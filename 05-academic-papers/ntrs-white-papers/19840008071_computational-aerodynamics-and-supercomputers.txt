@@ -1,0 +1,900 @@
+---
+title: Computational aerodynamics and supercomputers
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19840008071
+source_url: https://ntrs.nasa.gov/citations/19840008071
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-24
+retrieved: 2026-09-22
+sha256: fde057678b3cb8fad9921b0e6fecf766bada815ed276f7c960400d485f1e3ffa
+pages: 14
+words: 5190
+cv_look_pages: 6
+---
+
+NASA Technical Memorandum 85887
+
+
+
+                                  NASA-TM-8588719840008071
+
+
+
+
+Computational Aerodynamics and
+Supercomputers
+W.F. Ballhaus, Jr.
+
+
+
+
+January 1984
+
+
+
+
+                                     LANGL.CY f?':SEAFI·      :i~NTER
+                                            LlBR,(\RY. NASA
+                                         HAM~TOt-j1. VIRGINIA
+
+
+
+NI\S/\
+National Aeronautics and
+Space Administration
+NASA Technical Memorandum 85887
+
+
+
+
+Computational Aerodynamics and
+Supercomputers
+W. F. Ballhaus, Jr., Ames Research Center, Moffett Field, California
+
+
+
+
+NI\S/\
+National Aeronautics and
+Space Administration
+Ames Research Center
+Moffett Field, California 94035
+                                   COMPUTATIONAL AERODYNAMICS AND SUPERCOMPUTERS
+
+                                              W. F. Ballhaus, Jr.
+                                           NASA Ames Research Center
+                                         Moffett Field, California 94035
+
+
+                        Abstract                                        2.   Aerodynamic Simulation
+
+     This paper reviews some of the progress in com-            The two basic tools of the aircraft designer,
+putational aerodynamics over the last decade and           the wind tunnel and the computer, are depicted
+describes what remains to be done in the years             schematically in Figure 1. Both are simulations,
+ahead. The discussion includes a description of the        one analog and the other digital. In spite of the
+Numerical Aerodynamic Simulation Program objectives,       continuing rapid advancement in the performance of
+computational goals, and implementation plans.             supercomputers and numerical methods, it is not
+                                                           expected that computational simulations will com-
+                   1.   Introduction                       pletely replace wind-tunnel testing in the fore-
+                                                           seeable future. Their roles, instead, are comple-
+     Computational aerodynamics has emerged in the         mentary. The wind tunnel is superior in providing
+last decade as an essential element in the design          detailed performance data once a final configuration
+process for all types of aerospace vehicles. This          is selected, especially for cases with complex
+revolution has been driven by advances in computer         geometry and complex aerodynamic phenomena. Compu-
+power which, in turn, have led to advances in numeri-      tational simulations are especially useful for the
+cal solution techniques. The result is better com-         following applications: (1) .making detailed fluid
+putational simulations achieved more cost effec-           physics studies, such as simulations designed to
+tively. Further advances in computer power are             shed light on the basic structure of turbulent
+required for this revolution to continue.                  flows; (2) developing new design concepts, such as
+                                                           swept forward wings or jet flaps for lift augmenta-
+     NASA has initiated the Numerical Aerodynamic          tion; (3) sorting through many candidate configura-
+Simulation Program, an FY '84 new start, to provide        tions and eliminating all but the most promising
+this needed capability and to ensure continued U.S.        before wind-tunnel testing; (4) assisting the aero-
+leadership in computational aerodynamics. The pro-         dynamicist in instrumenting test models to improve
+gram has been structured to focus on the development       resolution of the physical phenomena of interest;
+of a complete, balanced computational system that          and (5) correcting wind-tunnel data for scaling and
+can be upgraded periodically to take advantage of          interference errors.
+advances in technology.
+                                                                Aircraft configuration design is an interactive
+     This paper reviews some of the progress in com-       process of trial and error. Computational simula--
+putational aerodynamics over the last decade and           tions substantially reduce the time and cost
+describes what remains to be done in the years ahead.      involved in detecting and correcting design errors
+The discussion includes a description of the Numeri-       in much the same fashion that word processing
+cal Aerodynamic Simulation Program objectives, com-        reduces the time and cost involved in correcting
+putational goals, and implementation plans.                errors in office correspondence. Computational
+
+
+
+
+            Wind Tunnel (Analog Simulation)                            Computer (Digital Simulation)
+
+                             Wind Tunnels and Computers Complement Each Other
+
+                             Figure 1.    Two Basic Tools for Configuration Design
+simulations can also provide data for conditions             available today. The first listed, design of a
+that are outside the operating range of existing             military transport, is an example. Other examples
+experimental facilities. An example is a high-speed          listed would require a computational capability
+planetary probe entry condition, as in the case of           beyond that currently available. Specifically,
+the Galileo Probe scheduled to enter the atmosphere          these cases would require the capability to treat
+of Jupiter in the late 1980s.                                complex, three-dimensional viscous flow fields.
+                                                             This is beyond current capabilities, but within
+      Inadequacies in testing are associated with            reach in this decade. Successful design of next-
+limitations in operating range (such as Mach number,         generation aircraft will be even more difficult with-
+Reynolds number, gas composition, and enthalpy               out further improvements in simulation capability.
+level) and the control of boundary conditions (such
+as flow nonuniformity, wall- and support-                          Improvements in computational efficiency are
+interference effects, and model fidelity). These             illustrated in Figure 2, which is an updated version
+factors must be properly controlled for the simula-          of a figure in Chapmsn. 1 The cost of a given compu-
+tion to accurately represent the desired free-flight         tation has decreased at the rate of about two orders
+conditions.                                                  of magnitude over a IS-year period because of
+                                                             increases in computer power. There has been a simi-
+      The inadequacies in computational simulations          lar two-order-of-magnitude decrease in the same time
+are primarily associated with poor resolution of             frame caused by improvements in solution methods.
+physical phenomena, and this is a direct result of           The net effect is a reduction in cost for a given
+insufficient computer power. Because of limited              computation of a factor of about 10,000. For
+available computer power, aerodynamicists are forced         example, the two-dimensional viscous flow field
+to solve approximate forms of the Navier-Stokes              about an airfoil can be computed today in about
+equations. These approximations introduce phenome-           15 minutes of computation time at a cost of about
+nological errors, with the consequence that certain          $1,000. Twenty-five years ago, such a simulation
+aspects of flow-field physics are not properly               would have cost $10 million on an IBM 704 computer
+represented. A further discussion of these errors            and would have required 30 years of computer run
+is contained in the next section. For any given              time.
+mathematical formulation, the approximating proce-
+dures used to solve the governing equations and                    Until recently, the United States enjoyed a
+boundary conditions introduce numerical errors.              significant advantage in simulation capability over
+These errors are compounded by inadequate grid               its military and commercial competitors. This was
+refinement or incomplete treatment of complex aero-          primarily due to an advantage in the availability
+dynamic configurations, both of which result from            of large-scale computers. Aerodynamicists in
+inadequate computer power. The consequences are,             Europe and the USSR were forced .to shoehorn large
+again, that physical phenomena are not represented           problems into small computers. Today, the United
+properly.                                                    States still maintains its advantage over the USSR.
+                                                             However, the U.S. advantage over Europe has eroded.
+     The penalties associated with inadequate simu-          For example, of the 16 orders for Cray machines in
+lation capability are illustrated in Table 1. This           1982, 10 were from Europe.
+is a list of major aircraft development projects
+whi~h, in spite of the use of the best simulation                  3.   Mathematical Stages of Approximation
+tools available at the time, encountered major aero-
+dynamic design problems that went undetected until                The coupled set of partial differential equa-
+flight testing. The consequences were severe penal-          tions governing aerodynamic flow fields, the Navier-
+ties in cost, schedule, and/or performance. Several          Stokes equations, have been known for over a cen-
+of these problems would have been detected early in          tury. Because of their complex form, closed-form
+the design cycle, and the consequent severe penal-           solutions have been obtained for only a few simple
+ties avoided, with the computational capability              cases. Eyen a numerical solution using advanced
+
+
+
+
+                                  Table I   Penalties Due to Inadequate Simulation
+
+
+                                        PROBLEMS DISCOVERED
+                      AIRCRAFT             IN FLIGHT TEST                CONSEaUENCE
+                     C·141           INCORRECTLY PREDICTED        COMPROMISED PERFORMANCE,
+                                     WING FLOW                    COSTLY MODIFICATIONS
+                     C-6A            INCORRECTLY PREDICTED        REDUCED WING FATIGUE LIFE
+                                     DRAG·RISE MACH NUMBER
+                      F·111          INCORRECTLY PREDICTED        COSTLY MODIFICATIONS
+                                     TRANSONIC AIRFRAME DRAG
+                     B-68 }          INCORRECTLY PREDICTED        REDUCED AIRCRAFT
+                     8-70            TRANSONIC PERFORMANCE        EFFECTIVENESS
+                     YF-12
+                     F·102
+                     F-106
+                              I INCORRECTLY PREDICTED
+                                TRANSONIC DRAG
+                                                                  REDUCED PERFORMANCE
+
+                     2CIVIL     INCORRECTLY PREDICTED             REDESIGN REaUIRED
+                     TRANSPORTS NACELLE·WING INTERFERENCE
+
+
+
+                                                         2
+                                  IMPROVEMENT IN COMPUTERS                                                   IMPROVEMENT IN METHODS
+
+                 100
+
+
+
+                     .IBM 650
+                  10 ~,
+          ~
+          (J
+                        ,   "     IBM 7090
+          Z            IBM 704...    7094
+          o
+                                  '~ .IBM 360·50
+          S
+          :::l
+                                      ' •• 360·67
+                              CDC 64oo"'~360.91
+                                                                                                                         ~.( 20 NAVIER·STOKES
+
+          Q.
+                                                                                                                            " o\
+          ~                     CDC66oo.    "
+                                           7600 .'~ 37ll-195
+                                                                                                                            G \
+          ~       .1                                ,                                                                     \  \
+                                                                                                                20 INVISCID'\ \
+                                                                                                                                      3D INVISCID
+                                                                                                                                             I
+,--
+          5
+          w
+          a:
+                                                 ASCnSTAR
+                                                               ,,
+                                             ILLIAC.4 • ' . CRAY f
+                                                                                                                                   b..\",~,
+                 .01                                                ,,                                                                 '\.        ~
+                                                                         ..... ,     NAS                                                     ~
+                                                                                   .......
+              .001 L.....I.-_--'_ _......_ _...._,....JI--_. . ._ _..ioo_---'
+                    1955     1960  1965     1970   1975    1980    1985   1990                     1955      1960     1965   1970     1975       1980
+                                              YEAR                                                                      YEAR
+
+
+                                     Figure 2.     Computation Cost Trend for Computer Flow Simulations
+
+      computers is generally infeasible because current                                  lated; for example, subsonic lift distribution in
+      computer power is inadequate to resolve the wide                                   Stage I, transonic wave drag in Stage II, airfoil
+      range of length scales active in high-Reyno lds-                                   drag and buffet in Stage III, and boundary layer
+      number turbulent flows of practical interest. Con-                                 transition and aerodynamic noise in Stage IV. Com-
+      sequently, nearly all the simulations to date have                                 puter codes based on Stages I and II are used now
+      involved solutions of mathematical formulations                                    throughout the aircraft industry, while Stages III
+      that 'are approximations to the Navier-Stokes                                      and IV are the bases for a number of pioneering
+      equations.                                                                         research efforts.
+
+           Table 2 lists the four major stages of approx-                                     Numerical computation methods for Stage I are
+      imation in order of their evolution and complexity                                 called "panel methods" because complex aircraft
+      (updated from Chapman 1 ). Advances in computational                               geometries are modeled by a large number of con-
+      aerodynamics have produced a variety of computer                                   tiguous surface panels. Whereas the full Navier-
+      codes ranging from Stage I codes, for complex air-                                 Stokes equations representing conservation of mass,
+      craft configurations, to Stage IV codes for very                                   momentum, and energy contain altogether 60 partial-
+      simple geometry. Each succeeding stage requires an                                 derivative terms when expressed in three Cartesian
+      increase in computer power for a given geometry, but                               coordinates, the linearized inviscid (Stage I)
+      allows a new class of physical phenomena to be simu-                               approximation truncates these 60 to only three
+
+                       Table 2 Governing Equations and Computer Requirements for Computational Aerodynamics
+
+                                                                                                          GRID POINTS       COMPUTER
+                        STAGE        APPROXIMATION                        CAPABILITY                                       REQUIREMENT
+                                                                                                           REQUIRED
+
+                                                               SUBSONIC/SUPERSONIC                          3 x 103
+                           I       LINEARIZED INVISCID           PRESSURE LOADS                                            1/10 CLASS VI '
+                                                                                                            PANELS
+                                                               VORTEX DRAG
+
+                                                               ABOVE PLUS:
+                          II       NONLINEAR INVISCID            TRANSONIC PRESSURE LOAOS                     105          CLASS VI
+                                                                 WAVE DRAG
+
+                                                               ABOVE PLUS:
+                                   REYNOLDS AVERAGED             SEPARATION/REATTACHMENT
+                          III                                                                                 107          30 x C,LASS VI
+                                   NAVIER·STOKES                 STALL/BUFFET/FLUTTER
+                                                                 TOTAL DRAG
+
+                                                               ABOVE PLUS:
+                                   LARGE EDDY
+                          IV                                     TURBULENCE StRUCTURE                         109          3000 x CLASS VI
+                                   SIMULATION
+                                                                 AERODYNAMIC NOISE
+
+                                                               ABOVE PLUS:
+                                                                                                                           3 MILLION TO
+                                                                 LAMINAR/TURBULENT
+                                   FULL NAVIER·STOKES                                                     1012 TO 1015     3 BILLION
+                                                                   TRANSITION
+                                                                                                                           CLASS VI
+                                                                 TURBULENCE DISSIPATION
+
+
+
+                                                                                     3
+terms: the Laplace equation for subsonic flows and               Stage IV, in its full complexity, involves the
+the wave equation for supersonic flows. The princi-         direct numerical simulation of large-scale turbulent
+pal advantage of this stage is that the governing           eddies from the complete time-dependent Navier-
+three-term equation is linear,' and ,henc;~. ,the           Stokes equations. The main physical concepts are
+forces on any panel are obtained by summing the -           that large eddies absorb energy from the mean flow,
+influences from all the other panels. Thus. very            are highly anisotropic, vary from flow to flow, and
+complex geometries can be treated relatively simply.        transport the principal turbulent momentum and
+                                                            energy;. on the other hand, small eddies dissipate
+      A major complication associated with approxi-         energy, tend toward isotropy, are nearly universal
+mations other than Stage I is that the entire flow          in character, and transport relatively little turbu-
+field, instead of just the aircraft surface. must be        lent energy or momentum. Thus, the large eddies ar~
+divided into a very large number of small cells or          computed. and the small subgrid-scale eddies are
+grid points for which finite-difference approxima-          modeled. Such simulations can be extremely demand-
+tions to the partial-derivative terms can be                ing on computer memory and speed. Given sufficient
+expressed. This is a formidable task for treating           computer power. however, numerical simulations from
+general aerodynamic configurations because no               essentially first principles could be made of phe-     --.
+straightforward, automated technique for grid gen-          nomena such as laminar/turbulent transition, aerody-
+eration has yet been devised. Considerable human            namic noise, surface pressure fluctuations. and all
+effort on a computer graphics terminal is required.         relevant quantities characterizing turbulence. This
+                                                            stage, though it is in a relatively primitive
+      The Stage I approximation. although crude, pro-       research phase. has already provided some informa-
+ vides surprisingly useful simulations for purely           tion about the nature of turbulent flows that has
+ subsonic or purely supersonic flows in which viscous       long belm intractable to experimental measurement,
+'effects are not dominant. A situation in which the
+ Stage I approximation is not applicable is for                       4.   Example Inviscid Computations
+ flight near the speed of sound. i.e., transonic
+ flows, wherein there are mixed subsonic-supersonic              Stage I and II approximations, in their purest
+ flow and embedded shock waves. Another example is a        forms. are frequently referred to as "inviscid for-
+ fighter aircraft in a gross maneuver, for which vis-       mulations." These approximations are applicable to
+ cous effects would be important. The effects of            cases for which viscous effects can be either
+ viscosity, which include boundary layers on surfaces.      neglected or accounted for by adding boundary-layer
+ turbulence, and a flow separation and reattachment,        corrections. An example application is the cruise
+ strongly affect aerodynamic performance, especially        design point for a commercial transport.
+ near t~e limits of performance.
+                                                                 Examples of current inviscid formulation capa-
+     Stage II. in its complete form, neglects only          bility are provided in Figures 3 and 4. The first
+viscous terms and contains 27 of the 60 partial-            illustrates a panel method (Stage I) computation for
+derivative terms in the complete Navier-Stokes              the Space Shuttle Orbiter mounted on top of the
+equations. There are subsets of the Stage II                B-747 carrier aircraft. 2 Accurate determinations
+approximation that involve fewer than the 27 terms.         were made of the lift characteristics for the com-
+This stage of approximation is applicable for sub-          bined configurations and for each vehicle during
+so~ic, transonic, supersonic. and hypersonic flows          separation of the orbiter from the carrier. Con-
+as long as viscous effects do not dominate.                 figuration orientations selected from the computa-
+                                                            tional design phase were tested in the wind tunnel
+     Stage III neglects none of the terms in the            for verification. Figure 4 illustrates the progress
+Navier-Stokes equations. However, the equations are         that has been made during the last decade in
+time-averaged over an interval that is long compared        Stage II computations. In 1972, when the first
+with turbulent eddy fluctuations, yet short compared        three-dimensional nonlinear transonic computations
+with macroscopic aerodynamic flow changes. Such an          were performed. about 18 hours of computer time per
+averaging process introduces various new terms.             case were required on the IBM 360-67. Now, more
+representing the time-averaged transport of turbu-          detailed simulations can be performed in substan-
+lent momentum and energy, that must be modeled. No          tially less time because of advances in numerical
+entirely suitable model for all flow types of engi-         solution techniques and the availability of more
+neering interest has yet been discovered. The cur-          powerful computers. Since design is normally a
+rent predominant thinking among researchers in the          trial and error (iterative) pro~ess. such reductions
+field is that no such universal turbulence model            in required computer run time can substantially
+exists. Hence, attention is now focused on develop-         reduce the time required for configuration
+ing menus of turbulence models. The process con-            optimization.
+sists of the synergistic use of computation and
+experiment to develop and test models of various                 Inviscid computations have become an integral
+types of flows that are considered building blocks          part of the design process in the aircraft industry
+to more complete aerodynamic configurations. The            today, and there are numerous examples of successful
+primary merit of the Stage III approximation is that        applications. One is the design of the European
+it provides realistic simulations of separated flows.       Airbus A-310. According to Jupp,3 the use of these
+of unsteady flows such as buffeting. and of total           methods was primarily responsible for the claimed
+drag and the other aerodynamic forces. Predictions          20% improvement in fuel efficiency of the A-310 over
+of these types of flows are fundamentally important         the A-300, which was designed before these methods
+in a wide range of aerodynamic problems for aircraft,       were widely available. Less wind-tunnel testing of
+missiles. helicopter rotors. and turbine and com-           wing designs was required, leaving more test time to
+pressor blades. Generally, considerably more com-           address complex aerodynamic component interference
+puter speed and storage are required for Stage III          problems. A simple back-of-the-envelope calcula-
+because of the large number of grid points needed to        tion, assuming fuel costs of $1.30 per gallon for an
+resolve viscous phenomena, even with the time aver-         assumed IS-year life of a 400-airplane fleet, indi-
+aging of turbulent fluctuations.                            cates a potential saving in fuel costs of
+
+                                                        4
+                                                                      .7
+                                                                            o WIND TUNNEL TEST
+                                                                              M = 0.6
+                                                                      .6
+
+                                                                      ,5                                          ,/'
+                                                                 CL        B747 + ORBITER
+                                                                                                         ,
+                                                                                                             ",,,,-
+                                                                                                               /.
+
+                                                                                                      ",'"        B747
+                                                                      .4
+                                                                                               ",'"               ALONE
+
+                                                                                         ',,"'" --"\.............
+                                                                                       "'"
+                                                                      .3
+                                                                                       . ",
+                                                                      .2               ~----            ORBITER
+
+                                                                               '" '"
+                                                                                                        ALONE
+                                                                      .1
+
+
+                                                                      0                                       6       7   8
+
+
+
+
+      Figure 3.    Linearized Inviscid Panel Method Applied to Space Shuttle Orbiter/B747 Combination
+
+
+                           1972                                                 1980
+
+
+
+
+                           WING                                            COMPLETE AIRCRAFT
+                  18 ~ OF COMPUTATION                                 16 minutes OF COMPUTATION
+
+
+               Figure 4.   Revolutionary Advances in Inviscid-Flow Technology During the 1970s
+
+$10 billion. Incidentally, Airbus has captured a           Table 3 E~amples of Important Viscous-Dominated
+substantial percentage of the wide-body jet market               Problems Amenable to Solution on NAS
+from its American competitors in a very short period        • PREDICTION OF AERODYNAMIC FORCES
+of operation.)
+                                                            • INLET FLOWS
+          5.    Example Viscous Computations
+                                                            • COMPRESSOR STALL
+     Examples of viscous-dominated aerodynamics
+problems, for which inviscid formulations generally         • AIRFRAME/PROPULSION SYSTEM INTEGRATION
+are not applicable, are provided in Table 3. These
+problem areas can be addressed using the Stage III          • STRAKE DESIGN
+approximations, the Reynolds-averaged Navier-Stokes         • STALL/BUFFET
+formulation. Currently, this stage is the basis for
+vigorous research focusing on ,the computation of           • PERFORMANCE NEAR PERFORMANCE BOUNDARIES
+
+                                                       5
+complex flow-field phenomena. Thus far, investiga-          that two-dimensional airfoil computation require-
+tions have been limited to simple geometries. Fig-          ments are well within the capabilities of the
+ure 5 illustrates some of the progress that was             Cray lS and Cyber 205 Class VI machines. Require-
+made during the 1970s. These building block compu-          ments for three-dimensional flow past a wing are
+tations, verified by comparison with experiment,            beyond the capabilities of these machines, at the
+indicate that the basic physics of these flow fields        limits of the capability of the Cray 2. Machine
+can be computed, at least qualitatively. Good               capability expected in 1988 is sufficient to tackle
+quantitative agreement will come in time as turbu-          the problem of a complete aircraft or a helicopter
+lence models (to reduce phenomenological errors) and        rotor with a l-million-point computational grid
+solution-adaptive grid generation techniques (to            system. This requires a computing speed of about
+reduce numerical errors) mature.                            1 billion floating point operations per second and
+                                                            a memory of 250 million words.
+      Currently, for three-dimensional cases such as
+the after-body drag computation for a fuselage with               There are few examples of the Stage IV approx-
+propulsive jet, shown in Figure 5, as much as               imation, Large-Eddy Simulation (LES) , computations
+20 hours of Class VI computer time are required.            because of the enormous computing power required
+Clearly, for computations about complete aircraft,          even for the simplest geometries. Figure 7 shows
+additional computer power is required. The specific         vorticity contours from an LES computation of a
+requirements are quantified in Figure 6, which is           three-dimensional compressible jet. 4 The contours
+modified from Chapman 1 to include recent performance       illustrate transition from laminar to turbulent
+predictions. These requirements are also compared           flow.
+with the capabilities of existing machines, and with
+the Cray 2, expected to be available in 1985, and
+the Cyber 2XX and Cray 3, expected to be available             6.   The Numerical Aerodynamic Simulation (NAS)
+in the late 1980s. The requirements are stated in                                   Program
+terms of computing speed and memory for a 15-minute
+computation based on solution algorithm efficiency                The NAS program is an FY '84 NASA aeronautics
+anticipated for 1985. Experience indicates that             new start that will be an ongoing evolutionary and
+10-15 minutes of run time are typically required for        pathfinding effort to provide a national computa-
+adequate turnaround in an applications-oriented             tional capability available to NASA, DOD, industry,
+environment. Algorithm efficiency for 1985 is set           other government agencies, and universities. This
+by extrapolation, assuming the same rate of progress        program is a necessary element in insuring continu-
+in algorithm development experienced during the             ing leadership in computational fluid dynamics and
+1970s. The computer speed requirements are stated           related disciplines. For additional information on
+in terms of millions of floating point operations           the NAS Program, including a summary of the 8-year
+per second sustained, i.e., the average speed               evolution of the concept, see Peterson et al. s
+expected for a typical flow-field computation. Note
+
+
+                   1970                                                  1980
+
+
+
+
+                                                   AFTERBODY DRAG                   AIRFOIL BUFFET
+
+
+
+                                                                       1-20 hours 0 F
+                                                                      COMPUTATION
+
+
+
+
+                                               AILERON BUZZ                              CORNER FLOWS
+
+
+
+
+                                                            COMPRESSOR/TURBINE BLADE ROW
+
+       Figure 5.   Revolutionary Advances in Viscous-Flow Building Block Technology During the 1970s
+
+
+                                                        6
+                                        SPEED REQUIREMENT BASED ON 15oml" RUN WITH 1985 ALGORITHMS
+                                               REYNOLDS AVERAGED NAVIER STOKES .EQUATIONS
+
+
+              109
+
+                                    CYBER 2XX, CRAY 3
+
+              108                            CRAY2
+
+
+                                            ILLIAC·IV
+
+     'E0      107
+      I                              CRAY 1S CYBER 205                                                                             AC   AIRCRAFT
+     >'                                                                                                                            W    WING
+     a:                             STAR 100A CYBER 203
+     0                                                                                                                             HR   HELICOPTER ROTOR
+     ::IE
+     w                                        CRAY·1                                                                               CB   COMPRESSOR BLADE,
+     ::IE     106
+                                                7600
+                                                                                                                                        OR TURBINE BLADE
+<-                                                                                                                                 IB   INCLINED BODY
+                                                                                                          N
+                                                                                                                                   A    AIRFOIL
+                                                                                                          >-
+                                                                                                          <
+                                                                                                          a:
+              105                                                                                         CJ
+
+
+
+
+              104 l...--I-....J...-W-I--.J..--l--L.J.J..--Jl...-.J.-........L-.....L....llJ.L-w........
+                .001               .01              .1                     1                   10
+                                                               COMPUTER SPEED. mflops
+
+            Figure 6.          Computer Speed and Memory Requirements Compared With Computer Capabilities
+
+
+
+
+                         • EXAMPLE: TRANSITION TO TURBULENCE IN A JET (1979)
+                             VORTICITY CONTOURS M" 0.6, ReO" 20,000
+
+
+                                   too 0
+                                                           -... ..-.... -.-.
+                                                              ~                                                ."~   .... ......
+                                                                                                                        ,~~
+
+
+
+
+                                  too 62
+
+
+
+
+                         • IMPORTANCE: PROVIDES DETAILED INFORMATION ABOUT TURBULENT
+                           MIXING. ENTRAINMENT. NOISE GENERATION. AND HEAT, MASS. AND
+                           MOMENTUM TRANSFER THAT IS NOT FEASIBLE TO OBTAIN EXPERIMENTALLY
+
+                             Figure 7.            Pl;'ovideIncreased Understanding of Fluid Flow Physics
+
+
+
+
+                                                                                           7
+       Specific performance goals of the NAS System              3.   Workstation Subsystem (WKS)
+are:                                                             4.   Graphics Subsystem (GRS)
+                                                                 5.   Mass Storage Subsystem (MSS)
+                                                                 6.   Long-Haul Communication Subsystem (LHCS)
+                                                                 7.   High-Speed Data-Network Subsystem (HSDN)
+       Speed    250 mflops, sustained                            8.   Local-Area Network Subsystem (LANS)
+       Memory - at least 64 x 10 6 64-bit words
+       Users - local and remote                             Only the HSP, SPS, WKS, and GRS will be programmed
+                                                            by users. The MSS and LHCS will provide a mass
+                                                            storage facility and a remote data-communications
+                                                            interface, respectively. The HSDN and LANS will
+       Speed - 1 gflops, sustained                          provide a data-transport function for the other
+       Memory - 256 x 10 6 64-bit words                     subsystems.
+       Users - support at least 100 simultaneously
+                on a time-sharing interactive basis              The High-Speed Processor Subsystem (HSP) is
+       Operating system and network - capable of            the advanced scientific computing resource within
+                accommodating a multivendor hardware        the NPSN. The purpose of this subsystem is to pro-
+                environment                                 vide the computational throughput and memory capac-
+                                                            ity to compute computational aerodynamics simula-
+Beyond 1987                                                 tion models. In addition to batch processing,
+                                                            interactive time-sharing processing will be pro-
+       Continue to expand capability                        vided to aid in application debugging, result edit-
+                                                            ing, and other activities that depend on close
+The capability envisioned for the NAS System in             user-processing coupling to achieve optimum overall
+1987 will permit three-dimensional viscous flows,           productivity.
+based on the Stage III approximation, about
+multiple-component (wings, fuselage, tail, nacelles,             Present plans call for two generations of HSP
+etc.) aircraft configurations. Furthermore, this            computers to be in the system at anyone time. The
+capability will permit Stage IV computations in a           first (HSP-1), planned for integration in 1985,
+research mode that will lead to a better understand-        will provide a capability to process optimally
+ing of turbulence and, hence, to the better turbu-          structured computational aerodynamics applications
+lence models essential to full realization of the           at a sustained rate of 250 mflops within a minimum
+Stage III approximation.                                    64 x 10 6 word memory capacity. The second (HSP-2),
+                                                            planned for integration in 1987, will increase
+     The planned NAS Processing System Network              these values to 1 gflops and 256 x 10 6 word memory.
+(NPSN) will be a large-scale, distributed resource
+computer network at Ames Research Center. This                    Whereas the HSP is the ultra-high-speed,
+network will provide the full end-to-end capabili-          large-scale computer resource serving the global
+ties needed to support computational aerodynamics,          user community, the Workstation Subsystem (WKS) is
+will span the performance range from supercomputers         the microprocessor-based resource used by the indi-
+to microprocessor-based workstations, and will              vidual researcher. The WKS will provide a "scien-
+offer functional capabilities ranging from "number-         tist's work-bench" for local users to perform text
+crunching" interactive aerodynamic-flow-model solu-         and data editing, to process and view graphics
+tions to real-time graphical-out put-display manipu-        files, and to perform small-scale applications
+lation. The NPSN resources will be made available           processing. Each individual workstation will have
+to a nationwide community of users via interfaces           the appropriate memory, disk storage, and hard-
+to landline and satellite data communications links.        copy resources to fit the local user's needs.
+                                                            Individual clusters of workstations will be net-
+     The NAS program is structured to accommodate           worked together via the LANS for use within local
+the continuing development of the NPSN as a leading-        user groups. In addition to local processing, the
+edge computer-system resource for computational             WKS will provide terminal access to other user-
+aerodynamics. This development process is dependent         programmed systems and a file-transfer capability
+upon the acquisition and integration of the most            via the LANS and HSDN.
+advanced supercomputers industry can provide that
+are consistent with computational aerodynamics                   T~e Support Processing Subsystem (SPS) is a
+requirements. Figure 8 illustrates the continuing           multi~super-minicomputer-based system providing a
+development of the NPSN functional and performance          number of important functions. The SPS will pro-
+capabilities through successive introduction of             vide general-purpose interactive processing for
+advanced high-speed processors into the network.            local and remote terminal-based users (i~e., those
+The introduction of each new high-speed processor           without workstations), and provide an intermediate
+involves the integration phase, in which new soft-          performance resource between the HSP and WKS per-
+ware and interfaces are implemented and tested,             formance as aWKS backup. The SPS will be a gate-
+followed by an operational phase. An important              way between the HSDN and the LANS, the location for
+element in this evolutionary strategy is the early          unit record input/output devices such as high-
+implementation and testing of a fully functional            speed printers and microfilm, and the focal point
+NPSN designed to accommodate new supercomputers from        for network monitoring and system operation.
+different vendors with a minimum impact on the exist-
+ing network architecture and on operational use.                 The Graphics Subsystem (GRS) is a super-
+                                                            minicomputer-based system that will provide a
+     As shown in Figure 9, the NPSN will consist of         sophisticated state-of-the-art graphical display
+the following eight subsystems:                             capability for those applications requiring highly
+                                                            interactive, high-density graphics for input prep-
+       1.   High-Speed Processor Subsystem (HSP)            aration and result analysis. The GRS will provide
+       2.   Support Processing Subsystem (SPS)              a level of performance and storage capability
+
+                                                        8
+                                _ _ _ _ TIME                                                                                                                            ~
+
+
+
+
+                        ,....     ...;:C;,;ON;;,;.;.T,;;,;IN,;;,;U;.;I,;;,;N;.;G;,.;.N.;.;;E;.;TW;,.;.;..;O;..R.;.;.K.;..I),.;;.;;.EV.;..E;.;L.;..OP~M...;E;.;,.N;..T          :>
+
+
+
+
+                                  INTjGRATION                               I
+                                                       FIRST HIGH·SPEED PROCESSOR
+                                                                                                OPERATION                                                1
+
+
+
+                                                                            INTjGRATION
+                                                                                              SECOND HIGH·SPEED PROCESSOR
+                                                                                                                         I                        OPERATION
+
+
+
+                                                                                                                                THIRD HIGH·SPEED PROCESSOR
+
+                                                                                                                        INTEjRATION                                     I   OPERATION:>
+
+
+
+
+                    MID
+                        t                                              LATE
+                                                                            1                                      LATE
+                    1982                                               1986                                        1987
+
+
+
+                                 Figure 8.                            Evolution of NAS System
+
+
+
+
+   HIGH               HIGH
+                                                                                                                                                                              --     AMES CENTRAL
+                                                                                                                                                                                       COMPUTER FACILITY
+
+
+                                                                                                                                                                               ---
+                                                                                                                            LONG HAUL
+  SPEED              SPEED                                                                                                                                                           ARPANET
+                                                                                                                          COMMUNICATION
+PROCESSOR          PROCESSOR                                                                                                                                                         DIAL UP
+                                                                                                                            SUBSYSTEM                                                WIDE BAND
+   #1                    #2
+
+
+
+
+                                                   HIGH SPEED DATA NETWORK
+
+
+
+
+                                                                                                                                SUPPORT
+         GRAPHICS
+                                                                                                                               PROCESSING
+        SUBSYSTEM
+                                                                                                                               SUBSYSTEM
+
+
+
+                                                                                             LOCAL AREA NETWORK SUBSYSTEM
+
+
+
+                                                                            WORK
+                                                                           STATION
+                                                                          SUBSYSTEM
+                                                                                                                           •• • •
+
+            Figure 9.     Numerical Aerodynamic Simulation Processing System Network
+
+
+                                                                                             9
+beyond that provided by workstations, and will be           to support up to 40 workstations and to provide a
+shared by first-level user organizations.                   hardware data-communications rate of at least
+                                                            10 megabits/sec.
+      The Mass Storage Subsystem (MSS) will provide
+the global on-line and archival file storage capa-               The LANS differs from the HSDN in data-
+bility for the NPSN. This subsystem will validate           communication bandwidth because of the smaller size
+and coordinate requests for files to be stored or           of files transferred on the LANS and the lower cost
+retrieved within the NPSN and maintain a directory          per LANS network interface device. The HSDN and
+of all contained data. The MSS will act as a file           LANS will use the same network protocol.
+server for other NPSN subsystems; control its own
+internal devices; and perform file duplication,                  The NPSN software will include a rich set of
+media migration, storage allocation, accounting,            systems and utility software aimed at providing the
+and file management functions. Current require-             most efficient and user-productive environment
+ments call for on-line storage of 200 gigabytes in          practical. Major software objectives are as
+1985 and 800 gigabytes in 1987.                             follows:
+
+     Users of the NPSN will create and use files on              1. A vendor-independent environment that
+various subsystems, e.g., HSP, SPS, GRS, or WKS.            allows the incorporation of new technologies with-
+However, after the user has exited the NPSN, the            out sacrificing existing software commitments
+main repository of these files will be the MSS.                  2. A common and consistent user environment
+This subsystem will hold those very large files that        across the NPSN
+will be used as input to, or generated as output                 3. The maximum transparency to the hetero-
+from, the largest tasks that will be processed on           geneous subsystem nature of the NPSN
+the HSP and GRS. It will contain user source and                 4. The optimal performance for critical
+object codes, and parameter and data files that are         resources
+kept for any significant length of time. The MSS                 5. A rich set of user tools
+will also contain the backup files that are created
+to improve the probability that long-lasting or             The strategy taken to satisfy these objectives is
+high-value files are accessible when needed.                to use a UNIX™ or UNIX™-Iook-alike operating
+                                                            system on the user programmable subsystems (RSP,
+     The Long-Haul Communication Subsystem (LHCS)           SPS, GRS, and WKS). This approach is the first
+will provide the data-communication interface               attempt to achieve vendor independence and a common
+between the NPSN and sites geographically remote            user environment, and will be implemented by a com-
+from Ames Research Center. This subsystem will              bination of native UNIX™, vendor UNIX™ look-
+provide the necessary hardware/software interfaces;         alikes, and virtual operating ststem approaches
+modulation and demodulation devices; and recording,         using Software Tools. The UNIX M approach provides
+processing, data buffering, and management func-            for the implementation of a rich set of user tools,
+tions to support data transfers and job control by          from text editors and compilers to graphics pack-
+remote users.                                               ages, that are transportable among systems. This
+                                                            approach also provides a degree of transparency
+     In the sense that the MSS is a back-end                among subsystems. Vendor independence and high
+resource for the entire NPSN, the LHCS is a front-          performance are aided by the implementation of a
+end resource. It provides for access by remote              highly functional and efficient network protocol,
+users to the HSP, SPS, GRS. and WKS. but it is not          such as the Livermore Interactive Network Communi-
+specifically addressed or programmed by the user.           cation System protocol.
+The LHCS processor functions as a data-communications
+front-end providing store and forward, protocol                   As the NPSN evolution continues, further gains
+conversion, and data-concentrator service.                  in meeting these objectives in the areas of
+                                                            automatic-file and data-format conversion, common
+      Current plans call for the LHCS to interface          network directory, architecture-independent pro-
+with data links capable of providing 9600 bits/sec          gramming languages. and architecture specific
+to over 1.5 x 10 6 bits/sec transmission rates in           optimization from ANSI languages will be
+order to interface with government-sponsored net-           forthcoming.
+works (e.g., ARPANET, and the proposed NASA Program
+Support Communication Network) and commercial                    7.   Supporting Computer Science Research at
+tariffed services. Candidate data-communication                                    NASA Ames
+protocols to be supported include ARPANET, IBM
+System Network Architecture (SNA), and Digital                   In mid-1983 the Research Institute for
+Equipment Corporation's network (DECnet).                   Advanced Computer Science (RIACS) was formed at
+                                                            NASA Ames and is operated under contract by the
+      The High-Speed Data-Network Subsystem (HSDN)          University Space Research Association. The intent
+provides the medium over which data and control             was to bring additional computer science expertise
+messages are exchanged among the HSP, SPS, GRS, MSS,        to NASA and to initiate a number of research ven-
+and LRCS. Major design emphasis will be placed on           tures involving personnel from NASA, RIACS, indus-
+the ability to support large file transfers among           try, and academia. The long range research theme
+these systems. The HSDN will include high-speed             is to automate the process of scientific investiga-
+(minimum SO megabits/sec) interface devices and             tion from problem formulation to results dissemina-
+driver-level network software to support NPSN               tion. Principal areas of focus include: concur-
+internal data communications.                               rent processing, computer system networking,
+                                                            knowledge-based expert systems, and fault tolerant
+     The Local-Area Network Subsystem (LANS) will           computing. It is envisioned that appropriate
+provide the physical data transfer path between the         research advances from these ventures will lead to
+SPS and WKS, and between various workstations               future upgrades in the NAS System in concert with
+within a WKS cluster. The L~S will be designed              the NAS Program pathfinding effort to provide a
+
+                                                       10
+
+
+                                       '"
+leading-edge computational system to a national                                 Acknowledgments
+community of aerodynamic and fluid dynamic users.
+                                                                 The author acknowledges the substantial con-
+                8.   Concluding Remarks                     tributions to the development of the NAS concept.
+                                                            as described here, by his friends and colleagues.
+     Remarkable progress was made during the decade         F. R. Bailey and V. L. Peterson of NASA Ames, and
+of the 1970s in advancing the discipline of compu-          D. R. Chapman of Stanford University.
+tational aerodynamics. This progress was sparked by
+increases in available computer power and was                                     References
+focused primarily on the development of inviscfd
+flow-field simulation techniques. These techniques          1.   D.R. Chapman, "Computational Aerodynamics
+have been incorporated into computer codes that are              Development and Outlook," AIM Journal.
+now vital tools in the aerospace industry for                    Vol. 17, No. 12, pp. 1293-1313, Dec. 1979.
+design and analysis.
+                                                            2.   A. L. da Costa, "Application of Computational
+     Today, research is focused primarily on extend-             Aerodynamic Methods to the Design and Analysis
+ing simulation capability to the treatment of more               of Transport Aircraft ," ICAS Paper, 11th Con-
+complex aerodynamic configurations and more complete             gress of the International Council of the Aero-
+treatment of complex aerodynamic phenomena. A major              nautical Sciences, Lisbon, Portugal,
+goal is the simulation of the three-dimensional vis-             Sept. 10-16, 1978.
+cous flow field about a complete aircraft. Such a
+capability will substantially reduce the level of           3.   J. A. Jupp, "Wings of Success," World Airnews,
+uncertainty in current simulations. This will per-               pp. 4-8, Dec. 1980.
+mit early detection of design deficiencies, thereby
+avoiding severe penalties in cost, schedule, and            4.   A. A. Wray, "Study of Transitional Phenomena in
+performance in many aerospace system developments.               a Flat Plate Boundary Layer and Effects of
+                                                                 Small Scale Turbulence on Large Scale Motions,"
+     To achieve .this objective, and for the rapid               DCW Industries Report DCW-R-22-01, Dec. 1978.
+rate of progress in computational aerodynamics to
+continue, further substantial increases in available        5.   V. L. Peterson, W. F. Ballhaus, Jr., and F. R.
+computer power will be required. The Numerical                   Bailey, "Numerical Aerodynamic Simulation,"
+Aerodynamic Simulation (NAS) Program, a NASA FY '84              NASA TM-84386. July 1983. To appear in the
+new start in aeronautics, is designed to meet this               Proceedings of the Conference on Large Scale
+challenge. The goal of this effort is to provide                 Scientific Computation, Academic Press (to be
+an advanced capability by the mid- to late-1980s                 published) •
+that will be available for use by government,
+industry, and academia. The NAS System will be
+continually upgraded beyond that date as computer
+technology advances.
+
+
+
+
+                                                       11
+ 1. Report No.                                            2. Government Accession No.                            3. Recipient's Catalog No.
+    NASA TM-85887
+ 4. Title and Subtitle                                                                                           5. Report Date
+                                                                                                                   January 1984
+   COMPUTATIONAL AERODYNAMICS AND SUPERCOMPUTERS                                                                 6. Performing Organization Code
+
+
+ 7. Author(s)                                                                                                    8. Performing Organization Report No.
+
+   W. F. Ba11haus, Jr.                                                                                             A-9583
+                                                                                                                10. Work Unit No.
+ 9. Performing Organization Name and Address
+                                                                                                                   K-1757                                ~,
+
+
+   Ames Research Center                                                                                         11. Contract or Grant No.
+   Moffett Field, CA 94035
+                                                                                                                13. Type of Report and Period Covered
+12. Sponsorin9 Agency Name and Address
+                                                                                                                   Technical Memorandum
+   National Aeronautics and Space Administration                                                                14. Sponsoring Agency Code
+   Washington, DC 20546                                                                                            505-31-01
+15. Supplementary Notes
+   Point of Contact: W. F. Ba11haus, Ames Research Center, MS 200-4, Moffett
+   Field, CA 94035 FTS 448"-5065 or (415) 965-5065
+16. Abstract
+
+        This paper reviews some of the progress in computational aerodynamics
+   over the last decade and describes what remains to be done in the years
+   ahead. The discussion includes a description of the Numerical Aerodynamic
+   Simulation Program objectives, computational goals, and implementation
+   plans.
+
+
+
+
+17. Key Words (Suggested by Author(s))                                             18. Distribution Statement
+
+   Computational fluid dynamics                                                           Unlimited
+   Numerical aerodynamic simulation
+   NAS Program
+                                                                                                          Subject Category - 02
+19. Security Classif. (of this report)                    20. Security Classif. (of this page)              121. No. of Pages           22. Price"
+             Unclassified                                               Unclassified                                   14                     A02
+
+                                         "For sale by the National Technic~1 Information Service, Springfield, Virginia 22161
+

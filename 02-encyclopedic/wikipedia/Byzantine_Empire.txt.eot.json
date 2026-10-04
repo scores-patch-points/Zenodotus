@@ -1,0 +1,117 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Byzantine_Empire.txt",
+  "sha256": "6350aca6f25277fe4d6ef13798e126204df763e2c4268bb1139adcf09391791b",
+  "chars": 71942,
+  "declaredIdentity": {
+   "title": "Byzantine Empire",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 22,
+  "debrisChars": 925,
+  "debrisFraction": 0.013,
+  "headingCount": 34,
+  "headings": [
+   "Nomenclature",
+   "History",
+   "Start date",
+   "Structures of the state",
+   "Governance",
+   "Law",
+   "Christianity and the Church",
+   "Warfare",
+   "Military evolution",
+   "Diplomacy",
+   "Society",
+   "Demography",
+   "Cuisine and dining",
+   "Recreation",
+   "Language",
+   "Economy",
+   "Arts and sciences",
+   "Art and architecture",
+   "Literature",
+   "Music",
+   "Science and technology",
+   "Legacy",
+   "Political aftermath",
+   "Cultural aftermath",
+   "See also",
+   "References",
+   "Notes",
+   "Citations",
+   "Bibliography",
+   "Books",
+   "Journals",
+   "Book chapters and encyclopaedias",
+   "Further reading",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 34,
+   "debrisFraction": 0.013
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": -0.5120428415488792,
+   "debrisFractionZ": 0.8356716504931924,
+   "priorSeenSoFar": 2
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.071Z"
+ }
+}

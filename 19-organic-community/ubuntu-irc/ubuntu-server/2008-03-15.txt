@@ -1,0 +1,711 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2008-3-15"
+lang: "en"
+messages: "702"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<sommer> mindframe-: mrtg works great for that
+<owh> sommer: I've written up what I've found so far: https://wiki.ubuntu.com/OnnoBenschop/ubuntu-server/cron-bug
+<sommer> cool
+<sommer> looks good
+<owh> I'm just wondering if its something weird like, reboot - add script - fail, vs reboot - reload - add script - success - add script - success
+<sommer> have you tested cron.hourly? ...wondering if it may be effected as well
+<owh> Hmm, I thought that I invented that on my system, hardy has it too :) I'll check.
+<owh> sommer: So far two out of three act normally, but the one we care about missed the job by about 46 seconds, so I'll have to wait an hour :)
+<sommer> wow... maybe something with the hardware?
+<owh> I'm beginning to wonder if its an anacron interaction. The hourly job doesn't use anacron.
+<sommer> ah... makes sense
+<owh> As for hardware, the gutsy-server is a HP proliant, the gutsy-workstation is a Thinkpad and the hardy-server is a vmware-server
+<gregbrady> Good evening everyone.
+<gregbrady> What is the best way to go about setting up a proxy server in my home network in order to block certain sites from individual users?
+<andguent> evenin' :) (i'm thinking most of the room is fairly quiet...)
+<andguent> are you already running Ubuntu on a server, or server-esk box?
+<Kamping_Kaiser> you'll need an authenticating proxy
+<gregbrady> Ubuntu on a desktop
+<gregbrady> All ubuntu machines.  5 in all
+<gregbrady> Over wireless
+<Kamping_Kaiser> gregbrady, do you have one user per system?
+<andguent> is your router running ubuntu as well? or just 5 desktops
+<gregbrady> No the three of us have access to all computers, except one main one.
+<gregbrady> Router is a standard Belkin Pre-N
+<andguent> if you know exactly which websites you want to block, or exactly which websites you want to allow, squid will be the most popular proxy out there to learn
+<gregbrady> No, not exact websites.
+<gregbrady> But I guess I could build a list over time
+<andguent> if you want it to be a 'smart' filter that just blocks certain types of websites, that gets slightly harder, but still doable
+<Kamping_Kaiser> dansguardian is the only filtering proxy i have used, so its the only one i can really recomend
+<gregbrady> Kamping_Kaiser, yup, I understand completely.  I'm looking for something maybe more generic, if that makes sense.
+<andguent> same, dansguardian is a very nice key word based filter, but it usually is run with squid
+<Kamping_Kaiser> andguent, i'm aware of it running with anything else
+<gregbrady> dansguardian just seems a bit daunting to install and manage.
+<Kamping_Kaiser> gregbrady, are you after keyword filtering/sitelists, what sort uf stuff?
+<Kamping_Kaiser> its not as hard as you think, exept it has the hidden overhead of needing to configure squid
+<gregbrady> Kamping_Kaiser, keyword and content
+<gregbrady> I would also like to monitor sites visited
+<Kamping_Kaiser> all proxys will log
+<gregbrady> Yup, I know.
+<andguent> if you have a good guide, or are familiar with squid & dans, it can be 3 config files and maybe 10 lines of config entries, not bad for what it does
+<gregbrady> -no guide, and not familiar with squid or dans
+<Kamping_Kaiser> 3 files?
+<andguent> squid.conf, dansguadian.conf, dansguardianf1.conf, ack, and /etc/default/dansguardian
+<andguent> ok, 4 :)
+<Kamping_Kaiser> you dont /need/ to edit f1 *i havent*
+<Kamping_Kaiser> i dont remember default/dans
+<andguent> going off of memory, its possible i'm wrong, anywho, the point is it isn't difficult at all
+<Kamping_Kaiser> agreed on the point :)
+<andguent> trying to track down a good guide
+<gregbrady> Yeah, so am I!
+<Kamping_Kaiser> https://wiki.ubuntu.com/EdubuntuProxy any help?
+<gregbrady> let me check.  Be aware that I'm just running Ubuntu
+<andguent> eh, its all the same, just different software installed by default
+<gregbrady> That's my understanding.  I'm relatively new so I just wanted to clarify.
+<andguent> as long as you can install dansguardian and squid, it really doesn't matter what you run it on
+<andguent> its actually possible to at least run squid on a commodity linksys router, but thats another project :P
+<andguent> Kamping_Kaiser's link looks good, I found this guide as well which keeps it short and sweet:http://www.brianmathis.net/2007/11/30/howto-squid-and-dansguardian-with-dapper/
+<owh> gregbrady: Just to break in here, but many domestic wifi routers have filtering capacity built in.
+<andguent> I feel like they are both missing a few httpd_accel lines for squid
+<gregbrady> owh, yes, but it is pay by the month on my router
+<owh> gregbrady: Huh? In a domestic environment? How are you connected to the 'net?
+<gregbrady> owh rogers and a belkin router
+<owh> gregbrady: The belkin router is in your home?
+<gregbrady> owh yes
+<gregbrady> Belkin Pre-N 530200
+<owh> gregbrady: Then my point still stands. Many domestic routers have filtering built in, that is, you can access their web interface and setup some form of URL filtering. Not all, but many.
+<owh> gregbrady: Most of them are running some form of linux anyway :)
+<gregbrady> This one relies on a service that you subscribe to
+<owh> gregbrady: I get no hits at all with that model number.
+<gregbrady> Sorry, Ubuntu froze and crashed.
+<Kamping_Kaiser> :o
+<owh> gregbrady: That sounds like a bigger problem than filtering. I've only had that happen with hardware faults.
+<gregbrady> yeah, first time for everything.
+<gregbrady> Too bad, I was doing a lot of long running processes in the background
+<owh> Did you see my last comment: gregbrady: I get no hits at all with that model number.
+<gregbrady> owh, second please.  I have about 5 process to get started again.
+<gregbrady> Man, and they were running for the last about 4 hours.......
+<gregbrady> Ok, back in business!
+<gregbrady> Belkin F5D8230-4
+<owh> gregbrady: http://whirlpool.net.au/index.cfm?a=h_view&model_id=327 - look for manual, click the link, look for manual, download.
+<gregbrady> owh, it only has them for win/mac
+<gregbrady> nope, found it
+<owh> gregbrady: Integrated Parental Control Web Content Filter: Belkin Parental Control allows you to set up your own policies and block any website you want. There is also an optional reporting feature (fee-based) that allows you to get a report showing you every website that was visited from your network (refer to your Parental Control User Manual for more information).
+<gregbrady> exactly, fee based
+<owh> gregbrady: Read it properly
+<gregbrady> owh, sorry page 10.  Parental controls.
+<owh> Let me make it clearer for you gregbrady: Integrated Parental Control Web Content Filter: Belkin Parental Control allows you to set up your own policies and block any website you want.
+<andguent> owh: I think he was looking for keyword/smart filtering of some sort
+<gregbrady> Parental control is free for 6 months, which includes blocking anysite
+<gregbrady> The last paragraph says what is included in the Parental controls, if subscribed to
+<gregbrady> owh, I could live with tracking and manual list creation if required
+<gregbrady> owh, maybe I'e misread it.
+<gregbrady> Is this a really unusual request for Ubuntu users to make?
+<owh> Well, on a ubuntu-server group, yes :)
+<Kamping_Kaiser> gregbrady, request what?
+<gregbrady> owh, could be.
+<gregbrady> Kamping_Kaiser, requesting an easy method for managing web access.
+<andguent> gregbrady: I'm more than happy to help getting squid and dansguardian up and running with you, i was just letting you check out alternate options in case they really did work for what you needed
+<gregbrady> andguent, nope, I understand your intent.
+<gregbrady> andguent, I guess I had hopes it would be easier.  I've never tried this before
+<andguent> there may be other better ways to do it, but the squid and dans combo has been around for a while, and its the one i know [works]
+<andguent> i've heard smoothwall can be an easy install, but i've never used it
+<gregbrady> andguent, I will attempt to follow the directions I've already been given
+<andguent> the long and the short of it is that there is no harm in trying it, at least not until you start permanently forcing custom iptables entries at boot, then you just need to remember where you made that change 6 months ago :)
+<owh> gregbrady: Everything in the manual indicates that the only part that is fee based is the reporting. I do not have access to the "Parental Control User Manual", but as the owner of the device you presumably do.
+<gregbrady> owh, nope and when you try to use the function, it asks you to login in and register, which of course does not work.
+<owh> gregbrady: If your domestic router does what you need then that will be far simpler to implement than anything else - unless you already have a central gateway linux box.
+<gregbrady> owh, I agree.
+<owh> gregbrady: Did you look on the CD that came with the device?
+<andguent> gregbrady: I can even try setting the same filter up here with you, i don't really have a need for it right now though
+<gregbrady> owh, I just googled and found out that that service no longer works.
+<gregbrady> owh, they were indeed subscription based, but it does not function anymore.
+<owh> gregbrady: Then perhaps contact Belkin and ask them what you need to do to enable filtering. Perhaps they have a new firmware version for you.
+<gregbrady> owh, I tried to get help with them before with VPN and that was a useless adventure.  No more Belkin products for me!  But, I'm stuck with what I have at the moment.
+<owh> andguent: I completely understand your response and it is correct if the router cannot do this, but only then. It might be a trivial thing to initially setup, apt-get install xyz, but maintaining it will be a challenge across several machines.
+<gregbrady> owh, exactly!!!!!
+<gregbrady> owh, that is why I wanted LSTP to work, but it does not work with a wireless server
+<owh> Huh?
+<owh> Says who?
+<gregbrady> I tried, with lots of help in the chatrooms, no luck
+<andguent> its all about deciding how complicated you want it, depending on the technical skill of those being filtered :)
+<owh> gregbrady: There is no earthly reason that I can think of, other than perhaps available bandwidth that might cause issues. (Bugs not withstanding.)
+<gregbrady> I thought LSTP sounded like a dream to me.  Maintain one main machine only......the rest are just thin clients with nothing to do on them.  Simple in theory.
+<owh> I suppose you could point all browsers at the same proxy server and lock that redirection down, then run the proxy/filter in one place and maintain it there. It will require that workstation to be on for anyone to browse, but it would work.
+<Kamping_Kaiser> owh, the key issue is devices dont netboot
+<Kamping_Kaiser> * netboot wireless
+<Kamping_Kaiser> anyway. afk
+<owh> Kamping_Kaiser: So, put an initrd on the device and get it to connect.
+<gregbrady> The whole thing is a lot more complex then I thought at first.
+<owh> gregbrady: It always is, which is why I was diverting you toward fixing your router :)
+<gregbrady> owh, Oh, I understand you completely and it would be awesome!
+<gregbrady> owh, Ubuntu is so easy to upkeep on individual machines....if I could just manage net access at one point, that would be awesome.
+<owh> gregbrady: As I said, configure one machine with andguent's assistance if so inclined, then redirect the proxy from all the other workstations to that same machine. Magic.
+<gregbrady> owh, or buy a proper router
+<owh> gregbrady: You can often throw money at anything to solve a problem :)
+<gregbrady> owh, good point, but this decision is not trivial.  I will have to maintain it as well.
+<andguent> afk for a bit, be back
+<gregbrady> owh, and this server has a bunch of hard drives in it that consume power.....more than a router I would imagine
+<owh> gregbrady: By several orders of magnitude.
+<owh> sommer: In case you're awake, the hourly jobs didn't run on hardy either.
+<gregbrady> owh, and I'm not really sure I understand exactly how the whole squid/dansguardian actually works, so if there is a problem it will be hard to fix.
+<gregbrady> owh, I like to understand the things I implement
+<faulkes-> gregbrady: a good policy
+<faulkes-> but nothing a bit of time and determination won't solve
+<faulkes-> squid is fairly straight forward once you do your config to your tastes
+<gregbrady> faulkes- no doubt, I'm investing now.
+<faulkes-> I havent used dans so
+<gregbrady> faulkes- I just have a problem blindly installing something.  It may work, but as soon as there is a glitch, and there will be glitches, then the real nightmare starts
+<gregbrady> squid and dans maybe perfect, I just have to read more to understand
+<Kamping_Kaiser> i love the way its set+forget after the iniital install
+<gregbrady> Kamping_Kaiser, I'm still reading.....
+<hatter> I have a problem where the ubuntu server network lags intermittently for 3 or 4 seconds,  the server is primarily samba,  I have changed every piece of hardware,  any1 got any clues ?
+<Kamping_Kaiser> gregbrady, not rushing you :)
+<gregbrady> Kamping_Kaiser, nope, none taken.  I appreciate the help!
+<andguent> I'm back -- gregbrady: I'm more than happy to help with things, but it doesn't make sense for half a dozen people to all give you ideas at once :) I will keep quiet unless asked for something
+<gregbrady> andguent, thanks and no problem.  I'm just doing some research here for my own peace of mind.
+<andguent> there are multiple ways on how to implement it, some are dead easy to revert (so easy that if you have 12 year olds+, it might not be effective..)
+<andguent> but definitely read what you need
+<Kamping_Kaiser> afk. back as kgoetz in about 30
+<gregbrady> Ok, trying to install
+<gregbrady> tons more to read in squid.conf!
+<andguent> gregbrady: Questions for you (if you want to do some design planning...) What would you consider the highest computer skill level of those being blocked is? (IE does this filtering config need to be protected by passwords) Are you sure that the proxy server box you are setting up will always be on and available? Will that box have a static IP address?
+<gregbrady> Skill level is minimal.....My son is 8.
+<gregbrady> The server can always be on
+<gregbrady> Server can be static, I don't see an issue there.
+<andguent> good good, if it hops around, family members will complain, including the one who shares your bed :)
+<gregbrady> hahahaha
+<andguent> although, i'm guessing most wives are more agreeable to porn filters then say.... rewiring all of the phones to go through voip, and then voip crashing....
+<gregbrady> I don't care about porn for the wife.
+<gregbrady> I only need to protect my son.  On all machines, except the server
+<andguent> yea, i know, but i'm sure she likes the idea... anywho, i'm getting us off topic
+<gregbrady> hahahah, for sure!
+<andguent> are you following a guide of any sort? most guides I have seen don't test things in phases very well, and you end up with a 4 part process that is broken somewhere in the middle :)
+<gregbrady> https://wiki.ubuntu.com/EdubuntuProxy
+<gregbrady> I've only installed the software and opened gedit
+<gregbrady> with squid.conf
+<andguent> ok good, I would say get squid.conf adjusted as needed, and then pause there to test it and verify functionality
+<gregbrady> I must read to understand what I'm adjusting though.  I'm working on that now.
+<andguent> take your time
+<gregbrady> It says the default settings should be fine
+<andguent> only one way to find out for sure :) I usually adjust things, but lets try the easy way first
+<gregbrady> So just turn it on?
+<andguent> yea, lets try that start command, and see if manually pointing your browser to your proxy gets you any connectivity
+<gregbrady> failed
+<gregbrady> no worries.  I've never had one single thing work out of the box with default settings.
+<andguent> squid failed to start? did it give a message? usually I would say avoid pasting numerous lines in a chat room, but we seem quiet enough in here tonight :)
+<gregbrady> * Starting Squid HTTP proxy squid                                               * Creating squid spool directory structure
+<gregbrady> FATAL: Could not determine fully qualified hostname.  Please set 'visible_hostname'
+<gregbrady> Squid Cache (Version 2.6.STABLE14): Terminated abnormally.
+<gregbrady> CPU Usage: 0.004 seconds = 0.004 user + 0.000 sys
+<gregbrady> Maximum Resident Size: 0 KB
+<gregbrady> Page faults with physical i/o: 0
+<gregbrady> Aborted (core dumped)
+<gregbrady> FATAL: Could not determine fully qualified hostname.  Please set 'visible_hostname'
+<gregbrady> Squid Cache (Version 2.6.STABLE14): Terminated abnormally.
+<gregbrady> CPU Usage: 0.012 seconds = 0.004 user + 0.008 sys
+<gregbrady> Maximum Resident Size: 0 KB
+<gregbrady> Page faults with physical i/o: 0
+<gregbrady> Aborted (core dumped)
+<andguent> ok, lets try what it asks then, do you have a line in squid.conf that starts with 'visible_hostname' ?
+<gregbrady> already working on that
+<kgoetz> back :)
+<andguent> excellent, forgive me if I ask silly questions :)
+<andguent> kgoetz: we are just starting into basic squid configuring, both of us got distracted a bit while you were out :)
+<gregbrady> andguent, no problem
+<gregbrady> ok, everything is commented out except the http_port line
+<andguent> i believe you can set visible_hostname to anything you want, just keep tinkering until squid restarts without complaining -- I could get my own squid started up here for good measure too....
+<andguent> Can I assume you are familiar with http://paste.ubuntu-nl.org/ just in case we need to exchange config files?
+<gregbrady> I only used that once
+<kgoetz> andguent: cool. i'm trying to get setup here, and having tecchnical issues ;|
+<gregbrady> I'm not sure what the hostname should be
+<gregbrady> What format?  In quotes?
+<andguent> shouldn't need quotes unless you have spaces or fancy characters
+<gregbrady> and the name is irrelevant?
+<andguent> I just put in a line on its own like this: 'visible_hostname goober'
+<andguent> yea, put it in as 'youPeskyKidsMadeMeResortToThisJustToShieldYourEyes' :)
+<gregbrady> ok, squid started
+<gregbrady> confirming now
+<gregbrady> keithclark@keithclark-desktop:~$ ps aux | grep squid
+<gregbrady> root     20819  0.0  0.0   4780   652 ?        Ss   23:49   0:00 /usr/sbin/squid -D -sYC
+<gregbrady> proxy    20824  0.3  0.3   7000  4528 ?        S    23:49   0:00 (squid) -D -sYC
+<gregbrady> 1000     20859  0.0  0.0   2976   756 pts/0    R+   23:50   0:00 grep squid
+<andguent> via 'ps aux|grep squid' I assume? -- I have another confirm command to run: 'netstat -nltp|grep squid'
+<andguent> I get: tcp        0      0 0.0.0.0:3128            0.0.0.0:*               LISTEN     28667/(squid)
+<gregbrady> I guess that means no then
+<gregbrady> (Not all processes could be identified, non-owned process info
+<gregbrady> will not be shown, you would have to be root to see it all.)
+<kgoetz> check your logs too
+<andguent> your command output was good, but netstat should show one line.... hmm, maybe 'sudo netstat -nltp|grep squid'
+<gregbrady> yup....
+<gregbrady> sorry, a home distraction....
+<andguent> happens :)
+<gregbrady> ok, it was the tv
+<gregbrady> so, success at the moment
+<andguent> ok, i personally like to test every phase so we know if we are standing on good ground or not, point your firefox manual proxy through localhost port 3128.... I can find exact menus in a sec
+<gregbrady> Should I not set my ip as static now for this machine?
+<gregbrady> And, should I be using my laptop to try this out now?
+<andguent> eh, lets confirm squid first, setting static IP can be the next step
+<kgoetz> personally i'd think ip is first, sine you want squid to listen on it
+<andguent> currently, its listening on all IPs, squid won't even care if you hop IPs, it will only matter to other computers, and none of them know about it yet
+<andguent> In firefox, can you go Edit -> Preferences -> Advanced -> Network -> Settings -> Manual Proxy....
+<andguent> remember this location, we will need to undo it later....
+<gregbrady> not a problem
+<andguent> Check off "Use this proxy server for all protocols", and enter for HTTP proxy: localhost, port 3128
+<andguent> then get a new tab up and just check your connection to google
+<gregbrady> localhost=ip of server?
+<andguent> you should actually be able to put that english in, exactly as spelled
+<andguent> IP would work too, but we might be changing that in a minute :)
+<gregbrady> ok, google works fine.  how do I confirm it went through the proxy server?
+<gregbrady> I actually understand this so far!
+<andguent> try 'tail /var/log/squid/access.log'
+<andguent> it should show your page hit, and your IP among other things
+<gregbrady> yup, it worked
+<gregbrady> so really, at this point, if I changed my other machines to point to this proxy server, tracking would be working?
+<andguent> good good, in the end you will end up with two logs like that, dans will have its own
+<andguent> yes, at minimum, if you repeated the firefox proxy settings on every box, you could at least see what sites they are visiting
+<andguent> but note that squid usually logs time stamps in non-english format
+<gregbrady> Awesome, you are good.  I actually followed this
+<gregbrady> andguent, I understand....I'm just happy with the progress
+<andguent> dans will have some easier logging to follow, i like to change date stamp to easier readable format, but thats later :)
+<gregbrady> now, I'm assuming, dansguardian sits between the proxy server and the net?
+<andguent> actually, the other way around, dans likes to get everything first, and then passes everything to squid
+<andguent> but close :)
+<gregbrady> That is what I meant
+<andguent> squid is mostly there for speed and redirection functionality
+<andguent> ah ok
+<gregbrady> internet to dans, dans to squid, squid to client, client to browser?
+<gregbrady> and viseversa?
+<andguent> either way, a static IP is a good idea before we get too far into this, feel free to undo your proxy settings in firefox before we forget about them...
+<andguent> mmmm, close...
+<gregbrady> ok, still learning
+<gregbrady> proxy reset
+<andguent> for outbound connections, the chain is workstation app (firefox) -> Dans on server -> Squid on server -> router -> internet, the return trip would be flipped
+<gregbrady> got you.
+<kgoetz> iptables redirects > firefox settings
+<gregbrady> yeah, this is where I get a little confused.
+<andguent> definitely an option, with an 8 year old though, we can get away with the easy manual proxy for now if we want
+<gregbrady> I would have thought that dans would be installed and configured first then?
+<andguent> i think of squid as being the foundation, start from the link closest to the internet, and test backwards from there
+<kgoetz> andguent: i'd think iptables would be easier overall, as you dont need to reconfigure each client
+<gregbrady> So far my son does not mean to do what he does.
+<gregbrady> I got you.....
+<gregbrady> Sorry, just trying to figure all this out as we go.
+<andguent> mmm, iptables will need to be run on each workstation, unless this server is becoming the router, either way we are touching each workstation
+<kgoetz> i just assumed the server would become the default route
+<gregbrady> ok, then the server will dole out ip addresses?
+<gregbrady> dns serving duties?
+<andguent> it can be, but that requires some advanced firewalling --- none of this is required, but can be done
+<andguent> you can leave dhcp and dns exactly as is if you want to keep it simple
+<gregbrady> no....the hardware firewall seems to be working....and I lend out some wireless to my neighbour
+<gregbrady> I dont' want his machine to be affected
+<kgoetz> bad me!
+<gregbrady> kgoetz, please let me hear them
+<andguent> i would say keep things as is, make the changes that are easiest to undo :) run with it for a week, and then make it more complex :)
+<gregbrady> I will keep simple, but I want to hear options
+<andguent> or throw another nic in the server, install shorewall, pull the belkin behind the new router, and make it a transparent proxy for all :)
+<gregbrady> Maybe I should have said this....I have a neighbour that cant' afford the internet access, so I let him use mine via wireless.  I don't want to change his settings.
+<kgoetz> set the gateway to be the default route for everything (so everything gets the option of using squid), and drop an iptables rule to route the neighbour through to th net directly not via squid
+<gregbrady> andguent, if I were to throw another nic in, I would just buy another router with everything built in.
+<andguent> if you have ubuntu (or really anything with iptables --- linux kernel 2.4 and up), its dead easy to force ALL port 80 outbound traffic to your filtering
+<andguent> you could, but running a full linux server as a router is a massive amount of power, not only knowing what websites people have been to, but who is hogging all of that download speed, monitoring all ports, not just web traffic
+<andguent> iptraf is your friend, but its only useful if your server sees the connections going out to the internet
+<gregbrady> andguent, yes, I understand the benefits.
+<andguent> either way, all of that stuff can be added later if you feel so inclined, not required for tonight :)
+<andguent> kgoetz: I agree you could definitely set his proxy box as the default gateway, but again, more complexity :)
+<DrIP> hi all
+<DrIP> i need to install my server without internet help!
+<gregbrady> my goal is to be able to get Matthew back online tomorrow with the least amount of trouble and the most amount of understanding so that I can manage it
+<gregbrady> But I would so enjoy learning more with you guys!
+<kris_ph> hello.. where can php.ini be located in gutsy?
+<andguent> DrIP: Any way the box can temporarily migrate to a place with internet? You probably don't need it for the cd installer, but its nice
+<andguent> kris_ph: 'locate php.ini'
+<andguent> gregbrady: are you ok setting the IP static or would you like help?
+<DrIP> andguent: sadly, no...
+<gregbrady> andguent, just point me....I think I know.
+<DrIP> i have resources to download a 'full dvd' if possiable
+<andguent> DrIP: how far can you install without the connection? a basic cd should work unless you know it will be missing software you want
+<kris_ph> Is it a good practice to hide the versions of apache and php in http head request?
+<DrIP> it goes to about 83%
+<DrIP> kris_ph: yes
+<andguent> gregbrady: if you have gui on that box, it may be easiest to just use network manager to set things, default gateway and dns server can both probably be your belkin
+<gregbrady> System, Administration, Network....
+<kris_ph> DrIP: I got the list of php.ini already.. but the thing is.. which php.ini location I need to modify to hide php details?
+<andguent> gregbrady: IP address can be any similar address as the other units on your network, as long as the last number is different
+<andguent> kris_ph: usually /etc/php/apache/php.ini, but don't quote me on that :)
+<kris_ph> DrIP: I just want to modify expose_php to OFF..
+<kris_ph> andguent: thanks..
+<DrIP> kris_ph: andguent should better hear that question :p i have yetr to get a working install of ubuntu server >.<
+<DrIP> err yea
+<DrIP> andguent: is there a dvd of server?
+<andguent> kris_ph: the real test is to figure out how to detect if that info is showing, adjust something, and see if the info dissapears
+<DrIP> i can not use internet... it *has* to be a serile server
+<kris_ph> andguent: yeah.. I tested it already.. and I detected it that it is showing its apache version and php information..
+<kris_ph> andguent: that's why I'm going to modify it.. ")
+<andguent> DrIP: any special software you will need to install? are you able to sneaker net any extra needed debs from another location?
+<DrIP> andguent: i just need wireless for my internet... but i can't use ndiswrapper and the linksys WMP11 isn't supported :(
+<DrIP> (and yes, i'm trying to get a server on wireless
+<DrIP> )
+<gregbrady> ok, I think it is set
+<gregbrady> should I logoff and back on to the network to be sure?
+<andguent> DrIP: http://www.ubuntu.com/getubuntu/downloadmirrors has dvd links at the bottom
+<gregbrady> ok, that did not work
+<DrIP> ahhhh
+<andguent> gregbrady: can you get a second computer available for IRC and then break your server network settings again so we can see how far it got?
+<DrIP> andguent: thanks :)
+<andguent> DrIP: np :)
+<gregbrady> I got as far as setting my static settings, then failure
+<gregbrady> system
+<gregbrady> admin
+<andguent> gregbrady: I'm assuming you are chatting from a different box then? is it still broken?
+<gregbrady> network
+<gregbrady> wireless connection
+<gregbrady> properties
+<gregbrady> uncheck roaming
+<andguent> yup, following.... if at all possible, it would be good if the sever was wired, but if it can't happen (and wireless has been working fine) then so be it
+<andguent> with you so far
+<gregbrady> again, server is wireless
+<gregbrady> Everything is wireless
+<andguent> it will work, as long as your wireless has been behaving :)
+<DrIP> andguent: eep those dvds are all client :|
+<andguent> DrIP: oh really? bleh, i thought there was a server edition
+<gregbrady> My wireless has worked for over 4 years, it should be ok today
+<DrIP> yea :(
+<DrIP> how can i get my server installed without internet...
+<kris_ph> Is there anybody here who uses phpsysinfo?
+<DrIP> brb... i need my lappy...
+<gregbrady> Then I find the Network Name, password type,password, I choose ip address subnet and so on
+<andguent> gregbrady: ok, where does the connection fail?
+<gregbrady> when I close and reconnect
+<gregbrady> It does not connect
+<gregbrady> you know what, this is probably a propriety driver problem
+<andguent> after hitting that reconnect, can you confirm the IP address was properly set via ifconfig?
+<gregbrady> that is why the lstp did not work
+<andguent> i couldn't tell you, it seems strange that any driver could do dhcp, but not static.... however it sounds like you have beat that bush to death already
+<DrIP> bbl
+<andguent> i assume youve double checked your gateway address, and still can't ping your gateway or anything?
+<gregbrady> yup, all my wireless cards across 6 machines in total are not supported
+<gregbrady> I have to use ndiswrapper, I believe
+<andguent> that still should allow static IPs though...
+<andguent> ....should..
+<gregbrady> No, I came across this before
+<gregbrady> belkin+linux=no good
+<andguent> well, then i guess we stick with dhcp then, put it back to roaming
+<andguent> can you sign into your router and see about setting a dhcp reservation? anything you can do to prevent your server from changing IPs the better
+<gregbrady> no, too much of a pain for me as administrator to redirect when my server decides to change the address
+<gregbrady> Belkin has very simple, easy to use hardware.  Not powerful but very easy to setup under Windows, Unfortunately
+<andguent> any basic router should have that option, as long as you don't change routers you won't have a problem.... even if you do, if we keep the setup simple, you will just have to go into firefox and disable the proxy to bypass
+<gregbrady> I remember that Windows handles this problem......Belkin writes drivers for it, but not Linux.
+<andguent> i'm assuming you are able to web into your router?
+<gregbrady> yup
+<andguent> have you confirmed that you can't set a reservation for your server?
+<gregbrady> yup
+<andguent> (sorry if ive asked this before)
+<andguent> bleh
+<andguent> i've never seen one not have the option in years, but I will leave it to Belkin to prove me wrong :)
+<gregbrady> Well, if you hear of a Belkin again, don't waste your time helping them out.
+<andguent> we still can do the internet filter, i just don't know how often your server box changes IPs
+<gregbrady> There is no VNC option, LSTP does not work, no internet filters and also no static ips
+<gregbrady> It kind of makes it secure!
+<andguent> no VNC?? are you able to do file sharing at all or anything?
+<gregbrady> nope
+<gregbrady> no tunnelling
+<andguent> can you ping another workstation?
+<gregbrady> yes
+<gregbrady> sorry, no vnc over the wan
+<andguent> try setting up firefox on another computer to use your server's proxy IP...
+<andguent> just for kicks
+<gregbrady> that will work
+<gregbrady> but if I try to setup a vnc from outside, no go
+<gregbrady> no settings for it
+<andguent> ok, i misread you then, that would seem like a basic feature, but it shouldn't stop your internet filter project
+<gregbrady> no, it will work, but it is us the the dns server to have the same address, or me running around making changes
+<gregbrady> *up to the dns server
+<andguent> the dns server is allowed to change, that shouldn't affect the filtering
+<gregbrady> no, just he proxy settings of all clients
+<andguent> even if name lookups go direct to the internet, the actual page loading will still be filtered
+<gregbrady> ok, hang on then, I misunderstand
+<andguent> i'm not sure if i'm understanding you... heh
+<gregbrady> ok, sorry.....
+<andguent> I will hold my tongue a sec, mind explaining what you mean once more?
+<gregbrady> the server will not have a set ip address
+<gregbrady> how can my clients find it?
+<gregbrady> hahaha, you can answer now!
+<andguent> normally, computers don't change IP very often, even if using DHCP
+<andguent> it does happen, but it shouldn't be a regular thing
+<gregbrady> ok, maybe I misunderstood, let's carry on then!!!!
+<andguent> i'm looking into dhcp client man pages now to see if there is a way you can keep it asking for the same address
+<gregbrady> I will also reseach, but let's carry on for now, agreed?
+<andguent> another option is to see if name lookups work properly on your network.... samba style name broadcasts may take care of your problem (set proxy filter IP to server name)
+<andguent> yes, carry on we shall :)
+<gregbrady> I seem to also have a problem with samba name lookups....they take forever
+<andguent> ok, squid works, lets get dans up and running, going back to the guide it says change one line, i think i want to do slightly more then that...
+<andguent> get yourself into that dansguardian.conf, we can page down together, i agree that you want to loose the UNCONFIGURED line
+<gregbrady> ok, let me get that far.
+<gregbrady> shoot, I lost the address for the instructions after the network loss...do you have what I sent you?
+<andguent> yup
+<andguent> https://wiki.ubuntu.com/EdubuntuProxy
+<gregbrady> yup, I'm into the editing
+<andguent> ok good, loose the UNCONFIGURED line if you havin't already, some other options in here are good to know about, but not required
+<andguent> loglevel = 3 is sometimes excessive, you can bump it down, but you start loosing track of what websites people have successfully gotten to
+<andguent> remember your /var/log/squid/access.log -- exact same concept, but for dans
+<gregbrady> ok, so save it?
+<andguent> i actually recommend one other change
+<gregbrady> ok, no problem
+<andguent> about 5-6 pages down (depending on page size), track down virusscan = on
+<andguent> this is a nice feature when it works, but leaving virusscanning on can cause headaches, and since you are all ubuntu, who the heck cares about viruses anyway? :)
+<gregbrady> it is on
+<andguent> turn it off, earmark it as something to tinker with later
+<gregbrady> I will turn it off
+<andguent> ok, save, quit that file
+<gregbrady> ok, saved
+<andguent> one more file that the guide doesn't touch.... same directory dansguardianf1.conf
+<andguent> in here, note how many other directories dans checks, that first page worth is just an fyi for things to browse through
+<andguent> naughtynesslimit is something to note and tweak later, especially if while visiting medical websites, you and your wife get denied too often
+<gregbrady> file not found
+<andguent> mmmm... /etc/dansguardian/dansguardianf1.conf ?
+<gregbrady> nevermind......(turning red)
+<andguent> its all good :P I'm amazed I'm still typing this coherently :)
+<gregbrady> I'm sorry to keep you up......
+<gregbrady> I owe you a few drinks of choice
+<andguent> no no, quite alright
+<Wrathtide> would a LAMP server be suitable for usage as a file server?
+<andguent> amusingly enough, i havin't done this filter setup in a while, i need the practice
+<andguent> Wrathtide: it definitely can, but it will have extra programs running
+<andguent> as long as it is on a home network, and not exposed to the outside internet, it really doesn't matter either way -- do you trust the people on your network not to break your stuff? :)
+<gregbrady> I'm sorry guys, I appreciate the extra suggestions, but could we just keep it simple for tonight?  We've been at it for hours....I'd love to learn further about all options though!
+<Wrathtide> andguent: they would break it if they could :\
+<Wrathtide> inept fools, i just had to reformat the household pc
+<andguent> gregbrady: i'm assuming you got into dansguardianf1.conf? did you see my notes above?
+<gregbrady> oh yeah
+<gregbrady> and I'm ready
+<andguent> Wrathtide: in that case, just do the normal install, setup samba with password requirements or read only the whole way, drop the lamp
+<andguent> gregbrady: I have not experimented with bypass options, but it might be worth tinkering with later, especially if your wife doesn't have the sudo password on this box :)
+<gregbrady> she has sudo
+<Wrathtide> andguent: right now i have FreeNAS running an ssh server which is giving me better speeds than cif/nfs
+<gregbrady> (and other tools)
+<andguent> and virusscan reappears in this file, turn it off again for good measure (i think turning it off once is enough, but lets kill it until its dead)
+<Wrathtide> andguent: meh, ill just stick to freenas till i restore all the data back
+<andguent> Wrathtide: speed is good, if it does what you want, dont kill yourself on something new :)
+<Wrathtide> =)
+<Wrathtide> thanks
+<andguent> gregbrady: I think we are done with this file, save quit
+<gregbrady> done
+<andguent> ok, back to the guide, their next two steps sound good
+<andguent> start, ps aux, cross fingers (in no particular order)
+<andguent> sudo /etc/init.d/dansguardian start && ps aux | grep dansguardian
+<gregbrady> andguent...you are addressing whom?
+<andguent> gregbrady: you, sorry, i assumed the room went empty again :)
+<andguent> kgoetz: You still around? :)
+<gregbrady> ok, seems to have gone ok
+<andguent> good good, lets do my netstat test again: 'sudo netstat -ntlp|grep dans'
+<gregbrady> and now to test?
+<andguent> should give you 0.0.0.0:8080
+<gregbrady> tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN     27394/dansguardian
+<andguent> eeeeexcellent
+<gregbrady> I'm excited here!
+<andguent> go back to your firefox proxy settings, change the port from 3128 to 8080
+<gregbrady> ok
+<andguent> after that, lets see if basic web visits still work
+<gregbrady> works ok....I hope that is a good thing!
+<andguent> if you have success, your web visit should be logged in two places: 'tail /var/log/dansguardian/access.log' and 'tail /var/log/squid/access.log
+<gregbrady> wooooooooooohoooooooooooooo
+<andguent> it might show a little differently, but your visit should get logged twice, telling you that your connection went through both programs
+<andguent> now for the real test: visit badboys.com
+<gregbrady> You are good!
+<andguent> you should get a big red NO SOUP FOR YOU message
+<gregbrady> Access denied
+<andguent> wonderful
+<andguent> you have a functioning internet filter
+<gregbrady> You are very very good!
+<andguent> :) I have practice
+<andguent> a few more tweaking files to consider... all in /etc/dansguardian:
+<gregbrady> I thank you for you understanding and putting up with my tantrums
+<kgoetz> andguent: sorry, yes i am
+<kgoetz> im/ rebuilding a system, so i'm paying attention to that
+<andguent> bannedexeceptionlist will cause some grief, will prevent you from downloading exe's, avi's, isos, and other sillyness, start commenting some of these out
+<andguent> kgoetz: no problem at all, just curious if anyone was watching
+<kgoetz> andguent: no, no one at all :)
+<andguent> gregbrady: Making sure you caught that file mention before I give more
+<gregbrady> andguent, you know what, I'm happy for today....thank you.......let's leave the rest until later!
+<kgoetz> exeptionsitelist is a good on too
+<kgoetz> incase it hasnt been meantioned ;)
+<andguent> definitely, i didn't want to dump my top 10 just yet, i think he might be off showing his wife or something :)
+<gregbrady> I hope it is ok if I come back here to learn again.  You have been great.
+<andguent> bannedexceptionlist just drives me batty, especially on a network with hundreds of windows boxes and all I want is a stinkin driver download
+<andguent> yup yup, i probably will be around :) please read all of the file names in /etc/dansguardian and be aware they are there, if you want to block a site, or unblock a site, start there
+<andguent> like kgoetz mentioned, exceptionsitelist can be important (more so if you have windows boxes trying to hit updates.microsoft.com)
+<kgoetz> or archive.ubuntu.com ...
+<andguent> go nuts setting proxy server settings in firefox and see who hits the wall first :) I'm sure there are ways to be notified if someone gets a denied message
+<andguent> also note what is within ./phraselists/, there are a lot of naughty words in there. I hear there are massive updated lists you can track down from somewhere, but i never got that far, the current setup does fairly well
+<gregbrady> shoot, now all my machines have no wireless access
+<andguent> uhhh, don't know what to do for you there.... reset the router?
+<gregbrady> nope
+<andguent> everything we did today should be completely opt-in, its not going to take anything over automatically
+<gregbrady> I think I will reinstall Linux on all machines and not worry about networking....it is not it's strong point.
+<gregbrady> Everytime I try to share directories or files in linux it is just a hassle
+<andguent> ?? uhm, ok seems like a lot of work, sorry to hear that wifi is such a pain
+<andguent> maybe tomorrow night we can play with samba :)
+<gregbrady> No, wifi under xp is no problem
+<kgoetz> wifi always has ben (and will b for th forseable future) a pain
+<kgoetz> *sp
+<gregbrady> nope, worked under xp with no issues
+<kgoetz> i'm not talking about xp...
+<gregbrady> oh, sorry
+<gregbrady> andguent, I appreciate the try though!
+<gregbrady> I have a ton of re-installing to do before I sleep!
+<andguent> are you wiping linux off or something?
+<andguent> or just reinstalling fresh
+<gregbrady> I need the protection working
+<kgoetz> pity you hav to use samba.
+<kgoetz> ssh/nfs are so much easier
+<andguent> i've always found samba easier, but ive also been playing with it for roughly 7 years more
+<gregbrady> No, I must go back to Windows!
+<kgoetz> andguent: how can samba posably be easier then anything else :o
+<andguent> just keep one linux box for the filtering, you said wifi worked fine for 4 years!!
+<gregbrady> andguent, on your belief, I will keep linux until tomorrow
+<andguent> if it worked for 4 years, one night down is ok, really it is :)
+<gregbrady> No, one night of porn....remember the reason
+<gregbrady> Any OS can direct all sites
+<andguent> samba: set share level, create share, set perms on share, samba restart -- i do it in my sleep
+<gregbrady> This seems to be a real hurt point for linux....if a solution can be found, maybe we could take advantage of it!
+<kgoetz> andguent: nfs: add share to export, optional extra controls, nfs reload
+<andguent> kgoetz: i'm sure its very easy, i've just never had a need, yeay for lowest common denomenator
+<kgoetz> andguent: heh, no joke
+<gregbrady> shoot, my internet is down except for the server now
+<kgoetz> ssh is better
+<andguent> ?
+<kgoetz> but lets leave that alone
+<andguent> when you say down, you mean before or after firefox got additional proxy filter settings?
+<kgoetz> bbs
+<andguent> via sshfs? fun toys there....
+<andguent> samba seems to be able to pay bills better, most business users want windows, don't care what the server is as long as it works, nfs is only for linux users really..
+<gregbrady> Shoot, the connection does not even come up
+<andguent> gregbrady: revert all browser proxy settings before assuming the connection is down :) if one is up, something must be working
+<andguent> ??
+<kgoetz> andguent: s/linux/unix
+<kgoetz> sshd+unix desktops vfs== win
+<andguent> kgoetz: i stand corrected
+<gregbrady> no browser
+<andguent> well, sit corrected...
+<gregbrady> new boot
+<andguent> nfs is only for *nix users really..
+<gregbrady> Ok, none of my 5 machines boots to a workable network now.  I'm offline
+<andguent> gregbrady: ? how are you chatting?
+<gregbrady> why?
+<andguent> are you using one of those 5 computers for irc?
+<gregbrady> Yes, the server
+<gregbrady> good point
+<andguent> so, when you say the network is down, have you tested anything other than firefox? can anyone ping google?
+<gregbrady> I cant' get on the net
+<andguent> what message do you get when you ping www.google.com
+<gregbrady> I get ping results
+<andguent> ok, if it gives you numbers, then your wireless is fine
+<gregbrady> ok, so now it works!
+<gregbrady> Why is that?
+<andguent> when you were using firefox to get to a site, what message was it giving? was it saying proxy unavailable, or malformed url?
+<gregbrady> unavailable
+<andguent> if you have any wireless weirdness, web browsing will now see the weirdness twice as often.... everyone has to go to your server, and then back out to the internet
+<andguent> there are too many possible reasons why it dropped
+<gregbrady> Ok, so the solution is?
+<andguent> but if pinging google.com works, and the web browser doesn't, double check to make sure both filtering programs are running
+<andguent> also keep in mind, if you restarted the server, it may take a minute for squid and dans to finish starting up
+<gregbrady> No, all works well on the laptop....it just took 15 mins
+<andguent> dansguardian has an awful lot of data to search through in its own phraselists, squid is anal about its cache files, they both double check stuff on startup
+<andguent> did this happen immediately after the server restarted?
+<kris_ph> Hello... is there a way to prevent users from accessing restricted sites with the use of proxysites like www.anonymouse.org?
+<kgoetz> stop users getting to those sites?
+<andguent> i dont think anonymouse is trying to offer that type of feature, but i only glanced at the page just now
+<pnukeid> heloo there
+<gregbrady> I will have to pay back somehow, thanks!
+<pnukeid> i was trying to install mysql 5.1 from source
+<kgoetz> grrr. now i'm having network issues *grin*
+<kris_ph> yeah.. preventing them going to restricted sites using anonymouse.. a good proxysite is www.proxycentre.com
+<pnukeid> but i always have problem
+<pnukeid> anybody can help me ?
+<kris_ph> if the user knows that site.. even if in your firewall you denied them accessing friendster.com or youtube.com... they could still be able to access those sites..
+<kgoetz> depends on your proxy
+<andguent> gregbrady: good luck, i might be back on tomorrow night, or there should be hundreds of other people able to help, just don't install XP, its baaaad :) Goodnight everyone, good luck on your projects
+<kris_ph> I don't think so.. IPcap can't even filter it...
+<kgoetz> ipcap being IP level?
+<gregbrady> andguent, you are correct, I just got fustrated@
+<kris_ph> did you get what I mean?
+<kgoetz> kris_ph: i'm not sure i did
+<kgoetz> pnukeid: try #mysql, or are you installing from ubuntu source?
+<pnukeid> no i try install mysql from source
+<kgoetz> pnukeid: try #mysql
+<pnukeid> ok thx..
+<kris_ph> kgoetz: okay.. this is the case.. I want users in the LAN as well as in WLAN not be able to access www.friendster.com and www.youtube.com since it is an educational institution...but when they will now using proxysites like those ones I mentioned....well too bad..they could gain access
+<kris_ph> *know
+<pnukeid> may be in here have experience with my problem too
+<kgoetz> kris_ph: i havent tried going to proxy sites in dans, so i dont know if it would catch stuff
+<kris_ph> kgoetz: okay..try it out.. and tell me what happens...
+<kgoetz> kris_ph: whats a proxy i can try and use?
+<kris_ph> kgoetz: in your router or in any firewall...try to deny users to access those sites...  you try www.proxycentre.com
+<kris_ph> kgoetz: let's say... you block them accessing www.friendster.com then try to access www.friendster.com using www.proxycentre.com and tell me what happens..
+<kgoetz> kris_ph: i cant see a place to put in a custom site.
+<kris_ph> kgoetz: ows.. I can't understand what you meant..
+<kgoetz> kris_ph: i want to try and visit 4chan (i know my proxy will block that) - but i cant see a way to do that at proxycentre
+<kris_ph> kgoetz: in Enter the URL Address: you type the website URL ....then hit enter... and tell me what happens...
+<kris_ph> kgoetz: you could find Enter the URL Address: in the webpage of www.proxycentre.com
+<kgoetz> ah, i didnt see that option
+<kgoetz> kris_ph: dansguardian blocks this link (4chan)  http://www.proxycentre.com/index.php?q=aHR0cDovL3d3dy40Y2hhbi5vcmcv
+<kgoetz> reason is:
+<kgoetz> ... has been denied for the following reason:
+<kgoetz> Weighted phrase limit exceeded.
+<kgoetz> "2008.3.15 16:56:26 - 192.168.0.2 http://www.proxycentre.com/index.php?q=aHR0cDovL3d3dy40Y2hhbi5vcmcv *DENIED* Weighted phrase limit of 50 : 240 " (i've cut off teh text it blocked on)
+<kgoetz> infact, using the proxy it was more sevearly blocked then without: " 2008.3.15 16:48:59 - 192.168.0.2 http://www.4chan.org/ *DENIED* Weighted phrase limit of 50 : 73"
+<kris_ph> kgoetz: you mean.. dansguardian was able to filter it?
+<kgoetz> kris_ph: i mean exactly that
+<MacKulkin> anybody knows how to make a streaming server on linux using ipcam ?
+<Jeeves_> Morning
+<Jeeves_> Does anyone know if rsync 3.0 will make it into hardy?
+<pschulz01> Evening...
+<pschulz01> Can anyone here recommend an SNMP tool that they actualll use?
+<pschulz01> (I am using cacti for some stuff..)
+<kris_ph> Is there a way to automatically update the ubuntu box everyday by its own?
+<spiekey> hey!
+<spiekey> whats wrong with this interfaces config? http://pastebin.ca/
+<spiekey> errr...http://pastebin.ca/943568
+<nijaba> morning
+<spiekey> hi
+<spiekey> i get: SIOCSIFFLAGS: Cannot assign requested address
+<nijaba> kris_ph: just install unattended-upgrade
+<kris_ph> what are the pros and cons with it?
+<zul> pros you dont have to worry about it, cons you worry about it breaking your system
+<kris_ph> I've been receiving emails with these details: from Cron Daemon ; subject: Cron <smmsp@****> test -x /etc/init.d/sendmail && /usr/share/sendmail/sendmail cron-msp; Message: /usr/share/sendmail/sendmail: line 875: /usr/sbin/sendmail-msp: No such file or directory
+<kris_ph> how would I solve it? I will not be using sendmail anymore...
+<kris_ph> >	I've been receiving emails with these details: from Cron Daemon ; subject: Cron <smmsp@****> test -x /etc/init.d/sendmail && /usr/share/sendmail/sendmail cron-msp; Message: /usr/share/sendmail/sendmail: line 875: /usr/sbin/sendmail-msp: No such file or directoryhow would I solve it? I will not be using sendmail anymore...
+<faulkes-> I take it you uninstalled sendmail via apt?
+<faulkes-> dpkg -P <package>
+<faulkes-> which should purge anything (like config files) which are still kicking around
+<faulkes-> nijaba: gonna grab a new copy of the survey and go after some of the recently submitted bugs
+<kris_ph> hello... can anybody here point me to a link with guide on how to install fastcgi in ubuntu gutsy?
+<gregbrady> good morning all.
+<gregbrady> Is there a good dansguardian log analyzer out there?
+<soulc> anyone here?
+<soulc> ahhhhh
+<soulc> anyone know how to fix the eyecandy stuff ?
+<gregbrady> Is there a way to set a computer running ubuntu up to use a proxy server, no matter what?  I changed Firefox for my son, but then I see that he also uses other browsers, which defeat the purpose!
+<timboy> hey setting up dns here on my end my box's ip is 192.168.0.7 do I set that as nameserver in resolv.conf?
+<timboy> or do i set my isp's nameserver ip?
+<timboy> nevermind I got it
+<keithclark> Hey every one, what is going on?  Pretty quiet in here!
+<keithclark> Kamping_Kaiser, this dansguardian is working wonders!  Thanks!
+<takedown_> hi, l'd like to now which more secure ubuntu or debian(not just out of the box), where security fixes comes faster or this same? I know ubuntu build with stack-protection features and have built-in apparmor support, when debian doesnt
+<takedown_> or give me a link please for a objective comparsion
+<rgl> hi.
+<rgl> will hardy support xen out-of-box?
+<Kamping_Kaiser> rgl, being a xen client? i belive so
+<Kamping_Kaiser> takedown_, what sort of answer are you expecting in *ubuntu*-server?
+<Kamping_Kaiser> afk. heading out
+<rgl> Kamping_Kaiser, being a dom0.  the xen packages seem to live in "universe" rather than in the normal archive :/
+<Kamping_Kaiser> rgl, is dom0 a host or.../
+<Kamping_Kaiser> s#/#?
+<takedown_> Kamping_Kaiser: idk, whatever
+<rgl> Kamping_Kaiser, dom0 is the host.  domU is the guest(?).
+<Kamping_Kaiser> rgl, host i'm not sure about, but i expect it will
+<soneil> rgl, I gather it's totally workable, just not the "supported" option.  ubuntu are going with kvm, but nothing stopping you using xen
+<rgl> soneil, oh I found the https://wiki.ubuntu.com/UbuntuWeeklyNewsletter/Issue76 which says just that.  thx.
+<alstone> ah here we are
+<alstone> how do I get the distro name plz?
+<ScottK2> alstone: Look in /etc/lsb-release

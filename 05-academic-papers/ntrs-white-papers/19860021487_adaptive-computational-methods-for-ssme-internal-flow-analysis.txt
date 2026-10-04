@@ -1,0 +1,2223 @@
+---
+title: Adaptive computational methods for SSME internal flow analysis
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19860021487
+source_url: https://ntrs.nasa.gov/citations/19860021487
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONTRACTOR_REPORT
+center: Legacy CDMS
+publication_date: 2019-06-24
+retrieved: 2026-09-22
+sha256: 53cc6ce076705f3ae78c98038cc8e9a6d6be2bf274ad21a636d7805fa0460ce1
+pages: 58
+words: 6475
+cv_look_pages: 6
+---
+
+                                      FINAL REPORT
+
+                                              ON
+
+                   RDflPTlUE COMPUTflTIONflL
+                       METHODS FOR SSME
+                   INTERNflL FLOUI flNHLYSIS
+
+                        NASA CONTRACT NA8-36647
+
+               MARSHALL SPACE FLIGHT CENTER, NASA
+
+
+                                 BYJ.TINSLEYODEN
+
+
+                                            TR86-05
+
+
+
+                                                      THE COMPUTATIONAL
+                                                      MECHANICS CO., INC.
+                                                      4804 AVENUE H
+THE COMPUTATIONAL MECHANICS COMPANY. INC.             AUSTIN, TEXAS 78751
+     (NASA-CB-17886il) ADAPTIVE COMPUTATIONAL                         N86-30559
+     HETHODS. FOR SSHE INTEBWAL, FLOS ANALYSIS         .         ...
+     Final Beport> (Computational Mechanics .
+     Consultants) . 58 p                   CSCL . 20D ..-•'.; ; - ; . Unclas
+                                                .__ . G3/3f , A3374
+                             TABLE OF CONTENTS
+
+
+
+     FOREWORD                                             1
+
+1.   INTRODUCTION                                          2
+
+2.   SPACE-TIME VARIATIONAL FORMULATION OF
+     COMPLEX FLOW PROBLEMS                                5
+
+     2.1.   A Space-Time Navier-Stokes Formulation        5
+
+     2.2.   A Space-Time Variational Formulation of the
+            Euler Equations                               6
+
+3.   ADAPTIVE SCHEMES                                     10
+
+     3.1.   Finite Element Approximations                 10
+
+     3.2.   A Node Redistribution Method                  14
+
+     3.3.   Numerical Experiments - An r-Method           20
+
+     3.4.   A p-Method                                    32
+
+4.   CONCLUSIONS                                          39
+
+     REFERENCES                                           40
+
+     APPENDIX                                             41
+
+     REFERENCES FOR THIS APPENDIX                         56
+                                 FOREWORD
+
+
+
+     This document is the final report of work done on adaptive finite
+
+element methods for SSME internal flow analysis for NASA under Contract
+
+NAS8-36647. The results described here summarize a one-year pilot study
+
+into several classes of adaptive methods which may have important implica-
+
+tions in a large body of computational fluid dynamics work connected with
+
+the analysis and design of the space shuttle main engine. The one-year
+
+effort supported by this NASA-Marshall Space Flight Center contract repre-
+
+sents one component of a larger program on adaptive methods in CFD underway
+
+at the Computational Mechanics Company, Inc. of Austin, Texas. The very
+
+encouraging results obtained suggest that a significant increase in the
+
+reliability of computer-generated flow simulations is possible through
+
+the use of special error estimates and various adaptive procedures.
+                              I. INTRODUCTION
+
+
+
+     In this report, we describe adaptive finite element methods for the
+
+analysis of classes of problems in compressible and incompressible flow
+
+of interest in SSME (space shuttle main engine) analysis and design.
+
+     The general objective of the adaptive methods of interest here is to
+
+improve and to quantify the quality of numerical solutions to the governing
+
+partial differential equations of fluid dynamics in two-dimensional cases.
+
+Implicit in this goal is the resolution of two questions: 1) how is this
+
+quality of the numerical solution to be assessed? and 2) how does one
+
+effectively adapt the solution to improve quality?
+
+     An answer to the first question is to somehow estimate the local
+
+error in a given mesh cell (in an appropriate norm) by using the results
+
+of a first trial calculation. Stated in another way, one can construct
+
+a-posteriori error estimates using data from rougher solutions obtained
+
+on a coarse mesh or with a low-order approximation. Once an estimate of
+
+the local quality of the solution is known, one can "adapt" the numerical
+
+scheme so as to improve the quality of the solution; i.e. so as to reduce
+
+the local approximation error.
+
+     There are several different families of adaptive schemes that can be
+
+used to improve the quality of solutions in complex flow        simulations.
+
+Among these are 1) r-methods (node-redistribution or moving mesh methods)
+
+in which a fixed number of nodal points is allowed to migrate to points
+
+in the mesh where high error is detected; 2) h-methods, in which the mesh
+
+size h is automatically refined to reduce local error and 3) p-methods,
+
+in which the local degree p of the finite element approximation is increased
+to reduce local error. There are, of course, combinations of these methods
+
+which can be very effective. Two of the three basic techniques have been
+
+studied in the project reported here: an r-method for steady Euler equations
+
+in two dimensions and a p-method for transient, laminar, viscous incom-
+
+pressible flow. For discussions of our work on h-methods for these types
+
+of problems see, e.g. [ 1, 2, 3, 4].
+
+     The issue of a-posteriori error estimation is a difficult one. Two
+
+basic categories of error estimation were studied in the work described
+
+here: 1) residual methods and 2) interpolation methods. The former classes
+
+of methods make use of residuals computed using trial finite element
+
+solutions. These methods can be computationally expensive; however, they
+
+can yield very good estimates of the local error. Interpolation methods,
+
+on the other hand, are easily implemented but may yield quite crude
+
+estimates of the actual error. These schemes employ interpolation theory
+
+and exploit superconvergence properties of finite element methods; they
+
+seem to be perfectly adequate as a basis for adaptive mesh schemes for
+
+the classes of problems considered here.
+
+     Following this Introduction, we present weak forms of Navier-Stokes
+
+equations and the Euler equations that are used as a basis for the
+
+development of finite element approximations. Since we anticipate the use
+
+of techniques which move nodes and elements, we construct general space-time
+
+"variational formulations" for these problems for which the computational
+
+domain can vary with time. In Section 3, we present two types of adaptive
+
+schemes. First, an r-method for two-dimensional steady problems in inviscid
+
+compressible flow characterized by the Euler equations. Numerical results
+
+are presented for some representative test problems. In Section 3, we
+also outline a p-method for incompressible viscous flows and cite some
+
+preliminary numerical results. A brief introduction to residual methods
+
+of a-posteriori error estimation is given in an Appendix, and some pertinent
+
+conclusions of the study are listed in Section 4.
+                             2. SPACE-TIME VARIATIONAL FORMULATIONS
+
+                                           OF COMPLEX FLOW PROBLEMS
+
+
+
+        2.1. A Space-Time Navier-Stokes Formulation. A general space-time
+
+variational principle for incompressible viscous flow is characterized as
+
+follows (see [ 1, 2, 3]).
+
+        Find a velocity field u in a class of functions V such that over a
+
+time interval [ 0, T],
+
+
+
+                      P [ y, u ] + \i(( ue, v )) +            pb ( ue, ue, v
+             0
+
+             + e 1 ( div u£, div v ) } dt
+
+                        T
+                  =    / ( f, v)t dt + p (u, v)Q - p (u£, v)r
+
+
+                                                           V v e V                      (2.1)
+
+
+where    v       is an arbitrary test function, p                     the mass density, M the
+
+viscosity, f the body force, and
+
+                                           3v
+                                           -r—
+                                           3
+                                                 u dx     at time t
+                                     /       t
+                                      "t
+        (( u> v))            =       |V u : V v dx       at time t
+
+
+
+        ( u, v)          =       I    u • v dx    at time t
+
+
+        b (u, u, v) = b (u, u, v) + b (u, if, v) + b (<|), u, v)
+
+
+         b (u, v, w) = I [(u -V ) v • w + \ div u (v • w) ] dx
+with ft the spatial time domain at time t. Here we use a penalty method
+
+(artificial      compressibility)               to approximate the hydrostatic pressure
+
+P> by
+
+
+                                        p        = - e   div u
+                                            e                 e
+
+with e a small positive parameter. The functional b (•,»,•) represents
+
+the convective term in the Navier-Stokes equations and                       (p is a particular
+
+function designed to simplify the enforcement of no-flow boundary con-
+
+ditions .
+
+        A   finite    element        approximation           (2.1)   is obtained   by   replacing
+
+u and v with appropriate discrete approximations defined over a space-
+
+time element K; e.g.
+
+
+      u » ujj (x, t) = 2_ue (t) <|IN (x)
+                       N
+Once a finite element solution is obtained on a fixed mesh, we use
+
+it to compute a local error indicator $which bounds the local e                          = u   -
+
+u? in an appropriate norm:
+
+
+                        lie— II      S || <k v \\            for element K
+                          *     K.              •* lx
+
+
+We shall discuss means for obtaining <J> later.
+                                                         K
+
+
+
+        2.2 A Space-Time          Variational Formulation of the Euler Equations.
+
+By following         a plan similar              to that used in the formulation of the
+
+weak-space-time        problem (2.1), a space-time formulation of the Euler
+
+equations in two dimensions can be obtained.
+     If U(x,t), (x,t) C D, is the 4-vector of conservation variables,
+             T
+U = {p, m, E} , with p the mass density, m the linear momentum, and
+
+E the total energy, and if dft and dS denote Lebesque measures of area
+
+(volume) and length (area) of ft and 3ft respectively, then we demand
+
+that U satisfy the following system of conservation laws:
+
+
+
+
+               H?
+                            - f Q(U)n
+                                 Q(U)n dS                                               (3.1)
+                                •> ao~ ~ ~
+
+
+ Here,   Q(U)     is the flux and            n    is the unit outward normal to         3ft . If
+
+m. , m.      denote Cartesian components of                 m , then
+
+                                    T
+               U = {p , m. , m_ , E}
+
+
+
+                                  m.
+
+                                         p(U)               p    n
+               Q(U)             -1                       -1 2
+                                                                     p(U)
+
+                        p — 1 m^E + p(U)) |             ^       (E + p(U))
+                                                            ^
+
+
+                                         ;       p(U) = (Y -                 m • m/2)
+
+
+
+In these equations, p is the thermodynamic pressure and y is tne                        ratio
+
+of specific heats, assumed here to be constant. In addition to (3.1),
+
+D must satisfy an entropy production inequality as well as an initial
+
+condition,
+
+               U(x,0) = Un(x)        ,                x 6 ft
+               _ -,     ~u ~
+ where    U.    is given.
+        It is of fundamental importance to note the smoothness requirements on
+
+U   in order that (.3.1) make sense mathematically.            Conservation laws (3-1)
+
+hold when the components of        U     are bounded measurable (with respect to
+
+Lebesque measure in x ) functions on D . Thus, we may seek solutions in
+
+ the function space
+
+             V = {V = {V1§ V2, V3, V4)T          I V± = V±(x.t)
+
+
+                       6 L°°(0,T ; L!(fi)) ; i = 1, 2, 3, 4}
+
+
+ In particular, (3.1) is not equivalent to the classical Euler equations,
+
+ Ufc + div Q(U) = 0    (with   U       = 3U/3t    and div Q = j SQ^/3*^ since
+
+solutions may not possess derivatives across surfaces in D . However,
+
+the conservation laws and initial conditions are fully equivalent to
+
+the following weak boundary-initial value problem:
+
+
+              Find   U 6 V   such that
+
+
+
+
+                                                 FT $ dS dt
+
+
+                                                   for all $ 6 W
+
+
+where    F   is the actual prescribed flux through            3«   and   W   is a suitable
+
+space of test functions-
+
+     Here, we use the notation
+                             4     34                     2 4        34
+                                 D           ;
+                             E . «?T             2 : ?* = I I Q    ai^
+                            a=l a •                      1=1 o«l al 3xi
+
+
+       Consider an arbitrary time interval                   [T,,T2] d[0,T] and include
+
+in W     functions          <J>(x,T2) * ° • Let        ui be a subset of fi such that
+u) o u T, = 0 > and let F•= Qn . Then another weak statement of the system
+
+conservation laws over                oj x [T,*!.,]    is:
+
+                  Find    U 6 V<0'T     such that
+              T
+                  2
+                          T       + (div )T      dn dt
+                       u
+                         ~
+
+
+                                                      for all % G w"fT
+
+
+with   v"'1           and W01'1   appropriate spaces of trial and test functions.
+                                 3. ADAPTIVE SCHEMES
+
+
+
+     3.1 Finite Element Approximations. A hierarchal finite element
+
+method designed for use in a p-method is used to construct approximations
+
+of (2.1). We furnish some details late in this section. For a more
+
+complete discussion of our approach, see [5].
+
+     Turning to (2.2), finite element approximations of the gas dynamics
+
+problem are obtained by a direct approximation on finite-dimensional spaces
+
+approximating the spaces        V   and     W . The spatial domain fl is partitioned
+
+into a collection       T,   of finite elements     ft    over which the components of
+                         h                           e
+trial functions     V    are approximated by polynomials of degree              k .   In this
+
+way, we construct a family          (V }    of finite dimensional spaces of the type
+
+
+ vh = {yh = (v\, v£, v*. vJ}T e v | vj e ?k <ne) , i - i. 2. 3. 4}
+
+
+where   P,(8 )    is the space of polynomials of degree                k   defined over fl
+         K e                                                                                 e
+Alternatively, we can use V^|fi             6 Qk(8g) » where Qfc(8 ) is the space of
+                                       e
+tensor products of polynomials of degree            k    on   n       (e.g., Q. (fi ) is
+                                                                  c            16
+
+spanned by bilinear functions,             Q2(fl ) by biquadratics, etc.).          In addi-
+
+tion, a family      (W, }    of finite dimensional spaces of test functions is
+
+also constructed.       We then consider Galerkin approximations              by seeking
+
+solutions in v , with W replaced by W .
+
+     We next derive a special semi-discrete, weak formulation which
+
+provides the basis for the construction of a popular family of finite
+
+element schemes. We proceed with the following steps:
+
+
+
+                                              LO
+  i)    Partition the time interval               [0,T] according to   0 = t_ < t.
+
+        < t2 < . . . < tN = T ;
+
+ii)     Apply the weak balance law (2.2)               to a typical time interval
+
+        [                    (wlth   T
+         V         W                 l = 'nand T2 = Cn+l );
+iii)    Set        <k = 0     in (2. 2) suggesting the ultimate use of a
+
+        time-invariant grid (we relax this assumption later);
+
+iv)     Replace the time integrations in (2.2)               by the elementary
+
+       midpoint quadrature rule
+
+         C
+             n+l
+                   f(t)dt ~ At
+
+
+
+                                           =    f(t
+                                                  n
+
+        Thus, with          ID = ft , we obtain the semidiscrete approximation
+
+
+                            dn -         yn dn + At Jo
+                                                    f  n+1*
+                                                       0 ^ : 7$. dft
+                                                             ~ n
+
+
+                                   -At
+
+                                                      for all $              (3.1)
+
+
+       where        ll" = U, (x, t ) , etc., U.         being the approximation of
+                    ~n    n ** n           **n
+                       n+
+       U , and          ^     is the flux at the half step,
+
+
+                       Uh
+
+ v) To obtain an approximation                  U, " , we use (2.1 ) again for time
+
+       interval        [t , t-AiJ , this time replacing the time integrals by
+
+       a simple strip rule and integrating by parts the divergence terms
+
+
+
+
+                                           11
+                                 -f
+
+                                                 for all   $h              (3.2)
+
+       We thus arrive at the algorithm,
+
+            1)     With    (D™ , gn = Q(uJJ))   known at the    n th time step,
+
+                   compute    u"+'5   using (3.4)
+
+            2)     Compute    Qn+i5   using (3.3)
+
+            3)     Compute    iF*^    using (3.4)
+                              ~h
+            4)     Go to 1)
+
+
+
+
+       This algorithm is the finite-element based two-step Lax-Wendrof f /
+
+Taylor Galerkin scheme. It is one of a family of methods advanced by
+
+Donea [6], studied by Baker and Kim [7], and successfully refined and
+
+used by Lb'hner et al. [8,9] in finite-element applications in fluid
+
+dynamics. This semi-explicit method is of second order in time and
+
+can experience spurious oscillations near shocks and other types of
+
+irregularities in the solution. These deficiencies must be reckoned
+
+with in implementing the method, and for this purpose we append to
+
+the right-hand side of (3.1) an artificial term of the form
+
+                 4 2
+                       c.(u) Un+J <(.h . d fi
+
+
+       - At T    <jj(c(c (un).VU)Un)
+                       (u).V       n ds
+
+with
+                 3u
+                   i
+       c.(u) = C -T—-                 (no sum on i)
+
+
+
+                                           12
+        In this work, we use meshes of four-node quadrilaterals over which
+
+the components of U are piecewise bilinear functions. Similar approximations
+
+and algorithms are used by Bey et al.                      In addition, so-called group
+
+approximations of the flux Q . (a = 1,2,3,4; i = 1,2) are employed
+
+so that these components are also piecewise bilinear functions determined
+
+by their values at element nodes. In general, this finite element approximation
+
+will be of the form,
+
+                            N
+                 tt
+                        1=1
+
+
+
+
+where     N     denotes the total number of nodes in the discretization, and'
+U
+ a ' ^ai are           va
+                        ^-ues °f H Q           at node
+                                                            3 » and <f>.   are the global
+piecewise bilinear basis functions.
+
+        As noted earlier, we advance the solution in time in two steps.                        It is
+
+important to note that the first step is essentially local, computed over
+
+each element, while the second is global and contains the artificial
+
+viscosity terms:
+
+First Step:- For each element fl , calculate a constant element vector
+
+Un+$5    from                                     -••-"^•'
+ a,e                                                                       •     ...   •   .   .
+
+                Ua e
+                 ' >f
+                a1                        i=i J ngj
+
+                                f   V W
+                       At r      i
+                      ~2   Jo 9xR
+
+
+
+
+                                                      13
+Second Step; For each node         j , calculate         tT'n+      by solving the
+
+following system of equations
+
+
+
+
+               + *»• i   /•»"' *   ±- j<-»     A j. i   _ in n+-2
+
+
+
+
+                                    *i ds
+
+Here, Q     denotes the elementwise averaged value of the flux.                The
+
+coefficients    TO     are defined to be constant over each element,
+                 P
+
+
+               - cAe
+
+
+where   c is a global constant               (c = 1 in the examples), A        denotes the
+
+area of fl , u         denote the components of the fluid velocity.
+
+
+
+      3.2 A Node Redistribution Method. We now describe one of the principal
+
+aspects of this investigation: a moving-mesh, node-redistribution method
+
+based on equidistribution of error indicators. We begin by presenting
+
+a simpler mathematical justification of the concept of equidistribution
+
+of error.
+
+     Consider a regular mesh of quadrilateral elements ft with a diameter
+
+h   Let 0 be an error indicator for element e and suppose that the mesh
+
+contains a fixed number M of elements. Let h = h(x1, x_) be a mesh
+
+
+                                               14
+function such that
+
+
+                              = dia(fie)     for
+
+and note that, approximately,
+
+
+                                   'fl >i^
+                              « - (Jo
+
+
+with    dn = dx.dx.      (this being exact for domains which are unions of square
+
+elements).       Let   0 = 0(x.,x2)   be mesh function which gives the local error
+
+indicator when evaluated at a point (0=0                for x 6 Q   ). We wish to
+
+minimize the total error indicator functional,
+
+
+                           f e2 dn
+                       ? 1 I«    e
+                       e=l ' fi
+subject to the constraint (.3.3).          Using Lagrange multipliers, this leads to
+
+the optimality condition,
+
+
+                         2
+             5(J + X(f
+                     J h~ dfi - M)) = 0 ,
+
+or
+
+                            If
+
+or
+                     39
+                 3     e
+             h     0 -rr^- - \ = 0
+                 e e 3h
+
+                                     2
+        Suppose that meas(JJ ) = a h         and that   0    is of the form
+                            e     o e                    e
+0    = h f(u) . Then, integrating this last result over a typical element
+
+gives
+
+                    oh3 0. hq~l f(u)dR = \a h2
+                      e e e                o e
+
+
+
+Hence, the optimal mesh size distribution results when
+
+
+
+
+                                             15
+Figure 1. Calculation of area center-of-error
+           N
+          X    to equidistribute element error
+
+          indicators in a cluster of four elements,
+
+
+
+                        16
+           l«      0 2 dfi = Aa /a = CONST.                                            (3>4)
+
+
+
+In other words, to obtain the optimal mesh, we must equidistribute the
+                f 2
+indicators       0e .
+     To use this result to redistribute nodes, we proceed as follows (cf.
+
+Diaz et al. :
+      1)     Generate an initial (generally regular) mesh with a fixed number
+
+M   of elements and compute a trial solution on this mesh at one time step;
+
+      2)     Compute the corresponding error indicators 0g ;
+
+      3)     For a group       k   of   P   elements (with    P   always     4    in this
+
+work), let A            denote the area of element     i     in the group.       The
+                   e
+                   i
+area-weighted indicators for group            k   are the P-numbers,
+
+                                    0 ./A .
+                                     ei ei
+
+      4)     Let       y_ denote a vector from the origin of a global coordinate
+                        e
+                         i
+system to the centroid of element            e. of group      k . Then the center of
+
+error of group         k   is defined as the vector (see Fig. 1)
+
+
+                       4       (   e.
+                       I
+                       U I
+                         AfA
+
+
+
+             xk =          . 0
+                           4r e,
+                            A
+                         */ '.V
+
+      5)     Relocate the node at the center of group             k   to lie at the vertex
+ , k
+of x ;
+
+      6)     Continue this sequence of operations over each group                 h     of four
+
+elements until the new location of each node does not change more than a
+
+preassigned tolerance.
+       There remains only the issue of how the error indicator 6 can
+
+be calculated in an efficient manner. Instead of using residual methods
+
+such as those discussed in the Appendix, we shall use an interpolation
+
+method. These methods are derived from the theory of interpolation
+
+of finite elements (see Oden and Carey [10]. In particular, let u be
+
+a smooth function defined over a regular domain fi. The W                (fi)-semi-
+
+norm of u is defined by
+
+                                                      )l/P
+
+             wr>p(n)      (Jn i+j=r
+                              i.j^o
+
+where    I ^ p = °° and       r    is a non-negative integer.
+
+The Sobolev norm of         u is
+                                   f r              }1/P
+                                          |u|
+                M wrrp
+                    'p(fl)u ' lk=o
+                                *           %Pp(n)J
+                                           ir'
+
+         Let    G   be an arbitrary convex subdomain (a finite element) of fJ
+
+ over which         u   is interpolated by a function        u^ which contains complete
+
+ piecewise polynomials of degree           k . Then, it can be shown that
+ the
+        local interpolation error in the ^^(O-seroi-norm is
+
+
+
+
+ where
+
+   h     =    the diameter of the domain        G
+
+   P     =    the diameter of the largest sphere that can be inscribed inside         G
+   n     =    the dimension of the domain ft
+
+
+
+                                            18
+     p' - p/(p - 1)
+     C =       a constant independent of h , P , and u .
+
+If     p    is proportional to       h       and if it remains proportional in refinements
+
+of     G defined by parametrically reducing                 h , we have
+
+
+                                                       -m
+                             c hP        p
+
+With
+               'L.p.G-     ''
+
+           Such estimates can be used to devise crude adaptive schemes.                           Suppose
+
+that       u    on the right side of (4.13) is replaced by a finite element
+                                                       =
+approximation         u   and that       I^L+i              IUL+1     +
+                                                                          °^)      •   Then, ( 3 . 4 )
+
+indicates that the local error in the                  ^'^(G) seminorm is proportional to
+
+the error indicator,         hnp         np
+                                                           ~m|u|,            . Some choices are:
+                                                                    K+l ,p
+
+            i) n = 2, m = 0,        k = 1, p = p' = 2
+
+
+                      «Eh||L2(G) . C h^|u|2)2>G             = C6G                               (3.5)
+
+
+In this case, one must approximate the                     W2'2-semi-norm of           u   over    G ;
+
+i.e., the L2-norm of second partial derivatives of                           u .
+
+           ii) n = 2, p = ~,        p1 = 1, k = 0, m = 0 .
+
+
+                           '(G)
+
+
+
+
+                                     Ch3 max|7'u(x)| = C6G                                        (3.6)
+                                         x6G ~
+
+
+
+                                                  19
+       3.3 Numerical Experiments - An r-method. We shall now cite some
+
+representative examples in which the r-method described above is used.
+
+All examples here are steady-state problems and the following conventions
+
+are used:
+
+
+
+       1. The numerical solution is computed on a fixed mesh and is advanced
+
+ in time until a steady state is reached.
+
+       2. After convergence to a steady state, initial error indicators
+
+9     are computed according to
+
+                         G = A
+                          e   e
+
+
+in analogy with (3.5).
+
+       3. Then, a modified error indicator 9   is employed which is designed
+
+to be always greater than unity even when 9 ~ 0. In particular, we
+
+use
+
+                                      06
+                                  l
+                              - * 6
+
+
+In our examples, a = 81, 3 = 1, and y = 8.
+
+
+       4. Nodes are redistributed a total of K times using the procedure
+
+described earlier. In the example, we take only two iterations (K = 2).
+
+
+
+       A Shock Reflection Problem. We begin with a problem for which
+
+an exact solution is known and which has been used as a benchmark problem
+
+by others.
+
+
+
+
+                                      20
+        The problem involves the steady flow of a perfect gas in a rectangular
+
+ duct in which density, velocity, and energy are prescribed in each of four
+
+ triangular wedges in such a way that the appropriate jump conditions (the
+
+ Rankine-Hugoniot conditions) are exactly satisfied.        Thus, a problem of
+
+ shock reflection for which an exact solution is known is obtained.        Dimen-
+
+ sions and data are given in Fig,         2.   In this and all the other problems,
+
+ the solution is considered to have converged to steady state when the
+
+magnitude of the        L2-norm of the density is reduced by three orders of
+
+magnitude.
+
+        The time step is monitored by the formula
+
+
+
+             At = mln
+                    e    • • '
+                                 +c
+
+           2 vp         i 12   2 -'2
+Here,     C =—      and |u| = u. + u_ , Y = 1.40 . The constants
+
+multiplying the artificial viscous terms were selected locally as:
+
+
+                         3u_n                     3vn
+             T = A                    ,   T =A
+              x   e      3x
+                                 e
+                                           y  e   ay
+
+
+where the bar denotes average element values. A Lapidus constant of
+
+1.0 is used.
+
+     The results of a uniform coarse grid approximation are shown in
+
+Fig. 3. The computed density contours are also shown.
+
+     The same problem was also analyzed using the node redistribution
+
+algorithm with 20 node redistribution iteration. Results are shown
+
+in Fig. 4. There, the original coarse initial mesh of Fig. 3 is progressively
+
+                                          21
+                      P = 1.7
+                        =4.45145
+                      m =-0.86071
+
+
+
+
+                      7  Shock Lines
+
+
+
+
+Figure 2-. A shock reflection problem.   Inflow values of the conservation
+
+          variables are prescribed as indicated in regions I and II, and
+
+          outflow values are computed in III to satisfy the conservation
+
+          laws.
+
+
+
+
+                                  22
+distorted to conform to the reflected shock locations. Corresponding
+
+density contours are also given in the figure.
+
+
+             NACA 0012 Airfoil in Supersonic Wind Tunnel.   In this example,
+
+the supersonic flow through a narrow wind tunnel containing a NACA 0012
+
+airfoil is studied.     The inflow Mach number was set at   M^ = 2 , with
+
+Y =* 1.40 and symmetry is exploited to reduce the computational effort.
+
+        The initial coarse mesh and density computed contours are given in
+F
+ *g. 5.        Note that the critical features of the solution — the
+
+reflected shock and contact discontinuity —    are lost with this coarse
+
+mesh.     Results of a node-redistribution scheme for the coarse mesh
+
+are shown in Fig. 6. In these results, ten iterations of the node re-
+
+distribution algorithm were used.
+
+
+            Supersonic Flow in a Wind Tunnel with a Step.   The steady-state
+
+solution of the problem of a wind tunnel with a step introduced into the
+
+flow is next considered.    The inflow Mach number was selected   M^ = 3.0
+
+and     Y = 1.40 . The initial coarse mesh is shown in Figure 14 with the
+
+corresponding density profiles.     The mesh refinement algorithm was also
+
+used, with the mesh and density profiles obtained after 10 iterations
+
+shown in Fig. 8. We see that some oscillations are present downstream,
+
+and they are believed to be due to the non-monotonicity of the solution
+
+algorithm. The results presented for the refinement-unrefinement procedure
+
+have been constrained by a maximum number of 2000 nodes or 2000 elements
+
+that can be allowed. In the refined mesh shown, this constraint has
+
+been achieved.
+
+
+                                      23
+Figure 3. Reflecting shock problem.
+
+          Initial mesh and density contours.
+
+
+
+
+               24
+Figure   4.   Reflecting shock problem.   Mesh and density contours obtained
+
+          after 2x10 applications of the mesh redistribution algorithm.
+
+
+                                  25
+\V\\\\\\\1
+  \\\\\.\\\ \
+
+
+
+
+ Figure   5.   NA.CA. 0012 airfoil in supersonic wind tunnel.
+
+               Initial mesh and density contours.
+
+
+
+                             26
+Figure 6.   NACA 0012 airfoil in supersonic wind tunnel.
+
+            Mesh and density contours obtained after 2x10
+
+            applications of the mesh redistribution algorithm.
+
+
+
+                             27
+                           •••••••••••••••MB
+
+
+
+
+Figure   7.   Supersonic flow in a wind tunnel with a
+
+              step.   Initial mesh and density contours.
+
+
+
+
+                               28
+Figure   8.   Supersonic flow in a wind tunnel with a step.
+
+              Mesh and density contours obtained after   2x10
+
+              applications of the mesh redistribution algorithm.
+
+
+                              29
+Figure 9_. Blunt leading edge in hypersonic flow field,
+            Initial mesh and density contours.
+
+                               30
+Figure 10.   Blunt leading edge in
+
+             hypersonic flow.   Mesh
+
+             and density contours
+
+             obtained after 4
+
+             applications of
+
+             the mesh
+
+             redistribution
+
+             algorithm.
+
+
+
+
+                                       31
+          Blunt Leading Edge of 8' HTT Panel Holder in Hypersonic Flow.
+
+The problem of the blunt leading edge of the 8' HTT panel holder in a
+
+supersonic flow field with freestream Mach number   M^ = 6.57 , y = 1«38
+
+and 0 angle of attack was solved to obtain the steady-state solution.
+
+This problem has also been studied by Bey et al.
+
+     A coarse mesh solution is indicated in Fig. 9. A distorted mesh
+
+and corresponding density map are indicated in Fig. 10. In this particular
+
+problem, the r-method did not give particularly good results, as a poor
+
+approximation of the solution between the shock and blunt body results
+
+from spurious ocsillations in the basic time-marching algorithm. In
+
+the case of mesh adaptation using redistribution, the solution actually
+
+diverges after four passes through the adaptive scheme due to the badly
+
+graded (hourglassed) mesh produced from the oscillations of the adaptive
+
+scheme downstream of the shock.
+
+
+
+     3.4. A p-Method. Returning now to the full, viscous, Navier-Stokes
+
+problem characterized by (2.1), we outline a p-method for adaptive
+
+improvement of finite element solutions. The procedure is straightforward:
+
+
+     1. On a fixed mesh, compute a trial solution at each time step
+
+using a linear or bilinear approximation of the velocity field U, .
+
+     2. Use U   to compute a residual for data in a local problem which
+
+yields the local error indicator $ over each element K.
+                                  K.
+     3. Use local quadratic approximations to compute approximate error
+
+indicators <f> .
+            K
+
+                                       32
+     4. Check for pre-assigned error tolerances. If the error is too
+
+large, recompute U, locally using quadratic elements.
+
+
+     We employ hierarchal families of elements and could go up to quadic
+
+polynomials. In results given below, only quadratics are employed,
+
+and mesh refinement is used if increasing p fails to bring error with
+
+acceptable limits.
+
+     To Lest the residual estimation technique and our p-method, we
+
+examine the performance of the method using a problem with a known
+
+analytical solution. Since few analytical solutions to the transient
+
+Navier-Stokes equations are known, we attempt to construct solutions
+
+to special problems by choosing an analytic solution and then computing
+
+the corresponding boundary conditions and body force.
+
+    The theoretical analysis suggests the following local error indicators;
+
+
+
+
+                          lg.^.V
+                                /
+
+
+
+
+                                    33
+Here,
+
+I ,Ki2        , ,K .K..         ii,Ki|2    .. K        , Kv.
+I* IK,? (! •* V H* I'K.t = ((? ' * "t
+
+         For each error indicator e.,
+                                                 K. , n,j   = l , . . . , 4 w e define the
+
+effectivity ratio
+
+
+                 K,n       n
+
+
+where lie II  is the norm estimated by e^   as described above.                                  We
+       -h K,n                           K,n
+say that c^   is an effective estimator if the corresponding
+
+effectivity ratio takes values close to unity.
+
+
+         In the numerical example to follow space-time elements of
+first order (bilinear in space, linear in time) are used to obtain an
+
+approximate solution and second-order space-time elements (biquadratic
+
+in space, quadratic in time) are employed to solve the local parabolic
+
+problems in the first time step.                       Then a normalized value          e,,
+                                                                                         K.,n     of
+
+the local error indicator                  (Z>     is computed for every element             K . A
+
+new order of approximation for element                          K   is defined as follows:
+
+         If     0 < e            < 6      first order approximation
+                       IN y H
+
+
+         If    6 < e    < 1               second order approximation
+                    K,n
+Thus, the order of approximation is increased in the elements with
+
+error indicator bigger or equal to 5                            times the value of the largest
+
+error indicator and an enriched mesh is obtained.                            This enriched mesh
+
+is used to advance the solution for                         M    time steps (including          the
+
+first) and after that the whole procedure is repeated.                              The success of
+
+this strategy in any particular problem depends on the choice of the
+
+
+                                                  3A
+ discretization parameters     h , At    and the constants 6 , M .
+
+      We   now    consider a problem. with a one-dimensional "wave-like"
+
+ solution in the fixed spatial domain n - [0,20] x [0,20], namely
+
+
+
+
+ The problem was solved with two uniform (5x5          and 10 x 10) meshes
+
+ using the following parameters:
+
+ Time step:      At = 0.025, 0.100
+
+ Penalty parameter:     e = 10~3
+
+ Fluid constants: p "I, v a 1
+Kinematic boundary conditions were applied on the side with         y = 0
+
+while traction boundary conditions were applied on the remaining three
+
+sides of the boundary.     This explains why the numerical solution-for
+
+the v-component shown in Fig. H}        L2   is not uniform in the y-direction.
+
+     For each error indicator we may compute a global effectivity
+
+ratio defined by:
+
+
+
+
+           6J
+            n
+
+
+
+
+     Table 1 gives the evolution of the global effectivity ratios for
+
+the proposed error estimators through the first nine time steps.         It
+
+is observed that the values of these ratios diverge from the optimal
+
+value of one as the time marching progresses.        This phenomenon is due
+
+to accumulation of the truncation error which destroys the effectivity
+
+of the error estimates and makes the adaptive procedure inefficient as
+
+
+
+                                   35
+                                                 L       /       /    /
+
+
+
+                                     /       /       /       /   /
+                   T       "/     /      /       /       /
+                           /    /        /       /       /
+
+
+
+
+Figure 11. Problem with exponential solution.    Computed solution for
+
+           time t = 0.1.   Parameters:   h = 2, At = 0.1, 6 - 0.25,
+
+
+
+                                36
+'""" " :;:::::
+            • »•        s:   h   —
+                                 5 » 0. 2 5 > M
+
+
+
+
+                   37
+can be seen. This situation can be corrected by reducing the values
+
+of the parameters of the adaptive procedure, namely h, At, M,      6.
+
+
+
+
+    Table 3-1
+
+    Values of the global effectivity ratios after the first time step; At
+    0.025
+
+
+                  Mesh       el
+                             o
+                               l           •?     6
+                                                      ?     •J
+
+                   5x5     1.0439      1.6995   1.3037    1.0339
+
+                  10x10    1 . 0054    0.3225   1.1627    1.0011
+
+
+
+
+                                      38
+                                 4. CONCLUSIONS
+
+
+
+        1. The use of rigorous residual error estimates for time-dependent
+
+Navier-Stokes problems in two dimensions is justified by the methods and
+
+results developed during the course of the work. In particular, sharp
+
+error bounds can be derived which were found to yield excellent error
+
+estimates for a test problem.
+
+        2. The use of p-methods and residual error estimates can be computa-
+
+tionally expensive. New data structures must be developed before these
+
+types of methods can find wide application in practical flow problems.
+
+        3. Adaptive p-methods may ultimately offer significant advantages
+
+over other adaptive schemes if used in parallel computation with efficient
+
+use of multiple array processes. At present, these schemes do not perform
+
+well in comparison with some other adaptive strategies from the viewpoint
+
+of programming ease and computational efficiency.
+
+        4. Node redistribution methods are simple to use and can be effective
+
+in certain steady problems. They do not appear to be attractive in general
+
+flow problems, particularly in cases in which boundary conditions vary in
+
+time.
+
+        5. The node-redistribution-relaxation scheme described in this report
+
+can exhibit numerical instabilities in certain flow problems. The method
+
+is incapable of reducing local errors below very high tolerance levels
+
+without acquiring some destabilizing properties. It is doubtful that the
+
+method will find broad applications unless it is combined with an h-type
+
+or p-type adaptive strategy.
+
+
+                                      39
+     6. The h-methods, not dealt with here, do offer some advantages in
+
+terms of speed of implementation and general data structures over the
+
+r-method and the p-method developed here. However, these schemes can also
+
+exhibit instabilities. It is highly likely that the best adaptive schemes
+
+will prove to be those which combine h- and r-strategies.
+
+     7. Interpolation methods for error estimates are rather easy to
+
+implement and can be easily added to existing CFD software. They can
+
+provide only a crude indication of the actual local errors, but they can
+
+be used to produce an adequate indication of relative error between succes-
+
+sive meshes.
+
+     8. Additional studies are needed to explore algorithms for accurate
+
+and efficient time-dependent problems. While we have developed some schemes
+
+in earlier work (e.g. [1]), a general approach to this important problem
+
+which fulfills requirements of accuracy and efficiency is not yet available.
+
+
+
+
+                                REFERENCES
+
+
+1.   Oden, J.T., Robertson, S.J., Strouboulis, T., Devloo, Ph., Spradley,
+     L.W. and McConnaughey, H.V., "Adaptive and Moving Mesh Finite Element
+     Methods for Flow Interaction Problems", Proceedings, Sixth Interna-
+     tional Conference on Finite Element Methods in Fluids, Antibes, Fran-
+     ce, 1986 (to appear)
+
+2.   Oden, J.T., Strouboulis, T. and Devloo, Ph., "Adaptive Finite Element
+     Methods for the Analysis of Inviscid Compressible Flow: I. Fast
+     Refinement / Unrefinement and Moving Mesh Methods for Unstructured
+     Meshes", TICOM Report, 863, The University of Texas at Austin, 1986
+
+3.   Demkowicz, L., Oden, J.T. and Strouboulis, T., "Adaptive Finite Ele-
+     ment Methods for Flow Problems with Moving Boundaries. Part I: Varia-
+     tional Principles and A-Posteriori Estimates", Comput. Meths. Appl.
+     Mech. Engrg.. 46, 1984
+
+
+
+                                     40
+4.    Demkowicz, L., Devloo, Ph. and Oden, J.T., "On an h-Type Mesh Refine-
+      ment Strategy Based on Minimization of Interpolation Errors", Comput.
+      Meths. Appl. Mech. Engrg., 1985.
+
+5.    Oden, J.T., Demkowicz, L., Strouboulis, T. and Devloo, Ph., "Adaptive
+      Methods for Problems in Solid and Fluid Mechanics", in L. Babuska,
+      O.C. Zienkiewicz, J.P. de S.R. Gago and A. de Oliveira, Adaptive
+      Methods and Error Refinement in Finite Element Computations, John
+      Wiley and Sons, Ltd., London, 1986.
+
+6.    Donea, J., "A Taylor Galerkin Method for Convective Transport Pro-
+      blems", Internat. J. Numer. Meths. Engrg., 20, 1984.
+
+7.    Baker, A.J. and Kim, J.W., "Analyses on a Taylor Weak-Statement
+      Algorithm for Hyperbolic Conservation Laws", Technical Report, CFDL-
+      /86-1, Comp. Fluid Dyn. Lab., University of Tennessee, 1986
+
+8.    Lb'hner, R., Morgan, K. and Zienkiewicz, O.C., "Adaptive Grid Refine-
+      ment for the Euler and Compressible Navier-Stokes Equations", in I.
+      Babuska, O.C. Zienkiewicz, J.P. de S.R. Gago and A. de Oliveira,
+      (Eds.), Adaptive Methods and Error Refinement in Finite Element Compu-
+      tations , John Wiley and Sons, Ltd., London, 1986.
+
+9.    Lb'hner, R. , Morgan, K. and Zienkiewicz, O.C., "An Adaptive Finite
+      Element Procedure for Compressible Flow in Deforming Regions", Comput.
+      Meths. Appl. Mech. Engrg., 51. 1985.
+
+10.   Oden, J.T. and Carey, G.F., "Finite Elements: Mathematical Aspects",
+      Vol. IV, Prentice Hall, Englewood Cliffs, 1983.
+
+
+
+
+                                       APPENDIX
+
+
+
+
+       A-Posteriori Error Estimation for a Class of One-Dimensional Elliptic
+       Problems.
+
+         Consider the model problem,
+
+
+
+
+                                         41
+            - j - ( a - j ) + bu = f in (0,1)
+              dx       dx
+                                                                                    (1)
+                               u(0) = u(l) = 0
+
+where it is assumed that
+
+
+            0 < a^ < a(x) < amax < + oo Vx6[0,l]
+
+            0£b(x)<b!           Vxe[0,l].
+Assuming a,a',b,feC([0,l]) we have ueC 2 ([0,l]).
+
+           Let us define the bilinear form,
+
+
+         a(u,v) = f (a -p- -p- + buv)dx
+                        dx
+                  o         <*
+Then u is the solution of the variational equation,
+
+                    1
+            a(u,v)=J fvdx           VveHjUO,!])
+                       0
+Moreover, we define the energy norm ||-||E by,
+
+
+            ||v||   = a(v,v)
+
+We discretize [0,1] using N linear element Qj = [Xj_j, Xj], j=l,...,N, where
+
+0=x0<X!< • • • <Xj_!<Xj • • ' <x N =l. Let V h cH 0 1 ([0,l]) denote the space which is
+
+spanned by the basis functions of the discretization. We approximate the solu-
+
+tion u of      '-(I) with a u h eV h which is obtained as the solution of the discrete
+
+problem:
+
+
+
+
+                                                 42
+        Find uhe Vh such that,
+
+                           1
+                               fvdx Vv6Vh
+                 o
+        We want to estimate the energy norm of the approximation error,
+
+eh = u-u h . In view of the orthogonality condition,
+
+         a(e h ,v h ) = 0 Vv h eV h
+
+the energy norm of the approximation error satisfies,
+
+
+               = a(eh> eh - vh)
+
+Choose v h eV h such that uh(Xj)=eh(Xj), j=0,l,...,N and let w=eh-uh to obtain:
+
+
+                               a    u u
+         l!ehlll = E        1
+                            ^ { T-(
+                                 dx - h)-T^
+                                         dx + b(u-uh)w}dx
+                    j=0
+
+
+Integrating by parts and noting that u^=0 in (Xj, x^j), j=0,l,...N-l, we get,
+
+
+         llehllE=I          T (f+a'u'h-buh)wdx                                    (3)
+
+
+        We also have (see Babuska and Rheinboldt []]) that:
+
+
+         ||eh-vh||E < (l40(h))||eh||E                              .
+
+Starting from (2)         and using Schwarz's and Kom's inequality and (3) we get
+
+the following estimate:
+
+
+
+
+                                            43
+         ||e h || E <(l+0(h))K(h)(£    f (f+a'u'h-buh)2dx)*                  (5)
+                                 j=o   x,
+Here, h = max (x:,
+                J
+                   i-X;),
+                     J
+                          and K(h) denotes Korn's constant.
+               -
+
+        The estimate given in     (4) has the disadvantage that it involves Korn's
+
+constant which has to be computed for a given discretization and even then the
+
+estimate is far from being optimal. Babuska and Rheinboldt [2], developed a
+
+less obvious approach ( than the one leading to (4) ) which gives sharp error
+
+estimates. This approach is summarized below.
+
+Define a family of local auxiliary problems as follows:
+
+        For every element Qj+1, find ty+jsHoftXj, Xj+1]) such that,
+
+
+              i, v> = J    (f+a'u'h-buh)vdx
+                      *i
+         Vv6H01([xj,xj+1]),j=0,...,N-l
+
+Combining (2./- with (5)        using Schwarz's inequality and inequality (3 ) we
+
+obtain the bound:
+
+
+
+                    j=0
+
+One can estimate Hfy+illE.*}., using the Lax-Milgram theorem to obtain:
+
+
+
+
+Moreover by using spectral analysis one can show (see [ 3 ])
+
+                                            44
+                                                                            (6)
+                 n2 min a(x)
+
+and finally we get the estimate:
+
+
+
+          WE * i=o 7C2 min a(x)                                            (7)
+
+
+
+We note that the error bound given in (6)        can be computed without solving
+
+the local problems defined in      ( 5) .
+
+
+
+     Locally Computed A-Posteriori Error Estimates for Elliptic Equations
+
+        For the sake of simplicity, we first restrict ourselves to the following
+
+model elliptic problem.
+
+      Find u such that
+
+
+         Au = f in n
+
+           u = u0 on Tu
+
+         9u = on
+
+
+Here £2 is a bounded domain in R2, ru, and FT form two disjoint parts of the
+
+boundary 8D and f, u0, g are given functions.
+
+        If u0 denotes a function from H^Q) whose extension to Fu coincides
+
+
+
+
+                                            45
+with u0 ( when we use the same symbol for UQ and its extension) we have the
+
+usual variational formulation to ( 7 ) .
+
+        Find u e UQ + V such that
+
+
+         JVu-Vv dQ = J f-v dQ + Jgv ds V v e V
+         n          n          rT
+where
+
+          V = (u e H^lu = 0 on Fu}
+
+and dfi, ds denote measures of volume and surface area^respectively.
+
+        In the following, we discuss a method to compute a-posteriori error esti-
+
+mates for finite element solutions of C 7 ) .
+
+        Suppose we are given two approximation spaces, say VjJ, V^ c V such
+
+that approximation (interpolation particularly) of an arbitrary element v e V by
+
+elements vfi e Vjf results in "much smaller" error than the approximation by
+
+VQ e Vj,1. Specifically we can think about Vfi as the space spanned by the
+
+hierarchical elements with order p large enough. VhJ does not mean necessarily
+
+the space corresponding to the first order approximation.
+
+        The approximate problem for the "lower order" approximation can be
+
+stated as follows:
+
+        Find Uh e UQ + Vh! such that
+
+
+
+
+                                           46
+        JVujJ-Vv,,1 dQ = J fvj dft 4- jgv,} ds V vh' e V,1
+       n                n            rT
+For simplicity, we will assume that kinematic boundary conditions can be
+
+satisfied exactly by the first order approximation (i.e., u0 e Vj|).
+
+          The residual r^ corresponding to the solution UjJ is an element from the
+
+dual space V* and should be estimated in the corresponding dual space norm:
+
+
+           ||rhV= sup        <r h 1 , v>                                      (8)
+                     V € V
+
+
+
+Certainly rh is weakly continuous over V and the ball ||v||v < 1 is weakly com-
+
+pact, and, therefore, there must exist a certain v0> ||v0||v ^ 1 in fact it must be
+
+normalized in the sense that ||v0|| =1) such that
+
+
+
+
+Now, let v<^ denote the best approximation of v0 out of the space Vf . Suppose
+      A                            A       A
+
+
+
+||v0 - v^JI < e. Defining v£ = v£ /||v£|| we easily conclude that also
+
+
+           ||v0 - v^|| < e + -^
+
+which is equivalent to saying that v0 can be approximated "close enough" by ele-
+
+ments with unit norm.
+
+          Next,   ( 8 ) can be replaced by
+
+
+
+
+                                               47
+          l|rhV * llrhVllvcr-Vifll + sup <r,},vjP>                             (9).
+
+the first term on the right-hand side being negligible. In other words we
+
+presume that the error in terms of the dual space norm can be estimated
+
+sufficiently well by taking the supremum over only the subspace Vfi.
+
+        Now let us try to estimate this supremum. We have:
+
+
+                                       - J fvf dfl - j^Tgv,P ds =
+
+
+                 - Au>
+                     h - f)vj dfl + J      l(j£-    - - . ) V , P ds
+          K K
+
+             r
+                     (-T- - g)yi? ds                                      (2
+                        h
+           +J         9n
+           aKnrT
+Let us note also that in (2.24) v£ can be replaced by the differnce v| - V),1, with
+
+arbitrary v,} 6 VjJ since the residual rj is orthogonal to Vj. In particular, we
+
+can choose for v,,1 - a VhJ - interpolant of vf .
+
+        Finally, defining
+
+
+          V,P(K) = {v,P 6 V^KJIV^ - interpolant of v£ = 0}
+
+we may use the following local problem associated with an element K:
+
+        Find 4>K€ V£(K) such that:
+
+
+
+
+                                           48
+            jY<j>Kvv,f
+            K
+
+                                   J       1
+                                           2 (
+                                                  -
+                                       -         <™      ^
+
+                            - g)vf ds V vfo €           Vf (K)
+
+and equation      (9) can be rewritten in the form:
+
+
+                                                  dti
+                         K K
+The functions (J>K are local error indicator functions.
+
+        Finally, we note that for each element K there exists a constant CK
+
+such that
+
+
+            IK - v,}||liic < CK||vf ||liK V vf 6 Vf (K)
+
+which results in
+
+
+                               J(Y(()K)
+                               K
+
+provided
+
+
+            C = maxCKK
+                 K
+The constant CK is independent of the size of element K, but it does depend on
+
+its shape. In particular, for grids consisting of the same regular elements (not
+
+necessarily uniform CK is independent of K and does not affect the local
+behavior of the estimate (10) (comp. also [ 4 ]).
+
+        Our estimate:
+
+
+          llfhliv * c(Z J(Y<t>k)2 an)*
+                        KK
+clearly has only a global character; however, the contributions J(Y4>K)
+                                                                      K
+(local) error indicators) may serve as a basis for some local refinement
+
+        Finally, let us note that in the case of the model problem the residual
+
+estimate can be directly reinterpreted as the estimate of the error ej = UjJ - u,
+
+since
+
+
+
+                   n
+                        dli - J(-Au)eh1 dfl - J - - e , , 1 ds =
+            n                 n               rT on
+                 e^ <
+
+and therefore,
+
+
+
+
+Conversely taking into account that in the case of a Hilbert space H with inner
+
+product (.,.)H and the corresponding norm ||-||H>
+
+         „ ..      <u, v>
+          u H = sup '
+
+one gets that
+
+
+
+
+                                           50
+          IWII- = IWIIv                                                        (ii)
+        In fact, for any self-adjoint elliptic problem we may define the proper
+
+(energy) norm in such a way that the norm of residual is exactly equal to the
+
+norm of the error. For a class of not self-adjoint problems or for certain classes
+
+of nonlinear operators (strongly monotone) the residual norm can likewise be
+
+bounded below by the norm of the error. However, in general the relation
+
+between these two quantities is more complicated and we must be satisfied with
+
+the observation that, in general when the solution of the boundary value problem
+
+depends continuously on the righ-hand side (the data), it makes sense to minim-
+
+ize the residual since it results in simultaneous convergence of the approximate
+
+solution to the exact one (see also [ 5 ]).
+
+        We now show that the concept of estimating the residual over a higher
+
+order approximation space Vjf can be easily applied to Stokes problem. Stokes
+
+problem is of special interest to us since it is obtained from a linearization of the
+
+stationary Navier-Stokes equations.
+
+        Let us restrict ourselves to the case of pure kinematic boundary condi-
+
+tions (the Dirichlet problem). The Stokes consists in the determination of the
+
+velocity field u and pressure field p such that:
+
+
+
+
+                                         51
+         - (lAu -f grad p = /
+                    div u = 0    in
+                        u = u0   on
+
+where ji is the viscosity constant, / stands for body forces and u0 specifies velo-
+
+city on the boundary. The usual consistency condtion must be satisfied, i.e.,
+
+
+        J Un ds = 0 '
+        XI
+where un = u-n, provided n denotes the outward normal unit to 3fi. The varia-
+
+tional formulation of (2.32) is as follows:
+
+Find u 6 u0 + V, p e LO(£&) such that:
+
+
+         Hj eij(u)eij(y) dO + J p div y dQ = J fy dQ    Vye V
+          n                  n              n
+                            Jdiv u q dD = 0 V q €
+                           n
+Here £jj(u) denotes the symmetric part of the gradient of u. In the above UQ
+
+denotes an arbitrary function in H^Q), such that ^Q\^n = Vo (again, we use the
+
+same notation for u0 and for its trace on the boundary, and that div u0 = 0, and
+
+Y = H^Q) and, as usual,
+
+
+                = {q € L*(Q)| J q dQ = 0}
+                              n
+        Denoting, as previously, a p-th order approximation space by Y| and
+
+    respectively, we may formulate the p-th order approximate problem as fol-
+
+lows:
+
+
+
+
+                                        52
+         Find uj € u£ + yf, p|P € L*h(Q), such that
+
+         ^J EijOtftejCvfl dQ + Jpjf div (y£) dfl= J f yf dH V v£ e V,P        ( 12 )
+          n                   n                   n
+                             J div uff <rf dQ = 0   VqeLtf
+                             n
+        As in the preceding case, we attempt to estimate the proper residuals
+
+corresponding to the "1-st order approximation" i.e., replacing suprema over
+
+y e V and q e Lo(Q) by suprema over y$ e. V^ and qj, e L^jf, with some
+
+p> 1.
+
+        We have for the first equation:
+
+
+         < - ^lAu,,1 + grad Ph1 - f; y£ > =
+
+         £{Jeij(uh1)eij(y1P) dfl - Jp,} div y| dTi - | fyf dii}
+         K K                      K              K
+
+         £{J(-   Au,,1 + grad ^ -_f)yf dQ +
+         K K
+
+
+
+
+where, as usual, jt* denotes a stress vector corresponding to an adjacent element.
+
+        For the second equation we get simply:
+
+
+         < div Uh1, q£ > = £ J div u,i q£ dfl
+                           KK
+As usual, one can see that y£ and q^ in (12) and (13) can be replaced by
+
+
+
+
+                                          53
+V]P - yh! and OjP - qj| for arbitrary yh! and particularly choosing for y^ and
+
+interpolants of yf and oj* we can set the local problem in the following way:
+
+
+         Find $K e Y&(K), yK e L&(K) such that:
+
+
+          H/(- Ay,} grad ph1 -/)y|    dQ + J     -^     yf dO V y,?
+
+
+
+         K
+In the above V£(K) = {ujf e VIP(K)|yh1-interpolant = 0)
+
+                             - interpolant of qg = 0}
+
+Finally (-t2) and (13) can be rewritten in the form:
+
+
+         < - nAUh1 + grad ph1 - f,v£ > =
+
+
+         Z {^J ^(ftc^Cyf-yh1) <JQ- JvK
+          K   K                          K
+
+and
+
+
+         < div U 1 , < > =      d i v X P - 1 ) dQ
+
+where Vj,1 and qj| are the appropriate interpolants of yf and qj* respectively. Both
+
+identities lead to the residual error estimates. However, the second one is practi-
+
+cally useless, since the ||div U^HL^ can be estimated simply by a direct compu-
+
+tation. Let us therefore focus our attention on the first residual. By Schwarz's
+
+inequality, we get
+
+
+
+
+                                        54
+                            j&f-yh1) dOMEGA - JyK div (yj-y,}) dfl|
+             K                                    K
+
+              (H<t>KllE.K
+
+
+
+
+where ||-||E,K is energy norm associated with the viscous, bilinear form,
+
+llyllfc = (llylli,K + Hdiv y||JK)% is a well-defined norm in Y£0(K), and finaUy CK is
+
+a constant associated with the estimate of the type:
+
+
+                              CK||yfl|K   V y| 6 Y
+
+Cj^ is independent of the size of the element K but depends upon its shape. For
+
+detailed discussion of these ideas, we refer to [ 4 ] • We note here that for
+
+meshes which are uniform or consist of elements of the same shape the constant
+
+CK is independent of the element and does not affect the local behavior of the
+
+estimate.
+
+        Finally, we arrive at the estimate:
+
+
+            ||- jiAUh1 + gradp,} - fl|_1>n < C(£ (11^11^ + HvKllo2fK)>*
+                                                  K
+
+where C = max CK, and the norm in the dual space is measured with respect to
+                 iV
+
+
+
+the norm:
+
+
+
+             llvll =
+                       K
+
+
+
+
+                                             55
+                       REFERENCES FOR THIS APPENDIX
+
+
+1.   Babuska, I. and Rheinboldt, W.C., "Error Estimates for Adaptive Finite
+     Element Computations", SIAM J. Numer. Anal., 15 (4), 1978.
+
+2.   Babuska, I. and Rheinboldt, W.C., "Analysis of Optimal Finite-Element
+     Meshes in R , Math. Comput., 36 (146), 1979.
+
+3.   Kelly, D.W., Gago, J.P. de S.R., Zienkiewicz, O.C. and Babuska, I,
+     "A-Posteriori Error Analysis and Adaptive Processes in the Finite
+     Element Method, Part II - Adaptive Mesh Refinement", Internat. J.
+     Numer. Meths. Engrg., 19, 1983.
+
+4.   Demkowicz, L., Oden, J.T. and Strouboulis, T., "Adaptive Finite Ele-
+     ment Methods for Flow Problems with Moving Boundaries. Part I: Vari-
+     ational Principles and A-Posteriori Estimates", Comput. Meths. Appl.
+     Mech. Engrg., 46, 1984.
+
+5.   Oden, J.T., Demkowicz, L., Strouboulis, T. andDevloo, Ph., "Adaptive
+     Methods for Problems in Solid and Fluid Mechanics", in I. Babuska,
+     O.C. Zienkiewicz, J.P. de S.R. Gago and A. de Oliveira, Adaptive
+     Methods and Error Refinement in Finite Element Computations, John
+     Wiley and Sons, Ltd., London, 1986.
+
+
+
+
+                                    56
+

@@ -1,0 +1,177 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg345_Dracula.txt",
+  "sha256": "96cd16eacdbfebae8fdda5591f66e0cc8ee76be18e0cd1aca02bc00615782d28",
+  "bytes": 881060,
+  "declaredIdentity": {
+   "title": "Dracula",
+   "author": "Bram Stoker",
+   "giver": "the source file's own declared header",
+   "ref": "01-literature-books/gutenberg/pg345_Dracula.txt#0-811"
+  }
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 881060,
+  "bodyOffset": 863,
+  "bodyChars": 861407,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7817,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 5761,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 90,
+  "surfaces": 69,
+  "referentEvents": 17,
+  "distinctReferents": 11,
+  "examined": true,
+  "edgesFound": 1,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 2,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 15
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 1,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 1,
+  "excerptOk": 1,
+  "rawChecked": 1,
+  "rawOk": 1,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 1,
+  "heard": 1,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "for when the magyars|conquered|the country in the eleventh century they found the huns settled in it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "for when the Magyars conquered the country in the eleventh century they found the Huns settled in it",
+    "subject": "for when the Magyars",
+    "verb": "conquered",
+    "object": "the country in the eleventh century they found the Huns settled in it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg345_Dracula.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg345_Dracula.txt#5709-5827",
+      "ref": "01-literature-books/gutenberg/pg345_Dracula.txt",
+      "text": "This may be so, for when the Magyars conquered the country in the eleventh century they found the Huns settled in it."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 1,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "for when the magyars|conquered|the country in the eleventh century they found the huns settled in it",
+   "subject": "for when the Magyars",
+   "verb": "conquered",
+   "object": "the country in the eleventh century they found the Huns settled in it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg345_Dracula.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg345_Dracula.txt#5709-5827",
+     "ref": "01-literature-books/gutenberg/pg345_Dracula.txt",
+     "text": "This may be so, for when the Magyars conquered the country in the eleventh century they found the Huns settled in it."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:34.721Z"
+ }
+}

@@ -1,0 +1,115 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2014-3-15"
+lang: "en"
+messages: "106"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<rostam> hi
+<semiosis> rostam: friendly greetings are nice, but if you want to ask a question, go for it!
+<rostam> I am following some of the official ubuntu website on how to install a grub2 on usb device.
+<rostam> The command I use is:
+<rostam> grub-install --target=x86_64-efi --efi-directory=/mnt/ --bootloader-id=grub2 --recheck --debug
+<rostam> it fails due to bad option:  --target=x86_64-efi .  Not sure why?
+<semiosis> sorry i can't help with that, but hopefully someone else will be able to
+<rostam> semiosis, thx
+<semiosis> yw
+<Midion__> hmmm as soon as i setup csf and whitelisted the cloudfare ip's for my domain. My site has started loading faster again.
+<afib> hey all. ive got a a strange problem going on with my ubuntu 12.04 server and was hoping for some insight into how i could track down the problem
+<afib> i bought a System76 Eland Pedestal, and it seems that data connection flakes out from time to time. im not sure what the source of the problem is or how to identify it
+<semiosis> afib: wired or wireless?
+<afib> but for example, if i ping the router, or an address, i don't lose packets. but it just seems to hang sometimes, and remoting in to the server sometimes fails
+<afib> wired. ive tried plugging both ethernet ports in, and only one. and swapped between the two
+<afib> ive got it on a static IP on a router running the Tomato Linux Firmware on a WRT54GL
+<semiosis> the 'dmesg' command might show hardware issues
+<semiosis> thats all i got
+<afib> since i do have another server in the office, and they do run the same daemons (SSH, VSFTP, WebMin interface for local etc), in order to differentiate between them i use different ports
+<afib> hmm okay ill give that a try. i wasnt finding anything in my logs
+<sarnold> afib: perhaps the port on your switch is flaky; can you pop a laptop onto that port and let it ping all day?
+<afib> but right now, i logged in via SSH tunnel => VNC... and then it hung, and dropped. but it's fine on the other server. and right now, im having to VNC into the one server, and then into the other in order to even get in
+<sarnold> afib: try with and without that specific ethernet cable, too, you never know, it might be flaky too
+<semiosis> i was thinking maybe ethernet cable too
+<afib> but oddly, SMB doesnt seem to be affected, and im not losing packets as far as i can tell. maybe im not pinging long enough
+<afib> so LAN seems fine, out to net is not
+<semiosis> possibly QoS on the router, but i have no idea how to check that
+<semiosis> not familiar with tomato
+<sarnold> tomato is slick but pretty basic..
+<afib> QoS is disabled. it's very similar to dd-wrt
+<semiosis> my routers run openwrt or openbsd....
+<afib> yeah, it's generally fine for the office fine. 2 servers, 8 computers mixed PC and Mac
+<semiosis> thinking about switching from openwrt to dd-wrt
+<semiosis> but i digress
+<sarnold> I -do- slightly wonder about bufferbloat. I dunno if I'm just parotting the new hotness or not, but it -might- be bufferbloat..
+<sarnold> repeat me repeat
+<sarnold> this looks cool: http://www.bufferbloat.net/projects/cerowrt
+<afib> hmm yes unfortunately im limited to what this router can handle
+<afib> since it's basically just a hardware and firmware modified consumer grade deal
+<sarnold> yeah, I ran tomato for a few years on an oldschool wrt54g
+<afib> budget does not allow anything more advanced, and really all it handles is the internet traffic since it's only 100mbps and we're a design agency
+<afib> so the lan traffic is done through apple base station
+<afib> then the ddns, ip assignments and port addressing is done through the wrt
+<sarnold> hrm, are both servers downstream of the apple base station?
+<afib> yes. both are hosting info used for everyone. one is a simple lampp stack web server for proofing sites and keep the git repos and databases in sync, and the other is a file server. both run 12.04. amd both run nearly identical configurations, although hardware is quite different
+<afib> the pedastal is brand new
+<afib> but eg, while one might have SSH on 3669, the other would be 3996 or something like that. also the web server runs virtual machines with various OSes and browsers for testing websites
+<afib> and all of those are remotel vboxes
+<afib> but that machine reuns fine, and internet on others is fine. its just the one, and its frustrating because it's supposed to be pushing data to the cloud, but it's getting disconnected (even with backup software off and uninstalled)
+<sarnold> DNS problems can lead to awkward behaviors. it doesn't feel like it'd be your problem, but if switch port and ethernet cable don't get you there..
+<sarnold> afib: -maybe- there are firmware updates for your nics, check the linux-firmware package or your nic vendor's website..
+<raj__> how do I override bash settings for all users, i want to override history size in .bashrc for all users...
+<raj__> if I configure in /etc/bash.bashrc that is overridden by local files. Any way to force global bashrc settings ?
+<sarnold> raj__: you can patch bash to ignore that setting
+<sarnold> raj__: what exactly are you trying to achieve?
+<raj__> sarnold, I want to increase history size for all users & do immediate history saving after each command is executed.. "for all users"
+<sarnold> raj__: why?
+<raj__> sarnold: increase history size so that I can keep a long history of everything executed on my server... immediate saving so that..if client gets disconnected..history is saved..
+<sarnold> raj__: but... why? :) I'm trying to figure out what problem you're trying to solve, there may be something better ..
+<raj__> long history to keep track of what all has been done on the server.. history can tell everything i have done to server..
+<sarnold> raj__: i wonder if you could execute 'script' via ssh forced commands; that would be overkill, it'd record output as well as commands..
+<raj__> could I put a certain file in some VCS like git/subversion/etc only "when" I am  modifying it. So first the put the unmodified version & then the modified version. The desire is to put the file in VCS only when I want, rather than doing initial full directory commits.. possible ?
+<sarnold> raj__: I've heard good things about etckeeper
+<raj__> sarnold, but that is only for /etc & it does a initial full directory commit ? why do I do that.. i would only want to keep the files i modify & manually manage rather than autocommits at each install...
+<jfcastro> hi, I want to install OpenStack Icehouse on Ubuntu
+<jfcastro> must I use ubuntu 14.04?
+<jfcastro> in others words, is going to be maintenance Openstack Icehouse in ubuntu 14.04?
+<jfcastro> thanks in advance :)
+<lordievader> Good morning.
+<jfcastro> morning
+<lordievader> Hey jfcastro, how are you doing?
+<jfcastro> fine :)
+<jfcastro> I'm trying to install OpenStack Icehouse on Ubuntu but I have some doubts
+<jfcastro> I normally use ubuntu-cloud.archives.canonical.com on ubuntu 12.04 but I would like use ubuntu 14.04
+<jfcastro> and it's no packages in ubuntu-cloud.archives to ubuntu 14.04
+<jamespage> jfcastro, the cloud archive does have icehouse  for 12.04 -  use the proposed pocket for now - but so does 14.04 which will be supported for 5 years
+<jamespage> the packages in the main archive are icehouse in 14.04
+<jamespage> no cloud-archive required
+<jamespage> (and please raise bugs if you find any :-))
+<jfcastro> jamespage: good!
+<jamespage> jfcastro, I was testing all of last week on 14.04 - its general good - ceilometer is broken but that should be fixed next week
+<jfcastro> jamespage: and these OpenStack packages on 14.04 will be maintenance same as cloud-archive?
+<jamespage> jfcastro, the openstack packages in 14.04 are the source for the packages for 12.04 in the cloud-archive - so yes!
+<jfcastro> it sounds fine!
+<jamespage> jfcastro, http://reqorts.qa.ubuntu.com/reports/ubuntu-server/cloud-archive/icehouse_versions.html
+<jamespage> to illustrate!
+<jfcastro> thanks!
+<jfcastro> I'm going to read :)
+<jamespage> (that report lies about greenlet and neutron - they are up-to-date)
+<Tex_Nick> ubuntu 13.10 ... how would i start a VPN service before lightdm ?
+<jfcastro> jamespage: so, to deploy Icehouse I must to use 14.04?
+<jfcastro> and openstack package will be maintenance for 5 years
+<jfcastro> really?
+<DeltaHeavy> Hey, I have a VPS running Ubuntu 12.04 to mainly serve up my website amongst a few other things. I have netfilter configured as tightly as sanely possible but I was wondering if it would perhaps be best to install VPN software on there, and make services like SSH, and my databases only open on my VPNs interface. Is this a good idea or are there pitfalls?
+<arrith> DeltaHeavy: well only ssh needs to be open really
+<arrith> and even then you can lock that down
+<DeltaHeavy> arrith: I'm a developer so I want to be able to access my DB's from DB clients.
+<DeltaHeavy> Ended up deciding that it would cause too much inconvinance to be worth while. Just going to continue on the way I'm going I think.
+<arrith> DeltaHeavy: you can tunnel db connections over ssh
+<DeltaHeavy> arrith: True, I usually just use SSL though.
+<arrith> DeltaHeavy: there is a difference between authentication and encryption. ssh does both
+<arrith> DeltaHeavy: by itself, ssl just does encryption
+<DeltaHeavy> arrith: Yeah, all the RDBMSs I use though have their own auth.
+<arrith> DeltaHeavy: larger attack surface. ssh you can lockdown in one place. also knockd
+<DeltaHeavy> True, I should look into that perhaps
+<DeltaHeavy> Thanks!

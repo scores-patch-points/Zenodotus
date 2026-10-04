@@ -1,0 +1,1612 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+  "sha256": "f531b6a3b95858b7d2f5cd139c6e75fc219a30e625d629b9144c784f3391aec3",
+  "bytes": 168315,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 168315,
+  "bodyOffset": 0,
+  "bodyChars": 168315,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7792,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 5517,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 143,
+  "surfaces": 50,
+  "referentEvents": 8,
+  "distinctReferents": 8,
+  "examined": true,
+  "edgesFound": 33,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 29,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 39
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 33,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 33,
+  "excerptOk": 33,
+  "rawChecked": 33,
+  "rawOk": 33,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 33,
+  "heard": 33,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "alice|meets|r",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Alice meets R",
+    "subject": "Alice",
+    "verb": "meets",
+    "object": "R",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#830-863",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Alice meets R. Q. 1."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "alice|meets|w",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Alice meets W",
+    "subject": "Alice",
+    "verb": "meets",
+    "object": "W",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#1020-1068",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Alice meets W. Q. (_with shawl_) 3."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "alice|takes|r",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Alice takes R",
+    "subject": "Alice",
+    "verb": "takes",
+    "object": "R",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#1665-1688",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Alice takes R.Q. & wins"
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "nor|heard|thy silver laughter",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Nor heard thy silver laughter",
+    "subject": "Nor",
+    "verb": "heard",
+    "object": "thy silver laughter",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#1903-2108",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "I have not seen thy sunny face, Nor heard thy silver laughter; No thought of me shall find a place In thy young life’s hereafter— Enough that now thou wilt not fail To listen to my fairy-tale."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "whose|echoes|live in memory yet",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Whose echoes live in memory yet",
+    "subject": "Whose",
+    "verb": "echoes",
+    "object": "live in memory yet",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#2112-2319",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "A tale begun in other days, When summer suns were glowing— A simple chime, that served to time The rhythm of our rowing— Whose echoes live in memory yet, Though envious years would say ‘forget.’"
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "who|fret|to find our bedtime near",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Who fret to find our bedtime near",
+    "subject": "Who",
+    "verb": "fret",
+    "object": "to find our bedtime near",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#2453-2521",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "We are but older children, dear, Who fret to find our bedtime near."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the shadow of a sigh|may tremble|through the story",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the shadow of a sigh may tremble through the story",
+    "subject": "the shadow of a sigh",
+    "verb": "may tremble",
+    "object": "through the story",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#2758-2965",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "And though the shadow of a sigh May tremble through the story, For ‘happy summer days’ gone by, And vanish’d summer glory— It shall not touch with breath of bale The pleasance of our fairy-tale."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "one thing|was|certain",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "One thing was certain",
+    "subject": "One thing",
+    "verb": "was",
+    "object": "certain",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3432-3552",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "One thing was certain, that the _white_ kitten had had nothing to do with it:—it was the black kitten’s fault entirely."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|was|the black kitten’s fault entirely",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "it was the black kitten’s fault entirely",
+    "subject": "it",
+    "verb": "was",
+    "object": "the black kitten’s fault entirely",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3432-3552",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "One thing was certain, that the _white_ kitten had had nothing to do with it:—it was the black kitten’s fault entirely."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that it _couldn’t_|have had|any hand in the mischief",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that it _couldn’t_ have had any hand in the mischief",
+    "subject": "that it _couldn’t_",
+    "verb": "have had",
+    "object": "any hand in the mischief",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3553-3763",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "For the white kitten had been having its face washed by the old cat for the last quarter of an hour (and bearing it pretty well, considering); so you see that it _couldn’t_ have had any hand in the mischief."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "she|was|hard at work on the white kitten",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "she was hard at work on the white kitten",
+    "subject": "she",
+    "verb": "was",
+    "object": "hard at work on the white kitten",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3767-4146",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "The way Dinah washed her children’s faces was this: first she held the poor thing down by its ear with one paw, and then with the other paw she rubbed its face all over, the wrong way, beginning at the nose: and just now, as I said, she was hard at work on the white kitten, which was lying quite still and trying to purr—no doubt feeling that it was all meant for its good."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that it|was|all meant for its good",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that it was all meant for its good",
+    "subject": "that it",
+    "verb": "was",
+    "object": "all meant for its good",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3767-4146",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "The way Dinah washed her children’s faces was this: first she held the poor thing down by its ear with one paw, and then with the other paw she rubbed its face all over, the wrong way, beginning at the nose: and just now, as I said, she was hard at work on the white kitten, which was lying quite still and trying to purr—no doubt feeling that it was all meant for its good."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the black kitten|had been|finished with earlier in the afternoon",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the black kitten had been finished with earlier in the afternoon",
+    "subject": "the black kitten",
+    "verb": "had been",
+    "object": "finished with earlier in the afternoon",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4150-4651",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "half|talking|to herself and half asleep",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "half talking to herself and half asleep",
+    "subject": "half",
+    "verb": "talking",
+    "object": "to herself and half asleep",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4150-4651",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "worsted alice|had been trying|to wind up",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "worsted Alice had been trying to wind up",
+    "subject": "worsted Alice",
+    "verb": "had been trying",
+    "object": "to wind up",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4150-4651",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "a little kiss to make it understand that it|was|in disgrace",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "a little kiss to make it understand that it was in disgrace",
+    "subject": "a little kiss to make it understand that it",
+    "verb": "was",
+    "object": "in disgrace",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4686-4798",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "cried Alice, catching up the kitten, and giving it a little kiss to make it understand that it was in disgrace."
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "dinah|ought|to have taught you better manners!",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Dinah ought to have taught you better manners!",
+    "subject": "Dinah",
+    "verb": "ought",
+    "object": "to have taught you better manners!",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4800-4855",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "“Really, Dinah ought to have taught you better manners!"
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and then dinah|scrambled|back into the arm-chair",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and then Dinah scrambled back into the arm-chair",
+    "subject": "and then Dinah",
+    "verb": "scrambled",
+    "object": "back into the arm-chair",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4898-5131",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "she added, looking reproachfully at the old cat, and speaking in as cross a voice as she could manage—and then she scrambled back into the arm-chair, taking the kitten and the worsted with her, and began winding up the ball again."
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and|began|winding up the ball again",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and began winding up the ball again",
+    "subject": "and",
+    "verb": "began",
+    "object": "winding up the ball again",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4898-5131",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "she added, looking reproachfully at the old cat, and speaking in as cross a voice as she could manage—and then she scrambled back into the arm-chair, taking the kitten and the worsted with her, and began winding up the ball again."
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "as dinah|was talking|all the time",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "as Dinah was talking all the time",
+    "subject": "as Dinah",
+    "verb": "was talking",
+    "object": "all the time",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5132-5250",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "But she didn’t get on very fast, as she was talking all the time, sometimes to the kitten, and sometimes to herself."
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "kitty|sat|very demurely on her knee",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Kitty sat very demurely on her knee",
+    "subject": "Kitty",
+    "verb": "sat",
+    "object": "very demurely on her knee",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5251-5451",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Kitty sat very demurely on her knee, pretending to watch the progress of the winding, and now and then putting out one paw and gently touching the ball, as if it would be glad to help, if it might."
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "only dinah|was making|you tidy",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "only Dinah was making you tidy",
+    "subject": "only Dinah",
+    "verb": "was making",
+    "object": "you tidy",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5508-5617",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "“You’d have guessed if you’d been up in the window with me—only Dinah was making you tidy, so you couldn’t."
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "they|had|to leave off",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "they had to leave off",
+    "subject": "they",
+    "verb": "had",
+    "object": "to leave off",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5715-5777",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Only it got so cold, and it snowed so, they had to leave off."
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|was|so angry",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I was so angry",
+    "subject": "I",
+    "verb": "was",
+    "object": "so angry",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6067-6291",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "“Do you know, I was so angry, Kitty,” Alice went on as soon as they were comfortably settled again, “when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow!"
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the mischief you|had been|doing",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the mischief you had been doing",
+    "subject": "the mischief you",
+    "verb": "had been",
+    "object": "doing",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6067-6291",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "“Do you know, I was so angry, Kitty,” Alice went on as soon as they were comfortably settled again, “when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow!"
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|was|very nearly opening the window",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I was very nearly opening the window",
+    "subject": "I",
+    "verb": "was",
+    "object": "very nearly opening the window",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6067-6291",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "“Do you know, I was so angry, Kitty,” Alice went on as soon as they were comfortably settled again, “when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow!"
+     }
+    ],
+    "seq": 25,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "she|went|on",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "she went on",
+    "subject": "she",
+    "verb": "went",
+    "object": "on",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6418-6453",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "she went on, holding up one finger."
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "you squeaked twice while dinah|was washing|your face this morning",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "you squeaked twice while Dinah was washing your face this morning",
+    "subject": "you squeaked twice while Dinah",
+    "verb": "was washing",
+    "object": "your face this morning",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6495-6574",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Number one: you squeaked twice while Dinah was washing your face this morning."
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|heard|you!",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I heard you!",
+    "subject": "I",
+    "verb": "heard",
+    "object": "you!",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6575-6617",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "Now you can’t deny it, Kitty: I heard you!"
+     }
+    ],
+    "seq": 28,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that the kitten|was|speaking",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that the kitten was speaking",
+    "subject": "that the kitten",
+    "verb": "was",
+    "object": "speaking",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6641-6713",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "(pretending that the kitten was speaking.) “Her paw went into your eye?"
+     }
+    ],
+    "seq": 29,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "her paw|went|into your eye?",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Her paw went into your eye?",
+    "subject": "Her paw",
+    "verb": "went",
+    "object": "into your eye?",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6641-6713",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "(pretending that the kitten was speaking.) “Her paw went into your eye?"
+     }
+    ],
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "suppose they|had|saved up all _my_ punishments!”",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Suppose they had saved up all _my_ punishments!”",
+    "subject": "Suppose they",
+    "verb": "had",
+    "object": "saved up all _my_ punishments!”",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#7218-7330",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "You know I’m saving up all your punishments for Wednesday week—Suppose they had saved up all _my_ punishments!”"
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "alice|went|on",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Alice went on",
+    "subject": "Alice",
+    "verb": "went",
+    "object": "on",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#7331-7385",
+      "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+      "text": "she went on, talking more to herself than the kitten."
+     }
+    ],
+    "seq": 32,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 33,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "a little kiss to make it understand that it|was|in disgrace",
+   "subject": "a little kiss to make it understand that it",
+   "verb": "was",
+   "object": "in disgrace",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4686-4798",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "cried Alice, catching up the kitten, and giving it a little kiss to make it understand that it was in disgrace."
+    }
+   ]
+  },
+  {
+   "id": "alice|meets|r",
+   "subject": "Alice",
+   "verb": "meets",
+   "object": "R",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#830-863",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Alice meets R. Q. 1."
+    }
+   ]
+  },
+  {
+   "id": "alice|meets|w",
+   "subject": "Alice",
+   "verb": "meets",
+   "object": "W",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#1020-1068",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Alice meets W. Q. (_with shawl_) 3."
+    }
+   ]
+  },
+  {
+   "id": "alice|takes|r",
+   "subject": "Alice",
+   "verb": "takes",
+   "object": "R",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#1665-1688",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Alice takes R.Q. & wins"
+    }
+   ]
+  },
+  {
+   "id": "alice|went|on",
+   "subject": "Alice",
+   "verb": "went",
+   "object": "on",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#7331-7385",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "she went on, talking more to herself than the kitten."
+    }
+   ]
+  },
+  {
+   "id": "and then dinah|scrambled|back into the arm-chair",
+   "subject": "and then Dinah",
+   "verb": "scrambled",
+   "object": "back into the arm-chair",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4898-5131",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "she added, looking reproachfully at the old cat, and speaking in as cross a voice as she could manage—and then she scrambled back into the arm-chair, taking the kitten and the worsted with her, and began winding up the ball again."
+    }
+   ]
+  },
+  {
+   "id": "and|began|winding up the ball again",
+   "subject": "and",
+   "verb": "began",
+   "object": "winding up the ball again",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4898-5131",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "she added, looking reproachfully at the old cat, and speaking in as cross a voice as she could manage—and then she scrambled back into the arm-chair, taking the kitten and the worsted with her, and began winding up the ball again."
+    }
+   ]
+  },
+  {
+   "id": "as dinah|was talking|all the time",
+   "subject": "as Dinah",
+   "verb": "was talking",
+   "object": "all the time",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5132-5250",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "But she didn’t get on very fast, as she was talking all the time, sometimes to the kitten, and sometimes to herself."
+    }
+   ]
+  },
+  {
+   "id": "dinah|ought|to have taught you better manners!",
+   "subject": "Dinah",
+   "verb": "ought",
+   "object": "to have taught you better manners!",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4800-4855",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "“Really, Dinah ought to have taught you better manners!"
+    }
+   ]
+  },
+  {
+   "id": "half|talking|to herself and half asleep",
+   "subject": "half",
+   "verb": "talking",
+   "object": "to herself and half asleep",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4150-4651",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle."
+    }
+   ]
+  },
+  {
+   "id": "her paw|went|into your eye?",
+   "subject": "Her paw",
+   "verb": "went",
+   "object": "into your eye?",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6641-6713",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "(pretending that the kitten was speaking.) “Her paw went into your eye?"
+    }
+   ]
+  },
+  {
+   "id": "i|heard|you!",
+   "subject": "I",
+   "verb": "heard",
+   "object": "you!",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6575-6617",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Now you can’t deny it, Kitty: I heard you!"
+    }
+   ]
+  },
+  {
+   "id": "i|was|so angry",
+   "subject": "I",
+   "verb": "was",
+   "object": "so angry",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6067-6291",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "“Do you know, I was so angry, Kitty,” Alice went on as soon as they were comfortably settled again, “when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow!"
+    }
+   ]
+  },
+  {
+   "id": "i|was|very nearly opening the window",
+   "subject": "I",
+   "verb": "was",
+   "object": "very nearly opening the window",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6067-6291",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "“Do you know, I was so angry, Kitty,” Alice went on as soon as they were comfortably settled again, “when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow!"
+    }
+   ]
+  },
+  {
+   "id": "it|was|the black kitten’s fault entirely",
+   "subject": "it",
+   "verb": "was",
+   "object": "the black kitten’s fault entirely",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3432-3552",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "One thing was certain, that the _white_ kitten had had nothing to do with it:—it was the black kitten’s fault entirely."
+    }
+   ]
+  },
+  {
+   "id": "kitty|sat|very demurely on her knee",
+   "subject": "Kitty",
+   "verb": "sat",
+   "object": "very demurely on her knee",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5251-5451",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Kitty sat very demurely on her knee, pretending to watch the progress of the winding, and now and then putting out one paw and gently touching the ball, as if it would be glad to help, if it might."
+    }
+   ]
+  },
+  {
+   "id": "nor|heard|thy silver laughter",
+   "subject": "Nor",
+   "verb": "heard",
+   "object": "thy silver laughter",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#1903-2108",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "I have not seen thy sunny face, Nor heard thy silver laughter; No thought of me shall find a place In thy young life’s hereafter— Enough that now thou wilt not fail To listen to my fairy-tale."
+    }
+   ]
+  },
+  {
+   "id": "one thing|was|certain",
+   "subject": "One thing",
+   "verb": "was",
+   "object": "certain",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3432-3552",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "One thing was certain, that the _white_ kitten had had nothing to do with it:—it was the black kitten’s fault entirely."
+    }
+   ]
+  },
+  {
+   "id": "only dinah|was making|you tidy",
+   "subject": "only Dinah",
+   "verb": "was making",
+   "object": "you tidy",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5508-5617",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "“You’d have guessed if you’d been up in the window with me—only Dinah was making you tidy, so you couldn’t."
+    }
+   ]
+  },
+  {
+   "id": "she|was|hard at work on the white kitten",
+   "subject": "she",
+   "verb": "was",
+   "object": "hard at work on the white kitten",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3767-4146",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "The way Dinah washed her children’s faces was this: first she held the poor thing down by its ear with one paw, and then with the other paw she rubbed its face all over, the wrong way, beginning at the nose: and just now, as I said, she was hard at work on the white kitten, which was lying quite still and trying to purr—no doubt feeling that it was all meant for its good."
+    }
+   ]
+  },
+  {
+   "id": "she|went|on",
+   "subject": "she",
+   "verb": "went",
+   "object": "on",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6418-6453",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "she went on, holding up one finger."
+    }
+   ]
+  },
+  {
+   "id": "suppose they|had|saved up all _my_ punishments!”",
+   "subject": "Suppose they",
+   "verb": "had",
+   "object": "saved up all _my_ punishments!”",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#7218-7330",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "You know I’m saving up all your punishments for Wednesday week—Suppose they had saved up all _my_ punishments!”"
+    }
+   ]
+  },
+  {
+   "id": "that it _couldn’t_|have had|any hand in the mischief",
+   "subject": "that it _couldn’t_",
+   "verb": "have had",
+   "object": "any hand in the mischief",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3553-3763",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "For the white kitten had been having its face washed by the old cat for the last quarter of an hour (and bearing it pretty well, considering); so you see that it _couldn’t_ have had any hand in the mischief."
+    }
+   ]
+  },
+  {
+   "id": "that it|was|all meant for its good",
+   "subject": "that it",
+   "verb": "was",
+   "object": "all meant for its good",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#3767-4146",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "The way Dinah washed her children’s faces was this: first she held the poor thing down by its ear with one paw, and then with the other paw she rubbed its face all over, the wrong way, beginning at the nose: and just now, as I said, she was hard at work on the white kitten, which was lying quite still and trying to purr—no doubt feeling that it was all meant for its good."
+    }
+   ]
+  },
+  {
+   "id": "that the kitten|was|speaking",
+   "subject": "that the kitten",
+   "verb": "was",
+   "object": "speaking",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6641-6713",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "(pretending that the kitten was speaking.) “Her paw went into your eye?"
+    }
+   ]
+  },
+  {
+   "id": "the black kitten|had been|finished with earlier in the afternoon",
+   "subject": "the black kitten",
+   "verb": "had been",
+   "object": "finished with earlier in the afternoon",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4150-4651",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle."
+    }
+   ]
+  },
+  {
+   "id": "the mischief you|had been|doing",
+   "subject": "the mischief you",
+   "verb": "had been",
+   "object": "doing",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6067-6291",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "“Do you know, I was so angry, Kitty,” Alice went on as soon as they were comfortably settled again, “when I saw all the mischief you had been doing, I was very nearly opening the window, and putting you out into the snow!"
+    }
+   ]
+  },
+  {
+   "id": "the shadow of a sigh|may tremble|through the story",
+   "subject": "the shadow of a sigh",
+   "verb": "may tremble",
+   "object": "through the story",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#2758-2965",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "And though the shadow of a sigh May tremble through the story, For ‘happy summer days’ gone by, And vanish’d summer glory— It shall not touch with breath of bale The pleasance of our fairy-tale."
+    }
+   ]
+  },
+  {
+   "id": "they|had|to leave off",
+   "subject": "they",
+   "verb": "had",
+   "object": "to leave off",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#5715-5777",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Only it got so cold, and it snowed so, they had to leave off."
+    }
+   ]
+  },
+  {
+   "id": "who|fret|to find our bedtime near",
+   "subject": "Who",
+   "verb": "fret",
+   "object": "to find our bedtime near",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#2453-2521",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "We are but older children, dear, Who fret to find our bedtime near."
+    }
+   ]
+  },
+  {
+   "id": "whose|echoes|live in memory yet",
+   "subject": "Whose",
+   "verb": "echoes",
+   "object": "live in memory yet",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#2112-2319",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "A tale begun in other days, When summer suns were glowing— A simple chime, that served to time The rhythm of our rowing— Whose echoes live in memory yet, Though envious years would say ‘forget.’"
+    }
+   ]
+  },
+  {
+   "id": "worsted alice|had been trying|to wind up",
+   "subject": "worsted Alice",
+   "verb": "had been trying",
+   "object": "to wind up",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#4150-4651",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "But the black kitten had been finished with earlier in the afternoon, and so, while Alice was sitting curled up in a corner of the great arm-chair, half talking to herself and half asleep, the kitten had been having a grand game of romps with the ball of worsted Alice had been trying to wind up, and had been rolling it up and down till it had all come undone again; and there it was, spread over the hearth-rug, all knots and tangles, with the kitten running after its own tail in the middle."
+    }
+   ]
+  },
+  {
+   "id": "you squeaked twice while dinah|was washing|your face this morning",
+   "subject": "you squeaked twice while Dinah",
+   "verb": "was washing",
+   "object": "your face this morning",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt#6495-6574",
+     "ref": "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+     "text": "Number one: you squeaked twice while Dinah was washing your face this morning."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:33.111Z"
+ }
+}

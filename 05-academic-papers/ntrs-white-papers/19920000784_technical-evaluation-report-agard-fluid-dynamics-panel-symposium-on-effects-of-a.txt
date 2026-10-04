@@ -1,0 +1,1263 @@
+---
+title: Technical evaluation report, AGARD Fluid Dynamics Panel Symposium on Effects of Adverse Weather on Aerodynamics
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19920000784
+source_url: https://ntrs.nasa.gov/citations/19920000784
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Legacy CDMS
+publication_date: 2019-07-12
+retrieved: 2026-09-22
+sha256: 60c3aca4304aebc061e5cafdfafb76e38f0dfa0674f1f2beb9f31a82be387151
+pages: 22
+words: 12999
+cv_look_pages: 6
+---
+
+                                       NASA-TM-105192 19920000784
+
+
+NASA Technical Memorandum 105192
+
+
+
+
+Technical Evaluation Report, AGARD
+Fluid Dynamics Panel Symposium
+on Effects of Adverse Weather
+on Aerodynamics
+
+
+
+J.J. Reinmann
+Lewis Research Center
+Cleveland, Ohio
+
+
+
+
+                                                                    ~_
+
+
+
+
+                                       _-JLLi       t   _:   " '!
+
+October 1991                             t
+
+                                         !
+
+
+
+
+                                   r         !!-'        '
+
+
+
+
+NB.SA
+                                           TECHNICAL EVALUATION REPORT
+
+                                        AGARD    Fluid Dynamics Panel Symposium on
+                                         EffectsofAdverse Weather on Aerodynaxalcs
+                                                             by
+                                                        J.J.Relnmann
+                                                 NASA   Lewis Research Center
+                                                 Cleveland,Ohio 44135 U.S.A.
+
+SUMMARY                                                          techldcal evaluator. Written versions of papers 10 and 18
+                                                                 were not available at the meeting, but drafts of the papers
+      The Fluid Dynamics Panel of AGARD sponsored a              were later received by the technical evaiuator. The 19
+Specialists Meeting on "Effects of Adverse Heather on            papers were published in AGARD Conference Proceedings
+Aerodynamics" on April 29 to May 1, 1991, in Toulouse,           CP-496. The titles of the 19 contributions are listed in
+France. The purpose of the meeting was to provide an             Appendix A. The members of the Program Committee for
+update of the state-of-the art with respect to the               the meeting are given in Appendix B.
+prediction, simulation and measurement of the effects of
+icing, anti-lcing fluids and various forms of precipitation on          The meeting's potential scope was far reaching,
+the aerodynamic characteristics of flight vehicles. Sessions      encompassing at least the following areas: all aircraft
+were devoted to introductory and survey papers and icing          classes; effects of adverse weather on component
+certilication issues, to anuiyticui and experimental             performance and on aircraft performance and stahility; a
+simulation of ice frost contandnation and its effects on          wide range of rain, icing, and winter weather conditions
+aerodynamics, and to the effects of heavy rain and                that produce an infinite continuum of types and amounts
+deicing/anti-icing fluids. The 19 papers announced for the        of surface roughness; both wind tunnel and flight testing
+meeting are published in AGARD Conference Proceedings             research; and state-of-the art computer code development.
+CP-496 and are listed in the Appendix of this report. A           Conslderiag thls broad scope, it is to the Meeting
+brief synopsis of each paper and some discussion,                 Committee's credit that their selection of papers gave a
+conclusions and recommendations are given in this                 balanced overview of the state-of-the-art with respect to
+evaluation report,                                                prediction, simulation, and measurement of the effects of
+                                                                  icing, anti-icing fluids, and pret-ipitation (snow, frost, and
+                                                                  heavy rain) on the aerodynamic characteristics of flight
+INTRODUCTION                                                      vehicles.
+
+     The 68th Meeting of the AGARD Fluid Dynamics                       Three papers were devoted to various aspects of icing
+Panel Specialists Meeting was held on April 29 to May 1,          certification. One paper reviewed the FAR/JAR 25
+1991, in Toulouse, France. Its theme, as published in the         r_gulailions and the proposed French supplement Joint
+AGARD announcement, was the following:                            Adviso'_'yMaterial AMJ 25-1419. This AMJ defines
+                                                                  standardize flight test procedures for demonstrating that
+     In recent years, a number of weather-related accidents,      an airplane's performance and handling qualities are
+     along with the introduction of new types of anti-icing       acceptable when lifting surfaces are contaminated with ice
+     fluids and apparent uncertainties in certification and       that accumulates in flight. Two other papers gave
+     operation procedures, have stimulated renewed                examples of computer caicuhtions for droplet trajectories,
+     research activities. "Aircraft operators, the aircraft       and one of these reviewed the airframe and engine testing
+     industry, as well as research institutes and                 done in support of certification. Two papers reviewed
+     certification authorities, are participating in such         previous AGARD meetings that contained extensive
+     activities,                                                  material relevant to the present meeting's objectives.
+                                                                  Another paper gave an overview or the analytical and
+     The purpose of the Specialists' Meeting is to provide        experimental simulation methods currently employed in
+     an update of the state-of-the-art with respect to the        icing research and teclmology. One paper reviewed the
+     prediction, simulation and measurement of the effects        major codes 11sedin an ice accretion prediction program
+     of icing, antl-icing fluids and various forms of             and gave comparisons between predicted and measured ice
+     precipitation on the aerodynamic characteristics of          shapes.
+     flight vehicles and to communicate research results on
+     these topics that have been obtained in recent years.              Three papers presented experimental data for the
+                                                                  effects of surface rouglmess on boundary layer development
+The 2-1/2 day meeting was divided into three sessions:            or on lift and drag versus angle of attack. One of these
+                                                                  papers measured the boundary layer growth for flow over a
+     Session I.     Icing 1--Introductory and Survey              fiat plate covered witll simulated frost. The frost was
+                    Papers, Certification Issues                  replicated by a llttle-known technique in which the actnal
+     Session II.    Icing 2--Prediction and Simulation of Ice     frost was covered with a dissolved liquid plastic. The frost
+                    Contamination and its Effects                 data were used to modify a bomtdary layer analysis and to
+     Session III.   Effects of Heavy Rain and De/Anti-Icing       predict the effects of surface roughness on wing
+                    Fluids                                        aeroperformance and on takeoff performance. Another
+                                                                  paper in tlds group included propeller power effects in a
+     The meeting agenda listed 19 papers, and all except          wind tunnel study of the effects of sand grain roughness on
+two (numbers 2 and 12} were presented at the meeting,             airfoil performemce. The third paper presented wind tumtel
+Fortunately, the written version of paper 2 was available at      data for a sub-scale mudel aircraft with simulated hoar-
+the meeting, and paper 12 was later received by the               frost on the wings and used the data in a grotmdbased
+engineering simulator to investigate the degradation in          analytical approaches depend heavily on empirical
+performance and handling qualities during take-off. This is      correlations because of the current lack of appropriate
+one of only a few published studies in which a simulator         turbulence models and/or discrete roughness models, and
+was used to investigate the effects of wing contamination        because it is difficult to accurately calculate Navier-Stokes
+on flight characteristics,                                       flows or boundary layer flows beyond stall. Furthermore,
+                                                                 there exists no systematic body of experimental data for
+      Two papers presented the effects of surface roughness      flows over single and multi-element airfoils with
+on high lift airfoils. One of these papers provided              appropriate roughness simulation and coverage and
+correlations for three essential flight characteristics:         Reynolds number range. Thus, those in the field of surface
+percentlossinmaximum llft,       percent increase  install       roughness  aerodynamics    must either work withhighly
+speed,  and reduction  install angleofattack.The data            empirical analytical   modelsorpioneer    new aerodynamic
+covered several orders of magnitude of roughness height-to-      flow models. And because of practical constraints, they
+chord ratio. And data was presented for both retracted           must limit fundamental wind tunnel and flight test studies
+and extended leading edge devices. The other paper               to only a few airfoil configurations and to only a small
+showed recent wind tunnel data on the sensitivity of             subset of the known surface roughnesses that nature can
+airfoils to sand roughness and presented percent loss in         produce. Some of these limited, but very important
+maximum lift versus wing chord Reynolds number for three         studies, were presented in this meeting.
+roughness height-to chord ratios. This important new data
+on Reynolds number effects has long been sought by those
+concerned with surface roughness and by the aircraft icing       SUMMARY OF AND COMMENTS ON THE PAPERS
+community which is considering deicing systems as a
+possible alternative to thermal anti-icing systems.                   In summarizing these papers, the author of this
+                                                                 present technical evaluation, rather than trying to
+     One paper presented dry-air wind tunnel                     paraphrase already good prose, freely excerpted segments
+measurements and corresponding three-dimeusional Navier-         from the papers without using the usual attributory
+Stokes code calculations for the flow field around semi-         quotation marks. This was done to minimize clutter in the
+span, straight and swept wings with artificial leading edge      text. Occasionally quotation marks were used. In the final
+ice shapes. This research effort shows the valuable              analysis, these summaries reflect the evaluator's
+advantages of concurrently conducting both computer code         interpretations and prejudices, and in no way should be
+development and supporting code validation experiments,          attributed to the authors of the original papers.
+
+      Two papers were devoted to ground deicing/anti-icing       Icing 1--Introductory _md Survey Papers, Certification
+fluids. One paper presented flight and wind tunnel test          Issues
+results on the effects of these fluids on takeoff performance,
+established allowable losses in maximum lift for jet                   Pa_r I. - RANAUDIE gave a report on the AGARD
+transports, and evolvedcriteria    foraerodynamic   acceptance   FLightMechanicsPanelSymposiumentitled            "Flight In
+tests  ofsuchfluids  forjettransports.    A secondpaper,in       AdverseEnvironmental         Conditions," heldinGol,Norway,
+collaboration withthefirst    paper,presented   a simplified     May 1989.The 26 papersfromthissymposiumwere
+wind tunnel test to determine ff a fluid passed the              published In AGARD-CP-470.            Mr. RANAUDIE
+aerodynamic acceptance criteria. The acceptance test             concentrated on selected papers from each of the five
+involved measuring the boundary layer thickness at the           sessions: (1) Atmospheric lV[easurements and Modelling;
+trailing edge of a flat plate covered with the fluid,             (_) Effect of Disturbances on Design and Operations;
+                                                                  (3) Visibility; (4) Icing; and (5) Electromagnetic
+      Two papers addressed helicopter rotor icing. Both          Disturbances. The two major types of severe atmosphere
+presented comparisons of computer code predictions against       disturbances were high-altitude turbulence (due to
+flight and/or wind tunnel data for rotor performance in           thunderstorm fronts or mountain ranges, both of which
+icing. One also presented results of a model rotor test in       were accompanied by temperature inversions) and low-level
+an icing wind tunnel and assessed the merits of sub-scale        microbursts. Fixed simulator approaches in microburst
+rotor icing tests,                                               wind shear conditions demonstrated the important and
+                                                                 dramatic advantages of pilot training. The recommended
+      Three papers were devoted to heavy rain effects. The       crew procedures during low-level windshear are (1) avoid if
+first presented both sub-scale and full-scale aero-              you can, (2) pull up, attitude 15", and (3) forget all
+performance test results for two-dimensional multi-element       previous experience. The flight controls for the Airbus
+airfoils, and it also included measured heavy rainfall rates     A320 were described as having (I) stall wanting--only
+at selected sites around the world. The second paper also        aircraft that can fly near maximum lift, (2) auto triggering
+presented wind tunnel tests results on a another sub-scale       of full thrust at high alpha or when pilot pulls pitch
+two-dimensional high lift airfoil model. The third paper         control, and (3) future plans for windshear warning and
+presented results for the measurement of liquid water films      automatic reaction system. In the session on
+using conductance sensors,                                       electromagnetic interferences, it was noted that lightning
+                                                                 occurred at the unexpected conditions of-40 "C ambient
+      Although the measurement and prediction of boundary        temperature, where the relative turbulence and
+layer development on rough surfaces has an extensive             precipitation intensities were characterized as negligible to
+bibliography (Refs. 1 to 4), there has been only Limited         light. Most aircraft lightning strikes were triggered by the
+progress toward developing accurate analytical predictions       vehicle itself, i.e.j short-circuiting between clouds of
+(Refs. 5 and 8). And although the aerodynamics of rough          opposite polarity. RANAUDIE also reviewed the
+airfoils is at the cutting edge of computational fluid           comprehensive report presented on NASA's icing
+dynamics, it has received only limited attention. Today's        technology program.
+     Paper 2. - BRUMBY was unable to attend the                  published in AGARD-CPP-480. The turboengine
+meeting, but copies of his paper were available at the           symposium, which addressed the effects of ice on engine
+meeting. This paper appropriately set the stage for all that     performance, nicely complemented the present meeting,
+followed on the effects of wing ice contamination on flight      which addressed the effects of ice on external aircraft
+characteristics. He reviewed the effect of wing ice              performance. Professor JACQUES noted under
+contamination on three essential flight characteristics:         Operational Concerns that ice buildup on or within engine
+percent increase in stall speed, percent decrease in             inlets can lead to loss of total pressure or flow distortion,
+maximum lift coefficient, and reduction in stall angle,          which in turn can lead to compressor surge and stall. Ice
+Both characteristics were plotted against k/c (ratio of          ingestion can damage fan blades or cause engine flame outs.
+roughness height to wing chord). The parameters included         He showed several solutions to ice buildup on inlet screen
+roughness over the entire upper surface with slats retracted     and in inlet ducts, with the usual solution being the use of
+and with slats fully extended, and roughness on just the         bypass flow systems and inertial particle separators. In one
+leading edge with slats retracted and with slats fully           surprising case, in spite of apparently successful tests of the
+extended. The plot for percent loss in maximum lift              ice protection system in the engine test cell and in natural
+coefficient is included as Fig. I of this rel_rt. His data is    icing tests, an twacceptable level of foreign object damage
+taken from wind tunnel and flight test results,                  caused by ice ingestion was observed in icing flight
+                                                                 operations. Several modifications to the ice protection
+     For takeoff with frost, snow, ice, or slush adhering to     system did not provide sufficient ice FOD resistance, and
+the wings, the appropriate curve in Fig. 1 would be for          the only solution was to develop ice FOD-resistant
+roughness over the entire upper surface. For example,            compressor blades.
+moderate frost would have a roughness of about 0.3 mm
+(0.012 in.), and on a 10-ft chord wing would give a k/c of            The symposium contained excellent discussions of
+about 0.0001, which would lead to about a 15 percent loss        engine test facilities and calibration concerns and
+in maximum llft. To get down to about a 2 or 3 percent           procedures. The symposium also presented good examples
+loss in maximum lift requires, according to Fig. 1, less than    of computer codes used both in icing facility calibrations
+0.15 mm (0.006 in.) on a 10-ft chord wing.                       and in the design of ice protection Systems. Computer
+                                                                 codes for both water droplet trajectory and ice accretion
+      Another important point made by BRUMBY was that            prediction were discussed.
+a reduction in stall angle accompanies the loss in maximum
+lift, and this can lead to two adverse effects. First, if wing        One paper described how low temperature operations
+ice causes a stall before the stall warnlng's prescheduied       can cause fuel to form solid wax precipitates that can cause
+angle of attack is reached, the flight crew will receive no      plugging of filters or blockage of fuel transfer lines.
+warning of impending stall. Second, the reduced stall angle      Another paper showed that water dissolved in the fuel can
+compounds the problem of the tendency of an ice-                 form ice crystals and block the filters, fuel controllers, and
+contaminated, swept-wing airplane to pitch up during             passages in heat exchangers. A computer code was
+rotation, increasing the risk of overshooting the stall angle    identified that predicts fuel temperatures in fuel tanks.
+shortly after tiftoH.
+                                                                       Paper 4. - CATTANEO gave a talk on current
+      Thus, its easy to see why BRUMBY concluded that            FAA/JAR 25 regulations for certification of civil aircraft
+"From an aerodynamic viewpoint, there is no such thing as        for flight into known icing conditions. He presented the
+'a little ice.' Strict attention should be focused on            French Certification Authority's proposed regulatory
+ensuring that critical aircraft surfaces are free of ice         changes to FAA/JAB. 25 as embodied in Advisory Material
+contamination at the initiation of takeoff."                     Joint AMJ 25-1419. This A]V[J is partially based on
+                                                                 525/2-x and 525-5-x of the Canadian DOT. Mr.
+     It might seem that Mr. Brumby's conclusions applied         CATTANEO noted that atmospheric conditions are well
+only to swept-wing, jet transports that tend to pitch up if      defined in Appendix C of FAR/JAR 25 and that methods
+the wing stalls at takeoff. But in his paper he says that        for testing and analyzing the performance of ice protection
+"_.ice contamination is quite democratic, adversely              systems (IPS) are well defined. But there is no
+affecting straight-wing aircraft such as the Nord 262 and        correspondingly well detined set of flight tests for
+numerous general aviation aircraft; sina!! turbojet aircraft     determining the effects of ice accumulations on aircraft
+with conventional airfoils such as the Learjet; larger           performance and handling qualities. Terms for safety are
+aircraft with conventional airfoils such as the F.28, DC-9-      vague. There is confusion about interpretation of tests and
+10, and DC-8; and aircraft with leading edge high-lift           about the required amount and proportion of testing in
+devices such as the 737."                                        natural icing and in clear air with artificial ice shapes.
+
+      The other curves on Fig. 1,desiguated as roughness on            He noted that even thin ice (4 mm thickness) can
+the leading edge only, are sometimes used to estimate the        reduce lift by 20 percent and stall angle by 3", can
+thickness of ice allowed to accumulate during in-flight          significantly increase drag, can affect static and dynamic
+icing. Some important new data presented in paper 12             pitch and roll stability, can produce a large loss in elevator
+indicate that these curves underestimate the aerodynamic         efficiency, and can cause an inversion of hinge moments
+penalties caused by ice that forms on the leading edge           with mechanical flight controls. Special attention should
+during flight in supercooled clouds,                             be paid to pushover to reach zero g because there is a loss
+                                                                 of 1° to 2° of tail stall angle caused by icing.
+    Paper 3. - JACQUES gave a report on the AGAB.D
+76th Symposium of the Propulsion and Energetics Panel on              Cattaneo proposed that icing flight trials be carried
+"Low Temperature Environment Operations of                       out mostly with artificial ice shapes in clear air testing and
+Turboengines (Design and User's Problems)," held in              be backed up with testing in natural icing conditions to
+Brussels, Belgium, October 1990. The 33 papers were              catch the complete aircraft icing problem. The artificial
+ice shapes should he computed with ice accretion computer         warning indicators should be reset to values appropriate to
+codes that have been experimentally validated. The size of        the lower stall angle observed in the icing flight trials. In
+ice depended on whether the part was protected or                 this regard, this evaluator recently learned that the
+unprotected, and on various engine and ice protection             ATR-42, ATR-?2, and the Dash 8-300 automatically shift
+system failures,                                                  stall warning to lower angles of attack when the anti-icing
+                                                                  is turned on. (Any anti-icing systems on the aircraft are
+    The paper gave the following discussion on size and           turned on before the deicing systems.) Alsoj at least in
+roughness of the artificial ice.                                  Canada, if an aircraft with conventional pneumatic deicer
+                                                                  boots had been in icing just prior to approach, the stall
+     Takeoff: To be performed with an engine failure. Ice         speed must be increased during approach to adjust for a
+is accumulated on the entire set of surfaces for a specified      loss in maximum lift caused by the maximum growth of ice
+angle of attack and for a specified duration.                     (about 12.5 mm thickness for conventional pneumatic
+                                                                  boots) on the deicers just prior to actuation. It is also
+     Cruise, hold, and lending: On unprotected parts of           common practice, when an airplane has been in icing
+the aircraft, ice formation has a maximum depth of 3 in.          conditions just Frier to approach, to fimit the degrees of
+with surface roughness of 3 mm and a density of grains of 8       flap during approach and landing to prevent tail stall.
+to I0 grains/cm 2. On protected parts, the time required in
+activating the systems for deicing and anti-icing, both                The _       25-1419 regulations described above are
+unavoidable and procedural, are ¢ousidered, both for ice          intended for twin engine aircraft with mechanical flight
+accumulated between deicing cycles and for any runback            controls, such as the Fokker 27. The French are
+and refreezing beyond the deicer heaters,                         considering a similar implementation for aircraft with a
+                                                                  larger flight range, e.g., the Dornier 328, Jetztream, A330
+     IPS failure in flight: For failures requiring the aircraft   and A340.
+to leave the area of icing conditions, the thickness of ice on
+the protected parts is set at 1.5 cm.                             Icing 2--Prediction and Simulation of Ice Contamination
+                                                                  and its Effects on Aerodynamics
+     Special case of sandpaper: A specific form of ice, that
+with a small thickness and the abrasiveness of sandpaper,               Paper 5. - POTAPCZUK and REIN                 presented
+has been used to qualify the behavior of aircraft during          a survey of the current methods for simulating the response
+push over maneuvers. It is known by experience that this          of an aircraft or aircraft subsystem to an icing encounter.
+type of accretion may have a large effect on this maneuver.       This work covered the entire field of icing simulation and
+                                                                  included 81 references. Topics discussed included computer
+     The paper also described the following tests to be           code modeling of droplet trajectoriesp of aircraft icing, and
+performed during flight,                                          of aircraft performance degradation in icing. Also covered
+                                                                  were experimental icing simulation wind tunnels, engine
+    Systems performance: Determination of time to                 test cells, in-flight spray tankers, and ground spray test
+remove ice after actuation of IPS.                                facilities. Special test techniques_ such as icing scaling laws
+                                                                  and subecale helicopter models in icing tunnels, were
+      Flight qualities: Characteristics of ice removal. Roll      discussed. It is generally agreed that icing simulation,
+and yaw stability. Transverse dynamic stability (Dutch            where applicable, is more desirable than testing in natural
+roll). Trim capacity. Vibrations and buffeting. Absence           icing because it presents lower risks, costs less, consumes
+of blocking of rudders and aileron (jamming). Roll                less time, is more reproducible, and it may more readily be
+behavior in pushovers to the limit of the flight envelope:        included in simulators for certification and pilot training.
+n=0 g VFE.                                                        But flight testing in natural icing will always remain a part
+                                                                  of the certification process and will be needed to validate
+      Flight in natural icing conditions: Purpose of these        the analytical and experimental simulation methods. The
+tests is to {1) validate the artificial ice forms for             concluding remarks identified several areas requiring
+subsequent use, and (2) assure that the degradations of           further research in icing simulation. These are:
+performance and flight handling quality observed with the
+artificial types of icing were conservative.                           1. Ice accretion physics; specifically, roughness
+                                                                  characterization, heat transfer correlations, splashing,
+     Stall warulng/stick shaker settings should be set for        runback, surface tension effects, and wetting
+greatest possible range of icing conditions, for ice coating      characteristics.
+thicknesses of up to 3 cm on the protected parts and ! cm
+on the unprotected parts. (Stall warning is further                    2. Ice structural properties and ice shedding.
+discussed below).
+                                                                       3. Stall mechanisms and post-stall behavior of iced
+     The rest of the paper gives results for the application      wings. Computational simulation of these phenomena.
+of the AMJ to the certification of the ATR 72, and as an
+experimental project, to a Fokker 27 that was designated               3. Inclusion of surface roughness effects in
+the Aircraft for Atmospheric Research and Remote Sensing          aerodynamics codes.
+(_T).
+                                                                      4. Evaluation of turbulent flow properties for iced
+      Cattaneo's experience has been that flight performance      wings and development of appropriate turbulence models.
+losses were more severe with artificial ice shapes than with
+natural ice shapes. As noted above, AMJ 25-1419 proposed               5. Three-dimensional ice accretion code development.
+that when the ice protection system is turned on, the stall
+     6. Computer code simulation of iced wing and iced          frost. The boundary layer code coupled with an inviscid
+aircraft performance. Development of performance codes          vortex panel code was used to calculate lift and profile drag
+for rotorcraft in icing,                                        for two airfoils, upto and beyond stall. A lifting line
+                                                                analysis was used with the airfoil results to determine wing
+      7. Continued development of computational methods         aerodynamics as well as takeoff performance of two
+for simulating ice protection systems,                          hypothetical aircraft with various amounts of frost
+                                                                coverage on their wing upper surface.
+      8. Continued development of experimental methods
+for simulating rotorcraft performanc e in icing.                      Hoar frost having a height of only 0.4 mm degraded
+                                                                wing performance and necessitated increased takeoff
+    9. Creation and verification of icing scaling laws.         distances for both a small light aircraft and a large
+                                                                transport aircraft. Serious performance loss was predicted,
+      Paper 6. o PREL presented an analysis of three-           however, only when the upstream edge of the hoar frost
+dimensional droplet trajectories about an aircraft. The         coverage was at, or very close to the suction peak in the
+flow over the aircraft was calculated with a three-             pressure distribution. The dramatic lift losses occlLrred
+dimensional panel code called FP3D that was developed by        when frost was present in the region of strong adverse
+Aerospatiale. The droplet trajectory calculation procedure      pressure gradients, just downstream of the suction peak, or
+was based on a method developed by D. Guffond at                in the region where the roughness height was several times
+ONERA. Code results showed hnw droplet trajectory               greater than the boundary layer momentum thickness. In
+predictions could be used to help locate cloud                  these regions, roughness caused the boundary layer to grow
+instrumentation on the aircraft so as to insure that            rapidly, and in the presence of adverse pressure gradients,
+measured cloud properties were representative of                made it prone to separation. When the upstream edge of
+freestream cloud conditions. Thus, instruments must not         the hoar frost coverage was beyond the suction peak, at the
+be placed in cloud shadow zones, nor should they be placed      quarter-chord or further downstream, the computed lift
+in regions where droplets are concentrated or dispersed by      and drag performance was approximately the same as for
+interaction with the flowfield around the airplane. Not         the clean wing.
+presented were any comparisons between the computer-
+predicted results and experimental droplet trajectory data.           Paper 9. - FL_G,         BOND, and BRITTON
+                                                                presented results from icing wind tunnel tests of a lightly
+      Paper 7. - POTAPCZUK, t)RAGG, KWON, and                   instrumented two-bladed teetering tail rotor from an
+SANKAR presented the results of a computational and             OH-58 helicopter and a heavily instrumented subscale
+experimental study of the sectional and total aerodynamic       articulated main rotor for another helicopter. The models
+load characteristics of moderate aspect ratio, swept and        were exposed to variations in temperature, liquid water
+nouswept wings with and without simulated glaze leading         content, and droplet diameter and were operated over
+edge ice. The computations were done with a three-              ranges of advance ratio, shaft angle, tip Mach number, and
+dimensional, compressible Navier-Stokes solver, and the         weight coefficient to determine the effect of these
+send-span wing models were tested in a dry-air wind             parameters on ice accretion and on rotor performance in
+tunnel. The goal of this work was to acquire experimental       icing. Ice profile tracings and ice molds were obtained.
+data for code development, calibration, and validation.         The paper presented the sensitivity of the model rotors to "
+Measured and computed values for chordwise pressure             the test parameters and compared the results to analytical
+distributions and spanwise load distributions agreed well       predictions. Test data quality was excellent and changes in
+for the iced and uulced swept wings at both 4° and 8°           lift and torque were remarkably repeatable. Analytical
+angle of attack. At 8° angle of attack, computations            predictions for ice accretion and rotor performance agreed
+showed that the flow over the iced wing was massively           with the trends observed in the test. The techniques
+separated. For the unswept wing at 8° angle of attack           employed were validated by the excellent results obtained.
+(but not for the swept wing), it was necessary to include       The data should prove useful for code and scaling research
+tunnel wall boundary conditions at the wing root in order       and development within the helicopter industry.
+to get agreement between code prediction and experiment.
+These results suggested that wall suction should be                  Paper 10. - GENT reviewed the icing research being
+incorporated into the tunnel to remove the boundary layer       conducted at the Royal Aerospace F_tablishment in the
+at the wing root. The ability to calculate surface              UK. A copy of GENT's paper was not available for the
+streamlines and time averaged streamlines in massively          meeting, but the technical evaluator later received from
+separated flows offers a rich source of flow phenomena for      GENT a copy of the text he prepared for his talk. RAE's
+comparison with experiments. Future plans for both the          icing work was established to provide an understanding of
+computational and experimental efforts were discussed,          the helicopter rotor icing problem, to provide engineers
+                                                                with tools needed to predict the effects of icing on rotor
+     Paper 8. - KIND and LAWRYSYN conducted a study             performance, and to develop the necessary rotor ice
+of the effects of frost on airfoil aerodynamics. They           protection systems. The RAE have developed and
+acquired samples of real frost on plates left outside           combined a series of two-dimensional computer codes for
+overnight and replicated the frost by a llttle-known            predicting ice accretion on rotor blades: these include a
+technique that involves pouring dissolved liquid plastic        potential flow code, a water droplet trajectory code, and a
+over the frost. The plates with the plastic replicas of frost   thermal heat balance code. The name of the ice accretion
+were used as the floor of a wind tunnel, and the boundary       code is TRAJICE. They have also developed one-
+layer profiles were measured on these roughened plates,         dimensional and two-dimensional codes for analyzing the
+These profiles were inserted into the law of the wall to        performance of electrothermal ice protection systems for
+determine the (delta u/u*) shift. This velocity profile was     rotors. This includes analyzing the heat flow and
+used in a rough-wall integral boundary layer code to            temperature distribution inside the blades, the melting and
+predict boundary layer growth over a wing covered with          freezing of ice on the rotors, and an elementary model for
+ice shedding. They have combined the above codes with a          sublayer around the nose, thus aggravating the effect of
+rotor performance code that predicts torque and lift             roughness elements and increasing the probability of
+changes caused by icing. Calculated results from the ice         separation.
+accretion, electrothermal heater, and rotor performance
+in icing codes have been compared with and calibrated                 Paper 12. - LYNCH, VALAREZO, and McGHEE
+against available experimental data from icing tunnel and        reported on experimental studies of the aerodynamic
+flight tests. The codes have been distributed widely to the      penalties caused by very thin leading edge ice formations
+aircraft industries in the UK, and special test cases have       (simulated by distributed roughness over that portion of
+been compared with predictions from comparable codes             the leading edge where ice would accumulate in flight).
+developed by NASA and ONERA.                                     The geometries studied included single element
+                                                                 configurations (airfoil and three-dlmensional tail) as well as
+      Pa_r 11. WICKENS and NGUYEN reported on a                  multi-element high-lift configurations. Emphasis was
+wind tunnel investigation into the effects of distributed        placed on obtaining results at high Reynolds numbers to
+upper surface roughness and leading edge ice formations on       insure the applicability to fuli-scale.
+the performance of a powered wing model. This interesting
+paper began by citing a 1936 reference by Jones and                    Even small ice thicknesses caused maximum lift losses
+Williams which showed that the loss in maximum lift was          of approximately 40 percent for single element airfoils.
+critically dependent on Reynolds number and also on              Losses in angle of attack margin to stall were also
+roughness particle size. Jones and Williams found that at        substantial--as high as 6°. Percentage losses for multi-
+a Reynolds number of I0 million (typical for takeoff) loss       element airfoils were not as severe as for single-element
+in maximum lift approached 50 percent of clean airfoK            configurations, but degradations of the angle of attack
+values, while at the lower Reynolds numbers typical of low       margin to stall were the same for both. On jet transports,
+speed wind tunnel testing the loss in maximum lift was           single-element airfoil results would apply to horizontal
+much lower. For the present paper, testing was done at a         tailplanes, and multi-element results to wings.
+Reynolds number of 1.3 million for the clean wing and
+three different grit sises, and at 2.3 million for the airfoil         The results for single-element airfoils with leading-
+covered with heavy grade commercial sandpaper,                   edge roughness were found to correspond roughly to
+Unfortunately, there was no data in which Reynolds               Brumby's correlation for the entire upper surface
+nttmber was varied while grit size remained constant, so         roughened and slats retracted (left hand curve on Fig. 1).
+any speculation as to the effects of Reynolds number in the      This finding contradicts the previously held assumption
+present study has to be taken with caution. Aside from the       that Brumby's more liberal correlation (that is, for
+above caveat, this paper contained unique data on                roughness restricted to only the leading edge, and given by
+powered-wing performance degradation caused by                   the right hand curves on Fig. 1) could be used to assess the
+distributed upper surface roughness and leading edge ice.        effect of in-flight ice accretions.
+
+      Roughness height used on the model scaled to I to                This paper contains important new information about
+3 mm for a 10-ft chord airfoil, which height was greater         the effects of Reynolds number on the loss in maximum llft
+than normal frost buildup. In the unpowered state,               for modern, single-elemsut airfoKs with distributed
+roughness reduced the lift slope and maximum llft by 30 to       roughness over that portion of the leading edge where
+50 percent. The leading edge region was especially               in-flight icing would accumulate. They showed that losses
+sensitive to these disturbances, and it was found that           in maximum llft increased rapidly over a chord Reynolds
+removing roughness from the first 15 percent of chord            number range from 2.5 to 5.0xl06,and beyond that the
+restored the wing to close to its original performance,          losses became nearly independent of Reynolds number.
+Wing drag also increased as a result of surface roughness.       Maximum lift losses increased with increased roughness
+Propeller power effects increased the lift slope and             height-to-chord ratios.
+maximum lift above that of the clean wing; however, for
+the roughened wing, the lift coefficient for the powered               The paper also obtained a simple linear correlation for
+wing dropped significantly below that for a clean,               loss in angle of attack margin to stall versus log of
+nnpowered wing. It was concluded that the reduced lift           roughness height-to-chord ratio (Fig. 2). The results apply
+slope and maximum lift caused by roughness would be very         to both single- and multi-element airfoils and are
+significant in event of engine failure at take off.              independent of Reynolds number in the range of 5 to
+                                                                 16x10 _. The correlation provides a quick way to assess the
+      Leading edge ice accretion also caused large losses of     maximum lift penalties incurred for s leading-edge ice
+lift and Increases of form drag. However, a comparison           roughness buildup on any representative wing or tail
+between leading edge ice and upper surface roughness             configuration. Simply use the lift versus angle of attack
+showed that leading edge ice produced a smaller reduction        curve for the clean configuration and reduce its stall angle
+of lift slope prior to flow separation,                          by the amount given by Fig. 2. It also provides the
+                                                                 information needed to check on the adequacy of stall
+     Increased drag was attributed partly to an increase in      warning a systern_ when anti-icing protection is not
+skin friction in unseparated flow, but mainly to increases in    provided.
+form drag after premature separation occurred. It was
+explained that if the roughness elements protrude above               Since modern high bypass engines have minimal
+the laminar sublayer of the turbulent boundary layer in          engine bleed air, airframers have effectively lost their
+attached flow, the result is an increase in skin friction and    supply of hot air for thermal anti-icing ice protection
+the production of more turbulence. In suggesting an              systems. Therefore they have been keenly interested in the
+explanation for the higher losses in maximum lift at the         promising new impulse deicing systems that do not require
+higher Reynolds numbers, it was pointed out that                 bleed air for operation. These new impulse deicers can
+increasing the Reynolds number would reduce the laminar          prevent ice thicknesses from exceeding about 0.030 in.,
+which is far better than the older pneumatic deicers could               takeoff. The pitch response to elevator input was slow.
+do. But unfortunately, the important message from this                   Extreme stickforces were required for rotation, and this
+paper is that even thicknesses as small as 0.030 in. could               would probably compel the pilot to abort the takeoff.
+cause maximum llft losses of approximately 40 percent for                After liftoff the aircraft was rnlstrimmed, which required
+single element airfoils. The results presented in this paper             very large pull forces. A large increase in takeoff distance
+indicated that even 0.005 in. ice roughness may cause                    was required. No improvement was found from cleaning
+unacceptable aeropenalties. With the airframers hard-                    the wing leading edge only or by increasing rotation speed.
+pressed to find any other alternative to compressor bleed                The results clearly demonstrated the importance of
+air, the finding that the new impulse systems may cause                  Advisory Circular AC 20-117 emphasizing the 'clean
+unacceptable aeropenafties will likely create controversy                aircraft concept' under adverse weather conditions before
+among those responsible for ice protection on modern jet                 takeoff.
+transports. It is expected that this paper should stimulate
+a more intense investigation of the effects of roughness on                   This is one of the few papers published on the
+the aeroperformance of future transports,                                simulator results of upper wing surface roughness. It is
+                                                                         hoped that in the future the entire icing scenario--takeoff,
+     Paper 13. - BOER showed how upper surface wing                      climb, cruise, hold, approach, and landing--will routinely
+roughness (representative of ground frost, snow, and ice)                be modeled in engineering simulators.
+degraded the Fokker 50 aircraft aerodynamics and lead to
+reduced flight safety during takeoff. Results were reviewed                   Paper 14. - WELTE, WOHLRATH, SEUBERT,
+for (1) tests conducted in Sweden's FFA wind tunnel in the               DeBARTOLOMEO and TOOGOOD presented a detailed
+early 1970's on multi-element airfoils with differing levels             account of the various analyses and tests they carried out
+and degrees of roughness; (2) poweroff wind tunnel tests on              as part of the process to qualify the Dornier 328 to the
+a complete model of the F27 (scale 1:20) with upper surface              FAR/JAR 25 requirements for operation in known icing
+roughness (which scaled to about 2 mm at full-scale); and                conditions. This paper could be recommended for anyone
+(3) a fixed-base engineering flight simulator study of the               who wants to understand the various steps that must be
+F50's performance and flight handling characteristics                    carried out before going into flight testing in natural icing.
+during takeoff with wing upper surface roughness.                        The first part of the paper discusses ice protection systems
+                                                                         for the airframe, and the second part for the engine.
+      The wind tunnel studies of multi-element airfoils
+showed severe losses in maximum lift and large reductions                      All lifting surfaces were pneumatically deiced, as were
+in stall angle of attack. Roughness, representative of hoar              all the protected surfaces in the engine intake. Appropriate
+frost, increased the boundary layer over the upper surface               two-dimensional or three-dimensional CFD codes were used
+and de-cambered the wing, thus causing loss of lift and                  to calculate cloud droplet impingement limits over a wide
+increase in drag for a given angle of attack. The tests                  range of operating conditions. In the engine intake tests,
+clearly demonstrated that there was no difference in                     even the three-dimensional flow in the engine test cell
+aerodynamic degradation due to hoar frost between slatted                cotmecting pipes was modeled in order to define test
+and nonslatted configurations. (Note that this could                     conditio'hs that were most representative of critical icing
+appear to differ from the results given in paper 2, but                  conditions. Theoretical calculations were done for take-off,
+Fig. 1 shows that if the roughness is thick enough, use of               climb, hold, descent, approach, and landing conditions
+extended slats does not recover the losses.)                             using adequate center of gravity locations, flap settings,
+                                                                         elevator and rudder deflections.
+     For the F50 or F27 with a clean wing, a combined
+leading and trailing edge'type of stall starts in the vicinity                To get early information about the aerodynamic
+of the engine nacelle and progresses gradually inboard and               degradation due to ice accretion, many tests were
+outboard. This clean-wing stall was designed to allow the                performed in the DNW wind tunnel (The Netherlands) on
+pilot to retain lateral control for as long as possible and to           a 1:4.2 scaled model of the complete aircraft with artificial
+have favorable pitching moment characteristics throughout                ice shapes on the leading edge of lifting surfaces. Separate
+the stall. The wind tunnel tests of the F27 scale model                  tests of the empennage were performed to guarantee safe
+showed that a roughened wing caused a pure trailing edge                 operation in heavy ice. These data were the basis for
+type of stall to occur simultaneously over the entire wing               increased landing speeds and limitations to flap settings in
+span. The roughness therefore seriously jeopardized the                  icing conditions.
+safety features designed into the clean-wing stall.
+Roughness coverage of I00 percent considerably                               Elevator horn icing was modeled with a two-
+deteriorated the aerodynamic characteristics of the                      dimensional ice accretion code, and the 1:4.4 scaled horn
+Fokker 50, and furthermore, tests showed that cleaning the               was tested in an icing wind tunnel. Icing scaling laws were
+leading edge up to 15 percent wing chord did not restore                 used to determine the icing tunnel test matrix.
+ the   clean   wing   llft and   drag   characteristics.   This   last
+ finding appears to disagree with the findings in papers 8                    Mr. TOOGOOD noted that in testing the engine air
+ and 11.                                                                 intake the most critical conditions occurred between -5 and
+                                                                         O "C, even though the FAA does not require testing above
+      The results of the Fokker wind tunnel tests were                   -5 "C. The higher LWC's associated with the warmer
+ introduced into the aerodynamic data base of the FS0 in                 temperatures leads to water runback and freezing beyond
+ the Fokker Aircraft fixed-base engineering flight simulator,            the protected areas. He felt that these results, which he
+ Performance and flight handling characteristics during                  has seen in other engine test programs as well, were
+ takeoff with contaminated wings were evaluated by a pilot,              important enough to recommend that the FAA change
+ From these simulator studies it was concluded that wing                 their certification procedure to include testing from -5 to
+ contamination seriously deteriorated aircraft behavior in               O °C.
+Effects of Heavy Rain and De/Anti-icing    Fluids              rain applications. The mean error obtained in the
+                                                               calibrations was :1:0.025mm for measurements in the 0 to
+      Paper 15. - DUNHAM, DUNHAM, and BEZOS                    0.5 mm range.
+summarized the NASA research on effects of heavy rain on
+airfoils. The paper was presented by Dr. E. WAGGONER                Paper 17. - TANG also presented wind tunnel test
+from NASA Langley. Covered in this paper were                  results for heavy rainfall on a two-dimensional multi-
+background of work done to date on heavy rain effects_         element, high lift airfoil. Effective rainfall rates ranged
+measurements of natural rain rates, wind tunnel heavy rain     from 50 to 300 mm/hr, and chord Reynolds numbers
+tests on single- and multi-element airfoils with chord         ranged from 1.7 to 8.8xi0 e. The measured loss in
+Reynolds numbers from 1.8 to 3.3×106, large scale track        maximum lift ranged from 6 to 16 percent, and drag levels
+testing with chord Reynolds numbers from II to 18x10 e,        at constant lift were up to 43 percent higher under wet
+and scaling considerations,                                    conditions.
+
+     Heavy rainfall rates are being acquired for short               The tests were conducted in a blowdown wind tunnel,
+sample times at 8 geographical sites. Over 7000 rainfalls      in which a run consisted of continuously changing the angle
+with rates above I00 mm/hr have been measured since            of attack from negative values up to and beyond stall, all
+1988. The maximum rate measured was 720 mm/hr for              at n constant water flow rate through the nossles.
+just under I0 sec. One quarter percent of the events           Apparently because of a water flow rate limit through the
+exceeded 500 mm/hr for events up to 10 s_c.                    nozzles, the rain rate was reduced as the Reynolds number
+                                                               was increased. Thus, there were no sets of data where the
+      Both subscale and fuil-scaie tests showed that           rain rate was held constant while the Reynolds number was
+extremely heavy rain of 900 mm/hr produced a reduction         varied, or vice versa. To isolate the effect of Reynolds
+in maximum achievable lift coefficient of at least 15 to       number, TANG assumed that the rain effects on lift
+20 percent, and a reduction in angle of attack to stall        increment depended linearly on rain rate. So he
+margin of 4" to 8°. The high-lift configurations (i.e.,        normalized all the lift increment data to 50 mm/hr by
+leading- and trailing-edge devices deployed) were more         multiplying the lift increment by 50 and dividing it by the
+sensitive to heavy rain than was the cruise configuration,     actual rainfall rate. There seems to be no justification for
+WAGGONER suggested, after the talk, that in the heavy-         this normalization procedure, but after it was done, the lift
+lift configuration the slat gap seems to become blocked        loss versus angle of attack showed a strong Reynolds
+with water, but he also said that this conference made him     number effect. In contrast, the authors of paper 15 did not
+aware of the strong effect of surface roughness on             find a strong Reynolds number effect. To resolve this
+maximum lift loss.                                             difference, it would be very desirable to conduct a series of
+                                                               tests with rain rate held constant for all runs while
+     WAGGONER suggested that a better understanding            changing only the Reynolds number from one run to the
+of the physics of heavy rain effects is needed before          next.
+analytical techniques will be able to successfully model the
+phenomena. Test results did not show a strong Reynolds              Another potential test problem involves the procedure
+number scaling effect, and it was therefore concluded that     of continuously changing the pitch during a run. In a
+low speedwind tunneltesttechniques       arevalidfor           private  discussionwithWAGGONER,       who presented
+obtaining  first-ordereffects
+                            ofheavyrain.(Thisconclusion        paper15,he pointedoutthatNASA foundthatittook
+was not supported by thetestresults     presented inpaper      about1.5to 2 secforthelift    to settle
+                                                                                                     down aftertheangle
+17,butaswillbe discussed    below,thereissome question         ofattackwas changed.So itshouldprovebeneficial       ifthis
+abouttheinterpretation    ofthosetestresults.)                 testcouldbe rerunusinga stepping    motor thatwould
+                                                               pitchthemodeland pauseforfixedtimesbeforegoingon
+      Based on the test results, DUNHAM, et al. concluded      to the next angle.
+that since transport aircraft normally avoid high angle of
+attack maneuvers, their normal operations should not be              Paper 18. - Papers 18 and 19 discuss the aerodynamic
+affected by heavy rain. However, should heavy rain occur       effects of aircraft ground deicing/anti-icing fluids. The
+during a severe low-altitude wind shear, the pilot             authors of these two papers collaborated on some key
+procedures used to counter the wlnd shear effects may          aspects of this fluids work. So while the same information
+result in operating at a higher than normal angle of attack,   may have appeared in both papers, it will be included in
+In a comment from the audience, it was urged that the          only one or the other of the discussions of these two papers.
+required research on heavy rain be carried out before          CARBONARO presented a historical review of the
+considering any changes to the pilot procedures for wind       research carried out by the yon Karman Institute (VKI) on
+shear,                                                         the flowoff properties and aerodynamic effects at takeoff of
+                                                               these fluids. He also described the rationale and a test
+     Paper 16. - FEO, ROGLES, and URDIALES                     methodology for an aerodynamic acceptance criteria for
+presented a paper on measurement of water film thickness       these fluids.
+on airfoils in heavy rain conditions using conductance
+sensors. They compared the performance of one, two, and              In general, anti-icing fluids are non-Newtonian, while
+three electrode sensors and showed that the triple electrode   deicing fluids are Newtonian. The viscosity of anti-icing
+sensor is superior to the others in accuracy and continues     fluids varies inversely with shear stress, while that of
+to hold its accuracy even when electrolytic corrosion          deicing fluids is independent of shear stress. The non-
+contaminates the probe. The triple electrode sensors also      Newtoulan anti-icing fluids tend to form on the surface of
+accurately measure thicknesses of wavy surface films,          the wing a protective fluid layer, which does not flow off
+After an appropriate calibration method is established,        the wing while the airplane is grounded and which prevents
+triple electrode sensors arevalid  foranyliquid typeand        icefromadhering     tothewing duringlongwaitsinfreezing
+condition.   Therefore, thesesensors  aresuitableforheavy      precipitation  beforetakeoff.    Duringtakeoff, airflowover
+the wing subjects the fluid to a large shear stress, and in      predetermined limiting values are judged aerodynamically
+the ideal case, the fluid should flow off the wing, leaving it   acceptable. These predetermined values are based on
+clean at the moment of rotation,                                 aerodynamic considerations that are discussed in paper 18.
+
+      The use of non.Newtonian anti-icing fluids was                   Paper 18. - ZIERTEN and HILL reported on a
+widespread in Europe when Boeing Airplanes published a           comprehensive follow-on wind tunnel investigation of
+report in which they warned that some fluid remained on          aircraft ground deicing/anti-icing fluids that was performed
+the wing at takeoff and could degrade takeoff performance        to supplement earlier reported flight and wind tunnel tests
+sufficiently to require takeoff adjustments for some aircraft,   and to support the development of aerodynamic acceptance
+The Boeing report triggered a reaction of several European       criteria for aircraft ground deicing/anti-icing fluids. The
+Airlines, and in 1983 the VKI was requested to further           test was conducted at the NASA Lewis Icing Research
+study the problem. Boeing's findings were confirmed by           Tunnel using both a two-dimensional wing model and a
+researchers at VKI on a large-scale wing in a refrigerated       three-dimensional half model of the Boeing 737-200ADV
+wind tunnel. At VKI, they also determined that the final         airplane. The fluids tested included three Type I
+fluid fill thicknecs on the wing at rotation was                 Newtonian fluids, which use ethylene, diethylene: and
+independent of the initial application thickness. This           propylene glycol as the freezing point depressant; four
+finding allowed them to eliminate the original film              Type II non-Newtonian fluids, which are currently in
+thickness as an important variable,                              production; eight developmental fluids; and a Nfil Spec
+                                                                 fluid to be used as a reference fluid in the aerodynamic
+     At "VKIthey determined that maximum lift loss could         acceptance test. The Type I and current Type II fluids
+not be correlated wlth fluid viscosity alone, as a fluid of      were tested neat and diluted with water to determine basic
+high viscosity could yield lower losses than another fluid       aerodynamic effects. Diluting the Type II fluids did not
+with lower viscosity. This was important because it meant        significantly alter the aerodynamic effects of the fluids.
+that quality control of the deicing/anti-icing fluids could      Diluting the Type I fluids to the dilutions used in practice
+not be made by a viscosity check, but that an aerodynamic        significantly reduced the adverse aerodynamic effects of
+test was required--at least until the mechanism of fluid         these fluids, especially at temperatures of -10 °C and
+flowoff and llft loss is fully understood and modeled. At        colder. Air boundary layer displacement thickness
+V'KI they analytically studied the aerodynamics of wings         measurements made with the fluids on the two-dimensi0nal
+with surface contamination by combining a nonviscous             model showed excellent correlation with lift loss due to the
+panel flow code with a boundary layer analysis for rough or      fluids at maximum lift and at operating angles of attack
+wavy'_urfaces. These studies suggested that it might be          and with the boundary layer displacement thickness
+possible to correlate maximum lift loss with the air             measured on a fiat plate in a small VKI wind tunnel. This
+boundary layer displacement thickness at the wing trailing       correlation validated the future use of fiat plate boundary
+edge. Further wind tunnel tests by both VKI and Boeing           layer displacement thickness measurement as the criterion
+confirmed that maximum lift loss correlated with trailing        for the aerodynamic acceptability of a fluid. The limiting
+edgedisplacement     thickness,                                  boundarylayer     displacement thickness, whichidentifies  a
+                                                                 fluid  asbeingaerodynamically    acceptable, was correlated
+    WhileBoeingundertook  a comprehensive
+                                        wind tunnel              witha 5.24percentlossinmaximum lift         thatresults  inan
+testofthese fluids
+                 on a two-dimensional
+                                   sectionmodel and              allowedspecific   reduction  inaerodynamic   performance
+a three-dimensional
+                  halfmodeloftheBoeing737-200ADV                 marginsattakeoff.
+airplaneattheNASA LewisResearchCenter,  VKI
+researchersmeasuredtheboundarylayerdisplacement over
+a flatplatecoveredwithfluidina windtunnelwherethe                DISCUSSION AND EVALUATION
+velocitywas ramped toreproducetakeoff
+                                    speeds.(The
+floorofthetunnelservedas theflatplate.)VKI found                     A discussion
+                                                                                oftheindividual
+                                                                                              paperswas included
+                                                                                                               in
+thatfora givenfluidand a givenairtemperaturethe                  section
+                                                                       2.0.Thissectionwilldiscuss
+                                                                                                majorsubjectareasin
+maximum lift lossmeasuredforwingscorrelatedwiththe               a broadercontext.
+boundarylayerdisplacement thickness
+                                  at thetrailing
+                                               edge
+ofthefiat plate.Boeingfoundthatthiscorrelationalso               Certification
+                                                                           forFlight
+                                                                                   intoKnown Icing
+                                                                                                 Conditions
+heldfortheBoeingtwo-dimensional wingdataand
+airplanehalfmodel data.                                              Papersdealing
+                                                                                 withaircrafticingcertification
+                                                                                                             revealed
+                                                                 thatCFD computercodesareusedroutinely inthe
+     VKI thendeveloped    a simplemethodologytomeasure           certification
+                                                                           processtopredictdropletrajectories,
+                                                                                                             droplet
+displacement    thickness
+                        atthetrailing  edgeofa flat  plate,      collection
+                                                                         efficiencies,
+                                                                                   and iceaccretionshapes.Codesare
+They applied    thefluidon thetestsection  floorofa small,       usedtodesigniceprotection
+                                                                                         systems,tolocateicing
+refrigerated  wind tunnel,and ramped thespeedthrougha            instruments
+                                                                           on aircraft,
+                                                                                     and toprovidethegeometryof
+prescribed  takeoff run. They obtained  theboundarylayer         artificial
+                                                                        iceshapesforuseon airplanesinclearairtesting.
+displacement    thickness
+                        by measuringtheincrease    in            Whiletwo-dimensional
+                                                                                    iceaccretioncodesareincommon
+airspeed betweenentrance    and exitofthetestsection,            use,three-dimensional
+                                                                                    codesarejustbecomingavailablefor
+whichwas a measureofthetunnelblockage        causedby the        sweptairfoils
+                                                                             (Ref.
+                                                                                 7),and therearenotyetany general
+boundarylayer.(CARBONARO            cautionedthatthewind         three-dimensional
+                                                                                iceaccretion
+                                                                                           codesavailable.Theseare
+tunneldimensions    must be measuredveryaccurately,    or        beginning
+                                                                         tobe developed,and their
+                                                                                                developmentishighly
+thederived    boundarylayerdisplacement   thicknesses will       recommended.
+contain large errors.) New fluids submitted for ground
+deicing/anti-icing applications are now conveniently tested             While several papers provided analytical
+in small wind tunnels to determine their effect on fiat plate     methodologies to predict aero penalties due to roughness,
+boundary layer displacement thickness. Those fluids that          there was no indication that these methods were
+produce boundary layer displacement thicknesses below             sufficiently validated to be accepted as part of the
+certification
+           process.
+                  Development,
+                             calibration,
+                                      and                                 Inpaper12itwas shown thataslittle        as0.005in.
+validation
+         ofcodesthatpredict
+                          aeroperformance
+                                       oficed                       thickroughness   on unslatted  airfoils caused20percent
+airfoils
+      ishighlyrecommended,                                         maximum lift     losses. As alsonotedinpaper12,ifin-flight
+                                                                   icecauseslift   decreases  of20percent,   thenwingareamust
+       The FAR/JAR 25regulations        arereasonably    specific  increase   by 20percenttocompensate.Jettransports        have
+ intheirrequirements      fordemonstrating    compliance   of       traditionally prevented   anyiceformation    on theirunslatted
+ aircraft  iceprotection   systems, and procedures   arewell        tailplanes  by employing  hotbleedairanti-icing    systemsto
+ established  forcorrelating   iceprotection  testresults  from    evaporate    impinging  cloudwater.But thelossofbleedair
+ icingwind tunnels,     icing flighttesting,and analysis.   But    on highbyps_ engines      isforcing  airframers toconsider
+ theFrenchcertification      authoritiesfeelthattheregulations replacing       anti.icingsystemswithdeicing     systems.Even
+ arenotsufficiently     explicittodemonstrate    theeffects  ofice thenew impulsedeicing       systemsbuildup much more than
+ accretions  on aircraft  performance  and flight  handling        0.005in.oficethicknembetweendeicer          activations,and
+ qualities.  Theirresponse    hasbeentodevelopa Joint              mosthavemore than0.005in.thickresidual            iceafter
+ AdvisoryMaterial      AMJ-25-1419thatcalls      forexplicit       actuation.    Thus thestudyofpaper12 isimportant
+ flight tests with art'_cial icc in clear air for cases of         because it showl Lhat it would be extremely diflicul _.to
+ (I) engine failure during take-off into known icing               utilize a deicing system without paying the penalties
+ conditions, (2) cruise, holding, and landing with ice on          associated with increased tail ares. But competition is
+ unprotected parts of the aircraft and with ice accumulated        forcing airfrsmers to use minimum wing and tail area to
+ between cycles on parts protected by deicing systems, and         achieve the greatest range and lowest fuel consumption.
+ (3) ice accumulations that occur when ice protection              Thus the _ers          wKl be forced to conduct numerous
+ systems fail in flight, (4) and a specific form of ice that,      trsdeoff studies before they can say for certain what the
+ with a small thickness and the abrasiveness of sandpaper,         best solution is for future in-flight ice protection. They
+ has been used to qualify the behavior of aircraft during          may be forced to use auxiliary power units or special air
+ pushovermaneuvers.Thistesting         would be backedup           heaters   toprovide  foranti-iclng  air.Itishoped thatthe
+ with flights in natural icing conditions. The AMJ also            results of these trade studies can be made avai!able to the
+proposed that when the ice protection system is turned on,         ice protection industry so that they can properly direct
+ the stall warning system should be reset to values                future ice protection technology development.
+appropriate to the lower stall angle, and stall speeds be
+ adjusted to the maximum lift observed in the icing flight         The Effect of Surface Roughness on Wing Aerodynamics
+ trials with artificial ice shapes.
+                                                                          Several papers in this meeting contained important
+       The Advisory AM J-25-1419 appears to make good              new experimental data and/or modified analytical methods
+sense, and since it incorporates material already being used       for determining the effects of surface contamination on the
+in Canada and possibly elsewhere, it deserves to be                aerodynamic performance of single-element and multi-
+carefu/ly considered by certification authorities everywhere,      element airfoils and of the overall aircraft. The findings
+                                                                   that surface roughness seriously degrades airplane takeoff
+       As was noted above, airplanes operate with portions of      performance and handling qualities acutely reinforces the
+their lifting surfaces unprotected from in-flight icing, so        FAA's requirement that the wings must be clean at
+they will fly and land with some surface contamination,            takeoff.
+Deicing systems allow ice to accumulate between deicer
+actuations and usually leave some residual ice after                      As noted in the Introduction, the literature on surface
+actuation.    Thtts,  an aircraft equippedwithdeicers     willfly  roughness   isextensive.   Yet,progress   hasbeenverylimited
+and landwithsome icecontamination.           Evenduring            indeveloping    analytical modelsand computerprogramsfor
+climboutitispossible       toaccumulate   iceiftheice              predicting   theaerodynamics   ofroughenedsurfaces:    Some
+protection   systemsmust remaininoperable        until a           perceive   thechallenge  oftheroughness    problemas
+prescribed   heightisreached.An airplane        willalso           comparable    tothatofturbulence.     Indeed,  in theviscous
+accumulate ice if the ice protection system fails during           analyses of surface roughness, turbulence models are
+flight,                                                            important. It is also expensive and time consuming to
+                                                                   acquire a systematic set of experimental data for the wide
+       While some of the papers gave guidance as to the            range of surface contaminations created by nature and for
+losses in maximum lift allowed during takeoff, little              the wide range of airfoils used by the airframers.
+guidance was offered for losses in maximum lift allowed
+during approach and landing. This issue is more complex                  New experimental data (paper 12) on roughened,
+because landing speeds and landing wing configurations are         modern airfoils revealed the importance of testing at full-
+dictated not on.ly by safety considerations but also by other      scale wing chord Reynolds numbers: losses in maximum
+customer requirements. Aircraft operators want minimum             lift increased with Reynolds numbers in the range of 2.5 to
+field lengths for landing, thus they don't want residual ice       5x10 6 and then held constant for higher values.
+from in-flight icing encounters to cause large increases in        Unfortunately, most airfoil data is obtained below 5.0x I0e
+landing stafl speeds. Also, since in-flight icing usually          in low speed wind tunnels; it requires either a very large
+occurs in winter conditions that are likely to be                  wind tunnel or a pressurized tunnel to test at the higher
+accompanied by slippery runways , the operators want to            Reynolds numbers. Obviously, testing at the lower
+avoid increases in stall speeds so as to prevent landing           Reynolds numbers gives an indication of the roughness
+mishaps. And finally, aircraft operators want low noise            effects, but apparently it will not give good absolute
+levels to ensure that they can operate out of airports with        numbers needed by aircraft designers. There is also the
+strict noise abatement policies. So, although lift can also        other question as to whether the physics of roughness, as
+be regained by using more flap, that would increase drag           applied to full-scale wings, can be determined from
+and require high engine power settings, Which in turn              fundamental studies conducted at the lower Reynolds
+would increase engine noise,                                       numbers.
+
+                                                              10
+      Although maximum lift losses for wings contaminated             the large jet transports. Fluid specification and
+with grit were shown to be sensitive to Reynolds number,              aerodynamic acceptance criteria have been worked out and
+there is still no knowledge as to whether wings with leading          are acceptable to members of the Aerospace industries
+edge ice shapes would exhibit a similar Reynolds number               Association (AIA), which represents the manufactr.rers and
+sensitivity. Ice, for example, causes a continuum of leading          users of the jet transports in both Europe and North
+edge surface distortions: during light icing conditions,              America. The AIA's criteria for acceptable loss in
+surface roughness; during rime icing conditions,                      maximum lift was based on allowing the 737-200ADV's
+aerodynamically shaped ice growths on the leading edge                13 percent stall speed margin for clean wing takeoffs to
+(but the ice is rough); and during glaze ice conditions,              drop to 10 percent margin when taking off with fluid
+large, bulbous, rough leading edge shapes." The variety of            contamination on the wings. The 10 percent stall margin
+possible ice shapes was illustrated in paper 10. Navier-              is the minimum allowed by FAA regulations. Using the
+Stokes solutions (paper 7) on a leading edge glaze ice shape          relationship that stall speed is inversely proportional to the
+showed the ice caused a leading edge flow separation                  square root of maximum lift, the above criteria for an
+bubble. It is possible that this leading edge stall caused by         allowable loss in stall margin translates into a 5.24 percent
+glaze ice might be relatively insensitive to Reynolds                 allowable loss in maximum lift. This appears not to be a
+number. This possibility seems to add more complexity to              problem for most transport aircraft, although for some an
+the problem; that is, the various kinds of leading edge               adjustment in take-off procedure would be necessary.
+distortion must each be examined for Reynolds number
+effects to determine how best to model and test each kind                  During the meeting, questions were raised as to
+of icing,                                                             whether in the wind tunnel testing the time-to-rotation
+                                                                      should have been reduced in proportion to the scale
+     As was recommended in the meeting, a systematic                  reduction of the wind tunnel model chord. But because the
+study of Reynolds number effects on airfoil performance               increments in lift loss and stall angle reduction were
+degradation due to ground and in-flight ice contamination             consistent with those increments found in flight testing, the
+is needed to support development of both empirical and                authors believed the tunnel testing approach was
+analytical models,                                                    appropriate.
+
+     Professor Slooff suggested at the meeting that we                      Given the complexity of the phenomena in fluid
+should look at the large body of work done on surface                 flowoff, such as the wave development due to shear stress
+roughness by naval hydrodynamicists, and he later                     on a non-Newtouian fluid and the accompanying thickening
+provided Ref. 8 on the subject,                                       of the air boundary layer and decambering effects, it is
+                                                                      remarkable that such an easy empirical aerodynamic
+Heavy Rain Effects                                                    acceptance criteria was found. In the longer term,
+                                                                      however, more effort should be devoted to understanding
+      It has been clearly demonstrated in wind tunnel and             the mechanisms of fluid flowoff and lift loss for these fluids.
+track testing that heavy rain significantly reduces both              In particular, not only fluid viscosity but also fluid
+maximum lift and stall angle. Yet, because of the                     elasticity (Ref. 9) should be considered in any analytical or
+difficulty and expense in conducting heavy rain tests, the            numerical model that describes the surface film wave
+database is rather limited. Again, because of the difficult           development and flowoff behavior of these fluids. The
+experimental conditions, knowledge of the physlcs of the              effects of fluld-to-air viscosity ratio on liquid film wave
+aerodynamic efiects of heavy rain is also rather limited,             growth were studied in Ref. 10. Ultimately, it would be
+                                                                      desirable to develop an acceptance criteria that depended
+      While NASA Langley found that low Reynolds                      on specifying only the physical and chemical properties of
+number wind tunnel testing yielded effects that were a                the fluid, as is done for Mil Spec fluids. Unfortunately,
+good first order approximation to full-scale, the Canadian            current formulations of non-Newtonian fluids are highly
+National Research Council (NRC) found a strong                        proprietary.
+sensitivity to Reynolds number. But during testing, the
+NRC never held rain rate constant While varying only                        Although nothing was mentioned about the effect of
+Reynolds number. Unfortunately, their assumption that                 these fluids on aircraft with takeoff speeds below 85 knots,
+lift loss increments depended linearly on rain rate was not           such as the commuter and general aviation categories, it is
+substantiated, so it is important to repeat the wind tunnel           known that these fluids may seriously degrade take-off
+test using the same rain rate for several different Reynolds          performance of some of these aircraft. Limited flight
+numbers,                                                              testing of these fluids on general aviation aircraft has lead
+                                                                      to the recommendation that they not be used for general
+      Under normal low angle of attack operation, heavy               aviation (Ref. 11). When used on commuters, adjustments
+rain would not present a safety hazard; but if heavy rain             in take-off procedttres will be necessary for some aircraft.
+accompanied low-altitude windshear, it could present an               Such adjustments include holding the aircraft on the
+additional safety hazard because pilot procedures require             ground up to 30 sec during the takeoff run to enhance fluid
+high angles of attack in such situations. Further research            runoff, and increasing takeoff speeds to compensate for the
+should be done on heavy rain effects before recommending              increased stall speeds caused by the degradation in
+that current pilot procedures for operations in windshear be          maximum lift (Ref. 12). Some fluid manufacturers offer a
+modified.                                                             "Type 1-1/2" fluid that has shorter holdover times in
+                                                                      freezing precipitation, but also causes smaller aerodynamic
+Ground Deicing/Anti-icing    Fluids                                   penalties for smaller aircraft (Ref. 13}.
+
+      It appears that the effects of ground deicing/anti-icing             The manufacturers and users of commuter aircraft
+fluids on takeoff performance are sufficiently well                   appear to be about three years behind the jet transports in
+understood, from an empirical approach, for application to            evaluating the effects of these fluids on take-off
+
+                                                                 11
+performance. But lest the wrong impression be given here,            engineering simulators to determine performance and
+it should be noted that some aircraft manufacturers, such            handling qualities under icing conditions is recommended.
+as deHavifiand (Ref. 12) and Fokker (Ref. 14), have                  The wind tunnel data can also serve as callbration data for
+conducted extensive flight and/or wind tunnel testing of             codes that predict overall aircraft performance and
+these fluids for selected aircraft and have issued winter            handling in icing.
+advisories, and some users have been testing these fluids on
+aircraft in their fleets. And the Federal Aviation                        A systematic experimental study of the effect of
+Administration (FAA) has been funding flight studies on              Reynolds number on surface roughness effects is strongly
+the effects of these fluids on general aviation aircraft             recommended. Such a study should consider not only
+(Ref. 11).                                                           surface roughness, but also leading edge ice shapes ranging
+                                                                     from thin grit roughness associated with light icing to
+                                                                     rough rime ice shapes and the even rougher and more bulky
+CONCLUSIONS AND RECOMIVIENDATIONS                                    glaze ice shapes.
+
+     The selection of papeA1in ;his meeting gave a                         The next generation of high bypass turbofan engines
+balanced overview of the state-of-the-art with respect to            will provide little or no excess bleed air for thermal anti-
+prediction, shnulatlon, and measurement of the effects of            icing ice protection systems. Therefore the icing
+icing, anti-icing fluids, and precipitation (snow, frost, and        community has been forced to consider efficient deicing
+heavy rain) on the aerodynamic characteristics of flight             systems as a possible alternative to the conventional
+vehicles,                                                            thermal antl-icing used on jet transports. One paper in
+                                                                     this meeting reported that a wind tunnel study showed
+      The current regulations FAR/JAR 25, for certification          that even the small ice thicknesses achieved by the
+of aircraft for/light into known icing conditions, offers            promising state-of-the-art impulse-type deicing systems
+clear guidance on the certification of ice protection                would cause losses in maximum lift of approximately
+equipment, but appears not to be as specific on the flight           40 percent for single element airfoils. This finding will
+test procedures for determining the safety hasardE of                likely create controversy and confusion within the icing
+leading edge ice on the aircraft's performance and handling          community as to the future of deicing systems for jet
+qualities. The French Certification Anthority's proposed             transports. It is recommended that further study of the
+regulatory changes, as embodied in Advisory Material Joint           tradeoffs of deicing versus anti-icing be carried out by the
+AMJ 25-1419, offers more specific procedures for evaluating          manufacturers of jet transports and that the results be
+the safety hazards of in-flight ice and is recommended for           made available to the ice protection industry so they can
+serious consideration by other certifying authorities,               properly direct future ice protection technology
+                                                                     development.
+     The use of CFD codes for predicting droplet
+trajectories and limits of impingement, ice shapes, and ice                Further studies of the effects of Reynolds number on
+protection system performance is widespread, and further             heavy rain effects are recommended. Further study of
+refinement of the codes along with experimental calibration          heavy rain effects is recommended in order to justify
+and validation is recommended. In particular the                     incorporating heavy rain considerations into the pilot
+development of a general three-dimensional ice accretion             procedures that have been developed for coping with low-
+code is recommended. Also recommended is the                         altitude windshear.
+development of flow codes that predict changes in
+aeroperformance caused by ice accretion and other surface                  The development of an empirical aerodynamic
+rouglmess. Ultimately, these codes should be combined                acceptance procedure for ground delclng/antl-lcing fluids
+into an overall airplane code that can predict ice                   was a remarkable achievement. Foliow-on work should
+formations and performance and handling qualities of a               include development of an analytical model of the flowoff
+complete aircraft in an icing encounter,                             and aerodynamics caused by these fluids during takeoff.
+                                                                     Ultimately, it would be desirable to develop an acceptance
+    More wind tunnel tests of complete aircraft models               criteria that depended on specifying only the physical and
+with simulated ice shapes and roughness is recommended,              chemical properties of the fluid, as is done for Mil Spec
+And inclusion of these wind tunnel data into fixed base              fluids.
+
+
+
+
+                                                                12
+                                                      REFERENCES
+
+1.   Hosni, M.; Coleman, H.; and Taylor, R.: Calculation        9.   Ross, F.: The Contr_isting Requirements for Type II
+     of Rough-Wall Turbulent Boundary Layer Heat                     De-/Anti-Icing Fluids. A1AA Paper 91-0759, Jan.
+     Transfer. AIAA Paper 91-0161, Jan. 1991.                        1991.
+
+2.   Taylor, R.P.; Coleman, H.W.; and Hodge, B.K.: A            10. Yih, C.S.: Wave Formation on a Liquid Layer for
+     Discrete element Prediction Approach for Turbulent             De-icing Airplane Wings. J. Fluid Mech., vol. 212,
+     Flow over Rough Surfaces. Mech. and Nuc. Eng.                  1990, pp. 41-53.
+     Dept., Mississippi State Univ., Report TFD-84-1.
+                                                                11. Kohlman, D.L.; and Rahbarrad, M.: Flight
+3.   Newton, J.E., et al.: Measurement of Local                     Evaluation of Several Ground Deiclng/Anti-icing
+     Convective Heat Transfer Coefficients from a Smooth            Fluids on General Aviation Aircraft. DOT/FAA/CT-
+     and Roughened NACA-O012 Airfoil: Flight Test                   TN90/31, Dec. 1990. (Avail. NTIS, 91N17005.)
+     Data. AIAA Paper 88-0287, Jan. 1988. (Also, NASA
+     TM-I00284.)                                                12. Ellis, N., et al.: Wind Tunnel Tests of Aerodynamic
+                                                                    Effects of Type I & II Ground De/Anti-lcing Fluids on
+4.   Oolbekkink, B.; and Volkers, D.F.: Aerodynamic                 Small Transport and General Aviation Aircraft During
+     Effects of Distributed Roughness on a NACA 632-015             Takeoff. AIAA Paper 91-0763, Jan. 1991.
+     Airfoil. AIAA Paper 91-0443, Jan. 1991.
+                                                                13. Salvador, R.: Application and Specification of
+5.   Kind, R.J.; and Lawrysyn, M.A.: Aerodynamic                    De-/Anti-Icing Fluids for Aircraft with Different Short
+     Characteristics of Hoar-Frost Roughness. AJ.AA                 Takeoff Time and Rotation Speed. AIAA Paper 91-
+     Paper 91-0686, Jan. 1991.                                      0560, Jan. 1991.
+
+6.   Cebeci, T.: Effects of Environmentally Imposed             14. van HengsL J.: Flight Tests of the Aerodynamic
+     Roughness on Airfoil Performance. NASA CR-179639,              Effects of Type I and Type H Ground De-/Anti-Icing
+     1987.                                                          Fluids on the Fokker 50 and Fokker 100 Aircraft.
+                                                                    AIAA Paper 91-0785, Jan. 1991.
+7.   Potapczuk, M.G.; and BidweU, C.S.: Numerical
+     Simulation of Ice Growth on a MS-317 Swept Wing
+     Geometry. AIAA Paper 91-0263, Jan. 1991. (Also,
+     NASA TM-103705.)
+
+8.   Musker, A.J.; and Lewkowicz, A.K.: The Effect of
+     Ship Hull Roughness on the Development of Turbulent                :!.
+     BoundaryLayers.International   Symposiumon Ship
+     ViscousResistance_ Goteborg, Sweden,1978,pp.10.1-
+     10.22(Avail. fromLiberDistrib., Vallinghy,Sweden).
+
+
+
+
+                                                           13
+    &yml&      T y p o f mugmW                    R d e m
+     m
+
+    mlc* Sudc.lnbud                     7ho*dripuaiora'(Abba)
+  riaid       ~mbudhg.trb               NACATW
+  tlrtd       Uu*ip*groarrr             NACATN457
+A 3l.ld       Cubaundunfl               NACATN457
+r *id         sand-                     'AorobyrPmch pmfile' WWI
+              ~~n.onw&m                 NACATU~
+4 3.lxld mDh&lgabp                      N A C A M
+0 3 . 1 ~ 1Romrdirqaq
+               ~                        NACATRL(S
+0 3 . l x l d Ro-arlp
+0 3.111d Promdirqrnrlp
+   3 6 . 1 d Cubaudum gil
+                                        NACATW
+                                        NAUTRu6
+                                        NACATtUE.7
+                                                                                             -                    -
+                                                                                     r 3-D tail @ ONERA fl. M, 0.134
+r-            Fma(inkirq1Mnol)
+A 24x106 M e D R u n i n P s n
+                                        N A C A T W
+                                        ~nt~Irrcid.m(DC4)
+                                                                                        (R,   6.2x104)
+                                                                                                                        -
+                                                                                     A 2-D single element @ LTPT. M, 0.29
+6 4 5 1 0 5 SirmkWlllplm*.
+b 5-106       SimuhWtalphmio
+V 7 & l d SkllUhWd.iClbOa.
+                                        DC-9
+                                        DClO
+                                        C-133                                -8
+                                                                                        (R, range 5-18x104)
+                                                                                     o 2-D multi&ent    @ LTPT. M, 0.20
+                                                                                        (R, range 5-16x104)
+                                                                                                                       -
+   7 n l d Cubaundumfl                  FKM 1703
+4 2 4 ~ 1 0 Chipped w o n LE'           DC-9
+4 2Rld WbUd                             NRAR1308
+W 24x106 Bvmddvds m LE          DC-9
+   32110s S m u l a t d t m a   FFARPTNI-MZ
+ol&ldSmuhled*rirgka             FFARPTAM                                 C
+8   -         Simukmdkmrwghnrrr I C A O B U L M T I
+
+              -    -   ~-
+
+v             ~ ~ ~honl a           d   i75i  VKI mun E    m2j
+v             S i m r W fmB             (767) VKI b a u n (W2)
+              DC-9wind W                TeQ LB-ISSAN
+      M a : 737 md 7ti7rlch mid slats
+     Solid c y n b k indcla d ~ e rmghness
+                                    d
+     Opr,.i*nbo*~sLplLrdclurbuwr,
+      RaQpJqmbdrhdcanrptWinJMa
+      '-1-  IlCpUbbhOd
+
+                   Entire u m r
+
+                                                                                      Nondimensionalroughness height Wc
+                                                                                  Figure 2.--Correlation of singWement and
+                                                                                    multielernentairfoil test results for loss in
+                                                                                    angleof-attackmargin to stall due to leading-
+                                                                                    edge roughness. (From paper no. 12).
+
+
+
+             MXH)l          .ooo1       .001       .o 1             .l
+                            Roughnesselement height - X
+                                  Wing chord            C
+                  F ~ u r e1.--Correlation of the en& of wing surface
+                   roughnesson maximum lift coefficienL (From
+                   paper no. 2).
+                                                       APPENDIX     A
+
+                                       LIST OF PAPERS - AGARD CONFERENCE
+                                                PROCEEDINGS NO. 496
+
+
+
+1.   Flight In Adverse Environmental Conditions                   12. The Adverse Aerodynamic Impact of Very Small
+     J.F. RENAUDIE, FormerlywithSTPAe, France-                        Leading-Edge Ice(Roughness)Buildupson Wingsand
+     (INVITED)                                                        Tails
+                                                                      F.T.LYNCH and W.O. VALAREZO, Douglas
+2. The EffectofWing IceContamination
+                                   on Essential                         Aircraft
+                                                                              Co.,and R.J.McGHEE, NASA Langley
+   FlightCharacteristics
+                      ILE.BRUMBY, Douglas
+   Aircraft
+          Co.,USA                                                 13. The Effect
+                                                                               ofHoar-Frosted
+                                                                                            Wings on theFokker50
+                                                                      Take-off
+                                                                             Characteristics
+3. Low TemperatureEnvironmentOperations
+                                      ofTurbo-                          J.N.BOER, FokkerAircraft,
+                                                                                               Netherlands
+   Engines
+   R. JACQUES, EcoleRoyaleMilitaire,
+                                  Belgium-                        14. Preparation
+                                                                                oftheIceCertification
+                                                                                                   oftheDornler328
+   (INVITED)                                                          RegionalAirliner
+                                                                                    by NumericalSimulation
+                                                                                                         andby
+                                                                      Ground Tests
+4. Evolution
+           ofRegulationAddressedtoCertification
+                                             of                       D. WELTE, W. WOHLRATH,    R. SEUBERT,
+   Airplanes
+           InIcingConditions                                          DornierLuftfahrt,
+                                                                                     Germany;W. Di BARTOLOME0,
+   G. CATTANEO, CEV Istres, France- (INVITED)                         R. TOOGOOD, Pratt& WhitneyCanada Inc.,
+                                                                      Canada
+5. IcingSimulation,a SurveyofComputerModelsand
+   Experimental Facilities                                        15. A Summary ofNASA Researchon Effects
+                                                                                                        ofHeavy
+   M.G. POTAPCZUK     and J.J.REINMANN, NASA                          Rainon Airfoils
+   Lewis, USA - (INVITED)                                             D.J. DUNHAM, R.E. DUNHAM, Jr., G.M. BEZOS,
+                                                                      NASA Langley, USA
+6.   Methods of Calculating the Collection Efficiencies of
+     Water Droplets in Three Dimensions with Industrial           16. The Measurement of Water Film Thickness on Airfoils
+     Applications                                                     in Heavy Rain Conditions Using Conductance Sensors
+     P. PREL, Aerospatiale, France                                    A. FEO, F. ROGLES/M. URDIALES, INTA, Spain
+
+7.   Simulation of Iced Wing Aerodynamics                         17. Experimental Investigation of Heavy Rain.fail Effect
+     M.G. POTAPCZUK, NASA Lewis; M.B. BRAGG,                          on a 2-D High Lift Airfoil
+     Univ. of Ill.; and O.J.KWON and L.N. SANKAR,                     F.C. TANG, NRC, Canada
+     Georgia Institute of Technology, USA
+                                                                  18. Aerodynamic Effects of De/Anti-lcing Fluids, and
+8.   Effects of Frost on Wing Aerodynamics and Take-Off               Description of a Facility and Test Technique for Their
+     Performance                                                      Assessment
+     R.J.KIND, M.A. LAWRYSYN, Carleton       Univ.,                   M. CARABONARO         VKI, Belgium
+     Ottawa,Canada
+                                                                  19. Wind TunnelInvestigation
+                                                                                            oftheAerodynamicEffects
+9. Model RotorIcingTestsintheNASA LewisIcing                          ofAircraft
+                                                                               Ground Delcing/Anti-lcing
+                                                                                                      Fluidsand
+   ResearchTunnel                                                     Criteria
+                                                                             forAerodynamicAcceptance
+   R.J.FLEMMING, Sikorsky  Aircraft
+                                 Div.UTC; T.H.                        T.A.ZIERTEN, E.G.HILL, BoeingCo.,USA
+   BOND, R.K. BRITTON, NASA Lewis,USA
+
+10. A Review ofIcingResearchattheRoyalAerospace
+    Establishment
+    R.W. GENT, RAE, UK
+
+11. Wind tunnelInvestigati9on
+                           ofa Wing-Propeller
+                                           Model
+    PerformanceDegradationduetoDistributed
+                                         Upper-
+    SurfaceRoughnessand LeadingEdgeShape
+    Modification
+    R.H. WICKENS, V.D. NGUYEN, NRC, Canada
+
+
+
+
+                                                             15
+                                              APPENDIXB
+                                       PROGRAM COMMITTEE
+
+
+Professor
+        IR.J.W. SLOOFF (Chairman)                      Professor Dr.Ix.J:L.van INGEN
+NationalAerospace
+                Laboratory,
+                          NLR                          DepartmentofAerospaceEngineering
+Anthony Fokkerweg2                                     DelftUniversity ofTechnology
+1059CM Amsterdam                                       Kluyverweg1
+Netherlands                                            2629HS Delft
+                                                       Netherlands
+Professor 5.A. ESSERS
+Institut de Mech_mique                                 Professor
+                                                               Dr.H. NORSTRUD
+Servided'Aerodynamique Appliquee                       Division
+                                                              ofHydro-and Gas Dynamics
+rueErnestSolvay21                                      The UniversityofTrondheim
+4000Liege                                              NorwegianInstituteofTechnology
+Belgium                                                N-7034 Trondhehn- NTH
+                                                       Norway
+Mr. L.H.OHMAN
+High SpeedAerodynamicsLab.- U66                        Mr. F. MONGE
+InstituteforAerospace Research                         Dpt.de Aerodlnemica   - INTA
+National Research Council                              Crta de Torrejon a Ajalvir, Kin. 4
+Montreal Road                                          28850 - Torrejon de Ardoz
+Ottawa,OntarioKIA OR6                                  Madrid
+Canada                                                 Spain
+                                                       Professor A.D. Young
+N.C. DUJARRIC                                          70 Gilbert Road
+ASE-Programme HERMES                                   CambridgeCB4 3PD
+BatimentPoincare                                       UK
+18 Avenue EdouardBelin
+31055ToulouseCedex                                     Mr. D.L.BOWERS
+France                                                 FlightDynamicsLaboratory
+                                                       WRDC/FIM]Vl
+Dr.B. WAGNER                                           Wright-Patterson
+                                                                      AFB, Ohio 45433
+DornlerLuftfahrt
+               GmbH                                    USA
+AbteilungAerodynamik
+Poetfach1303
+D-7990Friedrichshafen
+Germany
+
+Professor M. ONORATO
+Dipartimento diIngegneria
+                       Aeronautica
+                                 e Spazlale
+PolitecnicodiTorino
+C. soDuca degliAbruzzi24
+10129Torino
+Italy
+
+
+
+
+                                                  16
+                        REPORT DOCUMENTATION PAGE                                                                             I                OMB
+                                                                                                                                               FormNo.0704.0188
+                                                                                                                                                   Approved
+Public reporlmg t)tJrd<mto4"this collection o( information J8estimated 1o average 1 hour per relponse, including the itme for reviewing Insbxx:_k_s, searching exlllJng data sources,
+gaff_oringandmaintainingthe data needed,and€ompletingandreVmwtng1hecollectionofInformaUon.Sendcommentsregarding_is burdeneslirnataor any otheraspectofthis
+(x)llec_on OI InfocmalJo_, Including suggestions for reducing this burden, to Wma_gton   I-leadquartem Services, Directorate for Iniommf_n   OperlUon= and Reports, 1215 Jefferson
+I_tvls Highway,Suite1204,Arlington,VA 22202.4302,andto the Off'meof Managementand Budget,PaporwotkReducitonProje¢l(0704-0188),Wmadngton,DC 20503.
+
+
+                                                                  October 1991                                               Technical Memorandum
+4. TITLE AND SUBTITLE                                                                                                             5. FUNDING NUMBERS
+
+      Technical EvaluationReport,AGARD Fluid Dynamics Panel
+      Symposium on Effects of Adverse Weather on Aerodynamics
+
+6. AUTHOR(S)                                                                                                                           WU-505-68-10
+      JJ. Reinmann
+
+
+7. PERFORMING         ORGANIZATION          NAME(S) AND ADDRESS(ES)                                                               8. PERFORMING         ORGANIZATION
+                                                                                                                                     REPORT NUMBER
+      National Aeronautics and Space Adminis.tration
+      Lewis Research Center                                                                                                            E- 6460
+      Cleveland, Ohio 44135- 3191
+
+9. SPONSORING/MONITORINGAGENCY NAMES(S)AND ADDRESS(ES)                                                                            10. SPONSORING/MONITORING
+                                                                                                                                      AGENCY REPORT NUMBER
+
+      National Aeronautics and Space Administration
+      Washington, D.C. 20546-0001                                                                                                      NASA TM-105192
+
+
+11. SUPPLEMENTARY             NOTES
+
+      Responsible person, J.J. Reinmarm, (216) 433- 3900.
+
+
+
+12a. DISTRIBUTION/AVAILABILITY                   STATEMENT                                                                     112b. DISTRIBUTION           CODE
+
+
+
+
+                                                                                                                               I
+      Unclassified -Unlimited
+      Subject Categories Ol and 02
+
+
+13. ABSTRACT        (Maximum      200 word#)
+
+      The Fluid Dynamics Panel of AGARD sponsoreda Specialists Meeting on "Effects of Adverse Weather on Aerodynam-
+      ics" on April 29 to May 1, 1991, "mToulouse, France. The purpose of the meeting was to provide an update of the state-
+      of-the an with respect to the prediction, simulation and measurement of the effects of icing, anti-icing fluids and various
+      forms of precipitation on the aerodynamic characteristics of flight vehicles. Sessions were devoted to introductory and
+      survey papers and icing certification issues, to analytical and experimental simulation of ice frost contamination and its
+      effects on aerodynamics, and to the effects of heavy rain and deicing/anti-icing fluids. The 19 papers announced for the
+      meeting are published in AGARD Conference Proceedings CP-496 and are listed in the Appendix of this report. A brief
+      synopsis of each paper and some discussion, conclusions and recommendations are given in this evaluation report.
+
+
+
+
+14. SUBJECTTERMS                                                                                                                              15. NUMBER OF PAGES
+      Ice formation;Aerodynamiccharacteristics;
+                                             Aircraft performance;
+      Ice prevention; Cold weathertests                                                                                                       is. PRICE
+                                                                                                                                                      CODE
+
+17. SECURITY CLASSIFICATION                  118. SECURITY CLASSIFICATION                    I 19. SECURITY CLASSIFICATION                    20. LIMITATION       OF ABSTRACT
+
+            Unclassified                                    Unclassified                                   Unclassified
+    OF REPORT                                I      OF THIS PAGE                             I      OF ABSTRACT
+NSN7540-01-280-5500                                                                                                                     Standard     Form 298 (Rov. 2-89)
+                                                                                                                                        Prescribed   by ANSI    Std. Z39-18
+                                                                                                                                        298-102
+Nat,ona,
+ Aeronautics
+    an0 FOUR,.C.SSM.,.
+              IIIIII
+Lewis Research Center              ADDRESSCORRECTIONREQUESTED
+ICOMP (M,S. 5-3)
+Space Administration
+Cleveland, Ohio 44135
+
+Official Business                                               Postage and Fees Pa_d
+                                                                National Aeronautics and
+Penalty   for Private   Use $300                                Space   Adm_n_slrahon
+                                                                NASA    451
+

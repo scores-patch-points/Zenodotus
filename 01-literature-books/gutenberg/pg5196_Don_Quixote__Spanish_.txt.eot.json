@@ -1,0 +1,712 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+  "sha256": "6e522b0239f1e4c42785886cefc0a1a358a9d325dc319079b58d2b7b61b2b7f9",
+  "bytes": 112402,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 112402,
+  "bodyOffset": 0,
+  "bodyChars": 112402,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7845,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6152,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 88,
+  "surfaces": 36,
+  "referentEvents": 6,
+  "distinctReferents": 6,
+  "examined": true,
+  "edgesFound": 13,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 17,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 27
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 13,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 13,
+  "excerptOk": 13,
+  "rawChecked": 13,
+  "rawOk": 13,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 13,
+  "heard": 13,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "knew more than he|had|ever told",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "knew more than he had ever told",
+    "subject": "knew more than he",
+    "verb": "had",
+    "object": "ever told",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#909-1161",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "Loveliest was she among all the maidens of the Mariposa and of royal blood besides; although of this the great chief Torquam, who even at that moment lay sleeping in his lodge of deerskin on the crescent beach below, knew more than he had ever told."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "well knowest thou i|would|not disobey my father",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Well knowest thou I would not disobey my father",
+    "subject": "Well knowest thou I",
+    "verb": "would",
+    "object": "not disobey my father",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#1843-2015",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "Well knowest thou I would not disobey my father, him the bravest and most powerful of all thy warriors, him whom his people delight to honor, and whom I strive to please."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "wildenai|lifted|her eyes",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Wildenai lifted her eyes",
+    "subject": "Wildenai",
+    "verb": "lifted",
+    "object": "her eyes",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#3342-3422",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "Wildenai lifted her eyes,--eyes that widened first with wonder, then with fear."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "for many a week|had|the young man lingered",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "For many a week had the young man lingered",
+    "subject": "For many a week",
+    "verb": "had",
+    "object": "the young man lingered",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#3895-4170",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "For many a week had the young man lingered, renewing the friendship with the Mariposa cemented more than eighteen years before when his father, hindered by storms in his adventurous journey up the coast, cast anchor off the shore,--the first white man to see their island."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "in sore bewilderment and terror wildenai|watched|the distant ship",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "In sore bewilderment and terror Wildenai watched the distant ship",
+    "subject": "In sore bewilderment and terror Wildenai",
+    "verb": "watched",
+    "object": "the distant ship",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#4662-4729",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "In sore bewilderment and terror Wildenai watched the distant ship."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the clumsy spanish|galleon|she remembered",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the clumsy Spanish galleon she remembered",
+    "subject": "the clumsy Spanish",
+    "verb": "galleon",
+    "object": "she remembered",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#4843-4903",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "For this was not the clumsy Spanish galleon she remembered."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "any respect as|had|been that other",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "any respect as had been that other",
+    "subject": "any respect as",
+    "verb": "had",
+    "object": "been that other",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#4904-5013",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "The prow was not nearly so high, nor was the incoming vessel as large in any respect as had been that other."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "a lithe youth who|flung|himself breathless at her feet",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "a lithe youth who flung himself breathless at her feet",
+    "subject": "a lithe youth who",
+    "verb": "flung",
+    "object": "himself breathless at her feet",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#5842-5967",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "Up the stony trail leading to her cavern scrambled an Indian runner, a lithe youth who flung himself breathless at her feet."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "sends me to summon|thee|to torquam lodge",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "sends me to summon thee to Torquam lodge",
+    "subject": "sends me to summon",
+    "verb": "thee",
+    "object": "to Torquam lodge",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#5971-6034",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "“Thy father, oh princess, sends me to summon thee to his lodge."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "there kathah-galwa wilt keep|thee|safe",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "There Kathah-galwa wilt keep thee safe",
+    "subject": "There Kathah-galwa wilt keep",
+    "verb": "thee",
+    "object": "safe",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#6260-6308",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "There Kathah-galwa wilt keep thee safe, he says."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "mariposa|added|quickly",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Mariposa added quickly",
+    "subject": "Mariposa",
+    "verb": "added",
+    "object": "quickly",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#6489-6546",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "Yet will I obey if so my father bids,” she added quickly."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "wildenai|had|during some previous visit been at work",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Wildenai had during some previous visit been at work",
+    "subject": "Wildenai",
+    "verb": "had",
+    "object": "during some previous visit been at work",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#6575-6866",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "And hastily gathering together some reeds and colored grasses lying on the ledge, parts of an unfinished basket upon which, evidently, she had during some previous visit been at work, she flung them into a corner of the cavern and ran lightly down the narrow path leading to the village."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "wildenai|feels|no fear",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Wildenai feels no fear",
+    "subject": "Wildenai",
+    "verb": "feels",
+    "object": "no fear",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#7687-7750",
+      "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+      "text": "“Wildenai feels no fear, my father,” quietly answered the girl."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 13,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "a lithe youth who|flung|himself breathless at her feet",
+   "subject": "a lithe youth who",
+   "verb": "flung",
+   "object": "himself breathless at her feet",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#5842-5967",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "Up the stony trail leading to her cavern scrambled an Indian runner, a lithe youth who flung himself breathless at her feet."
+    }
+   ]
+  },
+  {
+   "id": "any respect as|had|been that other",
+   "subject": "any respect as",
+   "verb": "had",
+   "object": "been that other",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#4904-5013",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "The prow was not nearly so high, nor was the incoming vessel as large in any respect as had been that other."
+    }
+   ]
+  },
+  {
+   "id": "for many a week|had|the young man lingered",
+   "subject": "For many a week",
+   "verb": "had",
+   "object": "the young man lingered",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#3895-4170",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "For many a week had the young man lingered, renewing the friendship with the Mariposa cemented more than eighteen years before when his father, hindered by storms in his adventurous journey up the coast, cast anchor off the shore,--the first white man to see their island."
+    }
+   ]
+  },
+  {
+   "id": "in sore bewilderment and terror wildenai|watched|the distant ship",
+   "subject": "In sore bewilderment and terror Wildenai",
+   "verb": "watched",
+   "object": "the distant ship",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#4662-4729",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "In sore bewilderment and terror Wildenai watched the distant ship."
+    }
+   ]
+  },
+  {
+   "id": "knew more than he|had|ever told",
+   "subject": "knew more than he",
+   "verb": "had",
+   "object": "ever told",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#909-1161",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "Loveliest was she among all the maidens of the Mariposa and of royal blood besides; although of this the great chief Torquam, who even at that moment lay sleeping in his lodge of deerskin on the crescent beach below, knew more than he had ever told."
+    }
+   ]
+  },
+  {
+   "id": "mariposa|added|quickly",
+   "subject": "Mariposa",
+   "verb": "added",
+   "object": "quickly",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#6489-6546",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "Yet will I obey if so my father bids,” she added quickly."
+    }
+   ]
+  },
+  {
+   "id": "sends me to summon|thee|to torquam lodge",
+   "subject": "sends me to summon",
+   "verb": "thee",
+   "object": "to Torquam lodge",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#5971-6034",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "“Thy father, oh princess, sends me to summon thee to his lodge."
+    }
+   ]
+  },
+  {
+   "id": "the clumsy spanish|galleon|she remembered",
+   "subject": "the clumsy Spanish",
+   "verb": "galleon",
+   "object": "she remembered",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#4843-4903",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "For this was not the clumsy Spanish galleon she remembered."
+    }
+   ]
+  },
+  {
+   "id": "there kathah-galwa wilt keep|thee|safe",
+   "subject": "There Kathah-galwa wilt keep",
+   "verb": "thee",
+   "object": "safe",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#6260-6308",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "There Kathah-galwa wilt keep thee safe, he says."
+    }
+   ]
+  },
+  {
+   "id": "well knowest thou i|would|not disobey my father",
+   "subject": "Well knowest thou I",
+   "verb": "would",
+   "object": "not disobey my father",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#1843-2015",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "Well knowest thou I would not disobey my father, him the bravest and most powerful of all thy warriors, him whom his people delight to honor, and whom I strive to please."
+    }
+   ]
+  },
+  {
+   "id": "wildenai|feels|no fear",
+   "subject": "Wildenai",
+   "verb": "feels",
+   "object": "no fear",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#7687-7750",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "“Wildenai feels no fear, my father,” quietly answered the girl."
+    }
+   ]
+  },
+  {
+   "id": "wildenai|had|during some previous visit been at work",
+   "subject": "Wildenai",
+   "verb": "had",
+   "object": "during some previous visit been at work",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#6575-6866",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "And hastily gathering together some reeds and colored grasses lying on the ledge, parts of an unfinished basket upon which, evidently, she had during some previous visit been at work, she flung them into a corner of the cavern and ran lightly down the narrow path leading to the village."
+    }
+   ]
+  },
+  {
+   "id": "wildenai|lifted|her eyes",
+   "subject": "Wildenai",
+   "verb": "lifted",
+   "object": "her eyes",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt#3342-3422",
+     "ref": "01-literature-books/gutenberg/pg5196_Don_Quixote__Spanish_.txt",
+     "text": "Wildenai lifted her eyes,--eyes that widened first with wonder, then with fear."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:34.807Z"
+ }
+}

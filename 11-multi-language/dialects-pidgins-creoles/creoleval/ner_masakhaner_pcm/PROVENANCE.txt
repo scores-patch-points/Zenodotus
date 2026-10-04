@@ -1,0 +1,13 @@
+Source: MasakhaNER 2.0 (Nigerian Pidgin / Naija, "pcm" split)
+Fetched directly from: https://github.com/masakhane-io/masakhane-ner (MasakhaNER2.0/data/pcm/{train,dev,test}.txt)
+This is the exact dataset CreoleVal's own nlu/ner/download_masakhaner.sh script fetches -- CreoleVal
+does not vendor the raw text in-repo, only the download script and MaChAmp training configs
+(nlu/ner/configs/ner_naija.json), so this pocket fetched the real upstream files directly, the
+same way CreoleVal's own script would.
+License: Apache License 2.0, confirmed by fetching and reading
+https://raw.githubusercontent.com/masakhane-io/masakhane-ner/main/LICENSE directly (full Apache-2.0
+text, headed "The masakhane-NER code is based on the original transformer code by the Hugging Face
+team and released under Apache 2"). CreoleVal's own top-level README benchmark table independently
+lists this dataset as "Apache 2.0" too -- both sources agree.
+Domain: BBC News (Pidgin-language BBC News articles).
+Format: CoNLL-style token\tTAG per line, blank line between sentences (IOB2 NER tags: PER, ORG, LOC, DATE).

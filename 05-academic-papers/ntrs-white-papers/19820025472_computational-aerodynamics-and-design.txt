@@ -1,0 +1,1670 @@
+---
+title: Computational aerodynamics and design
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19820025472
+source_url: https://ntrs.nasa.gov/citations/19820025472
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-22
+retrieved: 2026-09-22
+sha256: f7f93aba2c346a537bf6ab251d1184ab8a909542a25c297fcb8b23e7c9bfd2b0
+pages: 28
+words: 8560
+cv_look_pages: 6
+---
+
+     NASA Technical Memorandum84257
+
+                                      NASA-TM-84257                 19820025472
+
+
+
+
+°
+
+
+
+
+    ComputationalAerodynamicsand
+    Design                i
+
+
+
+
+    W. F. Ballhaus, Jr.
+
+
+
+
+                                                                      €.
+
+
+
+
+    August 1982
+
+
+
+
+                                      Lt,'NGLEY R.--SE;,..-, , ;,J_TER
+-                                             Li_; V',Ry, NASA
+                                           •. _.,qON,.   VIRG!NIA
+
+
+
+
+    National Aeronautics and
+    Space Administration
+3 1176 00506 0760
+    NASA TechnicalMemorandum84257
+
+
+
+
+    Computational
+                Aerodynamics
+                           and
+    Design
+    W. F. Ballhaus, Jr., Ames Research Center, Moffett Field, California
+
+
+
+
+L
+
+
+-
+
+
+
+
+    N/SA
+    NationalAeronautics and
+    Space Administration
+    AmesResearchCenter
+    MoffettField.California94035
+
+                                                       6]gQ -,..932/,-/g
+                                                                      _
+    I1"
+
+
+°
+                                         COMPUTATIONAL AERODYNAMICS AND DESIGN
+
+
+                                                  W. F. Ballhaus, Jr.
+                                              Ames Research Center, NASA
+                                               Moffett Field, California
+
+
+
+                                                         INTRODUCTION
+
+
+.           In the last decade,           advances    in computer         technology      and data communications
+
+    began    to drastically        change     the way we       live and the way we work.              We bank,      shop,     make
+
+    airline    reservations,         and pay our bills by using              computers.        Now,     a new generation           of
+
+    children     is growing       up with     computers    in their homes           and in their classrooms.                This
+
+    computer     revolution       has    also had a major         effect    on the production           of new aircraft.
+
+    With    the major     investment        of the aircraft        industry    in computer-aided           design     and
+
+    computer-aided        manufacturing        (CAD/CAM),       much     of the development        process     from design
+
+    through    manufacturing         is computer       controlled.         Furthermore,       great progress        is being
+
+    made    in computerizing         the aeronautical          disciplines      that are      the elements     of design,
+
+    such as aerodynamics,            structures,       guidance     and control,         and propulsion.
+
+            Nowhere    has   this progress       been more        exciting     than in aerodynamics.           The avail-
+
+    ability     of modern       supercomputers        and the ingenuity         of computational          aerodynamics
+    researchers       have   resulted       in new methods        for solving       historically        intractable     non-
+
+    linear     flow-field       problems.      Advances     in data communications             have     facilitated     remote
+
+    access     to these      large computing         engines,     and-advances          in computer     technology     incor-
+
+    porated     in mini-     and midicomputers          now provide        sophisticated       interactive      graphics         and
+
+    data manipulation           capability.      All of these          advances     have profoundly        affected     the
+
+    aerodynamic       design      process.
+
+            Here we assess         the changing       role of computational              aerodynamics     in design     and
+
+    consider     the prospects          for continued     advancement.
+
+
+
+
+                                THE TOOLS OF THE DESIGNER              -- THEORY    AND EXPERIMENT
+
+
+
+i            From the beginning,           aerodynamicists        have     sought   to use     a proper    combination           of
+
+    theory     and experiment           to achieve    design     objectives       in a timely      and cost-effective
+-   manner.      The development           of theoretical        and experimental          techniques     has been motivated
+
+    by a desire       to assist         the aerodynamicist        in better     understanding         the influence         of
+
+    design     variables      on aerodynamic         performance.          In the early days of aviation,              the
+
+    Wright     brothers      built      a small wind     tunnel    and even used          some theory     to enhance        their
+
+     understanding       of aerodynamics         (fig. i).
+
+             In the decades        since,    the quality        of wind-tunnel          test techniques      has continued
+
+     to improve.        Today     these    techniques     are advancing        at an evolutionary          rate.      Theoreti-
+
+     cal techniques        also    advanced,    but     this advancement          was    impeded   by the nonlinearity                of
+                                           EXPERIMENT             the simplified         form of the partial              differ-
+
+
+
+          THEORY                                                  certain     flight    regimes,       such as the tran-
+
+           P = kV2                                                sonic Math       number     range.      In the late 1960s,
+
+
+                                                                  ential     equations       governing        fluid    flows      in
+
+
+                                                                  techniques
+                                                                  computers   became
+                                                                  tion of these        available.
+                                                                             sufficiently
+                                                                                  equations  large  Computational
+                                                                                              by finlte-difference
+                                                                                                   to  permit solu-
+                            FLIGHT                                aerodynamics        has since       advanced        at a revolu-
+
+                                                                  tionar 7    rate.
+
+                                                                          In spite of the rapid advancement                       of   _"
+
+                                                                  computational        methods,       it is not expected
+                                                                  that computational            simulations        will     com-
+
+                                                                  pletely     replace       wlnd-tunnel       testing       in the
+                                                                  foreseeable       future.       Their    roles       instead
+
+                     WRIGHT        FLYER                          are complementary.             Computations         can provide
+Fig. i.  In the beginning  there was a                            some of the less intricate               flow simulations
+blend of theory and experiment in aero-
+dynamic design,                                                   required     in design       more    quickly        and at less
+                                                                  cost    than wind     tunnels.        They can also be
+
+used     to make more        effective        use of wind     tunnels      by providing         the means      to (i) evaluate
+
+and improve        new design        concepts,     such as swept forward             wings     or jet flaps           for lift
+
+augmentation,         before       testing;     (2) carefully      discriminate         among     candidate        configura-
+
+tions,     eliminating           all but     the most   promising        before    testing;      (3) assist        the aerody-
+
+namicist     in instrumenting              test models      to improve       resolution       of the physical          phenomena
+
+of interest;         and    (4) correct       wind-tunnel      data      for scaling     and interference             errors.
+Computational         simulations          can also provide        data for conditions            that are outside             the
+
+operating     range        of existing       experimental      facilities.          An example        would    be a high-speed
+planetary     probe        entry    condition,     as in the Galileo           Probe    scheduled       to enter        the atmo-
+
+sphere     of Jupiter        in the late 1980s.
+
+         Inadequacies        in testing        (or analog    simulations)          are associated         with     limitations
+
+in operating         range,      such as Math      number,    Reynolds       number,     gas composition,             and
+
+enthalpy     level,        and   the control      of boundary       conditions,        such as flow nonuniformity,
+wall-     and support-interference               effects,    and model       fidelity.        When     these factors          are          ,
+
+properly     controlled,           the physical     phenomena       in the free-flight           condition        should      be       "
+simulated     correctly.
+
+        The inadequacies            in computational         (or digital)         simulations     are primarily             asso-
+ciated    with     poor     resolution       of physical     phenomena,        and this is a direct              result      of
+
+insufficient         computer       power.      If one accepts        the unsteady       compressible          Navier-Stokes
+
+equations     as an adequate           system     to describe      aerodynamic         flows,    then physical            phenomena
+
+of interest        could     be accurately        simulated       given sufficient          computer      power.       However,
+
+current     computer        power    is inadequate       to permit       numerical      solution       of these       equations
+
+with    suitable      resolution       of the wide       range of length           scales    active     in high-Reynolds-
+number     turbulent        flows.     Hence,     the aerodynamicist          usually       resorts     to mathematical
+                                                              2
+        formulations        that are approximations               to the Navier-Stokes           equations.        These     approxi-
+
+        mations     introduce       phenomenolo_ical           errors,     with    the consequence        that certain        aspects
+        of the flow-field            physics    are not properly           represented.         For any given mathematical
+
+        formulation,        the approximating           procedures        used    to solve     the governing       equations     and
+
+        boundary     conditions        introduce       numerical     errors.        Specifically,        these    errors     are due
+
+        to shch     factors       as inadequate        grid refinement           or incomplete       treatment     of complex
+
+        aerodynamic        configurations.            The consequences           are again     that physical       phenomena     are
+
+        not properly        represented.          Both phenomenological             errors     and numerical       errors     can be
+    -
+        reduced     by increased           computer    power.
+                 Because    of the inherent           differences        in the nature        of the two types of simulations,
+
+        wind     tunnels    and computers         are complementary:              they have different          inherent      errors    in
+
+        simulating      free-flight          conditions.        The principal        point     to be emphasized       is that com-
+
+        putational      and wlnd-tunnel           simulations       are merely        tools of the designer.            Success       in
+
+        design     depends     very    strongly       on the judgment        and expertise           of the designer,        his knowl-
+
+        edge     of aerodynamics,           and his ability        to use these design           tools effectively.
+
+
+
+
+                                     THE ROLE     OF COMPUTATIONAL          AERODYNAMICS        IN DESIGN
+
+
+
+                                                             The Design      Process
+
+
+
+                 In recent        years,    aircraft     design    has been complicated              substantially     by the trade-
+        offs     that must be made           to accommodate        conflicting        requirements.        For commercial         air-
+
+        craft,     these involve           performance,        cost, noise,        and exhaust       pollution,    all of which
+
+        are driven         by economic       and societal        pressures.         In the case of military           aircraft,
+
+        different      mission       profiles     require       trade-offs       at multiple     design    points.         For example,
+
+         an aircraft        may be required           both    to cruise     and maneuver       efficiently        at transonic
+
+         speeds    and to accelerate            rapidly       to supersonic        speeds    and perform       effectively     in that
+
+         regime.      The optimum          aerodynamic        configurations        that correspond        to each of these
+
+         design    points     are significantly              different.      This suggests        aerodynamic       designs    with
+
+,        variable geometry,           which     further       complicates        the mechanical       and structural        design     of
+         the aircraft.
+r
+                 The process        by which     these       requirements        are converted       into a production        aircraft
+
+         is illustrated           schematically        in figure     2 (M. Lores,       Lockheed-Georgia,           private    com-
+
+-        munication,        May    1982).      The system       requirements,        as determined        from customer       require-
+
+         ments     and mission        analysis,       feed into     the conceptual          design    phase.      From simple        analy-
+
+         ses and parametric            variation       studies,    a conceptual        baseline       emerges.      During     the
+
+         preliminary        design     phase,     the concept       is refined       by means     of more detailed          analyses
+
+         or exploratory           tests or both.         Design    baselines        are then allocated           to each     of the
+
+         technical     specialties.            In the detailed        design       phase,     detailed    analysis    or testing
+         leads     to final       tests     to verify     the production          baseline.
+                                             Advanced
+
+                                                        Design           Project Design
+
+                 [Mission Analyses I
+
+
+
+
+                   [ C_genPtUal _          I _;;     . ry _      [   Oesi:n       ]//                 [M_re          1
+                 • Optimization          • Optimization        • Sub-Optimization                                                                _-"
+                 • Parametrics           • Multi-Discipline    • Multi-Discipline
+                 • Simple Analyses       • Sophisticated    .I • Sophisticated
+                                         • Exploratory Tests I • Part Designs
+                                                             I • Verification Tests
+               Time     Minutes                     Hour_           II          Days
+               Scale                    L.._-Computationa!                Methods                I
+
+                                      Fig.    2.     The aircraft           design     process.
+
+
+
+                         Levels    of Use of Computational                   Aerodynamics             in Design
+
+
+
+       Pierre    Perrier         (Dassault,        private    communication,              Feb.       1982) defines         four distinct
+
+levels    at which       computational         aerodynamics              is used    in the design              process.      Level    0
+
+involves     no use whatsoever,              with    the designer           relying       on analysis,           empiricisms,        and
+
+successive      wind-tunnel         testing        to refine     the design.              Level       i involves     extensive        com-
+
+putation     in the preliminary              design    (PD) phase           followed       by configuration               refinement
+
+via wind-tunnel          testing      in the detailed          design         (DD) phase.             Level     2 involves       exten-
+sive   reliance        on computations         in PD with a synergistic                    mixture       of computations            and
+
+wind-tunnel       testing      in DD.        Final performance              verification             is obtained     using wind-
+
+tunnel     testing.       At   level 3, computational                    simulations       are the principal               design    too!
+
+in both     PD and DD, with           some wind-tunnel          verification              provided       at appropriate           check-
+
+points    in both       PD and DD.
+
+       There    is a variation          among       the broad       range of designers                 of aerospace         vehicles
+
+in the degree          to which     computations        are relied            on in the design                process.      It is fair
+
+to say     that all major         airframe         manufacturers           have progressed             beyond     level     0.    That     is,
+
+they all use computations               at least in PD.                  The result       has been       a greater         degree    of
+
+management      confidence        in the designs            emerging        from the PD phase.                  Hence,     larger    per-
+
+formance     gains      are possible         as a result       of the consequently                    greater     degree     of design
+
+flexibility       permitted.          Furthermore,          for the same budget,                 a greater        degree     of design
+
+refinement      can be achieved          before       encountering            the decision            point     that determines
+
+whether     the project        will    continue.
+
+       Some manufacturers             have not progressed                 beyond     level i to the use of computations
+
+in DD,     either      because     they do not consider                  aerodynamic       refinements           in their products
+
+to be highly          important     or because        they     lack confidence             in their computational
+
+                                                                4
+    simulations.           Generally,         to reach    level    2, a design        group must        have     (i) a turnaround
+
+    on their     computations          competitive        with    their wlnd-tunnel            fabrication       and    test turn-
+
+    around     and    (2) a high       degree     of confidence          in their computational               simulations,          at
+
+    least    in the operating            range near       the design       point.      According        to Raimo Hakkinen
+
+    (McDonnell-Douglas,              private     communication,          Jan. 1982),        "The role of wind           tunnel       test-
+
+    ing in transport           wing    design     has evolved       from that of almost               complete    dominance          in
+    the 1960s        to the current           one of verification           testing    after     the final configuration
+
+    candidates        have been       selected     by computational              methods.      The total       cost of the design
+
+    process     has been        correspondingly          reduced    by an order of magnitude                  (in a recent          project
+
+    by a factor        of 15), and a specific              wing    design        can be evaluated        in as little          as
+    24 hours,        instead     of the several          weeks normally           required     for fabrication          and testing
+
+    of a wind        tunnel    model."         For fighter       aircraft        designs,     which    strain     the limits         of
+
+    performance        and require        treatment       of complex        three-dimensional           viscous     flow phenomena,
+
+    computations           account     for only    about 20 to 30 percent               of the aerodynamic             design       effort,
+
+    according        to Richard        Bradley     (General Dynamics,             private     communications,          Jan.    1982).
+
+    This     percentage        is expected       to increase       as computational            treatment       of these complex
+
+    phenomena        advances.
+
+             Level    3 use of computational              aerodynamics           is still very        rare,    although       there       are
+
+    some outstanding            examples,       usually     involving       only minor        to moderate        changes      to some
+
+    base     configuration           that has been        extensively       tested.         The Dassault       Falcon    50 is one
+
+    of these     examples.            In the case of this transatlantic                     business    tri-jet,       a new    compu-
+
+    rationally        optimized        wing was     introduced      in fabrication            and flight       test with only one
+
+    low-speed        and    two high-speed        wind-tunnel           test series     (P. Perrier).
+
+             The potential           payoffs     from the extensive          use of computational              simulations          at
+
+    levels     2 and 3 are high, but               there is a significant              risk    that must       be addressed.
+
+    Generally,        testing        occurs    later     in the design       cycle     in levels       2 and 3 than in levels                   0
+    and i.      Before       verification         tests are performed,             the aerodynamic         design      cannot       be con-
+
+    sidered     frozen,        and hence       the nonaerodynamics           groups     cannot       freeze     their designs.
+
+    Should     difficulties           be uncovered        late in the design           cycle by verification               tests,
+
+    development        cost, schedule,            and performance          can be significantly            affected.          On the
+
+    other     hand,    computations           can significantly           shorten     the time required           for design;            they
+
+.   also     provide       the designer        a tool with which           design     deficiencies,        once uncovered,               can
+
+    be quickly        corrected.
+
+             A management        technique        that has worked          effectively        at Dassault        and some com-
+
+    panies     in the United           States     is to pursue          design    refinements        computationally          as an
+-   off-line      project       activity.         That    is, computational           simulations        are not relied          on in
+
+    DD and hence           cannot     adversely     influence       the project        critical        path in terms of cost,
+
+     schedule,       and performance.             These    simulations       are undertaken            by a design      team working
+
+    off-line         and seeking       improvements        that can be made           available        to the project         in a
+
+     timely    fashion.         Whether        these improvements          should     be incorporated           in the project
+
+     design    is a decision           that must be made           by the project           manager.      Frequently          this type
+     of off-llne        effort       can reduce     design       time    (and, hence,        cost)     and improve      performance.
+
+                                                                    5
+If the computational               design    team is not successful,              they dQ not adversely           affect          the
+
+project     cost,        schedule,    and performance          beyond     that which     was anticipated          in the
+original        project     plan.
+
+
+
+                            Some Lessons        from the Experience          of the Last        Decade
+
+
+
+         The current        level of integration           of computational           simulations       into the design
+
+process     has resulted           from    the learning     experience       of more     than a decade.           This      experi-
+
+ence began        with     research       in numerical     solution      techniques,      followed       by the development
+of computer        codes     based    on the products          of that research.          Extensive       evaluation         and        :'
+
+experience        with     these codes has          resulted    in their gradual         acceptance       by    the designer
+
+and his management.               And so the process           continues,     as improved        solution       techniques
+are devised.
+
+         Many    lessons     have    been    learned,     including      the following:          (i) the proper            role    of
+
+computations        can be       easily     misunderstood       by the designer         and his management;            (2) cali-
+
+bration,        interpretation,           and verification       are all essential           elements     in adapting            com-
+putational        analysis       to design;      (3) there are definable             factors     that determine            the
+
+degree     to which       a given     computational        capability       is useful;        (4) new codes must            be
+
+marketed        carefully       -- acceptance       will be gradual;        and     (5) aerodynamics       is still an
+
+art -- no entirely           satisfactory       procedure       has yet been        devised     to assist       the designer
+
+in defining        aerodynamic        shapes    for specified         performance       objectives       and design         con-
+straints.         Each    of these items        is addressed         in turn.
+
+
+
+        Proper     role of computations             -- It is now generally           accepted    among     aerospace
+
+designers        and managers        that computations          should    be used     extensively        in vehicle         design.
+
+The question        is no longer          whether      these methods       should    be used but how           to get them to
+
+do more.         This current        attitude       is a result      of a lengthy      educational        process.          Accord-
+
+ing to M. George            (Northrop,       private     communication,       Feb.    1982),    "In the beginning,                the
+
+codes    were     expected       to provide     'answers,'       i.e., actual        drag,    lift and moment          data.
+
+Today,    with     greater       acceptance     and more       extensive     use, the codes are used              to provide
+information        such    as shock       formations,      for example,       and other       flow characteristics                and
+
+phenomena       which     are    the causes     of aerodynamic          performance.         Such analysis       was previ-              .-
+
+ously    impossible        without     expensive,        time-consuming       tests.     Today,     the codes have                       •
+
+become    an integral           part of the design         process      -- that process       in fact is dependent                on
+the availability           and use of computational              methods."
+
+        Generally,        computations        are useful       in providing        the aerodynamicist          with    an
+understanding        of the effects           of configuration          modifications        on the features          of    the
+
+flow    field.      They    are normally        not reliable       in predicting        absolute     performance            values
+
+for a given        configuration.            Failure    of the designer           or his management        to understand
+
+the proper       use of computational            aerodynamics        can cause him        to abandon       its use and,
+hence,     lose the advantages              that derive     from it.
+            II!ipqrtance of calibration,              interpretation,       and verification        -- Extensive       experi-
+
+    euL'e with    computations         in aerodynamic       analysis       and design     indicates       the importance
+    ,,l _'al|bratlon,      interpretation,            and verification.         The aerodynamicist,           because       he
+
+    ,_dt,lsta_ds      that there are numerical             and phenomenological           errors    associated        with       com-
+
+    putationa[     simulations,          must   calibrate     his computational          tools before       applying        them.
+
+    Normally,     computed      results      are correlated        with    available     wind-tunnel       data     for some
+
+    representative        baseline       configuration      to determine        the extent       to which     the computa-
+
+    tions    represent     the essential         flow-field       physics.      Discrepancies       are reduced        by
+
+    appropriate       "tuning"     to empirically         model     those physical       features     of the flow that
+
+    are not adequately           treated     by the particular           computational        approach    in use.
+
+            For the case       of an invlscid          computational       simulation,        this could     involve       model-
+
+    ing the boundary          layer,     by assuming      an appropriate        displacement        thickness,       and the
+
+    shock/boundary-layer           and trailing-edge          flow conditions.           For    the case of wing design
+
+    using    a code    that is capable          of solving     only      flow past a wing,        some means       must be
+
+    used    to model     the effects       of the fuselage         and other aircraft           components     on the wing
+
+    flow.     Deficiencies        in the computations,            with    appropriate     modeling       included,     must       be
+
+    accounted     for by skillful          interpretation         of computed     results.        Guidance     for interpre-
+    tation    is provided       by results       of the calibration.            Once properly        calibrated,       the com-
+
+    puter    code can be used by the designer                 to solve the aerodynamics              problem       of interest.
+
+    In the case of a design              problem,      the computer       code can be used         to help define          the
+
+    aerodynamic       shape    that best meets performance                objectives     while    satisfying        design       con-
+
+    straints.      Because       the computation         normally     is not reliable          in establishing        the abso-
+
+    lute level     of performance,           experimental      verification       is required        before    the design
+
+    can be accepted.
+
+
+
+            Usefulness     of a given computational               capability     -- For an aeronautical             engineer
+
+    to decide     to invest       his time to learn how             to use a new computer           code, there must be
+
+    clearly     evident    gains     in capability        relative       to previously        existing    codes     or proce-
+
+    dures.      Capability       is measured        in terms of accuracy         and reliability,           run cost       and
+
+    turnaround     time, ease of use, and versatility.                      A designer        will use only        those    com-
+
+    putational     tools in which he has confidence.                      He builds     this confidence        through
+
+•   extensive     experience       in comparing         computed     results    with validated        data -- the calibra-
+
+    tion process.         This gives him a measure             of accuracy       and reliability,           as well    as run
+
+    cost and turnaround           time.      For any given analysis            then, he has        the information
+
+    required     to determine        which      of the tools he has calibrated                can provide     acceptable
+
+    accuracy     at minimum       cost    in the time required.
+
+            In high-prlority         design     activities,        turnaround    dominates       cost considerations.
+
+    In design     studies      constrained       by    tight computer       budgets,     the opposite        may be true.
+
+    However,     in assessing        cost and turnaround            time, one must       consider        the time and cost
+
+    of people,     as well       as the time and cost associated                with computer        facilities.           Ease
+
+    of use, or code "friendliness,"                   is directly     associated       with    these time and cost fac-
+
+    tors.      Friendliness       refers     to such features         as ease of manipulating              data;    the effort
+
+                                                               7
+involved     in the input of data                (especially        geometry    data)    and post-processing             of flow-
+
+field    data;     the degree       to which       input/output        is consistent       with    other    codes used by
+
+=he organization;           code transportability              and maintainability;          and code structure             and
+
+readability.         Versatility          refers    to the scope        of applications          to which    a code can be
+
+applied.      It is certainly             easier    to justify        the time investment          required       to learn
+the use of a new code if that code can be used in a wide                                 range    of applications          that
+
+are of interest           to the organization.
+
+
+
+        Marketln$        new codes -- New methods            and new codes,         like any new         product,    must be
+
+marketed     very    carefully.           Premature       release     can result     in reputation         assassination,            i_
+
+virtually     guaranteeing          that the new          technology     will    not be accepted          by the user com-
+
+munity.      This discourages             early    release     of new technology          to potential       users;      the
+
+code    developer        seeks    to wring       all of the "bugs"        out of a code before             its release.
+
+Hence,    detailed        testing       of the software        is continued       until    the code is thoroughly
+
+certified,        with    the consequence          that its release        is delayed       1 to 2 years.           An alter-
+
+native    approach        is to risk       early release           of an incompletely       tested       code to a care-
+
+fully    selected        group of users.           These    users     are then scrupulously          serviced       by    the
+
+code development           team.        For example,        the team can keep        a record      of all cases          run, of
+
+the input     and output,          and of other         information      necessary       to determine       the causes          of
+
+failure     in any given          run.     Deficiencies        in the use of the code are quickly                   corrected.
+
+Records     are kept       to document          deficiencies        in the code itself,          which    can then be cor-
+
+rected    with     changes       appropriately          documented.
+
+        The advantage        to the code development                 team is that the select             group of users
+assists     in debugging          the code in practical              applications.        Furthermore,        this initial
+
+group    of trained        users    can then       train additional        users,       relieving    the code develop-
+ment    team of that burden.               The advantage           to the users     is early access         to a new
+
+analysis/design           capability.           Moreover,    these     initially     trained      users    are recognized
+
+as valuable        assets    within       a company      -- their services        are in demand          by a number       of
+
+project     managers.        Experience          indicates     that acceptance          of any fundamentally             new com-
+
+putational        technology       by    the aerodynamicist           and his management          is a gradual       process.
+
+It occurs     in any company             only after       an extensive     calibration       phase       during    which    the
+
+capabilities        and proper          use of the new        technology       are thoroughly       evaluated.
+
+
+
+        Aerodynamics        is still an art -- The need                to control       the vast amounts          of informa-
+
+tion     involved    in modern          design    has    led. to increased       use of aircraft          synthesis       com-
+
+puter     codes    to combine       all of the technical              specialties       so that an integrated             design
+
+solution     can be achieved             quickly    and efficiently.            In such an environment,             the design
+
+flexibility        available       to the aerodynamicist              is limited,       and the interfaces          with    the
+
+other     aeronautical       specialties          are clearly        defined.     Within    these defined          limitations,
+
+the aerodynamicist           must       first    formulate     a definition       of the design          problem    in terms
+
+of aerodynamic           performance       objectives        and then decide        on the specific         approach       to be
+
+used     to solve    the problem.
+
+                                                               8
+                 Two distinct        problem    solving     approaches       can be identified.            The first,     which       we
+
+         might    call     the conventional        approach,       begins    with    analysis     and then leads to detailed
+
+         wind-tunnel        testing    of a limited        number    of candidate        configurations.         From    the result-
+
+         ing performance           data, a configuration           is selected       as the solution        to the problem,           or
+
+         new configurations           are selected      for further         testing.      In this approach,           computational
+
+         simulations       may     or may not be used in defining               candidate      configurations         for wind-
+
+         tunnel    testing.         The second     approach       is called    direct     design,    or optimization.            Here,
+
+         the aerodynamicist           formulates     and solves          a constrained       optimization     problem,     defining
+
+    eL   a function        to be minimized        (e.g.,     the drag      or some combination        of performance           param-
+         eters)    for a set of decision            variables       that represent        the configuration           shape,    subject
+
+         to a set of imposed           constraints.         The    constraints       generally     involve     limitations       on
+
+         geometrical        flexibility     and acceptable          levels    of aerodynamic        performance.         Computa-
+
+         tional     simulations       are a fundamental           part    of the optimization        approach;        they are
+
+         required        to compute    the objective         function      for various       test design     variables     used       in
+
+         searching        the design    space.
+
+                 Notice     that in the conventional              approach,     the final selection          is based     on the
+
+         testing     of a limited       number     of candidate          configurations,       but over a broad         range.
+
+         Only    a narrow     design    space     can be     searched,      and it may not include            the best feasible
+
+         design.         In the optimization        approach,       the focus is on producing              a single     configura-
+
+         tion that represents            the best    trade-off       of design       objectives     subject     to the imposed
+
+         constraints,        and    in principle     an infinite          number    of candidates     have been considered
+
+         in choosing        the optimum     configuration.           However,       only a limited     number        of design
+
+         points     are considered.         Consequently,          performance       difficulties     may be encountered              at
+
+         other    points     in the operating        range of the aircraft.               The design       techniques      in cur-
+
+         rent use are combinations               and variations          of the two approaches        outlined        above specifi-
+
+         cally    tailored       to solve a particular            problem.
+
+
+
+
+                                     EXAMPLES     OF COMPUTATIONAL          AERODYNAMICS        IN DESIGN
+
+
+
+                 This     first example        illustrates     how new computational             technology     is int4grated
+
+"        into existing        design    procedures.          The Highly      Maneuverable        Aircraft     Technology       (HIM_AT)
+
+         design     (fig. 3) took place in the mid-1970s                    and was     the first in which           a nonlinear,
+
+         three-dimensional,            transonic    finite-difference           code was used       in an aerodynamic           design
+
+         (ref.     i).     The HiMAT     project    objective       was     to develop    and evaluate       high-maneuverability
+
+         technologies        and    to synthesize      those      technologies       in a remotely     piloted        research
+
+         vehicle     (RPRV).        The specific     aerodynamic          objective    was    to improve      fighter    maneuver
+
+         performance        without     compromising       other mission        requirements,       such as cruise         perfor-
+
+         mance    and     supersonic     acceleration        capability.        The tight budget,           typical    of this type
+
+         of technology        demonstration        project,       and the ambitious          performance      goal    required    heavy
+
+         reliance        on analysis     and computations           with a minimum       of wind-tunnel        testing.
+                                                                                   The design-team           strategy       was     to opti-
+
+                                                                          mize     thebasic         design    for high maneuvera-
+
+                                                                           bility      and then to determine            an acceptable
+
+                                                                           cruise      configuration         that could be achieved
+
+                                                                          using     a variable        camber       system    and prepro-
+
+
+                                                                          grammed twist increment due to structural
+                                                                          bending.  The preliminary design and initial
+
+
+                                                             _
+                                                             Vl           stages     of the detailed design would be con-
+                                                                          ducted     using linear theory, a linear invls-
+
+          Fig.    3.       HiMAT    RPRV     three-view,                  cid approximation            to the Navier-Stokes                          -
+                                                                          equations.         This     computational          approach        is
+
+cost-effective               and,    in its present           mature       stage of development,              is capable          of treating
+
+complex          aerodynamic         configurations.               However,      it does not properly               account        for shock
+
+waves       or other         nonlinear        phenomena       encountered          in the transonic           regime.        Refinement
+
+of the configuration                    to meet    transonic         performance         requirements        would     subsequently           be
+
+accomplished               using    the Bailey-Ballhaus              (B2) nonlinear          transonic        code    (ref. 2), a less
+
+approximate            formulation           for transonic          flows      than linear         theory.     Wind-tunnel           tests
+
+would       be conducted            at appropriate           stages    of the design           as needed.
+
+           The baseline            wing-canard      design         was achieved        after    several       linear    theory        design
+iterations.                The design        exhibited       good subsonic          drag    characteristics           but,    as expected,
+
+was       deficient         at the transonic           designpoint             (M = 0.9).       Wind-tunnel          oil-flow        visuali-
+
+zation          indicated      shock-induced           separation         on the outboard           wing     and canard       and a strong
+
+                                                                          unswept      shock wave near         the trailing           edge of
+
+      .16                           CL = I             _                  the inboard        wing.     These flow features              were
+
+
+      .14              _
+                                                       /                  primarily
+
+                                                                          M=   = 0.9
+                                                                                           responsible
+
+                                                                                           shown    in figure
+                                                                                                             for the excess
+
+                                                                                                                    4 for
+                                                                                                                                      drag at
+
+                                                                                                                              the linear
+                                                                          theory    design.
+
+C D .12                                                                          To more       thoroughly      understand           the con-
+                                                                          figuration        deficiencies       and     to provide       data
+
+                                                   DESIGN                 to calibrate         the B 2 code,        a wind-tunnel
+
+      .10                                              GOAL               test was conducted           in which        upper-surface
+
+                                                                        pressures were measured.   Comparisons   of
+                        I           I          t         I           I                                                                                    .
+           .5          .6          .7         .8        .9          1.0 these measurements  and B2-computed  pressures
+
+                                        M_                                for two span stations              are    shown     in figure        5a.   -"
+
+WIND       TUNNEL      TEST OF:                                           The B 2 code accuracy was found                    to be accept-
+            LINEAR THEORY               DESIGN                            able in the inboard 70 percent                     of the semi-
+
+      [] DESIGN WITH INBOARD                   IMPROVEMENTS               span, where        the shock wave was not highly
+
+      V     FURTHER         DESIGN IMPROVEMENTS               IN          swept.       However,      it failed       to capture         the
+            OUTBOARD          WING AND        CANARD                      highly    swept      outboard      shock.         This    defi-
+
+Fig.      4.   Reduction           of HiMAT maneuver                      ciency had been anticipated by the code
+           configuration            drag rise.                            authors (ref. 3) and was eventually corrected
+
+                                                                     I0
+     (ref. 4), as indicated                            in figure              5b, but not in time to influence                              the HiMAT           design.
+
+     Consequently,                   the B 2 code was                      applied        to improve         the design            only for the inboard
+
+     70 percent                semispan         region.                   The B 2 code was also incapable                          of including          the canard
+
+     in the flow-field                        computation.                   During        the calibration              phase,       it was determined                     that
+
+     the effect                of the canard                  on the wing flow                   could be modeled                 by superimposing              an appro-
+
+     priate         amount           of wing          twist         on the geometrical                 twist of the wing in applying                             the wing
+     boundary             condition.
+
+             With           these improvements,                            the code could be used effectively                              to guide       the designer
+
+     in modifying                   the wing          shape         to improve             the wing     flow and thereby                   reduce       the transonic
+
+     drag.          The airfoil                sections             and wing             planformwere             modified         in a trlal-and-error                     man-
+
+     ner to minimize                      the computed                    strength        and extent         of the shock without                     sacrificing
+     lift.          This was continued                        until          suitable          pressure       distributions               were    obtained.               Veri-
+
+     fication             wind-tunnel            tests of the resulting                            configuration               indicated         that    the compu-
+
+     rationally                derived        modifications                   were        successful         in weakening            or eliminating              shock
+
+     waves     over much                  of the inboard                    70 percent           of the span.            This resulted                in a major
+
+
+                                _BAILEY-BALLHAUS                                   _= 5°
+                                     O TWT 294 TEST W7, o_~ 5°                                                                                               _ = 5°
+                                                                                                                        O TWT294TESTW7,                   ol~5 °
+
+               -1.01
+                -.8  _ = 0.55                                                                               -1.0 [ _ = 0.55
+                                                       ....                                                  .-8!
+                    -.6,                                                                                      -.6
+
+         Cpu                                                                                             -.4
+                    -.2                                                                              Cpu -.2 L                                                             I
+
+                      o
+                    -.4[                                                                                          oj
+                     .2 [                                                           "o                         .2 i                                             ""o        t
+                     .4 i                                                                                      .4 1
+                           0             .2      .4            .6            .8          1.0                        0        .2       .4         .6       .8              1.0
+                                                       x/c                                                                                 x/c
+
+
+             -1.0                                                                                    -1.0
+                           77= 0.85                                                                                 _ = 0.85
+
+
+..            -.6
+              -.4                              "'°'"                ',,                                -.6
+                                                                                                       -.4
+
+
+
+                0                                                                                         0
+
+               .2                                                                                       .2 i
+               .4 , - ........                                                                          .4, .......                                                   .
+                     0              .2          .4             .6             .8           1.0                0         .2           .4          .6        .8              1.0
+                                                       x/c                                                                                 x/c
+
+
+                           (a) Original               B 2 code.                                                     (b) Improved           B 2 code.
+
+               Fig.            5.        HiMAT wing            surface             pressure       comparisons           at two span stations.
+
+                                                                                           ii
+reduction        in drag.      In the outboard          region,        where    the flow was nearly            two-dimensional
+in a plane        normal     to the sweep dfrection,                 a two-dimensional        nonlinear        transonic       code
+
+and sweep        theory were        used    to improve     the configuration.               This    further     reduced     the
+
+drag     so that     the final       configuration,       when        tested,    indicated     a substantial         improve-
+
+ment     over    the llnear-theory           design     (fig. 4).
+
+         The HiMAT     design       illustrates       how new computational               technology     is accepted        by the
+designer.         The motivating           force behind        the use of the B _ code was              the need     to solve
+
+a particular         transonic       design    problem,        in the midst       of a design        effort,     that could
+
+not have been         solved      within     schedule    and budget        constraints        by using       existing     proce-
+
+dures.      The Rockwell          research     staff    acquired        this code before           it had been      thoroughly
+
+tested     and    certified,       extended     it in consultation              with    the code developers          to treat
+
+the winglets        at the wingtlps,           calibrated           it to understand        its deficiencies,           and mod-
+
+eled     the effect       of the canard        on the wing by introducing                  appropriate       twlst_in     the
+
+wing    boundary      condition.           They applied        the code only where           calibration       studies     indi-
+
+cated     it could be used reliably               (the inboard          70-percent        semispan).      They used       it
+
+effectively        to find configuration              modifications        that would        improve     features    of the
+flow that        the code     could provide        reliably,          that is, pressure        distributions,           and sub-
+
+sequently        conducted     wind-tunnel        tests to verify          the absolute        level of drag perfor-
+
+mance.      Finally,       they interacted        with    the code developers,               providing       valuable     feed-
+
+back    that was used         to improve       the code for future              design     efforts.
+
+        The HiMAT     design       approach     involved       a combination           of computations        and wind-tunnel
+
+tests.      Budget    limitations          precluded     the extensive           testing     normally     associated       with
+
+the conventional           design    approach     defined           in the preceding        section.     Although       some
+
+optimization        was    used    to obtain      the linear          theory    design,     the primitive        stage of
+
+development        and excessive           run time of the B 2 code precluded                 its use in an optimiza-
+tion mode        for refinement       of the transonic              design.      Hence,    a trial-and-error         approach
+was    used.      The following       example,        design    of a helicopter           rotor airfoil        section,        seeks
+
+a more    direct     approach       toward     configuration           refinement       by use of optimization.
+
+        A schematic        flowchart       of a typical        optimization        process     is depicted        in figure       6.
+
+The hypothetical           design    problem      shown is drag minimization                 with    three design       variables
+
+(hl, h2, and h3).            Here    the objective        is to minimize            the airfoil       drag by varying           the
+
+design    variables        that describe        the shape of the airfoil.                  The optimization         .process
+
+begins    with     an initial       specified     airfoil       shape.         Constraints     can be imposed        on the
+
+geometry        of the airfoil        (e.g., minimum        thickness),          on aerodynamic        performance        (e.g.,
+
+minimum     lift),    and on flow-field           characteristics              (e.g., maximum        shock    strength).         The
+
+computer        is then free to minimize              the objective        function,       subject     to the imposed           con-
+
+straints,        by varying       the design     variables.
+
+        The first     step in the design              process       is calculation        of the aerodynamic         coeffi-
+cients    of the initial           airfoil.      These    coefficients           are stored        as baseline     values       for
+
+future    use in the gradient              calculations.            The optimization         program     then perturbs          each
+
+of the design        variables,       one by one, returning               to the aerodynamics           program     for eval-
+
+uation    of the aerodynamic           coefficients        and the partial              derivative     of drag with        respect
+
+                                                               12
+                                                                                                            h2
+
+
+
+
+                                                                               COMPUTE
+                                                                                     aC d                                              COMPUTE
+
+
+                                                                                   %'N                                                  c.._
+
+
+          _                                  ,-,1_ COMPUTE
+                                                     Cd       _._
+
+                                                                        Cd IS NOT MIN.
+                                                                    AND/OR CONTRAINTS
+                                                                       AREVIOLATED
+
+                                                                        hl     _                                                       COMPUTE
+                                                                                                                                          _Cd
+
+
+
+
+                                                                                               '_"_    FORM GRADIENT        _C d
+                                                                                                                                   /
+                                                                                                          aC d _C d   _Cd
+
+                                                                              CONSTRAINTS
+                                                                                    ARE
+                                                                                   SATISFIED
+
+
+
+                                                                                      !
+                                                                                    STOP
+
+
+
+
+               Fig. 6.            Drag minimization           by numerical                  optimization,              3 design          variables.
+
+
+
+     to   each design             variable     after each perturbation.                          The partial                 derivatives           form    the
+
+     gradient        of drag        (VCD).       The direction               in which          (hl, h2, and h3) are displaced                              to
+
+     reduce     the drag coefficient                 is      -VCD      (the steepest                  descent         direction).                The optimiza-
+     tion program           increments         the design       variables              one to four times                       in the direction             indi-
+
+     cated     by        -VC D.     The process        continues             until     the drag begins                  to increase               as a result
+     of nonlinearity               in the design          space or until               a constraint               (such as airfoil                  thickness)
+     is encountered.
+
+              The    specific        choices      of objective               function,         constraints,                  initial       airfoil        shape,
+
+     and design           variables      describing          the airfoil             shape relative                   to the baseline               airfoil
+
+     are all selected               by the aerodynamicist.                     Experience              indicates             very clearly           that    the
+
+     success        of    the design         optimization           depends         strongly           on the judgment                  of the designer
+•"   in making           these choices.
+
+
+
+
+                                                                              13
+            Design       of helicopter             rotor airfoil          sections        requires     simultaneous       consideration
+
+    of several          design       requirements.              Example    requirements           are high maximum-lift           coeffi-
+
+    cients       and good          stall characteristics                for Mach        numbers    of 0.3 to 0.5, a high           lift/
+
+    drag ratio          at     M = 0.6           and     C£ - 0.6, and a drag divergence                   Mach    number      of at least
+    0.8, no drag             creep,       and low pitching             moments    over most        of the Mach      number      range.       To
+
+    achieve       all of these conditions,                      the optimization           code must monitor          and constrain
+
+    certain       aerodynamic             parameters       at five or six different                 combinations       of Mach number
+
+    and angle         of attack.
+
+            Such a design                was attempted          by Hicks and McCroskey               (ref. 5) in which,          to reduce
+
+    computing         time and           cost, only some             of these conditions           were   considered.          The shock
+
+    drag coefficient                at     M = 0.82        and        _ = 0°     was chosen        as the objective         to be mini-
+
+    mized.        Constraints             were    imposed       on    the shock drag coefficients               (Cd _ 0.001)       at
+    M = 0.4, _ = 12 = , and at                     M = 0.5,          = = i0 °    to delay     retreating-blade           shock stall.
+
+    The    standard          Jameson       FLO-6       transonic       full-potential        airfoil      analysis     code     (ref. 6),
+
+    linked       with    a standard          constrained             function    minimization        code, was      used in the design.
+
+    These       codes    had been          extensively          calibrated       in other     airfoil      designs.       The initial
+
+    airfoil       section          from which          the design       optimization        was    initiated      was the Wortman
+
+    profile,       designed          for helicopter             applications       and known        for its desirable          rotor
+    characteristics.
+
+            The resulting                airfoil       section,       called    the A-I section,          was   tested    in the 2- by
+    2-foot       wind    tunnel          at .Imes.       A comparison          of the A-l's        improved     performance       relative
+
+    to the baseline                section       (Wortman       FX69-H-098)       and a classical          rotor    section,      the
+
+    NACA    0012,       is shown in figure                7.
+
+            Computational                simulations       have been used          effectively        in a number        of recent       major
+
+    aircraft       development             programs.           The Airbus       A-310     and Boeing      757 are examples         in which
+
+    computational             simulations          have played          a significant        role    in achieving        new   designs
+
+    that are substantially                   more       fuel efficient          than their predecessors.              As these       simu-
+                                                                               lations     become    more useful,        aircraf-t com-
+
+
+                                             _0_                               panies     are becoming      less willing         to provide
+          1.b
+z                                                                              Consequently,   there are their
+                                                                                                          many interesting
+                                   ___j                                        information   concerning        application.
+
+_         1.4           _O_///                                                 examples     that, unfortunately,            cannot      be
+                                                 o eA-1
+w
+O "               \_q_       //O           -             WORTMAN               described     here.
+o _ 1.0                              NACA 0012           FX69-H-09
+           .8                                                                               PROSPECTS      FOR THE FUTURE
+          .6
+
+                .70           .75            .80            .85           .90       Although        computational        simulations
+                         ZERO-LIFT DRAG DIVERGENCE                             have become        considerably     more useful          in
+                                 MACH NUMBER
+                                                                               design    during     the last few years,           there      is
+
+                                                                               considerable  room for improvement.   Increas-
+    Fig. 7. Verified                 performance  improvement                  .
+      from helicopter                airfoil optimization,                     mng design cost and complexity,   as well as
+
+                                                                          14
+     increasing        performance     objectives          of new aircraft,          drive    the search        for more     accurate
+
+     and more     cost-effective            computational       capability.          The complexities           of the obstacles
+
+     involved     ensure     that    this search       will     continue      for many       years.     The major      areas      of
+
+     consideration        are    (i) the availability            of advanced         computers,       (2) advancements         in
+     numerical     solution       techniques,        (3) improvemerrts          in turbulence         models,     (4) treatment
+
+     of complex        geometries,     and     (5) improved         computational        design     procedures.
+
+
+
+                                                       Advanced Computers
+
+
+              The prospects       are good that significant                 increases     in scientific          computing     capa-
+
+     bility     will    become    available        in this decade.           From a technical          standpoint,      antici-
+
+     pated     advances    in component         technology      point       to improvements         in speed of at least               an
+
+     order     of magnitude.         Moreover,       architectural          advances     permitting       multiple     processors
+
+     to efficiently        address     a single       problem       with    a common     data base      offer opportunities
+
+     for further        orders-of-magnitude           improvements          in speed.        There will     also be advances
+
+     in memory     size and       in data transfer           rates    to support        such improvements          in speed.
+     Significant        attention     will be directed          toward       developing       software     to assist       the user
+
+     in taking     full advantage           of these architectural              advances.
+
+              The slowdown       in advances        during    the last decade,           prompted      by marketing        consid-
+
+     erations     rather    than technical           ones,    appears       to be reversing.           The anticipation           of
+
+     increases     in the size        of the market          for leading-edge           scientific      computers      has led to
+
+     increased     competition        within       the industry.           Moreover,     recent     government      policies
+
+     reflect     a growing       realization        that    the large-scale          scientific       computer     is a funda-
+
+     mental     tool affecting        the rate of progress              in a wide       range of technical          disciplines
+
+     (this is especially            true in Japan,          where    advances     in scientific         computing      have become
+
+     a national        objective).      Furthermore,          large machines           are becoming       accessible       to a
+
+     broader     range    of the user        community.        Until       recently,     leading-edge       scientific       com-
+
+     puters     in the United        States    have been       installed       primarily      in the national          research
+
+     laboratories,        with    the airframe        manufacturers          and universities          enjoying     only    limited
+     access     to them.     Now,     several       of these large          computing     engines      have been      installed
+
+     at universities        and at least one aircraft                 company.
+
+             Extensive     experience        with    supercomputing,          primarily       in the national         research
+
+     laboratories,        has provided        some observations             that illustrate        both    its power       and its
+
+.-   limitations.         The first     observation          is that it takes a larser                computer     to develop          a
+
+     new computational           capability        in a research       mode    than it does         to implement       that capa-
+     bility     in applications.            Once    a previously        intractable       problem      is solved,      then sig-
+
+     nificant     improvements        in accuracy          and efficiency       are subsequently           achieved     by a com-
+
+     bination     of analysis        and computational          experiments.           This   experimentation          requires
+
+     rapid    turnaround     which,     for problems          that strain       the limits        of existing       capability,
+
+     can only be achieved            with    the largest       and fastest       existing      computing        engines.      The
+
+     algorithm     refinements        that result          frequently       reduce   computer      run-time      to the point
+
+     where    the new capability            can be implemented             on smaller     systems.        For example,       much
+                                                                     15
+of the development             work     for inviscid       transonic     aerodynamic       methods       and codes was
+
+done on CDC-7600-class                machines.      Computer      run-times      have    been    reduced     by more      than
+
+an order       of magnitude.           Now,    these codes      can be run in minutes             on slower,        less expen-
+sive machines        like the VAX          11/780.
+
+        The second        observation         is that people      are becomin$          more    expensive     than computer
+hardware.        In human-computer             interactions,      maximum       effective       use of people       is becom-
+
+ing at least        as important          a measure       of efficiency        as maximum       use of computer         cycles.
+
+Human    effort     to construct          data bases       for processing        must    be considered        along with
+
+computer       run-time       in assessing        the total cost of a computational                  simulation.
+
+        The third       observation        is that large upgrades              in computer       power are     required       to    '_
+
+produce      moderate        improvements        in simulation       capability.         Doubling       the number      of grid
+points       in each direction           to improve       resolution     results    in a factor-of-8           increase       in
+
+the number       of total grid points              in the field.         This usually          results    in more    than a
+
+factor-of-8        increase       in computer       run-time      to get only      twice the resolution.               Hence,
+
+minor    improvements          in computer        power    usually    result     in insignificant           improvements       in
+
+accuracy.
+
+
+
+                                  Advances        in Numerical       Solution     Techniques
+
+
+
+        Advances     in numerical          solution       techniques     offer    prospects       for increasing         compu-
+
+tational       simulation       capability        at a rate comparable           to that resulting           from   increasing
+
+computer       capability.         An excellent        illustration       of this was provided              recently    by
+
+Holst    in a computation             of inviscid      ful!-potential          transonic       f!ow about     the ONERA M-6
+
+wing,    M     = 0.84,       = = 3 °.     This    case has been used by a number                 of researchers         to test
+new methods.         The base         code used was FLO-28            (ref. 7), which          solves    the full-potential
+
+equation       in conservation-law             form, using      successive-line          overrelaxation,        a standard
+
+solution       technique.         The computation          took 742 sec on the CDC-7600                 computer     to reach
+
+98 percent       convergence          on lift coefficient.            Hoist,     using    an improved        implicit      fac-
+
+torization       algorithm        to solve       the same governing         equation,       achieved      the same degree
+
+of convergence          in 64 sec -- an improvement               of better      than an order          of magnitude
+
+(ref. 8).        By running        the code on the faster              Cray IS machine,          after    first vectoriz-
+
+ing the coding          to take advantage           of the Cray's        special    architecture,           a solution       was
+
+obtained       in 4.8 sec -- a further             improvement       of better     than an order          of magnitude               _o
+
+(T. Hoist,       NASA     Ames,    private       communication,       March     1982).     With     a run-time      less     than
+
+5 sec, achieved           through       advances    in both     algorithm       efficiency       and computer       power,
+
+over    150 wing-flow          simulations        can be obtained        in the same time,           and for very nearly
+
+the same cost,          as    for a single        flow solution        using    FLO-28     on the CDC-7600.            Further-
+
+more,     an aerodynamic          analysis       code with     a 5-sec run-time          can be used effectively              for
+
+design       in the optimization           mode.
+        Such    dramatic       advances       in solution      techniques       for the full-potential              formulation
+
+provide       encouragement        for similar        advances       in techniques       for solving        the less-
+
+approximate        Euler      and Reynolds-averaged-Navier-Stokes                  (RANS)       formulations.        Relative
+
+                                                             16
+      to the full-potentlal             formulation,         the Euler    formulation        is a more       accurate        simula-
+
+     tion of flow-fleld            physics,       in that it provides            for the treatment          of rotational        flows.
+
+     including        vortices     and strong       shock-wave        effects.     The RANS       formulation,        combined
+     with     a suitable       turbulence       model,    further      provides     for the treatment          of viscous
+     effects,        including     flow    separation.
+
+             This     capability     is fundamentally          important       for simulating         aerodynamic       flows     near
+
+     performance        boundaries.         However,      these formulations            require     considerably       more     stor-
+
+     age and computational              work     to obtain    a solution       than the full-potential               formulation,
+
+     and current        computer     power      and solution      techniques       are    inadequate        for these formula-
+
+:    tlons     to be widely       used     in design.        Nevertheless,        major    reductions        in computer        run-
+
+     time are anticipated            during       the 1980s by overcoming            unnecessarily          severe    constraints
+
+     on integration          time-steps        (frequently     a result       of stability        rather     than accuracy        con-
+     siderations).
+
+             Further     reductions        in ru_-tlme,       and significant           reductions     in storage,       will be
+
+     achieved       by the development           of solution-adaptive            grid    techniques.         That is,    the dis-
+
+     tribution       of grid points         will be determined           dynamically,        as the solution          evolves.
+
+     Grid-point       distribution         then will be solution-dependent,                  with    grld-point       locations
+     chosen     to maximize       accuracy       for a specified         number    of points.
+
+
+                                                          Turbulence      Models
+
+
+
+             The dynamics        of turbulence        in the wide        range of scales          encountered        in practical
+
+     aerodynamics        problems       cannot    be simulated        using    either     present     computer       power    or that
+     anticipated        for many    years       to come.      Hence,     the flow variables           in the Navier-Stokes
+
+     equations       are averaged         over a time period          that is long compared           with     the time scales
+
+     associated       with    predominant        features     of the turbulence           (Reynolds-averaged-Navier-
+
+     Stokes    formulation).          The number         of unknowns      then exceeds        the number       of equations.
+     The process        of expressing          the unknowns     as transport        equations       or functions        in terms
+
+     of known       quantities     is called       "turbulence        modeling."         No entirely       suitable     model     for
+
+     all    flow types of engineering              interest     has yet been discovered.
+
+             The current       predominant        thinking     among     researchers       in the field        is that no such
+
+     universal       turbulence     model      exists.       Hence,    attention        is now    focused    on developing
+
+     menus    of turbulence        models.        The process       consists      of a synergistic          use of computation
+     and experiment          to develop        and test models        for various        types of flows        that are con-
+
+7.   sidered    building       blocks     to more    complete       aerodynamic         configurations,       such     as attached
+
+     flows    with    and without        curvature       and imposed      pressure       gradients,     simple       separated     and
+
+     reattached       flows,     flows with       shock waves,        and airfoil        trailing-edge       flows.      The state
+
+     of the art is such           that simple       attached     flows can normally              be adequately        treated.
+     Three-dimensional           cases with       large amounts        of skewing        of flow direction           in the bound-
+
+     ary layer       still    present     a considerable        challenge.         Complex       flows with massive           separa-
+
+     tion can often be properly                simulated      qualitatively        but not quantitatively.               For a
+     more    thorough     discussion,        see reference       9.
+
+                                                                 17
+                                                                ComplexGeometries
+
+
+                  One of the initial             steps    in a flow-fleld               computation       is the specification           of
+
+ boundary                   conditions.      For aerodynamic               flows,      digital     data describing         the configura-
+
+ tion shape                   of interest     must be provided.                  A finite-difference            grid system         is then
+ generated                   which    encompasses       the flow-field            domain     and serves       as the basis        for finite-
+
+ difference                   approximations          to the terms in the governing                     flow-field     partial      differ-
+
+ ential                equations.         The Principal         difficulty          involved       in the analysis         of complex        aero-
+
+ dynamic                   configurations     is the generation                 of a suitable        grid system.
+
+                  A number        of factors      must    be considered             in assessing         the suitability       of a grid             • ["
+
+ system.                    The object    is to achieve          required         accuracy       with    the minimum       number    of grid
+
+ points                and with       the least       effect    on the flow-solutlon                algorithm      owing    to singulari-
+
+ ties or other                    special    considerations.               An example        grid    for an aircraft         nacelle     flow
+
+ field                is shown       in figure    8    (from ref. i0).              The    grid is adapted         to the surface        of
+
+ the nacelle                   and the grid points             are clustered            in regions,       such as the leading          edge,
+where                 large    flow gradients          in the solution            are anticipated.            This grid was generated
+ for only a single                      component      -- the nacelle.
+
+                  Major       difficulties       are encountered               in treating       multiple     component      configurations,
+ for which                   component-adapted          grids must be interfaced.                    These    interfaces      introduce
+
+difficulties                    in the solution          process      in that they complicate                 coding     and adversely
+affect                 run-time      and numerical        accuracy.             Extensive     effort,       especially      in the aircraft
+
+companies,                    is contributing         to a very       gradual          expansion     in the complexity         of config-
+
+urations                    that can be adequately             analyzed.          For the time being,           however,      linear     theory
+will              continue       to be used       for analyzing            aerodynamic        configurations         in detail.        Linear
+
+theory,                    as described     in the HiMAT         example,         requires       generation     of a grid      system    only
+                                                                                on the boundary          surface,      not for the entire
+
+                                                                                flow field.         Because     the resulting         grid-
+
+ /                                                                         _    generation       problem     is so much      simpler,        this
+ \
+     \_                                                                         simple formulation  can be used to analyze
+      k
+                                                                                practical aerodynamic  configurations  to a
+
+              !                                                                 much    greater     degree    of detail      than can be
+
+          '            i                                                        achievedwith the more physicallycomplete
+         i            /
+
+
+
+                                                                                Euler, and formulations
+                                                                                nonlinear   Reynolds-Averaged-Navier-Stokes).
+                                                                                                          (full-potential,                           °_
+                  t
+     i            /                                               \
+ i                _                                                                       Computational       Design     Procedures
+
+
+
+                                                                      /"                One of the principal           advantages       of
+                                                                                computational        simulations       relative      to test-
+
+                                                                                ing is the opportunity             they offer       to com-
+Fig. 8.   Perspective   view of three-
+dimensional  coordinate   system for a                                          pure a vehicle          geometry     that yields       some
+nacelle,                                                                        desirable     aerodynamic       characteristic.
+                                                                           18
+      Optimization,as illustratedby the helicopterairfoil design describedin the pre-
+      ceding section,is a promisingapproach toward takingadvantageof this opportunity,
+      providing the designer can supply the Judgmentrequired to use it effectively.
+           To begin with, great care must be taken in selectingsome controllableparameter
+      or functionof severalparametersas the objectiveto be minimized. Experienceindi-
+      cates that since total drag is usuallynot predictedreliably,the emphasismust be
+      on obta_Lingconfigurationmodificationsthat eliminateor at leastweaken shock
+      waves, eliminateembeddedsupersonicflow on fuselagecabin regions,minimize adverse
+      pressuregradients,etc. Success also depends stronglyon the number of designvari-
+      ables that define the configurationshape and the extent to which these design varl-
+.I
+      ables permit flexibilityin the design (i.e.,can a near-optimumshapebe described
+ ?
+      from some suitablychosen values of design variablesselected). Finally,since many
+      flow-fieldcomputationsmay be requiredto achievean optimumdesign,only those
+      methods with suitably short run-tlmesfor a single flow-fieldcomputationcan be
+      used in an optimizationmode.
+           Optimizationcan be used to improve the effectivenessof other design tech-
+      niques. For example,it can be combinedwith the inverseapproach to permit speci-
+      ficationof performanceand configurationconstraints. In the inverseapproach,a
+      configurationshape correspondingto a pressuredistributionselectedby the aerody-
+      namicist is computed;the pressuredistributionselectedis one that his experience
+      indicateswill provide the desiredperformance. The combinedoptimization-inverse
+      approachwould seek that configurationthat best fits the specifiedpressuredistri-
+      bution while satisfyingthe imposedconstraints.
+           Clearly,much remains to be done to provide a more direct and systematic
+      approachto design than trial and error. The usefulnessof optimizationand other
+      approacheswill depend on the degree to which computerrun-timefor completethree-
+      dimensionalflow simulationscan be reducedby a combinationof more powerfulcom-
+      puters and improvedsolutionalgorithms. It will also dependon how accurately
+      flow-fieldphysics and geometricaldetail can be simulatedto relate configuration
+      shape to aerodynamicperformance.
+
+-°
+
+                                                  CONCLUDINGREMARKS
+
+
+ ",        The last decade       has been    an exciting        one for researchers    in computational         aero-
+      dynamics.      The next   one promises      to be just as exciting         for aircraft      designers.
+
+      Advances    in computer    power,    solution   algorithms,      viscous    flow simulation,      and grid
+
+      generationwill permit much more detailedsimulationsof complexaerodynamicphenom-
+      ena and the effects of geometry.             These   simulationswill broaden to include other
+      aeronautical     disciplines,   such as structuresand propulsion.                A new    generation      of
+      managerswill be in place,           who,   unlike    their predecessors,      have   grown    up with the
+
+                                                           19
+computer.       Their challenge will be to integrate the major computational advances of
+the 1980s into the design process in bold and imaginative new ways.
+
+
+
+                                                       ACKNOWLEDGMENT
+
+
+      The author gratefully acknowledges contributions by several individuals who
+provided ideas on various aspects of the design process, particularly P. Perrier,
+R. Bradley, M. George, R. Hakklnen, L. Roberts, N. Malmuth, L. Miranda, M. Lores,
+
+and P. Rubbert and his associates at Boeing.                                                                       _
+
+
+
+                                                          REFERENCES
+
+
+ i.   Child,    R.; Panageas,          G.; and Gingrich,           P.:     AGARD       Conference    Proceedings
+         No.     280, 1980.
+
+ 2.   Bailey,     F.; and Ballhaus,              W.:   NASA SP-147,        Part    i, 1975.
+
+ 3.   Lomax,    H.; Bailey,         F.; and Ballhaus,           W.:      NASA TN D-6933,          1973.
+
+ 4.   Ballhaus,       W.;    Bailey,    F.; and Frick,          J.:      NASA    CP-2001,       Vol. 4, 1976.
+
+ 5.   Hicks,    R.;     and McCroskey,           W.:   NASA TM-78622,           Mar.    1980.
+
+ 6.   Jameson,       A.:     Commun.    Pure & Appl. Math.,              vol.    27, 1974.
+
+ 7.   Caughey,       D.; and Jameson,            J.:   AIAA J., vol. 17, no. 2, Feb.                 1979.
+
+ 8.   Holst,    T.; and Thomas,            S.:     AIAA    Paper   82-0105,       1982.
+
+ 9.   Marvin,     J.:       AIAA   Paper    82-0164,       1982.
+
+i0.   Ives,    D.:      AIAA   Paper    81-0997,        1981.
+
+
+
+
+                                                             20
+         1. Report No.                                     " I 2. GovernmentAccession
+                                                                                    No.                              3. Recipient'sCatalogNO.
+            NASA TM-84257
+                                                             I
+         4. Title and Subtitle                                                                                       5. Report Date
+
+            COMPUTATIONAL         AERODYNAMICS AND DESIGN                                                              September 1982
+                                                                                                                    6. PerformingOrganizationCode
+
+
+         7. Author(s)                                                                                               8. Performing Organization Report No.
+           W.   F. Ballhaus,         Jr.                                                                                 A-8954
+
+                                                                                                                   10. Work Unit No.
+        9. Performing Organization Name and Address
+                                                                                                                         A-30ISJ2
+           NASA      Ames   Research       Center
+": -       Moffett      Field,      CA     94035                                                                   11. Contract or Grant No.
+
+
+                                                                                                                   13. Type of Report and PeriodCovered
+       12. SponsoringAgencyName and Address
+                                                                                                                         Technical Memorandum
+           National Aeronautics and Space Administration
+           Washington, D.C.   20546                                                                                14. SponsoringAgencyCode
+
+       15. SupplementaryNotes
+
+           Point of Contact:               W. F. Ballhaus, Jr. MS 200-4
+                                           Ames Research Center, Moffett Field, CA                     94035
+                                           (415) 965-5065 or FTS 448-5065
+       16. Abstract
+
+                In the last decade, advances in computer technology and data communications began to drasti-
+           cally change the way we live and the way we work. We bank, shop, make airline reservations, and
+           pay our bills by using computers. Now, a new generation of children is growing up with computers
+           in their homes and in their classrooms.   This computer revolution has also had a major effect on
+•          the production of new aircraft. With the major investment of the aircraft industry in computer-
+           aided design and computer-aided manufacturing (CAD/CAM), much of the development process from
+           design through manufacturing is computer controlled.   Furthermore, great progress is being made
+           in computerizing the aeronautical disciplines that are the elements of design, such as aerodynamics
+           structures, guidance and control, and propulsion.
+                Nowhere has this progress been more exciting than in aerodynamics.   The availability of
+           modern supercomputers and the ingenuity of computational aerodynamics researchers have resulted in
+           new methods for solving historically intractable nonlinear flow-fleld problems.   Advances in data
+           communications have facilitated remote access to these large computing engines, and advances in
+           computer technology incorporated in mini- and midicomputers now provide sophisticated interactive
+           graphics and data manipulation capability. All of these advances have profoundly affected the
+           aerodynamic design process.
+                Here we assess the changing role of computational aerodynamics in design and consider the
+           prospects for continued advancement.
+
+
+
+
+       17. Key Words(Suggestedby Author(s))                                            18. DistributionStatement
+
+           Computational aerodynamics                                                       Unlimited
+           Aerodynamic design
+
+
+
+                                                                                            Subject    Category     02
+
+       19. S_urity   Classif.(ofthisreport)                   20. SecurityClassif.(ofthis   _)                      21. No. of Pa_s       22. Dice*
+
+           Unclassified                                           Unclassified                                           23                    A02
+
+
+                                              "ForsalebytheNationalTechnicallnformationService,       Springfield, Virginia 22161
+_   J
+°
+
+
+
+
+    b/
+
+    t.
+         LANGLEY RESEARCH CENTER
+
+
+
+
+....   3 1176 00506 0760
+
+
+
+
+                                   ~
+

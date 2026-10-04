@@ -1,0 +1,1131 @@
+{
+ "schema": "EOTReading@2",
+ "supersedes": "EOTReading@1 — erased 2026-08-31 (LP7)",
+ "source": {
+  "path": "14-holy-texts/wlc-tanakh/Gen.txt",
+  "sha256": "4ce07ad3937982b2c0d1e3d7512039144dff3910543a28f01fc465dbd40e537b",
+  "chars": 198268
+ },
+ "reader": {
+  "kind": "hand-adjudication",
+  "recipeId": "cdc1ebe31991a3d4",
+  "descriptor": {
+   "generator": "scripts/eot-sidecar2.mjs@1",
+   "law": "POLICIES.md LP7 + 2026-08-31 amendment (surprise is hypergraph delta)",
+   "rule": "goldens/reading/RULE.md R1-R12 + fourth amendment (triadic minimum)",
+   "priors": {
+    "path": "derived-priors/reading-priors/reading-priors-v1.json",
+    "sha256": "df77decb3988597560e24d42bc6845a14359b845ec9eedf5436955c3b92d055a"
+   },
+   "actPrior": {
+    "path": "derived-priors/act-priors/act-prior-en.json",
+    "sha256": "67b97d1e10ba75a1c5ce34c05350181ae07033f74b7fd02f810b2d180115240c"
+   },
+   "livePriors": {
+    "commit": "483a0de7bfd51cc72493c8bd36b20f11322b366d"
+   }
+  },
+  "specimens": [
+   "gen-1@cdc1ebe31991a3d4",
+   "gen-2@cdc1ebe31991a3d4",
+   "gen-6@cdc1ebe31991a3d4"
+  ]
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint (a projection of the live goldens at the recipe's named commit — LP7 second amendment: checkpoints, never weights)",
+  "consumed": [
+   "act expectations (non-self + VerbNet)",
+   "the proposition bar"
+  ]
+ },
+ "windows": [
+  {
+   "specimen": "gen-1",
+   "start": 142,
+   "startText": "Gen.1.1 ",
+   "end": 992,
+   "endText": "י֥וֹם שֵׁנִֽי",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "gen-2",
+   "start": 4259,
+   "startText": "Gen.2.1 ",
+   "end": 4620,
+   "endText": "אֲשֶׁר בָּרָ֥א אֱלֹהִ֖ים לַעֲשֽׂוֹת",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "gen-6",
+   "start": 17927,
+   "startText": "Gen.6.5 ",
+   "end": 18335,
+   "endText": "כִּ֥י נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  }
+ ],
+ "admission": {
+  "gate": "hand-adjudication under RULE.md",
+  "offered": 30,
+  "heard": 30,
+  "turnedAway": 0
+ },
+ "spanSelfVerification": {
+  "checked": 30,
+  "ok": 30,
+  "bad": [],
+  "method": "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "note": "this source founds its own specimens' propositions; it joins no rosetta graph yet — its evidence seeds the act lexicon for the spiral"
+  },
+  "frame": {
+   "standing": "own-census",
+   "census": {
+    "gen-1": {
+     "INS·Ground": 5,
+     "NUL·Ground": 1,
+     "SIG·Ground": 1,
+     "SIG·Figure": 6,
+     "EVA·Figure": 1,
+     "SEG·Ground": 2,
+     "INS·Figure": 1
+    },
+    "gen-2": {
+     "SYN·Ground": 1,
+     "SYN·Figure": 1,
+     "NUL·Figure": 2,
+     "REC·Figure": 1,
+     "DEF·Figure": 1
+    },
+    "gen-6": {
+     "EVA·Ground": 1,
+     "REC·Ground": 2,
+     "EVA·Figure": 1,
+     "SIG·Figure": 1,
+     "NUL·Pattern": 1,
+     "INS·Figure": 1
+    }
+   }
+  },
+  "actExpectations": {
+   "act-agreement": 0,
+   "act-departure": 0,
+   "no-expectation": 23,
+   "no-verb-head": 7,
+   "departures": [],
+   "note": "checked against non-self witnesses + the received VerbNet tier only"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "hand-adjudication (the favored reading)",
+   "recipeId": "cdc1ebe31991a3d4"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading",
+  "note": "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists"
+ },
+ "propositions": [
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֑ים",
+   "relation": "בָּרָ֣א",
+   "object": "אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:created-heavens-earth",
+   "ground": "gen-1.1.1",
+   "role": "declared",
+   "because": "בָּרָא (created) brings THE WHOLE FIELD OF BEING into existence — heavens-and-earth is the totality, not one thing: Generate·Existence at GROUND grain; בְּרֵאשִׁית (in the beginning) is a temporal adjunct (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "INS",
+    "grain": "Figure",
+    "because": "readable as two named creata rather than the world-field"
+   },
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ",
+   "cell": {
+    "op": "INS",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "וְהָאָ֗רֶץ",
+   "relation": "הָיְתָ֥ה",
+   "object": "תֹ֨הוּ֙ וָבֹ֔הוּ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:earth-formless",
+   "ground": "gen-1.2.1",
+   "role": "declared",
+   "because": "copula + a predicate of PRIVATION (תֹהוּ וָבֹהוּ, unformed-and-void) — the field's formlessness stated as its condition: the absence of order IS the asserted state, A4's family at ground grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "SIG",
+    "grain": "Ground",
+    "because": "copula rule 4: formlessness read as a plain property held"
+   },
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֨הוּ֙ וָבֹ֔הוּ",
+   "cell": {
+    "op": "NUL",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "וְחֹ֖שֶׁךְ",
+   "relation": "עַל פְּנֵ֣י",
+   "object": "תְה֑וֹם",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:darkness-on-deep",
+   "ground": "gen-1.2.2",
+   "role": "declared",
+   "because": "a verbless nominal clause (the Arabic سواسية precedent): darkness [was] upon the face of the deep — presence held over a field, Relate·Existence at ground grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וְחֹ֖שֶׁךְ עַל פְּנֵ֣י תְה֑וֹם",
+   "cell": {
+    "op": "SIG",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "וְר֣וּחַ אֱלֹהִ֔ים",
+   "relation": "מְרַחֶ֖פֶת",
+   "object": "עַל פְּנֵ֥י הַמָּֽיִם",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:spirit-hovering",
+   "ground": "gen-1.2.3",
+   "role": "declared",
+   "because": "מְרַחֶפֶת (hovering) — one identified figure's presence held over the waters, the A5 landing family: Relate·Existence at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל פְּנֵ֥י הַמָּֽיִם",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֖ים",
+   "relation": "וַיֹּ֥אמֶר",
+   "object": "יְהִ֣י א֑וֹר",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:god-said-light",
+   "ground": "gen-1.3.1",
+   "role": "declared",
+   "because": "the say-act: a sign emitted — Relate·Existence at figure grain; the jussive content (let there be light) stays inside the quoted object (A1) — what it commands is then separately asserted by the narrative's own וַיְהִי",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "DEF",
+    "grain": "Figure",
+    "because": "the fiat readable as a bounded public act of definition, the proclaims family"
+   },
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֽוֹר",
+   "relation": "וַֽיְהִי",
+   "object": null,
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:light-came-to-be",
+   "ground": "gen-1.3.2",
+   "role": "declared",
+   "because": "וַיְהִי (and there was) — light's coming-to-be: Generate·Existence; ground grain because this primal light is an ambient field (the next verse divides it from darkness as field from field), not a lamp",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "INS",
+    "grain": "Figure",
+    "because": "readable as one created luminosity"
+   },
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַֽיְהִי אֽוֹר",
+   "cell": {
+    "op": "INS",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֛ים",
+   "relation": "וַיַּ֧רְא",
+   "object": "אֶת הָא֖וֹר כִּי ט֑וֹב",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:saw-light-good",
+   "ground": "gen-1.4.1",
+   "role": "declared",
+   "because": "seeing-that-it-was-good: perception carrying a VERDICT — a judgment held over one identified thing, Relate·Interpretation at figure grain (the perception family, with lear-france's never-see); the כִּי־טוֹב assessment stays inside the seen content (A1)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיַּ֧רְא אֱלֹהִ֛ים אֶת הָא֖וֹר כִּי ט֑וֹב",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֔ים",
+   "relation": "וַיַּבְדֵּ֣ל",
+   "object": "בֵּ֥ין הָא֖וֹר וּבֵ֥ין הַחֹֽשֶׁךְ",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:divided-light-darkness",
+   "ground": "gen-1.4.2",
+   "role": "declared",
+   "because": "וַיַּבְדֵּל (divided-between) CUTS two primal fields apart — Differentiate·Structure at GROUND grain: the object is not a thing but the light-field and dark-field themselves, held apart",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיַּבְדֵּ֣ל אֱלֹהִ֔ים בֵּ֥ין הָא֖וֹר וּבֵ֥ין הַחֹֽשֶׁךְ",
+   "cell": {
+    "op": "SEG",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֤ים",
+   "relation": "וַיִּקְרָ֨א",
+   "object": "לָאוֹר֙ י֔וֹם",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:called-light-day",
+   "ground": "gen-1.5.1",
+   "role": "declared",
+   "because": "naming — a sign attached to and held over one identified thing: the heading-row family's own act (a name stands over what it names), Relate·Existence at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "DEF",
+    "grain": "Figure",
+    "because": "naming readable as bounding the named thing"
+   },
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיִּקְרָ֨א אֱלֹהִ֤ים לָאוֹר֙ י֔וֹם",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֤ים",
+   "relation": "קָ֣רָא",
+   "object": "לָ֑יְלָה",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:called-darkness-night",
+   "ground": "gen-1.5.2",
+   "role": "declared",
+   "because": "the second naming of the pair — same act, its own proposition",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the verb's subject carries from וַיִּקְרָא's אֱלֹהִים",
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וְלַחֹ֖שֶׁךְ קָ֣רָא לָ֑יְלָה",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "עֶ֥רֶב",
+   "relation": "וַֽיְהִי",
+   "object": "וַֽיְהִי בֹ֖קֶר",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:evening-morning",
+   "ground": "gen-1.5.3",
+   "role": "declared",
+   "because": "the refrain: evening came-to-be and morning came-to-be — two ambient day-states arriving, Generate·Existence at ground grain; the paired וַיְהִי verbs are kept as one row (the Swahili serial precedent), and 'יוֹם אֶחָד' (day one) is a verbless count-apposition, folded (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַֽיְהִי עֶ֥רֶב וַֽיְהִי בֹ֖קֶר י֥וֹם אֶחָֽד",
+   "cell": {
+    "op": "INS",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֔ים",
+   "relation": "וַיֹּ֣אמֶר",
+   "object": "יְהִ֥י רָקִ֖יעַ בְּת֣וֹךְ הַמָּ֑יִם וִיהִ֣י מַבְדִּ֔יל בֵּ֥ין מַ֖יִם לָמָֽיִם",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:god-said-firmament",
+   "ground": "gen-1.6.1",
+   "role": "declared",
+   "because": "the say-act again; both jussives (let there be a firmament; let it be dividing) stay inside the quoted object (A1) — the making and the dividing are then asserted by the narrative in verse 7",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיֹּ֣אמֶר אֱלֹהִ֔ים יְהִ֥י רָקִ֖יעַ בְּת֣וֹךְ הַמָּ֑יִם",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִים֮",
+   "relation": "וַיַּ֣עַשׂ",
+   "object": "אֶת הָרָקִיעַ֒",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:made-firmament",
+   "ground": "gen-1.7.1",
+   "role": "declared",
+   "because": "וַיַּעַשׂ (made) — ONE identified thing brought into being: Generate·Existence at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיַּ֣עַשׂ אֱלֹהִים֮ אֶת הָרָקִיעַ֒",
+   "cell": {
+    "op": "INS",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִים֮",
+   "relation": "וַיַּבְדֵּ֗ל",
+   "object": "בֵּ֤ין הַמַּ֨יִם֙ אֲשֶׁר֙ מִתַּ֣חַת לָרָקִ֔יעַ וּבֵ֣ין הַמַּ֔יִם אֲשֶׁ֖ר מֵעַ֣ל לָרָקִ֑יעַ",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:divided-waters",
+   "ground": "gen-1.7.2",
+   "role": "declared",
+   "because": "the second primal division — the waters-below cut from the waters-above: Differentiate·Structure at ground grain; the locative אֲשֶׁר relatives are micro-relatives, folded (R1)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the verb's subject carries from וַיַּעַשׂ's אֱלֹהִים",
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיַּבְדֵּ֗ל בֵּ֤ין הַמַּ֨יִם֙ אֲשֶׁר֙ מִתַּ֣חַת לָרָקִ֔יעַ",
+   "cell": {
+    "op": "SEG",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "כֵֽן",
+   "relation": "וַֽיְהִי",
+   "object": null,
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:it-was-so",
+   "ground": "gen-1.7.3",
+   "role": "declared",
+   "because": "and-it-was-SO: the declared state of affairs realized — Generate·Existence at ground grain (the whole arrangement came to hold)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "SYN",
+    "grain": "Ground",
+    "because": "readable as word and world closing into one whole"
+   },
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַֽיְהִי כֵֽן",
+   "cell": {
+    "op": "INS",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "אֱלֹהִ֛ים",
+   "relation": "וַיִּקְרָ֧א",
+   "object": "לָֽרָקִ֖יעַ שָׁמָ֑יִם",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:called-firmament-heaven",
+   "ground": "gen-1.8.1",
+   "role": "declared",
+   "because": "the third naming — the sign held over the made thing",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַיִּקְרָ֧א אֱלֹהִ֛ים לָֽרָקִ֖יעַ שָׁמָ֑יִם",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-1",
+   "language": "he",
+   "subject": "עֶ֥רֶב",
+   "relation": "וַֽיְהִי",
+   "object": "וַֽיְהִי בֹ֖קֶר",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:evening-morning",
+   "ground": "gen-1.8.2",
+   "role": "declared",
+   "because": "the refrain's second occurrence — a second row on the same prop (R9's multi-row rule); 'יוֹם שֵׁנִי' folds as before",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 992
+   },
+   "anchor": "וַֽיְהִי עֶ֥רֶב וַֽיְהִי בֹ֖קֶר י֥וֹם שֵׁנִֽי",
+   "cell": {
+    "op": "INS",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-2",
+   "language": "he",
+   "subject": "הַשָּׁמַ֥יִם וְהָאָ֖רֶץ וְכָל צְבָאָֽם",
+   "relation": "וַיְכֻלּ֛וּ",
+   "object": null,
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:heavens-earth-finished",
+   "ground": "gen-2.1.1",
+   "role": "declared",
+   "because": "וַיְכֻלּוּ (were FINISHED) — the whole world-field and all its host brought to completion as ONE closed whole: Generate·Structure at GROUND grain; the passive states the totality's own closure",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 4620
+   },
+   "anchor": "וַיְכֻלּ֛וּ הַשָּׁמַ֥יִם וְהָאָ֖רֶץ וְכָל צְבָאָֽם",
+   "cell": {
+    "op": "SYN",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-2",
+   "language": "he",
+   "subject": "אֱלֹהִים֙",
+   "relation": "וַיְכַ֤ל",
+   "object": "מְלַאכְתּ֖וֹ אֲשֶׁ֣ר עָשָׂ֑ה",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:god-finished-work",
+   "ground": "gen-2.2.1",
+   "role": "declared",
+   "because": "וַיְכַל (finished) — ONE work completed into a whole: Generate·Structure at figure grain; 'בַּיּוֹם הַשְּׁבִיעִי' is a temporal adjunct (A2) and the formulaic relative 'אֲשֶׁר עָשָׂה' folds (R1)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 4620
+   },
+   "anchor": "וַיְכַ֤ל אֱלֹהִים֙ בַּיּ֣וֹם הַשְּׁבִיעִ֔י מְלַאכְתּ֖וֹ",
+   "cell": {
+    "op": "SYN",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-2",
+   "language": "he",
+   "subject": "אֱלֹהִים֙",
+   "relation": "וַיִּשְׁבֹּת֙",
+   "object": "מִכָּל מְלַאכְתּ֖וֹ אֲשֶׁ֥ר עָשָֽׂה",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:god-rested",
+   "ground": "gen-2.2.2",
+   "role": "declared",
+   "because": "וַיִּשְׁבֹּת (ceased/rested) — the CESSATION of one identified activity: the working's absence begun, and the absence IS the act (A4's family) at figure grain, polarity +",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the verb's subject carries from וַיְכַל's אֱלֹהִים",
+   "alternate": {
+    "op": "REC",
+    "grain": "Figure",
+    "because": "readable as the re-zero into rest — the sabbath as a new ground begun"
+   },
+   "span": {
+    "start": 142,
+    "end": 4620
+   },
+   "anchor": "וַיִּשְׁבֹּת֙ בַּיּ֣וֹם הַשְּׁבִיעִ֔י מִכָּל מְלַאכְתּ֖וֹ",
+   "cell": {
+    "op": "NUL",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-2",
+   "language": "he",
+   "subject": "אֱלֹהִים֙",
+   "relation": "וַיְבָ֤רֶךְ",
+   "object": "אֶת י֣וֹם הַשְּׁבִיעִ֔י",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:blessed-seventh-day",
+   "ground": "gen-2.3.1",
+   "role": "declared",
+   "because": "וַיְבָרֶךְ (blessed) GENERATES an interpretive standing — blessedness — upon one identified day: Generate·Interpretation at figure grain, the same cell-arithmetic as the UDHR's promote-respect and secure-recognition rows (fostering/creating a standing of regard); performative, not a report of a held view",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "DEF",
+    "grain": "Figure",
+    "because": "readable as a bounded standing assigned, the proclaims-as family"
+   },
+   "span": {
+    "start": 142,
+    "end": 4620
+   },
+   "anchor": "וַיְבָ֤רֶךְ אֱלֹהִים֙ אֶת י֣וֹם הַשְּׁבִיעִ֔י",
+   "cell": {
+    "op": "REC",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-2",
+   "language": "he",
+   "subject": "אֱלֹהִים֙",
+   "relation": "וַיְקַדֵּ֖שׁ",
+   "object": "אֹת֑וֹ",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:hallowed-day",
+   "ground": "gen-2.3.2",
+   "role": "declared",
+   "because": "וַיְקַדֵּשׁ (hallowed) — holiness is SET-APARTNESS: the day's standing bounded off from the ordinary six, Differentiate·Interpretation at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "'אֹתוֹ' → יוֹם הַשְּׁבִיעִי, the blessed day",
+   "alternate": {
+    "op": "SEG",
+    "grain": "Figure",
+    "because": "readable as the cut itself rather than the boundary of meaning"
+   },
+   "span": {
+    "start": 142,
+    "end": 4620
+   },
+   "anchor": "וַיְקַדֵּ֖שׁ אֹת֑וֹ",
+   "cell": {
+    "op": "DEF",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-2",
+   "language": "he",
+   "subject": "אֱלֹהִים֙",
+   "relation": "שָׁבַת֙",
+   "object": "מִכָּל מְלַאכְתּ֔וֹ",
+   "polarity": "+",
+   "clause": "reason-adjunct",
+   "prop": "gen:god-rested",
+   "ground": "gen-2.3.2.1",
+   "role": "declared",
+   "because": "the reason clause (כִּי, for-on-it-he-rested) restates the ceasing — a second row on gen:god-rested (R9's multi-row rule); the closing relative 'אֲשֶׁר בָּרָא אֱלֹהִים לַעֲשׂוֹת' is formulaic and folds (R1)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "'בוֹ' → the seventh day; subject carries from the matrix",
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 4620
+   },
+   "anchor": "כִּ֣י ב֤וֹ שָׁבַת֙ מִכָּל מְלַאכְתּ֔וֹ",
+   "cell": {
+    "op": "NUL",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֔ה",
+   "relation": "וַיַּ֣רְא",
+   "object": "כִּ֥י רַבָּ֛ה רָעַ֥ת הָאָדָ֖ם בָּאָ֑רֶץ וְכָל יֵ֨צֶר֙ מַחְשְׁבֹ֣ת לִבּ֔וֹ רַ֥ק רַ֖ע כָּל הַיּֽוֹם",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:saw-wickedness-great",
+   "ground": "gen-6.5.1",
+   "role": "declared",
+   "because": "וַיַּרְא (saw) — perception held over the AMBIENT moral condition of the earth (רבה בארץ... כל היום): Relate·Interpretation at GROUND grain; the perceived content (wickedness great; every inclination only evil continually) stays inside the object per A1, the gen-1 saw-that-good precedent",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "EVA",
+    "grain": "Pattern",
+    "because": "readable as taking in the RECURRENCE (every inclination, all the day) rather than the ambient state"
+   },
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "וַיַּ֣רְא יְהוָ֔ה כִּ֥י רַבָּ֛ה רָעַ֥ת הָאָדָ֖ם בָּאָ֑רֶץ",
+   "cell": {
+    "op": "EVA",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֔ה",
+   "relation": "וַיִּנָּ֣חֶם",
+   "object": "כִּֽי עָשָׂ֥ה אֶת הָֽאָדָ֖ם בָּאָ֑רֶץ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:god-repented-making",
+   "ground": "gen-6.6.1",
+   "role": "declared",
+   "because": "וַיִּנָּחֶם (repented/relented) — the RE-ZERO itself at ground grain: the maker's whole interpretive stance toward the made world conceded and re-grounded (regret THAT he had made man in the earth): Generate·Interpretation at GROUND grain — the tempest-abjure cell in Hebrew; the making regretted stays inside the object per A1 (content of an attitude)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "EVA",
+    "grain": "Ground",
+    "because": "readable as grief held over the whole rather than the stance re-grounded — the quran-2-37 tawba's own disclosed alternate, one grain up"
+   },
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "וַיִּנָּ֣חֶם יְהוָ֔ה כִּֽי עָשָׂ֥ה אֶת הָֽאָדָ֖ם בָּאָ֑רֶץ",
+   "cell": {
+    "op": "REC",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֔ה",
+   "relation": "וַיִּתְעַצֵּ֖ב",
+   "object": "אֶל לִבּֽוֹ",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "gen:grieved-to-heart",
+   "ground": "gen-6.6.2",
+   "role": "declared",
+   "because": "וַיִּתְעַצֵּב (was grieved) — an affect held, borne inward to his own heart (אל לבו): Relate·Interpretation at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the coordinated verb shares the matrix subject יְהוָה",
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "וַיִּתְעַצֵּ֖ב אֶל לִבּֽוֹ",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֗ה",
+   "relation": "וַיֹּ֣אמֶר",
+   "object": "אֶמְחֶ֨ה אֶת הָאָדָ֤ם אֲשֶׁר בָּרָ֨אתִי֙ מֵעַל֙ פְּנֵ֣י הָֽאֲדָמָ֔ה מֵֽאָדָם֙ עַד בְּהֵמָ֔ה עַד רֶ֖מֶשׂ וְעַד ע֣וֹף הַשָּׁמָ֑יִם כִּ֥י נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "gen:god-said-blot",
+   "ground": "gen-6.7.1",
+   "role": "declared",
+   "because": "the say-act (וַיֹּאמֶר): a sign emitted — Relate·Existence at figure grain, gen-1's own precedent; the quoted announcement's asserted clauses row below with embedded per the proclamation precedent",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "וַיֹּ֣אמֶר יְהוָ֗ה",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֗ה",
+   "relation": "אֶמְחֶ֨ה",
+   "object": "אֶת הָאָדָ֤ם",
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "gen:blot-out-man",
+   "ground": "gen-6.7.1.1",
+   "role": "declared",
+   "because": "אֶמְחֶה (I will blot out) — absence brought about as the act's own product (A4's family) over a KIND-RANGE (from man to beast to creeping thing to fowl — the range מֵאָדָם עַד... folded, disclosed; the locative מעל פני האדמה folded, A2): Differentiate·Existence at PATTERN grain; quoted announcement, rowed with embedded (the proclamation precedent; the volitive imperfect is the speaker's asserted course, the sw main-line-deontic ruling's family)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the 1sg subject is the quoted speaker → יְהוָה",
+   "alternate": {
+    "op": "NUL",
+    "grain": "Ground",
+    "because": "readable as wiping the whole living surface of the ground rather than the kinds ranged over"
+   },
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "אֶמְחֶ֨ה אֶת הָאָדָ֤ם אֲשֶׁר בָּרָ֨אתִי֙ מֵעַל֙ פְּנֵ֣י הָֽאֲדָמָ֔ה",
+   "cell": {
+    "op": "NUL",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֗ה",
+   "relation": "בָּרָ֨אתִי֙",
+   "object": "הָאָדָ֤ם",
+   "polarity": "+",
+   "clause": "restrictive-relative",
+   "prop": "gen:whom-i-created",
+   "ground": "gen-6.7.1.1.1",
+   "role": "declared",
+   "because": "בָּרָאתִי (I created) — the coming-into-being of the one now to be blotted: Generate·Existence at figure grain; an INDICATIVE restrictive relative rows (R8, the es que-será-completada precedent)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the 1sg subject → יְהוָה (the speaker); the relative head אֲשֶׁר → הָאָדָם, carried as object",
+   "alternate": null,
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "אֲשֶׁר בָּרָ֨אתִי֙",
+   "cell": {
+    "op": "INS",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "gen-6",
+   "language": "en",
+   "subject": "יְהוָ֗ה",
+   "relation": "נִחַ֖מְתִּי",
+   "object": "כִּ֥י עֲשִׂיתִֽם",
+   "polarity": "+",
+   "clause": "reason-adjunct",
+   "prop": "gen:for-i-repent",
+   "ground": "gen-6.7.1.2",
+   "role": "declared",
+   "because": "נִחַמְתִּי (I repent) — the same re-zero in the quoted FIRST person, the reason offered for the blotting: Generate·Interpretation at ground grain; the made-them content (כִּי עֲשִׂיתִם) stays inside the object per A1",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the 1sg subject → יְהוָה (the speaker)",
+   "alternate": {
+    "op": "EVA",
+    "grain": "Ground",
+    "because": "readable as grief held — the same disclosed mirror as the narrated וַיִּנָּחֶם"
+   },
+   "span": {
+    "start": 142,
+    "end": 18335
+   },
+   "anchor": "כִּ֥י נִחַ֖מְתִּי כִּ֥י עֲשִׂיתִֽם",
+   "cell": {
+    "op": "REC",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  }
+ ],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "cdc1ebe31991a3d4",
+  "at": "2026-08-31T19:09:24.818Z"
+ }
+}

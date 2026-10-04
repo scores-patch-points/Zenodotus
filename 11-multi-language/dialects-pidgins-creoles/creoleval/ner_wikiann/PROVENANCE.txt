@@ -1,0 +1,27 @@
+Source: WikiAnn / PAN-X NER data, as vendored directly inside the CreoleVal repo itself at
+nlu/ner/data/WikiAnn_data/<lang>/wikiann-<lang>.bio (bi, cbk_zam, ht, pap, pih, sg, tpi -- these
+are CreoleVal's own re-splits, since the CreoleVal authors state in nlu/ner/README.md: "As we could
+not find the official splits, the data can be found in: data/WikiAnn_data/<lang>").
+Underlying dataset: Pan, Zhang, May, Nothman, Knight & Ji, "Cross-lingual Name Tagging and Linking
+for 282 Languages" (ACL 2017), commonly redistributed as "WikiAnn" / "PAN-X", derived from
+Wikipedia dumps with automatically-projected NER tags (LOC/PER/ORG).
+
+LICENSE STATUS -- UNSPECIFIED, staged as a bounded sample and clearly tagged as such per this
+repo's staging rules (not treated as equivalent to an open license):
+- CreoleVal's own top-level README benchmark table lists this dataset's license as "Unspecified".
+- The canonical HuggingFace mirror (https://huggingface.co/datasets/unimelb-nlp/wikiann), fetched
+  and read directly for this verification, lists "license: unknown" in its own metadata and its
+  "### Licensing Information" section literally says "[More Information Needed]".
+- No license file exists anywhere in the CreoleVal repo's nlu/ner/data/WikiAnn_data/ tree.
+This is NOT the "scraped social media against a platform's ToS" case this repo's rules single out
+for outright exclusion -- the underlying text is Wikipedia article content (Wikipedia's own prose
+is CC BY-SA 3.0 / GFDL), and this exact WikiAnn corpus has been an openly redistributed, widely
+used academic NER benchmark (via HuggingFace `datasets`, XTREME, and hundreds of papers) since
+2017 with no known restriction asserted by its creators beyond the missing explicit statement.
+Given that, and per this repo's rule for "unclear" license status, a bounded, clearly-tagged SAMPLE
+is staged rather than either the full files or nothing.
+
+Coverage staged: the first 400 lines of each language's .bio file (out of 2,113-60,713 lines per
+language in the full CreoleVal-vendored files) -- a bounded sample, not the complete dataset.
+Format: CoNLL-style token\tTAG per line (IOB2: B-LOC/I-LOC/B-PER/I-PER/B-ORG/I-ORG/O), blank line
+between sentences.

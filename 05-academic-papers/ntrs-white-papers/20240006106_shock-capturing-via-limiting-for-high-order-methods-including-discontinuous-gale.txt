@@ -1,0 +1,1154 @@
+---
+title: Shock Capturing via Limiting for High-Order Methods including Discontinuous Galerkin
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20240006106
+source_url: https://ntrs.nasa.gov/citations/20240006106
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Glenn Research Center
+publication_date: 2024-07-18
+retrieved: 2026-09-22
+sha256: cda865f6091834725c1e5d78db1d8c586e065a274583c40b7406c48bd92a85a2
+pages: 23
+words: 7460
+cv_look_pages: 6
+---
+
+                                                    1
+
+
+
+
+      Shock Capturing via Limiting for High-Order Methods
+               including Discontinuous Galerkin
+
+                                            H. T. Huynh
+                                    NASA Glenn Research Center
+                                     Cleveland, OH 44135, USA
+                                        huynh@grc.nasa.gov
+
+
+Abstract
+    High-order methods, such as discontinuous Galerkin (DG), spectral, and flux reconstruction (FR),
+are prone to generating unwanted oscillations near shocks and discontinuities. Conventional limiting
+techniques, while effective in suppressing oscillations near shocks, often compromise accuracy near
+extrema, where the solution is only first-order accurate. This paper introduces a novel limiting technique
+for these high-order schemes, aimed at effectively managing shocks while preserving accuracy. The
+key idea is to expand the standard monotonicity limits to provide “room” near smooth extrema, ensuring
+that limiting has no effect and thus preserving accuracy. Near a discontinuity, these expanded limits
+effectively reduce to the original monotonicity limits, suppressing oscillations. Additional motivation
+is drawn from a formula for the derivative of Radau polynomials, which depicts the behavior of
+oscillations resulting from discontinuities. This behavior leads to a simplification by applying the limits
+to the sum of magnitudes of all modes, linear and higher degree. Unlike typical approaches, which rely
+on successful detection to activate limiting, our limiter depends continuously on the data, thereby
+avoiding potential issues if detection fails. To reduce computing time, efficient criteria for detecting
+smooth regions where limiting is unnecessary are presented. Combined with detection, the continuous
+dependence on the data is lost, but the method is more economical. A notable characteristic of the entire
+process is its simplicity in both concept and implementation. Numerical tests for advection and Euler
+equations are conducted to demonstrate the effectiveness of the proposed method.
+
+
+1    Introduction
+   As is well-known, popular high-order methods such as discontinuous Galerkin (DG), spectral, and
+flux reconstruction (FR), tend to produce oscillations near shocks and discontinuities. These oscillations
+cause a loss of accuracy and can result in negative pressure and/or density, leading to code break down.
+   To mitigate these oscillations, nonlinear stabilization techniques, often referred to as shock-
+capturing methods, have been developed. They can be broadly categorized into one of four groups:
+limiting (Van Leer 1977, Cockburn et al. 1990, Hoteit et al. 2004, Krivodonova et al. 2004,
+Krivodonova 2007, Yang and Wang 2009, Park et al. 2010, Park and Kim 2012, 2014, 2016, Moe et al.
+2015, You and Kim 2018, Lu et al. 2019), filtering (Hesthaven and Warburton 2008, Asthana et al.
+2015), artificial viscosity (Persson and Peraire 2006, Park et al. 2014), or method modification
+(Dumbser et al. 2015), each with a substantial body of literature (see the references given therein).
+These approaches differ in accuracy, robustness, computational cost, and difficulty of extensions. More
+recent works with promising results include (Dzanica et al. 2022, You et al. 2023, Kim et al. 2024).
+   Among shock capturing methods, we narrow our focus to limiting type, which is arguably the most
+popular. For standard piecewise linear schemes, the limiting approach imposes constraints on the
+calculated slopes to prevent excessive steepness, based on Van Leer’s (1977) concept of preserving
+monotonicity: when the data are monotone, the limited slopes yield a monotone solution. The main
+drawback of limiting is that it causes a loss of accuracy near smooth extrema where the solution is
+                                                    2
+
+somewhat flattened and only first-order accurate. Such a reduction in accuracy undermines the inherent
+high-order nature of the methods employed here.
+    Concerning higher order (quadratic and higher) methods, the key idea for limiting is the following.
+First, a solution is obtained using the base scheme. Next, a detection method is employed, marking a
+cell as “troubled” if, for example, high frequency or high modal components are significant, indicating
+the presence of oscillations and the necessity for limiting. For such cells, a constraint or a nonlinear
+reconstruction is applied to reduce steepness and suppress oscillations in the solution. Conversely, if
+the cell is deemed “good”—that is, not “troubled”—then the base solution is not altered.
+    Such DG-type limiters rely heavily on the detection technique, and detection can fail: occasionally,
+a good cell can be marked troubled, and vice versa. If a good cell in smooth regions is marked troubled,
+limiting may cause a loss of accuracy, and if a troubled cell is marked good, oscillations may take place.
+The detection methods must also balance between either marking too many cells as troubled resulting
+in more computing time or marking too few resulting in oscillations. Some of these methods also rely
+on user specified parameters which must be recalibrated for different data.
+    In this paper, we introduce a limiting technique designed to mitigate oscillations near shocks while
+maintaining accuracy for high-order methods such as DG, spectral, and FR. This technique extends the
+method proposed in (Huynh 1995) and (Suresh and Huynh 1997) for traditional interpolation-type
+schemes. The key idea is to expand the standard monotonicity limits to provide “room” so that near
+smooth extrema, limiting has no effect, thereby preserving accuracy. Near a discontinuity, the expanded
+limits effectively reduce to the original monotonicity limits, suppressing oscillations. Our limiter
+depends continuously on the data, in contrast to typical limiting methods, which rely heavily on the
+success of detection to activate or deactivate limiting. The algorithm is further simplified by two
+observations: (a) near a discontinuity, the magnitudes of the high order modes in the solution become
+excessively large, but their signs are consistent with the direction of the jump, thus limiting only needs
+to reduce their magnitudes; and (b) the limiting bounds can be applied to the sum of magnitudes of all
+modes, linear and higher order. Thus, our limiting shares the reduction of higher-order modes with
+filtering techniques. The key difference is that our approach can reduce even the linear mode and/or
+nullify all higher-order modes. These large reductions, however, occur only near a discontinuity, unlike
+in standard filtering, where a moderate reduction is applied everywhere.
+    To reduce computing time, we also present efficient criteria for identifying smooth regions where
+limiting is unnecessary. The main criterion among the three for our detection relies on comparing the
+jumps at the interfaces to the quadratic content within the cell. The resulting algorithm typically marks
+one to three cells near a shock as troubled. For a contact discontinuity, after it is dissipated over a few
+cells, the detection can result in no troubled cells, indicating that the data is sufficiently smooth to be
+managed by the base method with no limiting. Together with detection, the combined method no longer
+depends continuously on the data, but it is more economical. A notable characteristic of the entire
+process is its simplicity in both concept and implementation.
+    Our approach, along with its motivations and associated discussions, is strongly influenced by the
+behavior of the DG method at a discontinuity. To illustrate this behavior, we need to formulate the DG
+method for advection from an interpolation viewpoint using the FR approach. In essence, projection in
+the DG formulation is equivalent to interpolation at the Radau points. Here, the oscillations resulting
+from a discontinuity are given by the derivative of the Radau polynomial. While Radau quadratures are
+well known, Radau polynomials are not widely recognized. These polynomials, which approximate a
+unit jump at a cell interface, are defined by averaging the Legendre polynomials. Hence, providing a
+description of DG in the FR framework, along with discussions on Radau polynomials and DG solutions
+at a discontinuity, becomes necessary and is detailed below.
+    The paper is essentially self-contained and organized as follows. Section 2 presents the preliminaries
+including the Radau polynomials and their derivatives. Section 3 describes the DG method in the FR
+framework for advection. Section 4 shows the behavior of the DG solution for a jump discontinuity.
+Our limiting and detection methods are presented in Section 5. Numerical examples are provided in
+Section 6. Finally, conclusions and discussions can be found in Section 7.
+                                                      3
+
+
+2     Preliminaries
+    For any nonnegative integer 𝑚, let 𝑷𝑚 be the space of polynomials of degree 𝑚 or less.
+                                                                                   1
+    For any two functions 𝑣 and 𝑤 on 𝐼 = [−1, 1], denote (𝑣, 𝑤) = (𝑣, 𝑤)𝐼 = ∫−1 𝑣(𝜉)𝑤(𝜉) 𝑑𝜉 .
+   We need the Legendre polynomials to define the Radau polynomials. Let the Legendre polynomial
+𝐿𝑘 on 𝐼 be defined as the unique polynomial of degree 𝑘 that satisfies 𝐿𝑘 (1) = 1 and 𝐿𝑘 is orthogonal
+                                              1
+to 𝑷𝑘−1 (or 𝐿𝑘 ⏊ 𝑷𝑘−1 ), i.e., (𝐿𝑘 , 𝜉 𝑚 ) = ∫−1 𝐿𝑘 (𝜉)𝜉 𝑚 𝑑𝜉 = 0, for 𝑚 = 0, 1, … , 𝑘 − 1. The first few
+Legendre polynomials are
+                                 3𝜉 2 − 1         5𝜉 3 − 3𝜉              35𝜉 4 − 30𝜉 2 + 3
+        𝐿0 = 1,    𝐿1 = 𝜉,       𝐿2 =     , 𝐿3 =            , and 𝐿4 =                     .    (2.1)
+                                     2                 2                         8
+The zeros of 𝐿𝑘 are the 𝑘 Gauss points.
+   Fig. 2.1(a) shows the graphs of the above Legendre polynomials; the dots, which represent the zeros
+of 𝐿4 , are the 4 Gauss points.
+
+
+
+
+               (a) Legendre polynomials                             (b) Left Radau polynomials
+   Fig. 2.1: (a) The graphs of the Legendre polynomials 𝐿𝑘 , 𝑘 = 0, … , 4; the dots represent the 4 Gauss
+points. (b) The graphs of the left Radau polynomials 𝑅𝐿, 𝑘 , 𝑘 = 1, … , 4; the dots represent the 4 left
+Radau points. The left Radau polynomials approximate a unit jump (up) at the right boundary.
+
+    The Radau quadrature formulas are well-known, but the Radau polynomials are not. For any 𝑘 ≥ 1,
+let the left and right Radau polynomials of degree 𝑘 be defined respectively by
+                            1                                  (−1)𝑘
+                   𝑅𝐿, 𝑘 = (𝐿𝑘 + 𝐿𝑘−1 ), and 𝑅𝑅, 𝑘 =                  (𝐿𝑘 − 𝐿𝑘−1 ).              (2.2a,b)
+                            2                                     2
+Note that 𝑅𝐿, 𝑘 and 𝑅𝑅, 𝑘 are reflections of each other: 𝑅𝑅, 𝑘 (𝜉) = 𝑅𝐿, 𝑘 (−𝜉). At the two boundaries, for
+the left Radau polynomial,
+
+
+                                    𝑅𝐿, 𝑘 (−1) = 0,   and   𝑅𝐿, 𝑘 (1) = 1.                       (2.3a,b)
+For the right Radau polynomial,
+                                    𝑅𝑅, 𝑘 (−1) = 1,   and   𝑅𝑅, 𝑘 (1) = 0.                       (2.4a,b)
+    The first few 𝑅𝐿, 𝑘 ’s are
+                             𝑅𝐿, 1 = (1 + 𝜉)/2, 𝑅𝐿, 2 = (−1 + 2𝜉 + 3𝜉 2 )/4,
+     𝑅𝐿, 3 = (−1 − 3𝜉 + 3𝜉 2 + 5𝜉 3 )/4,       and    𝑅𝐿, 4 = (3 − 12𝜉 − 30𝜉 2 + 20𝜉 3 + 35𝜉 4 )/16.
+   Fig. 2.1(b) shows the graphs of these left Radau polynomials. The dots corresponding to the zeros
+of 𝑅𝐿, 4 represent the 4 left Radau points, which include 𝜉 = −1.
+                                                         4
+
+
+   The corresponding 𝑅𝑅, 𝑘 can easily be obtained by 𝑅𝑅, 𝑘 (𝜉) = 𝑅𝐿, 𝑘 (−𝜉).
+   Since both 𝐿𝑘 and 𝐿𝑘−1 are orthogonal to 𝑷𝑘−2, both Radau polynomials also have this property:
+                                    𝑅𝐿, 𝑘 ⏊ 𝑷𝑘−2 , and 𝑅𝑅, 𝑘 ⏊ 𝑷𝑘−2 .                               (2.5a,b)
+   Let the step-down function 𝑆𝐷 and step-up function 𝑆𝑈 on 𝐼 be defined respectively by
+                             1 for    𝜉 = −1                  0 for − 1 ≤ 𝜉 < 1
+                𝑆𝐷 (𝜉) = {                     and 𝑆𝑈 (𝜉) = {                                       (2.6a,b)
+                             0 for − 1 < 𝜉 ≤ 1                1 for 𝜉 = 1.
+On 𝐼, 𝑆𝐷 represents a unit jump (down) at 𝜉 = −1, and 𝑆𝑈 represents a unit jump (up) at 𝜉 = 1.
+   The right Radau polynomial 𝑅𝑅, 𝑘 can be considered as an approximation to the step-down function
+𝑆𝐷 since 𝑅𝑅, 𝑘 (−1) = 1, 𝑅𝑅, 𝑘 (1) = 0, and 𝑅𝑅, 𝑘 approximates 0 on (−1, 1] in the sense that
+𝑅𝑅, 𝑘 ⏊ 𝑷𝑘−2 , i.e., (𝑅𝑅, 𝑘 , 𝜉 𝑚 ) = 0 for 𝑚 = 0, 1, … , 𝑘 − 2. In other words, except for the two conditions
+at the boundaries, namely (2.4a,b), 𝑅𝑅, 𝑘 utilizes the rest of the conditions (𝑘 − 1 of them) to
+approximate 0 in the sense of orthogonality or projection: 𝑅𝑅, 𝑘 ⏊ 𝑷𝑘−2 .
+   Similarly, the left Radau polynomial 𝑅𝐿, 𝑘 approximates 𝑆𝑈 .
+   The above discussion implies that the left and right Radau polynomials can be employed to
+approximate the jumps at the cell interfaces for the DG method as will be discussed below.
+   The zeros of 𝑅𝐿, 𝑘 are the 𝑘 left Radau points, and the zeros of 𝑅𝑅, 𝑘 are the 𝑘 right Radau points.
+   Next, we present simple formulas for 𝑅𝐿, 𝑘+1 ′ and 𝑅𝑅, 𝑘+1 ′, which approximate the derivative of a
+jump at the boundaries, and show the behavior of the DG solution at a discontinuity:
+                             𝑘
+                  ′1              1
+          𝑅𝐿, 𝑘+1 = ∑ (2𝑚 + 1)𝐿𝑚 = {𝐿0 + 3𝐿1 + 5𝐿2 + 7𝐿3 + ⋯ + (2𝑘 + 1)𝐿𝑘 },                          (2.7a)
+                   2              2
+                            𝑚=0
+and
+                       𝑘
+            ′  1                      1
+      𝑅𝑅, 𝑘+1 = ∑ (−1)𝑚+1 (2𝑚 + 1)𝐿𝑚 = {−𝐿0 + 3𝐿1 + ⋯ + (−1)𝑘+1 (2𝑘 + 1)𝐿𝑘 }. (2.7b)
+               2                      2
+                      𝑚=0
+
+Note the pattern 1, 3, 5, … , 2𝑘 + 1. For the proof of (2.7), see Appendix A. The above imply
+                           2𝑘 + 1                                         2𝑘 + 1
+          𝑅𝐿, 𝑘+1 ′ = 𝑅𝐿, 𝑘 ′ +    𝐿𝑘 , and 𝑅𝑅, 𝑘+1 ′ = 𝑅𝑅, 𝑘 ′ + (−1)𝑘+1        𝐿𝑘 .               (2.8a,b)
+                               2                                            2
+The values at the boundaries, employed later, are also straightforward:
+                                                1                              (𝑘 + 1)2
+           𝑅𝐿, 𝑘+1 ′ (1) = −𝑅𝑅, 𝑘+1 ′ (−1) =      {1 + 3 + 5 − ⋯ + (2𝑘 + 1)} =          ,              (2.9)
+                                                2                                 2
+and
+                                        1                                                 𝑘+1
+      𝑅𝐿, 𝑘+1 ′ (−1) = −𝑅𝑅, 𝑘+1 ′ (1) =   {1 − 3 + 5 + ⋯ + (−1)𝑘 (2𝑘 + 1)} = (−1)𝑘             . (2.10)
+                                        2                                                   2
+   Fig. 2.2 shows the plots of (a) the first few right Radau polynomials and (b) their derivatives. In (b),
+consistent with (2.9), the values 𝑅𝑅, 𝑘+1 ′ (−1), for 𝑘 = 0, … , 3, respectively, are: −1/2, −4/2, −9/2,
+and −16/2; and consistent with (2.10), the values 𝑅𝑅, 𝑘+1 ′ (1) are −1/2, 1, −3/2, and 2.
+    Denote the 𝑘 + 1 left and right Radau points in increasing order by 𝜉𝐿, 𝑚 and 𝜉𝑅, 𝑚 respectively, 𝑚 =
+1, … , 𝑘 + 1. Then, while 𝑅𝑅, 𝑘+1 vanishes at the 𝑘 + 1 right Radau points, its derivative 𝑅𝑅, 𝑘+1 ′
+vanishes at the 𝑘 interior points of the 𝑘 + 1 left Radau points: for 𝑙 = 2, … , 𝑘 + 1,
+                                               𝑅𝑅, 𝑘+1 ′ (𝜉𝐿,𝑙 ) = 0.                                 (2.11)
+The exception is at the left boundary 𝜉 = −1 where 𝑅𝑅, 𝑘+1 ′ (−1) = −(𝑘 + 1)2 /2 by (2.9). The proof
+of (2.11) can be found in Appendix B.
+    A similar statement holds for the left Radau polynomial with appropriate changes.
+                                                        5
+
+
+
+
+             (a) Right Radau polynomials                    (b) Derivatives of Right Radau polynomials
+    Fig. 2.2: (a) Graphs of the right Radau polynomials 𝑅𝑅, 𝑘 , 𝑘 = 1, … , 4, alongside dots corresponding
+to the zeros of 𝑅𝑅, 4 representing the 4 right Radau points; (b) graphs of 𝑅𝑅, 𝑘 ′, note the different scales.
+Consistent with (2.11), for each 𝑘, the 𝑘 − 1 zeros of 𝑅𝑅, 𝑘 ′ together with 𝜉 = −1 form the 𝑘 left Radau
+points represented by the dots in (b) for 𝑘 = 4.
+
+
+3. Discontinuous Galerkin method for advection via interpolation
+   For advection, by casting the DG method in the flux reconstruction (FR) framework, projection, the
+key idea in the DG formulation, turns out to be equivalent to interpolation at the Radau points.
+   Consider the advection equation
+                                               𝑢𝑡 + 𝑎𝑢𝑥 = 0                                            (3.1)
+with initial condition
+                                             𝑢(𝑥, 0) = 𝑢0 (𝑥)                                          (3.2)
+where 𝑡 is time, 𝑥 space, and 𝑎 the advection speed, a positive constant (we can set 𝑎 = 1). By assuming
+that 𝑢0 is periodic, boundary conditions are trivial and thus omitted. The exact solution at time 𝑡 is
+obtained by shifting the data curve to the right a distance 𝑎𝑡: 𝑢exact (𝑥, 𝑡) = 𝑢0 (𝑥 − 𝑎𝑡).
+   Let the domain of calculation Ω be divided into (possibly non-uniform) cells 𝐸𝑗 , 𝑗 = 1, 2, … Denote
+the center of 𝐸𝑗 by 𝑥𝑗 and its width by ℎ𝑗 . Set ℎ = max(ℎ𝑗 ), 𝑗 = 1, 2, … Using the reference frame, with
+𝜉 varying on 𝐼 = [−1, 1] and 𝑥 on 𝐸𝑗 , the linear function mapping 𝐼 onto 𝐸𝑗 and its inverse are
+                                             ℎ𝑗             2
+                             𝑥(𝜉) = 𝑥𝑗 + 𝜉      , and 𝜉(𝑥) = (𝑥 − 𝑥𝑗 ).                                (3.3)
+                                             2              ℎ𝑗
+Thus, 𝑑𝑥 = ℎ𝑗 𝑑𝜉/2. A function 𝑟𝑗 (𝑥) on 𝐸𝑗 results in a function on 𝐼 denoted by, for simplicity of
+notation, 𝑟𝑗 (𝜉) with 𝑟𝑗 (𝜉) = 𝑟𝑗 (𝑥(𝜉)). By the chain rule, 𝑑𝑟𝑗 /𝑑𝑥 = (2/ℎ𝑗 )(𝑑𝑟𝑗 /𝑑𝜉).
+    Let 𝑝 be a nonnegative integer. At time 𝑡, let the solution 𝑢(𝑥, 𝑡) be approximated on each cell 𝐸𝑗
+by a polynomial of degree 𝑝 in 𝑥 denoted by 𝑢𝑗 (𝑥, 𝑡). For each fixed 𝑡, the collection of all polynomials
+{𝑢𝑗 (. , 𝑡)} as 𝑗 varies forms a function denoted by 𝑢ℎ , which is generally discontinuous across cell
+interfaces. In the reference description for 𝐸𝑗 , the solution 𝑢𝑗 (𝜉, 𝑡) can be expressed in modal form as
+                                                    𝑝
+
+                                       𝑢𝑗 (𝜉, 𝑡) = ∑ 𝑢𝑗, 𝑘 (𝑡) 𝐿𝑘 (𝜉).                                 (3.4)
+                                                  𝑘=0
+
+For each 𝑘, 0 ≤ 𝑘 ≤ 𝑝, the value 𝑢𝑗, 𝑘 is called the 𝑘-th mode (or 𝑘-th moment) of the solution in cell 𝑗,
+and 𝑢𝑗 of degree 𝑝 is determined by the 𝑝 + 1 modes 𝑢𝑗, 𝑘 .
+                                                        6
+
+
+   Assume that the data 𝑢𝑗, 𝑘 (𝑡 𝑛 ) = 𝑢𝑗, 𝑘 are known for all cells. We wish to calculate (𝑢ℎ )𝑥 or
+equivalently (𝑢ℎ )𝜉 . The initial condition 𝑢0 (𝑥) can be discretized by using the values at the 𝑝 + 1
+Gauss points in each cell. The resulting nodal data can easily be transformed into modal form (3.4).
+   As is routine, to involve data interaction among cells, at each interface 𝑗 + 1/2, we define a value
+common for the two adjacent cells 𝑗 and 𝑗 + 1 by upwinding: using the reference frame,
+                                                  upw
+                                               𝑢𝑗+1/2 = 𝑢𝑗 (1).                                       (3.5)
+   The DG method can be cast as follows (for the proof, see Appendix C). In each cell 𝑗, we reconstruct
+the solution by a polynomial of degree 𝑝 + 1, one degree higher than that of 𝑢𝑗 , denoted by 𝑈𝑗 , and
+defined by 𝑝 + 2 conditions. At the two interfaces, 𝑈𝑗 takes on the common (upwind) values,
+                                  upw                                   upw
+                     𝑈𝑗 (−1) = 𝑢𝑗−1/2 = 𝑢𝑗−1 (1) and 𝑈𝑗 (1) = 𝑢𝑗+1/2 = 𝑢𝑗 (1).                     (3.6a,b)
+
+For the remaining 𝑝 conditions, we require that 𝑈𝑗 (𝜉) approximates 𝑢𝑗 (𝜉) as closely as possible through
+projection:
+                                            (𝑈𝑗 − 𝑢𝑗 )⏊ 𝑷𝑝−1 .                                        (3.7)
+
+The degree 𝑝 + 1 for 𝑈𝑗 serves the purpose that (𝑈𝑗 ) , which yields (𝑢ℎ )𝜉 , matches the degree of 𝑢𝑗 .
+                                                            𝜉
+   Focussing on cell 𝑗, at the left interface, we have the following jump denoted by 𝐽𝐿 :
+                                            upw
+                    𝑈𝑗 (−1) − 𝑢𝑗 (−1) = 𝑢𝑗−1/2 − 𝑢𝑗 (−1) = 𝑢𝑗−1 (1) − 𝑢𝑗 (−1) = 𝐽𝐿 .                  (3.8)
+
+(A more complete notation would be 𝐽𝑗,𝐿 .) On the other hand, at the right interface, 𝐽𝑅 = 0,
+                                                   upw
+                               𝑈𝑗 (1) − 𝑢𝑗 (1) = 𝑢𝑗+1/2 − 𝑢𝑗 (1) = 𝐽𝑅 = 0.                            (3.9)
+
+Eqs. (3.7)–(3.9) provide 𝑝 + 2 conditions defining 𝑈𝑗 − 𝑢𝑗 . The 𝑝 + 1 conditions of (3.7) and (3.9) for
+𝑈𝑗 − 𝑢𝑗 are identical to those for 𝑅𝑅, 𝑝+1 , namely, (2.5b) and (2.4b) with 𝑘 = 𝑝 + 1. Thus, by
+multiplying 𝑅𝑅, 𝑝+1 by the constant 𝐽𝐿 , we can also match condition (3.8) at the left boundary, i.e.,
+
+                                           𝑈𝑗 − 𝑢𝑗 = 𝐽𝐿 𝑅𝑅, 𝑝+1 .                                    (3.10)
+Equivalently,
+                                           𝑈𝑗 = 𝑢𝑗 + 𝐽𝐿 𝑅𝑅, 𝑝+1 .                                    (3.11)
+
+Hence, by adding the “correction” 𝐽𝐿 𝑅𝑅, 𝑝+1 to 𝑢𝑗 , we obtain 𝑈𝑗 that matches the common values at the
+                               upw                    upw
+interfaces, namely, 𝑈𝑗 (−1) = 𝑢𝑗−1/2 and 𝑈𝑗 (1) = 𝑢𝑗+1/2 , and (𝑈𝑗 )𝜉 yields the desired (𝑢ℎ )𝜉 .
+   In short, (𝑈𝑗 )𝜉 yields the desired (𝑢ℎ )𝜉 by the DG method for the following reasons. The DG
+solution is of degree 𝑝, therefore, 𝑈𝑗 needs to be of degree 𝑝 + 1. The DG formulation involves
+                                                  upw        upw
+integration by parts to enforce the upwind value 𝑢𝑗−1/2 and 𝑢𝑗+1/2 at the two interfaces, consistent with
+𝑈𝑗 matching these values by (3.8) and (3.9). To define 𝑈𝑗 , we need 𝑝 additional conditions. These are
+provided by—using the key DG idea—requiring that 𝑈𝑗 approximates 𝑢𝑗 as closely as possible via
+projection: (𝑈𝑗 − 𝑢𝑗 )⏊ 𝑷𝑝−1 as in (3.7).
+   The polynomial 𝑢𝑗 of degree 𝑝 can be defined by its values at the 𝑝 + 1 right Radau points, and 𝑈𝑗
+                                                                                                 upw
+can defined by the 𝑝 + 2 conditions that it interpolates 𝑢𝑗 at these Radau points and 𝑈𝑗 (−1) = 𝑢𝑗−1/2 .
+    Fig. 3.1 depict (a) piecewise quadratic data, and (b) the cubic polynomials 𝑈𝑗 and 𝑈𝑗+1 , which
+interpolate 𝑢𝑗 and 𝑢𝑗+1 , respectively, at the 3 right Radau points; (𝑈𝑗 )𝜉 yields the DG spatial derivative.
+   Thus, for advection, loosely put, projection in the DG method is equivalent to interpolation at the
+right Radau points (between 𝑈𝑗 and 𝑢𝑗 ).
+                                                       7
+
+
+   On the other hand, the left Radau points play an important role in the interpolation between (𝑈𝑗 )
+                                                                                                                𝜉
+and (𝑢𝑗 )𝜉 . At the left boundary 𝜉 = −1,
+
+                                                                   (𝑘 + 1)2
+                                (𝑈𝑗 )𝜉 (−1) = (𝑢𝑗 )𝜉 (−1) − 𝐽𝐿              .
+                                                                      2
+However, at the 𝑝 interior points of the 𝑝 + 1 left Radau points, by (2.11), (𝑈𝑗 )𝜉 equals (𝑢𝑗 )𝜉 . Thus, at
+the left Radau points, the “correction” to (𝑢𝑗 )𝜉 , in the form (𝑈𝑗 )𝜉 , is lumped to the left boundary. This
+fact also relates to the sign changes of the oscillations across the left Radau points in Fig. 4.1(b) later.
+
+
+                                                                                𝑈𝑗 (𝑥)
+                       𝑢𝑗 (𝑥)
+
+                                   upw                                                      𝑈𝑗+1 (𝑥)
+           𝐽𝐿                     𝑢𝑗+1/2
+
+                      upw
+        𝑢𝑗−1 (𝑥)     𝑢𝑗−1/2       𝑢𝑗+1 (𝑥)
+
+
+
+          (a) Piecewise quadratic data                            (b) Cubic polynomials 𝑈𝑗 and 𝑈𝑗+1
+    Fig. 3.1: Piecewise quadratic DG method in the FR framework for advection: (a) piecewise
+quadratic data; (b) cubic polynomial 𝑈𝑗 (𝑥), which matches the upwind value at the left interface and
+interpolates 𝑢𝑗 at the 3 right Radau points; (𝑈𝑗 ) yields (𝑢ℎ )𝑥 for the DG method.
+                                                   𝑥
+
+
+   In passing, if there is also a jump at the right boundary of cell 𝑗, (e.g., the speed 𝑎 changes sign in
+the cell, or the centered common value is used instead of the upwind value in (3.5)), then to match the
+common values at both boundaries, (3.11) must be modified to 𝑈𝑗 = 𝑢𝑗 + 𝐽𝐿 𝑅𝑅, 𝑝+1 + 𝐽𝑅 𝑅𝐿, 𝑝+1 .
+   With 𝑈𝑗 by (3.11), the advection equation can then be discretized in semi-discrete form as
+                                         𝜕               2
+                                            𝑢𝑗 (𝜉, 𝑡) = − 𝑎(𝑈𝑗 )𝜉 .                                    (3.12)
+                                         𝜕𝑡              ℎ𝑗
+
+This completes the description of the DG method in the FR framework.
+   For convenience, the DG method of degree 𝑝 is abbreviated to DGp. We also denote 𝑢𝜉 by 𝑢′ .
+    The time stepping discussed below corresponds to an Euler forward method of size Δ𝜏 (by one stage
+of the Runge-Kutta method) with a CFL number of 𝜎 = 𝑎Δ𝜏/ℎ𝑗 . For convenience, it is referred to as a
+time step corresponding to 𝜎. The DG solution 𝑢̃𝑗 under such a time step is given by, using the above,
+
+                                             𝑢̃𝑗 = 𝑢𝑗 − 2𝜎𝑈𝑗′ .                                        (3.13)
+
+(The wave travels a distance 2𝜎 in the reference frame.) Hence, with 𝑈𝑗 by (3.11),
+
+                                    𝑢̃𝑗 = 𝑢𝑗 − 2𝜎𝑢𝑗′ −2𝜎𝐽𝐿 𝑅𝑅, 𝑝+1 ′ .                                 (3.14)
+Therefore, by (2.7b), the DGp solution is
+                𝑢̃𝑗 = 𝑢𝑗 − 2𝜎𝑢𝑗′ + 𝜎𝐽𝐿 [𝐿0 − 3𝐿1 + 5𝐿2 + ⋯ + (−1)𝑝 (2𝑝 + 1)𝐿𝑝 ].                       (3.15)
+  In (3.14) and the above, 𝑢𝑗 − 2𝜎𝑢𝑗′ represents the advection of 𝑢𝑗 with no interaction, while
+−2𝜎𝐽𝐿 𝑅𝑅, 𝑝+1 ′ and 𝜎𝐽𝐿 [… ] represent the effect of the interaction among cells due to the jump 𝐽𝐿 .
+                                                      8
+
+
+   The next discussion on accuracy is essential for the limiting procedure. At 𝜉 = 1, since 𝐿𝑘 (1) = 1,
+                                               𝑝
+
+                                    𝑢𝑗 (1) = ∑ 𝑢𝑗, 𝑘 = 𝑢𝑗, 0 + ⋯ + 𝑢𝑗, 𝑝 .                            (3.16)
+                                             𝑘=0
+
+At smooth regions, the 𝑘-th mode 𝑢𝑗, 𝑘 is of size 𝑂(ℎ𝑘 ), decreasing like ℎ𝑘 for small ℎ. Each successive
+𝑢𝑗, 𝑘 contributes to an estimate ∑𝑘𝑚=0 𝑢𝑗, 𝑚 for 𝑢(𝑥𝑗+1/2 ) accurate to order 𝑘, i.e., with an error 𝑂(ℎ𝑘+1 ).
+  In particular, the 𝑝-th mode 𝑢𝑗, 𝑝 is 𝑂(ℎ𝑝 ), and 𝑢𝑗 (1) above approximates 𝑢(𝑥𝑗+1/2 ) with an error
+𝑂(ℎ𝑝+1 ). A similar statement holds for 𝑢𝑗 (−1). Therefore, at all interfaces in smooth regions,
+
+                                        |𝑢𝑗+1 (−1) − 𝑢𝑗 (1)| = 𝑂(ℎ𝑝+1 ).                              (3.17)
+
+   Thus, if cell 𝑗 is in a smooth region, both 𝐽𝐿 and 𝐽𝑅 are 𝑂(ℎ𝑝+1 ), and (3.15) results in small
+corrections for all modes in the solution.
+   At a discontinuity, however, the jump 𝐽𝐿 is 𝑂(1), and the term −2𝜎𝐽𝐿 𝑅𝑅, 𝑝+1 ′ in (3.15) leads to
+higher modes of successively larger magnitudes, resulting in oscillations.
+
+
+4. Behavior of solutions at a discontinuity
+   Oscillatory DG solutions for step data.
+   The following example demonstrates the nature of the oscillations generated by the DG method at a
+discontinuity. Let the domain Ω = [0, 1] be divided into 3 uniform cells denoted by 𝑗 − 1, 𝑗, and 𝑗 + 1.
+With 𝜉 on 𝐼, consider the case of a step-down data where 𝑢𝑗−1 (𝜉) = 1, and 𝑢𝑗 (𝜉) = 𝑢𝑗+1 (𝜉) = 0 as
+shown in Fig. 4.1(a). Thus, the data are monotonically decreasing. Under a time step corresponding
+to 𝜎, since 𝑢𝑗 = 0, and 𝐽𝐿 = 1, by (3.14),
+
+                                            𝑢̃𝑗 = −2𝜎𝑅𝑅, 𝑝+1 ′ .                                       (4.1)
+Or, by (2.7b),
+                           𝑢̃𝑗 = 𝜎[𝐿0 − 3𝐿1 + 5𝐿2 + ⋯ + (−1)𝑝 (2𝑝 + 1)𝐿𝑝 ].                            (4.2)
+
+Note that the magnitude of the mode increases like 2𝑘 + 1 as the mode order 𝑘 increases.
+   Since 𝐿𝑘 (−1) = (−1)𝑘 , the above yields the following solution value at the left interface:
+
+                          𝑢̃𝑗 (−1) = 𝜎{1 + 3 + 5 + ⋯ + (2𝑝 + 1)} = 𝜎(𝑝 + 1)2 .                         (4.3)
+
+At the right interface,
+                   𝑢̃𝑗 (1) = 𝜎{1 − 3 + 5 + ⋯ + (−1)𝑝 (2𝑝 + 1)} = 𝜎(−1)𝑝 (𝑝 + 1).                       (4.4)
+Thus, for the step-down data, as 𝑝 increases, at the left interface, 𝑢̃𝑗 (−1) increases as 𝜎(𝑝 + 1)2 , and
+at the right interface, 𝑢̃𝑗 (1) has alternating signs and its magnitude increases as 𝜎(𝑝 + 1).
+   Denote the DG solution of degree 𝑝 under a time step corresponding to 𝜎 by [𝑢̃𝑗 ](𝑝) . It follows from
+(4.2) for our step-down example that the DGp solutions satisfy the recurrence relation
+                            [𝑢̃𝑗 ](𝑝) = [𝑢̃𝑗 ](𝑝−1) + 𝜎(−1)𝑝 (2𝑝 + 1)𝐿𝑝 .                              (4.5)
+   Fig. 4.1 shows (a) the step data and (b) the cubic DG solution (red curve) under a time step with
+𝜎 = 0.05. The cubic solution equals ∑3𝑚=0 𝑢𝑗, 𝑚 𝐿𝑚 where, for 𝑚 = 0, … , 3, respectively, the modes are
+𝑢𝑗,𝑚 = 𝜎, −3𝜎, 5𝜎, and −7𝜎. For 0 ≤ 𝑘 ≤ 2, each ∑𝑘𝑚=0 𝑢𝑗, 𝑚 𝐿𝑚 is identical to the DGk solution,
+whose plots are also shown. For 𝑚 = 0, … , 3, the modal values 𝑢𝑗, 𝑚 𝐿𝑚 (−1), are 𝜎, 3𝜎, 5𝜎, and 7𝜎
+respectively; they result in solution values [𝑢̃𝑗 ](𝑚) (−1) of 𝜎, 4𝜎, 9𝜎, and 16𝜎 represented by the dots
+on the vertical line 𝑥 = 1/3. Thus, the modes 𝑢𝑗, 𝑚 ’s have the “correct” sign in the sense that they result
+                                                    9
+
+in solution values increasing toward 1 at the interface corresponding to the jump (this observation holds
+for small 𝜎; a large 𝜎 can result in values larger than 1). At the right boundary, [𝑢̃𝑗 ](𝑚) (1) equals 𝜎,
+−2𝜎, 3𝜎, and −4𝜎. Consistent with (2.11) for 𝑅𝑅, 𝑝+1 ′ , the DG solutions also cross the 𝑥-axis at the
+corresponding interior left Radau points.
+
+
+
+
+         𝑢𝑗−1 (𝑥)
+
+                       Cell 𝑗                                                  Cell 𝑗
+
+
+                        𝑢𝑗 (𝑥)       𝑢𝑗+1 (𝑥)
+
+
+
+               (a) Step-down data                             (b) Corresponding cubic DG solution
+   Fig. 4.1: (a) Step data and (b) cubic DG solution under a time step with 𝜎 = 0.05 (red curve). The
+cubic solution equals ∑3𝑚=0 𝑢𝑗, 𝑚 𝐿𝑚 where 𝑢𝑗,𝑚 = 𝜎, −3𝜎, 5𝜎, −7𝜎 for 𝑚 = 0, … , 3, or 𝑢𝑗,𝑚 =
+(−1)𝑚 (2𝑚 + 1)𝜎. Each ∑𝑘𝑚=0 𝑢𝑗, 𝑚 𝐿𝑚 , 0 ≤ 𝑘 ≤ 2, is identical to the DGk solution.
+
+    For our step-down example, at the left interface, by (4.3), all solution modes contribute to increasing
+the value toward 1. That is, they exhibit the “correct” sign (a wrong sign would lead to a decrease in
+value). Thus, for each mode, we can limit only its magnitude and leave its sign unchanged.
+    At the right interface, however, by (4.4), 𝑢̃𝑗 (1) has alternating signs with magnitude increasing as
+𝜎(𝑝 + 1). Thus, near a discontinuity, to assure that the solution lies within the range [0,1], for modes
+𝑢𝑗,2 and above, zeroing them out is a reasonable option.
+   The filtering approach suppresses oscillations by reducing the magnitudes of the high modes
+everywhere. Various functions have been devised for this purpose (Hesthaven and Warburton 2008).
+However, determining an appropriate reduction for each mode remains challenging. Additionally, a
+significant drawback is that reducing mode sizes at smooth regions causes a loss of accuracy.
+   Our approach is different from standard filtering: for the above example, our limiting amounts to
+reducing even the linear mode and zeroing out all higher modes. Since our limiting has effect only at a
+few cells near discontinuities and has nonexistent or negligible effect at smooth regions, accuracy
+remains intact while oscillations are suppressed.
+   Given the oscillatory DG solutions, the question is what should the solution be for the step-down
+example above? Since the step data exhibits two essential properties—monotonicity and values within
+the range [0, 1]—it is reasonable to require the solution to also possess these properties.
+
+    Monotone solutions for step data.
+    The following is the FR generalization (Huynh 2007, 2009, Huynh et al. 2014) of the DG method:
+for advection, set
+                                             𝑈𝑗 = 𝑢𝑗 + 𝐽𝐿 𝑔                                         (4.6)
+where 𝑔, called a “correction function”, is of degree 𝑝 + 1 and determined by 𝑝 + 2 conditions. It must
+approximate the step-down function in some sense. At the two boundaries, 𝑔 is required to satisfy
+                                        𝑔(−1) = 1, 𝑔(1) = 0,                                        (4.7)
+with 𝑝 additional conditions to be prescribed. Here, condition 𝑔(−1) = 1 serves to match the upwind
+value at the left boundary, while condition 𝑔(1) = 0 serves to leave the value 𝑢𝑗 (1) unchanged.
+                                                   10
+
+
+   If 𝑔 = 𝑅𝑅, 𝑝+1 in (4.6), the result is the DGp method. The 𝑝 + 1 zeros of this 𝑔 are the right Radau
+points. To obtain a monotone 𝑔, we can push all the zeros to 𝜉 = 1 by requiring that 𝜉 = 1 is a zero of
+multiplicity 𝑝 + 1. Equivalently, for 1 ≤ 𝑘 ≤ 𝑝, all derivatives to degree 𝑘 vanish: 𝑔(𝑘) (1) = 0. Thus,
+                                              1 − 𝜉 𝑝+1
+                                           𝑔=(     ) .                                             (4.8)
+                                                2
+Consequently,
+                                            1         1−𝜉 𝑝
+                                      𝑔′ = − (𝑝 + 1) (   ) .                                       (4.9)
+                                            2          2
+   With 𝑈𝑗 by (4.6) and 𝑔 by (4.8), the FR solution after a time step corresponding to 𝜎 is given by
+                                                             1−𝜉 𝑝
+                            𝑢̃𝑗 = 𝑢𝑗 − 2𝜎𝑢𝑗′ + 𝜎𝐽𝐿 [(𝑝 + 1) (   ) ].                              (4.10)
+                                                              2
+   Hence, for our example of step-down data,
+                                                       1−𝜉 𝑝
+                                       𝑢̃𝑗 = 𝜎(𝑝 + 1) (   ) .                                     (4.11)
+                                                        2
+For 𝑝 = 0, 𝑢̃𝑗 = 𝜎, a constant function. For 𝑝 = 0, 1, 2, …, at the left boundary, the solution values are
+𝜎, 2𝜎, 3𝜎, … as opposed to 𝜎, 4𝜎, 9𝜎, … of the DG methods, i.e., 𝜎(𝑝 + 1) as opposed to 𝜎(𝑝 + 1)2 .
+                                                                             (𝑘)
+At the right boundary, for all 𝑝 ≥ 1, 𝑢̃𝑗 (1) = 0 and, for 1 ≤ 𝑘 ≤ 𝑝 − 1, 𝑢̃𝑗 (1) = 0.
+   Fig. 4.2 shows (a) the graphs of monotone correction functions (4.8) of degree 𝑘 = 𝑝 + 1, where
+𝑝 = 0, … , 3, and (b) the corresponding FR solutions (4.11) for the step-down data, which are
+monotonically decreasing in the cell.
+
+
+
+
+                                                                              Cell 𝑗
+
+
+
+
+       (a) Monotone correction functions                  (b) Corresponding monotone FR solutions
+   Fig. 4.2: (a) Graphs of monotone correction functions (4.8) of degree 𝑘 = 𝑝 + 1 where 𝑝 = 0, … , 3,
+and (b) the corresponding monotone FR solutions (curves) of degree up to 3 with time step 𝜎 = 0.2.
+
+   Regarding the monotone correction function 𝑔 of (4.8), it can be shown via Fourier analysis that
+with 𝑝 = 1, the resulting linear FR scheme is stable. However, for 𝑝 > 1, the schemes are unstable.
+   It appears reasonable to set the goal that for the step-down example above, limiting converts the
+oscillatory DGp solution in Fig. 4.1(b) into the monotone solution (4.11) shown in Fig. 4.2(b). Such
+methods remain to be explored.
+   Here, we focus on limiting methods associated with the linear case 𝑝 = 1 in (4.11) and apply them
+to higher-order modes. The main reason is that even with linear functions, a discontinuity can still be
+sharply resolved (in 2 to 4 cells). Additionally, our focus is on simple methods for the moment.
+                                                      11
+
+
+5. Limiting
+    As is well-known and discussed above, second and higher-order methods generate oscillations near
+discontinuities. One way to mitigate these oscillations is to limit the data so that it is not too steep.
+However, limiting can lead to a loss of accuracy near smooth extrema. Below, we present a limiting
+method capable of suppressing oscillations near discontinuities while preserving accuracy near extrema.
+    Our limiting procedure can be viewed as an extension of the techniques introduced in (Huynh 1995)
+for piecewise linear and (Suresh and Huynh 1997) for higher order methods. It turns out that with DG-
+type methods of degree 𝑝 ≥ 1, we can differentiate a discontinuity from a smooth extremum by a three-
+cell stencil, as opposed to the five-cell stencil required in finite-difference or finite-volume schemes.
+Hence, the limiting procedure here utilizes a three-cell stencil, like typical limiting processes.
+    We employ the standard 3-stage Runge-Kutta (RK) time-stepping method. The solution after each
+stage is given by (3.13): 𝑢̃𝑗 = 𝑢𝑗 − 2𝜎𝑈𝑗′ . Using the ODE notation 𝑘𝑖 for stage 𝑖, 𝑢̃𝑗 = 𝑢𝑗 + 𝜎(𝑘𝑖 )𝑗 . In
+the presence of discontinuities, the solution 𝑢̃𝑗 might be oscillatory. To suppress oscillations, we apply
+the limiting process below to 𝑢̃𝑗 resulting in the limited solution 𝑢̃𝑗LTD . Then, since 𝑘𝑖 will be used in
+later stages, it must be updated by (𝑘𝑖 )𝑗 = (𝑢̃𝑗LTD − 𝑢𝑗 )/𝜎.
+   As is routine, we limit the 𝑘-th mode, 1 ≤ 𝑘 ≤ 𝑝, but not the zero-th mode. The cell average
+quantities 𝑢𝑗,0 ’s are fundamental for the scheme to be conservative and should not be altered.
+   Limiting methods in the literature often constrain 𝑢𝑗, 𝑘 for 𝑘 = 𝑝, … , 1 in that order, i.e., the highest
+mode is constrained first. Here, we employ a reverse order, namely, 𝑘 = 1, … , 𝑝, i.e., we limit the linear
+mode 𝑢𝑗,1 first. The reason is that in smooth regions, limiting has nonexistent or minimal effect, so the
+mode order is irrelevant. Near a discontinuity, as shown in Fig. 4.1(b), high modes amplify with
+increasing mode order. If limiting already effects the linear mode, then the large higher-order modes
+are all suspects, and even zeroing them out seems reasonable.
+   To prepare, for any real numbers 𝑥 and 𝑦, let minmod(𝑥, 𝑦) be the median of 𝑥, 𝑦, and 0, or
+                                          1
+                       minmod(𝑥, 𝑦) = [sign(𝑥) + sign(𝑦)] min(|𝑥|, |𝑦|).                         (5.1)
+                                          2
+That is, minmod(𝑥, 𝑦) equals 0 if 𝑥 and 𝑦 are of opposite sign and equals the value with smaller
+modulus if 𝑥 and 𝑦 are of the same sign. Denote the smallest interval containing numbers 𝑥1 , …, 𝑥𝑚 by
+                          𝐼[𝑥1 , … , 𝑥𝑚 ] = [min(𝑥1 , … , 𝑥𝑚 ) , max(𝑥1 , … , 𝑥𝑚 )].
+For any numbers 𝛼, 𝛽, and 𝑦, the constraint that 𝑦 lies in the interval 𝐼[𝛼, 𝛽] can be enforced by
+
+                                             median(𝑦, 𝛼, 𝛽).
+We can express the above in minmod form, e.g., using 𝛼 as pivot,
+
+        median(𝑦, 𝛼, 𝛽) = 𝛼 + median(𝑦 − 𝛼, 0, 𝛽 − 𝛼) = 𝛼 + minmod(𝑦 − 𝛼, 𝛽 − 𝛼).                      (5.2)
+
+
+   Monotonicity bounds
+   Consider first the linear case. Focusing on cell 𝑗, using the average value 𝑢𝑗,0 as a pivot, to preserve
+monotonicity, at interface 𝑥𝑗+1/2, we require 𝑢𝑗,1 to lie between 0 and 𝑢𝑗+1,0 − 𝑢𝑗,0 , or 𝑢𝑗,1 ∈
+𝐼[0, 𝑢𝑗+1,0 − 𝑢𝑗,0 ]. Similarly, at interface 𝑥𝑗−1/2, we require −𝑢𝑗,1 to lie between 0 and 𝑢𝑗−1,0 − 𝑢𝑗,0 , or
+equivalently, 𝑢𝑗,1 ∈ 𝐼[0, 𝑢𝑗,0 − 𝑢𝑗−1,0 ]; see Fig. 5.1. To combine these conditions, set
+
+                              𝑢mm = minmod[𝑢𝑗+1,0 − 𝑢𝑗,0 , 𝑢𝑗,0 − 𝑢𝑗−1,0 ].                           (5.3a)
+
+The constraint that 𝑢𝑗,1 must be between 0 and 𝑢mm yields MUSCL (Monotone Upstream-Centered
+Schemes for Conservation Laws) limiting (Van Leer 1977). It is enforced by
+                                       𝑢𝑗,1 ← minmod[𝑢𝑗,1 , 𝑢mm ].                                    (5.3b)
+                                                     12
+
+    In smooth regions of the solution with a nonzero slope, the above constraint provides ample “room”
+so that the limited 𝑢𝑗,1 resulting from (5.3b) remains identical to the original 𝑢𝑗,1 , meaning limiting has
+no effect; see Fig. 5.1(b). However, a significant drawback arises near extrema, where 𝑢mm can
+become 0 or very small, leading to 𝑢𝑗,1 = 0 or very small after limiting, thus reducing accuracy to first
+order. We will discuss methods to expand the range 𝐼[0, 𝑢𝑗+1,0 − 𝑢𝑗,0 ] to alleviate this issue later.
+    Eqs. (5.3a,b) represent Van Leer’s MUSCL constraint (1977): “… in order to preserve the
+monotonicity of a sequence of mesh averages, the linear function (12) must not take values outside the
+range spanned by the neighboring mesh averages.” Here, “the linear function (12)” corresponds to a
+linear solution in cell 𝑗. An error in the DG literature misidentifies (5.3a,b) as the total variation
+diminishing (TVD) constraint and erroneously assigns essentially the minmod slope (5.3a) as the final
+MUSCL slope or final 2𝑢𝑗,1 , resulting in an overly dissipative MUSCL outcome (e.g., p. 150, Hesthaven
+and Warburton 2008).
+    As depicted in Fig. 4.1(b), the modes exhibit the “correct” signs. Thus, we can simplify the above
+constraint by limiting only the magnitudes, which also facilitates the limiting of higher-order modes.
+Note that reducing the modal magnitude is also employed in the filtering approach; however, the extent
+of reduction and the underlying reasons differ completely between limiting and filtering.
+   For simplicity of notation, we sometimes drop the subscript 𝑗, e.g., we use the notation 𝑢𝐿Lim where
+the superscript “Lim” stands for “Limit”, subscript “L” for “left”, and subscript 𝑗 is implied. All
+quantities defined in (5.4)–(5.7) are positive (≥ 0). Set
+                            𝑢𝐿Lim = |𝑢𝑗−1,0 − 𝑢𝑗,0 |, 𝑢𝑅Lim = |𝑢𝑗+1,0 − 𝑢𝑗,0 |.                       (5.4)
+and
+                                        𝑢Lim = min(𝑢𝐿Lim , 𝑢𝑅Lim ).                                   (5.5)
+
+Denote 𝑢Lim by 𝑢1Lim where the subscript 1 represents “linear” (𝑢𝑘Lim will be defined later). We require
+
+                                              |𝑢𝑗,1 | ≤ 𝑢1Lim .                                       (5.6)
+                                                                            Ltd
+The above constraint is enforced by replacing 𝑢𝑗,1 by the limited quantity 𝑢𝑗,1 ,
+                                   Ltd
+                                  𝑢𝑗,1 = sign(𝑢𝑗,1 ) min(|𝑢𝑗,1 |, 𝑢1Lim ).                            (5.7)
+
+   Fig. 5.1(a) shows 𝑢𝐿Lim , 𝑢𝑅Lim , 𝑢Lim = 𝑢1Lim = 𝑢𝑅Lim, the original linear data (thin blue line), and the
+                                      Ltd
+limited slope corresponding to 𝑢𝑗,1       (thick purple line). Here, for ease of observation, 𝜎 = 0.2.
+Fig. 5.1(b) shows the ample “room” provided by 𝑢Lim at smooth regions with a nonzero slope.
+   Constraints like (5.6) and (5.7) are typically employed to limit slope quantities. Higher-order modes
+are then limited by employing neighboring higher-order modes in a similar manner.
+   Our approach is different: we use 𝑢Lim = 𝑢1Lim to constrain all modes by requiring that
+                                              𝑝
+
+                                             ∑|𝑢𝑗,𝑘 | ≤ 𝑢Lim .                                        (5.8)
+                                            𝑘=1
+                                  Ltd                                          Ltd
+With 𝑢1Lim = 𝑢Lim by (5.5) and 𝑢𝑗,1   by (5.7), we define 𝑢2Lim = 𝑢1Lim − |𝑢𝑗,1    |, which is, loosely put,
+                                                       Lim
+the remainder of the limit. We then require |𝑢𝑗,2 | ≤ 𝑢2 , and the process continues. In other words, to
+                                                               Ltd
+limit the 𝑘-th mode for 2 ≤ 𝑘 ≤ 𝑝, with the limited quantity 𝑢𝑗,𝑘−1 , let the remainder of the limit be
+                                                          Ltd
+                                         𝑢𝑘Lim = 𝑢𝑘−1
+                                                  Lim
+                                                      − |𝑢𝑗,𝑘−1 |.                                    (5.9)
+We require
+                                              |𝑢𝑗,𝑘 | ≤ 𝑢𝑘Lim .                                      (5.10)
+                                                      13
+
+                                                                             Ltd
+The above constraint is satisfied by replacing 𝑢𝑗,𝑘 by the limited quantity 𝑢𝑗,𝑘 :
+                                     Ltd
+                                    𝑢𝑗,𝑘 = sign(𝑢𝑗,𝑘 ) min(|𝑢𝑗,𝑘 |, 𝑢𝑘Lim ).                          (5.11)
+
+This completes the limiting procedure except that we still need to enlarge 𝑢Lim to provide “room” near
+extrema as will be discussed below.
+                                                         Ltd
+   Note that for any 𝑘 ≥ 1, if |𝑢𝑗,𝑘 | ≥ 𝑢𝑘Lim , then |𝑢𝑗,𝑘  | = 𝑢𝑘Lim , and the remaining limit 𝑢𝑘+1
+                                                                                                  Lim
+                                                                                                      =
+ Lim     Ltd
+𝑢𝑘 − |𝑢𝑗,𝑘 | is zero, resulting in the vanishing of all 𝑘 + 1 and higher modes after limiting.
+
+
+
+
+         𝑢𝑗−1,0          Original linear data                                                𝑢𝑗+1,0
+
+                                Limited slope                                   𝑢𝑗,0
+            𝑢𝐿Lim                                                  𝑢𝐿Lim                      𝑢Lim
+                         𝑢𝑗,0
+                                     𝑢𝑅Lim = 𝑢1Lim                 𝑢𝑗−1,0
+
+                      Cell 𝑗          𝑢𝑗+1,0
+
+             (a) Limiting alters 𝑢𝑗,1                           (b) Limiting provides ample “room”
+   Fig. 5.1: (a) Quantities 𝑢𝐿Lim (dashed red vertical line), 𝑢𝑅Lim (thick red vertical line), 𝑢1Lim = 𝑢𝑅Lim,
+the original linear data (thin blue line), and the limited linear data (thick purple line); (b) at a smooth
+region with a nonzero slope, 𝑢Lim (red thick vertical line) provides ample “room” so that limiting has
+no effect.
+
+    For the step-down example in Fig. 4.1(b), the limiting process reduces the cubic solution to a limited
+linear solution: all modes of order 𝑘 ≥ 2 vanish after limiting. At first glance, the lack of higher-order
+modes might suggest that condition (5.8) dissipates a discontinuity. However, as illustrated later in Fig.
+6.2, this limit yields a relatively sharp transition at a discontinuity (spanning from 2 to 4 cells).
+    At smooth regions with a nonzero slope (away from extrema), for a uniform mesh, up to an error of
+𝑂(ℎ2 ), we have (𝑢𝑗,0 − 𝑢𝑗−1,0 ) ≈ (𝑢𝑗+1,0 − 𝑢𝑗,0 ) ≈ 2𝑢𝑗,1 . Therefore, the limit 𝑢1Lim ≈ 2𝑢𝑗,1 provides
+ample “room” so that limiting has no effect on all 𝑢𝑗,𝑘 , 𝑘 ≥ 1. This fact is depicted in Fig. 5.1(b).
+   At a smooth extremum, however, 𝑢Lim can become 0, causing a loss of accuracy as shown in
+Fig. 5.2(a).
+
+   Limiting near smooth extrema
+   To address this loss of accuracy, we enlarge 𝑢Lim in a manner that allows more “room” near a
+smooth extremum so that limiting has no effect, and thus, accuracy is preserved. At a discontinuity, the
+enlarged limit essentially reduces to the original limit 𝑢Lim in (5.5). In fact, for the case of the step-
+down data in Fig. 4.1(b) above, the enlarged limit is identical to the original limit.
+   We deal with real numbers below. For cell 𝑗, consider the quadratic defined by the first three modes:
+            𝑞𝑗 (𝜉) = 𝑢𝑗,0 + 𝑢𝑗,1 𝐿1 (𝜉) + 𝑢𝑗,2 𝐿2 (𝜉) = 𝑢𝑗,0 + 𝑢𝑗,1 𝜉 + 𝑢𝑗,2 (3𝜉 2 − 1)/2,
+
+where the expressions for 𝐿1 and 𝐿2 are given in (2.1). Therefore,
+     𝑞𝑗 (−1) = 𝑢𝑗,0 − 𝑢𝑗,1 + 𝑢𝑗,2 , 𝑞𝑗 (0) = 𝑢𝑗,0 − 𝑢𝑗,2 /2, and 𝑞𝑗 (1) = 𝑢𝑗,0 + 𝑢𝑗,1 + 𝑢𝑗,2 .        (5.12)
+
+   We can now enlarge 𝑢𝑅Lim for cell 𝑗. At interface 𝑥𝑗+1/2, using the neighboring cell averages, set
+                                                  1
+                                          𝑣11 = 2 (𝑢𝑗,0 + 𝑢𝑗+1,0 ).                                   (5.13)
+                                                        14
+
+
+For cell 𝑗, consider the quadratic 𝑞𝑗 in the local frame 𝐼 = [−1, 1]. The line joining (−1, 𝑞𝑗 (−1)) and
+(0, 𝑞𝑗 (0)) intersects the right boundary 𝜉 = 1 at 𝑣12 = 2𝑞𝑗 (0) − 𝑞𝑗 (−1). By (5.12),
+
+                                           𝑣12 = 𝑢𝑗,0 + 𝑢𝑗,1 − 2𝑢𝑗,2 .                                    (5.14)
+
+Note that whereas 𝑞𝑗 (1) in (5.12) has the term 𝑢𝑗,2 , the above contains the term −2𝑢𝑗,2 , which serves
+to provide the extra room so that limiting has minimal effect in smooth regions. By reflection, for cell
+𝑗 + 1, the line joining (1, 𝑞𝑗+1 (1)) and (0, 𝑞𝑗+1 (0) intersects the line 𝜉 = −1, i.e., the left cell
+boundary, at 𝑣13 = 2𝑞𝑗+1 (0) − 𝑞𝑗+1 (1). By using (5.12) with appropriate change in indices,
+
+                                       𝑣13 = 𝑢𝑗+1,0 − 𝑢𝑗+1,1 − 2𝑢𝑗+1,2 .                                  (5.15)
+
+At interface 𝑗 + 1/2, denote by 𝑣14 the median of 𝑣11 , 𝑣12 , and 𝑣13 :
+                               𝑣14 = 𝑣11 + minmod(𝑣12 − 𝑣11 , 𝑣13 − 𝑣11 ).                                (5.16)
+To the right of cell 𝑗, we enlarge the range 𝐼[𝑢𝑗,0 , 𝑢𝑗+1,0 ] to 𝐼[𝑢𝑗,0 , 𝑢𝑗+1,0 , 𝑣14 ]. To simplify the process,
+we replace 𝑢𝑅Lim by the extended limit 𝑢𝑅XLim where, using 𝑢𝑗,0 as the pivot for cell 𝑗,
+
+                           𝑢𝑅XLim = Max(|𝑢𝑗+1,0 − 𝑢𝑗,0 |, |𝑣14 − 𝑢𝑗,0 |).                                 (5.17)
+
+   Note that near a smooth extremum with a nonzero curvature, i.e., 𝑢𝑗,2 ≠ 0, the quantities 𝑣12 and
+𝑣13 are close to each other and the median 𝑣14 used in 𝑢𝑅XLim provides room so that limiting has no
+effect as can be seen in Fig. 5.2(b). The use of minmod function for 𝑣14 also assures that for the case
+of a step-down data in Fig. 4.1(b), the extended limit 𝑢𝑅XLim reduces to the original limit 𝑢𝑅Lim .
+
+
+
+                                                                         𝑣12                    𝑣13
+                                                                                              𝑢𝑅XLim
+             𝑢𝐿Lim
+                                     𝑢𝑅Lim = 0
+                          Cell 𝑗                                            𝑣11
+                                                                          Cell 𝑗         Cell 𝑗 + 1
+
+
+ (a) Monotonicity limit 𝑢𝑅Lim near a maximum                  (b) Extended limit 𝑢𝑅XLim near a maximum
+   Fig. 5.2: (a) 𝑢𝑅Lim reduces to 0, and limiting causes a loss of accuracy; (b) near a smooth maximum
+with a nonzero curvature, the extended limit 𝑢𝑅XLim provides ample room so limiting has no effect.
+
+      The extension for the left limit is similar. At the interface 𝑥𝑗−1/2, set
+                                                   1
+                                            𝑣21 = 2 (𝑢𝑗,0 + 𝑢𝑗−1,0 ).                                     (5.18)
+
+The line joining (1, 𝑞𝑗 (1)) and (0, 𝑞𝑗 (0)) intersects the left boundary at 2𝑞𝑗 (0) − 𝑞𝑗 (1) = 𝑣22 , where
+
+                                           𝑣22 = 𝑢𝑗,0 − 𝑢𝑗,1 − 2𝑢𝑗,2 .                                    (5.19)
+
+For cell 𝑗 − 1, the line joining (−1, 𝑞𝑗−1 (−1)) and (0, 𝑞𝑗−1 (0)) intersects the right boundary 𝑥𝑗−1/2 at
+2𝑞𝑗−1 (0) − 𝑞𝑗−1 (−1) = 𝑣23 , where
+
+                                       𝑣23 = 𝑢𝑗−1,0 + 𝑢𝑗−1,1 − 2𝑢𝑗−1,2.                                   (5.20)
+Set
+                                                      15
+
+
+                             𝑣24 = 𝑣21 + minmod(𝑣22 − 𝑣21 , 𝑣23 − 𝑣21 ).                              (5.21)
+Thus, the extended limit 𝑢𝐿XLim is given by
+                               𝑢𝐿XLim = Max(|𝑢𝑗−1,0 − 𝑢𝑗,0 |, |𝑣24 − 𝑢𝑗,0 |).                         (5.22)
+Combining both sides, like (5.5), the extended limit is
+                                      𝑢XLim = min(𝑢𝐿XLim , 𝑢𝑅XLim ).                                  (5.23)
+
+The rest of the algorithm for all modes is identical to (5.5)–(5.11) with 𝑢Lim replaced by 𝑢XLim . This
+completes the limiting process.
+    We summarize the limiting algorithm below.
+    Let the solution after one stage of Runge-Kutta (i.e., after an Euler forward step) be denoted by
+{𝑢𝑗, 𝑘 }, which might be oscillatory. For each index (or at cell) 𝑗, set 𝑣11 , … , 𝑣14 , and 𝑢𝑅XLim by (5.13)–
+(5.17), and set 𝑣21 , … , 𝑣24, and 𝑢𝐿XLim by (5.18)–(5.22). Set 𝑢XLim by (5.23). Then with 𝑢1Lim = 𝑢XLim ,
+for 𝑘 from 1 to 𝑝, set
+                                   Ltd
+                                  𝑢𝑗,𝑘 = sign(𝑢𝑗,𝑘 ) min(|𝑢𝑗,𝑘 |, 𝑢𝑘Lim ).                            (5.24)
+and
+                                           Lim             Ltd
+                                          𝑢𝑘+1 = 𝑢𝑘Lim − |𝑢𝑗,𝑘 |.                                     (5.25)
+Finally, for the standard 3-stage RK method, with the ODE notation 𝑘𝑖 for stage 𝑖, and with 𝑢𝑗,𝑘 replaced
+    Ltd
+by 𝑢𝑗,𝑘 , we update (𝑘𝑖 )𝑗 accordingly. This completes the algorithm.
+   The above limiting algorithm contains no “if” or “max” statements; furthermore, “sign” is
+exclusively combined with “min” statements. Clearly, its outcome depends continuously on the data.
+   For coding purpose, the algorithm can be shortened, e.g., (5.13)–(5.16) can be combined into the
+quantity 𝑣14 − 𝑢𝑗,0 in (5.17), resulting in
+                                  𝑣14 − 𝑢𝑗,0 = 0.5(𝑢𝑗+1,0 − 𝑢𝑗,0 ) + 𝑣15
+where
+      𝑣15 = minmod(𝑢𝑗,1 − 2𝑢𝑗,2 + 0.5𝑢𝑗,0 − 0.5𝑢𝑗+1,0 , −𝑢𝑗+1,1 − 2𝑢𝑗+1,2 + 0.5𝑢𝑗+1,0 − 0.5𝑢𝑗,0 ).
+   Note that from a filtering point of view, our limiting technique corresponds to occasionally filtering
+even the first mode 𝑢𝑗,1 and nullifying all higher modes (near a discontinuity). The technique has the
+advantage of providing ample room so that limiting has nonexistent or minimal effect at smooth regions,
+and it only takes effect at a few cells near a discontinuity.
+
+    Detecting “good” cells at smooth regions where limiting has no effect
+    While the above algorithm is relatively straightforward, for fluid flow equations, the costs add up.
+Therefore, as is commonly practiced in the literature albeit for different reasons, it is prudent to detect
+“good” cells at smooth regions where limiting does not alter the data and therefore is not needed. We
+present here a detection method with three criteria. For each cell, if any one of the criteria is met, the
+cell is flagged as good, and no limiting is required. The criteria are effective, as only a few cells near a
+discontinuity are flagged “troubled”, indicating the need for limiting. However, even at those cells,
+limiting may still leave the data unaltered. Typically, each discontinuity has four or fewer troubled cells.
+    The first criterion relates to the jumps or gaps at the two interfaces of the cell. At smooth regions,
+by (3.17), this gap is a small quantity of order 𝑂(ℎ𝑝+1 ). Denote the quadratic content for cell 𝑗 by
+                                            𝑐𝑗𝑄 = |𝑢𝑗,1 | + |𝑢𝑗,2 |.                                  (5.26)
+                                                         16
+
+We do not include higher modes because at a discontinuity, these modes can be very large and may
+result in false detection in (5.27) below. The cell 𝑗 is considered to be good if the gaps at the two
+interfaces are both smaller than 𝑐𝑗𝑄 /5:
+                                                                             1 𝑄
+                   Max[ |𝑢𝑗−1 (1) − 𝑢𝑗 (−1)|, |𝑢𝑗+1 (−1) − 𝑢𝑗 (1)| ] ≤        𝑐 + 10−3 .                (5.27)
+                                                                             5 𝑗
+Here, we allow a noise of level 10−3. The factor 1/5 works well in the numerical examples below. For
+fluid flow equations, we apply detection only to density and not to momentum or energy. Therefore,
+when prudence is required, this factor can be reduced, for example, to 1/10.
+    Note that if the gaps are small, then the correction to the solution, namely −2𝜎𝐽𝐿 𝑅𝑅, 𝑝+1 ′ in (3.14)
+or (3.15), is relatively small compared to the quadratic content.
+    The second criterion relates to the second modes, or equivalently, the curvature terms (Huynh 1995),
+at the cell and its two neighbors being close to each other. Cell 𝑗 is considered to be good if
+                               4 𝑢𝑗−1,2 5                     4 𝑢𝑗+1,2 5
+                                 ≤      ≤               and     ≤      ≤ .                              (5.28)
+                               5   𝑢𝑗,2   4                   5   𝑢𝑗,2  4
+For coding, denote 𝑐 = 4/5. (Here, 𝑐 < 1, and the closer 𝑐 is to 1, the more stringent the criterion.) The
+left expression above can be stated as 𝑢𝑗−1,2 lies between 𝑐𝑢𝑗,2 and 𝑐 −1 𝑢𝑗,2 , which can be written as
+
+                                 (𝑢𝑗−1,2 − 𝑐𝑢𝑗,2 )(𝑢𝑗−1,2 − 𝑐 −1 𝑢𝑗,2 ) ≤ 0.                            (5.29)
+
+Thus, (5.28) can be expressed as, with a noise level of 10−5 (due to the product terms),
+    Max[(𝑢𝑗−1,2 − 𝑐𝑢𝑗,2 )(𝑢𝑗−1,2 − 𝑐 −1 𝑢𝑗,2 ), (𝑢𝑗+1,2 − 𝑐𝑢𝑗,2 )(𝑢𝑗+1,2 − 𝑐 −1 𝑢𝑗,2 ) ] ≤ 10−5 .       (5.30)
+
+   Finally, the third criterion relates to the slopes. Cell 𝑗 is considered good if |𝑢𝑗,1 | is well within 𝑢Lim :
+                                                   3 Lim
+                                            |𝑢𝑗,1 | ≤  𝑢    + 10−4 .                                  (5.31)
+                                                   4
+   If any of the criteria (5.27), (5.30), or (5.31) is met, the cell is flagged as good; otherwise, the cell is
+troubled, and limiting is necessary. This completes the detection algorithm.
+   Typically, at each discontinuity, the detection method above yields four or fewer troubled cells, and
+sometimes even zero troubled cells after the discontinuity has dissipated.
+   Concerning noise levels, a tighter (smaller) level results in more troubled cells.
+
+
+6. Numerical Results
+   The following numerical tests demonstrate the effectiveness of our limiting technique.
+   In all figures, the dots represent the cell average solutions, the blue curves the polynomial solutions,
+and the red curves the initial or exact solution. The standard 3-stage RK method is employed for time
+stepping; for solutions of degree 𝑝 = 2, 3, 4, the corresponding CFL limits are approximately 0.209,
+0.130, and 0.089, respectively. The CFL number 𝜎 is generally chosen close to the limit.
+
+   Advection
+   The first test involves advection on the domain [0, 1] with 100 cells and periodic boundary
+conditions. The initial condition 𝑢0 (𝑥) consists of three waves, each of half width 0.1, including a
+Gaussian, a rectangular, and a semi-ellipse wave:
+                                            𝑥−0.1 2
+                                     −10(        )
+                                   𝑒         0.1    ,                        0 ≤ 𝑥 ≤ 0.2
+                                   1,                                        0.3 ≤ 𝑥 ≤ 0.5
+                  𝑢0 (𝑥) =        𝑥 − 0.8 2
+                              1−(        ) ,                                 0.7 ≤ 𝑥 ≤ 0.9
+                                    0.1
+                             { 0,                                            otherwise.
+                                                    17
+
+
+   Fig. 6.1 shows the DG2 solutions with no limiting and 𝜎 = 0.2. In Fig 6.1(a), the solution after 5
+time steps (the wave travels a distance 1 cell width) is noisy at the rectangular wave, and a little noise
+appears for the semi-ellipse wave. In Fig 6.1(b), after 10 time steps (2 cell widths), some of the noise is
+dissipated due to the numerical dissipation of the DG method. In Fig 6.1(c), after 500 time steps
+(1 period), the solution reaches a steady level of oscillations.
+
+
+
+
+                            (a) 5 time steps (distance travelled: 1 cell width)
+
+
+
+
+                           (b) 10 time steps (distance travelled: 2 cell widths)
+
+
+
+
+                            (c) 500 time steps (distance travelled: 1 period)
+   Fig. 6.1. DG2 solutions with no limiting and CFL number 𝜎 = 0.2. The blue dots represent the cell
+average solutions, the blue curves the polynomial solutions, and the red curves the exact solution.
+
+    Fig. 6.2 shows the DGp solutions with limiting for 𝑝 = 2, 3, 4. Fig. 6.2(a) depicts the DG2 solution
+for 𝜎 = 0.2 after 5 time steps (1 cell width); similar to the unlimited case in Fig. 6.1(a), a little noise
+appears for the semi-ellipse wave. Fig. 6.2(b) shows the DG2 solution with 𝜎 = 0.2 after 500 time steps
+(1 period). Fig. 6.2(c) represents the DG3 solution for 𝜎 = 0.125 after 800 time steps (1 period); for
+this case, each jump is resolved by only 2 cells. Note the improvement over the DG2 solution in
+Fig. 6.2(b). Fig. 6.2(d) depicts the DG4 solution with 𝜎 = 1/12 after 1200 time steps (1 period); here,
+the solution is very similar to the DG3 solution in Fig. 6.2(c). Note the Gaussian, including its
+maximum, is well resolved in all cases demonstrating that our limiting preserves accuracy.
+                                                  18
+
+
+
+
+    (a) DG2 solution with limiting and 𝜎 = 0.2 after 5 time steps (distance travelled: 1 cell width)
+
+
+
+
+    (b) DG2 solution with limiting and 𝜎 = 0.2 after 500 time steps (distance travelled: 1 period)
+
+
+
+
+   (c) DG3 solution with limiting and 𝜎 = 0.125 after 800 time steps (distance travelled: 1 period)
+
+
+
+
+                                  1
+  (d) DG4 with limiting and 𝜎 =      ≈ 0.08333 after 1200 time steps (distance travelled: 1 period)
+                                  12
+   Fig. 6.2. DGp solutions with limiting for 𝑝 = 2, 3, and 4. The blue dots represent the cell average
+solutions, the blue curves the polynomial solutions, and the red curves the exact solution. The magenta
+dots with a value greater than 0.1 identify troubled cells where limiting is required.
+                                                        19
+
+
+
+
+    Concerning the detection method, the (magenta) dots at level 𝑢 = 0.1 represent good cells where
+limiting is not needed, and the dots at level 𝑢 > 0.1 represent troubled cells where limiting is required.
+In the case of troubled cells, a dot at level 𝑢 = 0.15, as in Fig. 6.2(c), means limiting has no effect even
+though the cell was marked as troubled. For Fig. 6.2(a), it appears that the cell just to the right of 𝑥 =
+0.7 should be flagged as troubled due to the infinite slope at the foot of the wave. However, since the
+second modes 𝑢𝑗,2 at the cell and its two neighbors are small, this cell is flagged as good due to the
+noise level of 10−5 allowed in criterion (5.29) for detection. If we use a noise level of 10−6, this cell
+would be flagged as troubled. Also note that there are no troubled cells in Fig. 6.2(d); here, the data has
+become smooth enough and the polynomial solution is of a high enough order that the gaps at the
+interfaces are small, and all cells are good.
+    Unlike the linear case of advection where it is possible to have no troubled cells near a discontinuity,
+for the nonlinear case of a shock, the presence of troubled cells is nearly certain; this is due to the self-
+sharpening mechanism at shocks resulting from the converging characteristics (for advection,
+characteristics are parallel).
+    To illustrate that our detection method works well even with coarse meshes, we apply it to the
+sin 2𝜋𝑥 periodic initial data on the domain [0, 1]. The first case employs DG2 with 3 cells, 𝜎 = 0.15,
+and 20 time steps, i.e., the wave travels 1 period. With such a coarse mesh, the detection still results in
+no troubled cells, and limiting or no limiting yield identical solutions. If we use just 2 cells, then limiting
+takes effect, and the solution is damped to essentially zero; the method considered this data as noise
+and damps it out. The second case employs DG3 with only 2 cells, 𝜎 = 0.1, and 20 time steps,
+or 1 period. For this case, the detection yields no troubled cells, and limiting has no effect.
+
+   Euler Equations in One-Spatial Dimension
+   The next set of tests deals with the Euler equations in one-spatial dimension (1D). Here, as is typical,
+limiting is applied to the (conservative) characteristic variables of troubled cells.
+   The next test, used by Sod (1978), is the Riemann problem with the initial data
+                    (𝜌𝐿 , 𝑢𝐿 , 𝑝𝐿 ) = (1, 0, 1)   and        (𝜌𝑅 , 𝑢𝑅 , 𝑝𝑅 ) = (0.125, 0, 0.1)
+where the subscript 𝐿 represents the condition for 0 ≤ 𝑥 ≤ 0.5, and 𝑅 for 0.5 < 𝑥 ≤ 1. The 1D Euler
+equations are solved on the domain [0, 1] with 100 cells. The final time is 0.2. Boundary conditions are
+by simple extrapolation from the interior.
+    Fig. 6.3 shows the DG solutions with limiting for (a) 𝑝 = 2 after 200 time steps, each of size 0.001,
+and (b) 𝑝 = 3 after 320 time steps, each of size 0.000625. Note that there are no oscillations, and
+discontinuities are well resolved.
+    The third test, due to Shu and Osher (1989), has several extrema in the smooth regions. It is used to
+test accuracy of methods near extrema in the presence of a shock. On the interval −5 ≤ 𝑥 ≤ 5, a shock
+propagating at Mach 3 interacts with sine waves in density as described by the initial condition:
+                                       (3.857, 2.629, 10.333), − 5 ≤ 𝑥 ≤ −4
+                         (𝜌, 𝑢, 𝑝) = {
+                                       (1 + 0.2 sin 5𝑥 , 0,1),        otherwise.
+    Fig. 6.4 shows the solution with 200 cells for 𝑝 = 2 with a time step size of 0.002093 after 860
+time steps. Figure 6.4(a) portrays the solution across the entire domain. At each discontinuity, only 2
+or 1 cell is flagged as troubled. Figure 6.4(b) provides a close-up view of the solution on the domain
+[0, 2.4]. For comparison, the standard second-order solution using the Van Albada limiter with the same
+number of degrees of freedom, meaning 600 cells, are shown as red dots. Note that on this domain,
+there are no troubled cells, and the extrema are well resolved by the DG2 solution even after the shock
+passes through.
+                                                    20
+
+
+
+
+                                                    𝑥                                                     𝑥
+                   (a) DG2 solution                                     (b) DG3 solution
+   Fig. 6.3: Solution densities. (a) DG2 solution after 200 time steps, each of size 0.001; there are 2
+troubled cells at the shock and zero troubled cells at the contact discontinuity. (b) DG3 solution after
+320 time steps, each of size 0.000625; there are 3 troubled cells at the shock and zero troubled cells at
+the contact discontinuity. The blue dots represent the cell average solutions, the blue curves the
+polynomial solutions, and the red curves the exact solution. The magenta dots with a value greater than
+0.04 represent troubled cells where limiting is required.
+
+
+
+
+        (a) DG2 solution on whole domain                  (b) DG2 solution (in blue) on domain [0, 2.4]
+Fig. 6.4: Solution densities with 200 cells, 𝑝 = 2, time step size of 0.002093, after 860 time steps.
+(a) Solution on the whole domain; only 2 or 1 troubled cells are detected at each discontinuity.
+(b) Close-up view of solution on the domain [0, 2.4]; for comparison, the standard second-order
+solution using the Van Albada limiter with 600 cells are represented by red dots.
+
+
+7. Conclusions and Discussion
+   In conclusion, we introduced a new high-order limiting technique capable of managing shocks while
+preserving accuracy in smooth regions without relying critically on a detection method. Initially, we
+described the DG method within the FR framework, where the solution is formulated via interpolation
+rather than standard projection, with the Radau polynomials and their derivatives playing a crucial role.
+We illustrated the behavior of the DG solution at jump discontinuities, which partially motivates our
+approach. Subsequently, we presented our limiting technique, where the key innovation lies in
+expanding the standard monotonicity limits to provide ample “room” near smooth extrema, ensuring
+that limiting has no effect. Near a discontinuity, these expanded limits essentially reduce to the original
+                                                      21
+
+limits, suppressing oscillations. The algorithm is simplified by applying the limiting bounds to the sum
+of magnitudes of all modes, linear and higher order, successively. We also presented a detection method
+identifying regions where limiting is unnecessary to reduce computing time. Numerical examples were
+provided to demonstrate the effectiveness of the new limiter.
+    Additional tests, as well as 2D and 3D applications, particularly the extension to unstructured
+(triangular) meshes, remain to be explored.
+
+
+Acknowledgments
+   This research was sponsored by NASA’s Transformational Tools and Technologies (TTT) Project
+of the Transformative Aeronautics Concepts Program under the Aeronautics Research Mission
+Directorate.
+
+
+Appendices
+   A. Proof of formulas (2.7a,b) for the derivatives of Radau polynomials.
+   The derivative of the Legendre polynomial is given by (see, e.g., Wikipedia):
+        𝐿𝑘 ′ = (2(𝑘 − 1) + 1)𝐿𝑘−1 + (2(𝑘 − 3) + 1)𝐿𝑘−3 + (2(𝑘 − 5) + 1)𝐿𝑘−5 + ⋯
+where the last term is 𝐿0 if 𝑘 is odd and 3𝐿1 if 𝑘 is even. That is, for odd 𝑘, or 𝑘 = 2𝑚 + 1,
+                        𝐿2𝑚+1 ′ = 𝐿0 + 5𝐿2 + 9𝐿4 … + (2(2𝑚) + 1)𝐿2𝑚 .
+For even 𝑘, or 𝑘 = 2𝑚,
+                    𝐿2𝑚 ′ = 3𝐿1 + 7𝐿3 + 11𝐿5 … + (2(2𝑚 − 1) + 1)𝐿2𝑚−1 .
+The above two equations imply (2.7a, b), thus completing the proof.
+
+    B. Proof of formula (2.11): the derivative of the right Radau polynomial, 𝑅𝑅, 𝑘+1 ′, vanishes at the 𝑘
+interior points of the 𝑘 + 1 left Radau points.
+    Indeed, denote the 𝑘 + 1 left Radau points by 𝜉𝐿, 𝑚 , 𝑚 = 1, … , 𝑘 + 1, where 𝜉𝐿, 1 = −1. For each 𝑚,
+let 𝜙𝐿, 𝑚 be the corresponding Lagrange polynomial (degree 𝑘) that takes on value 1 at 𝜉𝐿, 𝑚 and value
+0 at all other 𝜉𝐿, 𝑙 ’s. Then for 𝑚 ≥ 2, 𝜙𝐿, 𝑚 (−1) = 0. Thus, again for 𝑚 ≥ 2, using integration by parts,
+since the boundary terms vanish due to 𝑅𝑅, 𝑘+1 (1) = 0 and 𝜙𝐿, 𝑚 (−1) = 0,
+                              (𝑅𝑅, 𝑘+1 ′ , 𝜙𝐿, 𝑚 ) = −(𝑅𝑅, 𝑘+1 , 𝜙𝐿, 𝑚 ′ ).
+Note that 𝜙𝐿, 𝑚 ′ is of degree 𝑘 − 1. Recall that by (2.5b) with 𝑘 replaced by 𝑘 + 1, 𝑅𝑅, 𝑘+1 ⏊ 𝑷𝑘−1 .
+Therefore, (𝑅𝑅, 𝑘+1 , 𝜙𝐿, 𝑚 ′ ) = 0. Thus, for 𝑚 ≥ 2, by the above, (𝑅𝑅, 𝑘+1 ′ , 𝜙𝐿, 𝑚 ) = 0. Next, by
+applying the left Radau quadrature to (𝑅𝑅, 𝑘+1 ′ , 𝜙𝐿, 𝑚 ), and since 𝜙𝐿, 𝑚 (𝜉𝐿, 𝑙 ) = 0 for all 𝑙 ≠ 𝑚, we
+obtain, for 𝑚 ≥ 2,
+                         𝑅𝑅, 𝑘+1 ′ (𝜉𝐿, 𝑚 )𝜙𝐿, 𝑚 (𝜉𝐿, 𝑚 ) = 𝑅𝑅, 𝑘+1 ′ (𝜉𝐿, 𝑚 ) = 0.
+This completes the proof.
+
+   C. Proof that for advection, the DG method can be cast in interpolation form (3.11).
+   Indeed, focusing on cell 𝐸 = 𝐸𝑗 , let 𝜙 be a test function, i.e., a polynomial of degree 𝑝 (independent
+of 𝑡). The advection equation leads to the following requirement via projection,
+                                   𝜕
+                                     (𝑢 , 𝜙)𝐸 + ((𝑢ℎ )𝑥 , 𝜙)𝐸 = 0.
+                                   𝜕𝑡 ℎ
+The above involves no interaction among cells. To account for interaction, we use integration by parts,
+                                                    22
+
+
+                                 𝜕
+                                   (𝑢 , 𝜙)𝐸 + (𝑢ℎ 𝜙)𝜕𝐸 − (𝑢ℎ , 𝜙𝑥 )𝐸 = 0.
+                                 𝜕𝑡 ℎ
+                                                                               upw            upw
+For 𝑢ℎ in the boundary term (𝑢ℎ 𝜙)𝜕𝐸 , we employ the common values 𝑢𝑗+1/2 and 𝑢𝑗−1/2 defined
+in (3.5). Thus, on cell 𝑗, the DG solution 𝑢ℎ = 𝑢𝑗 is required to satisfy, for any degree 𝑝 polynomial 𝜙,
+                     𝜕                upw             upw
+                        (𝑢 , 𝜙)𝐸 + 𝑢𝑗+1/2   𝜙(1) − 𝑢𝑗−1/2 𝜙(−1) − (𝑢ℎ , 𝜙𝑥 )𝐸 = 0.                   (A.1)
+                     𝜕𝑡 ℎ
+Integrate by parts again, but this time, use the values just inside cell 𝑗 for the boundary terms,
+     𝜕                              upw                     upw
+       (𝑢 , 𝜙)𝐸 + ((𝑢ℎ )𝑥 , 𝜙)𝐸 + (𝑢𝑗+1/2 − 𝑢𝑗 (1))𝜙(1) − (𝑢𝑗−1/2 − 𝑢𝑗 (−1))𝜙(−1) = 0.
+     𝜕𝑡 ℎ
+                           upw                             upw
+For advection, by (3.5), 𝑢𝑗+1/2 = 𝑢𝑗 (1), and by (3.8), (𝑢𝑗−1/2 − 𝑢𝑗 (−1)) = 𝐽𝐿 . The above implies
+                            𝜕
+                               (𝑢 , 𝜙)𝐸 + ((𝑢ℎ )𝑥 , 𝜙)𝐸 − 𝐽𝐿 𝜙(−1) = 0.                           (A.2)
+                           𝜕𝑡 ℎ
+Here, the term −𝐽𝐿 𝜙(−1) accounts for data interaction among neighboring cells.
+    Next, we wish to eliminate 𝜙, i.e., we wish to express 𝜙(−1) in the form (𝛾, 𝜙) for some 𝛾 of
+degree 𝑝. To this end, let ℝ be the real line. The mapping 𝐵 from 𝑷𝑝 to ℝ defined by, 𝐵(𝜙) = 𝜙(−1)
+for any 𝜙 of degree 𝑝, is a linear functional on 𝑷𝑝 . Thus, there exists 𝛾 in 𝑷𝑝 such that 𝐵(𝜙) = (𝛾, 𝜙).
+That is,
+                                              (𝛾, 𝜙) = 𝜙(−1).
+In fact, 𝛾 = −𝑅𝑅, 𝑝+1 ′. To prove this, using integration by parts,
+                  (𝑅𝑅, 𝑝+1 ′ , 𝜙) = 𝑅𝑅, 𝑝+1 (1)𝜙(1) − 𝑅𝑅, 𝑝+1 (−1)𝜙(−1) − (𝑅𝑅, 𝑝+1 , 𝜙 ′ ).
+Next, we use (2.5b), namely, 𝑅𝑅, 𝑝+1 ⏊ 𝑷𝑝−1 . Since 𝜙 ′ is of degree 𝑝 − 1, (𝑅𝑅, 𝑝+1 , 𝜙 ′ ) = 0. Next,
+𝑅𝑅, 𝑝+1 (1) = 0 and 𝑅𝑅, 𝑝+1 (−1) = 1. Therefore, the above implies
+                                          (𝑅𝑅, 𝑝+1 ′ , 𝜙) = −𝜙(−1),
+Thus, by the above, (A.2) implies
+                        𝜕
+                          (𝑢 , 𝜙)𝐸 + ((𝑢ℎ )𝑥 , 𝜙)𝐸 + 𝐽𝐿 (𝑅𝑅, 𝑝+1 ′ , 𝜙) = 0.
+                        𝜕𝑡 ℎ
+That is,
+                           𝜕
+                             (𝑢 , 𝜙)𝐸 + ((𝑢ℎ + 𝐽𝐿 𝑅𝑅, 𝑝+1 )𝑥 , 𝜙) = 0.
+                           𝜕𝑡 ℎ                                  𝐸
+
+Therefore, with 𝑈𝑗 = 𝑢𝑗 + 𝐽𝐿 𝑅𝑅, 𝑝+1 , the DG method leads to (𝑢ℎ )𝑥 = (𝑈𝑗 )𝑥 . This completes the proof.
+
+
+References
+ [1] K. Asthana, M.R. López-Morales, and A. Jameson, “Non-linear stabilization of high-order Flux
+      Reconstruction schemes via Fourier-spectral filtering,” J. Comput. Phys., 303, pp. 269–294,
+      2015.
+ [2] B. Cockburn, S. Hou, and C.-W. Shu, “The Runge-Kutta local projection discontinuous Galerkin
+      finite element method for conservation laws. IV. The multidimensional case,” Mathematics of
+      Computation, vol. 54, no. 190, pp. 545–581, 1990.
+ [3] T. Dzanica , W. Trojak, and F. D. Witherden, “Utilizing time-reversibility for shock capturing in
+      nonlinear hyperbolic conservation laws,” arXiv:2110.03653v2 [math.NA] 18 Apr 2022.
+ [4] M. Dumbser, O. Zanotti, R. Loubère, and S. Diot, “A posteriori subcell limiting of the
+      discontinuous Galerkin finite element method for hyperbolic conservation laws,” J. Comput.
+      Phys., 278, 1, pp. 47-75, 2014.
+                                                23
+
+[5] H. Hoteit, P. Ackerer, R. Mos´e, J. Erhel, and B. Philippe, “New two-dimensional slope limiters
+     for discontinuous Galerkin methods on arbitrary meshes,” International Journal for Numerical
+     Methods in Engineering, vol. 61, no. 14, pp. 2566–2593, 2004.
+[6] J. S. Hesthaven and T. Warburton, “Nodal discontinuous Galerkin methods: algorithms, analysis,
+     and applications,” Vol. 54, Texts in Applied Mathematics, Springer New York, 2008.
+[7] H. T. Huynh, “Accurate upwind methods for the Euler equations,” SIAM J. Numer. Anal. 32,
+     1565, 1995.
+[8] H. T. Huynh, “A flux reconstruction approach to high-order schemes including discontinuous
+     Galerkin methods,” AIAA Paper 2007-4079.
+[9] H.T. Huynh, “A reconstruction approach to high-order schemes including discontinuous Galerkin
+     for diffusion,” AIAA Paper 2009-403.
+[10] H.T. Huynh, Z.J. Wang, and P.E. Vincent, “High-order methods for computational fluid
+     dynamics: A brief review of compact differential formulations on unstructured grids,” Computers
+     and Fluids, Vol 98, pp. 209-220, 2014.
+[11] L. Krivodonova, “Limiters for high-order discontinuous Galerkin methods,” J. Comput. Phys.,
+     vol. 226, no. 1, pp. 879–896, 2007.
+[12] L. Krivodonova, J. Xin, J.-F. Remacle, N. Chevaugeon, and J. E. Flaherty, “Shock detection and
+     limiting with discontinuous galerkin methods for hyperbolic conservation laws,” Applied
+     Numerical Mathematics 48 (3-4) 323–338, 2004.
+[13] J. Kim , Hojun You , and C. Kim, “Shock-capturing PID Controller for high-order methods with
+     data-driven gain optimization,” J. Comput. Phys., 508, 113015, 2024.
+[14] Q. Lu, G. Liu, P. Ming, and Z.J. Wang, “A parameter-free gradient-based limiter for the FR/CPR
+     method on mixed unstructured meshes,” AIAA 2019-3210.
+[15] S.A. Moe, J.A. Rossmanith, and D.C. Seal, “A simple and effective high-order shock-capturing
+     limiter for discontinuous Galerkin methods,” arXiv:1507.03024 [math.NA], 2015.
+[16] J.S. Park, C. Kim, “Multi-dimensional limiting process for finite volume methods on
+     unstructured grids,” Computers & Fluids, 65, 8–24, 2012.
+[17] J.S. Park and C. Kim, “Higher-order multi-dimensional limiting strategy for discontinuous
+     galerkin methods in compressible inviscid and viscous flows,” Computers & Fluids 96, 377–396,
+     2014.
+[18] J.S. Park and C. Kim, “Hierarchical multi-dimensional limiting strategy for correction procedure
+     via reconstruction,” J. Comput. Phys., 308, 57–80, 2016.
+[19] J. S. Park, S.-H. Yoon, and C. Kim, “Multi-dimensional limiting process for hyperbolic
+     conservation laws on unstructured grids,” J. Comput. Phys., 229 (3) 788–812, 2010.
+[20] J.S. Park, M. Yu, C. Kim, and Z.J. Wang “Comparative study of shock-capturing methods for
+     high-order CPR: MLP and artificial viscosity,” ICCFD8-2014-0067, 2014.
+[21] Per-Olof Persson and Jaime Peraire, “Sub-cell shock capturing for discontinuous Galerkin
+     methods,” AIAA Paper 2006-112.
+[22] C.-.W. Shu and S. Osher, “Efficient implementation of essentially non-oscillatory shock-
+     capturing schemes, II,” J. Comput. Phys., 83, pp. 32-78, 1989.
+[23] G.A, Sod, “A survey of several finite difference methods for systems of nonlinear hyperbolic
+     conservation laws,” J. Comput. Phys., 27(1):1–31, 1978.
+[24] A. Suresh and H. T. Huynh, “Accurate Monotonicity-Preserving Schemes with Runge–Kutta
+     Time Stepping,” J. Comp. Phys., 136, pp 83-99, 1997.
+[25] B. Van Leer, ‘Towards the ultimate conservative difference scheme: IV. A New Approach to
+     Numerical Convection,” J. Comput. Phys., 23, pp. 276–299, 1977.
+[26] P. Woodward and P. Colella, “The numerical simulation of two-dimensional fluid flow with
+     strong shocks,” J. Comput. Phys., 54, pp. 115–173, 1984.
+[27] M. Yang and Z.J. Wang, “A Parameter-Free Generalized Moment Limiter for High-Order
+     Methods on Unstructured Grids,” Adv. Appl. Math. Mech., Vol. 1, No. 4, pp. 451-480, 2009.
+[28] H. You, J. Kim, and C. Kim, Deneb: An open-source high-performance multi-physical flow
+     solver based on high-order DRM-DG method, Computer Physics Communications 286, 108672,
+     2023.
+[29] H. You and C. Kim, “High-order multi-dimensional limiting strategy with subcell resolution I.
+     Two-dimensional mixed meshes,” J. Comput. Phys., 375, 1005–1032, 2018.
+

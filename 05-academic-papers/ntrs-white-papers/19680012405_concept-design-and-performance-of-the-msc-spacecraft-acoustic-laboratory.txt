@@ -1,0 +1,2108 @@
+---
+title: Concept, design, and performance of the MSC Spacecraft Acoustic Laboratory
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19680012405
+source_url: https://ntrs.nasa.gov/citations/19680012405
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-14
+retrieved: 2026-09-22
+sha256: 9827dfb89f8c30be131aab8c3a9fb63e62bf6685a56ad91ff3cb78d743c3d4e3
+pages: 53
+words: 12914
+cv_look_pages: 6
+---
+
+     By Robert 6. Wren,
+James D. JohnBton, Jr. , a
+            Named $pac@craftCent
+               Houston, Texas
+
+                        I
+                                                             Y
+                                                         4
+
+
+
+
+                    ABSTRACT
+
+       To obtain the best possible ground-test verifi-
+cation of the flight worthiness of the Apollo space-
+craft to launch and boost fluctuating pressure
+environments, the NASA Manned Spacecraft Center
+conceived, designed, and constructed the Spacecraft
+Acoustic Laboratory, which embodies a unique vi -
+bratory simulation technique and capability. Apollo
+acoustic levels and spectra were used to develop
+acoustic test energy requirements and frequency
+considerations in the design of the sources, horns,
+and ducts. The test configuration includes 16 horn/
+duct channels, each driven by an independently con-
+trollable acoustic noise source, which completely
+envelop the vehicle and control the propagation of
+high-energy acoustic waves downward over the ve -
+hicle. Evaluation of the performance characteris -
+tics of the facility was oriented toward verification
+of acoustic test hardware design and, more impor -
+tantly, toward comparison of Apollo vehicle vibra-
+tion responses achieved in the ground test with flight
+measurements. With minor exceptions (which were
+corrected), all acoustic parameters designed into
+the hardware have been met o r exceeded. The shell
+response of the service module as measured at
+eight locations during an Apollo flight has been du-
+plicated satisfactorily in the laboratory.
+
+
+
+
+                                         ED.
+
+
+                         ii
+                                            CONTENTS
+
+    Section                                                                             Page
+    SUMMARY       ....................................                                    1
+    INTRODUCTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        1
+    FACILITY DESIGNREQUIREMENTS . . . . . . . . . . . . . . . . . . . . . .               3
+       Philosophy of Environmental Simulation . . . . . . . . . . . . . . . . . . . .     3
+       Sources of Vibration in Spacecraft Vehicles During Flight      ..........          4
+
+       Aerodynamic Pressure Fluctuations Around the Apollo
+         Spacecraft Vehicle      .............................                            5
+       Simulation of the Pressure Fluctuations Around the
+                                 .........................
+         Apollo Spacecraft Vehicle                                                        6
+    FACILITYDESCRIPTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         9
+
+       General .....................................                                      9
+
+      ApolloTestConfiguration . . . . . . . . . . . . . . . . . . . . . . . . . . .      10
+      Control and Instrumentation . . . . . . . . . . . . . . . . . . . . . . . . . .    12
+    FACILITYPERFORMANCE . . . . . . . . . . . . . . . . . . . . . . . . . . .            13
+      Progressive Wave Performance . . . . . . . . . . . . . . . . . . . . . . .         13
+      HornPerformance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      15
+      Ductseals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    16
+      Reverberant Performance . . . . . . . . . . . . . . . . . . . . . . . . . . .      17
+      VibrationResponse . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      18
+
+5
+    CONCLUDINGREMARKS . . . . . . . . . . . . . . . . . . . . . . . . . . . . .          18
+    REFERENCES . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     47
+
+
+
+
+                                                 iii
+                                        TABLE
+
+Table                                                                               Page
+
+  I       CONTROL OF FLUCTUATING PRESSURE PARAMETERS
+            INTHESAL       .............................                             20
+
+
+                                       FIGURES
+
+
+Figure                                                                              Page
+      1   Apollo spacecraft vehicle in launch and boost configuration   ......       21
+
+   2      Sketches of two flow regimes over the Apollo vehicle from
+            Marshall Space Flight Center wind-tunnel tests
+            (original SLA configuration)  .....................                      21
+
+      3   Comparison of maximum overall aerodynamic pressure fluctuations
+            found in previous studies of typical configurations corrected to
+            flight dynamic pressure (original SLA configuration)   ........          22
+   4      Typical relative pressure spectra downstream of shoulder at
+            various Mach numbers     ........................                        22
+
+      5   Typical spectra of pressure fluctuations in 1/3 octaves for
+            several positions and several Mach numbers     ............              23
+
+      6   Design curve for random noise spectrum at shoulder of Apollo
+            vehicle with an overall level objective of 171 dB  ..........            23
+
+      7   Comparison of flight dynamic pressure fluctuations with facility
+            design spectrum for Apollo vehicle      .................                24
+
+      8   Three facility concepts for SAL . . . . . . . . . . . . . . . . . . . .    24
+
+      9   Spacecraft Acoustic Laboratory . . . . . . . . . . . . . . . . . . . .     25
+
+  10      Arrangement of test article and horn/duct system . . . . . . . . . . .     25
+
+  11      Apollo vehicle in SAL after installation of duct system . . . . . . . .    26
+
+  12      SAL horn assembly with air modulators installed . . . . . . . . . . .      27
+
+  13      Ducts removed showing contact of V-shaped duct supports with
+            outer shell of SM vehicle  .......................                       28
+
+  14      Interface of SAL ducts covering SM with ducts covering SLA . . . . .       29
+
+
+                                           iv
+    Figure                                                                                     Page
+      15     SAL reverberant flare system installed around Apollo vehicle          ....         30
+      16     SAL reverberant flare system . . . . . . . . . . . . . . . . . . . . . .           31
+
+      17     Access to the horn assembly and air modulators of the SAL via
+Y              movableplatforms     ..........................                                  3%
+
+      18     SALcontrolsystem . . . . . . . . . . . . . . . . . . . . . . . . . . .             33
+      19     Measurement locations for Apollo tests in the SAL . . . . . . . . . .              34
+      20     Typical spectra in SAL at Apollo shoulder . . . . . . . . . . . . . . .            35
+
+      21     Spectra obtained at Apollo shoulder in SAL by varying overall power
+               input tonoise makers    .........................                                35
+
+      22     Axial variation in SPL for maximum and minimum duct spacing              ,   ..    36
+      23     Spectra in ducts for two duct spacings from Apollo  ..........                     37
+      24     Typical envelope of SPL variation in SAL for 16-duct operation . , .               38
+
+      25     Axial variation in SPL of initial horn for single frequency
+               excitation   ...............................                                     38
+
+      26     Typical horn characteristics
+             (a) Initialhorn   .............................                                    39
+             (b) Reversehorn    ............................                                    39
+             (c) Reverberant flare .........................                                    40
+
+      27     Effect of seal on acoustic performance of a duct
+               (taken from a one-third scale model)   ................                          41
+
+      28     Typical noise reduction between adjacent ducts . . . . . . . . . . . .             42
+
+      29     Typical response of boilerplate 1150 CM with and without
+               ductsinstalled     ............................                                  42
+
+      30     Difference in airframe SLA response with and without ducts installed
+               for six measurement locations ....................                               43
+
+      31     SAL chamber absorption . . . . . . . . . . . . . . . . . . . . . . . .             43
+
+      32     Range of sound pressure spectra for SAL reverberant
+               flare operation    ............................                                  44
+      33     Sound pressure spectra for SAL reverberant flare operation        .....            44
+
+
+                                                V
+Figure                                                                           Page
+ 34      SLA response characteristics at three locations for two
+           acoustic fields  ............................                          45
+  35     Space average pressure spectra on Apollo SM . . . . . . . . . . . . .    46
+
+  36     Average vibration response of Apollo SM for flight and SAL
+           pressure fields   ............................                         46
+
+
+
+
+                                          vi
+                 CONCEPT, DESIGN, AND PERFORMANCE OF THE
+                    MSC SPACECRAFT ACOUSTIC LABORATORY
+
+                      By Robert J. Wren, Wade D, Dorland,
+                 James D. Johnston, Jr., and Kenneth McK. Eldred*
+                            Manned Spacecraft Center
+
+                                      SUMMARY
+
+       The random fluctuating pressure (acoustic) excitation of the Apollo spacecraft
+during earth launch and boost is not only 8evere but also varies as a function of both
+flight mission time and location on the vehicle. To obtain the best possible verifica-
+tion of the flight worthiness of the spacecraft, evaluation was required of the vibration
+behavior of the Apollo spacecraft under severe acoustic conditions of flight in a ground
+test. A review of existing fluctuating-pressure simulation techniques and capabilities
+for full-scale spacecraft led to a concept, design, and development program which has
+produce$ an unusual simulation technique and capability. The evolution ‘and embodi -
+ment of the simulation technique which resulted in the Spacecraft Acoustic Laboratory
+are described in this paper. Many simulation and facility hardware design problems
+were encountered, and both the problems and the solutions are discussed. Actual
+laboratory performance data are presented, and comparisons with flight measure -
+ments are made.
+
+                                   INTRODUCTION
+
+       The Apollo spacecraft (fig. 1) consists of the command module (CM), the service
+module (SM), and the lunar module (LM). During earth launch and boost, a rocket-
+propelled launch escape system (LES) is attached to the forward bulkhead of the CM,
+and a spacecraft lunar-module adapter (SLA) surrounds and protects the LM and also
+serves as the mechanical connection of the SM with the Saturn booster. In addition to
+the LES on the CM, many other aerodynamic protuberances, such as the reaction-
+control-system housing and nozzles on the SM, are located on the surface. The total
+acoustic excitation of the Apollo spacecraft during earth launch and boost reaches
+three peaks as a function of flight profile: (1) booster engine noise from the first stage
+of the Saturn at lift-off, (2) aerodynamic turbulence at transonic velocities, and
+(3) aerodynamic turbulence during maximum dynamic-pressure conditions at super-
+sonic velocities.
+
+      *Director of Research, Wyle Laboratories, El Segundo, California.
+       The first acoustic peak can be described as a composite of progressive waves
+propagating from the base of the Saturn booster forward to the Apollo spacecraft. The
+second and third acoustic peaks represent the combined actions of several separate
+aerodynamic mechanisms which are either generated o r intensified by the many vehi-
+cle protuberances projecting into the airstream and by abrupt changes in the vehicle
+mold line, These mechanisms include boundary-layer turbulence, separated flow, wake
+turbulence, and oscillating shocks. The varied nature of the acoustic loadings with
+respect to magnitude, spectral content, and correlation parameters dictated a ground
+test tool which would provide as much control over these parameters a s possible. In
+addition, since the flight acoustic loadings a r e characterized by a spatial distribution
+of forces over the surface of the vehicle which is of a continuous nature (in lieu of
+several point forces, for example), a ground-test technique was required that would
+provide spatial continuity of the test forcing function.
+      During the concept studies in 1963 (ref. l), the existing state of the a r t for sim-
+ulation of launch and boost acoustic loading or other means of inducing flight-like
+vibration of spacecraft structures was surveyed and reviewed. The use of electro-
+mechanical o r hydromechanical shakers, either singly o r in multiples, was investi-
+gated. The potential use of acoustic waves led to the consideration of reverberation
+rooms, single-source progressive waves, and multiple-source progressive waves.
+A multiple -source, multiple -channel (or multiple -duct) approach was chosen with each
+source -channel to be acoustically separated from adjacent channels circumferentially
+around the vehicle. The sources were located forward of the vehicle to satisfy spatial
+profile requirements of the Apollo acoustic levels. The Apollo acoustic levels and
+spectra were used to develop acoustic test energy requirements and frequency con-
+siderations in the design of .the sources and channels (horns and ducts). During the
+concept study, the selected approach was technically verified for practicality through
+the use of scale models.
+      The acoustic levels increased aftward on the CM (an uncommon condition since
+the acoustic levels decrease aftward on all other portions of the Apollo vehicle) which
+presented an unusually challenging acoustic test hardware design problem (ref, 2).
+The solution was found in the application of a technique using split horns with one horn
+reversed, The initial horn, reverse horn, and duct designs were verified with de-
+tailed scale models of the Apollo vehicle and of the acoustic test hardware.
+      The resulting test setup consists of 16 horn/duct channels each driven by an in-
+dependently controllable acoustic-noise source. Each source is rated at 10 000 watts
+output. The channels completely envelop the vehicle and control the propagation of
+high-energy acoustic waves downward over the vehicle. The horns are constructed of
+fiber glass and steel, and the ducts and duct supports a r e constructed of wood and
+steel. Viscoelastic damping compound is used to reduce vibration of steel compo-
+nents. The ducts are adjustable inward o r outward 'so that the cross section of the
+area through which the progressive waves propagate can be varied. Anechoic wedge
+terminators are used at the end of each wave propagation channel. Acoustic energy
+is produced by 16 pneumoacoustic sources, o r air modul             ir is supplied to
+these devices by a large constant -flow air compressor.              n of air valves in
+the devices is both controlled and powered by electrical control equipment located in
+a control room adjacent to the test area.
+
+
+
+
+2
+      The acoustic hardware was checked out, evaluated, and adjusted during a step-
+by-step series of checkout test programs. The objective of each checkout experiment
+included simplicity of operations, with rapid feedback of results. The experiments
+proceeded in an orderly progression from single horns to multiple horns and.from sin-
+gle Apollo modules to multiple modules; this was done for simplicity and to assure iso-
+lation of the hardware components and the dynamic parameters under evaluation.
+Potential physical interference of the ducts with the vibration response of the shells of
+test vehicles was investigated in a series of shaker tests. During these tests, the
+characteristic response was first measured at selected points on the bare checkout test
+article; then the vehicle response was measured at the same points after the horn/duct
+system had been mated with the test article.
+      Evaluation of the performance characteristics of the facility was oriented toward
+verification of acoustic test hardware design and, of more importance, toward com-
+parison of Apollo vehicle vibration responses achieved in the ground test with flight
+measurements. With minor exceptions (which were subsequently corrected), all
+acoustic parameters designed into the hardware were met o r exceeded.
+       Effects on the vehicle shell response of physical contact with the ducts are neg-
+ligible, The SM shell-vibration data from the laboratory tests compare quite favorably
+with flight data. The shell response of the SLA as measured at three locations on two
+separate flights has been duplicated satisfactorily in the laboratory.
+       In this paper, the facility design requirements will be discussed first. The dis-
+cussion will include the philosophy of environmental simulation, the sources of vibra-
+tion in space vehicles during flight, the aerodynamic pressure fluctuations around the
+Apollo vehicle, and the simulation of such pressure fluctuations. The next section will
+describe the final facility design, including the test configuration and the equipment for
+the Apollo vehicle. Finally, the performance of the facility (for the Apollo configura-      I
+
+
+
+
+tion) is reported and analyzed. Comparisons are made between intended and actual
+performance.
+
+                         FACILITY DESIGN REQUIREMENTS
+
+                       Philosophy of Environmental Simulation
+      The purpose of the Apollo acoustic tests as established by the NASA Manned
+Spacecraft Center (MSC) was to evaluate probable spacecraft vehicle structure and
+equipment response, failure, o r malfunction in the flight environment. Therefore, the
+criteria applied to the method of laboratory simulation were based on the need to re-
+produce probable flight responses.
+       To obtain the maximum information from the complete system test, it was
+deemed desirable to have the capability for all systems, including the astronauts, to be
+fully functioning during testing. To achieve this requirement, the vehicle axis had to
+be vertical so that the direction of the gravitational vector during flight would be dupli-
+cated for fuel tanks, personnel, et cetera.
+
+
+
+                                                                                         3
+       Since the purpose of the tests was to produce responses similar to flight re-
+sponses, the ideal test would have included (1) external pressure fluctuations with cor-
+rect time and spatial relationships, (2) inertial forces (due to body acceleration of
+spacecraft/booster vehicles), (3) separation and ignition shocks, (4) engine vibration,
+(5) vibrations introduced via structural interfaces into upper stages (spacecraft) from
+lower stages (booster) that are associated with low -frzequencybody -bending modes of a
+complete spacecraft/booster vehicle, (6) external temperatures with time and spatial
+relationships, (7) quasi-static wind loads, and (3) external static pressure loads with    i
+
+time and spatial relationships. This is a most formidable list of environmental con-
+siderations; the simultaneous accomplishment, o r even partial accomplishment, of
+which far exceeded the existing state of the art in 1963. Further, the concept of com-
+bined loadings was only beginning to be explored in the simultaneous application of two
+forcing functions. The acoustic laboratory was designed to allow accommodation si -
+multaneously of all these loads except external temperatures and static pressures.
+      Accomplishment of acceleration and quasi -static loads is generally achieved by
+attaching tension members to various hard points on the vehicle (interstage rings,
+et cetera). The tension members can then transmit the forces of hydraulic jacks which
+may be programed. The facility structure was designed to enable installation of at-
+tach points for both vertical and horizontal load applications.
+
+      Accomplishment of shock, engine vibration, and interstage vibration would re -
+quire placement of vibration generators at appropriate locations on the test vehicle,
+including the base of the stage under test. Exact simulation of structural interface
+impedance between stages is beyond the state of the art. However, the interface stiff-
+ness between the spacecraft and booster stages can be simulated. The assumption is
+made that structural impedances at the interfaces between spacecraft modules under
+test are simulated for all frequencies above the basic body resonances of the complete
+space craf t/boos ter vehicle.
+      As previously implied, a major source of vibratory energy for the upper stages,
+including the spacecraft, is the external aerodynamically induced pressure fluctuations.
+The responses to these fluctuations depend on the pressure spectrum at a point, on the
+size of the area over which the pressures are correlated, and on the natural response
+characteristics of the structure. The size of the area is generally related to the scale
+of the turbulent phenomena causing the pressure fluctuations. Unfortunately, the area
+over which an acoustic wave is correlated, either in time o r space, exceeds that over
+which the aerodynamic phenomena are correlated. Consequently, in many cases, the
+matching of an aerodynamic pressure spectrum at a point results in a greater gen-
+eralized force on the vehicle structure. This effect is usually most apparent at low
+frequencies. Relationships between frequency, boundary -layer thickness, correlation,
+et cetera, have been obtained for the normal boundary layer, both experimentally and
+theoretically.    owever, no information was available which would give the space and
+time correlations for separated flow and oscillating shock phenomena.
+
+              Sources of Vibration in Spacecraft Vehicles During Flight
+      The four primary sources of spacecraft vibration (at frequencies above the basic
+body resonances of a complete spacecraft/booster vehicle) during flight are (1) vibra-
+tional energy transmitted from propulsion systems or other onboard machinery;
+
+4
+(2) vibration induced by ignition, stage separation, and docking impact transients;
+(3) vibration resulting from rocket noise impinging on the spacecraft shell during
+launch; and (4) vibration resulting from excitation of the spacecraft shell by aerody-
+namically derived external pressure fluctuations.
+      Motions associated with low -f requency body -bending modes of a complete
+spacecraft/booster vehicle usually are lower in level, and are not considered to be a
+primary source of high-level structural vibration, especially at high frequencies
+(above the basic body resonances of the complete spacecraft/booster vehicle).
+      In general, the vibration of propulsion systems dominates the vibration levels
+adjacent to the engines. However, little of the vibrational power is received by for-
+ward o r remote areas of the spacecraft vehicle because of the attenuation within the
+damped structural path. This is especially. the case for mechanical-borne vibration
+reaching the spacecraft from the propulsion engines of the lower booster stages.
+      Shock energy created by ignition, stage separation, and docking impact tran-
+sients excites the fundamental vehicle vibratory modes and sometimes presents a very
+severe environment for structure and equipment mounted close to the source of the
+shock. However, little of the shock energy, particularly at the higher frequencies, is
+propagated to remote locations,
+        For much of a spacecraft vehicle, therefore, external pressure fluctuations,
+whether acoustic wave noise o r aerodynamically induced, are responsible for the ma-
+j ority of internal vibration, structural fatigue failure, and equipment malfunction.
+Generally, the aerodynamic sources are more significant in the forward areas of a
+spacecraft vehicle, whereas the rocket -generated acoustic wave noise is dominant on
+the aft end. The simulation of fluctuating pressures associated with aerodynamic
+sources, or the structural vibration resulting thereof, is less straightforward than
+simulation of rocket -generated acoustic wave noise. Therefore, the characteristics
+of the aerodynamic environment will be discussed in detail in the next section.
+
+                   Aerodynamic Pressure Fluctuations Around the
+                            Apollo Spacecraft Vehicle
+       The flow field around the Apollo spacecraft is rather complex (fig. 2) because of
+the many abrupt geometrical changes. The wake from the rocket tower of the LES
+covers the entire CM conical face during the launch phase. The presence of the wake
+makes it impossible for the bow shock, formed during supersonic flight in front of the
+blunt forebody (CM), to remain stationary. The abrupt transition at the shoulder of
+the CM creates a region of locally separated flow over the surface of the SM, which
+results in high-level excitation throughout the atmospheric portion of the flight. In
+addition, the entire SM is subjected to a forward-moving shock wave as the vehicle
+accelerates through the transonic region. Evidence of separated flow also exists over
+the SLA, and another flow separation occurs on the Saturn IVB (S-IVB) shoulder,
+
+      Several measurements of the surface pressure fluctuations have been made on
+models of typical spacecraft configurations (ref, 3). Numerous wind-tunnel tests using
+various scale models were also performed by North American Aviation, Inc., ( N U )
+
+
+
+                                                                                         5
+f o r NASA MSC at several wind-tunnel facilities, as noted in figure 3. (The latter data,
+although unpublished, were used for the Apollo Program environmental definition. )
+The maximum overall pressure-fluctuation levels for several typical stations around
+the Apollo vehicle at various      ch numbers are given in figure 3. The effect of the
+violent separation aft of the      shoulder is clearly evident. The maximum overall
+level at this point, 173 dB (all fluctuating pressure and sound pressure levels are in
+decibels, referenced to 2 X loe4 microbar), was obtained by NAA at the Douglas Air-
+craft Company, Inc., wind-tunnel facilities on a very small model. More controlled
+tests gave values of 166 to 168 dB. The average of all values was 169 dB.
+      Typical relative 1/3-octave band spectra in the shoulder area are given in fig-
+ure 4. The results show a constant increase of 10 dB per decade from the lowest fre-
+quency to the spectral maximum in the vicinity of 80 Hz. This slope is independent of
+Mach number; however, the spectral levels above 80 H z are influenced by Mach num-
+ber with a considerable increase in the supersonic region. Absolute values of typical
+maximum spectra, without regard to Mach number or station, are given in figure 5.
+The peak in the vicini of 80 H z is well defined for all subsonic and transonic regions.
+The characteristic low-frequency slope of 10 dB per decade is also consistent, as is
+the tendency for the high-frequency noise to increase in supersonic flight.
+       The clear upper bound of the data in figure 5 and the similarity of the spectra
+enabled the selection of the design acoustic performance curve shown in figure 6. The
+design curve was selected to have an overall sound pressure level (SPL)of 171 dB at
+the shoulder position and to give a margin of 2 dB. The margin allowed for uncertain-
+ties (in the capabilities of the yet -to-be-developed noise-source system) and allowed
+for the possibility of attaining higher levels, if warranted, for specific test objectives.
+      The range of sound pressure spectra required to simulate the aerodynamically
+derived pressure spectra is shown in figure 7. The estimated spectrum from rocket
+noise at launch is also shown. Note that the aerodynamically derived pressure fluctu-
+ations are more severe than the rocket noise. The judgment was that achievement of
+the facility design spectra with appropriate levels at the various body stations would
+guarantee a test envelope which would be realistically conservative.
+      A method was required for simulating the fluctuating pressure field around the
+Apollo spacecraft where the test article was a 65-foot-high stack made up of the CM,
+SM, and SLA on a support fixture. The test article would be 13 feet in diameter at the
+SM and 22 feet in diameter at the base. Since the stack is a large item to test, a sim-
+ulation technique would have to include consideration for the practical and economical
+methods of exciting such a specimen.
+
+                  Simulation of the ressure Fluctuations Around the
+                                pol10 Spacecraft Vehicle
+       Note that the use of shakers, either singly with excitation introduced at the base
+of the vehicle or in multiples with excitation introduced at several points on the vehicle
+surface, was discarded as an approach for simulation of the pressure fluctuations
+around the Apollo spacecraft vehicle. With single-input excitation at the base of the
+vehicle, the desired vibration field could not be achieved because of response attenua-
+tion, especially at higher frequencies, along the structural transmission paths to
+
+6
+points forward in the vehicle. A multiple-shaker approach would result in the more
+common problems encountered with this form of laboratory excitation tool when used
+for vibration testing of large vehicles. Some of these problems are that modifications
+would be required to the vehicle structure for attachment of shaker armatures; that
+vibration response in the vicinity of the shaker attachments would be excessive, which
+is unrealistic; and that control difficulties for a large matrix of shakers with inputs of
+random excitation would be formidable. For these reasons, further considerations
+emphasized acoustical input methods.
+
+      During the course of the conceptual development of the Spacecraft Acoustic
+Laboratory (SAL), three general methods of simulating the external pressure fluctua-
+tions by the use of acoustic wave impingement were proposed. These are illustrated
+in figure 8 and include (1) the reverberant field, (2) the progressive wave from either
+the bottom o r the top of the test specimen, and (3) the multiple-source close-coupled
+progressive wave.
+       A reverberation-chamber approach offered considerable handling and placement
+flexibility for the Apollo and future spacecraft because few, if any, fixtures and ducts
+would be required. However, for the 270 000-cu-ft test tower required to enclose an
+Apollo vehicle configuration, the acoustic power requirements became rather large.
+For example, if the wall absorption coefficient were 0.03, the absorption would be
+0.03 times 26 000 sq ft, which is 800 sabins. An input power of 2.5 million acoustic
+watts would be required to achieve an SPL of 170 dB in the chamber if the propagation
+in air were linear; however, because of macrosonic attenuation, the acoustic power
+requirement more probably would be on the order of 5 to 7 million acoustic watts.
+This power requirement would have far exceeded the most ambitious of previous facil-
+ities, and its .cost would have been prohibitive.
+      More important, technically, the high-level sound field would surround the entire
+vehicle, including all sections which have much lower maximum flight levels. This
+would provide a quite unrealistic simulation, especially for the aerodynamic cases, and
+would cause much higher response of equipment and structures than occur in flight.
+Consequently, failures and malfunctions which might be experienced during the test
+would have a low probability of occurring in flight, thus potentially leading to an ex-
+cessive number of structural fixes, overdesign, and overweight.
+      While high-level reverberant testing was impractical, it was desirable to be
+able to utilize the tower as a reverberation chamber at lower levels. This utilization
+would allow for future reverberant tests of large equipment and comparison of the re-
+sponses of vehicle structure to two different types of test environment, reverberant
+and progressive wave acoustic excitation. For this purpose, the internal tower di-
+mensions were selected as 90 feet high, 50 feet deep, and 61 feet wide to optimize the
+frequency separation of the acoustic modes in the chamber. In the optimiqation proc-
+ess, a height of 90 feet was selected to accommodate the vehicle, and a width of 50 feet
+was selected for architectural compatibility and for test- article handling space. The
+chamber modes were then calculated for a range of lengths between 54 and 65 feet in
+increments of approximately 1 foot. The 61-foot dimension provided the best results
+with good frequency response obtained above approximately 3.3 times the fundamental
+chamber resonant frequency of 6.2 Hz (approximately 20 Hz). Hence, good diffuse
+field characteristics were obtained for the entire frequency range of interest between
+20 and 2500 Hz. Because of later additional architectural considerations, the basic
+
+
+                                                                                         7
+tower dimensions were increased to 101 feet high, 56 feet deep, and 68 feet wide, each
+dimension being adjusted by the same factor to maintain the optimum dimension ratios.
+
+      Two alternative methods of progressive wave testing using a duct -containment
+system were considered and are illustrated in figure 8. Both methods required ap-
+proximately 160 000 acoustic watts of power to achieve 171 dB in a 3-inch-wide annular
+area around the command and service module (CSM) shoulder. Both concepts allowed
+simulation of the SPL gradient aft of the CSM shoulder by a combination of attenuation       6
+
+and increase in area function. Both could be terminated in similar manner, either
+alongside the SLA or around a portion of a simulated S-IVB stage.
+      A major difference in concept was the provision of multiple-source units. In the
+multiple-source configuration which was adopted, 16 sources would be utilized to drive
+16 longitudinal ducts in lieu of one o r two sources driving a single duct. Each of the
+16 sources could be driven from an independent random-noise generator which would
+enable limiting circumferential correlation to a duct width of 30 inches, thereby im-
+proving the simulation flexibility.
+      A second major difference was the use of a folded horn rather than a direct horn
+for the CM. The principal difficulty with the direct horn was the requirement that the
+SPL at the nose be less than that at the shoulder. Consequently, the duct cross-
+sectional area would have to be greater at the nose than at the shoulder with the antic-
+ipation that this area expansion followed by a contraction and then an expansion would
+lead to considerable acoustic-transmission difficulties, The folded horn avoided some
+of the difficulties since its horn area expansion nearly matched the areas required to
+achieve the desired sound pressure levels. However, impedance discontinuities would
+occur at the throat of the folded horn. These discontinuities were minimized during
+the model portion of the concept study.
+
+       During the design phase, the mold lines for the horns and ducts were defined in
+detail. An opportunity to add, at little additional cost, the capability to drive the lab-
+oratory reverberantly with the 16 noise sources also became apparent in the design
+phase. This second mode of testing would be achieved by removing the ducts from the
+horns at the CSM shoulder and replacing them with 16 large horn flare sections. The
+flare sections would couple the noise sources to the room volume by using a portion of
+the test vehicle as the horn walls. The resulting acoustical conditions would retain
+progressive wave excitation over the surface of the CM and the upper surface of the
+SM. The lower surface of the S and the surface of the SLA would be subjected to
+reverberant energy, thus affording versatility of the testing approach and an oppor -
+tunity to compare the response of vehicles to both types of laboratory forcing functions.
+       The primary purpose of the SAL, as in any ground-based experimental facility,
+is to provide a tool which can be used to simulate one o r more of the inservice envi-
+ronments of a spacecraft. With this tool, the experimenter may study the vibrations
+of either a full-scale or model vehicle to simulated environments, and then utilize the
+experimental results to predict the vibrations of the full-scale vehicle to actual en-
+vironments. The utility of any experiment involving such simulation is proportional
+to the degree of confidence which can be placed in the accuracy of the vibration re-
+sponse predictions that can be made from the experiment. Under the proper choice of
+field parameters, different fluctuating pressure fields can produce essentially identical
+
+
+8
+average vibration response in a structure, Thus, in general, the simulated environ-
+ment need not always be completely accurate in itself but rather must provide an ac-
+curate vibration prediction tool. The variable parameters for optimizing simulation,
+which served as design requirements for the SAL, are compared with flight conditions
+in table I.
+       The comparisons in table I indicate that the SAL could achieve a rather accurate
+simulation of the pressure field from rocket noise at launch and a less accurate simu-
+lation of the pressure field resulting from aerodynamic pressure fluctuations. The
+principal deficiencies of the latter simulation are (1)inability to simulate the longitu-
+dinal and lateral correlation functions except to the approximation of (sin ky)/ky,
+where k is the acoustic wavelength constant and y is distance, for the reverberant
+configuration; o r cos ky, longitudinally, and one-sixteenth of the circumference lat -
+erally in the progressive wave patterns; and (2) inability to vary the spectrum as a
+function of longitudinal position in either configuration. These deficiencies result from
+the use of an acoustic field to simulate nonacoustic phenomena. However, the signifi-
+cance of the deficiencies is still not established. Existing theory and experience indi-
+cated that their effects could be minimized through development of proper equivalent
+spectra for the ground simulation. Therefore, early experimental programs in the
+SAL, together with supporting theoretical studies (refs. 4 and 5), were directed toward
+developing the necessary equivalences and proving the results by comparing the vibra-
+tion field in actual vehicles measured both in flight and in the SAL. These efforts are
+continuing, and the results already achieved (ref. 6) toward simulation of flight re-
+sponse are quite promising. The following section is a detailed description of the fa-
+cility, as built.
+
+                              FACILITY DESCRIPTION
+
+                                       General
+       The SAL (fig. 9) is housed in a tower which has external dimensions of 105 feet
+high, 60 feet deep, and 70 feet wide. The tower consists of a structural steel frame-
+work with concrete panels for the exterior walls, and can accommodate a vehicle up
+to 30 feet in diameter and 85 feet in height. A door 40 feet high and 32 feet wide pro-
+vides access for bringing individual spacecraft modules into the laboratory, The lab-
+oratory is serviced by a 75-ton fixed-point hoist which is used for stacking modular
+components of an integrated spacecraft, and which can be used to suspend a spacecraft
+during testing, A 5-ton circular bridge crane is used for general-purpose material
+handling and for handling test ducts. Permanent and movable platforms are located
+at elevations of 15, 30, 45, 60, and 75 feet. The movable platforms are 3-foot-wide
+catwalks which encircle the test vehicles. An elevator 6 feet wide, 7 feet deep, and
+8 feet high is used for personnel and equipment access to the various levels and to the
+adjacent control room. Pneumatic and electrical utility connections, communications
+stations, and instrumentation and cable chases are located throughout the laboratory.
+      TWQmodes of testing are presently available in the laboratory: progressive
+wave, the primary mode; and progressive wave/reverberant f i l l -in, the secondary
+mode.
+
+
+                                                                                          9
+      In progressive wave tests, the exposed surface of a test vehicle is enveloped by
+controlled high-intensity sound, Sixteen separate progressive wave sound fields are
+directed downward over the vehicle in separate encircling ducts as shown in figure 9.
+The cross-sectional area of the ducts is adjustable so that specified sound pressure
+levels can be achieved along the longitudinal axis of the test vehicle. Sound energy is
+supplied by 16 noise sources, o r air modulators, which are electrically programed and
+have an output of 10 000 acoustic watts each, The air kodulators are suspended from
+the top platform in the tower and are attached to coupling horns which are connected to
+the ducts. The air modulators are independently controlled so that the correlation of
+the acoustic fields between the ducts can be programed. The 160 000 acoustic watts of
+power generated by the air modulators provide an overall SPL of 169 dB at the horn/
+duct interface.
+      In progressive wave/reverberant fill-in testing, the ducts are removed from the
+horns and replaced with extension horn flare sections which couple the acoustic energy
+to the acoustic response modes of chamber volume. Thus, the lower portion of the
+vehicle is subjected to reverberant loading.
+      The air modulators require a large volume of compressed air (approximately
+27 000 standard cu ft/min) which is supplied by a constant-flow centrifugal air com-
+pressor driven by a 4500-horsepower electric motor. The compressor is located in
+an adjacent building and draws its supply of air from within the tower, making the air
+system a closed loop, with the tower volume serving as a plenum. A i r manifolds are
+connected to the air modulators by hoses.
+
+                              Apollo Test Configuration
+      The SAL horn/duct system is presently configured specifically for the Apollo
+spacecraft (fig. 10). In this configuration, the complete Apollo test article (consisting
+of a CM, an SM, an SLA, and an LM located inside the SLA) is positioned on top of a
+Saturn instrument unit (IU) and a base fixture (which simulates the S-IVB forward
+skirt). The entire stack is in a vertical orientation. The dome of a forward tank of
+the S-IVB booster is also mounted, consistent with flight location, inside the S-IVB
+forward skirt to assure proper internal acoustical boundary conditions. The circular
+duct system is positioned around the entire Apollo vehicle stack (fig. 11) to contain the
+high-energy acoustic progressive waves which are generated above the stack and
+passed aftward over the outer shells of the vehicles. Approximately 75 percent of the
+acoustic energy passes down over the SM. The remainder is directed via a splitter
+arrangement in the initial, o r transition, horn section through a reverse, o r folded,
+horn backup over the face of the CM. Anechoic termination wedges are located at the
+
+
+      'Standard longitudinal Apollo station numbers are used to identify measurement
+locations. These station numbers along the longitudinal axis are identified as Xa----
+(with up to four digits to f i l l the blanks). In SAL, measurement locations from Xa 552
+(bottom of the SLA) to Xa 1260 (top of the upper terminator) are available.
+
+
+
+10
+end of each duct run and of each horn run to assure that a plane wave condition is main-
+tained. This is necessary to preclude the occurrence of standing acoustic waves and to
+assure compliance with plane wave propagation objectives. The latter allows the SPL
+to be increased o r decreased along the length of the specimen by moving the outer wall
+of the duct in o r out with respect to the vehicle outer shell (that is, the depth of the
+duct is variable). The spectral shape of the acoustic waves is controlled by appropri-
+ate programing of the electrical input signal to the driver coil of the air modulator
+which generates the acoustic waves. The acoustic levels are controlled by the pro-
+gramed output of the air modulator and by the radial placement of the duct with respect
+to the outer face of the vehicle shell. The duct is divided into 16 acoustically separate
+channels so that many combinations of levels, shapes, and correlations can be pro-
+gramed around the circumference of the test article.
+      The transition horns (fig. 12), which couple the air -modulator acoustic output
+with the folded-horn/duct system, are constructed of epoxy fiber glass and have access
+ports for mounting microphones so that the microphone diaphragms are flush with the
+internal wall of the horns. The transition horns are bolted to the steel folded-horn
+sections which surround the CM. A steel upper terminator unit having 16 compart-
+ments, each lined abundantly with fiber-glass absorptive material and fitted with fiber-
+glass wedges, is bolted to the top of the 16 folded-horn sections. The V-shaped duct
+supports (fig. 13), which are bolted to the lower faces of the folded-horn sections and
+extend downward over the SM, SLA, and IU, are constructed of plywood faced with
+sheet metal. The outer walls of the ducts (fig. 14) are steel rolled to a curvature that
+is concentric with the surface of the test article. Slotted tabs are provided on the
+outer walls of the ducts, and multiple bolting locations are provided on the V-shaped
+duct supports to allow radial adjustment of the cross-sectional area of the ducts. The
+cross-sectional area of each duct is bounded by the outer wall, two walls of the V-
+shaped duct supports, and the surface of the test vehicle. In a similar fashion, the
+surface of the CM serves as a fourth horn boundary in the reverse-horn sections.
+Fiber -glass wedges, which serve as lower terminators, are positioned at the bottom
+of each duct in the area of the IU and the base fixture. When the reverberant flare
+system (fig. 15) is used in lieu of the duct system, the acoustic progressive waves are
+coupled directly to the room and no anechoic terminators are used. All steel walls of
+the horn/duct assemblies are coated with several thick layers of viscoelastic damping
+compound. The weight of the horn/duct assemblies is supported by the building plat-
+forms through hangar rods and bolting arrangements so that no load is exerted on the
+test vehicle by the test hardware. Soft, highly compliant sealing hoses provide the
+only contact between the horn/duct systems and the test vehicle. The sealing hoses
+run longitudinally along the vehicle and separate the horn/duct walls from the vehicle
+surface. Acoustical isolation between adjacent horns and adjacent ducts is provided
+by the sealing hoses without interference with the vibration response of the surface of
+the test vehicle, During assembly of the horns and ducts around the vehicle, illumi-
+nation checks are made with electrical lights for duct leaks which, when found, are
+eliminated by the application of rubber sealing compound. A hyperbolic -exponential
+design with an aspect ratio of 0.6 was used for the expansions of all horns, and a de-
+sign cut-off frequency of 25 Hz was used throughout with the exception of the reverber-
+ant flare sections where 50 Hz had to be used because of space limitations (fig. 16).
+      The air modulators (fig. 17) are connected to the top of the initial horns with a
+quick =disconnect arrangement. Ancillary equipment items, including a cooling system
+
+
+
+                                                                                      11
+and a dc field supply, are located on adjacent platforms. The air modulators are
+linear -vane devices with electromagnetically driven cylindrical valves and were de -
+veloped specifically for the SAL. The units are water cooled with a vacuum-assisted
+return system. The modulator valves are suspended on continuous rubber diaphragms
+and are driven inductively by variable electrical programing signals interacting with
+magnetic fields (ref. 7).
+
+                             Control and Instrumentation
+       The control system equipment, located in a room adjacent to the acoustic tower,
+consists of 16 control and power channels, one for each of the 16 air modulators
+(fig. 18). Each channel includes a separate electrical white-noise generator and
+1/3 -octave band shaper for random programing, and a separate 3000-watt-power am-
+plifier so that acoustic energy which is uncorrelated between ducts can be produced by
+the separate air modulators. The amplified programing signals are connected via
+cables to the air modulators in the tower. Through patching changes, one white-noise
+generator and shaper can be used to drive all amplifier and air -modulator channels to
+obtain an all -correlated acoustic condition between the ducts. Intermediate correlation
+combinations are also possible. Oscillators are available and the air modulators can
+be driven sinusoidally, o r sinusoid programing can be mixed with random programing.
+While versatility of control is provided, a single master -gain control is used to in-
+crease and decrease the output levels of all air modulators simultaneously during a
+test run. Rapid attainment either of test levels or of shutdown was designed into the
+system to minimize undesired excitation and structural fatigue of the test vehicle.
+Other operational features include equipment malfunction alarms and automatic shut -
+down; emergency termination switches for the amplifier system and the air compres -
+sor; an arrangement allowing for selection of any control channel for monitoring by the
+test conductor; an environmental condition (temperature, humidity, and pressure) re -
+cording system; a flexible control and data instrumentation patching capability; plug -in
+modular components for quick replacement of malfunctioning units; intercom and tele -
+vision systems; and an analog data acquisition system consisting of signal -conditioning
+amplifiers and magnetic tape recorders. Presently, the data acquisition system can
+accommodate simultaneously 35 channels of horn/duct microphone measurements,
+ 160 channels of test vehicle microphone and accelerometer measurements, and
+ 50 channels of strain gage measurements. Multiple test runs with repatching can be
+used to obtain a larger number of response measurements on the test vehicle.
+      Each air modulator is calibrated using a plane wave tube (especially constructed
+for the purpose) before being installed in the SAL for a testing operation. All tests of
+airframe vehicles are preceded by a calibration test series using a boilerplate vehicle.
+During these calibration tests, the amplitudes and spectral shapes a r e adjusted se-
+quentially in each duct at planned test levels. This procedure assures appropriate
+compensation for individual air -modulator/duct anomalies that may be present, and
+assures correct settings at high levels where acoustical nonlinearities occur. The
+controls for each channel are then documented and the test stack is torn down. The
+boilerplate vehicle is replaced with the actual spacecraft test article and the horn/duct
+systems reinstalled. A low-level test run for checking the test environment and for
+ranging of data acquisition equipment precedes high-level runs. For the high-level
+runs, the test conductor uses a single master -gain control to apply acoustic excitation
+
+
+
+12
+    to the vehicle. Tape-recorded test data can be reduced with either analog or digital
+    equipment at data reduction facilities located elsewhere at NASA MSC.
+
+                                  FACILITY PERFORMANCE
+
+
+I          The major features of the facility performance for both the progressive wave duct
+    and the reverberant modes of operation are reviewed in this section, In addition, some
+    of the detailed performance characteristics of the coupling horns and ducts are ex-
+    amined, and the problems associated with coupling the progressive wave duct to the
+    vehicle are discussed. Vibration responses, which are obtained with accelerometers
+    at three locations on the SLA, are compared for both progressive wave duct and re-
+    verberant excitation. Vibration responses are presented which were obtained with ac -
+    celerometers at eight locations on the SM, for both progressive wave duct and flight
+    excitation.
+
+                                Progressive Wave Performance
+          As described in previous sections, the progressive wave mode of operation al-
+    lows variation of the overall SPL axially along the test article for all stations below
+    the CSM shoulder. Furthermore, the progressive wave mode allows freedom in se-
+    lecting the spectrum and level for ea@ duct and the correlation parameters among
+    various ducts. Therefore, for any individual duct, the spectrum throughout the duct
+    has a definite relation to the spectrum at all other points along the duct. The relation-
+    ship may be varied only by changing the axial variation of the duct cross-sectional
+    area, the characteristics of the acoustical termination, o r the axial impedance charac-
+    teristics of the vehicle.
+           A i r modulators were designed to meet the requirements of the SAL, and provide
+    a maximum of 10 000 watts acoustical power output over a frequency range of 30 to
+    1000 Hz. The high-frequency performance of the facility is thus limited by the capabil-
+    ity of the noise source above 1000 Hz, whereas the low-frequency performance is con-
+    trolled by the horn cut-off characteristics and the terminating impedances. Within
+    these frequency response constraints, a large variety of spectra can be generated, as
+    indicated by the range of spectra measured in several experiments at the CSM shoul-
+    der, station Xa 1008 (fig. 19). Figure 20 shows that the overall level can be varied
+    over at least 30 dB from 140 to 169.5 dB at the CSM shoulder station. Note that these
+    particular spectra were chosen for specific experimental objectives and do not repre-
+    sent all possible spectra. For example, spectra which peak at either the low-
+    frequency, middle -frequency, or high-frequency ends of the overall envelope indicated
+    in the figure may be produced.
+          Figure 2 1 gives the spectra resulting at the Apollo shoulder for one setting of the
+    electronic spectrum shaper and for various voltage amplitudes across the air modula-
+    tor. Note that all spectra are essentially similar below 500 Hz. However, in the fre-
+    quency range above 500 Hz, the rolloff for the high-level spectra is considerably less
+    than for the lowest level spectra. This nonlinear property, termed macrosonic atten-
+    uation, results from the distortion of high-level acoustic energy in its propagation in
+
+
+                                                                                           13
+the initial horn. The distortion produces a triangular waveform which, when fully de-
+veloped, will give a rolloff of approximately 3 dB per octave. For the data in figure 21,
+the highest level spectra is approaching the theoretical 3 -dB per octave rolloff.
+
+      For some applications, the presence of distortion at high frequency is undesir-
+able. However, the distortion is most useful f o r the majority of applications since it
+provides the only currently available method of extending the spectrum beyond the con-
+trollable limits of the acoustic noise source.
+      The variation of SPL along the axis of the vehicle is accomplished by varying the
+cross-sectional area of the ducts. The variation permits a change of area along the
+SM from the 90-sq-in. fixed cross section at the shoulder to as much as 450 sq in. at
+the base of the SM. The area along the SLA can vary from a minimum of 90 sq in. at       '
+
+the top of the SLA to a maximum of approximately 750 sq in. at the base. Part of the
+variation along the SLA comes from the increase in diameter of 13 feet at the top to
+22 feet at the base, and the remainder comes from the ability to vary the radial dimen-
+sion (or depth) of the duct from 4-1/2 to 15 inches.
+       Figure 22 illustrates the axial range of variation of SPL which has been found for
+the Apollo configuration. The ideal variation of SPL for both minimum and maximum
+duct spacings compares very closely with that measured in the high-frequency region.
+At low frequencies, however, the decrease of SPL along the vehicle is greater thanthat
+resulting from the area variation alone, The effect of frequency is best illustrated in
+figure 23, which gives the measured 1/3-octave band spectra in decibels relative to
+the shoulder spectra for four locations down the side of the test article. The high-
+frequency levels in figure 22 represent the average of the three 1/3-octave bands cen-
+tered on 800 Hz (from fig. 23); the low-frequency levels were derived from the six
+1/3-octave bands centered on 112 Hz.
+      Thus, figure 23 shows that the transition between the low- and high-frequency
+region occurs just above 250 Hz. As will be seen later, the maximum absorption of
+acoustic power by the vehicle structure occurs just below 250 Hz, with a considerable
+decrease in acoustic absorption at higher frequencies. Therefore, the additional de-
+crease in SPL along the axis of the vehicle for the low-frequency region is attributed
+to the absorption of acoustic power by the vehicle.
+       The mechanism for this absorption can be seen from a simplified acoustic model
+of the duct/vehicle system as a duct with a continuous resistive absorber forming one
+side. Analysis of the model indicates that the attenuation in decibels along the duct
+due to absorption of acoustic power should vary directly with axial distance and in-
+versely with radial duct dimension (or depth) for the Apollo structure. Therefore, if
+a lesser low-frequency SPL gradient along the vehicle were desired, the depth of the
+duct at the shoulder would need to be increased to obtain lower attenuation. Of course,
+the increase of area at the shoulder will have a side effect of reducing the maximum
+SPL in the duct at the shoulder. The simplified analysis also suggests that if the pro-
+gressive wave duct mode of testing were utilized for vehicles of lower surface weight
+than that of Apollo (approximately 2 lb/sq ft), careful consideration would have to be
+given to the duct depth versus SPL gradient requirements.
+      The utilization of 16 ducts and their associated air modulators enables a con-
+trolled variation of the circumferential spatial correlation of the sound field along
+
+14
+    the vehicle. As discussed in previous sections, this acoustic system, together with its
+    electronic controls, can operate in any mode from "all ducts correlated" to "all ducts
+    uncorrelated. '' The practical achievement of the "all ducts correlated" condition is yet
+    to be demonstrated in the facility. Early experiments revealed that unity correlation
+    w a s difficult to maintain from duct to duct over a wide frequency range, primarily be-
+    cause of variations among the acoustic noise sources. These variations among noise
+    sources also made it difficult to obtain identical spectra and amplitudes among the
+    ducts. The variation in SPL o r in the 1/3-octave band sound pressure levels for all
+    16 ducts operating in the uncorrelated mode is shown in figure 24. As shown from the
+    data envelopes, when the overall sound pressure levels are controlled to within
+    *1-1/2 dB, the sound pressure levels in 1/3-octave bands remain within *2 to 3 dB
+    over a substantial portion of the frequency range. However, deviations up to 4 dB are
+    noted in the high-frequency end of the spectra. The increase in deviation in high fre-
+    quency for the spectra is associated with the fact that the levels in this frequency range
+    are generated both by controlled modulation and nonlinear distortion of noise from
+    lower frequency modulation. In any event, the overall variation illustrated in figure 24
+    is considered quite acceptable for practical test purposes.
+
+           A great number of interesting experimental results have been derived from the
+    facility. Many of these experiments are directed toward obtaining better understanding
+    of detailed factors which affect the overall performance of the facility. Although space
+    does not permit discussion of all investigations here, two of the detailed factors have
+    general application to progressive wave duct excitation of aerospace vehicles and will
+    be discussed briefly in the following paragraphs,
+
+
+                                      Horn Performance
+          In the design of a high-intensity acoustic facility, horns are employed to give a
+    smooth transition from the very small area of the air-modulator throat to a large area
+    at the entrance to a test section, Ideally, the horns should be perfectly terminated in
+    impedances which match the characteristic impedance of air (or pc) and act as perfect
+    couplers for the energy over the entire frequency range. However, in any finite-length
+    horn/duct system, the termination is always less than perfect and will cause reflected
+    waves. The reflections result in the buildup of standing waves, which may be found ex-
+    perimentally by probing the sound field along the axis of the horn. A typical result of
+    such a probe is given in figure 25 for the initial horn and for three discrete frequen-
+    cies.
+           At 400 Hz, a variation of SPL along the axis departs from the ideal horn area ex-
+    pansion by less than 1 dB. However, at 100 Hz and lower frequencies, a greater dif-
+'
+    ference is found between the ideal and the real horn. The difference can be quantified
+    i n terms of the standing wave ratio, which is the peak-to-peak difference in decibels
+    of the departure of the pressure amplitude from the mean. This behavior can also be
+    related to the effective absorption coefficient of the termination to the horn (and is a
+    measure of the quality of the termination).
+          Both the standing wave ratio and the effective absorption coefficient for the initial
+    horn, reverse horn, and reverberant flare horn are given in figures 26(a), 26(b), and
+    26(c), respectively. The effective absorption for the initial horn approaches 100 per-
+    cent for frequencies above 150 Hz. However, below 100 Hz, the absorption varies be-
+    tween 70 and 90 percent, depending on frequency and type of termination. Although
+
+                                                                                           15
+the absorption for most acoustical purposes is generally of primary interest, the
+standing wave ratio is perhaps more meaningful from the point of view of assessing fa-
+cility performance, since it gives twice the maximum deviation from the mean SPL in
+terms of decibels. Also, as seen in figure 26, the standing wave ratio is a more sen-
+sitive indicator than the absorption coefficient in detecting minor departures from the
+ideal.
+
+                                                                                              1
+                                       Duct Seals
+
+       The sealing of the individual ducts to the vehicle to prevent leakage of sound into
+adjacent ducts is necessary to maintain independent noise fields and for the adequate
+acoustic termination of each noise source. A leak along the duct acts as a distributed
+inductive shunt and causes a significant degradation of the low -frequency performance
+of the entire system, in addition to providing added attenuation along the duct. The
+potential seriousness of the situation is illustrated in figure 27, which gives results
+from a one-third scale model of a typical duct section studied during the design of the
+facility. Spectra are given for three stations located in the parallel section of the duct,
+varying between 2 and 80 inches from the interface between the horn and duct. The
+data for the 2-inch location in figure 27 demonstrate that the overall frequency re-
+sponse of the horn/duct configuration rolled off below 100 Hz. However, with a tightly
+sealed configuration, the low-f requency performance is significantly improved with the
+low-frequency cut-off occurring at approximately 30 Hz. Furthermore, the results for
+locations farther down the duct show that considerable attenuation is occasioned by the
+leak.
+
+      These two effects of improper sealing make it essential to seal the vehicle to the
+duct acoustically. However, the sealing requirement conflicts somewhat with the re -
+quirement that the presence of the duct shall not inhibit the vibration response of the
+vehicle. This potential problem area was recognized early in the design concept study
+and resulted in experimental studies of various types of sealing devices to meet both
+criteria, The final result for the ducts along the Apollo vehicle is a 1-inch-diameter
+rubber hose of low durometer, supplemented with plastic sealants over local contour
+variations about the vehicle mold lines.
+      The noise reduction between adjacent ducts (fig. 28) is approximately 15 to 20 dB
+over both the CM and the SM. However, the noise reduction between these same ducts,
+when measured at the base of the SLA, is only 5 to 10 dB for frequencies below ap-
+proximately 300 Hz and increases to approximately 20 dB above that frequency. This
+lower noise reduction at the base of the SLA is suspected to result from the reradiation
+of energy by the vehicle into adjacent ducts. This would also explain the increase of
+the noise reduction to the 20-dB level at frequencies above the principal response f r e -
+quencies of the vehicle, as discussed previously and exhibited in the axial attenuation
+of figure 22.
+
+      The seal design, which gives a reasonable noise reduction, simultaneously en-
+ables achievement of designed low -frequency response performance characteristics.
+       To test the possible interference of the sealed ducts with the vibration response
+of the vehicle, experiments were conducted in which the vehicle was mechanically ex-
+cited, both with and without the acoustic duct system. A typical vibration response,
+
+16
+*
+    measured in 1/3-octave bands, for a boilerplate CM is given in figure 29 for both
+    cases. For convenience, the vibration response is expressed in decibels relative to
+    10-6g. Little variation was experienced throughout the spectrum. Figure 30 gives a
+    summary of the differences in response measured in the SLA at six accelerometer lo-
+    cations for mechanical excitation, both with and without the duct system coupled to the
+    vehicle. Again, the variation appears to be within the statistical accuracy of the data.
+    These and other experiments demonstrated that the seals currently in use are more
+    than adequate for the Apollo vehicle. However, if vehicles of significantly lower sur -
+    face weight were to be tested in a similar configuration, the adequacy of the seals
+    would need to be demonstrated again.
+
+
+                                    Reverberant Performance
+          The second basic mode of operation provided in the SAL is the semi-reverberant
+    mode discussed in a previous section. Although the principal experimentation to date
+    has been with the progressive wave mode, the measurements with the reverberant'mode
+    indicate that it will also furnish a practical tool f o r certain Apollo test applications.
+          The acoustical absorption provided inside the SAL is given in figure 31. The ab-
+    sorption below approximately 1200 to 1600 Hz averages a little over 4000 sq ft, re-
+    sulting in an absorption coefficient of approximately 0.12, based on a wall surface
+    area. The absorption coefficient is approximately eight times higher than would be ex-
+    pected in a standard hard-walled reverberation chamber. However, it is not the result
+    of the classical acoustic absorption expected from soft resistive absorptive materials;
+    rather it is the result of the vehicle, of the steel gratings provided at every platform
+    level, and of the various steel piping and other systems provided in the tower for gen-
+    eral facility operation. The increase in absorption illustrated in frequencies above
+    1600 Hz is the result of natural air absorption in the room and is expected to become
+    asymptotically proportional to the square of frequency.
+          Figure 32 gives the range of sound pressure levels measured along the SLA im-
+    mediately adjacent to the skin and in the general chamber volume. The levels are the
+    result of a reasonably flat input spectrum at almost full acoustic power. Note that the
+    levels adjacent to the SLA are within 1 o r 2 dB of those predicted for the launch case.
+    Therefore, this configuration has utility for some test purposes utilizing the SLA.
+          The difference between the sound pressure levels in the general chamber volume
+    and those adjacent to the actual structure, as illustrated in figure 32, is important to
+    note. Although the usual practice for equipment testing is to specify and measure the
+    average level in the general volume of a reverberant chamber, the levels which are
+    most important for full vehicle testing are those adjacent to the skin. Thus, in de-
+    signing a vehicle test, differences between the chamber reverberant level and the
+    pressure on the skin of the order of those shown in figure 32 must be considered in
+    specifying and measuring the test spectrum.
+          The relative spectra between the Apollo shoulder station and the four longitudi-
+    nal stations along the test article are given in figure 33. These data, which are meas-
+    ured at the same stations utilized in figure 23, show the type of variation of axial
+    sound pressures which might be expected from a combination of a close-coupled
+
+
+                                                                                            17
+horn/vehicle configuration in a reverberant chamber. Naturally, the absolute magni -
+tude of the difference between the close-coupled region and the throat of the horn in the
+reverberant chamber is dependent on both the coupling area and the absorption of the
+chamber.
+
+                                   Vibration Response
+      The ultimate intent of the acoustic facility is to produce a vibration field within
+the vehicle which is similar to that actually encountered in its mission performance.
+The transfer function, which relates the average vibration within the vehicle to the
+surface acoustic pressures, is known to be a function of the type of external pressure
+of the fluctuating field. Figure 34 gives the transfer function for three accelerometers
+located on the §LA for both the progressive wave duct and reverberant field excita-
+tions, The data show that the shapes of the transfer functions are almost identical and
+the absolute magnitudes are similar, although the reverberant sound field appears to
+produce a response averaging approximately 3 dB higher than that produced by pro-
+gressive wave duct excitation,
+      Note that the frequency response characteristics and the magnitude of the re-
+sponses which govern the transfer functions are a function of the SLA structure, size,
+stiffness, mass, and damping, as well as the characteristics of the room and the
+method of excitation, and therefore cannot be applied to other vehicles without suitable
+correction.
+      Figure 35 gives the space average fluctuating pressure spectra measured on the
+surface of the SM during Apollo flights. In an attempt to match the SM vibration re-
+sponse in SAL, acoustic spectra (fig, 35) were applied to a prototype airframe (honey-
+comb structural shell) SM with the progressive wave duct configuration. Figure 36
+presents the resulting two vibration response spectra for flight and laboratory cases.
+Each curve represents an average of eight accelerometers located on the SM outer
+shell with the locations in the laboratory test closely duplicating those in flight.
+
+      Further indications of good response simulations attainable in SAL are presented
+in another paper (ref. 6) discussing a specific test program in the facility.
+
+                                 CONCLUDING REMARKS
+
+      Simulation of vehicle vibration response to the acoustic waves propagating for -
+ward from the first-stage booster engine at lift-off is reasonably straightforward
+through application of progressive acoustic waves in the Spacecraft Acoustic Labora-
+tory. However, simulation of vehicle vibration response to aerodynamically induced
+fluctuating pressures, through the transonic and maximum dynamic -pressure flight
+regimes (by using acoustic progressive waves in the laboratory), required adjustments
+to the correlation, amplitude, and spectral shapes of the laboratory composite wave
+energy. The laboratory acoustic environment applied to the vehicle is not neces-
+sarily a duplication, acoustically, of the flight fluctuating pressure environment
+when attempting to achieve duplicate vehicle vibration response in the laboratory,
+Until adjustment criteria can be developed for the wide range of fluctuating pressure
+
+18
+environments and the vehicle structural characteristics which are possible, testing will
+probably follow a two-step procedure. The first step will be to program the laboratory
+environment to match the measured or predicted service environment in accordance
+with the amplitude and spectral shape. Comparison of vehicle vibration responses ob-
+tained from the first step with service vibration responses will then lead to the second
+step of adjusting the laboratory environment conditions, including phase correlation co -
+efficients, if possible, to achieve a duplication in the laboratory of the service vibra-
+tion responses,
+       Checkout and development tests have proved the practicality and workability of
+the fluctuating pressure simulation approach embodied in the Spacecraft Acoustic Lab -
+oratory for full-scale ground testing of large vehicles. Examination of acoustic per -
+formance data has shown that the design requirements for the Spacecraft Acoustic
+Laboratory have been met o r exceeded. Vehicle vibration responses, which closely
+duplicate responses measured in flight, have been obtained in the Spacecraft Acoustic
+Laboratory f o r the Apollo spacecraft.
+      The Spacecraft Acoustic Laboratory has been and currently is supporting the
+Apollo Program with evaluations of structurally complete prototype spacecraft. Fur -
+ther use of this unique facility in support of the Apollo Applications Program is sched-
+uled, and application of this simulation technique to future programs (such as the
+Manned Orbital Laboratory and the Mars Mission), which will have vehicles with new
+shapes and sizes, is possible with merely a modification of a portion of the acoustic
+test hardware.
+
+      Manned Spacecraft Center
+           National Aeronautics and Space Administration
+                 Houston, Texas, February 29, 1968
+                        914 -50-20-15 -72
+
+
+
+
+                                                                                     19
+                          1
+                I
+               .E
+               '8
+               ,h
+               e,
+                cn
+                cn
+                0
+                a
+                k
+                0
+
+
+
+
+     -
+     B
+     cd
+     h
+     5
+     E
+     cd
+     cn
+     W
+     0
+     E
+     r!W
+     n
+     E
+     k
+     a
+     F
+     u
+     .r(
+
+     0
+     W
+     M
+     M
+     z"
+     u
+
+
+
+
+                     ..
+
+           d
+           0
+
+
+
+
+20
+NASA-S-68-1032
+
+
+
+
+         Figure 1. - Apollo spacecraft vehicle in launch and boost configuration.
+   NASA-S-68- 1033
+
+
+
+
+                                            Mach 0.9
+
+
+
+
+                                            Mach 1.43
+ Figure 2.   - Sketches of two flow regimes over the Apollo vehicle from Marshall Space
+                Flight Center wind-tunnel tests (original SLA configuration).
+
+
+                                                                                     21
+       NASA-S-68-1034
+
+
+
+
+                     180
+
+
+                                                                         X NASA Arne3 15 5 p e r c e n t scale model)
+               3
+               0     170                                                 A Douglas 4 by 4 (2.75-percent scale model)
+               -sE
+              g.
+              0
+               rl    160
+               X
+               N
+
+               s
+               8 150
+               -I
+               n.
+               -
+               -
+               v)
+
+
+
+
+               0
+
+
+
+
+                          1200       1100   1000        900            800        700           600         500         400
+
+                                                   Apollo body station coordinates, X,,   in.
+
+
+Figure 3. - Comparison of maximum overall aerodynamic pressure fluctuations found
+  in previous studies of typical configurations corrected to flight dynamic pressure
+  (original SLA configuration).
+
+         NASA-S-68-1035
+
+
+                     0-
+                                                                                                                         Mach
+                                                                                                                        number
+          CI.                                      I
+          A
+          n
+          v)
+                -10   -                                                                                                   2.5
+
+
+                                                                                                                         2 .o
+          2
+          Y
+
+          m -20
+          -0          -                                                                                                   1.5
+          J
+          Q
+
+
+
+
+                -30   -                                                                                                   1.0
+
+
+
+                      'Jv        I                       I                                 I
+                -40                    1      I                    I                                  I
+                                                                                                                   I      I
+
+
+
+        Figure 4. - Typical relative pressure spectra downstream of shoulder
+                              at various Mach numbers.
+
+
+22
+      NASA-S-68-1036
+
+
+
+                             160    c
+
+
+
+
+                       e
+                       n     150
+             .         .-D
+                       E
+
+
+                             14 0
+
+
+
+
+                             130
+
+
+
+
+                             120
+
+
+
+
+                             110        I       I         I        I        I           I     I     I          I    I
+                                        1       2         5       10       20          50    100   200     500     1000
+
+                                                                        Frequency, Hz
+
+      Figure 5. - Typical spectra of pressure fluctuations in 1/3 octaves for
+                   several positions and several Mach numbers.
+
+        NASA-5-68- 1037
+
+
+
+
+                       170
+                 T
+                 n
+                 .-D
+                 E 160
+              x  Fl
+                 X
+                 hl
+                 2 150                                        Plus 10 dB /decade
+                 8
+                 2                                                     Minus 10 dB /decade
+                 CL
+                 UY
+                 t 140
+                 u
+
+                 0
+                 I
+                 m
+                 \
+                 rl
+
+                       130                                                 -       .
+                             1      2       5       10   20        50      100     200       500   1000 2000
+                                                                       Frequency, Hz
+
+Figure 6. - Design curve for random noise spectrum at shoulder of Apollo vehicle
+                    with an overall level objective of 171 dB.
+
+
+                                                                                                                          23
+     NASA-S-68-1038
+
+              170   r
+                                                                F a c i l i t y design spectrum at shoulder
+       Q                                                        of Apollo vehicle 7
+       m
+       n
+       e
+       .-0
+        E
+      P0
+       ..-I
+       X'
+       cu
+        ..
+        2
+       Y
+
+       m
+     ' - 0
+
+
+
+
+              130                                Maximum estimated noise
+                                                                                           booster shoulder
+                                        from rockets at I
+                               0-              service module shoulder                  -\
+
+
+
+
+              NASA-S-68-1039
+
+
+
+
+                                                   Progressive wave
+                                                   with two sources
+
+
+                           Figure 8. - Three facility concepts for SAL.
+
+24
+                                      v.
+                                       ,Anechoic wedges
+
+         Figure 9. - Spacecraft Acoustic Laboratory.
+
+
+
+
+              NASA-S-68-104 1
+
+
+
+
+               Upper tennlnator (1)
+
+
+
+
+               ’ Command module
+
+
+
+
+Figure 10. - Arrangement of test article and horn/duct system.
+
+
+                                                                 25
+                                                                             1
+
+
+
+
+     Figure 11. - Apollo vehicle in SAL after installation of duct system.
+
+
+26
+L horn assembly with air modulators installed,
+     Figure 13. - Ducts removed showing contact of V-shaped duct supports with
+                             outer shell of SM vehicle,
+28
+     Figure 15. - S L reverberant flare system installed around Apollo vehicle.
+
+
+30
+Figure 16. -   L reverberant flare system.
+     a,
+     5
+     w
+     0
+     W
+     k
+     *
+     0
+     d
+     I4
+
+
+
+     3E
+     k
+     .d
+     d
+
+
+
+
+32
+     i
+     a,
+    c1
+    rn
+    h
+9   rn
+d   d
+    0
+    k
+    c,
+    0
+    0
+
+
+
+
+    a,
+    k
+    7
+    ba
+    G
+
+
+
+
+    33
+     NASA-S-68- 105 0
+
+
+
+
+                                                                            horn)
+
+
+
+
+         Accelerometer
+
+
+          Figure 19. - Measurement locations for Apollo tests in the SAL.
+
+
+34
+        NASA-S-68-105 1
+                    160
+
+
+
+
+                    120
+              si
+              :
+              0
+
+             h
+             \ 110
+             l-l
+
+
+
+
+                    100
+                                 31.5    63   125 250       500   1000 2000
+                                                Frequency, Hz
+
+
+         Figure 20.       - Typical spectra in SAL at Apollo shoulder.
+                   NASA-5-68-1052
+
+
+                         170
+
+
+
+                   -B    160
+
+                    e
+                    .-
+                    E
+                   y     150
+                   0
+                   4
+                    X
+
+                    .. 140
+                    N
+                    e
+
+                         130
+
+
+
+
+                         110
+
+
+
+                         100
+                            OA    31.5   63   125   250 500 1000 2000
+                                                Frequency, Hz
+
+Figure 21. - Spectra obtained at Apollo shoulder in SAL by varying overall
+                      power input to noise makers.
+
+
+                                                                              35
+       NASA-S-68-1053
+                2
+                    0
+                                                    Maximum duct spacing    I
+                   -2
+                   -4
+                   -6
+                   -8
+                  -10
+
+            n
+                  -12
+            J
+
+            v, -14
+            a
+             L
+
+            2 -16
+             3
+            r" -18 I
+             ul
+                                I    I     I           I            I
+             ..     2
+            U
+             F
+            m
+            -a
+                    O
+            2      -2
+            n.
+            *      -4
+                   -6                          to area expansion
+                   -8
+                  -10
+                  -12
+                  - 14          I          I
+                                                       I
+                                                                    I
+
+                  -16
+                  -18
+                        1000   900       800         700           600     500
+                                         Apollo stations
+
+
+
+
+     Figure 22. - Axial variation in SPL for maximum and minimum duct spacing.
+
+36
+NASA-S-68-1054
+       _ _
+
+
+
+          0
+
+
+
+       -10
+
+
+
+       -20
+
+              CI             I
+                             I
+                                 l           I
+                                             I
+                                                 I           l
+                                                             I
+                                                             1
+                                                                         l
+                                                                         1
+                                                                         I
+                                                                                      1
+                                                                                      I
+                                                                                      I
+
+              t              I                                           I            I
+         0
+
+
+
+       -10
+
+
+
+       -2 0
+                   I   I             I   I           I   I       I   I       I   I         I   I
+              OA           31.5              63          125      250                500       1000
+                                                     Frequency, Hz
+                                                                                      --I      Xa 1082
+
+                                                                                      -        Xa 826
+                                                                                      -3
+
+
+
+
+                                                                                               X, 670
+                                                                                      --- X,552
+
+ Figure 23. - Spectra in ducts for two duct spacings from Apollo.
+
+
+                                                                                                         37
+             NA SA-S-68- 105 5
+
+
+
+
+      Figure 24. - Typical envelope of SPL variation in SAL for 16-duct operation.
+
+
+              NASA -S-68-105 6
+
+
+
+
+                                         Distance from horn throat, in.
+
+
+     Figure 25. - Axial variation in SPL of initial horn for single frequency excitation.
+
+
+38
+NASA-S-68- 1042
+
+
+
+
+                                                                           0‘
+                                                                       10 .-
+                                                                                Y
+
+                                                                                E
+
+
+                                                                                .-m
+                                                                                E
+
+                                                                       0        %
+          50   63   80   100    125   160    200   250   315   400   500        v)
+
+
+                                  Frequency, Hr
+
+
+
+                               (a) Initial horn.
+
+                                                                           B”
+NASA-S-68-1044
+
+
+
+ Y
+ E
+ 0)
+ 2    .
+ et 100
+ Y
+
+
+ .-
+  E
+ 0)
+
+
+ .-
+ 0
+
+ t    80
+ 80
+
+
+
+
+                           (b) Reverse horn.
+
+                Figure 26. - Typical horn characteristics.
+
+
+                                                                                      39
+     NASA-S-68-1057
+
+
+
+
+                                                m
+                                                -0
+
+
+
+
+                             Frequency, H t
+
+
+
+                      (e) Reverberant flare,
+                      Figure 26. - Concluded.
+
+
+
+
+40
+    NASA-S-68- 1058
+
+          160
+
+
+
+          150
+
+     .-
+      E   140
+    ?-
+     0
+     rl
+     X
+     N   130
+     Y
+      !?!150
+     m
+     -0
+      c
+
+
+
+
+     \
+          120
+
+
+
+          110
+                  31,s    63        125' 250 500       1000 2000
+                                      Frequency, Hz
+                         0 2 in below horn /duct interface
+                                e
+
+
+                         A 40 in ,below horn /duct interface   '
+
+
+
+
+                           80 in. below horn /duct interface
+
+
+
+
+Figure 27. - Effect of seal on acoustic performance of a duct (taken from a
+                          one -third scale model).
+
+
+                                                                              41
+                                                                               30
+                                           Frequency, Hz
+
+
+
+              Figure 28. - Typical noise reduction between adjacent ducts.
+
+                   NASA-S-68-1060
+
+
+                       150
+
+
+
+
+                      100
+                               31.5   63   125    250      500   1000   2000
+                                           Frequency, Hz
+
+ Figure 29. - m i c a 1 response of boilerplate 1150 CM with and without ducts installed.
+
+
+42
+        NASA-S-68-106 1
+
+
+                   20
+
+              .
+             m
+             Y
+             0
+             O         10
+             \
+         .-I
+             .-
+             S
+
+             W
+             E
+             0
+
+
+         L
+             g         o
+         c
+         U
+             -
+             W
+         ‘Z
+        ,1
+         1.2 -10
+         e
+         -
+         W
+             W
+             0
+             V
+         a
+                  -20
+                            OA    31.5        63         125         250       500    1000         2000
+                                                               Frequency, Hz
+
+
+Figure 30. - Difference in airframe SLA response with and without ducts installed
+                         for six measurement locations.
+
+
+         NA SA-S -68- 1062
+
+
+
+
+                       10 000
+                  .-2 8000
+                  n
+                   .
+                   I 6000
+                  .-
+                  0
+                  S
+                  Y
+                  Q
+                  p 4000
+                  n
+                  m
+                  L.
+                  u
+                  a
+                  E,
+                  5 . 2000
+
+                                                                                                         - 0.04 a
+                        1000I *     I I   I        I I         i I    I I      I I   I t     I I     I
+
+
+
+
+                                  Figure 31. - SAL chamber absorption.
+
+                                                                                                                    43
+                    NASA-5-68-1063
+
+
+
+                     2
+                     m
+                     n
+                     2
+                     .-
+                     0
+                     E
+                    P0
+                     r(
+
+                     X
+                    N
+
+
+
+
+                     >
+                     0,
+                     m
+                     Y
+                     0
+                     0
+
+                    c
+                    r(
+
+
+
+
+                              OA   31.5   63    125   250     500      1000   2000
+                                                  Frequency, Hz
+
+
+
+     Figure 32. - Range of sound pressure spectra for SAL reverberant flare operation.
+
+              NA SA-S-68- 1045
+
+
+
+
+              n
+                          0
+               L
+               aJ
+              Io,
+               J
+               0
+              s
+               v)
+
+
+
+              Y
+               !i-10
+              m
+              -a
+               z
+              -I
+              Q
+              in
+               >
+               aJ    -20
+              m
+              U
+              0
+              0
+               I
+              rn
+              \
+              4
+                     -30
+                                   31.5    63         125      250      500    1000   2000
+                                                      Frequency , Hz
+
+         Figure 33. - Sound pressure spectra for SAL reverberant flare operation.
+
+
+44
+          NA SA-S-68-1046
+
+
+
+
+                    0
+
+
+
+
+                     OA     31.5   63     125    250     500   1000 2000
+                                         Frequency, Hz
+
+
+
+
+Figure 34. - SLA response characteristics at three locations for two acoustic fields.
+
+
+                                                                                    45
+        hASA-S-6d-1047
+
+
+
+
+                    OA      31.5     63     125     250     500   1000   2000
+                                            Frequency, Hz
+
+
+
+        Figure 35. - Space average pressure spectra on Apollo SM.
+
+                   NASA-S-68- 1048
+
+
+
+                          150
+
+
+
+
+                     m
+                     -0
+
+
+
+
+                     m
+                     z 110
+                     0
+
+
+                     \
+                     4
+
+                          100
+                                   31.5   63 125 250        500 1000
+                                           Frequency, Hz
+
+     Figure 36. - Average vibration response of Apollo SM for flight and
+                           SAL pressure fields.
+
+46
+                                   REFERENCES
+
+1. Eldred, K. McK. : Concept Study for Simulation of Fluctuating Pressure Loads on
+     the Apollo Vehicle in the Acoustic Laboratory. Rep. WR 63-11, Wyle Labora-
+     tories, Sept. 24, 1963.
+2, Murray, F. M. : Acoustical Consulting Relative to the Acoustical Laboratory,
+    Building 49, NASA Manned Spacecraft Center at Clear Lake. Rep. W R 64-6,
+    Wyle Laboratories, Oct. 312, 1964.
+
+3. Jones, G. W., Jr. ; and Foughner, J. T . , Jr. : Investigation of Buffet Pressures
+     on Models of Large Manned Launch Vehicle Configurations. NASA TN D-1633,
+     1963.
+4. Eldred, K. McK. : Basic Considerations in the Development of Vibro-Acoustic
+     Test Methodology for the MSC Spacecraft Acoustic Laboratory. Rep. WR 66-33,
+     Wyle Laboratories, June 1966.
+5. White, R. W. : Predicted Vibration Responses of Apollo Structure and Effects of
+    Pressure Correlation Lengths on Response, Rep. WR 67-4, Wyle Laboratories,
+    Mar. 1967.
+
+6. Dorland, W. D. ; Wren, R. J. ; and Eldred, K. McK. : Development of Acoustic
+     Test Conditions for Apollo Lunar Module Flight Qualification.
+     NASA TM X-58016, 1968.
+
+7. Anon. : Model EPT -200 Electro -Pneumatic Transducer Instruction Manual.
+     Rep. EPT-200-85 -1, Ling Electronics, 1965.
+
+
+
+
+                                                                                   47
+

@@ -1,0 +1,847 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+  "sha256": "f71d5b009e909d1e3e1221c109bde9a60690fd29f263ad7ba57cf761ed03cdd9",
+  "bytes": 754836,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 754836,
+  "bodyOffset": 0,
+  "bodyChars": 754836,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7828,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6102,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 76,
+  "surfaces": 122,
+  "referentEvents": 19,
+  "distinctReferents": 16,
+  "examined": true,
+  "edgesFound": 16,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 21
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 16,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 16,
+  "excerptOk": 16,
+  "rawChecked": 16,
+  "rawOk": 16,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 16,
+  "heard": 16,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "this book|is|in three parts",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "This book is in three parts",
+    "subject": "This book",
+    "verb": "is",
+    "object": "in three parts",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#515-543",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "This book is in three parts."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the nature of the work which she and her teacher|have|done",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the nature of the work which she and her teacher have done",
+    "subject": "the nature of the work which she and her teacher",
+    "verb": "have",
+    "object": "done",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#948-1181",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "The addition of a further account of Miss Keller's personality and achievements may be unnecessary; yet it will help to make clear some of the traits of her character and the nature of the work which she and her teacher have done."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the third part of the book the editor|is|responsible",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the third part of the book the Editor is responsible",
+    "subject": "the third part of the book the Editor",
+    "verb": "is",
+    "object": "responsible",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#1185-1340",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "For the third part of the book the Editor is responsible, though all that is valid in it he owes to authentic records and to the advice of Miss Sullivan."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|is|with a kind of fear that i begin to write the history of my life",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "It is with a kind of fear that I begin to write the history of my life",
+    "subject": "It",
+    "verb": "is",
+    "object": "with a kind of fear that I begin to write the history of my life",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#3058-3129",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "It is with a kind of fear that I begin to write the history of my life."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the task of writing an autobiography|is|a difficult one",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The task of writing an autobiography is a difficult one",
+    "subject": "The task of writing an autobiography",
+    "verb": "is",
+    "object": "a difficult one",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#3250-3307",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "The task of writing an autobiography is a difficult one."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my early education|have|been forgotten in the excitement of great discoveries",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "my early education have been forgotten in the excitement of great discoveries",
+    "subject": "my early education",
+    "verb": "have",
+    "object": "been forgotten in the excitement of great discoveries",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#3638-3838",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "Besides, many of the joys and sorrows of childhood have lost their poignancy; and many incidents of vital importance in my early education have been forgotten in the excitement of great discoveries."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|was|born on june 27",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I was born on June 27",
+    "subject": "I",
+    "verb": "was",
+    "object": "born on June 27",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4007-4085",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "I was born on June 27, 1880, in Tuscumbia, a little town of northern Alabama."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my father's side|is|descended from caspar keller",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "my father's side is descended from Caspar Keller",
+    "subject": "my father's side",
+    "verb": "is",
+    "object": "descended from Caspar Keller",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4089-4203",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "The family on my father's side is descended from Caspar Keller, a native of Switzerland, who settled in Maryland."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that there|is|no king who has not had a slave among his ancestors",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that there is no king who has not had a slave among his ancestors",
+    "subject": "that there",
+    "verb": "is",
+    "object": "no king who has not had a slave among his ancestors",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4204-4492",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "One of my Swiss ancestors was the first teacher of the deaf in Zurich and wrote a book on the subject of their education--rather a singular coincidence; though it is true that there is no king who has not had a slave among his ancestors, and no slave who has not had a king among his."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my grandmother keller|was|a daughter of one of lafayette's aides",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "My Grandmother Keller was a daughter of one of Lafayette's aides",
+    "subject": "My Grandmother Keller",
+    "verb": "was",
+    "object": "a daughter of one of Lafayette's aides",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4861-5027",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "My Grandmother Keller was a daughter of one of Lafayette's aides, Alexander Moore, and granddaughter of Alexander Spotswood, an early Colonial Governor of Virginia."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "she|was|also second cousin to robert e",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "She was also second cousin to Robert E",
+    "subject": "She",
+    "verb": "was",
+    "object": "also second cousin to Robert E",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#5028-5073",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "She was also second cousin to Robert E. Lee."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the civil war|broke|out",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Civil War broke out",
+    "subject": "the Civil War",
+    "verb": "broke",
+    "object": "out",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#5431-5529",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "When the Civil War broke out, he fought on the side of the South and became a brigadier-general."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "after the war|was|over the family moved to memphis",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "After the war was over the family moved to Memphis",
+    "subject": "After the war",
+    "verb": "was",
+    "object": "over the family moved to Memphis",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#5654-5716",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "After the war was over the family moved to Memphis, Tennessee."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|was|completely covered with vines",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "It was completely covered with vines",
+    "subject": "It",
+    "verb": "was",
+    "object": "completely covered with vines",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#6112-6183",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "It was completely covered with vines, climbing roses and honeysuckles."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "fashioned garden|was|the paradise of my childhood",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "fashioned garden was the paradise of my childhood",
+    "subject": "fashioned garden",
+    "verb": "was",
+    "object": "the paradise of my childhood",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#6588-6646",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "Its old-fashioned garden was the paradise of my childhood."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "what joy it|was|to lose myself in that garden of flowers",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "What joy it was to lose myself in that garden of flowers",
+    "subject": "What joy it",
+    "verb": "was",
+    "object": "to lose myself in that garden of flowers",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#6935-7225",
+      "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+      "text": "What joy it was to lose myself in that garden of flowers, to wander happily from spot to spot, until, coming suddenly upon a beautiful vine, I recognized it by its leaves and blossoms, and knew it was the vine which covered the tumble-down summer-house at the farther end of the garden!"
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 16,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "after the war|was|over the family moved to memphis",
+   "subject": "After the war",
+   "verb": "was",
+   "object": "over the family moved to Memphis",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#5654-5716",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "After the war was over the family moved to Memphis, Tennessee."
+    }
+   ]
+  },
+  {
+   "id": "fashioned garden|was|the paradise of my childhood",
+   "subject": "fashioned garden",
+   "verb": "was",
+   "object": "the paradise of my childhood",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#6588-6646",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "Its old-fashioned garden was the paradise of my childhood."
+    }
+   ]
+  },
+  {
+   "id": "i|was|born on june 27",
+   "subject": "I",
+   "verb": "was",
+   "object": "born on June 27",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4007-4085",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "I was born on June 27, 1880, in Tuscumbia, a little town of northern Alabama."
+    }
+   ]
+  },
+  {
+   "id": "it|is|with a kind of fear that i begin to write the history of my life",
+   "subject": "It",
+   "verb": "is",
+   "object": "with a kind of fear that I begin to write the history of my life",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#3058-3129",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "It is with a kind of fear that I begin to write the history of my life."
+    }
+   ]
+  },
+  {
+   "id": "it|was|completely covered with vines",
+   "subject": "It",
+   "verb": "was",
+   "object": "completely covered with vines",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#6112-6183",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "It was completely covered with vines, climbing roses and honeysuckles."
+    }
+   ]
+  },
+  {
+   "id": "my early education|have|been forgotten in the excitement of great discoveries",
+   "subject": "my early education",
+   "verb": "have",
+   "object": "been forgotten in the excitement of great discoveries",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#3638-3838",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "Besides, many of the joys and sorrows of childhood have lost their poignancy; and many incidents of vital importance in my early education have been forgotten in the excitement of great discoveries."
+    }
+   ]
+  },
+  {
+   "id": "my father's side|is|descended from caspar keller",
+   "subject": "my father's side",
+   "verb": "is",
+   "object": "descended from Caspar Keller",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4089-4203",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "The family on my father's side is descended from Caspar Keller, a native of Switzerland, who settled in Maryland."
+    }
+   ]
+  },
+  {
+   "id": "my grandmother keller|was|a daughter of one of lafayette's aides",
+   "subject": "My Grandmother Keller",
+   "verb": "was",
+   "object": "a daughter of one of Lafayette's aides",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4861-5027",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "My Grandmother Keller was a daughter of one of Lafayette's aides, Alexander Moore, and granddaughter of Alexander Spotswood, an early Colonial Governor of Virginia."
+    }
+   ]
+  },
+  {
+   "id": "she|was|also second cousin to robert e",
+   "subject": "She",
+   "verb": "was",
+   "object": "also second cousin to Robert E",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#5028-5073",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "She was also second cousin to Robert E. Lee."
+    }
+   ]
+  },
+  {
+   "id": "that there|is|no king who has not had a slave among his ancestors",
+   "subject": "that there",
+   "verb": "is",
+   "object": "no king who has not had a slave among his ancestors",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#4204-4492",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "One of my Swiss ancestors was the first teacher of the deaf in Zurich and wrote a book on the subject of their education--rather a singular coincidence; though it is true that there is no king who has not had a slave among his ancestors, and no slave who has not had a king among his."
+    }
+   ]
+  },
+  {
+   "id": "the civil war|broke|out",
+   "subject": "the Civil War",
+   "verb": "broke",
+   "object": "out",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#5431-5529",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "When the Civil War broke out, he fought on the side of the South and became a brigadier-general."
+    }
+   ]
+  },
+  {
+   "id": "the nature of the work which she and her teacher|have|done",
+   "subject": "the nature of the work which she and her teacher",
+   "verb": "have",
+   "object": "done",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#948-1181",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "The addition of a further account of Miss Keller's personality and achievements may be unnecessary; yet it will help to make clear some of the traits of her character and the nature of the work which she and her teacher have done."
+    }
+   ]
+  },
+  {
+   "id": "the task of writing an autobiography|is|a difficult one",
+   "subject": "The task of writing an autobiography",
+   "verb": "is",
+   "object": "a difficult one",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#3250-3307",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "The task of writing an autobiography is a difficult one."
+    }
+   ]
+  },
+  {
+   "id": "the third part of the book the editor|is|responsible",
+   "subject": "the third part of the book the Editor",
+   "verb": "is",
+   "object": "responsible",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#1185-1340",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "For the third part of the book the Editor is responsible, though all that is valid in it he owes to authentic records and to the advice of Miss Sullivan."
+    }
+   ]
+  },
+  {
+   "id": "this book|is|in three parts",
+   "subject": "This book",
+   "verb": "is",
+   "object": "in three parts",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#515-543",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "This book is in three parts."
+    }
+   ]
+  },
+  {
+   "id": "what joy it|was|to lose myself in that garden of flowers",
+   "subject": "What joy it",
+   "verb": "was",
+   "object": "to lose myself in that garden of flowers",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt#6935-7225",
+     "ref": "01-literature-books/gutenberg/pg2397_Leaves_of_Grass_by_Whitman.txt",
+     "text": "What joy it was to lose myself in that garden of flowers, to wander happily from spot to spot, until, coming suddenly upon a beautiful vine, I recognized it by its leaves and blossoms, and knew it was the vine which covered the tumble-down summer-house at the farther end of the garden!"
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:34.023Z"
+ }
+}

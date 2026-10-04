@@ -1,0 +1,297 @@
+---
+title: Introduction to Remote Sensing Image Registration
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20180004558
+source_url: https://ntrs.nasa.gov/citations/20180004558
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Goddard Space Flight Center
+publication_date: 2019-07-12
+retrieved: 2026-09-22
+sha256: 8459a6012b97e51b9ff52949318b6129502153780c56a96857556d6cb4cb6330
+pages: 4
+words: 3473
+cv_look_pages: 0
+---
+
+                 INTRODUCTION TO REMOTE SENSING IMAGE REGISTRATION
+
+                                                   Jacqueline Le Moigne
+
+                     Software Engineering Division, NASA Goddard Space Flight Center,
+                                        Greenbelt, MD 20771, USA
+                        ABSTRACT                                  and fiducial points can be used; for remote sensing image
+                                                                  registration, it is much more difficult to have well-
+For many applications, accurate and fast image registration
+                                                                  distributed ground control points in each scene that needs to
+of large amounts of multi-source data is the first necessary
+                                                                  be registered. It is even more difficult when dealing with
+step before subsequent processing and integration. Image
+                                                                  other planets than the Earth. Finally, the size of the datasets
+registration is defined by several steps and each step can be
+                                                                  often represents an additional challenge to the image
+approached by various methods which all present diverse
+                                                                  registration problem. Therefore, many different methods for
+advantages and drawbacks depending on the type of data,
+the type of applications, the a priori information known          image registration have been developed that can deal with
+about the data and the type of accuracy that is required. This    the multiple image characteristics and the multiple
+                                                                  conditions and applications that need to be dealt with when
+paper will first present a general overview of remote sensing
+                                                                  performing remote sensing image registration [1]. This
+image registration and then will go over a few specific
+                                                                  paper will present a general overview of remote sensing
+methods and their applications.
+                                                                  image registration, review some general registration
+     Index Terms— Image registration, remote sensing,             frameworks, and will then describe a few representative
+feature matching, alignment                                       algorithms.
+
+                                                                           2. WHAT IS IMAGE REGISTRATION
+                   1. INTRODUCTION
+                                                                  In the Earth remote sensing domain, the datasets are usually
+Earth science studies deal with issues such as climate
+                                                                  first processed using a navigation or model-based systematic
+change over multiple time scales, predicting crop
+                                                                  correction; the model is based on characteristics related to
+production, monitoring land resources and understanding
+                                                                  orbit, attitude, platform/sensor, Earth model, etc. Image
+the impact of human activity on major Earth ecosystems.
+                                                                  registration is then often called feature-based precision
+These issues are addressed by using global and repetitive
+measurements provided by a wide variety of satellite remote       correction; it starts from the results of the systematic
+sensing systems. All these systems support multiple-time or       correction and is based on selected features extracted from
+                                                                  the image data.
+simultaneous observations of the same Earth features by
+different sensors. Remote sensing systems provide global          As a general definition, image registration is the process of
+measurements that are not available using ground or even          aligning two or more images, or one or more images with
+airborne sensors, and these measurements are often                another data source, e.g., a map containing vector data.
+complemented by local or regional measurements. To reach          Image registration can be described within a mathematical
+the full benefit of such complementary measurements, all          framework in which I1(x,y) and I2(x,y) are two images or
+these datasets must be correlated and integrated; and the         one image and a map that need to be registered. The
+first step in this correlation and integration is image           registration challenge is to find the mapping (f,g) which
+registration. The difficulty in registering these various data    transforms I1 into I2 such that:
+is that they usually have varying resolutions – spatial,                  I2(x,y) = g(I1( fx(x,y ), fy(x,y) )) + n(x,y),   (1)
+spectral, radiometric, temporal and angular, they are             in which f represents a spatial mapping, g is a radiometric
+acquired under different conditions – e.g., atmospheric,          mapping, and n is the noise term. Examples of spatial
+seasons, time of day, cloud coverage, and they cover              transformations can be a translation, a rigid or affine
+features with various characteristics, e.g., natural features     transformation, or even a projective, perspective of
+such as mountains or coastlines, or manmade features such         polynomial transformation. Examples of radiometric
+as cities, bridges and roads. In addition to these various        transformations are nearest neighbors, bilinear or cubic
+characteristics of the data, the application for which the data   convolution transforms.
+needs to be registered and the information known about the        Another framework that describes image registration is the
+data adds a level of complexity to the registration process.      algorithmic framework first introduced by Brown [2], which
+When dealing with other types of registration such as             includes the 4 main elements:
+medical registration, an image model is usually available               1. The Search Space of potential transformations, f
+    2.     The Feature Space of information extracted from        a Fourier-Mellin Transform [13]) or can be found by
+           the 2 datasets                                         combining local measurements using a similarity measure
+      3. The Similarity Metric used to match the 2 sets of        such as cross-correlation.
+           features                                               When using salient points, they can be matched either by
+      4. The Search Strategy that finds the optimal               finding point-to-point correspondences and then by
+           transformation.                                        computing the overall transformation from these point-to-
+                                                                  point matchings; or by directly finding the transformation
+To these 4 steps, we need to add the following ones:
+                                                                  that provides the optimal matching between the two clouds
+      5. The Resampling Method used to create the                 of salient points. Apart from a general edge detector (e.g.,
+           corrected image, if needed                             Sobel, or Canny), other methods can be utilized. The first
+      6. The Validation Method by which the image                 class of methods is linked to harmonic analysis, starting
+           registration algorithm is evaluated as accurate and    with short-time Fourier transforms, e.g., a Gabor transform,
+           reliable.                                              for which the window is a Gaussian function; more recently,
+Many image registration surveys can be found in the               discrete directional Gabor frames have also been proposed
+literature, some general and some more focused on a               [6]. Wavelets, shearlets and wavelet-like representations
+specific domain such as remote sensing or medical imagery         such as the Simoncelli decomposition can also be utilized
+[1–5]. These surveys describe the many algorithms that have       [7,8]; these representations allow to locally separate the pass
+been designed in which various choices have been made and         and high-pass components of the signal and the highest
+combined for elements 1 through 4/5. As described in [1],         values of these components can be used as salient points:
+                                                                                            2
+                                                                                       1                      +-&/ #-&0
+image registration algorithms are often broadly categorized           !"# $ ", & =              $(+, #). !(       ,     ) 1+ 1#
+                                                                                       "                       "    "           (2).
+as area-based or feature-based. Area-based methods match                                   -2
+
+areas or regions without an explicit correspondence between       Salient points can also be obtained using an interest or a
+points in the two images, while feature-based methods use a       corner operator such as the Harris operator [9].
+first step to extract “information-rich” features that are used   Other features, that take into account a larger amount of
+for matching. But these 2 approaches are often combined in        spatial information correspond to contours, lines or general
+actual algorithms. So another way to group image                  shapes, can be extracted by methods such as line fitting, a
+registration considers the following categories:                  simple or generalized Hough transform, or various region
+      • Manual Registration                                       segmentation methods [1/Chapter 10]. Another approach,
+      • Correlation-Related Methods                               that was used for detecting animals such as flamingos,
+      • Fourier-Domain and Other Transform-Based                  manmade features such as buildings and roads as well as
+           Methods                                                natural features such as trees and planetary craters, uses a
+      • Mutual Information and Distribution-Based                 Marked Point Process (MPP) model [21]. An MPP is a
+           Approaches                                             framework in which probabilistic models are defined on
+      • Feature-Point Methods                                     configuration spaces consisting of an unknown number of
+      • Contour- and Region-Based Approaches.                     parametric objects. A configuration consists of a set of
+In the remaining of this paper, we will focus on the 3 main       marked points. Random parameters (called marks)
+components that are essential to design all these algorithms,     are associated with each point. This framework allows to
+namely: feature extraction, similarity metrics and matching       model geometric constraints about each or a group of
+strategies. Then, we will briefly describe a few                  objects. Each realization of an MPP represents a model for
+representative algorithms and their applications to NASA          the possible spatial distribution of several objects in an
+data.                                                             image. Contours, shapes and objects are usually matched
+                                                                  one-to-one and the transformation, f, is computed from these
+              3. FEATURE EXTRACTION                               individual matchings.
+Features can be either gray levels, either original or after      Finally, methods like the Scale-Invariant Feature Transform
+enhancement; salient points such as those defined by an           (SIFT) and its variant, the Speeded Up Robust Features
+edge detector, a Fourier, Fourier-like, wavelet or wavelet-       (SURF) method, detect and describe local features in
+like transform, or a corner or interest point detector; or        images. The extracted features are invariant to uniform
+contours, lines, shapes or regions.                               scaling, orientation and illumination changes; this allows for
+                                                                  a direct matching of SIFT points between 2 images [10,11].
+When features are chosen as gray levels, the values can be
+the original values of the images or they can be the values                      4. SIMILARITY METRICS
+obtained after an enhancement operator such as an edge
+extractor, i.e., edge magnitudes, or a wavelet transformation,    When matching any of the features described in Section 3,
+i.e., low-pass or high-pass subband magnitudes. In this case,     one wants to choose a similarity metrics that is the most
+the transformations f and g from Equation (1) are either          appropriate to the algorithms and to the type of extracted
+found globally (e.g., using a Fast Fourier Transform [12] or      features. These metrics include distances that will need to be
+minimized and correlation-like measures that will need to be                                           with great success by computing a phase correlation. The
+maximized. Some examples are:                                                                          correlation can be computed efficiently in the Fourier
+• The Sum of Squared Distances (SSD), an L2 norm, over                                                 domain by computing the inverse of the Fourier product:
+  the region overlapping the 2 images:                                                                                  !"* $, & F( $, &
+                                  M -1 N -1
+                                                                                                                                                            (10)
+               SSD( x, y ) = åå [I1 (m, n) - I 2 (m - x, n - y )]
+                                                                                 2
+                                                                                                       This can also be extended to NCC, and finding small
+                                  m =0 n =0                                              (3)           rotational and scale differences can be obtained by matching
+• The usual Cross-correlation:                                                                         small moving chips [12]. If larger rotations and scales are
+                                                  M -1 N -1
+                                                                                                       involved, the images can first be transformed into the
+               I1 ( x, y ) o I 2 ( x, y ) = å å I1 (m, n) I 2 ( x + m, y + n)
+                        m=0 n =0              (4)                                                      Fourier-Mellin domain which is translation-invariant, and
+   and the corresponding Normalized Cross-Correlation                                                  represents rotation and scale change as translations in the
+   (NCC):                                                                                              angular and radius coordinates [13].
+                               M -1 N -1                                                               Still, the most popular strategy for matching features seems
+                               å å éë I (m, n) - I ùû éë I ( x + m, y + n) - I ùû
+                                              1                  1       2           2
+                                                                                                       to be optimization. It can be applied to gray levels as well as
+NCCI1 , I 2 ( x, y ) =         m=0 n =0
+                          M -1 N -1                              M -1 N -1                             to individual features, globally on the large images or
+                          å å éë I (m, n) - I ùû × å å éë I ( x + m, y + n) - I ùû
+                                                             2                               2
+                                      1                 1                    2           2             locally on sub-images. There are various types of
+               m=0 n =0           m=0 n =0               (5)
+                                                                                                       optimization techniques, the simplest being the steepest
+• The Mutual Information (MI) measure, which maximizes
+                                                                                                       gradient descent; others are based on the Levenberg-
+  the degree of statistical dependence between the images:
+                                                                                                       Marquart algorithm [7,14] or on a stochastic gradient [15].
+                                                      æ pI1 , I 2 ( g1 , g 2 ) ö
+    MI ( I1 , I 2 ) = åå pI1 , I 2 ( g1 , g 2 ) × log ç                                                This last method, although computationally more expensive,
+                                                      ç pI ( g1 ) × pI ( g 2 ) ÷÷
+                                                                                 ,
+                      g1 g 2                          è 1               2       ø                (6)   avoids to actually compute the gradient and instead provides
+   and which also can be computed using histograms:                                                    an estimate; this can be of interest with more complicated
+                         1                             æ MhI , I ( g1 , g 2 ) ö                        similarity metrics such as the mutual information.
+     MI ( I1 , I 2 ) =     åå hI ,I ( g1 , g2 ) × log çç h ( g1 2) × h ( g ) ÷÷
+                         M g1 g2 1 2                                                                   Another strategy involves Robust Feature Matching (RFM)
+                                                       è I1 1 I 2 2 ø
+                                                         (7)                                           using an efficient subdivision and pruning of the
+   where M is the sum of all histogram entries, i.e., number                                           transformation space and has been described in [16].
+   of pixels (in overlapping subimages).                                                               When dealing with contours and shapes, other approaches
+• Another similarity metrics that has been utilized in some                                            are being considered; for example, local geometric
+  algorithms is the Hausdorff or the partial Hausdorff                                                 distributions described in [1], and genetic algorithms used to
+  distance defined by:                                                                                 register binary shapes [17].
+          H K ( I1 , I 2 ) = K thp1ÎI1 min p2ÎI2 dist ( p1 , p2 ) ,                                    More recently, neural networks have also been considered to
+                                                                    (8)
+  where 1≤K≤|I1|.                                                                                      perform image registration [18]. Although counter-intuitive
+• Finally, another less common metrics is the Discrete                                                 for a well-defined problem such as registration, the mapping
+  Gaussian Mismatch (DGM) where ws(a) denotes the                                                      of the image registration problem to a neural network
+  weight of point a, and which is normalized between 0 and                                             framework is adapted to the rise of new types of hardware
+  1:                                                                                                   such as quantum and cognitive computing [19]. Although it
+                                                                                                       has not yet reached its full potential, it offers great promise
+               DGMs ( I1 , I 2 ) = 1 -
+                                                  å   aÎI1
+                                                             ws (a)
+                                                                                                       for registering large amounts of data very quickly.
+                                                       | I1 |                                    (9)   At the same time, matching strategies also involve looking
+                            æ dist(a, I 2 ) ö                        2
+                                                                                                       at the image either globally or performing local independent
+               ws (a) = exp ç -             ÷
+                            è     2s 2      ø                                                          registrations over small sub-images that are then either
+                                                                                                       stitched at the edges between multiple tiles of the image or
+         5. STRATEGIES FOR IMAGE MATCHING                                                              recombined to compute a global transformation. Other
+                                                                                                       approaches look at multi-resolution approaches, such as
+Matching strategies are paired with the feature extraction
+                                                                                                       wavelets or shearlets, with or without decimation, looking at
+and the similarity metrics to provide various registration
+                                                                                                       a coarser transformation space in the first iterations, and
+algorithms, but as described in Section 3, not all matching
+                                                                                                       progressively refining the accuracy of the transformation
+strategies can be used for all feature extraction methods.
+                                                                                                       while reducing the search space in the later iterations.
+The most obvious matching strategy is the exhaustive                                                   Similar approaches can be taken by using other types of
+search, i.e., looking at all potential transformations between                                         image representations such as quadtrees [20].
+the 2 datasets and select the transformation that yields the
+optimum similarity. Of course, this approach becomes                                                    6. A FEW IMAGE REGISTRATION ALGORITHMS
+exponential with the dimensionality of the transformation
+space and can rarely be applied in practice.                                                           In this section, a few algorithms combining previously
+                                                                                                       described feature extraction methods, similarity metrics and
+When dealing with gray level values, and when looking only
+for translations, the Fast Fourier Transform has been applied
+matching strategies, are presented as illustrations of the         [5] A. Goshtasby, 2-D and 3-D Image Registration for Medical,
+previous sections.                                                 Remote sensing, and Industrial Applications, John Wiley and Sons,
+                                                                   Hoboken, N.J., 2005.
+6.1. Wavelet and Wavelet-Like Based Algorithms                     [6] W. Czaja, B. Manning, J. Murphy, K. Stubbs, 2016, “Discrete
+                                                                   Directional Gabor Frames,” Applied & Compl Harmonic Analysis.
+Our team developed several algorithms based on wavelet or          [7] I. Zavorin, and J. Le Moigne, “Use of Multiresolution Wavelet
+wavelet-like features, using several similarity metrics such       Feature Pyramids for Automatic Registration of Multisensor
+as L2 Norm and mutual information, and with a multi-               Imagery,” IEEE Trans. on Image Processing, 14, No. 6, 2005.
+                                                                   [8] J. Murphy, J. Le Moigne, D. Harding, “Automatic Registration
+resolution optimization matching strategy following the
+                                                                   of Multi-Modal Remotely Sensed Data with Global Shearlet
+structure of the wavelet decomposition. Results, presented         Features,” IEEE Trans. Geosc. & Remote Sensing, 54, No.3, 2016.
+in refs [1,7,8], show the strengths and weaknesses of various      [9] C. Harris and M. Stephens, “A Combined Corner and Edge
+features depending on the initial conditions of the                Detector,” 4th Vision Conference, pp. 147-151, 1988.
+optimization process; some features will provide a higher          [10] D.G. Lowe, “Local Feature View Clustering for 3D Object
+registration accuracy when starting close to the solution,         Recognition,” IEEE Conference on Computer Vision and Pattern
+while some other features will provide a better robustness         Recognition, Kauai, Hawaii, pp. 682-688, 2001.
+                                                                   [11] B. Kupfer, N.S. Netanyahu, and I. Shimshoni, “An Efficient,
+when the optimization starts further from the solution.
+                                                                   SIFT-Based Mode-Seeking Algorithm for Sub-Pixel Registration
+Results presented in [8] also show that for very textured          of Remotely Sensed Images,” IEEE Geoscience and Remote
+images, regular features (even SIFT) do not yield high             Sensing Letters, 12, No. 2, 2015.
+registration accuracy while features taking rotation into          [12] H.S., Stone, M. Orchard, E.-C. Chang, and S. Martucci, “A
+account (such as shearlets) can quickly provide an                 fast direct Fourier-based algorithm for subpixel registration of
+approximate solution. Mutual information, although                 images”, IEEE Trans. Geosc. & Remote Sensing, 39, No. 10, 2001.
+computationally more expensive, provides a sharper peak            [13] Q.S. Chen, M. Defrise, and F. Deconinck, “Symmetric phase-
+                                                                   only matched filtering of Fourier-Mellin transforms for image
+and therefore a better accuracy for the final solution.            registration and recognition”, IEEE Transactions on Pattern
+                                                                   Analysis and Machine Intelligence, 16, 1994.
+6.2. Marked Point Process Based Algorithms                         [14] P. Thevenaz, U. E. Ruttimann, and M. Unser, “A pyramid
+More recently, we performed work using MPP models for              Approach to Subpixel Registration Based on Intensity”, IEEE
+crater detection and we used these extracted craters as the        Transactions on Image Processing, 7, No. 1, 1998.
+                                                                   [15] A. Cole-Rhodes, K. Johnson, J. Le Moigne, and I. Zavorin,
+features to perform planetary data registration. Hausdorff         “Multiresolution Registration of Remote Sensing Imagery by
+distance and Mutual Information were used as similarity            Optimization of Mutual Information Using a Stocchastic
+metrics; both a multi-resolution approach and a region-            Gradient," IEEE Trans. Image Processing, 12, No. 12, 2003.
+based approach were used as search strategies, and a genetic       [16] N. Netanyahu, J. Le Moigne and J. Masek, “Geo-Registration
+algorithm provided the feature matching. Results are               of Landsat Data by Robust Matching of Wavelet Features,” IEEE
+presented in [22] and [23].                                        Transactions on Geoscience and Remote Sensing, 42, No. 7, 2004.
+                                                                   [17] G. Troglio, J. Le Moigne, J.A. Benediktsson, G. Moser,
+                                                                   S.B. Serpico, “Automatic Extraction of Ellipsoidal Features for
+                     7. CONCLUSION                                 Planetary Image Registration”, IEEE Geoscience and Remote
+This paper presented a brief introduction to remote sensing        Sensing Letters, 9, No.1, 2012.
+image registration and its main components, namely feature         [18] I. Elhanany, M. Sheinfeld, A. Beck, Y. Kadmon, N. Tal and
+                                                                   D. Tirosh, “Robust Image Registration Based on Feedforward
+extraction, similarity metrics and matching strategies. These      Neural Networks”, 2000 IEEE International Conference on
+components need to be adapted to the variety of data to            Systems, Man and Cybernetics, Oct. 8-11, 2000.
+register, the many data acquisition methods and conditions         [19] C. Pelissier, M. Halem, T. Clune, J. Le Moigne, and G.
+as well as the many applications registration is needed for.       Nearing, “Image Registration and Data Assimilation as a QUBO
+Current and future work will involve a systematic                  on the D-Wave Quantum Annealer”, 2016 American Geophysical
+assessment of these various components that will help future       Union (AGU) Fall Meeting, Dec. 12-16, San Francisco, 2016.
+                                                                   [20] Y. Han and Y. Byun, “Automatic and Accurate Registration
+users choose the most appropriate image registration
+                                                                   of Very High Resolution Optical and SAR Images Using a
+algorithm for their data and its applications.                     Quadtree Structure”, Intern J. Remote Sensing, 36, No. 9, 2015.
+                                                                   [21] G. Troglio, J. A. Benediktsson, G. Moser and S. B. Serpico,
+                     8. REFERENCES                                 “Crater Detection Based on Marked Point Processes,” Signal and
+[1] J. Le Moigne, N.S. Netanyahu, and R.D. Eastman, Image          Image Processing for Remote Sensing, CRC Press, 2012.
+Registration for Remote Sensing, Cambridge Univ. Press, 2011.      [22] A. Gotelli, J. Le Moigne, G. Moser, S.B. Serpico, “Planetary
+[2] L.G. Brown, “A survey of image registration techniques”, ACM   Crater Detection and Registration Using Marked Point Processes,
+Computing Surveys, 24, No. 4, 1992.                                Graph Cut Algorithms, and Wavelet Transforms”, IGARSS17.
+[3] L.M.G. Fonseca and B.S. Manjunath, “Registration techniques    [23] D. Solarna, G. Moser, J. Le Moigne and S.B. Serpico,
+for multisensor remotely sensed imagery”, Photogrammetric          “Planetary Crater Detection and Registration Using Marked Point
+Engineering & Remote Sensing, 62, No. 9, 1996.                     Processes, Multiple Birth and Death Algorithms, and Region-
+[4] B. Zitova and J. Flusser, “Image registration methods: a       Based Analysis”, IGARSS17.
+survey”, Image and Vision Computing, 21, No. 11, 2003.
+

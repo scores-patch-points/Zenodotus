@@ -1,0 +1,88 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2014-7-15"
+lang: "en"
+messages: "79"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<GeekDude> Xubuntu (and also ubuntu when that was what was installed) looks really odd on boot and shutdown. Sorry for the blurry shutdown picture, but there was only a second or so that it was showing, which was a bit too fast for my phone's autofocus. http://imgur.com/a/TC5VQ
+<GeekDude> Any way for me to resolve this video issue?
+<ObrienDave> that is weird. are your graphics drivers current?
+<GeekDude> I'm not sure how to check
+<GeekDude> I just installed xubuntu (wiping the drive) today
+<GeekDude> set it to install updates over ethernet while it installed the OS
+<GeekDude> then let it run the post-installation updates
+<ObrienDave> that should get you the latest repo versions
+<ObrienDave> which video card or chipset?
+<GeekDude> not sure
+<GeekDude> according to http://www.dell.com/downloads/global/products/optix/en/opti_320techspecs.pdf
+<GeekDude> ATI Radeon® Xpress 1100 Professional Chipset
+<ObrienDave> i would think you need to search for drivers from Dell
+<ObrienDave> or ATI as a last resort. usually the manufacturers drivers are optimized for your computer whereas ATIs are more generic
+<GeekDude> Supposing I found some, would that also increase the performance of pipelight's "hardware acceleration"?
+<ObrienDave> hard to say, i would think so but cant be sure
+<GeekDude> As it is, it runs choppily at standard definition video, and I don't even want to think of high definition
+<GeekDude> seems there hasn't been proprietary support since ubuntu 8.01
+<ObrienDave> that's possible considering the age of the computer. you might have to locate an ATI driver that works
+<Blue1> I am trying to get print screen to work in xubuntu 14.04 -- have been schlepping for 45 minutes no ideas
+<David-A> Blue1: what happens when you press the PrintScreen button?
+<David-A> Blue1: do you have this settings: Settings>Keyboard>ApplicationShortcuts? is the Print key associated with a command there?
+<MetaCosm> Got a weird issue... I have keybindings setup for switching desktops (alt-1.. alt-2.. etc), after I set them via settings->window manager->keyboard they work -- but after a reboot they stop working.  They still show as properly mapped and if I got into settings are "rebind" them (alt-1 to alt-1 again) ... they start working
+<groja> hello
+<groja> Anyone online at the moment?
+<elfy> groja: lot's of people are - ask the question and if anyone can help you they will
+<groja> no questions yet, just installing it on my system at the moment.  :)
+<meek_geek> sup
+<cousteau> xubuntu 12.04.  How can I change the default monospace font?
+<cousteau> right now it's Droid Sans Mono, I think.  This font has a different width when bold, so it's not very monospace on code editors.  I'd like to change it to DejaVu Sans Mono.
+<cousteau> I often can do this per application, but I'd rather change it system-wide
+<cousteau> (I'd consider this as a "bug" in the font, btw)
+<koegs> cousteau: xfce4-settings-manager -> appearance -> Fonts
+<cousteau> only one font there
+<cousteau> the "default font" (which I guess is what "sans" defaults to).  But there's no setting for monospace font there.  (at least on my Xubuntu version)
+<cousteau> but thanks anyway :)
+<cousteau> ...yuck, I activated the sub-pixel smoothing; I had forgotten how much I hate it
+<koegs> cousteau: seems that there is no menu for that: http://from-mac-to-xubuntu.tumblr.com/post/37327811400/change-default-monospace-font
+<cousteau> koegs, cool, thanks!
+<xubuntu382> how can i get lightdm to run an xrandr script on startup? there is no lightdm.conf
+<xubuntu382> i tried making one and setting display-setup-script as the only option but that didn't work
+<Guest62000> How can I get more XFCE themes for xubuntu? I know if debian when I install I have a ton of themes. Is there a package?
+<Guest62000> nevermind. xfwm4-themes
+<xangua> xfce-look.org
+<Alpha-Omega> Does anyone know why MPV doesn't show an OSD?
+<Alpha-Omega> Anyone?>
+<elfy> Alpha-Omega: what's MPV?
+<Alpha-Omega> elfy: a video player
+<Alpha-Omega> http://mpv.io/
+<Alpha-Omega> the link shows the OSD that should show by default, but the Xubuntu repo install doesn't seem to show it.
+<elfy> Alpha-Omega: no idea - get the same here in 14.10 - there is a channel #mpv-player
+<elfy> try there perhaps
+<Alpha-Omega> elfy: I'll try, thanks
+<MetaCosm> Got a weird issue... I have keybindings setup for switching desktops (alt-1.. alt-2.. etc), after I set them via settings->window manager->keyboard they work -- but after a reboot they stop working.  They still show as properly mapped and if I got into settings are "rebind" them (alt-1 to alt-1 again) ... they start working
+<elfy> MetaCosm: that's a known issue - bug 1292290
+<ubottu> bug 1292290 in xfce4-settings "Window manager keybindings don't work after reboot" [Medium,Confirmed] https://launchpad.net/bugs/1292290
+<elfy> MetaCosm: there appear to be some workrounds in that bug
+<MetaCosm> elfy, the "click clear until it is actually clear" work-around seems to have done the trick, thanks.
+<elfy> welcome :)
+<xubuntu202> sudo apt-get update on 13.04 fails with errors 7-15 @ 16:06 CST
+<xubuntukristina> hi! I've just installed xubuntu 14.04 and keep getting message while loading " support for core revisions... disabled by module parole". What should I do? Can anyone help?:)
+<xubuntukristina> also my ubuntu software center is very slow..
+<xubuntukristina> anyone??...
+<wilsonjl3> hey hedge
+<wilsonjl3> do you have that link on how to burn Xubuntu to cd/usb?
+<David-A> !info burn
+<ubottu> burn (source: burn): command-line tool for writing optical media. In component universe, is optional. Version 0.4.6-2 (trusty), package size 51 kB, installed size 223 kB
+<David-A> !burn
+<ubottu> CD/DVD burning software: k3b (KDE), brasero (GNOME), gnomebaker, xcdroast, wodim (command-line) | To burn ISO files, see https://help.ubuntu.com/community/BurningIsoHowto
+<wilsonjl3> ya but i dont have linux yet. she had one that showed how to burn off windows
+<wilsonjl3> oh hey
+<wilsonjl3> nvm thats great
+<David-A> wilsonjl3: the link BurningIsoHowto above have info for windows too. and a link to burning to usb, with info for windows too (but no pictures)
+<wilsonjl3> eah thats awesome
+<Ady_> Hi guys
+<Ady_> I need to ask a question
+<Ady_> The beauty of IRC..NO BLOODY responds, a full room of users but they just sit there like vegetables, it's like this everytime I go on a IRC server, absolute waste of time
+<whiterice> haha wtf? Some people are so entitled it makes me sick
+<whiterice> yeah Ady_ wherever you are- we are so useless because we dont sit around waiting for you

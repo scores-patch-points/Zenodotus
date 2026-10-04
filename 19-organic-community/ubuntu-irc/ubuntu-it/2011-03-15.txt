@@ -1,0 +1,912 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2011-3-15"
+lang: "it"
+messages: "903"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<bender_> Salve, c'è qualcuno che può aiutarmi con ubuntu 64 bit? dev'esserci un piccolo bug
+<marcotux> non so se so aiutarti, comunque, spiega meglio il problema, magari se non io, altri possono aiutarti
+<bender_> ogni volta che mi viene richiesta la password dell'administrator nelle operazioni di aggiornamento, installazione programmi etc dopo aver inserito la password e premuto autentica la finestra si frizza
+<bender_> Solo dopo averla chiusa manualmente con la X allora tutto procede a dovere, questa cosa su ubuntu 10.10 64 but, mentre nella versione 32 bit non accade.
+<bender_> scusate vado a dormire, riformulerò la domanda domani ad un orario più consono. Notte
+<Bartoloni> qualcuno sa indicarmi pacchetti aggiuntivi di schemi sonori extra?
+<CoOltux> ragazzi non riesco a cambiare le skins a mplayer
+<CoOltux> chi mi aiuta?
+<Shin3> \o
+<massimo18> Buon Giorno
+<Odo> Giorno
+<glpiana> ola
+<select> ciao
+<select> buon giorno
+<glpiana> !ciao | select
+<ubot-it> select: Ciao! Benvenuto in #ubuntu-it
+<select> firefox non mi apre più i link contenuti in vari programmi...
+<glpiana> select, spiega meglio , magari fammi un esempio
+<select> dunque...esempio: xchat -doppio click sui link e non succede niente, oppure da (sistema->informazioni su ubuntu) non apre i link e dice: l'URI non è valido
+<glpiana> select, su xchat a me il doppio click sul link non ha mai portato a nulla. se clicchi col destro e fai "apri collegamneto nel browser" lo apre?
+<glpiana> *collegamento
+<massimo18> select: da xchat click destro sul link e apri con il browser
+<massimo18> ecco :)
+<select> non lo apre neanche così. Ho un problema in qualche file di configurazione nel quale si dice apri i file html con il browser.. ipotizzo. Forse è dovuto ad un tentativo di installazione di chrome poi rimosso
+<glpiana> select, vai su sistema preferenze applicazioni preferite
+<glpiana> select, prima scheda, Browser web, che c'è selezionato?
+<select> mi sa che ci siamo!! allora è selezionato personalizzato e sotto questa stringa: /opt/google/chrome/google-chrome %s
+<select> ho selezionato firefox come browser e tutto è tornato a posto. grazie
+<glpiana> select, seleziona firefox dal menu a tendina e vedrai che ti si apriranno con firefox
+<glpiana> ecco :)
+<select> alla prossima. ciao a tutti
+<raff0z> ciao ragazzi
+<raff0z> sentite come faccio a far funzionare il wake on lan su un eee box b202 con ubuntu ? (bios già settato , impostato con ethtool la modalità ... ma quando mando il pacchetto magico non si accende mica!)
+<raff0z> non mi dite che devo mettere xp
+<Fidech> l'hai impostato nel bios? (e la scheda di rete lo supporta? :-) )
+<raff0z> si dice che lo supporta ethtool
+<raff0z> e dal bios è impostato
+<Fidech> non ho mai provato ad usarlo... Le mie conoscenze si fermano lì (sorry)
+<Fidech> (ci ho provato)
+<raff0z> tranquillo :P grazie
+<Fidech> Ho provato a farlo sulla mia rete, ma poi mi sono accorto che tramite wireless non funziona. :-P
+<Fidech> pigerò il bottone di accensione ;-)
+<raff0z> xD
+<raff0z> no io l ho connesso con il cavo :P
+<Fidech> io ho avuto solo quella di esperienza con WOL :-Px2
+<raff0z> xD
+<Fidech> solo per non alzarmi ad accendere il PC fisso a un metro da me :-) (pigrizia rulez!)
+<glpiana> !chat | Fidech
+<ubot-it> Fidech: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<Fidech> ok, scusa
+<jester-> 'ngiorno
+<ivan_> ciao  ho scaricato ubuntu l'ho scritto su cd , ho win 7 e vorrei anche ubuntu insieme , come fare?
+<jester-> ivan_: hai partizione e partizone swap ?
+<ivan_> nn capisco
+<ivan_> swap
+<ivan_> ho c come partizione del sis operativo di win e d per le cose mie in tutto 500 giga
+<ivan_> dove installo ubuntu?
+<Fidech> dovresti creare un po' di "spazio vuoto" sul disco
+<Fidech> (occhio che ripartizionando rischi di perdere i dati... un backup è il minimo che dovresti fare)
+<ivan_> posso partizionare d
+<ivan_> ma posso installare ubuntu su d ?
+<ivan_> ????
+<ivan_> su win / puoi partizionare come vuoi senza nessun programma
+<ivan_> ma quale partizione scegliere per prendere spazio per ubuntu??
+<Fidech> se lo installi su D cancelli D
+<Fidech> devi ripartizionare e creare un po' di spazio vuoto (lo fa anche il disco di Ubuntu)
+<polden> ciao a tutti avrei bisogno di aiuto da un po' ubuntu (9.10) non mi fa più l'automount dei dischi/chiavi usb
+<polden> dmesg | tail mi dice FAT: Unrecognized mount option "group=pap" or missing value
+<glpiana> polden, ci sarà qualcosa che non va in fstab
+<glpiana> polden, in un terminale dai: cat /etc/fstab            e metti su pastebin quanto esce
+<glpiana> !paste | polden
+<ubot-it> polden: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<polden> http://paste.ubuntu.com/580495/
+<cip> maverik installato ma la stampante cmq non la trova uffa
+<glpiana> polden, quel group=pap è una delle opzioni. l'hai messa tu?
+<glpiana> cip, che stampante?
+<polden> può essere, in un tentativo di risolvere
+<cip> glpiana, la stampante usb che ho nella rete windows pensavo che l'aggiornamento mi risolvesse il problema invece
+<polden> su storage device manager
+<glpiana> polden, non so cosa sia storage device manager
+<polden> sistema>amministrazione>storage device manager
+<glpiana> cip, controlla con sta guida che le tue configurazioni siano a posto http://wiki.ubuntu-it.org/Server/Samba
+<cip> glpiana, si ora ricontrollo o forse il problema e di win xp
+<massimo18> polden: io non ho quella voce di menù
+<jester-> <polden> sistema>amministrazione>storage device manager  ?????
+<polden> sic
+<massimo18> polden: sicuro di avere ubuntu?
+<glpiana> nemmeno io ho quella voce. polden controlla l'editor di menu e dimmi se il comadno è palimpsest
+<jester-> polden: sicuro di avere  ubbuntu?
+<ivan_> il cd di ubuntu che ho scritto nn si avvia in automatico da dove lo devo installare?
+<glpiana> polden, http://wiki.ubuntu-it.org/AmministrazioneSistema/Fstab modifica come suggerito qui
+<glpiana> !release | ivan_
+<ubot-it> ivan_: puoi scaricare le iso ufficiali da qui: http://releases.ubuntu.com/
+<glpiana> ivan_, ma come hai scritto sto cd?
+<polden> certo che è ubuntu (forse un po'vecchiotto, con un paio di passagi di versione)
+<jester-> glpiana: non c'è neanche il pacchetto palimpset
+<glpiana> !info palimpsest
+<ubot-it> Package palimpsest does not exist in maverick
+<ivan_> le ho scaricate ma quando metto il cd mi dice apri cartella per visualizzare i file
+<glpiana> sarà un mio residuo di lucid :)
+<glpiana> ivan_, tasto destro sulla iso -> scrivi su disco
+<jester-> ivan_: va che per installare devi far il boot da cd
+<ivan_> glpiana> ho sritto il disco ma quando vado a installare non installa in automatico mi fa vedere tutte le cartelle con i file
+<glpiana> ivan_, tu hai scritto il disco, il disco è nel lettore e tu che fai? riavvii il pc e setti il bios affinchè faccia il boot da cd o fai altro?
+<glpiana> ivan_, dunque?
+<massimo18> fa altro :)
+<ivan_> glpiana spiega come settare il bios . e come quando reinstalli win da cd??
+<glpiana> ivan_, sì
+<glpiana> !installazione | ivan_ l'hai guardata sta guida?
+<ubot-it> ivan_ l'hai guardata sta guida?: http://wiki.ubuntu-it.org/Installazione | Per installazione grafica http://wiki.ubuntu-it.org/Installazione/Grafica | Si consiglia la visione della guida ufficiale in inglese http://www.ubuntu.com/desktop/get-ubuntu/download
+<ivan_> quindi spengo e al riavvio con cd inserito f8?
+<glpiana> ivan_, non conosco il tuo bios. guarda tu che devi fare epr accedere allelenco dei dispositivi di boot
+<glpiana> *all'elenco
+<polden> con cat /etc/fstab mi da http://paste.ubuntu.com/580501/ mi ci date un occhiata please? (sono impedito) graxie
+<glpiana> polden, ti ho scritto sopra
+<glpiana> polden, http://wiki.ubuntu-it.org/AmministrazioneSistema/Fstab modifica come suggerito qui
+<polden> ok grazie ho provato a modificarlo, devo riavviare?
+<glpiana> polden, no, dovrebbe bastare sudo mount -a
+<polden> grande funzica grazie mille
+<glpiana> :)
+<polden> ciao e grazie ancora
+<newlife> 'giorno a tutti :)
+<shiba89> giorno
+<testam3nt> ciao a tutti
+<testam3nt> ragazzi ho installato un file .deb e quando provo ad avviarlo mi dà questo errore
+<testam3nt> error while loading shared libraries: libpng.so.3: cannot open shared object file: No such file or directory
+<jester-> testam3nt: i deb vanno installati
+<testam3nt> l'ho installato
+<jester-> testam3nt: cerca una libreria che non c'è
+<testam3nt> l'ho già installata via apt-get
+<glpiana> testam3nt, che deb hai messo?
+<testam3nt> un programmino stupido per creare campionati sportivi
+<jester-> testam3nt: se fosse quella giusta la troverebbe e di sicuro è un deb del put visto che si è installato senza chiedere la dipendenza
+<newlife> jester-: glpiana a parte gli scherzi.... mi date una mano?
+<testam3nt> il fatto è che mi chiedeva quella libreria, e cercandola non c'era
+<glpiana> newlife, apri un terminale, inserisci la penna e scrivi: dmesg | tail      poi metti su pastebin
+<glpiana> testam3nt, è il problema di usare software esterno. comunque apri un terminale e scrivi sudo updatedb
+<glpiana> testam3nt, quando finisce scrivi: locate  libpng.so.3
+<testam3nt> questa è la voce apparsa dopo aver installato il pacchetto libpng3 -> /usr/lib/libpng.so.3
+<glpiana> !paste | testam3nt
+<ubot-it> testam3nt: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<newlife> glpiana:  :O guarda qua :O http://paste.ubuntu.com/580522/
+<glpiana> newlife, staccala e riattaccala a un'altra porta
+<testam3nt> glpiana, ecco l'output http://paste.ubuntu.com/580523/
+<glpiana> testam3nt, eh, bisognerebbe capire dove le cerca sto programma. l'hai preso da un sito? da un blog?
+<testam3nt> sì
+<newlife> glpiana: http://paste.ubuntu.com/580524/ non cambia nulla
+<glpiana> testam3nt, ecco, allora controlla se ci sono FAQ o commenti al riguardo
+<glpiana> newlife, mi sa che è andata. hai altri pc su cui provarla? hai windows da qualche parte?
+<glpiana> testam3nt, e proseguiamo su #ubuntu-it-chat che qui non c'è supporto per programmi esterni
+<newlife> glpiana: si..... ma con winzozz non mi da problemi :O
+<newlife> glpiana: spe' che nel dubbio riprovo
+<glpiana> newlife, ecco, aprila con windows, che no da problemi, e fai un check della chiavetta
+<newlife> glpiana: non ci capisco una mazza...... da winzozz non mi da alcun errore... la monto qua e non va.....
+<glpiana> newlife, hai altre chiavette?
+<newlife> si.... il problema glpiana che mi fa la stessa cosa su tutte :|
+<glpiana> newlife, dai uname -a
+<newlife> spe' la monto qua
+<newlife> glpiana: http://paste.ubuntu.com/580529/
+<glpiana> newlife, hai già provato a spegnere e riaccendere? (cit.)
+<glpiana> stacco a dopo
+<newlife> glpiana: azz
+<jester-> newlife: hai il kernel da proposerd ed è instabile e presumo che ti abbia cambiato pure quelche lib il repo, e si spiegano poi certi problemi
+<newlife> jester-: :O ma le proposed sono commentate sul file di conf
+<newlife> jester-:  non l'ho scaricato
+<jester-> newlife: il 35-28 è da proposed
+<newlife> jester-: porc'........
+<jester-> impossibile che si metta conproposed commentati
+<newlife> jester-: eppure.........
+<newlife> jester-: dove trovo la roadmap del kernel?
+<jester-> newlife: ??
+<newlife> jester-: per vedere se sulla prox è fixato 'sto probl.
+<jester-> newlife: se il repo ti ha cambiato qualche lib centra nulla il kernel con il mount
+<newlife> jester-: ok.... come risolvo allora?
+<jester-> newlife: aspetti sperando che fixino
+<newlife> jester-: anche perchè se riformatto la chiavetta. tutto ok....... se la stacco e la rimonto mi ridà quel problema..........
+<jester-> newlife: come formatti
+<Lenn> Salve a tutti ho un bruttissimo problema, quando accendo il mio pc (Ovviamente non questo) ed entro nella schermata di ubuntu ed inserisco la pass pper entrare, cliccando "Invio" si carica e ritorna in quella pagina... Spero di essermi spiegato bene, chi mi può aiutare?
+<newlife> sia da qui sia da winzozz fat 32......... e appena formattata tutto ok.. smonto e rimonto la chiavetta e mi da problemi
+<newlife> jester-:
+<attemptD> newlife se lo fa' anche con win la chiavetta ti sta' abbandonando mi sa.
+<newlife> no jester- con win non lo fa..... tutto ok.......... lo fa solo qui. addirittura il file sulla root compaiono con caratteri del menga.. cosa che se la stacco e la metto su winzozz non si verifica
+<Lenn> Non posso più accedere ai miei dati, veramente nessuno sa cosa fare? D:
+<newlife> porc' paletta
+<freeboom> hhh
+<thebestneo> ciao a tutti, sono sempre dietro a cercare di impostare i valori di default della stampa su file
+<Celebrimbore> salve. curiosittà, su ubuntu è possibile vedere un blue-ray? grazie
+<thebestneo> Celebrimbore: premetto che non ne ho idea, ma non vedo perchè no se hai il lettore blue ray!
+<Celebrimbore> eh ma sono protetti
+<kakuku> protetti da cosa?
+<Celebrimbore> la protezione, come i dvd
+<Celebrimbore> per i dvd c'è una libreria che permette di leggerli
+<massimo18> uhm
+<siviglia> ciao
+<siviglia> !list
+<ubot-it> questo non è un canale per scaricare o di condivisione di contenuti
+<glpiana> Celebrimbore, guarda qui https://help.ubuntu.com/community/RestrictedFormats/BluRayAndHDDVD
+<thebestneo> glpiana: ma hai una risposta sempre a tutto???
+<glpiana> thebestneo, no :)
+<glpiana> ma gogol ne ha parecchie ;)
+<Celebrimbore> grazie guardo
+<thebestneo> glpiana: posso chiederti una cosa su questa discussione dove hai risposto te? http://forum.ubuntu-it.org/index.php/topic,416382.0.html
+<glpiana> thebestneo, certo, dimmi
+<thebestneo> glpiana: ho lo stesso problema, ma non ho capito come ha risolto, aggiungendo dove hai detto te o a caso? ho un soft block, invece che sbloccare ogni volta non si può impedire che blocchi?
+<glpiana> thebestneo, per impedire che blocchi bisogna sapere cosa la blocca. senza uesta informazione è sicuramente più comodo sbloccarla in avvio, imho
+<thebestneo> glpiana: non c'è modo di sapere cosa la blocca quindi?
+<glpiana> thebestneo, magari c'è anche. io non ne conosco.
+<glpiana> thebestneo, ma hai anche windows su quel pc?
+<ivan_> ciao nn riesco a avviare il cd d'installazione di ubuntu su win 7
+<thebestneo> glpiana: si ma non loggo praticamente mai
+<thebestneo> glpiana: perchè?
+<glpiana> ivan_, e perchè dovresti avviar eil cd di installazione di ubuntu sotto windows?
+<glpiana> thebestneo, perchè a volte usando la scheda su windows alla chiusura riamane bloccata
+<thebestneo> glpiana: vedi che hai risposte a tutto? è possibile, visto che a volte quando attacco il computer al tv in salotto uso il wifi e ogni tanto sono stato costretto a usarlo da windows. quindi potrei provare a loggare, usare il wifi e poi avere l'accortezza di spegnerlo e riavviare
+<glpiana> thebestneo, prova e vedi come si comporta
+<thebestneo> glpiana: nel caso funzioni posterò nella discussione, anche se vecchia, questo accorgimento
+<thebestneo> glpiana: grazie
+<glpiana> thebestneo, ma se inserendo in rc.local rfkill unblock all già risolve il problema, non vedo perchè menarsela altrimenti
+<thebestneo> glpiana: perchè ogni tanto mi si incasina sbloccandolo in quel modo
+<glpiana> ah ecco
+<thebestneo> glpiana: lo vorrei tenere come asso nella manica
+<glpiana> :)
+<thebestneo> ps, la stampa su file viene vista come stampante viruale?
+<glpiana> thebestneo, non credo, funziona anche con cups spento
+<thebestneo> glpiana: uff non riesco a capire dove cercarla
+<Lenn> Salve a tutti, ho un problema piuttosto serio, l'ho già postato sul forum, e prima l'ho anche fatto presente in chat, il mio problema è il seguente, http://forum.ubuntu-it.org/index.php/topic,448961.0.html Spero sia consentito inviare link del forum qui sulla chat, grazie in anticipo
+<glpiana> Lenn, già controllato lo spazio su disco residuo?
+<Lenn> glpiana:  No, spiegami meglio
+<glpiana> Lenn, se non hai più spazio su cui scrivere fa quel lavoro lì di solito. sai come controllare?
+<Lenn> glpiana: No, potresti dirmelo?
+<glpiana> Lenn, adesso hai ubuntu acceso su un altro pc ?
+<Lenn> glpiana: No, l'ho solo su quello...
+<glpiana> questo che stai usando?
+<Lenn> glpiana: No, aspetta, entriamo in chat privata
+<glpiana> Lenn, perchè in chat privata?
+<massimo18> eh
+<glpiana> Lenn, voglio capire se puoi dare dei comandi al volo e darmi le risposte o se è lo stesso pc su cui sei ora da altro sistema operativo
+<Lenn> glpiana: No, ora sono su un'altro sistema operativo.
+<Lenn> glpiana: E su un'altro pc
+<glpiana> Lenn, allora fai così, riavvia il sistema, accedi in recovery mode e scegli la console di root
+<glpiana> ah sei su un altro pc
+<glpiana> difficile starti dietro :)
+<glpiana> puoi avviare ubutnu?
+<Lenn> glpiana: Sul computer col problema, ovviamente non riesco ad avviare ubuntu, Su questo non posso avviarlo in quanto ho solo Windows
+<glpiana> Lenn, oki, ma ce l'hai lì da accendere il pc col problema?
+<Lenn> glpiana: Sì
+<glpiana> Lenn, avvialo in recovery mode
+<ivan_> devo installare ubuntu da cd su win 7 aiuto
+<massimo18> ivan_: ma perchè da win7?
+<glpiana> ivan_, perchè su windows?
+<massimo18> ivan_: installalo normalmente
+<Lenn> glpiana: Se stai parlando Di "Recovery Console" Mi da lo stesso problema, altrimenti dimmi come posso entrarci
+<glpiana> Lenn, recovery console non so cosa sia. all'avvio vedi il menu di grub?
+<Lenn> glpiana: No, cosa devo cliccare per vederlo?
+<glpiana> Lenn, appena visualizzi la schermata iniziale del bios tieni premuto il tasto shift
+<Lenn> glpiana: Ecco, sono entrato in recovery mode, ora ho davanti l menù di ripristino
+<glpiana> Lenn, bene, scegli la console di root
+<glpiana> ti dovresti ritrovare il prompt #
+<Lenn> glpiana: Uhmm... Lo shell con privilegi di root,no?
+<glpiana> Lenn, sì
+<Lenn> glpiana: Ok, ci son
+<glpiana> Lenn, ci sei?
+<Lenn> glpiana: Sì
+<glpiana> oki, dimmi, hai la home su partizione separata?
+<glpiana> Lenn, se non lo sai non fa nulla
+<Lenn> glpiana: Non ho mai partizionato nulla, quindi deduco di no...
+<glpiana> Lenn, allora scrivi:    df
+<glpiana> Lenn, ti restituisce una lista. una voce è riferita a /
+<glpiana> Lenn, mi dici che percentuale leggi?
+<Lenn> glpiana: Credo ci sia un'errore... non leggo nessun "/a"
+<glpiana> Lenn, ho scritto /   non /a
+<glpiana> dai deve essere la prima voce elencata
+<Lenn> glpiana: Ah, perdonami ahah, 18%
+<glpiana> se hai solo quello sul pc inizierà per /dev/sda1
+<glpiana> Lenn, tra le altre voci vedi /home   ?
+<Lenn> glpiana: No, Niente /home
+<glpiana> Lenn, oki, allora non è questione di spazio. fai così, digita: dpkg  --configure  -a
+<glpiana> se ora hai la mappatura americana il trattino corrisponde al tuo  tasto '
+<Lenn> glpiana: Non mi da nulla, possibile?
+<glpiana> Lenn, certo. ora scrivi: su tuoutente
+<Lenn> glpiana:  "Required key not avable Perhaps try the interactive 'encryptfs-mount-private' to run a command as administrator (User "root"), use "Sudo commands"  ....
+<ivan_> ciao  ho scritto ubuntu su cd lo devo installare insieme a win 7 ma il cd nn si avvia cosa devo fare?
+<Lenn> glpiana: Comunque ora sono su utente@computer:/root prima ero su root@computer
+<ivan_> ciao  ho scritto ubuntu su cd lo devo installare insieme a win 7 ma il cd nn si avvia cosa devo fare?
+<glpiana> Lenn, ma hai il filesystem criptato?
+<glpiana> ivan_, dacci un taglio. è la quarta volta che fai la stessa domanda
+<glpiana> ivan_, ti si risponde e tu non consideri
+<glpiana> !troll | ivan_
+<ubot-it> ivan_: Trollare è un comportamento considerato fastidioso dagli altri utenti del canale. Questo include andare offtopic o chiedere la stessa cosa piu volte ottenendo risposte ma non considerarle, e questi non sono i soli comportamenti che possono essere considerati da troll. Per favore leggi /msg ubot-it irc - se questo riguarda te, potresti ritrovarti fuori dal canale.
+<ivan_> glpiana scusa ma mi si disconnette il pc
+<glpiana> ivan_, e com'è che adesso la risposta l'hai vista?
+<glpiana> !installazione | ivan_ leggi qui, c'è tutto quello che ti serve sapere
+<ubot-it> ivan_ leggi qui, c'è tutto quello che ti serve sapere: http://wiki.ubuntu-it.org/Installazione | Per installazione grafica http://wiki.ubuntu-it.org/Installazione/Grafica | Si consiglia la visione della guida ufficiale in inglese http://www.ubuntu.com/desktop/get-ubuntu/download
+<ivan_> continuamente ho una connessione debole
+<vincem68> ciao a tutti
+<Lenn> glpiana:  Mhm...  resi la cartella Home privata, Immagino di aver fatto un casino, vero?
+<glpiana> Lenn, boh, mai usato
+<vincem68> avrei una domanda da fare a tutti gli esperti di ubuntu essendo un neofita di linux
+<glpiana> Lenn, comunque prova a digitare startx
+<glpiana> !chiedi | vincem68
+<ubot-it> vincem68: per cortesia non chiedere il permesso di chiedere, semplicemente formula la domanda (tutta su  una riga, in modo tale che gli altri possano leggerla e seguirla con facilità). Se qualcuno conosce la risposta ti risponderà :-)
+<vincem68> ok
+<onebitxajax> da qualche giorno ho un problema con flash su ubuntu 10.10. la prima volta apro un video di you tube e lo vedo bene, se dopo lo riapro o apro qualsiasi altra cosa. il sistema mi si blocca tutto
+<Lenn> glpiana: Ora come continuo?
+<onebitxajax> praticamente nn riesco a muovere nemmeno il mouse
+<glpiana> Lenn, haiscritto startx?
+<Lenn> glpiana: Sì
+<vincem68> ho installato ubuntu ver.10.10 mi collego a internet ( anche in questo momento) ed essendo collegato in una lan sotto il controllo di un isa server non riesco a scaricare gli aggiornamenti
+<glpiana> onebitxajax, prova a fare sta cosa. apri un giochino, chessò su flashgames o roba simile
+<onebitxajax> ho controllato (con molta calma)va in shock plugin-container
+<glpiana> Lenn, e che ha fatto?
+<filo1234> vincem68: devi inserire i parametri del proxy su synaptic se ce li hai
+<glpiana> onebitxajax, una votla caricato il gioco clicca col destro e entra in impostazioni. togli la spunta dall'accelerazione grafica
+<vincem68> mi da questo errore  The ISA Server requires authorization to fulfill the request. Access to the Web Proxy filter is denied.  )
+<filo1234> sei autorizzato?
+<vincem68> si li ho inseriti
+<glpiana> Lenn, si è aperta l'interfaccia grafica o no?
+<vincem68> ho inserito nome utente password e porta
+<vincem68> e ip del server isa
+<Lenn> glpiana: No, solo un mucchio di righe
+<onebitxajax> glpiana; ora i video manco si vedono, continua il caricamento e basta
+<onebitxajax> glpiana; adesso funge ma ci sta un bel po prima di caricare
+<glpiana> Lenn, oki, scrivi exit e poi scrivi restart
+<filo1234> vincem68: fai una prova, apri un terminale
+<vincem68> sono andato su preferenze proxy di rete
+<glpiana> onebitxajax, il fatto che carichi a lungo non c'entra con l'pzione che abbiamo variato... forse... non so. comunque è il modo per farlo andare. con l'aggiornamento han sminchiato qualcoasa
+<glpiana> *qualcosa
+<filo1234> vincem68: export http_proxy="http://(utente):(password)@(indirizzo-o-nome-proxy):(eventuale-porta) && export ftp_proxy="ftp://(utente):(password)@(indirizzo-o-nome-proxy):(eventuale-porta)
+<filo1234> vincem68: suao apt-get update && sudo apt-get upgrade
+<onebitxajax> glpiana; aggiornamneto mio del computer o del flash?
+<filo1234> sudo*
+<vincem68> ok provo
+<glpiana> onebitxajax, del pacco flash
+<onebitxajax> glpiana; ok grazie ;)
+<onebitxajax> glpiana; un'altra domanda perche nn mi monta la partizione di swap? ho un 1gb di ram
+<glpiana> onebitxajax, controlla fstab
+<glpiana> caffè
+<Lenn> glpiana: Fatto, credo che abbia fatto un errore...
+<vincem68> questo è il risultato     bash: !@192.168.1.1: event not found
+<filo1234> vincem68: non ho capito
+<filo1234> risultato di cosa?
+<vincem68> ho fatto come mi hai detto
+<vincem68> il risultato sul terminale
+<filo1234> bash: !@192.168.1.1: event not found
+<vincem68> scrivendo la stringa con i miei parametri ovviamente
+<filo1234> non mi pare
+<filo1234> si ma non capisco il !
+<filo1234> da dove sbuchi
+<Lenn> glpiana: Ecco, ora che l'ho ripetuto ha funzionato
+<vincem68> dovevo scrivere questo sul terminale ? export http_proxy="http://(utente):(password)@(indirizzo-o-nome-proxy):(eventuale-porta) && export ftp_proxy="ftp://(utente):(password)@(indirizzo-o-nome-proxy):(eventuale-porta)
+<filo1234> eh, ma  ancora non vedo nessun !
+<filo1234> bash: !@192.168.1.1: event not found
+<vincem68> il punto escamativo fa parte della password
+<filo1234> credo che si incavoli allora
+<vincem68> ammenochè il sistema non accetta i caratteri speciali
+<filo1234> prova ad usare ' anzichè le " nelal stringa, altrimenti prova ad inserire un escape \ prima della password \!tuapassoword
+<Lenn> glpiana: Ora cosa devo fare?
+<vincem68> ci provo
+<filo1234> vincem68: le parentesi non ci vogliono eh
+<vincem68> si lo so
+<vincem68> comunque mi da lo stesso errore
+<filo1234> metti la password tra 'password' apici
+<vincem68> ok provo
+<vincem68> no niente
+<vincem68> tu dici che è il ! che fa incazzare il sistema?
+<filo1234> vincem68: si però in teroria dovresti trovare il modo di far passare quel ! com ecarattere nor,male e non caratttere speciale... e questo lo fai con le ? " quotes o mettendo appunto un escape \ prima del carattere speciale
+<filo1234> quindi qualcosa lo sta facendo arrabbiare per questo motivo
+<Lenn> glpiana: Ho finito di fare tutto quello che mi avevi detto, cosa devo fare ora?
+<vincem68> provo a mettere i doppi apici?
+<filo1234> prova
+<bender_> salve, ho un piccolo bug nella mia ubuntu 10.10 64 bit. Quando inserisco la password per gli aggiornamenti o per installare applicazioni etc la finestra di autenticazione rimane frizzata. Se la chiudo manualmente allora la password viene accettata altrimenti rimane frizzato su "autentica". Come risolvere?
+<vincem68> niente tutto uguale
+<filo1234> vincem68: scusa puoi scrivere la stringa esatta rispettando i vari caratteri speciali che devi usare? e come la stai scrivendo? almeno vediamo un po'
+<Diels-Alder> ciao a tutti esiste un software tipo handbrake per ubuntu che parallelizzi i calcoli in GPU?
+<vincem68> sudo export http_proxy="http://v.maso:Pass!@192.168.1.1:8080 && export ftp_proxy="ftp://v.maso:Pass!@192.168.1.1:8080
+<Lenn> glpiana: Io provo a riavviare... sperando in bene...
+<vincem68> filo ci sei?
+<marcotux> filo1234, vincem68 non è che mancano delle chiusure apici?
+<filo1234> marcotux: anche
+<filo1234> vincem68: export http_proxy="http://v.maso:Pass\!@192.168.1.1:8080"
+<glpiana> Lenn, ero via
+<vincem68> si ho scritto quella iniziale
+<vincem68> senza apici
+<Lenn> glpiana: Ah, perdonami, non ho toccato nulla e mi sono fermato a "Restart"
+<filo1234> vincem68: export ftp_proxy="ftp://v.maso:Pass\!@192.168.1.1:8080"
+<glpiana> Lenn, sì scusa ti ho detto restart ma volevo dire reboot -.-
+<glpiana> Lenn, dovevi semplicemente riavviare  evedere se andava
+<vincem68> provo
+<filo1234> vincem68: no aspetta intendevo dire che con gli apici vede \ come carattere quindi la pasword risulta errara
+<filo1234> errata
+<filo1234> vincem68: usa la stringa senza apici
+<Lenn> glpiana: Devo dare reboot o riavvio senza fare nulla?
+<glpiana> Lenn, se sei ancora in console di root e scrivi reboot si riavvia
+<Lenn> glpiana:  Non ci sono, sono su Nomecomputer Login
+<vincem68> mi dice questo   sudo: export: command not found
+<glpiana> Lenn, premi ctrl+alt+canc
+<filo1234> vincem68: scusa ma perchè stai usando sudo?
+<filo1234> bah
+<onebitxajax> glpiana; /dev/sda5       none            swap    sw              0       0
+<vincem68> perchè ho provato sia con che senza
+<filo1234> export http_proxy=http://v.maso:Pass!@192.168.1.1:8080
+<onebitxajax> glpiana; e' in fastab
+<vincem68> riprovo
+<Lenn> glpiana: Non è cambiato nulla.........
+<glpiana> onebitxajax, ora dai sudo fdisk -l
+<glpiana> Lenn, puoi provare a resettare gnome
+<filo1234> export ftp_proxy=ftp://v.maso:Pass!@192.168.1.1:8080  vincem68
+<Lenn> glpiana:  Comporta la perdita di dati?
+<glpiana> Lenn, rinomina le dir nascoste .gnome .gnome2 .gconf .config .gnome_private .local
+<glpiana> Lenn, perdita no, se rinomini non perdi. non avrai le impostazioni che avevi prima, ma avendo rinominato restano a portata di mano qualora servissero
+<glpiana> Lenn, se dai ctrl+alt+f1 passi al login testuale?
+<onebitxajax> glpiana; http://paste.ubuntu.com/580583/
+<vincem68> bash: !@192.168.1.1: event not found  risultato
+<Lenn> glpiana: Sì
+<glpiana> onebitxajax, devi modificare fstab. al posto dei device devi usare uuid
+<glpiana> !uuid | onebitxajax
+<ubot-it> onebitxajax: uuid is Per determinare UUID di una partizione esegui nel terminale sudo vol_id /dev/hdxx o vol_id /dev/sdxx, su karmic usa blkid al posto di vol_id
+<glpiana> !fstab | onebitxajax
+<ubot-it> onebitxajax: http://wiki.ubuntu-it.org/Fstab
+<glpiana> Lenn, esegui il login
+<glpiana> Lenn, per rinominare da linea di comando sai come fare?
+<filo1234> vincem68: scusami errore mio ora
+<Lenn> glpiana: Veramente no...
+<filo1234> export ftp_proxy=ftp://v.maso:Pass\!@192.168.1.1:8080  vincem68
+<filo1234> export http_proxy=http://v.maso:Pass\!@192.168.1.1:8080
+<glpiana> Lenn, ti faccio l'esempio per la directory .gconf:   mv .gconf .gocnf_old
+<vincem68> si infatti lo appena riscritto e non mi ha dato errore
+<glpiana> Lenn, tu fallo per le directory che ti ho elencato sopra. non necessariamente troverai .gnome
+<marcotux> in sostanza mv vecchio_nome nuovo_nome
+<vincem68> li ho scritti tutte e due senza darmi errori
+<vincem68> adesso che devo fare?
+<onebitxajax> glpiana; sudo blkid /dev/sdb5 mi da /dev/sdb5: TYPE="swap"
+<nicotano> buon pomeriggio
+<onebitxajax> glpiana; nn da uuid
+<glpiana> onebitxajax, scrivi: sudo blkid          dovrebbe dartele tutte e con tanto di uuid
+<Lenn> glpiana:  mv .gnome .gnome_old  per rinominare .gnome?
+<glpiana> Lenn, sì
+<glpiana> Lenn, se ti da errore è perchè non hai .gnome, ma non importa
+<filo1234> vincem68: suao apt-get update && sudo apt-get upgare
+<filo1234> upgrade*
+<onebitxajax> glpiana; http://paste.ubuntu.com/580585/
+<filo1234> vincem68: sudo apt-get update && sudo apt-get upgrade
+<Lenn> glpiana: Quindi se mi dice "Login incorrect" è normale
+<glpiana> Lenn, no, se ti dice login incorrect è perchè sbagli l'utente o la password
+<Lenn> glpiana: Pensa un po' che idiota, scrivevo i comandi nel login
+<vincem68> filo1234: mi dice ripetutamente questo  ( The ISA Server requires authorization to fulfill the request. Access to the Web Proxy filter is denied.  )
+<glpiana> onebitxajax, aspetta
+<onebitxajax> glpiana; ok ;) grazie di tutto cmq
+<tdk200> salve a tutti
+<vincem68> filo1234: hai altre idee?
+<filo1234> vincem68: env | grep http_proxy
+<tdk200> volevo sapere come verificare la versione di ubuntu che sto usando adesso
+<Lenn> spero di aver fatto bene
+<nicotano> tdk200, lsb_release -a
+<nicotano> .
+<tdk200> nicotano ciao
+<vincem68> fil1234:  http_proxy=http://v.maso:Pass!@192.168.1.1:8080
+<Lenn> glpiana: Doveva dirmi qualcosa quando scrivevo?
+<tdk200> io ho fatto l'aggiornamento dalla 10.04 alla 10.10
+<tdk200> dopo aver effettuato l'aggiornamento mi dava messaggio come avanzamento tipo che fosse stato eseguito a metà
+<glpiana> Lenn, no
+<nicotano> tdk200,  sudo dpkg --configure -a     finisce di configurare pacchetti in sospeso
+<Lenn> glpiana: Allora ho fatto
+<glpiana> Lenn, ora dai: alt+f7   e torni al login garfico
+<glpiana> *grafico
+<tdk200> quando viene aggiornato ubuntu non modifica le impostazioni tipiche che l'utente imposta nel sistema?
+<glpiana> onebitxajax, digita: cat /etc/blkid.tab
+<glpiana> tdk200, le tue personali no. altre cose vengono modificate. grub ad esempio
+<filo1234> vincem68: se i dati sono corretti la variabile c'è
+<Lenn> glpiana: Si blocca....
+<Guest29377> devo attivare l'ascolto dell'X server su Ubuntu
+<tdk200> esempio la grafica o qualche prog che prima parte poi non funziona più perchè dice di aggiornare lo stesso programma
+<nicotano> tdk200, le tue impostazioni restano, i file di config tuoi stanno nella home
+<Guest29377> ho modificato la key DisallowTCP a false
+<vincem68> si però non mi fa fare gli aggiornamenti
+<glpiana> Lenn, allora tu selezioni l'utente e lui ti chiede la password, giusto?
+<tdk200> aspè io ho mandato il codice che mi hai detto ti passo il paste bin
+<filo1234> vincem68: ma scusa però quella è la password vera o hai scritto un esempio?
+<tdk200> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<Lenn> glpiana: Sì
+<onebitxajax> glpiana; stessa roba http://paste.ubuntu.com/580597/
+<glpiana> Lenn, in basso però dopo aver selezionato il nome utente vedi che appaiono delle impostazioni
+<filo1234> vincem68: Pass! è la tua password o è un'esempio?
+<onebitxajax> glpiana; si puo editare questo file e scrivere qualsiasi cosa? XD
+<Guest29377> è necessario pure rimuovere il "-nolisten tcp" oppure non c'entra?
+<glpiana> onebitxajax, proviamo un comando: sudo blkid -c /dev/null -p /dev/sdb5
+<vincem68> no è la mia password
+<tdk200> http://paste.ubuntu.com/580598/ leggi nicotano
+<onebitxajax> glpiana; /dev/sdb5: VERSION="2" TYPE="swap" USAGE="other"
+<Lenn> glpiana: Sì
+<nicotano> tdk200, e allora ..
+<tdk200> quindi è aggiornato?
+<glpiana> onebitxajax, non so perchè continui a non dare l'uuid. fammi vedere tutto fstab
+<onebitxajax> glpiana; ok
+<nicotano> tdk200,  così dice
+<tdk200> ok
+<tdk200> cmq se mando il comando sudo dpkg --configure -a succede nulla?=
+<onebitxajax> glpiana; http://paste.ubuntu.com/580601/
+<nicotano> tdk200,  sudo dpkg --configure -a     finisce di configurare pacchetti in sospeso,  se non hai segnalazioni di errore il comando viene eseguito correttamente
+<glpiana> onebitxajax, continuo a non spiegarmi la cosa, ma non ho soluzioni al momento. per cui posso solo dirti di modificare fstab mettendo sdb5 al posto di sda5
+<tdk200> perfetto
+<onebitxajax> glpiana; ma punta lo stesso alla swap?
+<glpiana> onebitxajax, la tua swap è su /dev/sdb5
+<onebitxajax> glpiana; ma anche ext3
+<tdk200> nicotano, mi diceva pure che dovevo aggiornare amsn perchè la versione risulta essere vecchia possibile?
+<Diels-Alder> !slideshow
+<ubot-it> Voce non trovata: 'slideshow'
+<glpiana> onebitxajax, eh?
+<tdk200> non si connetteva
+<Diels-Alder> quale è il miglior software per fare slideshow?
+<filo1234> vincem68: scusa la domanda che può sembrare banale...ma l'update l'hai dato dalla stesso terminale in cui hai esportato l'export? o hai aperto un'altro terminale per dare l'update
+<filo1234> ?
+<onebitxajax> glpiana; la swap e la ext3 di ubuntu sono sullo stesso hd
+<nicotano> !amsn | tdk200
+<ubot-it> tdk200: http://wiki.ubuntu-it.org/InternetRete/Messaggistica/Amsn
+<glpiana> onebitxajax, ma che c'entra?
+<vincem68> dallo stesso terminale
+<glpiana> onebitxajax, a parte che quell'fstab lo metterei tutto a uuid e non a device, lasciando il device solo per la swap...
+<Diels-Alder> nessun suggerimento?
+<nicotano> Diels-Alder, openshot
+<vincem68> filo1234: devo provare ad aprirne un altro?
+<tdk200> lo conosco amsn. solo cosa strana che mi dava, avendolo installato da tempo, errore quando accedevo. Mi dice versione non aggiornata aggiorna amsn
+<filo1234> vincem68: no
+<tdk200> e io l'ho disinstallato nicotano
+<glpiana> Diels-Alder, apt-cache search slideshow
+<onebitxajax> glpiana; nel mio fstab ce scritto che la ext3 e la swap stanno su sda
+<nicotano> tdk200, lo reinstalli se ti serve
+<glpiana> onebitxajax, fdisk -l dice che swap è su /dev/sb5
+<glpiana> onebitxajax, fai così, scrivi mount   e metti su pastebin
+<tdk200> ok
+<filo1234> vincem68: ma normalmente navighi invece?
+<tdk200> io adesso riavvio
+<tdk200> mi chiede di farlo :D  a dopo
+<tdk200> grazie nicotano
+<vincem68> si certo e scarico anche la posta
+<nicotano> :)
+<vincem68> in questo momento sto usando ubuntu
+<Diels-Alder> ok glpiana ma volevo un consiglio pratico non una ricerca
+<onebitxajax> glpiana; comunque forse hai ragione http://paste.ubuntu.com/580604/
+<filo1234> vincem68: http://ubuntuforums.org/archive/index.php/t-474978.html prova ader uno sguardo qui
+<glpiana> Diels-Alder, per i consigli chiedi su #ubuntu-it-chat per cortesia
+<glpiana> onebitxajax,  /dev/sdb6 on / type ext3
+<nicotano> Diels-Alder, ti ho risposto prima , non ti piace openshot?
+<onebitxajax> glpiana; in fstab e' sda6 O.o hai ragione, provo a metterte sdb
+<vincem68> si ho già installato NTLMAPS
+<Diels-Alder> passo in chat
+<glpiana> onebitxajax, e ti consiglio anche di sostiutuire tutti gli altri con gli uuid
+<Lenn> glpiana: Non sono riuscito a risolvere nulla... se entro col cd in live posso salvare i miei file?
+<onebitxajax> glpiana; provo a fare subito , ma poi riavvio vero? per avere le cose confermate
+<glpiana> Lenn, sì, puoi
+<glpiana> Lenn, ma non ti ho chiesto in seguito a cosa ti è successo sto danno
+<glpiana> onebitxajax, no, puoi dare: sudo mount -a
+<glpiana> onebitxajax, oppure riavvii, vedi tu. io prima farei sudo mount -a che se c'è qualche problema si risolve subito
+<onebitxajax> glpiana; ok grazie di tutto e scusa il disturbo
+<glpiana> :)
+<Lenn> glpiana: A nulla, settimane fa istallai kde insieme a gnome, questo è il massimo
+<Lenn> glpiana: Vado a prendere il cd di ubuntu 10.10 poi potresti dirmi come posso procedere?
+<glpiana> Lenn, aspetta, hai anche kde lì?
+<glpiana> Lenn, dammi 5 minuti
+<Lenn> sì
+<tdk200> nicotano,  scusa ancora
+<tdk200> adesso stavo installando kdenlive ma è successo che la wifi si è staccata mo non continua come fo?
+<nicotano> riavvia la connessione e poi  rifai l'installazione
+<tdk200> sta andando meno male
+<glpiana> Lenn, eccomi, dicevamo tu hai gnome e kde insieme sulla stessa installazione?
+<tdk200> a ragazzi c'è una stanza qui in freenode di supporto kdenlive?
+<laidon> buonasera
+<tdk200> a nicotano comunque ubuntu 10.10 dopo l'aggiornamento perchè la schermatta di avvio si vede la scritta ubuntu10.10 tipo testo invece che logo tutto viola?=
+<nicotano> tdk200, ma comunque funziona tutto quando fai login  ?
+<tdk200> si
+<tdk200> la grafica però si è sfasata tutta
+<nicotano> tdk200, reinstalla i driver video, menu sistema amministrazione driver aggiuntivi seleziona proprietari
+<glpiana> Lenn, su che devo andare. ci sei ancora?
+<Lenn> glpiana: Sì, ma ora devo andare a fare una visita medica, ci sentiamo dopo se sei connesso, ok?
+<glpiana> Lenn, difficile stasera, ma vediamo. ciao
+<Lenn> glpiana: Ok, grazie per l'aiuto di oggi, ciao!
+<tdk200> nicotano, no io dico mi si è sfasata la grafica nel senzo di ubuntu
+<laidon> sapreste come importare tutte le impostazioni quali segnalibri, password da minefield a firefox? grazie
+<tdk200> l'immagine di avvio ubuntu non è più il logo fico alla partenza
+<tdk200> esce solo na scritta bianca ubuntu10.10 e altre scritte mentre carica
+<glpiana> tdk200, corretto. altri difetti grafici?
+<tdk200> nessuno
+<glpiana> tdk200, che io sappia il logo di maverick sembra scritto con la machcina da scrivere
+<glpiana> *macchina
+<tdk200> cioè è proprio così la schermata di avvio di ubuntu 10.10?
+<tdk200> a
+<tdk200> nn ' come la 10.10
+<tdk200> cioè 10.04
+<tdk200> scusa
+<glpiana> tdk200, o forse quella schermata appare se ci sono incompatibilità con plymouth
+<tdk200> però adesso la cosa più grave che mi sta facendo impazzire è la password di root
+<glpiana> tdk200, puoi fare una prova se vuoi
+<tdk200> come
+<glpiana> tdk200, avvii e al menu premi "e" ed editi la riga dove leggi quiet splash aggiungendoci nomodeset
+<glpiana> tdk200, poi ctrl+x e vedi come va l'avivo
+<glpiana> tdk200, se migliora si rende poi definitiva la cosa
+<tdk200> per il problema della psw di root è possibile che non accetti più quella che poco fa ho usato per installare kden live
+<glpiana> tdk200, la password di root? ma root di default è disabilitato
+<nicotano> !root | tdk200
+<ubot-it> tdk200: root è disabilitato di default su ubuntu,  usa sudo per eseguire i comandi testuali con i permessi di root http://wiki.ubuntu-it.org/AmministrazioneSistema/Sudo - per i programmi con interfaccia grafica usa gksudo o kdesudo
+<tdk200> no adesso se faccio su
+<tdk200> non accetta la password
+<nicotano> tdk200, usa sudo
+<tdk200> a su nn va +?
+<glpiana> stacco
+<nicotano> ciao
+<tdk200> dovevo inviare il comando sudo apt-get purge linux-image-2.6.35-25-generic
+<tdk200> comunque nicotano  dove dovrei fare quella operazione che dice glpiana?
+<nicotano> <glpiana> tdk200, avvii e al menu premi "e" ed editi la riga dove leggi quiet splash aggiungendoci nomodeset
+<nicotano> <glpiana> tdk200, poi ctrl+x e vedi come va l'avivo
+<tdk200> si ma come menu intende dove metto la psw o la scelta del tipo di grafica?
+<nicotano> tdk200, al menu di  boot prima di avviare ubuntu
+<tdk200> il grub?
+<nicotano> si
+<tdk200> quindi affianco quet splash momodeset
+<tdk200> nomodeset*
+<nicotano> ok
+<tdk200> vediam se va
+<tdk200> nicotano, ninete da fare resta uguale a prima
+<tdk200> :D
+<tdk200> strano
+<nicotano> tdk200, reinstalla i friver della scheda video
+<nicotano> driver**
+<tdk200> dici che è quello?
+<tdk200> cmq sono proprietari perchè disinstallare e reinstallare?
+<nicotano> tdk200, prova,
+<tdk200> ok
+<nicotano> li avevi reinstallati dopo l'aggiornamento?
+<tdk200> sembra strano
+<tdk200> no già li avevo
+<tdk200> presenti
+<nicotano> tdk200,  appunto,
+<tdk200> rimuovo e reinstallo quindi
+<nicotano> reinstallali,
+<tdk200> ma dopo rimossi riavvio
+<tdk200> ?
+<nicotano> ok e dopo reinstalli dall'apposita voce menu sistema
+<tdk200> driver aggiuntivi
+<laidon> a seguito dell'aggiornamento da firefox 3.6 a 4 RC a qualcuno è spuntata la finestra di importazione impostazioni? io ho scelto di rinviare la scelta ma la finestrella non mi compare più...
+<tdk200> nicotano, no la schermata all'avvio non va sempre scritta a tastiera bianca sembra
+<tdk200> cosa strana si è ripresa invece la scritta in chiusura che è fica
+<newlife> nicotano: scusa.. una cosa........
+<tdk200> quindi secondo te cosa potrei fare per lo splash screen all'avvio?
+<gek> ho un grande problema
+<gek> da quando ho installato ubuntu non mi funzionano le porte usb
+<nicotano> tdk200,  cerca nel forum con chiave visualizzare splash screen
+<gek> qualcunomi puo aiutare
+<tdk200> nicotano,  altra ultima domanda poi ti lascio seriamente in pace
+<tdk200> visto che devo usare kdenlive ho un problema nel sentire l'audio dal pc
+<tdk200> in poche parole sembra che esca graffiato
+<tdk200> le canzoni i video qualsiasi cosa
+<tdk200> tutto l'audio esce con un suono come di graffiato ma
+<tdk200> in altri pc si sente ok
+<nicotano> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<nicotano> tdk200, vedi qui altro non so dirti  http://paste.ubuntu.com/580632/
+<tdk200> http://paste.ubuntu.com/580639/
+<tdk200> sembra diverso
+<tdk200> http://paste.ubuntu.com/580641/ questo è tutto il file
+<isidoro> buonasera
+<isidoro> qualcuno mi sa dire perche non mi funzionano gli usb
+<tdk200> nicotano,
+<tdk200> ci sei?
+<nicotano> tdk200, non c'è la riga da disabilitare
+<tdk200> quindi non devo mettere #
+<nicotano> già
+<tdk200> però resto con l'audio fracassone
+<tdk200> :D
+<agnese> sera a tutti ^^ qualcuno mi sa dire come faccio ad aggiungere a cairo dock dei lanciatori che ho creator dal menuK? se li trascino non me li mette >.<
+<Davide_G> agnese, prova quando ce lhai sulla dock tasto destro...
+<filippo> ciao
+<agnese> Provato Davide_G 8( non ha funzinato...
+<filippo> come posso spengere ubuntu 10.10?
+<e-DIO-t> sudohalt?
+<Davide_G> agnese, prova ad entrare nelle preferenze della dock
+<agnese> mi da gli applet preimpostati...
+<define> volevo installare ubuntu 10.10 tramite wubi e quando cerco d aprire wubi mi scrive > exception processing message...' come posso risolvere?
+<define> come faccio a sapere quale .iso è quello giusto?
+<jester-> define: perchè non su partizione he wubi da dentro win si sminchia una volta si e l'altra ancora?
+<define> jester-: d solito wubi ha sempre funzionato , e nn so quale .iso sia quello giusto da installare
+<jester-> define: è in tutte le iso
+<jester-> define: infili il cd in winzoz e lo  lanci
+<define> jester-: vbb ripeto la dom quale .iso devo masterizzare? qual è quella giusta?
+<jester-> define: qualsiasi desktop 32 o 64bit
+<define> quindi è indiff tra 32 o 64bit?
+<jester-> define: la puoi montare con alcool in win senza materizzare
+<define> jester-: se mi spieghi come,,, grazie
+<jester-> define: non è indifferente, dipende dal processore che hai, se supporta 64bit
+<Angel_Demon> ciao.
+<Angel_Demon> :o
+<jester-> !wubi | define
+<ubot-it> define: wubi is http://wiki.ubuntu-it.org/Installazione/Wubi
+<define> jester-: prima mi scrivi qualsiasi poi mi scrivi che non è = ,,,
+<Angel_Demon> jester- ciao.
+<jester-> define: e 4, wubi è in tutte le iso, poi se installare 32 o 64bit dipende dal tuo hw
+<jester-> cià Angel_Demon
+<Angel_Demon> :)
+<Angel_Demon> jester- mi sai aiutare?
+<jester-> Angel_Demon: dipende se conosco il problema
+<Angel_Demon> omg
+<define> jester-: premesso ke mi hai linkato wubi e già so come funziona ma mi da quel messaggio d errore,,, il mio hw è : p4 2,59 ghz 1 gb ram
+<jester-> Angel_Demon: scrivilo il problema che chi sa e ha tempo ti risponde
+<Angel_Demon> ok wait
+<define> 1,5 gb ram sorry
+<jester-> define: usa i386
+<define> jester-: sai dirmi come risolvere il msg d errore che mi scrive wubi o come montare senza masterizzare?
+<jester-> define: forse usi una 64bit
+<hobo> ciao ragazzi
+<define> jester-: uso wubi ke si trova in 'sto link -> http://releases.ubuntu.com/10.10/
+<hobo> ho problema con ubuntu soft cent  non m fa installare k3u  mentre 2 -3 mesi fa si
+<jester-> define: http://wiki.ubuntu-it.org/Installazione/Wubi
+<Angel_Demon> jester- come setto ubuntu dopo la prima installazzione?
+<Angel_Demon> *-z
+<jester-> Angel_Demon: cioè?
+<Angel_Demon> omg
+<Angel_Demon> ho installato ubuntu con wubi.
+<jester-> hobo: k3u?
+<define> jester-: so come s installa wubi ha sempre funzionato ma mi scrive quell errore che t ho indicato prima , come risolvo?
+<jester-> Angel_Demon: quindi?
+<Angel_Demon> avviato e tutto.... ora come setto il sistema operativo
+<hobo> dice che potrebbe esserci conflitto con altri programmi si jester
+<jester-> define: non lo so
+<Angel_Demon> non c'è tipo un "pannello di controllo" come winzoz?
+<define> jester-: non trovo altri wubi , mi hai scritto che ogni versione ha il suo wubi ma io ne vedo solo 1 su release.ubuntu\10.10
+<jester-> Angel_Demon: spiegati meglio,cosa vorrstifare
+<Angel_Demon> jester- Omg
+<jester-> define: che iso hai
+<Angel_Demon> settare Il S.O
+<Angel_Demon> no da riga di comando :\
+<jester-> Angel_Demon: hai gnome o kde
+<define> jester-: mi linki wubi ubuntu i386?
+<Angel_Demon> gnome
+<Angel_Demon> ubuntu 10.10
+<define> jester-: non ho nessun iso , mi hai scritto che c è 1 wubi per ogni versione e volevo sapere dove trovare wubi i386
+<Angel_Demon> define non c'è bisogno di nessuna iso :\
+<Angel_Demon> se scarichi wubi installi ubuntu come un programma.
+<define> Angel_Demon: wubi mi ha sempre funzionato stavolta mi scrive 1 errore quando c clicko x awiarlo
+<Angel_Demon> jester- ma non ci sono differenze tra ubuntu normale e wubi?
+<Angel_Demon> che errore define
+<Angel_Demon> ?
+<jester-> define: http://releases.ubuntu.com/maverick/ubuntu-10.10-desktop-i386.iso poi la scrivi su un cd ( non copiare) lo infili nel cdrom e vedrai che c'è wubi anche
+<jester-> Angel_Demon: come os no, le differenze sono che wubi meno affidabile
+<Angel_Demon> perchè?
+<define> jester-: be si ma non mi serve + wubi a quel . tanto vale ke faccio awiare cd all awio pc... volevo evitare d masterizzarlo vbb
+<jester-> perchè sta in  cartella compressa dentro a winzoz
+<Angel_Demon> lol
+<define> Angel_Demon: exception processing message...
+<jester-> define: ho la vaga impressione che tu stia trollando
+<Angel_Demon> io l'ho installato dentro winzoz però dentro un altro HDD.
+<Angel_Demon> dove non c'è winzoz.
+<define> jester-: nn so ke significa...trollando
+<Angel_Demon> jester- omg sarà un trool?
+<define> cmq vbb mi arrendo masterizzero .iso vbb
+<Angel_Demon> troll
+<Angel_Demon> *
+<jester-> Angel_Demon: è comunque un po una ciofeca, lo scopo di wubi è di far provare l'os da winzoz a gente che poo avezza a maneggiare partizioni
+<define> jester-: appunto :( vbb
+<jester-> poi, di solito, data una palpata si mette su partizione
+<Angel_Demon> capito
+<Angel_Demon> jester- lascialo perdere, è un troll :D
+<jester-> Angel_Demon: comunque ha messo ubuntu o kubuntu
+<jester-> o xubuntu
+<Angel_Demon> Ubuntu.
+<remix_tj> !italiano | define
+<ubot-it> define: scrivere in maniera corretta facilita la lettura dei messaggi: frasi contenenti abbreviazioni, spesso chiare soltanto a chi le scrive, sono di difficile interpretazione. Ti invitiamo pertanto a non usarle. Vedi http://tinyurl.com/35d9kcn
+<remix_tj> perche', caro define, non si capisce una beata minchia di quello che scrivi.
+<jester-> Angel_Demon: barra superiore, a sisnitra hai i menu con le applicazioni, a destra hai sistema-->preferenze e amministrazione
+<Angel_Demon> remix_tj sarà un Bimbominchia lol
+<jester-> remix_tj: sa di troll con poca fantasia
+<Angel_Demon> ahahahhahahaha stima per ubot-it *_*
+<Angel_Demon> jester- che client IRC mi consigli per Ubuntu?
+<jester-> Angel_Demon: xchat, kvirc, empathy
+<jester-> va a gusti
+<define> con wubi avrei fatto molto prima vbb c mette 'na vita a download .iso e poi masterizzare vbb
+<Angel_Demon> jester-
+<Angel_Demon> come dimensioni di installazione va bene 30?
+<jester-> Angel_Demon: non ti fa fare di piu
+<Angel_Demon> no
+<vcmnbnwsdqgdvcqe> bellaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+<jester-> Angel_Demon: dipende da quanto porni ci metti
+<Angel_Demon> jester- omg circa 500 °_°
+<jester-> Angel_Demon: hd non winzoz metti su partizione che fai un lavoro come va fatto
+<Angel_Demon> quindi, dovrei formattare winzoz?
+<jester-> che fra qualche giorno minimo si sminchia il boot loader
+<Angel_Demon> lol, dici?
+<vcmnbnwsdqgdvcqe> 你好，你都不錯，但你有沒有耐心
+<jester-> Angel_Demon: ma che winzoz formmattone
+<Angel_Demon> già s'è sminchiato 2 volte ed ho formattato :\
+<Angel_Demon> jester- OMG
+<Angel_Demon> LOL
+<Angel_Demon> chi è quest'altro LoL
+<jester-> Angel_Demon: usi tutto il disco?
+<Angel_Demon> jester- e un portatile
+<Angel_Demon> ho 2 hdd
+<Angel_Demon> uno gira winzoz e programmi
+<Angel_Demon> altro e vuoto.
+<jester-> Angel_Demon: hai detto che lo installi non sulla partizione win
+<Angel_Demon> si ma con wubi.
+<Angel_Demon> sull'altro HDD
+<jester-> Angel_Demon: il vuoto  quanto e grande
+<qafs> k99brain, certo che sei stupido è
+<Angel_Demon> 110
+<define> altro dubbio: perché wubi permette d impostare max 30 gb anke se ho 300 gb liberi? nella finestra d installazione iniziale
+<Angel_Demon> define perche sei troll?
+<jester-> Angel_Demon: hai 2 hd?
+<Angel_Demon> jester- yep
+<Angel_Demon> sempre interni.
+<jester-> Angel_Demon: alura al partizionamento gli dici di usare lintero disco da 110 gb che fa tutto lui
+<define> Angel_Demon: come mai posso impostare max 30 gb anche se ho 300 gb liberi?
+<jester-> define: e 7 wubi è cosi
+<Angel_Demon> jester- si, ma non ho il cd :°D
+<define> jester-: è 1 kzt vbb
+<jester-> Angel_Demon: sei troll di rinforzo?
+<Angel_Demon> jester- no lol
+<Angel_Demon> define non fare il bimbominchia
+<K99Brain> !italiano | define, e 2
+<ubot-it> define, e 2: scrivere in maniera corretta facilita la lettura dei messaggi: frasi contenenti abbreviazioni, spesso chiare soltanto a chi le scrive, sono di difficile interpretazione. Ti invitiamo pertanto a non usarle. Vedi http://tinyurl.com/35d9kcn
+<K99Brain> define, alla prossima butto fuori pure e te, ok?
+<jester-> K99Brain: metti il canale in +q va
+<define> Angel_Demon: l unica mnk è wubi che non va e che permette di impostare max 30 gb anche se 1 ha 300 gb liberi vbb
+<Angel_Demon> :|
+<Angel_Demon> insiste :°D
+<Angel_Demon> lol
+<K99Brain> Angel_Demon, registra il nick se vuoi parlare
+<jester-> cosi se ti banniamo non la scampi
+<Aizram> jester-, lol :)
+<jester-> Aizram: hihihi
+<agnese> sera popolino.... qualcuno ho provato switcheroo ?
+<Holden> no, cos'è?
+<agnese> penso uno Script* se non erro... serve per chi ha due schede grafiche , a switcharle
+<agnese> http://linux-hybrid-graphics.blogspot.com/2010/07/using-acpicall-module-to-switch-onoff.html
+<agnese> mi stavo accingendo a provarlo dato che ho dei problemi col mio notebooking
+<agnese> notebook* <.<
+<Lenn> Salve a tutti, ho un altro computer che per motivi già discussi mi ha portato a chiedervi tanto: Come posso accedere e salvare i miei dati del computer con il cd live?
+<Holden> Lenn, quanti dati? quanti Gb?
+<K99Brain> Lenn, avvi col cd live e poi vai su risorse, clicchi sul tuo disco così te lo monta e copi i dati dove ti pare
+<ajalha> scusate ho noleggiato un dvd perchè il lettore di linux non me lo apre? ho provato anche a scaricare vlc player da ubuntu software center ma niente da fare...qualcuno può darmi una mano please????
+<ajalha> :(
+<ajalha> vi prego
+<ajalha> vi supplico
+<ajalha> vi imploro
+<ajalha> aiutatemi
+<FloodBotIt1> ajalha: Non intasare il canale, usa http://paste.ubuntu.com per incollare, non usare Invio come punteggiatura.
+<ajalha> va bene scusa flood
+<Lenn> K99Brain: Forse mi serve qualche privilegio da Root, in quanto mi dice che non posso aprire la home, come faccio?
+<K99Brain> Lenn, da live cd??
+<Lenn> K99Brain:  Yess
+<K99Brain> Lenn, dimmi l'errore preciso
+<AssemblerCompute> ciao ragazzi ho problemi con un otebook con VGA 885GM , seguendo varie info sul web, ho letto ch ee 'enecessarioscaricare un fix .. ma mi viene restituito: "Unable to locate package 855gm-fix-dkms"
+<K99Brain> Lenn, inoltre, che tipo di file system è?
+<K99Brain> !formatiproprietari | ajalha
+<ubot-it> ajalha: ﻿per informazioni sui formati multimediali proprietari http://wiki.ubuntu-it.org/Multimedia/FormatiProprietari - Vedi anche !FormatiLiberi
+<AssemblerCompute> la repository da cui dovrei scaricarala e' "sudo add-apt-repository ppa:glasen/855gm-fix"
+<Lenn> K99Brain: L'errore è chenon ho i permessi necessari per aprire la cartella, il File Sistem è quello grafico
+<K99Brain> Lenn, va beh, iniziamo da zero
+<K99Brain> Lenn, apri un terminale
+<Lenn> K99Brain: Poi?
+<K99Brain> Lenn, sudo parted -l
+<K99Brain> Lenn, e quelolo che esce mettilo tutto su pastebin
+<K99Brain> !paste | Lenn
+<ubot-it> Lenn: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<Lenn> K99Brain: Scusa se ti  rompo, potresti riscrivermi il comando?
+<K99Brain> Lenn, sudo parted -l
+<Lenn> K99Brain: http://paste.ubuntu.com/580710/
+<K99Brain> Lenn, sudo mount -t ext4 /dev/sda1 /mnt
+<K99Brain> Lenn, se ricevi un errore dimmelo, sennò andiamo avanti
+<Lenn> K99Brain: Non è successo nulla, possiamo proseguire
+<K99Brain> Lenn, allora te l'ha montato
+<K99Brain> Lenn, dovresti vederlo sul desktop
+<K99Brain> Lenn, oppuren in risorse,
+<Lenn> K99Brain: E infatti è lì sul desktop
+<Lenn> K99Brain:  http://img820.imageshack.us/i/screenshotpnb.png/  L'errore persiste
+<Cranick> ciao :-)
+<K99Brain> Lenn, ma per caso quando hai installa hai fatto una home criptata?
+<Lenn> K99Brain: Aia... Credo di sì
+<K99Brain> ah, ecco
+<K99Brain> Lenn, e allora nulla, non puoi accedere ai tuoi dati
+<K99Brain> non da live, almeno
+<Lenn> K99Brain: Un'altro modo c'è?
+<K99Brain> Lenn, ma il tuo sistema non si avvia piu?
+<Lenn> K99Brain: Ho un problema esposto anche sul forum, ecco il link: http://forum.ubuntu-it.org/index.php/topic,448961.0.html
+<Lenn> K99Brain: Allora?
+<Diels-Alder> ciao a tutti ho un problema con gm-notify ubuntu 10.04
+<Diels-Alder> non perde le credenziali per metterne altre è l'ho disinstallato con il purge
+<Diels-Alder> appena lo reinstallo e vado per configurarlo mi rimostra i dati che vorrei cambiare senza il pulsante applica cliccabile
+<Nede> ciao a tutti
+<Nede> [Dvb-S] Qualcuno di voi ha idea se TechnoTred S2-3200 + CI + SmarCam TivùSat + Card TivùSat + Mythtv funziona qualche cosa?
+<Diels-Alder> qualcuno mi da una mano con gm-notify?
+<Nede> Ho dei dubbi che il nuovo modulo CI non viene visto dal S.O.
+<Diels-Alder> praticamente non mi funziona il pulsante applica
+<Suffer> Zalve a tutti, come decripto la home da live?
+<lucas123> /msg NickServ VERIFY REGISTER lucas123 mwfqgtpwsaje
+<S3M> ragazzi qualcuno puo aiutarmi??
+<frnksx> salve, ogni tanto ubuntu fa spegnere lo schermo del monitor e poi mi chiede la password, come faccio a farlo restare attivo?
+<maddler> frnksx: disattiva il salvaschermo
+<frnksx> e dove si trova?
+<maddler> o, sempre dalla configurazione del salvaschermo disabilita la richiesta della password
+<maddler> frnksx: hai provato a guardare nel menu "sistema->preferenze"
+<frnksx> ecco cel'ho fatta xD
+<maddler> good
+<giggino> k3b  e brasero non mi funzionano su ubuntu 10.10,problema con mkisofs .chi può aiutarmi?grazie
+<Bartoloni> ho associato (ho tenatto di associare) ai plain text (come tipo di file) un appliaczione... gli do ' il"remeber".. e me la apre...  se riclicco sul file di testo, mi richiede che cosa voglio farxi (eseguirlo o displayerlo)... col menu' tatso destro. ma da l'opzioen di aprirlo con il gedit.. ma della mia applicazione predefinita.. nessuna traccia

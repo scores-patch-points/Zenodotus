@@ -1,0 +1,1464 @@
+---
+title: Discontinuous Galerkin and Related Methods for ODE
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20220008600
+source_url: https://ntrs.nasa.gov/citations/20220008600
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Glenn Research Center
+publication_date: 2022-07-22
+retrieved: 2026-09-22
+sha256: b7375c280d998e51d0a8e09dac9361b510fb96b0f011c166cba187cbf7129c05
+pages: 27
+words: 13986
+cv_look_pages: 6
+---
+
+ Eleventh International Conference on                                                    ICCFD11-xxxx
+ Computational Fluid Dynamics (ICCFD11),
+ Maui, Hawaii, USA, July 11-15, 2022
+
+
+
+       Discontinuous Galerkin and Related Methods for ODE
+                                           H. T. Huynh
+                                         huynh@grc.nasa.gov
+                              NASA Glenn Research Center, MS 5-11,
+                                    Cleveland, OH 44135, USA.
+
+
+         Abstract: A defining feature of the discontinuous Galerkin (DG) method for ODE is
+         that the piecewise polynomial solution can have a jump discontinuity at the beginning
+         of each step. Starting from the standard integral formulation, the DG method is derived
+         here in differential form. The key ingredient is a polynomial called the correction
+         function, which helps ‘correct’ the discontinuous solution by approximating the jump
+         and yields a continuous one. Under the right Radau quadrature, this continuous solution
+         is identical to the solutions by the right Radau collocation and the continuous Galerkin
+         (CG) methods. Next, the correction function facilitates the construction of the
+         associated implicit Runge-Kutta schemes (IRK-DG). Different quadratures for DG
+         result in different IRK-DG methods: left Radau quadrature in Radau IA, right Radau
+         quadrature in Radau IIA or right Radau collocation, and Gauss quadrature in a method
+         called DG-Gauss. The construction of IRK-DG clarifies the meaning and facilitates the
+         proofs of various 𝐵(𝑝), 𝐶(𝜂), and 𝐷(𝜁) conditions for accuracy. The two consequences
+         of these conditions are that all 𝑠-stage IRK-DG methods are accurate to order 2𝑠 − 1,
+         and the IRK-DG methods of Radau type are unique. Numerical examples showing the
+         behavior of the DG solutions are provided. In all, the correction function plays a key
+         role and helps establish the relations among the DG, IRK-DG, collocation, and CG
+         schemes.
+
+         Keywords: Discontinuous Galerkin, implicit Runge-Kutta, collocation, continuous
+         Galerkin, time stepping, numerical methods, ordinary differential equations.
+
+1    Introduction
+The finite element method is popular for numerically solving partial differential equations as well as
+ordinary differential equations (e.g., Eriksson et al. 1996, Johnson 2012, Hughes 2012). The continuous
+finite element, or continuous Galerkin (CG), method was first employed to solve ODE by Argyris &
+Scharpf (1969) and Fried (1969). Hulme (1972) showed that the CG method for ODE is equivalent to the
+collocation method using quadrature points as collocation points.
+    Collocation is an idea widely applicable in numerical analysis. For ODE, collocation methods enforce
+the differential equation at the collocation points. These methods were studied by Cooper (1968) and
+Axelsson (1969). Wright (1970) showed that the collocation process leads to an implicit Runge-Kutta
+(IRK) scheme. Collocation methods are covered in most texts on numerical methods for ODE (e.g., Hairer,
+Norsett, & Wanner 1993, Hairer & Wanner 1991, Lambert 1991).
+    The discontinuous Galerkin (DG) method, which allows jump discontinuities across cells or elements,
+was introduced by Reed & Hill (1973) for the neutron transport equation. These methods are popular for
+the spatial discretization of conservation laws (Cockburn, Karniadakis, & Shu 2000). LeSaint & Raviart
+(1974) formulated the DG method for ODE and showed, by employing the left Radau quadrature, that the
+method results in an IRK scheme that is A-stable and superconvergent. Delfour, Hager, & Trochu (1981)
+generalized the DG method by using a weighted average of the left and right values for the boundary terms
+
+
+
+                                                       1
+of each step and proved the superconvergence property of the resulting method. In general, such a weighted
+average leads to the coupling among the steps and a very large system of equations, and the method is no
+longer of one-step type. More recent efforts on unifying frameworks for DG and related methods as well
+as their associated IRK schemes include the contributions of Borri & Bottasso (1993), Bottasso (1997),
+Tang & Sun (2012), and Zhao & Wei (2014). Dissipative dynamical behavior of the DG method was
+studied by Estep & Stuart (2001). A posteriori error estimates of the DG method was explored by Baccouch
+(2016). A time finite element method based on Hamilton’s variational principle can be found in Xing, Qiu,
+& Guo (2017). An adaptive DG method for very stiff systems was investigated by Fortina & Yakoubi
+(2019). Additional contributions can be found in the cited references. A common feature of papers on this
+subject is that they are typically highly algebraic and/or analytic, centering on error estimates and stability
+analyses.
+    In this paper, we study the DG method for ODE from a perspective different from those in the literature.
+Our focus is on constructing the solution. This task is accomplished by removing the test function in the
+integral formulation and deriving the DG method in differential form. The key ingredient is a polynomial
+called the correction function, which helps ‘correct’ the discontinuous solution by approximating the jump
+at the beginning of each step. The result is a continuous solution for the DG method. Under the right Radau
+quadrature, this continuous solution is identical to the solutions by the right Radau collocation and the CG
+methods. Next, the correction function facilitates the construction of the associated implicit Runge-Kutta
+schemes (IRK-DG). Different quadratures for DG result in different IRK-DG methods: left Radau
+quadrature in Radau IA, right Radau quadrature in Radau IIA or right Radau collocation, and Gauss
+quadrature in a method called DG-Gauss. All 𝑠-stage IRK-DG methods are shown to be accurate to order
+2𝑠 − 1. The proof is carried out by employing the IRK-DG construction to derive various 𝐵(𝑝), 𝐶(𝜂), and
+𝐷(𝜁) conditions. The 𝐶(𝑠) and 𝐷(𝑠) conditions also lead to uniqueness of the Radau type methods.
+Numerical examples showing the behavior of the DG solutions are provided. In sum, the correction
+function plays a crucial role and helps clarify the relations among the DG and related schemes.
+    This paper is essentially self-contained and organized as follows: the DG method is presented in §2,
+the resulting IRK-DG §3, accuracy §4, numerical examples §5, and conclusions and discussion §6.
+
+
+2     Discontinuous Galerkin (DG) Formulation for ODE
+For simplicity and with no loss of generality, instead of a system of equations, consider a scalar ODE:
+                                               𝑢′ (𝑥) = 𝑓(𝑥, 𝑢(𝑥))
+with initial condition
+                                                   𝑢(𝑥0 ) = 𝑢0 .
+Assuming a solution exists, the methods studied are of one-step type: the data 𝑢𝑛 at 𝑥𝑛 is known and, with
+step size ℎ (may depend on 𝑛), the solution 𝑢𝑛+1 at 𝑥𝑛+1 = 𝑥𝑛 + ℎ is to be calculated, 𝑛 = 0, 1, 2, ….
+    The DG method approximates the solution on (𝑥𝑛 , 𝑥𝑛 + ℎ] by a polynomial 𝑢ℎ of degree 𝑘. At each
+𝑥𝑛 , the data is 𝑢𝑛 = 𝑢ℎ (𝑥𝑛− ), i.e., upwinding is employed; for 𝑛 = 0, the data is the initial condition 𝑢0 . A
+defining feature of the method is that the piecewise polynomial function 𝑢ℎ can be and usually is
+                                                                                       − ).
+discontinuous across each 𝑥𝑛 , or 𝑢ℎ (𝑥𝑛− ) ≠ 𝑢ℎ (𝑥𝑛+ ). The solution is 𝑢𝑛+1 = 𝑢ℎ (𝑥𝑛+1
+    As is routine, the reference or local variable 𝜉 on [0, 1] is employed:
+                                                   𝑥 = 𝑥𝑛 + 𝜉ℎ.
+A function 𝑣(𝑥) on [𝑥𝑛 , 𝑥𝑛+1 ] corresponds to a function on [0, 1] also denoted by 𝑣: 𝑣(𝜉) = 𝑣(𝑥(𝜉)). By
+applying the chain rule to the ODE,
+                                             𝑑𝑢
+                                                 = ℎ𝑓(𝜉, 𝑢(𝜉)).
+                                             𝑑𝜉
+For the moment, with no loss of generality, we assume
+                                                      ℎ = 1.
+Loosely put, ℎ is absorbed into 𝑓. The case of a general ℎ is straightforward and will be expressed later.
+
+
+                                                          2
+   In the rest of this paper, we employ the notation
+                                                            𝑑𝑢
+                                                     𝑢′ =      .
+                                                            𝑑𝜉
+Thus, using the local coordinate 𝜉 with the assumption ℎ = 1, the ODE takes the form: on [0, 1],
+                                      𝑢′ (𝜉) = 𝑓(𝜉, 𝑢(𝜉)),         𝑢(0) = 𝑢𝑛 .                              (2.1)
+   Denote by 𝑷𝑘 the space of polynomials of degree 𝑘 or less, by 𝒫𝑘 the projection onto 𝑷𝑘 and, for any
+two functions 𝑣 and 𝑤 on [0, 1] (usually polynomials here),
+                                                        1
+                                           (𝑣, 𝑤) = ∫ 𝑣(𝜉)𝑤(𝜉)𝑑𝜉 .
+                                                       0
+               ′ (𝜉)
+   To solve 𝑢       = 𝑓(𝜉, 𝑢(𝜉)), the DG method seeks a polynomial 𝑢ℎ of degree 𝑘 on (0, 1], such that
+for any 𝑣 in 𝑷𝑘 , (𝑢ℎ′ , 𝑣) nearly equals (𝑓, 𝑣); the precise criteria is given by (2.3) below. To involve 𝑢𝑛 ,
+by integration by parts,
+                                 (𝑢ℎ′ , 𝑣) = 𝑢ℎ (1)𝑣(1) − 𝑢ℎ (0+ )𝑣(0) − (𝑢ℎ , 𝑣 ′ ).
+At 𝜉 = 0, the data 𝑢𝑛 is more critical and is employed instead of 𝑢ℎ (0+ ) above.
+   The DG method seeks 𝑢ℎ of degree 𝑘 on (0, 1] such that for any 𝑣 in 𝑷𝑘 (called a test function),
+                                 𝑢ℎ (1)𝑣(1) − 𝑢𝑛 𝑣(0) − (𝑢ℎ , 𝑣 ′ ) = (𝑓, 𝑣).                               (2.2)
+The above is often called the weak form. Integrate (𝑢ℎ , 𝑣 ′ ) by parts, we obtain the strong form
+                                    [𝑢ℎ (0+ ) − 𝑢𝑛 ]𝑣(0) + (𝑢ℎ′ , 𝑣) = (𝑓, 𝑣).                              (2.3)
+At 𝑥𝑛+1 , the solution 𝑢𝑛+1 is, in the local coordinate,
+                                            𝑢𝑛+1 = 𝑢ℎ (1) = 𝑢ℎ (1− ).                                       (2.4)
+Strictly speaking, 𝑢ℎ is defined on (0,1]. To simplify the notation, its domain is extended to [0,1] by
+                                               𝑢ℎ (0) = 𝑢ℎ (0+ ).
+Since 𝑣 ∈ 𝑷𝑘 , we can replace 𝑓 on the right hand side of (2.3) by its projection onto 𝑷𝑘 , i.e., 𝒫𝑘 (𝑓). Set
+                                                   𝑓ℎ = 𝒫𝑘 (𝑓).                                             (2.5)
+By the above two equations, the strong form (2.3) can be written as
+                                  [𝑢ℎ (0) − 𝑢𝑛 ]𝑣(0) + (𝑢ℎ′ , 𝑣) = (𝑓ℎ , 𝑣).                                (2.6)
+Note that 𝑓ℎ = 𝒫𝑘 (𝑓) is of degree 𝑘, and 𝑢ℎ′ , degree 𝑘 − 1. Loosely put, 𝑢ℎ′ nearly equals 𝑓ℎ except for
+the term [𝑢ℎ (0) − 𝑢𝑛 ]𝑣(0).
+   The following simple example shows the essential properties of the DG solution. With 𝜉 on [0, 1], solve
+                                𝑢′ (𝜉) = 𝑓(𝜉) = 6𝜉 − 5,        𝑢(0) = 3.
+The exact solution is trivial,
+                                             𝑈(𝜉) = 3𝜉 2 − 5𝜉 + 3.                                          (2.7)
+For the linear DG solution 𝑢ℎ (𝜉) = 𝑎𝜉 + 𝑏, on [0, 1], by the strong form (2.6) with 𝑣 = 1 and 𝑣 = 𝜉, a
+little algebra yields 𝑎 = −1 and 𝑏 = 2, or
+                                                𝑢ℎ (𝜉) = −𝜉 + 2.                                            (2.8)
+The solution at the end of the step is 𝑢ℎ (1) = 𝑈(1) = 1.
+   Next, on [0, 1], the two left Radau points are 0 and 2/3, and right Radau points, 1/3 and 1. The
+quadratic solution 𝑈 of (2.7) and the linear DG solution 𝑢ℎ above intersect at (1/3, 5/3) and (1,1) i.e.,
+the abscissas of their intersections are the two right Radau points (see Fig. 2.1b). Whereas 𝑈 satisfies
+𝑈(0) = 𝑢𝑛 = 3, the DG solution 𝑢ℎ does not, and 𝑢ℎ interpolates 𝑈 at the two right Radau points and is
+defined by the values of 𝑈 at these two points. On the other hand, 𝑢ℎ′ and 𝑈 ′ intersect at (2/3, −1), i.e.,
+the abscissa of their intersection is the interior left Radau point (see Fig. 2.1a). That is, the solutions 𝑈 and
+𝑢ℎ match at the right Radau points, and their derivatives 𝑈 ′ and 𝑢ℎ′ match at the interior left Radau points.
+
+
+
+
+                                                            3
+   It will be shown that (a) the above relation for 𝑈 and 𝑢ℎ as well as that for 𝑈 ′ and 𝑢ℎ′ hold true for the
+general case; (b) the left and right Radau points also play an essential role in the approximate Dirac delta
+and the correction functions, respectively; and (c) 𝑈 is a collocation as well as a CG solution.
+   Fig. 2.1a shows the plots of 𝑓(𝜉) = 6𝜉 − 5 (thick blue line) and 𝑢ℎ′ = −1 (dot-dashed green line); the
+𝜉-coordinate of their intersection is the nonzero member of the two left Radau points (blue square dots on
+𝜉-axis). Fig. 2.1b shows the (exact) quadratic solution 𝑈 (thick blue curve) and the linear DG solution 𝑢ℎ
+(dot-dashed green line); the intersections of 𝑈 and 𝑢ℎ (big red circular dots) and their 𝜉-coordinates, which
+are the two right Radau points (small red circular dots).
+   We can also turn the problem around and ask: on [0, 1], how do we evaluate the derivative of the
+discontinuous function 𝑢ℎ defined by 𝑢ℎ (0) = 3 and, for 0 < 𝜉 ≤ 1, 𝑢ℎ (𝜉) = −𝜉 + 2? The answer is that
+the DG method amounts to the following derivative evaluation: reconstruct the solution via 𝑈 of one degree
+higher than 𝑢ℎ that interpolates 𝑢ℎ at the right Radau points and satisfies 𝑈(0) = 3: 𝑈 = 3𝜉 2 − 5𝜉 + 3;
+the derivative of the discontinuous function 𝑢ℎ is given by 𝑈 ′ . Note that 𝑈 ′ is of the same degree as 𝑢ℎ .
+Such a derivative estimate for a polynomial with a jump discontinuity also holds true for the general case.
+
+
+
+
+             Left Radau points
+                                                                    𝑈
+
+                                                                                           𝑢ℎ
+                                        𝑢ℎ′
+
+                      𝑓                                                            Right Radau points
+
+
+
+                           (a)                                                   (b)
+Fig. 2.1 The graphs of (a) 𝑓(𝜉) = 6𝜉 − 5 (thick blue line), 𝑢ℎ′ = −1 (dot-dashed green line), and the two
+left Radau points (blue square dots on 𝜉-axis); and (b) the quadratic solution 𝑈 (thick blue curve), the
+linear DG solution 𝑢ℎ (dot-dashed green line), and the two right Radau points (red circular dots).
+
+
+
+   Approximate Dirac Delta Function 𝛾 at 𝜉 = 0
+   The standard approach is to solve the weak form (2.2) or the strong form (2.3). Here, the goal is to
+define a polynomial 𝑈 of degree 𝑘 + 1 closely related to 𝑢ℎ and has the properties that
+                                          𝑈 ′ = 𝑓ℎ and 𝑈(0) = 𝑢𝑛 .                                       (2.9)
+In other words, we wish to eliminate the test function 𝑣 in (2.6).
+   To this end, let ℝ be the real line. The mapping 𝐵 from 𝑷𝑘 to ℝ defined by, for each 𝑣 in 𝑷𝑘 ,
+                                                 𝐵(𝑣) = 𝑣(0),
+is a linear functional on 𝑷𝑘 . Thus, there exists 𝛾 in 𝑷𝑘 such that 𝐵(𝑣) = (𝛾, 𝑣), i.e.,
+                                                  (𝛾, 𝑣) = 𝑣(0).                                        (2.10)
+    The polynomial 𝛾 of degree 𝑘 is called an approximate Dirac delta function for the following reason.
+In our context, on [0, 1], let the Dirac delta function at 𝜉 = 0 be denoted by 𝛿0 and defined by 𝛿0 (𝑣) =
+𝑣(0) for any continuous function 𝑣 on [0, 1]. Then 𝛾 defined above is an approximation of 𝛿0 by an
+element of 𝑷𝑘 .
+    In fact, 𝛾 can be expressed explicitly. Let the 𝑘 + 1 left Radau points on [0, 1] be denoted by 𝜉𝐿,1 , …,
+𝜉𝐿,𝑘+1 where 𝜉𝐿,1 = 0. Let 𝑙𝐿,1, …, 𝑙𝐿,𝑘+1 be the corresponding Lagrange (basis) polynomials, which are
+of degree 𝑘 and satisfy 𝑙𝐿,𝑗 (𝜉𝐿,𝑖 ) = 𝛿𝑖,𝑗 . Then
+
+
+
+                                                         4
+                                                      𝛾 = (𝑘 + 1)2 𝑙𝐿,1 .                                 (2.11)
+To show the above, let the corresponding left Radau quadrature weights be 𝑏𝐿,1 , …, 𝑏𝐿,𝑘+1 where
+                                                      1
+                                           𝑏𝐿,1 =          .                                     (2.12)
+                                                  (𝑘 + 1)2
+(The standard weight of 2/(𝑘 + 1)2 is due to the domain being [−1, 1]; see, e.g., Hildebrand 1974). Recall
+that the Radau quadrature with 𝑘 + 1 evaluation points has a degree of precision 2𝑘, i.e., it is exact for any
+polynomial of degree 2𝑘 or less. As a consequence, for any 𝑣 in 𝑷𝑘 , since 𝑙𝐿,1 𝑣 is of degree 2𝑘 or less, by
+applying the left Radau quadrature, and since 𝑙𝐿,1 vanishes at all Left Radau points except at 𝜉𝐿,1 = 0,
+                                         1
+                                                                                1
+                           (𝑙𝐿,1 , 𝑣) = ∫ 𝑙𝐿,1 (𝜉)𝑣(𝜉)𝑑𝜉 = 𝑏𝐿,1 𝑣(0) =                𝑣(0).
+                                        0                                    (𝑘 + 1)2
+That is,
+                                               ((𝑘 + 1)2 𝑙𝐿,1 , 𝑣) = 𝑣(0).
+The above and (2.10) completes the proof of (2.11).
+   Fig. 2.2a shows the 3 left Radau points (blue square dots on the 𝜉-axis) and the corresponding Lagrange
+polynomials for 𝑘 = 2, and Fig. 2.2b shows the approximate Dirac delta function 𝛾 for 𝑘 = 8 (thin blue
+curve) and 𝑘 = 9 (red thick curve).
+
+
+
+
+      𝑙𝐿,1             𝑙𝐿,2                    𝑙𝐿,3
+                                                                            𝑘=9        𝑘=8
+
+      𝜉𝐿,1          𝜉𝐿,2                    𝜉𝐿,3
+              Left Radau points 𝜉𝐿,𝑗
+
+                            (a)                                                   (b)
+Fig. 2.2 (a) The left Radau points 𝜉𝐿,𝑗 (blue square dots) and the corresponding Lagrange polynomials 𝑙𝐿,𝑗 ,
+𝑗 = 1, 2, 3 for 𝑘 = 2. (b) The approximate Dirac delta function 𝛾 = (𝑘 + 1)2 𝑙𝐿,1 for 𝑘 = 8 (blue thin
+curve) and 𝑘 = 9 (red thick curve).
+
+
+
+   With 𝛾 as in (2.11), by using (2.10), the strong form (2.6) can be written as
+                                  [𝑢ℎ (0) − 𝑢𝑛 ](𝛾, 𝑣) + (𝑢ℎ′ , 𝑣) = (𝑓ℎ , 𝑣).                            (2.13)
+That is (recall 𝑢ℎ′ = 𝑑𝑢/𝑑𝜉 and ℎ is absorbed into 𝑓), on [0, 1],
+                                           [𝑢ℎ (0) − 𝑢𝑛 ]𝛾 + 𝑢ℎ′ = 𝑓ℎ .                                   (2.14)
+Here, 𝑢ℎ′ is of degree 𝑘 − 1, but 𝛾 is of degree 𝑘 matching that of 𝑓ℎ = 𝒫𝑘 (𝑓).
+   It will be shown later that by using a quadrature for DG, 𝑓ℎ can be defined by its values at the quadrature
+points. As such, the above equation yields a differential formulation for DG involving no inner products.
+   The left Radau points play a special role in the above differential formulation. Indeed, by (2.11), the
+above implies
+                                     𝑢ℎ′ − [𝑢𝑛 − 𝑢ℎ (0)](𝑘 + 1)2 𝑙𝐿,1 = 𝑓ℎ .                            (2.15)
+Thus, in solving 𝑢′ = 𝑓, the DG solution 𝑢ℎ satisfies, at the interior left Radau points 𝜉𝐿,𝑗 , i.e., for 2 ≤ 𝑗 ≤
+𝑘 + 1,
+
+
+
+                                                                5
+                                             𝑢ℎ′ (𝜉𝐿,𝑗 ) = 𝑓ℎ (𝜉𝐿,𝑗 )                                 (2.16)
+and for 𝑗 = 1, i.e., at 𝜉 = 𝜉𝐿,1 = 0, by (2.15),
+                                  𝑢ℎ′ (0) − (𝑘 + 1)2 [𝑢𝑛 − 𝑢ℎ (0)] = 𝑓ℎ (0).                          (2.17)
+    Loosely put, the jump in function values at 𝜉 = 0 from 𝑢𝑛 to 𝑢ℎ (0) does not alter the derivative at the
+nonzero left Radau points by (2.16); however, at 𝜉 = 0, by the above, the derivative 𝑢ℎ′ (0) is ‘corrected’
+by an amount of −(𝑘 + 1)2 [𝑢𝑛 − 𝑢ℎ (0)] to account for the jump (see also Fig. 2.1). In other words, by
+employing the 𝑘 + 1 left Radau points to evaluate the derivative of 𝑢ℎ , all the corrections caused by the
+jump [𝑢𝑛 − 𝑢ℎ (0)] in function values at the left boundary is lumped to the left boundary itself and the
+amount of correction for the derivative evaluation at the left boundary is −(𝑘 + 1)2 [𝑢𝑛 − 𝑢ℎ (0)]. This
+discussion will be clarified further by the correction function of the next subsection.
+    As a consequence of (2.16) and (2.17), the solution 𝑢ℎ can be constructed from the values of 𝑓ℎ at the
+left Radau points as follows. Consider 𝑘 of the 𝑘 + 1 left Radau points away from the left boundary,
+                                     (𝑘−1)       (𝑘−1)
+namely, 𝜉𝐿,𝑗 , 2 ≤ 𝑗 ≤ 𝑘 + 1. Let 𝑙𝐿,2 , …, 𝑙𝐿,𝑘+1 be the corresponding Lagrange (basis) polynomials,
+which are of degree 𝑘 − 1. Then, by (2.16) and, since 𝑢ℎ′ is of degree 𝑘 − 1,
+                                                       𝑘+1
+                                                                        (𝑘−1)
+                                       𝑢ℎ′ (𝜉) = ∑           𝑓ℎ (𝜉𝐿,𝑗 )𝑙𝐿,𝑗     (𝜉).                  (2.18)
+                                                       𝑗=2
+Consequently,
+                                                       𝑘+1
+                                                                        (𝑘−1)
+                                       𝑢ℎ′ (0) = ∑           𝑓ℎ (𝜉𝐿,𝑗 )𝑙𝐿,𝑗     (0).
+                                                       𝑗=2
+Substitute right hand side the above into (2.17), we obtain
+                                            1                 𝑘+1
+                                                                             (𝑘−1)
+                         𝑢ℎ (0) = 𝑢𝑛 +            [𝑓 (0) −  ∑     𝑓ℎ (𝜉𝐿,𝑗 )𝑙𝐿,𝑗 (0)].                (2.19)
+                                        (𝑘 + 1)2 ℎ            𝑗=2
+                           𝜉
+Since 𝑢ℎ (𝜉) = 𝑢ℎ (0) + ∫0 𝑢ℎ′ (𝜂) 𝑑𝜂, the above and (2.18) yield a solution that depends only on 𝑓ℎ (𝜉𝐿,𝑗 ),
+                                                    𝜉        𝑘+1
+                                                                              (𝑘−1)
+                               𝑢ℎ (𝜉) = 𝑢ℎ (0) + ∫ ∑               𝑓ℎ (𝜉𝐿,𝑗 )𝑙𝐿,𝑗      (𝜂) 𝑑𝜂.        (2.20)
+                                                   0         𝑗=2
+   Whereas 𝑢ℎ can be expressed using the values of 𝑓ℎ at the left Radau points as in the above two
+equations, it turns out that by using the right Radau points, 𝑢ℎ can be expressed in a simpler and more
+conveying manner as will be shown by (2.34) or (2.35) below.
+
+   Correction Function 𝑔
+   The polynomial 𝛾 approximates the derivative of a jump. We now wish to approximate the jump itself.
+In other words, we wish to integrate (2.14) by first integrating −𝛾.
+   Let the polynomial 𝑔 of degree 𝑘 + 1 be defined by
+                                           𝑔′ = −𝛾 = −(𝑘 + 1)2 𝑙𝐿,1                                   (2.21)
+and
+                                                    𝑔(0) = 1.                                         (2.22)
+These two conditions result in
+                                                        𝜉
+                                      𝑔(𝜉) = 1 − ∫ (𝑘 + 1)2 𝑙𝐿,1 (𝜂)𝑑𝜂 .                              (2.23)
+                                                        0
+The function 𝑔 defined above satisfies
+                                                    𝑔(1) = 0.                                         (2.24)
+Indeed, by using the left Radau quadrature and (2.12),
+
+
+
+
+                                                              6
+                                               1
+                                            ∫ (𝑘 + 1)2 𝑙𝐿,1 (𝜉)𝑑𝜉 = 1.
+                                             0
+The above (which is also a property of the Dirac delta function) and (2.23) imply (2.24).
+   As a consequence of 𝑔(0) = 1 and 𝑔′ = −𝛾, similar to (2.17), loosely put, when calculating the
+derivative of a jump at 𝜉 = 0, a jump of size 1 in function values (i.e., 𝑔(0) = 1) leads to a jump of size
+−(𝑘 + 1)2 in derivative values (i.e., 𝑔′ (0) = −(𝑘 + 1)2 ).
+   The following assertion holds: the polynomial 𝑔 defined by (2.23) of degree 𝑘 + 1 is orthogonal to all
+polynomials of degree 𝑘 − 1 or less:
+                                                       𝑔 ⊥ 𝑷𝑘−1 .                                                   (2.25)
+  For the proof, let 𝑣 be in 𝑷𝑘 , then 𝑣 ′ is in 𝑷𝑘−1 and, as 𝑣 spans 𝑷𝑘 , 𝑣 ′ spans 𝑷𝑘−1 . Next, recall that
+𝑔(0) = 1 and 𝑔(1) = 0; thus
+                       (𝑔, 𝑣 ′ ) = 𝑔(1)𝑣(1) − 𝑔(0)𝑣(0) − (𝑔′ , 𝑣) = −𝑣(0) − (𝑔′ , 𝑣).
+By (2.21), 𝑔′ = −𝛾. Therefore,
+                                           (𝑔′ , 𝑣) = (−𝛾, 𝑣) = −𝑣(0),
+where the last equality above follows from (2.10). As a result of the above two equations, for all 𝑣 in 𝑷𝑘 ,
+                                                       (𝑔, 𝑣 ′ ) = 0.
+As 𝑣 spans 𝑷𝑘 , 𝑣 ′ spans 𝑷𝑘−1 , and assertion (2.25) follows.
+   We can now show that 𝑔 defined by (2.23) is identical to the right Radau polynomial of degree 𝑘 + 1
+defined by the 𝑘 + 2 conditions that it vanishes at the 𝑘 + 1 right Radau points and 𝑔(0) = 1.
+   Indeed, condition 𝑔(0) = 1 is satisfied by requirement (2.22). Next, let the 𝑘 + 1 right Radau points
+be denoted by 𝜉𝑅,1 , …, 𝜉𝑅,𝑘+1 . Among these points, 𝑔(𝜉𝑅,𝑘+1 ) = 𝑔(1) = 0 by (2.24). Consider now the
+                                                                                (𝑘−1)
+𝑘 members other than the right boundary, namely, 𝜉𝑅,1 , …, 𝜉𝑅,𝑘 . Let 𝑙𝑅,𝑖 , 1 ≤ 𝑖 ≤ 𝑘, be the
+corresponding Lagrange polynomials of degree 𝑘 − 1. Then, since, by (2.25), 𝑔 is orthogonal to 𝑷𝑘−1 ,
+                                                         (𝑘−1)
+                                                    (𝑔, 𝑙𝑅,𝑖     ) = 0.
+                    (𝑘−1)                                                                         (𝑘−1)
+Next, evaluate (𝑔, 𝑙𝑅,𝑖 ) by the 𝑘 + 1 right Radau quadrature. Since 𝑔(1) = 0 and 𝑙𝑅,𝑖                    (𝜉𝑅,𝑗 ) = 𝛿𝑖𝑗 for
+1 ≤ 𝑖, 𝑗 ≤ 𝑘, we obtain, with 𝑏𝑅,𝑖 the Radau weight at 𝜉𝑅,𝑖 ,
+                                 (𝑘−1)                         (𝑘−1)
+                            (𝑔, 𝑙𝑅,𝑖     ) = 𝑏𝑅,𝑖 𝑔(𝜉𝑅,𝑖 )𝑙𝑅,𝑖         (𝜉𝑅,𝑖 ) = 𝑏𝑅,𝑖 𝑔(𝜉𝑅,𝑖 ).
+The above two equations imply 𝑏𝑅,𝑖 𝑔(𝜉𝑅,𝑖 ) = 0. Since all Radau weights are nonzero (strictly positive),
+                                                      𝑔(𝜉𝑅,𝑖 ) = 0.
+This completes the proof.
+    Fig. 2.3a shows the cubic correction function 𝑔 for the case 𝑘 = 2; here, 𝑔′ vanishes at two of the three
+left Radau points: 𝑔′ (𝜉𝐿,2 ) = 𝑔′ (𝜉𝐿,3 ) = 0. Fig. 2.3b shows the correction function of degree 𝑘 + 1 for
+𝑘 = 8 (thin blue curve) and 𝑘 = 9 (thick red curve).
+    The following remark is in order. In our context, the Heaviside function 𝐻 on [0, 1] is the step-up
+function defined by 𝐻(0) = 0 and 𝐻(𝜉) = 1 for 0 < 𝜉 ≤ 1. Then 𝐻 ′ = 𝛿0 or 𝐻 is the integral of 𝛿0 . Let
+the step-down function be defined by Stdn = 1 − 𝐻 or Stdn(0) = 1 and, for 0 < 𝜉 ≤ 1, Stdn(𝜉) = 0.
+Then, Stdn′ = −𝛿0 . Concerning the corresponding polynomial approximations, 𝑔 of degree 𝑘 + 1
+approximates the step-down function, and 𝑔′ = −𝛾 of degree 𝑘 approximates −𝛿0 .
+    The correction function 𝑔 can also be defined by using the Legendre polynomials, which are typically
+defined on [−1, 1]. Any function 𝑉 on [−1, 1] corresponds to a function 𝑣(𝜉) on [0, 1] by
+                                                   𝑣(𝜉) = 𝑉(2𝜉 − 1).
+All special polynomials discussed here are on [0, 1] using the above transformation. For any integer 𝑛 ≥ 0
+(𝑛 here has nothing to do with the subscript 𝑛 of 𝑢𝑛 ), the Legendre polynomial of degree 𝑛 denoted by 𝐿𝑛
+is defined by the 𝑛 + 1 conditions that 𝐿𝑛 (1) = 1 and 𝐿𝑛 is orthogonal to 𝑷𝑛−1 . Then, as is well known,
+
+
+
+                                                               7
+                                                    𝐿𝑛 (0) = (−1)𝑛 .
+Next, the left and right Radau polynomials of degree 𝑛 are respectively defined by
+                                        1                              (−1)𝑛
+                               𝑅𝐿,𝑛 = 2 (𝐿𝑛 + 𝐿𝑛−1 ) and 𝑅𝑅,𝑛 =          2
+                                                                               (𝐿𝑛 − 𝐿𝑛−1 ).           (2.26)
+Note that 𝑅𝑅,𝑛 (𝜉) = 𝑅𝐿,𝑛 (1 − 𝜉). As a consequence of the above definitions,
+                            𝑅𝐿,𝑛 (0) = 0, 𝑅𝐿,𝑛 (1) = 1, 𝑅𝑅,𝑛 (0) = 1, and 𝑅𝑅,𝑛 (1) = 0.
+The correction function 𝑔 equals the right Radau polynomial of degree 𝑘 + 1 (see Huynh 2007, 2009a):
+                                                      𝑔 = 𝑅𝑅,𝑘+1 .                                     (2.27)
+Also note that since 𝐿𝑛 ⊥ 𝑷𝑛−1 for all 𝑛, by the second half of (2.26), 𝑔 above satisfies 𝑔 ⊥ 𝑷𝑘−1 ,
+consistent with (2.25).
+
+
+
+
+                                                                     𝑔           𝑘=9
+           𝑔                                                                                    𝑘=8
+
+              𝜉𝑅,1               𝜉𝑅,2           𝜉𝑅,3
+       𝜉𝐿,1          𝜉𝐿,2                    𝜉𝐿,3
+
+                            (a)                                                (b)
+Fig. 2.3 (a) The cubic correction function 𝑔 for the case 𝑘 = 2; 𝑔 vanishes at the three right Radau points
+(red circular dots) and has local extrema at two of the three left Radau points (blue square dots). (b) The
+correction functions of degree 𝑘 + 1 for 𝑘 = 9 (thick red curve) and 𝑘 = 8 (thin blue curve).
+
+    Fig. 2.4 shows, on [0, 1], the graphs of the Legendre polynomials of degree 𝑛 (thin blue curve) and
+degree 𝑛 − 1 (thin purple curve), the left Radau polynomial of degree 𝑛 or 𝑅𝐿,𝑛 = (𝐿𝑛 + 𝐿𝑛−1 )/2 (dashed
+red curve) , and the right Radau polynomial 𝑅𝑅,𝑛 (thick red curve); Fig. 2.4a depicts the case 𝑛 = 2 and
+Fig. 2.4b the case 𝑛 = 3. The zeros of the right Radau polynomial are the right Radau points (red circular
+dots), and the zeros of the left Radau polynomial are the left Radau points (blue square dots). The interior
+left Radau points (the exception is the first one, 𝜉 = 0) are the local extrema of the right Radau polynomial
+and, vice versa, the interior right Radau points (the exception is the last one, 𝜉 = 1) are the local extrema
+of the left Radau polynomial. The abscissas of the intersections of the curves 𝐿𝑛−1 and 𝐿𝑛 are also the
+interior right Radau points.
+
+
+
+
+                                        𝐿1                                                𝐿3
+                     𝑅𝑅,2
+                                              𝐿2                                   𝑅𝐿,3         𝑅𝑅,3
+
+         𝑅𝐿,2
+                                                                                           𝐿2
+
+
+                          (a)                                                   (b)
+    Fig. 2.4 The graphs of 𝐿𝑛 (thin blue curve), 𝐿𝑛−1 (thin purple curve), 𝑅𝐿,𝑛 (dashed red curve), and 𝑅𝑅,𝑛
+(thick red curve) for (a) 𝑛 = 2 and (b) 𝑛 = 3.
+
+
+
+                                                            8
+   Note that the Radau polynomials were employed in the flux reconstruction method to correct for the
+jumps in fluxes at the cell boundaries (Huynh 2007, 2009a, Huynh, Wang, & Vincent 2014). They were
+employed for error estimates in Baccouch (2016) to prove the super-convergence properties.
+   We review the key properties of 𝑔. It is of degree 𝑘 + 1 so that 𝑔′ is of degree 𝑘 matching that of 𝑢ℎ
+and 𝑓ℎ . It vanishes at the 𝑘 + 1 right Radau points; on the other hand, 𝑔′ vanishes at 𝑘 of the 𝑘 + 1 left
+Radau points; the exception is 𝑔′ (0) = −(𝑘 + 1)2 . It provides a polynomial approximation to the step-
+down function. The polynomial −𝑔′ = 𝛾 = (𝑘 + 1)2 𝑙𝐿,1 of degree 𝑘 approximates 𝛿0 . Finally, 𝑔 is the
+polynomial of degree 𝑘 + 1 defined by the 𝑘 + 2 conditions that 𝑔(0) = 1, 𝑔(1) = 0, and 𝑔 ⊥ 𝑷𝑘−1 .
+
+   DG Formulation via Correction Function
+   We can now apply the correction function 𝑔 to the DG formulation.
+   To prepare for the resulting implicit Runge-Kutta methods, from here on, we deal with the equation
+𝑢′ = 𝑑𝑢/𝑑𝜉 = ℎ𝑓 and a general step size ℎ. By (2.21), 𝑔′ = −𝛾; therefore, (2.14) takes the form
+                                       ([𝑢𝑛 − 𝑢ℎ (0)]𝑔 + 𝑢ℎ )′ = ℎ𝑓ℎ .                                 (2.28)
+Next, set
+                                          𝑈 = [𝑢𝑛 − 𝑢ℎ (0)]𝑔 + 𝑢ℎ .                                    (2.29)
+Then 𝑈 is of degree 𝑘 + 1 whereas 𝑢ℎ is of degree 𝑘, and (2.28) can be written concisely:
+                                                   𝑈 ′ = ℎ𝑓ℎ .                                         (2.30)
+Since 𝑔(0) = 1,
+                                                  𝑈(0) = 𝑢𝑛 .                                          (2.31)
+Since 𝑔(1) = 0,
+                                               𝑈(1) = 𝑢ℎ (1).                                          (2.32)
+   The polynomial 𝑈 defined by (2.29) solves the ODE by matching it closely as shown by (2.30) and
+(2.31). At the 𝑘 + 1 right Radau points, the values of 𝑈 match those of 𝑢ℎ , i.e., for 1 ≤ 𝑖 ≤ 𝑘 + 1,
+                                             𝑈(𝜉𝑅,𝑖 ) = 𝑢ℎ (𝜉𝑅,𝑖 ).                                    (2.33)
+Thus, 𝑢ℎ can be defined by 𝑈(𝜉𝑅,𝑖 ), 1 ≤ 𝑖 ≤ 𝑘 + 1, and vice versa, 𝑈 can be defined by the starting
+condition 𝑢𝑛 and the values 𝑢ℎ (𝜉𝑅,𝑖 ) at the right Radau points; 𝑈 can also be defined by the 𝑘 + 2
+conditions of 𝑈(0) = 𝑢𝑛 and 𝑈(1) = 𝑢ℎ (1) at the two ends, and the 𝑘 conditions that 𝑈 is as close as
+possible to 𝑢ℎ in the sense that they have the same projection onto 𝑷𝑘−1 (a consequence of (2.29) and 𝑔 ⊥
+𝑷𝑘−1 ).
+   As a result of (2.30) and (2.31), with 𝜉 varies on [0, 1],
+                                                         𝜉
+                                      𝑈(𝜉) = 𝑢𝑛 + ℎ ∫ 𝑓ℎ (𝜂, 𝑢ℎ (𝜂))𝑑𝜂 .                               (2.34)
+                                                        0
+Thus, if 𝑓ℎ = 𝒫𝑘 (𝑓) is known via a quadrature rule or exact integration, 𝑈 can be obtained by the above.
+  The solution 𝑢ℎ satisfies, by the above and (2.29),
+                                                                      𝜉
+                          [𝑢𝑛 − 𝑢ℎ (0)]𝑔(𝜉) + 𝑢ℎ (𝜉) = 𝑢𝑛 + ℎ ∫ 𝑓ℎ (𝜂, 𝑢ℎ (𝜂))𝑑𝜂 .                     (2.35)
+                                                                      0
+Since 𝑓ℎ depends on 𝑢ℎ , the above results in an implicit system of equations discussed in the next section.
+At 𝑥𝑛+1 , or 𝜉 = 1, the solution is
+                                                                  1
+                            𝑢𝑛+1 = 𝑢ℎ (1) = 𝑈(1) = 𝑢𝑛 + ℎ ∫ 𝑓ℎ (𝜂, 𝑢ℎ (𝜂))𝑑𝜂 .                         (2.36)
+                                                                 0
+  The relation among the solution 𝑈 and the collocation, as well as CG solutions, is discuss below.
+  To prepare, with 𝜉 on [0, 1], consider the ODE 𝑢′ (𝜉) = 𝑑𝑢/𝑑𝜉 = ℎ𝑓(𝜉, 𝑢(𝜉)) and 𝑢(0) = 𝑢𝑛 .
+  In the case of collocation, let 𝜂𝑖 , 1 ≤ 𝑖 ≤ 𝑘 + 1, be strictly increasing values on [0, 1]. The collocation
+method with collocation points 𝜂𝑖 seeks a polynomial solution 𝒰 of degree 𝑘 + 1 satisfying
+
+
+                                                            9
+                                                     𝒰(0) = 𝑢𝑛 ,                                      (2.37)
+and, for 1 ≤ 𝑖 ≤ 𝑘 + 1,
+                                              𝒰′ (𝜂𝑖 ) = ℎ𝑓(𝜂𝑖 , 𝒰(𝜂𝑖 )).                             (2.38)
+   The CG method seeks a polynomial of degree 𝑘 + 1, also denoted by 𝒰, that satisfies (2.37) and, for
+any 𝑣 in 𝑷𝑘 ,
+                                            (𝒰′ , 𝑣) = ℎ(𝑓(𝜉, 𝒰(𝜉)), 𝑣).                              (2.39)
+   The solution at 𝑥𝑛+1 for either method is 𝒰(1).
+   Let 𝑙𝑖 , 1 ≤ 𝑖 ≤ 𝑘 + 1, be the Lagrange polynomials corresponding to 𝜂𝑖 ’s. Then under the quadrature
+associated with 𝜂𝑖 ’s, the above with 𝑣 = 𝑙𝑖 implies (2.38), which results in the following claim.
+   The CG method using the quadrature associated with the collocation points and the associated
+collocation method yield identical solutions.
+   For later use, the CG and collocation solution satisfies, by the above claim and by (2.39),
+                                              𝒰′ = ℎ𝒫𝑘 (𝑓(𝜉, 𝒰(𝜉))).                                  (2.40)
+   Proposition 2.1. The DG solution 𝑈 given by (2.29) under the 𝑘 + 1 point right Radau quadrature is
+identical to the right Radau collocation solution as well as the CG solution under the same quadrature.
+   Indeed, at each right Radau point 𝜉𝑅,𝑖 , 1 ≤ 𝑖 ≤ 𝑘 + 1, since 𝑔(𝜉𝑅,𝑖 ) = 0, by (2.29),
+                                                𝑈(𝜉𝑅,𝑖 ) = 𝑢ℎ (𝜉𝑅,𝑖 ).                                (2.41)
+Therefore, 𝑓(𝜉𝑅,𝑖 , 𝑢ℎ (𝜉𝑅,𝑖 )) = 𝑓(𝜉𝑅,𝑖 , 𝑈(𝜉𝑅,𝑖 )). Next, under the right Radau quadrature, 𝑓ℎ = 𝒫𝑘 (𝑓) is
+determined by the 𝑘 + 1 values 𝑓(𝜉𝑅,𝑖 , 𝑢ℎ (𝜉𝑅,𝑖 )) (see also (3.5) below). As a result, for 1 ≤ 𝑖 ≤ 𝑘 + 1,
+                        𝑓ℎ (𝜉𝑅,𝑖 , 𝑢ℎ (𝜉𝑅,𝑖 )) = 𝑓(𝜉𝑅,𝑖 , 𝑢ℎ (𝜉𝑅,𝑖 )) = 𝑓(𝜉𝑅,𝑖 , 𝑈(𝜉𝑅,𝑖 )).           (2.42)
+Consequently, for 1 ≤ 𝑖 ≤ 𝑘 + 1, (2.30) implies,
+                                          𝑈 ′ (𝜉𝑅,𝑖 ) = ℎ𝑓(𝜉𝑅,𝑖 , 𝑈(𝜉𝑅,𝑖 )).                          (2.43)
+Thus, the DG solution 𝑈 of degree 𝑘 + 1 can be defined by the 𝑘 + 2 conditions of 𝑈(0) = 𝑢𝑛 and the
+above, which is exactly the definition (2.38) of the collocation solution with 𝒰 replaced by 𝑈. The claim
+after (2.39) shows that the collocation solution is the same as the CG solution under the quadrature with
+collocation points as quadrature points. See also Huynh (2009b). This completes the proof.
+    The above discussion shows that the right Radau quadrature is a convenient and sensible choice of
+quadrature for the DG method in the context of ODEs. (It is important to note that this comment does not
+hold in the context of conservation laws, where upwinding at each interface can involve values from both
+sides, not just by the value from the left as is the case here). Below, however, the quadrature can be the
+left or right Radau, Gauss, or a blending of the Radau quadratures where the evaluation points are the zeros
+of 𝑄 defined by, with 0 ≤ 𝛼 ≤ 1,
+                                     𝑄 = 𝛼𝑅𝑅,𝑘+1 + (1 − 𝛼)(−1)𝑘+1 𝑅𝐿,𝑘+1 .                            (2.44)
+Such a quadrature, with 𝑘 + 1 evaluation points, has a degree of precision 2𝑘 or higher.
+   Concerning the two DG solutions 𝑢ℎ and 𝑈, if an approximation at 𝜉 for 0 < 𝜉 < 1 is needed, 𝑈(𝜉) is
+generally a better choice than 𝑢ℎ (𝜉). The values of 𝑢ℎ at the right Radau points are more accurate than
+those at other points since they match the values of 𝑈 (of one degree higher). What is crucial, however, is
+that at 𝜉 = 1, 𝑈 and 𝑢ℎ yield the same solution 𝑢𝑛+1, which is accurate to order 2𝑘 + 1, the order of
+accuracy of the right Radau quadrature. On the other hand, the expected order of accuracy for a quadrature
+using a polynomial approximation of degree 𝑘 is only 𝑘 + 1. The property of much higher accuracy order
+than expected is also called ‘super convergence’ (e.g., Adjerid et al. 2002, Baccouch 2016).
+   As a passing remark, the correction function 𝑔 was employed to reconstruct the flux for conservation
+laws in the flux reconstruction or FR method (Huynh 2007, 2009a, Huynh, Wang, and Vincent 2014). The
+FR method is used in codes applied to practical calculations such as PyFR (https://www.pyfr.org/) and
+GFR (Spiegel et al. 2022). Here, the function 𝑢 itself is being reconstructed from 𝑢ℎ in the form of 𝑈.
+Thus, the above formulation can be considered as the FR, or ‘function reconstruction’, approach for ODE.
+
+
+
+
+                                                            10
+3     Implicit Runge-Kutta Methods Resulting from DG Formulation
+
+We next construct the implicit Runge-Kutta method resulting from the DG formulation or IRK-DG. Here,
+the correction function 𝑔 plays a crucial role. To be consistent with the standard RK notation, let the
+number of stages be
+                                                     𝑠 = 𝑘 + 1.
+A quadrature on [0, 1] with 𝑠 evaluation points 𝜉1 , …, 𝜉𝑠 and a degree of precision 2𝑠 − 2 or higher is
+employed, e.g., the left or right Radau, Gauss, or a blending of the Radau quadratures via (2.44). Denote
+the corresponding Lagrange polynomials by 𝑙𝑗 , 1 ≤ 𝑗 ≤ 𝑠, which are of degree 𝑠 − 1 and defined by
+𝑙𝑗 (𝜉𝑖 ) = 𝛿𝑖𝑗 . Then, for each 𝑗, the quadrature weight is
+                                                           1
+                                                  𝑏𝑗 = ∫ 𝑙𝑗 (𝜉)𝑑𝜉 .                                            (3.1)
+                                                          0
+Note that even if the Legendre polynomials are employed as basis functions for the DG formulation, we
+still need a quadrature to evaluate inner products. Since the quadrature is assumed to be exact for
+polynomials of degree 2𝑠 − 2 or less, and 𝑙𝑖 𝑙𝑗 is of degree 2𝑠 − 2, for 1 ≤ 𝑖, 𝑗 ≤ 𝑠,
+                                                  (𝑙𝑖 , 𝑙𝑗 ) = 𝛿𝑖𝑗 𝑏𝑗 ,                                        (3.2)
+Thus, 𝑙𝑗 , 𝑗 = 1, … , 𝑠, form an orthogonal basis for 𝑷𝑠−1.
+  At each quadrature point 𝜉𝑗 , set
+                                    𝑢𝑛,𝑗 = 𝑢ℎ (𝜉𝑗 ) and 𝑓𝑛,𝑗 = 𝑓(𝜉𝑗 , 𝑢𝑛,𝑗 ).                                  (3.3)
+Then, the solution 𝑢ℎ of degree 𝑠 − 1 can be expressed as
+                                                              𝑠
+                                              𝑢ℎ (𝜉) = ∑              𝑢𝑛,𝑗 𝑙𝑗 (𝜉).                             (3.4)
+                                                              𝑗=1
+
+Concerning a similar expression for 𝑓ℎ = 𝒫𝑠−1 (𝑓), whereas 𝑢ℎ is a polynomial, 𝑓(𝜉, 𝑢ℎ (𝜉)) can be a non-
+polynomial. Since 𝑙𝑗 , 𝑗 = 1, … , 𝑠, form an orthogonal basis for 𝑷𝑠−1 ,
+                                                                  𝑠     (𝑓, 𝑙𝑗 )
+                                              𝒫𝑠−1 (𝑓) = ∑                         𝑙𝑗 .
+                                                                  𝑗=1 (𝑙𝑗 , 𝑙𝑗 )
+                                          1
+By using the quadrature, (𝑓, 𝑙𝑗 ) = ∫0 𝑓(𝜉, 𝑢ℎ (𝜉))𝑙𝑗 (𝜉)𝑑𝜉 = 𝑏𝑗 𝑓𝑛,𝑗 . As a result of (3.2) and the above,
+under the quadrature with evaluation points 𝜉𝑗 ’s,
+                                                                                          𝑠
+                          𝒫𝑠−1 (𝑓)(𝜂) = (𝒫𝑠−1 (𝑓))(𝜂) = 𝑓ℎ (𝜂) = ∑                              𝑓𝑛,𝑗 𝑙𝑗 (𝜂).   (3.5)
+                                                                                          𝑗=1
+    Next, set
+                                                                  𝜉
+                                                 𝑙̃𝑗 (𝜉) = ∫ 𝑙𝑗 (𝜂)𝑑𝜂                                          (3.6)
+                                                              0
+and
+                                                                  𝜉
+                                                𝑓̃ℎ (𝜉) = ∫ 𝑓ℎ (𝜂)𝑑𝜂 .                                         (3.7)
+                                                              0
+Then, for each fixed 𝜉, the quantities 𝑙̃𝑗 (𝜉), 1 ≤ 𝑗 ≤ 𝑠, are the weights at 𝜉𝑗 for a quadrature from 0 to 𝜉:
+                                      𝜉                                   𝑠
+                                   ∫ 𝑓ℎ (𝜂)𝑑𝜂 = 𝑓̃ℎ (𝜉) = ∑                     𝑓𝑛,𝑗 𝑙̃𝑗 (𝜉).                  (3.8)
+                                     0                                    𝑗=1
+If 𝜉 = 1, the quadrature weights are, by (3.1),
+                                                    𝑙̃𝑗 (1) = 𝑏𝑗 ,                                             (3.9)
+
+
+
+
+                                                              11
+and the degree of precision for the corresponding quadrature is 2𝑠 − 2 or higher as in our assumption. For
+𝜉 ≠ 1, however, the quadrature (3.8) has a degree of precision of only 𝑠 − 1.
+   Fig. 3.1a shows, for the case 𝑠 = 3, the cubics 𝑙̃𝑗 , 1 ≤ 𝑗 ≤ 3; here, the quadrature points are the 3 left
+Radau points; the quadratic 𝑙𝑗 used in (3.6) to construct 𝑙̃𝑗 for this case is identical to 𝑙𝐿,𝑗 of Fig. 2.2a.
+
+
+
+          𝑢                                                                        𝑢
+                                   𝑙̃2
+                                                                                                                𝑙̃2
+                                                          𝑙̃3                                                                          𝑙̃3
+                                                                                                       Right Radau points 𝜉𝑅,𝑗
+              𝑙̃1
+                                                                                   𝑙̃1
+                    Quadrature points 𝜉𝑗
+                                                                𝜉                                                                               𝜉
+        𝜉1             𝜉2                    𝜉3                           𝜉𝑅,1                 𝜉𝑅,2         𝜉𝑅,3
+                              (a)                                                      (b)
+Fig. 3.1 (a) The polynomials 𝑙̃𝑗 for the case the quadrature points are the 3 left Radau points (blue square
+dots); (b) the values 𝑙̃𝑗 (𝜉𝑅,𝑖 ), 1 ≤ 𝑖, 𝑗 ≤ 3, i.e., the entries of the matrix 𝑴𝑅𝐼 , are represented by the red
+round dots; the values at the red round dots on the vertical line at each right Radau points 𝜉 = 𝜉𝑅,𝑖 form
+the entries for the 𝑖-th row of 𝑴𝑅𝐼 .
+
+
+    Assume for the moment, the values 𝑢𝑛,𝑗 at the quadrature points 𝜉𝑗 are known, 1 ≤ 𝑗 ≤ 𝑠; therefore,
+𝑓𝑛,𝑗 = 𝑓(𝜉𝑗 , 𝑢𝑛,𝑗 ) are also known. Using (3.4) and (3.5), Eq. (2.35) implies
+                            𝑠                                   𝑠                                           𝑠            𝜉
+              [𝑢𝑛 − ∑             𝑢𝑛,𝑗 𝑙𝑗 (0)] 𝑔(𝜉) + ∑               𝑢𝑛,𝑗 𝑙𝑗 (𝜉) = 𝑢𝑛 + ℎ ∑                       𝑓𝑛,𝑗 ∫ 𝑙𝑗 (𝜂)𝑑𝜂 .         (3.10)
+                            𝑗=1                                 𝑗=1                                         𝑗=1          0
+Note that the above equation involves no inner product since 𝑓ℎ = 𝒫𝑠−1 (𝑓) is defined by 𝑓𝑛,𝑗 .
+   Our goal is to obtain an implicit system of equations for 𝑢𝑛,𝑖 , 1 ≤ 𝑖 ≤ 𝑠, as shown below in (3.22)
+(these values define 𝑢ℎ ). To this end, at each right Radau point 𝜉𝑅,𝑖 , since 𝑔(𝜉𝑅,𝑖 ) = 0, by evaluating the
+above at 𝜉𝑅,𝑖 and by using (3.6),
+                                         𝑠                                             𝑠
+                                     ∑           𝑢𝑛,𝑗 𝑙𝑗 (𝜉𝑅,𝑖 ) = 𝑢𝑛 + ℎ ∑                    𝑓𝑛,𝑗 𝑙̃𝑗 (𝜉𝑅,𝑖 ).                             (3.11)
+                                         𝑗=1                                           𝑗=1
+Note (3.11) does not hold at points other than right Radau.
+   Concerning the left hand side above, with ‘R’ for ‘right’ Radau or ‘row’, and ‘Q’ for ‘quadrature’ or
+‘column’, denote the matrix
+                                                                                   𝑠
+                                                          𝑴𝑅𝑄 = {𝑙𝑗 (𝜉𝑅,𝑖 )}𝑖,𝑗=1 .                                                          (3.12)
+For the following row vectors of values at quadrature points, denote the corresponding column vectors by
+                                             𝑠        𝑇                      𝑠         𝑇
+                         𝒖𝑛 = ((𝑢𝑛,𝑗 )               ) , 𝒇𝑛 = ((𝑓𝑛,𝑗 )             ) , and 𝟏 = (1,1, … 1)𝑇
+                                             𝑗=1                             𝑗=1
+where the superscript ‘T’ represents the transpose. When it does not cause confusion, we simply use the
+                                𝑠
+index 𝑖 and the notation (𝑢𝑛,𝑖 )𝑖=1 for a column vector. Then, by (3.4), the left hand side of (3.11) implies
+                                                                𝑠                          𝑠
+                                                 𝑠
+                                  (𝑢ℎ (𝜉𝑅,𝑖 ))         = (∑           𝑢𝑛,𝑗 𝑙𝑗 (𝜉𝑅,𝑖 ))             = 𝑴𝑅𝑄 ∙ 𝒖𝑛 .                              (3.13)
+                                                 𝑖=1            𝑗=1                        𝑖=1
+That is, with 𝒖𝑛 the (column) vector of values at the quadrature points, which determines 𝑢ℎ , the vector
+of values of 𝑢ℎ at the right Radau points is given by the matrix-vector product 𝑴𝑅𝑄 ∙ 𝒖𝑛 .
+
+
+
+                                                                        12
+   Concerning the right hand side of (3.11), with ‘R’ for ‘right’ Radau and ‘I’ for ‘integral’, denote
+                                                 𝜉𝑅,𝑖                𝑠
+                                                                                            𝑠
+                                  𝑴𝑅𝐼 = {∫              𝑙𝑗 (𝜂)𝑑𝜂 }           = {𝑙̃𝑗 (𝜉𝑅,𝑖 )}𝑖,𝑗=1 .       (3.14)
+                                                0                    𝑖,𝑗=1
+                                                                                       𝑠
+As in (3.8), for each fixed 𝑖, the 𝑖-th row of 𝑴𝑅𝐼 , i.e., the row vector {𝑙̃𝑗 (𝜉𝑅,𝑖 )}𝑗=1 , provides the weights
+for a quadrature formula with evaluation points 𝜉𝑗 , 1 ≤ 𝑗 ≤ 𝑠, for the integral from 0 to 𝜉𝑅,𝑖 :
+                                  𝜉𝑅,𝑖                                         𝑠
+                                ∫        𝑓ℎ (𝜂)𝑑𝜂 = 𝑓̃ℎ (𝜉𝑅,𝑖 ) = ∑                  𝑓𝑛,𝑗 𝑙̃𝑗 (𝜉𝑅,𝑖 ).
+                                 0                                             𝑗=1
+The quadrature formula has a degree of precision of only 𝑠 − 1, except when 𝑖 = 𝑠, where the degree of
+precision is 2𝑠 − 2 or 2𝑠 − 1. The rightmost hand side above is the 𝑖-th row of the vector 𝑴𝑅𝐼 ∙ 𝒇𝑛 , and
+                                                             𝑠
+                                                (𝑓̃ℎ (𝜉𝑅,𝑖 ))𝑖=1 = 𝑴𝑅𝐼 ∙ 𝒇𝑛 .                             (3.15)
+That is, multiplying by 𝑴𝑅𝐼 (on the left) yields the vector of the integration from 0 to the right Radau
+points. For later use, concerning the components, with each fixed 𝑗, by replacing 𝑓ℎ by 𝑙𝑗 in the above,
+                                                       𝑠                     𝑠
+                                          (𝑙̃𝑗 (𝜉𝑅,𝑖 ))𝑖=1 = 𝑴𝑅𝐼 ∙ (𝑙𝑗 (𝜉𝑖 ))𝑖=1 .                        (3.16)
+                                     𝑠
+Here, the column vector (𝑙𝑗 (𝜉𝑖 ))𝑖=1 has all zero entries except the 𝑗-th entry, i.e., 𝑖-th row where 𝑖 = 𝑗,
+which equals 1 since 𝑙𝑗 (𝜉𝑖 ) = 𝛿𝑖𝑗 , and the right hand side above yields the 𝑗-th column of 𝑴𝑅𝐼 .
+   Fig. 3.1b shows the entries of 𝑴𝑅𝐼 as red round dots (corresponding to the setting in Fig. 3.1a). Here,
+again the quadrature points are the 3 left Radau points. For each fixed 𝑖, the 𝑖-th row of 𝑴𝑅𝐼 consists of
+the values of the three red round dots on the vertical line through the right Radau point 𝜉 = 𝜉𝑅,𝑖 . For each
+fixed 𝑗, the 𝑗-th column of 𝑴𝑅𝐼 consists of the values of the three red round dots on the curve 𝑙̃𝑗 .
+   Continuing with the derivation of the IRK method, using (3.13) and (3.15), Eq. (3.11) implies
+                                           𝑴𝑅𝑄 ∙ 𝒖𝑛 = 𝑢𝑛 𝟏 + ℎ 𝑴𝑅𝐼 ∙ 𝒇𝑛 .                                 (3.17)
+   To obtain 𝑴−1
+              𝑅𝑄 , denote the Lagrange polynomials for the right Radau points by 𝑙𝑅,𝑗 , 1 ≤ 𝑗 ≤ 𝑠. Set
+                                                           𝑠
+                                         𝑴𝑄𝑅 = {𝑙𝑅,𝑗 (𝜉𝑖 )}𝑖,𝑗=1 .                                 (3.18)
+Suppose the vector 𝒗 of the 𝑠 values 𝑣𝑅,1 , …, 𝑣𝑅,𝑠 at the right Radau points is known; 𝒗 determines a
+polynomial 𝑣 of degree 𝑠 − 1. The vector of values of 𝑣 at the quadrature points is given by 𝑴𝑄𝑅 ∙ 𝒗.
+   With 𝑰 denoting the 𝑠 × 𝑠 identity matrix, we next show that
+                                                        𝑴𝑄𝑅 ∙ 𝑴𝑅𝑄 = 𝑰.                                    (3.19)
+   Indeed, let 𝑤 be a polynomial of degree 𝑠 − 1, and let 𝒘𝑄 be the vector of values of 𝑤 at the quadrature
+points. Then 𝒘𝑅 = 𝑴𝑅𝑄 ∙ 𝒘𝑄 is the vector of values of 𝑤 at the right Radau points, and 𝒘𝑅 also defines a
+polynomial identical to 𝑤. Next, the vector of values of 𝑤 at the quadrature points is given by 𝑴𝑄𝑅 ∙ 𝒘𝑅 ,
+which is identical to 𝒘𝑄 ; thus, (3.19) follows.
+   The constant function 1 takes on the value 1 at all points; as a result,
+                                                𝑴𝑄𝑅 ∙ 𝟏 = 𝑴𝑅𝑄 ∙ 𝟏 = 𝟏.
+   Multiply (3.17) on the left by 𝑴𝑄𝑅 and using the above two equations, we obtain
+                                           𝒖𝑛 = 𝑢𝑛 𝟏 + ℎ 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 ∙ 𝒇𝑛 ,                                 (3.20)
+                    𝑠                       𝑠
+where 𝒖𝑛 = (𝑢𝑛,𝑖 )𝑖=1 and 𝒇𝑛 = (𝑓𝑛,𝑖 )𝑖=1 . Next, set
+                                                      𝑨 = 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 ,                                     (3.21)
+Then the resulting IRK-DG method follows from (3.20):
+                                                    𝒖𝑛 = 𝑢𝑛 𝟏 + ℎ 𝑨 ∙ 𝒇𝑛 .                                (3.22)
+
+
+
+
+                                                                 13
+   In summary, the DG method using a quadrature with 𝑠 evaluation points 𝜉𝑖 ’s and of a degree of
+precision 2𝑠 − 2 or higher results in an 𝑠-stage IRK scheme with a Butcher tableau (see also Table 3.1
+below) defined by, for 1 ≤ 𝑖, 𝑗 ≤ 𝑠, the stages 𝑐𝑖 = 𝜉𝑖 (leftmost column), the quadrature weights 𝑏𝑗 at 𝜉𝑗
+(bottom row), and with 𝑴𝑄𝑅 by (3.18) and 𝑴𝑅𝐼 by (3.14), the matrix 𝑨 (upper right matrix) where
+                                                               𝑠
+                                               𝑨 = (𝑎𝑖𝑗 )𝑖,𝑗=1 = 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 .                                (3.23)
+   Eq. (3.22) can be written in a more familiar form: for 1 ≤ 𝑖 ≤ 𝑠,
+                                                                      𝑠
+                                           𝑢𝑛,𝑖 = 𝑢𝑛 + ℎ ∑                    𝑎𝑖,𝑗 𝑓(𝜉𝑗 , 𝑢𝑛,𝑗 ).           (3.24)
+                                                                      𝑗=1
+With 𝑢𝑛,𝑖 by the above implicit system of equations, and 𝑓𝑛,𝑗 = 𝑓(𝜉𝑗 , 𝑢𝑛,𝑗 ), the solution is given by
+                                                                               𝑠
+                                               𝑢𝑛+1 = 𝑢𝑛 + ℎ ∑                        𝑏𝑗 𝑓𝑛,𝑗 .             (3.25)
+                                                                               𝑗=1
+   The vector 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 ∙ 𝒇𝑛 = 𝑨 ∙ 𝒇𝑛 in (3.20) plays an important role. Its meaning is discussed below.
+                                       𝑠
+   The vector 𝑴𝑅𝐼 ∙ 𝒇𝑛 = (𝑓̃ℎ (𝜉𝑅,𝑖 ))   given by (3.15) is the vector of values of 𝑓̃ℎ at the 𝑠 right Radau
+                                            𝑖=1
+points. These 𝑠 values define a polynomial of degree 𝑠 − 1 denoted by 𝑟, which is generally different from
+                                          𝑠
+𝑓̃ℎ of degree 𝑠. Then, 𝑴𝑄𝑅 ∙ (𝑓̃ℎ (𝜉𝑅,𝑖 ))𝑖=1 yields the vector of values of 𝑟 at the quadrature points:
+                                                  𝑠
+                                          (𝑟(𝜉𝑖 ))𝑖=1 = 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 ∙ 𝒇𝑛 = 𝑨 ∙ 𝒇𝑛 .                           (3.26)
+   Concerning the components, for each fixed 𝑗, the 𝑠 values 𝑙̃𝑗 (𝜉𝑅,𝑖 ) at the right Radau points, 1 ≤ 𝑖 ≤ 𝑠,
+define a polynomial denoted by 𝑟𝑗 of degree 𝑠 − 1, which is different from 𝑙̃𝑗 of degree 𝑠; and
+                                      𝑠                         𝑠                           𝑠
+                         (𝑟𝑗 (𝜉𝑖 ))        = 𝑴𝑄𝑅 ∙ (𝑙̃𝑗 (𝜉𝑅,𝑖 ))𝑖=1 = 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 ∙ (𝑙𝑗 (𝜉𝑖 ))𝑖=1             (3.27)
+                                  𝑖=1
+where the second equality follows from (3.16). Since 𝑴𝑄𝑅 ∙ 𝑴𝑅𝐼 = 𝑨, the above implies
+                                                           𝑠                              𝑠
+                                              (𝑟𝑗 (𝜉𝑖 ))           = 𝑨 ∙ (𝑙𝑗 (𝜉𝑖 ))              .
+                                                       𝑖=1                                𝑖=1
+                                                                               𝑠
+Since 𝑙𝑗 (𝜉𝑖 ) = 𝛿𝑖𝑗 , for each fixed 𝑗, the product 𝑨 ∙ (𝑙𝑗 (𝜉𝑖 ))𝑖=1 yields the 𝑗-th column of 𝑨. In other words,
+for 1 ≤ 𝑖, 𝑗 ≤ 𝑠,
+                                                           𝑎𝑖𝑗 = 𝑟𝑗 (𝜉𝑖 ).                                  (3.28)
+   As a consequence of the above argument, multiplying a vector 𝒇𝑛 by 𝑨 (on the left) yields a vector,
+which is an approximation (via 𝑟) to the integration of 𝑓ℎ from 0 to the quadrature points 𝜉𝑖 , 1 ≤ 𝑖 ≤ 𝑠. In
+other words, 𝑨 corresponds to quadrature formulas: for each fixed 𝑖, the 𝑖-th row of 𝑨 corresponds to the
+weights of a quadrature formula for the integration from 0 to 𝜉𝑖 with quadrature points 𝜉𝑗 and quadrature
+weights 𝑎𝑖𝑗 , 1 ≤ 𝑗 ≤ 𝑠. Due to the approximation by 𝑟𝑖 , we expect a reduction in the degree of precision
+by 1 as will be discussed when dealing with condition 𝐶(𝜂) for accuracy after (4.3).
+   Regarding the solution 𝑢ℎ , using the above, Eq. (3.24) implies, for each 𝑖, 1 ≤ 𝑖 ≤ 𝑠,
+                                                                          𝑠
+                                             𝑢𝑛,𝑖 = 𝑢𝑛 + ℎ ∑                       𝑓𝑛,𝑗 𝑟𝑗 (𝜉𝑖 ).
+                                                                          𝑗=1
+Then, 𝑢ℎ of degree 𝑠 − 1, defined by the values 𝑢𝑛,𝑖 ’s above at the quadrature points, is given by
+                                                                              𝑠
+                                                  𝑢ℎ = 𝑢𝑛 + ℎ ∑                      𝑓𝑛,𝑗 𝑟𝑗 .
+                                                                              𝑗=1
+That is, if 𝑓𝑛,𝑗 , 1 ≤ 𝑗 ≤ 𝑠, are known, the solution polynomial 𝑢ℎ can be obtained by the above.
+   Fig. 3.2 shows, for 𝑠 = 2 (i.e., 𝑘 = 1), the entries of 𝑨 (big square dots) of the Butcher tableau. The
+IRK-DG method has quadrature points 𝜉𝑖 ’s (small black squares) of type (a) left Radau, (b) Gauss, and (c)
+right Radau. For each fixed 𝑗, the quadratic 𝑙̃𝑗 is shown by the thin curve, and the values of 𝑙̃𝑗 at the two
+right Radau points are given by the two red round dots; these values determine a linear function 𝑟𝑗 shown
+by the thick line. The two values 𝑟𝑗 (𝜉𝑖 ) at the quadrature points 𝜉𝑖 , 1 ≤ 𝑖 ≤ 2, shown as big square dots,
+
+
+                                                                      14
+form the 𝑗-th column of the matrix 𝑨. For each fixed 𝑖, the entries for the 𝑖-th row of 𝑨 are represented by
+the large square dots on the vertical line 𝜉 = 𝜉𝑖 . Note that in Fig. 3.2c, since the quadrature points are also
+the right Radau points, the red round dots are identical to and appear on top of the large square dots.
+   Table 3.1 shows, for 𝑠 = 2, the Butcher tableaux of the IRK-DG methods where, similar to Fig. 3.2,
+the quadrature is of type (a) left Radau, (b) Gauss, and (c) right Radau. Here, the values for the entries of
+𝑨 match the values at the large square dots of Fig. 3.2. Also note that Table 3.1a corresponds to the Radau
+IA method and Table 3.1c to Radau IIA (Ehle 1969, Axelsson 1969). The IRK-DG method of Table 3.1b,
+derived here constructively via the correction function, was derived algebraically in (Bottasso 1997, Tang
+& Sun 2012); it is called DG-Gauss here.
+
+
+
+     𝑢                                         𝑢            𝑙̃1                          𝑢
+                        𝑟2
+                                               𝑟1
+                                 𝑙̃2                                                         𝑟1
+      𝑟1                                                      𝑟2
+                                                                                                                       𝑟2
+     𝑙̃1                                                                𝑙̃2          𝜉            𝑙̃1                         𝜉
+                                       𝜉
+    𝜉1                  𝜉2                                                                                         𝑙̃2
+                                                      𝜉1                      𝜉2                        𝜉1
+                                                                                                                             𝜉2
+                 (a)                                              (b)                                        (c)
+Fig. 3.2 The entries of 𝑨 of the Butcher tableau for the DG method with 𝑠 = 2 represented by big square
+dots; each 𝑖-th row of 𝑨 corresponds to the values on the vertical line at 𝜉 = 𝜉𝑖 . The quadrature points 𝜉𝑖 ’s
+(small black squares) are of type (a) left Radau, (b) Gauss, and (c) right Radau. The quadratic 𝑙̃𝑗 is shown
+by the thin curve, and the values of 𝑙̃𝑗 at the two right Radau points are given by the two red round dots;
+                                                                                                        2
+these values determine a linear function 𝑟𝑗 shown by the thick line; and 𝑨 = {𝑟𝑗 (𝜉𝑖 )}𝑖,𝑗=1 .
+
+
+
+                       Table 3.1 Butcher tableaux for the IRK-DG method with 𝑠 = 2.
+       (a) Radau IA (left Radau)                       (b) DG-Gauss                      (c) Radau IIA (right Radau)
+                   1       1                       1  √3     1                1−√3                  1        5         1
+           0             −                           − 6                                                           −
+                   4       4                       2         3                  6                   3        12        12
+            2      1      5                        1   √3   1+√3                1                             3          1
+            3      4      12                         +                          3
+                                                                                                    1         4          4
+                                                   2   6      6
+                   1         3                                1                 1                             3          1
+                   4         4                                2                 2                             4          4
+
+
+   The DG-Gauss method corresponding to Fig. 3.2b and Table 3.1b is, as will be discussed, third-order
+accurate. For comparison, the Gauss collocation method, which is fourth order accurate, has the same 𝑐𝑖 ’s
+                                 1 √   1   3                    √       1       3    1
+and 𝑏𝑗 ’s, but {𝑎11 , 𝑎12 } = { , − }, and {𝑎21 , 𝑎22 } = { + , }; this method gains in accuracy and is
+                               4 4  6                      4     6   4
+also A-stable, but as opposed to IRK-DG, it has the disadvantage of not being L-stable (discussed later).
+   Fig. 3.3 is the analogous to Fig. 3.2 except 𝑠 = 3. Again, for each fixed 𝑖, the entries for the 𝑖-th row
+of 𝑨 are represented by the large square dots on the vertical line 𝜉 = 𝜉𝑖 .
+   Table 3.2 shows the Butcher tableaux of the IRK-DG methods with 𝑠 = 3 where the quadrature is of
+type (a) left Radau and (b) right Radau. Again, the entries of 𝑨 match the values at the large square dots
+of Figs. 3.3a and 3.3c. Tables 3.2a yields Radau IA and Table 3.2b yields Radau IIA methods.
+   Table 3.3 shows, again for 𝑠 = 3, the Butcher tableaux for (a) the IRK-DG method with Gauss
+quadrature (accuracy order 5) and, for comparison, (b) the Gauss collocation method (accuracy order 6).
+
+
+
+
+                                                                  15
+      𝑢                                            𝑢                                                           𝑢
+                  𝑟2
+                                                               𝑙̃1                                                       𝑙̃1
+                        𝑙̃2                                                                                                 𝑟1
+                                     𝑙̃3                  𝑟1
+     𝑟1           𝑙̃1                                                               𝑟3                                   𝑟2
+                                                         𝑟2          𝑙̃2                     𝑙̃3
+                                           𝜉                                                       𝜉                             𝑙̃2        𝑟3
+                    𝑟3                                                                                                                                 𝜉
+                                                                                                                                                 𝑙̃3
+     𝜉1      𝜉2                 𝜉3                     𝜉1                  𝜉2                𝜉3
+                                                                                                                   𝜉1                  𝜉2                  𝜉3
+                   (a)                                   (b)                                 (c)
+Fig. 3.3 The entries of 𝑨 for the DG method with 𝑠 = 3 represented by big square dots. The quadrature
+points 𝜉𝑖 ’s (small black squares) are of type (a) left Radau, (b) Gauss, and (c) right Radau.
+
+
+
+                       Table 3.2 Butcher tableaux for the IRK-DG methods with 𝑠 = 3.
+                  (a) Radau IA (left Radau)                       (b) Radau IIA (right Radau)
+                  1           −1−√6            −1+√6                                 4−√6               88−7√6          296−169√6       −2+3√6
+     0            9             18               18                                   10                  360              1800           225
+
+   6−√6           1           88+7√6           88−43√6                               4+√6              296+169√6         88+7√6         −2−3√6
+    10            9             360              360                                  10                  1800             360            225
+
+   6+√6           1           88+43√6          88−7√6                                                   16−√6            16+√6              1
+                  9
+                                                                                         1                                                  9
+    10                          360              360                                                      36               36
+                  1           16+√6            16−√6                                                    16−√6            16+√6              1
+                  9             36               36                                                       36               36               9
+
+
+
+
+                                   Table 3.3 Butcher tableaux with 𝑠 = 3
+                   (a) DG-Gauss (order 5)                        (b) Gauss collocation (order 6)
+  1  √15           29         8−3√15           29−6√15                              1  √15                5             2  √15         5   √15
+  2
+    − 10          180           45               180                                2
+                                                                                      − 10                36            9
+                                                                                                                          − 15         36
+                                                                                                                                          − 30
+     1        8+3√15            5              8−3√15                                    1             5   √15              2          5   √15
+     2          72              18               72                                      2             36
+                                                                                                          + 24              9          36
+                                                                                                                                          − 24
+
+  1   √15    29+6√15          8+3√15              29                                1   √15            5    √15         2   √15             5
+    +                                            180
+                                                                                      +                   +               +                 36
+  2    10      180              45                                                  2    10            36    30         9    15
+                  5             4                5                                                        5                 4               5
+                  18            9                18                                                       18                9               18
+
+
+
+
+   IRK-DG Method under Right Radau Quadrature
+   For this case, as discussed in the proposition after (2.40), the DG method is equivalent to the collocation
+method with the right Radau points as collocation points as well as the CG method under the right Radau
+quadrature. The resulting IRK method is straightforward: the matrix 𝑨 is given by, for 1 ≤ 𝑖, 𝑗 ≤ 𝑠,
+                                                                                𝜉𝑅,𝑖
+                                               𝑎𝑖,𝑗 = 𝑙̃𝑅,𝑗 (𝜉𝑅,𝑖 ) = ∫                𝑙𝑅,𝑗 (𝜂)𝑑𝜂 .
+                                                                                0
+The above is also a consequence of 𝑴𝑅𝑄 = 𝑴𝑄𝑅 = 𝑰. This IRK-DG scheme is called Radau IIA in the
+literature (e.g., Hairer & Wanner 1991).
+    Note that if the quadrature points are not of right Radau type (e.g., left Radau or Gauss type), then the
+corresponding collocation method is different from the DG method using such a quadrature.
+
+
+
+
+                                                                           16
+   IRK-DG Method under Left Radau Quadrature
+   For this case, with 𝑓𝐿,𝑗 = 𝑓(𝜉𝐿,𝑖 , 𝑢𝐿,𝑗 ), 1 ≤ 𝑗 ≤ 𝑠, Eqs. (2.19) and (2.20) provide a system of 𝑠 equations
+for 𝑠 unknowns 𝑢𝐿,𝑖 , 1 ≤ 𝑖 ≤ 𝑠. An elegant derivation of the corresponding IRK method using the left
+Radau quadrature can be found in LeSaint & Raviart (1974). Although not mentioned in the cited
+reference, as discussed below, the result is an IRK method identical to Radau IA.
+
+
+4     Accuracy
+The following conditions play a crucial role in the orders of accuracy of RK methods as well as the
+uniqueness of the Radau type schemes. Condition 𝐶(𝜂) and especially 𝐷(𝜁) are typically not easy to grasp.
+Using the IRK construction in the previous section, these conditions for the IRK-DG methods are relatively
+simple to interpret and easy to prove. Condition 𝐶(𝜂) amounts to a degree of precision of 𝜂 − 1 for certain
+quadratures, and 𝐷(𝜁) relates to the projection of the polynomial 𝑟𝑗 defined by (3.28) onto 𝑷𝜁−1 . For more
+on these conditions applied to general IRK methods, see, e.g., Hairer & Wanner (1991).
+   With quadrature points 𝜉𝑖 , Butcher tableau with stage levels 𝑐𝑖 = 𝜉𝑖 (leftmost column), quadrature
+weights 𝑏𝑗 at 𝜉𝑗 (bottom row), and matrix 𝑨 = {𝑎𝑖𝑗 } (upper right), 1 ≤ 𝑖, 𝑗 ≤ 𝑠, the conditions are:
+                                           𝑠             1
+                                                 𝑞−1
+         𝐵(𝑝):                          ∑ 𝑏𝑖 𝑐𝑖       =                    𝑞 = 1, … , 𝑝 ;
+                                           𝑖=1           𝑞
+                                         𝑠                 𝑞
+                                                 𝑞−1     𝑐𝑖
+         𝐶(𝜂):                        ∑ 𝑎𝑖𝑗 𝑐𝑗        =                    𝑖 = 1, … , 𝑠, 𝑞 = 1, … , 𝜂 ;
+                                         𝑗=1              𝑞
+                                    𝑠                𝑏𝑗
+                                           𝑞−1                𝑞
+         𝐷(𝜁):                   ∑ 𝑏𝑖 𝑐𝑖 𝑎𝑖𝑗 = (1 − 𝑐𝑗 )                   𝑗 = 1, … , 𝑠, 𝑞 = 1, … , 𝜁 .
+                                    𝑖=1               𝑞
+
+   Butcher’s Theorem. If the coefficients 𝑏𝑖 , 𝑐𝑖 , and 𝑎𝑖𝑗 of an RK method satisfy 𝐵(𝑝), 𝐶(𝜂), 𝐷(𝜁) with
+𝑝 ≤ 2𝜂 + 2 and 𝑝 ≤ 𝜂 + 𝜁 + 1, then the method is of order 𝑝.
+   In other words, if conditions 𝐵(𝑝), 𝐶(𝜂), 𝐷(𝜁) hold for highest possible integer values of 𝑝, 𝜂, and 𝜁,
+then the method is of order Min(𝑝, 2𝜂 + 2, 𝜂 + 𝜁 + 1).
+
+   Condition 𝐵(𝑝)
+   This condition means the quadrature has a degree of precision 𝑝 − 1 or of order 𝑝, i.e., it is exact for
+any polynomial 𝑣 of degree 𝑝 − 1 or less:
+                                              1                    𝑠
+                                          ∫ 𝑣(𝜉)𝑑𝜉 = ∑                   𝑏𝑗 𝑣(𝜉𝑗 ).
+                                           0                       𝑗=1
+Concerning IRK-DG, for the Radau quadratures, condition 𝐵(2𝑠 − 1) holds, and for Gauss, 𝐵(2𝑠).
+
+   Condition 𝐶(𝜂)
+   This condition means for each 𝑖, 1 ≤ 𝑖 ≤ 𝑠, the following quadrature with weights 𝑎𝑖𝑗 , 1 ≤ 𝑗 ≤ 𝑠, has
+a degree of precision 𝜂 − 1: for any 𝑣 in 𝑷𝜂−1 ,
+                                           𝑐𝑖                      𝑠
+                                         ∫ 𝑣(𝜉)𝑑𝜉 = ∑                    𝑎𝑖𝑗 𝑣(𝜉𝑗 ).                       (4.1)
+                                          0                        𝑗=1
+Indeed, with 𝑖 and 𝑞 fixed, by applying the quadrature rule of weights 𝑎𝑖𝑗 at quadrature points 𝜉𝑗 , 1 ≤ 𝑗 ≤
+                                            𝑐                      𝑞−1
+𝑠, we have the following approximation: ∫0 𝑖 𝜉 𝑞−1 𝑑𝜉 ≈ ∑𝑠𝑗=1 𝑎𝑖𝑗 𝜉𝑗 . If the quadrature is exact, then
+                                                      𝑠                𝑞
+                                                                 𝑞−1 𝑐𝑖
+                                                  ∑         𝑎𝑖𝑗 𝜉𝑗 = .                                     (4.2)
+                                                      𝑗=1             𝑞
+The monomials 𝜉 𝑞−1 , 𝑞 = 1, … , 𝜂, form a basis for 𝑷𝜂−1 . Due to linearity, the fact that the above holds
+for 𝑞 = 1, … , 𝜂 is equivalent to the fact that (4.1) holds for all 𝑣 in 𝑷𝜂−1 , and the claim follows.
+
+
+                                                              17
+   Condition 𝐶(𝑠) holds for the DG method under the right Radau quadrature,
+   Indeed, with such a quadrature, the DG method is equivalent to the right Radau collocation method as
+shown by the proposition before (2.41). Thus, for each 𝑖, 1 ≤ 𝑖 ≤ 𝑠, the quadrature formula
+                                    𝜉𝑅,𝑖                          𝑠                                        𝑠
+                                ∫          𝑓ℎ (𝜂)𝑑𝜂 = ∑                 𝑓𝑅,𝑗 𝑙̃𝑅,𝑗 (𝜉𝑅,𝑖 ) = ∑                   𝑎𝑖𝑗 𝑓𝑅,𝑗       (4.3)
+                                0                                 𝑗=1                                      𝑗=1
+is exact for any 𝑓ℎ in 𝑷𝑠−1 and the above claim of 𝐶(𝑠) follows.
+    Condition 𝐶(𝑠 − 1) holds for an IRK-DG method under any quadrature of degree of precision 2𝑠 − 2
+or higher. In other words, the degree of precision of (4.1) is reduced by 1, a consequence of 𝑟𝑗 of degree
+𝑠 − 1 approximating 𝑙̃𝑗 of degree 𝑠 to one degree lower as discussed in (3.26)-(3.28).
+    To prove condition 𝐶(𝑠 − 1), with 1 ≤ 𝑞 ≤ 𝑠 − 1, set
+                                                                  𝑣(𝜉) = 𝜉 𝑞−1 .                                                (4.4)
+                        𝑞−1
+Note that 𝑣(𝜉) = ∑𝑠𝑗=1 𝜉𝑗 𝑙𝑗 (𝜉) is of degree ≤ 𝑠 − 2 (in spite of each 𝑙𝑗 being of degree 𝑠 − 1). Next,
+                                                      𝜉
+                                                                          𝜉𝑞    𝑠
+                                                                                    𝑞−1
+                                       𝑣̃(𝜉) = ∫ 𝑣(𝜏)𝑑𝜏 =                    = ∑ 𝜉𝑗 𝑙̃𝑗 (𝜉)
+                                                     0                    𝑞     𝑗=1
+
+is of degree 𝑞 ≤ 𝑠 − 1 (in spite of each 𝑙̃𝑗 being of degree 𝑠). Consequently, the 𝑠 values of 𝑣̃ at the right
+Radau points, namely 𝑣̃(𝜉𝑅,𝑖 ), 𝑖 = 1, … , 𝑠, determine a polynomial 𝑟 identical to 𝑣̃:
+                                                                           𝜉𝑞
+                                                             𝑟(𝜉) = 𝑣̃(𝜉) = .
+                                                                           𝑞
+(Here, if 𝑞 = 𝑠, i.e., 𝑣(𝜉) = 𝜉 𝑠−1 , then 𝑟 has degree 𝑠 − 1, 𝑣̃ has degree 𝑠, 𝑟 ≠ 𝑣̃, and the argument fails.)
+For each fixed 𝑖, by (3.26),
+                                                                           𝑠
+                                                                                      𝑞−1
+                                                         𝑟(𝜉𝑖 ) = ∑              𝑎𝑖𝑗 𝜉𝑗           .
+                                                                           𝑗=1
+The above two equations imply, since 𝑐𝑖 = 𝜉𝑖 , for 1 ≤ 𝑖 ≤ 𝑠, and 1 ≤ 𝑞 ≤ 𝑠 − 1
+                                                              𝑠                           𝑞
+                                                                            𝑞−1       𝑐𝑖
+                                                          ∑           𝑎𝑖𝑗 𝑐𝑗      =      .
+                                                              𝑗=1                     𝑞
+This completes the proof.
+
+    Condition 𝐷(𝜁).
+    This condition relates to the projection of 𝑟𝑗 onto 𝑷𝜁−1 as follows. For each fixed 𝑗, 𝑟𝑗 defined by (3.27)
+is of degree 𝑠 − 1. If 𝑣 is of degree 𝑠 − 1 or less, then 𝑣𝑟𝑗 is of degree 2𝑠 − 2 or less. Since the quadrature
+associated with 𝜉𝑖 ’s has a degree of precision 2𝑠 − 2 or higher,
+                            1                                 𝑠                                        𝑠
+                         ∫ 𝑣(𝜉) 𝑟𝑗 (𝜉)𝑑𝜉 = ∑                          𝑏𝑖 𝑣(𝜉𝑖 )𝑟𝑗 (𝜉𝑖 ) = ∑                    𝑏𝑖 𝑣(𝜉𝑖 )𝑎𝑖𝑗 ,   (4.5)
+                          0                                   𝑖=1                                      𝑖=1
+where the last equality follows since 𝑟𝑗 (𝜉𝑖 ) = 𝑎𝑖𝑗 by (3.28). Next, similar to (4.4), but with 1 ≤ 𝑞 ≤ 𝑠, set
+𝑣(𝜉) = 𝜉 𝑞−1 . Then 𝑣 is of degree 𝑠 − 1 or less. Eq. (4.5) implies,
+                                                          1                                   𝑠
+                                            𝑞−1                                                            𝑞−1
+                                (𝑟𝑗 , 𝜉           ) = ∫ 𝜉 𝑞−1 𝑟𝑗 (𝜉)𝑑𝜉 = ∑                            𝑏𝑖 𝜉𝑖      𝑎𝑖𝑗 .          (4.6)
+                                                         0                                    𝑖=1
+The above determines the projection of 𝑟𝑗 onto 𝑷𝑠−1 by using the quadrature associated with 𝜉𝑖 ’s.
+   Thus, condition 𝐷(𝜁) means for all 𝑗, the projection of 𝑟𝑗 onto 𝑷𝜁−1 is given exactly by the quadrature
+associated with 𝜉𝑖 ’s. We can now show the following.
+   Condition 𝐷(𝑠 − 1) holds for an IRK-DG method under any quadrature of degree of precision 2𝑠 − 2
+or higher. The condition resulting in 𝐷(𝑠) will be discussed following the completion of this proof.
+
+
+
+
+                                                                           18
+   Indeed, the key to the proof is to replace 𝑟𝑗 by 𝑙̃𝑗 in the left hand side above. With 1 ≤ 𝑞 ≤ 𝑠 − 1, or
+𝑞 − 1 ≤ 𝑠 − 2, we focus on the projection of 𝑟𝑗 onto 𝑷𝑠−2 . By employing the 𝑠-point right Radau
+quadrature, and since 𝑙̃𝑗 − 𝑟𝑗 vanishes at the right Radau points (𝑟𝑗 interpolates 𝑙̃𝑗 at the right Radau points),
+                                                          (𝑙̃𝑗 − 𝑟𝑗 , 𝜉 𝑞−1 ) = 0.                               (4.7)
+That is, 𝑙̃𝑗 and 𝑟𝑗 have the same projection onto 𝑷𝑠−2:
+                                          1                                 1
+                                        ∫ 𝜉 𝑞−1 𝑟𝑗 (𝜉)𝑑𝜉 = ∫ 𝜉 𝑞−1 𝑙̃𝑗 (𝜉)𝑑𝜉 .                                    (4.8)
+                                         0                                 0
+Concerning the right hand side above, by integration by parts,
+                                   1
+                                      𝑞−1 ̃
+                                                    1 𝑞 1 1 1 𝑞
+                                  ∫ 𝜉     𝑙𝑗 (𝜉)𝑑𝜉 = [𝜉 𝑙̃𝑗 ]0 − ∫ 𝜉 𝑙𝑗 (𝜉)𝑑𝜉 .                                   (4.9)
+                                   0                𝑞           𝑞 0
+For the last term above, since 𝑙𝑗 (𝜉𝑖 ) = 𝛿𝑖𝑗 , and 𝜉𝑗 = 𝑐𝑗 , by applying the quadrature,
+                                                          1
+                                                                                     𝑞
+                                                      ∫ 𝜉 𝑞 𝑙𝑗 (𝜉)𝑑𝜉 = 𝑏𝑗 𝑐𝑗 .
+                                                          0
+Substituting the above into (4.9), we obtain
+                                               1                               𝑏𝑗       𝑞
+                                             ∫ 𝜉 𝑞−1 𝑙̃𝑗 (𝜉)𝑑𝜉 =                  (1 − 𝑐𝑗 ).
+                                              0                                𝑞
+Finally, by (4.8), (4.6), and the above, for 1 ≤ 𝑞 ≤ 𝑠 − 1,
+                                                  𝑠                            𝑏𝑗
+                                                              𝑞−1                       𝑞
+                                         ∑                𝑏𝑖 𝑐𝑖     𝑎𝑖𝑗 =         (1 − 𝑐𝑗 ).                     (4.10)
+                                                  𝑖=1                          𝑞
+This completes the proof.
+    Condition 𝐷(𝑠) holds for the DG method under the left Radau quadrature.
+    Indeed, we wish to show (4.10) for 1 ≤ 𝑞 ≤ 𝑠. To this end, since 𝑞 − 1 ≤ 𝑠 − 1, for the projection of
+𝑟𝑗 onto 𝑷𝑠−1 , consider (𝑟𝑗 , 𝜉 𝑞−1 ). We have, by using the quadrature, which is of left Radau type here,
+                                                      1                                  𝑠
+                                                                                                   𝑞−1
+                               (𝑟𝑗 , 𝜉 𝑞−1 ) = ∫ 𝜉 𝑞−1 𝑟𝑗 (𝜉)𝑑𝜉 = ∑                            𝑏𝑖 𝑐𝑖     𝑎𝑖𝑗 .   (4.11)
+                                                      0                                  𝑖=1
+To prove (4.10) for 1 ≤ 𝑞 ≤ 𝑠, first, consider the case 𝑗 = 1. Since 𝑙1 = 𝑙𝐿,1 , by (2.21), 𝑙1 = −𝑔′ /𝑠 2 .
+Consequently, 𝑙̃1 = constant − 𝑔/𝑠 2 . Next, since 𝑙̃1 (0) = 0, and 𝑔(0) = 1,
+                                                           1−𝑔
+                                                      𝑙̃1 = 2 .                                       (4.12)
+                                                             𝑠
+At the right Radau points, 𝑔(𝜉𝑅,𝑖 ) = 0, 𝑖 = 1, … , 𝑠; therefore, 𝑙̃1 (𝜉𝑅,𝑖 ) = 1/𝑠 2 . Thus, 𝑟1 defined by
+𝑙̃1 (𝜉𝑅,𝑖 ), 1 ≤ 𝑖 ≤ 𝑠, is a constant function: 𝑟1 (𝜉) = 1/𝑠 2 . As a result, for 1 ≤ 𝑖 ≤ 𝑠,
+                                                                 1
+                                              𝑎𝑖1 = 𝑟1 (𝜉𝑖 ) = 2 = 𝑏1 .
+                                                                 𝑠
+Consequently, for 1 ≤ 𝑞 ≤ 𝑠,
+                              𝑠             𝑠               1
+                                𝑞−1              𝑞−1                  𝑏1
+                          ∑ 𝑏𝑖 𝑐𝑖 𝑎𝑖1 = 𝑏1 ∑ 𝑏𝑖 𝑐𝑖   = 𝑏1 ∫ 𝜉 𝑞−1 𝑑𝜉 = .                                         (4.13)
+                           𝑖=1              𝑖=1            0          𝑞
+That is, (4.10) holds with 1 ≤ 𝑞 ≤ 𝑠 for 𝑗 = 1.
+  For 𝑗 ≥ 2, again with 1 ≤ 𝑞 ≤ 𝑠, by applying integration by parts to (𝜉 𝑞−1 , 𝑟𝑗 ),
+                                   1
+                                                  1 𝑞 1 1 1 𝑞 ′
+                                  ∫ 𝜉 𝑞−1 𝑟𝑗 (𝜉)𝑑𝜉 =[𝜉 𝑟𝑗 ]0 − ∫ 𝜉 𝑟𝑗 (𝜉)𝑑𝜉 .                                    (4.14)
+                               0                  𝑞             𝑞 0
+Since the quadrature points are the left Radau points, 𝑟𝑗 (1) = 𝑙̃𝐿,𝑗 (1) = 𝑏𝐿,𝑗 = 𝑏𝑗 . Thus,
+
+
+
+
+                                                                      19
+                                                                   1
+                                                           [𝜉 𝑞 𝑟𝑗 ]0 = 𝑏𝑗 .                                                    (4.15)
+Next, note that 𝑙̃𝐿,𝑗 − 𝑟𝑗 is of degree 𝑠 and vanishes at the right Radau points; therefore, 𝑙̃𝐿,𝑗 − 𝑟𝑗 = 𝑐𝑔 for
+some constant 𝑐. Since 𝑔′ vanishes at all left Radau points except at 𝜉 = 0, we have, for 2 ≤ 𝑖 ≤ 𝑠,
+                                      𝑟𝑗′ (𝜉𝐿,𝑖 ) = 𝑙̃𝐿,𝑗
+                                                      ′
+                                                          (𝜉𝐿,𝑖 ) = 𝑙𝐿,𝑗 (𝜉𝐿,𝑖 ) = 𝛿𝑖𝑗 .
+By applying the left Radau quadrature to the last term of (4.14), the above implies, for 1 ≤ 𝑞 ≤ 𝑠,
+                   1                     𝑠                                      𝑠
+                                                       𝑞                                   𝑞                𝑞         𝑞
+                 ∫ 𝜉 𝑞 𝑟𝑗′ (𝜉)𝑑𝜉 = ∑           𝑏𝐿,𝑖 𝜉𝐿,𝑖 𝑟𝑗′ (𝜉𝐿,𝑖 ) = ∑              𝑏𝐿,𝑖 𝜉𝐿,𝑖 𝛿𝑖𝑗 = 𝑏𝐿,𝑗 𝜉𝐿,𝑗 = 𝑏𝑗 𝜉𝑗 .       (4.16)
+                  0                      𝑖=1                                    𝑖=1
+Using (4.15) and (4.16), Eq. (4.14) implies
+                                     1                                      𝑞
+                                         𝑞−1
+                                                         𝑏𝑗 𝑏𝑗 𝜉𝑗  𝑏𝑗     𝑞
+                                   ∫ 𝜉         𝑟𝑗 (𝜉)𝑑𝜉 = −       = (1 − 𝜉𝑗 ).
+                                    0                    𝑞    𝑞    𝑞
+By (4.6) and the above, for 1 ≤ 𝑞 ≤ 𝑠,
+                                                   𝑠       𝑏𝑗
+                                                           𝑞−1      𝑞
+                                             ∑         𝑏𝑖 𝜉𝑖     𝑎𝑖𝑗 =
+                                                              (1 − 𝜉𝑗 ).                                                        (4.17)
+                                         𝑖=1               𝑠
+That is, (4.10) with 1 ≤ 𝑞 ≤ 𝑠 holds for 𝑗 ≥ 2. This, together with (4.13), completes the proof.
+
+   Conditions 𝐵(𝑝), 𝐶(𝜂), and 𝐷(𝜁) for IRK-DG Method
+   The above argument shows that the following table of conditions holds for the IRK-DG method.
+
+                                                               Table 4.1
+     Quadrature            IRK-DG method                       𝐵(𝑝)                            𝐶(𝜂)                     𝐷(𝜁)
+     Left Radau                Radau IA                    𝐵(2𝑠 − 1)                       𝐶(𝑠 − 1)                     𝐷(𝑠)
+    Right Radau               Radau IIA                    𝐵(2𝑠 − 1)                           𝐶(𝑠)                  𝐷(𝑠 − 1)
+        Gauss                 DG-Gauss                         𝐵(2𝑠)                       𝐶(𝑠 − 1)                  𝐷(𝑠 − 1)
+
+   By Butcher’s theorem, the orders of accuracy are: for Radau IA,
+                            Min(𝑝, 2𝜂 + 2, 𝜂 + 𝜁 + 1) = Min(2𝑠 − 1, 2𝑠, 2𝑠) = 2𝑠 − 1;
+for Radau IIA,
+                          Min(𝑝, 2𝜂 + 2, 𝜂 + 𝜁 + 1) = Min(2𝑠 − 1, 2𝑠 + 2, 2𝑠) = 2𝑠 − 1;
+and, for DG with a quadrature of degree of precision 2𝑠 − 2 or higher as in our assumption (𝑝 ≥ 2𝑠 − 1),
+                            Min(𝑝, 2𝜂 + 2, 𝜂 + 𝜁 + 1) = Min(𝑝, 2𝑠, 2𝑠 − 1) = 2𝑠 − 1.
+That is, all IRK-DG methods with solution of degree 𝑠 − 1 are accurate to order 2𝑠 − 1.
+
+      Uniqueness of Matrix 𝑨 by Condition 𝐶(𝑠) for IRK Method with Right Radau Quadrature
+      If 𝑐𝑖 ’s are the right Radau points, 𝑐𝑖 = 𝜉𝑅,𝑖 , and 𝑏𝑗 ’s are the right Radau quadrature weights, 𝑏𝑗 = 𝑏𝑅,𝑗 ,
+1 ≤ 𝑖, 𝑗 ≤ 𝑠, then condition 𝐶(𝑠) uniquely determines 𝑨. Consequently, 𝐶(𝑠) implies 𝐷(𝑠 − 1).
+      Indeed, with 𝑐𝑖 = 𝜉𝑅,𝑖 , let the corresponding Lagrange polynomials be 𝑙𝑖 = 𝑙𝑅,𝑖 , 1 ≤ 𝑖 ≤ 𝑠, and set
+̃𝑙𝑗 (𝜉) = ∫𝜉 𝑙𝑗 (𝜂)𝑑𝜂. By (4.3), the matrix {𝑙̃𝑗 (𝑐𝑖 )}𝑠      satisfies condition 𝐶(𝑠).
+          0                                                𝑖,𝑗=1
+                      𝑠
+   Next, let {𝐴𝑖𝑗 }𝑖,𝑗=1 be a matrix satisfying condition 𝐶(𝑠). By (4.1), the following quadrature has a
+degree of precision 𝑠 − 1: for any 𝑣 in 𝑷𝑠−1 ,
+                                                𝑐𝑖                      𝑠
+                                             ∫ 𝑣(𝜂)𝑑𝜂 = ∑                     𝑣(𝑐𝑗 )𝐴𝑖𝑗 .                                       (4.18)
+                                               0                        𝑗=1
+
+
+
+
+                                                                   20
+Uniqueness of 𝑨 follows if we can show that 𝐴𝑖𝑗 = 𝑙̃𝑗 (𝑐𝑖 ), 1 ≤ 𝑖, 𝑗 ≤ 𝑠.
+  To this end, with a fixed 𝑗, set 𝑣 = 𝑙𝑗 in the above and, since 𝑙𝑗 (𝑐𝑚 ) = 𝛿𝑗𝑚 , we obtain
+                                       𝑐𝑖                      𝑠
+                                     ∫ 𝑙𝑗 (𝜂)𝑑𝜂 = ∑                   𝑙𝑗 (𝑐𝑚 )𝐴𝑖𝑚 = 𝐴𝑖𝑗 .                      (4.19)
+                                      0                        𝑚=1
+                                  𝑐
+Next, by the definition of 𝑙̃𝑗 , ∫0 𝑖 𝑙𝑗 (𝜂)𝑑𝜂 = 𝑙̃𝑗 (𝑐𝑖 ). This fact and the above imply, for 1 ≤ 𝑖, 𝑚 ≤ 𝑠,
+                                                        𝐴𝑖𝑗 = 𝑙̃𝑗 (𝑐𝑖 ).
+This completes the proof.
+    An IRK method using the right Radau quadrature is uniquely determined by condition 𝐶(𝑠). That is,
+such a method is identical to the IRK-DG scheme under the same quadrature as well as the IRK method
+for the right Radau collocation scheme. As a consequence, condition 𝐷(𝑠 − 1) holds. The method is called
+Radau IIA in the literature (e.g., Hairer & Wanner 1991).
+
+   Uniqueness of Matrix 𝑨 by Condition 𝐷(𝑠) for IRK Method with Left Radau Quadrature
+   If 𝑐𝑖 ’s are the left Radau points, 𝑐𝑖 = 𝜉𝐿,𝑖 , and 𝑏𝑗 ’s are the corresponding quadrature weights, 𝑏𝑗 = 𝑏𝐿,𝑗 ,
+1 ≤ 𝑖, 𝑗 ≤ 𝑠, then condition 𝐷(𝑠) uniquely determines 𝑨. Consequently, 𝐷(𝑠) implies 𝐶(𝑠 − 1).
+   For the proof, with 𝑟𝑗 defined by (3.27), using the left Radau quadrature, for 𝑞 ≤ 𝑠,
+                                                        𝑠                        𝑏𝑗
+                                                                   𝑞−1                    𝑞
+                                  (𝑟𝑗 , 𝜉 𝑞−1 ) = ∑           𝑏𝑖 𝑐𝑖      𝑎𝑖𝑗 =      (1 − 𝑐𝑗 ).
+                                                        𝑖=1                      𝑞
+Next, let {𝐴𝑖,𝑗 } be an 𝑠 × 𝑠 matrix that satisfy condition 𝐷(𝑠): for 1 ≤ 𝑗, 𝑞 ≤ 𝑠,
+                                                𝑠          𝑏𝑗
+                                                        𝑞−1          𝑞
+                                            ∑       𝑏𝑖 𝑐𝑖     𝐴𝑖𝑗 =
+                                                              (1 − 𝑐𝑗 ).
+                                               𝑖=1          𝑞
+Let 𝑅𝑗 be a polynomial of degree 𝑠 − 1 defined by 𝑅𝑗 (𝜉𝑖 ) = 𝐴𝑖𝑗 . Then, for a fixed 𝑗, by using the (left
+Radau) quadrature,
+                                                   𝑠              𝑏𝑗
+                                                        𝑞−1              𝑞
+                                  (𝑅𝑗 , 𝜉 𝑞−1 ) = ∑ 𝑏𝑖 𝜉𝑖 𝐴𝑖𝑗 = (1 − 𝑐𝑗 ).
+                                                   𝑖=1            𝑞
+Since 𝑅𝑗 and 𝑟𝑗 are of degree 𝑠 − 1 and they have the same projection onto 𝑷𝑠−1, 𝑅𝑗 = 𝑟𝑗 . Consequently,
+for 1 ≤ 𝑖, 𝑗 ≤ 𝑠, 𝑅𝑗 (𝜉𝑖 ) = 𝑟𝑗 (𝜉𝑖 ), or
+                                                            𝐴𝑖𝑗 = 𝑎𝑖𝑗 .
+This completes the proof.
+   Therefore, an IRK method using the left Radau quadrature is uniquely determined by condition 𝐷(𝑠).
+Such a method is thus identical to the IRK-DG scheme under the left Radau quadrature and, as a result,
+condition 𝐶(𝑠 − 1) holds. The method is called Radau IA in the literature (e.g., Hairer & Wanner 1991).
+
+
+5     Numerical Examples of DG Solutions
+Two simple examples show the behavior of the DG solutions 𝑢ℎ and 𝑈.
+  For the first example, the ODE on [0, 1] is given by
+                                                           𝜋              1
+                              𝑢′ (𝑥) = 𝑓(𝑥) = 𝜋 cos(𝜋𝑥 + ) ,      𝑢(0) = .
+                                                           6              2
+With step size ℎ = 1, we wish to obtain the DG solutions 𝑢ℎ and 𝑈 using the left Radau, Gauss, and right
+Radau quadratures for each of the two cases 𝑘 = 1 and 𝑘 = 2. The exact solution is obvious:
+                                                              𝜋
+                                        𝑢exact (𝑥) = sin (𝜋𝑥 + ).
+                                                              6
+
+
+
+
+                                                                   21
+The DG solution 𝑢𝑛+1 = 𝑢ℎ (1) = 𝑈(1) reduces to the solution by the quadrature formula as shown below.
+Consequently, the Gauss quadrature produces a result accurate to one order higher than the two Radau
+quadratures. This gain in accuracy, however, does not hold in the second example.
+     For the quadratures employed, the projection of 𝑓 reduces to interpolation, i.e., with quadrature points
+𝜉𝑖 , 1 ≤ 𝑖 ≤ 𝑘 + 1, 𝑓ℎ is defined by 𝑓(𝜉𝑖 ): 𝑓ℎ = 𝒫𝑘 (𝑓) = ∑𝑘+1
+                                                            𝑖=1 𝑓(𝜉𝑖 )𝑙𝑖 . The solution 𝑈 is given by (2.34):
+                                          𝜉             𝑘+1       𝜉
+                                    1               1
+                           𝑈(𝜉) =     + ∫ 𝑓ℎ (𝜂)𝑑𝜂 = + ∑ 𝑓(𝜉𝑖 ) ∫ 𝑙𝑖 (𝜂)𝑑𝜂 .
+                                    2    0          2   𝑖=1      0
+At the end of the step,
+                                               1             𝑘+1
+                                         1               1
+                                𝑈(1) =     + ∫ 𝑓ℎ (𝜂)𝑑𝜂 = + ∑ 𝑏𝑖 𝑓(𝜉𝑖 ).
+                                         2    0          2   𝑖=1
+That is, the DG solution 𝑈 reduces to the quadrature formula. As for 𝑢ℎ , it is defined by 𝑈(𝜉𝑅,𝑖 ) at the
+right Radau points 𝜉𝑅,𝑖 , 1 ≤ 𝑖 ≤ 𝑘 + 1.
+    Fig. 5.1 shows, on [0, 1], the graphs of the exact 𝑓 (thin red curve) and, for the case 𝑘 = 1, the linear
+𝑓ℎ (thick blue line) defined by the values at the two quadrature points (red square dots) of type (a) left
+Radau, (b) Gauss, and (c) right Radau.
+    Fig. 5.2 shows the graphs of the exact solution 𝑢exact (thin red curve) and, for 𝑘 = 1, the quadratic DG
+solution 𝑈 (thick blue curve) as well as the linear DG solution 𝑢ℎ (dot-dashed green curve); again, the
+quadrature points are of type (a) left Radau, (b) Gauss, and (c) right Radau. Here, each continuous curve
+is the integral of the corresponding counterpart in Fig. 5.1 with 𝑢(0) = 1/2. For 1 ≤ 𝑖 ≤ 𝑘 + 1, the
+solutions 𝑢𝑛,𝑖 at the quadrature points by the IRK-DG method are shown as the large green square dots on
+the line 𝑢ℎ . Note that the solution at 𝜉 = 1 in (b) is most accurate, a fact consistent with the Gauss
+quadrature being more accurate by one order compared with the Radau quadratures.
+    Fig. 5.3 is analogous to Fig. 5.1 but with 𝑘 = 2, and the same is true for Fig. 5.4 relative to Fig. 5.2.
+
+
+
+
+                (a)                                  (b)                                    (c)
+Fig. 5.1 The graphs of 𝑓exact (red curve) and, for 𝑘 = 1, the linear 𝑓ℎ (thick blue line) defined by the values
+at the two quadrature points (red square dots) of type (a) left Radau, (b) Gauss, and (c) right Radau.
+
+
+
+
+         𝑢ℎ                                  𝑢ℎ
+                                                                               𝑢ℎ
+                                                              𝑈
+                                                                                                     𝑈
+
+
+                    𝑈
+                (a)                                 (b)                                   (c)
+Fig. 5.2 The graphs of 𝑢exact (red curve) and, for 𝑘 = 1, the quadratic 𝑈 (thick blue curve) and the linear
+𝑢ℎ (dot-dashed green line); the quadrature points are of type: (a) left Radau, (b) Gauss, and (c) right Radau.
+
+
+
+
+                                                         22
+                 (a)                                 (b)                                 (c)
+Fig. 5.3 The graphs of 𝑓exact (red curve) and, for 𝑘 = 2, the quadratic 𝑓ℎ (thick blue curve) defined by the
+values at three quadrature points (red square dots) of type (a) left Radau, (b) Gauss, and (c) right Radau.
+
+
+
+                                                                            𝑢ℎ        𝑈
+                                         𝑢ℎ
+  𝑢ℎ
+                                                            𝑈
+                           𝑈
+
+
+
+                (a)                                 (b)                                 (c)
+Fig. 5.4 The graphs of 𝑢exact (red curve) and, for 𝑘 = 2, the cubic 𝑈 (thick blue curve), and quadratic 𝑢ℎ
+(dot-dashed green curve); the quadrature points are of type (a) left Radau, (b) Gauss, and (c) right Radau.
+
+
+    For the second and final example, the ODE on [0, 1] is 𝑢′ = 𝜆𝑢. We employ two different values for
+𝜆, 2𝜋𝒾/3 and 𝜋𝒾/3, which is equivalent to halving the step size; here, 𝒾 is the imaginary number. The
+initial condition is 𝑢(0) = 1. The exact solution is 𝑢exact (𝜉) = 𝑒 𝜆𝜉 . We wish to obtain the DG solutions
+𝑢ℎ and 𝑈 with ℎ = 1 for both 𝑘 = 1 and 𝑘 = 2.
+    For this problem, provided the quadrature has a degree of precision 2𝑘 or higher, the DG solution is
+independent of the quadrature employed as discussed after (6.2).
+    Fig. 5.5 shows the graphs of 𝑢exact (red dashed curve) and the DG solutions 𝑢ℎ (dot-dashed green line)
+and 𝑈 (continuous blue curve) for the case 𝑘 = 1 where 𝜆 equals (a) 2𝜋𝒾/3 and (b) 𝜋𝒾/3.
+
+
+
+
+                                𝑢exact
+
+                                                                                          𝑢exact
+                   𝑢ℎ                                                            𝑢ℎ
+
+                                 𝑈
+                                                                                          𝑈
+
+
+
+                         (a)                                                   (b)
+Fig. 5.5 The graphs of 𝑢exact (red dashed curve) and the DG solutions 𝑢ℎ (dot-dashed green line) and 𝑈
+(continuous blue curve) for the case 𝑘 = 1 where (a) 𝜆 = 2𝜋𝒾/3 and (b) 𝜆 = 𝜋𝒾/3.
+
+
+
+
+                                                       23
+   Fig. 5.6 is analogous to Fig. 5.5 but with 𝑘 = 2.
+   Note the significant improvement in accuracy by halving the step size (𝜆 from 2𝜋𝒾/3 to 𝜋𝒾/3) or by
+increasing the degree of approximation (𝑘 from 1 to 2).
+
+
+
+
+                                𝑢exact
+                     𝑈
+                                                                                            𝑢exact
+
+
+
+
+                                                                                            𝑈
+                                              𝑢ℎ
+                                                                                                  𝑢ℎ
+                          (a)                                                    (b)
+Fig. 5.6 The graphs of 𝑢exact (red dashed curve) and the DG solutions 𝑢ℎ (dot-dashed green line) and 𝑈
+(continuous blue curve) for the case 𝑘 = 2 where (a) 𝜆 = 2𝜋𝒾/3 and (b) 𝜆 = 𝜋𝒾/3.
+
+
+    The error in the DG solution 𝑢ℎ (1) is
+                                          Er = |𝑢exact (1) − 𝑢ℎ (1)|.
+In the piecewise linear case of Fig. 5.5, for 𝜆 = 2𝜋𝒾/3, the error is Er1 ≈ 0.1720; for 𝜆 = 𝜋𝒾/3, Er2 ≈
+0.01520 resulting in Er1 /Er2 ≈ 11.3. The next halving of the step size (𝜆 = 𝜋𝒾/6) results in Er2 /Er3 ≈
+14.9 and then 15.7 approaching a ratio of 16 = 24 . Thus, the error reduction is consistent with the fact
+that the piecewise linear DG method for ODE is third-order accurate. Similarly, the piecewise parabolic
+DG solution is fifth-order accurate. We omit the details.
+
+
+6     Conclusions and Discussion
+In summary, we studied the numerical solutions for ODE by the DG method from a perspective different
+from those in the literature. Our focus was on constructing the solution by first deriving the DG method in
+differential form. The derivation is made possible by a polynomial called the correction function, which
+approximates the jump at the beginning of each step. The correction function facilitates the construction
+of the IRK-DG schemes under different quadratures. The IRK-DG construction in turn clarifies the
+meaning and facilitates the proofs of various 𝐵(𝑝), 𝐶(𝜂), and 𝐷(𝜁) conditions, which play a crucial role
+in the order of accuracy of the schemes as well as the uniqueness of the Radau type methods. Numerical
+solutions were provided. In all, the correction function plays a central role and clarifies the relations among
+the DG and related schemes.
+    In addition to clarifying the relations among methods, the current approach can be employed to simplify
+the time discretization of the space-time DG methods. Concerning existing space-time DG methods, see,
+e.g., Johnson et al. (1984), Van der Vegt & Van der Ven (2002), Murman et al. (2016). Iterative procedures
+amenable to modern supercomputers for the IRK as well as other high-order time stepping methods are
+currently an active area of research (Wang et al. 2013, Slotnick et al. 2014).
+
+Acknowledgements. The author was supported by the Transformational Tools and Technologies Project
+of NASA. He also wishes to thank Dr. Dimitri Mavriplis for several interesting discussions on DG methods
+applied to time stepping and Dr. Seth Spiegel for his thorough review.
+
+
+
+                                                         24
+References
+ [1] S. Adjerid, K.D. Devine, and J.E. Flaherty and L. Krivodonova, A posteriori error estimation for
+       discontinuous Galerkin solutions of hyperbolic problems, Comput Methods Appl Mech Eng, 191
+       (2002), pp. 1097-1112.
+ [2] J.H. Argyris and D.W. Scharpf, Finite elements in time and space, Aer. J. Royal Aer. Soc., 73, 1041-
+       1044 (1969).
+ [3] O. Axelsson, A class of A-stable Methods, Nordisk Tidskr. Informationbehandling (BIT), v. 9, 1969,
+       pp. 185-199.
+ [4] M. Baccouch, Analysis of a posteriori error estimates of the discontinuous Galerkin method for
+       nonlinear ordinary differential equations, Applied Numerical Mathematics 106 (2016) 129–153.
+ [5] M. Borri and C.L. Bottasso, A general framework for interpreting time finite element formulations,
+       Comput. Mech., 13, 133-142 (1993).
+ [6] C.L. Bottasso, A new look at finite elements in time: a variational interpretation of Runge-Kutta
+       methods, Applied Numerical Mathematics, 25, 355-368 (1997).
+ [7] B. Cockburn, G. Karniadakis, and C.-W. Shu, Discontinuous Galerkin methods: Theory,
+       Computation, and Applications, Springer (2000).
+ [8] G. J. Cooper, Interpolation and quadrature methods for ordinary differential equations, Math. Comp.,
+       v. 22, 1968, pp. 69-76.
+ [9] M. Delfour, W. Hager, and F. Trochu, Discontinuous Galerkin methods for ordinary differential
+       equations, Math. Comp., v. 36, 1981, pp. 455-473.
+ [10] B.L. Ehle, A-Stable Methods and Padé Approximations to the Exponential, SIAM Journal on
+       Mathematical Analysis, v. 4, 1973, pp. 671-680.
+ [11] D. Estep and A. Stuart, The dynamical behavior of the discontinuous Galerkin method and related
+       difference schemes, Math. Comput., 71, 1075-1103 (2001).
+ [12] K. Eriksson, D. Estep, P. Hansbo, and C. Johnson, Computational Differential Equations,
+       Cambridge University Press (1996) or https://www.csc.kth.se/~jjan/private/cde.pdf (2009)
+ [13] I. Fried, Finite element analysis of time dependent phenomena, AIAA J., 7, 1170-1173 (1969).
+ [14] A. Fortina and D. Yakoubi, An adaptive discontinuous Galerkin method for very stiff systems of
+       ordinary differential equations, Appl. Math. Comput, v. 358, 2019, pp. 330-347.
+ [15] E. Hairer, S. P. Norsett, and G. Wanner, Solving ordinary differential equations I, 2nd edition,
+       Springer-Verlag (1993).
+ [16] E. Hairer and G. Wanner, Solving ordinary differential equations II, Springer-Verlag (1991).
+ [17] F.B. Hildebrand, Introduction to Numerical Analysis, Dover (1987).
+ [18] B. Hulme, Discrete Galerkin and related one-step methods for ordinary differential equations, Math.
+       Comp., v. 26, 1972, pp. 881-891.
+ [19] Thomas J.R. Hughes, The finite element method, Dover Publications (2012).
+ [20] H.T. Huynh, A flux reconstruction approach to high-order schemes including discontinuous
+       Galerkin methods, 18th AIAA-CFD Conference, AIAA paper 2007-4079.
+ [21] H.T. Huynh (2009a), A Reconstruction Approach to High-Order Schemes Including Discontinuous
+       Galerkin for Diffusion, AIAA Paper 2009-403.
+ [22] H.T. Huynh (2009b), Collocation and Galerkin Time-Stepping Methods, AIAA Paper 2009-4323.
+ [23] H.T. Huynh, On Formulations of Discontinuous Galerkin and Related Methods for Conservation
+       Laws, NASA/TM—2014-218135.
+ [24] H.T. Huynh, Z.J. Wang, P.E. Vincent, High-order methods for computational fluid dynamics: a brief
+       review of compact differential formulations on unstructured grids. Comput. Fluids 98, 209–220
+       (2014).
+ [25] C. Johnson, Numerical Solution of Partial Differential Equations by the Finite Element method,
+       Dover Publications (2012).
+ [26] C. Johnson, U. Nävert, and J. Pikäranta, Finite element methods for linear hyperbolic problems,
+       Comput. Methods Appl. Mech. Eng., v. 45, 1984, pp. 285-312.
+ [27] J.D. Lambert, Numerical methods for ordinary differential systems, John Wiley and Sons (1991).
+ [28] P. LeSaint and P.A. Raviart, On the finite element method for solving the neutron transport equation,
+       in C. de Boor, editor, Mathematical aspects of finite elements in partial differential equations,
+       Academic Press (1974), pp. 89-145.
+
+
+
+
+                                                      25
+[29] S.M. Murman, L. Diosady, A. Garai, and M. Ceze, A Space-Time Discontinuous-Galerkin
+     Approach for Separated Flows, AIAA Paper 2016-1059.
+[30] W.H. Reed and T.R. Hill, Triangular mesh methods for the neutron transport equation, Tech. Report
+     LA-UR-73-479, Los Alamos Scientific Laboratory, 1973.
+[31] J. Slotnick, et al., CFD Vision 2030 Study: A Path to Revolutionary Computational Aerosciences,
+     NASA/CR–2014-218178.
+[32] S.C. Spiegel, M.R. Borghi and D.A. Yoder, Simulations of a Single-Injector Cooling Flow Using
+     the High-Order Flux Reconstruction Method, AIAA Paper AIAA 2022-1813.
+[33] W.S. Tang and Y.J. Sun, Time finite element methods: A unified framework for numerical
+     discretizations of odes. Appl. Math. Comput. 2012, 219, 2158–2180.
+[34] J.J.W. van der Vegt and H. van der Ven “Space-time discontinuous Galerkin finite element method
+     with dynamic grid motion for inviscid compressible flows, Part I. General formulation”, J. Comput.
+     Phys., 182 (2002) 546-585.
+[35] Wang, Z.J., et al.: High-order CFD methods: current status and perspective. Int. J. Numer. Meth.
+     Fluids 72(8), 811–845 (2013).
+[36] K. Wright, “Some relationship between implicit Runge-Kutta, Collocation and Lanczos 𝜏-methods,
+     and their stability properties”, BIT, v. 10, 1970.
+[37] Y. Xing, M. Qin, J. Guo, A Time Finite Element Method Based on the Differential Quadrature Rule
+     and Hamilton’s Variational Principle. Applied Sciences. 2017; 7(2):138.
+[38] S. Zhao and G.W. Wei, A unified discontinuous Galerkin framework for time Integration,
+     Mathematical Methods in the Applied Sciences, v. 37(7), 2014.
+
+
+
+
+                                                    26
+27
+

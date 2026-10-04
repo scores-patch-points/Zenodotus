@@ -1,0 +1,731 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2014-7-15"
+lang: "it"
+messages: "722"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<akis24> giorno
+<cristian_c> lol
+<francesco52> buongiorno...help me!  ho una versione datata: la 8.4 del 2008 perchè il mio portatile è vecchio. con un vecchio so che si èpiantato. devo installare i codec per leggere gli mp3 ma il sistema mi rifiuta qualsiasi aggiornamento; anzi ho provato ad aggiornarlo alla vers. 10.0 ma poi tutto si bloccacome devo comportarmi
+<cristian_c> francesco52, è molto datata, scaricane una supportata (anche la 10.10 è datata)
+<cristian_c> tutte scadute
+<francesco52> caratteristiche del mio laptop sono: Ubuntu -Lernel linux 2.6.24-26 generic GNOME 2.22.3 ;  Hardware - Memory 471,6 MB; Processor Mobile AMD Athlon (64Processor 3200+;  System Status:  Available disk space 31,5 GB.  quindi posso installare altra cersione?
+<francesco52> ...e quale...?
+<akis24> francesco52:  scaricati lubuntu 14.04 e prova da live e vedi come va'
+<francesco52> provo!!  spero di risentirci...
+<akis24> ci risentiamo si dai prova
+<francesco52> aaa!!!  con questa versione che ho adesso posso masterizzare la copia dal formato ISO  ?  poichè ora sono fuori casa e/ devo prima scaricarmi un sw che mi permette di fare ciò?
+<akis24> francesco si masterizza la .iso e poi provi
+<cristian_c> !iso | franc
+<ubot-it> franc: http://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/MasterizzareIso
+<cristian_c> lol
+<akis24> vanno di fretta eh
+<Fly80> ciao a tutti
+<Fly80> sto avendo un problema con una stampante di rete Epson
+<Fly80> quando provo ad aggiungere la stampante mi dà due opzioni
+<Fly80> una IPP
+<Fly80> e l'altra LPD
+<Fly80> qual è la migliore/corretta?
+<akis24> !stampanti
+<ubot-it> stampanti is http://wiki.ubuntu-it.org/Hardware/StampantiScanner
+<cristian_c> !cups
+<ubot-it> http://wiki.ubuntu-it.org/Server/Stampa | Guida alla stampa da rete: https://help.ubuntu.com/community/NetworkPrintingWithUbuntu
+<cristian_c> Ubuntu uses the Common UNIX Printing System ("CUPS") to handle printing. CUPS uses the Internet Printing Protocol ("IPP") as the basis for managing print jobs and queues. Other protocols are also supported (LPD, SMB, AppSocket a.k.a. JetDirect), some with reduced functionality.
+<Fly80> ok, quindi meglio usare IPP
+<Fly80> io mi sono scaricato dei driver dal sito linuxdrivers
+<Fly80> per il modello WF-3620
+<cristian_c> Fly80, sicuro che tu debba scaricare?
+<Fly80> cristian_c, gli ho passato il ppd direttamente, nell'elenco non c'è
+<Fly80> a meno che non si possa adattare un altro driver
+<Fly80> tra quelli presenti
+<Fly80> io immagino di sì, ma non so quale
+<cristian_c> WF-3620 Series
+<cristian_c> Printer Driver 	Linux
+<cristian_c> 1.4.0 	ESC/P-R Driver (generic driver) 	All language
+<cristian_c> 03-10-2014
+<Fly80> dove l'hai trovata?
+<cristian_c> WF-3620 Series	Printer Driver 	Linux	1.0.0 	PC-FAX Driver 	English	05-16-2014
+<Fly80> sul sito di ebz.epson?
+<cristian_c> Fly80, sul sito di epson
+<cristian_c> Fly80, io sarei per il secondo
+<cristian_c> il primo sembra generico
+<cristian_c> poi c'è anche:
+<cristian_c> WF-3620 Series	Scanner Driver 	Linux	Ver. 2.29.3/1.29.0 	core package&data package 	All language	06-26-2014
+<Fly80> cristian_c, il fatto è che li ho scaricati e installati i .deb
+<Fly80> ora non so se sono gli stessi
+<Fly80> alla fine io dentro /opt ho una cartella con i driver
+<Fly80> questo qui /opt/epson-inkjet-printer-escpr/ppds/Epson/Epson-WF-3620_Series-epson-inkjet-printer-escpr.ppd.gz
+<cristian_c> Fly80, nome del deb
+<cristian_c> così vediamo
+<Fly80> asp
+<cristian_c> epson-pc-fax_1.0.0-1lsb3.2_i386.deb
+<cristian_c> epson-pc-fax_1.0.0-1lsb3.2_amd64.deb
+<cristian_c> a seconda dell'architettura
+<Fly80> /home/flavio/Work/installers/external_rpms/epson-inkjet-printer-escpr-1.4.0-1lsb3.2.x86_64.rpm
+<Fly80> /home/flavio/Work/installers/external_rpms/epson-inkjet-printer-escpr_1.4.0-2_amd64.deb
+<Fly80> devo aver preso l'x86_64 e poi l'ho convertito con alien
+<Fly80> forse ho sbagliato architettura?
+<Fly80> o magari funziona pure il i386
+<cristian_c> Fly80, ora, perché hai scaricato gli rpm?
+<cristian_c> seriamente
+<cristian_c> Fly80, hai installato un sistema a 32 o a 64 bit?
+<Fly80> cristian_c, non avevo visto il .deb
+<cristian_c> lol
+<Fly80> provo a riscaricarlo, ma tu stai vedendo un altro driver però
+<Fly80> pc-fax
+<cristian_c> Fly80, la cartella externa_rpms l'hai creata tu?
+<Fly80> certo
+<cristian_c> Fly80, non so cos'hai fatto
+<Fly80> non c'entra nulla quella cartella
+<cristian_c> lol
+<Fly80> guarda, vabbeh, ora li riscarico e ricomincio
+<Fly80> disinstallo quelli e riprovo
+<cristian_c> Fly80, controlla anche con dpkg -l | grep epson
+<cristian_c> non si sa mai
+<Fly80> ii  epson-inkjet-printer-escpr                            1.4.0-2                                             amd64        Epson Inkjet Printer Driver (ESC/P-R) for Linux
+<Fly80> ii  epson-pc-fax                                          1.0.0-2                                             amd64        Epson Laser Printer Driver (ESC/Page) for Linux
+<cristian_c> lol
+<cristian_c> Fly80, perché sono installati insieme?
+<Fly80> cristian_c, immagino che uno serva per la stampante e una per il fax
+<cristian_c> uhm, non so
+<cristian_c> dovresti guardare il manuale epson
+<Fly80> vabbeh, proviamo una alla volta... eh magari ci fosse
+<Fly80> ormai non li mettono più
+<cristian_c> Fly80, eppure hai detto che avevi scaricato solo il primo
+<cristian_c> Fly80, assolutamente no
+<cristian_c> i manuali ci sono
+<cristian_c> non diciamo eresie
+<Fly80> sì, da scaricare
+<cristian_c> lol
+<Fly80> non nella scatola
+<Fly80> quello intendevo
+<cristian_c> non conosco la workforce
+<cristian_c> ho solo una office
+<Fly80> okey, allora proviamo con il generic?
+<Fly80> ecco cristian_c di x86_64 non c'è il .dev
+<Fly80> ecco cristian_c di x86_64 non c'è il .deb
+<Fly80> prendo l'amd64?
+<Fly80> pson-inkjet-printer-escpr-1.4.0-1lsb3.2.x86_64.rpm	1.75 MB
+<Fly80> epson-inkjet-printer-escpr_1.4.0-1lsb3.2_amd64.deb
+<cristian_c> Fly80, perché continui a guardare gli rpm?
+<Fly80> epson-inkjet-printer-escpr_1.4.0-1lsb3.2_amd64.deb
+<Fly80> non continuo a guardare gli rpm
+<cristian_c> epson-inkjet-printer-escpr_1.4.0-1lsb3.2_amd64.deb	2.11 MB
+<cristian_c> <Fly80> pson-inkjet-printer-escpr-1.4.0-1lsb3.2.x86_64.rpm 1.75 MB
+<Fly80> ti ho scritto che dell'arch x86_64 non c'è il .deb, ma solo rpm
+<cristian_c> Fly80, non hai capito, devi scaricare il deb
+<ivan__> come tolgo il portachiavi che mi appare?
+<cristian_c> e ciò dipende dalla tua architettura
+<cristian_c> ivan__, su quale ubuntu?
+<cristian_c> Fly80, uname -a
+<ivan__> xubuntu non so che versione
+<cristian_c> ivan__, controlla
+<ivan__> come si vede la propia versione?
+<cristian_c> ivan__, cat /etc/issue
+<ivan__> grazie
+<Fly80> non hai capito tu cosa ho scritto, visto che la mia architettura è x86_64, non c'è il corrispondente .deb
+<Fly80> Architecture:          x86_64
+<cristian_c> Fly80, o è a 64 bit o è a 32 bit
+<cristian_c> nonj si scappa
+<cristian_c> -j
+<cristian_c> Fly80, a meno che tu non stia usando un altro sistema
+<Fly80> ??
+<cristian_c> Fly80, hai digitato il comando che ti ho indicato?
+<Fly80> cristian_c, ma mi leggi? ti ho già detto qual è la mia architettura, è x86_64
+<cristianmatiaz> ragazzi come tolgo lo standby su ubuntu dopo un po che nn sn al pc^ì?
+<Fly80> non amd64
+<cristian_c> cristianmatiaz, vuoi disattivarlo completamente?
+<cristianmatiaz> cristian_c, si
+<cristian_c> Fly80, puoi postare il risultato del comando?
+<cristian_c> cristian_c, usi ubuntu con unity?
+<Fly80> ... Linux qmapdell 3.13.0-30-generic #55-Ubuntu SMP Fri Jul 4 21:40:53 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+<Fly80> non ti fidi di quello che dico? :)
+<cristianmatiaz> cristian_c, uso 12.04 gnome
+<cristian_c> Fly80, ok, allora scarica epson-inkjet-printer-escpr_1.4.0-1lsb3.2_amd64.deb 2.11 MB
+<cristian_c> cristian_c, non c'è più gnome sulla 12.04
+<cristian_c> c'è unity, eventualmente
+<cristianmatiaz> cristian_c, si lo so ho messo gnome io
+<cristian_c> lol
+<cristian_c> cristian_c, non so se è una buona idea
+<cristian_c> comunque, dovresti trovare tutte nel gnome control center
+<cristian_c> cristian_c, ah, scusa, gnome-shell
+<cristian_c> mi ero confuso con gnome 2
+<cristianmatiaz> cristian_c, ok
+<cristianmatiaz> cristian_c, lo configuro da li quindi
+<cristian_c> cristianmatiaz, ci dovrebbe essere lo strumenti, di cui al momento mi sfugge il nome
+<cristianmatiaz> cristian_c, trovato grazie
+<cristian_c> cristianmatiaz, dovrebbe essere in Power/Alimentazione
+<cristian_c> ok
+<cristianmatiaz> cristian_c, se volessi installare qualche theme devo scegliere gnome shell?
+<cristianmatiaz> c'e' qualche repo per nuovi theme per gnome 3?
+<cristian_c> cristianmatiaz, non è cosa di cui si possa parlare in questo chan
+<cristian_c> cristian_c, inoltre, ti consiglio di fare attenzione quando scarichi roba esterna ai repository ufficiali
+<cristian_c> di certo non ti consiglio di aggiungere repository esterni, in quanto possono dare problema al sistema e renderlo inutilizzabile
+<cristian_c> lol
+<cristian_c> cristianmatiaz,
+<cristianmatiaz> cristian_c, ok ok era solo curioso XD
+<Fly80> cristian_c, l'ho installata, curiosamente nelle info mi dice che anche il .deb è convertito dall'rpm (nelle info del package)
+<Fly80> (Converted from a rpm package by alien version 8.79ubuntu0.1.)
+<cristian_c> Fly80, non saprei, mai mi è successo
+<cristian_c> poi non so se hai usato alien
+<Fly80> ho scaricato il .deb
+<Fly80> e l'ho installato
+<cristian_c> la trovi nel menù di system-config-printer?
+<Fly80> perché ti dovrei dire una cosa per un altra?
+<cristian_c> <Fly80> devo aver preso l'x86_64 e poi l'ho convertito con alien
+<Fly80> prima
+<Fly80> ma ora ti ho detto che ho scaricato quel .deb
+<Fly80> cristian_c, ora devo fare ADD printer da quella gui
+<cristian_c> ok, controlla
+<Fly80> e stiamo come prima, provo a vedere se mi dà la stampante dalla lista
+<cristian_c> Fly80, come hai rimosso quei pacchetti?
+<cristian_c> della precedente installazione
+<Fly80> dal package manager
+<Fly80> completely remove
+<cristian_c> e li ha purgati completamente?
+<Fly80> sì
+<cristian_c> ok
+<Fly80> ora nella lista di network printer vedo la stampante (la vedevo pure prima)
+<Fly80> ha indirizzo 192.168.0.104
+<Fly80> la seleziono e mi chiede il tipo di connessione
+<cristian_c> Fly80, e la stai usando con ethernet?
+<Fly80> la prima è IPP netowrk printer via DNS-SD
+<Fly80> è nella stessa rete locale, via wi-fi
+<Fly80> la seconda è LPD/LPR queue 'PASSTHRU'
+<Fly80> che seleziono?
+<cristian_c> Fly80, beh, le altre stampanti fungono via wifi?
+<cristian_c> Fly80, però non ho capito, l'hai collegata a un access point?
+<Fly80> cristian_c, è andata, non mi ha chiesto nemmeno il driver
+<cristian_c> lol
+<Fly80> :D
+<Fly80> ha stampato la test page
+<cristian_c> ok, ma come l'hai agigunta alla gui?
+<Fly80> come IPP
+<cristian_c> +aggiunta
+<cristian_c> ok
+<cristian_c> perfetto
+<Fly80> vediamo se funge da libreoffice
+<Fly80> grazie mille intanto
+<cristian_c> non ho fatto molto
+<Fly80> mi hai fatto notare la cosa dell'rpm
+<Fly80> l'unica è non capisco come mai amd64 va bene pure per x86_64
+<cristian_c> Fly80, indicano sempre sistema a 64 bit
+<cristian_c> altrimenti avevi un i386, i486, i686 o x86
+<cristian_c> che indicano i 32 bit
+<Fly80> ah, quindi la scelta è la stessa
+<cristian_c> rpm per fedora, opensuse, red hat, ecc...
+<cristian_c> deb per debian, ubuntu, mint, ecc..
+<ivan_> si puo parlare italiano?
+<cristian_c> dipende, ma magari poi non ci si capisce
+<cristian_c> :P
+<ivan_> come si toglie il portachiavi?
+<ivan_> rompe
+<cristian_c> ivan_, ti ho fatto una domanda
+<ivan_> scusami non l ho letta
+<cristian_c> lol
+<cristian_c> <cristian_c> non ho fatto molto
+<cristian_c> <Fly80> mi hai fatto notare la cosa dell'rpm
+<cristian_c> <Fly80> l'unica è non capisco come mai amd64 va bene pure per x86_64
+<cristian_c> <cristian_c> Fly80, indicano sempre sistema a 64 bit
+<cristian_c> <cristian_c> altrimenti avevi un i386, i486, i686 o x86
+<cristian_c> <cristian_c> che indicano i 32 bit
+<cristian_c> ehm, ho sbagliato a incollare
+<cristian_c> <cristian_c> ivan__, su quale ubuntu?
+<ivan_> non esiste uno scrren saver per xubuntu?
+<ivan_> 14.10
+<cristian_c> ivan_, la 14.10 non è ancora ufficialmente uscita
+<cristian_c> occorre aspettare ottobre
+<cristian_c> !beta | ivan_
+<ubot-it> ivan_: se non sai risolvere da solo i problemi o non sai riconoscere i bug, non usare una versione alpha o beta. Per discussioni e supporto alle versioni in sviluppo /join #ubuntu-it+1
+<ivan_> si è aggiornato da solo
+<cristian_c> non è vero
+<ivan_> come si entra nel canale di aiuto?
+<cristian_c> ivan_, lol, ci siamo già
+<ivan_> ma io ho detto xubuntu 14.10
+<cristian_c> se intendi quello della beta, allora /join #ubuntu-it+1
+<ivan_> ma io che versione ho?
+<ivan_> il canale per xubuntu on è questo?
+<krabador> ivan_, canale di supporto italiano ufficiale per ubuntu e derivate
+<ivan_> grazie
+<ivan__> io ho messo never ed ora non mi richiede piu la pasword dopo lo spegnimento dello schermo
+<ivan__> ma ogni tanto mi appare il portachiavi si puo togliere?
+<Fly80> cristian_c, ora provo a scaricareil driver per identificare la parte scanner della epson, dallo stesso sito ci sono due driver
+<Fly80> iscan_2.29.3-1~usb0.1.ltdl3_amd64.deb
+<Fly80> iscan_2.29.3-1~usb0.1.ltdl7_amd64.deb
+<Fly80> l'unica differenza è l3 o l7
+<Fly80> mah!
+<cristian_c> Fly80, il secondo dovrebbe essere quello pià recente, credo
+<cristian_c> io faccio scaricare sempre ltdl7
+<krabador> Fly80, linka
+<krabador> manda link
+<Fly80> ok, allora vada per quello
+<Fly80> http://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=28880&DSCCHK=ec6ec9b0ae7d86aeadf2c0b88252dbe4149a9831
+<ivan_> ciao a tutti
+<ivan_> la mia web cam si vede grande e capovolta
+<Fly80> devo scaricare anche iscan_data come dipendenza
+<krabador> Fly80, si, si devono installare entrambi
+<krabador> iscan e iscan data
+<Fly80> sì, sto installando il secondo
+<Fly80> poi faccio con iscan
+<cristian_c> se non sbaglio iscandata è un pacchetto comune
+<cristian_c> ma posso sbagliarmi
+<Fly80> sì esatto
+<ivan_> nessun aiuto
+<ivan_> vabbene
+<ivan_> ci sono programmi per regolare la propia web cam?
+<ivan_> va bene esco
+<ivan_> addio
+<ivan_> fanculo ubuntu
+<ivan_> adesso
+<ivan_> ho preso la parola?
+<krabador> ivan_, qui si domanda, e si aspetta pazientemente che qualcuno possa rispondere
+<ivan_> scusatemi
+<ivan_> eccolo di nuovo il portachiavi di accesso non è stato  ecc ecc...
+<krabador> non è colpa del sistema operativo, se ti innervosisci alla prima difficoltà
+<ivan_> non sono nervoso
+<krabador> "<ivan_> fanculo ubuntu"
+<ivan_> scusatemi
+<Fly80> krabador, una volta installato iscan
+<Fly80> c'è un manager tipo la printer settings?
+<Fly80> perché lo scanner è in rete, essendo la epson multifunzion
+<ivan_> cmq ubuntu e un OS ancora da migliorare
+<krabador> Fly80, riavvia
+<krabador> ivan_, sicuro che non sia la tua preparazione, "ancora da migliorare" ?
+<Fly80> krabador, ok, dopodiché cosa devo lanciare?
+<ivan_> sono un perito informatico
+<ivan_> diplomato con 60/60
+<Fly80> krabador, vabbeh, intanto riavvio
+<ivan_> per fare copia incolla non esiste crtl+c
+<krabador> ivan_, allora puoi dare una mano nel gruppo sviluppo
+<krabador> http://wiki.ubuntu-it.org/GruppoSviluppo/ComeIniziare
+<ivan_> si potrei
+<ivan_> perche ora nasce l ibuntu
+<ivan_> ci penso io
+<ivan_> e sara interamente in italiano
+<Fly80> krabador, riavviato, ma lo scanner facendo partire iscan, non viene trovato
+<krabador> Fly80, credo che tu debba gestirlo sempre con sane
+<Fly80> sane?
+<krabador> Fly80, allora, controllando i pacchetti dal sito epson, è il ltdl7 per versioni di ubuntu successiva alla 8.10
+<krabador> hai installato quello , p ltdl3 ?
+<krabador> *o
+<Fly80> il 7
+<krabador> bene
+<krabador> mi dai il modello preciso della tua multifunzione?
+<ivan_> posso almeno settare trasmission?
+<Fly80> WF-3620DWF
+<Fly80> workforce sarebbe
+<ivan_> perche non supera il 20 kb/sec
+<Fly80> della Epson
+<krabador> ivan_, un perito informatico l'avrebbe già fatto
+<ivan_> l ho installato 10 minuti fa
+<ivan_> ho fatto sistemi operativi con nlite
+<ivan_> ora ho deciso di dedicarmi alle distru linux
+<krabador> Fly80, scanimage -L che risultato da?
+<Fly80> provo
+<ivan_> il mio scanner io l ho subito usato
+<Fly80> krabador, device `epson2:net:192.168.0.104' is a Epson PID 08B8 flatbed scanne
+<ivan_> fly80 non riesci
+<Fly80> ivan_, è di rete
+<ivan_> si so leggere
+<Fly80> scusate, ma devo andare a pranzo ora, ci sentiamo dopo
+<krabador> Fly80, sudo sane-find-scanner
+<krabador> ok
+<ivan_> ctrl+ins trovato shitf+ins
+<ivan_> non ricevo aiuto
+<ivan_> faccio da solo
+<ivan_> fanculo
+<riki> vorrei installare sulla mia Lubuntu minimale un programmino per settare ora e data. Qualcosa che non richieda l'installazione di un "miliardo" di pacchetti. Sapete consigliarmi qualcosa?
+<riki> ?
+<Giane> in che senso riki?
+<riki> vorrei un programmino che mi permetta da interfaccia grafica di settare data ora (tutto qui)
+<riki> nella mia versione minimale non ho nulla in "system tool"
+<Giane> nemmeno nel pannello di amministrazione mi sembra strano -.- purtroppo non ho una lubuntu sotto mano
+<riki> no...è molto minimale
+<riki> sostanzialmente è una ubuntu minimale con lxde come DE
+<Giane> è ma almeno un pannello di amministrazione o una cosa del genere dovrebbe esserci. mi spiace sinceramente non so come aiutarti
+<cristianmatiaz> ragazzi come posso installare la libreria libgtk-1.2.so.0 su ubuntu 12.04 amd64
+<cristianmatiaz> ?
+<cristianmatiaz> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<cristianmatiaz> mi appare questo errore
+<cristianmatiaz> http://paste.ubuntu.com/7798496/
+<bullone> cortesemente mi aiutate ad avanzare alla 13.10 dalla 13.04 plizzz?
+<krabador> cristianmatiaz, apri il terminale, e manda locate libgtk
+<krabador> !pastebin | cristianmatiaz
+<ubot-it> cristianmatiaz: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<cristianmatiaz> krabador, http://paste.ubuntu.com/7798558/
+<krabador> cosa hai installato ,e come, che da questo errore ?
+<cristianmatiaz> cercando su internet ho visto che la libreria è obsoleta
+<krabador> cosa hai installato ,e come, che da questo errore ?
+<cristianmatiaz> https://help.ubuntu.com/community/Games/Native/UnrealTournament krabador
+<cristianmatiaz> c'e' l'errore li sotto.. ma le librerie nn ci sono per la amd64
+<cristianmatiaz> forse l'avevo trovata ma mi da errore
+<krabador> cristianmatiaz, https://help.ubuntu.com/community/Games/Native/UnrealTournament#Error_loading_shared_libraries
+<krabador> cristianmatiaz, devi installare, come indicato, le 32, ovvero le i386
+<cristianmatiaz> si non me le installa krabador
+<cristianmatiaz> le i386
+<krabador> cristianmatiaz, mandami il pastebin del comando di installazione
+<cristianmatiaz> http://paste.ubuntu.com/7798604/
+<cristianmatiaz> tolgo la common e metto prima questa?
+<cristianmatiaz> krabador,
+<krabador> prova ad installare prima la common
+<cristianmatiaz> e cosi ho fatto XD
+<krabador> cristianmatiaz, non è il comando che hai mandato
+<krabador> guarda bene
+<krabador> cristianmatiaz, il pastebin è relativo a sudo dpkg -i libgtk1.2_1.2.10-18.1build2_i386.deb
+<cristianmatiaz> krabador, perche la common è gia installate
+<krabador> l'installazione di questo libglib1.2ldbl_1.2.10-19build1_i386.deb   ?
+<cristianmatiaz> no di questo
+<cristianmatiaz> libgtk1.2-common_1.2.10-18.1build2_all.deb
+<krabador> si, e l'installazione di questo libglib1.2ldbl_1.2.10-19build1_i386.deb ?
+<cristianmatiaz> non va
+<krabador> manda pastebin
+<cristianmatiaz> mo riprovo
+<cristianmatiaz> la common fatta
+<neramarea> 'giorno a tutti... posto il problema, poi eventualmente ditemi se è il caso di passare in chat: come diamine faccio a far funzionare farmville2 (facebook) su firefox in ubuntu 12.04? il plugin di flash per ubuntu arriva alla 11.2, è richiesta almeno la 13, per il supporto 3d...
+<krabador> neramarea, installa chrome
+<cristianmatiaz> krabador, http://paste.ubuntu.com/7798630/
+<neramarea> krabador, detesto chrome... su firefox non c'è speranza?
+<krabador> neramarea, no
+<krabador> firefox sta con l'ultimo flash ufficiale per linux, ovvero l'11.2
+<krabador> cristianmatiaz, ha rimandato l'altro
+<krabador> cristianmatiaz, per favore, fammi vedere libglib1.2ldbl_1.2.10-19build1_i386.deb
+<neramarea> e non c'è modo di "forzare" la cosa? un bel porting stile android? ;-)
+<cristianmatiaz> krabador, ti ho mandato entrambi
+<cristianmatiaz> krabador, aah no asp mi sono sbagliato..
+<cristianmatiaz> un secondo
+<krabador> bene
+<krabador> neramarea, puoi provare ad usare pepperflashplugin-nonfree
+<neramarea> indago. grazie.
+<krabador> neramarea, sudo apt-get remove --purge flashplugin-nonfree
+<krabador> neramarea, sudo apt-ge install pepperflashplugin-nonfree
+<krabador> neramarea, ti sto rispondendo ufficialmente.
+<cristianmatiaz> krabador, ora l'ha installato
+<neramarea> grazie, mr. krab...
+<cristianmatiaz> krabador, ma da un altro errore
+<neramarea> ;-)
+<krabador> cristianmatiaz, pastebin
+<cristianmatiaz> krabador, ti mando proprio tutto http://paste.ubuntu.com/7798649/
+<krabador> cristianmatiaz, ci vanno tutti e tre i pacchetti
+<krabador> cristianmatiaz, adesso prova ad installare libgtk1.2-common_1.2.10-18.1build2_all.deb
+<neramarea> krabador, termino e riavvio la sessione, tra un colpo e l'altro? chè ora è tutto aperto, fb compreso.
+<cristianmatiaz> krabador, fatto
+<krabador> neramarea, basta che chiudi il browser
+<cristianmatiaz> krabador, ma da lo stesso errore
+<neramarea> ok, provo. grazie
+<krabador> cristianmatiaz, http://launchpadlibrarian.net/11167856/libgtk1.2_1.2.10-18.1build2_amd64.deb
+<krabador> scarica ed installa questo
+<krabador> poi installa anche l'i386
+<krabador> cristianmatiaz, "The installer can run on amd64 architecture if the amd64 versions of the above packages are installed. "
+<neramarea> krabador, il pacchetto non ha candidati da installare
+<krabador> neramarea, 12.04 ?
+<neramarea> sì
+<cristianmatiaz> krabador, http://paste.ubuntu.com/7798657/
+<krabador> neramarea, pepperflash, che sarebbe il flash di chrome, per 12.04 non c'è
+<neramarea> aaaaapposto...
+<krabador> o installi chrome, o passi di versione, o forzi l'installazione del pacchetto (sconsigliatamente)
+<neramarea> mi piace l'ultima. come procedo?
+<neramarea> ...verrò ricordato nei secoli come neramarea-attila, lo scardinatore di sistemi...
+<krabador> cristianmatiaz, dpkg --add-architecture i386
+<krabador> e riprova ad installare il pacchetto
+<cristianmatiaz> krabador, http://paste.ubuntu.com/7798679/
+<krabador> neramarea, informati a tuo rischio e pericolo , per procedure sconsigliate
+<neramarea> ok, capo. comunque grazie.
+<krabador> cristianmatiaz, sudo apt-get install build-essential
+<krabador> cristianmatiaz, sudo dpkg --force-architecture -i      <---- nomefile.deb
+<cristianmatiaz> ok
+<neramarea> krabador, ultima domanda ot e poi vi lascio lavorare... pep si tira dietro tutto chromium... credi che se mi metto a scandagliare trovo soluzioni meno pesanti, o è probabilmente l'unica via?
+<krabador> neramarea, flash in linux ha questa caratteristica, 11.2 per tutti e flash interno per chrome
+<krabador> cerca di fartene una ragione
+<neramarea> :'-(
+<krabador> in chromium hanno disabilitato i plugin di terze parti
+<krabador> adobe ha smesso di supportare linux, con flash
+<krabador> pian piano flash non servirà piu' a nulla
+<neramarea> e cosa useremo???
+<krabador> html5
+<desi358> ciao
+<desi358> ce nessuno?
+<desi358> avrei bisogno di consigli
+<spartacus_72> sera
+<spartacus_72> ragazzi nn riesco più a connettermi in wifi
+<sandrofirenze> Salve, vorrei scaricare wubi per l'ultima versione di ubuntu ma non trovo il link di download, potete aiutarmi?
+<xubuntu_> ciao ho messo in live xubuntu ma va tutto a scatti
+<xubuntu_> posso capire come mai_
+<xubuntu_> [ UN PECATO PERCH{ FUNZIONA TUTTO
+<xubuntu_> scusate il maiuscolo lho inserito per sbaglio
+<sandrofirenze> allora per adesso non è ancora a posto ?
+<sandrofirenze> fra quanto sarà disponibile una versione che non vada a scatti?
+<cybernova> sandrofirenze, wubi non può essere installato in pc con uefi o winz 8, l'installer lo puoi trovare all'interno della iso 14.04
+<cybernova> xubuntu_, quali sono le caratteristiche del tuo pc?
+<xubuntu_> cybernova, non le so peche non e mio ora do il comando
+<sandrofirenze> Ho windows 7 e un processore amd athlon x2 64 bit
+<cybernova> sandrofirenze, non era rivolto a te
+<sandrofirenze> ok scusa
+<xubuntu_> cybernova, http://paste.ubuntu.com/7799031/
+<cybernova> xubuntu_, credo sia colpa della scheda video e temo che anche il processore e ram non siamo diversi
+<xubuntu_> azz
+<cybernova> xubuntu_, lubuntu è quella più leggera prova con quella, purtroppo la scheda video è molto datata
+<xubuntu_> quindi niente lnux_
+<xubuntu_> avevo convinto mio zio a passare a linux
+<xubuntu_> potrebbe migliorare con lubuntu_
+<xubuntu_> ma servono driver proprietari
+<cybernova> xubuntu_, provare non fa male, è sicuramente più leggera di xubuntu
+<xubuntu_> cybernova, ok grazie
+<xubuntu_> ma da quanto lagga dubito che possa far miracoli
+<xubuntu_> ma il pc non e lento
+<xubuntu_> e la visualizzazione che e lenta e scatosa
+<xubuntu_> se apro il browser e comincio a navigare e veloce ma lagga la scheda video credo
+<cristianmatiaz> ragazzi mi si è spento piu volte il pc xk l'ho surriscaldato XD c'e' qualche comando per vedere se è tutto apposto o per riparare i filesistem?
+<cybernova> cristianmatiaz, viene fatto in automatico all'avvio del sistema se ce n'è bisogno
+<cybernova> xubuntu_, purtroppo che linux resuscita le mummie è un mito da sfatare
+<spartacus_72> cybernova, qualche idea per il wifi che nn va? ubuntu 12.04
+<cybernova> spartacus_72, prima funzionava?
+<spartacus_72> cybernova, si,ho cambiato gestore e router
+<spartacus_72> cybernova, col pc win va
+<cybernova> spartacus_72, ti sei collegato al router?
+<spartacus_72> cybernova, si,in ethernet
+<cybernova> spartacus_72, cosa c'entra il cambio gestore e router con il fatto che non ti funziona il wifi? spiegati meglio
+<spartacus_72> cybernova, è questo che nn capisco,me lo spiego solo cosi
+<spartacus_72> cybernova, vedo la rete,metto la passw e me la chiede in continuazione
+<xubuntu_> cybernova, il [problema sono oi driver della gpu come posso fare
+<cybernova> spartacus_72, se te la chiede in continuazione significa che magari la inserisci sbagliata
+<spartacus_72> cybernova, no
+<cybernova> spartacus_72, la wifi funziona perchè altrimenti non ti vedrebbe le altre reti
+<spartacus_72> cybernova, già
+<spartacus_72> cybernova, tempo fa un utente del chan mi aveva guidato con una procedura modprobe,che nn ricordo
+<xubuntu_> cybernova, potresti aiutarmi tu a capire che devo fare non ci capisco niente
+<cristianmatiaz> cybernova, ok thnx
+<xubuntu_> praticamente sembr che debbo configurare il file xconf.org e installare qualche pacchetto
+<cybernova> spartacus_72, si ma la wifi funziona, modprobe non centra nulla
+<spartacus_72> cybernova, che posso fare?
+<cybernova> spartacus_72, chiedi in ubuntu-it-chat
+<cybernova> !chat | spartacus_72
+<ubot-it> spartacus_72: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<spartacus_72> grazie
+<cybernova> xubuntu_, ok allora dalla live apri il terminale e digita sudo apt-get install xserver-xorg-video-openchrome
+<xubuntu_> cybernova, grazie ora faccio
+<xubuntu_> cybernova, gia ci sono e allultima versione dice
+<xubuntu_> cybernova, bisogna editare il file xconf.org?
+<cybernova> xubuntu_, che versione hai? 14.04?
+<xubuntu_> si
+<xubuntu_> xubuntu
+<cybernova> xubuntu_, vai in Impostazioni → Software e Aggiornamenti → Driver Aggiuntivi
+<cybernova> e guarda se nelle voci c'è il driver per la via
+<xubuntu_> dice non ce nulla ho gia provato
+<xubuntu_> ho riprovato niente
+<xubuntu_> dice che non ci sono driver disponibili addizionali
+<xubuntu_> mi dispiace perche volevo sostituire xp a mio zio con linux
+<xubuntu_> l avevo convinto a piallare del tutto xp e lascia un single boot
+<cybernova> xubuntu_, convincilo a cambiare anche pc
+<xubuntu_> aqhahahahhah
+<xubuntu_> quindi niente da fare_
+<xubuntu_> ?
+<xubuntu_> tolgo la live?
+<cybernova> xubuntu_, prova lubuntu come ultima opzione
+<xubuntu_> mmmm
+<xubuntu_> ma il fatto e che non e lento xubuntu
+<xubuntu_> va veloce ma sul display arriva tutto in riatardo
+<cybernova> xubuntu_, eh ma miracoli non se ne fanno, se la scheda video è ultra datata c'è poco da fare temo
+<xubuntu_> ma jnon credo sia ulra datata
+<xubuntu_> secondo me e copa dei driver
+<cybernova> xubuntu_, ha praticamente 10 anni e già all'epoca non era granchè essendo integrata
+<xubuntu_> cybernova, se io metto un altra gpu posso escludere questa e usare laltra che metto?
+<cybernova> xubuntu_, non so se riesci a trovare un'altra gpu da mettere dentro ad una macchina così vecchia e non credo manco convenga
+<xubuntu_> cybernova, ma me ne acchiappio una a lavoro da mio padre a gratis
+<xubuntu_> vabb[ mo provo xubuntu ci risentiamo dopo
+<xubuntu_> lubuntu scusa
+<xubuntu_> rubytor, ih
+<xubuntu_> hi
+<lubuntu> cybernova: sei lì=?
+<cybernova> Guest71293, allora come va?
+<Guest71293> cybernova: finalmente
+<Guest71293> cybernova: sei ancora lì?=
+<cybernova> Guest71293, si
+<Guest71293> cybernova: allora ce l'abbiamo fatt
+<Guest71293> con lubuntu va perfetto
+<Guest71293> non lagga per neinte
+<Guest71293> l'unica cosa
+<Guest71293> e neanche troppo piccola è il fatto che ora praticamente con lubuntu non mi riconosce la chiavetta usb per il modem wifi che con xubuntu mi riconosceva
+<cybernova> Guest71293, lsusb da terminale
+<cybernova> !paste | Guest71293
+<ubot-it> Guest71293: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<Guest71293> e come faccio
+<Guest71293> sto dall'altro pc
+<Guest71293> c'è non ho rete sull'altro come incollo?
+<cybernova> Guest71293, eh difficile dare supporto senza essere sul pc in questione
+<cybernova> Guest71293, controlla che il Network Manager ci sia
+<Guest71293> sì c'è
+<Guest71293> mi fa scegliere il tipo di rete
+<Guest71293> ma perché non mi viene rilevata quella?
+<Guest71293> su xubuntu compariva l'icona della rete. qui non compare niente come se non avessi attaccato la pennetta
+<Guest71293> mmm ma cosa potrebbe essere, cybernova hai idee?
+<cybernova> Guest71293, te l'ho detto, mi serve l'output di quel comando che ti ho dato, altrimenti niente
+<Guest71293> ok allora provo a scriverlo a mano
+<Guest71293> vediam
+<Guest71293> oppure faccio fotografia
+<cybernova> Guest71293, fotografia va bene
+<cybernova> !image | Guest71293
+<ubot-it> Guest71293: Carica un'immagine su http://postimage.org/?lang=italian | https://imgur.com/ | http://imageshack.us/ (richiede registrazione) e metti un collegamento ad essa in canale.
+<ivan__> ciao a ttt
+<Guest71293> cybernova: sei lì?
+<Guest71293> scusa il ritardo ma sono stato impegnato
+<ivan__> chi mi aiuta con la webcam
+<ivan__> è rigirata
+<ivan__> e grande
+<Guest71293> cybernova:  https://www.dropbox.com/s/nzxdmvt4izlnu2v/IMG_20140715_193355564.jpg
+<ivan__> FANCULO
+<ivan__> TANTO NESSUNO TI AIUTA IN QUESTA CHAT DI MERDA
+<ivan__> FANCVULO TUTTI
+<Guest71293> cybernova: va bene la foto?
+<sambuco> ivan__: fanculo a te
+<sambuco> modello e lspci della tua webcam
+<sambuco> a posto così
+<sambuco> bye
+<Guest71293> sambuco: tu sai aiutarmi per favore?
+<sambuco> forse
+<sambuco> spara
+<Guest71293> eh praticamente xubuntu era troppo pesante per la mia macchina
+<Guest71293> fortunatamente sono riuscito a risolvere con lubunt che gira a meraiglia
+<Guest71293> però non mi funziona il wifi mentre con xubuntu andava
+<Guest71293> io uso la chiavetta usb per collegarmi al wifi
+<Guest71293> sambuco: ???
+<sambuco> ok
+<sambuco> rfkill list ?
+<sambuco> lspci | grep -i wireless ?
+<sambuco> lsmod | grep iw
+<sambuco> inizia a darmi l'output di questi comandi
+<sambuco> mandameli su paste
+<sambuco> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<Guest71293> eh non posso perché non c'è connessione com eho detto
+<Guest71293> faccio la fotografia
+<Guest71293> sambuco: ecco eh
+<Guest71293> sambuco: https://www.dropbox.com/s/vuhqm8il24jp4kh/IMG_20140715_195002191.jpg
+<Guest71293> ma se su xubuntu funzionava perché qua non funziona?
+<cybernova> Guest71293, dai da terminale: lsmod | grep rt
+<cybernova> Guest71293, e posta la foto
+<sambuco> Guest71293: non vede la scheda wifi
+<sambuco> lspci | grep -i eth
+<gipp1> ciao, posso chieder una mano per risolvere un'impotazione?
+<cybernova> !chiedi | gipp1
+<ubot-it> gipp1: per cortesia non chiedere il permesso di chiedere, semplicemente formula la domanda (tutta su  una riga, in modo tale che gli altri possano leggerla e seguirla con facilità). Se qualcuno conosce la risposta ti risponderà :-)
+<gipp1> devo impostare un desktop esteso su un vecchio portatile acer aspire, ora ma lo duplica. Ho lubuntu 14.04
+<Guest71293> sambuco:  ora lo do
+<spartacus_72> sera
+<spartacus_72> cybernova, nn riesco a risolvere in alcun modo
+<cybernova> spartacus_72, hai provato a togliere la password del tuo router per vedere se si collega?
+<spartacus_72> cybernova, si,già fatto
+<cybernova> spartacus_72, e cosa fa?
+<sambuco> devo scappare Guest71293 chiedi anche ad altri, non ti vede la scheda wifi
+<spartacus_72> cybernova, nn si connette
+<sambuco> bye
+<Guest71293> https://www.dropbox.com/s/2p7tugypdmtkbes/IMG_20140715_200732208.jpg
+<Guest71293> vabbè mi sa che rimetto xp va
+<Guest71293> è un peccato perché avevo convinto  mio zio a passare a linux
+<spartacus_72> cybernova, ho disinstallato anche il macchanger
+<cybernova> spartacus_72, il che?
+<spartacus_72> cybernova, lo spoof del mac
+<cybernova> <cybernova> Guest71293, dai da terminale: lsmod | grep rt
+<Guest71293> ora do
+<cybernova> spartacus_72, che router è?
+<spartacus_72> un pirelli drg
+<cybernova> spartacus_72, serve il modello esatto
+<gipp1> buonasera, chi mi aiuta a estendere un desktop sul monitor esterno al mio aspire antidiluviano?
+<cybernova> !ripeti | gipp1
+<ubot-it> gipp1: non ripetere la tua domanda spesso, ogni N minuti. Non aumenterà le probabilità di ottenere una risposta ma provocherà solamente una reazione stizzita da parte degli altri utenti del canale. Se nessuno ti risponde riprova più tardi o utilizza le altre forme di supporto messe a dispozione dalla comunità.
+<spartacus_72> cybernova, drg A124g
+<Guest71293> cybernova: ora metto la foto
+<Guest71293> cybernova: https://www.dropbox.com/s/84rzpkx0rwzr9d0/IMG_20140715_201212996.jpg
+<spartacus_72> cybernova, ho provato anche con una live su usb,in wifi nn si connette
+<cybernova> spartacus_72, hai provato a connetterti ad altre reti?
+<spartacus_72> cybernova, che intendi x altre reti?
+<Guest71293> cybernova: vista la foto?
+<cybernova> Guest71293, calma
+<cybernova> spartacus_72, un'altra rete diversa dalla tua per vedere se si connette
+<spartacus_72> cybernova, nn ho come fare adesso
+<cybernova> Guest71293, allora da terminale sudo gedit /etc/modprobe.d/blacklist.conf
+<Guest71293> ok
+<Guest71293> aspè
+<cybernova> Guest71293, aggiungi queste righe alla fine del file: blacklist rt2x00usb
+<cybernova> blacklist rt2x00lib
+<cybernova> blacklist rt2800usb
+<cybernova> Guest71293, guarda qua: http://forum.ubuntu-it.org/viewtopic.php?f=9&t=528995
+<Guest71293> cybernova: https://www.dropbox.com/s/qbog5np8i3njs9q/IMG_20140715_202331688.jpg
+<cybernova> Guest71293, aggiungi quelle 3 righe che ti ho detto al file in questione
+<Guest71293> ma dove?
+<Guest71293> dove devo aggiungerle?
+<Guest71293> in che punto intendo
+<Guest71293> e comunque dopo devo riavviare?
+<Guest71293> perché se riavvio non perdo le modifiche essendo una live?
+<cybernova> Guest71293, vero hai ragione, mi ero dimenticato che eri in live
+<cybernova> Guest71293, dai questo comando: sudo modprobe -rf rt2800usb rt2x00usb rt2x00lib
+<Guest71293> e poi?
+<Guest71293> dovrebbe andare?
+<cybernova> Guest71293, e poi vediamo
+<cybernova> la certezza non ce l'abbiamo
+<Guest71293> ok
+<Guest71293> niente
+<Guest71293> ho dat il comando si è bloccato tutto
+<Guest71293> non ripondeva piu nulla
+<Guest71293> ho dovuto spegnere da sotto
+<Guest71293> ci rinuncio per oggi
+<Guest71293> grazie dell'aiutp
+<Guest71293> è un pecacto perfhé con xubuntu faceva schifo ma funzionava tutto
+<Guest71293> con lubuntu l'ho resuscitato ma non funzionava il wifi
+<cybernova> Guest71293, si è strano
+<Guest71293> altrimenti dovrei provare altri de leggeri come lubuntu
+<Guest71293> provo linux mint con mate???
+<cybernova> !chat | Guest71293
+<ubot-it> Guest71293: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<Guest71293> eh vabbe che fiscalità
+<Guest71293> non è sempre ubuntu?
+<cybernova> Guest71293, no è un'altra distro
+<Guest71293> puoi dirmi solo se mate è leggero quanto lxde o piu tipo xfce?
+<cybernova> Guest71293, mate è abbastanza leggero puoi provarlo
+<Guest71293> ok grazie
+<cybernova> prego
+<Guest71293> va a finì che era il DE allora che me lo rallentava
+<Guest71293> non credevo ci fosse tutta sta differenza tra xfce e lxde
+<cybernova> Guest71293, altrimenti potresti installare xubuntu di base e poi installare il pacchetto: lubuntu-desktop e far partire una sessione lxde invece che xfce
+<Guest71293> e viene bene o si incasinano i layout?
+<cybernova> Guest71293, viene bene
+<Guest71293> una volta installai xfce su ubuntu con unity e fece un casino
+<Guest71293> qual è il comando?
+<Guest71293> quindi devo fare la live persistente?
+<cybernova> Guest71293, sudo apt-get install lubuntu-desktop
+<cybernova> Guest71293, si
+<Guest71293> ok vediamo va
+<Guest71293> intanto che scarico quelal con mate provo così
+<Guest71293> certo che non me ne va bene una co sto pc eh
+<Guest71293> cybernova: sei lì?
+<spartacus_72> sera
+<spartacus_72> krabador, hai 2 min per un problema wifi?
+<krabador> spartacus_72, dimmi, se posso
+<spartacus_72> krabador, ubuntu 12.04 nn si connette in wifi,richiede in continuazione la pass
+<krabador> spartacus_72, che scheda è?
+<spartacus_72> krabador, intel centrino n 1000
+<krabador> spartacus_72, non si è mai connesso, o ha iniziato adesso a fare in questo modo?
+<spartacus_72> krabador, si connetteva,ho cambiato provider e nn si connette
+<spartacus_72> krabador, http://paste.ubuntu.com/7800142/
+<krabador> cambiato provider, con stesso router?
+<spartacus_72> krabador, esatto,ovviamente configurato a dovere e testato su windows
+<krabador> spartacus_72, va a verificare i parametri di sicurezza della connessione wi-fi, nel router
+<krabador> spartacus_72, al che crei a mano il profilo in networkmanager
+<spartacus_72> krabador, già fatto,ho un altro pc windows connesso in wifi in questo momento
+<spartacus_72> krabador, fatto anche quello
+<spartacus_72> nn capisco,nn è un problema di driver,è ovvio!
+<krabador> spartacus_72, se è il link wifi il problema, e non la connessione ad internet dopo la connessione wifi, ed il router si connetteva perfettamente ad ubuntu all'altro provider, puo' solo essere una questione di impostazioni cifratura, o indirizzo mac
+<spartacus_72> krabador, ho disabilitato il mac filter nel router,credo sia qualcosa del genere,come la cifratura
+<krabador> spartacus_72, disabilita wep/wpa/wpa2, riavvia il router, e vedi se si connette
+<spartacus_72> krabador, provo a passare da aes a tkip
+<spartacus_72> krabador, ho fatto anche quello ma nulla
+<spartacus_72> provo a cambiare la cifratura e ti faccio sapere
+<krabador> spartacus_72, se prima funzionava, è impossibile che senza protezione non si connetta
+<krabador> resetta il router
+<krabador> reimposta tutto
+<spartacus_72> krabador, adesso provo,grazie
+<krabador> di niente, in bocca al lupo
+<xbmc> ciao non riesco a vedere i file mkv sento vl'audio ma il video no

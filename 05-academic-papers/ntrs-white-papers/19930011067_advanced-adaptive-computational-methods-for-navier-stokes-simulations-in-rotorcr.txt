@@ -1,0 +1,1969 @@
+---
+title: Advanced adaptive computational methods for Navier-Stokes simulations in rotorcraft aerodynamics
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19930011067
+source_url: https://ntrs.nasa.gov/citations/19930011067
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONTRACTOR_REPORT
+center: Legacy CDMS
+publication_date: 2019-06-26
+retrieved: 2026-09-22
+sha256: 6b270c254298bfcd8cb4094fd1c82c645340abc6334fbb949655cd1c15f5457a
+pages: 36
+words: 2991
+cv_look_pages: 6
+---
+
+      r
+
+
+          NASA-CR-I92282
+  t
+
+
+
+
+,._                                                 Final     Report
+
+                                                                                    cT777   :
+
+                                                            on
+
+
+
+
+           A D VANCEDADAPTIVE                                             COMPUTATIONAL
+
+                       METHODS                FOR           NAVIER-STOKES
+
+                           SIMULATIONS                      IN ROTORCRAFT
+                                                                                                             ,,o
+
+                                                                                                                                    0
+                                          AERODYNAMICS                                                       N
+                                                                                                             o
+                                                                                                             N
+                                                                                                                                    4
+                                                                                                                 I                  0"
+                                                                                                                         (J         4
+                                                                                                             o'-         C          r-I
+
+                                                                                                                                    0
+                                      m
+
+                                      m
+                                                                                                                                    N
+                                                                                                                                    0
+
+
+                                                                                                                                    L_
+                                      ----_ Contract        #NA_$2-13285
+                                                                                                                              o.
+
+                                                                                                                              p,.
+
+
+                            NationaVAeronautics             andSpace               _,.Administrati°n                          A
+                                                                                                                     z
+                                      _     Ames      Research               Center                                           g
+                                                                                                            _OZ
+                                    _El                       _-_-:--_
+
+
+                                      I
+
+                                      m                TR-93-02
+
+                                      []             March          -1993
+
+                                                                                                            _Z_               0
+                                      i                          .....                                      __,-
+                                                            ..... 7 2-Y   .....   :--:?;_
+
+
+                                                                                                            I__
+
+
+
+
+                                                      Computational               Mechanics      Co_mpany, Inc.
+                                      __ _        . _    .........           7701North       Lama.r, Suite 200
+            COMCO                                        ............................     Austin,   Texas 78752
+
+
+
+
+                                      m                                                         __. _   :
+                                   Final    Report
+
+
+                                           on
+
+
+
+
+    A D VANCED          ADAPTIVE                  COMPUTATIONAL
+
+            METHODS           FOR          NAVIER-STOKES
+
+            SIMULATIONS                    IN ROTORCRAFT
+
+                        AERODYNAMICS
+
+
+
+
+                           Contract        #NAS2-13285
+
+
+
+             National   Aeronautics        and   Space   Administration
+L
+
+
+                            Ames      Research       Center
+
+
+
+
+=
+
+                                       TR-93-02
+w
+
+
+
+                                      March      1993
+
+
+
+
+=
+
+
+
+
+                                       Computational         Mechanics    Company,  Inc.
+u                                                         7701 North Lamar, Suite 200
+    COMCO                                                           Austin, Texas 78752
+         Prologue
+
+         This      document           is the     final     report         on Ill(: SBIR           Phase      II project          colt¢l,wted                 by the      Computa-
+         tional     Mechanics              C'ompany.            Inc.      under        Contract       A88-41            with     NASA              Ames.          The     objective
+         of this     Phase          II effort       was        to develop             a three-dimensional                 adaptive              computer           code      for the
+         numerical           simula.tion         of transonic                  flow     around      multi-bladed               helicopter                rotors       in hover        or
+
+         forward         flight.     The      major        issues        of concern         included:
+
+
+                • .Mathematical                 torlnulatioll             o1 fil,ite       element          based        Euler         equal           ion     in an      arbitrary
+
+                   Lagrangia             n- Eu teria n ,'eterence               ['ra me.
+
+                • development                o1" an b-adal_live                 package      along        with      error      estimation                ca.pabilities        to sys-
+                   tematically             reduce        the    error      in Ihe solution            and        captured         fine scale                 flow features       with
+                   a minimum                nulnl)er      o[ added             degrees      of freedom.
+
+
+                • development                of a grid general                 ion code     capable       o|' modeling           a variety              of blade        geometries
+     ±
+                   and      fuselage         coufiguralions.
+
+                • a sliding          inlerface         algorill_,n         for i_lodeting           tile Rotor-Fuselage                        illleraclion         problem
+
+                • development                of Explicil,/lll_plicit                  sotulion      algoriIllms.
+
+
+                Significanl          acllie\<'i_l('lt/         I,as I)_'('i, luade         ill each     of tile above            areas.               Documentation             of re-
+         suits,     theory         and     programlners                holes     are given        in their       respect.ire           manuals.               A brief     summary
+         of the      project        includil_g         code       perlorlnance             issues     and     future        work        are        ,liscussed         in this    final
+         report.      A section            of sanlple          prol,lems         are also enclosed               that    demoxtsl              rale     various       capabilities.
+
+
+
+
+L_
+
+w
+
+
+
+
+==
+
+
+
+
+W
+
+
+
+
+                                                                                                                                   i    _i!/
+
+
+
+
+=
+
+
+
+
+                                                                                                                                                                           ORIGINAL        PAGE   IS
+                                                                                                                                                                          OF POOR QUALITY
+=
+
+
+
+
+         Contents
+
+         1   Introduction                                                                                                                                        3
+
+
+                                                                                                                                                                 4
+         2   Summary           of the            Phase         II     Effort
+
+
+         3   Performance                Issues                                                                                                                   5
+
+
+w
+         4   Sample         Results                                                                                                                             10
+
+             -l.l     NACA          0012         Airfoil              ..............................                                                            [0
+
+             4.2      Ni    Bump          - 10ci         arc          ..............................                                                            15
+
+             4.3      Fixed        3D     V¢ing           .................................                                                                     18
+
+             4.-1     Rotor        Hover          Simulation:                       Caradonna,               Laub,      and     Tung       Experiment
+
+                      [2] .........................................                                                                                             25
+             4.5      Rotor-Fuselage                     Simulation:                    Smith          and    Betzina         Experiment         [3]    . . .   29
+
+             4.6      References             ....................................                                                                               29
+
+
+         5   Future         Work                                                                                                                                32
+
+
+
+
+w
+
+
+
+
+=    =
+
+
+
+m
+
+
+
+
+w
+
+
+
+
+ml
+
+W
+
+
+
+
+w
+
+
+
+
+w
+                1          Introduction
+
+                The       unsteady           flow fi(-ld surrounding                       a rotorcraft            vehicle        in hovering                 and      forward          flight      en-
+._.   w         compasses            a wide          range        of complex           flow phenomena,                  which         includes             blade-vortex              interaction,
+                spiral      vortex         sheets,        tip     vortices,         and     unsteady           effects,          to name              a few.         Accurate           modeling
+
+      w
+                of these           flow phenomenon                      is essential         for efficient,            high      performance                  rotorcraft             designs.         In
+                particular,            a. detailed           ana.lvsis       or ll_e wake           structure            is needed              to accurately                predict      acoustic
+                and       vii)rational            characteristics,             as well as l]le all'loads.                      One       standard             solution             practice        is to
+
+                incorporate             models          for the         tip vortex          st ructure         rather         than      capturing                 lhe structure               numeri-
+                ca.lly.     These          methods,             howe\cr,       lend        only     to be as good                as the         assumptions                 eml)loyed           in the
+      =
+                models.
+
+                       .XIore recent               e[forls       [()1' sinmlaling            rotorcraft          aerodynamics                     include           finite-difference               and
+      -2        finite-volun]e               methods             with      structured             computational                grids         encompassing                    the     entire      rotor
+      w
+                blade.          However,            due       to difficulties             in capturing             the     tip       vortex           structure             (insufficient          grid
+                resolution)            and        numerical          dissipation,            all ernative          tlllSllllC[        I1 red      lllel    J/otis are         being      pursued.
+
+                       One       of the       challenges            in modcling             fluid tlvnamics               I)roblents             is creal iug a proper                   mesh        for
+                the      simulation.               In (_1' 1 illodeling,                a prol)er         computational                    me_;ll is essential                     to ensure        rm-
+                rnerical         convergence              all(I sollll ion accuracy.                  This      is, in general,                 due        Io lhe     fact      that     fluid flow
+      w
+
+                problems            have      extrel_,clv           large,      ilol>_lllitorrn           gradients,             particularly                in l_oundary              layers       and
+                near      shocks.          Often.         lhe     location         t_l"these       flowfield       stru(lures              al'_• diffic/llt          to predict,            even     for
+                experienced                CFD       users..\dapliv,"                 nlctllo(ls       provides           a \'dlicle             for aulolnalically                    identifying
+                and       cal)turing          the      these        types      of ptlenomena                 associated              witll       rotorcraft            aerodynamics.                     In
+                particular,            h-adaptivit            5 attempts            Io reduce         the      error      iu lhe solution                    by s_ffMixiding                  selected
+      _ma
+                elements            into     smaller          elomenls,         b-adal)lat.ion              is particularh                 usct'_l         l'or capturing              flow struc-
+2
+                tures       that     have sharp              discotlt.illuit       ies. such        a.s shocks          and      flow separation.                    The      current          project
+                focus       011 lhe ability             to allisol         ropic     adaptation:            thal       is. refillelllenl              of    the     mesh        independently
+                in the        l hree       local     elellleltl      _lirvcl ions.         so lhat        no degrees-of-freedom                             are     "'wasted".
+
+                         With      rathe,"        general        set of goals         in mind,        the development                    of an unstructured                        flow soh'er           to
+      w
+
+                model           rotorocraft           aerodynamics,                 a Phase         II research           and        development                   effort      was conducted
+      =     :
+                which        focused          on the          following        issues:
+      w
+
+
+                       1. lhe       developing               t,l _ I-illil_' (,Iciil_,l_I based             COml>Ulalional                     fluid ,l\'nalnics              (('FD)          analysis
+                            tool     that      conl _ines           /_-adapti\'e           tecltmHogy           and      error       est ilx_al ion.
+
+                       •2. the      dex'elopmei_I                el" general        grid     generation            package            for generating                  grids        for rotorcraft
+                            con figu rat ion.
+
+                       3. development                   o1 a sliding            inlert'ace          for modeling                 Rolor-Fuselage                     tyl)e      problems            (See
+                            Figure          1).
+      m
+
+
+
+
+      w
+                                                            .         ., .   -              ROTATING           QLFI_JI     G_IIO
+
+
+
+
+i
+
+
+
+                                                      :                           --                       .                    •          .,      \,_.                          ",      /
+
+     L     :                         ;          ::,                              !!i                  :
+                                     i          IT!                                .    '         t
+
+
+
+
+:   ....   ;
+
+
+
+
+                                                ,                                       I         !
+
+
+
+
+                                                                                  _TX,E__G_to                                                                                                        ]
+
+    W
+
+
+
+
+    =
+
+     1
+
+
+
+
+               Figure       [' Schematic                             ill,>Iratillg                    t ,_' i,lca of a sliding                            illtcri'ace      [or l_otor-F_Lselage                     Problem.
+
+
+                     Presented            ill lllc" I'_llowiiLg                               scc_zons is a summary                                       ot the' Phase               II effort,         a discussion           of
+               Performance               Issues                 I'oltowed                   by a collvction                     of res_tlt.s and                 fillall\"      an oulline          of Future           \\"ork.
+
+    w
+
+
+
+
+     =         2          Summary                                        of the                            Phase                     II          Effort
+    w
+
+
+
+
+               .-ks outlined             in the                 previous                     section,              ltle        Phase.           I1 efforl         llas    focused            oll the        research       and
+               development,              of a nunfl)er                                 of ideas                 and        methodologies                       which         may        1)e loosely           grouped           to
+               include:       l) Adaptive                            ._feltlocls.              2) grid generation                               and       data     structure            issues,      3) Flow          solvers,
+               and     4) the      assimilal                    ion o17l)_a,t s 1-:_ i,lt o a working                                             code       along       wil h valhlation.                 Some       genera.1
+               comments            with        regard                   to each                of these                 areas        follows.
+
+                     The     final       code             incorporates                          some              Ieatures            that         are       common             t.o other         software           packages
+    F_
+               under       development                          al      CO.'klCO.                         These          include            the     data         slructure,            the    />adaptive             module,
+    m
+
+
+               the     graphics          and              posl processillg                                calmbililies,               and         t]tc C[:[             (leveloped           concurrently              for our
+               phase       II operator                    Slfliiling                   research                lyro.iecl.           Initial         sllpl)orl           for a phase           III effort        to further
+               enrich      and       develop                    1Ills        I('chl/O]og.v                      lilts      also       been         oblnincd              from         a partner            company         and
+               should       lead         to the                 co_nmerciatiz_,liol_                                    o['a        code        containing               some         of these           features      within
+               1:2-18 months.
+    w
+
+
+
+                     Adaptive            methods                       [or lhe                anal\'sis             of transonic                  rotorcraft             a.erodynamics               have      been      stud-
+               ied extensively                 during                    ll_<, Phase                       II _,l[ort          resulting              in t.he complelion                     of an        h-adaptive         re-
+    w
+
+
+
+
+     m
+
+
+
+                                                                                                                                                                                                                OF_LGI,_L            PAO£   !,.I
+                                                                                                                                                                                                                OF POOR              QUALITY
+          finement/unrefinement                        package          along           with      an error            estimation            capability              to systematically
+          reduce        the     error      in tile       solution         while           capturing              fine     scale         flow     features           with     a minimum
+          number         of added            degrees         o[" freedonl.              The       l_-adaptive               package            employs         both        isotropic         and
+          anisotropic           refinement             capability.          The          algorithm              has      been      throughly             tested       on a variety               of
+          problerns           (See     Section       -i for a sample                of results)            and        has       demonstrated                to be quite             robust.
+
+                A considerable                 amoum           ol-et-Forl         during           the     Phase            II also       focused          on developing                  a grid
+          generation            package          ((;A._INI.\3I))                capable           of modeling                   a variety          of blade           geometries             and
+          fuselage       configurations.                 As m¢,l_tio_ed                  _mrlier,         the     ability         to generate               a good          quality         mesh
+          is of the       upmost             imporlance              in order           lo ensure          solution             accuracy           and      flow solver             stability.
+          GAMMA3D                    employs        both        structured               and      unstructured                   grid      techniques             in an       attempt            to
+2    .
+          resolve       the     necessary           details          associated            with          multi-bladed               configurations.                   A visualization
+          package        (:_IESH\:U1R)                 was     also      developed                to work             in conjunction                with       C,A,_IMA3D                  as an
+=
+
+--   7    aid in designing                high     quality        mesh¢_s.              Both      of these            tools.      C;.\._[._[A3D             and      ._[ESHX:I.'R             are
+          complete            and     have     been      used        itl the generation                   of grids             for all valida.tion             problems.
+
+2     7
+                A variety             of numerical            algorilhms                related          to the         solution          proccdure           were         integrated          to-
+     7
+          gether       to produce              a robust         muIti-I)lade               ROTOR3D                      code.       ROTOI13D                  has     an explicit            and
+          implicit       time         accurate         and     steady           state      flow solvers               as well as a modified                         lapidus      aritificial
+
+=    :
+          dissipation           model        to aid in stabilizing                 the solution                 procedure.              A sliding        inlerface          for modeling
+          the     combined            F{otor-Fllsetage               problem            was developed                    and      implemented                in 1-tOTO[13D.
+
+                The     flow solvers             c_irr_'_l Ix operational                   include         an explicit             lump         mass      solver      and      an explicit
+          or implicit           GNfF/ES           it_wa.tive         procedul'e.               ,\long      the        lines      el'an         integraled           Explicit/Implicit
+          solver,      several          key ,:lcx'elopmellls              have          been       incori_oraled                 includi,lg         mesh        coloring/grouping
+          based       on elemellt            t.yl)<_ (Explicil           or [lllplicit)             and         interior         \ersus         I_o,lltdarv         element,          and     lhe
+W
+
+          generation           of Explicil/lluplicil                   lisls.
+
+                At, the        current         time.         [{OTOI{3D              is operational                    with       a few exceptions.                     All of the            grid
+          motion         terms          have      been        it_cluded           in the          numerical              algoritllms.              However.            only         the     pure
+          translation           terms        has been         lhoroughly                lested.         Due      to performance                   issues      which         are discussed
+          in the      next      section,         it became            difficult         if not      impossible                 to validate          ROTOR3D                  on the         three
+          rotorcraft           benchmark               problems           (i.e.         Rotor        Hover,             non-lilting             forward        flight,        and         Rotor-
+
+L         Fuselage        intera.ction).
+W
+
+
+
+
+z :
+          3          Performance                                Issues
+w
+
+
+
+
+          In order       to solve         the large          scale     l_robh'ms            associated             with rotorcral't                aerodynamics                where         grid
+          sizes      normally           exceed      20,000-degrees                 of freedom,                code       performance                is a primary              concern.           In
+          particular,           the     average        operational               vector        length         (VL)        and      the      floaling        point      operations             per
+r_ 2      second        (FLOPS            or XlFLOPS                 for millions              of FLOPS)                 are     two key performance                        indicators.
+
+
+
+
+w
+
+
+
+
+w
+w                In this          regard,          we have              profiled                 the      R()TOR::ID                   code          on the            CRAY              YMP.          Tills       effort
+          has      revea.led         several            1)otllenecks                associated                  with           the     performance                    which           were       not      identified
+          during        the       design          an_l i_lilial              t L'Slillg phases.                      Tile        firsl        of these           bottlenecks               was       the       general
+          overall       poor         performance                      of the         code,              which            had      an average                    VL      of only           11.1       with         a cor-
+          responding               megaflop               rating        of         t.5.      ]'his         was        a. surprising                   result_         primarily              due       to the         fact
+
+w         that      great         care      and      a significanl                   effort             were         placed          on       the      design          of the         data         base      and       the
+          handling           of the element                    computations                       in terms               of groups              and        batches           to maximize                  the vector
+          length.           In an effort             to more                closeh"          identify                which           parts       of the           code       were         causing           the      poor
+          1)erformance,               the     COml_utalions                        associated                 with        the        boundary               condilions              were        disabled.             The
+          resulting           performance                   indicators                showed                  that        the        VL       increased               to .3 t..3 and             the        megaflop
+          rating       increased             to 2l.:_           (this        VL of ._-1_..5is out                          of a maximum                          of 64 on the                  YMP,          which          is
+          quite      good,         however,              the        .h[FLOI"S               are still            quite          low).          Based            on    this simple               experiment,                 it
+          is apparent               that      the        boundary                  conditions                  are       completely                 scalar           bound         at. the         present           time
+          and       that,      even         with         the     current             gt'ouping                  and       coloring              strategy,             any         gain     in vectorization
+          through           the     volume           integrals               is damped                   by the boundary                            integrals.           We believe                that        a possi-
+          ble remedy               to this         B('       related          problena                  is to modify                  tile      grouping              and       coloring           algorithm             to
+          collect,      elements            with          common              lm_lnda.t'y                 types           and        faces       together.
+
+                  A second            problenl              lllat      appeal'ed                  on      the        Flowtrace                Statistics              repot'!       (see Fig.             2) is tha.t
+w
+          when        the     boundam                   colllI'i]_lllions                  alc         ignored,           the        thl'ee         rolllines           w]lic]l       appear           at      the     top
+          of the       cpu        timings           are        roulinos             uhh:ll             relrie\'e          data        [rom          llle     dala        ])ase.          This      problem            was
+          not      anticipated              as tl,e            data         I_ase alld             cb_ta base                  access          was         initiedly         l)rototyped               on an SGI
+          workstation               and       profiled              wil]_      lhc          PIXIE              option,           which           did        not       flag      any       of tile         data        base
+          access       routines.             Referencing                     the      Y._IP             profile          data,         as shown                 in Fig.         2, it is apparent                     that
+hi/       the      large      use of C!PU t.ilne associated                                       with         the       data        base       retrieval             does        not necessarily                    come
+          from       slow      data         base        access         but         more           likely        from           the     large         number             of calls          to the       data          base.
+          A possible              remedy            for this           data         base          access         issue          would           be to include                   much         of the         constant
+          scalar       data         that      is being                loaded              from          the      data           base          in either              a leml_orary                workspace               or
+          a. common               block.           To incorpm¢,lc                          such          a remedy                would              require           moderate             restructuring                 of
+      =
+
+          routines           to hold          the         scalar        param¢'ters                      in common                    and        woltld           reduce           the     number              of calls
+          to tile data.             base.         One        positive              comment                 about            tile flowtrace                   report          is that         the     calls        to tile
+
+W
+          data       base         to load          up      tl,e groups                and          batches               of data              (ELDBR.,\T)                    does        not       appear          to be
+          significant.
+
+                  As mentioned                    above,         the        ROTOR3D                       code           was profiled                  in an SGI              workstation                 using        the
+w
+
+          PIXIE            option          (see     Fig.        3).         The           results         shown             there         flag        the       large        C.'Pl:       usage        associated
+          with       the      routines            perfoHning                  the          boundary                  calculations                   and.        in general,               do     not        show       the
+w         data       base      access        to be an issue.                        ]_ased             on these           performance                      numl_ers           and        lhesize          of the av-
+          erage       computational                      domain             associated                   with        rotorcraft                simulations,               significant               performance
+          enhancements                     in the code                at'e roqltit'ed                  betbre         any of the                large        scale       computations                   associated
+
+
+                                                                                                                     6
+
+
+
+
+..:   7
+
+w
+w
+
+
+
+
+        with    the    benchnaarl<      plol_loms   <_lll I_o voasonably   performed         and   t'llllF" converged.     In general,
+        based     on    t.he NIFL()IL%_' ¢)l)tailwd     tvom   t_he Flowtrace       Statistics,     a. l_orformance       increase     on
+        t_he order     of 15 to 25 (in t_:t'Ills _1 ._IFLOPS)         is required     to provide-     competit_ive       performance
+        numbers        and   run     times.
+
+
+
+
+w
+
+
+
+
+w
+
+
+
+
+L   ,
+
+
+W
+
+
+
+
+r   _
+
+
+
+
+U
+
+
+
+
+w
+
+
+
+
+w
+
+
+
+
+w
+
+
+
+
+w
+w
+
+
+
+
+                                                                                                     Fiowtrace              Statistics                Report
+                                                                    Showing                   Routines             Sorted          by      CPU       Time      (Descending)
+                                                                                              {CPU         Times      are         Shown        in     Seconds)
+
+
+                           koutine                    Name                           Multi?          Tot      Time          I    Calls         ^vg      Time     Percentage           Accum_
+                           ..............................................................
+
+                           inq_obJect_field                                            N             3.61E+02                   376146         9.59E-04                   30.38          30.38
+                           inq_Wrkspcnext                                              N             3.03E+02                 152135           1.99E-03                   25.52          55.90
+                           GTGELNO                                                     N             1.70E+02               2675472            6.34E-05                   14.29          70.19
+                           JACOB                                                       N             8.11E+01                      8400        9.65E-03                        6.93      77.02
+                           hash                                                         N            4.17E+01                      8665        4.81E-03                        3.51      80.53
+                            fiIIBatch                                                  N             2.60E+01                      TII3        2.33E-02                        2.19      82.72
+                           GETSOL                                                      N             2.42E+01                     94272        7.05E-04                        2.04      84.75
+                            fill           elem            idol                        N             1.99E+01                   353616         5.61E-05                        1.67      86.43
+                           OMODELD                      --                              N            1.65E+01                      8400        1.96E-03                        1.39      87.81
+
+                            inqWrkspcVarName
+                                                                                       N             1.21E+01                   160734         7.52B-05                        1.02      88.83
+                           GETJAC                                                      N             1.038+01                     67352        1.53E-04                        0.87      89.70
+
+                            fill           elemxyz                                      N            9.92E+00                   353616         2.81E-05                        0.84      90.53
+                           deposlt_ucur                                                N             7.75E+00                         50       1.55E-01                       0.65       91.18
+                           CALAFJJ                                                     N             6.82E+00                      8400        B.12E-04                       0.57       91.76
+
+                            get   ug_index                                              N            5.91E_00               2101140            2.81E-06                       0.50       92.26
+                            MELEM                                                       N            5.66E+00                    1071          5.28E-03                       0.48       92.73
+                            Check             SaveQueue                                N             5.13E+00                     18933        2.71E-04                       0.43       93.16
+                            SHPFUN3                                                    N             4.6]E_00                       8568       5.38E-04                       0.39       93.55
+
+                            fill_elem_temp_arrays
+                                                                                        N            3.97E+00                   353616         1.12E-05                        0.33      93.89
+                            ReadWrite                      Disk                         N            3.86E+00                   428772         0.01E-06                       0.33       94.21
+                            comco              read           elems                     N            3.81E+00                              I   3.81E+00                       0.32       94.53
+                            MCFRTR@524--                                                Y            3.59E+00                      3267        1.10E-03                       0.30       94.84
+                            ZEROLR                                                      N            3.18_+00                      1071        2.97E-03                       0.27       95.10
+                            Build             Elem            Face            Conn
+                                                                                        N            3.00E+00                              I   3.00E+00                        0.25      95.36
+                            f111            elem           bclnfo                       N            2.91E_00                   353616         8.24E-06                        0.25      95.60
+
+                            dump_obje_t                                                 N            2.89E+00                     33109        8.73E-05                        0.24      95.84
+                            comco     read                    nodes                     N            2.69E+00                              I   2.69_00                         0.23      96.07
+
+                            Get_ObjArray_Pntr
+7   :                                                                                   N            2.64E_00                   650432         4.05E-06                        0.22      96.29
+
+                            InitobJect_all                                              N            2.38E+00                     33292        7.16E-05                       0.20       96.49
+                            QADDUG                                                      N            2.30E+00                       1071       2.15E-03                       0.19       96.69
+                            Build             colors                                    N            1.91E+00                              I   1.91E+00                        0.16      96.85
+                            NGMRES                                                      N            1.89E+00                      8568        2.21E-04                       0.16       97.01
+
+                            crea_e_ob_ect                                               N            1.76E+00                     33226        5.29E-05                       0.15       97.16
+                            get_nodeporders
+                                                                                        N            1.62E+00                   353616         4.58E-06                       0.14       97.29
+                            fill            elem             fllp                       N            1.53E+00                   353616         4.33E-06                        0.13      87.42
+
+                            Jacoblans_are_good
+                                                                                        N            1.28E+00                      6672        1.92E-04                        0.ii      97.53
+
+                            ADDFXYZ                                                     N            1.04E+O0                     16800        6.10E-05                       0.09       97.62
+                            UGTOQ                                                       N            9.97B-01                      4284        2.33E-04                       0.08       97.70
+                            PASSJAC                                                     N            8.11E-Of                     53376        1.71E-05                       0.08       97.78
+
+                            build             groups                                    N            9.01E-Of                              I   9.01E-Of                       0.08       97.85
+                            IFLUX                                                       N            7.78E-01                      8400        9.26E-05                       0.07       97.92
+                            SHAPEID                                                     N            6.50E-01                     32466        2.00E-05                       0.05       97.97
+                            withdraw                    ucur                            N            6.23E-01                              4   1.56E-Ol                       0.05       98.03
+                            GETXYZ                                                      N            6.10E-OI                     13976        4.37E-05                       0.05       98.08
+
+
+
+
+                            get_GlobalGnode                                      Hums
+                                                                                    N                6.03E-01                    30308         1.99_-05                       0.05      98.13
+                            ZEROLB@I'I8                                                Y          5.75E-01                          778        7.39E-04                       0,05      98.18
+                            ADDART                                                     N          5.23E-01                        8400         6.23E-05                       0.04      98.22
+                            Check             Node            _eenDoneList
+w                                                                                      N          5.08E-01                      242464         2.10E-06                       0.04      98.26
+                            comco             read            _Celems
+                                                                                       N             4.87E-01                             1    4.87E-01                       0.04      98.30
+
+                            get   node                  number                         N             4.69E-01                   242464         1.93E-06                       0.04      98.34
+                            SHPFUN3@410                                                Y             4.40E-01                      5416        8.12E-05                       0.04      98.38
+
+u
+
+
+
+
+W
+
+
+
+
+        Figure   "2: Flowtraco                     of ROTOI-I:{D                                              neglecting                         boundary                     col,tributions     -..50   steps.
+U
+
+
+
+
+                                                                                                                            8
+            226229600     cycles
+    L
+
+
+
+                 cycles    %cycles              cum     %        cycles             bytes       procedure              (file)
+                                                                   /call            /line
+
+
+              36762096        16 .25            16.25                2814               79      getsolb_           (.getsol.f)
+              19760449         8       73       24.98                2061               67      shpfun3            (.shape.f)
+              16940352         7       49       32.47              24063                79      getsol_          (.qetsol.f)
+             12831705          5       67       38.14             72908                 74      mcfrtr           (.mcfrtr.f)
+    w
+                6208732        2       74       40.89                    209            52      shapeld            (.shape.f)
+                6112750        2       70       43.59                    633            31      shp3_        (.shape.f)
+
+                5419440        2       40       45    99             7527              223      calafjj_           (.calafjj.f)
+                5072548        2 ,24            48    23           10146                47      de2ck          (.gdbc.f)
+                4567200            2   02       50    25                 519           234      getbcsol_              (.bcelem.f)
+                4065036            1   80       52    04          101626                64      gdbc_        ( .gdbc.       f)
+                4005910            1   77       53    82                 401            81      get jac_         ( .getjac.           f)
+                3905271            1   73       55    54           88757                94      melem          ( .melem.         f)
+
+                3889474            1   72       57    26             3231               19      GetResources                (Resources.c)
+
+                3770133            1.67         58.93                     !34          608        XrmInternalStrinqToQuark                          (Quarks.c)
+
+                3254887        1.44             60.37                1059               17      getenv_          (getenv_.c)
+                3242502        1.43             61.80                6236             114       qmodeld            (.qmodeld.f)
+                3111416        1.38             63.17                5051               85      getsrfn            (.bcsrf.f)
+    =
+                3083059        1.36             64.54                4283               64      jacob_         (.jacob.f)
+                2597036        1.15             65.69              35576                54      fill_double_inf                   (wrkspc.c)
+                2546370        1.13             66.81                      45           55      inq_object_field                      (0bjects.c)
+    7           2437958        1.08             67.89                      88           12      XrmStringToQuark                      (Quarks.c)
+                2364592        1.05             68.93                    182            36      !Ishp3_          (.gshape.f)
+                2312487        1.02             69.96              52557                81      bce!em           (.bce!em.f)
+                2093850        0       93   70._8                209385                 56      bdcbxu_          (.gdbc.f)
+                2003814        0       89   71.77                    1583               22      Se_Values              (SetVaiues.c)
+                1986380        0       88   72.65                  45145                50      zerolr           (.zerolr.f)
+                1926840        0       85   73.50                        427            27      zsetz         (.zse_z.f)
+=       =
+
+                1906409        0       84   74.34                         47             5 bcopy             (qen/bcopy.s)
+                1902432        0       84   75.18                    5662               63 ugtoq_             (.ugtoq.f)
+                1773028        0       78   75.96                   2062                50      addd2uq_          (.qdbc.f)
+                1748119        0.77         76.74                        185           26       qetjacb_          (.qetjac.f)
+                1647762        0.73         77.47                         94           21         Imalloc         (malloc.c)
+                1561304        0.69         78.16                         56                5   sqrt      (sqrt.       s)
+                1378476        0.61         78.77                137848                56       aveck         (.qdbc.       f)
+               1179904         0.52         79.29                   9218               45       filiBatch              (grpFil!Batch.c)
+                1092487        0.48         79.77                   3415               80       addfxyz_          (.addf!ux.f)
+               1071081         0.47         80.24                         19           16       !owordr           (.shape.E)
+--7
+               1007336         0.45         80.69                  11447               44       zerohav           (.zerohavs.f)
+U
+                 994861        0.44         81.13                        488           19       ImportArgs       (Reslnd.c)
+                 992533        0.44         81.57                 24814                57       dtb2d      (.dtbatch.f)
+                 838900        0.37         81.94                 83890                45       zerock          (.qdbc.f)
+                 819254        0.36         82.30                        267          182       getxyz_         (.getxyz.f)
+
+
+
+z       :
+                                       Figure        3: S(ll   profile     of ROTOR3D                  ,,slng/}ix]e,
+                                                                                                          "
+
+
+
+
+                                                                                9
+w
+           4          Sample                       Results,
+
+           In this         section,        we presenl                 the      resulls        of five     sample        prol)lems          that     have      been        solved       up
+           to various           stages         during         the      testing          and     validation         phases       of tile     project.         These         problems
+           include;
+! __
+                   • NACA            0012       airfoil
+
+
+                   • Ni Bump              - 10V arc
+
+                   • Fixed       3D wing
+
+                   • Rotor       hover
+
+
+                   • Rotor-fuselage                 interaclion
+
+
+                   Tile    particular             details       regarding               the     selection         of t.he val'ious         flow       conditions,           ardaptive
+           parameters,               initial    coiIdilions,                au,t    numerical           resldts     are discllssed          in lhe       subsections           below.
+
+
+
+
+           4.1             NACA                0012            Airfoil
+
+           A NACA              0012      airfoil     wilh       an approach                   .X[ach number          0.85      at 1° angle         attack      was selected            as
+           the     first    example            problem.             The       initial     mesh      consisting          of II.c) quadratic             elements           (geolnetry
+           only)      is shown           in figure           t. Openflow                boundary          conditions           were    imposed         on all sides.
+
+  .    =
+                   The     initial       mesh        was      adapted              3 different          times      during       tlle calculations.             Each        time      the
+           mesh          was   adapted             the      refinemel_t/unrelqnement                            parametet's        were      set    to 0.95         and     0.-I.5 re-
+           spectively.          The        convergence                Iole,'ance          was     specified        as    1 x 10 -I      during        each     of the       solution
+           passes.
+
+                   Numerical            results          lk-Jt this     case       at'e shown           in figures       5 - 7.       t-tighlighted         in figure        5 is the
+           final     adapted           mesh        witll     approximately                    :?,509 quadratic          elements.          Pictured          in figure       6 and        7
+  ==
+
+
+           are conlours              of ._[ach           illlml-_er and            plessure.       Qualilivelv           the    reslllls     are    _good. however,               there
+           appears         1o be an overshoot                       near       lll¢' lraveting          shocks.
+
+  w
+
+
+
+
+                                                                                                    10
+  u
+
+
+
+
+  W
+      w
+
+
+
+
+    b
+
+
+
+
+w
+
+          Figure,   I: [nilial   _rid   t'or _he :NA(.\   0019 airfoil,
+
+
+w
+
+
+
+
+                                         11
+w
+
+
+
+
+z
+
+-r-
+        Ii
+
+
+
+
+    w
+
+
+
+
+    U
+
+
+
+    w
+
+
+
+
+w
+
+
+
+
+iii
+
+
+
+
+w
+
+
+
+
+! 7!
+w
+                 Figure   5: Final    adapted   mesh ['ol Itie N..\C.-\ 0012 ailfoil   with   appl'oacli   XIacli   numl)er   0.85
+                 a,t 1° angle   of attack.
+i        i
+=            =
+
+
+
+
+                                                                       12
+i
+
+
+
+
+!
+    w
+
+
+
+
+w
+
+
+
+
+u
+
+
+
+
+F
+
+
+
+L_
+w
+
+
+
+
+=       =
+w
+
+
+
+
+u
+
+
+            Figure   6: .Nlach   numl)er   contours   for the   NACA        0012   airfoil   - ,Nlach   lllllll])(_l'   0.85   and   c_ =   1.0 °.
+
+
+
+
+                                                                       13
+                                                                                                                                       1.15
+
+                                                                                                                                       1.10
+
+                                                                                                                                       1.05
+
+                                                                                                                                       1.00
+
+                                                                                                                                       0.95
+
+                                                                                                                                       0.90
+
+                                                                                                                                       0.85
+
+                                                                                                                                       0.80
+
+                                                                                                                                       0.75
+
+                                                                                                                                       0.70
+
+                                                                                                                                       0.65
+
+                                                                                                                                       0.60
+
+                                                                                                                                       0.55
+
+                                                                                                                                       0.50
+
+                                                                                                                                       0.45
+
+                                                                                                                                       0.4O
+
+                                                                                                              iiii!i!!i
+                                                                                                               .......,.......
+                                                                                                             :::::::::::::::::::::::
+
+
+                                                                                                                                       0.30
+
+
+E
+
+
+
+W    ¸
+
+
+
+
+         Figure   7: Pressure   col_tours   for..-\C.,\   001"2 airfoil   .X[ach numl>er   0.$5   and   c_ = 1.0 °.
+
+L_
+
+w
+
+
+
+
+                                                             14
+
+
+
+
+w
+        4.2         Ni       Bump              - 10(_         arc
+
+
+        In this        second      example,            compressil)le          inviscid        flow     past      a, Ni      Bump       - 10%       arc         (See       figure
+
+        S) was         analyzed.         In this         example         we have          a single       open        flow    bounda.ry         on        the      left,     and
+        right    faces,      and      a solid     wall     boundary           on the      Ni bump             and    upper      s'nrface.      As this            is a two-
+        dimensional           problem,          we have       generated          a simple       mesh          consisting      o[" 40 quadratic             hexahedral
+        elements          with     no clustering.            Inflow      conditions           for    this example            problenl        correspond               to the
+        choked         flow case       with     Ma.ch       nunll3er      =    0.73.
+
+                Some      numerica.l         results      t ak_-n afi er 669 time              steps     arc given          in Figs.     9-11.      Shown             in Fig.
+        l0 are      contours          of the     _lach      number.           The   location           and     the   strength      of shock          compare                very
+        favorably         with     results       1)3' others.          A carpet        plot    of Mach           number         along       both    the         lower       and
+        upper      surfaces        is shown            in Fig.     1, .\ga.in,      the       maximum            value      compares         qualitatively                 with
+        published          reports.
+    w
+
+
+
+
+=   =
+
+
+
+
+w
+
+
+
+
+w
+
+
+
+
+m
+
+
+
+
+                                                                                         15
+             w
+
+
+
+
+                                                                         SOLID
+
+                                                                                               A
+                                                                                                I
+
+                 M = 0.73                                                                                                   OPENFL()W
+                             f
+                                                                                              ..J                  >
+        w                            •                         3.0
+                                                                                                I
+                                                                                               ¥
+
+
+
+
+    w
+                            Figure    S: Schem_tic     o[" supersonic        flow over       a Ni butrip   (10_   arc).
+
+
+
+
+                 ii
+    Z   i"
+                 I
+i
+                 i     '
+
+
+
+
+                 !     '     I
+                 I
+                 i     'i
+W
+
+
+
+
+                 '           i.
+w
+
+
+
+
+                      Figure      9: Fitaal   ,/a_'_h lor Si 1)ttnap (10_,_, arc)        -   choked   fto_" c'o,aditions.
+
+
+
+
+                                                                        16
+           w        1.60                                                                                                                                |
+
+
+                    1.50
+
+
+                    1.40
+
+
+                    1.30
+
+
+                    1.20
+,_,._
+r"
+
+                    1.10                                                                                   W
+                                                       -                                               m
+
+                                                                                                   W
+                    1.0O                                                                      ,/
+
+
+                                                                                     aft"
+
+                    0.90
+
+
+                    0.80
+                                                                                                                      L
+                    0.70                         •   °.m.- Ju" 'r" r"
+
+
+
+
+                    0.60
+....           i-
+
+
+
+
+                                                                                                                 7
+                    0.50
+
+
+ii -5_
+tl      22
+                    0.4o I                   t                          I           I                                                         i             1.60
+                            -l.O0         -0.50                     0.00          0.50                         [.00          1.50           2.0O
+                                                                                                                                                            1.55
+                           Figure   IO:       _[ach               distribution              along               lower      and      upper    surface.       1.50
+                                                                                                                                                            1.45
+                                                                                                                                                            1.40
+                                                                                                                                                            1.35
+                                                                                                                                                            1.30
+                                                                                                                                                            1.25
+                                                                                                                                                            1.20
+                                                                                                                                                            1.15
+                                                                                                                                                            1.10
+       @_
+        ..:J,
+       w
+                                                                                                                                                            1.05
+                                                                                                                                                            1.00
+       =       =
+
+                                                                                                                                                            0.95
+                                                                                                                                                            0.90
+                                                                                                                                                            0.85
+                                                                                                                                                            0.80
+                                                                                                                                                            0.75
+                                                                                                                                                            0.70
+                                                                                                                                                            0.65
+                                                                                                                                                            0.60
+       = ==                                                                                                                                                 0.55
+       w 1
+                                                                                                                                                            0.50
+                           Figure   i1:      .Slach              nunal)er        contours                      predicted         b\- ROTOFt:ID.             0.45
+       "-,17-
+       U                                                                                                                                                    0.40
+
+                                                                                         t7
+
+
+
+
+       = =
+
+
+
+       W
+     w
+
+
+
+
+         4.3          Fixed            3D           Wing
+
+
+         A fixed       3D wing              with        wing     span       S similar           to the        configuration             emplo_;ed              in McAllister                and
+         Takahashi           experiment                 [1] was        chosen        as the         third     case.    Subsonic              flow conditions                  with       Mach
+         number        0.85 were             imposed            with       a zero         angle      of attack.
+
+               The     initial        mesh          was        constructed              using        both      unstructured              and          structured             techniques.
+         The      initial     mesh          shown         in Fig.         12 consisted               of 8035        nodal      points          and      7000       linear          elements.
+         Approximately                20 nodes             were         initially         located       on the        wing         surface         at each       span         wise       plane.
+         The      outer       boundaries                of the        computational                  grid     were     located          apl-Jrox_i_iately                5 to 6 chord
+         lengths       above         and      below            the     wing.        The       gap     between          the     wing          tip     and     the      side      boundary
+         was      approximately                2 chord               lengths.         Open          flow    boundary               conditions            were         imposed            on all
+         boundaries            except         the       wing         sttrface       and     the      wing      root    plane.          For those             boundaries              no    flow
+         and     symmetry             conditions               were      enforced           respectively.
+
+               The     initial        mesh         was      adapted             on :3 occasions               during         the     solution           process.          During           each
+ _-:1!   adaptive           pass      the     refinement/unrefinement                                parameters              were      prescribed              as 0.90             and    0.:30.
+         The      primary           reason         for the       high       refinement              parameter          was         to control/minimize                       the     number
+         of elements           refined.            Two         additional           parameters              - the      maximum                h level        and       the     number             of
+         passes       per adaption                 were     also        set. to :3 and            "2 respectively.
+ t
+
+
+               A closeup             view         of the         wings          upper         surface       after      the     final         adal)tation              is presented                in
+         Fig. 13.           Here,      the     shock           pattern          is evident           by the       refined          elements.            Notice         the     turning            of
+         the     shock       near      the        tip     section.          This        is believed           due      to 3D         effects         and       thus      weakening                of
+         shock       near     the     tip section.              The       final mesh              consisted         of 19997          elements           and       26923       degrees            of
+         freedom.
+
+                 Results       for the        pressure           coefficient            and       Mach      number           for the         final     mesh        are       presented            in
+         Figs.       14-17.        Although             there        is an apparent                 overshoot         near     the      shock,          qualitively            the results
+W
+
+         took quite          good.          The     results           also show           a slight        asymmetry            in the solution                 near      the        traveling
+         edge.       This      a.symmetry                dicl not. occur              until       after     the     third      adaptive              pass,     and       is believed              to
+         be a result           of our        anisotropic               refinement             procedure.
+
+
+
+
+Z ¸ !_
+
+w
+
+
+
+
+                                                                                                     18
+         w
+
+
+
+
+        k,../
+
+
+
+
+    w
+
+
+
+
+    W
+
+
+
+
+    =    =
+
+
+
+
+    w
+
+
+
+
+w
+
+
+
+
+=. ,=
+                Figure   12: Initial   mesh    for the   fixed   3D wing.
+
+
+-       +.
+
+_       +
+
+
+
+
+                                              L9
+L
+
+
+
+
+                                                                           \
+
+
+
+
+r
+
+
+
+
+    Figure   13: Closeup   view of tile wing   upper   surface   highlighting   the shock   pattern   as depicted
+    by tile ada.pted   elements.
+
+
+
+
+                                                          :_0
+                                                             Pressure            Coefficient             (-Cp)
+                    Y
+
+                                                                                                                                                      _et   0
+                         1.00
+
+                         0.90
+
+                         0.80
+
+                         0.70
+
+                         0.60
+
+        L       =
+                         0.50
+
+                         0.40
+
+                         0.30
+
+                         0.20
+
+                         0.i0
+
+                         0.00
+
+                        -0.i0
+    -       =
+
+
+
+
+                        -0.20
+
+                        -0.30 --
+
+                        -OAO
+
+                        -0.50 --
+
+                        -0.60
+
+                        -0.70
+
+                        -0.80   --
+
+                        -0.90
+
+    i ¸¸                -[.00 --
+
+                        -i.I0
+
+!                       -1.20                                                                                                                   X x 10-3
+                                           -400.00             -200.00               0.00                 200.00               _00.00
+
+
+
+
+                           Figure    14:   Predicted   l)ressut_e   coel_cient   (-Cp)      versus   st.reanawise   distance--wing      root   sec-
+                           tlon.
+
+
+
+
+                                                                                    21
+                                                                   Pressure          Coefficient               (-Cp)
+             Y
+
+
+i       ""
+                                                                                                                                                              Set 0
+                         0.70
+        r
+
+
+                         0.60
+
+                         0.50
+
+                         0.40
+
+                         0.30
+                                            /
+                         0.20
+
+                         0.10
+
+                     0.00
+
+    -=               -0.i0
+
+                     -0.20
+    L
+
+
+
+                     -0.30
+
+                     -0.40
+
+                     -0.50
+
+                 -0.60
+
+                 -0.70
+
+                 -0.80
+
+                 -0.90
+
+                 "   [   .00      I"
+
+
+
+
+                 -i.lO
+
+                 -1.20                                                                                                                                    XxlO-
+                                             -400.00               -200.00                  0.00               200.00                 400.00
+
+
+
+
+                         Figure        15: Predicted   1)ressure     coeiticient   (-CI))     versus   stl'eamwise   distance--wing        tip section.
+
+
+
+
+                                                                                            "22
+                                                             Mach         Number
+            Y
+
+                                                        I                      i                                                   _et   0
+                 1.40
+
+
+                 1.30
+                                                                                                                            I
+                 1.20
+                                                                                                                            f
+    : :i
+
+    =   =
+
+                i. I0
+                                 /                                                                                          r
+                1.00
+
+
+                0.90
+                            /                                                                                               [
+                0.80    -
+
+
+                0.70
+=       =
+
+
+                0.60
+
+
+                0.50
+
+
+                0.40
+
+w
+                0.30
+
+
+                0.20
+
+
+                0. I0
+
+
+                0.00
+
+                                                                                                                                X x i0 -3
+                            -400.00             -200.00                  0.00                     200.00            400.00
+
+
+
+
+                             Figure   t6:   Predicted       ._[ach   number        distril)ution--wing     1"ool section.
+
+
+
+
+                                                                          23
+                                                          Mach Number
+!
+                Y
+i!:
+                                                                                                                    Set 0
+                     1.20
+
+
+
+                     I.i0
+
+
+
+                    1.00
+
+
+
+                    0.90
+
+
+
+                    0.80
+
+
+
+                    0.70
+
+
+        .   =
+                    0.60
+
+
+
+                    0.50
+
+
+
+                    0.40
+
+    w
+
+
+
+                    0.30
+
+    w
+
+                    0.20
+
+
+
+                    0.i0 --
+
+
+
+                    0.00                                                                                         X x I0"3
+                              -400.00           -200.00              0.00               200.00          400.00
+
+
+
+
+                                Figure   17: Predicted    3lach   number    distrlbution--wing   tip section.
+
+
+
+
+                                                                       24
+    4.4          Rotor              Hover           Simulation:                      Caradonna,                         Laub,           and        Tung         Ex-
+                 perinaent                 [2]
+
+    The      isolated       model        rotor     experiment           of Caradonna,                Laub,      and      Tung      [2] for a nonllfting           test
+    condition           with      tip   Mach       number         = 0.439        and       advance           ratio      (# = 0.0)        was    modeled.         The
+
+w   rotor      blade       simulated            is a rigid     model       rotor       with        aspect       ratio      of six      (based      on the      blade
+    radius)       and      a rectangular            NAC.-k          0012   airfoil        section.       Tile        initial    grid    pictured      in Fig.       18
+    consisted          of 19698         nodes     and       17184     linear     elements.
+
+            A closeup          view of thetip           section       is shown       in Fig.         19. Note,          in order       t.o generate         the mesh
+    around       the      tip region        and     still    maintain          a given      grid      quality        an unstructured               was employed
+    in the      tip     region.
+
+            Shown       in Fig.         20 are     isosurfaces        of pressure           for the         rotor      hover     simulation         after     a total
+    of 5:35 time          steps.
+
+
+
+
+                                                                                     25
+         7
+
+
+
+
+    =   .
+
+
+
+
+W
+
+
+
+
+L_
+
+
+W
+
+
+
+
+=
+
+
+
+
+             Figure     18: Computational          grid   for the rotor   hover   simulation.   Iniital   mesh   consists   of 17,184
+             elements     and   19,698   laodes.
+
+
+
+
+                                                                          26
+        •           J
+
+
+
+
+    =           :
+
+
+
+
+=           =
+
+    i
+
+
+
+                                                                                               I
+                                                                                                   II
+
+            e
+
+
+
+
+                        Figure   19: Close-up   view   of the   rotor   blades.        Note,        the   blade   tip employs   an unstructured
+                        grid.
+
+
+
+
+                                                                                  97
+w
+
+
+
+
+\
+
+
+
+
+/
+
+
+
+
+    Figure    ?.0: Isosurfaces   plot of pressure   for the    rotor   hover   simulation.   Total   number   of steps
+    = .)35.
+
+
+
+
+                                                              "28
+    4.5            Rotor-Fuselage                              Simulation:                            Smith              and          Betzina               Experiment
+                      [3]
+
+    In this       last        problem,         ROTORaD                is used         to model             the     rotor-fllselage            experiment            investigated
+    by Smith            and      Betzina          [3]. The     computational                       model      for the rotor-fuselage                   simulation           employs
+    both        unstructured/structured                        grid     technology.                  The      tip Mach          number          and    advance           ratio     were
+    specified           as 0.6 and           0.1.5, respectively.                  The       resulting            angular       velocity        was      0.16      rad/sec.
+
+            The       first     step     towards       soMng           the     complete               Rotor-Fuselage                  problem         targeted        the     sliding
+    interface.           To demonstrate                the moving                  grid     capability            as well as the data                 structure,          the rotor
+    blades        were         allowed         to rotate       without              actually          calling        the    flow solver.              Shown        in Fig.         21 is
+    the        mesh      with      the     blades      in their         initial           location         ((3 = 0).           The     computational               grid       for this
+    combined             problem          consists         of approximately                    30,000         elements.          Fig.        22 shows       the     rotor        ])lades
+    after       they      rotated         approximately               75 o (1000               time     steps).
+
+            The       second       step     in the solution             sequence               required          activating           the    flow solver.          As discussed
+    previously                in Section          3, performance               related             issues        prohibited           any     real     computations                even
+    on this        initial       mesh.
+
+
+
+    4.6           References
+
+
+          1. McAlister,                  K.\V.,      and     Takahashi,                   R.I<.,      "NACA              0015        hling      Pressure           and      Trailing
+                Vortex          Measuremeltts."                .NAS.\         TP      315t,           1991.
+
+
+          2.    Caradonna,                F.X.,      and     Tung,           C.,     "Experimental                   and       Anal\'tical            Studies       of a Model
+                Helicopter             Rotor       in Hover,"          NASA               TM       81232,        Sept.      1981.
+
+          3. Strawn,             R.C.      and      Barth,      T.J.,         "A Finite-Volume                       Euler       Solver        for Computing                  Rotary
+                Wing          Aerodynamics              on Unstructured                        Meshes,"            presented           at the        48th     Annual          Forum
+                of the         American           Helicopter          Society,            Washington,               DC,        June     3-5,     1992.
+
+
+
+
+W
+
+
+
+
+                                                                                               29
+    w
+
+
+
+
+    =       .
+
+
+
+
+    =       =
+
+
+    T
+
+
+
+
+W
+
+
+
+
+w
+
+
+
+
+=       :
+
+
+
+W
+                Figure   21:Computationa.1   grid   for the   rotor-fuselage   simulation.   Initial   position,   _ = 0 °.
+
+
+
+W
+
+
+
+
+                                                                    3O
+v
+
+
+
+
+v
+
+
+
+
+    Figure   '22: Rotor-fuselage   grid   with   blades    rotated   approximately   75 ° (1000   steps).
+
+
+
+
+                                                      3I
+                      5         Future                  Work
+
+                      The     main       objectives             of the             Phase         II project          were        to research                and         develop         a set      of
+                      computational                 methodologies                   which         could       be combined              to effectively                   model        transonic
+                      flow     around          multi-bladed                  helicopter             rotors      in hover            and      forward              flight.          The      scope
+        =
+        liw
+                  .
+                      of this     work         included              the      development                 of data         structures,              adaptive              methods,            error
+                      estimator/indicator                     techniques,                  implicit-explicit               and      implicit/explicit                       time        accurate
+                      and     steady      state      flow solvers,                 iterative        linear     equation           solvers,         graphics,             a user      interface,
+                      and     grid generationcapabilities.                                All of these          components              were        to be synthesized                    into an
+                      operational          three        dimensional                 code       and     used       to solve        predefined             large          scale     benchmark
+                      problems.
+
+                      At the conclusion                 of the project,                   many        of these       objectives           were       successfully                met      as out-
+                      lined     in Section           '2 of this report.                   \Ve were successful                    in solving          several            two-dimensional
+                      and     three-dimensional                     test     problems            which        included        both        static         and      moving           grids.     The
+                      structured/unstructured                              grid      generation            package,          GAMMA3D,                       was         completed            early
+    W
+                      last summer             and       was used             to generate              several      single        and      multi-blade                   meshes.         In addi-
+                      tion,    this     package          was         used         to generate            a rotor-fuselage                 mesh       which              we believe          is the
+    r                 one of the         first coml)lete               models             of this     type.       \¥e also coml)leted                     the first         version         of the
+                      MESHVUIR                package          whh'h          is a fully            interactive           package         for viewing               and         conditioning
+                      computational                 meshes.            Finally,            the      pieces      of the       effort        which          fell     short         in the       final
+    W
+                      anah.'sis        we believe         are all basically                    related        to performance                 issues         which          were      discussed
+
+r             _
+                      in detail        in Section         3.
+
+                      Translating             the    performance                   issue       into    completion            of the        various             tasks,       obviously           the
+                      benchmark            problems             identified             in the original               proposal          were        large         scale      computations
+                      and     with      the     current         performance                    of ROTOR3D                   coukl      not       be completed                     in a timely
+                      manner.
+7             =
+                      The      current         status         of ROTOR3D                         is basically            operational.               It      has         been       tested       and
+        J
+                      validated         on a number                  of rather             small      two and            three-dimensional                       test     problems.           The
+                      immediate          focus       of any additional                      work on ROTOR3D                         should         be targeted                  at improving
+                      its performance.                  The         basic         areas     in which          have        been     currently             identified              as requiring
+                      immediate           attention            include:
+
+
+                            • Optimization                of the boundary                      conditions          part     of the code             (i.e.        coloring          and group-
+                               ing bc to increase                    the      vector         length)
+
+                            • Restructuring                   the     access              to the      data        base      so the         common                 blocks          and       global
+                               workspace             is used          to store             scaler      data       used      in many           of the             frequently             accessed
+                               routines.
+
+
+
+                                                                                                      32
+     • Once      these    two pieces   of optimization        are in place,    continue       with   profiling   studies
+       and    in-lining     as indicated     by   the     YMP     Flowtrace      Statistics      and    other    profiler
+       options     to improve      overall   vector      length   and   performance.
+
+
+
+
+25
+
+
+
+
+                                                         33
+        NASA
+                                                    Report              Documentation                                     Page
+        I. Report No.                                               2. Government       Accession No.                       3. Recipient's Catalog No.
+               TR-93-02
+
+        4. Title and Subtitle                                                                                               5. Report Date
+
+                Advanced          Adaptive   Computational     Methods               for Navier-Stokes                                 March      4, 1993
+                Simulations        in Rotorcraft  Aerodynamics                                                              6. Performing Organization Code
+
+
+        7. Author(s)                                                                                                        8. Performing Organization          Report No.
+
+           S. T. Stowers,        J. M. Bass,     J. T. Oden
+                                                                                                                            10. Work Unit No.
+
+
+
+        9. Performing Organization Name and Address                                                                            11. Contract or Grant No.
+
+                 Computational   Mechanics                                                                                             NAS2-13285
+                 7701 North Lamar, Suite 200
+                 Austin, Texas 78752                                                                                           13. Type of Report and Period Covered
+
+        12. Sponsoring Agency Name and Address
+                                                                                                                                          Final   Report
+                  NASA         Ames      Research     Center
+                                                                                                                                14. Sponsoring Agency Code
+                    Moffett     Field,   CA    94035-1000
+
+
+
+        15. Supplementary Notes
+
+
+
+             None
+
+
+
+        16. Abstract
+
+
+
+                                 A Phase      II research      and development          effort   was conducted        in area    transonic,       com-
+                    pressible,    inviscid   flows with an ultimate         goal of numerically       modeling     complex     flows
+                    inherent    in advanced       helicopter    blade designs.       The algorithms     and methodologies          therefore
+                    are classified     as adaptive     methods,     which are error estimation        techniques     for approximating
+v
+
+                    the local numerical        error, and automatically         refine or unrefine     the mesh so as to deliver a
+                    given level of accuracy.          The result is a scheme        which attempts      to produce    the best possible
+                    results with the least number            of grid points, degrees of freedom,          and operations.       These types
+                    of schemes      automatically       locate and resolve shocks, shear layers, and other flow details                   to an
+                    accuracy     level specified     by the user of the code. The Phase I work involved                a feasibility     study
+                    of h-adaptive       methods     for steady viscous      flows, with emphasis        on accurate     simulation      of
+                    vortex initiation,      migration,     and interaction.      Phase II effort focused      on extending      these
+                    algorithms      and methodologies          to a three-dimensional       topology.
+=   :
+
+
+
+
+        17. Key Words (Suggested by Author(s))                                                   18. Distribufon   Statement
+
+L
+            Helicopter        aerodynamics,         computaional       fluid                      Unclassified,    Unlimited
+w
+            dynamics,     adaptive  methods,            unstructured
+            meshes,   finite elements
+
+
+        t9. Security Classif. (of this report)                                 20. Security Classif. (of this page)     21. No. of pages                   22. Price
+
+                 None                                                                            None                                33                       n/a
+

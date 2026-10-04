@@ -1,0 +1,1940 @@
+---
+title: Effects of unsteady aerodynamics on rotor aeroelastic stability
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19770025134
+source_url: https://ntrs.nasa.gov/citations/19770025134
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-20
+retrieved: 2026-09-22
+sha256: 2cab3359f5015233cced54c6fbcd484309ab488e1b5640dca6069d12d1775262
+pages: 32
+words: 3515
+cv_look_pages: 6
+---
+
+                                    General Disclaimer
+
+    One or more of the Following Statements may affect this Document
+
+
+
+      This document has been reproduced from the best copy furnished by the
+      organizational source. It is being released in the interest of making available as
+      much information as possible.
+
+
+
+      This document may contain data, which exceeds the sheet parameters. It was
+      furnished in this condition by the organizational source and is the best copy
+      available.
+
+
+
+      This document may contain tone-on-tone or color graphs, charts and/or pictures,
+      which have been reproduced in black and white.
+
+
+
+      This document is paginated as submitted by the original source.
+
+
+
+      Portions of this document are not fully legible due to the historical nature of some
+      of the material. However, it is the best reproduction available from the original
+      submission.
+
+
+
+
+Produced by the NASA Center for Aerospace Information (CASI)
+     NASA TECHNICAL                                            NASA TM 78,434
+              MEMORANDUM
+    (NA:.A-1M-78434)   EFFECTS OF UNSTEADY                        N77—j2078
+    A.ZROLYNAMICS CN FC10B AEBOEIASTIC STABILITY
+    (NASA)   30 p EC A02/MF A01            CSCL 01A
+                                                                Unclas
+                                                         G3/02 47866
+
+     M
+     v
+     co
+     r.
+
+
+
+     Q
+     Q
+     Z
+
+
+
+
+     EFFECTS OF UNSTEADY AERODYNAMICS ON ROTOR
+     AEROELASTIC STABILITY
+
+
+     Donald L. Kunz
+
+
+     Ames Research Center, NASA
+                and
+     Ames Directorate, USAAMRDL, AVRADCOM
+     Ames Research Center, Moffett Field, Calif. 94035
+
+
+
+s
+
+
+
+
+                                                                   off'r jq-
+     September 1977                                        N
+                                                           ^         r,
+
+                                                                                r
+:,Irr             I
+
+
+
+
+                                        EFFECTS OF UNSTEADY AERODYNAMICS
+
+                                        ON ROTOR AF,ROELASTIC STABILITY
+
+
+
+                                                  Donald L. Kunz
+
+                                                 Research Scientist
+                                                Ames Research Center
+        y                                         Ames Directorate
+
+                                     U. S. Army Air Mobility R&D Laboratory
+                                                     AVRADCOM
+                                           Moffett Field, California
+
+
+
+                                                     Abstract
+
+                      An analysis was conducted to study the effects of unsteady aerodynamics
+
+            on the stability characteristics of helicopter rotor blades. A simple physical
+
+            model of each blade was used together with Theodorsen, Loewy, and quasi-steady
+
+            aerodynamics to derive the equations of motion. The stability analysis com-
+
+            paring the effects of using each of the three theories revealed some signifi-
+
+            cant differences between the Loewy and Theodorsen results. These included
+
+            increases and decreases in lead-lag damping, localized around integer lead-lag
+
+            frequencies. It was also shown that the standard method of multi-blade coordi•-
+
+            nates must be modified for use in conjunction with Loewy aerodynamics.
+
+
+
+
+              I                            IL
+                                                       Notation
+
+         a                 'Linear, two-dimensional lift curve slope
+
+         B                 Tip loss factor
+
+         C(k)              Theodorsen's lift deficiency function
+
+n        C(k,m,h,N,^q)     Loewy's lift deficiency function
+
+                           Profile drag coefficient
+         C
+              0
+         c                 Blade chord
+
+         c                 Nondimensional blade chord, c/R
+
+         D                 Airfoil section drag force
+
+         e                 Hinge offset nondimensionalized by R, Fig. 1
+
+         h                 Wake spacing nondimensionalized by R, Fig. 2
+
+         I                 Blade inertia about the hinge
+
+         Ie                Blade torsional inertia nondimensionalized by I                 3
+
+         i
+
+         K2 ,K3 ,K4        Blade geometry correction factors, Eq. (16)
+
+         KS ,K^            Combined flap and lead-lag spring stiffness at
+
+                           a   = 8   = 0, Eqs. (A10-All)
+
+         KSb ,K^b          Flap and lead-lag spring stiffnesses at the blade root,'
+
+                           Fig. 1
+
+         KRh ,K^h          Flap and lead-lag spring stiffness of the inclinable hub
+
+                           springs, Fig. 1
+
+         k                 Reduced frequency, me/2Qr
+
+         Lc                Airfoil section circulatory lift force
+
+         L                 Airfoil section noncirculatory lift force
+             nc
+         M  ,M             Nondimensional aerodynamic hinge moments
+          Oa ^a
+         MS ,MO            Nondimensional elastic hinge moments
+              e        e
+         M        ,M       Nondimensional inertial hinge moments
+
+
+
+                                                      -2-
+
+
+
+    `1                                                                                w^
+                                 L           l
+             m                Modal frequency ratio, w1R
+
+             N                Number of blades
+
+             p                Uncoupled rotating flap frequency
+ l
+ r           Q                Generalized lift deficiency function
+
+                              Integrated lift deficiency functions, Eq.   (17)
+         °   Q1'Q2'Q3
+             q                Blade number (0, 1, 2,           )
+         r
+             R                Rotor radius
+ t           Rb,Rh            Elastic coupling parameters, Eqs. (A8-A9)
+i
+
+             r                Distance outboard of the hub centerline nondimensionalized
+x
+
+     _                          by R
+
+             s                Modal eigenvalue, 6 + iw
+
+             V                Blade velocity in the plane of rotation, Eq. (12)
+c
+
+
+             x                Distance outboard of the hinge nondimensionalized by R
+
+             x                Blade root cutout (from the hinge) nondimensionalized by R
+                 0
+                              Blade velocity normal to the plane of rotation, Eq.    (11)
+tz
+             S                Blade flapping deflection, Fig. 1
+
+             Y                Lock number, pacR4/I
+
+             4                Stiffness parameter, Eq.   (7)
+
+             e                Blade pitch angle with respect to V
+
+                              Blade lead-lag deflection, Fig. 1
+t,
+             8                Blade geometric pitch angle, Fig. 1
+
+             Bb , Oh          Inclinations of the blade and hub principal flexural
+
+                                axes, Fig. 1
+
+             80        ,8 S   Pitch-flap coupling parameters, Eqs.   (20-22)
+                  b    h
+             B^,B^ ,B^        Pitch-lag coupling parameters, Eqs. (20-22)
+                  b    h
+             P                Air density
+
+             c7               Modal damping
+
+
+
+                                                  -3-
+^f
+
+
+                       Lead-lag damping
+
+                       Inflow angle
+         ^i
+         ^q            Interblade phase angle
+
+         Q             Rotor rotational speed
+
+         W             Modal frequency
+
+         W^            Lead-lag frequency
+
+         ws,wVwe       Nondimensional, uncoupled flap, lead-lag,
+
+                         natural frequencies, Eqs, (Al2-A13)
+
+         ( ) o ,^( )   Equilibrium and perturbation quantities
+
+                       [d( )/dt]/O
+
+                       [d 2 ( )/dt2]/Q2
+
+
+
+
+P
+
+1
+F
+
+
+                                            -4-
+k
+
+
+
+
+"t
+
+ e   Q
+              l
+                                     Introduction
+
+         Over the past few years, many investigators have studied the aeroelastic
+
+    stability of hingeless helicopter rotor blades. For the most part, these
+
+    researchers have used quasi-steady, strip theory aerodynamics to develop the
+
+    aerodynamic forces [1-3]. Although the results obtained from such analyses
+
+    have often correlated well with experiment    [4) , and have provided valuable
+4
+
+    insights into the physical problem, some discrepancies have appeared which
+
+    cannot be explained within the limits of the theory [5]. A possible source
+
+    of these discrepancies is unsteady aerodynamics.
+
+         The aerodynamic theories used in this investigation include Theodorsen's
+
+    unsteady theory [6], Loewy's rotary-wing theory [7], and a quasi-steady approxi-
+
+    mation to the two unsteady theories. By comparing the results obtained by
+
+    using each of these aerodynamic formulations, the relative effects of unsteady
+
+    flow and the shed wakes beneath the rotor plane can be determined.
+
+         While other investigators have used unsteady aerodynamics in stability
+
+    analyses [8-10], their main concern has generally been the determination of
+
+    stability boundaries. The primary reason for the limited scope of these
+
+    analyses has been that the aerodynamic theories only apply for simple harmonic
+
+    motion. It is the intention of this study to treat transient motion, by assum-
+
+    ing that motion to be nearly simple harmonic, as well as the case of neutral
+
+    stability. In addition, the work presented here observes the effects of the
+
+    shed wakes below the rotor plane on the behavior of a multibladed rotor.
+
+
+                                     Blade Model
+
+         The physical model chosen to represent each individual blade of the rotor
+
+    was purposely kept simple, so that the aerodynamic effects would be obscured as
+
+    little as possible by the blade dynamics. It is the same as the model used for
+
+    the theoretical development in Reference 5.
+
+                                           -5-
+     As shown in Figure 1, the blade model has flap and lead-lag degrees of
+
+freedom, perpendicular and parallel to the plane of rotation. While the blade
+
+is rigid in torsion, provisions are made for including kinematic pitch-lag,
+
+pitch-flap, and elastic coupling. Hinge offset can also be represented. In
+
+addition, the hinge sequence can be changed from lag-flap to flap-lag by
+
+rotating 9 h from 0° to 90°. All of the blades are attached to a fixed hub
+
+which rotates at a constant speed, 52.
+
+
+                              Aerodynamic Thom -)ries
+
+     Before proceeding with the derivation of the equations of motion, the
+
+aerodynamic theories that are used will be briefly discussed. Since both the
+
+Theodorsen and Loewy theories are widely known, this discussi. ,.:n will serve only
+
+to compare their mathematical models and approaches. It will also point out
+
+the limitations their use imposes on the stability analysis.
+
+     The unsteady aerodynamic theory developed by Theodorsen [6] considers a
+
+thin airfoil undergoing simple harmonic motion, and being trailed by a straight
+
+wake. The vortex strength of this wake varies sinusoidally with time:, and
+
+results in a lift deficiency function, C(k), which is associated only with the
+
+circulatory portion of the lift. This lift deficiency function is only depen-
+
+dent on the reduced frequency of the airfoil oscillations.
+
+     Loewy [7] modified the wake model in Theodorsen's analysis to more closely
+
+represent the cast! of a rotating wing. As shown in Figure 2, the airfoil
+
+section at any spanwise station is trailed by a wake in the plane of the rotor,
+
+as in Theodorsen's model. However, Loewy also includes vortex sheets below the
+
+plane of rotor, which result from the vorticity shed by previous passes of the
+
+blades being carried downward by the induced velocity. For ease of computation,
+
+the wake sheets are assumed to be parallel to the plane of rotation and without
+
+
+
+
+                                          -6-
+                                                                                      I'
+%.
+
+
+
+
+     to the plane of rotation and without curvature. They are also assumed to
+
+     extend infinitely far ahead of and behind the airfoil, as well as below it.
+
+          Loewy's analysis of this aerodynamic model follows the same approach as
+
+     that of Theodorsen, and the results are similar. The lift deficiency function
+
+     C(k,m,h,N,tq), is again only associated with the circulatory lift. However, it
+
+     is now dependent on the frequency ratio, the wake spacing, the number of blades,
+
+     and the interblade phasing, as well as on the reduced frequency.
+
+          The quasi-steady approximation to the Theodorsen and Loewy theories is
+
+     obtained by letting the lift deficiency function equal unity. This has no
+
+     effect on the non-circulatory lift, but does make the circulatory lift indepen-
+
+     dent of blade frequencies and wake geometry.
+
+          Since the lift deficiency functions of the unsteady theories are dependent
+
+     on reduced frequency, a constraint is placed on the applicability of the sta-
+
+     bility analysis. That is, only those modes which have frequencies corresponding
+
+     to the reduced frequency used to compute the value of the lift deficiency func-
+
+     tion are valid results. Therefore, unlike when the quasi-steady theory is used,
+
+     a separate calculation must be made for each mode.
+
+          Mother limitation on the validity of the stability analysis is applied
+
+     when one is considering transient motion. Both Theodorsen's and Loewy's
+
+     theories were developed only for simple harmonic airfoil motion. However, for
+
+     lightly damped modes, the airfoil motion will be nearly simple harmonic.
+
+                                  at     (6+im)t           a iw t                   (1)
+                                                      n.
+
+
+                             ea = 1 + 6 + 6 2 /2! +            + on /n!             (2)
+
+
+     Therefore, when the damping is small, e 6 is approximately unity and e st is
+
+     approximately e lmt .   This assumption of nearly simple harmonic motion
+
+     essentially means that only the results for the lead-lag mode are valid, since
+
+
+                                               -7-
+
+
+
+                                                                                          s
+   I               I                      I
+
+the damping of the flap mode is generally outside the limits of this
+
+approximation.
+
+       One final problem encountered when dealing with the Theodorsen and
+
+Loewy lift deficiency functions results from their being represented by
+
+complex numbers. If the resultant complex aerodynamic coefficients are not
+
+expressed in real form, the two eigenvalues for each mode will not necessarily
+
+be complex conjugates. The problems in physically interpreting such a solution
+
+are obvious. It is therefore necessary to invoke the asst , mption of simple
+
+harmonic or, in this case, nearly simple harmonic motion in order to express
+
+the aerodynamic coefficients as real numbers.
+
+
+                                              Equations of Motion
+
+
+       From Reference 5, the inertial and elastic moments about the hinges are
+
+
+
+                   1           ttt
+
+                                   ^ //
+              14        = -`^ - 29 + Zl l
+                                        e e )0]                                                 (4)
+                   ^i
+
+
+              M se = -                                           + Rh sin 6 h i
+                                                              g 6bo
+                                      {[ws + (w2 - ws)1Rb
+                                                      1   sin                0/ t S
+
+                                      \                                                l,
+                          + 2 R - W0)s (Rh sin 2Bb + Rh                   in 26 h )^            (5)
+
+
+
+                                                             sin 20 b + R h sin 26 h) 0
+              MC
+                                      F2 (w^ - w S l (_R b
+
+                          + [w^ - Iwo - m5) (R b sin 2 e + Rh sin 2 6 h)                        (6)
+                                                                                            J
+
+where
+                               -2 -2
+                               w          ws f
+                       = 1 +          2-2    IRb (1-R b )s in2 B b + R il (1-R il) sin2 Bh
+                                     wtwR     L
+
+                                                                   ll
+                                    2 6 sin 6 h + 8b
+                           - Rb Rh (2             2 sin
+                                                    sin 2 sin 20 h) (7)
+                                       h                            J
+
+                                                              -8-
+                 Since all of the aerodynamic theories used in this study are similar in
+
+        form, the aerodynamic moments are derived for an arbitrary lift deficiency
+
+        function, Q. The expressions for lift and drag are based on Reference 11,
+
+        with the small pitch angle assumption removed.
+
+                             P
+                    L nc =       ac 14/[z r_os B + ze sin 8 + V sin B + VE cos 0 + 4 e,              (S)
+    r
+    F
+                                                        r
+                                      L c = Pac V           z cos B + V sin G+ 2 e^Q                 (9)
+                                                        L                                11
+
+
+                                                                           (0                       (10)
+t                                                   D               p l c V2 \ ao/
+
+        cohere
+
+                                              z=-                       (e + x) + Rx]R              (11)
+                                                             CCCC                                                  ;
+                                                                                                                   1
+                                                V = ^S2(e + x) +^x R                                (12)
+                                                                  J
+                                                                                                                    a
+                                                            E = 0 sin S                             (13)
+
+F
+        Note that the blade vertical velocity, z, contains contributions from the                                  y
+        induced velocity and blade flapping; while V, the horizontal velocity, has
+
+        contributions from the rotor rotation and the blade lead-lag motion.                  The
+                                                                                                                   n
+
+        terms containing a are a result of the virtual pitch rate induced by the
+
+        coning of the blade as it rotates.
+
+                 To obtain the aerodynamic moments, Equations 11-13 are substituted into
+
+        Equations 8-10, and the lift and drag resolved along the flap and lead-lag
+
+        axes.      The forces at each blade section are then multiplied by their moment
+                                                                                                               ti
+
+        arms about the hinge, and the product integrated over the span of the blade.
+
+        The resulting moments are
+
+                 cfs- _ Y
+                        $       2 + 2K3       + K)(sin8 - ^i cos B) - ( K3 cos 0) S
+                          ^(K2e                  4                    \4
+                    a
+
+                        +(8 K3 sin 2BI         -        (Q2 e - Q 3 ) cos e]
+                                                    L
+
+
+                                                                         -9-
+
+                                                                                                           r
+                                                                                                               n
+
+                                                                                                           r
+                                                                                                           1
+                                                            I           I I
++                   (Q 2 e + Q 3 )(2 sin 6 - ^ cos 0)^ + 4e r2(Q l            + Q2)
+
+
+                 + (K 2 e + K 3 ) Cos 2      0]s}                       L                   (14)
+
+
+                      (Cd
+
+        M4 = - 8          ( R 2 e 2 + 2K 3   + K4 )[O i ( sin 6 - $ i   cos e) + ao
+             a        1
+
+
+                   (8 K 3 sin 20) S + 14 K 3 sin g 0 ) ^ + (Q 2 e + Q 3 ) ( sin 0 - 2¢ i cos 0)S
+                                                           Cd
+                 +e + Q3)^i sin 0 + 2(K 2 e + K 3 ) a         0 0
+                   [(Q2
+
+                 +Z (K 2 e + K 3 ) sin 2e, 5                                                (15)
+                                                        1
+
+    where
+
+                                             K(B .e) n - xo1                                (16)
+                                             n             n                          [
+
+                                                            B- e
+                                              Q n = 4 f xnQdx                               (17)
+                                                    x
+                                                      0
+
+            The flap equation is obtained by summing Equations 3, 5, and 14, and
+
+    setting the result equal to zero. Equations 4, 6, and 15 are summed and set
+
+    equal to zero in order to obtain the lead-lag equation. By perturbing the
+
+    blade about an equilibrium position, the equilibrium and perturbation
+
+    equations are obtained.
+
+
+                                                    s=sa+os                                  (18)
+
+
+
+                                                        ^0+04                                (19)
+
+
+                                             e=e0+esAs+0Ac                                   (20)
+
+
+                                         B b = 0 b + B S ^S + 6^ A4
+                                                    o           b   b
+
+
+                                                            -10-
+I
+
+                              6 = eh       + 6        OS + 0        g           (22)
+                                       o         Ch            Ch
+
+
+    The complete equations can be found in the appendix.
+
+
+                                 Multi-Bladed Rotor
+
+         When working with rotors having more than one blade, the standard practice
+
+    is to transform the isolated blade equations into multi-blade coordinates [12).
+
+    Under this transformation, a four-bladed rotor would have four rotor degrees
+
+    of freedom for each blade degree of freedom: collective, differential collec-
+
+    tive, lateral cyclic and longitudinal cyclic. In hover, the collective and
+
+    differential collective degrees of freedom are linearly independent of each
+
+    other and of the two cyclic degrees of freedom. The two cyclic degrees of
+
+    freedom are, however, coupled.
+
+         Using quasi-steady or Theodorsen aerodynamics for the fixed hub, multi-
+
+    bladed rotor considered in this investigation, the transformation to multi-
+
+    blade coordinates provides little more information than would an isolated
+
+    blade analysis. The results show the damping of all rotor modes to be the
+
+    same for a single blade mode, and only the frequencies identify the high
+
+    frequency (Q + w) and low frequency (Q - w) cyclic modes. This situation
+
+    occurs because fixing the hub uncouples the blades from each other, and
+
+    because the blades are aerodynamically independent. In addition, note that
+
+    if the modal frequency, w, is greater than the rotor speed, Q; the low
+
+    frequency cyclic mode is the progressing mode and the high frequency cyclic
+
+    mode is the regressing mode. If w < Q, however, the low frequency mode becomes
+
+    the regressing mode and the high frequency mode becomes the progressing mode.
+
+         The nature of the analysis changes when Loewy aerodynamics are introduced,
+
+    since the blades are aerodynamically coupled through the wake structure.
+
+    Each of the four independent rotor modes (collective, differential, low
+
+                                                 -11-
+    1   .I
+
+             frequency cyclic, and high frequency cyclic) resulting from the eigenanalysis
+
+             have different wake geometries associated with them and, therefore, K va
+
+             different values of the interblade phasing,       ,
+                                                           q
+
+
+
+                        q = 0                                      Collective
+
+                            = 7rq                                  Differential
+                        q
+
+
+                            = 27rq/ NLow     Frequency                 Cyclic
+                        q
+
+                       ^q = 7Tq ( 1 + 2/N)                         High Frequency Cyclic
+
+
+             Since the collective and differential degrees of freedom are independent in
+
+s            multi-blade coordinates, there are no difficulties in providing each set of
+r
+             equations with the proper aerodynamic coefficients. However, the fact that
+
+             the cyclic degrees of freedom are coupled does present problems.
+
+                  If the wake geometries associated with cyclic degrees of freedom are
+
+             used to compute the aerodynamic coefficients for the coupled cyclic equations,
+
+             the same damping is obtained for both the high and low frequency cyclic modes,
+
+             irrespective of the differences in their wake geometries. The reason for this
+
+             occurrence is that in both cyclic degrees of freedom the oscillations of each
+
+             blade lead the one following it by 21rq / N. Thus, the wake geometries of both
+
+             cyclic degrees of freedom are the same, as are the aerodynamic coefficients.
+
+             Since the hub is fixed, the damping must be the same for both modes,
+
+                  There are two ways of circumventing these difficulties. The first is to
+
+             consider only an isolated blade which is coupled to the others through the
+
+             wake geometry [ 9]. This method is, however, only valid for a rotor with a
+
+             fixed hub. The other way -:a to devise another transformation for the cyclic
+
+             degrees of freedom which ^,c:ouples them and results in the proper wake geo-
+
+             metries. For this case of the fixed hub, it is immaterial which method is
+
+                                                    -12-
+Y
+
+
+
+
+    used. The flap-lag perturbation equations can be solved N times using tl
+
+    aerodynamic coefficients for a different mode each time; or be transform,
+
+    into a set of 2N equations, each with the appropriate coefficients, and
+
+    simultaneously.
+
+
+                               Results and Discussion
+
+         A sampling of the results obtained from the above analysis are show
+
+    Figures 3-7. In these figures, the configuration parameters are as give.
+
+    Table 1, except where noted.
+
+         Figure 3 illustrates the effect of unsteady aerodynamics on a system with
+
+    a low level of damping (note the scale of the ordinate). While the results
+
+    using Theodorsen aerodynamics do differ from the quasi-steady results through-
+
+    out the frequency range, the differences are small in comparison to the ones
+
+    produced by using Loewy's aerodynamics. The addition of the wake sheets below
+
+    the plane of the rotor appears to have a significant effect on the behavior of
+
+    an isolated blade. There is a sharp spike at the 1/rev lead-lag frequency, an
+
+    N-wave at 2/rev, and smaller dips at 3/rev and 4/rev.
+
+         The results for a four-bladed rote (Fig. 4) scow the same characteristics
+
+    as those for the isolated blade. However, the peaks and valleys do not appear
+
+    at every integer frequency for every mode. Instead, the collective mode has
+
+    the 4/rev dip, the differential mode has the 2/rev N-wave, the low frequency
+
+    cyclic mode has the 1/rev spike, and the high frequency cyclic mode has the
+
+    3/rev dip. Except at the points noted, these curves follow the Theodorsen
+
+    curve quite closely. From other results, it appears that this pattern repeats
+
+    itself at higher frequencies. That is, the collective mode would exhibit
+
+    significant deviations from the Theodorsen curves at 4/rev, 8/rev, 12/rev, and
+
+    so forth. The other modes would behave similarly. In addition, the sequence
+
+    of low frequency cyclic at 1/rev, differential at 2/rev, high frequency cyclic
+
+                                           -13-
+                                                                                     1a1
+
+
+
+
+                                                                                     ^i
+      at 3/rev, and collective at 4/rev appears to hold for all other four-blade
+
+      configurations.
+
+           With a system having a low level of damping, like the one above, a
+
+      question arises as to whether the effect of Loewy aerodynamics is significant
+
+      only for that type of system, or for all systems. To check out this possibility,
+
+      a configuration with full elastic coupling and negative pitch-lag coupling was
+
+      analyzed. The results (Fig. 5) show the wake effects to be significant only
+
+      below lead-lag frequencies of 2.5/rev. It appears, therefore, that the wake
+
+      effects become less significant as the level of damping in the system increrses.
+
+           In order to determine if a torsionally soft blade would be more sensitive
+
+      to Loewy aerodynamics than a torsionally rigid blade, a pseudo-torsional degree
+
+      of freedom was added to the analysis. While the above analysis does not incluu
+
+      the torsional degree of freedom, it can be approximated by using the pitch-flap
+
+      and pitch-lag coupling parameters to produce pitch angle perturbations [11].
+
+                                         2     2\   -2   1l
+                               6 s = - ( )^ - w s) /w8                              23)
+                                                     Ia]'o
+
+
+                                                  e
+f(m   -       ws)/w8                             I Ia e                             (24)
+
+
+      This approach neglects inertial torsion moments and is generally valid for
+
+      torsion natural frequencies of 5.0 and above. Figure.6 shows the Loewy curve
+
+      to have much larger deviations from the Theodorsen curve than in any other
+
+      case. It should be noted, however, that the damping values in this case are
+
+      of such a size as to make the assumption of simple harmonic motion somewhat
+
+      questionable.
+
+           Finally, in order to see how the quasi-steady, Theodorsen and Loewy
+
+      results compare for purely simple harmonic motion, a stability boundary was
+
+      plotted for each (Fig. 7). For pitch angles below 0.1 radian and lead-lag
+
+
+
+
+                                              -14-
+    frequencies below 1/rev, all three are virtually identical. At higher pitch
+
+    angles, the boundaries of the quasi-steady and unsteady theories diverge from
+
+    one another. The main differences between the Loewy and Theodorsen results
+
+    occur at and above 1/rev. At 1/rev, there is a small dip in the Loewy curve.
+
+    Above that frequency, the curves intersect twice, indicating the type of
+
+    behavior observed in the other figures.
+
+         Another significant feature of Figure 7 is the manner in which the Loewy
+
+    effects do not diminish at the larger pitch angles. It is generally assumed
+
+    that the effects of the wake sheets are more important at small pitch angles,
+
+    where the wake sheets are more closely spaced. In the case of wake-induced
+
+    bending-torsion flutter, decreases in wake spacing are destabilizing [9].
+
+    However, the pitch-flap problem is linear, and the aerodynamic coupling is
+
+    independent of pitch angle. The flap-lag problem is, on the other hand,
+
+    nonlinear and sensitive to aerodynamic coupling. As the flap-lag aerodynamic
+
+    coupling increases with pitch angle, it overcomes the decrease in the wake
+
+    effect caused by the increased spacing at higher pitch angles, and dominates
+
+    the results.
+
+
+                                    Conclusions
+
+         The results of this investigation show that the choice of an aerodynamic
+
+    theory can have a significant effect on stability calculations. Most notable
+
+    is that the addition of wake sheets below the plane of the rotor influences
+
+    the :.ator stability characteristics. While this effect is not exceedingly
+
+    large for.most configurations, except at 1/rev, it does appear that it could
+
+    be quite significant for systems having a low level of damping and for
+
+    torsionally soft blades.
+
+         Secondly, it was shown that the method of multi-blade coordinates is not
+
+    entirely applicable when Loewy aerodynamics are being used. It would also
+
+
+                                          -15-
+
+
+
+                   _1                                           __I              ,
+t                               1             t        I_
+              i           f           4          l
+
+
+
+
+                  appear that any aerodynamic theory with coefficients that depend on the wake       P
+                  geometry would not be compatible with multi-blade coordinates.
+
+                        Finally, while the Loewy results are very interesting, the significant       m
+                  effects occur only at integer frequencies. Since rotor systems are designed
+
+                  to avoid these frequencies, the wake effects are observed where they have          r^
+
+                  minimum influence. Consequently, for most practical configurations, they will
+
+                  probably not be quantitatively significant.
+
+
+                                                      References
+
+                   1.   Hohenemser, K. H., and Heaton, P. W., "Aeroelastic Instability of Torsion-
+
+                        ally Rigid Helicopter Blades," Journal of the American Helicopter Society,
+
+                        Vol. 12, No. 2, April 1967.
+
+                   2.   Ormiston, R. A., and Hodges, D. H., "Linear Flap-Lag Dynamics of Hingeless
+
+                        Helicopter Rotor Blades in Hover," Journal of the American Helicopter
+
+                        Society, Vol. 17, No. 2, April 1972.
+z
+y'
+a                  3. Friedmann, P., and Tong, P., "Non-linear Flap-Lag Dynamics of Hingeless
+
+r'                      Helicopter Blades in Hover and in Forward Flight," Journal of the Sound
+
+                        and Vibration, Vol. 3, No. 1, September 1973.
+
+                   4.   Ormiston, R. A., and Bousman, W. G., "A Theoretical and Experimental
+
+ `                      Investigation of Flap-Lag Stability of Hingeless Helicopter Rotor Blades,"
+
+                        NASA TM X-62179, August 1972.
+
+                   5.   Bousman, W. G., Sharpe, D. L., and Ormiston, R. A., "An Experimental Study
+
+                        of Techniques for Increasing the Lead-Lag Damping of Soft Inplane Hinge-
+
+                        less Rotors," Presented at the 32nd Annual AHS Forum, May 1976.
+     s
+
+                   6.   Theodorsen, T., "Ganeral Theory of Aerodynamic Instability and the
+         'i
+         ^j             Mechanism of Flutter," NACA Report 496, 1935.
+
+
+
+
+                                                           -16-
+                                                            i              I
+
+
+     7.   Loe:ay, R. G., "A Tao-Dimensional Approximation to the Onste 1y Aerodynawtfa
+
+          of Rotary Wings," Journal of the Aeronautical Sciences, Vol. 24, No. 2,
+
+          February 1957.
+
+    8.    Zvara, J., "The Aeroelastic Stability of Helicopter Rotors in Hovering
+
+          Flight," MIT Aeroelastic and Structures Research Laboratory, ASRL TR 61-1,
+
+k         September 1956.
+
+     9.   Anderson, W. D., and Watts, G. A., "Rotor Blade Wake Flutter," Lockheed-
+
+          California Company, Lockheed Report LR 26213, December 1973.
+
+    10.   Friedman, P., and Yuan, C., "Effect of Modified Aerodynamic Strip Theories
+
+          on Rotor Blade Aeroelastic Stability," Proceedings of the 17th AIAA/ASME/SAE
+
+          Structures, Structural Dynamics and Materials Conference, May 1976.
+
+    11.   Hodges, D. H., and Ormiston, R. A., "Stability of Elastic Bending and Torsion
+
+          of Uniform Cantilever Rotor Blades in Hover with Variable Structural Coup-
+
+          ling," NASA TN D-8192, April 1976.
+                                                                                             }
+    12.   11ohenemser, K. H., and Yin, S. K., "Some Applications of the Method of
+
+          Multi-Blade Coordinates," Journal of the American Helicopter Society.,
+
+          Vol. 17, No. 3, July 1973.
+
+
+                                            APPENDIX
+                                                                                             I
+                    Flap-Lag Equations with Unsteady Aerodynamics
+
+    Equilibrium Equations
+
+
+                                    F^ F^      Q 1 -   F
+
+                                                                                      (A1)
+
+
+
+
+                        e + Q W 2 + Iw2 - w^ R ) sin
+           F S = 1 + 2 (Te)                                6bo + R , sin       0h 1   (A2)
+                                                                                 o/
+
+
+
+                    32 (K 2 e + K 3 )(2 + cos 2 ©o)
+                                                -17-
+                         MR                                                                                I
+
+
+
+
+                                      -2    -2
+                                   w - w
+                          F       =A 2- S            R b sin 20 b + Rh sin 20h                                       (A3)
+                                                                        0                        0
+                                   ^a                 Yc
+                                            Pt              (K e + K 3 )sin 26 0                                     (A4)
+                                                    + 64      2
+
+
+                                                     -2
+                                           w _ (               R b sin g © b + R h sing 11 )                         (A5)
+        Cr   s 2 ^1- + A                             w      w \
+                                                          - 2)              U             O
+
+
+                      IK2e2 + 2K
+                    Foe
+                      t          3 e + K 4 ^(sin 6 0 - ^ i cos 00)                                                   (A6)
+                                                                 //                                            C^
+         Co = -           (^2e2 + 2K 3 e + K 4 )             ^h i (sin 0 ° - ^ i cos 0 0 ) + 30                      (A7)
+
+
+where
+
+
+                         R1           ( ` K S /K^ b l- w2 Kc/KCbl (                                                  (A3)
+                                                                                      w2        w2)
+
+                                            S IK Qh)-        ' K^/K^h f W 2 - W                                      (A9)
+                     Rh = (w2 K
+                                                                                 1
+
+
+                  hs          K sb K sh K^ f j Ksh K6f + K                                                          (A10)
+                                                                             sb K 6f + K6 KFh
+
+
+                  Kc =                                                                                              (A11)
+                              K ^b Kyh ",                K th K^f + K ^b K^f + K^b Kph/
+
+
+
+                                                     w 2 = K^ /IQ 2                                                 (Al2)
+
+
+                                                     W2 = K^/122                                                    (A13)
+
+
+Perturbation Ecuations
+
+              FS FS           l                 FQ F,'       (3 f           FS F_     1(3   _        0 f
+
+
+
+
+             L
+              C.^
+                    Ct            {             C   CT
+                                                             t
+                                                                            C^   Ct                  0
+                                                                                                                     (A14)
+
+
+                                           Fa = 1                     3 cos 2 00                                     (A15)
+                                                          + 32 K
+
+
+                                            F       _ -
+                                                          ^4 K 3 sin 200                                             (Ai6)
+
+
+                                                                 -18-
+                                                                     9 = FF
+                                                                                                                                                 (A17)
+
+
+
+
+                                                 C^ = 1+                   K 3 sin         00                                                    (A18)
+                                                                      3
+
+                                                F R = 8 ( Q 2 e + Q 3 )Cos a0                                                                    (A19)
+
+
+                            FZ = 2 S -                      2                                   - ^ i Cos 60)
+                                                 8 (Q e + Q 3 )(2 sin 6 0                                                                        (A20)
+                                        0
+
+                            CR =                                 e + Q 3 )(sin 6 0 - 2¢ i cos 00)
+                                                + 8 (Q2                                                                                          (A21)
+                                            0
+                                                                                                                 C^
+                           C^           (Q 2 e + Q )6,sin 0 0 + 2(K 3 e + K4)                                                                    (A22)
+                                                            3                                                     ao
+
+                                                                                       s,112
+          F^ = 1 + 2 (lee/ + A                        1     + (72- W^             Rb              0b           + R h sin 2 6h
+                                                                                                       0                           0
+
+
+                   32 [ I (Q e +                 + (K.) e + K )Cos 2 0 0 - F 1 a ^ - F 2 6 S - F 3 0                                             (A23)
+                                                                       3               J                   1                                8
+                                                                                                                                            }1
+                                                                                                                           b
+
+
+                 -2 -2
+                 W - 61,
+         F^ = r2A N. ('Zb sin 20 b + R h sin 20 h-                                     F 1 6^ - F 2 0                      - F3 6                (A24)
+                                  0              o                                                                     C
+                                                                                                                       b               ch
+
+                            -2
+                   ( A 2 - (1)
+          CS -                   S i J sin 20 b0 + % Sin 20 110 + 6 (` e + K 3 sin 260
+                   ^ A
+
+                   C   1 0 S - C 2 E)           - C       3 as                                                                                   (A25)
+                                        b                        h
+
+
+            C^ = 2 ( lee) +                           - ^W2 - w^sin
+                                                                  R 2 0b + Rh                                  sin 2 0h
+             '                                          \      9)(         o                                                   0
+
+                 - C 0 - C 0                      - C a                                                                                          (A26)
+                         1 4         2 Cb                   3 ^h
+
+ where
+
+         = 8 ;(K                                                                           c
+F1                     2 e 2 + 2K 3 e + K 4 (cos 0 0 + ^ sin 0)- 4 (K 2 e + K )sin2810                                                           (A27)
+                                                                             3         30l
+
+
+          F2 = -            (2 - -2 (Rwbj2
+                                     Sin 26    - R T };
+                                                     - -cos 20i;(A28)
+                                  R)        b0    wb•1   o     b o
+                                                                                                                               o
+
+
+
+
+                                                                           -19-
+       F3                           w              in 16             - R           J   ^^           -       R     J - cos 26
+                                        S                      hn             wh 1          a                   wh 2                            ^o    (A29)
+                                                                                                                             h
+                                                                                                                                        0
+
+
+C i = _Y.^(
+         i K 2 e 2 + 2K 3 e + K+
+                               ^4) ^ (Cos 6 0                                                   c
+                                                                                   i sin 6 ° )+ 4 (K^e + K)cos20 (3 o(A30)
+       8 \\                                                                                               3     oJ
+
+
+       C2        -       (^2 - w`                 cos 26             - R           J          y in '?6                         + R
+                         \      S}                             bo             wb       ^o - (                                          1.             (A31)
+                                                                                                       b                             wb 3       0
+                                                                                                        \                  o
+
+
+
+                              2) [
+       C       = -' ( w 2 - w      (os 26    - R J      -                                                   in 26 h+ Rwh J ;te a
+           3      A     S     S           ho    wb 2 so                                                                                              (A32)
+                                                                                                                   J
+
+and
+
+
+
+                     J1 =       w       + (w^ - w                   (R       sin 2 0 b              + R          sin       6h
+                                             \\                          b                                  ti                                       (A33)
+                                                                                            0                                    0
+
+                                    -2            -2
+
+                            J2 =            2A         (Rb sin 20 b                    + Rh sin 26 h                                                 (A34)
+                                                                                   0                                   0
+
+
+                     J3 =      wC - (2 - w6) Rb sin                                    6b           + Rh sin               6!^
+                                    w                                                                                                                (A35)
+                                                                                            0                                    0 )1
+
+       -2_ -2
+                     6
+Rwb = r2 -2                 (1 - %) sin 20 b -                               2 sin2 0 h sin 20 b + sin 26 11 cos 0b
+       w e w^
+                                                           °                           o        0          0        0
+
+
+                                                                                                                                                     (A36)
+      - -2 _ -2
+
+Rwh = w^2 -2 S           (1 - R!I )sin 26 h                                  sin 2 0 b sin 26 h + sin 26 b cos 0h
+           w^ ws
+                                                       °                                        °                  °                        o        0
+
+
+                                                                                                                                                     (A37)
+
+
+
+
+                                                                              -2J-
+                         Table 1. Blade Configuration Parameters
+
+
+     Y=8                                                 Solidity .=3
+
+     e = 2                                               C               0.01
+                                                             d       =
+                                                                 0
+
+
+     R
+         h       0
+                     0                                                   o
+         b                                                   h
+                                                                 0
+             0                                                                  _\
+                             0                           0               0
+                                                             Rh
+\^                       b
+                                                                         0
+                                                             Ch
+                         b
+
+
+
+                                                         x 00
+     e= 0
+
+     B           1. 0
+
+
+
+
+                                                - 2 1-
+                  A..A
+
+
+
+
+                         ti
+                         0
+                         s
+                         v
+                         b
+
+
+                         i
+
+
+                         v
+
+
+                         w
+
+
+
+
+    ci
+         Y
+
+I            zz
+             ,N
+
+
+
+
+                          w
+
+
+
+
+                  v
+                  e
+
+
+
+     /   I        3
+
+                  T
+
+
+
+
+                  N
+                  w
+
+
+
+
+                  N
+                  N
+                  MG^OP
+
+
+
+
+23
+                                             I                 ^
+
+
+
+
+                                                 s
+                                                 v
+
+
+                    i
+                                                                   ro
+
+                                                               H
+                                                 L             o
+                                 }z
+                                 pd wN                         m
+                                 w
+                                       O         o             "n
+                                       p >       ri
+
+                                 d O
+                                   w w                             0
+                                       z o
+                                                 rn
+                                                 N                 n
+                                                                   >-
+                                                          !3
+                                                                   ba.m
+                                                 o
+                                                 C                 .n
+                                                                   b
+                                                                   a
+                                                                    ca
+                                                 LO                     4
+
+                                                 r                  O
+                                                                    v;
+                                                                   H
+                                                                   !
+                                                 •-                 a
+
+      O O
+      11   11
+                                                                   W
+                                                     Lo
+      ^ m
+
+
+
+LL)             d       p
+                        M        p                   O
+O                                            O
+O                       O        O
+
+
+
+
+                            b,
+
+
+
+
+                                  24
+I   ip
+
+
+
+                              w                             zcn
+                                                            w
+                          I
+                              U
+                              w
+                                                            Cc
+                              J                                                O
+                                                            0>-                d           .b
+                                                            0     ir                       i0
+                      '       U                             w     w                        1.         a-.   f
+
+
+                                                                                           .-a
+                                                            h     OJ
+
+                                                                               ^           o
+
+                                                                               ^            u
+                      ^       3
+                                                                                           m0
+                                                                                           L
+                                                                               o            ^
+
+                                                                                           0
+
+
+
+                                                                                            it
+                                          J                                    LO
+                                          Q                                    N            R
+                                          H
+                                          Z
+                                          w                                           '3     v
+                                                                                             0
+                                          w                                    C)
+                                          LL                                   N
+                                          LL
+                                                                                                v
+                                          0                                                 b
+
+
+                                                                               It 1
+                                                                               r                ^
+                                                                                                O
+                                  i....                                                         O
+                                                                                            G.
+                                  3
+                                      I                                                          I
+                              C;                                               0
+                                                                                                 v
+                                                                                                 tx
+
+                                                                               w                w
+                                                                                0
+
+
+
+
+                 1                1                 I                  1
+                                                                                0
+         •   p   ^            p                     Q
+             p   p            O                     G                  0
+
+             ^       I^               I                 I                  I
+                                               C
+                                          ZS^^U
+
+
+
+
+I    0                                             25
+    t
+        `YI   D
+
+k         r
+
+
+                                                                              I
+
+
+
+
+4
+
+
+
+
+                                                              .b
+s
+
+                                                              I~
+
+
+                                              t               r-I
+
+
+                                                              O
+
+                                                                I
+                                              n
+                                              h                         0
+                                                              m
+                                                               uro
+
+                                              ri               0
+
+
+                                                                    1
+                                              N
+                                                        a.,
+                                                                    y
+                                                       13           b
+                                              c                     ro
+                                              N                     H
+
+                                                                    ,b
+                                                                    y
+                                                                    a^
+                                              I.C)
+                                              r                     rV
+                                                                        O
+                                                                    U)
+                                                                    H
+
+                                                  O                     I
+
+
+
+
+                                                                        s4
+                                                  LQ                     00
+                                                                        ^I
+                                                                        [s.
+
+
+
+
+                                                   O
+                           M        C14
+                  Lo                      O
+
+
+
+
+                       b
+
+
+
+
+                               26
+                                                                         ^       1
+
+
+
+
+                                                     b
+                                                     ro
+
+
+                                           U7        rl
+
+
+
+
+                                                     1
+
+
+                                                           O
+
+                                                     N
+                                                      ro
+                                                         T                   r`• I
+
+
+
+
+                                            n
+                                            h
+                                                     5{
+                                                     d
+                                                     H
+                                                     w
+
+                                            ^7           ro
+                                                          G
+                                                          O
+                                                         • -4
+                                                          N
+
+                                            U?            O
+                                            N
+                                                          O
+                                                          O
+                                                           O
+                                                           U.
+                                                0          a
+                                                N
+                                                          yJ
+                                                          .h
+                                                           3
+                                                          C
+
+                                                r
+                                                          H
+
+
+                                                                I
+
+
+
+                                                0
+                                                           a^
+                                                           b
+                                                           ro
+
+
+                                                in          b
+                                                            a,
+                                                                ro
+                                                                0
+                                                                H
+                                  ^O   N         O
+    p     0    00I-                    O                        ^D
+                                       1
+     1•   1'
+                                                                    L+
+w                     C/
+                       a.n                                          00
+                       b
+                                                                    W
+
+
+
+
+                             ?7
+
+
+
+
+                                                                                 f
+I;
+
+
+
+
+                                                                                    ,n
+                                                    }C)z
+                                                    Q w
+                                                    w        U)
+
+                                                    N0>                             cu
+
+
+                                       _            Q        w    w
+                                                                                    s
+
+                                                                                    n
+                                                                                    a
+
+                                                                                    3
+                                                                                    'v
+                                                                                    ro
+
+                                                                                    .a
+                                                                                    .b
+                                                                      O             Qi
+
+                                                                      r             u
+                                                                                    r-1
+                                                                                     O
+                                                                                     W
+
+
+
+
+                                                                            '...,
+                                                                           13        0
+                                                                                    L'4
+
+                                                                                     U)
+                                                                                     N
+                                                                                    •I
+
+                                                                                    .D
+                                                                      Ln
+                                                                                     C
+                                                                                     O
+                                                                                     O
+
+
+
+
+                                                                                    ,.O
+                                                                                      ro
+                                                                                     i6,
+
+                                                                                        I
+
+
+
+
+     is                   Lq   Q                N                     0                 y
+
+                                                                                        00
+                                           m                                         Li.
+
+
+
+
+                                               ?g
+
+
+
+
+          I   ^   ^   ^                    f
+
+                                   I                    II
+                                                                                                                                                           r   i
+
+
+
+
+K
+
+
+
+
+         f. Repel No.                                            2. Government Accession No.                           3. Rnipient's Catalog No
+           NASA TM-78,434
+         4. Title and Subtitle                                                                                         S. Report Date
+
+           EFFECTS OF UNSTEADY AERODYNAMICS ON ROTOR                                                                   6. Performing organization Code
+           AEROELASTIC STABILITY
+
+         7. Author(sl                                                                                                  B. Performing Organization Report No.
+                                                                                                                          A-7191
+           Donald L. Kunz
+                                                                                                                     10. Work Unit No.
+         9. Performing Organization Name and Address
+    a
+           Ames Research Center, NASA and                                                                            11, Contract or Grant No.
+           Ames Directorate, USAAMRDL, AVRADCOM
+           Ames Research Center, Moffett Field, Calif. 94035                                                           3. Tyre of Report and Period Covered
+         12. Sponsoring Agency Name and Address                                                                           Technical Memorandum
+           National Aeronautics and Space Administration                                                             14. Sponsoring Agency Code
+           Washington, D.C. 20546
+         15. Supplementary Notes
+
+
+
+
+         16. Abstract
+
+                An analysis was conducted to study the effects of unsteady aerodynamics
+           on the stability characteristics of helicopter rotor blades. A simple
+           physical model of each blade was used together with Theodorsen, Loewy,
+           and quasi-steady aerodynamics to derive the equations of motion. The
+           stability analysis comparing the effects of using each of the three
+           theories revealed some significant differences between the Loewy and
+           Theodorsen results.  These included increases and decreases in lead-lag
+           damping, localized around integer lead-lag frequencies.   It was also shown
+           that the standard method of multi-blade coordinates must be modified for
+           use in conjunction with Loewy aerodynamics.
+
+
+
+
+    is
+
+
+
+
+    0    17. Kev Words Suggested by Authorls))                                            18. Distribution Statement
+
+            Aeroelasticity                                                                                        Unlimited
+            Helicopter rotor
+            Hingeless rotor                                                                                  STAR Category - 02
+            Unsteady aerodynamics
+                                                                  20. Security Classif. to this pa9e1                   21. No. of Pages       22. Price
+         19. Security Clanit, lot this report)
+                        Unclassified                                           Unclassified                                    29                 $3.75
+
+                                                 -- or sale by the National Technical Information Service, Springfield, Virginia 22161
+
+
+                                                                                                        29
+1
+
+
+
+
+     I   Hep "rt %o                                 T7^^eirnm^
+                                                             et Accession No                                 3   Recrpent's C talog No
+
+         NASA Tr' -78,434
+     4   Title and Subtitle                                                                                  5. Report Date
+
+         EFFECTS OF UNSTEADY AERODYNAMICS ON ROTOR
+                                                                                                            6 Performing O r ga mzatiori Code
+         AEROELASTIC STABILITY
+         AuthorlO                                                                                           8 f'erforming Organization Report No.
+
+         Donald L. Kunz                                                                                          A-7191
+                                                                                                            10   Work Unit No
+     9   Performing Organization Name and Address
+
+         Ames Research Center, NASA                         and                                             I . Contract Or Grant No
+         Ames Directorate, USAAMRDL, AVRADCOM
+         Ames Research Center, Moffett Field, Calif. 94035                                                  13 Ty.* of Report and Period Covered
+    12   Sponsoring Agency Name and Address                                                                    Technical Memorandum
+         National Aeronautics and Space Administration                                                      14   Sponsoring Agency Code
+         Washington, D.C. 20546
+    15 Supplementary Notes
+
+
+
+
+    16   Abstract
+
+
+              An analysis was conducted to study the effects of unsteady aerodynamics
+         on the stability characteristics of helicopter rotor blades. A simple
+         physical model of each blade was used together with Theodorsen, Loewy,
+         and quasi-steady aerodynamics to derive the equations of motion.   The
+         stability analysis comparing the effects of using each of the three
+         theories revealed some significant differences between the Loewy and
+         Theodorsen results.  These included increases and decreases in lead-lag
+         damping, localized around integer lead-lag frequencies.   It was also shown
+         that the standard method of multi-blade coordinates must be modified for
+         use in conjunction with Loewy aerodynamics.
+
+
+
+
+    1;   Kev Words (Suggested by Author(s))                                     18 Distribution Statement
+
+         Aeroelasticitv                                                                                 Unlimited
+         Ielicopter rotor
+         Hingeless rotor                                                                          STAR Category - 02
+         Unsteady aerodynamics
+    19 Security Classif (oi th s report)               20 Security Classif. fof this page)                   71. No of Pages        22 Price*
+                    Unclassified                                     Unclassified                                    29                  $3.75
+
+                                           • sale by the National Techr;cvl Information Service. Springfield, Virgima 22161
+
+
+
+
+                                                                                             29
+

@@ -1,0 +1,433 @@
+{
+ "schema": "EOTReading@2",
+ "supersedes": "EOTReading@1 — erased 2026-08-31 (LP7)",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Immanuel_Kant.txt",
+  "sha256": "72edaadd3492fca01ddecdf3016c2b92466d30525cd2b520ce4b5d68e712bf2c",
+  "chars": 102626
+ },
+ "reader": {
+  "kind": "hand-adjudication",
+  "recipeId": "cdc1ebe31991a3d4",
+  "descriptor": {
+   "generator": "scripts/eot-sidecar2.mjs@1",
+   "law": "POLICIES.md LP7 + 2026-08-31 amendment (surprise is hypergraph delta)",
+   "rule": "goldens/reading/RULE.md R1-R12 + fourth amendment (triadic minimum)",
+   "priors": {
+    "path": "derived-priors/reading-priors/reading-priors-v1.json",
+    "sha256": "df77decb3988597560e24d42bc6845a14359b845ec9eedf5436955c3b92d055a"
+   },
+   "actPrior": {
+    "path": "derived-priors/act-priors/act-prior-en.json",
+    "sha256": "67b97d1e10ba75a1c5ce34c05350181ae07033f74b7fd02f810b2d180115240c"
+   },
+   "livePriors": {
+    "commit": "483a0de7bfd51cc72493c8bd36b20f11322b366d"
+   }
+  },
+  "specimens": [
+   "kant@cdc1ebe31991a3d4"
+  ]
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint (a projection of the live goldens at the recipe's named commit — LP7 second amendment: checkpoints, never weights)",
+  "consumed": [
+   "act expectations (non-self + VerbNet)",
+   "the proposition bar"
+  ]
+ },
+ "windows": [
+  {
+   "specimen": "kant",
+   "start": 0,
+   "end": 2120,
+   "endText": "conform to its objects.",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  }
+ ],
+ "admission": {
+  "gate": "hand-adjudication under RULE.md",
+  "offered": 10,
+  "heard": 10,
+  "turnedAway": 0
+ },
+ "spanSelfVerification": {
+  "checked": 10,
+  "ok": 10,
+  "bad": [],
+  "method": "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "note": "this source founds its own specimens' propositions; it joins no rosetta graph yet — its evidence seeds the act lexicon for the spiral"
+  },
+  "frame": {
+   "standing": "own-census",
+   "census": {
+    "kant": {
+     "SIG·Pattern": 1,
+     "INS·Figure": 2,
+     "EVA·Figure": 1,
+     "SYN·Figure": 1,
+     "CON·Ground": 1,
+     "EVA·Ground": 1,
+     "DEF·Figure": 1,
+     "SIG·Figure": 1,
+     "CON·Figure": 1
+    }
+   }
+  },
+  "actExpectations": {
+   "act-agreement": 3,
+   "act-departure": 2,
+   "no-expectation": 2,
+   "no-verb-head": 3,
+   "departures": [
+    {
+     "specimen": "kant",
+     "key": "en|was",
+     "tier": "golden",
+     "expectedOps": [
+      "NUL"
+     ],
+     "adjudicated": "SIG"
+    },
+    {
+     "specimen": "kant",
+     "key": "en|made",
+     "tier": "golden",
+     "expectedOps": [
+      "INS",
+      "SIG",
+      "SEG"
+     ],
+     "adjudicated": "SYN"
+    }
+   ],
+   "note": "checked against non-self witnesses + the received VerbNet tier only"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "hand-adjudication (the favored reading)",
+   "recipeId": "cdc1ebe31991a3d4"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading",
+  "note": "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists"
+ },
+ "propositions": [
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Immanuel Kant",
+   "relation": "was",
+   "object": "a German philosopher",
+   "polarity": "+",
+   "because": "copula rule 2: standing-as-a-kind (philosopher, German) — Relate·Existence at kind grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 568,
+    "end": 1267
+   },
+   "anchor": "was a German philosopher.",
+   "cell": {
+    "op": "SIG",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "golden",
+    "key": "en|was",
+    "expectedOps": [
+     "NUL"
+    ],
+    "verdict": "act-departure"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Immanuel Kant",
+   "relation": "born",
+   "object": "Emanuel Kant; 22 April 1724 – 12 February 1804",
+   "polarity": "+",
+   "because": "parenthetical asserts birth (name + lifespan): one individual comes into being — Generate·Existence at figure grain",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 568,
+    "end": 1267
+   },
+   "anchor": "(born Emanuel Kant; 22 April 1724",
+   "cell": {
+    "op": "INS",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "golden",
+    "key": "en|born",
+    "expectedOps": [
+     "INS"
+    ],
+    "verdict": "act-agreement"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Immanuel Kant",
+   "relation": "born in",
+   "object": "Königsberg in the Kingdom of Prussia",
+   "polarity": "+",
+   "because": "fronted participial asserts his birth (one individual); the place is the act's adjunct, kept in object as the participle's own complement",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "\"he\"-chain: the fronted participle attaches to the main clause subject, resolved to the article's own established topic (Immanuel Kant)",
+   "alternate": null,
+   "span": {
+    "start": 568,
+    "end": 1267
+   },
+   "anchor": "Born in Königsberg in the Kingdom of Prussia, he is considered",
+   "cell": {
+    "op": "INS",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "golden",
+    "key": "en|born",
+    "expectedOps": [
+     "INS"
+    ],
+    "verdict": "act-agreement"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Immanuel Kant",
+   "relation": "is considered",
+   "object": "one of the central thinkers of the Age of Enlightenment",
+   "polarity": "+",
+   "because": "copula rule 1: participle of consider — a claim held (by unnamed holders) about one figure — Relate·Interpretation at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "\"he\" → Immanuel Kant, the sentence-1 subject and the article's topic",
+   "alternate": null,
+   "span": {
+    "start": 568,
+    "end": 1267
+   },
+   "anchor": "he is considered one of the central thinkers of the Age of EnlightenmentEnlightenment.",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Kant's comprehensive and systematic works in epistemology, metaphysics, logic, ethics, aesthetics, political theory, and the philosophy of religion",
+   "relation": "have made",
+   "object": "him one of the most influential and highly discussed figures in modern Western philosophy",
+   "polarity": "+",
+   "because": "the works PRODUCE his standing — a position within the field's arrangement — Generate·Structure landing on one figure",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "\"His\" → Kant's; \"him\" → Kant — both from the paragraph's established topic",
+   "alternate": {
+    "op": "REC",
+    "grain": "Figure",
+    "because": "readable as producing a new interpretive standing rather than a structural position"
+   },
+   "span": {
+    "start": 568,
+    "end": 1267
+   },
+   "anchor": "have made him one of the most influential and highly discussed figures in modern Western philosophy.",
+   "cell": {
+    "op": "SYN",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "golden",
+    "key": "en|made",
+    "expectedOps": [
+     "INS",
+     "SIG",
+     "SEG"
+    ],
+    "verdict": "act-departure"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Kant's philosophy",
+   "relation": "is centered on",
+   "object": "the human subject",
+   "polarity": "+",
+   "because": "the philosophy as a whole is held in arrangement around a center — Relate·Structure at ground grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 1269,
+    "end": 2120
+   },
+   "anchor": "Kant's philosophy is centered on the human subject",
+   "cell": {
+    "op": "CON",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Kant's philosophy",
+   "relation": "is motivated by",
+   "object": "the desire to secure the possibility of both knowledge and morality against the threats of skepticism and determinism",
+   "polarity": "+",
+   "because": "relates the whole philosophy to its aim — an interpretive relation over the whole project",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "coordinated predicate shares sentence-subject \"Kant's philosophy\"",
+   "alternate": {
+    "op": "CON",
+    "grain": "Ground",
+    "because": "readable as a structural relation between the philosophy and its motive force"
+   },
+   "span": {
+    "start": 1269,
+    "end": 2120
+   },
+   "anchor": "motivated by the desire to secure the possibility of both knowledge and morality against the threats of skepticism and determinism.",
+   "cell": {
+    "op": "EVA",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Kant",
+   "relation": "argues for",
+   "object": "transcendental idealism",
+   "polarity": "+",
+   "because": "advocating a position bounds a claim — Differentiate·Interpretation on one doctrine; the in-the-Critique adjunct stays outside the object (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 1269,
+    "end": 2120
+   },
+   "anchor": "Kant argues for transcendental idealism",
+   "cell": {
+    "op": "DEF",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "transcendental idealism",
+   "relation": "is",
+   "object": "the doctrine that space and time are mere \"forms of intuition\" that structure all experience and that we have knowledge only of \"appearances\" and not of the nature of things in themselves",
+   "polarity": "+",
+   "because": "non-restrictive appositive identifies one named doctrine — copula rule 3, unique identity; the that-clause content stays inside the identity (A1)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 1269,
+    "end": 2120
+   },
+   "anchor": "the doctrine that space and time are mere",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "golden",
+    "key": "en|is",
+    "expectedOps": [
+     "SIG"
+    ],
+    "verdict": "act-agreement"
+   }
+  },
+  {
+   "specimen": "kant",
+   "language": "en",
+   "subject": "Kant",
+   "relation": "drew a parallel to",
+   "object": "the Copernican Revolution",
+   "polarity": "+",
+   "because": "places his proposal and the Copernican Revolution in explicit relation — one link made — Relate·Structure at figure grain; the in-his-proposal material is adjunct (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "EVA",
+    "grain": "Figure",
+    "because": "a drawn parallel is also an interpretive comparison"
+   },
+   "span": {
+    "start": 1269,
+    "end": 2120
+   },
+   "anchor": "Kant drew a parallel to the Copernican Revolution",
+   "cell": {
+    "op": "CON",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  }
+ ],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "cdc1ebe31991a3d4",
+  "at": "2026-08-31T19:09:24.820Z"
+ }
+}

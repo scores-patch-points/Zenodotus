@@ -1,0 +1,327 @@
+{
+ "schema": "EOTReading@2",
+ "supersedes": "EOTReading@1 — erased 2026-08-31 (LP7)",
+ "source": {
+  "path": "09-source-code/BurntSushi_ripgrep/CHANGELOG.md.txt",
+  "sha256": "028fe166d7ea9dcf79c1a122cfb3482c047ff499996b32cec0b3488673bad8cf",
+  "chars": 90034
+ },
+ "reader": {
+  "kind": "hand-adjudication",
+  "recipeId": "cdc1ebe31991a3d4",
+  "descriptor": {
+   "generator": "scripts/eot-sidecar2.mjs@1",
+   "law": "POLICIES.md LP7 + 2026-08-31 amendment (surprise is hypergraph delta)",
+   "rule": "goldens/reading/RULE.md R1-R12 + fourth amendment (triadic minimum)",
+   "priors": {
+    "path": "derived-priors/reading-priors/reading-priors-v1.json",
+    "sha256": "df77decb3988597560e24d42bc6845a14359b845ec9eedf5436955c3b92d055a"
+   },
+   "actPrior": {
+    "path": "derived-priors/act-priors/act-prior-en.json",
+    "sha256": "67b97d1e10ba75a1c5ce34c05350181ae07033f74b7fd02f810b2d180115240c"
+   },
+   "livePriors": {
+    "commit": "483a0de7bfd51cc72493c8bd36b20f11322b366d"
+   }
+  },
+  "specimens": [
+   "ripgrep@cdc1ebe31991a3d4"
+  ]
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint (a projection of the live goldens at the recipe's named commit — LP7 second amendment: checkpoints, never weights)",
+  "consumed": [
+   "act expectations (non-self + VerbNet)",
+   "the proposition bar"
+  ]
+ },
+ "windows": [
+  {
+   "specimen": "ripgrep",
+   "start": 0,
+   "end": 1079,
+   "endText": "across multiple directories.",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  }
+ ],
+ "admission": {
+  "gate": "hand-adjudication under RULE.md",
+  "offered": 7,
+  "heard": 7,
+  "turnedAway": 0
+ },
+ "spanSelfVerification": {
+  "checked": 7,
+  "ok": 7,
+  "bad": [],
+  "method": "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "note": "this source founds its own specimens' propositions; it joins no rosetta graph yet — its evidence seeds the act lexicon for the spiral"
+  },
+  "frame": {
+   "standing": "own-census",
+   "census": {
+    "ripgrep": {
+     "SYN·Figure": 2,
+     "SYN·Pattern": 1,
+     "CON·Figure": 1,
+     "SYN·Ground": 1,
+     "EVA·Pattern": 1,
+     "EVA·Figure": 1
+    }
+   }
+  },
+  "actExpectations": {
+   "act-agreement": 3,
+   "act-departure": 0,
+   "no-expectation": 1,
+   "no-verb-head": 3,
+   "departures": [],
+   "note": "checked against non-self witnesses + the received VerbNet tier only"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "hand-adjudication (the favored reading)",
+   "recipeId": "cdc1ebe31991a3d4"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading",
+  "note": "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists"
+ },
+ "propositions": [
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "Release notes",
+   "relation": "have been written",
+   "object": null,
+   "polarity": "-",
+   "because": "writing produces a document (Generate·Structure); negated (\"not yet\") — polarity carries it (R6); passive with no agent, null object recorded honestly",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 0,
+    "end": 68
+   },
+   "anchor": "Release notes have not yet been written.",
+   "cell": {
+    "op": "SYN",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "verbnet",
+    "key": "en|written",
+    "expectedOps": [
+     "SIG",
+     "INS",
+     "SYN"
+    ],
+    "standing": "contested",
+    "verdict": "act-agreement"
+   }
+  },
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "This release",
+   "relation": "fixes",
+   "object": "a number of bugs related to gitignore matching as well as some performance improvements in directory tree traversal",
+   "polarity": "+",
+   "because": "repair follows the build-log precedent (a revision is SYN — A6) over a class of defects; the source's own zeugma (\"fixes…improvements\") kept whole in the object per R4",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "SEG",
+    "grain": "Pattern",
+    "because": "readable as defects removed"
+   },
+   "span": {
+    "start": 71,
+    "end": 246
+   },
+   "anchor": "This release fixes a number of bugs related to gitignore matching",
+   "cell": {
+    "op": "SYN",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "aarch64-unknown-linux-musl",
+   "relation": "is included in",
+   "object": "the release binaries for ripgrep",
+   "polarity": "+",
+   "because": "one target now inside the binaries set — containment, Relate·Structure at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 267,
+    "end": 352
+   },
+   "anchor": "is now included in the release binaries for",
+   "cell": {
+    "op": "CON",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "the change PERF #3293",
+   "relation": "improves",
+   "object": "directory traversal time on very large corpora",
+   "polarity": "+",
+   "because": "a working characteristic re-made better across a whole regime (A6's revision precedent, ground grain); subjectless bullet resolved to its own labeled change",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "changelog convention: the bullet's bracketed label [PERF #3293] names the acting change",
+   "alternate": {
+    "op": "REC",
+    "grain": "Ground",
+    "because": "readable as re-grounding the performance regime"
+   },
+   "span": {
+    "start": 381,
+    "end": 506
+   },
+   "anchor": "Improves directory traversal time on very large corpora.",
+   "cell": {
+    "op": "SYN",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "ripgrep",
+   "relation": "respects",
+   "object": "GIT_CONFIG_GLOBAL and GIT_CONFIG_SYSTEM",
+   "polarity": "+",
+   "because": "deference: holds its own behavior against the named configs — Relate·Interpretation as a standing rule over kinds of configuration",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "CON",
+    "grain": "Pattern",
+    "because": "readable as a standing structural coupling to the configs"
+   },
+   "span": {
+    "start": 531,
+    "end": 668
+   },
+   "anchor": "ripgrep now respects",
+   "cell": {
+    "op": "EVA",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "ripgrep",
+   "relation": "check for",
+   "object": "the existence of .jj",
+   "polarity": "-",
+   "because": "checking is a test (Relate·Interpretation) on one thing, negated behavior; the when---no-ignore-is-used condition is adjunct (A2); imperative changelog register resolved to ripgrep",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "changelog imperative: the behaving subject is ripgrep itself",
+   "alternate": null,
+   "span": {
+    "start": 682,
+    "end": 1079
+   },
+   "anchor": "Don't check for the existence of",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "verbnet",
+    "key": "en|check",
+    "expectedOps": [
+     "SIG",
+     "EVA"
+    ],
+    "standing": "contested",
+    "verdict": "act-agreement"
+   }
+  },
+  {
+   "specimen": "ripgrep",
+   "language": "en",
+   "subject": "the changes BUG #3320, BUG #3376, BUG #3419",
+   "relation": "fix",
+   "object": "gitignore matching bug",
+   "polarity": "+",
+   "because": "one defect repaired (A6's revision precedent, figure grain); the when-searching condition is adjunct (A2); subjectless bullet resolved to its own labeled changes",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "changelog convention: the bullet's bracketed labels name the acting changes",
+   "alternate": null,
+   "span": {
+    "start": 682,
+    "end": 1079
+   },
+   "anchor": "Fix gitignore matching bug when searching across multiple directories.",
+   "cell": {
+    "op": "SYN",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "verbnet",
+    "key": "en|fix",
+    "expectedOps": [
+     "SYN",
+     "EVA"
+    ],
+    "standing": "contested",
+    "verdict": "act-agreement"
+   }
+  }
+ ],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "cdc1ebe31991a3d4",
+  "at": "2026-08-31T19:09:25.997Z"
+ }
+}

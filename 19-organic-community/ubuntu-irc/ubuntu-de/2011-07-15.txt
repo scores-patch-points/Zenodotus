@@ -1,0 +1,968 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2011-7-15"
+lang: "de"
+messages: "959"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<Tyron^tower> exit
+<skynix> moin moin
+<LetoThe2nd> Nicodemus: der support findet _AUSSCHLIESSLICH_ hier statt! leute, die man nicht kenn im query vollzuquatschen ist aufdringlich und verdammt unhöflich.
+<LetoThe2nd> von meiner seite hast du's jetzt geschafft. ignore set.
+<jokrebel> hi
+<Nicodemus> Hallo..
+<Nicodemus> Was bedeutet bitte ifconfig ?
+<Nicodemus> steht wofür ?
+<apollo13> man ifconfig
+<koegs> Nicodemus: man ifconfig
+<jokrebel> Nicodemus: Damit schaust Du Dir Deine Netzwerkinterfaces an.
+<Nicodemus> danke..., das ging ja schnell
+<Nicodemus> aber gab es da nicht noch ein rfconfig ?
+<Nicodemus> rf ?
+<koegs> wofür soll das sein?
+<Nicodemus> muß iwconfig gewesen sein..
+<Nicodemus> Wireless LAN mein ich
+<jokrebel> …oO( is ja fast das gleiche )
+<Thomas_Zahreddin> guten Morgen, ich hab ubuntu 11.04 mit gnome; Bildschirm portrait (xrandr); erstaunlicher und unangehmer Effekt: wenn ich mit der Maus von rechts nach links fahre, dann springt die linke Bildschirmhälfte ca. 1-2 Pixel nach rechts - nicht immer aber sehr störend
+<Thomas_Zahreddin> jemand eine Idee?
+<jokrebel> Thomas_Zahreddin: Was für Grafikkarte (und welchen Treiber dafür) nutzt Du?
+<k1l> Thomas_Zahreddin: passt die auflösung zum bildschirm? das klingt so als wenn das bild diese 1-2 pixel zu groß ist und du scrollst dann rüber?
+<Nicodemus> nein, feststellen konnte ich wohl einen Rand (ca. 1en Pixel? breit der wohl ein überrest des Starters ist bzw.. war) aber nicht weiter störend für mich, außerdem ist der Rand verschwunden; ahhh, den Rand hatte ich als ich den Classic-Ubuntu Bildschirm genutzt habe und er war ein Rand von einem Panel das ich nach links verlegt hatte..... das hat wohl beides garnichts miteinander zu tun....
+<Thomas_Zahreddin> ATI Radeon HD 4850; 1050 x 1680 = exakt Bildschirm
+<Nicodemus> ?
+<Thomas_Zahreddin> Treiber: ATI 8.84.60 (glaube ich zumindest)
+<Thomas_Zahreddin> ja, ist Ubuntu Classic als Displaymanager
+<Nicodemus> Wäre jemand so freundlich mir zu sagen wie, bzw. mit welchem Befel ich die Temperatur der CPU feststelle (Duo) ?
+<Nicodemus> Befehl..
+<dadrc> Ich mag ja http://wiki.ubuntuusers.de/Lm_sensors
+<dadrc> Kann unter anderem auch die CPU-Temperatur
+<Nicodemus> mit welchen Befehl setze ich die CPU-Geschwindigkeit (DUO) fest, bitte..?
+<Nicodemus> dadrc,  ?
+<jokrebel> Nicodemus: In Gnome gibt es ein Applet fürs Panel, welches sowas kann, wenn es Deine CPU unterstützt.
+<dadrc> Ansonsten http://wiki.ubuntuusers.de/Prozessortaktung
+<Nicodemus> Ich benutze den Gnome-Unity Desktop....
+<jokrebel> Nicodemus: Gnome =|= Unity
+<Nicodemus> Gnome-Unity-Desktop ?
+<Fussel> 11.04 clasic?
+<Nicodemus> "pkill gnome-panel" funktioniert unter Unity...
+<k1l> gnome ist nicht unity. es gibt auch keinen "mercedes bmw"
+<LetoThe2nd> k1l: hey, nicht meine illusionen kaputt machen hier!
+<Nicodemus> allerdings nur ohne updates...., ansonsten...... gibts ein Linux-Mischmasch...
+<sash_> Was? Wovon redest du?
+<Nicodemus> Linux-Misch-Masch-Desktop
+<sash_> Was soll das sein?
+<Fussel> Nicodemus, meint bestimmt die clasic-oberfläche vom 11.04
+<Nicodemus> ja...., da hatte ich dann plötzlich ein ürsprunglichen Gnome-Desktop.... obwohl der aussah bald wie KDE
+<Nicodemus> zumindest das Panel...
+<Nicodemus> ich werd erstmal nichts updaten....
+<Nicodemus> und mit dem installieren....., na, ich weiss nich...., bestenfalls Anwerdersoftware....
+<Nicodemus> Anwendersoftware..
+<sash_> Ich wette, niemand hier hat eine Ahnung, was du da erzählen willst.
+<k1l> Nicodemus: hast du eine supportfrage? zum rumlabern ist das hier der falsche channel
+<Nicodemus> Ich lapper nich...
+<Nicodemus> Ich sage die Wahrheit
+<k1l> Nicodemus: ich geb dir mal ne std. auszeit um nochmal die channelregeln zu lesen und dein verhalten diesen anzupassen.
+<jokrebel> cu
+<sas_> moin
+<sas_> leute hab mal, was mich betrifft, ne komische frage. habe gestern auch schon ne zeit gegooglet das problem aber so nicht gefunden........... wenn ich die konsole öffne und auf /dev/sda gehen will sind keinerlei sd* geräte vorhanden, wenn ich aber im dolphin schaue sind sie da... hat da wer ne idee?
+<sas_> bash complention ist schon neu installiert
+<sas_> fdisk -l zeigt ebenfalss die geräte als /dev/sda etc... an
+<sas_> ls /dev  zeigt die geräte ebenfalls an in gelb
+<koegs> /dev/sda ist auch ein block-device
+<koegs> wenn mit ls -l /dev/sda* alle angezeigt werden ist doch alles in butter
+<sas_> koegs: also ich kenne das normal so das wenn ich das mit tab vervollsändigen will er mir dann auch sda macht aber er zeigt da keine geräte an, auf dem rechner nebenan geht es ja
+<sas_> in der firma gehts auch und genau darum raff ich das net
+<k1l> sas_: welches ubuntu?
+<apollo13> wie versuchst du denn auf /dev/sda zu gehen?
+<sas_> k1l: 11.04
+<sas_> auf allen rechnern an 2 gehts an dem hier net
+<k1l> .o(wäre nicht der erst mit debian und falschen completion einstellungen)
+<koegs> "cd" wird nicht reagieren, höchstens ls
+<sas_> apollo13: z.b. bei mount /dev/sda /mnt ... is jetzt nur en beispiel
+<koegs> weil kein verzeichnis
+<sas_> koegs: das cd nicht dahin geht ist mir klar
+<apollo13> sas_: ist jetzt nur ein beispiel ist schlect, denn mit ls tabben geht bei mir ;)
+<apollo13> oh und bei mount gehts bei mir auch
+<sas_> is auch merkwürdig das ich nach "mount" kein tab für vervollständigen der pfade machen kann
+<apollo13> meins kann es
+<sas_> ja ich kenn das halt so das das normal geht
+<sas_> wie gesagt neben dran der rechner geht auch einziger unterschied der hat ne ide platte der hier hat ne sata
+<sas_> ehrlich gesagt ist das grad wenn man mounten will ziemlich störend das es nicht geht
+<k1l> sas_: wirklich nen ubuntu? normaler user oder als root eingelockt? ne minimal installation oder normale desktop?
+<sas_> k1l: NE IST JETZT NE KUBUNTU AUF beiden aber da herrscht grad so ne gähnende leere..... is ja grundlegend das selbe bis auf die kde....normale installation
+<sas_> ob root oder user macht keinen unterschied
+<sas_> hab ich auch schon dran gedacht
+<sas_> geht auch eigentlich von haus aus direkt nach der install wenn ich die /etc/bash.bashrc angepasst habe
+<k1l> sas_: was hast du angepasst?
+<sas_> #enable bash completion in interactive shells
+<sas_> if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+<sas_> . /etc/bash_completion
+<sas_> fi
+<sas_> einfach nur auskommentiert
+<k1l> das gehört auskommentiert mit #
+<sas_> funktioniert auch sonst bei allem außer mount und den sd* geräten
+<sas_> k1l: ja wenn ich da jetzt überall ein # davor setzte geht das "tappen" noch viel weniger als vorher
+<sas_> darum nehm ich das ja immer rein
+<sas_> aber richtig standart is das nicht an
+<k1l> nee
+<k1l> du überschreibst jetzt die bash completion settings iirc
+<sas_> kk dann wie kommentieren und reboot?
+<sas_> und nochmal im zweifel die bash  com. neu installen?
+<k1l> warte mal ich versuche mich grade zu erinnern wie das genau war
+<sas_> wie=wieder
+<sas_> ich weiß nur das es bis jetzt immer nicht korrekt ging wenn ich das nicht manuell angepasst habe
+<sas_> z.b. geht dann das install nach apt-get nicht tappen
+<k1l> also bei mir steht der absatz in der .bashrc im home
+<sas_> ich habs jetzt (wie immer) in der /etc/bash.bashrc geändert
+<sas_> aber ich schaue gleich auch mal im home was ich da finde
+<sas_> genauer pfad ..... /home/user/.bashrc?
+<k1l> eigentlich sollte das paket ubuntu-standard bei einer nicht minimal.installation dafür sorgen, dass die completion läuft und in der .bashrc gesetzt wird
+<k1l> jo
+<sas_> # enable programmable completion features (you don't need to enable
+<sas_> # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+<sas_> # sources /etc/bash.bashrc).
+<sas_> if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+<sas_> . /etc/bash_completion
+<sas_> geht ja auch sonst immer nur beim mount eben nicht oder wenn ich auf /dev/sd* tappen will das verstehe ich einfach net
+<sas_> sonst habe ich noch nicht festgestellt wo es "nicht "geht
+<k1l> hmm. komisch.
+<sas_> genau dachte vlt hatte hier wer was ähnliches
+<sas_> google schweigt sich nämlich leider auch aus
+<k1l> wer weiss was da sonst verändert ist. jedenfalls sollte es funktionieren. schau nochmal ob ubuntu-standard drauf ist
+<sas_> jup, geht ja auch mti dem rechner nebendran ... sind alle von der selben cd installiert
+<erwin_> hi
+<sas_> erwin_: tag
+<erwin_> ich wollte ein skript schreiben um die PATH variable anzupassen
+<erwin_> wenn ich export PATH=/home/erwin/Beagleboard/setup-scripts/build/tmp-angstrom_2008_1/sysroots/i686-linux/usr/armv7a/bin:$PATH
+<erwin_> im skript ausführe kennt er nur im skript den neuen path, wenn das skript beendet ist ist sie wieder wie normal
+<erwin_> was mahe ich da falsch?
+<sas_> k1l: ah also jetzt wirds spannend............. Sudo /dev/sd tab geht
+<sas_> sudo /dev/sd... nicht
+<sas_> als root gehts garnet
+<k1l> unter ubuntu ist man auch nicht root
+<k1l> log dich als normaler user ein
+<sas_> ja habs ja grade nur in der konsole getestet
+<sas_> als normaler user gehts wie beschrieben mit dem sudo
+<sas_> allerdings nur wenn ich Sudo statt sudo schreibe
+<sas_> das is auch ungewöhnlich
+<k1l> also das klingt mal nach sehr verwurstelt
+<sas_> ja sehe ich ähnlich
+<sas_> ich wusste garnet das es bei sudo nen unterschied zwischen goß und kleinschreibung gibt
+<sas_> ja lol wenn ich das Sudo groß mache gehts auch bei mount .......... als root selbst aber auch net wobei es grade da gehen müsste
+<sas_> lol
+<sas_> neuinstall des systems oder hilft da noch was anders vlt.?
+<deem> sas_: machst du mal ein "which sudo" und ein "which Sudo" bitte?
+<sas_> jup
+<erwin_> keiner ne idee?
+<sas_> sas@sas-dsk:~$ which sudo
+<sas_> /usr/bin/sudo
+<sas_> sas@sas-dsk:~$ which Sudo
+<deem> sas_: bei Sudo kommt nix?
+<sash_> Natürlich nicht.
+<sas_> deem: nein genauso wie ichs gepastet habe is die ausgabe
+<deem> sas_: was heißt hier natürlich nicht? wenn sein ubuntu unterschiede macht zwischen "sudo" und "Sudo"
+<sash_> Macht es nicht
+<deem> sas_: dann erklär mir mal, was er da oben beschrieben hat
+<deem> sas_: *
+<deem> sash_: *
+<sash_> Es macht Unterschiede zwischen "Schwachsinnswort am Anfang der Zeile" und "Ausführbares Programm am Anfang der Zeile"
+<sash_> sas_: Gib doch mal "Sudo ls" ein und sag, was da passiert
+<deem> sash_: wenn er aber sagt "sudo mount bla" funktioniert, dann muss da etwas verwurschtelt sein, denn bei mir stoppt die bash direkt bei "Sudo" und fragt mich, ob ich nicht vielleicht "sudo" gemeint habe
+<sas_> sash_: warum schwachsinnswort ??? normaler weise geht sudo immer auch "klein" ich hatte das noch nie anders
+<sas_> sash_: .....Befehl nicht gefunden Sudo .....
+<sash_> sas_: 'Sudo ls' bitte
+<sash_> Ahaaaaa
+<Gurkenglas> Gibt es eine Tastenkombination, um den Terminal zu starten?
+<k1l> Gurkenglas: strg+alt+t
+<sash_> Gurkenglas: Depends on Desktop-Environmnt und ist einstellbar
+<Gurkenglas> Ubuntu 9.10
+<sas_> Gurkenglas: oder yakuake installieren finde ich pers. super
+<Gurkenglas> k1l, geht nit
+<k1l> Gurkenglas: und 9.10 ist immernoch schon aus dem support raus. update die karre mal endlich
+<sas_> sash_: bringt dich das der möglichen lösung nun einen schritt näher?
+<deem> yakuake is für kde. unter gnome nimmt man da guake
+<sas_> deem: tschuldigung
+<sash_> sas_: Eigentlich schon, ja... Aber leider ist Bash-Completion so ne Sache, die jede Distribution irgendwie anders frickelt. Und ich kann bei Ubuntu nur noch bei generischen Fehlern helfen, weil ich das selbst nicht mehr nutze. Aber "Bash-Completion failed für richtige Programme, aber tuts mit Spaßkommandos" ist ne behebbare Sache
+<deem> bei mir tabt der.
+<sash_> Ich würd... bash-completion purgen, neu installieren, die /etc/bashrc resetten und... und so Änderungen nur in /home/user/.bashrc vornehmen
+<sas_> sash_: wenn ich dann nur wüsste wie so der guru bin ich ja dann auch nicht und vorallem raff ich net...........warums am rechner nebendran mit dem selebn system eght.........
+<sash_> "............." <- sucken
+<sas_> sash_: ja versuch ich dann nochmal .. mit purge runter habe ich schon vorher aber nicht in der /etc/bash.bashrc resettet
+<sas_> sash_: sry^^
+<sash_> :)
+<sas_> ich teste das mal, mach nen reboot und geht euch gleich nochmal aufen nerv ;) thx 4 help
+<Oins> Hallo. Mein Bluetooth funktioniert seit kurzem nicht mehr. Kann mir jemand einen Tip geben was ich der Reihe nach überprüfen könnte? Im Bios ist es natürlich aktiviert.
+<deem> Oins: dmesg zb
+<Oins> deem: nach was soll ich da suchen?
+<deem> nach bluetooth oder nach dem chip
+<deem> kA. hab sowas nicht,a ber dmesg ist ne gute anlaufstelle
+<Oins> deem: ok, danke für den Tip. Werd mal raus suchen welcher Chip verbaut ist
+<dadrc> Ich würd vorher mit lspci gucken, welcher Chip das ist
+<k1l> Oins: überprüf mal die klassiker wie hardware schalter, tasten kombi etc
+<Gurkenglas> uh, ja. ich wollt den terminal aufmachen um sudo apt-get clean zu tun bevor ich update wies mir gesagt wurde
+<Oins> k1l: danke für die Info, aber den Schalter zum deaktivieren hab ich extra im Bios komplett deaktiviert. (und er ist auch auf ON)
+<dadrc> Gurkenglas, willst du uns damit sagen, du kriegst kein Terminal gestartet?
+<sas_> sash_: so also sehr geil habe deinen rat befolgt ergebnis............ wenn bash-completion runter ist geht sudo normal auf /dev/sda mit tappen........... isses drauf geht das wieder nur mit Sudo /dev/sda.......... nachteil wenns runter is kein tappen bei apt möglich und das nervt ;)... in der /etc/bash.bashrc isses nicht aktiv nur in der .bashrc
+<sas_> sowas merkwürdiges hatte ich bisher nicht
+<sash_> "............." <- sucken immer noch
+<Oins> kann es sein, dass meine Wifi Karte auch Bluetooth drin hat? "Network controller: Intel Corporation Ultimate N WiFi Link 5300"
+<Gurkenglas> dadrc, ne ich wollt ne tastenkombi weil es mir zu monoton war den aus dem menü zu fischen ^^
+<Gurkenglas> Ich tu den mal in dieses Panel da oben
+<dadrc> Gurkenglas, aso :) Mach dir halt eine.
+<Gurkenglas> wie geth
+<sash_> sas_: Doch. Das ist normal. Es gibt die Standard-Completion für Verzeichnisse und so, die ist immer da. Und es gibt die erweiterte. Kannst du mal den Inhalt von /etc/bash_completion.d/ posten, bitte?
+<deem> Gurkenglas: unter gnome ist für das terminal "Strg+Alt+T" vorfdefiniert
+<deem> vordefiniert*
+<Gurkenglas> wee, 726 KB/s. auf Windows krieg ich immer nur so um die 700
+<sas_> sash_: ja den unterscheid kenne ich ich meinte das ich das nicht kenne das wenn die an is, das normale sudo und tappen auf /dev/sda nicht geht... das hatte ich noch nicht................. den inhalt mit ls ?
+<dadrc> Gurkenglas, Befehl zum Starten ist gnome-terminal, Gnome hat in den Einstellungen ein Programm, um beliebige Tastenkürzel anzulegen
+<k1l> ,nopaste? sas_
+<Gurkenglas> deem, geht aber nit
+<shetlandpony> sas_: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.pocoo.org [paste]
+<dadrc> Heißt (glaub ich) Tastenkombinationen.
+<dadrc> Gerade kein Gnome hier, deshalb kann ich nicht nachgucken
+<deem> Gurkenglas: dann solltest du mal in deinen tastenkombinationen schauen ob da was verfrickelt ist
+<koegs> System - Einstellungen - Tastenkombinationen
+<Gurkenglas> das menü-terminal schaut von der titelleiste her anders aus als wenn ich gnome-terminal aufrufe
+<sash_> sas_: Jo
+<Gurkenglas> deem, wo find ich die
+<sash_> sas_: ,paste?
+<Gurkenglas> ui, unter system
+<sash_> Where teh p0ny at?
+<dadrc> shetlandpony ←
+<sas_> sash_: http://paste.pocoo.org/show/439358/
+<k1l> sash_: andersrum, erst factoid dann name
+<sash_> da braucht man kein sudo für. k1l, oh ja, stimmt
+<Gurkenglas> war deaktiviert, hab auf Strg-Alt-T gesetzt. kthx
+<sash_> Das ist Ubuntu, sas_?
+<k1l> sas_: nopaste mal bitte "lsb_release -a"
+<Gurkenglas> Jetzt schaun die Titelleisten wieder gleich aus. War wohl was mit Auswahlhighlight oder so.
+<dadrc> (Stimmt zumindest mit meinem xubuntu 11.04 überein)
+<sash_> sas_: Und den Inhalt der /etc/bash_completion noch bitte
+<k1l> sas_: das wird wohl eher kein ubuntu sein
+<sas_> sash_: mom grade am lesen hab mir kaffe gemacht
+<sash_> dadrc sagt, sein xubuntu sieht auch so aus, k1l.
+<sas_> k1l: ne kubuntu wie schon mehrfach erwähnt
+<sas_> aber in dem channel bekomm ich niemanden
+<dadrc> Was auch immer yum-arch da macht
+<sash_> Ich frag mich nur, was rpmcheck und yum-arch da machen.
+<Oins> lspci liefert mir http://pastebin.com/VZF33sTV . Soweit ich auf der Intel Seite nun gesehen habe, hat die 5300 kein Bluetooth an board, also Taucht der Chip scheinbar nicht (mehr) auf. Was nun?
+<k1l> sas_: ok.
+<sas_> sash_: http://paste.pocoo.org/show/439361/
+<Oins> hcitool dev liefert auch kein Gerät
+<Nicodemus> Wie bekomme ich im Terminal die Menge des freien Festplattenplatzes angezeigt, bitte ?
+<k1l> Nicodemus: df -h
+<sas_> k1l: ausgabe -->  ubuntu.
+<sas_> k1l: 11.04
+<sas_> Nicodemus: df -h
+<k1l> sas_: es geht nur darum, dass einige derivate da selber rumfummeln und man dann hier im dunkeln stochert.
+<sas_> k1l: jup
+<Nicodemus> danke..
+<sash_> sas_: /me ist draußen, keine Ahnung. Hatte gehofft, dass da was vom Adobe-Reader zwischen hängt, das hat mir mal die Completion kaputt gemacht. Außerdem muss ich jetzt los. Viel Erfolg noch.
+<sas_> sash_: danke dennoch
+<deem> sas_: magst du die ausgabe von lsb_release -a bitte nopasten?
+<sas_> deem: ubuntu 11.04 mehr infos gibt die auch net raus
+<sas_> deem: okok es steht noch natty dabei aber das is ja klar
+<deem> sas_: ich hätte es dennoch gerne in einem nopaste bitte
+<sas_> deem: http://pastebin.com/BmRyfnx9
+<deem> geht doch. danke =)
+<Gurkenglas> Ich hab gerade Ubuntu geupdatet
+<deem> Gurkenglas: gz
+<Gurkenglas> Beim Neustart hat er mir gesagt ein Fehler hat dazu geführt dass ich jetzt mal im Lowgraphicsmode weitermachen müsste
+<sas_> habe grade noch das hier gefunden
+<sas_> https://bugs.launchpad.net/ubuntu/+source/bash-completion/+bug/769866
+<sas_> kann das auch hier der fall sein?
+<Gurkenglas> Ich schreibe in kurzen Nachrichten weil grad meine vollständige Fehlerbeschreibung kurz vorm Enter abgemurkst wurde
+<sas_> post 15 in etwa da gehts nemme rum den adobe
+<Gurkenglas> Ich wurde schlagartig abgemeldet, und jetzt erscheinen komische Farbartefakte auf dem Bildschirm
+<Gurkenglas> Der Scrollback vom Neustart bis schlagartiger Abmeldung in XChat ist auch weg
+<Gurkenglas> System->Info zu Ubuntu sagt, ich wäre noch in 9.10
+<Gurkenglas> Und ich krieg ne Meldung, ich habe zu wenig Speicherplatz, nur noch 62,5 MB übrig
+<Gurkenglas> (Nach dem Neustart, vor der letzten Abmeldung hat er noch gesagt es wäre etwa 22)
+<Gurkenglas> Ich hab jetzt mal ein Spiel gelöscht, was etwa 80 MB freigelegt haben dürfte
+<Gurkenglas> deem, Hilfe? :D
+<Gurkenglas> <Gurkenglas> Beim Neustart hat er mir gesagt ein Fehler hat dazu geführt dass ich jetzt mal im Lowgraphicsmode weitermachen müsste <- da hat er mir auch nen Fehlercode gegeben, aber der wurde bis nach der Anmeldung wohl wieder aus der Zwischenablage gelöscht
+<deem> Gurkenglas: du solltest mal schauen ob du noch viele alte kernel installiert hast und die mal löschen
+<deem> du brauchst eigentlich nur den aktuellen und den vorherigen
+<Oins> Falls es jemand interessiert. Der Trick ist scheinbar das Bluetooth Device unter Windows zu aktivieren, dann läuft es auch in Ubuntu wieder.
+<Imo> hey, könnt ihr mir sagen wie ich über die console in einer mysql tabelle einen eintrag suchen kann und diesen löschen?
+<deem> select * from tabelle where <wert> = bla
+<deem> delete * from tabelle where <wert> = foo
+<frostschutz> ohne *
+<deem> von mir aus auch ohne *
+<Imo> xHxwZ0uM
+<deem> aha
+<Imo> http://pastebin.com/xHxwZ0uM
+<Imo> schau mal das ist mein eintrag zum löschen
+<Imo> und ich will jetzt nach dem namen und der email adresse in der tabelle suchen und den eintrag dann löschen
+<LetoThe2nd> mögt ihr das bitte in query/OT/#mysql verschieben? sql-nachhilfe ist nicht sooo direkt ubuntu bezogen, IMHO.
+<Gurkenglas> deem, wie geth?
+<Gurkenglas> Wie schau ich ob ich noch viele alte kernel installiert habe und wie lösch ich die?
+<k1l> ,kernel? Gurkenglas dort beschrieben
+<shetlandpony> Gurkenglas dort beschrieben, Kernel ist http://wiki.ubuntuusers.de/Kernel - Weitere Infos im query ...
+<Denny_Crane> k1l: gurkenglas? ^^
+<Denny_Crane> ah shit
+<Denny_Crane> verlesen
+<Denny_Crane> vergesst es
+<Gurkenglas> <shetlandpony> dort <- das war der query Oo
+<Gurkenglas> Ich hab grad den Computer neugestartet um zu sehen ob ich mehrere Kernel habe. Statt dem GRUB kam ein Error, und dann wieder das Low-Graphics-Ding von vorhin
+<Gurkenglas> deem, halp?
+<k1l> Gurkenglas: welche graka? welcher treiber? treiber wie instaliiert?
+<k1l> welcher error?
+<Gurkenglas> k1l, kA @graka, treiber, wie installiert
+<Gurkenglas> Zur Zeitpunkt der Anzeige des Errors lässt sich kein Screen machen und die Zwischenablage wird bis zu diesem Zeitpunkt geleert
+<k1l> so kann man dir nicht helfen.
+<Gurkenglas> Kann ich den Error irgendwie konservieren?
+<Gurkenglas> Wie find ich das raus mit graka, treiber, und art der installation
+<Gurkenglas> btw, wenn ich versuche synaptic über das system-menü zu starten, krieg ich http://www7.pic-upload.de/15.07.11/11ufq3cw8xc.png und es schließt wieder
+<szal> dann mach n Terminal auf & tu, was da steht
+<Gurkenglas> szal, wieso macht das Programm denn das nicht selber, wenn es sicher ist, dass das hilft
+<k1l> Gurkenglas: fehlermeldungen sind nicht wie bei windows zum wegklicken da. benutz doch mal dein hirn.
+<szal> weils net dessen Aufgabe is
+<Gurkenglas> k1l, soll ich das ganze Fenster aufn Blatt Papier abschreiben und dann hier zurückübertragen oder wie?
+<szal> ouw banaan, hat irgendjemand kritisiert, dass du hier n Screenshot postest?
+<Gurkenglas> szal, aber wenn der Laie der das liest nichts anderes machen kann als das auszuführen, oder hier nachzufragen was zu tun ist, wo ihm auch gesagt wird dass er das ausführen soll, bedeutet das am ende nur einen unnötigen schritt für den benutzer
+<Gurkenglas> (war das an mich oder ist banaan ein nick oder so?)
+<k1l> Gurkenglas: sabbel hier nicht rum. mach was in der fehlermeldung gesagt wurde
+<Gurkenglas> das hab ich ja schon gemacht
+<k1l> und?
+<k1l> Gurkenglas: sollen wir alle raten?
+<Gurkenglas> (funktioniert auch wieder. unnötiger aufwand dass das programm das nicht gemacht hat, aber nichtsdestotrotz thx)
+<Gurkenglas> k1l, eine Möglichkeit die Fehlermeldung beim Boot hier zugreifbar machen zu können wäre wohl ideal :D
+<k1l> Gurkenglas: sorry aber mit deiner einstllungen bleibst du sicher besser bei windows. jedenfalls wirst du langfristig so mit deiner einstellungen weder mit linux noch hier im supportchannel freude haben.
+<Gurkenglas> Außerdem, kann ja sein dass "Fehlermeldung beim Boot" für gewöhnlich immer dieselbe Ursache hat
+<Gurkenglas> Na bisher hats doch funktioniert. Was ich suche ist eine einleutende Erläuterung, warum das Programm das nicht selber gemacht hat :D
+<Gurkenglas> Dass das nicht seine Aufgabe wäre versteh ich nicht, seine Aufgabe ist es doch zu funktionieren
+<LetoThe2nd> Gurkenglas: der knackpunkt ist, dass es user gibt die unter umständen den befehl so nicht haben wollen. sind wenige, aber sie existieren. und solange es eine möglichkeit gibt dass jemand das will, hält linux den weg für diese leute offen und drängt ihnen kein automatisiertes verhalten auf.
+<LetoThe2nd> Gurkenglas: _das_ ist der grund.
+<apollo13> vor allem weil dpkg --configure -a viel putt machen kann
+<Gurkenglas> hmk
+<Gurkenglas> uh
+<apollo13> und da ist besser der user machts selber putt *gg*
+<Gurkenglas> Das hätte es mir auch sagen sollen, vielleicht hab ich jetzt was kaputtgemacht D:?
+<apollo13> nö, wenns ohne probleme durchgerannt ist passt
+<Gurkenglas> Wenns Probleme gehabt hätt hätte ich also wieder herkommen sollen?
+<k1l> Gurkenglas: upgrade mal lieber zu einer supporteten ubuntu version. sonst geht noch mehr kaputt
+<Gurkenglas> k1l, das versuche ich ja
+<Gurkenglas> dieses ganze problem mit dem low graphics mode und so ist erst aufgetreten nachdem ich versucht hab zu updated
+<Gurkenglas> *n
+<Gurkenglas> (hab ich ganz oben auch gesagt)
+<Gurkenglas> Es hat geupdatet, gesagt jetzt muss ich neustarten um das Update abzuschließen, und dann kam der Schlamassel
+<Gurkenglas> http://www7.pic-upload.de/15.07.11/lmovdcrbz2g9.png
+<Gurkenglas> ("szal")
+<koegs> -zu
+<koegs> Gurkenglas: ist das Ubuntu auf nem USB-Stick oder wieso /dev/loop
+<apollo13> klingt nach livecd
+<Gurkenglas> koegs, nie was von /dev/loop gehört. Ubuntu ist bei mir auf ner Partition
+<koegs> wubi?
+<Gurkenglas> Kann mich nicht an etwas vom namen livecd oder wubi erinnern
+<szal> /dev/loop0?  entweder Live-CD/-USB, Wubi oder Chroot
+<koegs> wie hast du denn bei der installation partitioniert?
+<szal> würd ich mal tippen
+<Gurkenglas> Ist schon lang her, aber ich glaub ich hab Ubuntu installiert vom Harddrive (C:) auf Harddrive (D:), ohne irgendwelche Extras
+<apollo13> auf jeden fall ist alles ziemlich voll^^
+<koegs> mach mal /etc/fstab in nen nopaste
+<Gurkenglas> Partitioniert war das iirc von vornherein
+<Gurkenglas> D: war leer, bis ich Ubuntu draufgetan hab
+<koegs> bah, das ist wubi, auch noch mit zu wenig platz, EOS weil der Fall klar ist
+<Gurkenglas> Ich weiß nicht was EOS heißt
+<apollo13> end of support
+<szal> jo, dass 1,7 GB vorne & hinten net reichen, is doch an sich klar
+<Gurkenglas> heißt das er mag nimmer helfen?
+<apollo13> jupp
+<Gurkenglas> Also soweit ich weiß ist mein D: 20 GB groß
+<Gurkenglas> Dann kann ich mir ja das /etc/fstab sparen
+<apollo13> Gurkenglas: ja und das ist voll
+<Gurkenglas> Wie geb ich dem mehr Platz? Auf C: hab ich noch was
+<apollo13> (ok 364 mb sind noch frei, aber auch nicht das wahre)
+<szal> Gurkenglas: wenn da sonst nix drauf is, dann nimm dir ne *buntu-Live- oder Alternate-CD & nutz die Partition zum Installieren eines physikalischen *buntu
+<apollo13> keine ahnung, wubi interessiert mich nicht wirklich… kann dir maximal bei ner normalen installation helfen
+<Gurkenglas> szal, da ist mein Windows drauf
+<koegs> bei wubi lässt sich nicht so einfach die Partitionierung ändern, deswegen ha ich keine lust auf Support
+<Gurkenglas> Und knapp 1 TB, wovon alles außer so 50 GB auch voll ist
+<szal> Gurkenglas: ich mein, auf deiner tollen Partition D:
+<koegs> installier ubuntu neu und korrekt auf eine eigene ordentlich große Partition
+<Gurkenglas> Ich weiß nix von wubi. Wie find ich raus wie ichs installiert hab?
+<Gurkenglas> szal, auf D: ist sonst nix drauf. Aber erstmal müsste es ja größer gemacht werden
+<szal> Gurkenglas: net notwendigerweise, 20 GB reichen dicke für den Anfang
+<Gurkenglas> Aber ich hab hier doch auf D: schon nur Ubuntu
+<szal> die Tatsache, dass die Platte noch D: heißt, impliziert schon, dass es sich um ne Wubi-Installation handelt, da haste dann den Container für die virtuelle Platte und vermutlich noch n paar Sachen drumrum (/me nix Ahnung von Wubi)
+<sdx23> Gurkenglas: "sudo fdisk -l" in einen Nopaste bitte.
+<Gurkenglas> Auf Windows heißt sie D:, auf Linux hab ich nie "D:" gesehen
+<szal> Gurkenglas: eben, wenn da physikalisch ein ext3 oder ext4 oder was drauf wäre, könnte Windows die gar net lesen
+<k1l> und dann auch noch wubi *sigh*
+<Gurkenglas> sdx23, http://www7.pic-upload.de/15.07.11/p1l8qprdvshl.png
+<Gurkenglas> szal, ich weiß nicht was ext3 oder ext4 heißt
+<sdx23> ,nopasten? Gurkenglas
+<shetlandpony> Gurkenglas: Um einen Text zu nopasten, gehe folgendermassen vor: Folge dem Link http://paste.pocoo.org . Waehle das Textfeld aus und kopiere dort hinein deinen Text, den du anderen zugaenglich machen moechtest. Klicke dann "Absenden". Die Seite wird neu laden und eine andere URL haben. Ueber diese URL ist mein Paste dann fuer andere erreichbar, dh. diese URL gibst du dann in den Channel.
+<szal> Gurkenglas: außerdem wurdest du um Nopaste gebeten & nicht um einen Screenshot
+<Gurkenglas> Da steht "Paste!" und nicht absenden :P
+<Gurkenglas> http://paste.pocoo.org/show/439405/
+<sdx23> Gurkenglas: und da siehst du's auch, es gibt nur Fat und NTFS Partitionen. Auf denen kann kein Linux direkt sein (jedenfalls nicht sinnvoll). Dein Ubuntu liegt in einem Kontainer(einzelne Datei) auf der Fat/NTFS Partition.
+<Gurkenglas> Wo ist der Unterschied? (Ist euer Traffic so begrenzt?)
+<k1l> Gurkenglas: du hast ubuntu in dein windows installiert (mit wubi). das ist keine lösung für die dauer. installier mal ubuntu neu und installier es dann richtig auf eine eigene partition
+<Gurkenglas> k1l, wie geth
+<Gurkenglas> (bisher konnte ich von C: aus auf D: zugreifen. geht das dann auch weiterhin?)
+<k1l> wenn c linux unc d win ist: ja
+<Gurkenglas> c win und d linux
+<Gurkenglas> Mein Linux kann mein C: nicht mounten, seit ich es nicht booten kann
+<k1l> nein, windows kann kein ext format lesen
+<Gurkenglas> Geht das mit Win-Software?
+<k1l> sicher deine daten und mach das komplett neu. so wie es grade ist ist es nur eine frage der zeit bis sowohl windows als auch ubuntu vor die hunde geht
+<ppq> Gurkenglas: theoretisch ja, praktisch solala
+<ppq> wenn man sowas einsetzt, muss man backups haben, da das auch mal das fs zerstören kann
+<szal> Gurkenglas: die Platte hat kein TB, sondern 640 GB, und die Partition, über die wir reden, hat keine 20, sondern 10 GB, wenn ich richtig gerechnet habe
+<Gurkenglas> Auf C: hat mir Tune Up Utilities gesagt, ich sollte meine Festplatten auf Fehler untersuchen. D: ging nebenher, für C: sollte ich neustarten. Nach ner Weile hab ich hochgerechnet, es würde mindestens 5 Stunden dauern, also wollte ich es von Linux aus machen lassen damit ich nebenher was machen kann. Abbrechen konnte ich dann aber nur indem ich den Strom abschaltete. Seitdem kann Windows nimmer booten
+<Gurkenglas> Safe mode zeigt mir, dass er beim laden von storport.sys hängt, jetzt will ich von Linux aus auf C: das storport.sys durch einen ersatz aus dem internet ersetzten, aber ich komm ja nit drauf
+<k1l> da hast du es ja schon. sicher mit dem ubuntu noch deine daten auf ne externe festplatte z.b.
+<Gurkenglas> k1l, auch das windows neu? Oo
+<k1l> dann kloppst du da das windows neu drauf und dann das ubuntu auf eine (wobei eigentlich besser 2-3) partition dahinter
+<Gurkenglas> Ich hab keine so große externe D:
+<Gurkenglas> (smiley)
+<szal> tja, dumm gelaufen :P
+<k1l> Gurkenglas: es ist doch schon vermurkst. ob du das win noch retten kannst musst du die windows jungs fragen
+<Gurkenglas> mir scheint nur das storport.sys ist kaputt
+<Gurkenglas> Und weil ein Teil kaputt ist will er alles nicht lesen
+<Gurkenglas> Sowas in der Art hatt ich schon, die VistaCD hat mir alles gerettet (obwohl es gesagt hat das würde alle dateien löschen Oo)
+<Gurkenglas> Wenn ich jetzt noch die VistaCD hätte :P
+<Gurkenglas> Aber es zeigt dass das Reparieren einfach sein dürfte
+<koegs> das ist alles windows-kram, kein ubuntu-kram, frag in nem windows-channel
+<Gurkenglas> Kann ich Ubuntu auf D: neu installieren ohne das Windows auf C: zu gefährden?
+<apollo13> man kann ja, ob du es schaffst
+<apollo13> ohne sicherung würde ich es dir nicht anraten
+<koegs> http://wiki.ubuntuusers.de/WUBI#Wubi-Deinstallation
+<koegs> danach Ubuntu ordentlich in eine eigene Partition installieren
+<koegs> für dein Windows-Problem sind wir hier aber nicht zuständig
+<k1l> Gurkenglas: ich glaube das geht nicht, weil es D: gar nicht gibt. das ist intern in deinem windows. deswegen soll man wubi auch nicht benutzen für langfristige sachen
+<szal> aber net auf die existierende Winz-Partition, die wird auch wieder flott zu klein
+<Gurkenglas> Kann ich erstmal überhaupt rausfinden ob ich wubi habe?
+<k1l> Gurkenglas: du hast wubi
+<Gurkenglas> http://www.pic-upload.de/index.php?to=upload gibt mir ja zu denken ob das nicht doch ne richtige partition ist
+<Gurkenglas> k1l, woher weißt du das
+<k1l> weil du ein linux in einem container hast und keine ext partition auf deiner festplatte ist
+<Gurkenglas> Wenn das Win-Intern-Ding mir bei ner 20-GB-Partition 18 GB weggenommen hat, müsste ich mit der Zuweisung von 40 GB doch eigt 22 GB für Linux bekommen, sodass es reichen dürfte, oder?
+<dAnjou> Gurkenglas: dir is klar, dass du grütze verlinkt hast? ^^
+<k1l> Gurkenglas: installier das vernünftig. sonst brauchen wir hier gar nicht weiter sprechen
+<Gurkenglas> dAnjou, huhwat?
+<Gurkenglas> k1l, ich hab aber keine externe die groß genug ist
+<koegs> lass Ubuntu bei der Installation ein wenig von den Windows-Partitionen wegnehmen, der wird sowas in der Richtung vorschlagen
+<dAnjou> gibt mir ja zu denken ob das nicht doch ne richtige partition ist
+<dAnjou> shit
+<k1l> Gurkenglas: die externe brauchst du nur für deine backups. kannst die auch in die cloud packen, abschreiben oder einfach löschen wenn die daten nicht wichtig sind.
+<dAnjou> Gurkenglas: na was haste denn zuletzt verlinkt, das war nur eine sache
+<k1l> Gurkenglas: du könntest auch erstmal versuchen dein windows wieder herzustellen. aber das fragst du bitte den windows support.
+<Gurkenglas> dAnjou, das war ein screen von meinen Partitionen im Dateibrowser
+<dAnjou> Gurkenglas: nein, war es nicht
+<ppq> ich habe momentan in kubuntu 11.04 nen autostart in kde eingerichtet für den synergy client. ich will den aber früher starten, damit ich mich auch schon im kdm darüber einloggen kann.
+<ppq> dachte an die /etc/rc.local, aber das wird dann ja als root ausgeführt. ist 'sudo -u' da der richtige ansatz?
+<Gurkenglas> dAnjou, ieh. http://www7.pic-upload.de/15.07.11/5396pdv8o9tr.png
+<ppq> also, damit synergyc als user ausgeführt wird...
+<eike_> mahlzeit
+<koegs> ppq: rc.local?
+<koegs> oh, sorry
+<koegs> su koegs -c "/usr/bin/vboxwebsrv -b" als beispiel
+<eike_> mein 11.04 wurde vor ettlichen wochen mit der alternate cd installieren samt verschlüsseltem LVM. vorgestern kam ein grub update und nach dem reboot gestern geht "nix mehr" sprich ich bekomme nur die grub rescue konsole zu sehen.
+<ppq> koegs: danke :) su ist wohl besser, ja. wird dann ja mit der login shell ausgeführt, also auch mit allen gesetzten sachen aus ~/.profile, oder?
+<eike_> auf sda3 (verschlüsselter teil) kann ich via live cd zugreifen. habe schon die grub reparatur mit der "chroot-methode" probiert - ohne erfolg. nun zeigts mir vor der grub rescue konsole "unknown filesystem"
+<eike_> tl;dr: wie erstelle ich die /boot partition neu bei einer verschlüsselten installation?
+<ppq> eike_: es wär gut zu wissen, was genau du im chroot getan hast usw
+<eike_> ppq: zuerst http://wiki.ubuntuusers.de/grub_2/reparatur und danach habe ich es noch mit https://help.ubuntu.com/community/Grub2 abschnitt Copy LiveCD Files probiert
+<eike_> letzteres führt zumindest dazu, das sie die alte fehlermeldung "invalid arch independendent ELF magic" verschwunden ist.
+<ppq> koegs: hmpf, in der rc.local wird es vor x gestartet. ich werd mir wohl nen upstart job basteln müssen
+<CalebRipley> Banshee benennt ja leider CDs nicht selbständig, bei denen mehr als ein Vorschlag zur Benennung exestiert… Gibt es eine einfache Alternative die das Problem nicht hat?
+<szal> hae?
+<CalebRipley> Wenn ich einen CD mit Banshee oder Rhythmbox überspielen will (ubuntu 10.04 oder 10.10) dann schreibt er nur Unbekannter Interpret, Titel usw.
+<mgolisch> naja kennt die cd vermutlich nicht
+<mgolisch> da sind ja keine informationen darueber drauf
+<CalebRipley> Jupp, kann banshee denn gar nicht via CDDB die Infos sammeln?
+<mgolisch> ka schau in den einstellungen
+<mgolisch> evtl ist die cd einfach nicht bekannt in der verwendeten datenbank
+<CalebRipley> Über abcde (a better cd encoder) via freedb.org klappt es ohne Probleme und Adele (21) ist ja nicht gerade unbekannt.
+<mgolisch> naja verwendet evtl ne andere datenbank
+<mgolisch> ka
+<mgolisch> hab keine audiocds
+<CalebRipley> Danke trotzdem :-). Solange mir kein Webshop FLAC-Files anbietet bleibe ich bei CD ^^
+<apollo13> CalebRipley: picard ist sonst super um pc rips korrekt zu taggen
+<CalebRipley> Oh danke apollo13 :)-
+<apollo13> pc sollte natürlich cd heißen, ist aber wirklich eher für rips, da stark albumorientiert
+<ppq> picard hat bei mir schon witzige sachen produziert, ein death metal album als benjamin blümchen getagt zb :D aber ist wohl das beste für den zweck
+<szal> löl
+<apollo13> ppq: beides keine musik also passt das schon ;) aber naja zumeist sagt er die übereinstimmung, solang die grün ist (ampelsystem ftw) dann hauts eigentlich hin
+<Thomas_Zahreddin> seltsames Problem: video http://seleniumhq.org/movies/intro.mov nur sichtbar, wenn ein anderes Fenster (eigentlich) darüber liegt … jemand einen Hinweis?
+<Thomas_Zahreddin> (Ubuntu 11.04, Classic, ATI Radeon 4850)
+<szal> Thomas_Zahreddin: mit welchem Player?
+<Thomas_Zahreddin> szal: gute Frage; ging weder in firefox noch in Chrome - muss mal sehen wie ich den Player herausbekomme, Codecs sind die restricted und w64 installiert
+<szal> hier mit VLC nix Problem (11.04, KDE, nVidia GT 240)
+<szal> und was will uns das Video sagen? ;)
+<mnass> kein Problem Chromium 11.04, unity
+<Thomas_Zahreddin> szal: totem ist der player hier
+<Thomas_Zahreddin> szal: mit vlc hier gleiches Verhalten (64 bit bei mir )
+<k1l> ich kenne einen ähnlichen effekt. da lag das video immer hinter allen anderen (auch dem desktop)
+<apollo13> das kenn ich von flash ;)
+<deem> Chromium mit Ubuntu 10.04 - Nvidia GT 210. Läuft Optimopti
+<Thomas_Zahreddin> szal: ev. ein Problem weil ich einen Dist-upgrade machte?
+<k1l> musste mal mit dem ausgabemodul rumfummeln
+<apollo13> Thomas_Zahreddin: was ist wenn du das video ganz normal (also nicht im browser) laufen lässt
+<apollo13> k1l: bei totem ist nicht viel mit ausgabemodul rumfummeln iirc
+<Thomas_Zahreddin> apollo13: gleiches Problem: Video nur sichtbar, wenn ein anderes Fenster (eigentlich) drüberliegt (getestet mit totem und vlc)
+<k1l> Thomas_Zahreddin: warst du das nicht auch mit dem grafik fehlern beim porträt modus?
+<Thomas_Zahreddin> k1l: richtig, hab der Einfachheit halber jetzt auf Querformat umgestellt, da zeigt sich dieses Problem nicht - auf den Video-Fehler kam ich, weil ich einen Screenshot machen wollte (Fehler war am Bildschirm sichtbar, aber nicht im Screenshot)
+<Thomas_Zahreddin> k1l: als ich dann versuchte mit recordmydesktop ein Video zu erstellen, war das nur schwarz (aber ev. der hier geschilderte Video-Fehler)
+<k1l> mit ati kenn ich mich leider nicht aus
+<Thomas_Zahreddin> szal: apollo13 k1l ich vermute der Fehler liegt im Codec oder im Video-Treiber (ATi, proprietär)
+<Thomas_Zahreddin> szal: eine Alternative? (ich spiele keine 3D-Spiele und auf compiz kann ich auch verzichten)
+<szal> Thomas_Zahreddin: radeonhd (der freie Treiber)
+<szal> Thomas_Zahreddin: oder kauf dir ne nVidia-Karte
+<Thomas_Zahreddin> szal: Hardwaremäßig ist die ATI 4850 ja nicht schlecht (meine nächste wird eine nvidia)
+<szal> der einzige tangible Vorteil, den (neuere) ATI-Karten haben, is die Nutzung von mehr als 3 Monitoren, wenn man so viele hat
+<Thomas_Zahreddin> szal: https://bugs.launchpad.net/ubuntu/+bug/811082
+<deem> wie änder ich denn die standardprogramme? ich hatte hier mal office drauf und seitdem will er mir meine doc dateien immer mit office anstatt mit openoffice öffnen, obwohl word gar nicht mehr installiert ist.
+<Thomas_Zahreddin> szal: danke
+<Protector1981> rechte Maustaste auf die Datei -> Eigenschaften -> öffnen mit und dort des Standardprogramm auswählen
+<Thomas_Zahreddin> szal: ich bin mal alle Einstellungen des ATI-Treibers durchgegangen und hab sie auf Standard gestellt - siehe da es geht (wahrscheinlich irgendeine Anti-… Effekteinstellung)
+<Thomas_Zahreddin> k1l: der Fehler in der Porträt-Einstellung des Monitors ist nach wie vor vorhanden
+<deem> Protector1981: k. danke =)
+<gewuerzwiesel> servus, hat jmd ne Ahnung, wieso hier nach der install von 11.04 mit dem Laden des grub der Monitor ausgeht, und erst beim Loginscreen wieder an? Sieht mir ähnlich dem Fehler von früher, bei dem man den Installer nur per nomodeset sichtbar bekam
+<frostschutz> gewuerzwiesel: kannst ja mal mit nomodeset probieren. wenn das hilft, ists ein problem mit dem framebuffer/grafiktreiber
+<gewuerzwiesel> frostschutz: ja, nur wo eintragen? Ich seh ja schon den Grub selbst nicht. Sonst trug man das ja beim bootparameter ein
+<szal> gewuerzwiesel: /etc/default/grub -> GRUB_CMDLINE_LINUX="edd=on nomodeset" <- anschl. 'sudo update-grub'
+<gewuerzwiesel> szal: besten dank, ich probiers aus
+<gewuerzwiesel> szal: tut nicht, sobald grubmenu laden sollte, geht der monitor auf "out of scan range", habs auch bei GRUB_CMDLINE_LINUX_DEFAULT="nomodeset quiet splash" probiert (wie ichs von der bootline kannte)
+<gewuerzwiesel> sobald gnome da ist (is autoanmeldung) is alles wieder sauber
+<szal> schließ den Moni digital an (DVI, HDMI, whatever) anstatt analog (VGA)
+<gewuerzwiesel> als der gebaut wurde, gab's die Worte nichmal! ;D
+<gewuerzwiesel> hm, werd ichs vor Ort mir dem richtigen Monitor mal testen müssen...
+<gewuerzwiesel> danke derweil für den Tip
+<frostschutz> gewuerzwiesel: das sind ja zwei verschiedene dinge, der kernelparameter ändert nur die auflösung des anschließend bootenden linux, nicht von grub selbst
+<gewuerzwiesel> frostschutz: jap
+<frostschutz> vielleicht steht das irgendwo hier dabei http://wiki.ubuntuusers.de/GRUB_2/Konfiguration
+<frostschutz> ich benutze noch grub 1 ;)
+<gewuerzwiesel> frostschutz: mach ich egtl auch, aber der PC fürn Vater... da hab ich net mehr Zeit als default alles einzukippen
+<szal> frostschutz, gewuerzwiesel: steht auch in /etc/default/grub -> GRUB_GFXMODE=1280x1024 <- z. B.
+<frostschutz> kenn ich, meine eltern sind auch im default (d.h. windows) ;)
+<gewuerzwiesel> szal: jap, das teste ich grade
+<dAnjou> wtf, irgendwie spinnt das reputation system von askubuntu. gestern hatte ich noch 339, heut vormittag warns 379 und jetz sinds auf einmal 479, ohne dass irgendwas passiert is
+<dAnjou> huch, sorry
+<gewuerzwiesel> szal, frostschutz GRUB_GFXMODE wars, habs auf 800x600 und jetzt is einwandfrei. Danke euch!
+<Wedelwolf> kann das sein, dass ubuntu mit 3mpx webcams ueberfordert ist?
+<PBeck> hi
+<Haasee> Wie bekomme ich "Parole" dazu, mp3-streams abzuspielen. Beim anklicken des files (hier wdr5) öffnet zwar das Programm, weiter geschieht nichts...
+<nahab> hi, wie öffne ich grub.conf mit rootrechen?...was für einen Befehl muß ich in das Terminal eingeben?
+<Fuchs> nahab: das ist prinzipiell eine sehr schlechte Idee
+<Fuchs> nahab: wenn Du Dir aber gerne ins Knie schiessen moechtest: sudo -e /pfad/zur/datei
+<xaxas> moin
+<nahab> Fuchs, warum, will haben das der bootloader ne kleinere auflösung hat
+<Fuchs> ,grub2? nahab lieber erst da lesen
+<shetlandpony> nahab lieber erst da lesen: http://wiki.ubuntuusers.de/GRUB_2
+<Fuchs> nahab: dann ist die grub.conf falsch, die wird naemlich immer wieder ueberschrieben. Siehe Wikiartikel.
+<nahab> Fuchs, und wo kann ich es dann einstellen
+<Fuchs> steht im Artikel sehr gut beschrieben
+<Fuchs> /etc/default/grub waere vermutlich ein guter Anfangspunkt
+<k1l> nahab: die grub.cfg ist nur das endprodukt. veränder lieber die scripte die die grub.cfg erstellen
+<nahab> Fuchs,  wie öffne ich jetzt /etc/default/grub mit rootrechten?
+<Fuchs> nahab: mit sudo -e /etc/default/grub
+<nahab> danke :-)
+<Fuchs> gegeben, dass $EDITOR gesetzt ist.  Sonst halt  sudo nano /etc/default/grub  oder sudo vim /etc/default/grub   oder gksu gedit /etc/default/grub
+<nahab> Fuchs, und wo genau da ändere ich die auflösung?
+<nahab> bei #GRUB_GFXMODE=800x600?
+<k1l> nahab: hast du mal in den link geguckt?
+<Fuchs> nahab: keine Ahnung, ich mache grosse Boegen um Grub2. Lies doch den Artikel, den ich nun zwei mal empfohlen habe
+<nahab> kil, ja
+<k1l> dann kannst du ja nach dem gucken jetzt mal lesen :)
+<Ben83> Hi nutzt jemand von euch linux mint 11
+<TheInfinity> Ben83: nutzen hier sicher einige. aber support dafür gibts im mint channel. :)
+<Ben83> Och schade.ist doch fast das selbe
+<k1l> ohwe bitte nicht schon wieder. Ben83 wenn es das selbe ist nutz doch ubuntu. ansonsten bitte an den mint support wenden.
+<TheInfinity> du sagst es. fast. aber eben nicht exakt. und dewegen können wir hier nicht wissen, was die mint devs grade mal wieder anders gemacht haben.
+<thomasfuston> Ben83: dann nutze ubuntu und du bekommst hier super support
+<Ben83> Mit Abneigung empfangen.sorry.wollt wirklich nicht unverschämt wirken.erinnern will ich nur nochmal an den Open soure Gedanken hinter dem Linux eigentlich steht.
+<TheInfinity> Ben83: der open source gedanke beinhaltet aber auch, dass man selbst genau die leute fragt, die sich dafür anbieten.
+<thomasfuston> Ben83: für solche äußerungen in den offtopic channel gehen
+<fellbuendel> welchen Teil von "Das ist eben nicht das selbe, da kann dir hier höchstens aus extremem Zufall jemand helfen" hast du nicht verstanden, Ben83?
+<Ben83> *rofl*
+<Ben83> Macht mal weiter hier.Grundsatzdiskussionen möchte ich jetzt keine führen
+<PBeck> Ben83: ich denke in #ubuntu-de-offtopic gibts sicherlich ein paar Leute die dir helfen
+<jokrebel> hi
+<jokrebel> Kennt einer ne Möglichkeit wenn man nur eine Kopie ziehne will, scannen und drucken zu automatiesieren. Momentan muss ich immer mit Simple-Scan erst scannen und anschließend über dessen Druckfunktion zum Drucker schicken. Sowas sollte doch bestimmt auch einfacher gehn.
+<nahab> Fuchs,  leider klappt es nicht mit dem was da steht, gibt es noch ne andere möglichkeit die Auflösung im Grub zu ändern?
+<sdx23> jokrebel: Was fertiges wüsste ich nicht, aber im Prinzip kannst du mit scanimage und lpr was zusammenbasteln.
+<PBeck> jokrebel: ein kleines skript - scanimage und dann direkt an lpr schicken
+<PBeck> jokrebel: und das dann als button in der gnome leiste
+<frostschutz> mein drucker hat einen scanner und kopierknopf eingebaut ;)
+<PBeck> upps sdx23 war schneller
+<nahab> weiß jemand wie man auf einfacher Weise  die Auflösung im Grub zu ändern kann?
+<frostschutz> nahab: /etc/default/grub GRUB_GFXMODE oder so
+<Check> guten abend zusammen,wo könnte man den pin für die sim eines wwan modems hinterlegen? wenn ich nicht möchte das er mich noch mal danach fragt. ps in der provider einstellung steht er schon drin, aber er fragt bei jedem booten und anmelden.jemand eine idee
+<Robert_Zenz> Check, gibt's da nicht drunter die Checkbox zum anhaken das er sich den merken soll?
+<Check> ne nicht das ich wüste, bei ubuntu 9.1 habe ich ihn einmal eingegeben und dann war das ok. und bei 11.04 will er ihn sobald das modem gefunden wird.das nervt
+<Check> habe gehoft ich könnte ihn in die config datei vom wwan modem aufnehmen weis aber nicht wo diese sich befinden.
+<Check> des weiteren verstehe ich nicht wie so er ihn überhaupt will,mein er steht ja in den einstellungen der zugangsdaten drin.
+<jokrebel_> Check: eventuell hilft es schon, die SIM-karte mal in ein Handy zu stecken und dort dann abzuspeichern, dass nicht nach der PIN gefragt werden soll.
+<Check> sim ohne pin muß ja auch net sein wenn man den laptop rum schlept aber als not lösung wäre es ne idee :)
+<Check> wenn es eine checkbox gäbe wo man sagen könnte er soll ihn sich merken, wo würde er den reinschreiben?
+<jokrebel_> Check: es wird ja wohl kaum die SIM ohne Laptop (bzw. umgekehrt) abhanden kommen. Wo ist dann der Unterschied, ob die SIM beutzung ohne PIN zuläßt oder die PIN im Laptop fest abgespeichert ist?
+<Check> habe mehrere modem auch ein externes usb modem , hin und wieder nehme ich nur die karte und das modem mit ohne laptop,da wäre es mir recht wenn man schon die pin braucht fals ich es mal vergesse.
+<Check> ;)
+<dreamon> Könnt ihr mir einen zuverlässigen FlashPlayer empfehlen. Wenn ich youtube unter Firefox aufrufe oder schließe, hab ich des öfteren Systemabstürze.Geht gar nix mehr. Nur noch reisub
+<jokrebel_> dreamon: Bin aus ähnlichen Gründen auf Chromium umgestiegen und sehr zufrieden.
+<dreamon> jokrebel_, Hast du das auch mal gesehen das die Flashvideos (Werbung) im Hintergrund weiterlief? Passiert hier auch manchmal
+<jokrebel_> dreamon: nö
+<dreamon> Was kann das sein, wenn Scroll Lock blinkt auf der Tastatur
+<sdx23> eine Kernelpanik.
+<dreamon> sdx23, Oh.. kiste läuft aber..
+<dreamon> wo kann ich schauen was er für ein Problem hat?
+<jokrebel> dreamon: das ist dann eher merkwürdig…
+<dreamon> jetzt hat es aufgehört zu blinken.. ist dunkel
+<jokrebel> dreamon: Bist vielleicht vorhin mehrfach auf die "Rollen" taste gekommen?
+<ghostcube> hi wo speichert denn gnome die metacity themes?
+<dreamon> ich starte mal neu.. mir fällt das immer auf wenn ich die Kiste starte.. An der Stelle wo ich mich einlogge ist noch alles normal.. dann fängts an zu blinken..
+<dreamon> jokrebel, Nein, hab ausser Passwort nichts an der Kiste gemacht.. meinst das die Tastatur spinnt?
+<dreamon> jetzt ist es aus.. obwohl ich nichts gemacht habe.
+<ghostcube> hat sich erledigt :)
+<RichyW> hey ich habe ein lcd display (http://www.mythtv.org/wiki/Imon  das erste bild) und wenn ich lsusb eingebe steht da das es ein vfd ist. habe probleme beim einrichten kann es an dieser falschen angabe liegen?
+<gh1234> Sers, eine kurze Frage, zerlege ich mir meine Home Partition wenn ich die verkleiner obwohl ich im Installer die Option gesetzt habe die zu verschlüsseln? Oder ist _nur_ der Order verschlüsselt und das ganze verhältnissmäßig ungefährlich? :D
+<TheInfinity> gh1234: also. ohne backup ist das n no go.
+<TheInfinity> und das ganze dürfte n bissl aufwendiger werden.
+<gh1234> TheInfinity: Das ist partition vergrößern / verkleinern sowieso...
+<gh1234> Hab bloß keine Lust das Backup zurück zu spielen weils schon ne ganze Menge Dateien sind...
+<gh1234> Darum frag ich lieber bevor ich auf gut Glück bastle
+<ohhi> hoy, der netzwerkmanager hat ja die option 'für alle nutzer verfügbar' was ist genau damit gemeint ?
+<TheInfinity> ohhi: dass auch andere nutzer deines systems das netzwerk nutzen können
+<k1l> ohhi: damit brauchst du beim einloggen für das wlan z.b. kein pw mehr eingeben
+<ohhi> also das sind dann doch 2 unterschiedliche sachen
+<jokrebel> ohhi: Da? nicht nur der Hauptnuter (und Adminrechte-Inhaber) das Netzwerk nutzen kann sondern auch alle anderen (ggf.) angelgten Nutzer dieses PCs.
+<k1l> ohhi: es ist kein hotspot oder so
+<ohhi> problem ist bei mir grad ich hab den haken nicht gesetzt, und trotzdem kann mein anderer nutzer das netzwerk nutzen
+<gh1234> Also hier hat auch keiner ne Ahnung wie genau da verschlüsselt wird? Na ist ja Wochenende... dann werd ichs morgen einfach mal auf gut Glück versuchen.
+<k1l> ohhi: wenn er in der admin gruppe ist muss er nen pw eingeben und kann es dann nutzen. ohne den haken kann es jeder user auf dem sysstem nutzen
+<ohhi> warte und mit dem haken nur ich oder was ?
+<jokrebel> .oO( nicht eher umgekehrt? )
+<k1l> admin user können es iirc immer. sie haben ja sudo rechte mit ihrem pw
+<ohhi> admin ..... könnte sein wie lösch ich den nochmal aus ner gruppe ?
+<k1l> benutzer und gruppen aufrufen und dann dort bei gruppen anschauen
+<jokrebel> System - Systemverwaltung - Benutzer und Gruppen.
+<ohhi> k1l die frage war nur für den fall das jemand zufällig auswendig den terminal befehl weiß  sonst kuck ich eben ins wiki
+<ohhi> weil ich hab grad keine wm am start
+<k1l> achso
+<ohhi> nüx mit systemverwaltung >_<
+<Nicodemus> Hallo, ich bin Laie und habe folgende Frage: Warum läßt sich der Unity-Panel-Service nicht von der Kommandozeile als "Unity-Panel-Service" starten ?
+<ohhi> deluser ....... ja das hätte man vllt auswendig wissen können ^^
+<Nicodemus> vom terminal....nicht von der Kommandozeile...
+<k1l> Nicodemus: nutzt du überhaupt die unity version? dachte du nutzt die gnome-session von 11.04.
+<Nicodemus> falsch...
+<Nicodemus> Ich nutze Unity...
+<Nicodemus> Ich habe die Classic version ausprobiert, und bin dann zu Unity gewechselt...., daher die Verwechslung mit dem Befehl "pkill gonme-panel"
+<jokrebel> .oO( hat da auch anderes im Hinterkopf - seit nunmer 4 Tagen oder so …=
+<k1l> und dein problem ist jetzt, dass das unity panel fehlt? kommt denn ne fehlermeldung?
+<ohhi> nun nope, jetz ist mein gast in fast keiner gruppe mehr und hat immernoch internet
+<Nicodemus> nein...., ich frage warum sich der Service nicht ausführen läßt.... das Terminal meldet mir Befehl nicht gefunden....
+<Nicodemus> "Befehl nicht gefunden"
+<mgolisch> Nicodemus: vermutlich weil das ding nicht so heisst?
+<ohhi> Nicodemus: kommpletier doch mal mit tab
+<Nicodemus> Ich möchte per Tastatur auf das Unity-Panel zugreifen um meinen Stick zu aktivieren....
+<k1l> Nicodemus: nein. wenn das panel läuft musst du es nicht starten. drück mal die super taste (win taste)
+<Nicodemus> nicht die Dash...
+<k1l> dann kommen zahlen auf die buttons und die drückst du dann
+<Nicodemus> nicht die Schnellstartleiste
+<k1l> achso.
+<Nicodemus> oben rechts...
+<k1l> hatten wir das thema nicht, dass das nicht dafür ausgelegt ist?
+<Nicodemus> beim Netzwerk...
+<mgolisch> wieso nimmst du nicht die maus?
+<Nicodemus> na, mann wird doch fragen dürfen warum das terminal den Befehl Unity-Panel-service nicht findet, oder ?
+<jokrebel> mgolisch: Weil er s Laptop auf den Knien hat und keine Maus nutzen will ;-)
+<k1l> wieso nimmt er nicht nen cli programm, wenn er die maus nicht nehmen will?
+<mgolisch> wieso nuzt man dann sowas wie gnome oder unity?
+<mgolisch> naja egal
+<mgolisch> :)
+<mgolisch> es gibt cmdline interfaces fuer networkmanager
+<mgolisch> evtl kannst du dir mit sowas behelfen
+<Nicodemus> Unity scheint mir eigentlich ganz gut für ein Notebook geeignet zu sein...
+<mgolisch> echt?
+<mgolisch> find das sieht aus wie nen spielzeug desktop
+<Nicodemus> hmm...
+<mgolisch> wie bei nem telefon oder sowas
+<mgolisch> und die meisten gui tools lassen sich eh nicht gescheit ohne maus bedienen
+<jokrebel> Nicodemus: Dann kauf Dir wenigstens nen Laptop mit Trackball oder gewöhn Dich ans Touchpad. Herrgott!
+<Nicodemus> mgolisch, wie connecte ich denn den Stick von der Kommandozeile aus, erkannt wird er ja automatisch...
+<mgolisch> nmcli --help?
+<ohhi> nmcli
+<jokrebel> Nicodemus: Bist Du es nicht langsam selber leid????
+<ohhi> oh ups ^^
+<Nicodemus> Linux ?
+<ohhi> übers terminal fänd ich grad auch mal gut
+<jokrebel> Nicodemus: Nöö - Deine Fragen bezüglich Steuerung von GUI-Lastigen Dingen möglichst ohne Maus zu bewerkstelligen.
+<ohhi> ich mach das sonst mit wvdial
+<Nicodemus> gelistet wird der Stick nmcli con"
+<bekks> Nicodemus: Das ganze nochmal in verständlich bitte.
+<bekks> Der letzte Satz war - nicht zu verstehen.
+<Nicodemus> gelistet wird der Stick mit "nmcli con"(im Terminal)
+<bekks> Gelistet von WAS?
+<Nicodemus> mom..
+<Nicodemus> NAME                      UUID                                   TYP               BANDBREITE ZEITSTEMPEL-ECHT
+<Nicodemus> Tchibo-Mobil Tagesflat / Monats-Flatrate L / Monats-Flatrate XL da1f4fd8-d302-4cc7-a821-f9edf78be333   gsm               Benutzer Fr 15 Jul 2011 22:22:04 CEST
+<Nicodemus> Auto Telekom              9685be85-3868-4547-8a25-e0dcabfb79d2   802-11-wireless   Benutzer nie
+<Nicodemus> bartholomaeus@Mobile-V5505:~$
+<bekks> STOP!
+<bekks> HErrjeh.
+<bekks> ,nopaste? Nicodemus
+<shetlandpony> Nicodemus: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.pocoo.org [paste]
+<bekks> Und meine Frage beantwortet das nebenbei mal genau gar nicht.
+<Nicodemus> ist aber genauso wieder gegeben wie in der ausgabe im terminal..
+<bekks> Ist mir egal was das ist - das ist jedenfalls keine Antwort auf meine Frage.
+<ohhi> Nicodemus: was genau wolltest du nochmal machen ?
+<mgolisch> wer will sein umts dings aktivieren oder so
+<bekks> Dann benutzt man doch idR einfach umtsmon?
+<dAnjou> und wieso will er das per tastatur machen??
+<mgolisch> nmcli con up id <id>
+<mgolisch> oder so
+<mgolisch> weil er das touchpad nicht mag oder so
+<mgolisch> ka
+<mgolisch> ist mir auch wurst eigentlich, jedem das seine
+<dAnjou> mich deucht, ihr helft hier auf der falschen ebene
+<Nicodemus> Ich wollte eigentlich auf das Unity-Panel mittels Tastaturkombination zugreifen um de UMTS-Stick aus den Panel-Menü (oben rechts bei) im Menü per Tastendruck aktivieren; aber nun suche ich eine Varianteum den Stick per Kommandozeile mit dem Internet zu connecten...
+<dAnjou> Nicodemus: warum zur hölle?
+<jokrebel> .oO( oder, da ist nicht (mehr) zu helfen … )
+<ohhi> Nicodemus:  wvdial heißt der befehl zur einwahl  muss aber angepasst werden (apn und so)
+<Nicodemus> muß mal eben zu Stift greifen...
+<dreamon> Was sagt diese Meldung : your cpu appears to be lacking expected security protections. Please check your bios settings. for more info run /usr/bin/check-bios-nx verbose   -> was ist da los?
+<bekks> dreamon: Das was in der MEldung steht. Einfach übersetzen.
+<bekks> dreamon: Nopaste doch mal die Ausgabe des angegebenen Befehls.
+<alamar> dreamon: you h4z no NX bit
+<bekks> oh noez!
+<dreamon> bekks, This CPU is family 6, model 23, and has NX capabilities but is unable use these protective features because the bios is confiured to disable the capability. Please enable in Bios.
+<jokrebel> dreamon: Na dann schalt es ein im BIOS.
+<ohhi> ist das ich son schutzdingenz gegen unerlaubte proßesse ?
+<dreamon> Meinen die "No-Execute Memory Protection?" das ist im moment disabled
+<alamar> ohhi: es ist ein "schutzdingenZ" um programme "sicherer" ausführen zu können.
+<alamar> dreamon: ja
+<jwi> dreamon: genau das
+<alamar> ohhi: einfach gesagt kann man speicherbereiche im ram als ausführbar und nicht ausführbar flaggen
+<Shin_> hi
+<alamar> ohhi: für mehr details frag in einem passendem channel oder dem offtopic channel
+<x42> Kann ich eigentlich den SCSI Controler als Modul compilen?
+<jokrebel> dreamon: Habs nur überflogen, aber vielleicht hifts Dir weiter: http://forum.ubuntuusers.de/topic/bios-und-nx-was-ist-das/#post-2709316
+<dreamon> Ok, meldung ist weg. Diese komische Caps Lock blinkt aber immer noch.. seltsam
+<mgolisch> x42: wie meinst du das?
+<mgolisch> ein scsi controler ist ein stueck hardware, was willst du da kompilieren..?
+<mgolisch> und bei ubuntu sind eigentlich alle treiber als module uebersetzt
+<x42> Ich frage mich ob ich den SCSI Driver als Modul kompilieren kann, anstatt den fest in den Kernel zu kompilieren
+<bekks> dreamon: dmesg nopasten.
+<mgolisch> x42: wieso baust du selber nen kernel?
+<bekks> x42: Wieso sollte man das nicht können?
+<lloyd> weil er es kann
+<bekks> lloyd++ :)
+<mgolisch> rite! i f0rg0t
+<jokrebel> .oO( ich bin Root - ich dar das… )
+<x42> Will dass mein Kernel schlanker wird.
+<x42> kompiliert ihr eure kernel nicht neu?
+<bekks> Nö, wozu?
+<jokrebel> x42: Was hilft Dir ein schlankerer Kernel mit mehr Modulen?
+<Nicodemus> hmmm.....
+<bekks> Mir ist vollkommen hupe, ob mein kernel schlank ist oder nicht.
+<Nicodemus> Ich werd mich erstmal abmelden..
+<T2k3> jokrebel: damit man module raus werfen kann die man nie brauchen wird
+<Nicodemus> tschüßi
+<x42> z.b. um das big kernelog zu deaktivieren oder um z.b. autoscheduling groups zu aktivieren
+<x42> lock
+<bekks> x42: Das bick kernel lock ist mir ebenso hupe.
+<bekks> cgroups sind in neueren Versionen sowieso aktiviert.
+<x42> und der ubuntu kernel ist schon etwas angestaubt
+<bekks> "angestaubt"?
+<bekks> Was ganz genau ist an einem .38 angestaubt?
+<mgolisch> ist nicht 3.0
+<mgolisch> :)
+<x42> dnftt
+<bekks> "dnftt"?
+<x42> will ja nix gesagt haben
+<x42> not feeding the troll
+<bekks> x42: Erst wissen, wovon man da redet, dann beschweren ;)
+<dreamon> bekks, http://pastebin.com/b0a8NBKC
+<ohhi> ist nich .39 aktuell ?
+<mgolisch> und?
+<ohhi> ka
+<bekks> ohhi: welche gesteigerte Rolle spielt das für die o.g. Argumente? :)
+<ohhi> keine is mir nur grad durchen kopf geschossen
+<x42> ist kein 3.0
+<mgolisch> naja 3.0 ist auch nicht stable
+<x42> lol ubuntu ist auch nicht stable
+<bekks> Aha.
+<Fuchs> koennte man das OT ein klein wenig verschieben? Danke.
+<x42> ot?
+<bekks> ,ot? x42
+<shetlandpony> x42: Dies ist ein Supportchannel! Fuer Offtopic- und Stammtischgespraeche bitte #ubuntu-de-offtopic nutzen. Danke! ;) [offtopic]
+<Fuchs> offtopic geplapper. Der Kanal hier ist fuer Support.
+<x42> wir reden dohc über den ubuntu kernel
+<Fuchs> ist trotzdem kein Support. Danke.
+<Nicodemus> mgolisch, .... danke..., hat geklappt !
+<x42> Ich hab doch gefragt, ob ich den SCSI Driver als Modul compilieren darf ...
+<T2k3> Fuchs: heißt der Chanel "ubuntu-de-support" ?
+<hiroko> kennt ihr ein programm mit dem man photos von der webkam machen kann?
+<Fuchs> x42: darfst Du. Aber wenn Deine Bootpartition auf einer via SCSI Treiber angeschlossenen Platte liegt, dann willst Du das Modul zwingend in der initrd haben
+<ohhi> aja das errinert mich daran das ich ja noch nen problem lössen wollte
+<mgolisch> hiroko: cheese?
+<hiroko> ah ok
+<Fuchs> T2k3: der Kanal hier ist Support only, steht in den Kanalregeln, die im Topic stehen. Wenn Du das diskutieren willst: gerne, aber nicht hier.
+<Fuchs> hiroko: cheese, kamoso
+<ohhi> wie verhinder ich jetz das mein zweitbenutzer auf meine internetleitung zugreift
+<x42> @Fuchs bist du ubuntu entwickler?
+<bekks> ohhi: Effektiv gar nicht.
+<T2k3> Fuchs: das Topic ist bei mir ca. 80 Chars lang und wird von mir genüsslich ignoriert ^^ aber das ihr das hier so streng seht ist immer wieder sehr befremdlich, meine 50¢ dazu
+<ohhi> -.-
+<x42> ich find das auch ziemlich krass hier
+<x42> seid doch nett zueinander
+<mgolisch> sind wir doch
+<mgolisch> :()
+<x42> wem gehört denn der channel? den entwicklern oder war irgendjemand anderes schneller?
+<Fuchs> x42: steht in den Kanalregeln im Topic. Aber ein kleiner Hinweis vorneweg: er ist offiziell, und ich bin einer der offiziellen, es waere also nett, wenn Du auf mich hoerst
+<x42> Hackerregel #1: Misstraue den Autoritäten ;)
+<Shin_> Fuchs: bitte freenode channel guidelines beachten, danke
+<Fuchs> Shin_: bitte #ubuntu-de-op verwenden, danke.
+<lloyd> junge junge
+<lloyd> ihr seid mir echt zu krass
+<thomasfuston> ist es so schwer zu unterscheiden, support? und offtopic? dann gibts kein problem
+<mgolisch> versteh das problem auch nicht..
+<x23> Hab gehört, das jemand geckit wurde nachdem er "Hackerregel #1: Misstraue den Autoritäten" gepostet hat.
+<mgolisch> eher gemerkt..
+<Nicodemus> mgolisch,  danke.... noch einmal.....
+<mgolisch> Nicodemus: np
+<Nicodemus> ich bin begeistert....
+<mgolisch> x23: oder redest du mit dir selbst?
+<dreamon> bekks, Hat dir mein nopaste nicht gefallen?
+<bekks> dreamon: Doch, war doch super :)
+<Nicodemus> Jetzt geht die Verbindung up and down..... und das per Knopfdruck....
+<mgolisch> dreamon: blinkt das einfach so? aber sonst geht alles?
+<bekks> dreamon: Blinken die beiden anderen LEDs nicht?
+<dreamon> Das blinkt nach dem login.. ein paar minuten.. und dann geht aus.. und ok
+<dreamon> nein die anderen leuchten .. im moment sind alle aus.. ohne das ich numlock angefasst hätte oder dis shift..
+<dreamon> CapsLock blinkt, ca. 3Minuten lang
+<dreamon> Mist ich Penn am Tisch ein.. N8 leute.. heute ist nicht aller Tage abend..
+<Nicodemus> Hallo, wo mache ich am besten Vorschläge für Ubuntu 12.04 ?
+<Fuchs> Nicodemus: www.launchpad.net, da bei dem passenden Projekt feature requests anbringen.
+<Fuchs> Nicodemus: ansonsten die Mailinglisten / IRC Kanaele der betroffenen Projekte. Am besten nicht hier, weil hier liest es keiner, der es auch umsetzen koennte.
+<lfan> hallo, ich hab mal eine rechtliche frage. darf man den tux eigentlich einfach so auf seiner website einbinden? den original tux darf man anscheinend überall einbinden, aber ich hätte gerne diesen http://tm-webservices.de/wp-content/uploads/Tux-G2.png
+<szal> lfan: -> #ubuntu-de-offtopic bitte
+<lfan> szal: okay
+<Nicodemus> mgolisch, .... sind Sie noch da ?
+<mgolisch> so alt bin ich noch nicht :)
+<mgolisch> aber ja
+<Nicodemus> darf ich Sie privat anchatten ?
+<mgolisch> ja
+<szal> Nicodemus: hou möt dat Siezen op, is ja gruselich :P
+<kuangbao> szal: na ob er dat jetzt verstanden haett ;)
+<Nicodemus> Der Befehl su.... ändert nur den Besitzer so als ob er gerade frisch eingeloggt hätte....
+<Nicodemus> und was genau macht jetzt sudo....
+<Nicodemus> das hab ich nicht verstanden....
+<szal> sudo führt einen Befehl mit den Rechten eines anderen Benutzers (i. d. R. root) aus
+<Nicodemus> ohne das der root angemeldet wäre ?
+<Nicodemus> ohne das der root angemeldet ist.
+<Nicodemus> oder wäre der sudo ein extra (tty ?) Teilnehmer ?
+<Nicodemus> Wie lautet denn der Befehl zum feststellen der eingeloggten Personen/Terminals/Consolen....
+<Nicodemus> Consolen wohl eher...
+<Fuchs> w
+<Fuchs> alternativ noch who, aber w sagt standardmaessig mehr
+<Nicodemus> also.... der zeigt mir hier eine gnome-session an, sorry aber ich benutze Unity....
+<Fuchs> Unity ist ein compiz-plugin mit sehr viel Gnomekrams drum. Das ist somit ziemlich normal.
+<Nicodemus> compiz-plugin ....
+<Nicodemus> also, wenn Compiz der eigentliche Fenstermanager ist, der den X-Server benutzt und nicht gnome.....
+<Fuchs> Gnome ist kein Fenstermanager, sondern ein kompletter Desktop. Du solltest Dich da vielleicht einlesen,
+<Fuchs> ,compiz? Nicodemus
+<shetlandpony> Nicodemus, Compiz ist http://wiki.ubuntuusers.de/Compiz - Weitere Infos im query ...
+<Fuchs> ,gnome? Nicodemus
+<shetlandpony> Nicodemus, GNOME ist http://wiki.ubuntuusers.de/GNOME
+<Nicodemus> dann ist das aber anscheinen nicht ganz korrekt... ( das drumherrum(Gnome) ist dann sozusagen eine stütze für Unity) obwohl eigentlich genial programmiert ?
+<Nicodemus> werden dann Unity und Gnome irgendwann zu einem Unity verschmelzen.. ?
+<bekks> Nicodemus: Das ist keine Stütze... sondern ein kompletter Desktop.
+<Fuchs> Nicodemus: nein, und das wird langsam eher ein Thema fuer den Offtopickanal, denke ich
+<Nicodemus> ein Gnome-Unity-Desktop, oder eben ein Gnome-Desktop mit Unity-plugin
+<Fuchs> unrealistisch, diskussion zum warum: #ubuntu-de-offtopic. Oder nicht.
+<x1o> hey, ähm ich möchte meine 55gb ssd vom laptop auf eine 2,5 zoll 500gb sichern
+<x1o> das soll regelmäßig passieren
+<x1o> also eine vollsicherung mit regelmäßigen inkrementellen backups
+<bekks> rsync
+<bekks> oder tar
+<x1o> gibt es da was womit die wiederherstellung einfach ist?
+<x1o> wie macht man das?
+<bekks> rsync. oder tar.
+<bekks> ,backup? x1o
+<shetlandpony> x1o, backup ist http://wiki.ubuntuusers.de/Datensicherung und http://wiki.ubuntuusers.de/Backup
+<x1o> ja da bin ich ja schon die ganze zeit
+<x1o> aber da gibt es so viel auswahl
+<bekks> Da ist wirklich alles was Du brauchst, verlinkt.
+<bekks> LEsen musst Du das aber alleine - entscheiden auch :D
+<x1o> :(
+<bekks> Ich mach das auch für Dich - am Wochenende für 240 €/h pro angefanger Stunde. :)
+<bekks> Scherz beiseite - wir können das nicht für dich entscheiden.
+<Shin_> bekks: bitet kein ot.
+<x1o> ähm
+<bekks> Shin_: Siehe mein zweiter Satz. Die Ironietags hatte ich beim ersten - vergessen. :)
+<x1o> rsync komprimiert aber nicht?
+<bekks> x1o: Nein. rsync kopiert.
+<bekks> tar komprimiert auch nur mit den Optionen -z und -j -- was dann aber inkrementelle BAckups unmöglich macht.
+<x1o> ich hab von dar, statt tar gehört, habt ihr davon gehört? benutzt?
+<x1o> wenn ich ne vollsicherung mit tar mache, werden dann auch unterverzeichnisse mit anderm mountpoint gesichert?
+<x1o> also auf nem andern device?
+<bekks> x1o: Ja, habe ich. Ich habe u.a. an darbackup mitgeschrieben.
+<bekks> und wie Du tar genau sagen kannst, was es wie sichern soll, kannst Du der man page von tar entnehmen.
+<x1o> naja ich möchte einfach alles sichern nicht, spezielle ordner
+<bekks> Dann mach das einfach.
+<bekks> Und alle szu sichern ist Quatsch.
+<bekks> /dev, /sys, /tmp und /proc will man nicht sichern.
+<x1o> jo ok, also /media lass ich raus, dann wird /home auch automatisch mitgesichert
+<bekks> /media auch nicht.
+<x1o> obwohl es auf nem andern device ist...
+<bekks> Das macht nichts.
+<x1o> ja ok dann hab ich alles richtig verstanden
+<bekks> Ich persönlich würde aber immer die Systemsicherung von /hom trennen.
+<x1o> ja ist wahrscheinlich besser und auch einfacher beim wiederherstellen
+<x1o> macht dar bei ssd-->hdd sinn?
+<bekks> Das BAckuptool spielt keinerlei Rolle.
+<x1o> ne dar wurd ja scheinbar wegen performance gemacht oder?
+<bekks> Nein?
+<x1o> sondern?
+<bekks> Weil es einige andere/mehr Dinge können sollte als tar, und mit einer Festplatte statt einem Bandlaufwerk als Ziel/Quelle umgehen können sollte.
+<x1o> ja ziel ist ja bei mir hdd, soll ich da dar benutzen?
+<bekks> Musst Du selbst entscheiden.
+<x1o> :(
+<x1o> ich dachte ich könnte mal von euren erfahrungen profitieren
+<bekks> Wir entscheiden aber nicht für Dich.
+<x1o> du hast mir aber auch nciht von deinen erfahrungen berichtet
+<bekks> Du hast nicht danach gefragt.
+<x1o> :)
+<x1o> ok, dachte das wäre deutlich geworden.
+<x1o> würdest du dar statt tar benutzen wenn ja warum?
+<bekks> Weil es inkrementelle und differentielle Backups beherrscht (mit ein bisschen Hirnschmalz ;) ), weil es einen integrierten Backupmanager hat und weil es scriptingfähig ist.
+<x1o> ach, das kann tar alles nicht (so gut)?
+<bekks> tar hat keinerlei Backupmanager. Die anderen Dinge kann tar auch, aber nicht so, wie ich sie haben will
+<x1o> :) das kling ja überzeugend :)
+<bekks> cpio ist für Backups auch super. :)
+<x1o> backupmanager heißt, ich kann zum beispiel zwischen den inkrementellen backups besser unterscheiden?
+<x1o> und sowas?
+<bekks> Nein.
+<x1o> sondern?
+<bekks> Man kann dar so benutzen, dass alle getätigten Backups in eine Datenbank eingetragen werden und man dann sehr schnell sehen kann, welches Backup welche Version einer Datei enthält.
+<x1o> ok
+<x1o> das wäre ja für mich interessant
+<bekks> Man kann auch mit tar eine Dateiliste erzeugen und grep benutzen...
+<x1o> mmh dakne bekks
+<AngelofThunder> hallo alle zusammen...
+<AngelofThunder> ich habe mein ubuntu lucid (artistx) upgedated, und habe jetzt jede menge probleme mit einzelnen Programmen....
+<AngelofThunder> so etwa monobristol, wo jetzt die ganzen instrumente fehlen und bei den repositorien werde auf einmal viele ignoriert, weiss jemand zu helfen?
+<szal> "artistx"?
+<AngelofThunder> ubuntu artistx
+<AngelofThunder> kann man unter ubuntu dafür sorgen das repositorien wieder geladen und nicht mehr ignoriert werden?
+<AngelofThunder> und auch libraries die zuvor da waren aber bei update gelöcht worden sind wieder installieren?
+<szal> AngelofThunder: lsb_release -a bitte
+<AngelofThunder> wie gesagt ubuntu lucid (ubuntu 10.04.2 LTS)
+<bekks> AngelofThunder: Hast Du ein Ubuntu oder "artistx"?
+<AngelofThunder> naja ein ubuntu wie vorin beschrieben im artistx distro
+<AngelofThunder> @bekks
+<szal> AngelofThunder: vollständigen Output des o. g. Befehls bitte -> Pastebin (siehe Topic)
+<bekks> Also artistx - dann hast Du hier leider keinen Support.
+<AngelofThunder> naja die repositorien dürften zum grossteil die gleichen wie beim standard ubuntu sein, davon abgesehn scheint es keinen channel spezifisch für artistx zu geben :-(
+<szal> AngelofThunder: die ham n Forum, und #ubuntu-de-offtopic existiert - Fragen kostet nix :)
+<AngelofThunder> habe es jetzt in die paste-bin kopiert szal, und jetzt?
+<szal> Adresse hier rein
+<AngelofThunder> http://paste.ubuntuusers.de/401527/

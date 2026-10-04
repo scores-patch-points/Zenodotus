@@ -1,0 +1,647 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2011-3-15"
+lang: "en"
+messages: "638"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<jiboumans> Daviey: what's the PPA url? i can take a look now
+<soren> hudson's deprecated anyway.
+<soren> deb http://pkg.jenkins-ci.org/debian binary/
+<soren> is what I use.
+<Daviey> jiboumans, https://launchpad.net/~hudson-ubuntu/+archive/testing
+<Daviey> actually, ~ubuntu-hudson is based on Natty... so soren's suggestion is probably better for LTS.
+<jiboumans> Daviey: you know me well :) of course i'm on LTS (smoser++)
+<Daviey> jiboumans, What?!  You aren't putting production loads on the development release?!
+<jiboumans> Daviey: indeed, I'm not hitting the crack pipe :)
+<Daviey> :)
+<hallyn> Daviey: ok, i'll try ffe process
+<hallyn> Daviey: I do seem to recall that debuild was failing until i refreshed patch 01-kvers.patch
+<hallyn> Daviey: but, hopefully you're off for the night and will read this in the morning :)
+<Daviey> hallyn, Make sure you note that you spent significant time trying to cherry pick a fix etc.  And new upstream snapshot seemed both more reliable, and less time - and more supportable rather than a massive patchset
+<Daviey> Lay it on thick :)
+<Daviey> hallyn, Ah, debuild will crap out if the patch contains fuzz... when quilt push doesn't... really annoying variation of defaults!
+<SpamapS> Daviey: 3.0 quilt or --with quilt ?
+<SpamapS> I think the 3.0 (quilt) thing is a bit broken. We really need 3.0 (bzr)
+<Daviey> SpamapS, "quilt pop -a ; quilt push -a" works.. with default setup, mentions fuzz and offset... but the build process will only accept offset but not fuzz.
+<Daviey> SpamapS, I recently pondered the idea of 3.0 (bzr), but can you imagine converting all of debian? :).... Really, i think bzr needs to have native knowledge of .pc
+<sbeattie> Daviey: there is an experimental 3.0 (bzr) somewhere, 3.0 (git) got bumped from experimental to approved recently, I though.
+<sbeattie> err, I thought.
+<Daviey> sbeattie, Yeah - but how useful is that for /everything/... Other than a few DM that use bzr and Ubuntu native packages?
+<sbeattie> Daviey: useful? when has that ever been a criteria? :-)
+<Daviey> lol
+<Daviey> Has everyone else had puppet adverts following them across the internet today?
+<ScottK> Do nightmares about clowns count?
+<Daviey> Depends if you have the nightmare whilst awake :)
+<RoAkSoAx> kirkland: dude could you also please publish the tarball for poewrnap at launchpad/net/powernap?
+<Tohuw> Is there any compelling reason to leave usergroups=yes in adduser.conf if I'm configuring an Ubuntu LAMP server? Granted, I need to watch my perms (e.g. 644 not 664), but that's just paying attention, not a real argument against it.
+<twb> There are two cases where the group permission is relevant: /home/fred (private personal files) and /srv/share (shared files that need group write access).
+<twb> IME you cannot handle both correctly with plain POSIX permissions, so it is better to err towards privacy and leave usergroups=yes.
+<twb> This allows users to opt-in to a shared group on specific files (i.e. /srv/share) rather than having to opt-out of same for /home/fred.
+<Tohuw> twb: good point. thank you
+<twb> Obviously if you value security over convenience, you should study one or more LSM MACs, like grsecurity, selinux or apparmor.
+<Tohuw> twb: I'm going to learn apparmor last, but I do plan to incorporate it to some extent. I figure, get it working, then harden it. :)
+<twb> Sure.
+<twb> You're running PHP so you're pretty much screwed anyway
+<Tohuw> twb: why are the default directory perms in adduser.conf 0755 if you're not supposed to execute stuff in /home?
+<twb> Tohuw: the default behaviour is to give world read access to files in $HOME
+<twb> On the basis that sharing is useful, e.g. so you can read alice's .bashrc for handy things to put in your own
+<Tohuw> twb: "You're running PHP so you're pretty much screwed anyway" <-- it depends, I would say. You can harden php decently through proper php.ini and phpSuExec configuration.
+<twb> http://en.wikipedia.org/wiki/PHP#Security
+<twb> One quarter to one third of ALL vulnerabilities announce each year are PHP related.
+<Tohuw> twb: I was more asking about the "7" part. Doesn't that allow the user to execute from their home?
+<twb> Tohuw: no, it's a umask.
+<twb> Actually, not it isn't.
+<twb> That's the actual permission that /home/fred will be set to, so 7 means rwx
+<Tohuw> So, why allow execution? I though executables were supposed to be in */bin dirs?
+<twb> Tohuw: execute permission on a directory means that you're allowed to cd into it, IIRC
+<twb> Something like that.  Anyway, you need it
+<Tohuw> oh. Hm!
+<Tohuw> I'll be darned; you're right
+<twb> Run info coreutils 'File permissions'
+<Tohuw> Revoking the executable bit prevents cd to the dir.
+<twb> Unfortunately there's only info page, not manpage
+<twb> `x' the permission the USERS have to execute the file, or search it if it is a directory.
+<Tohuw> the whole "oh let's only make info pages because info lolrulez" attitude is frankly annoying.
+<twb> info foo | less
+<twb> Now you have a big manpage
+<uvirtbot> New bug: #735239 in postfix (main) "package postfix 2.7.0-1 failed to install/upgrade: 子程序 installed post-installation script 傳回了錯誤退出狀態 75" [Undecided,New] https://launchpad.net/bugs/735239
+<Tohuw> twb: haha. It's more about telling users "just use man to find out about stuff", only some things don't have a man, or even worse, an outdated/very sparse one.
+<Tohuw> Though I suppose telling users, "just info it" is valid as all man pages are read by info, AFAIK
+<aarcane_> anyone here using a SAS Expander, and willing to recommend it for use in a new system ?  i'm shopping for a SAS Expander for a ubuntu based system, and would love to hear from anyone running one now.
+<twb> By "expander" do you mean a chassis that houses the disks, or a card that has SATA ports, or what?
+<aarcane_> a SAS expander is a circuit board, often housed on a PCI(E) shaped card or in a 5.25" bay that goes inside one of the chassis that houses the drives (or a main system) that allows multiple drives to be connected to one controller.  Most of the expanders I've seen take one SFF-8088 or 8087 cable from a controller card, and "expand" it to connect 16 or 24 drives plus 2 additional expanders.
+<aarcane_> I've also seen SAS expanders built directly into a backplane, but those are too expensive for me.
+<Tohuw> Okay, I've RTFM, but I still don't understand what format the quota for quotauser should be in...
+<Tohuw> (quotauser as set in adduser.conf)
+<twb> Hm, OK
+<twb> I can't help; I mainly deal with SATA
+<Tohuw> Is there a strict 1:1 relationship between inodes and files? I.e., every file has an inode.
+<Patrickdk> everything on a disk has an inode
+<Patrickdk> even directories, symlinks, ...
+<Patrickdk> not all inodes are files
+<twb> Tohuw: no, two files can have the same inode (i.e. a hard link)
+<jmarsden> Patrickdk: well, multiple hard links often fit inside one inode, too... touch foo; ln foo bar ; ls -i foo bar  # both have same inode number :)
+<Patrickdk> ya, I wasn't thinking about that
+<twb> Similarly, if you open a file, delete it, then create a new file, both files will be /tmp/x, but they will have different inodes
+<Patrickdk> and wasn't even thinking about it that way
+<Patrickdk> I was thinking stuff (files,dir,...) -> inodes -> blocks
+<Patrickdk> inodes is a collection of blocks, basically
+<Patrickdk> or, an inode
+<Tohuw> twb: thanks, I received the answer in another channel. I'm clear on it now. Is dumpe2fs the "standard" tool for viewing free inodes?
+<twb> By contrast, FAT has no inodes, so you cannot delete an open ifle
+<Patrickdk> tune2fs?
+<Patrickdk> really df -i
+<Tohuw> oh
+<Tohuw> good ol df
+<twb> Tohuw: I don't know why you would ever need to do that
+<twb> df -i lists the percentage of inodes used/free
+<Tohuw> twb: setting rational quotas for my partitions
+<twb> Tohuw: number of files is a rough guide to current inode usage within a specific directory tree
+<Tohuw> Given that I could theoretically run out of inodes before running out of blocks
+<Patrickdk> then for quota purposes, it's pretty much dir+files=inodes
+<twb> Tohuw: try find /home/ -user fred -xdev | wc -l
+<Patrickdk> hopefully user fred is a standard user, and doesn't have only maildir files :)
+<Tohuw> twb: right, but I was more interested in total free inodes, to try and devise a policy for limiting them.
+<Tohuw> fred is my mta AND sql log rotation holder! :D
+<Patrickdk> I'm doing one inode per 32kb currently
+<Tohuw> Patrickdk: what brought you  to that decision?
+<Patrickdk> it was the ratio setup before me, and I didn't see any point in changing it
+<Patrickdk> 4k is just normally overkill
+<Patrickdk> 64k is too big though :(
+<Patrickdk> 16k would probably be good
+<Patrickdk> but some users abuse inodes, not too many
+<twb> Look at what users are using, then halve
+<Patrickdk> I'm probably going lower the inode limit good pretty soon
+<Patrickdk> once I convert all the email
+<aarcane> Hi, Me again, still wondering which SAS Expanders people have used in here with a Ubuntu system
+<patdk-lap> how can we answer that when you don't stick around for an answer?
+<jmarsden> patdk-lap: You could try answering using memoserv, if you really want to :) :)
+<patdk-lap> I could
+<patdk-lap> but I seriously don't even think the os knows about sas expanders
+<patdk-lap> it's just sees drives connected to a scsi card
+<patdk-lap> as long as the expanders and sas card get along, all should be good
+<smoser> jamespage, awake ?
+<uvirtbot> New bug: #735296 in samba (main) "package winbind 2:3.4.7~dfsg-1ubuntu3.4 failed to install/upgrade: underproces installed post-installation script returnerede afslutningsstatus 127" [Undecided,New] https://launchpad.net/bugs/735296
+<luckymurali> Hi all
+<luckymurali> I installed ubuntu server 10.04 64 bit and there is no desktop on it
+<luckymurali> i want to install desktop on that machine but there is no internet
+<TheInfinity> luckymurali: of cource theres no desktop enviroment - servers usually don't have xorg / gnome
+<TheInfinity> luckymurali: and - then you have to set up your network connection :)
+<_ruben> luckymurali: if you want a desktop, install the desktop edition .. it's obvious i'd say
+<luckymurali> yes i know that, my concern is how to install desktopn on server without internet
+<_ruben> you'd use the desktop cd/dvd to install it, as it's not on the server cd/dvd
+<TheInfinity> luckymurali: get an internet connection. set up your wireless connection via cli.
+<TheInfinity> or whatever you need for internet
+<luckymurali> TheInfinity,I need Desktop without internet
+<luckymurali> but i dont know where is the desktop pacakge
+<luckymurali> the desktop I need to use is for a specific reason
+<luckymurali> any way thanks for your suggestions
+<uvirtbot> New bug: #735369 in bacula "Bacula Admin Tool (bat) does not work well with Qt 4.6.2 in Lucid" [Undecided,New] https://launchpad.net/bugs/735369
+<jdepi> hallyn: Hi hallyn; could you please post a link to more info about updating the apparmor profile (re mail on ubuntu-server list); i found some info on https://apparmor.wiki.kernel.org/index.php/Libvirt but I must say I have no experience with apparmor...
+<uvirtbot> New bug: #735402 in squid (main) "package squid 2.7.STABLE7-1ubuntu12.2 failed to install/upgrade: sub-processo script post-installation instalado retornou estado de saída de erro 1" [Undecided,New] https://launchpad.net/bugs/735402
+<uvirtbot> New bug: #735409 in mysql-dfsg-5.1 (main) "package mysql-server-5.1 (not installed) failed to install/upgrade: il sottoprocesso nuovo script pre-installation ha restituito lo stato di errore 1" [Undecided,New] https://launchpad.net/bugs/735409
+<RoAkSoAx> morning all
+<lynxman> morning RoAkSoAx
+<hallyn> jdepi: jdstrand may know of an actual link about updating apparmor profiles for libvirt instances, but please send reply in email to whatever msg i sent yesterday, and we'll figure it out
+<jdstrand> hallyn, jdepi: that link and the /usr/share/doc/libvirt-bin/README.Debian.gz should have everything needed
+<jdepi> hallyn: i did :-)
+<hallyn> jdstrand: thanks, I should'vethought of that one
+<jdepi> jdstrand: thanks, i'll have a look
+<ivoks> idea for UDS:
+<ivoks> no... make that
+<ivoks> request for UDS: ACL by default
+<ivoks> why are we still in the 20th century? :)
+<zul> heh
+<patdk-wk> acl by default on what?
+<ivoks> filesystems
+<patdk-wk> never used acl's
+<soren> ivoks: Last we had that discussion, I think Adam Conrad (infinity) said something about Samba changing its behaviour if the filesystem had ACL enabled... and then we decided not to enable it. I think it
+<soren> s ripe for another discussion.
+<ivoks> makes life easier in some situations... /me thiks about samba and nfs
+<ivoks> soren: hm... i can't remember what it was
+<soren> ivoks: Anyways, it was almost 5 years ago. :)
+<soren> ivoks: Hmm... Or was it in Boston? Anyways, several years ago for sure.
+<ivoks> http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/AccessControls.html#id2614541
+<ivoks> i think it was prague
+<soren> I also forget when infinity left
+<ivoks> i didn't know he left :)
+<zul> like 2 years ago i think
+<ivoks> ah
+<zul> ivoks: its on my list to bring up
+<ivoks> thanks :)
+<ivoks> ok, maybe pushing it by default is over the line
+<ivoks> but, lots of people are unaware of it and we could probably make better docs by mentioning how to utilize acl
+<ahs3> absolutely; better docs are a minimum.  simple tools to enable acl's would also help, imo
+<RoAkSoAx> ivoks: pacemaker now also has support for acls
+<hallyn> Daviey: do i need to create a new bug for the open-vm-tools FFE?
+<RoAkSoAx> hallyn: is there a merge bug opened already? If so, nope
+<hallyn> there is a bug open which the merge is needed for
+<hallyn> (bug 727342)
+<uvirtbot> Launchpad bug 727342 in open-vm-tools "package open-vm-dkms 2010.06.16-268169-3ubuntu1 failed to install/upgrade: open-vm-tools kernel module failed to build" [Critical,In progress] https://launchpad.net/bugs/727342
+<hallyn> cani just mark that one 'new' and put the info in there?
+<ivoks> RoAkSoAx: hm... i don't see how's that relevant for pacemaker :)
+<RoAkSoAx> hallyn: yeah, add [FFe] at the beginning of the bug title. You can also modify the title, and off course add the description for the FFe
+<ivoks> RoAkSoAx: pacemaker doesn't do anything on the filesystem... ACLs are of no use for it
+<ivoks> RoAkSoAx: maybe you are refering to pacemaker's internal ACL
+<RoAkSoAx> ivoks: "S.U.S.E. has implemented support for ACLs. This means that you can now delegate permission to control parts of the cluster (as defined by you) to non-root users."
+<ivoks> right, no internal ACL
+<ivoks> ACL = access control list
+<ivoks> what i was refering to is acl on filesystem
+<RoAkSoAx> ivoks: yeah yeah but I mean, your conversation of FS ACL's reminded me mof pacemaker's
+<ivoks> s/right, no internal ACL/right, so internal ACL/
+<ivoks> right... that's a nice feature
+<RoAkSoAx> indeed
+<RoAkSoAx> kirkland: howdy!! I just uploaded python-ethtool which is required by koan, could you please take a look at it when you have the time since it's in the NEW queue? thanks
+<Daviey> hallyn, no
+<Daviey> RoAkSoAx, Has it had FFe
+<RoAkSoAx> Daviey: python-ethtool? yes
+<RoAkSoAx> hallyn: yeah just use the same bug. I usually put [FFe] before the title of the bug and enhance description, etc etc  (sorry for the delay i though I replied :) )
+<lynxman> p/whois soren
+<lynxman> soren: hey, saw your presentation at fosdem about Openstack, great one
+<lynxman> kirkland ping
+<kirkland> lynxman: hi
+<kirkland> RoAkSoAx: sure, i'm on a call at the moment
+<RoAkSoAx> kirkland: no worries, whenever you have the time is fine ;) Thanks
+<lynxman> kirkland: hey *waves* I had some unexepected troubles with the upstart file for mcollective and I modified it on my 1.1.3 packaging to get it closer to what SpamapS suggested (for mcollective-server-provisioner, which kinda is the same category) just wanted your opinion/ideas on it
+<lynxman> kirkland: http://pastebin.ubuntu.com/580609/
+<lynxman> kirkland: no hurries though
+<kirkland> lynxman: np, i'm on the phone for the next ~1 hour
+<lynxman> kirkland: can easily wait :)
+<orudie> how can I check mail for root user ?
+<nimrod10> orudie, 2 ways: either log in as root   and type   mail     ,   or as your user (asuming you have sudo access) type   sudo mail
+<zul> isnt there a meeting today?
+<RoAkSoAx> zul: daylight saving
+<RoAkSoAx> is in effect
+<zul> damn farmers
+<RoAkSoAx> lol
+<lynxman> zul: blame the sun
+<zul> lynxman: farmers are more tangable
+<lynxman> zul: true true
+<SpamapS> the sun will actually be up for the meeting.. woot
+<orudie> how can I view sshd log ?
+<lynxman> SpamapS: I resent daylight savings time for stealing 1 hour of my life
+<twb> I resent it for wasting my time and everyone elses
+<twb> I resent it for being a government-controlled resource
+<twb> I especially resent when said government changes the start/stop times with only TWO WEEKS NOTICE because of some goddamn sporting even
+<twb> *event
+<ivoks> orudie: mail for root should be forwarded to the user
+<lynxman> orudie: depends on what you're looking for, mostly in /var/log/auth.log
+<RoAkSoAx> arght daylight*
+<lynxman> RoAkSoAx: inside a datacenter there's no daylight to save :D
+<twb> Anyway, edison and friends obviated the need for a daystar
+<RoAkSoAx> lynxman: hehe indeed. In my case is none sense since I have light till 8pm or so
+<RoAkSoAx> lol
+<SpamapS> lynxman: it only borrows it ;)
+<lynxman> RoAkSoAx: lucky you
+<RoAkSoAx> lynxman: not really... because of that I don't sleep till late nite
+<lynxman> SpamapS: yeah it's given back in October when I don't need it anymore to enjoy summertime :)
+<lynxman> RoAkSoAx: me neither, but I just do it as an anti-farmer protest ;)
+<SpamapS> lynxman: except in summer time when would you rather have more daylight.. when you've just awakened, or near sunset ...
+<lynxman> SpamapS: hmm fair point
+<hallyn> hm?  I prefer light int he morning, thank you
+<hallyn> night time should be dark.  Lit by xmas lights.
+<lynxman> hallyn: even if it wakes you up?
+<hallyn> lynxman: because it wakes me up
+<hallyn> you know.  at 8am.  feh
+<twb> You're talking to someone who doesn't get out of bed before 10AM
+<lynxman> hallyn: that's too soon
+<hallyn> lol
+<SpamapS> Unfortunately... my child/wife/alarm clock wake me up long before the sun threatens to do so naturally
+<lynxman> twb: how does that feel?
+<hallyn> all right, ubuntu desktop cd is still hanging on partman
+<twb> Now, OK, it is 2:30AM and I am in the office
+<twb> But that is not the point
+<hallyn> vmbuilder to the rescue
+<SpamapS> "The datacenter!?, what is it?!" ... "Its a dank dark dungeon filled with servers and star wars fans, but thats not important right now."
+<hallyn> it crowd?
+<SpamapS> Adaptation of Airplane!
+<hallyn> (sounds like leslie nielsen)
+<hallyn> ok
+<twb> I liked when they gave her "the internet" in a box
+<hallyn> i figured it crowd had an airplane moment
+<hallyn> 'DONT DROP IT'
+<ua> hello
+<twb> Airplane was awesome
+<lynxman> SpamapS: I've heard people get lost in datacenters... then they come back as deformed creatures after years of roaming through the cabling...
+<twb> It's rebadged in .au, so when it was last on the telly I was watching for an hour going "this seems a lot like Airplane..."
+<SpamapS> twb: haha doh!
+<hallyn> hm,e how does one have vmbuilder write to a lvm partition...
+<ua> need help please, i can not install virtual box
+<twb> Admittedly at that point I had only read the script on usenet, not actually seen the film
+<ua> can you help please?
+<twb> ua: that's not part of Ubuntu; it would be better to talk to your vendor (Oracle)...
+<SpamapS> virtualbox isn't part of Ubuntu?
+<SpamapS> virtualbox-ose - x86 virtualization solution - base binaries
+<ua> http://paste.debian.net/110739/
+<ua> spamaps>sorry i didn't understand what you mean
+<twb> Ah, mea culpa
+<twb> I forgot there was an open source "edition"
+<twb> ua: you probably want virtualbox-ose, which is 4.0 in natty, but not before
+<ua> twb>yes thank you, i tested now, it seems working
+<RoAkSoAx> Daviey: ok so I was thinking we can ship two powernap-eucalyptus configs. One for when in powersave and the other for when in any other action method. The one for powersave would be default and will only have a [ProcessMonitor] for kvm, while the one for any other action method will have a [ProcessMonitor] for /sbin/init
+<ua> may be i've to restart
+<RoAkSoAx> Daviey: they can be installed in /usr/share/eucalyptus/ and the default either symlinked or copied to /etc/powernap/config.d/
+<ua> twb>can you tell me how could i inscrease the size of/boot?thank you
+<twb> ua: you probably can't
+<twb> Usually if /boot is its own partition, it'll be a simple primary partition, with another partition immediately after it
+<twb> In theory it could be on LVM, in which case you can lvextend
+<twb> If /boot is just part of your normal root filesystem, you can delete other stuff, and/or extend that partition.  But if you're complaining, this is probably not the case
+<twb> Note that vbox images probably don't belong in /boot -- /srv/vm would make more sense
+<ua> twb>i've given 32Mb for /boot witch is own partition, but not it's  full, that's why i'd like to increase it or purge somefiles ...
+<uvirtbot> New bug: #734984 in debian-installer (main) "Ubuntu server Natty listening to port 953 in tcp and tcp6" [Undecided,New] https://launchpad.net/bugs/734984
+<ua> i've given 32Mb for ( /boot) witch is it own partition, for now boot patition is  full, that's why i'd like to increase it or purge somefiles in...
+<ua> twb>are you there friend?
+<ua> where are you?
+<kpettit> I just setup a new ubuntu 10.04 server and I'm trying to move over some apache virtualhosts.  I'm trying to use the default setup where you a2ensite and such.
+<remix_tj> so what is your problem?
+<kpettit> My sites show up in etc/apache2/sites-enabled but when I try to go to their url's I only get the "default"
+<remix_tj> kpettit: paste an example of the virtualhost
+<remix_tj> to http://paste.ubuntu.com
+<kpettit> if I remove the "default" site I can see my first virtualhost and only my first one.  It doesn't seem to be paying attention to the  ServerName
+<kpettit> it's fustrating becuase same config works on identical ubuntu server.  but I think that one is ubuntu 9.10.  I'll paste...
+<kpettit> http://paste.ubuntu.com/580658/
+<remix_tj> maybe you copied something that is connected to the old machine
+<remix_tj> only this?
+<kpettit> It's odd becuase if I remove the default it will show this domain's settings, but only this one.  Like it's only going to show the first virtualhost or something
+<remix_tj> and other virtualhosts are set as?
+<remix_tj> yes, he serves the first working match
+<kpettit> exactly same as the one I paste except the domain name and directory are different.  I've got 3-4 of them on there
+<remix_tj> kpettit: and you are trying to access to http://www.setuplinux.com
+<remix_tj> ?
+<kpettit> yes.
+<remix_tj> uhm
+<kpettit> Right now if you go there it goes to the "default" with is a hello world.   It doesn't pay attention to my virtualhost file unless I remove "default".
+<kpettit> If I remove the "default" then it only pays attention to the next virtualhost in line for all the other virtualdomains.
+<kpettit> http://paste.ubuntu.com/580663/
+<kpettit> this is a copy of the ports.conf which has the "NameVirtualHost" directive and such.  I also put in the "default" virtualhost file.
+<remix_tj> everithing is correct...
+<remix_tj> uhm
+<kpettit> yeah that's what I figured.  Haven't had a issue where it only ever paid attention to one virtual host unless I hadn't set the NameVirtualHost directive or something, but it's there so I'm a confused.
+<remix_tj> let's verify something
+<kpettit> It's a default brandnew install with updates as of this morning.
+<remix_tj> ls -la /etc/apache2/sites-enabled/
+<patdk-wk> in mine, I deleted the default one
+<remix_tj> ls -la /etc/apache2/sites-available/
+<remix_tj> so we can check
+<kpettit> It shows 000-default and my www.setuplinux.com and other sites.
+<kpettit> I just verified it's not a permission thing.
+<remix_tj> tail -n 50 /var/log/apache2/error.log
+<remix_tj> ?
+<kpettit> it's something to do with the namevirtualhost directive not working right.
+<remix_tj> maybe you do not need to add NameVirtualHost *:80 a second time
+<kpettit> I did and one of the virtualhosts worked.
+<kpettit> but another one didn't so I'm checking on that.
+<remix_tj> i've some vhosts with namevirtualhost specified, other not
+<kpettit> it should be a generic thing that you only need to specifiy once
+<remix_tj> kpettit: why you specified on serveralias the same thing is specified on servername?
+<kpettit> i got it wokring.
+<kpettit> for whatever reason it didn't like everything being in different files.  I copied and pasted all my virtualhosts in the one "default" config and it works
+<kpettit> I have no idea why it works in one config rather than having them in the seperate configs like is supposed to be the default
+<remix_tj> the default is with different configs
+<patdk-wk> I have mine in 12 different files
+<remix_tj> because it includes sites-enabled/*
+<patdk-wk> some files have more than on vhost line, most have one
+<kpettit> what I mean by "default" is the file /etc/apache/sites-available/default
+<patdk-wk> you shouldn't use sites-available
+<patdk-wk> but sites-enabled
+<kpettit> for whatever reason on this one my different virtualhosts config files weren't looked at.  But I put them all in the one file and it works fine
+<patdk-wk> sites-available is ignored :)
+<kpettit> that same line is still in there and it works fine.
+<kpettit> so it wasn't causing it to fail.
+<patdk-wk> cause default is symlinked to sites-enabled
+<kpettit> odd
+<kpettit> patdk-wk, yeah I had them all in sites-available and there were symlinked to sites-enabled using the a2ensite commandline
+<patdk-wk> ah
+<kpettit> it would only look at one file.  If I removed default it wouldn't only look at the next virtualhost and not any others
+<patdk-wk> I just ignore sites-available completely
+<kpettit> yeah, I normally do that.  I was just trying to follow more the standard on Ubuntu.
+<patdk-wk> seems way too confusing for what I do, to have them doubled up in two directories
+<kpettit> no biggie.
+<kpettit> I like the idea behind it.  It's nice when having lots of virtualhosts so you can turn on/off easy.  But didn't work for me this time around
+<remix_tj> kpettit: the apache2.conf is set at default? no customizations at all?
+<kpettit> remix_tj, yes.  It was a default install as of 2 hours ago
+<NidHelp6092> âñåì ïðèâåò
+<NidHelp6092> åñòü æëàíèå ïîìî÷ íóáó?
+<remix_tj> NidHelp6092: as far as i can see you're doing a pretty UTF-8 test case.
+<NidHelp6092> ((((
+<remix_tj> kpettit: putting everything in a file works?
+<kpettit> yes
+<remix_tj> kpettit: the name of that file?
+<kpettit> /sites-available/default
+<kpettit> I just put all my stuff in the "default" file.
+<kpettit> my 3 domains are up and running now.   All seems well.  not sure why having them in the different files didn't work.
+<remix_tj> kpettit: try grep sites-enabled /etc/apache2/apache2.conf
+<remix_tj> let's take a look to the config
+<kpettit> Include /etc/apache2/sites-enabled/
+<remix_tj> with * at the end?
+<kpettit> I know it was looking in the directory becuase if I removed "default" and added my own it worked as well.  But it only ever looked at the first file it found.  NOt any others
+<kpettit> no, it's just like I pasted
+<remix_tj> kpettit: try replacing with this
+<kpettit> Shoudl it have a * at the end?
+<remix_tj> Include /etc/apache2/sites-enabled/[^.#]*
+<patdk-wk> mine doesn't
+<kpettit> my old server doen't either.  I'll give it a try here in a bit though.
+<remix_tj> kpettit: also my lucid server does not
+<remix_tj> kpettit: this is an example of my working vhost on a single file
+<remix_tj> http://paste.ubuntu.com/580673/
+<remix_tj> is not much different than yours..
+<kpettit> that hosed me up.  I'm not sure what's happening with that.  Have to role back.
+<kpettit> usually apache is very straight forward for me.  Oh well, it's all working now.
+<kpettit> thanks for the help remix_tj
+<remix_tj> :-)
+<deucep> Hello
+<TKsw> I'm having some problems with a static ip on an ubuntu server. I have configured the network in /etc/network/interfaces and double checked it against other servers on the same subnet (but with another IP off course). When I run "/etc/init.d/networking restart" I get an SIOCADDRT: No such process and the interface fails to come up
+<TKsw> Any idea what could be causing this error?
+<TKsw> dhcp works just fine
+<pmatulis> TKsw: maybe pastebin you interfaces file
+<remix_tj> TKsw: ifconfig -a and cat /etc/network/interfaces, please :-)
+<pmatulis> do *not* paste that stuff in here
+<TKsw> no no
+<TKsw> Just have to get a dhcp adress and then ssh :P
+<TKsw> http://pastebin.com/CDDmHbPp
+<deucep> Anyone here configured a samba share to have password authentication?
+<patdk-wk> per user? or per share?
+<TKsw> Anyone has any clue what my network problem could be? :P
+<remix_tj> TKsw: remove this two lines
+<remix_tj> network xxx.xxx.102.0
+<remix_tj> broadcast xxx.xxx.103.255
+<TKsw> Nope, still getting the error
+<remix_tj> uhm
+<remix_tj> are you sure gateway, netmask and address are matching?
+<remix_tj> (i see also ipv6 configured on your eth0...)
+<TKsw> haha, found the error
+<TKsw> After one hour of looking at the interfaces files I had typed an ip-adress wrong ;P
+<TKsw> We were even two persons looking really hard at it and still didn't discover the error
+<TKsw> Anyway, thanks for the help :)
+<remix_tj> :-)
+<zul> Daviey: ping did you upload bind sru yet?
+<format120> hey, im turning an old laptop into an ubuntu server, hopefully should be ssh, ftp, email-(I have a gmail that i want to use for now) and web-(the domain name for this will be my new email pretty soon, i hope) will someone please point me to a few guides? inital googleing didn't turn anything up
+<Daviey> zul, No, doing that today
+<RoAkSoAx> Daviey: they can be installed in /usr/share/eucalyptus/ and the default either symlinked or copied to /etc/powernap/config.d/ --> ideas?
+<Daviey> RoAkSoAx, hmm.. either/or i think...
+<format120> oh, and an IRC server, if thats possible, havent googled it yet
+<Daviey> RoAkSoAx, it's a config file, that people should be able to edit IMO... so a real file in /etc/ is better IMO.
+<Daviey> RoAkSoAx, if it's /usr/share/, it should be static.
+<RoAkSoAx> Daviey: right, but in /usr/share there's "examples" and one of these configs should be default and the other is a choice or backup or additional
+<format120> yep, I would like to include IRC into that list
+<RoAkSoAx> Daviey: and since /etc/powernap is not eucalyptus config it should not go by default there IMHO
+<Daviey> RoAkSoAx, I don't think it matters either way tbh... Personally, adding complexity of a symlink seems unecessary.
+<Daviey> RoAkSoAx, Well fair point, if we consider something like phpmyadmin and apache2... that uses the symlink approach.
+<Daviey> for a conf.d.
+<RoAkSoAx> Daviey: indeed
+<Daviey> RoAkSoAx, go with that!
+<Daviey> make it so.
+<format120> anyone want to help?
+<RoAkSoAx> Daviey: alrigth
+<Daviey> format120, I'm really sorry, people aren't ignoring you - we are just all really busy at the moment.  Please hang around, and hopefully someone will help soon.
+<smoser> jamespage, or anyone else...
+<smoser> wondering if anyone is aware of a "generic native launcher" applet
+<format120> ok Daviey
+<smoser> we're using this nx web runner applet. but it basically just an applet that downloads native binaries, puts them into a user directory and then launcches them.
+<format120> thanks, and im not just waiting for someone to hold my hand, I'm still googlein
+<smoser> it seems like there might be a more generic (open source/modifiable) applet that does that
+<bobg> i rebuilt a  package (asterisk-mp3) and made it available on a local repository but my client ignores this version and downloads it from the official repo.  How do I get my clients to use my local repo with higher priority than the official repo?
+<jmedina> pin
+<jmedina> google for apt pinning
+<Pici> !pinning | bobg
+<ubottu> bobg: pinning is an advanced feature that APT can use to prefer particular packages over others. See https://help.ubuntu.com/community/PinningHowto
+<bobg> ubottu, Pici, thanks.  it seems that pinning control which release a package is taken from . I have the exact version of the file on my local repo (its only rebuilt to fix a appearent build mistake in the official version(https://bugs.launchpad.net/ubuntu/+source/asterisk-addons/+bug/560656)).  How does apt decide where to get a file if it exists in more than one repo? I know I could bump the version number of my build but I would rather
+<bobg> not if I don't need to
+<ubottu> Error: I am only a bot, please don't think I'm intelligent :)
+<uvirtbot> Launchpad bug 560656 in asterisk-addons "The mysql add-on module is out of sync with asterisk" [Undecided,Fix released]
+<Pici> bobg: It grabs the most recent version number unless the pinning setting say differently.
+<RoAkSoAx> Daviey: you haven't yet merged the branch that creates the new eucalyptus-admin-tools package right?
+<Daviey> RoAkSoAx, don't /think/ i have
+<Daviey> RoAkSoAx, I merged the adding of it, but not the new package
+<RoAkSoAx> Daviey: ubuntu2 was the one you merged, which was fixing the installing of the missing euca_admin python module
+<format120> is there an automatic way to get ubuntu server on a USB? all the guids I found are outdated, or give you a .exe to do it, and Im on Arch linux
+<bobg> Pici, do you know what it does if the exact same filename (package version) exists on more than one repository?  Is it arbitrary which one it chooses?  is the order in the sources.list file significant?
+<RoAkSoAx> Daviey: don't yet merge it though. I'm gonna  do the powernap configs on top of that
+<Pici> bobg: I suppose it would be arbitrary.
+<bobg> format120, when I did it about 6 months ago it was surprisingly difficult. I think that the method I used was to mount the usb stick as a virtual drive on a xen virtual machine and then install Ubuntu into the VM -- i followed some how to  (sorry i don't have any details)
+<bobg> Pici, thanks
+<format120> ok, ill do some googleing, thanks
+<Daviey> RoAkSoAx, ack
+<kirkland> Daviey: RoAkSoAx: i prefer the /usr/share + symlink approach
+<RoAkSoAx> kirkland: yeah that's best IMO
+<kirkland> RoAkSoAx: \o/
+<RoAkSoAx> kirkland: Daviey where shall we document this changes though?
+<kirkland> RoAkSoAx: hmm
+<kirkland> RoAkSoAx: at least in http://help.ubuntu.com/community/UEC
+<kirkland> RoAkSoAx: possibly a release note, if the admin needs to take action
+<RoAkSoAx> kirkland: yeah I think a release note is definitely required as this will affect anyone who's running powernap on the NC's
+<kirkland> RoAkSoAx: okay
+<kirkland> RoAkSoAx: i can help you with that, if you like
+<RoAkSoAx> kirkland: sure :)
+<format120> hey guys, I'm trying to setup an ubuntu server, but don't have access to a cd drive.  I could use a USB key, but that looks hard, can someone point me to a guide on installing over the network?  I'm in Arch linux on this box, by the way
+<geekbri> is it possible somebody might have a clue why my following cron line spits out an error about end of file unexpected expecting ")".*/2 * * * * . /etc/web/conf.d/reporting.env && cd /home/reporting/trunk/crons/ && echo "---------------------------------- `date`" >> /var/log/fc-crons/KPI_build.log && /usr/local/bin/php /home/reporting/trunk/crons/freecause_daily_KPI_build.php $(date -d yesterday +%Y-%m-%d) >> /var/log/fc-
+<geekbri> crons/KPI_build.log 2>&1
+<format120> wait, nevermind, I didn't bother to check the ubuntu website, and fourms said that it was really complicated
+<genii-around> format120: You might want to look at https://help.ubuntu.com/10.04/installation-guide/i386/linux-upgrade.html it shows a method using debbootstrap
+<_ruben> geekbri: i'd put all those commands in script and have cron call that .. much cleaner imo, might ease up the debugging too
+<RoAkSoAx> kirkland: should the symlinking be handled in eucalyptus-nc.postinst or shall I just tweak the packaging for that?
+<geekbri> _ruben: i may just very well do that, as it seems it runs fine as a bash script
+<_ruben> geekbri: i try to keep my cron entries as clean as possible, so i basically write a script whenever it needs to do more than 1 thing ;)
+<geekbri> _ruben: i was just trying to avoid the internal dilema of where do i keep my script that run as crons ;)
+<_ruben> i tend to just shove 'em in /usr/local/(s)bin/
+<soren> lynxman: Thanks!
+<_ruben> or depending on the "frequency", one of the cron.{hourly,daily,weekly} dirs
+<geekbri> i stil am dying to know what i've done wrong however :). I noticed a couple things. one since im using crontab -e i didn't need the users name, and two i used . to source the .env file instead of source
+<kirkland> RoAkSoAx: it should be in a debhelper .links file
+<_ruben> geekbri: you might be using bashisms and cron might be using sh .. just guessing here though
+<kirkland> RoAkSoAx: unless logic is required
+<kirkland> RoAkSoAx: in which case, postinst would have to be used
+<_ruben> and i tend to avoid crontab -e as well ;)
+<geekbri> _ruben: im pretty sure that is the problem.  I think its the entry  $(/bin/date -d yesterday +%Y-%m-%d)
+<_ruben> /etc/cron.* is already scattered enough ;)
+<RoAkSoAx> kirkland: yeah i'm just using dh_link in debian/rules... btw... I think I'm just gonna ship 1 conf that has kvm-euca = "kvm" and init = "^/sbin/init". Though kvm-euca will only be enabled
+<RoAkSoAx> so that if admin changes from the default action of powersave to any other one, they'll have to change use the init ProcessMonitor rather than kvm-euca
+<geekbri> _ruben: i think im just going to go ahead and put this one in a bash script :)
+<bencc> with l7 filters, can I port forward http:// requests to port 8000 and ws:// requests to port 9000?
+<bencc> I found good iptables resources but not l7 filter resources
+<_ruben> bencc: no
+<bencc> _ruben: so what do i7 filters do?
+<_ruben> bencc: NAT happens at the very first (SYN) packet, which doesn't have the URI in it
+<bencc> _ruben: so there is nothing I can do?
+<_ruben> there's a lot of things you can do, just not what you want to ;)
+<bencc> except for a proxy?
+<_ruben> proxy would be best solution for this, yes
+<bencc> _ruben: what about using port 8080, can I count on it to be open for most users?
+<bencc> for http of course
+<_ruben> for certain values of "most", sure ;)
+<_ruben> corporate businesses filter whatever they feel like, though i think 8080 would be kinda safe
+<bencc> cool. 8080 it is :)
+<bencc> if my users will be blocked, I'll send them here to complain
+<_ruben> or just use ipv6 and don't have to deal with the ipv4 depletion issues and port overloading
+<bencc> what do you mean?
+<_ruben> sounds to me your trying to offer 2 services on the same port on a single ipv4 address ... which is a result of the ipv4 depletion (no more ipv4 addresses "soon") ... ipv6 is one of the solutions to that
+<bencc> aren't I depend on the hosting service?
+<_ruben> usualy you are, tho any self-respecting hosting service would already offer ipv6 or atleast be able to offer it in the very near future
+<_ruben> then again, i'm an optimist from time to time
+<bencc> they usually charge for additional ip addresses
+<bencc> it doesn't cost much but it is another manual step in the deployment
+<jkg> of course a service accessible only over ipv6 is currently not accessible to many, many people...
+<_ruben> make sure the service is "interesting" enough, put it on non-standard port on ipv4, and standard port on ipv6 ;)
+<_ruben> "forcing" others to bite the bullet as well
+<bencc> convince fb to switch to ipv6
+<Patrickdk> the only thing I have that doesn't do ipv6 is fail2ban and mysql
+<_ruben> bencc: fb as in facebook? they're on ipv6 atleast partially
+<bencc> _ruben: so when I go to facebook.com I see ipv6 ip
+<bencc> ?
+<_ruben> nah, there's www.v6.facebook.com
+<_ruben> still fetches most of its resources over ipv4 though i think
+<Patrickdk> fail
+<bencc> server not found
+<Patrickdk> www.v6.facebook.com.	3600	IN	AAAA	2620:0:1cfe:face:b00c::3
+<Patrickdk> works here
+<_ruben> same here
+<Patrickdk> it freaking redirects me to ipv4 though
+<Patrickdk> HTTP/1.0 302 Found
+<Patrickdk> Location: http://www.facebook.com/common/browser.php
+<Patrickdk> X-FB-Server: 10.43.78.53
+<Patrickdk> extra fail, they must be doing a ipv6 http proxy -> ipv4 backends
+<shauno> odd, I get sent to Location: http://www.v6.facebook.com/common/browser.php [following]
+<Patrickdk> You are using an incompatible web browser. (firefox 3.6)
+<Patrickdk> man facebook failing all over the place
+<Patrickdk> ya, this time I got recirected to that also
+<SpamapS> turbotax didn't want to run on chromium for linux.. changed the useragent to windows.. finished taxes in 20 minutes. Suck it Intuit.
+<Patrickdk> facebook must be having ipv6 routing issues
+<format120> speaking of ipv6, can you set that up as a service? like ipv6 routing, then PAT onto an ipv4 external network?
+<Patrickdk> set it up as a service?
+<Patrickdk> you mean, nat64?
+<remix_tj> format120: no no no!
+<Patrickdk> nat64 + dns64
+<remix_tj> nat to external ipv4 is pretty useless
+<Patrickdk> not if your running an ipv6 only internal network
+<remix_tj> what is the utility of running ipv6 internally if you are not connected to ipv6 public network?
+<Patrickdk> who said it wasn't?
+<Patrickdk> but not the whole world is ipv6 yet, so
+<format120> I did Patrickdk, and I know its pointless, but its fun\
+<Patrickdk> oh? I didn't see the, only ipv4 external
+<remix_tj> you can simply use a dual stack network, i did it in my office
+<remix_tj> or you can try messing around with totd and ptrtd
+<shauno> if you're going to go that far, why not just find a tunnel broker? with that 1 more step, you could make the 6 actually useful
+<format120> it sounds like fun.  I have fios, and might be getting a new server, so i might add a fiberoptic nic, and just have fios directly to the server, and use it as my router, that would be sweet
+<remix_tj> you can build in very few minutes an ipv6 router with a linux machine connecting your network to the ipv6 internet using a tunnelbroker like HE.net
+<remix_tj> (as i did at work)
+<format120> cool, well, I'm working on installing my first server, ever, right now, so it might be a while, with many dumb questions inbetween
+<Fredrick> hey, what landscape? it seems like its for managing large clouds of servers. do i want it to manage my updates? this is my only, and first server
+<RoyK> Fredrick: landscape works well, but it isn't free
+<Fredrick> oh, lol, so i don't want it.
+<RoyK> pkgsync or similar systems exist for doing the same
+<Fredrick> im builing the first 100% free network, gifted crappy PC's linux OS's, and free use of my rich friends soler panels, when hes not useing them, and if I do all of his yard work. lol
+<Fredrick> so what would be the best choice for a single server?
+<RoyK> well, all that depends on the load etc
+<Fredrick> probably small, server is for DHCP and other router stuff, maybe a little ssh, ftp, and if im lucky, webserver
+<Fredrick> oh, and email
+<Fredrick> thats why im making it, the rest are just bonuses
+<Fredrick> im thinking, no automatic updates? and just ssh in, and do sudo apt-get update every now and again?
+<RoyK> and apt-get dist-ugprade
+<RoyK> dist-upgrade, even
+<RoyK> apt-get update will only update the index
+<Fredrick> oh, how is that diffrent
+<RoyK> security updates will happen automatically if chosen so in the setup
+<Fredrick> so pick that one?
+<RoyK> Fredrick: apt-get update updates the package index, but doesn't download anything, use apt-get dist-upgrade (or perhaps apt-get upgrade if you're paranoid) to upgrade the system
+<Fredrick> yea, I went with that one.
+<Fredrick> ok, why would apt-get upgrade be more secure than apt-get dist-upgrade
+<air^> AFAIK upgrade doesn't do kernel upgrades.
+<RoyK> not really - dist-upgrade will only upgrade to the latest sub-release (as in from 10.04.2 to 10.04.3 when that eventually arrives)
+<RoyK> air^: even dist-upgrade doesn't upgrade to 2.6.35, which is recommended
+<Fredrick> oh, ok
+<Fredrick> so how do I get up there?
+<RoyK> apt-get install ...
+<Fredrick> my install disk is kinda old, so i might be back at .1
+<Fredrick> 10.4.1 that is, not 10.0
+<Fredrick> 1
+<RoyK> there is no 10.0
+<RoyK> there is 9.10 and 10.04
+<RoyK> year.month
+<Fredrick> so just apt-get install is more prefer than apt-get install upgrade?
+<Fredrick> I meant 10.01, but i hit enter to early
+<RoyK> 10.01 doesn't exist either
+<RoyK> it's year.month, with 6 months between each release
+<Fredrick> and its barely perfered over apt-get install dist-upgrade?
+<Fredrick> oh, ok
+<RoyK> there is no such thing as "apt-get install dist-upgrade"
+<Fredrick> then why so long in between 10.04, and 10.10,
+<RoyK> apt-get install somepackage
+<RoyK> or apt-get dist-upgrade
+<RoyK> Fredrick: how long between april 2010 and october 2010?
+<RoyK> it's quite simple
+<Fredrick> err i mean why are we still on 10.04, and not 10.10
+<RoyK> !lts
+<ubottu> LTS means Long Term Support. LTS versions of Ubuntu will be supported for 3 years on the desktop, and 5 years on the server. The current LTS version of Ubuntu is !Lucid (Lucid Lynx 10.04)
+<air^> 10.04 is LTS.
+<Fredrick> 4, plus 6 is ten
+<Fredrick> you said it was 6 months,
+<RoyK> between releases, yes, but two years between LTS releases
+<Fredrick> oh,
+<Fredrick> ok then
+<RoyK> for a home setup, any release will probably do
+<RoyK> but for production setups, I use LTS
+<Fredrick> thanks, i only have one keyboard, so i have to switch it back to the server, but ill stay in the channel, and switch back when i have a nother question
+<Fredrick> tanks
+<RoyK> Fredrick: isn't your server networked? ;)
+<air^> :D
+<Aison> hello, where do I set the network settings and nfs mount settings so that nfs is mounted AFTER the network is up?
+<Aison> currently nfs tries to mount the fstab entries before the network is up and so it fails
+<Patrickdk> what nfs version?
+<Patrickdk> normally, _netdev
+<Aison> 4
+<Patrickdk> nfs4 ignores _netdev
+<Patrickdk> have to do it manually
+<Aison> very nice....
+<Patrickdk> https://help.ubuntu.com/community/NFSv4Howto
+<Aison> thx
+<Fredrick> ok, im at Software selection, whats a LAMP server?
+<Pici> Fredrick: Apache, mysql, php
+<Fredrick> ok, why would I want that?
+<Fredrick> what would a user be doing, in order to require a Lamp server? arent apache, and php programing languages? and msql a database?
+<Fredrick> ok, well what about a Tomcat Java server?
+<shauno> apache's a web server.  php is a programming language, and mysql a database.  together they make the stereotypical linux-based webserver
+<Fredrick> oh, thanks
+<Fredrick> what about Tomcat Java?

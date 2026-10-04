@@ -1,0 +1,213 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2012-3-15"
+lang: "en"
+messages: "204"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<willijs3> Do you know anything about the indicator plugin in the panel?
+<beata1> .... That was quick ....
+<antisaint> Afternoon all
+<antisaint> QUERY
+<antisaint> /join #xubuntu-offtopic
+<beata1> I'm looking for some way to make the various icons on my panel the same size. Searching variations on 'xfce panel icon size' has so far been not helpful.
+<mosno> how can i get rid of the annoying lag when i right-click my desktop? i've already disabled compositing.
+<mosno> i'm comparing lubuntu and xubuntu side-by-side on identical hardware -- lubuntu doesn't have the lag
+<mosno> it's around 0.4sec or so
+<Hanslanda> hello guys...anyone can help me?  i have a problem here...cant run a game ...got a console message ...think is about libsdl library
+<Sysi> if error message is longer than three lines, paste it to http://paste.ubuntu.com
+<Hanslanda> Sysi, http://paste.ubuntu.com/884358/
+<mosno> wow, i would have said one line
+<Sysi> some say two, some four, luckily this is clear case :)
+<Hanslanda> do u think u can help me Sysi
+<Sysi> Hanslanda: what graphics card, proprietary/additional drivers?
+<Hanslanda> ati mobility radeon hd 4000xxx series
+<Hanslanda> 01:00.0 VGA compatible controller: ATI Technologies Inc M92 [Mobility Radeon HD 4500/5100 Series]
+<Hanslanda> 01:00.1 Audio device: ATI Technologies Inc RV710/730
+<Sysi> press: Alt F2 and type: jockey-gtk
+<Sysi> does it suggest some drivers?
+<Hanslanda> there are 1 that is not activated
+<Hanslanda> but..
+<Hanslanda> one already activated is a 3D-accelerated proprietary graphics driver for ATI cards.
+<Hanslanda> the one is not activated is the same thing...but there is a comment (post-release updates)
+<Hanslanda> just one minute please...ill be back in 2 minutes Sysi
+<hanslanda> Sysi, problem solved..thanks..
+<hanslanda> Sysi, i have another problem...where and how i can configure my keyboard
+<hanslanda> anyone can help me configuring my keyboard
+<crond> hanslanda, settings -> settings manager -> keyboard
+<monser> hello all
+<monser> i want to block this driver from being loaded every time at boot time ohci_hdc
+<hanslanda> i cant do it this way...i dont know exactly what is my keyboard model...isnt there a way to configure it by matching the keys?
+<monser> I added it to the blacklist.conf but it is still being loaded
+<monser> is there any working way to do that?
+<crond> hanslanda, umm... possibly.  I'm not sure offhand, i'd google that.
+<hanslanda> crond, can u help on this job? ive already searched that...but no success
+<crond> hanslanda, sadly probably not, I just select my keyboard type. :(
+<hanslanda> crond, thank anyway
+<well_laid_lawn> monser: what was the line you added to blacklist.conf ?
+<monser> blacklist ohci_hdc
+<well_laid_lawn> k
+<well_laid_lawn> monser: you might have to blacklist something that depends on that too
+<monser> how to find out what depends on that?
+<TheSheep> lsmod
+<monser> I see ohci1394
+<monser> should I block usbhid as well?
+<hanslanda> hello there...anyone can help me? how can i remove mouse acceleration ?
+<xubuntu860> hello, guys
+<Marzata> eh
+<knome> hullo
+<alban_hall> hello, i have a problem of window manager collapse : no more tittle bar, and worse no more mouse cursor, or just a cross.
+<alban_hall> and only one virtual desktop, and no possibility to bring forward a window from the background. when i go to the xfce settings, there is nothing more in the window manager and window manager tweaks sections.
+<chevee> I'm looking for a bit of xscreensaver help.
+<Marzata> chevee: just ask
+<chevee> :)
+<chevee> Wasn't sure if anyone was paying attention.
+<chevee> I lock my screen every day when I leave work.
+<chevee> Some mornings I come in to find my xscreensaver daemon has died over night and my desktop is not locked.
+<chevee> Where do I start looking for the root cause?
+<Sysi> ~/.xsession-errors for a start
+<chevee> Hmmmm.  have not heard of that one before. :D
+<chevee> Hm.  Looks like maybe it's one particular screensaver?  I have my settings set to random, so I'll try and pick one that works and see if the problem goes away.
+<Marzata> chevee: you might install simpler screensavers
+<chevee> Is there a better option other than xscreensaver or do you  mean the screensavers themselves?
+<Marzata> xscreensaver-data-extra
+<chevee> I have that
+<Sysi> chevee: could well be some specific screensaver (theme)
+<chevee> This is the only error I have in the log for xscreensaver:
+<chevee> (xscreensaver-demo:11350): libglade-WARNING **: Could not load support for `gnome': libgnome.so: cannot open shared object file: No such file or directory
+<chevee> So I'm assuming that's from one specific screensaver which causes xscreensaver to crash?
+<jevanz> hello everyone how can i force thunar to english
+<TheSheep> jevanz: LC_ALL=en.US thunar
+<jevanz> TheSheep, how will i do that
+<jevanz> TheSheep, terminal?
+<TheSheep> jevanz: whatever is convenient for you, may be terminal, may be a launcher icon
+<TheSheep> sorry, that's en_US not en.US
+<jevanz> TheSheep, same only hidden files are english now
+<TheSheep> I don't understand what you mean
+<jevanz> TheSheep, still chinese
+<TheSheep> make sure you kill all other instances of thunar
+<TheSheep> btw, thunar will not translate the filenames
+<TheSheep> only the menus and such
+<jevanz> oh
+<jevanz> even uing the language selector didnt help
+<jevanz> using*
+<TheSheep> what is the problem you are trying to solve?
+<jevanz> i need to change the folder names in thunar it is chinese i want to make this english
+<TheSheep> just rename them
+<TheSheep> or do you mean the special directories, like 'Video', 'Documents', etc?
+<jevanz> yes
+<jevanz> all chinese not english even on login has chinese characted
+<TheSheep> change .config/user-dirs.locale
+<jevanz> character*
+<TheSheep> to en_US
+<jevanz> after changing do i need to reboot?
+<TheSheep> you can also change the names in .config/user-dirs.dirs
+<TheSheep> no
+<TheSheep> you might need to log out
+<jevanz> ok will try
+<jevanz> brb log out
+<jevanz> TheSheep, worst after logout many folders display with chinese names
+<TheSheep> jevanz: but there should be new ones with english names now
+<jevanz> TheSheep, still no change
+<TheSheep> jevanz: xubuntu will not delete the old ones, because you might have something important there
+<TheSheep> :/
+<TheSheep> jevanz: what if you rename .config/user-dirs.dirs to user-dirs.dirs.old or something?
+<jevanz> TheSheep, ok after renameing will xubuntu creates user-dir by its own?
+<TheSheep> jevanz: that's the theory
+<jevanz> TheSheep, ok trying
+<TheSheep> jevanz: if it doesn't, you can rename that file back, change the names in it and manually rename the directories and it will work
+<jevanz> TheSheep, ok now i have english names on folder but has chinese too
+<jevanz> TheSheep, maybe its safe to delete this folders?
+<jevanz> TheSheep, folders with chinese names
+<jevanz> TheSheep, ok working fine now thanks for helping
+<Guest85100> hello. why ub server don't boot from usb-hdd? xub normally boot with "map" from grub4dos.
+<holstein> Guest85100: ub server = ubuntu server ?
+<Guest85100> yes
+<holstein> ubuntu server is not booting from a usb hard drive you have installed it to?
+<Guest85100> yes
+<holstein> i would look into where grub is, and how its configured
+<holstein> i typically put grub on the removable media
+<Guest85100> grub print error 17
+<Guest85100> fs on usb - ntfs
+<holstein> im not so concerned about the file system, though i would just do ext.. i would be more concerned with where grub is
+<holstein> unless you have *not* instaled the ubuntu server yet, and you are trying to make a live usb stick for installing ubuntu server
+<holstein> http://askubuntu.com/questions/56174/install-ubuntu-10-10-server-from-usb-with-grub4dos
+<holstein> i typically take the path of least resistance.. im might just use xubuntu or lubuntu and convert that to server, or install what i need server-wise
+<holstein> depends on the box im building and the workflow i need on the server machine.. maybe i need X for something
+<Sysi> this isn't server support channel.. grub4dos is for booting from ntfs?
+<holstein> yeah... #ubuntu-server is where i would go for actual server installation questions
+<maxon> about boot ub server. it is real?
+<bazhang> maxon, try #ubuntu-server
+<maxon> ok
+<goliat> Hello. I have a Laptop running Xubuntu and im thinking about getting windows on it also. I was wondering if there is any easy way to make a partition i can install windows on? Or is it just better to reinstall Xubuntu?
+<holstein> !grub | goliat
+<ubottu> goliat: GRUB2 is the default Ubuntu boot manager since 9.10 (Karmic). Lost GRUB after installing Windows? See https://help.ubuntu.com/community/RestoreGrub - For more information and troubleshooting for GRUB2 please refer to https://help.ubuntu.com/community/Grub2 - See !grub1 for releases before Karmic (9.10)
+<holstein> i would check out the grub docs on "after installing windows" goliat
+<holstein> goliat: bascially, you make room for windows however you want... i would use gparted to resize.. then windows will break grub and make xubuntu not boot.. then you recover grub, and grub will boot both OS's
+<goliat> ubottu: I havnt lost ubuntu yet. But will i lose it if i would install it? or to be more specifik i lose GRUB and cant boot Xubuntu?
+<ubottu> goliat: I am only a bot, please don't think I'm intelligent :)
+<goliat> dog
+<goliat> doh*
+<goliat> Holstein: how difficult is it to recover grub? And how safe is it?
+<goliat> A friend said that changing the partition can possibly break it.
+<holstein> goliat: you should have *all* your data backed up
+<holstein> you said "should i reinstall xubuntu".. thats the worst case scenario
+<holstein> you break it all somehow and cant get back into xubuntu
+<holstein> goliat: its not trivial, but quite do-able
+<holstein> goliat: can you break it? sure... can you just install windows and get into a dual boot? sure
+<holstein> goliat: read and ask questions... i say, consider running windows in virtualbox if you dont need it for gaming
+<goliat> holstein: Yeah i got that tip to but i dont believe it has the performance for that. I installed Xubuntu on it because i felt that windows slowed it down.
+<holstein> goliat: for me, i feel like you can literally try it in vbox and not risk breaking anything
+<holstein> if you dont like it, you can move on
+<goliat> Thats true.
+<magerquark> goliat, the easiest was is to save /home, then install windows, and then reinstall xubuntu
+<goliat> magerquark: that depends on how you look at it. I got some software ive struggled to install. Dont know if i want to go through some of that again to be honest.
+<holstein> personally, bacing up /home should be one of the first steps either way you go
+<magerquark> goliat, wich computer do you have, there were reasons for switching away from windows, why do you want to use it now?
+<magerquark> ok, when you want to keep your installation then backup /home, resize ubuntu partition with gparted, install windows into the free space generated with gparted, recover grub via live-cd
+<goliat> magerquark: It's a dell inspiron, I bought it for school and thats mostly programming, alot of the software we used the first year was practicly only available for linux, but now were also using commercial software, thats only available for windows.
+<magerquark> wich inspiron?
+<goliat> 1570 i believe
+<magerquark> xp should work flawlessly in virtzualbox
+<goliat> Ok, Could windows 7 work also?
+<magerquark> yes it will work, i tried windows 7 in viretualbox with an amd athlon xp 2500+, but it is rather slow then
+<magerquark> i would go for windows xp
+<goliat> magerquark: Ok, i got the laptop with win 7 basic and i almost cried over how slow it feelt.
+<magerquark> thats strange, i have a athlon II 5050e here with win7 professional, well it isnt the fastest cpu, but honestly it feels fast
+<goliat> magerquark: Does gparted work on the disk i have xubuntu on or do i need to run it from a live cd also? To recover GRUB on live cd, is that like a common option on it?
+<goliat> magerquark: i have some low energy cpu on it, could be that
+<magerquark> goliat, https://help.ubuntu.com/community/Boot-Repair
+<magerquark> goliat, you have to use gparted with a live cd
+<magerquark> you can not unmount your "/"-partition
+<goliat> magerquark: ok, i heard it could take some time to move it, heard anything about that?
+<goliat> when i run it as a live-cd/usb can i run it as im testing ubuntu?
+<magerquark> i dont understand your question
+<goliat> or is that the definition of the live-cd, runing it from an cd/usb? ^^
+<magerquark> of course you run the live-system via cd/usb
+<goliat> ok
+<magerquark> it is the "testing mode"
+<goliat> ahh ok, nice ^^
+<magerquark> but at first backup /home
+<magerquark> !!!!!!!!!!!!
+<goliat> yeah definitely
+<goliat> magerquark: if the partition would brake. how would i notice it? Can't boot ubuntu? Or error during the partition making?
+<zezik> hello, I want to help with translation, but I found only this page: https://translations.launchpad.net/ubuntu/precise - I want to translate Xubuntu, not Ubuntu! Any advice?
+<mongy> zezik: if it's xubuntu specifically then maybe you mean xfce
+<Unit193> zezik: How about this? http://xubuntu.org/contribute/translating/
+<zezik> aww, thanks
+<go8765> hello. i have simple question - ubuntu with xfce is the same as xbuntu?
+<Unit193> Not quite.
+<go8765> Unit193: so what  the diferenc ?e
+<luroh> go8765: xubuntu comes with a different set of applications
+<luroh> sure, you can pull them in by installing the xubuntu-desktop package, but you'd still have a bunch of ubuntu cruft left
+<luroh> ubuntu one, zeitgeist and whatnot
+<go8765> the use the same repos from upgrade?
+<go8765> f i use ubuntu i have the same fresh xfce soft?
+<go8765> *the=they
+<go8765> f i = if
+<luroh> yes and yes
+<go8765> okay. soo i dont need to chande ubuntu to xubuntu, only install xfce in ubuntu
+<go8765> thanks for answers! :)
+<luroh> alrighty :)

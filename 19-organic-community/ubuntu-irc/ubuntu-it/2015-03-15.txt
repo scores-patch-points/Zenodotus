@@ -1,0 +1,898 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2015-3-15"
+lang: "it"
+messages: "889"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<jester-> nttgcc: la scheda è su, nel router NAT è abilitato?
+<nttgcc> penso di si perchè nell'altro pc il cavo eth funziona
+<jester-> non assegna ip
+<jester-> stacca l'altro pc
+<nttgcc> si è staccato
+<nttgcc> ora è connesso via eth solo il pc con ubuntu
+<jester-> nttgcc: sudo service network-manager restart
+<jester-> batti la pass in binaco
+<nttgcc> jester-  http://i58.tinypic.com/28swmme.jpg
+<jester-> ha ragione
+<jester-> nttgcc: sudo service network-manager restart
+<jester-> non menager
+<jester-> nttgcc: sudo route
+<jester-> cosa c'è a default
+<nttgcc> jester- http://i62.tinypic.com/2qissit.jpg
+<jester-> secondo me è il ruttere che non assegna ip
+<jester-> nttgcc: ip del router?
+<jester-> nttgcc: sudo dhclient eth0
+<jester-> o il cavo è cassato
+<jester-> o è incrociato
+<nttgcc> nessuna risposta a questo comando
+<jester-> prova col cavo del pc che va
+<jester-> è tornato la promt?
+<nttgcc> jester- questo il risultato http://it.tinypic.com/view.php?pic=i1y7tz&s=8#.VQTOtuF4aAY
+<jester-> nttgcc: sta facendo ma non  conclude
+<jester-> nttgcc: control-c
+<nttgcc> fatto
+<jester-> cambia il cavo che se è ciucco è tempo perso
+<nttgcc> il cavo funziona infatti collegandolo al secondo pc ho la connessione.non capisco come mai prima sia sato sufficiente imposta ipv6 su ignore mentre ora non funziona più nulla
+<jester-> nttgcc: riavvia la live
+<jester-> oppure che ip ha il router
+<jester-> nttgcc: hai fastweb?
+<nttgcc> Indirizzo IPv4 : 192.168.1.101
+<nttgcc> Subnet mask: 255.255.255.0
+<nttgcc> Gateway predefinito: 192.168.1.1
+<nttgcc> no tiscali
+<jester-> nttgcc: che dati sono
+<iolpe> ciao notte grazie
+<nttgcc> credevo fossero i dati dell'ip da windows su terminale ho dato ipconfig
+<jester-> ipconfig non esiste in linux
+<nttgcc> si ho provato da windows.. su ubuntu non conosco il comando..qual è?
+<jester-> nttgcc: sudo ifconfig eth0 192.168.1.110 netmask 255.255.255.0 gateway 192.168.1.1
+<nttgcc> jester- http://i57.tinypic.com/11rda8l.jpg
+<jester-> nttgcc: secondo me la live è bacata. controlla md5sum della iso usata
+<jester-> se giusto fai la usb con il tool winzoz
+<jester-> !usbwin
+<ubot-it> Scarica Universal USB Installer (http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/) | Installalo su Windows e lancialo: lui si occuperà di trasferire l'immagine ISO su USB (guida: http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows) | Opzionalmente questo programma può anche scaricare lui stesso l'immagine ISO
+<jester-> o la porta è cotta
+<jester-> !md5sum
+<ubot-it> http://wiki.ubuntu-it.org/Md5Sum. Per una lista completa, si veda: https://help.ubuntu.com/community/UbuntuHashes
+<nttgcc> non ho capito cosa devo controllare della md5sun?
+<nttgcc> *sum
+<jester-> leggi la guida
+<jester-> se l'ash non corrisponde la iso è bacata
+<BlackVirus> nttgcc, il sum e come un numero di serie originale
+<nttgcc> http://pastebin.ubuntu.com/10600506/
+<nttgcc> quale numero devo controllare?
+<jester-> nttgcc: e leggila sta guida
+<jester-> è uno solo
+<jester-> ed è del file iso che hai usato per fare la live
+<nttgcc> ma io nel file iso se apro il file md5sum mi apre tutto quell'elenco
+<BlackVirus> nttgcc,  la iso che hai scaricato  mettila nella home
+<nttgcc> puoi dirmi il comando per accedere nella cartella root?
+<BlackVirus> poi apri il terminale
+<BlackVirus> di root
+<BlackVirus> ti leggita la guida
+<BlackVirus> http://wiki.ubuntu-it.org/Installazione/MD5Sum
+<nttgcc> il punto è che io il file iso ce l'ho sulla partizione di windows e quindi devo accedere a windows da ubuntu per poi spostare il file .iso sulla home di ubuntu per poter dare quel comando.no?
+<akis24> giorno
+<yarid> buongiorno
+<jester-> 'ngiorno
+<andrewldn> salve a tutti,sono nuovo di qui. Voglio installare ubuntu in un pentium 4  ram 2gb 30gb HD come devo procedere ? scarico ubunto lo masterizzo su cd e faccio avvio da cd-rom? è sufficente questo? grazie
+<cristian_c> andrewldn, ubuntu è troppo per quel pc
+<cristian_c> andrewldn, al massimo ci girerà lubuntu
+<andrewldn> non capisco
+<cristian_c> !requisiti | andrewldn
+<ubot-it> andrewldn: requisiti is http://wiki.ubuntu-it.org/Installazione/RequisitiDiSistema
+<andrewldn> capisco
+<cristian_c> !lubuntu
+<ubot-it> https://wiki.ubuntu.com/Lubuntu
+<cristian_c> !iso | andrewldn
+<ubot-it> andrewldn: http://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/MasterizzareIso
+<cristian_c> andrewldn, lo provi in modalità live
+<cristian_c> e se tutto va bene, lo installi sull'hard disk
+<andrewldn> te dici in modalità live con cd
+<cristian_c> sì
+<andrewldn> che differenza cè tra averlo installato e live cd?
+<andrewldn> non salva?
+<cristian_c> andrewldn, che non è installato sul disco
+<cristian_c> in modalità live l'hdd non viene toccato
+<andrewldn> grazie cristian_c il fatto ho questo pc da tavolo e non sò come sfruttarlo attualmente cè xp ma nn gira bene..se metto il win 7 andrebbe al limite
+<cristian_c> andrewldn, ovviamente, il pc se è troppo vecchio è meglio lasciar perdere
+<cristian_c> andrewldn, ti suggerisco di utilizzare un pc più recente
+<mtjbuntu> ciao a tutti
+<fabio_cc> !ciao | mtjbuntu
+<ubot-it> mtjbuntu: Ciao! Benvenuto in #ubuntu-it
+<carlos77> ciao   avrei bisogno di un aiuto    ho sky e volevo vedere  sky go   pero mi chiede il Silverlight
+<fabio_cc> !pipelight | carlos77
+<ubot-it> Voce non trovata: 'pipelight'
+<fabio_cc> carlos77, aspetta che ti do il link
+<carlos77> ok
+<fabio_cc> carlos77, http://wiki.ubuntu-it.org/InternetRete/Navigazione/Pipelight
+<fabio_cc> carlos77, versione di ubuntu?
+<mtjbuntu> scusate la domanda da niubbo (lo sono, ubuntu da due giorni), ma perchè su Ubuntu 14.04 c'è ancora il kernel 3.16 se sono già usciti il 3.18 e il 3.19 stabili?
+<carlos77> lubuntu
+<fabio_cc> carlos77, versione?
+<fabio_cc> carlos77, 14.04, 14.10?
+<carlos77> 14.04 lts
+<fabio_cc> carlos77, ok, segui il wiki
+<fabio_cc> mtjbuntu, anche la 14.10 ha il kernel 3.16
+<carlos77> mi da questo avviso e  poi non fa  niente  "Ciò richiede l'installazione di pacchetti da sorgenti non autenticate."
+<carlos77> che faccio
+<fabio_cc> carlos77, metti su pastebin tutto quello che hai fatto
+<fabio_cc> !pastebin | carlos77
+<ubot-it> carlos77: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<mtjbuntu> grazie fabio_cc :)
+<mtjbuntu> ma dici che posso installare il 3.19 senza problemi se lo hanno rilasciato ma non viene usato?
+<mtjbuntu> ho un po' la fissa dell'aggiorna a tutti i costi :(
+<fabio_cc> mtjbuntu, se vuoi un sistema stabile, devi usare il kernel dato con la distribuzione, se usi altri kernel lo fai a tuo rischio
+<mtjbuntu> perfetto, dissipato ogni dubbio, grazie ancora fabio_cc :)
+<fabio_cc> mtjbuntu, prego :)
+<mtjbuntu> pensavo fosse un aggiornamento che prima o poi occorre cmq fare... ;)
+<mtjbuntu> 20 anni di windows sono duri da smaltire :D
+<fabio_cc> mtjbuntu, :)
+<fra_dolcino> problema con boot loader e partizioni sballate riporto qui la domanda posta per esteso su ubuntu forum http://paste.ubuntu.com/10602820/
+<jester-> fra_dolcino: se hai il menu grub al boot il problema è del sistema non del boot loader
+<fra_dolcino> jester-, non c'è più dopo che ho fatto aggiunto la partizione bios boot  e ultimo BootRepair, aggravadno stupidamente la situazione
+<jester-> fra_dolcino: partizione bios boot?
+<fra_dolcino> ora come ho scritto nel posto ho tolto questa partizione
+<fra_dolcino> si ora è segnata come unallockated
+<jester-> fra_dolcino: devi riportare come in precedenza cosa hai ridotto per crare la partizione
+<jester-> winzoz parte?
+<fra_dolcino> jester-, winzoz non c'è, l'ho tolto subito dopo acquisto del pc mesi fa, rifacendo le partizioni
+<fra_dolcino> un' altra cosa sconsiderata come mi diceva qualcuno qui
+<jester-> fra_dolcino: hai fatto male, mp hai un pc inservibile
+<jester-> fra_dolcino: ti conviene creare una nuova tabella gpt e reinstallare
+<fra_dolcino> jester-, e i dati?
+<jester-> li recuperi dalla live
+<fra_dolcino> jester-, avrei bisogno di un disco esterno, giusto?
+<jester-> prima di procedere a creare tabella e partizione
+<jester-> fra_dolcino: dipende da cosa hai da recuperare, un backup regolare se si hanno dati importanti dovrebbe essere la norma
+<jester-> capita pure che i dischi si fottano
+<fra_dolcino> jester-, se faccio un attimo la live di xubuntu, ora ho solo bootrepair, mi spieghi come si recuperano i dati da live?
+<jester-> fra_dolcino: apri il file manager vai sulla partizioone home e fai
+<jester-> copi e incolli nella usb o hd esterno
+<fra_dolcino> jester-, non ci sono permessi per alcune cartelle, c'è una x sopra
+<jester-> le live sono come un coltellino svizzero
+<jester-> fra_dolcino: secondo me hai sminchiato i permessi di tutto il sistema
+<cristian_c> fra_dolcino, hai provato da chroot come ti aveva suggerito gigirock?
+<jester-> fra_dolcino: lancia il filemanager con sudo
+<fra_dolcino> cristian_c, non ho avuto modo, ora sono libero posso
+<jester-> se rimane bloccato hai i filesystem a bottane
+<fra_dolcino> jester-, sto avviando la live
+<fra_dolcino> jester-, ho un problema, BootRepair lo avvia, mentre la live no, dice BusyBox v1.21 (ubuntu1:1.21-0-1ubuntu1) built-in shell (ash) Enter "help" for a list of built-in commands.
+<fra_dolcino> (initramfs) Unable fo find a medium containing a live file system
+<jester-> fra_dolcino: avvia la live non ammucchiare le situazioni
+<jester-> [12:09:49] <fra_dolcino> (initramfs) Unable fo find a medium containing a live file system
+<jester-> il cd o usb sono ciucchi
+<fra_dolcino> jester-, sto usando usb
+<fra_dolcino> jester-, posso provare a rifarla con unetbootin
+<jester-> fra_dolcino: controlla md5sum della iso che se ha errori perdi solo tempo
+<jester-> !md5sum
+<ubot-it> http://wiki.ubuntu-it.org/Md5Sum. Per una lista completa, si veda: https://help.ubuntu.com/community/UbuntuHashes
+<fra_dolcino> jester-, scarico un'altra live
+<jester-> fra_dolcino: chesum sballato?
+<jester-> checksum
+<jester-> fra_dolcino: a 64 bit nè
+<fra_dolcino> jester-, semplicemente non corrisponde a quelli riportati nella pagina sopra
+<jester-> fra_dolcino: appunto per quello non si avvia
+<fra_dolcino> il fatto che sia xubuntu penso non c'entri niente, c'è l'asterisco, quindi immagino valga per le derivate
+<jester-> se l'ash non corrisponde significa che la iso è scaricata con errori
+<fra_dolcino> jester-, l'avevo già provata e andava, non so se il file può corrompersi anche successivamente...
+<jester-> se hai dei settori danneggiati sul disco puo succdere di tutto
+<fra_dolcino> la live di ubuntu dovrebbe avere controllo disco...
+<jester-> da file che spariscono a file che non si aprono etc etc
+<jester-> non controlla la superficie per controllare da live devi fare fsck -c /dev/sticass
+<jester-> se ha settori danneggiati è da buttare
+<fra_dolcino> >_<
+<fra_dolcino> jester-, a parte che questo posso controllarlo subito da BootRepair, c'è il terminale
+<fra_dolcino> jester-, al posto di sticass, cosa ci fa? sda1, 2, 3 ecc?
+<jester-> yess
+<fra_dolcino> uno per uno? o sda li controlla tutti?
+<jester-> uno per uno
+<fra_dolcino> jester-, per farlo però ho bisogno dei permessi, dice you must have r/w access or be root
+<jester-> non so come si diventa root in boot repair
+<cristian_c> fra_dolcino, scusa, ma perché non usi boot repair direttamente dalla live di xubuntu?
+<cristian_c> come ti si era detto
+<fra_dolcino> cristian_c, sto scaricando una nuova live, quella non si avvia più, forse è danneggiata
+<cristian_c> fra_dolcino, fai il controllo hash
+<cristian_c> *checksum
+<fra_dolcino> cristian_c, mi ha suggerito prima jester- di fare confronto ma effettivamente non combaciava con quelli indicati alla pagina di ubuntu-help
+<cristian_c> fra_dolcino, sei sicuro di aver confrontato il file giusto?
+<cristian_c> 64 bit
+<cristian_c> come suggerito da jester
+<Stefy90> Ciao a tutti, ho appena installato ubuntu ed è andato tutto bene. l'unico problema che ho è la scheda wifi che non la riconosce. Chi sa darmi qualche consiglio?
+<fabio_cc> Stefy90, apri un terminale e dai lspci -k
+<fabio_cc> Stefy90, poi metti su pastebin
+<fabio_cc> !paste | Stefy90
+<ubot-it> Stefy90: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<Stefy90> fabio_cc http://paste.ubuntu.com/10603064/
+<fabio_cc> Stefy90, ifconfig -a
+<fabio_cc> Stefy90, sempre su paste
+<Stefy90> ok
+<Stefy90> fabio_cc http://paste.ubuntu.com/10603083/
+<fabio_cc> Stefy90, che versione di ubuntu hai?
+<fabio_cc> Stefy90, dai il comando iwconfig
+<fabio_cc> Stefy90, metti sempre su paste
+<Stefy90> ho la versione 14.04 LTS
+<fabio_cc> Stefy90, ok dai il comando
+<Stefy90> fabio_cc http://paste.ubuntu.com/10603094/
+<fabio_cc> Stefy90, rfkill list
+<fabio_cc> Stefy90, sempre su paste
+<Stefy90> fabio_cc http://paste.ubuntu.com/10603108/
+<fabio_cc> Stefy90, non hai un tasto per accendere il wifi?
+<fabio_cc> Stefy90, o un tasto a parte o un tasto fn+qualcosa
+<Stefy90> si da pc posso fare il classico fn+f2 però non accade niente, ed anche sul menu connessioni di ubuntu la voce "abilita wifi" è bloccata.
+<fabio_cc> Stefy90, quindi se premi la combinazione la voce abilita wifi non si sblocca
+<cristian_c> Stefy90, premilo una volta sola e poi digita: rfkill list
+<cristian_c> Stefy90, digita anche: dmesg | tail
+<Stefy90> effettivamente il pc mi dice wifi disabilitata da interruttore hardware.
+<cristian_c> ?
+<cristian_c> Stefy90, posta i risultati su pastebin
+<Stefy90> fabio_cc http://paste.ubuntu.com/10603146/
+<cristian_c> Stefy90, ma l'hai premuto adesso?
+<Stefy90> si, l'ho premuto...
+<cristian_c> Stefy90, allora, controlla nel bios
+<cristian_c> se è bloccato da lì
+<Stefy90> fabio_cc io ho installato ubuntu a fianco di windows, può dipendere anche da quello che la scheda wifi mi da problemi?
+<cristian_c> Stefy90, quale combinazione hai premuto adesso?
+<Stefy90> fn+f2
+<cristian_c> ok
+<cristian_c> Stefy90, guarda nel bios
+<cristian_c> e controlla che anche in windows sia attivo il wifi
+<Stefy90> ok, mi faccio risentire dopo, grazie
+<Stefy90> cristian_c ho controllato su windows e la scheda funziona e anche la combinazione di tasti, e sul bios la scgheda è attivata
+<cristian_c> Stefy90, ora su ubuntu, digita: rfkill list
+<Stefy90> http://paste.ubuntu.com/10603280/
+<cristian_c> Stefy90, interessante
+<cristian_c> si è ribaltato ora
+<cristian_c> Stefy90, il blocco si è spostato
+<cristian_c> su phy0
+<cristian_c> Stefy90, premi il tastino e ridigita: rfkill list
+<Stefy90> http://paste.ubuntu.com/10603310/
+<cristian_c> Stefy90, mmmmm
+<cristian_c> qualcosa è cambiato però
+<cristian_c> quando hai provato in winz
+<cristian_c> Stefy90, aspetta
+<cristian_c> http://askubuntu.com/questions/548592/wi-fi-is-disabled-by-hardware-switch-asus-x551cx551ca-ubuntu-14-04
+<cristian_c> Stefy90, è il tuo caso
+<Stefy90> ora lo leggo
+<fra_dolcino2> cristian_c, ho avviato una live nuova, ho provato a seguire la guida Chroot, posto output di fdisk -l
+<fra_dolcino2> http://paste.ubuntu.com/10603397/
+<cristian_c> fra_dolcino2, quella è la live
+<cristian_c> non è chroot
+<cristian_c> aaahhh, ok
+<cristian_c> non avevo capito bene
+<cristian_c> sda?
+<fra_dolcino2> cristian_c, ok, sono qua per ulteriori delucidazioni
+<cristian_c> !chroot
+<ubot-it> http://wiki.ubuntu-it.org/AmministrazioneSistema/Chroot
+<cristian_c> fra_dolcino2, sudo parted -l
+<Stefy90> cristian_c non riesco a capire bene sta guida
+<cristian_c> Stefy90, a cosa ti riferisci?
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603440/
+<cristian_c> fra_dolcino2, ecco , ora hai le partizioni
+<cristian_c> in bocca al lupo
+<Stefy90> cristian_c la pagina che hai linkato prima
+<fra_dolcino2> cristian_c, ma cosa dovrei fare, non ho capito, sembra che il sistema non deve essere in GPT
+<cristian_c> fra_dolcino2, ?
+<cristian_c> fra_dolcino2, leggi la guida chroot
+<cristian_c> Stefy90, cosa non ti convince?
+<fra_dolcino2> cristian_c, dice di montare la partizione nella quale risiede il sistema, intende la partizione da 20 GB in ext, non quella grande con i dati...
+<cristian_c> fra_dolcino2, hai individuato la partizione tramite sudo parted -l?
+<cristian_c> però aspetta
+<fra_dolcino2> cristian_c, chiedevo sopra a quale partizione si riferisce, ovvero devo montare la partizione in ext da 20 GB nella quale è installato il sistema, non quella dati
+<fra_dolcino2> cristian_c, si aspetto
+<cristian_c> fra_dolcino2, fammi vedere la schermata di gparted
+<cristian_c> così ci togliamo il dubbio
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603440/ questo è l'output
+<fra_dolcino2> cristian_c, ok, un momento, apro gparted
+<cristian_c> fra_dolcino2, hai la /home separata?
+<fra_dolcino2> cristian_c, credo di si, scusa la vaghezza, penso di averlo fatto quando ho comprato il pc, dopo aver tolto windows, c'è modo di verificare? (ora posto screenshot gparted)
+<cristian_c> fra_dolcino2, di solito te lo dice /etc/fstab
+<fra_dolcino2> cristian_c, intanto ecco foto gparted http://imgur.com/Cx82kDs
+<cristian_c> sda2 o sda4
+<cristian_c> una delle due
+<fra_dolcino2> cristian_c, /etc/fstab va aperto con un editor di testo?
+<cristian_c> a occhio dire sda2
+<cristian_c> che è la più piccola
+<cristian_c> fra_dolcino2, etc/fstab che risiede sull'hard disk
+<cristian_c> non quello della live
+<cristian_c> fra_dolcino2, ma dalle dimensioni non ti ricordi?
+<cristian_c> fra_dolcino2, non puoi montare le partizioni per vedere cosa c'è dentro?
+<fra_dolcino2> cristian_c, sono montate due partizioni, una con il sistema, l'altra con la home, posso vedere le cartelle, ma non posso accedervi perché non ho i permessi
+<cristian_c> fra_dolcino2, quindi ora sai qual'è quella di sistema?
+<fra_dolcino2> cristian_c, si
+<cristian_c> quella su cui hai installato ubuntu
+<cristian_c> e quella devi usare per chroot
+<cristian_c> curiosamente hai la swap montata
+<cristian_c> e le altre no
+<fra_dolcino2> cristian_c, nel file manager io le vedo montate entrambe, sistema e dati, devo comunque fare sudo  montu?
+<cristian_c> mmmmm
+<fra_dolcino2> o faccio direttamente sudo chroot /mnt
+<cristian_c> fra_dolcino2, prova in chroot
+<Stefy90> cristian_c niente da fare, ho seguito la guida ma non cambia niente!
+<cristian_c> fra_dolcino2, attenzione a non digitare sda1
+<cristian_c> che è la partizione efi e non c'entra
+<cristian_c> Stefy90, cos'hai fatto?
+<fra_dolcino2> cristian_c, ok...quella che dovrebbe essere Efi ma viene rilevata con Gpt
+<cristian_c> fra_dolcino2, utilizza i comandi sulla partizione giusta
+<cristian_c> non so quale sia tra sda2 e sda4, tu però lo sai
+<Stefy90> cristian_c ho fatto quello che c'era nella gida in fondo alla pagina.
+<cristian_c> !dettagli | Stefy90
+<ubot-it> Stefy90: Per favore dacci dettagli completi. Per esempio "Ho un problema con..., sto usando Ubuntu versione... con interfaccia.... Quando provo a fare..., ottengo questo output: ..., ma mi sarei aspettato che facesse..."
+<fra_dolcino2> cristian_c, ho fatto chroot e ora dovrei essere root
+<cristian_c> fra_dolcino2, controlla di esserlo
+<cristian_c> è cambiato il prompt?
+<cristian_c> fra_dolcino2, pwd
+<fra_dolcino2> root@ubuntu:/#  ora è così
+<cristian_c> ok
+<fra_dolcino2> cristian_c, quale password??
+<fra_dolcino2> non me l'ha chiesta ....
+<cristian_c> fra_dolcino2, non ho parlato di password
+<cristian_c> digita: pwd
+<fra_dolcino2> aaa
+<fra_dolcino2> cristian_c, ok
+<fra_dolcino2> c'è poco output posto qui: root@ubuntu:/# pwd
+<cristian_c> ?
+<cristian_c> ah, ok
+<cristian_c> posta pure
+<fra_dolcino2> ho messo pwd output è solo /
+<cristian_c> fra_dolcino2, ls /home
+<fra_dolcino2> cristian_c, dovrei prima andare nella home?
+<fra_dolcino2> cd /home
+<cristian_c> -,-
+<cristian_c> no
+<cristian_c> :(
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603608/
+<cristian_c> fra_dolcino2, cat /etc/fstab
+<fra_dolcino2> a parte che sono nella partizione in cui non c'è la home
+<cristian_c> mmmm, mi sembra tu sia ancora in live
+<cristian_c> fra_dolcino2, ?
+<fra_dolcino2> cristian_c, ho montato la partizione con il sistema
+<cristian_c> lol
+<cristian_c> fra_dolcino2, cat /etc/fstab
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603619/
+<cristian_c> # /home was on /dev/sda4 during installation
+<cristian_c> # / was on /dev/sda2 during installation
+<cristian_c> fra_dolcino2, separata
+<cristian_c> ora lo sai
+<fra_dolcino2> cristian_c, bene
+<cristian_c> fra_dolcino2, vuoi montare la /home?
+<cristian_c> in chroot
+<cristian_c> immagino tu voglia salvare i dati della home
+<cristian_c> *backup
+<fra_dolcino2> cristian_c, certo
+<cristian_c> ok
+<fra_dolcino2> o fare reinstall salvando la home intatta se è possibile
+<cristian_c> fra_dolcino2, mount -t ext4 /dev/sda4 /home
+<cristian_c> fra_dolcino2, cosa intendi?
+<cristian_c> 'fare reinstall salvando la home intatta'
+<Stefy90> cristian_c ho fatto questa procedura che ho trovato sulla pagina che mi avevi indicato tu. http://imgur.com/q0HKKzh
+<cristian_c> ah, ok
+<cristian_c> fra_dolcino2, monta la home
+<fra_dolcino2> cristian_c, avevo letto che è possibile formattare il pc e che separare la home separata serve apposta, per permettere format senza perdere dati
+<cristian_c> Stefy90, perché hai pubblicato una schermata?
+<fra_dolcino2> cristian_c, ok, monto la home
+<cristian_c> fra_dolcino2, tu non devi formattare nulla
+<cristian_c> non ci siamo capitio
+<cristian_c> -o
+<Stefy90> cristian_c per farti vedere la procedura che ho provato ad eseguire
+<cristian_c> fra_dolcino2, praticamente tutti qui ti hanno suggerito di brasare la tabella delle partizioni
+<cristian_c> fra_dolcino2, comunque, se il problema dipende da operazioni sbagliate sul sistema, e ci sta perché hai detto che xubuntu ha smesso di bootare improvvisamente
+<fra_dolcino2> cristian_c, ok, ciò non equivale a formattare quindi, sto facendo solo il backup
+<cristian_c> Stefy90, quali comandi hai digitato esattamente?
+<cristian_c> quali operazioni hai svolto
+<cristian_c> e quali risposte hai ottenuto?
+<fra_dolcino2> cristian_c, credo di avere montato la home
+<fra_dolcino2> ma non c'è output, torna solo al nom utente
+<cristian_c> fra_dolcino2, forse il ripristino funzionerebbe per danni al sistema, ma se poi hai pacioccato anche con partizioni uefi, ecc.., allora la strada maestra è rifare la tabella
+<cristian_c> quindi ti serve il backup
+<cristian_c> fra_dolcino2, ok
+<cristian_c> fra_dolcino2, qual è il nome utente?
+<cristian_c> fra_dolcino2, whoami
+<fra_dolcino2> cristian_c, root
+<cristian_c> fra_dolcino2, personalmente, io ho un pc con uefi, acquistato senza sistema operativo
+<cristian_c> fra_dolcino2, quando ho creato le partizioni con gparted, ho scelto ms-dos come tabella invece di gpt
+<cristian_c> in modo da utilizzarlo come un pc classico
+<Stefy90> come descritto nella procedura prima ho provato a modificare i file di testo "/etc/rc.local con gedit. poi vedendo che non funzionava nulla ho ripristinato il file di testo coe l'originale.
+<cristian_c> ok
+<Stefy90> Dopo aver fatto questo ho provato a dare nel terminale il comando
+<Stefy90> sudo -i
+<Stefy90> echo "options asus-nb-wmi wapf=1" > /etc/modprobe.d/asus.conf
+<Stefy90> exit
+<Stefy90> però anche in questo caso non ha funzionato nulla.
+<cristian_c> Stefy90, rc.local si tocca per rendere definitiva una modifica al volo
+<cristian_c> Stefy90, quindi le cose si fanno prima al volo
+<cristian_c> se funzionano poi si rende definitivo inserendo i comandi in /etc/rc.local
+<cristian_c> Stefy90, visto che queste cose vengono applicate al boot
+<fra_dolcino2> cristian_c, ora per iniziare a copiare qualcosa faccio tutto da riga del comando con cp?
+<cristian_c> fra_dolcino2, se vuoi
+<cristian_c> !comandi
+<ubot-it> trovi i comandi base su http://wiki.ubuntu-it.org/AmministrazioneSistema/ComandiBase - Gestione di File e Directory: http://wiki.ubuntu-it.org/AmministrazioneSistema/ComandiBase#gestionefiledirectory - Terminale e File Manager: http://wiki.ubuntu-it.org/AmministrazioneSistema/RigaDiComando
+<cristian_c> fra_dolcino2, e ti guardi come si usa cp
+<fra_dolcino2> purtroppo devi travasare poco per volta, ho solo una chiavetta da 8 gb e un pc dove depositare
+<Stefy90> però anche in questo caso non ha funzionato nulla.
+<cristian_c> Stefy90, cioè?
+<Stefy90> cristian_c susaho sbagliato a inviare. Comunque nella guida c'era specificato chiaramente che dopo aver modificato il ile bisognava fare il reboot, l'hofatto ma non ha funzionato nulla.
+<cristian_c> Stefy90, digita i comandi in un terminale
+<cristian_c> aspetta
+<cristian_c> Stefy90, lsmod
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603731/ omette la directory che volevo copiare
+<Stefy90> cristian_c http://paste.ubuntu.com/10603732/
+<cristian_c> <cristian_c> fra_dolcino2, e ti guardi come si usa cp
+<cristian_c> fra_dolcino2, non l'hai letta, eh?
+<cristian_c> Stefy90, modinfo asus-nb-wmi
+<Stefy90> cristian_c http://paste.ubuntu.com/10603755/
+<cristian_c> Stefy90, sto guardando
+<Stefy90> cristian_c vai tranquillo.
+<cristian_c> http://ubuntuforums.org/showthread.php?t=2181558
+<cristian_c> cat /etc/modprobe.d/asus_nb_wmi.conf
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603778/ ora dove sbaglio?
+<cristian_c> fra_dolcino2, hai ancora sbagliato
+<Stefy90> cristian_c che percorso è quello li?
+<cristian_c> fra_dolcino2, dev/sdc1 non è un punto di mount
+<cristian_c> Stefy90, digita il comando: cat /etc/modprobe.d/asus_nb_wmi.conf
+<cristian_c> fra_dolcino2, controlla dove viene montata sdc1
+<Stefy90> cristian_c mi dice file o directory non esistente.
+<cristian_c> Stefy90, ls -l /etc/modprobe.d/
+<fra_dolcino2> cristian_c, /media/ubuntu
+<cristian_c> lol
+<cristian_c> fra_dolcino2, la pendrive si chiama ubuntu?
+<fra_dolcino2> cristian_c, no, se vado in proprietà della cartella, si chiama EF45-8DA8
+<cristian_c> fra_dolcino2, quindi: cp -r /home/dusko/Lavoro /media/ubuntu/Backup ?
+<Stefy90> cristian_c http://paste.ubuntu.com/10603806/
+<cristian_c> fra_dolcino2, lol
+<cristian_c> <cristian_c> fra_dolcino2, controlla dove viene montata sdc1
+<cristian_c> Stefy90, echo "options asus_nb_wmi wapf=4" | sudo tee /etc/modprobe.d/asus_nb_wmi.conf
+<Stefy90> cristian_c mi dice: "options asus_nb_wmi wapf=4"
+<cristian_c> ok
+<cristian_c> Stefy90, l'aveva fatto anche prima?
+<cristian_c> quando avevi digitato il comando manualmente, secondo la pagina che avevi letto
+<cristian_c> <Stefy90> cristian_c susaho sbagliato a inviare. Comunque nella guida c'era specificato chiaramente che dopo aver modificato il ile bisognava fare il reboot, l'hofatto ma non ha funzionato nulla.
+<cristian_c> ah, ok
+<cristian_c> non l'avevi provato
+<Stefy90> esatto non l'avevo fatto.
+<cristian_c> Stefy90, riavvia il pc
+<cristian_c> e non toccare tasto wifi
+<Stefy90> ok
+<cristian_c> Stefy90, vedi se è attiva con rfkill list
+<fra_dolcino2> cristian_c, me li ha copiati nel posto sbagliato, sulla partizione del sistema
+<fra_dolcino2> cristian_c, per indentificare il percorso della chiavetta come faccio?
+<cristian_c> fra_dolcino2, ti avevo detto di controllare
+<cristian_c> fra_dolcino2, ti ha creato una partizione di nome Backup su sda2?
+<cristian_c> *una directory di nome backup
+<Stefy90> cristian_c eccomi, ho riavviato. adesso il wifi sta funzionando e non ho toccato il tasto del wifi.
+<cristian_c> Stefy90, rfkill list
+<fra_dolcino2> cristian_c, ho creato una cartella backup, entrando nella cartella della chiavetta attraverso filemanager, cliccando col destro e facendo crea cartela
+<cristian_c> Stefy90, bene,  allora funziona il workaround
+<cristian_c> nel topic sul forum in inglese è scritto:
+<cristian_c> Reboot and the wifi should be active now. Unfortunately, Fn+F2 still won't work. A workaround, until it gets fixed, is given in the next post below. I'll update this post if (and when) found a fix to that.
+<cristian_c> fra_dolcino2, non ci stiamo capendo
+<cristian_c> fra_dolcino2, hai detto di aver copiato per errore sulla partizione di sistema di ubuntu
+<cristian_c> in /media/ubuntu
+<Stefy90> cristian_c pazienza se il tasto non funziona. l'importante è che funzioni la scheda!!!
+<cristian_c> <fra_dolcino2> cristian_c, me li ha copiati nel posto sbagliato, sulla partizione del sistema
+<fra_dolcino2> cristian_c, sì, credevo che fosse il percorso della chiavetta
+<cristian_c> Stefy90, infatti è un workaround
+<Stefy90> adesso funziona sempre e non si disattiva mai?
+<cristian_c> Stefy90, per il tasto viene spiegato anche come, ma per il momento funziona e basta il wifi
+<cristian_c> Stefy90, purtroppo non puoi disattivarlo al momento
+<fra_dolcino2> cristian_c, o almeno andando a vedere nelle proprietà della direcotry, diceva che era quello
+<cristian_c> senza metterci mano
+<cristian_c> Stefy90, nel topic è scritto
+<cristian_c> quindi se l'unico tuo interessa era navigare in wifi, sei a posto per il momento
+<cristian_c> fra_dolcino2, ls -l /media
+<Stefy90> cristian_c non ce alcun problema. va benissimo così!! ti ringrazio tantissimo!!
+<cristian_c> fra_dolcino2, schermata di gparted su sdc
+<cristian_c> fra_dolcino2, ma forse hai guardato in chroot
+<cristian_c> Stefy90, di niente :)
+<fra_dolcino2> cristian_c, http://paste.ubuntu.com/10603906/
+<cristian_c> Stefy90, purtroppo c'è un bug e finché non lo risolvono...
+<Stefy90> cristian_c grazie ancora e a risentirci!! :)
+<cristian_c> fra_dolcino2, spiega cos'è dusko e cos'è ubuntu
+<fra_dolcino2> cristian_c, schermata gparted con la chiavetta, arrivo
+<krabador> fra_dolcino2, senti, se non sai dov'è montata una pendrive , fai sudo umount /dev/sdc1 sudo mkdir cartella (dove ti pare, col nome che vuoi ) sudo mount /dev/sdc1 cartellacreata
+<fra_dolcino2> cristian_c, erano due cartelle vuote, create automaticamente
+<fra_dolcino2> krabador, ok
+<FreeWolF> ciao a tutti
+<pierantonio> salve
+<pierantonio> riscontro un problema con la connessione wireless
+<pierantonio> non mi trova nessuna rete
+<pierantonio> se collego il cavo ethernet mi collego tranquillamente
+<pierantonio> come posso risolvere?
+<cristian_c> pierantonio, apri un terminale e digita: iwconfig && ifconfig -a
+<cristian_c> pierantonio, poi digita anche: lshw -C network
+<cristian_c> pierantonio, incolla tutti i risultati su pastebin
+<cristian_c> !paste | pierantonio
+<ubot-it> pierantonio: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<pierantonio> http://paste.ubuntu.com/10604099/
+<pierantonio> ecco a te
+<cristian_c> pierantonio, aspetta che il secondo comando finisca
+<cristian_c> pierantonio, l'ha eseguito ora?
+<cristian_c> intendo  lshw -C network
+<AlessandroG9> aiuto aiuto! D:
+<AlessandroG9> ho un brutto problema con ubuntu 14.04
+<pierantonio> http://paste.ubuntu.com/10604130/ ecco a te cristian
+<cristian_c> product: BCM4312 802.11b/g LP-PHY
+<cristian_c> !broadcom | pierantonio
+<ubot-it> pierantonio: Dispositivo senza filo Broadcom http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom
+<AlessandroG9> all'accensione esce scritto: c'è stato un errore nel montaggio di /boot/efi. poi esce scritto premi s per saltare il montaggio o premi m per il ripristino manuale ovviamente io scelgo s, poi quando si accende la connessione non c'è!
+<AlessandroG9> esce scritto disconnesso
+<AlessandroG9> cosa devo fare???
+<cristian_c> pierantonio, a proposito
+<AlessandroG9> perchè non mi si connette più???
+<cristian_c> pierantonio, hai fatto gli aggiornamenti di sistema?
+<AlessandroG9> no
+<cristian_c> lol
+<cristian_c> AlessandroG9, avevo chiesto a pierantonio
+<AlessandroG9> che devo fare???
+<AlessandroG9> si ho visto
+<AlessandroG9> ho sbagliato
+<AlessandroG9> chi sa come risolvere questo problema???
+<AlessandroG9> non posso avere minecraft su ubuntu se poi non ci gioco in multiplayer
+<AlessandroG9> cmq se nn avete capito:
+<AlessandroG9> all'avvio esce scritto "errore nel montaggio di /boot/efi"
+<AlessandroG9> poi dice:premi s per saltare il montaggio o premi m per il ripristino manuale ovviamente io scelgo s
+<AlessandroG9> ma quando vado alla scrivania non funziona la connessione esce solo scritto "disconnesso"
+<AlessandroG9> risolvete urgente
+<AlessandroG9> se sapete qualcosa mandate un email qua: ale03giannoni@gmail.com
+<AlessandroG9> adesso sloggo
+<fra_dolcino2> per copiare i file da live questa mi sembra la soluzione molto piu pratica, soprattutto per i meno esperti
+<fra_dolcino2> http://www.istitutomajorana.it/forum/Thread-Permessi-di-root-su-ubuntu-live
+<cristian_c> fra_dolcino2, per piacere, non postare link a risorse esterne qui in canale
+<cristian_c> grazie
+<pierantonio> cristian mi si era scollegato il cavo ethernet
+<pierantonio> allora? come risolvo il problema?
+<cristian_c> pierantonio, hai fatto gli aggiornamenti di sistema?
+<pierantonio> mmm no
+<pierantonio> come li faccio?
+<cristian_c> pierantonio, da Software e aggiornamenti
+<cristian_c> 'aggiornamenti software'
+<pierantonio> ok poi
+<pierantonio> ?
+<pierantonio> ok, sta facendo il download
+<pierantonio> dovrebbe risolversi il problema in questo modo?
+<cristian_c> pierantonio, ha finito?
+<pierantonio> non ancora
+<cristian_c> pierantonio, fatto?
+<pierantonio> hei cristian
+<pierantonio> ho appena aggiornato e riavviato
+<cristian_c> ok
+<cristian_c> va?
+<pierantonio> no
+<pierantonio> non trova reti
+<cristian_c> !broadcom | pierantonio
+<ubot-it> pierantonio: Dispositivo senza filo Broadcom http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom
+<pierantonio> ora che devo fare?
+<cristian_c> pierantonio, hai aperto il link?
+<pierantonio> si poi?
+<cristian_c> leggi
+<pierantonio> è una guida?
+<cristian_c> sì
+<pierantonio> ok
+<pierantonio> la seguo e ti faccio sapere
+<cristian_c> pierantonio, http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom#Installare_i_driver_b43_con_connessione_internet
+<cristian_c> pierantonio, 14.04?
+<pierantonio> http://paste.ubuntu.com/10604553/     questo è il risultato dei primi due comandi
+<pierantonio> come proseguo=
+<pierantonio> ?
+<pierantonio> perdonami ma è il mio primo giorno con ubuntu
+<cristian_c> 01:00.0 Network controller [0280]: Broadcom Corporation BCM4312 802.11b/g LP-PHY [14e4:4315] (rev 01)
+<cristian_c> non molto diverso dal risultato di lshw
+<cristian_c> pierantonio, comunque, semplicemente ha una tipica scheda wifi broadcom
+<cristian_c> che richiede installazione firmware
+<cristian_c> pierantonio, ma non hai risposto alla domanda
+<cristian_c> <cristian_c> pierantonio, 14.04?
+<pierantonio> si mi sembra che prima ho aggiornato alla 14.04
+<cristian_c> aggiornato?
+<cristian_c> hai detto primo giorno
+<cristian_c> lol
+<pierantonio> si primo giorno
+<pierantonio> più che primo giorno, prime ore
+<pierantonio> quindi? che faccio ora?
+<cristian_c> pierantonio, allora hai installato la 14.o04, giusto?
+<cristian_c> *14.04
+<pierantonio> ahhahahaha si
+<pierantonio> eventualmente, come controllo?
+<cristian_c> pierantonio, hai installato tramite dvd?
+<pierantonio> tramite usb
+<cristian_c> pierantonio, controlla sulla usb
+<pierantonio> si, cosa controllo?
+<cristian_c> pierantonio, come hai creato la usb?
+<pierantonio> LinuxLive USB Creator
+<cristian_c> lol
+<cristian_c> non conosco
+<pierantonio> comunque ho installato la 14.04.2 LTS
+<cristian_c> pierantonio, ok
+<cristian_c> pierantonio, http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom#Installare_i_driver_b43_con_connessione_internet
+<cristian_c> pierantonio, segui attentamente le indicazioni contenute in questo paragrafo
+<pierantonio> ok
+<pierantonio> wait please
+<cristian_c> ok
+<nu2zi> come si elimina un account da questo forum
+<Guest81059> Salve da qualche settimana ho fatto l'aggiornamento a 14.04 da 12.04 e da quel momento quando entro nel portale TIMinternet non rileva che io stia navigando con un numero tim può esserci una correlazione tra le due cose? grazie in anticipo P.s. sono un neofita di linux
+<nu2zi> come si elimina un account da questo forum
+<cristian_c> !forum | nu2zi
+<ubot-it> nu2zi: forum is http://forum.ubuntu-it.org
+<jester-> nu2zi: questo non è il forum
+<nu2zi> ok
+<pierantonio> cristian ci sei?
+<pierantonio> allora
+<pierantonio> ho riavviato
+<pierantonio> ora mi trova le reti
+<pierantonio> ma quando clicco per inserire la password mi di questo errore
+<pierantonio> Connection activation failed
+<pierantonio> (1) Creating object for path '/org/freedesktop/NetworkManager/ActiveConnection/7' failed in libnm-glib.
+<pierantonio> come procedo?
+<jester-> pierantonio: sicuro di avere una ubuntu doc?
+<pierantonio> l'ho scaricato dal sito ufficiale
+<jester-> proprio non esiste quel path in ubuntu
+<jester-> e tantomeno si è mai visto una cosa del genere
+<pierantonio> ahahahhahaha che sfiga
+<cristian_c> pierantonio, esattamente, cos'hai fatto
+<pierantonio> ho installato i driver b43
+<pierantonio> e ho riavviato
+<cristian_c> pierantonio, iwconfig && ifconfig -a
+<jester-> il problema è che majoranisti e mintisti e qualche debianista vengono a giurare di avere ubuntu viisto che per quelle distro l'assistenza fa pena
+<cristian_c> poi: lshw -C network
+<cristian_c> come prima
+<stefano67> ciao a tutti, scusate ma devo risolvere un problemino, skype, non si sente e non si avvia la cam...
+<jester-> e accertati nel rutter di aver la wpa2 come protezione
+<cristian_c> stefano67, e con cheese?
+<jester-> stefano67: installato come?
+<pierantonio> rutter?
+<stefano67> installato da internet
+<jester-> router
+<stefano67> si avvia
+<stefano67> si apre
+<cristian_c> ok
+<stefano67> mi da i contatti
+<cristian_c> stefano67, intendevo cheese
+<stefano67> cheese?
+<cristian_c> !info cheese
+<ubot-it> cheese (source: cheese): tool to take pictures and videos from your webcam. In component main, is optional. Version 3.10.2-0ubuntu2 (trusty), package size 47 kB, installed size 397 kB
+<pierantonio> http://paste.ubuntu.com/10604818/  ecco a voi
+<jester-> stefano67: va minga ben, toglilo, abilita i repo parteners e indipendent e installalo da apt
+<stefano67> per me sarebbe piu facile se palaste austroungarico
+<jester-> |info skype
+<cristian_c> pierantonio, e i primi due comandi?
+<jester-> !info skype
+<ubot-it> skype (source: skype): client for Skype VOIP and instant messaging service. In component main, is extra. Version 4.2.0.11-0ubuntu0.12.04.2 (trusty), package size 15 kB, installed size 61 kB (Only available for i386; amd64)
+<cristian_c> anzi, il primo
+<stefano67> che dovrei fare
+<pierantonio> cristian , dimmi cosa devo scrivere nel terminal
+<cristian_c> <cristian_c> pierantonio, iwconfig && ifconfig -a
+<jester-> [17:49:08] <jester-> stefano67: va minga ben, toglilo, abilita i repo parteners e indipendent e installalo da apt
+<stefano67> Jester mi consigli di disinstallarlo?
+<stefano67> ma c'è nessuno che mi può aiutare passo passo...
+<jester-> [17:49:08] <jester-> stefano67: va minga ben, toglilo, abilita i repo parteners e indipendent e installalo da apt
+<pierantonio> http://paste.ubuntu.com/10604845/   ecco cristian
+<stefano67> jester se ripeti un'altra volta non è che capisco meglio...
+<stefano67> puoi aiutarmi?
+<jester-> [17:49:08] <jester-> stefano67: va minga ben, toglilo, abilita i repo parteners e indipendent e installalo da apt
+<jester-> piu chiaro di cosi
+<jester-> stefano67: vai in sorgenti software
+<cristian_c> !skype | stefano67
+<ubot-it> stefano67: Guida all'installazione di skype: http://wiki.ubuntu-it.org/InternetRete/Telefonia/Skype
+<stefano67> ok
+<cristian_c> jester-, ma leggere oggigiorno fa male
+<cristian_c> :D
+<jester-> eh si perde la vista
+<pierantonio> cristian allora?
+<cristian_c> wlan0     IEEE 802.11bg  ESSID:off/any
+<cristian_c> Mode:Managed  Access Point: Not-Associated   Tx-Power=20 dBm
+<stefano67> leggo, e anche molto, solo che per me, parteners e indipendent  questo è tedesco mi capite ?
+<stefano67> comunque grazi
+<stefano67> e
+<jester-> stefano67: vai in sorgenti software
+<stefano67> ok
+<cristian_c> pierantonio, lsb_release -a && cat -n /etc/issue
+<cristian_c> !repository | stefano67
+<ubot-it> stefano67: Guida ai repository: http://wiki.ubuntu-it.org/Repository e http://help.ubuntu-it.org/8.04/ubuntu/add-applications/it/extra-repositories.html | Esempio di sources.list http://wiki.ubuntu-it.org/Repository/SourcesList | Da Kubuntu: http://wiki.ubuntu-it.org/Repository/Kubuntu
+<stefano67> ubout... grazie provo con i tuoi link
+<pierantonio> cristian, mi dice:   No LSB modules are available.
+<cristian_c> !paste | pierantonio
+<ubot-it> pierantonio: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<pierantonio> http://paste.ubuntu.com/10604890/
+<solaris82> salve ragazzi sto cercando di far partire ubuntu da usb ma non parte, mi spiego meglio o preso ubuntu 14.4 tramite  unetbootin-windows-608.exe lo installato su usb vado nel bios metto usb come boot primario ma non parte ubuntu possiedo  Samsung i3 NP300E5C-S02IT
+<solaris82> come devo fare?
+<cristian_c> pierantonio, puoi postare una schermata dell'errore?
+<krabador> !usbwin| solaris82
+<ubot-it> solaris82: Scarica Universal USB Installer (http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/) | Installalo su Windows e lancialo: lui si occuperà di trasferire l'immagine ISO su USB (guida: http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows) | Opzionalmente questo programma può anche scaricare lui stesso l'immagine ISO
+<krabador> prova con questo
+<solaris82> non esce nessun errore parte automaticamente windows
+<krabador> solaris82: formatta prima
+<solaris82> lo avevo già formattata in fat32
+<solaris82> ok lo scaricato adesso
+<solaris82> mi consigliate usare iso o scaricarlo tramite quel programma?
+<krabador> USA la ISO scaricata
+<krabador> ma controlla prima l'hash
+<krabador> !md5 | solaris82
+<ubot-it> solaris82: http://wiki.ubuntu-it.org/Md5Sum. Per una lista completa, si veda: https://help.ubuntu.com/community/UbuntuHashes
+<solaris82> come ricavo md5?
+<solaris82> sto portando ubuntu 14.4.1 64bit su usb
+<solaris82> spero parta adesso
+<solaris82> md5 controllato e ok
+<krabador> solaris82: hai formattato prima?
+<solaris82> si fat 32
+<solaris82> poi il programma mi ha chiesto di formattare di nuovo in fat 32 e lo fatto adesso sta portando su usb
+<solaris82> come termina vi posto clipboard
+<solaris82> http://paste.ubuntu.com/10605101/
+<solaris82> eccolo
+<krabador> ok , smonta correttamente , riavvia e prova a farla partire
+<solaris82> ok
+<solaris82> adesso tolgo hdd dove è installato windows così se mi da errore lo posto
+<solaris82> a dopo
+<solaris82> eccomi ritornato
+<solaris82> fatto ma non parte
+<solaris82> in pratica il pc non vede usb inserita non dà nessun errore
+<solaris82> ecco la foto
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183801.jpg
+<cristian_c> solaris82, hai la stessa situazione?
+<solaris82> ecco le foto delle impostazioni del bios
+<solaris82> si
+<krabador> pc uefi?
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183815.jpg
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183822.jpg
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183830.jpg
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183837.jpg
+<solaris82> ops errore
+<krabador> pc uefi?
+<solaris82> scusate per gli spazzi
+<krabador> rispondi?
+<solaris82> nelle foto ci sono tutte le impostazioni del bios
+<solaris82> sarebbe uefi?
+<solaris82> scusa ignoranza :(
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183815.jpg
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183822.jpg
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183830.jpg
+<krabador> basta
+<solaris82> http://soshackintosh.altervista.org/bios/IMG_20150315_183837.jpg
+<solaris82> sono 4 foto
+<krabador> sono 2 volte che le posti
+<cristian_c> solaris82, ok
+<solaris82> scusa
+<cristian_c> solaris82, usb hdd forse non va bene
+<cristian_c> sembrerà strano
+<cristian_c> ma usb fdd
+<solaris82> ma prima funzionava
+<krabador> solaris82: disabilta uefi boot Support
+<solaris82> poi a chiesto agg. bios e non va più
+<solaris82> ok ci provo
+<solaris82> fatto ma nulla
+<solaris82> :(
+<solaris82> ;(
+<krabador> solaris82: spegni , stacca pendrive, reinseriscila, accendi , prova a vedere se è listata
+<solaris82> lo fatto più volte tolto batteria tolto tutto ma nulla non vede usb lo inserita in tutte e 3 le usb ma nulla ;(
+<solaris82> sto impazzendo ;(
+<krabador> dopo averla rifatta?
+<krabador> l'occhiolino , è perchè dovrebbe essere scontato che tu stia impazzendo?
+<solaris82> si hihihi
+<krabador> beh, niente è scontato . potresti anche mentire
+<krabador> solaris82: prova le altre 2 opzioni USB
+<krabador> se non va , cambia pendrive
+<solaris82> xchè dovrei mentire? :/
+<solaris82> le altre due non so come fare
+<solaris82> la prima usb hdd ok
+<krabador> le selezioni
+<solaris82> ma le altre 2?
+<solaris82> sono già selezionate
+<krabador> leggi la schermata, te lo dice
+<solaris82> nel boot e selezionato 1 posto usb hdd poi 2 usb cd 3 usb fdd se non parte 1 parte 2 e così via ma rivela solo dvd
+<jester-> solaris82: perchè non fai un dvd ?
+<boschi> avrei un quesito ... router <-- eth0 --> ubuntu [ proxy ] <-- wlan0 --> clients ( esiste una guida di come configurare questa archittettura ? ).
+<solaris82> xchè possiedo già un dvd ma mi serve su usb perchè su live tramite dvd se faccio le operazioni le salva? no
+<krabador> solaris82: prova le altre 2 opzioni USB , la schermata di dice come spostarle per prima
+<jester-> boschi: wlan (wifi) non centra con eth a cavo
+<krabador> solaris82: ti serve qualcuno che prema i tasti per te?
+<solaris82> no
+<solaris82> lo fatto
+<solaris82> ma non funziona
+<jester-> il proxy lo fai sia su wifi che eth
+<jester-> solaris82: non è che hai copiato la iso tal quale per caso?
+<krabador> solaris82: carica le impostazioni default del BIOS e riprova
+<krabador> sol
+<krabador> solaris82: se non va , cambia pendrive
+<boschi> pc collegato a router via eth0. Con proxy share wifi, Rif router non wifi
+<solaris82> se vi ho mandato anche  questo link http://paste.ubuntu.com/10605101/
+<jester-> solaris82: visto il tuo nick hai un pc sparc?
+<solaris82> ???
+<solaris82> cosa jester?
+<jester-> solaris è un sistema operativo unix di oracle per pc sparc
+<krabador> solaris82: per favore , fa quanto segnalato
+<solaris82> no
+<solaris82> va bo
+<solaris82> lo fatto ma non và
+<solaris82> grazie lo stesso
+<cristian_c> lol
+<krabador> solaris82: come sei rapido
+<krabador> solaris82: riprova , per favore
+<solaris82> se possiedo 2 pc
+<solaris82> è normale che con uno provo e con un altro chiedo aiuto
+<krabador> default BIOS e tutte e 3 le voci USB?
+<solaris82> si
+<krabador> solaris82: cambia pendrive
+<boschi> Avrei un router collegato ad un solo pc e vorrei usare il pc in questione ( e qui ho montato squid3 ) per gestire wifi altri pc.
+<solaris82> si tutte è 3 le voci usb sono attive
+<solaris82> adesso cambio usb
+<krabador> solaris82: mi sa che non ti è chiaro il punto sulle voci USB
+<jester-> boschi: stai facendo confusione
+<krabador> devi selezionarle come prime nell'elenco
+<krabador> solaris82: una alla volta
+<krabador> solaris82: non controllare se sono attive
+<solaris82> forse non sono stato chiaro o cambiato le voci
+<solaris82> prima era 1 usb hdd e 2 usb cd
+<solaris82> poi ho fatto 1 usb cd e 2 usb hdd
+<krabador> non è importante cosa ci sia per seconda
+<solaris82> poi 1 usb fdd e 2 usb hdd
+<krabador> l'importante è la prima
+<solaris82> ma non funziona
+<solaris82> spero mi sia spiegato meglio
+<solaris82> adesso
+<boschi> volevo semplicemnte dire che ho un pc con wifi ... un router senza wifi ...  router < --- eth --> pc e dal medesimo pc < --- wlan0 --- squid3 ----> altri client  con wifi.
+<krabador> solaris82: quando si chiede assistenza , essere chiari su quello che si fa è un dovere
+<jester-> boschi: non sacciamo
+<solaris82> ma lo detto prima di aver cambiato
+<solaris82> le impost.
+<krabador> solaris82: vai con altra pendrive
+<solaris82> come finisce il pass. provo
+<solaris82> provato ma non và
+<solaris82> sempre lo setto problema vede solo dvd
+<solaris82> ci rinuncio
+<krabador> solaris82: controlla uefi sia disabilitato
+<solaris82> si disattivato
+<solaris82> grazie per il tempo che mi avete dedicato
+<boschi> grazie se trovo qualcosa prima di concretizzarlo faro' rif. a te jester. Tnx
+<jester-> boschi: se ci erudisci ti saremo grati
+<FreeWolF> ciao a tutti
+<FreeWolF> ho una domanda velocissima: se dovessi installare Ubuntu adesso, mi consigliate la versione 14.10 o la 14.04? Quando uscirà la 15, probabilmente aggiornerò subito e se tutto va bene farò la stessa cosa anche con la 16 (sempre se non muoio prima)
+<jester-> FreeWolF: se intendi  avanzare usa la 14.10
+<FreeWolF> da quello che ho capito la differenza è che la 14.10 ha i vari pacchetti più aggiornati ma "solo" nove mesi di supporto, mentre la 14.04 ha i pacchetti più vecchi ma con il supporto più lungo
+<FreeWolF> ok, grazie mille
+<jester-> non potresti passare dalla 14.04 alla 15.04 diretto
+<FreeWolF> a ok
+<krabador> FreeWolF: aspetta un mese
+<krabador> e installa 15.04
+<FreeWolF> posso passare dalle versioni 14.10 alla 15.10 senza problemi
+<FreeWolF> ma non dalla 14.04 alla 15.04
+<FreeWolF> ok
+<FreeWolF> kabrador: ci avevo pensato in effetti, la beta non la metto su per il momento
+<krabador> FreeWolF: tieni lontano il martello dall'hd , però
+<FreeWolF> perchè ? :)
+<krabador> se ti metti a smanettare pesantemente con software non ufficiale
+<krabador> da guide non ufficiali
+<krabador> mettendo PPA  ecc
+<krabador> avrai problemi nell'aggiornamento
+<FreeWolF> a beh, non è la prima volta che mi "salta" l' installazione
+<FreeWolF> diciamo che non ho dei grossi problemi a formattare, anche se eviterei
+<browser> ciao
+<browser> sera
+<browser> volevo farvi una domanda per quanto riguarda l'installazione su android-studio
+<FreeWolF> comunque, sintetizzando: se voglio fare l'upgrade all' uscita della 15.x mi consigliate di mettere su la 14.10 che si può aggiornare alla 15.10 senza problemi, mentre se metto su la 14.04 NON si può aggiornare alla 15.04....giusto?
+<krabador> vuoi una conferma con valore legale?
+<FreeWolF> ahaha no no :)
+<jester-> !chat | browser
+<ubot-it> browser: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<krabador> 14.10 e passi a 15.04 , 14.04 non puoi
+<browser> scusate se mi intrometto ma la 14.10 ancora non è un lts conviene farlo??
+<browser> cioè conviene installare la 14.10??
+<jester-> se ti piacciono le milf tieni la 14.04 se le sbarbate le non lts
+<FreeWolF> bel paragone
+<browser> mmmh ok
+<browser> cmq dovrei instalalre android-studio su ubuntu... dopo aver installato i repository " paolo rotolo" quando vado ad installare android-studio mi da problemi sulle dipendenze
+<browser> mi sapreste dire il problema?
+<jester-> !chat | browser
+<ubot-it> browser: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<clacla> salve. il netbook MSI U90 con XP non si avvia. nel senso che appare il logo Windows XP ma resta fisso così, e la barra dove normalmente scorre quando sta caricando è vuota... premetto che non sono un esperto, ma sta cosa non era mai accaduta e modifiche hw o sw non ne sono state eseguite. cosa posso fare? ora vi sto scrivendo da un macbook...
+<jester-> clacla: andare a chiedere i ##windows
+<clacla> cioè devo cliccare su ##windows?
+<jester-> clacla:  /j ##windows
+<clacla> su qualche forum mi pare di aver letto che è possibile riavviare XP con Ubuntu... ho capito bene? e si come?
+<jester-> clacla: è posdibile copiare o scrivere nella partizione winz sempre il flisystem non sia a buone donne
+<krabador> clacla, puoi solo caricare la sessione live di ubuntu, ed essendo pc con xp , meglio lubuntu, per accedere alla partizione windows, ma non ripari windows
+<krabador> visto che ci sono una marea di motivazioni per cui possa non partire, che non sono argomento di questo canale
+<clacla> in ##windows mi hahi riposto "we don't speak italian!", per me è già difficile spiegare in italiano il mio problema, figuriamoci in inglese... che faccio? mollo?
+<krabador> clacla, puoi rivolgerti ad un centro assistenza
+<clacla> lo faro... grazie lo stesso
+<akis24> sera

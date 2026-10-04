@@ -1,0 +1,71 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2015-3-15"
+lang: "en"
+messages: "62"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<thor77> hey, im trying to run postfix, it works very good, but i get this message sometimes "warning: valid_hostname: misplaced delimiter: .
+<thor77> "
+<thor77> whats wrong?
+<FreezingCold> Can't seem to create a debootstrap install as a user
+<FreezingCold> W: Failure trying to run: chroot /home/user/fakeroot-x64 mount -t proc proc /proc
+<FreezingCold> fakechroot fakeroot debootstrap --variant=fakechroot lucid ~/ubuntu-lucid-fakeroot-x64/ http://mirror.its.dal.ca/ubuntu/
+<sarnold> FreezingCold: the chroot(2) syscall requires root privileges
+<FreezingCold> sarnold: Thanks for not reading at all.
+<sarnold> FreezingCold: that may explain your failure...
+<FreezingCold> Of course that's why it's failing, that IS the problem.....
+<FreezingCold> fakechroot fakeroot is supposed to fix that
+<stgraber> FreezingCold: while fakechroot will fake the chroot call for you as an unprivileged user, it will still not let you do mounts
+<sarnold> evening stgraber :)
+<stgraber> hey sarnold
+<FreezingCold> stgraber: You're mixing up fakechroot and fakeroot.
+<stgraber> FreezingCold: I'm not. fakechroot will let you do chroot() as an unprivileged user, fakeroot will let you write files as other uids/gids than yourselves, neither will let you do mount table changes as an unprivileged user
+<FreezingCold> So why is this magically a new thing?
+<FreezingCold> debootstrap definitely has *TONS* of reports of working perfectly with fakechroot fakeroot as a user
+<stgraber> hmm, so looks like the mount issue is supposed to be worked around by fakechroot by ignoring the mount and letting you see the real /proc. The problem I see here when trying with lucid on trusty is that lucid's simply too old.
+<stgraber> the LD_PRELOAD set by fakechroot requires a recent version of the C library which lucid simply doesn't have
+<stgraber> precise on trusty works fine
+<stgraber> fakechroot requires a libc >= 2.14. so precise is as old as you can run (since 2.14 was never shipped by Ubuntu and the closest thing is 2.15 in precise)
+<lordievader> Good morning.
+<thor77> what does this "warning: valid_hostname: misplaced delimiter: ." message in mail.log from postfix mean?
+<bekks> That your hostname contains a . where it shouldnt be.
+<thor77> http://pastie.org/private/damb65x7gg9v7lidqhrqrq
+<thor77> i dont see the misstake
+<thor77> or should i use $mydomain for "myhostname="?
+<bekks> thor77: whats the hostname of your machine?
+<thor77> bekks: fire.crapwa.re
+<bekks> Then you does your config does not contain it?
+<thor77> bekks: i replaced crapwa.re with domain.tld in the paste
+<bekks> Which makes the pastebin useless.
+<thor77> why?
+<thor77> where's the difference between abc.domain.tld and fire.crapwa.re?
+<thor77> so... where should i place my hostname in the config?
+<smallfoot-> If I run Ubuntu on Microsoft's Azure cloud, will I have to do any maintenance and package updates myself or will that all be handled automatically for free?
+<smallfoot-> When you run Ubuntu on Azure, is it as IaaS or PaaS ?
+<bekks> MS Azure is a SAAS provider.
+<smallfoot-> bekks, no I don't believe Azure does SaaS. My understanding is that Azure primarily does PaaS (their own offerings) and secondarily IaaS (third-party offerings)
+<bekks> smallfoot-: At least Wikipedia states that Azure is a SAAS provider :)
+<smallfoot-> " It provides both PaaS and IaaS services and supports many different programming languages, tools and frameworks, including both Microsoft-specific and third-party "
+<smallfoot-> *nowhere* on the Wikipedia article does it mention SaaS
+<Patrickdk> heh, even if azure did saas, running ubuntu in azure is so not saas
+<smallfoot-> right
+<smallfoot-> If you want to run a unattended server, is it better go with Ubuntu Server or CentOS?
+<smallfoot-> Maybe I should go with CentOS, they are more professional and don't live in the dream world where they will make it on tablet and smartphones lol
+<andol> smallfoot-: To that question, what answer do you really expect in a channel named #ubuntu-server? :)
+<smallfoot-> true
+<Patrickdk> heh? centos doesn't live in anyworld
+<Patrickdk> they have no dreams or ambissions
+<Patrickdk> they *just* feed off redhat
+<Patrickdk> I wonder if their *security patching* is fixed yet, or not
+<smallfoot-> oh, CentOS is bad at security patching?
+<Patrickdk> it used to lag a month+ behind
+<Patrickdk> since rhel has taken them in, I haven't been keeping track
+<Patrickdk> centos is only *maintained* by 2 people
+<Patrickdk> only so much they can do
+<smallfoot-> oh, i see
+<smallfoot-> I didn't know it was that bad
+<squisher> rbasak, hey, finally got around to fixing the bcache repo, but I can't push because there's a remote hook that rejects non-fast-forward updates :-\
+<squisher> jamespage, ^ what's the best way to resolve that?

@@ -1,0 +1,147 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/World_War_I.txt",
+  "sha256": "cf12aea9780076fe08843bbb3f842240b37e2f05597643012e08eaa3520b69bd",
+  "chars": 104083,
+  "declaredIdentity": {
+   "title": "World War I",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 17,
+  "debrisChars": 270,
+  "debrisFraction": 0.003,
+  "headingCount": 64,
+  "headings": [
+   "Names",
+   "Background",
+   "Political and military alliances",
+   "Arms race",
+   "Conflicts in the Balkans",
+   "Prelude",
+   "Sarajevo assassination",
+   "July Crisis",
+   "Progress of the war",
+   "Opening hostilities",
+   "Confusion among the Central Powers",
+   "Serbian campaign",
+   "German offensive in Belgium and France",
+   "Asia and the Pacific",
+   "African campaigns",
+   "Indian support for the Allies",
+   "Western Front",
+   "Trench warfare begins",
+   "Continuation of trench warfare",
+   "Naval war",
+   "Southern theatres",
+   "War in the Balkans",
+   "Ottoman Empire",
+   "Italian Front",
+   "Eastern Front",
+   "Initial actions",
+   "Romanian participation",
+   "Central Powers peace overtures",
+   "Final years of the war",
+   "Russian Revolution and withdrawal",
+   "United States enters the war",
+   "Allied advance to the Hindenburg Line",
+   "Armistices and capitulations",
+   "German government surrenders",
+   "Aftermath",
+   "Formal end of the war",
+   "Peace treaties and national boundaries",
+   "National identities",
+   "Casualties",
+   "War crimes",
+   "Chemical weapons in warfare",
+   "Genocides by the Ottoman Empire",
+   "Prisoners of war",
+   "Soldiers' experiences",
+   "Conscription",
+   "Economic effects",
+   "Support and opposition for the war",
+   "Support",
+   "Patriotic funds",
+   "Opposition",
+   "Technology",
+   "Diplomacy",
+   "Legacy and memory",
+   "Memorials",
+   "Historiography",
+   "Unexploded ordnance",
+   "See also",
+   "Lists of World War I topics",
+   "Footnotes",
+   "References",
+   "Bibliography",
+   "External links",
+   "Archival materials",
+   "Library guides"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 64,
+   "debrisFraction": 0.003
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 1.8475026944014334,
+   "debrisFractionZ": -0.17642658593102814,
+   "priorSeenSoFar": 45
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.102Z"
+ }
+}

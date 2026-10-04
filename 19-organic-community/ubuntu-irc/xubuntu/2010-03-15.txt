@@ -1,0 +1,128 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2010-3-15"
+lang: "en"
+messages: "119"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<Ritchie> hello
+<Ritchie> anybody here?
+<_Techie_> no were all out for lunch
+<_Techie_> just kidding
+<Ritchie> ok then...
+<Ritchie> just because I am desperately in need of some help
+<Ritchie> I lost one of my foldern in Thunar and don't know how to get it back
+<_Techie_> have you checked the recycle bin?
+<Ritchie> I tried to drag and drop a folder from my documents to the list of folders on the left side of the window (where documents, pictures, etc. is listed)
+<Ritchie> and boom, no folder...
+<_Techie_> odd
+<_Techie_> anyone else care to step in??? its not exactly my area of expertise
+<Ritchie> ok
+<Ritchie> it got it!!!
+<Ritchie> whohoooo!!!! :D
+<_Techie_> gratz
+<Ritchie> sorry for disturbing with this question
+<Ritchie> but all my university notes for this semester are there
+<Ritchie> and although I have a copy, the new things are not saved from this weekend
+<Ritchie> and that means hours of work..
+<Ritchie> which I don't really wanna do again :D
+<Ritchie> Thunar simply copied the files to Music :)
+<_Techie_> you dont have to apologise for asking
+<_Techie_> this is where i would say some wise quote about how a question never asked is a question never answered, but im drawing a blank
+<Ritchie> :)
+<Ritchie> thank you anyway :)
+<_Techie_> no problem
+<_Techie_> anyway, time to install my new fans and cold cathode lights
+<_Techie_> catcha later
+<Ritchie> have fun with them! :)
+<Ritchie> bye
+<pkbest> anyone know or play a good FPS?
+<pwnkiller> hello
+<pwnkiller> hello
+<pwnkiller> hello
+<pwnkiller> hello
+<Balsaq> yo _Techie_
+<_Techie_> what?
+<Balsaq> said hello
+<_Techie_> oh, i wasnt gone for that long
+<Balsaq> i just got here
+<pwnkiller> hi
+<tontsa_> does anyone know how to modify the right click menu?
+<charlie-tca> did not you could?
+<charlie-tca> Did not know you could.
+<tontsa_> hm.. there should be way in 4.6?
+<charlie-tca> Not that I know of.
+<charlie-tca> You could ask that in #xfce, though.
+<tontsa_> oh well.. there used to be?
+<charlie-tca> Not that I know of
+<Redaxxx> How can I see what version of Xfce I'm running?
+<tontsa_> in the menu in info
+<eXpl0i7> xfce4-about
+<nikolam> uuuuh
+<nikolam> that ^%$*^% LTS update
+<nikolam> and its idea of killing grub
+<nikolam> every time I upgrade kernel on regular updates on LTS I have to set it manually
+<nikolam> It screws (hd0,0) with something insane
+<nikolam> and puts UUID instead of root=/dev/xy designation
+<nikolam> I was standing and doing nothing 4 hours because of that
+<charlie-tca> grub does?
+<nikolam> it basically kills grub with uuid and that changing device thing in menu.lst
+<nikolam> I can boou after booting from cd and manually editing menu.lst
+<nikolam> Horror
+<nikolam> boot
+<nikolam> I imagine those ppl having server on it have.. alternate solutions, i suppose..
+<charlie-tca> that would be the bug that keeps getting declared invalid because grub isn't supposed to be doing that...
+<nikolam> As I know, it asks me during update, what to do with menu.lst, regarding new kernel update
+<charlie-tca> Server people almost never will upgrade the kernel
+<nikolam> seems that selecting anything but "leave it there" scr.. things up in menu.lst
+<nikolam> charlie-tca, I suppose they do upgrade in regular 8.04.x updates
+<charlie-tca> What if you leave it there, then boot to recovery menu and update grub?
+<nikolam> there wer dozen ofthose updates since lts came out
+<nikolam> nothing can boot
+<nikolam> since there is no single item in menu that works
+<charlie-tca> No, server is all text based, and seldom will upgrade the kernel. They install security updates only, much of the time
+<nikolam> i could invoke only grub cli
+<nikolam> I suppose 2.6.24-27 and previous are just security updates.
+<charlie-tca> no
+<charlie-tca> It's like doing a sudo apt-get update and sudo apt-get upgrade
+<charlie-tca> you miss most of the updates then
+<charlie-tca> but I think I do know the issue you are referring to.
+<charlie-tca> The good news is lucid doesn't have that problem
+<charlie-tca> And, it is a direct upgrade from 8.04
+<nikolam> Thats fine. i think maybe it would be clever not to upgrade from LTS to Lucid, but to do fresh install, I suppose
+<charlie-tca> If you want ext4 and grub2, otherwise it is just like upgrading each release
+<nikolam> or, I dont know, if I would do it anyway, maybe after clearing some disk space, I could do uograde to lucid now and suffer some testing in meantime :))
+<subspider> hello everybody
+<subspider> hello charlie-tca
+<charlie-tca> Hello, subspider
+<nikolam> hello
+<charlie-tca> nikolam: just don't do it on a production server. It isn't quite there yet
+<nikolam> ChanServ, well its my home machine that I was proud with beoing stable and everything
+<nikolam> I was just mentioning other uses
+<charlie-tca> I know that one. I got mine up to 9.10 now, and will upgrade to lucid at RC testing
+<nikolam> Since I was on this LTS form the start, I had to fix that menu.lst several times and had about 2 kernel upgrades that werent ok and needed to wait half a day etc, trath my report
+<charlie-tca> yup
+<nikolam> Closed Ati driver stopped me upgrading to 8.10 and 9.04
+<nikolam> now it suppose free drive catched up, will see
+<nikolam> driver
+<paolo> hi, the two panels on the desktop disappeared after I rebooted.... what could be happened?
+<charlie-tca> !panels | paolo
+<ubottu> paolo: Did your panels disappear? Press alt+f2 and run: xfce4-panel | See also: https://help.ubuntu.com/community/XubuntuPanels | Want to theme your panels? See http://xubuntu.wordpress.com/2007/10/12/howto-set-a-background-image-for-your-panel/
+<paolo> thanks charlie-tca
+<charlie-tca> You are welcome
+<nasrullah> I am searching for a blog or website about xubuntu guide
+<charlie-tca> Expand that, please. What is xubuntu guide?
+<nasrullah> your help please
+<nasrullah> like www.ubuntuguide.org
+<nasrullah> or  a blog
+<Sysi> much of that works also for xubuntu
+<Myrtti> ubuntuguide isn't itself recommended by the community, btw.
+<charlie-tca> I believe we call it Xubuntu Help? click the help icon on the panel or Applications -> Help
+<Sysi> google is great guide..
+<Sysi> in xfce.org is also good information
+<Myrtti> ubuntuguide tells you to enter commands without really expanding what they do
+<nasrullah> ok
+<nasrullah> a nice ,blog
+<faron> sorry everybody I'll learn someday...I just downloaded flashplayer 10.1 beta 3 from http://labs.adobe.com/downloads/flashplayer10.html   & it' sitting in xarchiver & now I'm lost.what do I do next ?

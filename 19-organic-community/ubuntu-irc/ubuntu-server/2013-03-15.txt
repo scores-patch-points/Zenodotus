@@ -1,0 +1,521 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2013-3-15"
+lang: "en"
+messages: "512"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<qman__> I think I'm running into bug 633392
+<uvirtbot> Launchpad bug 633392 in linux "Bridged Guests losing network connectivity" [High,Expired] https://launchpad.net/bugs/633392
+<qman__> unfortunately it went unresolved
+<qman__> I'll try unbonding and see if it solves the problem
+<qman__> yep, it did
+<qman__> so I guess bonding + bridging + kvm is broken
+<patdk-lap> can't say I ever joined bonding + bridging
+<qman__> bonding + bridging works great on the host OS
+<qman__> it just breaks stuff with the KVM guests
+<qman__> not sure where the fault is
+<patdk-lap> bonding and bridging on the host and normal nic on kvm guest?
+<qman__> yes
+<qman__> both normal nic and a guest with a bridge
+<qman__> same thing happens to both guests
+<patdk-lap> and firewall rules on the host?
+<qman__> accept all
+<qman__> it just has the normal KVM stuff
+<qman__> or libvirt
+<qman__> or whatever puts it in there
+<patdk-lap> just thinking :) I normally put a firewall on the host
+<qman__> yeah, this is all externally secured
+<RoyK> bonding on the host, not the guest?
+<qman__> yes
+<RoyK> what sort of bonding?
+<qman__> balance-rr
+<qman__> I don't have smart hardware
+<qman__> unmanaged switch, two different types of NIC
+<RoyK> bonding to a single switch?
+<qman__> yes
+<RoyK> then why not LACP?
+<RoyK> should work well
+<RoyK> perhaps not to a dumb switch, though
+<qman__> yeah, I don't think I can
+<qman__> I just wanted to try and squeeze some more bandwidth out of it
+<qman__> it's not critical, just annoying that it's broken
+<RoyK> get a good switch
+<RoyK> well, file a bug report
+<RoyK> if enough users/developers think it's a problem, it'll be solved
+<MraAlbertina> hi. could you please help me sonve this issue; "perl: warning: Setting locale failed." Pastebin: http://pastebin.com/p3N17prX
+<MraAlbertina> sonve/solve..
+<sarnold> MraAlbertina: 'locale -a' will show you the installed locales on your system
+<sarnold> MraAlbertina: I guess one of your locale variables there is not one of the legal values reported by locale -a
+<MraAlbertina> wow... i need to discover where that is
+<MraAlbertina> sarnold: i have a C and C.UTF-8 after 'locale -a' everything else seems ok (all en_**.utf8)
+<MraAlbertina> i have no clue where that C is coming from. might that be the problem?
+<sarnold> MraAlbertina: "C" is the safe fallback :)
+<MraAlbertina> oh
+<MraAlbertina> oh, another entry i have is POSIX, besides that C and all en*
+<MraAlbertina> is it possible to reconfigure locale, in a quick fix, sarnold ?
+<qman__> pretty sure this one is the problem: LC_ALL = (unset),
+<MraAlbertina> because everything seems ok, with locale -a
+<qman__> there's a dpkg-reconfigure you can do to set the locale
+<qman__> I can't remember which package though
+<MraAlbertina> i saw that LC_ALL = (unset) somewhere
+<qman__> related: http://ubuntuforums.org/showthread.php?t=1720356
+<qman__> shows three methods to fix, in the order you should try them
+<MraAlbertina> oh, ya, on the first "warning" i got, in the pastebin
+<MraAlbertina> LC_ALL = (unset),
+<MraAlbertina> okay, thanks so much qman__
+<MraAlbertina> thanks sarnold
+<sarnold> MraAlbertina: what fixed it? :)
+<MraAlbertina> going for a reboot after editing /etc/environment  and i'll tell you :)
+<MraAlbertina> sarnold: adding: LC_ALL="en_GB.utf8" -to- /etc/environment and rebooting solved it
+<sarnold> MraAlbertina: excellent :) thanks
+<MraAlbertina> thanks for discovering that qman__
+<patdk-lap> isn't bond-mode balance-tlb going be better than balance-rr?
+<patdk-lap> balance-rr when using a single switch, can cause out of order packets
+<patdk-lap> that might be your issue
+<patdk-lap> the other one, balance-a?? can cause issues with devices that depend on the mac being static (cable modems, some switchs management interface, basically anything using mac for a security cookie)
+<sarnold> qman__: ^^^
+<qman__> while that's possible I don't think it's the problem at hand, when watching a tcpdump, the arp requests go through the bridge and get back to my host, but simply don't get to the guests, most of the time
+<qman__> and the host has no issues at all communicating with the rest of the network over the bridge on the bond
+<patdk-lap> ya, I imagine the balance-rr issue will be more if you load the interfaces up good
+<patdk-lap> I believe I have seen that arp issue before
+<patdk-lap> but it's been awhile
+<qman__> likewise, real hosts on the LAN can reach the guests just fine, it only applies to the guests trying to initiate
+<patdk-lap> I've defently seen that before
+<patdk-lap> but totally can't remember what it was
+<patdk-lap> I don't use kvm, but used to use xen with bridges like that
+<autoditac> hey everyone. is this the right channel to ask questions regarding nfs on ubuntu?
+<autoditac> i' d be glad if someone could give me a hint regarding posix acls and nfs4 on ubuntu.
+<autoditac> question is: will posix acls be applied if i access a ext3 filesystem with heavy usage of acls using nfs 4 without using kerberos? i have the same userbase both on the client and the server (LDAP)
+<xnox> yes, but they will be able to bypass it, if they have root on the client.
+<autoditac> hi, xnox :)
+<autoditac> xnox, users don't have root access on the client. furthermore, no_root_squash is not set
+<autoditac> i was just wondering if the nfs4 acls and posix_acls map and if the acls get enforced on the server or on the client side?
+<patdk-lap> enforced on the client
+<buengenio> guys, can somebody please recommend a shared calendar server/service?
+<patdk-lap> gmail?
+<resno> buengenio: google calendar?
+<patdk-lap> just dunno what a shared calendar server/service is
+<patdk-lap> like a community calendar? a wordpress plugin?
+<buengenio> no, like a caldav
+<patdk-lap> or like exchange/outlook? a webmail thing?
+<patdk-lap> isn't caldav a protocol?
+<buengenio> exchange/outlook type of thing but that can work with Outlook/Thunderbird/Mail, etc....
+<patdk-lap> heh?
+<sarnold> good luck with outlook :/
+<patdk-lap> outlook does it's own thing
+<holstein> you can use google cal with those
+<buengenio> I'd love to say that to our boss
+<patdk-lap> and last I knew thunderbird and that doesn't support calanders
+<resno> im still suggest google calendar
+<patdk-lap> buengenio, install exchange
+<buengenio> no thank
+<buengenio> no thanks
+<resno> can you even install exchange in linux?
+<sarnold> buengenio: iirc there's a horrible plugin thingy for outlook to make google calendars work there. I'm sure they did their best, but I don'tthink outlook was meant to have plugins. so.
+<buengenio> but boss is sticking with Outlook till dies irae
+<patdk-lap> I run exchange 2010 currently, not a big deal
+<patdk-lap> buengenio, next best thing, outlook365 :)
+<buengenio> isn't there something OSS?
+<buengenio> standards based
+<buengenio> that works everywhere?
+<patdk-lap> there are standards?
+<sarnold> buengenio: it's the "works everywhere" that fails, outlook doesn't want to play that game.
+<patdk-lap> outlook has no standards, atleast till outlook 2013, then it can use activesync
+<sarnold> buengenio: and iirc nothing else really speaks exchange
+<sarnold> (client-side)
+<holstein> owncloud
+<patdk-lap> I guess you could install horde webmail, setup activesync, then use outlook2013
+<patdk-lap> I have not *tested* that though
+<resno> theres zimbra
+<resno> zimbra the paid versoin speaks it
+<patdk-lap> there is always openchange
+<patdk-lap> no idea how well that works
+<sarnold> buengenio: I've heard good things about http://en.wikipedia.org/wiki/Open-Xchange but never used it myself
+<shauno> I'd be wary of google calendar, their caldav access is on the chopping board
+<buengenio> Their biggest problem is that adding event invitations sent to a non GMail address doesn't work
+<buengenio> At least in Thunderbird
+<patdk-lap> heh?
+<buengenio> which is what almost everyone uses at the office
+<resno> if you had users comfortable with ftp, how would you allow them to upload their files?
+<resno> whats a resonable alternative or a secure ftp server?
+<sarnold> resno: I'd get them comfortable with sftp right quick.
+<patdk-lap> there is no difference between ftp and sftp these days to a user
+<sarnold> except no more baffling image vs text or pasv vs active :)
+<patdk-lap> hmm, most programs hide that too :)
+<patdk-lap> just when it won't work, do you have to deal with it :)
+<sarnold> :D
+<patdk-lap> like my friends router that messed up active ftp :)
+<resno> is sftp that much improved over ftp?
+<patdk-lap> resno, yes and no
+<resno> im sure the "s" brings secure, but is it night and day
+<patdk-lap> personally I hate sftp
+<resno> i hate s/ftp
+<patdk-lap> but it uses a single connection, unlike ftp, fixing nat issues
+<patdk-lap> and it uses ssh
+<patdk-lap> so it just works better :)
+<resno> oh?
+<resno> so, i wouldnt need an ftp server?
+<patdk-lap> depends
+<patdk-lap> most ftp servers these days support sftp too
+<resno> you give me hope and then snatch it away
+<patdk-lap> but give you more control than ssh will give you for sftp
+<patdk-lap> all depends on what goal you have
+<patdk-lap> use ssh for both
+<patdk-lap> or use like proftpd for sftp
+<patdk-lap> I think pure-ftp does it too now, but haven't checked
+<resno> theres 3 main ftp servers right?
+<patdk-lap> what is *main*?
+<resno> uhm
+<resno> ill look into proftpd
+<resno> ive managed to avoid ftp being installed, so i want to make sure its all good and secure
+<patdk-lap> there is one issue with that :)
+<patdk-lap> you can't have both proftpd and ssh both listening on port 22 (I believe, maybe they did a passthough thing?)
+<patdk-lap> so you would have to move normal ssh to another port
+<resno> you cant have proftpd listen on another port as well?
+<resno> seems like a reciepe for disater
+<patdk-lap> if you have it listen on another port, it will confuse users
+<patdk-lap> when they use the default port :)
+<sarnold> man, i'd so much rather just rely on sshd to do sftp rather than get one of the ftpd servers involved.
+<patdk-lap> sarnold, like I said it depends :)
+<patdk-lap> the ftp server has more control, than ssh gives you per user
+<patdk-lap> and personally, I love file upload notifications
+<patdk-lap> so I can realtime scan and check files people upload
+<resno> patdk-lap: do you do that even for trusted users? ie) coworkers
+<sarnold> something that'd be annoying to put together with imcron and sshd over a few thousand users :)
+<resno> i dont know your enviroment
+<patdk-lap> trusted users? those exist?
+<patdk-lap> anyones account could be compromised
+<resno> true
+<resno> hmm, i didnt think of that actually
+<jamespage> yolanda_, https://code.launchpad.net/~james-page/python-quantumclient/grizzly-2.2.0/+merge/153512
+<jamespage> when you get a chance please :-)
+<yolanda_> jamespage, meeting
+<jamespage> yolanda_, (I know :-))
+<nailora> sarnold: i found this https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1008400
+<uvirtbot> Launchpad bug 1008400 in linux "Ubuntu server uses CFQ scheduler instead of deadline" [Medium,In progress]
+<yolanda_> jamespage, i'm looking the code at the diff, i see that in changelog * debian/control: Set version minimum for python-cliff (>= 1.3.1).
+<yolanda_> but i don't see that reflected in the diff, is that from a previous commit?
+<jamespage> yolanda_, yeah - it needed a tweak in the changelog to drop the ~
+<jamespage> as changelog and change did not actually match
+<yolanda_> approved it
+<jamespage> bug 1155556
+<uvirtbot> Launchpad bug 1155556 in maas "HP ProLiant DL380 G7 tftps kernel, but initrd tracebacks in tftp server.  DL380 G6 succeeds." [Undecided,New] https://launchpad.net/bugs/1155556
+<jamespage> adam_g, reviewed and uploaded to folsom CA
+<jamespage> adam_g, I swept that and the django fix through to -updates
+<smoser> roaksoax, jamespage woot, isc-dhcp in raring with our no maas no-uuid patch.
+<smoser> er.. what ever that patch was. thansk to stgraber
+<jamespage> smoser, great!
+<roaksoax> smoser: nice!!
+<smoser> roso i guess actualy, in raring you should modify maas to use that.
+<smoser> in its default config.
+<zetheroo> got a couple ubuntu servers both running 12.04.2 here  ... one looks like this when logged in "[root@mars ~]#" while the other looks like this "root@saturn:~#" ... why does mars have those brackets ?
+<patdk-wk> probably cause of the shell your using
+<zetheroo> I am accessing them both through the same terminal via ssh ...
+<zetheroo> all servers are using bash shell
+<zetheroo> weird ... I closed the saturn session and reopened it and now saturn has those brackets ... [root@saturn ~]#
+<jamespage> adam_g, http://people.canonical.com/~jamespage/ca-updates/
+<jamespage> quantumclient and new version of python-django-compressor for horizon
+<crankharder> what is it about this builder command that I can't ssh or telnet into the host once it's built & started?  https://gist.github.com/crankharder/c0063a365996f90b170c
+<ttx> jamespage: cinder milestone-proposed cut
+<jamespage> ttx, ta
+<soren> Daviey: There's a question for you(r team) in my post to the tb mailing list earlier today. Would you mind (having one of your minions) taking a look?
+<Daviey> soren: I am the minion to the cretins. :)
+<soren> Daviey: That's the spirit.
+<Daviey> soren: I'll reply to that.. just not right now. Thanks for raising it
+<soren> Daviey: By extension, is... err.. Rick Spencer  your minion?
+<Daviey> soren: The higher you go, the least important you become.. so yes :)
+<Daviey> I say jump. and he says,
+<Daviey> "your're fired"
+<pmatulis> hmph, on quantal (at least) i see that 'deluser --remove-home' does not remove the home directory, just the files
+<Croves> Hello guys! I'm trying to install Ubuntu Server 12.04 i386 on a XenServer Virtual Machine, but when I try to install the sistem, I get this error: "Your installation CD-ROM couldn't be mounted. This probably means that the CD-ROM was not in the drive. "
+<Croves> Any idea?
+<saki`> hi ho
+<saki`> i was wondering
+<saki`> if i could run an ubuntu server OS off a live usb?
+<melmoth> saki`, http://en.wikipedia.org/wiki/Ubuntu_Live_USB_creator
+<crankharder> what is it about this builder command that I can't ssh or telnet into the host once it's built & started?  https://gist.github.com/crankharder/c0063a365996f90b170c
+<Croves> Anyone here is familiar with XenServer?
+<saki`> thanks melmoth
+<saki`> maybe i should mention
+<saki`> i'm going to be trying to run this off it: http://www.sourcefabric.org/en/airtime/download/
+<melmoth> saki`, the usb creator thingy let you have a "stat" in your live usb system. wich means, any change you make, will be there after a reboot.
+<melmoth> so you can apt-get install or compile stuff you need, and they will be available on the usb stick.
+<melmoth> all you need is... space on the key.
+<saki`> okay cool, so a persistent install or whatever yeah?
+<saki`> thanks melmoth.
+<melmoth> indeed.
+<melmoth> when you create the key, you have an option about "casper", that s the persistant stuff
+<melmoth> basically, it ask you how much space you want to allocate to the persitsant storage (if i understand correctly)
+<saki`> ah ok
+<melmoth> i dont kow the details, i just know it "just worked" last time i needed it
+<saki`> hmm this seems to require me to compile it somewhere. if this works let me try and use a windows based installer instead.
+<saki`> as in, if it works anyway
+<saki`> you wouldn't happen to know of one would you melmoth? the only one i know of is YUMI, and that's for multiboot stuff
+<melmoth> nope, sorry.
+<saki`> ah no worries
+<saki`> found one
+<zetheroo> in trying to setup glusterfs here I am running into this message and cannot seem to find a fix that works for me:  /mnt/gluster or a prefix of it is already part of a volume
+<hrenovo> so to add a rule with ufw I do something like this "ufw allow 8080" , now how can I delete this rule from showint up in "ufw status" ?
+<jpds> hrenovo: That's... not suppose to be done?
+<jpds> Why would you add a rule, then hide its existance?
+<hrenovo> if I no longer need it
+<hrenovo> not hide, just get rid of it
+<hrenovo> i gigured it out
+<hrenovo> its ufw delete allow 8080
+<hrenovo> like that
+<jpds> hrenovo: Ah, right. :)
+<fabiofranco> something weird is happening with my tomcat7 and mysql server. when I add firewall rules with iptables to open the port 8080 and 3306 and add the last rule dropping everything else the communication between tomcat7 and mysql just stops... any thoughts?
+<patdk-wk> fabiofranco, thoughts without seeing the rules?
+<fabiofranco> sure, I add: iptables -A INPUT -j ACCEPT -p tcp --dport 8080, iptables -A INPUT -j ACCEPT -p tcp --dport 3306 and finally iptables -A INPUT -j DROP -p tcp
+<fabiofranco> just those three... and after I add the last one the communication stops immediately
+<fabiofranco> I add the one open ssh too of course
+<qman__> you need to add rules to allow all traffic on the loopback interface
+<fabiofranco> qman__ example pls?
+<adam_g> jamespage, those 2 new CA updates LGTM
+<qman__> iptables -A INPUT -i lo -j ACCEPT
+<qman__> iptables -A OUTPUT -o lo -j ACCEPT
+<fabiofranco> qman__ i see.. gonna give a try
+<qman__> also, it's conventional to put the -j at the end of each line
+<qman__> not sure if it affects the rules
+<qman__> but if it does, your last rule could mean iptables -A INPUT -j DROP, which would certainly not be great
+<qman__> also, do you have rules for established traffic?
+<qman__> iptables -A INPUT -p tcp -m state --state RELATED,ESTABLISHED -j ACCEPT
+<fabiofranco> no, I dont
+<qman__> you definitely need that too
+<fabiofranco> gonna apply it right now
+<jamespage> adam_g, great - ta
+<fabiofranco> qman__ do you think the last rule should be iptables -A INPUT -j DROP?
+<qman__> it can but that will break all icmp and udp traffic
+<qman__> so if you want any of either, make sure you allow it first
+<fabiofranco> qman__ I see... gonna try it
+<fabiofranco> qman__ it worked... thanks a lot
+<jamespage> adam_g, that horizon oddness with firefox is fixed with the new version of django-compressor
+<adam_g> jamespage, great
+<adam_g> jamespage, which projects are we waiting on for RC1?
+<jamespage> adam_g, most of them
+<adam_g> ah
+<jamespage> quantum and cinder have released rc1's
+<jamespage> I started on quantum
+<jamespage> but noticed the watch file does not work that well and got distracted....
+<jamespage> adam_g, MP for quantum rc - https://code.launchpad.net/~james-page/quantum/grizzly-rc1/+merge/153606
+<adam_g> jamespage, nice.
+<jamespage> adam_g, I think all the required deps are in the grizzly-staging PPA now
+<jamespage> there are a few catchups outstanding but nothing critical.
+<adam_g> jamespage, when i got online, saw a precise+grizzly test had just failed on volume creation. hope its something transient. :)
+<jamespage> adam_g, hmm - worked a few minutes ago - I'll try again
+<jamespage> adam_g, btw I'm working on a tool to make backporting easier
+<jamespage> ca-backport-package 'os_series' 'package' 'Comment for Changelog'
+<adam_g> jamespage, hah
+<jamespage> hopefully it will mean the only thing you can get wrong is the changelog comment :-)
+<adam_g> jamespage,  i just did this yesterday http://paste.ubuntu.com/5617160/
+<jamespage> adam_g, lol
+<jamespage> great minds and all that
+<jamespage> we should consolidate stuff
+<jamespage> mines a bit more hacky write now
+<adam_g> jamespage, yeah, what are your thoughts on making this automated, in response to the version_drift failing?
+<jamespage> adam_g, I'd be up for that - I implemented the changes we discussed in the CA archive admin tooling to help support that today
+<jamespage> ca admins now get the change details so can choose to ignore things.
+<adam_g> jamespage, where do you envision the bot pushing the auto-built backports? straight to the staging PPA or somewhere for a human to do that?
+<jamespage> adam_g, cinder looks OK to me - http://paste.ubuntu.com/5617170/
+<jamespage> adam_g, I think step one would be to put it somewhere for a human to review, sign and upload
+<jamespage> adam_g, but so long as that proves reliable then full automation ++
+<adam_g> jamespage, thats what i was thinking. a staging-staging-PPA so we can ensure builds, as well
+<adam_g> need to step away. back in 10
+<jamespage> adam_g, yeah - one that inherits of the staging PPA would be neat
+<jamespage> hmm - that give me a thought
+<jamespage> we could just write a tool that pulls stuff from there, signs the packages and uploads them to the true staging PPA
+<jamespage> actually thats almost an extension of the tool I already wrote for syncs staging->proposed->updates
+<jamespage> adam_g, other thing I have been doing is switching the build configs from master -> milestone-proposed as the branches are cut
+<jamespage> done for cinder and quantum - ttx has been good at pinging me when that has happened
+<jamespage> adam_g, if you agree with the approach I took in the mysql charm re openstack-charm-helpers I'll add that to tha ha-helpers branch, re-sync swift-proxy and start working on keystone on monday
+<jamespage> I guess the unison helper could live in charm-helpers as well.
+<jamespage> And then we can write some unit tests.
+<jamespage> w00t
+<adam_g> jamespage, +1 to all that. do the branches that have a milestone-proposed also have havana version bump in master?
+<jamespage> adam_g, yes
+<jamespage> but due to the way we override the OSLO version number in the lab we don't get busted by that
+<jamespage> i.e. the release created is always 2013.1
+<jamespage> adam_g, OK - I have to go now
+<jamespage> adam_g, weekend and all that - I will check back in a bit later +3 hr
+<jamespage> ttfn
+<adam_g> jamespage, k, looking at the mysql stuff now. after we merge that i'll sync the helpers branch with those changes + anything else still pending
+<jamespage> adam_g, ahead of you - lp:~james-page/openstack-charm-helpers/ha-python-updates
+<jamespage> feel free to merge - I added headers over the mysql versions to tell people its part of openstack-charm-helpers
+<adam_g> doh! :)
+<HelloWorld321> I'm looking at a resolved help-forum post that seems similar to my problem (http://boards.portforward.com/viewtopic.php?f=3&t=9910&sid=201967eaaef5c2335ed22ea5a811c5d3&start=10) and I don't know what the poster means in his resolution: "I noticed that the net:bind_ip in utorrent was set to a different internal IP address than the static one assigned my computer, so I just cleared this, so the field was blank.".  I'm not
+<HelloWorld321> What is net:bind_ip?
+<sarnold> HelloWorld321: you were cut off at "I'm not"
+<sw> HelloWorld321: net:bind_ip is the IP address that it binds too. from their website: net.bind_ip: If your computer setup requires that you use a specific LAN adapter for incoming connections, you may specify that adapter's IP address here.
+<sarnold> HelloWorld321: when a program listens on a socket, it binds a socket to a port on an IP
+<sarnold> HelloWorld321: the usual interface is, if no IP address is specified, bind that port on _all_ IPs the machine uses. If an IP is specified, then bind only on that IP, so other IPs on the machine don't expose the service -- or can run a different service.
+<HelloWorld321> thanks.  so I can find that in netstat?
+<HelloWorld321> (cut off at "I'm not"):  ... using utorrent, I'm trying to set up an ftp as a proof-of-concept, since I figure ftp is pretty standard (maybe a little too standard: I'll disable it for security once I figure out what's going on with my router), ...
+<HelloWorld321> but I don't know what the net:bind_ip is or where to clear it
+<sarnold> HelloWorld321: yikes, ftp is a pain in the butt all around :) active vs passive connections is extremely irritating.
+<HelloWorld321> I was supposiung that it would be easy, because it was so old and so standard
+<HelloWorld321> (afk4lunch!)
+<HelloWorld321> bak
+<HelloWorld321> I'm able to hit the ftp server from inside the network, so I suppose that the hsot is set up properly
+<hrenovo> hi. iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+<hrenovo> I have this rule added in iptables
+<hrenovo> is there a way to add it in ufw ?
+<hrenovo> if I enable ufw this rule is blocked
+<HelloWorld321> My system is listening for ftp on all ip addresses (http://pastebin.com/WjhZtzTX) and I'm having no trouble reaching the ftp server from inside my network, so I believe that my original question about checking/clearing net:bind_ip is not really the issue.  Is that correct?
+<qman__> HelloWorld321, that is correct
+<qman__> FTP is ancient and poorly designed, and does not play well with NAT
+<qman__> http://mywiki.wooledge.org/FtpMustDie for more information
+<qman__> the short if it is, don't use FTP, SFTP is in all ways superior and you probably already have it
+<Pici> Also ,don't confuse FTPS is not SFTP
+<Pici> Also ,don't confuse FTPS with SFTP
+<Pici> er, not with that, with typing the right thing.
+<HelloWorld321> okay, I'll take that into account.  But for now, my point isn't actually to set up an FTP server., it's to set up my router.  I just want to hit anything inside my network from the world IP address.
+<qman__> HelloWorld321, FTP is the worst possible protocol to test that with
+<qman__> becuase FTP specifically will not work over a NAT without lots of hacking
+<HelloWorld321> I used to run a Ventrilo server, but I had to stop when I got a different router, so now all my gamer friends are bummed.
+<HelloWorld321> okay, what's the simplest application to test that with?
+<qman__> http or ssh
+<HelloWorld321> okay.  I have apache running on that same box.
+<HelloWorld321> I'll go open those ports and try that.
+<HelloWorld321> http is port 80, right?
+<qman__> yes
+<qman__> bear in mind that if you have a residential ISP, they may block it
+<qman__> many block 25, 80, and 443
+<HelloWorld321> I've thought of that.  I asked the support desk.  They said they didn't.  But they also sounded like they didn't know what "ports" are
+<HelloWorld321> and yes, this is on a residential ISP.
+<qman__> I've never seen one that blocks 22 though
+<qman__> and you can always try forwarding a high port, like 8080 -> 80
+<imrook> I'm trying to build the php5_5.3.10-1ubuntu3.6 source package, but getting "debian/setup-mysql.sh: 44: debian/setup-mysql.sh: USER: parameter not set" during test-results.txt
+<HelloWorld321> is 22 sftp?
+<qman__> ssh/sftp
+<imrook> This was fixed back in 3.3 http://irclogs.ubuntu.com/2012/12/21/%23ubuntu-server.html
+<imrook> Is this a known regression?
+<HelloWorld321> okay, 80 doesn't work with this configuration.
+<RoyK> HelloWorld321: setup ssh and tell us the ip address - unless you have a very bad password, it should be safe to post the address for some of us to test. if you have a bad password, your box will be compromised in hours anyway
+<HelloWorld321> I have just tried to sftp localhost, and ssh to the internal ip, so sftp is setup.  My outside ip address is 98.148.120.187
+<HelloWorld321> o:
+<HelloWorld321> but I haven't opened that port yet: 22
+<RoyK> hehe
+<qman__> yeah, it's being dropped
+<HelloWorld321> okay, I think I've opened that port.
+<HelloWorld321> But I also think that that's my problem.  I'm not setting up the router properly.
+<qman__> I got a response
+<qman__> it's open
+<HelloWorld321> you see me?  freaky!  yay!
+<HelloWorld321> can you guess my password?  :P
+<qman__> The authenticity of host '98.148.120.187 (98.148.120.187)' can't be established.
+<qman__> RSA key fingerprint is 86:6a:1b:00:03:2c:85:bd:6e:2e:dc:31:50:47:6a:2a.
+<qman__> so, that part of it works
+<HelloWorld321> Hm.
+<qman__> you can check if your software is listening correctly by doing `netstat -lanp | grep $port`
+<HelloWorld321> That's not the same figerprint I'm seeing
+<HelloWorld321> I can hit ssh & sftp at localhost, but I can't hit them from the external ip I just gave you.  Would you mind hitting it one more time, tell me, then I'll disable it, and see if it stopped.  Just to make sure that it's me
+<hallyn> jamespage: please do let me know if/when tests confirm the /dev/kvm issue is fixed - i'll wait until then to sru the fix.  (have written down to look at it again next w if nothing else)
+<qman__> HelloWorld321, yes, it's still working
+<HelloWorld321> This means that the box will accept ssh from anywhere?:   tcp6       0      0 :::22                   :::*                    LISTEN
+<qman__> HelloWorld321, most NAT routers won't route traffic back in destined for your external IP
+<qman__> you have to specifically configure it
+<qman__> so, you can't reliably test the setup from inside your own network
+<HelloWorld321> I have stopped forwarding port 22, see if you can hit it now.
+<qman__> nope, dropped
+<HelloWorld321> Nifty.  So I'm onto something here.
+<HelloWorld321> and the reason I couldn't do the same with ftp was because it was the hardest example, not the simplest
+<qman__> yes
+<qman__> FTP requires ports 20 and 21, in addition to a range of high ports
+<HelloWorld321> lemme try http now ...
+<qman__> and your FTP server must be configured with those high ports, and must also be configured to hand out your internet IP
+<qman__> you need a minimum of 3 open ports to handle a single connection
+<HelloWorld321> I would suppose that it's generally safe to leave port 22 (ssh) open, as long as I have a strong password policy in place?
+<qman__> it's actually best to disable password authentication
+<qman__> but if you have strong passwords it should be ok
+<qman__> it's also advisable to limit brute forcing through things like fail2ban or a rate limiting firewall
+<HelloWorld321> would you mind trying to hit me at http://98.148.120.187
+<qman__> squirrelmail
+<HelloWorld321> that's right.  Thanks!
+<HelloWorld321> This was driving me nuts!
+<imrook> sshguard is also an easy and effective solution to prevent hammering on 22.
+<HelloWorld321> For http, I would suppose I only need TCP open, not UDP?
+<HelloWorld321> Thanks qman__, imrook, RoyK.  I was totally stuck on that.
+<qman__> HelloWorld321, for all of the above, only TCP is needed
+<HelloWorld321> I'ma secure my ssh in all the ways you've said:  disable password authentication, fail2ban, and sshguard.
+<HelloWorld321> fail2ban was already installed and auto-configured.  I've poked abuot that documentation, and don't understand a word, from which I'll infer that the default configuration is reasonable?
+<HelloWorld321> I've installed sshguard 1.5-4 from the package, and the developer site says that post 1.5 there is zero configuration.  Is that correct?
+<imrook> If you're just protecting sshd, then yes
+<imrook> Aside from the bug I reported that hasn't been closed yet
+<imrook> Having the string 'ssh' in your hostname causes the regex to fail and sshguard will not properly detect failed login attempts
+<HelloWorld321> bummer.  k.  that won't be a problem for my hostname
+<sarnold> imrook: hah :)
+<HelloWorld321> I now beleive I have my port 22 open, sshguard & fail2ban installed, and password authentication turned off for ssh at 98.148.120.187.   Care to verify?
+<sarnold> HelloWorld321: Permission denied (publickey).
+<sarnold> no password prompt. woot.
+<HelloWorld321> That's good, right?  Yay, I did it.  Thanks.  That's pretty cool.
+<HelloWorld321> Now I can run around opening other ports
+<HelloWorld321> I tell ya: it was driving me NUTS!
+<HelloWorld321> I totally thought I had a bum router
+<sarnold> :)
+<dsmythies> Hello, I am not normally on IRC, and am actually somewhat IRC challenged, but there is an issue I was hoping to get help with.
+<dsmythies> .
+<dsmythies> The computer is an Ubuntu Server 12.04 LTS with no GUI. To install a virtual machine (a ubuntu 12.04 server again) I am following the Ubuntu Serverguide Virtualization chapter, sub-section 1 Libvirt.
+<dsmythies> The problem is that I can not figure how to complete a virtual machine installation, without either a GUI or a 2nd computer with a VNC viewer client.
+<dsmythies> The serverguide sub-chapter mentions both virt-manager and virt-viewer, but both require a GUI.
+<dsmythies> I finally figured out that I could use another computer with both a GUI and a VNC viewer client, if I used this command:
+<dsmythies> .
+<dsmythies> sudo virt-install -n virt32_01 -r 128 --disk path=/var/lib/libvirt/images/virt32_01.img,bus=virtio,size=12 -c ubuntu-12.04.2-server-i386.iso --accelerate --network network=default,model=virtio --connect=qemu:///system --graphics vnc,listen=0.0.0.0 --noautoconsole -v
+<dsmythies> .
+<sarnold> dsmythies: (please don't use . to try to add paragraphing to irc :)
+<dsmythies> The important part of the command being: "--graphics vnc,listen=0.0.0.0"
+<dsmythies> .
+<dsmythies> My question: Is there a (Libvirt) way on a non-GUI server without involving other computers?
+<dsmythies> .
+<dsmythies> References:
+<dsmythies> https://help.ubuntu.com/12.10/serverguide/libvirt.html
+<dsmythies> https://bugs.launchpad.net/serverguide/+bug/1129649
+<uvirtbot> Launchpad bug 1129649 in serverguide "Chapter 20 - Subsection 1 - Virtualization - Libvirt needs updating" [Undecided,In progress]
+<dsmythies> http://ubuntuforums.org/showthread.php?t=2116415
+<dsmythies> .
+<sarnold> dsmythies: have you tried leaving off the --graphics command line option?
+<sarnold> dsmythies: I use the 'uvt' wrapper to build, snapshot, and revert VMs, no VNC required: https://wiki.ubuntu.com/SecurityTeam/TestingEnvironment
+<sarnold> dsmythies: .. though it is Yet Another Tool to configure.
+<dsmythies> If I leave off the --graphics line, then I am unable to connec to anything.
+<dsmythies> I do not know of "uvt", but will look into it. Right now I am specifically trying to use virt-install...
+<dsmythies> In the end, I hope to edit the serverguide itself with better emphasis on a non-GUI server.
+<sarnold> dsmythies: uvt doesn't do anything that you couldn't otherwise do, but it does make it easy to ignore the virt-* details :D
+<dsmythies> Before the --graphics stuff, this is the command I was trying:
+<dsmythies> sudo virt-install -n virt32_01 -r 128 --disk path=/var/lib/libvirt/images/virt32_01.img,bus=virtio,size=12 -c ubuntu-12.04.2-server-i386.iso --accelerate --network network=default,model=virtio -v
+<luminous> hello! what is the ubuntu solution to easily encrypting/decrypting a directory
+<luminous> similar to truecrypt, but not tc
+<sarnold> luminous: ecryptfs if you just want directories; dm-crypt on an entire block device if you want everything...
+<luminous> the fuse encfs?
+<luminous> sarnold: ^^
+<tyhicks> luminous: ecryptfs and encfs are similar
+<tyhicks> luminous: you get to choose :)
+<luminous> but not the same
+<tyhicks> no, different implementation
+<luminous> interesting.. i will need to read more
+<tyhicks> ecryptfs is an in-kernel filesystem, encfs is fuse based
+<luminous> great!
+<tyhicks> ecryptfs will get you a little better performance, encfs probably has more knobs and features (but I haven't looked at it in a while)
+<luminous> ll i need is to be able to do is copy/store a git repo and some files
+<luminous> to confirm, encryptfs requires one to decrypt, edit/update/read, then encrypt, w/ encryption/decryption initiated manually - correct?
+<tyhicks> luminous: no, it does it all transparently
+<sarnold> luminous: ecryptfs is intended to be transparent -- once mouted, the decryption and encryption happen for you
+<tyhicks> luminous: it is a stacked filesystem that goes on top of your existing local filesystem
+<luminous> or, said another way... if in use, it is readable to all / like a normal directory
+<luminous> it has to be unmounted to be 'protected'
+<patdk-lap> once unlocked it's usable by the whole system, yes
+<luminous> k, good to know, ty
+<tyhicks> luminous: yes... it is close enough to be considered a posix compliant filesystem
+<sarnold> luminous: if you're instead wanting git to store remote repositories encrypted, there's a tool for that specifically under development: https://github.com/blake2-ppc/git-remote-gcrypt
+<luminous> that's cool
+<luminous> i'll check it out, though i do want to feel reasonably confident in the setup
+<sarnold> no doubt ecryptfs has seen more development time and more peer review :)
+<luminous> yea
+<luminous> thanks for your input!
+<luminous> it is apprecited
+<sarnold> have fun :)
+<luminous> oh, and if interested in this stuff.. have a peek at crypton.io
+<sarnold> nice :)
+<luminous> yea :) still early, but very promising
+<luminous> and backed by spideroak.com

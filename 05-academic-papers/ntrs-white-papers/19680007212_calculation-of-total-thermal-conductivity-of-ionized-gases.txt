@@ -1,0 +1,742 @@
+---
+title: Calculation of total thermal conductivity of ionized gases
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19680007212
+source_url: https://ntrs.nasa.gov/citations/19680007212
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-07-12
+retrieved: 2026-09-22
+sha256: 9c41bc674326effb1d9b50f2cae333f9c3ba64f6413e54abc697eaabe90742e8
+pages: 14
+words: 7816
+cv_look_pages: 6
+---
+
+                                                  b     ,I
+
+
+
+
+                      Calculation of Total Thermal Conductivity of Ionized Gases
+
+
+                                           Warren F. Ahtyel
+
+                                     Vehicle Environment Division
+                                      Ames Research Center, NASA
+                                   Moffett Field, California 94035
+                                                                                p q’&
+                                              W ( j f3 - 4 cD :. c, ’
+                                                                  -1
+
+
+                                                                               fdj9
+                                                                                c/
+                                                                                    1 fo[
+              The suitability of the Boltzmann equation for calculating transport coefficients
+         of partially ionized gases is discussed. Analytical and experimental investigations
+         are cited to show that it can be used as a starting point to calculate the total
+         thermal conductivity. The Chapman-Enskog solution of the Boltzmann equation is used
+                                                                                                   1
+         to derive an expression for the total thermal conductivity, composed of three parts -
+         the translational, reactive, and thermal diffusive Components. The reactive and
+         thermal diffusive components are explicitly expressed in terms of the multicomponent
+         and thermal diffusion coefficients. Effects of higher order Sonine expansion terms
+         are examined for the various transport coefficients. The first three orders of the
+         Sonine expansion terms are required f o r the accurate calculation of the translational
+         thermal conductivity, whereas only the first two orders are sufficient for the cal-
+         culation of the multicomponent and thermal diffusion coefficients. These diffusion
+         coefficients are then used to calculate the reactive and thermal diffisive components
+         of the total thermal conductivity of hydrogen, nitrogen, and argon at conditions
+         where the reactive component is at a maximum. These values of the reactive conductiv-
+         ity are examined to determine the relative importance of multicomponent and thermal
+         diffisicn. The predominant mechanism for hydrogen is the binary diffusion of atoms
+         and ions, although the effects of t h e m 1 diffusion of electrons is also important.
+         Thermal diffusion becomes more dominant as the molecular weight of the atom increases.
+         In fact, the multicomponent diffusive effects for argon cancel, and the reactive
+         thermal conductivity can be attributed almost entirely to the thermal diffusion of
+         electrons.
+
+
+              Key Words: Boltzmann equation, Chapman-Enskog formulation, ionized gases,
+              multicomponent diffusion, thermal conductivity, thermal diffusion.
+
+
+
+                                            1. Introduction
+
+     An object traveling through an atmosphere has part of its kinetic energy converted into thermal
+excitation of the surrounding flow field gas molecules. When the speed is sufficiently high, the gas
+decomposes into a complex mixture of molecules, atoms, ions, and electrons. The total thermal conductiv-
+ity of this gas must be known in order to determine the heat flux into the surface of the object. In the
+calculation of the thermal conductivity of this ionized gas, one would ask the following questions.
+First, does the presence of charged particles introduce phenomena which affect the thermal conductivity?
+Second, is the theory which is used for neutral gases sufficiently general to account for these phenomena?
+This paper will describe some of the analytical and experimental work done in the past few years to
+resolve these two questions.
+
+     The greatest difference between an ionized gas and a neutral gas lies in the range of intermolecular
+forces. For example, the effective range of the force between two neutral particles or a charged parti-
+cle and a neutral particle is orders of magnitude smaller than the average intermolecular spacing. These
+effective ranges are in accord with the basic assumption that particle collisions in the gas are binary -
+a necessary condition for the validity of the Boltzmann equation governing the transport coefficients of
+neutral gases. In contrast, the effective range of the intermolecular forces between two charged parti-
+cles is usually greater than the average intermolecular spacing. At first appearance, this suggests
+
+
+
+
+     ’Research Scientist
+                                                                 .     .   I
+t h a t t h e .Boltzmaann equation i s not v a l i d f o r gases w i t h an appreciable degree of ionization2. This s i t u -
+ation. prompt'ed S p i t z e r and h i s coworkers [l and PI3 t o derive a theory which describes t r a n s p o r t phenom-
+ena ( s p e c i f i c a l l y e l e c t r i c a l and thermal conductivity) of an e l e c t r o n gas where t h e i n t e r a c t i o n s a r e
+a t t r i b u t e d t o many long-range simultaneous b u t independent Coulombic i n t e r a c t i o n s . The c o l l i s i o n term i n
+t h e Boltzmann equation w a s replaced by t h e Fokker-Planck expression which describes these simultaneous
+i n t e r a c t i o n s . Recently Gross [ 3 ] , Grad [4], Koga [?I, and others re-examined t h e mathematical implica-
+t i o n s of t n e Boltzmann and Fokker-Planck equations and concluded t h a t t h e Boltzmann equation was v a l i d
+f o r ionized gases a f t e r a l l . Grad s t a t e d t h a t
+
+              ". .      .The c r i t i c a l point here i s t h a t , although t h e two physical p i c t u r e s a r e e n t i r e l y d i f -
+      f e r e n t , t h e i r mathematical d e s c r i p t i o n s a r e identical! The net e f f e c t of many successive inde-
+      pendent small impulses i s t h e same a s many simultaneous independent small impulses, provided
+      only t h a t t h e means and variances of t h e two impulse d i s t r i b u t i o n s a r e t h e same ( a c t u a l l y , t h e
+      e n t i r e p r o b a b i l i t y d i s t r i b u t i o n s were taken t o be t h e same). Thus we conclude, without s e t t i n g
+      p e n c i l t o paper, t h a t t h e Fokker-Planck equation, which i s a n immediate consequence of t h e
+      simultaneous grazing impulse model, must yield r e s u l t s i d e n t i c a l with those obtained from t h e
+      Boltzmann equation, provided t h a t an appropriate grazing c o l l i s i o n s approximation i s made and
+      t h e same cut-off i s used i n t h e l a t t e r computation."
+
+The e\:.ivalence between t h e Boltzmann and Fokker-Planck equation f o r t h e case of a f i l l y ionized gas was
+f u r t h e r demonstrated by t h e e x c e l l e n t agreement of t h e two sets of values of t r a n s p o r t c o e f f i c i e n t s based
+on these equations [ 2 ] .
+
+          A more rigorous theory f o r f i l l y ionized gases can be derived from Bogolyubov-Born-Green-Kirkwood-
+Yvon hierarchy of equations 161 which account f o r simultaneous b u t dependent i n t e r a c t i o n s ( i . e . many
+p a r t i c l e c o r r e l a t i o n s ) . An a n a l y s i s by Sundaresan and Wu 171 has s h m t h a t t h e thermal conductivity
+from t h e B-B-G-K-Y approach i s almost i d e n t i c a l t o t h a t f o r t h e Fokker-Planck approach.
+
+         The accuracy of t h e Boltzmann equation was demonstrated i n two recent experiments by m o n s 181 and
+Morris [93. The goal of t h e i r experiments was the measurement of t h e e l e c t r i c a l and thermal conductivity
+of p a r t i a l l y ionized gases. Although the thermal conductivity could not be measured accurately a t l a r g e
+degrees of i o n i z a t i o n because of t h e masking e f f e c t s of thermal r a d i a t i o n , t h e e l e c t r i c a l conductivity
+was measured. I n f i g u r e s 1 and 2 t h e experimental values of t h e e l e c t r i c a l conductivity a r e compared
+with values based on t h e Boltzmann equation (second-order Chapman-Enskog formulation). It can be seen
+t h a t t h e agreement i s f a i r l y good over t h e entireorange of temperatures (degree of i o n i z a t i o n ranging
+from 1 percent a t 9000% t o 100 percent a t 22,000 K). Since t h e predominant cross s e c t i o n f o r t h e elec-
+t r i c a l conductivity i s t h e well-verified Coulombic cross section, t h e agreement shown i n f i g u r e s 1 and 2
+i s a good i n d i c a t i o n of t h e v a l i d i t y of t h e Chapman-Enskog formulation of t h e Boltzmann equation f o r a l l
+degrees of ionization. Unfortunately, t h i s is no guarantee t h a t t h e values of t h e thermal conductivity
+can be a c c u r a t e l y predicted a t t h e s e high degrees of i o n i z a t i o n s i n c e t h e predominant cross sections
+(e.g. atom-ion e l a s t i c and charge-exchange cross sections) a r e not known accurately, and s i n c e t h e r e a r e
+d i f f e r e n t types of d i f f u s i o n a l e f f e c t s present i n thermal conduction. This means t h a t measurements of
+thermal conductivity a r e s t i l l necessary.
+
+
+                                           2.   Derivation of T o t a l Thermal Conductivity
+
+         The a n a l y t i c a l and experimental work described i n t h e previous s e c t i o n i n d i c a t e t h a t t h e Boltzmann
+equation can b e used as a s t a r t i n g point t o calculate t h e t o t a l t h e m l conductivity. The approach
+described i n t h i s paper i s t h e same a s t h e Chapman-Enskog formulation applied t o t h e case of n e u t r a l
+monatomic gas mixtures by Hirschfelder, Curtiss, and Bird 1101 and w i l l be examined t o determine i t s
+s u i t a b i l i t y f o r a p a r t i a l l y ionized gas. Besides t h e d i f f e r e n c e i n t h e range of intermolecular forces a
+p a r t i a l l y ionized gas d i f f e r s from a n e u t r a l gas i n two other respects. F i r s t , a charge separation f i e l d
+a r i s e s because of l o c a l differences i n t h e ion and e l e c t r o n concentrations, and second, t h e r a t i o of t h e
+mass of t h e heaviest p a r t i c l e t o t h a t of t h e l i g h t e s t p a r t i c l e increases by a t l e a s t t h r e e orders of mag-
+nitude due t o t h e presence of f r e e electrons. A great amount of f o r e s i g h t was used i n t h e d e r i v a t i o n of
+t h e complete Chapman-Enskog formulation, f o r there e x i s t terms which account f o r t h e s e two differences.
+I n p r i n c i p l e t h e charge separation f i e l d can b e calculated s i n c e a macroscopic f o r c e term i s included i n
+t h e Chapman-Enskog formulation. The much l a r g e r mass r a t i o i n p a r t i a l l y ionized gases i s not r e a l l y a
+flmdamental d i f f e r e n c e , but it does mean a re-evaluation of c e r t a i n computational s i m p l i f i c a t i o n s which
+were c a r r i e d m e r from t h e c a l c u l a t i o n of t h e thermal conductivity of n e u t r a l gas mixtures. For example,
+it has been customary t o discard c e r t a i n Sonine expansion terms i n t h e t r a n s l a t i o n a l t h e m l conductivity
+and t h e multicomponent d i f f u s i o n c o e f f i c i e n t s , and t o omit e f f e c t s of thermal d i f f u s i o n on t h e t o t a l
+thermal conductivity [lo]. An examination of thermal d i f f u s i v e e f f e c t s does show t h a t t h e e f f e c t s a r e
+small f o r n e u t r a l gas mixtures, b u t it a l s o shows t h a t t h e e f f e c t s become i n c r e a s i n g l y important a s t h e
+
+
+
+          2The Boltzmann approach i s p r e s e n t l y the only one a v a i l a b l e f o r t h e c a l c u l a t i o n of t r a n s p o r t coef-
+f i c i e n t of p a r t i a l l y ionized gases, although many competing approaches a r e a v a i l a b l e f o r f i l l y ionized
+gases.
+          'Figures i n brackets i n d i c a t e t h e l i t e r a t u r e references a t t h e end of t h i s paper.
+                                                                                                                                             ~~   ~-
+
+
+
+
+r a t i o mheavy/mlight            increases. Consequently, the author [11 and 121 showed t h a t it w a s necessary t o
+include the'discarded Sonine expansion terms and t o include thermal diff'usive e f f e c t s . The r e s u l t s of
+these c a l c u l a t i o n s w i l l be described i n t h e next section.
+
+     The c a l c u l a t i o n of t h e t o t a l thermal conductivity i s based on t h e expression f o r t h e heat f l u
+vector
+
+
+
+
+where DTi i s t h e thermal d i f f b s i o n c o e f f i c i e n t , and h i i s t h e t o t a l enthalpy of a p a r t i c l e of
+species i. The q u a n t i t y A t i s t h e t h e m 1 conductivity o f a s p a t i a l l y homogeneous gas mixture without
+concentration gradients. The diff'usion v e l o c i t y , Li, i s defined as
+
+
+
+
+vhere D i j i s t h e multicomponent d i f f u s i o n c o e f f i c i e n t and t h e "forcing p o t e n t i a l " f o r a p a r t i a l l y
+ionized gas i n t h e absence of pressure gradients i s defined as
+
+
+
+
+where ~i i s t h e charge, Zje, f o r a p a r t i c l e of species i, and E&.                   i s t h e e l e c t r i c f i e l d generated by a
+d i f f e r e n c e i n ion and e l e c t r o n concentrations. Equation ( 3 ) d i f f e r s from t h e expression f o r & i n [lo]
+ill t h a t      Z i e G describes an i n t e r n a l macroscopic force whereas t h e corresponding q u a n t i t y i n [lo]
+describes an e x t e r n a l macroscopic force. However, the conceptual d i f f e r e n c e i s only apparent as &
+always stems from an e x t e r n a l energy source (e.g. heating c o i l s ) . Assume t h a t t h i s energy i s imposed on
+t h e system such t h a t t h e average temperature i s high enough t o ionize t h e gas, but t h e temperature gra-
+d i e n t i s small ecough t o j u s t i f y l i n e a r i z a t i o n proced.ures. The temperature gradient induces concentration
+gradients, hi,&, and a charge separation f i e l d , .&I                        I f it i s assumed t h a t both hi/&and & a r e
+proportional t o t h e temperature gradient, i t can be seen from eqs ( 2 ) and ( 3 ) that
+proportional t o t h e temperature gradient. The heat f l u x vector can then be expressed as
+                                                                                                                       vi     and Ai a r e a l s o
+
+
+
+
+The r e a c t i v e component of t h e t h e m 1 conductivity, Ar, derives i t s name because of t h e addition of t h e
+r e a c t i o n energy t o t h e enthalpy of t h e individual species [131. This mode of heat t r a n s f e r can be
+described i n terms of a d i f f u s i o n cycle. I n t h e higher temperature region t h e concentration of ions and
+e l e c t r o n s a r e l a r g e r than i n t h e lower temperature region, forcing t n e charged p a r t i c l e s t o d i f f u s e
+toward t h e lower temperature region. I n t h i s region, t h e i o n recombines with an e l e c t r o n , thereby
+r e l e a s i n g t h e i o n i z a t i o n energy ( i . e . t r a n s p o r t of energy). The cycle i s completed when the atom i s
+forced by t h e atomic concentration gradient t o diffuse toward t h e higher temperature region where t h e
+i o n i z a t i o n process occurs. The t r a n s l a t i o n component, A t , i s t h e conductivity of a s p a t i a l l y homogeneous
+gas mixture without concentration gradients, and i s t h e only component explained by simple k i n e t i c theory
+[lo]. For obvious reasons, t h e t h i r d component of t h e thermal conductivity, Ad, i s c a l l e d t h e thermal
+d i f f u s i v e component. Unfortunately, no simple physical p i c t u r e can describe t h i s mode of heat t r a n s p o r t .
+
+          The c a l c u l a t i o n of A t i s straightforward and i s described by Hirschfelder, Curtiss, and Bird [lo].
+Before numerical values for A, and h d can b e c d c u l a t e d it i s necessary t o obtain values f o r t h e con-
+c e n t r a t i o n gradient of each species and t h e charge separation f i e l d , a l l i n terms of t h e temperature
+gradient. The simplest case which can be examined i s t h a t f o r a gas undergoing t h e r e a c t i o n A                      I + e  +
+
+( i . e . a t e r n a r y mixture of atoms, A, ions, I, and electrons, e ) . The s o l u t i o n of t h e problem can be
+expressed i n terms of four dependent v a r i a b l e s                 - the concentration gradients f o r t h e atom, ion, and
+e l e c t r o n , and t h e charge separation f i e l d , a l l expressed i n terms of t h e temperature gradient. However,
+t h e r e are only t h r e e independent equations r e l a t i n g t h e s e four q u a n t i t i e s . Two of t h e s e equations a r e
+statements of t h e flux conservation of elemental p a r t i c l e s as f o m l a t e d by B u t l e r and Brokaw [l3]. For
+t h e t e r n a r y mixture t h e elemental p a r t i c l e s a r e defined a s a s i n g l y charged ion and an electron. Then
+f l u x conservation r e q u i r e s t h a t t h e d i f f u s i o n v e l o c i t i e s be r e l a t e d as follows4:
+
+
+
+
+         *More e x p l i c i t forms of ( 5 ) and (6), where                i s expressed i n terms o f         di, was used i n t h e
+                           .
+c a l c u l a t i o n of [ 141
+
+
+                                                                   ~~              ~
+                                                         XAXA   + x&     = 0.
+
+
+The t h i r d equation can be derived from the expression f o r t h e equilibrium constant,
+
+                                                                3
+                                                         Kp = n       (xipIai,
+                                                                i=i
+
+where t h e a i ' s a r e t h e stoichiometric c o e f f i c i e n t s f o r t h e r e a c t i o n ( a A = -1, a1 = 1, ae = 1). Combina-
+t i o n o f t n e gradient of eq ( 7 ) with e x p l i c i t expressions f o r t h e charge separation f o r c e r e s u l t s i n
+
+                                          d ln
+                                          K  p . b r = - -' d               1         1
+                                                                         +-d        +-de.
+                                             dT         ax      xA -A      x I -I    xe
+
+The author [12] discussed t n e d i f f i c u l t i e s i n solving eqs ( 5 ) , (6), and (8) for                and 3,b u t could
+not o f f e r a s o l u t i o n . Subsequently, Meador and Staton [l5] circumvented t h e problem of too many v a r i -
+a b l e s by assuming t h a t t h e concentration gradient of t h e ion was equal t o t h a t for t h e electron. They
+J u s t i f i e d t h i s assumption by combining concepts from e l e c t r o s t a t i c s and plasma physics with expressions
+from non-ecpilibrium thermodynamics, then using order of approximtion arguments. The accuracy of t h i s
+approach w i l l be discussed l a t e r . Meador and Staton used t h e e q u a l i t y of &I/&            and axe/&   i n eqs (51,
+(6), and (8) t o solve for ax,/& and ?&. Their expression for t h e r e a c t i v e component of t h e thermal
+conductivity i s
+
+
+
+
+which i s i d e n t i c a l t o t h e B u t l e r and Brokaw expression for d i s s o c i a t i n g gases [13] i f it i s assumed that
+t h e multicomponent d i f f u s i o n coefficient DAI can be approximated by t h e binary d i f f u s i o n c o e f f i c i e n t
+&AI.   This equation has s e v e r a l implications: (1)The r e a c t i v e component i s completely dominated by t h e
+binary d i f f i s i o n between t h e ion and atom, ( 2 ) The r e a c t i v e component i s independent of t h e motion of t h e
+electron, and ( 3 ) The r e a c t i v e component i s not affected by thermal d i f f u s i v e e f f e c t s .
+
+          I n a subsequent paper [14] t h e author a l s o derived an expression f o r t h e t o t a l thermal conductivity.
+I n c o n t r a s t t o t h e Meador and Staton work, it w a s not necessary i n [141 t o r e l y on any subsidiary assump-
+t i o n s , and t h e d e r i v a t i o n was exact within the framework of t h e Chaprin-Enskog formulation. The C ~ I X o f
+t h i s approach i s not t o separate t h e forcing p o t e n t i a l , 21, of eq ( 3 ) i n t o axi/a; and & components,
+b u t t o solve f o r & d i r e c t l y by d i n g use o f the conservation of t h e net f l u x for each elemental par-
+t i c l e . Physically, t h i s means t h a t regardless o f t h e value of t h e charge separation f i e l d , t h e concen-
+t r a t i o n g r a d i e n t s w i l l r e a d j u s t themselves s o that t h e net flux i s conserved ( e q s ( 5 ) and ( 6 ) ) .
+Therefore, t h e cornbined e f f e c t s of hi/&and & i n t h e form of & is a more l o g i c a l dependent
+v a r i a b l e than i t s components. The s o l u t i o n for the various k ' s i s then obtained from eqs ( 5 ) , (6), and
+(8). The determinantal expression for t h e various                 23's            is
+where
+
+
+
+
+A combination of eqs (l), ( e ) , (lo), and (11)gives the final expression for the total thermal
+conductivity :
+                         r
+                                                         n2
+                                   D 6 + m D 6 ) -hA p(?DA161
+                                                                                         n2
+        Atotal = At +             AIAA    eIee                            + +DAe6e) 'he T ( m ADeA6A + "ID e16I)
+                         L
+
+
+
+                 +-hAD;f
+                                                        +-
+                                                              T
+                                                             D161   +   %]
+                                                                        neme
+                   "AT                                       "I?
+                                        J
+
+where At is the translational thermal conductivity, the sum of all terms containing the various hi's
+is the reactive thermal conductivity, and the sum of the remaining terms is the thermal conductivity due
+to thermal diffision. Note that the reactive component has two modes. The first is by multicomponent
+diffusion and the second by thermal diffusion. For a fully ionized gas5 (i.e. no neutral particles)
+eq (12) reduces to
+
+
+                                             'total   = At
+
+
+where    p   is the reduced mass of the electron-ion system.
+     Since the terms in eq (12) are so complex it would be impossible to single out by inspection any one
+mechanism (e.g. thermal diffusion) as being the chief contributor to A r or Ad. This can be done only
+by an inspection of the numerical values which are described in the next section. However, it can be
+seen from eq (12) that there is a definite need for accurate values of the multicomponent and thermal
+diffusion coefficients since A r and A d are determined by Dij and DY, and since 6i (the combined
+effect of the concentration gradients and the charge separation field) are also determined by Dij and DiT
+(eqs (10)and (11)).
+
+                             3. Numerical Values of Higher Order Transport Coefficients
+                                                                                                               T
+     The importance of higher order Sonine expansion terms in the expressions for At, Dij, and Di will
+be described first. The expressions for At, Dij, and :D [lo] are the ratio of two determinants. If the
+first and second Sonine expansion terms are used (second approximation) then both determinants contain
+four subdeterminants which are designated as the 00, 01, 10, and 11 subdeterminants, where the 0 cor-
+responds to the first Sonine polynomial and the 1 corresponds to the second Sonine polynomial. In the
+calculation of the thermal conductivity of neutral gases the 00, 01, and 10 subdeterminants are normally
+discarded (first approximation) with very little l o s s in accuracy [lo]. Unfortunately, this simplifica-
+tion was carried over into the calculation of the thermal conductivity of partially ionized gases. The
+result of this approximation is shown in figure 3 for partially ionized argon. The second approximation
+of At 1121 is larger than the first approximation by 30 percent at 50-percent ionization and larger by
+50 percent at complete ionization. An inspection of the numerical values of the elements in the At sub-
+determinants [12] show that the increase in ht in going from the first to the second approximation can
+be attributed to the inclusion of additional terms in the 00 subdeterminant arising from interactions
+between unlike particles ( A - I , e-A, and e-I). Subsequent analyses by DeVoto [16 and 171 showed that
+third order Sonine expansion terms for the translational thermal conductivity were also appreciable.
+Figure 3 shows that the difference between the third and second approximations for At is roughly the
+same as the difference between the second and first approximations. DeVoto's calculations, however, show
+very little difference between the third and fourth approximations. Landshoff Is [18] calculations for an
+electron gas show roughly the same trends in going from the second to the fourth approximation.
+
+
+     'The author [le] erroneously identified At with Spitzer's [21 field free therm1 conductivity.
+The error was resolved by the analysis of Meador and Staton.
+     Multicomponent diffusion coefficients are usually approximated by retaining only the first Sonine
+expansion terms (i.e. using only the 00 subdeterminant). These first-Order coefficients are compared
+with the second-order coefficients (i.e. both first and second Sonine exmnsion terms) in figure 4. The
+second-order coefficients D,-A( 2) and De-l( 2) are larger than the corresponding first-order coefficients
+by 25 percent at 50-percent ionization and by 45 percent at complete ionization. An inspection of the
+numerical values of the elements in the Dij subdeterminants show that the increase in Dij in going
+from the first to tk?e second approximation can be attributed to the inclusion of term in the 11 sub-
+determinant arising from interactions between like particles (A-A, 1-1, and e-e). The electron-electron
+interaction is especially important since a simple hard sphere model shows that Dij is inversely pro-
+portional to the product of the collision cross section and the reduced mass. In contrast, the first-
+and second-order coefficients for diff’usion between heavy particles (e.g. DA-I) differ by only a few
+percent. DeVoto’s calculations show that there is little difference between second- and third-order
+multicomponent and thermal diffusion coefficients.
+
+     It is essential that second-order t h e m 1 diffusion coefficients be used since these coefficients
+are identically zero in the first approximation. Typical values of the second-order thermal diff’usion
+coefficients for the argon atom, ion, and electron from [ll] are shown in figure 5. In the expression
+for the total thermal conductivity (eq (12))) df always occur in combination with the particle
+mass in the denominator. Although the electron thermal diffusion coefficient, @, is at most two orders
+of mgnitude smaller than those for the atom and ion, the electron mass is four orders smller. Conse-
+quently, thermal diff’usive effects can be attributed almost entirely to the electron term. Another
+interesting conclusion can be reached by an inspection of figure 5. It can be seen that the atom and ion
+thermal diffusion coefficients are within 1 percent of each other in magnitude from a few percent ioniza-
+tion up to extremely high degrees of ionization (approximately 95 percent). Beyond this point ll!$
+decreases in value, changes sign, then approaches the value of DZ near 100-percent ionization. These
+variations imply that the diff’usive motion of both the atom and ion are essentially independent of that
+for the electron, up to large degrees of ionization. The diffusive motion of the electrons, in turn, is
+dictated by the ion rather than the atom because of the greater magnitude of the Coulombic forces6.
+These same conclusions were reached from an examination of the second-order multicomponent diff’usion
+coefficients.
+                                                                    T
+     The previous discussion of second-order values of Dij and Di leads towards the calculation of A,
+and A d from eqs (lo), (11)) and (12). The author recently made a series of calculations for hydrogen,
+nitrogen, and argon for a pressure of one atniosphere and temperatures corresponding to 50-percent ioniza-
+tion. The values of A,       were compared with those based on the expressions derived by Meador and Staton
+[l5]. The values of A,       from the two sets of calculations agreed within a few percent. However, this
+is not necessarily a verification of the Meador and Staton approach, as calculations have shown that any
+non-trivial assumed values of &I,,/& and &e,,/&      will result in the same values of A r and Ad. The
+agreement can be explained as follows. The values of A, and A d are determined not by the separate
+effects of the concentration gradients and the charge separation field, but by their combined effects.
+Consequently, if erroneous values of the concentration gradients were initially assumed the constraints
+of the problem (eqs ( 5 ) ) (6)) and (8)) would compensate for this error in the resulting value of the
+charge separation field.
+
+     A more critical comparison could come from the determination of the predominant mechanism for the
+reactive component of the thermal conductivity. The reactive component from eq (12) can be resolved into
+two components: (1) the sum of the hin2mjDij6j/p terms which shall be called the Dij component for
+                                                                                     T
+identification, and (2) the sum of the hiDF/miT terms which shall be called the Di       component.    The
+results are summarized in the following table.
+
+    Table I. T h e m 1 Conductivity Components for Partially Ionized Gases (p = 1 atm, 5%      ionization)
+            1   ~~    -
+
+
+                              At( 2)           ~ ~ ( 2 ) w m-l deg-l                Ad(2,
+
+                     Gas
+                                            Dij component        T component
+                                                                D.               W m-’ deg’’
+                           W m-l deg-l                           1
+
+
+                Hydrogen       1.9               5.77               1.78             -0.20
+
+                Nitrogen       1.34              0.87               1.30             -0.25
+
+                Argon          1.31              -0.17              1.32             -0.29
+                                                            \
+
+
+
+
+                                   T
+     ‘As a result, the values of De calculated for Wrtially ionized argon can be used for other
+partially ionized gases to a good degree of accuracy.
+For hydrogen the largest contribution comes from the Dij component, and the predominant term in this
+component is the hIn Q.DI-AGA/P               term as predicted by Meador and Staton. However, the thermal diffbsive
+contribution is not negligible, but comprises 25 percent of the value of A,.               As the mass of the heavy
+particle increases, thermal diffusive effects become relatively more important. For example, in nitrogen
+the DT component of 1, is larger than the D i j component. In argon the Dij component is ahost
+zero due to the cancellation of the ion termby the atom and electron term. Consequently, the reactive
+thermal c o n d i i c t i v i t y for argon can be attributed almost entirely to the df component, and the predoini-
+nant term in this component is the heDz/+T                 term. This result is in direct contradiction to those
+predicted by Meador and Staton and indicates that one or more of their initial assumptions m y be
+erroneous.
+
+     This paper has described the analytical work done in the past few years to clear up some of the
+uncertainties in the expression for the total thermal conductivity of a partially ionized gas. The
+author feels that the theoretical basis for this expression is currently on substantial ground. However,
+there are several deficiencies which must be resolved before accurate values can be calculated. The
+first of these is the lack of measured or calculated c r o s s sections for collisions between an atom which
+is chemically unstable at low temperatures (e.g. nitrogen or oxygen) and an electron, ion, or another
+chemically unstable atom. A second deficiency is the absence of terms in the expressions for the trans-
+port coefficients which account for inelastic collisions, and the lack of measured or calculated cross
+sections for these inelastic collisions. A third deficiency is the absence of any experimental verifica-
+tion of the total thermal conductivity, especially in the region of 50-percent ionization where Atotal
+peaks because of the reactive component. A method which shows some promise is the ultrasonlc absorption
+technique as used by Carnevale et al. [19]. Consequently, large amounts of analytical and experimental
+effort must still be expended to remedy these deficiencies before accurate values of the total thermal
+conductivity of a partially ionized gas can be obtained.
+
+
+                                                   4.   References
+
+                         ,
+     Cohen, Robert S. Spitzer, Lyman, Jr. and  ,                     Ahtye, Warren F.: A Critical Evaluation of
+     Routl;r, Paul Mc R.: The Electrical Cmductiv-                   Methods of Calculating Transport Coefficients
+     ity of an Ionized Gas. Phys. Rev., vol. 80,                     of a Partially Ionized Gas. Proceedings of
+     no. 2, Oct. 15, 1950, pp. 230-238.                              the 1964 Heat Transfer and Fluid Mechanics
+                                                                     Institute, Stanford Univ. Press, 1964.
+     Spitzer, Lyman, Jr., and &, Richard: Trans-
+     port Phenomena in a Completely Ionized Gas.                     Ahtye, Warren F.: A Critical Evaluation of
+     Phys. Rev., vol. 89, no. 5, March 1953,                         Methods for Calculating Transport Coefficients
+     PP* 977-981.                                                    of Partially and Fully Ionized Gases. NASA
+                                                                     TN D-2611, 1965.
+              ,          ,
+     Burgers Johannes ed. : Statistical Plasma
+     Mechanics. Symposium of Plasma Dynamics,                        Butler, James N., and Brokaw, Richard S.:
+     Addison-Wesley Publishing Co., Reading, Mass.,                  Thermal Conductivity of Gas Mixtures in
+      1960, pp. 164-169.                                             Chemical Equilibrium. J. Chem. Phys.,
+                                                                     vol. 26, no. 6, June 1957, pp. 1636-1643.
+     Grad, H. : Modern Kinetic Theory of Plasmas.
+     Proc. Fifth Int. Conf. on Ionization Phenomena                  Ahtye, Warren F.: Total Thermal Conductivity
+     in Gases, Vol. 11, North-Holland Publ. Co.,                     of Partially and Fully Ionized Gases. Phys.
+     Amsterdam, 1962, pp. 1630-1649.                                 Fluids, vox. 8, no. 10, Oct. 1965, pp. 1918-
+                                                                     1919 (Erratum, vol. 9, no. 1, Jan. 1966,
+      Koga, Toyoki: The Generalized Validity of the                  pp. 224).
+      Boltzmann Equation for Ionized Gases. Proc.
+      Third Int. Symposium on Rarified Cas Dynamics,                 Meador, W. E., Jr., and Staton, L. D.:
+      Vol. I, Academic Press, N. Y., 1963, pp. 75-93.
+
+      Wu, Ta-You: Kinetic Equations of Gases and
+                                                                             .
+                                                                     Electrical and Thermal Properties of Plasmas.
+                                                                                     ,
+                                                                     Phys Fluids vol. 8, no. 9, Sept. 1965
+                                                                     pp. 1694-1703.
+                                                                                                              ,
+      Plasmas. Addison-Wesley Publishing Co.,
+                     ,
+      Reading, Mass. 1966.                                           DeVoto, R. S.: Transport Properties of Par-
+                                                                     tially Ionized Monatomic Gases. Dept. of
+      Sundaresan, M. K., and Wu, Ta-You: Thermal                     Aeronautics and Astronautics, Stanford Uni-
+      Conductivity of a Fully Ionized Gas. Can. J.                   versity Rep. SUDAER No. 207, 1964.
+      Phys., vol. 42, no. 4, April 1964, pp. 794-813.
+                                                                     DeVoto, R. S.: Argon Plasma Transport Prop-
+      m o n s , Howard W.: Arc Measurements of High-                 erties. Dept. of Aeronautics and Astronau-
+      Temperature Gas Transport Properties. Phys.                    tics, Stanford University Rep. SUDAER No. 217,
+      Fluids, vol. 10, no. 6, June 1967, pp. 1125-                   1.965
+      1136.
+                                                                                 ,
+                                                                     Landshoff Rolf: Convergence of the Chapman-
+      Morris, James: Private Communication                           Enskog Method for a Completely Ionized Gas.
+                                                                     Phys. Rev., vol. 82, no. 3, May 1, 1951,
+1101 Hirschfelder, Joseph O., Curtiss, Charles F.,                   p. 442.
+     and Bird, R. Byron: Molecular Theory of Gases
+     and Liquids. John Wiley and Sons, Inc., N. Y.,
+      1954.
+[191 Carneyale, E. H., Lynnvorth, L. C., and
+    *   Larson, G. S.: Ultrasonic Determination of
+        Transport Properties of Monatomic Gases at
+        High Temperatures. J. Cnem. Phys., vol. 46,
+        no. E, April 1967, pp. 3040-3047.
+                                             FIGUFJ3 LEGENDS
+
+
+Figure 1.- Comparison of experimental and tneoretical electrical conductivity of nitrogen.
+
+Figure 2.- Cornparison of experimental and theoretical electrical conductivity of argon.
+
+Figure 3.- Comparison of various approximations f o r calculating the translational thermal conductivity of
+
+   argon.
+
+Figure 4.- Comparison of various approximations for calculating multicomponent diffhsion coefficients of
+
+   argon.
+
+Figure 5.- Thermal diffusion coefficients of argon.
+                 rr)
+                         8M
+                  -
+                  0
+                     x
+                         0
+                         k
+                         -v
+                         .rl
+
+-a              - m-     d
+                         k
+                         0
+
+
+
+
+          [ra
+          o w
+          wa.
+          X X
+          t-w
+
+
+
+
+     z
+     -
+     0
+     z
+     -
+     0
+     I-
+     o
+     a
+     a
+     LL
+                 -
+                -0
+
+
+                Ja,
+                m        I
+                          .
+                 -
+                 0       rl
+           \
+           \
+            \
+
+
+
+
+                                   E
+                                  zt
+                                  0 0
+                                  ( 3 -
+                                        II
+
+
+
+
+    I I'
+    I I
+
+I     I         I I I I I I   I     I        I
+                *0
+                 -
+                                                           m
+                                                           -
+                                                           0
+                                                           X
+                                                           n
+                                                           N
+
+
+
+
+      \
+
+                                           €               3
+                                           t               N
+                                           P
+                                           II                   11:
+                                                                0
+                                           Q
+                                                                +-   L
+
+                                                                W
+                                                                E
+                                                           E?
+                                                            a
+                                                            a
+                                                            w
+                                                            a.
+                                                                5:
+                                                                W
+                                                                I-
+
+                            z                              Q
+                            0
+                            c9
+                            CK
+                            a
+
+
+  I        I         I        I        I        I          Ln
+           Ln
+           cu.      9
+                    cv       -
+                             Lc)      9         u)
+
+
+                   I- 6ap , - W M          '+Y
+' A l l A l l 3 n a N O 3 l W W t J 3 H l 1WNOIIWlSNWtll
+              m
+               0  -x
+     m a          0
+     -ai ai
+     0 0          rr)
+
+
+
+
+                  (0
+                  cu
+
+
+
+
+E
+t
+0
+-
+II
+Q
+
+
+
+
+                  -
+                  O
+
+
+
+              -
+              I
+              0
+                                                  M
+                                                  -X
+                                                  0
+
+
+                             I
+                z            I
+                0
+                         I
+                a
+                         .\.: --     I
+
+                         . & e------------
+
+                                                  eiF
+                                                  cu         c
+  Lo                                                    I-
+-rc                                                          C
+
+
+  a!                                     E
+                                                        W
+                                                        a
+                                         t
+-a!         /-                           -
+                                         0        -I-
+                                                        a
+-k /
+     /-                                  II
+                                         a
+                                                        a
+                                                        W
+                                                        a.
+-Lo
+      ' I
+                                                  S W
+                                                        z
+-rc! \                                                  I-
+-- \
+  ln        \
+                \
+-9
+ -                                                -
+                                                  O
+- 0. La     T
+            Y
+
+
+
+
+                                                  (D
+
+ -
+ b              b
+                -   b-           I
+                                 -
+                                 0            b
+                                              -
+

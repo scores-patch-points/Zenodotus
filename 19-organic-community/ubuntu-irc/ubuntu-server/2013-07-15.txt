@@ -1,0 +1,679 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2013-7-15"
+lang: "en"
+messages: "670"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<zzak> my issue was resolved on #postfix, thank you
+<allaire> Hi, anybody has some monit experience?
+<gld1982ltd> hi all. i need help getting sshfs working on boot. fstab entries are not working.
+<atpa8a> hello
+<atpa8a> trying to figure out the cloud thingie :P any help here?
+<atpa8a> right now i'm running a kvm on one server and a few virtual machines
+<atpa8a> can i use MAAS to do the same?
+<atpa8a> on one server that is
+<atpa8a> or is that an overkill?
+<ketan985> Hello Friends, I want to control server in such way that it kill process when it consumes more memory
+<rbasak> ketan985: try looking into "ulimit" and "oom killer".
+<ztuiop> hello there
+<ztuiop> hello anyone there ?
+<ztuiop> /join ubuntu-gb
+<zertyui> hi
+<zertyui> anyone there ?
+<zertyui> is it pôssible to create a root user with temporary access ?
+<melmoth> zertyui, you can add any user on the sudo list temporary.
+<melmoth> but .... how can you be sure this user will not change things while he is root so he can be root again later on ?
+<zertyui> yes if he would liek
+<zertyui> but i m looking for a command creating users with timestamp access
+<zertyui> so impossible ?
+<maxb> root, by definition, can do anything. Including adding backdoors to regain root later
+<zertyui> yes of course i m an idiot do not understand that
+<zertyui> my question was how to actroy root access to a user with timestamp access ?
+<zertyui> you are logged in root on a system  i would like to a create a user
+<zertyui> and give him a root
+<zertyui> just for example for 2 days
+<melmoth> add him in the sudeor file, and remove him after 2 days.
+<melmoth> if you wanna have this automatically done, write a script that does it for you. and use cron to launch it
+<zertyui> then the user autamatically back to an normal user i would do that automatically
+<zertyui> without doing it manually
+<ttx> Daviey: "agile granite foundations", wow :)
+<rbasak> You can set user accounts to expire. See usermod(8).
+<rbasak> sudoers(5) expiry doesn't exist, AFAIK, but you can cron it.
+<psivaa> jdstrand: Would like to know if there is any update on bug #1197484. ETA for any possible fix, etc?
+<uvirtbot> Launchpad bug 1197484 in isc-dhcp "Connection requests to saucy server VMs from a hosts fail after fresh VM installs" [High,New] https://launchpad.net/bugs/1197484
+<jamespage> yolanda, that nagios3 merge is confusing - I'm not entirely sure why the debdiffs's are so huge
+<yolanda> let me double check
+<yolanda> not sure now
+<yolanda> jamespage, you mean the diffs between the two ubuntu versions?
+<jamespage> yolanda, yes - the debian commits are patches and packaging
+<yolanda> I'll recheck the process
+<jamespage> yolanda, even the diff between -3 and -4  in debian is massive
+<jamespage> yolanda, I don't think its what you have done
+<jamespage> although I did not expect to see the diff in debian/po
+<yolanda> let me paste the report
+<yolanda> maybe you see something
+<yolanda> http://paste.ubuntu.com/5876994/
+<jamespage> yolanda, yeah - I know
+<jamespage> but think about what change you actually made for 3ubuntu1
+<jamespage> that should be the only delta
+<yolanda> let me recheck taht
+<jamespage> yolanda, oh - you should also close out the merge bug as part of your changelog
+<jamespage> I was about to add that to the bug report but got sidetracked by this issue
+<yolanda> ok, didn't know about it, so i should reference the LP bug in changelog?
+<jamespage> yolanda, yes
+<jamespage> yolanda, I think the po mods are a grab-merge bug
+<jamespage> yolanda, if I do the merge using ubuntu:nagios3 and lp:debian/sid/nagios3 I get what I would expect
+<yolanda> ok, so i'll try with that approach
+<yolanda> jamespage, is that better to rely on manual merges, not in grab_merge script?
+<yolanda> or maybe do the grab_merge and then check that for unexpected results?
+<jamespage> yolanda, yeah - thats what I end up doing
+<yolanda> ok, then i'll fix that, and i also have to update the changelog for the others
+<jamespage> yolanda, great - thanks!
+<yolanda> jamespage, much more cleaner debdiff doing a manual merge
+<yolanda> i'll resend the patches
+<yolanda> jamespage, generated diff between prev ubuntu version and this one is huge anyway, mostly same size, but diff between debian/ubuntu is clean now
+<jamespage> yolanda, when you attach patches please can you make sure that you tick the 'this is a patch to fix the problem' option
+<jamespage> it breaks the sponsorship tooling otherwise
+<jamespage> yolanda, for the nagios merge the bug in the changelog does not match the one in launchpad
+<jamespage> yolanda, fwiw you can just push the branch to launchpad/raise a MP instead of doing the debdiff's
+<yolanda> jamespage, i remember don't having the permissions, i think
+<jamespage> yolanda, to mark patches as 'patches'?
+<yolanda> no, for the MP
+<jamespage> yolanda, anyone can raise a merge proposal
+<yolanda> ok, and you do the merge? i can't remember who recommended me to use the debdiff approach
+<yolanda> np, having lunch and i'll raise the mp
+<jamespage> yolanda, OK - for the quid3 merge:
+<jamespage> dpkg-source: info: local changes detected, the modified files are:
+<jamespage> squid3-3.3.4/src/cf.data.pre
+<jamespage> when I try to use the debdiff - can you take a look at that as well
+<jamespage> ta
+<yolanda> sure
+<yolanda> jamespage: https://code.launchpad.net/~yolanda.robla/ubuntu/saucy/nagios3/debian_merge/+merge/174736
+<jamespage> yolanda, lots of conflicts
+<yolanda> i know
+<yolanda> lots of conflicts between prev and this ubuntu veresion
+<yolanda> but it's like that using the grab-merge and the manual merging also
+<yolanda> i'll try resubmitting the mp, just a moment
+<jamespage> yolanda, nm - I already uploaded that one
+<yolanda> is that ok?
+<jamespage> yolanda, I just fixed up the debdiff you uploaded a while back
+<yolanda> oh ok
+<yolanda> i'll check the squid3 problem, not sure what happens
+<zul> jamespage:  i really need to beat out neutron today
+<jamespage> zul, beat away!
+<jamespage> morning btw
+<zul> good morning
+<jamespage> yolanda, https://jenkins.qa.ubuntu.com/job/saucy-adt-nagios3/
+<yolanda> let me try locally
+<hxm> hi
+<hxm> i want to emulate a NAS server in my ubuntu server, is that possible?
+<hxm> exists any kind of software for do this?
+<hxm> what could be the query string for google, nas software gives too many results
+<Pici> What exactly are you trying to acheive?
+<hxm> create folders, rename files, that basic things
+<hxm> i guess a NAS is a webdav server, no?
+<Pici> So just a file server? Pick a protocol.
+<Pici> NFS, SMB, whatever.
+<hxm> yes, i use smb, but some users asked for have a HTTP interface with admin control
+<hxm> i just wonder if that exists
+<hxm> or the user just should login as admin when map the server
+<atpa8a> i would think you need some CMS type of software
+<RoyK> hxm: what do you need to administer over web?
+<rbasak> hxm: look into freenas. It's BSD based, but perhaps you can run it inside a VM on Ubuntu Server?
+<RoyK> freenas is good, runs on zfs too IIRC, which is good indeed
+<jdstrand> psivaa: still trying to reproduce
+<psivaa> jdstrand: ok, i had an impression that you've seen it somewhere else as well, may be i misunderstood
+<jdstrand> psivaa: I did, but I've yet to reproduce it
+<psivaa> jdstrand: ok, understand
+<Chocobo> Hmmm, any idea why my NFS mount would lock up periodically (to the point of needing a reboot)?
+<RoyK> Chocobo: not sure, it could be anything. anything in the logs? dmesg?
+<yolanda> jamespage, i tested nagios3 tests again locally, and run fine for me
+<jamespage> yolanda, bah
+<yolanda> some dependency with nagios3-cgi should be the problem? why it works locally with run-adt-test, and not on the test machine?
+<atpa8a> hey
+<atpa8a> can MAAS be a good substitute for managing virtual machines?
+<Chocobo> RoyK: Not really... I can still mount other NFS exports on the same interfaces, but it just hangs when I try to mount a certain export.   It is strange because other nodes in the cluster all have the problematic export mounted
+<Chocobo> When I try to mount it there is tons of traffic (using tcpdump)  this is strange
+<RoyK> Chocobo: same server as well?
+<Chocobo> RoyK: What do you mean same server?  yes, I can mount other exports from the same server.
+<RoyK> Chocobo: if you mount with options soft,intr, than the connection should be interruptable
+<RoyK> otherwise, the default action for NFS is to hang while the server's unavailable
+<yolanda> jamespage, about squid3, i'm finding an strange problem with the patches. I removed all .pc directory, retried again, applying all patches manually, etc...
+<yolanda> when i do a bzr bd -S i have this error :bzr: ERROR: An error (1) occurred running quilt: The working tree was created by an older version of quilt. Please run 'quilt upgrade'.
+<Chocobo> RoyK: this is my fstab entry:  dedup-ib:/big_pool/os-grizzly /os-grizzly nfs rw,async,noatime,nolock,tcp,bg,intr,hard,_netdev,noauto 0 0
+<yolanda> runnning quilt upgrade doesn't help, it complains about that the quilt metadata is already in version 2, nothing to do
+<yolanda> packaging with a debuild works, but not sure it that is ok
+<RoyK> Chocobo: perhaps try soft instead of hard
+<RoyK> Chocobo: it won't fix the issues, but may make it easier to debug
+<RoyK> btw, I don't think noatime is a valid nfs flag
+<Chocobo> RoyK: Thanks, I will give it a shot.
+<RoyK> Chocobo: btw, is this some dedup thing?
+<Chocobo> RoyK: it is a ZFS backend that has deduplication enabled, yes.
+<RoyK> ok
+<RoyK> lots of memory in the machine?
+<RoyK> in my experience, zfs dedup is *very* hungry for memory
+<bitnumus> hey, my system clock keeps drifting
+<bitnumus> whats the best solution to fix this
+<bitnumus> doesnt ubuntu have a default cron to handle this ?
+<bitnumus> fncirunbvhltdjiddnjuihkrfglcfigcvdekrevdnlin
+<RoyK> bitnumus: ntp should keep your clock in sync
+<RoyK> bitnumus: is this a vm?
+<bitnumus> nope
+<bitnumus> not sure how the provider has it setup, its a VPS
+<RoyK> then it's probably a vm
+<RoyK> can you pastebin lshw output?
+<bitnumus> lshw ?
+<patdk-wk> why would ubuntu have a cron to handle clock? that is the worst idea ever
+<bitnumus> patdk-wk, just what i've read
+<RoyK> bitnumus: apt-get install ntp
+<bitnumus> ntp is installed
+<bitnumus> maybe not running but
+<bitnumus> sec
+<bitnumus> i looked at this a few days ago now, something about ntpdate
+<RoyK> bitnumus: yes, lshw, it should show on what hardware or hypervisor you're running
+<bitnumus> RoyK, that gives 'bad command'
+<RoyK> then apt-get install it :)
+<RoyK> bitnumus: perhaps dmidecode will tell
+<rbasak> Some VPSes don't let you set the clock.
+<RoyK> but lshw output is better
+<bitnumus> sec,
+<rbasak> I had one where the clock was out, the kernel wasn't available to user modification, and setting the clock resulted in an error. I had to get the hosting provider to fix it.
+<bitnumus> RoyK,  http://pastebin.com/z9aFjKGm
+<RoyK> rbasak: openvz or vserver based systems don't have individual clocks
+<bitnumus> so i've installed ntp, anything i need to do to initialise it ?
+<RoyK> bitnumus: not sure, but I guess vserver
+<bitnumus> does it need a reboot
+<RoyK> bitnumus: to manually set the time from a timeserver, use ntpdate pool.ntp.org
+<bitnumus> i dont want to manually do anything, i need it to keep up to date with next to 0 drift
+<RoyK> you might need to stop ntp first because of an open socket
+<bitnumus> will ntpd keep it in check ?
+<RoyK> yes
+<bitnumus> so no reboot or anything ?
+<RoyK> no
+<bitnumus> how often should it update it ?
+<RoyK> but if the clock is too far askew, ntpd might not catch up
+<atpa8a> or it will take some time to catch up
+<RoyK> so, service ntp stop ; ntpdate pool.ntp.org ; service ntp start
+<bitnumus> na, atm its about 1second out
+<rbasak> ntpd adjusts the clock speed to match the time it's syncing. So it's not updated as such. Once  the clock stays in sync it should just appear to be in sync.
+<bitnumus> maybe that was my issue before, it drifted to 264seconds
+<RoyK> then it souldn't be needed to use ntpdate
+<bitnumus> ok great stuff
+<streulma> what is the best way to update your server? apt-get upgrade, or apt-get upgrade --show-upgraded, or apt-get dist-upgrade, or aptitude dist-upgrade ?
+<bitnumus> cheers ^
+<patdk-wk> streulma, depends on the goal
+<RoyK> streulma: I just do apt-get update && apt-get -y dist-upgrade && apt-get -y autoremove
+<patdk-wk> upgrade everything, upgrade security patches only, ...
+<patdk-wk> dist-upgrade is what I use, and you need it to bring in new kernel security patches
+<streulma> used command from RoyK
+<patdk-wk> royk, maybe use virt-what next time, over lshw?
+<RoyK> patdk-wk: virt-what?
+<RoyK> ah
+<RoyK> didn't know that ;)
+<patdk-wk> I knew it existed, but couldn't remember the name
+<patdk-wk> and didn't know if it did openvz and them, but it does
+<RoyK> streulma: can you try virt-what as patdk-wk suggested?
+<patdk-wk> bitnumus, you mean?
+<RoyK> uh, yes
+<RoyK> bitnumus: ?
+<bitnumus> what
+<patdk-wk> ya, what is the word :)
+<RoyK> bitnumus: can you try virt-what as patdk-wk suggested?
+<Chocobo> RoyK: There is 512GB in that machine I believe.
+<RoyK> Chocobo: should suffice for rather a large amount of diskspace ;)
+<patdk-wk> hate to see that reboot
+<bitnumus> XEN
+<RoyK> ah
+<RoyK> I've seen clock drift with xen
+<patdk-wk> your ok running ntp on xen
+<patdk-wk> it won't keep the clock perfect though
+<patdk-wk> but it will keep it close
+<streulma> I've seen some time wibble on Xzn
+<streulma> Xen
+<weeb1e> Hi everyone
+<RoyK> ho
+<weeb1e> I just got access to two new sponsored servers running the latest ubuntu
+<weeb1e> I haven't used the past few ubuntu versions so some things have changed
+<weeb1e> First up, is there something special that needs to be done now to change my sudo password?
+<weeb1e> passwd does not seem to be working
+<hachre> What do you mean by 'sudo password'
+<hachre> if your user is in the etc sudoers file it can access root via it's own user password
+<hachre> if you wanna change the root password you can do 'sudo passwd'
+<weeb1e> I've tried about 4 times now, I use passwd, enter the current password, then enter my new password twice, it says it is changed, yet if I open a new SSH session only the old password works
+<hachre> are you changing the password for the user you also try to ssh in with?
+<weeb1e> So I mean my own account password which is the only account on the box
+<hachre> nothing in that regard has changed, is this a brand new installation?
+<weeb1e> My next question would be how to check if a root password is set at all, since I know ubuntu does not set one by default, so I would only want to change that if one is already set
+<weeb1e> But I first need to figure out why my own password is not changing
+<weeb1e> hachre: Yes, I was told it was installed today
+<hachre> it's weird, passwd should go through the /etc/pam.d/system-auth component
+<weeb1e> I see now it is not the latest ubuntu even, they installed Ubuntu 12.04.2 LTS
+<hachre> I think
+<hachre> ah yea
+<weeb1e> I hope 12.04 does not cause me grief
+<hachre> thats the latest LTS release
+<rbasak> weeb1e: "sudo getent shadow root" to see the root password hash. If it's "!" or "*" or something, then there's no root password set. That's generally the same across all distros.
+<weeb1e> thanks rbasak, any idea why passwd wouldn't be taking effect for me?
+<weeb1e> There is a hash there so I assume a root password is set
+<rbasak> weeb1e: "passwd" sets the password you use to sudo with (your own user password). What you ssh in as should be the same password. I don't know of any reason that wouldn't work unless your provider is doing something? Is it a fresh install on real hardware, or some kind of VM?>
+<weeb1e> rbasak: I know that, passwd says it works for my user but then my users password is not changed in any new SSH sessions
+<weeb1e> It is a fresh install on hardware, I had to wait a few days for them to remove the VM and install an OS directly
+<weeb1e> VMs are useless for realtime software which requires minimal overhead and max performance
+<rbasak> weeb1e: how about an ssh user@localhost from the machine itself?
+<RoyK> weeb1e: were you running "passwd" as your own user, or as root?
+<weeb1e> rbasak: Still only the old password works
+<weeb1e> RoyK: My own user
+<rbasak> weeb1e: "sudo getent shadow youruser" before and after changing the password. Does that get updated?
+<RoyK> check the file date of /etc/shadow
+<RoyK> rbasak++
+<weeb1e> rbasak: Yes it changes
+<weeb1e> This is very weird
+<RoyK> weeb1e: and then if you try to ssh youruser@localhost?
+<weeb1e> I am getting very confused, I have worked with plenty Ubuntu servers in the past and have never had an issue like this
+<rbasak> weeb1e: "grep password /etc/pam.d/sshd" - does that say "@include common-password" or something else?
+<rbasak> weeb1e: it certainly shouldn't do that on a default install.
+<weeb1e> RoyK: Hmm, that worked now from that same session
+<RoyK> weeb1e: but not from another machine?
+<weeb1e> And now it works in a new session
+<weeb1e> Why the hell would it suddenly work on the 6th attempt :|
+<RoyK> ok, possibly PEBKAC ;)
+<weeb1e> Oh wait, I changed the root password
+<RoyK> bingo
+<weeb1e> So the only explaination is it is using the root password for my own account?
+<weeb1e> Why would it be doing that
+<weeb1e> rbasak: Yes, that is included
+<weeb1e> I guess the techie that installed these boxes did something odd
+<rbasak> weeb1e: the behaviour you're describing is certainly non-standard non-default.
+<RoyK> normally, on ubuntu, root doesn't have a password. it means you can boot to single if you have physical access without a password, but then, if you have physical access, you can normally override most security
+<RoyK> rbasak: seems to me he just ran passwd as root, nothing more
+<rbasak> weeb1e: it might be worth comparing /etc/ssh/sshd_config and /etc/pam.d/* against a default system.
+<weeb1e> If I had to remove the root password now, would my user still work with its own password?
+<RoyK> yes
+<weeb1e> I just don't want to lock myself out
+<rbasak> weeb1e: RoyK: yeah, perhaps I've misunderstood the details.
+<weeb1e> How would I remove the root password?
+<RoyK> weeb1e: no need, really
+<RoyK> weeb1e: your system is only slightly more secure with a root password
+<rbasak> weeb1e: leave an ssh session running "sudo -i" so you have a root prompt. Change and test at will. If you leave the session open you can recover from problems using that.
+<rbasak> EOD
+<RoyK> weeb1e: you may want to turn off root login in /etc/ssh/sshd_config, though
+<weeb1e> Well, ok I don't need to remove the root password
+<weeb1e> But I don't want all accounts to use that password
+<weeb1e> Would removing "@include common-password" be enough to solve that?
+<RoyK> weeb1e: all accounts have their own passwords
+<weeb1e> RoyK: Like I said I can't login or sudo with my own accounts password
+<weeb1e> It only started working when I set the root password to my own password
+<rbasak> weeb1e: I'd avoid changing /etc/pam.d at all unless you're restoring defaults that have been changed. AIUI, the behaviour you want *is* default on Ubuntu
+<RoyK> @include common-password is there by default
+<weeb1e> Ok well let me change my own password and see if it takes effect now
+<rbasak> The beahviour I've heard you describe here (as far as I've understood what you've said) *is not* default on Ubuntu.
+<RoyK> weeb1e: well, now, after you have successfully changed your password, login and try sudo -i
+<weeb1e> rbasak: Yeah that was my understanding too, I've used plenty ubuntu servers and never experienced this before
+<weeb1e> But now after having set the root password, changing my own accounts password works correctly
+<RoyK> weeb1e: I guess what you experienced was just taht you changed the wrong password
+<weeb1e> I still don't understand why it was not before
+<weeb1e> RoyK: I tried using passwd without sudo at least 5 times
+<weeb1e> And it said it worked, yet a new ssh session only worked with the old password
+<RoyK> never seen that - ever - since I installed slackware 2.1 back in 1994
+<weeb1e> Very odd behaviour
+<RoyK> weeb1e: indeed - does ssh youruser@localhost work with the new one?
+<weeb1e> Well, I have a second box that should be identical to this one, lets see how the password changing goes there
+<weeb1e> It does now, it didn't before
+<RoyK> weeb1e: try localhost first
+<RoyK> if there's a difference between ssh to localhost and from another machine, there may be a man-in-the-middle somewhere
+<RoyK> which is rather alarming
+<weeb1e> No, there is no difference, both ssh to localhost and an external ssh session failed for the first bunch of attempts
+<weeb1e> They only started working with the newly set password after I changed the root password
+<RoyK> weeb1e: do both work now?
+<weeb1e> Yes
+<RoyK> then you probably changed the wrong user's password
+<weeb1e> But I have a second machine to test now, and it does not have a root password set
+<RoyK> try again
+<RoyK> ok
+<weeb1e> Oh well, that machine worked as expected
+<weeb1e> All things do point to me having changed the wrong password, but I am also very sure that I did not.. but oh well, thanks for the help anyway
+<weeb1e> So much for the machines being identical, the second box has something seriously wrong
+<weeb1e> E: Package 'build-essential' has no installation candidate
+<RoyK> huh
+<RoyK> weeb1e: I'd reinstall that if I were you
+<RoyK> perhaps run rkhunter or chkrootkit on it first
+<RoyK> and check the repos used
+<RoyK> or just nuke it
+<weeb1e> RoyK: Reinstall the whole OS?
+<weeb1e> I would have to get my sponsor to send a technician to do it
+<RoyK> if something has been let in that can be logging passwords, then it's rather bad
+<RoyK> can you compare /etc/apt/* between the two machines?
+<weeb1e> "if something has been let in that can be logging passwords"?
+<weeb1e> Where did you get that from?
+<RoyK> use rsync -r from a separate machine to transfer the contents
+<RoyK> weeb1e: I'm just paranoid, sometimes that's all it takes
+<weeb1e> Hmm, I'll compare the contents
+<weeb1e> why apt/* not just apt/sources?
+<weeb1e> the sources.list files are the same
+<patdk-wk> heh?
+<RoyK> because sources.d is another source to sources :P
+<patdk-wk> someone can easily setup apt to use a proxy server
+<patdk-wk> and then give you whatever they want
+<patdk-wk> checking sources won't detect that
+<RoyK> true
+<weeb1e> Yeah well, they could, but this sponsor likely does not have the technical know how for that :P
+<RoyK> weeb1e: check the checksums (md5 or sha) of passwd and the modules used by pam
+<RoyK> weeb1e: it may be false alert, but you're seeing some rather interesting issues that *may* turn up to be nasty
+<weeb1e> I'd need to find another 12.04.2 ubuntu server to compare against
+<weeb1e> Let me check if I have a VM installed
+<RoyK> weeb1e: first: download rkhunter and/or chkrootkit from the source, not from the repos, and run it/them
+<weeb1e> RoyK: I understand your concern, since I have just gained access to these boxes I'd rather be safe than sorry
+<RoyK> patdk-wk: do you know any other checks to run on such a system?
+<patdk-wk> not really, I just don't bother anymore
+<patdk-wk> restore from template
+<RoyK> patdk-wk: why not?
+<RoyK> ok
+<patdk-wk> I do tend to keep the old ones around for inspection, and find the issue
+<patdk-wk> but normally, people breaking into servers leave craploads of helpful info around
+<RoyK> patdk-wk: doesn't work too well for physical machines, though
+<patdk-wk> good thing I don't have any :)
+<patdk-wk> but it would work the same way
+<patdk-wk> just take longer to do a restore
+<patdk-wk> I do it for laptops, and desktops
+<patdk-wk> after I install, I backup to a template, that I restore on the other ones
+<patdk-wk> and use if someone gets infected
+<patdk-wk> that is windows though
+<weeb1e> I only have physical machines, without any physical access :/
+<weeb1e> VMs have too much overhead
+<RoyK> weeb1e: huh?
+<RoyK> weeb1e: we run 150ish VMs on 8 VMware hosts at work, and it runs smoothly
+<RoyK> would probably run well on 6, or it will, when we reorganize the two clusters into one
+<patdk-wk> since when do vm's have overhead?
+<patdk-wk> atleast if your using an ept server, so e54xx or higher cpu
+<RoyK> patdk-wk: heh - back before they added virtualization extensions ;)
+<patdk-wk> no, that was painful
+<RoyK> vmware around 2001 was rather heavy
+<patdk-wk> ept caused it so you didn't have overhead for memory page changes
+<patdk-wk> if your server is that old, to not support vt, I would suggest, you don't need a server :)
+<RoyK> hehe
+<patdk-wk> but if your server is <5years old or so, you probably have ept support
+<patdk-wk> so the vm will have an unmeasurable amount of vt overhead
+<patdk-wk> I will say, going from physical to vmware, caused me a 15% additional overhead
+<patdk-wk> then I realized the old servers didn't have ept, removed it, and I am <5% overhead
+<RoyK> patdk-wk: got a cluster?
+<patdk-wk> 4 clusters
+<RoyK> many hosts?
+<patdk-wk> large windows, small windows, large ubuntu, small rhel
+<patdk-wk> physical, from 3 to 6
+<RoyK> why separate the vm's into different clusters based on OS?
+<patdk-wk> royk, they aren't
+<patdk-wk> they are in different datacenters doing different things
+<RoyK> ok
+<patdk-wk> large windows cluster has like 5 rhel on it
+<patdk-wk> but it has 400 windows vm's
+<RoyK> damn
+<RoyK> how many hosts?
+<patdk-wk> on 5 blades
+<RoyK> not bad
+<RoyK> how much memory in those?
+<patdk-wk> currently, 144, and we are pushing into 80% used again
+<patdk-wk> those blades are getting upgraded next spring, so moving to 386 or more ram, but need faster cpu's, single core performance in windows is really hurting lately
+<RoyK> we have two clusters, plus a separate box for patient data, running a single vm, separate box of historical issues, I guess, since some people didn't trust putting a large VM on other machines that were exposed to the internet
+<RoyK> perhaps going for virtual datacentre one day
+<patdk-wk> if it had patient data, it would be a hippa issue here, much easier to say your in regulations
+<patdk-wk> but not sure what the laws are there
+<RoyK> hippa?
+<patdk-wk> http://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act
+<RoyK> I know others that are using the same cluster for mixed data
+<patdk-wk> guess it's hipaa
+<RoyK> I see, thanks
+<RoyK> The Norwegian Data Protection Authority is the main actor at this, and they allows (at least certain) installations of patient data VMs along with open servers
+<Pici> RoyK: "Exposed to the internet", you mean web servers? or just something that was able to access the internet outbound?
+<patdk-wk> ok, hipaa doesn't forbid it :)
+<patdk-wk> but if you don't want to report loss to your *customers*
+<patdk-wk> then it must be approved and encrypted
+<RoyK> Pici: web servers or others that can be reached from the internet
+<patdk-wk> so making it encrypted, and being able to verify loss, is simple if it's dedicated
+<RoyK> IMHO nothing is really dedicated when the blade is in the same chassis as the other blades and VLAN control is at the VM level
+<patdk-wk> ok, it's long after lunch time
+<RoyK> patdk-wk: 400 VMs on five hosts with 192GB seems rather heavy, it's like 1.92GB per VM
+<RoyK> (with four, if one fails)
+<patdk-wk> well, depends on mem dedup though
+<RoyK> is that really efficient?
+<patdk-wk> as 240 or so are cloned win7, they dedup good
+<RoyK> ok
+<patdk-wk> ya, they have 4gigs of ram each, and normally only use 1gig of ram each
+<RoyK> ok
+<RoyK> clients?
+<patdk-wk> vmware view, for client access yes
+<patdk-wk> destroyed on each logout
+<RoyK> should try that out
+<RoyK> we have some 20k users, mostly students, but some 1800 employees
+<patdk-wk> how many are logged in at any given time?
+<RoyK> looking at the fileserver statistics, perhaps 2k
+<RoyK> at really high times
+<zul> jamespage:  ping enjoy: https://code.launchpad.net/~zulcss/neutron/rename/+merge/174832
+<patdk-wk> well, that would be how many licenses you need then
+<RoyK> possibly rather expensive :P
+<patdk-wk> well like everything
+<RoyK> do you use thin clients for this?
+<patdk-wk> you do it yourself, or you pay for it
+<patdk-wk> royk, heh?
+<Pici> Is this a single hospital?
+<patdk-wk> clients==customers, we have no control over them
+<RoyK> Pici: hioa.no
+<Pici> Ah.
+<RoyK> patdk-wk: I meant, are you using thin clients or PCs for this thing? thin clients as in those that only knows RDP or whatever access protocol, but doesn't have much of an OS locally
+<patdk-wk> like I said, how should I know
+<weeb1e> RoyK: I host realtime sensitive software which is affected by the overhead and timeslicing of virtual machines
+<patdk-wk> they are controlled by the customer, offsite, nothing to do with our company
+<weeb1e> Such software includes a variety of resource intensive game servers as well as multimedia transcoding and processing
+<patdk-wk> ya, realtime stuff is not vm friendly
+<weeb1e> My services are realtime and latency sensitive, so VMs are really not an option
+<TheSov> you would be surprised how fast vm's can work
+<patdk-wk> depends though
+<TheSov> we keep hosts here with just 1 vm on them
+<patdk-wk> but if latency is the only issue, latency normally trumps all vm latency issues
+<RoyK> weeb1e: I see
+<TheSov> the 1 vm is a very important and high speed guest the reason its virtual is due to portability
+<patdk-wk> network latency
+<RoyK> we installed varnish on a dedicated blade some time back, 200% speed increase
+<RoyK> so in some applications, virtualization isn't the best approach
+<TheSov> what happens if your blade backplane fails?
+<patdk-wk> royk, that sounds like an ept issue :)
+<TheSov> which has happened to me
+<RoyK> patdk-wk: ept?
+<patdk-wk> the memory paging virtualization support in newer cpu's
+<patdk-wk> otherwise every page table lookup, hits the hyperviser
+<RoyK> TheSov: it all goes down, obviously, and the important VMs are started on the secondary site
+<patdk-wk> and since varnish is memory happy, it will matter a lot
+<TheSov> RoyK, im just saying virtualization, as much as it has its drawbacks is worth it most of the time
+<patdk-wk> I was getting 50% slowdown on some vm's
+<TheSov> if not for just machine portability
+<TheSov> not being hardware dependant is ****** awesome
+<RoyK> TheSov: I know, but the positive side of virtualization is rather huge compared to the drawbacks
+<TheSov> i think we are arguing on the same side lol
+<RoyK> 150 VMs as pizzaboxes would fill four racks
+<RoyK> and consume a rather large amount of power
+<patdk-wk> oh, maybe you needed those old rlx blade I used to have :)
+<patdk-wk> 2ghz with 20gig drive, 24 per 4u blades
+<RoyK> we have three Dell bladecentres atm
+<patdk-wk> so happy to drop them off a cliff
+<TheSov> i have an entire rack of dell r714's with 12 core processors and 128 gigs of ram
+<RoyK> recycling the older ones for the secondary site
+<TheSov> they rock
+<patdk-wk> sounds like amd
+<TheSov> yes they are
+<patdk-wk> I'm normally ram heavy
+<patdk-wk> but the 100% flash san is helping to change that
+<patdk-wk> no need to cache as much stuff in ram
+<RoyK> patdk-wk: what sort of SAN do you have?
+<patdk-wk> purestor
+<RoyK> url?
+<patdk-wk> purestorage.com
+<RoyK> something like zfs?
+<patdk-wk> it's not
+<patdk-wk> it works a lot like zfs, but it's not zfs at all
+<patdk-wk> they are using raid3d, so it's basically raid6 but without a dedicated spare, but random holes all over
+<RoyK> have you tried to yank a disk and put it in a zfs-enabled box and tried zpool import?
+<RoyK> ;)
+<patdk-wk> it wouldn't work
+<patdk-wk> it's not zfs, as it's raid3d :)
+<patdk-wk> even if they did zfs ontop of it
+<RoyK> what's raid3d?
+<patdk-wk> google it
+<patdk-wk> ibm made it
+<patdk-wk> it solves the slow rebuild issue of using spares
+<patdk-wk> hard to explain without the picture
+<RoyK> <1s failover is nice
+<RoyK> Dell tells EqualLogic customers to increase iSCSI timeout to 120 to avoid problems
+<patdk-wk> well, it's active/active
+<RoyK> which doesn't work too well with internal timeouts in databases, exchange etc
+<patdk-wk> ya, vmware says to use 180sec
+<patdk-wk> and it pushs that into windows
+<patdk-wk> but not linux
+<RoyK> doesn't work with exchange
+<patdk-wk> I have never failed over exchange yet
+<RoyK> exchange uses non-blocking I/O and fails after some seconds
+<RoyK> patdk-wk: all SSD SAN?
+<patdk-wk> yes
+<RoyK> what interlink?
+<TheSov> dude, lefthand networks has an amazing virtual san appliance
+<patdk-wk> using 8gb fc
+<RoyK> ok
+<TheSov> i use that in combo with freenas and RDM to produce a high speed full failover san solution that functions at high speed
+<TheSov> FC!?!? ok i get off the boat here
+<RoyK> patdk-wk: guess you get rather good IOPS from that thing
+<patdk-wk> only have 4 of the 8fc connected right now
+<patdk-wk> but we can max out the 2 fc ports per host, easily
+<patdk-wk> with 4k iops
+<RoyK> 4kiops doesn't sound that impressive, though
+<RoyK> when a single SSD can deliver 10x+ of that
+<patdk-wk> hmm?
+<patdk-wk> a single ssd can do >200k iops?
+<patdk-wk> I know I can do random write iops at full speed
+<patdk-wk> you can't say that about zfs with dedup, very easily
+<patdk-wk> royk, one thing I do like about them, and why their numbers do seem low
+<patdk-wk> their numbers you will get, they are the best numbers under perfect optimization conditions
+<patdk-wk> and they are working on a cost scale too
+<patdk-wk> so one gen old hardware, to keep costs down
+<RoyK> patdk-wk: how much storage do you have in total (net) on those SSDs?
+<patdk-wk> 11tb raw usable
+<RoyK> how many SSDs?
+<patdk-wk> we have 19tb of data on it
+<RoyK> seems like an awful lot
+<patdk-wk> 48 256gb ssd's
+<patdk-wk> we moved our 15tb of thin allocated data from our old san, to it, and used 4.5tb
+<RoyK> you should e getting a wee more than 4kiops from that bunch
+<patdk-wk> 4k?
+<RoyK> even spinning rust should give you 4kiops with that amount of drives
+<patdk-wk> wee more than 4k block size iops?
+<patdk-wk> I keep peeking out around 300-500k iops
+<patdk-wk> way over their specs
+<RoyK> shit
+<RoyK> that's a lot
+<patdk-wk> can easily get 100-150k for a single stream
+<RoyK> (and my excuses to the language police for saying a bad word)
+<patdk-wk> it must not count anymore, or bot the bot would yell :)
+<RoyK> patdk-wk: want to ship this over? you don't need it, do you? :D
+<patdk-wk> I kind of like it
+<patdk-wk> we are getting a 2x dedup ratio, and a 2.3x compression ratio on it
+<patdk-wk> they join those numbers into one though, generally
+<patdk-wk> but we pre-tested our data using a tool that will read your lun and spit out what it would use
+<patdk-wk> so you can estimate how much you need
+<IdleOne> If you're going to make sarcastic comments in regards to the ops right after using language you clearly know is not acceptable, why do it at all?
+<IdleOne> because you are not aware of all the facts perhaps
+<IdleOne> Anyway, let us all try to behave according to the rules please.
+<patdk-wk> IdleOne, is something about this sarcastic? "<RoyK> (and my excuses to the language police for saying a bad word)"
+<patdk-wk> as that was the only thing said after the word
+<patdk-wk> in this channel atleast
+<patdk-wk> and everything you said, if it was in reply to an off-channel comment, not sure why you would bring it in here
+<IdleOne> yes, first of all we are not "language police" second of all if you are aware enough to apologise for doingsomething wrong then you should have been aware enough not to do it.
+<patdk-wk> the second part is not true
+<patdk-wk> it's one thing to know you did something wrong, it's another thing to break your habbit
+<IdleOne> sure it is. There is no excuse for bad behaviour. When someone joins an Ubutu channel they know what behaviour is acceptable and expected.
+<IdleOne> Ubuntu*
+<IdleOne> especially someone who has been in ubuntu channels as long as RoyK has.
+<IdleOne> We all mess up now and then I'll grant you that, but in light of recent history. I think the rules woyuld have been fresh in his mind.
+<cyberviking> HI there
+<cyberviking> I installed apache 2.4 but now when i try to analyze a log file, I got "-bash: fork: Cannot allocate memory" and the ssh session close. Do you know why ? :)
+<RoyK> cyberviking: what ubuntu version?
+<RoyK> cyberviking: how much memory?
+<cyberviking> total     used    free
+<cyberviking> Mem:       2097152     287824    1809328
+<cyberviking> -/+ buffers/cache:      20072    2077080
+<cyberviking> trying to analyze a 35mo fil via some grep
+<cyberviking> 35mB
+<RoyK> pastebin ps axfv
+<RoyK> !pastebin | cyberviking
+<ubottu> cyberviking: For posting multi-line texts into the channel, please use http://paste.ubuntu.com | To post !screenshots use http://imagebin.org/?page=add | !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+<RoyK> cyberviking: cannot fork seems like a bunch of processess staggering
+<RoyK> cyberviking: pastebin output of uptime as well
+<cyberviking> the command is not so impressive but it crash, just one to know how time Googlebot was there
+<cyberviking> cat /var/log/apache2/other_vhosts_access.log|grep "15/Jul"|grep -v "Googlebot"|wc -l
+<cyberviking> uptime :  23:47:18 up  3:11,  1 user,  load average: 0.00, 0.00, 0.00
+<RoyK> so probably no disk issues
+<RoyK> but now swap?
+<cyberviking> forget the "-v" on grep above of course :p
+<cyberviking> it's a VPS
+<cyberviking> with no swap
+<cyberviking> Swap:            0          0          0
+<cyberviking> I can shutdown apache, execute this command and start apache again it works ^^. But I want to understand what the hell happen here.
+<RoyK> pastebin ps axfv
+<cyberviking> the only difference is without apache -/+ buffers/cache:      11092    2086060
+<cyberviking> and with apache : -/+ buffers/cache:      15912    2081240
+<RoyK> should be no difference
+<cyberviking> I know :s, but it's not :D
+<jsonperl> i've got a bit of a strange situation with memory (potentially a swap thing)
+<jsonperl> i have a bunch of servers running with 16gb of ram available... they have a leak and when they get somewhere above 1GB, they get restarted
+<jsonperl> but for some reason, freeing of that memory seems to make the whole machine spike in cpu usage, and slows everything WAY DOWN while it happens
+<jsonperl> i was thinking maybe tuning the swappiness might be the solution, but does anyone have an idea what I should be looking for?
+<Patrickdk> heh?
+<Patrickdk> why would you think this is a swap issue?
+<Patrickdk> where is a pastebin with any results that back this up?
+<Patrickdk> cause if you have 16gig ram, and you reboot them when they > 1gb ram, you have personal issues, not swap issues
+<jsonperl> each process has 1gb of ram
+<jsonperl> there are 14 server instances running
+<jsonperl> im now running sysstat so I can get some stats next time i see the issue
+<jsonperl> its a custom ruby / c game server
+<Patrickdk> really, all you need to do is run vmstat, and maybe free, and probably ps axl, when you are having the issue
+<Patrickdk> to tell if you have a swap issue or not
+<jsonperl> what would i want to look for?
+<Patrickdk> something wrong
+<freeflying> jamespage: is there any particular reason for openvswitch package not using upstart?
+<jsonperl> does that symptom seem indicative of a swapping issue?
+<Patrickdk> jsonperl, the issue is unknown yet, as you have not described anything
+<Patrickdk> you said a cpu spike, swap issues don't cause cpu spikes, they cause disk spikes
+<Patrickdk> so far, that is the only clue given
+<jsonperl> sure ok here
+<Patrickdk> what is nice, is to use something like munin, so you know what it *normally* looks like
+<Patrickdk> then you can tell what changed
+<jsonperl> Basically all server activity drops to 0
+<Patrickdk> sysstat does it also, I just never used it
+<jsonperl> i have charts of core usage
+<jsonperl> i basially persist mpstat to db
+<jsonperl> it only starts happening once servers cycle... and release a lot of memory
+<jsonperl> I'll paste one somewhere and link
+<Patrickdk> mpstat only gives cpu info
+<jsonperl> http://picpaste.com/pics/Screen_Shot_2013-07-13_at_10.19.40_PM-AS1JtSXk.1373927861.png
+<jsonperl> Cpu is clearly a problem here
+<Patrickdk> so cpu usage drops to bottom
+<Patrickdk> that says cpu is NOT the issue
+<Patrickdk> so again, we have no idea
+<jsonperl> What are some potential reasons for that
+<jsonperl> heavy IO wait time?
+<Patrickdk> I could list you atleast a few million
+<Patrickdk> but there is no point
+<jsonperl> theres not much running on the machine
+<jsonperl> pretty much just these servers
+<Patrickdk> this is why you need to record all basic stats
+<Patrickdk> disk i/o, memory, cpu
+<Patrickdk> all in reference to each other
+<jsonperl> sysstat is doing that for me now
+<Patrickdk> other things, if this is a vm
+<Patrickdk> it could not be anything to do with you
+<jsonperl> its not a vm
+<jsonperl> physical machine
+<jsonperl> all mine
+<jsonperl> Patrickdk ok im collecting stats on the minute now
+<jsonperl> hopefully ill see something interesting
+<jsonperl> this sucks
+<jsonperl> I run deepworld btw... fun game if you have a mac or ios device

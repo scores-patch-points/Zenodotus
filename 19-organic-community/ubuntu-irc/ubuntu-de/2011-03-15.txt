@@ -1,0 +1,554 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2011-3-15"
+lang: "de"
+messages: "545"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<zeitsofa> hat jemand ne idee was man im kernel falsch kompilieren kann das aus 4 kernen nur noch 2 werden? das is mir ja auch noch nie passiert
+<luchs> zeitsofa: so viele Möglichkeiten gibt es unter "Processor type and features" doch nicht, was für eine CPU genau? 4 core oder 2 plus 2x ht?
+<zeitsofa> luchs: core 4 quad
+<zeitsofa> und ja eben soviel gibts da nun wirklich nicht
+<luchs> zeitsofa: wirst du sicherlich alles aktiviert haben: Symmetric multi-processing support, Maximum number of CPUs, Multi-core scheduler support
+<zeitsofa> luchs: boah ey ich kompilier mir grad einen und wunder mich "mensch warum hast das ding nur 2 cores" kopp > tisch - klar wenn ich da nur 2 cores aktiviere .... thx for the hint :)
+<zeitsofa> es ist einfach dosch schon spät heute .... man man man
+<luchs> jo, kann passieren, noch mal mit cat /proc/cpu schauen ob alle da sind, eventuell hast du ja noch einen mit ht, dann würden noch mal 4 core dazu kommen.
+<zeitsofa> Q6600 der hat soweit ich weiß kein ht
+<luchs> nö hat kein ht: http://ark.intel.com/Product.aspx?id=29765
+<zeitsofa> jo hab da auch grad geschaut :D aber danke :)
+<zeitsofa> wenn der seine 4 macht is schon ok - dann dauerts emergen nimmer gar so lange
+<sds58> moin, wie logge ich mich mit pidgin-mbpurple bei twitter ein?
+<sds58> bekomme die ganze zeit einen authentication error
+<zeitsofa> sds58: hat dir nicht einer der ersten 10 hits bei google geholfen mit den begriffen "PIDGIN TWITTER UBUNTU" da gibts doch nun wirklich howtos wie sand am meer zu
+<papachaotica> sds58, welche ubuntu version nutzt du?
+<sds58> papachaotica: 10.04
+<papachaotica> die mbpurble version in 10.04 ist veraltet und funktioniert nicht mehr du brauchst eine neure aifk ab version 3.0
+<papachaotica> http://code.google.com/p/microblog-purple/
+<papachaotica> https://launchpad.net/~ikuya-fruitsbasket/+archive/ppa/
+<sds58> papachaotica: danke, bin gerade dran das einzurichten :)
+<IchEsseDichAuf> hi, ich migriere den root auf eine andere partition. ich hab auf schwierigkeiten gestoßen.
+<IchEsseDichAuf> ich hab folgendes gemacht: aus den livesystem die partition geklont, sie gemountet, die dev proc und  sys dahin mit bind gemountet
+<IchEsseDichAuf> chroot auf die neue partition, und dann versucht den grub2 neuzukonfigurieren. nun, dies läuft nicht so, wie ich es mir wünsche
+<IchEsseDichAuf> also "grub-mkconfig > /boot/grub/grub.cfg" findet nur den alten root, auf der alten partition
+<IchEsseDichAuf> ok, das problem lag an der mitgeklonten /etc/mtab, sodass das system nach den chroot glaubte es wäre an der alten position
+<bullgard> Wenn Maverick kaltstartet, gibt Maverick in der virtuellen Konsole 1 aus: "System inormation as of Sat Mar 12 15:51:57 CET 2011. System load, Temperature Usage of /home, Processes: Memory Usage: Users logged in, Swap usage, IP address for eth0. --  Welches Programm gibt diese Information aus?
+<orcor> guten Morgen
+<orcor> mein ubuntu startet nicht mehr bin  mit live cd online wie kann ich mein dateisystem überprüfen?
+<orcor> da ich mich nihct auskennen tue
+<orcor> ?
+<orcor> jemand da?
+<mm1> hi
+<orcor> mein ubuntu startet nicht mehr wie kann ich es zurück widerherstellen oder mein datei system überprüfen kenne mich mit terminal nicht aus und wiki kann mir auch nicht weiter helfen
+<orcor> bin gerade mit live cd online
+<orcor> für jede hilfe bin ich shcon im voraus dankbar
+<orcor> hmm... alle noch am schlafen?
+<orcor> wie ist der Terminal befehl um mein Dateisystem  zu überprüfen
+<Frickelpit> http://wiki.ubuntuusers.de/Dateisystemcheck
+<orcor> hab shcon geschaut wiki kann mir nicht so gerade helfen
+<orcor> bin nun mit live cd online da mein ubuntu 10.10 nicht mehr starten kann
+<orcor> der meint kann festplatte nicht einhängen
+<orcor> oder so
+<LetoThe2nd> Sysopa: die sprüche wollte schon von den gentoolern keiner hören... ist hier nicht deutlich anders ;-)
+<Sysopa> *hmpf*
+<Orcor> komishc das in ubuntu 10.10 live cd kein xchat ist mußte Xubuntu starten live
+<Orcor> kann kein datei system überprüfen lassen da kommt an dauernd irgend was mit muß einhängen
+<Orcor> wiki kann mir auch nicht helfen
+<Frickelpit> "irgendwas mit" ist keine gute erklärung …
+<Orcor> alo ich hba gestern was gemacht in terminal dann is alles stehn geblieben dann hab reset gedrückt wollte neu starten und seid gestern kann ich mein ubuntu 10.10 nicht mehr starten
+<Orcor> zurücksetzen geht auch nicht
+<Orcor> da kommt irgend was das ich festplatte einhengen muß oder so
+<Frickelpit> [09:19:01] < Frickelpit> "irgendwas mit" ist keine gute erklärung …
+<Orcor> oder kennt jemand einen befehl wo ich prüfen lassen kann und repariren damit mein ubuntu wider von festplatte starten kann
+<Frickelpit> probier es doch mal ganz simpel mit fsck
+<Orcor> auf dauer nur mit live cd ist langweilig
+<Orcor> was soll ich eingeben in terminal da ich neuling bin
+<Frickelpit> na was wohl?
+<Orcor> ubuntu@ubuntu:~$ fsck
+<Orcor> fsck from util-linux-ng 2.17.2
+<Orcor> ubuntu@ubuntu:~$
+<Frickelpit> und welche platte soll er prüfen?
+<Orcor> na die die ich im pc hab und wo mein linux instaliert ist
+<Orcor> ich kenne mich da nich tso aus
+<Frickelpit> dann schau mit fdisk -l nach
+<Frickelpit> ein wenig mitdenken musst du schon
+<Orcor> ubuntu@ubuntu:~$ fdisk -l
+<Orcor> ubuntu@ubuntu:~$
+<Orcor> kommt nix
+<dAnjou> als root afaik
+<Orcor> ?
+<Frickelpit> mit sudo …
+<Orcor> bin neuling
+<Orcor> kenne mich nicht aus
+<Frickelpit> und bitte nicht hier pasten, sondern in
+<Frickelpit> ,paste? Orcor
+<shetlandpony> Orcor: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.pocoo.org
+<Orcor> http://paste.pocoo.org/show/353907/
+<Frickelpit> sda1 ist eingehängt?
+<Frickelpit> mount zeigt es dir an
+<Orcor> ich glaube ich muß es einhängen
+<Orcor> warum auch imemr
+<Orcor> und wiki konnte mir auch nicht weid bringen
+<Frickelpit> nein musst du nicht
+<bullgard> Wenn Maverick kaltstartet, gibt Maverick in der virtuellen Konsole 1 aus: "System inormation as of Sat Mar 12 15:51:57 CET 2011. System load, Temperature Usage of /home, Processes: Memory Usage: Users logged in, Swap usage, IP address for eth0. --  Welches Programm gibt diese Information aus?
+<Orcor> wie gesagt bin anfänger hab gestern was in terminal eingegeben weis leider nicht mehr welchen befehl und dann neu gestartet und ubuntu startet nicht mehr
+<Orcor> will es aber irgend wie repariren
+<dAnjou> Orcor: sudo bedeutet superuser do und der superuser ist gemeinhin auch bekannt als root (deswegen auch root rechte)
+<Orcor> was sudo ist weis ich
+<dAnjou> just fyi
+<Orcor> nur welcher password ist in live cd?
+<Frickelpit> keins?
+<Hans-Bit> ^^
+<Orcor> ach so
+<Orcor> schade das man nicht bei mir dateisystem prüfen kann und repariren damit mein ubuntu von platte starten kann
+<Hans-Bit> Sind paar PHP Entwickler hier aufm Boot ?
+<Hans-Bit> Wenn ja, ich suche ein gutes PHP Framework
+<bullgard> Hans-Bit: Bitte stelle hier in diesm Kanal eine konkrete Frage.
+<Orcor> http://paste.pocoo.org/show/353908/
+<Frickelpit> /dev/sda1 on /media/Volume
+<Hans-Bit> Ich suche ein gutes leichtzuverstehenes simples PHP Framework, womit man schnell kleine Anwendung (z.B. Gästbeuch, Forum) erstellen kann
+<Frickelpit> sie ist gemountet
+<dAnjou> Hans-Bit: is ne sache fuer nebenan
+<Hans-Bit> ok
+<Orcor> ja aber eine platte ist usb bei mir
+<Orcor> die muß ich mal aus schalten
+<Orcor> die brauchte ich weil da die zugangsdaten für mein internet gespeichert sind
+<Frickelpit> m(
+<Orcor> wo finde ich ein befehl wo ich meine festplatte prüfen oder einhängen kann wo das ubuntu instaliert ist
+<Orcor> :-(
+<sdx23> ,fsck? Orcor
+<shetlandpony> Orcor, fsck ist http://wiki.ubuntuusers.de/Festplatten_Problembehebung und http://wiki.ubuntuusers.de/fsck
+<Orcor> http://paste.pocoo.org/show/353911/
+<Orcor> ich melde mich nahcer muß weg sorry
+<Minipluto> hiho, man kann doch fsck so anwenden, wass es beim Boot alle Partitionen checkt… wie macht man das nochmal? Ich sollte es mir mal aufschreiben. Dachte das stünde in der Manpage
+<Minipluto> ich habs glaub ich schon gefunden
+<bullgard> Minipluto: 'sudo tune2fs -c 1 /dev/<partition>
+<Minipluto> bullgard: danköö
+<Minipluto> ghdie Russen ham immer erhöhte Strahlung
+<Minipluto> upps :D
+<Hans-Bit> Hey, Mercurial bietet ja so eine Weboberfläche, wo man seine Repositories + Changes etc. sieht.
+<Hans-Bit> Kann man auch ne Ansicht "bauen", die mir die letzten 5 Änderungen von ALLEn repos anzeigt?
+<Hans-Bit> also irgendwie letzten 5 änderungen:
+<Hans-Bit> in dem repo z wurde das gemacht
+<Hans-Bit> in dem repo x wurde das gemacht
+<Hans-Bit> in dem repo y wurde das gemacht
+<Hans-Bit> in dem repo x wurde das gemacht
+<Hans-Bit> bietet mercurial da schon irgendwie ne fertige api ?
+<leszek> hi
+<bullgard> Hans-Bit: Frag mal in #ubuntu-motu. Vielleicht weiß das dort jemand.
+<Hans-Bit> motu steht für ?
+<leszek> master of the universe
+<Sysopa> ich möchte auf #ubuntu-motku korrigieren - der Vollständigkeit halber
+<bullgard> Diese "Korrektur" hat keine Vollständigkeit erbracht.
+<Hans-Bit> ?
+<Sysopa> "Master of the known universe"
+<Fuchs> ,ot?
+<shetlandpony> Dies ist ein Supportchannel! Fuer Offtopic- und Stammtischgespraeche bitte #ubuntu-de-offtopic nutzen. Danke! ;) [offtopic]
+<dauerflucher> ich hab da mal eine verständnisfrage. zur identifikation von dateitypen verwendet linux ja keine dateiendungen, sondern magic numbers. wenn man jetzt z.B. bild.jpg in bild umbenennt wird der dateityp immer noch richtig erkannt, aber ls gibt die datei dann farblich anders aus, wenn die dateiendung fehlt. wie/wo genau ist da der zusammenhang?
+<Fuchs> dauerflucher: daran, dass meistens eine Mischung diverse Moeglichkeiten (Dateiendung, Magic Number, Fileheader, ...) verwendet wird,
+<Fuchs> dauerflucher: und jede Dateiverwaltung und shell das machen kann, wie sie will
+<dauerflucher> also noch mehr lesen :S
+<Fuchs> oder sagen, was genau Du vor hast :p
+<dauerflucher> Fuchs: ich wollte eigentlich "nur" mal einen artikel im uu.de wiki über MIME-Types schreiben
+<dauerflucher> der rattenschwanz wird nur langsam echt endlos
+<Fuchs> herzliches Beileid und viel Erfolg
+<dauerflucher> =P
+<Hans-Bit> weißjemand, ob man bei einem mercurial repository in der hhrc datei einstellen kann, dass es nicht auf der weboberfläche (.../hg) angezeigt werden soll?
+<Deem> Hans-Bit: da fragst du am besten deren maintainer
+<Hans-Bit> maintainer?
+<Deem> Hans-Bit: den bereitsteller des repos
+<Deem> oder der software
+<Hans-Bit> ich hab ein eigenen hg server
+<Hans-Bit> über apache
+<Deem> oder was auch immer das ist, aber das ist schon eine sehr spezifische frage, die eigentlich weniger mit ubuntu zu tun hat
+<Deem> hö?
+<LetoThe2nd> Hans-Bit: ich persönlich würde einfach mal im mercurial-channel oder auf deren ML nachfragen. je spezifischer, umso unwahrscheinlicher dass es hier wer weiss.
+<dauerflucher> Hans-Bit: [web] hidden=true
+<dauerflucher> siehe auch http://www.selenic.com/mercurial/hgrc.5.html
+<Hans-Bit> danke dir
+<dauerflucher> Hans-Bit: bzw. man hgrc
+<Hans-Bit> super funktioniert
+<Hans-Bit> yeah
+<dauerflucher> Hans-Bit: glaub's ma oder net, bis gerade hab ich von der scheisse noch nichts gehört… ich empfehle dir dringend einen grundkurs in netzrecherche zu machen
+<Hans-Bit> nach was haste denn gesucht?
+<dauerflucher> Hans-Bit: "mercurial disable webui" -→ mercurial faq [web interface] → hgrc
+<dauerflucher> aber das wird jetzt offtopic
+<Hans-Bit> ok ok ich bin ja schon leise, danke
+<dauerflucher> wofür genau ist die datei /etc/mime.types bzw. ~/.mime.types?
+<dauerflucher> ah, oh… frage hat sich erledigt
+<bullgard> Warum haben die beiden DEB-Programmpakete landscape-client und landscape-common unterschiedliche Namen, aber identische Beschreibungen?
+<Fuchs> weil sie unterschiedlichen Inhalt haben
+<Fuchs> schreib den Paketmaintainer an.
+<bullgard> Fuchs: Das werde ich tun.
+<Fuchs> wobei eigentlich die Unterschiede allein vom Namen her klar sind, die Beschreibung vom -common Paket sollte angepasst werden
+<dauerflucher> bullgard: die beschreibungen sind doch korrekt
+<dauerflucher> bullgard: steht doch jeweils drin, was die pakete enthalten "This package provides the Landscape client and requires a Landscape account." und "This package provides the core libraries."
+<bullgard> dauerflucher: Ah! Mein Fensterausschnitt war zu klein. Da habe ich nur die Anfangszeilen gesehen. --  Danke!
+<dauerflucher> bullgard: aber ich sehe gerade, dass du im prinzip doch recht hast… die kurzbeschreibungen müssten eindeutiger sein
+<bullgard> Ja.
+<Yaster> high
+<Yaster> Hallo
+<ring0> ,frag? Yaster
+<shetlandpony> Yaster: Einfach drauf los fragen und nicht fragen ob jemand etwas kennt oder man fragen darf (oder ob jemand da ist).
+<Yaster> kennt sich jemand mit kornmeier aus?
+<dauerflucher> ,metafrage? Yaster
+<shetlandpony> Yaster: Das ist eine Metafrage! => http://metafrage.de/
+<Yaster> kornmeier mahnt für die gsdr ab..
+<dauerflucher> ,ot? Yaster
+<shetlandpony> Yaster: Dies ist ein Supportchannel! Fuer Offtopic- und Stammtischgespraeche bitte #ubuntu-de-offtopic nutzen. Danke! ;) [offtopic]
+<ring0> wie vergleiche ich am besten eine gebrannte dvd mit einem image?
+<Minze> Guten Tag zusammen, gibt es irgendwie eine Möglichkeit lib-notify (das Notification Tool rechts oben) mit Pidgin statt Empathy zu betreiben?
+<k1l> ring0: md5 z.b.?
+<Minze> Imo ist Empathy ein schlechter Scherz verglichen zu Pidgin
+<ring0> k1l, einfach eine summe generieren lassen, stimmt eigentlich :)
+<Minze> (Ubuntu 10.10)
+<ring0> k1l, ist es erheblich, zwischen binary und text modus auszuwählen?
+<k1l> öhm auswählen? :)
+<Minipluto> hab auch noch eine Alternative: dvdisaster
+<ring0> k1l, ja, standard ist ja text. dachte nur eventuell ist für die dvd binary angebrachter?
+<Minipluto> Minze: wenn in den letzten Wochen dafür nicht ein Pidgin-Plugin raus gekommen sein sollte, würde ich mal sagen, dass es nicht besser geht als es ist, weil für empathy halt extra ein paar Dinge für die Gnome-Integration unter Ubuntu getan wurde
+<Minipluto> was fehlt dir denn genau?
+<ring0> Minipluto, dvdisaster ist ganz praktisch danke
+<Minze> die notification nachrichten die bei nachrichteneingang aufpoppen, und die möglichkeit bspw. den status über das tool oben zu switchen
+<Minze> glaub mit 9.10 oder 10.04 war pidgin irgendwie garnicht mehr ansprechbar über das notification-tool
+<daswort> Ich glaube das geht schon du musst nur lib-notify oder so installiert haben.
+<Minze> wird gleich ausgetestet
+<Minipluto> jo weil bei mir gehts auch, ich weiß nur nicht warum ;)
+<Minipluto> Status da oben ändern ist aber afaik nicht drin
+<daswort> Braucht man aber auch nicht!
+<daswort> libnotify-bin
+<daswort> Um genau zu sein.
+<schischibunti> Hallo die ist ein Test!
+<schischibunti> Huhu Jemand da?
+<dadrc> Don't ask to ask.
+<k1l> ,tests? schischibunti
+<shetlandpony> schischibunti: Client-Tests sollten im allgemeinen Interesse in #test stattfinden. #botwar ist fuer allgemeine Bot-Tests. Nutze #ubuntu-de-bot fuer Fragen zum Bot und zum Fuettern des Infobots. Danke!
+<Deem> pidgin hat ein eigenes notify
+<Deem> nennt sich pidgin-libnotify afaik
+<ring0> kann ich md5sum auch auf devices anwenden?
+<schischibunti> wie meinst du das?
+<leszek> re
+<ring0> schischibunti, eine md5sum von einem datenträger erzeugen
+<schischibunti> keine Ahnung
+<schischibunti> sorry
+<helix_9> hallo, woran liegts, wenner meckert dass der befehl wget, den ich meinem shell-script aufrufe nicht existiert? (rechte sind gesetzt)
+<joschi> helix_9: vorausgesetzt wget ist installiert, könnte es an inkorrekter $PATH variablen liegen
+<joschi> helix_9: lass mich raten, du möchtest das skript in einem cronjob ausführen?
+<helix_9> neine, nur ein simples script
+<schischibunti> ring0, hast du eine siso file gem,acht?
+<helix_9> aber danke, ich hab den fehler schon
+<joschi> ring0: everything's a file. einfach md5sum direkt auf das block device ausführen.
+<schischibunti> md5sum geht ja nur für ganze datein soweit ich weiß
+<ring0> joschi, ok :)
+<ring0> joschi, ist es egal, ob ich binär oder text modus von md5sum nehme?
+<joschi> ring0: schau dir die option noch mal genau an…
+<ring0> joschi, hab ich. sagt mir trotzdem nichts
+<joschi> ring0: dann ignoriere sie
+<ring0> joschi, wozu ist sie denn?
+<joschi> ring0: damit steuerst du die ausgabe. entweder du bekommst die prüfsumme als ascii-string, oder eben als 128-bit binärwert
+<ring0> joschi, danke sehr. ich dachte, es käme auf den input an :)
+<joschi> ring0: vergiss, was ich geschrieben habe. das ist falsch.
+<joschi> ring0: mich hat der (inkorrekte) deutssche hilfetext irritiert
+<joschi> ring0: normalerweise brauchst du dich darum aber nicht zu kümmern
+<ring0> joschi, ja, default ist ja text. das funktioniert auch. mich hat es nur interessiert
+<Michi1802> hallo kann mir einer bei dem problem helfen ?http://forum.ubuntuusers.de/topic/problem-mit-hamachi-ping-versuch/#post-2810425
+<Michi1802> keiner da der mir dabei helfen kann ?
+<uwe> wobei ?
+<Frickelpit> ,geduld? Michi1802
+<shetlandpony> Michi1802: Bitte Gedulde dich! Du wirst nie die volle Aufmerksamkeit des ganzen Channels haben. Manche sind nicht mal an ihrem Computer oder mit anderen Dingen beschaeftigt. Wenn jemand aber irgendwann deine Frage liest und eine Antwort kennt, wird er sie dir sicherlich nennen.
+<Michi1802> okay super danke
+<gzor> hi
+<Michi1802> hi
+<danage> hi, ist bei jemandem hier chromium auch kaputt? öffnet bei mir keine seiten mehr
+<Michi1802> ne der funktioniert bei mir
+<dAnjou> danage: version fehlt
+<danage> 10.0.648.133 (77742) Ubuntu 10.10
+<Frickelpit> funktioniert hier
+<LarsTorbenk> hier gehts auch gerade getestet
+<danage> ich kann nichtmal mehr die einstellungsseiten öffnen, löschen des ordners in .config bringt auch nichts
+<danage> ich kriege unresponsive pages meldung
+<Michi1802> übel
+<LarsTorbenk> neu installieren `
+<LarsTorbenk> den browser meine ich
+<grossing> danage, andere Browser zicken nicht?
+<danage> nein, firefox läuft astrein
+<LarsTorbenk> hehe
+<LarsTorbenk> komisch ..
+<grossing> Sperrt ne Firewall o.ä. den chrome?
+<danage> nein, aber da sich configseiten ja auch nicht öffnen...
+<Fuchs> marienz: ping, another one ...
+<gzor> ich hab was falsches in die /etc/fstab geschrieben, und jetzt will er mein file-system nicht mounten... ich krieg nicht mal mehr en texteditor mit schreibrechten...
+<gzor> weiß einer was ich machen könnte?
+<claw> hallo ich habe folgendes problem : ich wollte einen 42" Plasma als monitor benutzen aber die anzeige überlappt den darstellungsbereich. wie könnte ich das anpassen?
+<Michi1802> claw vielleicht auflösung einstellen ?
+<gzor> nachdem ich ein live cd eingelegt hab, hat dort der desktop nicht funktioniert und in tty1 bekomm ich massenweise fehlermeldungen
+<russell1> gzor: die live-cd sollte unabhängig von der fstab und dem gesamten filesystem funktionieren.
+<gzor> hmm vll ist die cd kaputt... ich probier mal ne andere
+<tuor> ist es möglich ein netopia 3342 (usb) auf ubuntu zu nutzen?
+<tuor> könnte schon nen treiber per 3g laden oder so.. ;) (zum glück gibts händis :) )
+<sysdef> tuor: was hat dir die suche mit z.b. google bisher gebracht?
+<Fuchs> ,hcl? tuor, schau mal da
+<shetlandpony> tuor, schau mal da: HCL ist die Hardware Compatibility List. Siehe http://www.ubuntuhcl.org/ und https://wiki.ubuntu.com/HardwareSupport/ sowie http://wiki.ubuntuusers.de/Hardwaredatenbank
+<tuor> andern router nehmen. ;) ich hab natürlich erst swisscom angerufen und nen techi bestellt. der sagte mir es sei unmöglich...
+<tuor> thx
+<tuor> hmm find nix... nicht für mein gerät...
+<tuor> kleine farge: bei den datei endungen wenn .tar.bz2 steht kann ich das einfach als bz2 ansehen odde
+<tuor> (ups) oder ist es was anders noch als tar oder bz2 (ne mischung??)
+<Fuchs> es ist eine Mischung
+<tuor> thx
+<Fuchs> es ist ein tarball, der mit bzip komprimiert worden ist.  aber  tar -f datei  kann das automatisch erkennen und entpacken
+<Fuchs> -xf, sorry
+<tuor> ok. thx erspahrst mir google :)
+<uwe> nabend zusammen
+<bekks> Man kann das ganze auch erzwingen, mit -j für bz2 und -z für gz.
+<tuor> also tar -j oder tar -z (richtig verstanden?)
+<sdx23> tuor: Nein. Das tut dann noch nichts. Es weiß ja nicht ob es entpacken oder packen soll.
+<tuor> ok.. ich les den artikel den ich gefunden hab mal durch ... der hat mir aber eben nur tar oder bz2 gegeben. aber ich hoffe dass mit ich mit logig es dann versteh. :)
+<jabba> hallo, ich suche eine _aktuelle_ (bezogen auf ubuntu >=10.04) howto, die beschreibt, wie man vncserver so aufsetzt, dass man beim login in die vncsession im gdm landet, so dass man dann per user-login erst die desktop-umgebung startet... (ähnlich xdmcp, nur internettauglich)
+<jabba> alles, was ich über google finde ist schrecklich outdated, also ein tip in wäre nett...
+<jabba> -in
+<nemesis> kann mir mal bitte jemand mit xrandr und nem gedrehten tft helfen?
+<nemesis> was muss man angeben damit der Pivot entsprechend angezeigt wird?
+<nemesis> $  xrandr --output DVI-0 --rotate right
+<nemesis> xrandr: screen cannot be larger than 1680x1200 (desired size 1680x1680)
+<jokrebel> re
+<sdx23> nemesis: du suchst die "Virtual" Option in der Display SubSection der xorg.conf
+<nemesis> gut, also muss ich xserver danach neu starten?
+<sdx23> Mir ist keine Möglichkeit ohne dasselbige bekannt, ja.
+<tuor> ,pastpad
+<tuor> ,past
+<nemesis> hrm :(
+<Wedelwolf> ,paste
+<Wedelwolf> :o
+<nemesis> sollte default auf 8096x8096 dann stehen
+<dadrc> ,paste?
+<shetlandpony> Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.pocoo.org
+<tuor> thx
+<nemesis> sind zwei zeilen Wedelwolf und tuor
+<gon_> Hallo
+<nemesis> sdx23, also über 4096 sollte man ned gehen, kommt dann kein funktionierendes x aufm monitor
+<nemesis> und xchat braucht nen transparenten hintergrund, sonst kann man text nimmer lesen...
+<nemesis> wie bringt man nun noch bei, das des zwei unabhängige desktops sein sollen, also ned 1:1?
+<sdx23> nicht --sameas sondern --rightof bzw. gewünschte verwenden
+<MrCatEye> guten Abend
+<nemesis> fail
+<nemesis> $ xrandr --output DVI-0 --rotate left --right-of LVDS
+<nemesis> xrandr: screen cannot be larger than 2048x2048 (desired size 2730x1680)
+<nemesis> *seufz*
+<nevchen> welche taste muss man beim starten nochmal drücken wenn grub kommt?
+<MrCatEye> ich hab da eine Frage bezüglich einem Ad Hoc Netzwerk und zwar hab ich ein AdHoc Netzwerk erstellt und es nicht alsautomatisch verbinden im nm-applet markiert
+<nevchen> bzw. damit grub kommt
+<Fuchs> nevchen: shift
+<Fuchs> nevchen: zumindest bei grub2
+<MrCatEye> jetzt steht es auch lustig in der Liste des nm, aber wie kann ich es nach einem Neustart beispielsweise wieder neu initialisieren
+<nevchen> Fuchs:  thx und vorher?
+<Fuchs> esc, Irrtum vorbehalten
+<MrCatEye> es wird mir nicht der Liste der verfügbaren Netze angezeigt
+<MrCatEye> + in
+<MrCatEye> steht aber wie gesagt noch im nm-applet drin
+<MrCatEye> jedes mal das Adhoc rauslöschen und ein neues erstellen is irgendwie "umständlich"
+<nemesis> danke sdx23  xrandr --output DVI-0 --rotate left --right-of LVDS tut nun
+<nemesis> gut, video abspielen wäre wohl nun zuviel verlangt gewesen
+<nemesis> 2d beschleunigung tut mit richtigen grafikkarten dann aber schon, oder?
+<grullers> Ist es möglich GRUB auf einer mit LVM erstellten Partition zu installieren?
+<grullers> Ich habe alle Festplatten mit LVM zu einer Partition zusammengefügt und möchte nun Grub installieren. Dies schlägt aber fehl.
+<LetoThe2nd> grullers: nein.
+<LetoThe2nd> grullers: zumindest die /boot-partition muss ausserhalb sein.
+<grullers> LetoThe2nd, also benötige ich ein weiteres medium für grub?
+<LetoThe2nd> grullers: s/medium/partition/
+<shetlandpony> LetoThe2nd thinks that grullers meant: LetoThe2nd, also benötige ich ein weiteres partition für grub?
+<LetoThe2nd> ja.
+<Frickelpit> grub2 kann afaik vom lvm booten
+<LetoThe2nd> Frickelpit: /boot _IM_ lvm?
+<Frickelpit> jop
+<LetoThe2nd> zeigen, sehen will :-)
+<Frickelpit> LetoThe2nd: http://wiki.ubuntuusers.de/GRUB_2/Grundlagen
+<grullers> Frickelpit, welche Server-Variante von Ubuntu hat LTS?
+<grullers> Frickelpit, möchte den server nicht jedes halbe jahrupdaten
+<Frickelpit> grullers: aktuell 10.04 und noch 8.04
+<LetoThe2nd> Frickelpit: ist mir neu :-)
+<grullers> Frickelpit, Debian hat keinen Grub 2?
+<LetoThe2nd> muss ich bei gelegenheit testen.
+<Frickelpit> grullers: mit debian bist du hier aber auch falsch
+<grullers> Frickelpit, ja wohl wahr, aber ist ja in manchen dingen ähnlich
+<grullers> Frickelpit, im serverbereich setze ich noch überwiegend auf debian
+<sash_> grullers: 1. Gibt es auch Grub2 für Debian. 2. Gibt es auch Supportchannel für Debian.
+<grullers> sash_, ok bitte entschuldige :)
+<dreamon> Adobe Reader macht mir hier probleme.. der pennt immer wieder für ein paar sekunden ein. Was könnt ihr mir empfehlen für 10.10?
+<Sysopa> Okular
+<sash_> evince, xpdf
+<darkkilla> hi... hab ein Problem mit (ich denke) meinem Kernel. Hab Ubuntu 10.10 AMD64 mit Linux 2.6.35-27-generic, alle Aktualisierungen sind eingespielt. Zur Info: System ist mit LUKS (mit Ausnahme von /boot, aber inkl. der swap-Partition [mit zufälligem Key bei jedem Reboot]) verschlüsselt. Problem: Über die Jahre hinweg wurde der Kernel immer aggressiver, wenn es darum geht Prozesse zu killen. Bevorzugt killt er mir Opera (alle Plugins sind
+<darkkilla> deaktiviert, da der Flashplayer ja der Crashmaster Nr. 1 ist) und Pidgin
+<darkkilla> Pidgin killt er mir ca. zwei bis vier mal täglich, Opera hingegen seit heute morgen quasi ständig, ich kann bestenfalls max. einen weiteren Tab öffnen und dann wird bei der nächsten Eingabe der Prozess gekillt
+<Sysopa> darkkilla: also bei mir killt er nichts
+<Sysopa> das Einzige, was sich ab und an mal weghängt ist Akonadis Datenbank
+<darkkilla> Obwohl die Swappiness auf 60 steht, benutzt er 0 Byte davon... selbst nach mehreren Tagen Betrieb
+<Sysopa> thats it
+<dreamon> Sysopa, sash_  Danke
+<Sysopa> ansonsten - ich glaube, das letzte Mal, daß mir ein Problem weggeschmiert ist, war Kontakt unter KDE 4.0.x
+<darkkilla> hab den Verdacht, dass der gar nicht erst versucht Swap zu benutzen und deswegen so aggressiv reagiert
+<Fuchs> darkkilla: ist denn der RAM da voll, und bist Du sicher, dass der OOM-Killer anspringt?
+<Sysopa> wieviel Ram hast Du denn?
+<k1l> darkkilla: ist denn der ram voll?
+<darkkilla> hab 3,7 GiB Swap und 0 Byte... Hauptspeicher: 4 GB
+<Sysopa> Fuchs: das wollte ich auch gerade fragen
+<Fuchs> darkkilla: was sagen die Logs dazu? Wenn es da reihenweise Meldungen zu segfaults gibt, dann wuerde ich eher mal den RAM pruefen lassen
+<darkkilla> Speicher ist zur Zeit 1,4 GiB belegt, aber nein... dmesg sagt nie was von OOM
+<Sysopa> und Du lässt 3-4 virtuelle Windows 7 laufen, damit 4 GByte Speicher voll werden?
+<darkkilla> nope
+<Fuchs> darkkilla: wie kommst Du dann auf die Idee, dass das der OOM-Killer ist?
+<darkkilla> Windows schaue ich nicht mal mit dem Hintern an...
+<Fuchs> darkkilla: zeig mir mal dmesg und den Inhalt von /var/log/messages, bitte.
+<Fuchs> Bevorzugt nachdem das aufgetreten ist.
+<darkkilla> ich kann 'nen Ausschnitt aus beidem pasten... moment
+<darkkilla> http://paste.ubuntuusers.de/399984/ <- dmesg...
+<darkkilla> http://paste.ubuntuusers.de/399985/ <- /var/log/messages... eh gleich, aber gut...
+<darkkilla> finde es trotz allem merkwürdig, dass er kein bischen vom Swap benutzt, selbst nach Wochen Dauerbetrieb nicht
+<k1l> darkkilla: ich würde mal den ram überprüfen. der segfaultet da. der killt nichts, weil der ram voll ist, sondern weil probleme mit den daten im ram auftreten
+<Fuchs> siehe k1l und was ich oben schon gesagt habe
+<darkkilla> hm... damn it... so viel zu Corsair
+<darkkilla> die fast vier Jahre Dauerbetrieb mochte der RAM wohl nicht besonders
+<darkkilla> offenbar habe ich bei Opera und Pidgin immer das "Glück", dass die offenbar immer fehlerhafte Speicherbereiche erwischen
+<darkkilla> eigtl. hatte ich gehofft, dass es nicht der Speicher ist, aber gut... werd wohl an nem Memtest Dauerlauf nicht vorbei kommen, anyway thx..., gleich mal ans Werk... bye
+<bullgard> Wenn ich meinen Maverick-Computer boote, erhalte ich auf der virtuellen Konsole 1Daten, die fast gleich sind mit der Ausgabe von '~$ landscape-sysinfo'.  Maverick fordert mich auf: "Graph this data and manage this system at http://landscape.canonical.com/ ." Ist die Benutzung dieses Dienstes kostenpflichtig?
+<bullgard> s/Maverick/Lucid/
+<shetlandpony> bullgard meant: Wenn ich meinen Lucid-Computer boote, erhalte ich auf der virtuellen Konsole 1Daten, die fast gleich sind mit der Ausgabe von '~$ landscape-sysinfo'.  Maverick fordert mich auf: "Graph this data and manage this system at http://landscape.canonical.com/ ." Ist die Benutzung dieses Dienstes kostenpflichtig?
+<crapman> hab grad gtk-sopcast isntalliert, wenn ich es starte passiert aber nichts
+<crapman> firefox sagt, dass das protokoll mit keinem programm verknüpft ist
+<crapman> und wenn ich sopcast übern terminal starte kommt /dev/mixer: Datei oder Verzeichnis nicht gefunden
+<claw> Hallo hat jemand erfahrung mit Unison ? Ich versuche gerade per ssh den /home von meinem Notebook mit dem Desktop zu syncen. Verbindung aufbauen war einfach und dann hat es angefangen den localen /home zu durchsuchen. Jetzt bleibt es aber bei "Waiting for changes from server    "
+<jham> claw: wie lange bleibt es denn schon so stehen?
+<jham> und wie gross ist die home partition?
+<jham> bzw. wieviele gb daten sind im home auf der remote seite
+<claw> ja jham habe gerade auch gemerkt, dass es wohl doch am arbeiten ist
+<jham> ok
+<claw> habe die ganze geschichte falsch verstanden
+<Julz2k> Abend, folgendes. Habe per USB Stick Lubuntu 10.4 auf meine externe festplatte installiert, hat alles funktioniert als der restart kam jedoch nicht mehr. Der PC bleibt bei "verifying dmi pool data" hängen. Im Bios ist alles richtig gesetzt, außerdem hat das installieren einer USB Live version auch auf der externen funktioniert..
+<daswort> Wie kann ich die joins und quits mit / bei xchat filtern?
+<sdx23> daswort: rechtsklick auf den Channel, links in der Leiste.
+<daswort> Merci sdx23
+<helix_9> hallo, wie lautet die rewrite ruel von domain.de/ auf domain.de/en   ?
+<dAnjou> --> #httpd würd ich mal ganz frech behaupten
+<dAnjou> ansonsten is das ne stinknormale regex
+<dAnjou> ich würd mal sagen irgendwas in der art: ^(.*domain\.de)$ $1/en
+<Deem> wenn ich einen user der sudo gruppe hinzufüge. muss man dann vorher noch was refreshen oder so,damit das übernommen wird?
+<Fuchs> der User muss sich neu einloggen, damit es wirksam wird
+<daswort> Was war der Unterschied zwischen grp Admin und sudo?
+<Deem> Fuchs: der user hat sich das erste mal eingeloggt
+<Deem> Fuchs: aber ich bekomme immer id efehlermeldung, dass der user nicht in der sudoers wäre. ich hab ihn aber der gruppe sudo hinzugefügt
+<Fuchs> Deem: und gem. /etc/sudoers ist das auch die Gruppe, die verwendet wird?
+<Fuchs> Deem: und der User muss sich neu einloggen, _nachdem_ er in die Gruppe hinzufuegt worden ist. Vorher sind die Aenderungen nicht aktiv.
+<Deem> Fuchs: in /etc/sudoers sthet %sudo
+<Deem> ich hab mich jetzt auch schon 2 mal wieder neu angemeldet an dem ding
+<Fuchs> das waere dann korrekt. Dann schau Dir mit dem user halt `groups` an
+<Deem> bin in der gruppe sudo
+<Fuchs> und wann kommt diese Meldung?
+<Deem> ah.. jetzt gehts
+<Deem> da hat sich der fehlerteufel eingeschlichen
+<Deem> man sollte auf den hostnamen achten wo man was editiert :D
+<jokrebel> gÃ¼hppÃ¼Ã¼Ã¼Ã¼+++++uÃ¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¼Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã¶Ã
+<Deem> jokrebel: alle klar bei dir?
+<jokrebel_> de
+<jokrebel_> f´´r´´´De
+<jokrebel_> Deem: nk9chr mehr wirkich l deshakb ein shnekkes "VU"
+<Deem> hö?
+<siedhuss> hab mal ne frage zu dem fenstermanager von gnome
+<jokrebel_> gn8
+<siedhuss> kann ich mit damit die fesntergröße automatisch festlegen?
+<Deem> siedhuss: bitte?
+<siedhuss> das problem ist dass mein netbook ne auflösung von 1024x600 hat
+<siedhuss> und ich manchmal die untersten buttons in einem fesnter nicht mit der mouse erreichen kann weil das fenster größer ist
+<siedhuss> zum beispiel bei opera nervt das sehr weil ich immer wenn ich die einstellungen ändern will nicht richtig an den ok/ändern button rankomme
+<Guschtel> alt+maus verschiebt
+<siedhuss> geht nicht weiter hoch
+<Guschtel> ?
+<siedhuss> kleiner machen des fensters geht auch nicht
+<Guschtel> schieb den dialog höher
+<bekks> alt+space drücken und das fenster verschieben, mit den Pfeiltasten.
+<siedhuss> ich kann ja das fenster nicht über mein oberes panel schieben
+<k1l> siedhuss: fass mal nicht oben an, fass mal in der mitte von der höhe des fensters an
+<siedhuss> mom ich probiers mal
+<siedhuss> ja geht
+<siedhuss> wenigstens das
+<siedhuss> aber kann man das nicht irgendwie seitens fenstermanager oder sowas fest ändern?
+<k1l> siedhuss: ansonsten gibts auch extra die netbook edition.
+<siedhuss> naja die unity oberfläche ist meiner meinung nach nicht der burner
+<siedhuss> aber trotzdem danke für die hilfe
+<siedhuss> noch ne kleine frage
+<siedhuss> woran kann das liegen dass manchmal meine externe festplatte nicht erkannt und eingehängt wird
+<bekks> In dmesg müsstest du den Grund finden.
+<siedhuss> hmm weis leider nicht was dmesg ist
+<siedhuss> ne art logfile ?
+<bekks> Ein Befehl.
+<Guschtel> ich vermute er braucht erst ne shell
+<siedhuss> also wenn ich dmesg in terminal eingebe dann kommt da viel text
+<siedhuss> mit dem ich leider nicht viel anfangen kann
+<bekks> Richtig. Das ist sind die Meldungen, die dein Kernel generiert. Und wenn Du die Platte einsteckst, und sie nicht eingebunden wird, sollte da auch ein Hinweis auf den Grund stehen.
+<siedhuss> aha
+<k1l> ,nopaste? siedhuss pack es mal da rein und zeig uns das dann
+<shetlandpony> siedhuss pack es mal da rein und zeig uns das dann: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.pocoo.org [paste]
+<siedhuss> [    0.385092] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0.EXP1._PRT]
+<siedhuss> [    0.385392] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0.EXP2._PRT]
+<siedhuss> [    0.386078] ACPI Warning for \_SB_.PCI0._OSC: Parameter count mismatch - ASL declared 5, ACPI requires 4 (20100428/nspredef-352)
+<siedhuss> [    0.386110] \_SB_.PCI0:_OSC evaluation returned wrong type
+<siedhuss> [    0.386117] _OSC request data:1 1f 1f
+<siedhuss> [    0.398141] ACPI: PCI Interrupt Link [LNKA] (IRQs 3 4 5 7 9 10 *11 12)
+<siedhuss> [    0.398529] ACPI: PCI Interrupt Link [LNKB] (IRQs 3 4 5 7 9 *10 11 12)
+<siedhuss> [    0.398889] ACPI: PCI Interrupt Link [LNKC] (IRQs 3 4 5 7 9 10 *11 12)
+<siedhuss> [    0.399261] ACPI: PCI Interrupt Link [LNKD] (IRQs 3 4 5 7 9 10 *11 12)
+<siedhuss> [    0.399618] ACPI: PCI Interrupt Link [LNKE] (IRQs 3 4 5 7 9 10 11 12) *0, disabled.
+<siedhuss> [    0.400018] ACPI: PCI Interrupt Link [LNKF] (IRQs 3 4 5 7 9 10 11 12) *0, disabled.
+<siedhuss> [    0.400391] ACPI: PCI Interrupt Link [LNKG] (IRQs 3 4 5 7 9 10 11 12) *0, disabled.
+<siedhuss> [    0.400754] ACPI: PCI Interrupt Link [LNKH] (IRQs 3 4 5 7 9 10 11 12) *0, disabled.
+<siedhuss> [    0.400960] HEST: Table is not found!
+<siedhuss> [    0.401208] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+<siedhuss> [    0.401238] vgaarb: loaded
+<siedhuss> [    0.401806] SCSI subsystem initialized
+<siedhuss> [    0.402024] libata version 3.00 loaded.
+<siedhuss> [    0.402222] usbcore: registered new interface driver usbfs
+<k1l> aiaiai, da wartet noch ne menge arbeit
+<siedhuss> war das jetzt falsch?
+<k1l> ,nopaste? siedhuss
+<shetlandpony> siedhuss: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.pocoo.org [paste]
+<daswort> Dafür nutzt man einen Paste Service, damit der Chat nicht voll unpraktischer logs ist! siedhuss
+<siedhuss> okay ich glaub ich hab mit dem nopaste etwas falsch gemacht
+<k1l> du sollst das nicht hier reinpasten, sondern es in den nopaste service packen und uns dann den link geben
+<siedhuss> ahso
+<siedhuss> ok
+<siedhuss> http://paste.pocoo.org/show/354243/
+<daswort> brav :)
+<siedhuss> also wars jetzt richtig?
+<daswort> siedhuss, cookie schenk
+<siedhuss> boa geil
+<siedhuss> sind das hier eig menschliche mods ?
+<k1l> ja bis auf:
+<k1l> ,bot? siedhuss
+<shetlandpony> siedhuss: ich bin ein bot ;p
+<daswort> Nur Huftiere, alles andere sind Menschen
+<siedhuss> weil ich hab auch schon channels gesehen da wurde man sofort gekickt ab einem post über eine bestimmt zeichen anzahl
+<daswort> Ja das ist eine einfache aber ineffektive Art solchen Copy&Paste-SPAM zu lösen
+<siedhuss> wie lange benutzt ihr schon linux?
+<k1l> wir haben zum quatschen (ausser support) auch einen extra channel: #ubuntu-de-offtopic
+<daswort> 1 1/2 Jahre erst :-( Aber ich bereue es das ich nicht früher angefangen habe, zumal bei uns im Haus viele Jahre ein RHL rumlag ohne das ich es wusste.
+<siedhuss> oh stimmt
+<daswort> Ist mir auch gerade eingefallen. Das war der Channel denn ich noch zum autologin zufügen wollte…
+<siedhuss> guckt sich jmd überhaupt meinen paste-link an?
+<jham> laut dmesg wird die platte ja von kernel erkannt und "attached"
+<siedhuss> meistens geht es auch
+<siedhuss> aber manchmal , kein plan warum, dann auch wieder nicht
+<siedhuss> kommt aber irgendwie nur selten vor
+<k1l> siedhuss: dann wäre mal der dmesg interessant, kurz nachdem das passiert.
+<k1l> siedhuss: und ein heisser tip: usb-platten nicht einfach abziehen, sondern aushängen. auch unter windows
+<ring0> kann ich nautilus sagen, dass nachdem ein neues device per usb erkannt wurde, es dieses nicht in einem neuen, sondern sofern vorhanden, in einem bestehenden fenster in einem tab öffnen/anzeigen soll?
+<dauerflucher> ring0: man kann doch irgendwo die standardaktionen festlegen, wenn ein neues gerät erkannt wird… kann man da nichts einstellen?
+<ring0> dauerflucher, da ist was dran. ich werde das prüfen
+<dauerflucher> ring0: http://wiki.ubuntuusers.de/GNOME_Wechseldatentr%C3%A4ger_und_-medien
+<ring0> dauerflucher, vielleicht stelle ich mich auch ein wenig dämlich an, aber ich finde gerade außer http://media.cdn.ubuntu-de.org/wiki/attachments/48/28/nautilus_hardy_datentraeger.png den anderen dialog http://media.cdn.ubuntu-de.org/wiki/attachments/47/28/WechseldatentraegerMedieneinstellungen_01__.png unter 10.04 nicht
+<shetlandpony> ring0's url: http://tinyurl.com/4jwr9wh
+<dauerflucher> ring0: sry, ich habe hier selber kein gnome… ich kann dir leider auch nicht sagen, wo was abgeblieben ist oder was noch aktuell ist :-\
+<dauerflucher> ring0: im zweifelsfall würde ich einfach mal gconf durchwühlen… sollte bestimmt einen schlüssel dafür geben
+<ring0> dauerflucher, vielleicht gibts es auch einfach eine datei in der ich dies anpassen könnte? aber auch das wird wohl eher gnome spezifisch sein
+<ring0> dauerflucher, ok, gconf könnt ich mal versuchen auf den kopf zu stellen
+<ring0> dauerflucher, gibts eine solche funktion in der desktopumgebung, die du nutzt?
+<dauerflucher> ring0: jau, thunar-volman -c

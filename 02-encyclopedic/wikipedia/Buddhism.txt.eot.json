@@ -1,0 +1,140 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Buddhism.txt",
+  "sha256": "1ebb5187edb33b7ae37b10248fcbdd03d9b1193aa2f0a9a3eb1b9214ab75ec2c",
+  "chars": 125566,
+  "declaredIdentity": {
+   "title": "Buddhism",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 2,
+  "debrisChars": 86,
+  "debrisFraction": 0.001,
+  "headingCount": 59,
+  "headings": [
+   "Etymology",
+   "The Buddha",
+   "Worldview",
+   "Three marks of existence",
+   "The cycle of rebirth",
+   "Rebirth",
+   "Karma",
+   "Liberation",
+   "Dependent arising",
+   "Not-Self and Emptiness",
+   "The Three Jewels",
+   "Buddha",
+   "Dharma",
+   "Sangha",
+   "Paths to liberation",
+   "Paths to liberation in the early texts",
+   "Noble Eightfold Path",
+   "Refuge",
+   "Devotional and liturgical practices",
+   "Precepts",
+   "Vinaya",
+   "Restraint and renunciation",
+   "Mindfulness and clear comprehension",
+   "Meditation",
+   "Origins",
+   "The formless attainments",
+   "Meditation and insight",
+   "The Brahma-vihara",
+   "Tantra, visualisation and the subtle body",
+   "Insight and knowledge",
+   "Vegetarianism and animal ethics",
+   "Texts",
+   "Early texts",
+   "The Tripitakas",
+   "Tantric texts",
+   "History",
+   "Historical roots",
+   "Indian Buddhism",
+   "Pre-sectarian Buddhism",
+   "The Core teachings",
+   "Ashokan Era and the early schools",
+   "Post-Ashokan expansion",
+   "Late Indian Buddhism and Tantra",
+   "Spread to East and Southeast Asia",
+   "Schools and traditions",
+   "Monasteries and temples",
+   "In the modern era",
+   "Colonial era and after",
+   "In the West",
+   "Neo-Buddhism movements",
+   "Sexual abuse and misconduct",
+   "Classification",
+   "Cultural influence",
+   "Demographics",
+   "See also",
+   "Notes",
+   "References",
+   "Sources",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 59,
+   "debrisFraction": 0.001
+  },
+  "againstRunningPosterior": {
+   "measurable": false,
+   "reason": "fewer than 2 prior files read — the posterior has no spread yet"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.070Z"
+ }
+}

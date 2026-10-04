@@ -1,0 +1,1467 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2011-3-15"
+lang: "en"
+messages: "1458"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<gedas> czesz
+<alyen> bjuti
+<gedas> well this is pretty much all i know
+<alyen> jak sprawdzic ile miejsca na dysku mam do dyspozycji?
+<gedas> jak dela?
+<gedas> nevem
+<alyen> smutne... ja tez...
+<alyen> sie mnie zebralo na stare lata uczyc nowego systemu ;o]
+<alyen> my english is poor... i have a question: how to check how many MB i have free on my hdd?
+<tielk> alyen: try df -k
+<james147> ^^ or -m for megabytes
+<tielk> yeah
+<alyen> in terminal? please write all like for old man who first time have kubuntu ;o]
+<tielk> df -m
+<james147> alyen: yes, in a terminal
+<james147> ^^ type that exactly and press enter :)
+<james147> (what tielk just said that is)
+<alyen> bjuti :o) it works :o) thanks ;o]
+<alyen> what do you use to mount an iso like a cd or dvd?
+<tielk> the command is called mount
+<james147> alyen: "sudo mount -o loop /path/to/file.iso /path/to/mount/point"
+<alyen> gosh... i'll try ;o] sudo... i must to learn more about terminal... i see that without terminal no way...
+<james147> alyen: there is...
+<james147> :s hmm kde-look.org seems to be down
+<Guest80285> Hello everyone, I'm trying to get some help on Amarok
+<Guest80285> I'm trying to connect a Samsung Galaxy S to Amarok but I can't, any suggestion?
+<BentFranklin> 96000 files on a Windows 7 share.  All but one show up in my Linux mount, including all others in the same folder.  I can't find any difference in the permissions.  Any ideas?
+<BentFranklin> Well, I moved it to my desktop and then back and now it's seen, but still so weird...
+<roxy> what is the thing to type for getting pulseaudio in term
+<BentFranklin> A file is called Don't Stop.txt   How do I escape the ' so I can mv it?
+<Pranav_rcmas> How do I enable shortcuts in Kubuntu? I want to configure a Ctrl-Alt-T shortcut to open Konsole, but I couldn't find any place to add it in Shortcuts and Gestures
+<james147> Pranav_rcmas: application shortcuts can be added by edit the menu (right click kmenu > edit aplications or run kmenuedit)
+<james147> (though I think that its just a front end to adding them to the shortcuts and gestures page)
+<siniestro> hi
+<Pranav_rcmas> james147, thanks!
+<lkmsjan> 1
+<smoothtaste> hey fellas
+<smoothtaste> natty wont boot for me, checked md5 sums burned 3 times, but all im really worried about is kde 4.6
+<smoothtaste> anybody here upgrade 10.04 lts to 4.6?
+<eagles0513875_> hey guys i installed lucid on my netbook and upgraded to maverick
+<eagles0513875_> and for some reason i dont have knetwork manager any more :(
+<eagles0513875_> how can i connect to a wifi connection with out it
+<valorie> eagles0513875: add the wireless widget
+<valorie> network interface, I think it's called
+<eagles0513875_> valorie: seems like though after the upgrade knetworkmanager isnt even installed for some reason
+<Firefishe> anyone here have problems with konqueror in 10.04 mutating into a runaway process that opens multiple windows?
+<eagles0513875_> Firefishe: i have noticed that when i open links from irc
+<eagles0513875_> i think any link for that matter would trip it
+<Firefishe> yeah...and it also happens when I do it in links when I'm in pokerth in a game
+<Firefishe> or when clicking in that software on the home page link for www.pokerth.com
+<Firefishe> any idea why?
+<eagles0513875_> Firefishe: if you file a bug i can confirm ti for you
+<eagles0513875_> no idea why though
+<Firefishe> eagles0513875: Should this be for KDE or Kubuntu?
+<eagles0513875_> file it against konqueror
+<eagles0513875_> Firefishe: can you link me once the bug is submitted
+<Firefishe> eagles0513875: I don't even know where to file this thing.  on KDE.org?
+<eagles0513875_> launchpad
+<eagles0513875_> launchpad.net
+<Firefishe> ok
+<Firefishe> gotcha
+<Firefishe> brb
+<eagles0513875_> it will then be dealt with accordingly by the devs if need be they will file it upstream
+<valorie> eagles0513875_: you can install the widget from the liveCD or USB?
+<valorie> oh, you upgraded
+<eagles0513875_> ya this is a netbook
+<eagles0513875_> used usb to install lucid
+<valorie> still, you should have it on your system somewhere
+<eagles0513875_> then upgraded
+<eagles0513875_> all i have according to locate is the .mo files
+<eagles0513875_> as well as a .desktop file
+<valorie> hmmm
+<eagles0513875_> also when i first installed maverick on my netbook
+<eagles0513875_> for some reason even though i told grub to be installed to the MBR on the hard disk the installer opted to install grub on my pen drive lol
+<valorie> same thing happened to me
+<eagles0513875_> that was an easy fix but rather curious as to why it installed it on the pen drive
+<valorie> I wrote a blog post about it
+<eagles0513875_> valorie: did you file a bug?#
+<valorie> it is a major icky horrible BUG
+<valorie> sure, let me find that
+<eagles0513875_> valorie: depends how you look at it
+<valorie> how else can I look at it?
+<eagles0513875_> valorie: can be ickky yet also secure in a sense that if the netbook goes missing they cant access your data without a reformat
+<valorie> ha
+<eagles0513875_> all depends on how you look at things lol
+<eagles0513875_> valorie: do you know if there is a knetwork manager package available for offline installation?
+<eagles0513875_> woot found it
+<eagles0513875_> valorie:  :)
+<eagles0513875_> found where i can download deb pkg for knetwork
+<valorie> nice!
+<valorie> did you get my email?
+<eagles0513875_> ill look now
+<eagles0513875_> lol now im connected
+<eagles0513875_> just saw i added the widget to the desktop
+<valorie> \o/
+<eagles0513875_> valorie: turns out i do have network manager installed yet in command line it says otherwise O_o
+<eagles0513875_> ty
+<eagles0513875_> valorie: also got the email :)
+<eagles0513875_> sry for running out so quickly on ya before
+<valorie> np
+<valorie> I've been bouncing in and out of IRC for two days
+<valorie> can't tell if it's my netbook, my bnc, or what
+<eagles0513875_> i need to ssh into my server at home yet somethign still seems to be blocked at the firewall level
+<eagles0513875_> granted my domain is whitelisted i still cant access it :(
+<eagles0513875_> valorie: im in the process of migrating my business from my server at home to a virtual server in the cloud where im working part time right now
+<eagles0513875_> gonna setup a znc on my vps when i can get access to it from here at school lol
+<valorie> I guess there is screen+irssi
+<valorie> but I'm not quite geeky enough for that
+<eagles0513875_> me neither
+<eagles0513875_> im hooked on kvirc
+<valorie> don't know what that one is -- is it lightweight?
+<valorie> konvi seems a bit heavy for the netbook
+<eagles0513875_> ya its rather light weight
+<eagles0513875_> im impressed with the performace on my eee pc
+<eagles0513875_> then again i usually compile from svn source
+<zoggy> hi there, i see that in ubuntu, when i'm in the terminal and i try push Git changes, Gnome pops up with a graphical password dialog and then, once entered, never asks me again. In KDE though (in konsole) it asks me for a password every time (and does not do it graphically). Is there any way to configure it to work like Ubuntu does? thanks?
+<eagles0513875_> zoggy: O_O are you talking about the wallet? or somethign else
+<eagles0513875_> it could be as well the way the the git repository is configured im not 100% sure
+<zoggy> eagles0513875_: i guess it could be a process of having konsole integrate with the wallet
+<zoggy> eagles0513875: FYI you've pointed me in the right direction - i think "SSH Askpass" might be what I'm looking for
+<zoggy> eagles0513875: yeeaah - it's working, thanks again, your question helped me clarify what to google for
+<eagles0513875_> hey valorie  im back
+<eagles0513875_> valorie: can i pm you something a bit off topic
+<valorie> yes, I was asking there.....
+<Hedron> hi everybody, can somebody help me with xhosts? I am trying to make the xhost change permanent, however I do not know how to do it, does anybody have any idea how to do this?
+<Hedron> I run xhost + and it works fine, but on relogin or restart, the config is lost
+<eagles0513875_> hey guys has anyone worked with dropbox on linux before?
+<Eruaran> Does anybody know how to fix audio problems in kubuntu?
+<Eruaran> (I have no audio)
+<susundberg> https://help.ubuntu.com/community/SoundTroubleshooting
+<Eruaran> ty susundberg
+<Dekk-lappie> can anyoen tell me about how much space to install kubuntu desktop on top of a regular 10.10 install?
+<Tm_T> Dekk-lappie: this is pure speculation, but less than 500 MiB
+<Dekk-lappie> really?
+<Dekk-lappie> is it in synaptic?
+<Dekk-lappie> or do i need a ppa?
+<Tm_T> Dekk-lappie: kubuntu-desktop metapackage is in ubuntu repositories
+<Tm_T> Dekk-lappie: Kubuntu is Ubuntu (:
+<Dekk-lappie> koo
+<Dekk-lappie> just checkin
+<Dekk-lappie> havent run kde for a long time.. but it seems to be the future with all this gnove vs ubuntu stuff
+<Dekk-lappie> oh btw..819 meg
+<asraniel> hi. can it be that kde 4.6.1 is broken? i have nepomuk crashes and kwallet problems on login, using two different computers
+<twn39> hello,I just want to ask what's the advantage of kde compared with gnome,because I have to make a choice between ubuntu and kubuntu.
+<_Sophia_> o.o
+<Riddell> twn39: it's hard to make generalisations, mostly they are two projects trying to achieve the same thing, try both and decide which one you prefer
+<Riddell> twn39: KDE uses Qt which is a better development framework
+<twn39> That's ok ,now I'm trying kubuntu.
+<kps_foo> twn39: KDE has a very helpful and fun community, so consider that too
+<kps_foo> twn39: they are very helpful and guide newcomers in the right direction almost always...
+<c2tarun> can anyone please help me with this problem http://ubuntuforums.org/showthread.php?t=1707356
+<kps_foo> c2tarun: the auto eth0 is the default name for any dsl lan wire connection that you connect to your laptop
+<r41> can i remove phonon without removing the whole kde desktop?
+<kps_foo> c2tarun: your dsl connection should work fine when you simply connect it with your laptop, you didn't delete the auto etho connection did you ?
+<kps_foo> c2tarun: what does your ipconfig say ?
+<kps_foo> c2tarun: go to terminal and type ipconfig
+<kps_foo> then paste the output from that command at dpaste.com, and give us the dpaste link here
+<c2tarun> kps_foo, there is no command name ipconfig, do you want the o/p of ifconfig?
+<Dekk-lappy> ok..another question.. i can connect wirless with gnome.. nut under kde... shows connectrion.. but i get nada..any takers?
+<c2tarun> Dekk-lappy, did you install kde in ubuntu?
+<Dekk-lappy> yep
+<c2tarun> Dekk-lappy, are you able to connect your kde with wired connection?
+<Dekk-lappy> installed kubuntu desktop
+<Dekk-lappy> havent tried.. im at work.. :)
+<c2tarun> Dekk-lappy, I faced the same problem, I think you'll be able to connect with wired connection, if yes than go to additional drivers and remove the wifi driver and install it again, it will work.
+<kps_foo> c2tarun: yeah, sorry for the mistake
+<kps_foo> c2tarun: got the command mixed up with a DOS based command
+<kps_foo> c2tarun: try ifconfig
+<c2tarun> kps_foo, right now I am using ubuntu, the main problem is I am not getting my DSL connection name there and kubuntu is automatically connecting with auto eth0 + in ubuntu I am able to see auto-eth0 option under wired tab, so I removed connect-automatically option from it, but in kubuntu auto-eth0 is also not gettin displlayed
+<c2tarun> Dekk-lappy, If you really like KDE try installing a fresh copy  of kubuntu (it feels better than using KDE only :))
+<kps_foo> c2tarun: I agree about that
+<kps_foo> c2tarun: by default it doesn't get the connection name, auto eth0 is your wired dsl connection...you can always rename it from the network manager
+<c2tarun> kps_foo, that is the prob, I created the DSL connection from n/w manager, but when I apply the changes and come out and click the icon I am able to see only one connection that is Auto-eth0 normally it displays all the connections and the connection being use now is displayed in bold letters.
+<kps_foo> c2tarun: try restartin your network manager, by pressing the wifi key(F2) if you are on a laptop
+<c2tarun> kps_foo, are you sure by turning of wifi and turning it on will restart n/w manager? because my wifi is turned of right now.
+<kps_foo> c2tarun: it doesn't restart the network manager, but it might solve your problem
+<c2tarun> kps_foo, ok, I'll log into kubuntu and i'll try it :) thanks
+<kps_foo> c2tarun: ok
+<Dekk-lappy> c2 can i install the kde wirless driver  from within gnome?
+<Dekk-lappy> i dont have an ethernet cable here
+<kps_foo> Dekk-lappy: yeah you can, just go to Systemprefrences and then click on additional device drivers
+<kps_foo> Dekk-lappy: oh you said no ethernet ? sorry my bad, you need wired internet
+<asdfgh> hellooooooooooooooooooooooooooo
+<asdfgh> how can i put the adobe flashplr in my fresh sew kubuntu?
+<asdfgh> new*
+<kps_foo> asdfgh: you want it in firefox ?
+<asdfgh> my kubunt does now downloasd firefox
+<asdfgh> problems in repos
+<asdfgh> =(
+<asdfgh> i dont use linux since slack 7, (99)
+<yofel> asdfgh: where does it fail? for flash you need to install flashplugin-installer
+<asdfgh> 1 min, i ll see
+<c2tarun> kps_foo, ping, its not working :(
+<asdfgh> when i put my passwrd
+<Dekk-lappy> yeah c2tarun  im not sure about kde4 yet.. so unless i can get it all sorted.. i may have to stick with just having the desktop for kde
+<asdfgh> he fails
+<Dekk-lappy> anyway..back to work
+<asdfgh> now linux has a pretty lookng face, in my time.... holly s#1t
+<c2tarun> Dekk-lappy, well I never said to switch to kubuntu :) I just said install one more OS kubuntu
+<kps_foo> c2tarun: finally, try this, this might help, http://ubuntuforums.org/showthread.php?t=1239964
+<jiangtao> hallo
+<alyen> hello pretty/handsome young and rich in knowledge about kubuntu... could you help a greyhair man with his old print server?
+<BluesKaj> Hiyas
+<_Sophia_> hallo ;d
+<BluesKaj> hi _Sophia_ how goes the install ?
+<_Sophia_> i did the chkdisk /f thing a bit ago
+<_Sophia_> didn't see what it said though, was in the other room
+<_Sophia_> (i slept 15 hours lol)
+<c2tarun> kps_foo, I tried what was on the thread :( it didn't work. Installing network manager again is not possible because there is no internet on kubuntu :(
+<BluesKaj> _Sophia_, have you backed up your data , so in case of an accidental erasure (extremely unlikely) of your windows partition, then you haven't lost anything
+<_Sophia_> uh
+<_Sophia_> i don't have anything to back my data up on :)
+<kps_foo> c2tarun: I don't know what more to do, the forums are your best help now, or maybe someone else here might answer you
+<cadam92> what have you done Sophia?
+<c2tarun> kps_foo, yup looking forward to forum :( many people faced this prob http://ubuntuforums.org/showthread.php?t=1470894
+<kps_foo> c2tarun: best of luck
+<cadam92> ok have one question, to develop free software, what is the program coding usually? C? Python? etc
+<BluesKaj> c2tarun, ethernet or wifi ?
+<c2tarun> BluesKaj, ethernet
+<kps_foo> cadam92: you can use any language it doesnt matter
+<kps_foo> cadam92: though python is easy to learn for beginners
+<_Sophia_> cadam92: people usually shy away from .net languages >.>
+<BluesKaj> c2tarun, chave you run ifconfig , if not pastebin the outputpls
+<cadam92> so Python is easiest to learn for GNU/Linux Kernel, kk sorry just beginning. Spent years being an Animator, Web Designer and Graphic Designer
+<c2tarun> BluesKaj, I am ubuntu right now, I have to reboot and log back to kubuntu but that DSL connection is working fine in my ubuntu I am facing the exact problem as mentioned in this thread http://ubuntuforums.org/showthread.php?t=1470894 can you please take look
+<c2tarun> cadam92, what languages do you know?
+<cadam92> none thats helpful for proper programming however i learnt C years ago :P
+<_Sophia_> cadam92, before starting with python, you should read the Zen of Python and see if you agree with it philosophically
+<c2tarun> BluesKaj, looked at that thread>
+<c2tarun> ?
+<cadam92> lol Sophia
+<cadam92> but she's left
+<cadam92> also learn to do different commands for linux, anyway Im out. midnight here.
+<PhilRod_> c2tarun: I'm intrigued - you found python difficult? compared to c++? I'm intrigued. What did you find difficult?
+<c2tarun> PhilRod_, missed main :)\
+<BluesKaj> c2tarun, I recommend using the /etc/network/interfaces file to run your connection , without knetworkmanager in the mix , http://www.cyberciti.biz/faq/setting-up-an-network-interfaces-file/ , this was recommended to me by several knowledgable ppl and it works perfectly on gnome and kde .
+<PhilRod_> c2tarun: heh :-)
+<oliver__> Hello. I am having problem installing nvidia driver.
+<oliver__> sudo sh drivername.run doesnt work
+<oliver__> How can I kill x ?
+<BluesKaj> oliver__, ./drivername.run in the terminal
+<oliver__> "No sush file or directory"
+<oliver__> But how can I come in to this terminal window, that takes whole screen?
+<oliver__> I remember on ubuntu it were something with alt and f4 or something
+<BluesKaj> oliver__, did you try the recommended nvidia driver in ,kmenu/applications/system/additional drivers ?
+<oliver__> It doesnt find any
+<oliver__> In ubuntu it always found
+<BluesKaj> oliver__, you have to cd to dir where the driver is located first
+<oliver__> I have
+<oliver__> cd Desktop
+<BluesKaj> oliver__, move the driver /home/user
+<BluesKaj> to
+<oliver__> Ok
+<BluesKaj> but oliver__ I have repeat this question : did you try the recommended nvidia driver in ,kmenu/applications/system/additional drivers ?
+<BluesKaj> have to
+<oliver__> Yes
+<oliver__> It doesnt show anything
+<oliver__> But this method works in ubuntu, kill x and install in this fullscreen terminal
+<oliver__> How can I enter fullscreen terminal where x is killed?
+<BluesKaj> oliver__, follow this tutorial , http://pastebin.com/bseRSx1M
+<oliver__> ok, thanks I will try that
+<_Sophia_> ohai
+<kalg> hi, is there a way that I can synchronize KDE calendar and KOrganizer calendar , so a TODO will appear like we can see holidays in KDE calendar
+<_Sophia_> hey people o.o
+<kalg> hello
+<_Sophia_> i did all the stuff from yesterday just a sec ago, and installed parititon manager and unmounted sda1 and then freed up space, can i just go through installation process now, or w hat? ;o
+<kalg> I wasn't here yesterday :)
+<shane4ubuntu> vmware or vbox for a windows xp install???  I need it for use with internet
+<_Sophia_> applying the partition is taking forever o.o
+<kalg> I use vbox and had no issues
+<shane4ubuntu> kalg: straight from the repos?
+<kalg> got the repo from virtualbox site
+<kalg> vbox=virtualbox right?
+<shane4ubuntu> right
+<shane4ubuntu> no wonder I couldn't find it, always was called vbox before, I think
+<kalg> oh.. here is the link http://www.virtualbox.org/wiki/Linux_Downloads
+<shane4ubuntu> kalg: thanks, I'm downloading it from the repos.
+<kalg> nice.
+<james147> shane4ubuntu: vitrualbox from the reops works fine for mostthings... think its has issues with either usb devices or virtual folders...
+<shane4ubuntu> actually added the virtualbox repo, and getting the 4.0 version now
+<oliver__> Hello, I tried what you sent me. And it installed something
+<oliver__> How can I check what driover I have installed?
+<oliver__> But now to my second problem, my wireless doesnt work. Or it finds my internett, but when I am connecting it only
+<oliver__> says "configuring interface"
+<oliver__> and never connects
+<oliver__> Hello, can anyone help me with my wireless problem?
+<afief> I just have to ask: How do you just select a single file in dolphin/konq/ark without opening it?
+<afief> oliver__: what's the problem?
+<oliver__> Ohh I just read, that it might have something to do with that my wireless is wep protected?
+<oliver__> Its stuck on "configuring interface" and Im 100% the password is right
+<kalg> afief: u can use ctrl key while clikcing on it. or change the behavior of dolphin to use double click to open files
+<afief> kalg: I actually like the single click to open, but until now always box-selected when I wanted a single file
+<afief> is there a mouse only way?
+<afief> oliver__: try without wep, sometimes it helps(depending on your card)
+<oliver__> Problem is that in that case I need to change to wpa
+<oliver__> Since we got so many neightboars
+<kalg> afief:  in dolphin menu settings --> configure Dolphin
+<kalg> go to navigation and select "Double click to open files" radio button
+<afief> kalg: thanks :-) I've been looking for this in the System Settings but couldn't find it
+<kalg> afief: you are welcome
+<oliver__> So I should try wpa
+<oliver__> Or is it no other method to fix this?
+<kalg> oliver__: you are trying to connect to a wireless AP which you know the password right
+<oliver__> Yes
+<afief> oliver__: personally I'd try wpa first, if that fails try to connect to an unencrypted network(mac address protected?). You might want to read up on bugs specific your wifi card
+<oliver__> The password is 100% right, that is not the problem
+<oliver__> well, I've never had problems with the wifi card. Only with kubuntu, not with win7, vista, ubuntu or linux mint
+<oliver__> Hmm, my family is also using network. So i wont switch until I have tried everything else
+<oliver__> I red about Wicd
+<BluesKaj> oliver__, have you set up the router to use wpa encryption and and password , then the network manager will connect if both match
+<oliver__> No, the router is still using WEP
+<oliver__> I havent changed
+<oliver__> yet
+<BluesKaj> don't change it , try wicd first, oliver__
+<kps_foo> oliver__: WEP is unsecure in that it can be cracked in under 1 hour using Aircrack, do not use it, use WPA or WPA2
+<oliver__> I will change, but I cannot do it right now.
+<kps_foo> oliver__: not right now
+<oliver__> So I will try wicd first
+<kps_foo> oliver__: ofcourse
+<afief> oliver__: did you make sure that you picked the right "password type"? perhaps it's ascii while you're typing hex?
+<oliver__> No
+<oliver__> Not ascii or hex
+<oliver__> I am shure its right
+<kps_foo> oliver__: I had a similar problem in Ubuntu 10.
+<BluesKaj> kps_foo, yeah fine but what about access of the other pcs on hisa network
+<oliver__> "Passphrare (for 128 bit) is right?
+<afief> oliver__: depends on your password settings in the router
+<oliver__> well, thats the only 2 alternatives. Passphrases and ascii
+<afief> oliver__: so try ascii, might be that this is what your router defaults to
+<kps_foo> BluesKaj: I think it would be better that he switched his entire network to WPA later on, but for now he can try and make WEP work, that is what he seems to be doing, so I need to shut up :)
+<oliver__> Hmm, I can't figure how to install wicd
+<kps_foo> oliver__: I had a very similar problem in Ubuntu 10.04, I updated and the problem was gone
+<BluesKaj> kps_foo, exactly ..his immediate prob needs solving first
+<kps_foo> oliver__: I used a wired connection to update my Ubuntu and later on this nasty problem was fixed
+<BluesKaj> kps_foo, , don't shut up , we need help here , and my wifi experience is has been good , so solving a wifi problem is beneficial to my experience.
+<kps_foo> BluesKaj: ok
+<kps_foo> BluesKaj: oliver__: I am ready to help
+<BluesKaj> oliver__,open a terminal , sudo apt-get install wicd , it will disable knetworkmanager once you install it
+<Alonea> how do I fix the brightness buttons to work properly? The key combos work, but the scale goes all over the place. it goes from dark, to light, then to dark, then to sorta dim, but never really bright
+<BluesKaj> assuming he's on an ethernet connection:)
+<BluesKaj> oops
+<Alonea> anyone?
+<Daskreech> Alonea: Hello!
+<_Sophia_> hey dask? it's been moving partition for about 70 min, and it's been at 16% the whole time o.o
+<Daskreech> hi _Sophia_
+<_Sophia_> hai
+<Daskreech> Did it detect Vista?
+<_Sophia_> i figured out the steps from yesterday on my own
+<_Sophia_> after doing the chkdsk /f t hing
+<Alonea> Daskreech: omg hey! now why is brightness all screwy on this thing. the scale is completely messed up.
+<Daskreech> _Sophia_: I was on except for 3 hours I didn't see you :(
+<_Sophia_> now i'm moving partition, but it's been stuck at 16% for an hour
+<james147> _Sophia_: how big is the partition?
+<_Sophia_> uh
+<_Sophia_> 0.91 TiB :D
+<james147> ^^ give a few more hours and see
+<_Sophia_> LOL k :s
+<Daskreech> Alonea: ok let me see if I can track that down
+<Alonea> Daskreech: I will happily rip out all the power management stuff if it fixes it. ^_^
+<Daskreech> ha ha I know you will :)
+<Daskreech> _Sophia_: did it happily detect Vista?
+<_Sophia_> i dunno Daskreech ;d
+<_Sophia_> i assume :D
+<_Sophia_> ^_^
+<Daskreech> _Sophia_: Oh so what are you doing now? Not installing?
+<Alonea> Daskreech: I am grabbing lunch. Will be back in a few.
+<Daskreech> Alonea: ok still looking at your thing
+<_Sophia_> daskreech, i'm partitioning the HD ;o
+<Daskreech> How?
+<_Sophia_> it's been at 16% for 75 minutes
+<_Sophia_> with partitionmanager?
+<Daskreech> Oh! right that thing :)
+<Daskreech> haha :)
+<_Sophia_> yeah
+<_Sophia_> i remembered those steps from yesterday
+<Daskreech> Might not have been needed >_>
+<_Sophia_> :/
+<Daskreech> But  good move in any case
+<_Sophia_> whatever works
+<_Sophia_> should it end up taking a few hours then? :S
+<Daskreech> yeah and probably safer given the history
+<Daskreech> For 1TB ? possibly 45 minutes or so I don't see that it should take that long
+<_Sophia_> it's been almost double that ;o
+<_Sophia_> Move partition ‘/dev/sda1’ to the right by 6.84 MiB and shrink it from 0.91 TiB to 351.57 GiB  Job: Check file system on partition ‘/dev/sda1’  Command: ntfsresize -P -i -f -v /dev/sda1  ntfsresize v2.0.0 (libntfs 10:0:0) Device name        : /dev/sda1 NTFS volume version: 3.1 Cluster size       : 4096 bytes Current volume size: 1000200991232 bytes (1000201 MB) Current device size: 1000200994816 bytes (1000201 MB) Checking
+<Daskreech> I could be horribly mislead into thinking that the resizing is linear :)
+<BluesKaj> _Sophia_, lots of data on the windows partition ? if so then it could take many hrs.
+<_Sophia_> uh
+<_Sophia_> probably 230 GB of data
+<BluesKaj> all that data has to be moved when resizing
+<BluesKaj> that's what takes so long
+<_Sophia_> oh
+<Daskreech> _Sophia_: Windows is really messy with it's files
+<_Sophia_> oh well
+<_Sophia_> then i want to try to install the quake live plugin so i can play quake while waiting
+<Daskreech> to repeat so it's understood Windows is redonkeyulously messy with it's files
+<_Sophia_> can i have help with that? >_>
+<james147> _Sophia_: I would suggest not doing anything to stress your system (even alittle) while moving such large amount of data
+<_Sophia_> :S
+<_Sophia_> i'm on the comp a lot, i don't really have other stuff to do :P
+<_Sophia_> already read a manga while waiting
+<Daskreech> james147: why would quake live stress her system?
+<james147> ^^ but its better to be patient then risk losing everything :)  ...(its probably not a very high probability, but its also a high risk)
+<Daskreech> Hmm ok
+<james147> Daskreech: anything that accesses the disk would be bad ^^ ... its already under allot of stress
+<Daskreech> james147: She's on a live CD
+<_Sophia_> o.o
+<_Sophia_> well to install the plugin i'd have to install chrome
+<_Sophia_> sec lol
+<james147> Daskreech: :) then probably more of a reason, ^^ You really shouldnt messaround with trying to set things up (its when things are mostlikly to break) when moving important data
+<_Sophia_> o.o
+<_Sophia_> quake is like a 13 year old game
+<_Sophia_> isn't going to stress my comp much
+<_Sophia_> lol
+<Daskreech> _Sophia_: how about Solitare? :-D
+<james147> _Sophia_: if your on a live cd then the entire game (with the rest of the OS) wll be in ram ^^
+<_Sophia_> O_o
+<_Sophia_> well i may as well try to run it ;x
+<_Sophia_> and idk
+<_Sophia_> i could play logic games onlinee
+<_Sophia_> but i play a lot of quake so idk lol
+<Daskreech> _Sophia_: sudo apt-get install kpat
+<_Sophia_> kpat = ?
+<Daskreech> Kpatience
+<Daskreech> You'll see when it's installed
+<james147> _Sophia_: Espically when you dont know if it will run ^^ crashing your display driver will kill X and the shell your doing the copy in... a low probaibility but high risk again...
+<Daskreech> unless you prefer suduko ?
+<_Sophia_> fine i won't play quake right now >_>
+<Daskreech> Sudoku
+<_Sophia_> uh
+<_Sophia_> well
+<_Sophia_> i have an issue with the kpat install
+<_Sophia_> see:
+<Daskreech> ok
+<FloodBotK2> _Sophia_: Please don't flood; use http://paste.ubuntu.com to paste; don't use Enter as punctuation.
+<james147> _Sophia_: I really suggest not messing around while copying the data ^^ though I cant stop you :)
+<_Sophia_> After this operation, 15.0MB of additional disk space will be used. Do you want to continue [Y/n]?
+<_Sophia_> should i hit Y
+<_Sophia_> o_O?
+<Daskreech> Yes
+<_Sophia_> wasn't sure since the HD is being messed with :p
+<_Sophia_> ok
+<Daskreech> It's telling you that it will take more space than just that one package do you want to continue
+<_Sophia_> ah
+<Daskreech> It gives you options and if you don't put in any options the big one will be chosen
+<Daskreech> so If you just hit enter it will choose Y
+<Daskreech> For the most part in questions like that anything except Y is the same as N
+<james147> _Sophia_: just about all packagemanager will give you a list of packages it going to install (sometimes with teh space they will use) so you can make sure it not installing something you dont want
+<Daskreech> unless it has more options of course :)
+<_Sophia_> ah
+<james147> (assuming it going to install more then you asked it to)
+<_Sophia_> i installed chrome btw
+<_Sophia_> was pretty straightforward
+<james147> ^^due to dependencies
+<_Sophia_> but when i tried the quake plugin it was not
+<_Sophia_> i'm assuming it's because rekonq isn't supported ;p
+<Daskreech> _Sophia_: it's also possible that someone can setup a repo somewhere that says it's installing X but always installs Y as well to do some BadThings®©
+<Daskreech> So the package manager tells you anytime something happens that you didn't ask for so you can be aware of what's going onto your computer
+<Daskreech> So unlike Windows :)
+<_Sophia_> i see
+<_Sophia_> well
+<Daskreech> _Sophia_: I'll look at the quake plugin in a little bit
+<_Sophia_> windows is like in the middle, macs give you no option, windows hides what it's installing, and linux atomizes stuffs
+<_Sophia_> and sure, no hurry
+<_Sophia_> just need something to do :p
+<Daskreech> Kpat is installed?
+<_Sophia_> yes, looking at it now
+<_Sophia_> not a big fan of cards
+<Daskreech> _Sophia_: what are you a fan of?
+<_Sophia_> chess is cool though, maybe i'll play lichess online
+<_Sophia_> logic puzzles, books, music
+<Daskreech> Ah there are chess games :)
+<_Sophia_> i was state chess champ for intermediate class at 16 y.o. ;o
+<_Sophia_> oh wow
+<_Sophia_> partition  completion percentage went from 16 to 66% :D
+<Alonea> Daskreech: back
+<Daskreech> Alonea: and forth
+<Daskreech> _Sophia_: Whoooooooooooooooooooo :)
+<Alonea> Daskreech: any good news or am I doomed to never have a completely working linux system (or is that blasphemy)
+<Daskreech> Alonea: Seems others have the problem as well. Trying to find out if there is a workaround
+<Alonea> Daskreech: of course others have it. ^_^
+<Alonea> Daskreech: at least my wifi mostly works. I have an issue, but its on every distro AND on my android phone
+<Daskreech> Alonea: Misery loves company :)
+<Daskreech> Alonea: Broadcom?
+<Alonea> Daskreech: actually, not sure
+<Alonea> Daskreech: Atheros
+<Alonea> Daskreech: basically, on wpa2, after a while the IP goes bad and it doesn't notice so I have to disconnect/reconnect. I get the same issue on my android phone
+<Daskreech> Ah hmm ok yeah I think I know of that. Driver issue
+<Alonea> Daskreech: its more annoying on my phone than the laptop
+<Daskreech> Yeah I can imagine that would be the case
+<Daskreech> Time is more precious on a phone and you can only really keep one app connection up at a time so you really want that to work
+<Alonea> Daskreech: because it doesn't switch to 3g because it thinks its still connected to the internet with wifi, so I have to turn wifi off and such
+<Alonea> Daskreech: so the only time I turn wifi on is when I am on the phone
+<Daskreech> wait you walk around with Wifi on? how dead do your batteries get?
+<Alonea> Daskreech: wifi takes less power than 3g
+<Daskreech> (I'd turn off both but hey ;-)
+<Alonea> Daskreech: and if I leave the wifi on it doesn't use hardly any power unless its working. I run JuiceDefender which does turn off 3g while idle
+<Daskreech> !info knights
+<ubottu> Package knights does not exist in maverick
+<Daskreech> >_<
+<Alonea> Daskreech: my Evo generally works all day without issue
+<Alonea> Daskreech: course I have also rooted it, put a new kernel on for over/under clocking. overall though Juicedefender helps a lot on android phones
+<Daskreech> Alonea: ha ha ok yeah I guess underclocking is what I would do as well
+<Alonea> Daskreech: of course being general tinkers I would root any phone I get. The Droid X on Verizon is nice too
+<Daskreech> BluesKaj: Phone
+<Daskreech> !info xboard
+<ubottu> xboard (source: xboard): An X Window System Chess Board. In component universe, is optional. Version 4.4.3-1 (maverick), package size 714 kB, installed size 3940 kB
+<Daskreech> _Sophia_: ^^ install that :)
+<Daskreech> I think notably it was the first 4G phone on the market
+<BluesKaj> Daskreech, ok , already got a motorola-cell, pay as you go for travel and clling wife to pick me up after band practice , (we tend to have few beers )
+<Daskreech> BluesKaj: Buy a phone for what you will use it for
+<BluesKaj> yup, exactly Daskreech :)
+<Daskreech> I either never use my phone or I'd want it to ssh into servers as needed on the road
+<Alonea> BluesKaj: its from Sprint and has 4g
+<BluesKaj> Alonea, I'm in Canada , I think sprint went belly up here
+<Daskreech> I need to track down where the phrase belly up came from
+<Daskreech> always sounds like someone sleeping to me
+<BluesKaj> Daskreech, probly means dead
+<Daskreech> It does. I just don't understand why that would be a ... oh wait Fish
+<james147> Daskreech: ^^ think it refers to a dead fish
+<Daskreech> Yeah it just clicked a fish that's dead would be belly up
+<DarthFrog> BluesKaj:  I'm not sure but I kinda think that Sprint partnered with a CDN cell company.  Not Rogers, they're with AT&T.  Bell or Telus perhaps.
+<Alonea> BluesKaj: I think you can get it with...umm. name is something South???
+<_Sophia_> Bell South
+<_Sophia_> if you're discussing ISPs
+<_Sophia_> um
+<BluesKaj> Alonea, I have a cellphone and I don't use it to surf just make calls
+<_Sophia_> dask, does that xboard install include chess engines, or is it a human-to-human client?
+<Alonea> BluesKaj: yeah I have a dependency of being connected to the internet 24/7
+<Alonea> BluesKaj: best was when I stayed in a hotel and they wanted you to pay 20 a day for internet...*turns phone in to wireless router*
+<DarthFrog> _Sophia_: I believe xboard also installs GNUChess.
+<_Sophia_> o.o
+<Daskreech> _Sophia_: both
+<DarthFrog> But you can use Crafty or others, if you wish.
+<Daskreech> You can replace the AI with others those but Gnuchess is pretty crafty if you ramp up the difficulty
+<BluesKaj> Alonea, wife and I travel a bit ,but we're retired so we don't have job related comunication needs :0
+<_Sophia_> kk dask, will install it
+<_Sophia_> also stoned so x.x
+<DarthFrog> _Sophia_: If you like chess, you should check out scid.  It's a freeware chess database program.
+<_Sophia_> i don't study it anymore, stopped after winning state championship
+<_Sophia_> problem with chess is that it's mostly memorization
+<DarthFrog> _Sophia_:  I presume that you know about the FICS chess server?
+<_Sophia_> yes
+<Alonea> BluesKaj: just a college student now, but I use my phone for homework. I put my readings (pdf) in my dropbox and read off my Evo.
+<_Sophia_> i used to play coorespondence pretending to be someone older ahaha
+<_Sophia_> Alonea, you retain information better from a physical book :)
+<DarthFrog> _Sophia_: A move is a move, no matter who made it.  I don't care how old my opponent is, as long as s/he's  jellyware and not software. :-)
+<Alonea> _Sophia_: these are the readings that are digital only.
+<_Sophia_> oh i see
+<Alonea> _Sophia_: though I have no issue reading from lcd screens. been doing it for many years. I do have a kindle though. adore it
+<_Sophia_> how to install xboard? x.x
+<DarthFrog> _Sophia_: We showed you yesterday how to use KPackageKit, didn't we?  Use KPackageKit to install anything.
+<Daskreech> Alonea: They say it will be fixed next month with KDE 4.6.2
+<Daskreech> _Sophia_: You can use kpackagekit or you can type sudo apt-get install <name>
+<Alonea> Daskreech: yay! I can wait a month.
+<Daskreech> :)
+<Daskreech> are you on KDE 4.6.1 now?
+<Daskreech> Of course you Are <_<
+<Alonea> Daskreech: have no idea. lemme look. I just installed this last week (10.10)
+<karnak> !list
+<ubottu> This is not a file sharing channel (or network); be sure to read the channel topic. If you're looking for information about me, type « /msg ubottu !bot »
+<Daskreech> ha ha :)
+<Daskreech> !botsnack
+<ubottu> Yum! Err, I mean, APT!
+<_Sophia_> lol okay i see
+<BluesKaj> !apt | _Sophia_  ,check this out
+<ubottu> _Sophia_  ,check this out: APT is the Advanced Package Tool, which together with dpkg forms the basic Ubuntu package management toolkit. Short apt-get manual: https://help.ubuntu.com/community/AptGetHowto - Also see !Synaptic (Gnome), !Adept (KDE) or !KPackageKit (KDE)
+<roland> is it possible to do a dualscreen computer setup using a laptop as a second monitor? The laptop is connected to a PC over ethernet and shows a virtual screen so that it would be possible to move a window from PC over to the laptop screen.
+<james147> roland: technically, yes...
+<roland> practically.. no?
+<james147> depends
+<james147> remote desktop is the easiest, but i dont think it will give you what you want
+<james147> you could try messing around with forwarding X... though i dont know if that would work they way you want either...
+<james147> or you can share the keyboard and mouse over the computers... http://www.chasingeyes.com/technology/networking/how-to-share-keyboard-and-mouse-with-multiple-computers-over-lan/1248/
+<shane4ubuntu> with ffmpeg using -threads seems faster, how do I know how many threads to use?
+<james147> shane4ubuntu: no more then about 1.5 times the number of threads on your cpu i would say
+<shane4ubuntu> james147: how many threads does my cpu have?  I didn't know it was sewn together.
+<james147> shane4ubuntu: its the number of "cores" your operating system detects
+<shane4ubuntu> I used threads 4 and it was much faster, and system didn't seem to bog down
+<roland> james147: I'm already using synergy
+<genii-around> shane4ubuntu: sudo lshw -C | grep threads
+<genii-around> oops hangon
+<genii-around> shane4ubuntu: sudo lshw -C cpu | grep threads
+<genii-around> If you have multiple cores it will output multiple lines. Add up the numbers and then you know how many threads altogether.
+<shane4ubuntu> genii-around: thanks!  no threads:  http://pastebin.com/mRksCGMk
+<james147> shane4ubuntu: but its dualcore, so you have at least 2
+<genii-around> Yup
+<james147> (one for each cpu)
+<james147> shane4ubuntu: thus, i suggest using 3 or 4 thread for processes
+<shane4ubuntu> ok, thanks
+<shane4ubuntu> I'm such not a hardware guy
+<james147> (so that if one or both threads are waiting on io, the other threads can be processed
+<shane4ubuntu> is that a decent machine?
+<james147> shane4ubuntu: at almost 3ghz yea
+<shane4ubuntu> well, I don't live in the USA or Europe and sometimes getting up-to-date hardware can be a challenge, that coupled with my poor knowledge of hardware, makes it a little challenging
+<shane4ubuntu> ok, thanks guys
+<james147> shane4ubuntu: 3ghz is quite fast for any processor (some can go up to 4ghz, but not many go jmuch above that) beyond that its the number of cores you have, 2 is common now, but some of the higher range cpus are getting 4 or 6
+<xalyy> Hi all
+<xalyy> someone can help me?
+<xalyy> Van itt magyar?
+<genii-around> !hu
+<ubottu> Magyar nyelvű segítséget az #ubuntu-hu csatornán talál
+<shane4ubuntu> james147: ahh, ok, I thought when I was buying about a year ago to look for ghz because I figured that made a difference, as for cores, I think 2 is common and getting anything more is quite pricey here in Peru.
+<xalyy> !hu
+<_Sophia_> lol how do i install java =p
+<james147> shane4ubuntu: yea, 2 cores is still quite good... you only really need more if your doing very heavy multi tasksing (like compiling, or to a lesser extend gaming)
+<genii-around> _Sophia_: If you install kubuntu-restricted-extras then you get stuff like java and flash plugin, etc. You need to enable multiverse repository first in package manager
+<shane4ubuntu> james147: very little gaming here, mostly video and audio processing are my big jobs, after that minor stuff.
+<james147> shane4ubuntu: video and audio processing also use cpu and will beinfit form multicore
+<_Sophia_> okay ;p
+<_Sophia_> lol compiling
+<_Sophia_> dynamic languages are the future ^_^
+<shane4ubuntu> james147: that is what I figured, thanks.
+<james147> shane4ubuntu: most batch processing tasks can usualy be split into threads and will benifit from number of cores, though they also benifit from the raw speed as well :)
+<shane4ubuntu> james147: yeah, I noticed that adding the thread option to ffmpeg sped it up greatly
+<james147> shane4ubuntu: take a look at "htop" while running under differnt number of threads, and you will see why :)
+<Daskreech> _Sophia_: how is it going?
+<_Sophia_> um
+<_Sophia_> 66% still
+<_Sophia_> says 12min left
+<Daskreech> _Sophia_: Does that time move?
+<_Sophia_> yes
+<_Sophia_> well
+<_Sophia_> no
+<Daskreech> _Sophia_: Sorry :( should have told you to Defrag windows before this
+<_Sophia_> it doesn't move in real time
+<Daskreech> Would help the wait
+<Daskreech> _Sophia_: How's the chess?
+<_Sophia_> it periodically prints off a time estimation
+<_Sophia_> i got into a long convo with a roomie
+<_Sophia_> haven't tried the chess
+<_Sophia_> didn't see an xchess either
+<Daskreech> Yeah it's not a linear operation so it can't tell you realtime what will happen
+<Daskreech> _Sophia_: xboard <_<
+<_Sophia_> lol oops
+<eagles0513875> hey guys has anyone else used drop box on maverick
+<eagles0513875> i need some help
+<james147> eagles0513875: with what exactly?
+<eagles0513875> james147: its complaining constantly about the dropbox daemon
+<eagles0513875> O_o
+<shane4ubuntu> eagles0513875: I'm using it on maverick
+<eagles0513875> shane4ubuntu: did you have issues with it asking for a proprietary daemon
+<_Sophia_> how do i install the kubuntu-restricted-extras?
+<james147> complaining?
+<shane4ubuntu> eagles0513875: hmm, I don't think, I just installed the deb, it setup the repo, and no probs
+<eagles0513875> _Sophia_: sudo apt-get install kubuntu-restricted-extras on commandline
+<eagles0513875> james147: ya
+<_Sophia_> i tried: sudo apt-get install kubuntu-restricted-extras , and it did not work
+<eagles0513875> always asking me to download it
+<_Sophia_> O_O
+<shane4ubuntu> _Sophia_: sudo apt-get yah, what he said
+<eagles0513875> _Sophia_: worked fine for me on a fresh install
+<_Sophia_> it can't see it, so
+<eagles0513875> sudo apt-get update _Sophia_
+<eagles0513875> then the other command above
+<_Sophia_> already done that
+<_Sophia_> ;3
+<_Sophia_> do i have to do something with a *universe in settings?
+<eagles0513875> apt-cache policy kubuntu-restricted-extras _Sophia_
+<eagles0513875> see if its already installed
+<_Sophia_> o.o sure, will try that
+<_Sophia_> N: Unable to locate package kubuntu-restricted-extras
+<eagles0513875> _Sophia_: did you do an upgrade from a previous version O_o
+<eagles0513875> james147:  and shane4ubuntu this is what the msg says in order to use dropbox, you must download the proprietary daemon
+<eagles0513875> what daemon is it talking about damn it
+<genii-around> _Sophia_: The "multiverse" repository needs to be enabled
+<shane4ubuntu> eagles0513875: hmm, not sure, try purging it and re-installing it.
+<_Sophia_> so i was right :DDDDDD i'm catching on >_>!
+<james147> eagles0513875: probally the drop box deamon ^^ (dropboxd)
+<eagles0513875> shane4ubuntu: tried
+<eagles0513875> james147: where do i get that from
+<james147> i would think downloading it from the repos should install it
+<james147> try from here: http://www.dropbox.com/downloading?src=index
+<eagles0513875> ok ill add the repo
+<Incarus6> james147, better the linux version, right? http://www.dropbox.com/downloading?os=lnx
+<james147> Incarus6: ^^ both link lead to the same place for me :p
+<_Sophia_> lol now i forget where the universe settings are ;x
+<eagles0513875> james147: where is the name of the repository listed so i can add it to my sources
+<Incarus6> james147, ah, you're right, i disabled the usaer agent of my browser
+<BluesKaj> kde has a dropbox version called kfilebox , you can dl the deb file
+<agnese> helo everyone ^^ doeas anybody ever tried switcheroo?
+<BluesKaj> Kfilebox , here : http://sourceforge.net/projects/kdropbox/ , if you want to keep your system gnomefree :)
+<Alonea> eagles0513875: I reccomend getting the version of dropbox that doesn't require gnomes file browser
+<Alonea> eagles0513875: ah, BluesKaj beat me there.
+<eagles0513875> where can i get that Alonea
+<eagles0513875> O_O
+<eagles0513875> interesting but does that BluesKaj work wiht the normal drop box
+<Alonea> eagles0513875: yes, I have it installed and it works perfectly fine with dolphin.
+<BluesKaj> yes eagles0513875 , i use it , it will go thru the dropbox register procedure when you install it
+<eagles0513875> dropbox register meaning ask me if i want to login etc
+<Alonea> eagles0513875: I used this guide here: http://antrix.net/posts/2008/dropbox-without-gnome/
+<BluesKaj> unless you already have adropbox acct then you can just check that option
+<claydoh> http://kdropbox.deuteros.es/index.php?option=com_content&view=article&id=53&Itemid=53
+<claydoh> I *just* installed that like 15 mins ago
+<eagles0513875> lol claydohbeat you to it with google haha
+<james147> eagles0513875: just installed it ^^ seems to be a front end to the dropbox daemon
+<claydoh> I had totally forgotten about dropbox until a stray link cam emy way lol
+<eagles0513875> so i still need dropbox O_o
+<james147> eagles0513875: yeah, but first run seems to download the daemon
+<eagles0513875> i have never had this much issue with normal dropbox
+<eagles0513875> of the kdropbox
+<eagles0513875> james147:
+<duckx0r> how do you connect to a wireless devices in kde 4.6? My wireless card is enabled and i can see the list of the connections, but clicking, double clicking, right clicking on them does nothing.
+<james147> eagles0513875: nor i ^^ and kfilebox wasnt any trouble either...
+<BluesKaj> eagles0513875, the dropbox linux idea was first used with nautilus/gnome , then it migrated to dropbox for kde , which is now called kfilebox , it's just a dropbox that uses dolphin  instead of nautilus
+<_Sophia_> partition complete, i now have unallocated space >.< now what? :o
+<Alonea> _Sophia_: boy, it took long enough.
+<_Sophia_> ;/
+<Incarus6> duckx0r, works for me, are you sure you are using the latest kde version (4.6.1)?
+<BluesKaj> !Tb is alarge space
+<james147> _Sophia_: what where you originally trying to do?
+<_Sophia_> well
+<_Sophia_> see, before, the whole HD was partitioned to windows, so i fixed that
+<_Sophia_> goal is  to install  kubuntu from here i suppose
+<Alonea> _Sophia_: installation is usually the easy part
+<james147> _Sophia_: boot a live cd if you havnt already, and run the installer (should be an icon on the desktop)
+<_Sophia_> i want to know if i'm to that point O_O
+<_Sophia_> i'm in the live-cd now ^_^
+<BluesKaj> _Sophia_, now you need to right click on the unallocated spce and choose new , then a drop down with options , choose ext4
+<james147> _Sophia_: prity much ^^ the installer should handle anything else thats needed
+<Alonea> _Sophia_: well, if you have a partition ready to install on, then you are ready. I suggest something like 15-20 gig for root and the rest for /home
+<BluesKaj> Alonea, lets not get too complicated
+<duckx0r> Incarus6, yes. i just installed it from the repository
+<_Sophia_> is home all the files that are accessable through the OS?
+<james147> Alonea: ^^ and 20 is being genrous
+<Alonea> BluesKaj: I was taught this my first day of linux. I had to compile my kernel from source on my first day
+<james147> _Sophia_: /home is where all user file are stored (their settings and files)
+<_Sophia_> okay
+<Alonea> james147: depends on what you are doing, but if you have plenty of space its a good cap
+<_Sophia_> well i'll have lots of ruby programs there so o_O
+<Incarus6> duckx03, can you dial in via the system settings?
+<duckx0r> Incarus6, what do you mean by dialing in?
+<james147> Alonea: I dont think i have ever gone above 15, and that was with installing just about everything i could ever need (including development headders)
+<_Sophia_> bluesKaj, i'll do the ext4 thing now ;o
+<Incarus6> duckx03, connect to the wireless network
+<eagles0513875> Alonea: haha
+<Alonea> james147: indeed and I used to only do 10, but you never know what the future will hold.
+<duckx0r> Incarus6, how do I do that?
+<_Sophia_> uh wait a sec
+<_Sophia_> am i supposed to have two partitions, or three
+<Incarus6> duckx0r, Systemsettings > Networksettings > Wireless
+<james147> Alonea: yeah, if you have the space then its a nice buffer :)
+<Alonea> eagles0513875: yeah, it was like, I have to do what now? I just kinda of guessed on what boxes to check and which not to...it worked
+<_Sophia_> because i just made one that covered all the free space
+<eagles0513875> Alonea: feel free to pme me if your interested in hearing my idea
+<duckx0r> Incarus6, yes, I tried adding a connection there. How do I tell it to connect to that?
+<james147> _Sophia_: depends on what you want..., its recomended to seperate / and /home onto two different partitions, but you dont need to
+<BluesKaj> _Sophia_, one will be a swap , probly around 6G if you have 4G ram , the others thge windows (ntfs) and ext4 linux
+<Alonea> _Sophia_: I generally suggest having 2 (or 3 if you need swap, but I think not). I like having home and root separate so if I want to change distros or I somehow break things really bad I don't lose my data
+<james147> BluesKaj: ^^ you dont need 6gigs of swap with 4gigs of ram ... if anything you dont need any :p
+<Alonea> BluesKaj: do we still need swap these days? I still do, but some people say  no
+<_Sophia_> o_O
+<Incarus6> duckx0r, you could activate the seeting "automatically connect"
+<duckx0r> Incarus6, yes, I did that
+<Incarus6> did you restart since the kde update?
+<BluesKaj> james147, that's the std formula ..it's not written instone
+<_Sophia_> x.x??
+<Daskreech> _Sophia_: ha ha ok want some background before you move forward or want to move forward and learn after?
+<_Sophia_> i want to transfer data from windows to kubuntu
+<_Sophia_> o_O
+<duckx0r> Incarus6, yes I restarted. But it wasn't an update. I installed kde 4.6 on ubuntu
+<james147> _Sophia_: ^^ The disk layout you chose will most likly depend on what you want to do... you require at least one partition for / (aka the root) from there it is common to have a seperate partition for /home, where alll the user files are stored, this makes it easy to reformat the / partition without losing all your data, such as if you want to reinstall
+<Daskreech> _Sophia_: What data?
+<_Sophia_> uh, background is fine
+<_Sophia_> um, well
+<BluesKaj> _Sophia_, did you click apply after choose ext4 for the unallocated partition ?
+<maco> james147: ubuntu can reinstall without overwriting your old /home
+<maco> just uncheck the "format" box on the / partition
+<_Sophia_> i just hit apply lol
+<_Sophia_> o_O
+<Daskreech> maco: That's what he just said
+<maco> Daskreech: no it's not...
+<maco> Daskreech: he was talking about making a separate /home partition
+<Alonea> Daskreech: hello again
+<james147> _Sophia_: often people also have a small partition for swap space (the page file in windows terms) although with more then about 2-4 gigs of ram this isnt needed as mcuh, depending on what you do... I tend to suggest creating a swap file instead of partition as it is more felxable
+<_Sophia_> but what i need to transfer is like: pdfs, pictures in various formats, and i may need to transfer programs from kubuntu to windows to check that they work with windows
+<james147> maco: yeah, i know...
+<Alonea> maco: er me? (is a she)
+<maco> Alonea: no, not you. james
+<james147> maco: ^^ but do other system also preserve it?
+<maco> i'm saying it doesnt have to be a seprate partition. it can be a directory in / and if you uncheck "format" everything but home gets deleted
+<BluesKaj> wow, this is too much ... :)
+<_Sophia_> o_O?
+<Alonea> maco: OK, I was also suggesting separate, but then I go through various distros so having separate is nice
+<maco> james147: mint, since it uses the same installer. don't know if any other distros have that in their installer
+<_Sophia_> BluesKaj, you mean the speed? lol
+<maco> Alonea: are you aware of the Ubuntu Women Project, by the way?
+<maco> !women
+<ubottu> The women and men of the Ubuntu Women project hang out in #ubuntu-women. Encouraging women to use linux? Read http://www.tldp.org/HOWTO/Encourage-Women-Linux-HOWTO/ for some suggestions compiled by women who use Linux on how to do so effectively.
+<Alonea> maco: no actually. are they scary women?
+<_Sophia_> O_O
+<maco> Alonea: no, friendly :)
+<maco> _Sophia_: are you the sophie i know?
+<Daskreech> _Sophia_: you can transfer most of what you said easily
+<_Sophia_> maco, i doubt it ;o i'm from Portland, OR lol
+<_Sophia_> also random question, can i transfer firefox bookmarks to kubuntu somehow?;o
+<maco> _Sophia_: ok. there's someone on this server who also has a "sophia" nick, but maybe thats without the _'s
+<Daskreech> maco: serious? You can uncheck format / ?
+<maco> Daskreech: yes
+<james147> _Sophia_: you can easly transfer files from linux to windows (in linux), although windows dsnt care to know how to access linux drives :p
+<maco> Daskreech: like....since 2008
+<_Sophia_> maco, i may have been on here without the underscores
+<Daskreech> When did that come in? up to 10.04 it forced me to format /
+<maco> Daskreech: itd only force it if you chose a different format than whatever was already on there
+<Daskreech> _Sophia_: yes you can transfer bookmarks
+<james147> Daskreech: no it dosent ^^ it enables it by default but I have unchecked it serival times :) it then deletes the old system folders
+<maco> in that case, it obviously would need ot
+<maco> *to
+<BluesKaj> _Sophia_, now you're ready to install kubuntu on thatext4 partition , it will probly ask you if want a swap partition, it's up to you , if you think you need it
+<james147> ^^ yeah assuming its the same formate
+<_Sophia_> i don't get the point of a swap partition though
+<_Sophia_> X_X
+<Daskreech> james147: guess I was DoingItWrong ®©
+<Daskreech> _Sophia_: do you know about pagefiles in Windows?
+<_Sophia_> nope!
+<maco> _Sophia_: swap partition is where the contents of RAM goes if you hibernate and also what the system uses if it needs more memory than just what you have of RAM
+<james147> _Sophia_: swap space is like extra ram on your hard disk, it is used when your ram fills up
+<Incarus6> duckx03, you can try the command line way. i found a nice tool called "cnetworkmanager" (26kB), you could try that (cnetworkmanager --help)
+<Incarus6> !cnetworkmanager
+<Alonea> _Sophia_: also, get XMarks addon for FF, chrome, etc. its great for bookmarks
+<BluesKaj> _Sophia_, , like ppl have been say ing if your RAM is over 4G , you might not ever need it
+<_Sophia_> it is 4G
+<_Sophia_> idk
+<maco> Alonea: meh, Firefox Sync...
+<Daskreech> _Sophia_: ok in short the computer keeps everything in RAM obviouslt that's quite limited. So the Swap partition is like a slower version of RAM it can use to pretend RAM is larger than it is
+<_Sophia_> only intensive processes are Quake and Ruby
+<maco> Alonea: it's a Mozilla-created addon for 3 and built into 4
+<_Sophia_> oh
+<_Sophia_> sure i'll make a little swap thing
+<_Sophia_> if it doesn't complicate things much
+<Daskreech> it's a way for hte computer to keep on working instead of deleting things that it cannot remember right now
+<_Sophia_> okay
+<_Sophia_> sure
+<_Sophia_> sounds useful to me
+<FloodBotK2> _Sophia_: Please don't flood; use http://paste.ubuntu.com to paste; don't use Enter as punctuation.
+<Daskreech> _Sophia_: it won't should make things easier and other than the hard drive space you won't miss it
+<Alonea> maco: i liek xmarks cause its compatiable with my phone and all my brwosers
+<_Sophia_> fu floodbot!
+<_Sophia_> okay
+<BluesKaj> like a pagefile I think ,in windows
+<Daskreech> :)
+<_Sophia_> so swap partition: how to go about doing that? >_>
+<james147> !swap
+<Daskreech> _Sophia_: It will ask you during install
+<ubottu> swap is used to move unused programs and data out of main memory to make your system faster. It can also be used as extra memory if you don't have enough. See https://help.ubuntu.com/community/SwapFaq for more info
+<maco> Alonea: ahhh ok. did they figure out yet what theyre going to do about the oh-god-we-have-no-money thing? they were saying before that they were going to start charging $$$ and then back-pedalled on that...
+<maco> BluesKaj: "do you know what a page file is?" "no" already came up ;-)
+<_Sophia_> um
+<maco> (i tend to forget people can have bookmarks on their phones. mine makes calls and sends text messages. not much else)
+<BluesKaj> maco, are you here to help or just correct ppl again?
+<_Sophia_> do i have to resize my new second partition to be able to make a swap partition during install?
+<maco> _Sophia_: if you didnt leave any space, then yeah
+<_Sophia_> lol >_>
+<_Sophia_> 6 GB is good?
+<maco> plenty
+<_Sophia_> kk
+<maco> assuming you don't have 8GB of RAM and intention to hibernate
+<Incarus6> duckx0r, did knetworkmanager work in an earlier version of kde? can you paste a screenshot of that issue?
+<james147> _Sophia_: you can also create a swap file after installation, instead of a partition
+<Incarus6> duckx0r, another thing you could try is to start knetworkmanager over the terminal
+<_Sophia_> how is the file different?
+<james147> _Sophia_: its easier to resize ^^ other then that there is no difference
+<maco> it can resize as necessary
+<_Sophia_> oh
+<_Sophia_> no other functional difference?
+<james147> _Sophia_: not really
+<_Sophia_> all right
+<_Sophia_> i'd rather do that then
+<_Sophia_> to simply the partitions :p
+<james147> _Sophia_: tecnically, its just a partition thats placed in a file instead of on a drive :)
+<Daskreech> _Sophia_: If you are hibernating that should be great otherwise I hope you are doing crazy Art with mega databases :)
+<james147> !swap
+<ubottu> swap is used to move unused programs and data out of main memory to make your system faster. It can also be used as extra memory if you don't have enough. See https://help.ubuntu.com/community/SwapFaq for more info
+<james147> _Sophia_: ^^ that link should tell you how to create one (best to do after installation)
+<_Sophia_> daskreech, what? O_O
+<BluesKaj> _Sophia_, the kubuntu install off the live-cd (I assume that's what you're using) will ask if you want a swap when you start the install
+<maco> _Sophia_: making a joke about "what on earth are you doing thatd require MORE than 6GB?!"
+<_Sophia_> oohh
+<_Sophia_> all righty
+<_Sophia_> BluesKaj, will it allow me to do a swap *file* during install, or only a partition
+<maco> only partition
+<_Sophia_> if it only does the partition option, i won't be able to do it then
+<_Sophia_> no free space ^_^
+<maco> well, the default is partition
+<Daskreech> maco: Huh?
+<maco> you can choose manual partitioning mode
+<Daskreech> no You can do a swap *file* anytime yo uwant
+<james147> _Sophia_: you can just ignore the warning about swap space during the installation
+<_Sophia_> 350 for windows, 570 for kubuntu o_O
+<_Sophia_> okay
+<duckx0r> Incarus6, I haven't run an earlier version of KDE on this computer. Only gnome. I just tried wicd and it also has a problem connecting, so it's probably something to do with the wireless driver
+<_Sophia_> am i ready to install? x.x
+<maco> Daskreech: i meant "only partition" in that the installer wont *offer* swap file
+<maco> there is no option for it
+<Daskreech> maco: ah I see of course there isn't
+<Incarus6> duckx03, jep, thats the reason i was asking that question. dmesg doesnt show any errors?
+<james147> _Sophia_: you should be
+<Daskreech> it will not perform as well as a partition so there is no reason to offer to make one
+<_Sophia_> okay
+<_Sophia_> going to try to install now
+<_Sophia_> :D
+<Daskreech> _Sophia_: happy face!
+<_Sophia_> or =D
+<_Sophia_> but =D reminds me of a bunny ;o
+<_Sophia_> >=D
+<Incarus6> offtopic ;)
+<BluesKaj> getting giddy in here , time for a break :)
+<Alonea> Incarus6: I got horribly OT earlier with android...its mostly linux!
+<Daskreech> Mostly :)
+<Daskreech> at least tit's not a fork of linux anymore
+<duckx0r> Incarus6, dmesg doesn't show anything when i try to click on the access point in the network manager
+<Incarus6> linux mixed with privacy issues and the user isn't root. wonder if another distribution would run on cell phones
+<Incarus6> duckx0r, and when the wlan device is connected / recogniced ?
+<Alonea> Incarus6: theoretically, I mean , once you root your phone and there are kernels out there, so you could really make any rom on top (and of course fiddle more with the kernel)
+<duckx0r> Incarus6, all it has is [ 2879.832074] eth1: no IPv6 routers present
+<Incarus6> that took 2900 seconds?
+<duckx0r> Incarus6, since the computer booted, yeah
+<noaXess> hey all
+<Daskreech> Alonea: In theory
+<Daskreech> more phone manufacturers are putting rombombs in the phone
+<noaXess> upgrade a 10.04 machine to 10.10.. and now can't boot... can boot only with older kernel 2.6.32 but 2.6.35 stop's on boot.. any hint?
+<noaXess> googing already ;)
+<maco> Incarus6: could try Kubuntu Mobile...
+<maco> not that i recommend it on your primary phone...
+<maco> i think apachelogger's been testing it out
+<Alonea> Daskreech: I am horribly proud of Cyanogen. They have done such a wonderful job and we are getting more life on our phones than we would otherwise
+<Incarus6> maco, i dont have any cell phone that is able to run such software ;)
+<Daskreech> Alonea: I know :) the prospects are really great
+<Alonea> Daskreech: I just wish it was easier to get Sense UI. I hate that I love it...I know its bloated, but I like it
+<Daskreech> Hoping that those who are setting the phones to blow themselves up if you put on your own software lose so many sales that they either bury themselves or have to stop stupid things like that
+<Daskreech> noaXess: What's the stop error?
+<Alonea> Daskreech: yeah and AT&T needs to cut out blocking out of market apps. I am on Sprint and had little issue rooting my phones
+<Daskreech> Alonea: What do you like about it? There is no replacement for it yet?
+<duckx0r> Incarus6, I'm going to try uninstalling the proprietary wireless driver i'm using and see if I can get this.
+<noaXess> Daskreech: hey.... give me a minute.
+<Alonea> Daskreech: not really. I mean Launcher Pro is getting there, but I had a lot of stability issues with it. The problem with SenseUI is its HTC's baby and no can make an updated rom with sense in it as they have to wait for HTC to release SenseUI with the later android OS versions for at least one phone before people can toodle with it
+<Incarus6> !ot
+<ubottu> #kubuntu is the official Kubuntu support channel, for all Kubuntu-related support questions. Please use #kubuntu-offtopic for general chatter. Thanks!
+<noaXess> Daskreech: for what message should i search in kern.log?
+<noaXess> Daskreech: what i found.. 0000:00:04.0: Error EEPROM read 0
+<noaXess> maybe a bios problem?
+<Daskreech> Alonea: Well that's kinda the point of them doing Sense isn't it? :) to tie you to them
+<Daskreech> noaXess: Looks like it. Try removing the kernel image and reinstalling
+<noaXess> Daskreech: boot into old recovery and reinstall, right?
+<Daskreech> Or just bump the older kernel to default unless you want something specific from the new build
+<noaXess> Daskreech: better reinstall current kernel..
+<Daskreech> noaXess: Either works
+<noaXess> Daskreech: ok
+<Alonea> Daskreech: ^_^. I mean, its just a UI, I ran stock on my hero for a while, but I just got an Evo and I am happy with the stock ROM with a hacked kernel
+<noaXess> Daskreech: also purge linux-headers
+<noaXess> ?
+<Daskreech> noaXess: shouldn't make a differnce Kernel doesn't use the linux headers
+<noaXess> what?
+<Daskreech> It's the header files for apps to link into
+<Daskreech> They are all already compiled into the kernel. Doesn't need them externally
+<noaXess> aha.. so no, not purge ;)
+<Daskreech> Yeah
+<noaXess> after purge linux-image, install it, or reboot?
+<Daskreech> Either would work :)
+<noaXess> or just sudo aptitude install linux-image-generic
+<shane4ubuntu> ok, any programmers?  I want to script this out for easy use, ffmpeg -bunch-o-options -i $1  $1.withoutextension.mp4  ??  Basename can be used I think right?
+<Daskreech> unless you want to reboot back in to that image
+<Daskreech> Yes it can shane4ubuntu
+<katsrc> what do you guys think about all these people saying "God is punishing Japan?"
+<shane4ubuntu> Daskreech: I have an example of basename, but I don't know how to apply it in this instance
+<shane4ubuntu> here is my example I have on file:    for x in *.ogg; do ffmpeg -i "$x" "`basename "$x" .ogg`.mp3"; done
+<BluesKaj> katsrc, not the place for such discussions
+<Daskreech> katsrc: try in #kubuntu-offtopic or #ubuntu-offtopic
+<katsrc> BluesKaj: sorry, the message went to the wrong channel
+<noaXess> Daskreech: same problem.. the last lin on boot is: registered taskstats version 1.. then just the blinking cursor.. maybe i make a bios update..
+<Daskreech> noaXess: You hit enter and ^Z?
+<Incarus6> katsrc, try it in #wrong-server-to-talk-about-such-things
+<noaXess> Daskreech: no.. when cursor is blinking?
+<BluesKaj> katsrc, i don't agree with that statement anyway  ...it's ridiculous to make such a judgement
+<Incarus6> BluesKaj, dont feed the religion-troll
+<Daskreech> Incarus6: ?
+<BluesKaj> hehe, Incarus6 , I couldn't resist , it's so stupid
+<Daskreech> We already pushed to the OT chans
+<shane4ubuntu> ok, so if I wanted to use basename Daskreech, how about this:  ffmpeg -i $1 "`basename "$1".*`.mp4
+<Daskreech> That would work if in a script
+<shane4ubuntu> Daskreech: thanks a bundle, is there a simple way I can test basename? like a one liner? ls | echo "`basename .*"
+<Daskreech> shane4ubuntu: do you know what basename does?
+<shane4ubuntu> well, just read the very short man page, it strips either the leading directories, or the suffix, I'm having a difficult time figuring out it's usage
+<shane4ubuntu> I tried, ls *.mp4 | basename to no avail
+<noaXess> Daskreech: what you mean with: hit enter and ^Z
+<Daskreech> noaXess: I had a bug with a kernel on Fedora that had a process waiting on something and it was blocking.
+<duckx0r> Incarus6, I got it working somehow with wicd, disabling and enabling the proprietary driver and a few reboots. Don't ask me how.
+<Daskreech> nothing would boot till it stopped waiting. Hitting ^Z backgrounded it and everything else went on booting
+<Alonea> noaXess: I believe ^Z means ctrl+Z
+<noaXess> Hah ok.. no CTRL+Z won't work.. also the new bios.. :(.. grrrr..
+<Daskreech> some processes will stop waiting if you hit enter so just hit one then the other to see if it prods it to moving forward
+<shane4ubuntu> ok, the help file isn't very helpfull
+<Daskreech> shane4ubuntu: :) tell me what you gather from it and I'll tell you if it's correct
+<noaXess> Daskreech: if i ht enter nothing happends.. even no new line.. and also ^Z won't work
+<Daskreech> noaXess: ^C?
+<noaXess> no chance...
+<noaXess> also ctrl+alt+del.. won't work.. it is blocked.
+<Daskreech> noaXess: I'm going on the presumption you know  ^Z means Ctrl+Z :)
+<noaXess> i know.
+<Daskreech> noaXess: does SysReq work?
+<shane4ubuntu> Daskreech: it shows to use it like this: basename file.ext  should output file  however it outputs file.ext
+<Incarus6> duckx0r, kernel 2.6.38 was released today, much things are fixed in newer kernel versions (current: 2.6.35), i believe that driver situation would be better with the next ubuntu release
+<Incarus6> *will, not would
+<noaXess> Daskreech: the key.. no.. nothing happends..
+<Daskreech> shane4ubuntu: basename file.ext .ext
+<Daskreech> Try that
+<noaXess> Daskreech: or what you mean exaclty with SysReq?
+<noaXess> SysRq
+<Daskreech> noaXess: alt+ctrl+Sysreq+B
+<shane4ubuntu> Daskreech: ahh, but for that you must *know the ext, in a script I don't know the ext.
+<Alonea> noaXess: MAgical sysreq is awesome
+<Daskreech> shane4ubuntu: You can probably detect it with regexp
+<noaXess> nothing.. system is blocked
+<Daskreech> You want the smallest substring of a basename that ends with .
+<shane4ubuntu> Daskreech: regexp?
+<Daskreech> noaXess: Hosed. File a bug and use a kernel that works
+<Daskreech> shane4ubuntu: it's a system not a command
+<duckx0r> Incarus6, well with 2.6.35 it doesn't even recognize that there is a wireless card installed
+<Daskreech> Hold on let me find a tutirial for you
+<shane4ubuntu> ahh, regular expression
+<shane4ubuntu> lol
+<shane4ubuntu> Daskreech: or regex
+<Daskreech> shane4ubuntu: yes
+<noaXess> Daskreech: got it.. if i use acpi=off in the kernel line.. i can biit the 2.6.35 kernel..
+<Daskreech> of course.
+<Daskreech> power >_>
+<shane4ubuntu> Daskreech: I need just one example of using basename with a regex
+<Daskreech> it would be two lines
+<Incarus6> duckx0r, yes, they added some wireless drivers in the newer versions ;) i remember the time when ubuntu 8.04 came out., 8.04 was unuseable on desktop computer (didnt work for me ;) debian did) and it got better with 8.10 but 9.04 broke it again.. i dont like these 04 releases ;)
+<Daskreech> shane4ubuntu: what are you trying to accomplish with it?
+<Daskreech> is http://tldp.org down for anyone else?
+<Incarus6> Daskreech, also down in germany: Error 102 (net::ERR_CONNECTION_REFUSED): Unknown Error
+<Daskreech> :(
+<shane4ubuntu> Daskreech: script out ffmpeg with bunch of options to a single command script filename     script would conver avi, mov, mgp etc to mp4
+<noaXess> Daskreech: pci=noacpi also work... hm...
+<Daskreech> shane4ubuntu: http://tinyurl.com/6hprk58
+<Incarus6> Daskreech, PING tldp.org (152.46.7.81) 56(84) bytes of data. 64 bytes from vhost.ibiblio.org (152.46.7.81): icmp_req=1 ttl=55 time=161 ms
+<Daskreech> noaXess: yes it's acpi that's screwing with you
+<Daskreech> Incarus6: Yeah I can get the server to respond but I can't get it to server me anything
+<Daskreech> I guess that makes it a responder rather than a server
+<noaXess> Daskreech: what is the problem if i set pci=noacpi? acpi is powermanagement or more?
+<BluesKaj> hmm, I'm using a wireless KB and just discovered my SysRq key is missing , prtscrn is int's place
+<Daskreech> noaXess: acpi is powermanagement
+<Daskreech> BluesKaj: same key
+<noaXess> Daskreech: with above option, pci devices don't have acpi.. or the system can't control it.. right?
+<Alonea> BluesKaj: if you are on a laptop you might have to do Fn
+<Incarus6> Daskreecg, http://wiki.tldp.org/ is working
+<Daskreech> Without any modifers it's printscreen
+<Daskreech> pressing a modifer makes it SysReq
+<BluesKaj> I'm using a wireless KB
+<Daskreech> Course Windows doesn't use that so people don't label as that since "no one" will every use it
+<Daskreech> ever
+<BluesKaj> ok Daskreech , thanks
+<BluesKaj> yeah it's a MS KB :)
+<Daskreech> noaXess: there is no power management for the PCI bus which is used for all devices correct
+<Daskreech> If I remember that correctly
+<Daskreech> been a few years since i studied kernel cheat codes
+<Daskreech> BluesKaj: That would explain a lot :) Don't forget to get a Tux sticker to replace the Windows Logo :)
+<noaXess> Daskreech: ok.. for the moment, it works..
+<Daskreech> noaXess: Whee :)
+<Sophia> ohai
+<_Sophia_> x_x
+<_Sophia_> okay, *so*
+<_Sophia_> now i can't run windows, and when i put in the windows CD, it doesn't give a 'repair computer' option, all it gives is an install option
+<_Sophia_> what do? ;d
+<_Sophia_> Daskreech? >.>
+<Daskreech> ohhai
+<_Sophia_> ohai ;3
+<Daskreech> _Sophia_: define I can't run windows
+<_Sophia_> okay, when i installed kubuntu, i chose the dual boot option
+<_Sophia_> so it has a menu come up with 5 options
+<_Sophia_> kubuntu, kubuntu in safe mode, memtest1, memtest2, and vista (in sda1 or w.e it's called)
+<_Sophia_> when i pick windows, it won't run, attributing the error to a recent software or hardware change >_>
+<_Sophia_> it said to put in the install disk and click on the 'repair computer' option
+<_Sophia_> when i put in the install disk, it has no such option, and wants me to install windows -_-
+<Daskreech> Where did you get the install Disk?
+<_Sophia_> the windows one?
+<Daskreech> yes
+<_Sophia_> i got it from the place i bought my prebuilt machine from, 2 years ago and 2000 miles away :p
+<_Sophia_> also, how do i get flash and stuff like that installed? it was implied earlier that all were under 1 cmd, but it didn't work when i attempted it
+<_Sophia_> >.>
+<_Sophia_> dying without music =)
+<BluesKaj> _Sophia_, sudo apt-get install kubuntu-restricted-extras, in the konsole
+<_Sophia_> is what i tried before
+<_Sophia_> i'll copy+paste this time >_>!
+<_Sophia_> sudo password for Sophia:
+<_Sophia_> wtf lol
+<_Sophia_> oh the pw when i installed
+<_Sophia_> can i make it so i don't have to input that to install stuff?
+<_Sophia_> i'm the only user of this machine
+<Daskreech> _Sophia_: yes
+<BluesKaj> _Sophia_, yes but for secuity's sake it's part of the linux system , it can be altered later , but it's a bit complicated
+<_Sophia_> okay
+<_Sophia_> but uh
+<_Sophia_> how do i get past this MSFT EULA? o.o
+<Daskreech> _Sophia_: Umm
+<Daskreech> Where is this?
+<_Sophia_> in konsole
+<_Sophia_> i'm installing that package
+<DarthFrog> _Sophia_:  Did you clone an image of your Windows system yesterday, with Clonzilla as I told you to do, *before* resizing the Windows partition.  If so, simply restore that image via Clonezilla and you'll have Windows back.
+<Daskreech> oh
+<Daskreech> umm
+<_Sophia_> DarthFrog, totally didn't do that o_O
+<genii-around> tab to switch fields, enter to select
+<BluesKaj> _Sophia_, sudo update-grub ,just to make sure , you may need to use a partition manager like Gparted to make the windows partition "active" ,. That happened to me once after using the live cd to partiotion my diskspace
+<DarthFrog> _Sophia_: Too bad, it'd cover your ass right now.
+<_Sophia_> genii-around, ty :p didn't think of tab
+<_Sophia_> BluesKaj, okay, will do
+<DarthFrog> _Sophia_:  My suggestion is to simply bite the bullet and back up the data in the Windows partition (you can do that from Kubuntu), then re-install Windows.
+<_Sophia_> will my data still be available? lol
+<DarthFrog> _Sophia_: If you've made a copy of it in Kubuntu, yes, you can restore it.
+<_Sophia_> is this a 'data seperate from OS' thing?
+<DarthFrog> _Sophia_: It should be. :-)
+<_Sophia_> i don't care about the OS other than for testing purposes, but i need data from it to Kubuntu
+<_Sophia_> o_O
+<_Sophia_> i guess i'm restarting OS now, so flash will work ^_^
+<Daskreech> _Sophia_: open dolphin
+<_Sophia_> uh fine ;o
+<Daskreech> There should be a A hard drive on the left under Trash
+<Daskreech> click that
+<_Sophia_> two
+<_Sophia_> kubuntu and 351  GiB o_O
+<Daskreech> ok click the 350 GB one
+<_Sophia_> okay
+<_Sophia_> i see data
+<_Sophia_> o_O
+<_Sophia_> is this all the data from before install?
+<Daskreech> _Sophia_: yes
+<Daskreech> that's Windows
+<Daskreech> Click on Users
+<_Sophia_> if so i shouldn't need to worry about Windows, right?
+<Daskreech> then your user name
+<FloodBotK2> Daskreech: Please don't flood; use http://paste.ubuntu.com to paste; don't use Enter as punctuation.
+<Daskreech> _Sophia_: Right :)
+<_Sophia_> stfu floodbot >_>!
+<_Sophia_> lolz
+<_Sophia_> okay, in Users o_O
+<_Sophia_> also coming down from high btw =/
+<_Sophia_> i assume you just wanted me to click on user
+<Alonea> _Sophia_: I am a    bit behind here so you are looking for files on your windows box?
+<_Sophia_> O_O?
+<_Sophia_> i need to transfer stuff from windows to kubuntu
+<_Sophia_> pictures, pdf files, and i need to figure out how to transfer like bookmarks and cookies
+<Alonea> _Sophia_: ok, so you are looking at your windows drive yes?
+<_Sophia_> o_O
+<_Sophia_> i suppose, since i see data :p
+<Alonea> _Sophia_: then copy/paste away
+<_Sophia_> oh i see
+<_Sophia_> uh
+<_Sophia_> hum
+<_Sophia_> i need to install some good stuff today though, like skype + vlc + quakelive plugin + firefox and chrome
+<_Sophia_> going to restart so flash works
+<_Sophia_> brb
+<_Sophia_> =)
+<Alonea> _Sophia_: package manager is generally your friend
+<_Sophia_> i noticed ;3
+<_Sophia_> is pretty straightfoward =D
+<_Sophia_> k brb ;p
+<Alonea> though I personally prefer to install some things by the actual vendor as that is more up to date
+<BluesKaj> Alonea, give the girl a break , she's new...let her get settled in first
+<Alonea> BluesKaj: well, thats more a personal thing. I generally tell people to use the package manager, though I love how angry people get in here sometimes when I don't
+<Alonea> BluesKaj: The slackware people rubbed off on me
+<Daskreech> umm
+<Daskreech> ok
+<Daskreech> did anyone tell her that she just needs to restart the browser?
+<BluesKaj> it's ok ,but when we know the person is a newuser , compilinhg isn't exactly an easy thing for them
+<Alonea> Daskreech: probably not...
+<Daskreech> Oh wait she's on IRC through the browser anyway
+<Daskreech> never mind :)
+<Alonea> BluesKaj: ^_^. yeah, though a lot of people are good at providing binaries for us lazy people
+<Daskreech> shane4ubuntu: Got that basename done?
+<BluesKaj> Alonea, I think she wants to get her windows access problem solved first
+<Daskreech> Yeah that's normally the fear
+<Alonea> BluesKaj: so, did she break her windows system? or just the boot?
+<Daskreech> after a while if Windows breaks  you might look at fixing it next month
+<Daskreech> Alonea: just boot
+<BluesKaj> the windows boot
+<Alonea> BluesKaj: though it sounds like her files are still there. ok. fixing boot isn't usually too bad
+<Daskreech> _Sophia_: install konversation
+<Alonea> Daskreech: or pidgin!
+<_Sophia_> lol
+<_Sophia_> i'll install an IRC client today
+<BluesKaj> anyway , bbl got some stuff to do before dinner ...good luck _Sophia_  :)
+<_Sophia_> but as this works through computer, it's not as high a priority  as the other stuff ;o
+<_Sophia_> thanks BluesKaj ;3
+<_Sophia_> *works through internet
+<Daskreech> What works through the computer?
+<_Sophia_> wow LOL
+<Daskreech> Oh
+<_Sophia_> IRC client
+<Daskreech> I was confused :)
+<Daskreech> ok
+<_Sophia_> using official one
+<_Sophia_> yeah, my bad, sorry
+<_Sophia_> and now i'm using chrome so x.x
+<Daskreech> booo chrome boooo
+<Daskreech> :)
+<Daskreech> ok so what now?
+<_Sophia_> putting off installing firefox because there may be some easier way to transfer bookmarks if i do it during install
+<_Sophia_> now i need to see if flash works (Youtube) = music
+<Alonea> _Sophia_: I don't know if this is still true or will even matter based on your ram, but on slower systems I have found that chrome runs much faster than FF
+<Daskreech> Though it uses more RAM
+<_Sophia_> i use chrome for quake live, because it doesn't mess up as much
+<_Sophia_> but firefox for everything else
+<Daskreech> feels way faster though
+<Daskreech> Ok :)
+<_Sophia_> i like add-ons
+<_Sophia_> my firefox is like a tank or something :p
+<Alonea> Daskreech: yeah, when I did FF on this netbook it was a slideshow. chrome ran smooth
+<Daskreech> Yep
+<_Sophia_> okay flash seems to be installed, as youtube streaming works ;3
+<Daskreech> of course it is :)
+<_Sophia_> okay, so now, how do i transfer bookmarks? ;o
+<_Sophia_> to firefox ofc
+<Daskreech> Copy them from windows
+<Daskreech> Bookmarks.html
+<_Sophia_> uh
+<_Sophia_> not sure the location of that ;o
+<Daskreech> Me either :)
+<Alonea> _Sophia_: ummm...its under applicationdata someplace
+<Alonea> _Sophia_: and Application Data is a hidden folder under your User folder
+<_Sophia_> appdata
+<_Sophia_> isn't hidden
+<_Sophia_> is the first folder
+<Daskreech> it's most likely something like Users/<username>/Application Data/Mozilla/Firefox/Profiles
+<_Sophia_> i've gone in there to tweak some stuff before o_O
+<_Sophia_> will look
+<_Sophia_> uh wait
+<_Sophia_> there's an AppData, and an Application Data (and Application Data is written in italics_
+<Daskreech> AppData probably
+<_Sophia_> nope
+<_Sophia_> other one
+<_Sophia_> =)
+<Daskreech> Appdata/Local/
+<_Sophia_> i found bookmarks.html
+<Daskreech> maybe?
+<Daskreech> ok
+<Daskreech> cool
+<_Sophia_> no i found it
+<FloodBotK2> Daskreech: Please don't flood; use http://paste.ubuntu.com to paste; don't use Enter as punctuation.
+<Daskreech> that's all you need
+<_Sophia_> what to do with it?
+<_Sophia_> floodbot is like an angry schoolmarm ;d
+<Daskreech> install Firefox then tell it you have a bookmarks.html
+<_Sophia_> it will ask during install? i don't recall as much
+<_Sophia_> or is this something to do after install
+<_Sophia_> regardless i'll start install ;p
+<Daskreech> after install
+<_Sophia_> well we'll see then ;o
+<_Sophia_> okay so i have the tar.bz2 file, but no idea how to install it -_-
+<Daskreech> lol
+<Daskreech> _Sophia_: sudo apt-get install firefox
+<_Sophia_> okay will try that
+<_Sophia_> is probably easier >_>
+<_Sophia_> yay firefox ;x
+<_Sophia_> now, how to do the bookmark thing? ;o
+<genii-around> ctrl-D
+<_Sophia_> that's how to make a bookmark
+<_Sophia_> already knew that
+<_Sophia_> what i'm trying to do is copy the bookmarks.html into firefox so i have my bookmarks
+<genii-around> _Sophia_: Ahhhh. In Kubuntu is under /home/yourname/.mozilla/firefox    area.
+<genii-around> After that dir is a name system specific
+<genii-around> like 9ywq8wxy.default or so. Thats where to put the bookmarks.html
+<_Sophia_> nvm i figured it out >.<
+<_Sophia_> wait maybe not -_-
+<_Sophia_> think i just imported the default bookmarks
+<_Sophia_> apparently i can't find my bookmarks >_>
+<Daskreech> _Sophia_: manage Bookmarks -> import bookmarks -> from file -> give it bookmarks.html
+<_Sophia_> i did
+<_Sophia_> and the bookmarks.html file was last updated last year
+<_Sophia_> so it's the default one =(
+<Daskreech> Ok
+<_Sophia_> installing skype lol
+<Daskreech> !skype
+<ubottu> To install Skype on Ubuntu, see https://help.ubuntu.com/community/Skype - To record on Skype, check: https://wiki.ubuntu.com/SkypeRecordingHowto - Please use open protocols instead if you can, see !Ekiga
+<_Sophia_> yay skype
+<_Sophia_> now, bookmarks ;o!
+<Daskreech> _Sophia_: The bookmarks woudln't import?
+<Daskreech> was tehre an error?
+<_Sophia_> well
+<_Sophia_> it's just the standard one
+<_Sophia_> i can't find *my* bookmarks
+<_Sophia_> also, headphones won't work
+<_Sophia_> ;o
+<shane4ubuntu> Daskreech: well, not really I just decided to go with it in a loop since I had a good example of that to follow, didn't have time to learn about the regex in a script
+<shane4ubuntu> for basenames that is
+<Daskreech> _Sophia_: where is the bookmarks.html can you open it in a browser?
+<Daskreech> shane4ubuntu: ok you have basename working though
+<shane4ubuntu> Daskreech: yep, through a loop, appreciate the info.
+<shane4ubuntu> Daskreech: some of the videos I have in my pictures collection are excessively large, and I'm cutting down their size with ffmpeg to make them mp4.
+<Daskreech> o-_^O
+<Daskreech> The videos in your picture collection??
+<Daskreech> :-D
+<Daskreech> Weddings I guess
+<shane4ubuntu> no, short videos of kids, and videos of church things, although some of them were excessive, 200MB+
+<shane4ubuntu> these digital cameras now days do video in a large fashion
+<shane4ubuntu> I was contented when the digital cameras were like 3megapixels, I thought that was good enough, for printing a 3x5 or 4x6 picture, which is what probably 99% of the pictures are.
+<Daskreech> shane4ubuntu: so drop your size in the settings
+<shane4ubuntu> Daskreech: well, I didn't realize those videos cam out so large
+<shane4ubuntu> I did set the picture size down so they aren't so large
+<shane4ubuntu> I think 1.5 - 2MB a pic, even those I shrink after about 6 months of not printing them.
+<_Sophia_> O_O?
+<Daskreech> _Sophia_: I see your O_O and raise you ^O^
+<_Sophia_> >.>
+<_Sophia_> i need bookmarks >_<!
+<Daskreech> Can you open the bookmarks.html in a browser?
+<seirios> hi i woild like an invitation please to the vault
+<Dekk-lappy> can one remove gnome desktop after kubuntu desktop is installed in ubuntu vanilla?
+<Dekk-lappy> just askin  :)
+<seirios> very dificult , go to ubuntu forums
+<shane4ubuntu> yes just make surew you have kdm setup
+<Dekk-lappy> oooh...
+<mashizzel> Does anyone know if the 64bit flash plugin is stable yet or should I just use 32bit?
+<james147> !purekde
+<ubottu> If you want to remove all !Gnome packages and have a default !Kubuntu system follow the instructions here « https://help.ubuntu.com/community/PureKDE »
+<seirios> can someone please invite me to the vault
+<_Sophia_> Daskreech, i found the last 5 days of bookmark backups, but they're in json format, maybe i can change them to html? :O
+<shane4ubuntu> mashizzel: I switched to google chrome, and now I don't worry about flash plugins. :)
+<Daskreech> _Sophia_: where did you find this?
+<Daskreech> Dekk-lappy: see what ubottu said
+<shane4ubuntu> _Sophia_: you should be able to open that with Firefox and then save it as an html
+<_Sophia_> User > Application Data > Mozilla > Firefox > Profiles > Default > bookmarkbackups
+<mashizzel> shane4ubuntu: nice.. thanks for the tip. Always thought it had to be Plugged IN so to say.. :D
+<Dekk-lappy> wow..
+<Dekk-lappy> looks easier to copy needed files to a flash drive.( work docs) and do a clean kubuntu install
+<shane4ubuntu> mashizzel: No prob, I have really found chrome to be fast, different than firefox, but fast.
+<_Sophia_> okay i opened it with FF
+<_Sophia_> it's a super long single line (144 kb)
+<shane4ubuntu> Dekk-lappy: if you do that, make a separate /home partition, to make future installs simple
+<shane4ubuntu> _Sophia_: OOOhh, I meant, somehow Firefox will import backup files like that, not open it directly with firefox.
+<_Sophia_> O_O
+<mashizzel> shane4ubuntu: thanks.. I'll give it a try. Question if I may?
+<shane4ubuntu> _Sophia_: I guess I wasn't real clear about that, but that is what I meant.
+<_Sophia_> =/
+<Daskreech> _Sophia_: What happened to the bookmarks.html that you had?
+<shane4ubuntu> mashizzel: fire away.
+<_Sophia_> it is the default, i have said
+<_Sophia_> it's the default that is installed when firefox is installed
+<_Sophia_> apparently
+<_Sophia_> because when i try to select it, none of the bookmarks change
+<mashizzel> One thing I like, is flash player working and when researching having new tab open to home page. Is that possible with Chrome?
+<Daskreech> _Sophia_: Huh? You have a file called bookmarks.html right?
+<shane4ubuntu> mashizzel: hmm, I'm not sure about that, that is a good question, my new tabs open blank, but I don't mind that.
+<_Sophia_> yes
+<_Sophia_> BUT
+<_Sophia_> it's only 6 kb
+<shane4ubuntu> mashizzel: I don't use flash a lot, but I have never noticed any problems with it with chrome
+<Daskreech> _Sophia_: soooo not hte right one then :)
+<_Sophia_> the bookmarkbackups are 140 or so kb
+<mashizzel> shane4ubuntu: what's the easiest way to install Chrome. This is a default install of Kubuntu 10.10 64bit? sudo apt-get crome ?
+<mashizzel> *chrome
+<Dekk-lappy> interesting
+<shane4ubuntu> mashizzel: no, that will get you chromium, and chromium is the testing bed for chrome, let me get that for you.
+<mashizzel> shane4ubuntu: k.. thanks. appreciate your help
+<Daskreech> _Sophia_: ahm but those are not the bookmarks.html ?
+<Daskreech> See if you can find one that's about that size
+<_Sophia_> they aren't in html i said ;o
+<_Sophia_> json format
+<mashizzel> _Sophia_:  what are you trying to do? Export from json to html?
+<_Sophia_> i guess what i need to do is convert from json to html, then import the html file from within firefox
+<shane4ubuntu> mashizzel: wow that was harder to find than I thought:  http://www.google.com/chrome   I thought there was a repo to add, but download the deb, and it will add their repo and you will be good.
+<_Sophia_> since i can't find the current bookmarks html -_-
+<mashizzel> _Sophia_:  http://fixunix.com/mozilla/547122-ff3-bookmark-converter-json-html.html
+<shane4ubuntu> _Sophia_: Menu -> Bookmarks -> Organize  there is a tab at the top, Import and Backup  That is what you need to do.
+<_Sophia_> thanks mashizzel, i'll check that out
+<_Sophia_> and shane4ubuntu, i already know that =)
+<shane4ubuntu> _Sophia_: Restore File and choose your json file
+<_Sophia_> oh?
+<_Sophia_> will try that too x.x
+<shane4ubuntu> _Sophia_:  Restore -> Choose File
+<_Sophia_> ah thank you!
+<_Sophia_> bookmarks :D
+<_Sophia_> that's like half of what i need to do >_>
+<_Sophia_> now it's basically: get headphones to work, install Ruby and gedit, mess with visual stuff, drag over pics and pdfs
+<_Sophia_> and i'll be good to go
+<mashizzel> shane4ubuntu:  sweet. Thanks.. I'll fire this up and try it out. Can't hurt. Anything is better than clunky PC-BSD
+<shane4ubuntu> mashizzel: no prob
+<_Sophia_> also need to import cookies ;o!
+<shane4ubuntu> _Sophia_: sudo apt-get install gedit     or just use kate if you are in kde, or check out bluefish (my personal favorite) although kate is faster than bluefish on startup
+<shane4ubuntu> import cookies????
+<shane4ubuntu> that is a first for me.
+<_Sophia_> o_O supposedly it's possible?
+<_Sophia_> maybe only within one OS
+<_Sophia_> but the ff site said that it is possible
+<Daskreech> _Sophia_: can Firefox import json ?
+<_Sophia_> uh
+<_Sophia_> it wasn't an option like 'import html' was
+<_Sophia_> but i did just get my bookmarks by restoring a json file
+<shane4ubuntu> _Sophia_: I don't know much about ruby, but sudo apt-get install ruby will get something
+<Daskreech> _Sophia_: great :)
+<_Sophia_> apparently i have to go through some other process =)
+<_Sophia_> (for ruby, that is)
+<_Sophia_> so yeah, cookies ;o
+<Daskreech> _Sophia_: copy the folder
+<_Sophia_> would need to find it first =)
+<james147> _Sophia_: any reason you need the cookies? most will be recreated when you viste the site again
+<_Sophia_> eh i suppose
+<_Sophia_> was mainly to make password stuff easier
+<_Sophia_> i have too many D:
+<james147> they dont store passwords, use a real password manager for that :) (like kwallet)
+<james147> ^^ or shouldnt
+<shane4ubuntu> _Sophia_: you should look for the extension that syncs your firefox stuff, that would be ideal for what you want to do.
+<_Sophia_> uh? o_O
+<shane4ubuntu> it is a feature that Google Chrome has, and afterwards, I found out that FF also has an extension to do the same.
+<james147> _Sophia_: there are firefox extensions that can sync firefoxs settings (well, some things) like bookmarks
+<shane4ubuntu> I think they may do that with passwords too, I'm not sure about the security of it, you are on your own there, but thought I would mention it.
+<_Sophia_> o_O
+<Daskreech> _Sophia_: cookies don't keep passwords
+<_Sophia_> i think it will be okay
+<Daskreech> or they are really broken
+<_Sophia_> and all right o_O
+<james147> shane4ubuntu: there are firefox extensions to store passwords on external sites ^^ and thus sync
+<_Sophia_> i just assumed that when a browser asks if you wish to save a pw, that it was stored in a cookie
+<Daskreech> Firefox had a sync before Chrome did
+<Daskreech> _Sophia_: No that's the browser
+<james147> Daskreech: did it? does it? it has extensions but does the core sync?
+<shane4ubuntu> james147: right that is what I said.
+<Daskreech> It stores it somewhere secure. A cookie is just a text file on your hardrive anything can read it. You don't want passwords there
+<Daskreech> james147: yes
+<shane4ubuntu> Daskreech: yeah that is very possible, I just never thought of it, or ran into it until I started using chrome
+<Dekk-lappy> ok, enabled kdm..so now if i have the guts, i can do sudo apt-get remove ubuntu desktop?
+<Daskreech> !purekde | Dekk-lappy yes you can try this
+<ubottu> Dekk-lappy yes you can try this: If you want to remove all !Gnome packages and have a default !Kubuntu system follow the instructions here « https://help.ubuntu.com/community/PureKDE »
+<shane4ubuntu> Dekk-lappy: ok, if you got kdm enabled, you should be good to go, if you get dumped to a non-gui login, login and type startx that will get you into your desktop
+<shane4ubuntu> ok, I'm off for diner
+<shane4ubuntu> dinner
+<shane4ubuntu> super
+<shane4ubuntu> supper
+<FloodBotK2> shane4ubuntu: Please don't flood; use http://paste.ubuntu.com to paste; don't use Enter as punctuation.
+<shane4ubuntu> ahhgh, be back later.
+<xjjk> hello, is anyone using KDE 4.6.1 w/ the PPA on maverick and getting Nepomuk crashes?
+<Daskreech> _Sophia_: How are you doing?
+<_Sophia_> mostly listening to music and customizing firefox lol
+<Daskreech> _Sophia_: What else would you like?
+<_Sophia_> um
+<Daskreech> Ruby on rails obviously
+<_Sophia_> need to install the quakelive plug-in, install ruby (and rails), import some pdfs and pics, get my headset to work
+<_Sophia_> is about it =)
+<Daskreech> "import some PDFs" ?
+<Daskreech> Well go to Quakelive and you should be ok there
+<Daskreech> !info rails
+<ubottu> rails (source: rails): MVC ruby based framework geared for web application development. In component universe, is optional. Version 2.3.5-1.1 (maverick), package size 11 kB, installed size 60 kB
+<Daskreech> _Sophia_: sudo apt-get install rails and you have ruby and rails installed setup and ready to go
+<_Sophia_> apparently that causes issues with gems
+<_Sophia_> i'll look up the ruby and rails stuff from blogs o_O
+<Daskreech> No idea what you mean by import pdfs but if you mean copy from Windows you already know how to do that
+<Daskreech> Headset should be in system settings
+<_Sophia_> figured out the quakeliveplugin issue
+<_Sophia_> apparently linux doesn't support something necessary for it to install in chrome
+<_Sophia_> chrome isn't an officially supported browser for quake live, but it usually works anyway
+<_Sophia_> with linux firefox is necessary
+<Daskreech> What was the problem?
+<Daskreech> You said you figured it out
+<_Sophia_> lol yes
+<_Sophia_> i got it to install
+<_Sophia_> firefox installed the file for me
+<_Sophia_> with chrome it just saved it to documents and i couldn't do anything with it
+<_Sophia_> uhm, headphones...
+<james147> _Sophia_: run "alsamixer" in a terminal and check that the capture channels arnt muted

@@ -1,0 +1,2768 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+  "sha256": "1b298906182db57b9c9435beff1882442e992786ac926cf70d3163461b7ec3f1",
+  "bytes": 43343,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "91744811662d81e3",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "language": "en",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver Universal Dependencies, native/priors/pos-eng.json, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "verbForms": null,
+   "createLemmatizer": null,
+   "sameStem": "omitted — no declension prior for language \"en\" (normalized \"eng\") in this environment",
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "5dc67f65c76c94cde86dfaf7b262ec5a7fcdb877",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "04238cac474b8537d6b1873a7dec013d449d1134",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "7d92319d91635b0fec0bbd8220f163c1e39147d4",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 43343,
+  "bodyOffset": 0,
+  "bodyChars": 43343,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 8000,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6279,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 108,
+  "surfaces": 43,
+  "referentEvents": 6,
+  "distinctReferents": 4,
+  "examined": true,
+  "edgesFound": 59,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 17,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 19
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 59,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 59,
+  "excerptOk": 59,
+  "rawChecked": 59,
+  "rawOk": 59,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 59,
+  "heard": 59,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "et lucques|ne|sont plus que des apanages",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "et Lucques ne sont plus que des apanages",
+    "subject": "et Lucques",
+    "verb": "ne",
+    "object": "sont plus que des apanages",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#46-133",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "si vous|ne|me dites pas",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "si vous ne me dites pas",
+    "subject": "si vous",
+    "verb": "ne",
+    "object": "me dites pas",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#134-439",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Non, je vous préviens, que si vous ne me dites pas, que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j’y crois) — je ne vous connais plus, vous n’êtes plus mon ami, vous n’êtes plus мой верный раб, comme vous dites."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "je|ne|vous connais plus",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "je ne vous connais plus",
+    "subject": "je",
+    "verb": "ne",
+    "object": "vous connais plus",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#134-439",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Non, je vous préviens, que si vous ne me dites pas, que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j’y crois) — je ne vous connais plus, vous n’êtes plus mon ami, vous n’êtes plus мой верный раб, comme vous dites."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "садитесь|и|рассказывайте",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "садитесь и рассказывайте",
+    "subject": "садитесь",
+    "verb": "и",
+    "object": "рассказывайте",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#472-528",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Je vois que je vous fais peur, садитесь и рассказывайте."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "фрейлина|и|приближенная императрицы марии феодоровны",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "фрейлина и приближенная императрицы Марии Феодоровны",
+    "subject": "фрейлина",
+    "verb": "и",
+    "object": "приближенная императрицы Марии Феодоровны",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#530-721",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "встречая важного|и|чиновного князя василия",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "встречая важного и чиновного князя Василия",
+    "subject": "встречая важного",
+    "verb": "и",
+    "object": "чиновного князя Василия",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#530-721",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "анна павловна|кашляла|несколько дней",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Анна Павловна кашляла несколько дней",
+    "subject": "Анна Павловна",
+    "verb": "кашляла",
+    "object": "несколько дней",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#722-856",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Анна Павловна кашляла несколько дней, у нее был грипп, как она говорила (грипп был тогда новое слово, употреблявшееся только редкими)."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "malade|ne|vous effraye pas trop",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "malade ne vous effraye pas trop",
+    "subject": "malade",
+    "verb": "ne",
+    "object": "vous effraye pas trop",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#986-1166",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "le comte (или mon prince), et si la perspective de passer la soirée chez une pauvre [4]malade ne vous effraye pas trop, je serai charmée de vous voir chez moi entre 7 et 10 heures."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "нисколько|не|смутясь такою встречей",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "нисколько не смутясь такою встречей",
+    "subject": "нисколько",
+    "verb": "не",
+    "object": "смутясь такою встречей",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1220-1379",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— отвечал, нисколько не смутясь такою встречей, вошедший князь, в придворном, шитом мундире, в чулках, башмаках, и звездах, с светлым выражением плоского лица."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "он|говорил|на том изысканном французском языке",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Он говорил на том изысканном французском языке",
+    "subject": "Он",
+    "verb": "говорил",
+    "object": "на том изысканном французском языке",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "на котором|не|только говорили",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "на котором не только говорили",
+    "subject": "на котором",
+    "verb": "не",
+    "object": "только говорили",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "но|и|думали наши деды",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "но и думали наши деды",
+    "subject": "но",
+    "verb": "и",
+    "object": "думали наши деды",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "в свете|и|при дворе значительному человеку",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "в свете и при дворе значительному человеку",
+    "subject": "в свете",
+    "verb": "и",
+    "object": "при дворе значительному человеку",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "свою надушенную|и|сияющую лысину",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "свою надушенную и сияющую лысину",
+    "subject": "свою надушенную",
+    "verb": "и",
+    "object": "сияющую лысину",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1613-1734",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Он подошел к Анне Павловне, поцеловал ее руку, подставив ей свою надушенную и сияющую лысину, и покойно уселся на диване."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "изменяя голоса|и|тоном",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "изменяя голоса и тоном",
+    "subject": "изменяя голоса",
+    "verb": "и",
+    "object": "тоном",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1792-1923",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Успокойте меня, — сказал он, не изменяя голоса и тоном, в котором из-за приличия и участия просвечивало равнодушие и даже насмешка."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "за приличия|и|участия просвечивало равнодушие и даже насмешка",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "за приличия и участия просвечивало равнодушие и даже насмешка",
+    "subject": "за приличия",
+    "verb": "и",
+    "object": "участия просвечивало равнодушие и даже насмешка",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1792-1923",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Успокойте меня, — сказал он, не изменяя голоса и тоном, в котором из-за приличия и участия просвечивало равнодушие и даже насмешка."
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "за мной|и|повезет меня",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "за мной и повезет меня",
+    "subject": "за мной",
+    "verb": "и",
+    "object": "повезет меня",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2196-2233",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Дочь заедет за мной и повезет меня."
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "которым он|и|не хотел",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "которым он и не хотел",
+    "subject": "которым он",
+    "verb": "и",
+    "object": "не хотел",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2375-2535",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Ежели бы знали, что вы этого хотите, праздник бы отменили, — сказал князь, по привычке, как заведенные часы, говоря вещи, которым он и не хотел, чтобы верили."
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "князь василий|говорил|всегда лениво",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Князь Василий говорил всегда лениво",
+    "subject": "Князь Василий",
+    "verb": "говорил",
+    "object": "всегда лениво",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2843-2916",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Князь Василий говорил всегда лениво, как актер говорит роль старой пиесы."
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "преисполнена оживления|и|порывов",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "преисполнена оживления и порывов",
+    "subject": "преисполнена оживления",
+    "verb": "и",
+    "object": "порывов",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2917-3014",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Анна Павловна Шерер, напротив, несмотря на свои сорок лет, была преисполнена оживления и порывов."
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "даже того|не|хотелось",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "даже того не хотелось",
+    "subject": "даже того",
+    "verb": "не",
+    "object": "хотелось",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3016-3187",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Быть энтузиасткой сделалось ее общественным положением, и иногда, когда ей даже того не хотелось, она, чтобы не обмануть ожиданий людей, знавших ее, делалась энтузиасткой."
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "чтобы|не|обмануть ожиданий людей",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "чтобы не обмануть ожиданий людей",
+    "subject": "чтобы",
+    "verb": "не",
+    "object": "обмануть ожиданий людей",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3016-3187",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Быть энтузиасткой сделалось ее общественным положением, и иногда, когда ей даже того не хотелось, она, чтобы не обмануть ожиданий людей, знавших ее, делалась энтузиасткой."
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "хотя и|не|шла к ее отжившим чертам",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "хотя и не шла к ее отжившим чертам",
+    "subject": "хотя и",
+    "verb": "не",
+    "object": "шла к ее отжившим чертам",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3188-3435",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Сдержанная улыбка, игравшая постоянно на лице Анны Павловны, хотя и не шла к ее отжившим чертам, выражала, как у избалованных детей, постоянное сознание своего милого недостатка, от которого она не хочет, не может и не находит нужным исправляться."
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "которого она|не|хочет",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "которого она не хочет",
+    "subject": "которого она",
+    "verb": "не",
+    "object": "хочет",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3188-3435",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Сдержанная улыбка, игравшая постоянно на лице Анны Павловны, хотя и не шла к ее отжившим чертам, выражала, как у избалованных детей, постоянное сознание своего милого недостатка, от которого она не хочет, не может и не находит нужным исправляться."
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "не может|и|не находит нужным исправляться",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "не может и не находит нужным исправляться",
+    "subject": "не может",
+    "verb": "и",
+    "object": "не находит нужным исправляться",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3188-3435",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Сдержанная улыбка, игравшая постоянно на лице Анны Павловны, хотя и не шла к ее отжившим чертам, выражала, как у избалованных детей, постоянное сознание своего милого недостатка, от которого она не хочет, не может и не находит нужным исправляться."
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "я ничего|не|понимаю",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Я ничего не понимаю",
+    "subject": "Я ничего",
+    "verb": "не",
+    "object": "понимаю",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3549-3628",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Я ничего не понимаю, может быть, но Австрия никогда не хотела и не хочет войны."
+     }
+    ],
+    "seq": 25,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "но австрия|никогда|не хотела и не хочет войны",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "но Австрия никогда не хотела и не хочет войны",
+    "subject": "но Австрия",
+    "verb": "никогда",
+    "object": "не хотела и не хочет войны",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3549-3628",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Я ничего не понимаю, может быть, но Австрия никогда не хотела и не хочет войны."
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "высокое призвание|и|будет верен ему",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "высокое призвание и будет верен ему",
+    "subject": "высокое призвание",
+    "verb": "и",
+    "object": "будет верен ему",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3693-3756",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Наш благодетель знает свое высокое призвание и будет верен ему."
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "нашему доброму|и|чудному государю предстоит величайшая роль в мире",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Нашему доброму и чудному государю предстоит величайшая роль в мире",
+    "subject": "Нашему доброму",
+    "verb": "и",
+    "object": "чудному государю предстоит величайшая роль в мире",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+     }
+    ],
+    "seq": 28,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "так добродетелен|и|хорош",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "так добродетелен и хорош",
+    "subject": "так добродетелен",
+    "verb": "и",
+    "object": "хорош",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+     }
+    ],
+    "seq": 29,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "что бог|не|оставит его",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "что Бог не оставит его",
+    "subject": "что Бог",
+    "verb": "не",
+    "object": "оставит его",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+     }
+    ],
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "этого убийцы|и|злодея",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "этого убийцы и злодея",
+    "subject": "этого убийцы",
+    "verb": "и",
+    "object": "злодея",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "коммерческим духом|не|поймет и не может понять всю высоту души императора александра",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "коммерческим духом не поймет и не может понять всю высоту души императора Александра",
+    "subject": "коммерческим духом",
+    "verb": "не",
+    "object": "поймет и не может понять всю высоту души императора Александра",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4102-4202",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Англия с своим коммерческим духом не поймет и не может понять всю высоту души императора Александра."
+     }
+    ],
+    "seq": 32,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "они|не|поняли",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Они не поняли",
+    "subject": "Они",
+    "verb": "не",
+    "object": "поняли",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4328-4457",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Они не поняли, они не могут понять самоотвержения нашего императора, который ничего не хочет для себя и всё хочет для блага мира."
+     }
+    ],
+    "seq": 33,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "они|не|могут понять самоотвержения нашего императора",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "они не могут понять самоотвержения нашего императора",
+    "subject": "они",
+    "verb": "не",
+    "object": "могут понять самоотвержения нашего императора",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4328-4457",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Они не поняли, они не могут понять самоотвержения нашего императора, который ничего не хочет для себя и всё хочет для блага мира."
+     }
+    ],
+    "seq": 34,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "который ничего|не|хочет для себя и всё хочет для блага мира",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "который ничего не хочет для себя и всё хочет для блага мира",
+    "subject": "который ничего",
+    "verb": "не",
+    "object": "хочет для себя и всё хочет для блага мира",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4328-4457",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Они не поняли, они не могут понять самоотвержения нашего императора, который ничего не хочет для себя и всё хочет для блага мира."
+     }
+    ],
+    "seq": 35,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "и того|не|будет!",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "и того не будет!",
+    "subject": "и того",
+    "verb": "не",
+    "object": "будет!",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4486-4518",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "И что́ обещали, и того не будет!"
+     }
+    ],
+    "seq": 36,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "что бонапарте|непобедим|и что вся европа ничего не может против него",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "что Бонапарте непобедим и что вся Европа ничего не может против него",
+    "subject": "что Бонапарте",
+    "verb": "непобедим",
+    "object": "и что вся Европа ничего не может против него",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4519-4612",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Пруссия уже объявила, что Бонапарте непобедим и что вся Европа ничего не может против него..."
+     }
+    ],
+    "seq": 37,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "и я|не|верю ни в одном слове ни гарденбергу",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "И я не верю ни в одном слове ни Гарденбергу",
+    "subject": "И я",
+    "verb": "не",
+    "object": "верю ни в одном слове ни Гарденбергу",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4613-4670",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "И я не верю ни в одном слове ни Гарденбергу, ни Гаугвицу."
+     }
+    ],
+    "seq": 38,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "одного бога|и|в высокую судьбу нашего милого императора",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "одного Бога и в высокую судьбу нашего милого императора",
+    "subject": "одного Бога",
+    "verb": "и",
+    "object": "в высокую судьбу нашего милого императора",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4733-4798",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Я верю в одного Бога и в высокую судьбу нашего милого императора."
+     }
+    ],
+    "seq": 39,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "то|и|особенно-небрежно",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "то и особенно-небрежно",
+    "subject": "то",
+    "verb": "и",
+    "object": "особенно-небрежно",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5452-5694",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Скажите, — прибавил он, как будто только что вспомнив что́-то и особенно-небрежно, тогда как то, о чем он спрашивал, было главною целью его посещения, — правда, что l’impératrice-mère желает назначения барона Функе первым секретарем в Вену?"
+     }
+    ],
+    "seq": 40,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "барона функе|первым|секретарем в вену?",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "барона Функе первым секретарем в Вену?",
+    "subject": "барона Функе",
+    "verb": "первым",
+    "object": "секретарем в Вену?",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5452-5694",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Скажите, — прибавил он, как будто только что вспомнив что́-то и особенно-небрежно, тогда как то, о чем он спрашивал, было главною целью его посещения, — правда, что l’impératrice-mère желает назначения барона Функе первым секретарем в Вену?"
+     }
+    ],
+    "seq": 41,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "князь василий|желал|определить сына на это место",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Князь Василий желал определить сына на это место",
+    "subject": "Князь Василий",
+    "verb": "желал",
+    "object": "определить сына на это место",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5746-5868",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Князь Василий желал определить сына на это место, которое через императрицу Марию Феодоровну старались доставить барону."
+     }
+    ],
+    "seq": 42,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "марию феодоровну|старались|доставить барону",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Марию Феодоровну старались доставить барону",
+    "subject": "Марию Феодоровну",
+    "verb": "старались",
+    "object": "доставить барону",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5746-5868",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Князь Василий желал определить сына на это место, которое через императрицу Марию Феодоровну старались доставить барону."
+     }
+    ],
+    "seq": 43,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "анна павловна|почти|закрыла глаза в знак того",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Анна Павловна почти закрыла глаза в знак того",
+    "subject": "Анна Павловна",
+    "verb": "почти",
+    "object": "закрыла глаза в знак того",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5870-6004",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Анна Павловна почти закрыла глаза в знак того, что ни она, ни кто другой не могут судить про то, что́ угодно или нравится императрице."
+     }
+    ],
+    "seq": 44,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "кто другой|не|могут судить про то",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "кто другой не могут судить про то",
+    "subject": "кто другой",
+    "verb": "не",
+    "object": "могут судить про то",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5870-6004",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Анна Павловна почти закрыла глаза в знак того, что ни она, ни кто другой не могут судить про то, что́ угодно или нравится императрице."
+     }
+    ],
+    "seq": 45,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "анна павловна|назвала|императрицу",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Анна Павловна назвала императрицу",
+    "subject": "Анна Павловна",
+    "verb": "назвала",
+    "object": "императрицу",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6131-6380",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "В то время, как Анна Павловна назвала императрицу, лицо ее вдруг представило глубокое и искреннее выражение преданности и уважения, соединенное с грустью, что́ с ней бывало каждый раз, когда она в разговоре упоминала о своей высокой покровительнице."
+     }
+    ],
+    "seq": 46,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "представило глубокое|и|искреннее выражение преданности и уважения",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "представило глубокое и искреннее выражение преданности и уважения",
+    "subject": "представило глубокое",
+    "verb": "и",
+    "object": "искреннее выражение преданности и уважения",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6131-6380",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "В то время, как Анна Павловна назвала императрицу, лицо ее вдруг представило глубокое и искреннее выражение преданности и уважения, соединенное с грустью, что́ с ней бывало каждый раз, когда она в разговоре упоминала о своей высокой покровительнице."
+     }
+    ],
+    "seq": 47,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "барону функе|beaucoup|d’estime",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "барону Функе beaucoup d’estime",
+    "subject": "барону Функе",
+    "verb": "beaucoup",
+    "object": "d’estime",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6381-6501",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Она сказала, что ее вели[7]чество изволила оказать барону Функе beaucoup d’estime, и опять взгляд ее подернулся грустью."
+     }
+    ],
+    "seq": 48,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "ей придворною|и|женскою ловкостью и быстротою такта",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "ей придворною и женскою ловкостью и быстротою такта",
+    "subject": "ей придворною",
+    "verb": "и",
+    "object": "женскою ловкостью и быстротою такта",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6528-6740",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Анна Павловна, с свойственною ей придворною и женскою ловкостью и быстротою такта, захотела и щелконуть князя за то, что он дерзнул так отозваться о лице, рекомендованном императрице, и в то же время утешить его."
+     }
+    ],
+    "seq": 49,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "захотела|и|щелконуть князя за то",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "захотела и щелконуть князя за то",
+    "subject": "захотела",
+    "verb": "и",
+    "object": "щелконуть князя за то",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6528-6740",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Анна Павловна, с свойственною ей придворною и женскою ловкостью и быстротою такта, захотела и щелконуть князя за то, что он дерзнул так отозваться о лице, рекомендованном императрице, и в то же время утешить его."
+     }
+    ],
+    "seq": 50,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "знак уважения|и|признательности",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "знак уважения и признательности",
+    "subject": "знак уважения",
+    "verb": "и",
+    "object": "признательности",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6915-6966",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Князь наклонился в знак уважения и признательности."
+     }
+    ],
+    "seq": 51,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "анна павловна|после|минутного молчания",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Анна Павловна после минутного молчания",
+    "subject": "Анна Павловна",
+    "verb": "после",
+    "object": "минутного молчания",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6968-7257",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Я часто думаю, — продолжала Анна Павловна после минутного молчания, придвигаясь к князю и ласково улыбаясь ему, как будто выказывая этим, что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю, как иногда несправедливо распределяется счастие жизни."
+     }
+    ],
+    "seq": 52,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "к князю|и|ласково улыбаясь ему",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "к князю и ласково улыбаясь ему",
+    "subject": "к князю",
+    "verb": "и",
+    "object": "ласково улыбаясь ему",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6968-7257",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Я часто думаю, — продолжала Анна Павловна после минутного молчания, придвигаясь к князю и ласково улыбаясь ему, как будто выказывая этим, что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю, как иногда несправедливо распределяется счастие жизни."
+     }
+    ],
+    "seq": 53,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "что политические|и|светские разговоры кончены и теперь начинается задушевный: — я часто думаю",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю",
+    "subject": "что политические",
+    "verb": "и",
+    "object": "светские разговоры кончены и теперь начинается задушевный: — я часто думаю",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6968-7257",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "— Я часто думаю, — продолжала Анна Павловна после минутного молчания, придвигаясь к князю и ласково улыбаясь ему, как будто выказывая этим, что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю, как иногда несправедливо распределяется счастие жизни."
+     }
+    ],
+    "seq": 54,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "я его|не|люблю",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "я его не люблю",
+    "subject": "я его",
+    "verb": "не",
+    "object": "люблю",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7258-7433",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "За что́ вам судьба дала таких двух славных детей (исключая Анатоля, вашего меньшого, я его не люблю, — вставила она безапелляционно, приподняв брови) — таких прелестных детей?"
+     }
+    ],
+    "seq": 55,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "цените их|и|потому их не сто́ите",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "цените их и потому их не сто́ите",
+    "subject": "цените их",
+    "verb": "и",
+    "object": "потому их не сто́ите",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7434-7491",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "А вы, право, менее всех цените их и потому их не сто́ите."
+     }
+    ],
+    "seq": 56,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "ее величества|и|жалеют вас",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "ее величества и жалеют вас",
+    "subject": "ее величества",
+    "verb": "и",
+    "object": "жалеют вас",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7737-7845",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Между нами будь сказано (лицо ее приняло грустное выражение), о нем говорили у ее величества и жалеют вас..."
+     }
+    ],
+    "seq": 57,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "князь|не|отвечал",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Князь не отвечал",
+    "subject": "Князь",
+    "verb": "не",
+    "object": "отвечал",
+    "witnesses": [
+     "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+    ],
+    "spans": [
+     {
+      "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7847-7919",
+      "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+      "text": "Князь не отвечал, но она молча, значительно глядя на него, ждала ответа."
+     }
+    ],
+    "seq": 58,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 59,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "et lucques|ne|sont plus que des apanages",
+   "subject": "et Lucques",
+   "verb": "ne",
+   "object": "sont plus que des apanages",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#46-133",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte."
+    }
+   ]
+  },
+  {
+   "id": "je|ne|vous connais plus",
+   "subject": "je",
+   "verb": "ne",
+   "object": "vous connais plus",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#134-439",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Non, je vous préviens, que si vous ne me dites pas, que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j’y crois) — je ne vous connais plus, vous n’êtes plus mon ami, vous n’êtes plus мой верный раб, comme vous dites."
+    }
+   ]
+  },
+  {
+   "id": "malade|ne|vous effraye pas trop",
+   "subject": "malade",
+   "verb": "ne",
+   "object": "vous effraye pas trop",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#986-1166",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "le comte (или mon prince), et si la perspective de passer la soirée chez une pauvre [4]malade ne vous effraye pas trop, je serai charmée de vous voir chez moi entre 7 et 10 heures."
+    }
+   ]
+  },
+  {
+   "id": "si vous|ne|me dites pas",
+   "subject": "si vous",
+   "verb": "ne",
+   "object": "me dites pas",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#134-439",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Non, je vous préviens, que si vous ne me dites pas, que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j’y crois) — je ne vous connais plus, vous n’êtes plus mon ami, vous n’êtes plus мой верный раб, comme vous dites."
+    }
+   ]
+  },
+  {
+   "id": "анна павловна|кашляла|несколько дней",
+   "subject": "Анна Павловна",
+   "verb": "кашляла",
+   "object": "несколько дней",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#722-856",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Анна Павловна кашляла несколько дней, у нее был грипп, как она говорила (грипп был тогда новое слово, употреблявшееся только редкими)."
+    }
+   ]
+  },
+  {
+   "id": "анна павловна|назвала|императрицу",
+   "subject": "Анна Павловна",
+   "verb": "назвала",
+   "object": "императрицу",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6131-6380",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "В то время, как Анна Павловна назвала императрицу, лицо ее вдруг представило глубокое и искреннее выражение преданности и уважения, соединенное с грустью, что́ с ней бывало каждый раз, когда она в разговоре упоминала о своей высокой покровительнице."
+    }
+   ]
+  },
+  {
+   "id": "анна павловна|после|минутного молчания",
+   "subject": "Анна Павловна",
+   "verb": "после",
+   "object": "минутного молчания",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6968-7257",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Я часто думаю, — продолжала Анна Павловна после минутного молчания, придвигаясь к князю и ласково улыбаясь ему, как будто выказывая этим, что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю, как иногда несправедливо распределяется счастие жизни."
+    }
+   ]
+  },
+  {
+   "id": "анна павловна|почти|закрыла глаза в знак того",
+   "subject": "Анна Павловна",
+   "verb": "почти",
+   "object": "закрыла глаза в знак того",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5870-6004",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Анна Павловна почти закрыла глаза в знак того, что ни она, ни кто другой не могут судить про то, что́ угодно или нравится императрице."
+    }
+   ]
+  },
+  {
+   "id": "барона функе|первым|секретарем в вену?",
+   "subject": "барона Функе",
+   "verb": "первым",
+   "object": "секретарем в Вену?",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5452-5694",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Скажите, — прибавил он, как будто только что вспомнив что́-то и особенно-небрежно, тогда как то, о чем он спрашивал, было главною целью его посещения, — правда, что l’impératrice-mère желает назначения барона Функе первым секретарем в Вену?"
+    }
+   ]
+  },
+  {
+   "id": "барону функе|beaucoup|d’estime",
+   "subject": "барону Функе",
+   "verb": "beaucoup",
+   "object": "d’estime",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6381-6501",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Она сказала, что ее вели[7]чество изволила оказать барону Функе beaucoup d’estime, и опять взгляд ее подернулся грустью."
+    }
+   ]
+  },
+  {
+   "id": "в свете|и|при дворе значительному человеку",
+   "subject": "в свете",
+   "verb": "и",
+   "object": "при дворе значительному человеку",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+    }
+   ]
+  },
+  {
+   "id": "встречая важного|и|чиновного князя василия",
+   "subject": "встречая важного",
+   "verb": "и",
+   "object": "чиновного князя Василия",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#530-721",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер."
+    }
+   ]
+  },
+  {
+   "id": "высокое призвание|и|будет верен ему",
+   "subject": "высокое призвание",
+   "verb": "и",
+   "object": "будет верен ему",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3693-3756",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Наш благодетель знает свое высокое призвание и будет верен ему."
+    }
+   ]
+  },
+  {
+   "id": "даже того|не|хотелось",
+   "subject": "даже того",
+   "verb": "не",
+   "object": "хотелось",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3016-3187",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Быть энтузиасткой сделалось ее общественным положением, и иногда, когда ей даже того не хотелось, она, чтобы не обмануть ожиданий людей, знавших ее, делалась энтузиасткой."
+    }
+   ]
+  },
+  {
+   "id": "ее величества|и|жалеют вас",
+   "subject": "ее величества",
+   "verb": "и",
+   "object": "жалеют вас",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7737-7845",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Между нами будь сказано (лицо ее приняло грустное выражение), о нем говорили у ее величества и жалеют вас..."
+    }
+   ]
+  },
+  {
+   "id": "ей придворною|и|женскою ловкостью и быстротою такта",
+   "subject": "ей придворною",
+   "verb": "и",
+   "object": "женскою ловкостью и быстротою такта",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6528-6740",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Анна Павловна, с свойственною ей придворною и женскою ловкостью и быстротою такта, захотела и щелконуть князя за то, что он дерзнул так отозваться о лице, рекомендованном императрице, и в то же время утешить его."
+    }
+   ]
+  },
+  {
+   "id": "за мной|и|повезет меня",
+   "subject": "за мной",
+   "verb": "и",
+   "object": "повезет меня",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2196-2233",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Дочь заедет за мной и повезет меня."
+    }
+   ]
+  },
+  {
+   "id": "за приличия|и|участия просвечивало равнодушие и даже насмешка",
+   "subject": "за приличия",
+   "verb": "и",
+   "object": "участия просвечивало равнодушие и даже насмешка",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1792-1923",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Успокойте меня, — сказал он, не изменяя голоса и тоном, в котором из-за приличия и участия просвечивало равнодушие и даже насмешка."
+    }
+   ]
+  },
+  {
+   "id": "захотела|и|щелконуть князя за то",
+   "subject": "захотела",
+   "verb": "и",
+   "object": "щелконуть князя за то",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6528-6740",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Анна Павловна, с свойственною ей придворною и женскою ловкостью и быстротою такта, захотела и щелконуть князя за то, что он дерзнул так отозваться о лице, рекомендованном императрице, и в то же время утешить его."
+    }
+   ]
+  },
+  {
+   "id": "знак уважения|и|признательности",
+   "subject": "знак уважения",
+   "verb": "и",
+   "object": "признательности",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6915-6966",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Князь наклонился в знак уважения и признательности."
+    }
+   ]
+  },
+  {
+   "id": "и того|не|будет!",
+   "subject": "и того",
+   "verb": "не",
+   "object": "будет!",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4486-4518",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "И что́ обещали, и того не будет!"
+    }
+   ]
+  },
+  {
+   "id": "и я|не|верю ни в одном слове ни гарденбергу",
+   "subject": "И я",
+   "verb": "не",
+   "object": "верю ни в одном слове ни Гарденбергу",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4613-4670",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "И я не верю ни в одном слове ни Гарденбергу, ни Гаугвицу."
+    }
+   ]
+  },
+  {
+   "id": "изменяя голоса|и|тоном",
+   "subject": "изменяя голоса",
+   "verb": "и",
+   "object": "тоном",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1792-1923",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Успокойте меня, — сказал он, не изменяя голоса и тоном, в котором из-за приличия и участия просвечивало равнодушие и даже насмешка."
+    }
+   ]
+  },
+  {
+   "id": "к князю|и|ласково улыбаясь ему",
+   "subject": "к князю",
+   "verb": "и",
+   "object": "ласково улыбаясь ему",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6968-7257",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Я часто думаю, — продолжала Анна Павловна после минутного молчания, придвигаясь к князю и ласково улыбаясь ему, как будто выказывая этим, что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю, как иногда несправедливо распределяется счастие жизни."
+    }
+   ]
+  },
+  {
+   "id": "князь василий|говорил|всегда лениво",
+   "subject": "Князь Василий",
+   "verb": "говорил",
+   "object": "всегда лениво",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2843-2916",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Князь Василий говорил всегда лениво, как актер говорит роль старой пиесы."
+    }
+   ]
+  },
+  {
+   "id": "князь василий|желал|определить сына на это место",
+   "subject": "Князь Василий",
+   "verb": "желал",
+   "object": "определить сына на это место",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5746-5868",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Князь Василий желал определить сына на это место, которое через императрицу Марию Феодоровну старались доставить барону."
+    }
+   ]
+  },
+  {
+   "id": "князь|не|отвечал",
+   "subject": "Князь",
+   "verb": "не",
+   "object": "отвечал",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7847-7919",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Князь не отвечал, но она молча, значительно глядя на него, ждала ответа."
+    }
+   ]
+  },
+  {
+   "id": "коммерческим духом|не|поймет и не может понять всю высоту души императора александра",
+   "subject": "коммерческим духом",
+   "verb": "не",
+   "object": "поймет и не может понять всю высоту души императора Александра",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4102-4202",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Англия с своим коммерческим духом не поймет и не может понять всю высоту души императора Александра."
+    }
+   ]
+  },
+  {
+   "id": "которого она|не|хочет",
+   "subject": "которого она",
+   "verb": "не",
+   "object": "хочет",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3188-3435",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Сдержанная улыбка, игравшая постоянно на лице Анны Павловны, хотя и не шла к ее отжившим чертам, выражала, как у избалованных детей, постоянное сознание своего милого недостатка, от которого она не хочет, не может и не находит нужным исправляться."
+    }
+   ]
+  },
+  {
+   "id": "который ничего|не|хочет для себя и всё хочет для блага мира",
+   "subject": "который ничего",
+   "verb": "не",
+   "object": "хочет для себя и всё хочет для блага мира",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4328-4457",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Они не поняли, они не могут понять самоотвержения нашего императора, который ничего не хочет для себя и всё хочет для блага мира."
+    }
+   ]
+  },
+  {
+   "id": "которым он|и|не хотел",
+   "subject": "которым он",
+   "verb": "и",
+   "object": "не хотел",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2375-2535",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Ежели бы знали, что вы этого хотите, праздник бы отменили, — сказал князь, по привычке, как заведенные часы, говоря вещи, которым он и не хотел, чтобы верили."
+    }
+   ]
+  },
+  {
+   "id": "кто другой|не|могут судить про то",
+   "subject": "кто другой",
+   "verb": "не",
+   "object": "могут судить про то",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5870-6004",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Анна Павловна почти закрыла глаза в знак того, что ни она, ни кто другой не могут судить про то, что́ угодно или нравится императрице."
+    }
+   ]
+  },
+  {
+   "id": "марию феодоровну|старались|доставить барону",
+   "subject": "Марию Феодоровну",
+   "verb": "старались",
+   "object": "доставить барону",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5746-5868",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Князь Василий желал определить сына на это место, которое через императрицу Марию Феодоровну старались доставить барону."
+    }
+   ]
+  },
+  {
+   "id": "на котором|не|только говорили",
+   "subject": "на котором",
+   "verb": "не",
+   "object": "только говорили",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+    }
+   ]
+  },
+  {
+   "id": "нашему доброму|и|чудному государю предстоит величайшая роль в мире",
+   "subject": "Нашему доброму",
+   "verb": "и",
+   "object": "чудному государю предстоит величайшая роль в мире",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+    }
+   ]
+  },
+  {
+   "id": "не может|и|не находит нужным исправляться",
+   "subject": "не может",
+   "verb": "и",
+   "object": "не находит нужным исправляться",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3188-3435",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Сдержанная улыбка, игравшая постоянно на лице Анны Павловны, хотя и не шла к ее отжившим чертам, выражала, как у избалованных детей, постоянное сознание своего милого недостатка, от которого она не хочет, не может и не находит нужным исправляться."
+    }
+   ]
+  },
+  {
+   "id": "нисколько|не|смутясь такою встречей",
+   "subject": "нисколько",
+   "verb": "не",
+   "object": "смутясь такою встречей",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1220-1379",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— отвечал, нисколько не смутясь такою встречей, вошедший князь, в придворном, шитом мундире, в чулках, башмаках, и звездах, с светлым выражением плоского лица."
+    }
+   ]
+  },
+  {
+   "id": "но австрия|никогда|не хотела и не хочет войны",
+   "subject": "но Австрия",
+   "verb": "никогда",
+   "object": "не хотела и не хочет войны",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3549-3628",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Я ничего не понимаю, может быть, но Австрия никогда не хотела и не хочет войны."
+    }
+   ]
+  },
+  {
+   "id": "но|и|думали наши деды",
+   "subject": "но",
+   "verb": "и",
+   "object": "думали наши деды",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+    }
+   ]
+  },
+  {
+   "id": "одного бога|и|в высокую судьбу нашего милого императора",
+   "subject": "одного Бога",
+   "verb": "и",
+   "object": "в высокую судьбу нашего милого императора",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4733-4798",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Я верю в одного Бога и в высокую судьбу нашего милого императора."
+    }
+   ]
+  },
+  {
+   "id": "он|говорил|на том изысканном французском языке",
+   "subject": "Он",
+   "verb": "говорил",
+   "object": "на том изысканном французском языке",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1381-1612",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуся в свете и при дворе значительному человеку."
+    }
+   ]
+  },
+  {
+   "id": "они|не|могут понять самоотвержения нашего императора",
+   "subject": "они",
+   "verb": "не",
+   "object": "могут понять самоотвержения нашего императора",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4328-4457",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Они не поняли, они не могут понять самоотвержения нашего императора, который ничего не хочет для себя и всё хочет для блага мира."
+    }
+   ]
+  },
+  {
+   "id": "они|не|поняли",
+   "subject": "Они",
+   "verb": "не",
+   "object": "поняли",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4328-4457",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Они не поняли, они не могут понять самоотвержения нашего императора, который ничего не хочет для себя и всё хочет для блага мира."
+    }
+   ]
+  },
+  {
+   "id": "представило глубокое|и|искреннее выражение преданности и уважения",
+   "subject": "представило глубокое",
+   "verb": "и",
+   "object": "искреннее выражение преданности и уважения",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6131-6380",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "В то время, как Анна Павловна назвала императрицу, лицо ее вдруг представило глубокое и искреннее выражение преданности и уважения, соединенное с грустью, что́ с ней бывало каждый раз, когда она в разговоре упоминала о своей высокой покровительнице."
+    }
+   ]
+  },
+  {
+   "id": "преисполнена оживления|и|порывов",
+   "subject": "преисполнена оживления",
+   "verb": "и",
+   "object": "порывов",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#2917-3014",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Анна Павловна Шерер, напротив, несмотря на свои сорок лет, была преисполнена оживления и порывов."
+    }
+   ]
+  },
+  {
+   "id": "садитесь|и|рассказывайте",
+   "subject": "садитесь",
+   "verb": "и",
+   "object": "рассказывайте",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#472-528",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Je vois que je vous fais peur, садитесь и рассказывайте."
+    }
+   ]
+  },
+  {
+   "id": "свою надушенную|и|сияющую лысину",
+   "subject": "свою надушенную",
+   "verb": "и",
+   "object": "сияющую лысину",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#1613-1734",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Он подошел к Анне Павловне, поцеловал ее руку, подставив ей свою надушенную и сияющую лысину, и покойно уселся на диване."
+    }
+   ]
+  },
+  {
+   "id": "так добродетелен|и|хорош",
+   "subject": "так добродетелен",
+   "verb": "и",
+   "object": "хорош",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+    }
+   ]
+  },
+  {
+   "id": "то|и|особенно-небрежно",
+   "subject": "то",
+   "verb": "и",
+   "object": "особенно-небрежно",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#5452-5694",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Скажите, — прибавил он, как будто только что вспомнив что́-то и особенно-небрежно, тогда как то, о чем он спрашивал, было главною целью его посещения, — правда, что l’impératrice-mère желает назначения барона Функе первым секретарем в Вену?"
+    }
+   ]
+  },
+  {
+   "id": "фрейлина|и|приближенная императрицы марии феодоровны",
+   "subject": "фрейлина",
+   "verb": "и",
+   "object": "приближенная императрицы Марии Феодоровны",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#530-721",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер."
+    }
+   ]
+  },
+  {
+   "id": "хотя и|не|шла к ее отжившим чертам",
+   "subject": "хотя и",
+   "verb": "не",
+   "object": "шла к ее отжившим чертам",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3188-3435",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Сдержанная улыбка, игравшая постоянно на лице Анны Павловны, хотя и не шла к ее отжившим чертам, выражала, как у избалованных детей, постоянное сознание своего милого недостатка, от которого она не хочет, не может и не находит нужным исправляться."
+    }
+   ]
+  },
+  {
+   "id": "цените их|и|потому их не сто́ите",
+   "subject": "цените их",
+   "verb": "и",
+   "object": "потому их не сто́ите",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7434-7491",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "А вы, право, менее всех цените их и потому их не сто́ите."
+    }
+   ]
+  },
+  {
+   "id": "что бог|не|оставит его",
+   "subject": "что Бог",
+   "verb": "не",
+   "object": "оставит его",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+    }
+   ]
+  },
+  {
+   "id": "что бонапарте|непобедим|и что вся европа ничего не может против него",
+   "subject": "что Бонапарте",
+   "verb": "непобедим",
+   "object": "и что вся Европа ничего не может против него",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#4519-4612",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Пруссия уже объявила, что Бонапарте непобедим и что вся Европа ничего не может против него..."
+    }
+   ]
+  },
+  {
+   "id": "что политические|и|светские разговоры кончены и теперь начинается задушевный: — я часто думаю",
+   "subject": "что политические",
+   "verb": "и",
+   "object": "светские разговоры кончены и теперь начинается задушевный: — я часто думаю",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#6968-7257",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "— Я часто думаю, — продолжала Анна Павловна после минутного молчания, придвигаясь к князю и ласково улыбаясь ему, как будто выказывая этим, что политические и светские разговоры кончены и теперь начинается задушевный: — я часто думаю, как иногда несправедливо распределяется счастие жизни."
+    }
+   ]
+  },
+  {
+   "id": "чтобы|не|обмануть ожиданий людей",
+   "subject": "чтобы",
+   "verb": "не",
+   "object": "обмануть ожиданий людей",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3016-3187",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Быть энтузиасткой сделалось ее общественным положением, и иногда, когда ей даже того не хотелось, она, чтобы не обмануть ожиданий людей, знавших ее, делалась энтузиасткой."
+    }
+   ]
+  },
+  {
+   "id": "этого убийцы|и|злодея",
+   "subject": "этого убийцы",
+   "verb": "и",
+   "object": "злодея",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3783-4017",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Нашему доброму и чудному государю предстоит величайшая роль в мире, и он так добродетелен и хорош, что Бог не оставит его, и он исполнит свое призвание задавить гидру революции, которая теперь еще ужаснее в лице этого убийцы и злодея."
+    }
+   ]
+  },
+  {
+   "id": "я его|не|люблю",
+   "subject": "я его",
+   "verb": "не",
+   "object": "люблю",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#7258-7433",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "За что́ вам судьба дала таких двух славных детей (исключая Анатоля, вашего меньшого, я его не люблю, — вставила она безапелляционно, приподняв брови) — таких прелестных детей?"
+    }
+   ]
+  },
+  {
+   "id": "я ничего|не|понимаю",
+   "subject": "Я ничего",
+   "verb": "не",
+   "object": "понимаю",
+   "witnesses": [
+    "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt@91744811662d81e3"
+   ],
+   "spans": [
+    {
+     "at": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt#3549-3628",
+     "ref": "11-multi-language/war-and-peace/ru/voyna-i-mir_Tolstoy_wikisource.txt",
+     "text": "Я ничего не понимаю, может быть, но Австрия никогда не хотела и не хочет войны."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "91744811662d81e3",
+  "at": "2026-08-31T00:10:18.484Z"
+ }
+}

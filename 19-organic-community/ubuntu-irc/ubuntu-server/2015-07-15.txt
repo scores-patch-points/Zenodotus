@@ -1,0 +1,87 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2015-7-15"
+lang: "en"
+messages: "78"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<wolflarson> I think I broke something
+<wolflarson> I installed a .deb and now I cant remove it
+<bigjools> can anyone point to docs that explain how to PXE boot with custom net drivers please?
+<patdk-lap> you don't need to?
+<patdk-lap> it's pxe, the nic does it, so there is no need for a driver
+<bigjools> in the naive world, yes
+<patdk-lap> and your nic driver should be in your initramfs file, and that is loaded via pxe, so
+<patdk-lap> how so?
+<patdk-lap> the whole point of pxe is it's driverless
+<sarnold> wolflarson: what errors do you get when you try to remove it?
+<wolflarson> sarnold, I was able to resolve this by manually removing the files
+<sarnold> wolflarson: aha
+<wolflarson> things seem to be updating normlly now
+<lkthomas> hey all
+<neonixcoder> Good day team..
+<neonixcoder> How can I eliminate this error? http://askubuntu.com/questions/41930/kernel-panic-not-syncing-vfs-unable-to-mount-root-fs-on-unknown-block0-0 ?
+<neonixcoder> I want to upgrade from 10.04 to 12.04 LTS on 200+ server and when I try to do it on test machine, I get above error..
+<neonixcoder> What are the precautions I should take before I upgrade OS. Everyone is saying what we have to do once we see this error, but no one is saying what we have to do in-order to avoid this error?
+<lordievader> Good morning.
+<jamespage> coreycb, super-awesome - thanks for debugging that!
+<Elion> hi, i own a VPS on OVH, and i would like to do a full backup (similar to a snapshot) of my server, so i can restore it later or migrate it elsewhere, what should i use ?
+<bekks> !backup | Elion
+<ubottu> Elion: There are many ways to back your system up. Here's a few: https://help.ubuntu.com/community/BackupYourSystem , https://help.ubuntu.com/community/DuplicityBackupHowto , https://wiki.ubuntu.com/HomeUserBackup , https://help.ubuntu.com/community/MondoMindi - See also !sbackup and !cloning
+<lordievader> I like dirvish.
+<Elion> ubottu: thanks
+<ubottu> You're welcome! But keep in mind I'm just a bot ;-)
+<adsc> if you remove apache from autostart using update-rc.d, can it happen that an apache update re-adds the service there?
+<adsc> the reason why I'm asking is because a colleague installed server updates yesterday, and now I see apache processes running
+<rbasak> I'm not sure but I think if it does that then you have a bug. Can you reproduce it? And you're not on >= 15.04 (systemd), are you?
+<teward> rbasak: hiya.  still busy?  Or do you want me to take a stab at drafting the message to the TB
+<adsc> rbasak: no, I'm on 14.04 LTS
+<adsc> rbasak: i think i'll wait for the next update and see if it happens again
+<adsc> rbasak: maybe the dude di something wrong, he's not very experienced with command line
+<rbasak> teward: sorry, permanently busy :(
+<rbasak> teward: please go ahead and draft the email - don't let me stop you!
+<teward> 'tis fine.  what info do i need to include in an email to the TB?
+<teward> first time addressing the TB after all xD
+<rbasak> Hmm.
+<teward> what we're requesting, what the situation is, brief synopsis of what's been discussed so far with server and release teams, planned mapping of the course of action up to and through X release?
+<rbasak> A summary of the issue. References to existing discussion. Summary of conclusions from relevant people about what we want. And a specific question that's easy for them to approve/disapprove.
+<rbasak> Yeah, what you said :)
+<teward> specific question might be hard - we're basically asking for a post-freeze post-release exemption - effectively, up until release of X we want to continue to merge in 1.9.x, and prior to release the latest-tagged snapshot from the upstream repository (or the tarballs), and then include 1.10.x for X either after finalfreeze or after release, due to the nginx release time
+<teward> but that's not too hard
+<teward> i'll draft the email, throw it your way for a review, and send it off :)
+<teward> rbasak: good news though for the wily isos - the network interface names are correctly read by both systemd post install AND the installer disk (so no kernel naming pattern vs. systemd naming pattern discrepancies breaking networking-coming-up-after-installation provlems)
+<teward> and thats all i'mma say on the matter (discovered it myself last week being an issue)
+<rbasak> Thanks!
+<Tazmain> hi all, I am having trouble removing a package. I keep getting, mv: cannot stat ‘/etc/php5/conf.d/perforce.ini’: No such file or directory dpkg: error processing package perforce-swarm (--remove): subprocess installed pre-removal script returned error exit status 1
+<Tazmain> does anyone know how I can remove this package ?
+<rbasak> Tazmain: you can tweak /var/lib/dpkg/info/perforce-swarm.prerm but you should report a bug to Perforce. And seek further help from their support desk I guess, as it's their package rather than one from Ubuntu.
+<Tazmain> rbasak, well someone in #linux suggested I just touch the file it was looking for and that solved the problem
+<rbasak> Tazmain: great. Thank you for reporting back.
+<skylite> if I have a folder with a bunch of hardlinks in it and I simply copy that folder it will be much bigger because the files will become actual files is that right?
+<patdk-wk> yes
+<skylite> and how can I copy this file structure by preserving the hardlinks?
+<skylite> it contains a lot of hardlinks
+<patdk-wk> rsync would work
+<skylite> and if a hardlink is copied it wont matter what was the original file because there is no such thing here like in symlinks right?
+<adsc> what is the default deployment setup for apache websites? Deploy as user with group www-data and rw group permissions?
+<adsc> if that is the default, why does apache process not start with umask 002?
+<rbasak> kickinz1: could you take a look at bug 1474863 please? Does this mean that bcache is broken in Wily?
+<ubottu> bug 1474863 in bcache-tools (Ubuntu) "bcache device files aren't available in initramfs" [Undecided,Invalid] https://launchpad.net/bugs/1474863
+<rbasak> Ah, never mind.
+<kickinz1> OK
+<rbasak> The reporter invalidated it. Sorry!
+<kickinz1> NO pb!
+<homecable> any one have a cs24-sc server
+<homecable> ?
+<mojtaba> Hi, does anybody know how can I use rsync with two destination and one source?
+<sarnold> mojtaba: what's the goal?
+<mojtaba> sarnold: I have one disk which I want to backup on two separate disks
+<keithzg> mojtaba: The closest I can think of would be batch mode, although I can't remember actually using that myself ever: http://manpages.ubuntu.com/manpages/trusty/man1/rsync.1.html#contenttoc21
+<mojtaba> keithzg: thx
+<sarnold> mojtaba: I'd probably just run it twice; rsync source/ dest1:destination/  ; rsync source/ dest2:/destination/ ...
+<sarnold> mojtaba: if dest1 and dest2 have a faster network connection between them, you might be able to get a speedup by logging in to dest1 and rsyncing to dest2, perhaps before doing the source-to-dest2 copy
+<mojtaba> sarnold: I will consider that one thanks. But for now I am doing it all locally (external HDDs)
+<mojtaba> thx
+<sarnold> mojtaba: aha :)

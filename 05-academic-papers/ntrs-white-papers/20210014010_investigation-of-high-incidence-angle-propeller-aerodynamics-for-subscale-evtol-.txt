@@ -1,0 +1,1668 @@
+---
+title: Investigation of High Incidence Angle Propeller Aerodynamics for Subscale eVTOL Aircraft
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20210014010
+source_url: https://ntrs.nasa.gov/citations/20210014010
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Langley Research Center
+publication_date: 2021-05-07
+retrieved: 2026-09-22
+sha256: 00e2cb0d50742fda6a3f8fb1d06cb31d082454cdd05a4723e712f9d828de1b6a
+pages: 87
+words: 14790
+cv_look_pages: 6
+---
+
+NASA/TM–20210014010
+
+
+
+
+Investigation of High Incidence Angle
+Propeller Aerodynamics for Subscale
+eVTOL Aircraft
+Benjamin M. Simmons and David B. Hatke
+Langley Research Center, Hampton, Virginia
+
+
+
+
+May 2021
+                              NASA STI Program Report Series
+
+
+Since its founding, NASA has been dedicated       • CONFERENCE PUBLICATION.
+to the advancement of aeronautics and space         Collected papers from scientific and
+science. The NASA scientific and technical          technical conferences, symposia, seminars,
+information (STI) program plays a key part          or other meetings sponsored or
+in helping NASA maintain this important             co-sponsored by NASA.
+role.
+                                                  • SPECIAL PUBLICATION. Scientific,
+The NASA STI program operates under the             technical, or historical information from
+auspices of the Agency Chief Information            NASA programs, projects, and missions,
+Officer. It collects, organizes, provides for       often concerned with subjects having
+archiving, and disseminates NASA’s STI.             substantial public interest.
+The NASA STI program provides access to
+the NTRS Registered and its public                • TECHNICAL TRANSLATION.
+interface, the NASA Technical Reports               English-language translations of foreign
+Server, thus providing one of the largest           scientific and technical material pertinent
+collections of aeronautical and space science       to NASA’s mission.
+STI in the world. Results are published in
+                                                  Specialized services also include organizing
+both non-NASA channels and by NASA in
+                                                  and publishing research results, distributing
+the NASA STI Report Series, which includes
+                                                  specialized research announcements and
+the following report types:
+                                                  feeds, providing information desk and
+• TECHNICAL PUBLICATION. Reports of               personal search support, and enabling data
+  completed research or a major significant       exchange services.
+  phase of research that present the results
+                                                  For more information about the NASA STI
+  of NASA Programs and include extensive
+                                                  program, see the following:
+  data or theoretical analysis. Includes
+  compilations of significant scientific and      • Access the NASA STI program home page
+  technical data and information deemed to          at http://www.sti.nasa.gov
+  be of continuing reference value. NASA
+  counterpart of peer-reviewed formal             • Help desk contact information:
+  professional papers but has less stringent
+  limitations on manuscript length and            https://www.sti.nasa.gov/sti-contact-form/
+  extent of graphic presentations.                and select the “General” help request type.
+• TECHNICAL MEMORANDUM.
+  Scientific and technical findings that are
+  preliminary or of specialized interest, e.g.,
+  quick release reports, working papers, and
+  bibliographies that contain minimal
+  annotation. Does not contain extensive
+  analysis.
+• CONTRACTOR REPORT. Scientific and
+  technical findings by NASA-sponsored
+  contractors and grantees.
+NASA/TM–20210014010
+
+
+
+
+Investigation of High Incidence Angle
+Propeller Aerodynamics for Subscale
+eVTOL Aircraft
+Benjamin M. Simmons and David B. Hatke
+Langley Research Center, Hampton, Virginia
+
+
+
+
+National Aeronautics and
+Space Administration
+Langley Research Center
+Hampton, Virginia 23681-2199
+
+
+
+May 2021
+The use of trademarks or names of manufacturers in this report is for accurate reporting and does not
+constitute an official endorsement, either expressed or implied, of such products or manufacturers by the
+National Aeronautics and Space Administration.
+
+
+
+
+                                         Available from:
+
+                              NASA STI Program / Mail Stop 148
+                               NASA Langley Research Center
+                                  Hampton, VA 23681-2199
+                                     Fax: 757-864-6500
+Abstract
+    Propellers used for electric vertical takeoff and landing (eVTOL) aircraft propul-
+sion systems experience a wide range of aerodynamic conditions, including signifi-
+cant incidence angles relative to oncoming airflow. Propellers in oblique flow exhibit
+deviations in thrust and torque oriented along their axis of rotation, as well as signif-
+icant off-axis forces and moments. Although important for understanding eVTOL
+aircraft aerodynamics, sparse experimental data exist for propellers operating at
+incidence. This report describes an experimental wind tunnel study of isolated
+propeller aerodynamics across a wide range of flight conditions expected to be ex-
+perienced by the LA-8 tandem tilt-wing, eVTOL aircraft. The experimental data
+obtained from the study are graphically presented and a discussion of observed aero-
+dynamic phenomena is compared to theoretical expectations and past experimental
+work. The content of this report is intended to provide guidance to future propeller
+testing efforts and describe pertinent propeller aerodynamic behavior expected to
+be experienced by eVTOL vehicles.
+
+
+
+
+                                           1
+Contents
+List of Figures                                                                                       3
+
+List of Tables                                                                                        4
+
+Nomenclature                                                                                          5
+
+Acronyms                                                                                              5
+
+1 Introduction                                                                                        6
+
+2 Background                                                                                     6
+  2.1 Axial Propeller Aerodynamics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+  2.2 Theoretical Propeller Aerodynamics at Nonzero Incidence Angle . . . . . . . . . . . 8
+  2.3 Previous Experimental Research . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+3 Wind Tunnel Experimentation                                                                         11
+  3.1 LA-8 Propellers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   11
+  3.2 Experiment Setup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      12
+  3.3 Testing Methodology and Experimental Design . . . . . . . . . . . . . . . . . . . . .           14
+  3.4 Test Execution and Data Collection . . . . . . . . . . . . . . . . . . . . . . . . . . .        15
+  3.5 Additional Isolated Propeller Testing Considerations . . . . . . . . . . . . . . . . . .        16
+
+4 Results and Discussion                                                                              18
+
+5 Conclusions                                                                                         23
+
+Acknowledgments                                                                                       24
+
+References                                                                                            24
+
+Appendix A Additional Figures                                                                         28
+
+
+
+
+                                                   2
+List of Figures
+  1    LA-8 mounted in the NASA Langley 12-Foot Low-Speed Tunnel. . . . . . . . . . . . 7
+  2    Propeller incidence angle definition and coordinate system. . . . . . . . . . . . . . . 9
+  3    Schematic of the NASA Langley Research Center 12-Foot Low-Speed Tunnel. . . . . 12
+  4    Comparison of the custom CCW rotating (upper) and COTS CW rotating (lower)
+       propeller blade planforms, as viewed from the bottom. . . . . . . . . . . . . . . . . . 12
+  5    Experimental CCW rotating propeller. . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+  6    LA-8 propeller installation on the wind tunnel sting. . . . . . . . . . . . . . . . . . . 14
+  7    Graphical representation of the designed propeller wind tunnel test points for freestream
+       velocity and incidence angle (all five motor PWM commands are tested at each point). 15
+  8    LA-8 propeller mounted in the NASA Langley 12-Foot Low-Speed Tunnel. . . . . . . 16
+  9    Tested range of normal and tangential advance ratio. . . . . . . . . . . . . . . . . . . 17
+  10   Tested range of propeller rotational speed and propeller blade Reynolds number. . . 17
+  11   CW propeller rotational speed variation with airspeed V∞ and the normal component
+       of airspeed V∞ cos ip . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+  12   CCW propeller rotational speed variation with airspeed V∞ and the normal compo-
+       nent of airspeed V∞ cos ip . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+  13   Static CW and CCW propeller data (q̄ = 0 psf). . . . . . . . . . . . . . . . . . . . . 30
+  14   CW and CCW propeller forces and moments variation with ip at q̄ = 0.25 psf. . . . 31
+  15   CW and CCW propeller forces and moments variation with ip at q̄ = 0.5 psf. . . . . 32
+  16   CW and CCW propeller forces and moments variation with ip at q̄ = 1 psf. . . . . . 33
+  17   CW and CCW propeller forces and moments variation with ip at q̄ = 1.5 psf. . . . . 34
+  18   CW and CCW propeller forces and moments variation with ip at q̄ = 2.5 psf. . . . . 35
+  19   CW and CCW propeller forces and moments variation with ip at q̄ = 3.5 psf. . . . . 36
+  20   CW and CCW propeller forces and moments variation with ip at q̄ = 4.5 psf. . . . . 37
+  21   CW and CCW propeller forces and moments variation with ip at q̄ = 6 psf. . . . . . 38
+  22   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 0.25
+       psf. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+  23   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 0.5
+       psf. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+  24   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 1 psf. 41
+  25   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 1.5
+       psf. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+  26   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 2.5
+       psf. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+  27   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 3.5
+       psf. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+  28   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 4.5
+       psf. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+  29   CW and CCW propeller force and moment coefficients variation with ip at q̄ = 6 psf. 46
+  30   CW propeller thrust, thrust coefficient, torque, and torque coefficient variation with
+       J at ip = 0◦ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+  31   CW propeller force and moment coefficients variation with J at ip = 30◦ . . . . . . . 48
+  32   CW propeller force and moment coefficients variation with J at ip = 60◦ . . . . . . . 49
+  33   CW propeller force and moment coefficients variation with J at ip = 90◦ . . . . . . . 50
+  34   CW propeller force and moment coefficients variation with J at ip = 120◦ . . . . . . . 51
+  35   CW propeller force and moment coefficients variation with J at ip = 150◦ . . . . . . . 52
+
+
+                                                   3
+  36   CW propeller force and moment coefficients variation with J at ip = 180◦ . . . . . . .            53
+  37   CCW propeller thrust, thrust coefficient, torque, and torque coefficient variation
+       with J at ip = 0◦ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   54
+  38   CCW propeller force and moment coefficients variation with J at ip = 30◦ . . . . . .              55
+  39   CCW propeller force and moment coefficients variation with J at ip = 60◦ . . . . . .              56
+  40   CCW propeller force and moment coefficients variation with J at ip = 90◦ . . . . . .              57
+  41   CCW propeller force and moment coefficients variation with J at ip = 120◦ . . . . . .             58
+  42   CCW propeller force and moment coefficients variation with J at ip = 150◦ . . . . . .             59
+  43   CCW propeller force and moment coefficients variation with J at ip = 180◦ . . . . . .             60
+  44   CW propeller force and moment coefficients variation with J for 0◦ ≤ ip ≤ 60◦ . . . .             61
+  45   CW propeller force and moment coefficients variation with Jx for 0◦ ≤ ip ≤ 60◦ . . . .            62
+  46   CW propeller force and moment coefficients variation with Jz for 0◦ ≤ ip ≤ 60◦ . . . .            63
+  47   CW propeller force and moment coefficients variation with J for 70◦ ≤ ip ≤ 110◦ . . .             64
+  48   CW propeller force and moment coefficients variation with Jx for 70◦ ≤ ip ≤ 110◦ . .              65
+  49   CW propeller force and moment coefficients variation with Jz for 70◦ ≤ ip ≤ 110◦ . .              66
+  50   CW propeller force and moment coefficients variation with J for 120◦ ≤ ip ≤ 180◦ . .              67
+  51   CW propeller force and moment coefficients variation with Jx for 120◦ ≤ ip ≤ 180◦ . .             68
+  52   CW propeller force and moment coefficients variation with Jz for 120◦ ≤ ip ≤ 180◦ . .             69
+  53   CW propeller force and moment coefficients variation with Jx and Jz . . . . . . . . .             70
+  54   CCW propeller force and moment coefficients variation with J for 0◦ ≤ ip ≤ 60◦ . . .              71
+  55   CCW propeller force and moment coefficients variation with Jx for 0◦ ≤ ip ≤ 60◦ . . .             72
+  56   CCW propeller force and moment coefficients variation with Jz for 0◦ ≤ ip ≤ 60◦ . . .             73
+  57   CCW propeller force and moment coefficients variation with J for 70◦ ≤ ip ≤ 110◦ . .              74
+  58   CCW propeller force and moment coefficients variation with Jx for 70◦ ≤ ip ≤ 110◦ .               75
+  59   CCW propeller force and moment coefficients variation with Jz for 70◦ ≤ ip ≤ 110◦ .               76
+  60   CCW propeller force and moment coefficients variation with J for 120◦ ≤ ip ≤ 180◦ .               77
+  61   CCW propeller force and moment coefficients variation with Jx for 120◦ ≤ ip ≤ 180◦ .              78
+  62   CCW propeller force and moment coefficients variation with Jz for 120◦ ≤ ip ≤ 180◦ .              79
+  63   CCW propeller force and moment coefficients variation with Jx and Jz . . . . . . . .              80
+  64   CW and CCW propeller propulsive efficiency ηp variation with advance ratio J at
+       ip = 0◦ separated by motor PWM command. . . . . . . . . . . . . . . . . . . . . . .               81
+  65   Time history and power spectrum of individual data point measurement histories
+       for the CW propeller in forward flight (leftward plots at ip = 0◦ ) and VRS-like
+       conditions (rightward plots at ip = 180◦ ). . . . . . . . . . . . . . . . . . . . . . . . .       82
+
+
+List of Tables
+  1    Measurement range of the strain gauge balance used for wind tunnel testing . . . . 13
+  2    Measurement accuracy of the strain gauge balance used for wind tunnel testing (95%
+       confidence interval expressed as a percentage of maximum loading) . . . . . . . . . . 13
+  3    Propeller wind tunnel test matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+
+
+
+
+                                                   4
+Nomenclature
+
+c                  propeller chord at 75% blade length, ft
+CTx , CTy , CTz    propeller force coefficients
+CQx , CQy , CQz    propeller moment coefficients
+D                  propeller diameter, ft
+ip                 propeller incidence angle, rad or deg
+J                  advance ratio
+Jx                 normal advance ratio
+Jz                 tangential advance ratio
+Mtip               propeller tip Mach number
+n                  propeller and motor rotational speed, revolutions/s
+Qx , Qy , Qz       propeller moments, ft-lbf
+q̄                 freestream dynamic pressure, lbf/ft2
+Re                 propeller blade Reynolds number
+Tx , Ty , Tz       propeller forces, lbf
+Vp                 propeller blade linear speed at 75% blade length, ft/s
+V∞                 freestream velocity, ft/s
+ηp                 propulsive efficiency
+µ                  air dynamic viscosity, lbf-s/ft2
+ρ                  air density, slug/ft3
+
+
+Acronyms
+
+CCW         counterclockwise
+COTS        commercial off-the-shelf
+CW          clockwise
+DEP         distributed electric propulsion
+DFT         discrete Fourier transform
+ESC         electronic speed control
+eVTOL       electric vertical takeoff and landing
+LA-8        Langley Aerodrome No. 8
+PWM         pulse width modulation
+RPM         revolutions per minute
+UAM         Urban Air Mobility
+VRS         vortex ring state
+VTOL        vertical takeoff and landing
+
+
+
+
+                                                    5
+1    Introduction
+    Urban Air Mobility (UAM) is currently drawing significant interest in the aerospace industry
+as a future transportation method being enabled by recent advances in electric vertical takeoff
+and landing (eVTOL) vehicle technology. In addition to vertical takeoff and landing (VTOL)
+capabilities, many eVTOL aircraft designs strive for efficient cruise flight, which requires a vehicle
+configuration that is a hybrid between fixed-wing and rotary-wing aircraft. NASA has initiated
+multiple efforts to develop conceptual and tangible eVTOL vehicles to better understand their
+flight characteristics and develop technology enabling mainstream integration of this new type of
+aircraft [1–4]. A common design attribute of eVTOL vehicles is distributed electric propulsion
+(DEP) with multiple propellers spread across the airframe. Since eVTOL vehicles experience a
+wide variety of flight conditions spanning hover, transition, and forward flight, their propellers
+experience aerodynamic conditions that significantly differ from conventional propeller operation.
+Propeller aerodynamics are conventionally defined in an axial airflow condition where data tables
+or a functional representation of axial thrust and torque coefficients are sufficient to model the
+propeller aerodynamics. However, at high incidence angles, off-axis propulsive forces and moments
+become significant, and axial thrust and torque deviates from its nominal axial airflow value.
+    The motivation of this work is to investigate and characterize the propeller aerodynamics for
+the Langley Aerodrome No. 8 (LA-8) aircraft, ultimately to develop a high-fidelity simulation of
+the aircraft. The LA-8 aircraft, pictured in Figure 1, is a subscale, tandem tilt-wing, DEP, VTOL
+configuration consisting of four propellers mounted to each wing [4]. The aircraft design leads
+to significant aerodynamic contributions from the airframe, propulsors, and airframe-propulsion
+interactions. The LA-8 is designed to be used as both a wind tunnel and flight testbed for advancing
+eVTOL technology. This work describes the wind tunnel testing effort used to characterize the
+isolated propulsion unit (including the propeller, electric motor, and electronic speed control), and
+is complimented by other NASA research pertaining to the LA-8 aircraft [4–12]. The data presented
+in this report have been used to facilitate development of a high-fidelity LA-8 propulsion system
+model [10], which aided development of an aerodynamic model for the LA-8 aircraft [11]. The
+isolated propeller data have also been used to inform LA-8 computational studies [12], and select
+data points have been validated in independent wind tunnel testing [13]. While the information in
+this report is presented in the context of the LA-8 vehicle, the objective is to generically characterize
+high incidence angle propeller aerodynamics and provide the reader physical understanding of the
+dominant propeller aerodynamic phenomena present for eVTOL vehicles.
+    This report is organized as follows: Section 2 presents pertinent background on propeller aero-
+dynamics theory and previous research for propellers operating at high incidence angles. Section 3
+describes the experimental design and setup for wind tunnel testing. Section 4 presents experi-
+mental results with accompanying discussion highlighting important data characteristics. Overall
+conclusions are summarized in Section 5. Figures displaying the experimental data are shown in
+Appendix A to maintain brevity in the report body.
+
+
+2    Background
+    This section provides a theoretical background on axial propeller aerodynamics and propeller
+aerodynamics at incidence. Past experimental work characterizing propellers operating at high inci-
+dence angles is also summarized. Understanding of this background information aids interpretation
+of the results presented in Section 4.
+
+
+
+
+                                                   6
+                (a) LA-8 front view                                 (b) LA-8 rear view
+
+            Figure 1. LA-8 mounted in the NASA Langley 12-Foot Low-Speed Tunnel.
+
+
+2.1   Axial Propeller Aerodynamics
+    Propeller aerodynamics are well-defined and well-researched for nominal operating conditions
+in axial flow where aerodynamic predictions can be made analytically and/or experimentally. The-
+oretical techniques include momentum theory, blade element methods, and vortex theories [14].
+Experimental techniques typically consist of developing data tables or functional representations
+from wind tunnel data. For propellers in airflow normal to the propeller disk, the propeller only
+produces a net thrust force and a net aerodynamic torque acting along the axis of rotation [15]. The
+individual propeller blades can be thought of as rotating wings which each produce a lift force per-
+pendicular to the relative flow direction and a drag force parallel to the relative flow direction [16].
+The summed lift forces produced by the propeller blades is the propeller thrust Tx . The summed
+drag forces results in a net moment about the propeller shaft opposite to the direction of rotation,
+which is the propeller aerodynamic torque Qx .
+    Propeller data are generally presented as a representation of thrust coefficient CTx and torque
+coefficient CQx (or equivalently by power coefficient CP = 2πCQx where P = 2πnQx ). The thrust
+and torque coefficients are defined as
+                                                       Tx
+                                            CT x =                                                  (1)
+                                                     ρn2 D4
+                                                      Qx
+                                            CQ x =                                                  (2)
+                                                     ρn2 D5
+where n is the propeller rotational speed in revolutions per second, ρ is the air density, and D is the
+propeller diameter. The thrust and torque coefficients can be shown through dimensional analysis
+to be a function of advance ratio J, propeller blade Reynolds number Re, and propeller tip Mach
+number Mtip for a given propeller design [15, 17]. Because propeller similitude relations to scale
+propeller aerodynamics are limited [18], due to differences in boundary layer characteristics [19],
+propellers must be tested at full-scale to properly capture the advance ratio, Reynolds number, and
+Mach number effects.
+    Advance ratio J, which relates to the linear distance traveled by the propeller in one revolution,
+is defined as
+                                                    V∞
+                                               J=                                                   (3)
+                                                    nD
+
+
+                                                     7
+where V∞ is the freestream velocity and other variables follow their earlier definition. Advance ratio
+generally has the largest effect on propeller aerodynamics, and thus, thrust and torque coefficient
+representations are commonly expressed as only a function of advance ratio. Representing propeller
+aerodynamics only as a function of advance ratio requires that airflow is parallel to the propeller
+axis of rotation as well as the assumptions that viscous and compressibility effects are negligible [15].
+    Reynolds number is a dimensionless quantity which corresponds to the ratio of inertial to viscous
+forces acting on a lifting body. For full-scale aircraft propellers, the propeller blade Reynolds number
+effects are minimal and can generally be neglected. For subscale propellers, the Reynolds number is
+lower, indicating that the viscous forces become more important. This effect manifests as a thicker
+boundary layer, which is more likely to result in flow separated from the propeller surface [19] and
+results in propeller performance degrading at lower Reynolds number [20, 21]. The equation used
+herein for the propeller blade Reynolds number Re follows the definition given in Reference [21],
+
+                                                         ρVp c
+                                               Re =                                                    (4)
+                                                          µ
+
+where ρ is the air density, c is the propeller chord at 75% blade length, µ is the dynamic viscosity,
+and Vp = 0.75πnD is the propeller blade linear speed at 75% blade length.
+    Mach number is the ratio of flow speed to the speed of sound, which physically represents the
+ratio of inertial forces to forces related to compressibility of the fluid [19]. For subscale aircraft, the
+propeller tip Mach number generally remains low enough (Mtip < 0.3) such that compressibility
+effects can be ignored, which is the approach taken in this report.
+    Propulsive efficiency ηp is defined as the ratio of usable output power Pout to supplied power
+Pin [16]. Usable output power is defined as Pout = Tx V∞ and power input is defined as Pin = 2πnQx ,
+therefore, propulsive efficiency can be expressed as:
+                                                      Tx V∞
+                                              ηp =                                                     (5)
+                                                     2πnQx
+For a propeller in forward flight, propulsive efficiency can be expressed using thrust coefficient,
+torque coefficients, and advance ratio as:
+
+                                         CTx ρn2 D4 V∞
+                                                   
+                                                            CTx J
+                                 ηp =              2  5
+                                                         =                                      (6)
+                                       2πn (CQx ρn D )     2πCQx
+
+2.2    Theoretical Propeller Aerodynamics at Nonzero Incidence Angle
+    When the airflow relative to a propeller is not parallel to the axis of rotation, the propeller
+will produce auxiliary forces and moments other than the axial thrust and torque [15]. In this
+condition, periodic variation in propeller blade local angle of attack results in a non-uniform load
+distribution on the propeller disk. Thus, in a general case of arbitrary flow direction relative to
+the propeller disk, propeller forces and moments will also be dependent on the angle between the
+freestream velocity and propeller axis of rotation, in addition to advance ratio, propeller blade
+Reynolds number, tip Mach number, and the propeller design. This angle between the freestream
+airflow and propeller rotation axis is referred to in this work as the propeller incidence angle, ip ,
+shown in Figure 2. The value of ip is zero when airflow is normal to the propeller disk, opposing
+the direction of axial thrust.
+    One additional auxiliary force and one additional auxiliary moment is predicted theoretically
+from the periodic lift and drag imbalance on the individual propeller blades [15, 16]. To explain these
+phenomena, it is useful to consider a common example of a front mounted propeller on an airplane
+
+
+                                                     8
+                                                       𝑥
+
+                                   𝑉∞              𝑖𝑝
+
+
+
+                                                           𝑧
+
+
+
+               Figure 2. Propeller incidence angle definition and coordinate system.
+
+
+in level, forward flight at positive angle of attack, where it is assumed that the propeller axis of
+rotation coincides with the x body-axis of the airplane. The propeller blades moving downward will
+produce more lift than the propeller blades moving upward because the downward moving blade is
+experiencing a higher angle of attack and relative airspeed. Consequently, the net center of thrust
+force is offset from the propeller axis of rotation, favoring the side of downward blade movement.
+When the net thrust force is transferred to the center of the propeller, a net yawing moment is
+observed acting to rotate the downward moving propeller blades into the oncoming airflow. This
+effect is often referred to as the p-factor. The individual propeller blade drag forces are also larger
+on the side of downward movement, again due to the greater relative angle of attack and airspeed,
+resulting in a net normal force directed upward for the current example. Thus, a propeller on an
+airplane at positive angle of attack will produce a normal force and a yawing moment in addition
+to the conventional axial thrust and torque. Following similar reasoning, the example propeller in
+sideslip will instead produce pitching moment and side force as the auxiliary force and moment.
+    An analytical treatment of airplane propeller aerodynamics at low angle of attack presented in
+Reference [16] agrees with the qualitative conclusions obtained from the preceding example. For
+a propeller operating at a small nonzero angle of attack and zero sideslip, the normal force and
+yawing moment are shown to be linearly proportional to the propeller incidence angle; pitching
+moment and side force coefficients are theoretically zero. It is also shown that for low incidence
+angle conditions, small perturbations in incidence angle have no effect on axial thrust and torque.
+Aerodynamic trends observed in experimental testing may differ from analytical predictions, as will
+be considered in Section 2.3 and Section 4.
+    The propeller side force Ty , normal force Tz , pitching moment Qy , and yawing moment Qz can
+be non-dimensionalized in a manner similar to the thrust Tx and torque Qx [16]. The propeller
+normal force coefficient CTz , side force coefficient CTy , pitching moment coefficient CQy , and yawing
+moment coefficients CQz , are defined as:
+
+                              Ty              Tz            Qy              Qz
+                   CT y =     2  4
+                                   , C Tz =   2  4
+                                                   , CQy =   2  5
+                                                                  , C Qz =                          (7)
+                            ρn D            ρn D           ρn D            ρn2 D5
+The propeller force and moment sign convention used in this work follows the right-handed propeller
+coordinate system shown in Figure 2, where the y-axis is pointed into the page.
+
+
+
+
+                                                   9
+2.3   Previous Experimental Research
+    Many previous studies have employed methods for theoretical and computational prediction
+of propeller aerodynamics at incidence [16, 22–29]; however, experimental techniques provide the
+most accuracy in revealing the highly complex and nonlinear behavior of propeller aerodynamics at
+incidence. Interest in vertical/short takeoff and landing (V/STOL) vehicles in the 1950’s initiated
+several experiments studying propellers operating at incidence. Reference [30] tested a four bladed
+1/3 full-scale propeller from 0◦ to 180◦ of incidence while also varying flow speed, propeller rota-
+tional speed, and propeller blade angle. Reference [31] conducted a similar study for three different
+full-scale 3-bladed propellers, varying flow speed, propeller rotational speed, blade angle, and pro-
+peller incidence angle between 0◦ and 85◦ degrees. The three different propeller variants, including
+different blade shape and a flapping propeller, were tested and exhibited similar force and moment
+deviations with incidence angle and the component of advance ratio normal to the propeller disk.
+A significant finding was that the axial thrust and torque coefficients were nearly constant and
+off-axis force and moment coefficients showed a roughly linear increase over a significant range of
+incidence angles when plotted against the normal component of advance ratio at a constant blade
+pitch angle. The angle of incidence where these trends were no longer followed occurred at lower
+incidence as the normal advance ratio increased. Reference [32] studied the high incidence angle
+aerodynamics of isolated propellers as well as propeller-wing interactions up to 90◦ of incidence,
+noting aerodynamic differences due to the presence of the wing.
+    References [30, 31] made use of an alternative advance ratio Jx describing the flow normal to
+the propeller disk,
+                                                 V∞ cos ip
+                                            Jx =                                                  (8)
+                                                    nD
+which was found to be more appropriate for describing propellers at incidence. Rotorcraft utilize a
+similar representation of advance ratio components [19, 33], from which a complementary definition
+of tangential advance ratio Jz can also be postulated:
+                                                  V∞ sin ip
+                                           Jz =                                                  (9)
+                                                    nD
+The normal and tangential representation of advance ratio was used in a previous propeller modeling
+effort that developed lookup tables for propulsive forces and moments for a quadrotor vehicle [34].
+Propeller aerodynamic effects from advance ratio and incidence angle were also found to be best
+characterized by Jx and Jz for developing polynomial aerodynamic models for propellers at inci-
+dence [10].
+    The increased interest in efficient jet propulsion subsequent to References [30–32] resulted in
+propeller aerodynamics research becoming dormant for several decades, until recently when in-
+creased interest in electrically-powered unmanned aerial vehicles, distributed electric propulsion,
+and eVTOL designs arose in the aerospace community. Reference [35], performed wind tunnel
+testing of a 9-inch diameter, 5-inch pitch propeller at incidence angles ranging from 0◦ to 180◦
+in 30-degree increments and flow speeds up to 29.5 ft/s. The off-axis side and normal forces at
+high incidence angles were found to be small compared to the axial thrust force generated by the
+propeller. Normal force magnitude was found to be less than axial thrust but still significant at
+nonzero incidence angles. Side force was found to be negligible for all incidence angles. The off-
+axis pitching and yawing moments were found to be comparable in magnitude to the aerodynamic
+torque along the axis of rotation at high incidence angles. Notably, this pitching moment result
+is not predicted by the propeller theory described in Reference [16] showing the limitations of the
+analytical treatment of propellers at incidence. The significant pitching moment at high incidence
+
+
+                                                  10
+angles can be attributed to non-uniform airflow through the front and rear portions of the pro-
+peller relative to the airflow, which leads to a tendency for the propeller to pitch upward at near 90◦
+incidence angles [35]. This work also presented frequency domain analyses which showed a large
+peak in the plot of the measured forces and moments frequency spectrum in accordance with the
+measured rotational speed of the propeller suggesting an alternative technique to measure propeller
+rotational speed.
+    Reference [36] followed this work by testing the same 9-inch diameter, 5-inch pitch propeller
+and performing additional testing on multiple 3D printed propeller blades with different pitch
+angles at incidence angles ranging from 0◦ to 90◦ and flow speeds up to 32.8 ft/s. The measured
+propeller force and moment coefficients showed reasonable agreement between the testing efforts
+and trends between the propellers. Reference [37] also performed similar experiments for several
+subscale propellers at incidence angles ranging from 0◦ to 180◦ in 15◦ increments and flow speeds
+up to 49.2 ft/s.
+    Reynolds number effects associated with subscale propellers are also relevant to consider for
+subscale vehicles [20, 21, 38, 39]. Operation at low propeller blade Reynolds number (approxi-
+mately 100,000 or lower) degrades propeller performance due to an increasing dominance of viscous
+effect. This results in decreased propeller blade lift production and an increase in propeller blade
+drag, which lowers efficiency and decreases thrust coefficient for otherwise identical conditions.
+Consequently, it is important to consider propeller blade Reynolds number as an additional factor
+to describe subscale propeller aerodynamics.
+
+
+3       Wind Tunnel Experimentation
+    The isolated propeller wind tunnel testing for this study was performed in the NASA Langley
+Research Center 12-Foot Low-Speed Tunnel.1 The facility is an atmospheric pressure tunnel with a
+12-foot width and height octagonal cross-section and 15-foot test section length. Dynamic pressures
+are obtainable up to q̄ = 7 psf, which corresponds to a flow velocity of approximately 77 ft/s at
+standard sea level conditions. The air is pulled through the tunnel by a 6-blade, 15.8-ft diameter
+fan. The test section turbulence level is approximately 0.6% for the longitudinal center-line-flow. A
+schematic of the wind tunnel is shown in Figure 3. The remainder of this section describes the LA-
+8 propellers, experiment setup, testing methodology, and data collection procedures. Additional
+isolated propeller specific testing considerations are also highlighted.
+
+3.1     LA-8 Propellers
+    The propellers tested in this study were 16-inch diameter, 8-inch pitch, fixed-pitch, folding
+three-bladed clockwise (CW) and counterclockwise (CCW) rotating propellers used on the LA-8
+aircraft. The CW rotating propellers, as viewed from behind the aircraft, are available commercial
+off-the-shelf (COTS). Since the manufacturer only produced propellers for CW rotation and folding
+propellers of CW and CCW rotation of the desired size were not available from a suitable propeller
+manufacturer, a CCW propeller was custom developed to mirror the CW propeller geometry and
+performance. While the custom propellers were intended to exactly mirror the COTS propellers,
+slight differences in the propeller characteristics were noted through physical examination. The
+CCW custom propeller blades had a slightly smaller chord, span, and mass compared to the CW
+COTS propeller blades. Also, the shape and thickness of the CCW custom propellers was slightly
+    1
+    Information available online at https://researchdirectorate.larc.nasa.gov/12-foot-low-speed-tunnel-12-ft-lst/ [ac-
+cessed March 2021]
+
+
+
+
+                                                         11
+      Figure 3. Schematic of the NASA Langley Research Center 12-Foot Low-Speed Tunnel.
+
+
+different, particularly around the propeller tip, and the surface finish of the CCW custom propellers
+was noted to have a rougher texture compared to the CW COTS propeller. Additionally, the differ-
+ences in custom propeller characteristics were found to be inconsistent throughout the production
+run so custom propellers with nearly identical mass were selected for testing to reduce vibrations.
+A photograph comparing the CW COTS and CCW custom propeller blade planforms is shown
+in Figure 4. Visually, the mirroring of the propellers appears to be very similar. Figure 5 shows
+additional photographs of the propeller blade shape, and the assembled three-bladed propeller.
+
+
+
+
+Figure 4. Comparison of the custom CCW rotating (upper) and COTS CW rotating (lower)
+propeller blade planforms, as viewed from the bottom.
+
+
+3.2    Experiment Setup
+    The six force and moment components were acquired during wind tunnel testing using a strain
+gauge balance with measurement range and accuracy given in Table 1 and Table 2, respectively.
+The balance was attached to the sting to allow the balance and propulsion system to rotate from 0◦
+to 180◦ relative to the oncoming airflow without having to modify the balance or propulsion system
+
+
+                                                 12
+      (a) Propeller blade (top and side view)            (b) Assembled three bladed propeller (front view)
+
+                         Figure 5. Experimental CCW rotating propeller.
+
+
+orientation. The balance was protected from the aerodynamic forces and thermal effects from the
+airflow with a fairing, as depicted in Figure 6. The balance fairing was determined to be beneficial
+in previous isolated propeller testing to obtain reliable results [34]. Gaps between the fairing and
+motor were covered with aluminum tape to further inhibit any air from moving over the sensitive
+strain gauges of the balance. The balance fairing was mounted to the sting such that it imparted
+no forces into the recorded data.
+      Table 1. Measurement range of the strain gauge balance used for wind tunnel testing
+
+                                           x         y        z       Units
+                              Force       ±50       ±60      ±100       lbf
+                              Moment      ±176      ±480     ±540     in-lbf
+
+
+Table 2. Measurement accuracy of the strain gauge balance used for wind tunnel testing (95%
+confidence interval expressed as a percentage of maximum loading)
+
+                                                  x         y        z
+                                 Force          0.05%    0.07%    0.04%
+                                 Moment         0.11%    0.04%    0.03%
+
+    The propellers were powered by a 450 KV electric motor and 100-amp electronic speed control
+(ESC). The ESC was powered with 29 volts at 32 amps using wiring running along the model
+sting. The ESC was provided input pulse width modulation (PWM) signals by a microcontroller to
+set the desired motor rotational speed, which is equivalent to the propeller rotational speed. The
+measured motor rotational speed in revolutions per minute (RPM) from the ESC was extracted
+using a Teensy35 microcontroller. Both input PWM signal and measured RPM were linked to
+the control room via an Arduino Mega and recorded by the data acquisition system. In previous
+LA-8 wind tunnel entries with the same motor, it was observed that the motor RPM for the same
+input commands and flow conditions changed over time due to thermal effects. It was determined
+that the motor temperature reached an approximate steady state after running for 10 minutes at
+a PWM command of 1550 µs. Therefore, before each run, the motors were warmed up by running
+
+
+                                                    13
+                                                         Sting
+                                            Motor
+
+
+
+
+                                                         Power Supply
+                     Propeller         Balance Fairing
+
+                 Figure 6. LA-8 propeller installation on the wind tunnel sting.
+
+
+them at a PWM command of 1550 µs for 10 minutes to reduce transient thermal effects while
+collecting data. This step is important because of the open-loop nature of the control system used
+and proved to be useful in previous testing.
+
+3.3   Testing Methodology and Experimental Design
+    The propeller wind tunnel experiment was designed to cover a majority of the operational
+envelope of the LA-8 aircraft and match the propeller flight conditions experienced in a previous
+LA-8 powered-airframe wind tunnel entry used to develop an aerodynamic model of the aircraft [7,
+11]. Static wind-tunnel testing for each propeller variant was conducted in a one-factor-at-a-time
+manner directly commanding dynamic pressure q̄, motor PWM command, and incidence angle ip .
+Testing was performed at dynamic pressure settings ranging from 0 to 6 psf, which corresponds
+to a freestream airspeed from 0 to 71 ft/s at standard sea level conditions. Testing at the tunnel
+limit of 7 psf was avoided due to tunnel heating issues and because the LA-8 powered-airframe
+wind tunnel testing was only performed up to 5 psf [7]. The tunnel dynamic pressure settings
+were chosen to vary the flow velocity in a roughly linear manner because airspeed has a larger
+effect on propeller aerodynamics due to the strong dependencepon advance ratio (cf. Equation (3)).
+Freestream velocity is related to dynamic pressure by V∞ = 2q̄/ρ, therefore, finer increments of
+dynamic pressure were selected at lower dynamic pressure test points.
+    Incidence angle was varied from 0◦ to 180◦ for dynamic pressures up to 1.5 psf to capture
+the thrust decrease and thrust fluctuations seen when approaching a vortex ring state (VRS) [40].
+The incidence angle increments between points was chosen to be 10◦ for 0◦ ≤ ip ≤ 60◦ , 5◦ for
+65◦ ≤ ip ≤ 115◦ , and 10◦ for 120◦ ≤ ip ≤ 180◦ . Finer increments were tested near 90◦ of incidence
+because of the expected and observed higher sensitivity of changes in forces and moments when
+the flow is nearly parallel to the propeller disk. Incidence angle was varied between 0◦ and 90◦
+at a dynamic pressure setting of 2.5 psf in 10◦ increments for 0◦ ≤ ip ≤ 60◦ and 5◦ increments
+for 65◦ ≤ ip ≤ 90◦ . Incidence angle was varied between 0◦ and 60◦ in 5◦ increments at dynamic
+pressure settings of 3.5 psf and above. The motor PWM command inputs were varied evenly at
+five different settings between 1350 µs to 1600 µs for all dynamic pressure settings and incidence
+angles, which translates to a propeller rotational speed range of approximately 1500 RPM to 6000
+RPM. The test matrix is summarized in Table 3 and is shown graphically in Figure 7.
+
+
+
+
+                                                14
+                                  Table 3. Propeller wind tunnel test matrix
+
+      q̄ [lbf/ft2 ]   V∞ [ft/s]        PWM Command [µs]                         ip [deg]
+            0            0.0       [1350, 1413, 1475, 1538, 1600]   [0:10:60, 65:5:115, 120:10:180]
+          0.25          14.5       [1350, 1413, 1475, 1538, 1600]   [0:10:60, 65:5:115, 120:10:180]
+           0.5          20.5       [1350, 1413, 1475, 1538, 1600]   [0:10:60, 65:5:115, 120:10:180]
+            1           29.0       [1350, 1413, 1475, 1538, 1600]   [0:10:60, 65:5:115, 120:10:180]
+           1.5          35.5       [1350, 1413, 1475, 1538, 1600]   [0:10:60, 65:5:115, 120:10:180]
+           2.5          45.9       [1350, 1413, 1475, 1538, 1600]          [0:10:60, 65:5:90]
+           3.5          54.3       [1350, 1413, 1475, 1538, 1600]               [0:5:60]
+           4.5          61.5       [1350, 1413, 1475, 1538, 1600]               [0:5:60]
+            6           71.0       [1350, 1413, 1475, 1538, 1600]               [0:5:60]
+
+
+
+
+Figure 7. Graphical representation of the designed propeller wind tunnel test points for freestream
+velocity and incidence angle (all five motor PWM commands are tested at each point).
+
+
+3.4   Test Execution and Data Collection
+    The propeller test conditions were established by commanding different values of tunnel dynamic
+pressure, motor PWM signal, and incidence angle. Each individual wind tunnel run was executed
+by sweeping incidence angle while holding a constant dynamic pressure setting and motor PWM
+command throughout the run. This procedure is reflected in the multi-exposure image of a test
+run depicted in Figure 8a. The propeller coordinate system and incidence angle measurement is
+depicted in Figure 8b.
+    Five seconds of contiguous data were recorded for each test point to allow sufficient averaging
+of dynamic data, particularly nearing thrust fluctuations associated with a VRS. A sample rate of
+2,500 Hz was selected to allow frequency domain analysis of the data with a maximum frequency
+well above the propeller rotation rate (the Nyquist frequency is 1,250 Hz or 75,000 RPM). A
+sixth-order Butterworth anti-alias filter with a cutoff frequency of 1,000 Hz was applied before
+sampling the data. While the test point conditions were specified using dynamic pressure and
+motor PWM command, these settings were used to indirectly sweep variables more pertinent to
+propeller aerodynamics: freestream airspeed V∞ and propeller rotational speed n. These latter
+quantities were then further reduced to calculate propeller advance ratio(s) (Equations (3), (8),
+and (9)) and propeller blade Reynolds number (Equation (4)). Changes in dynamic pressure
+change the flow velocity, which drives changes in propeller advance ratio. Changes in motor PWM
+command change the propeller rotational speed, which has the primary effect of changing the
+
+
+                                                     15
+                          𝑉∞                                                  𝑉∞
+
+                                                                          𝑧        𝑖𝑝
+                                                                                        𝑥
+
+                                                                               𝑦
+
+
+                   sting rotation
+
+
+
+   (a) Multi-exposure image of a wind tunnel run          (b) Propeller test coordinate system
+
+      Figure 8. LA-8 propeller mounted in the NASA Langley 12-Foot Low-Speed Tunnel.
+
+
+propeller blade Reynolds number, but also contributes to changes in the propeller advance ratio.
+A plot of the tested values of normal advance ratio Jx and tangential advance ratio Jz for the CW
+rotating propeller is shown in Figure 9. A plot showing the range of propeller rotational speed and
+propeller blade Reynolds number covered by the testing is shown in Figure 10. The figures show
+data corresponding to the CW rotating propeller, but the conditions experienced by the CCW
+propeller are similar.
+    In addition to the nominal static test matrix, several repeat and validation-specific runs were
+made to ensure data quality and allow testing of the model predictive capability. Validation runs
+were taken with different motor PWM commands and dynamic pressure settings within the ranges
+tested. Furthermore, several continuous data collection runs containing variable amplitude motor
+step inputs were made at multiple dynamic pressure settings with 0◦ ≤ ip ≤ 60◦ to aid characteri-
+zation of the motor dynamics.
+
+3.5   Additional Isolated Propeller Testing Considerations
+    A phenomenon that has been noted in several past tests of propellers in the NASA Langley
+12-Foot Low-Speed Tunnel is balance zero shifting for long runs. There are multiple suspected
+causes including airflow over the balance, temperature changes, violent vibrations, and electrical
+interference, which are far less prevalent in conventional aircraft model wind tunnel tests. The
+balance fairing discussed in Section 3.2 appeared to mitigate a large amount of the zero shifting
+phenomenon, however, shortening the run time and taking a new zero before each run appeared to
+further reduce data corruption from zero shifting. Even with these precautions, the test personnel
+needed to remain vigilant for sporadic runs corrupted with large amounts of measurement errors
+which were required to be re-tested.
+    One notable approach found to be critical to ensuring quality data collection was a modeling-
+while-testing approach, which comprised of fitting polynomial models to the data during the test
+using similar techniques to those described in Reference [10]. After sufficient data were collected
+to enable preliminary model development, modeling residuals were analyzed and outlying residuals
+were flagged for inspection. Outlying residuals were generally found to occur in clusters linked to a
+specific wind tunnel run. When this was the case, the wind tunnel run was re-tested. Most of the
+time, the new data would then agree more with the expectations from the model, which suggested
+to include the new run for modeling and to discard the suspect run. This procedure was imperative
+
+
+                                                   16
+                 Figure 9. Tested range of normal and tangential advance ratio.
+
+
+
+
+   Figure 10. Tested range of propeller rotational speed and propeller blade Reynolds number.
+
+
+to ensure all data used for subsequent model development was high quality.
+    The RPM measurement provided by the motor-ESC setup was validated by analyzing the
+frequency spectrum of the vibrations experienced by the balance. A large spike in the magnitude of
+the frequency response corresponding to the measured RPM was noted at all test conditions and the
+accuracy of the RPM measurement was well within the resolution of the discrete Fourier transform
+(DFT) technique for the given sampling time and sampling rate. Additional analysis was performed
+using a Fourier transform technique which leverages time-domain cubic interpolation and the chirp
+z-transform to produce a high accurate spectrum with arbitrary frequency resolution [41, 42].
+The calculations were carried out using codes available in the System IDentification Programs for
+
+
+                                               17
+AirCraft (SIDPAC) software toolbox.2 Using the latter high-accuracy Fourier transform technique,
+most residuals between measured RPM and the peak of the frequency spectrum spike were within
+approximately ±5 RPM or approximately 0.2% difference, confirming the accuracy and precision
+of the RPM measurement from the ESC. In theory, the frequency domain analysis could be used
+as a replacement to an RPM measurement, however, structural responses in the tunnel make this
+approach difficult to use exclusively because of interference observed at certain frequencies. A
+sample frequency domain analysis depicting this strategy will be shown in Section 4.
+
+
+4        Results and Discussion
+    Figures showing the collected propeller wind tunnel test data for the CW and CCW rotating
+propellers are given in Appendix A. The figures are described in this section and important ob-
+servations are highlighted. Recall from Section 2, the aerodynamics for a given propeller design
+in axial airflow are primarily dependent on advance ratio J, propeller blade Reynolds number Re,
+and tip Mach number Mtip . Incidence angle ip becomes another factor for describing propeller
+aerodynamics at nonzero incidence. For the experimental propellers in this work, advance ratio
+and angle of incidence effects were expected to be the main contributing factors to the propeller
+aerodynamics. The propellers also operate at low propeller blade Reynolds number (approximately
+40,000 to 140,000), which was expected to be a smaller, but still significant factor. Since the testing
+was performed at subsonic, nearly incompressible propeller tip conditions, tip Mach number effects
+were not studied. Advance ratio, incidence angle, and propeller blade Reynolds number effects are
+examined in the subsequent figures.
+    It is worth noting a few test-specific data presentation subtleties. The off-axis force and moments
+measurements (Ty , Tz , Qy , Qz ) and their corresponding dimensionless values were shifted such that
+they were zero in axial flow (ip = 0◦ ) for each run (recall incidence angle was swept from 0◦ up to a
+maximum value specified for each run). In theory, at zero incidence, propellers should only produce
+an axial thrust force and aerodynamic torque about the axis of rotation. Small offsets were noted
+in the data, particularly for the lower magnitude non-axial forces and moments, which could be
+attributed to sting interactions, slight misalignment of measurement hardware, flow angularity, or
+other small measurement errors. For equivalent test conditions, the off-axis forces and moments
+values at zero incidence were inconsistent; the curve shapes against incidence angle for each run
+appeared to be preserved, but a small constant offset was observed in repeat runs at the same
+test conditions. Also of note is that many plot traces are separated by commanded motor PWM
+signal. A more aerodynamically representative choice would be to separate by propeller rotational
+speed n; however, data were not collected with propeller speed feedback. Since the PWM command
+was fixed for incidence angle sweeps, the propeller speed varied slightly as a function of incidence
+angle. This is because propeller speed is also a function of freestream conditions in addition to
+PWM command. However, PWM command on a per test condition basis is still a good metric to
+characterize changes in propeller rotational speed or changes in propeller blade Reynolds number,
+and can be interpreted as such.
+    Figures 11-12 show the measured propeller rotational speed n variation with freestream airspeed
+V∞ and the component of freestream airspeed normal to the propeller disk V∞ cos ip for the CW
+and CCW rotating propellers. The plots are separated by incidence angles ranging from 0◦ to
+90◦ and 90◦ to 180◦ . The figures show different propeller speed behavior for 0◦ ≤ ip ≤ 90◦ and
+90◦ ≤ ip ≤ 180◦ , resulting from the oncoming airflow either resisting or favoring propeller motion.
+Between 0◦ and 90◦ of incidence, the output rotational speed appeared to have a strong dependence
+    2
+        Information available online at https://software.nasa.gov/software/LAR-16100-1 [accessed March 2021]
+
+
+
+                                                          18
+on motor PWM command, freestream velocity V∞ , and incidence angle ip . The normal component
+of freestream velocity relative to the propeller V∞ cos ip appears to well characterize the V∞ and
+ip dependent variation in a single variable. Between 90◦ and 180◦ of incidence, freestream velocity
+and incidence angle appeared to have a much smaller effect on output propeller rotational speed;
+propeller speed appears to be mainly dependent on only the motor PWM command. The overall
+propeller speed values for a particular PWM command appears to be slightly higher for the CCW
+rotating propeller compared to the CW rotating propeller.
+    Figure 13 presents the acquired data at the static condition (q̄ = 0 psf). The plots show motor
+PWM command, propeller blade Reynolds number Re, thrust Tx , torque Qx , thrust coefficient CTx ,
+and torque coefficient CQx plotted against measured propeller rotational speed n. Note that the
+axial torque coefficient CQx and axial torque Qx are shown as absolute quantities to allow better
+comparison between CW and CCW propeller performance—the axial torque for the CW rotating
+propeller is always negative. The thrust and torque increased with increasing propeller rotational
+speed, with a steeper increase at higher propeller speed. The thrust and torque coefficients show a
+slight overall increase with increasing propeller rotational speed, suggesting the presence of Reynolds
+number effects. If Reynolds number effects were not present, the thrust and torque coefficient traces
+would, in theory, remain a constant value against RPM. The thrust and torque for the CW rotating
+propeller are greater than the CCW rotating propeller, with a larger difference at higher propeller
+speeds.
+    Figures 14-21 show the dimensional propeller forces and moments as a function of propeller
+incidence angle ip . Each plot shows the data for the CW and CCW rotating propellers at each
+of the five tested motor PWM command settings in µs, where each legend entry corresponds to
+a specific wind tunnel run composed of an incidence angle sweep. The propeller speed n and
+freestream airspeed V∞ are also included to illustrate the similarity of test conditions. Plots are
+separated by the dynamic pressure q̄ (or equivalently standard sea level freestream velocity VSSL )
+test condition. Figures 22-29 show equivalent plots to Figures 14-21 only instead showing the
+propeller force and moment coefficients. Note that the absolute value of axial torque Qx and
+torque coefficient CQx is again shown to facilitate improved visual comparison of CW and CCW
+rotating propellers. Notable observations from these figures are summarized as follows:
+
+    The axial thrust Tx plots at each dynamic pressure setting show that the thrust gradually
+     increases as incidence angle increases before leveling off at about 60◦ of incidence. Beyond 60◦
+     of incidence the axial thrust variation becomes more nonlinear with incidence angle. Axial
+     thrust is also observed to decrease overall at higher dynamic pressure settings at low incidence
+     angles.
+
+    The measured axial thrust Tx and axial torque Qx of the CW rotating propeller is observed to
+     be significantly larger than that of the CCW propeller for equivalent motor PWM commands,
+     particularly at low freestream airspeed and higher motor PWM settings. This is compounded
+     by noting that the RPM is always greater for the CCW rotating propeller for equivalent motor
+     command. This difference can be attributed to the aforementioned geometric differences due
+     to different manufacturing processes for each propeller (see Section 3.1). The individual
+     propeller blades for the CW rotating propeller produce more lift and more drag compared to
+     the CCW rotating propeller (see Section 2.1).
+
+    The propeller side force Ty is negligible in theory and was observed in other similar studies to
+     be insignificant [30, 31, 35]. However, the Ty traces as a function of incidence angle appear to
+     have deterministic trends. Since the tested propellers were folding propellers, the propellers
+     were able to flap through the incidence angle sweeps, similar to the passive flapping of heli-
+
+
+                                                  19
+  copter rotors in forward flight. Thus, the observed side force may be attributed to cyclic blade
+  flapping. Opposite contributions to side force from the CW and CCW propeller also provided
+  evidence that there is a perceptible side force phenomena occurring in the data. Although,
+  inexplicable changes in certain traces of Ty reflect the measurement limitations because of
+  the low magnitude of the side force relative to the axial thrust. Side force contributions may
+  be insignificant for many applications.
+
+ Normal force Tz is observed to generally become increasingly negative for incidence angles
+  between 0◦ and approximately 90◦ for both propeller orientations, as theory would suggest. At
+  high freestream velocity, the normal force is invariant with propeller orientation and propeller
+  rotational speed at low incidence angles (ip < 30◦ ). Since normal force is directed in the same
+  direction for both propeller orientations, the effect of counter-rotating propellers is additive
+  and will have a significant effect on vehicle dynamics.
+
+ Propeller pitching moment Qy initially increases positively at higher PWM settings for both
+  the CW and CCW propellers as incidence angle is swept. This differs from theoretical pre-
+  dictions of no pitching moment produced at shallow incidence angles, but agrees with afore-
+  mentioned experimental results from other studies. Pitching moment in some cases at a high
+  PWM setting increases then shows a large decrease near 90◦ of incidence then increases again
+  before tapering off at 180◦ degrees of incidence (cf. Figures 16-17). The peak pitching mo-
+  ment typically does not occur at ip = 90◦ . Since the pitching moment is generally the same
+  sign for both propeller orientations, the effect of counter-rotating propellers is additive and
+  will have a significant effect on vehicle dynamics.
+
+ Propeller yawing moment Qz is observed to initially increase positively for the CCW rotating
+  propeller and negatively for the CW rotating propellers from zero incidence, as theoretical
+  predictions would suggest. The yawing moment magnitude for the CCW rotating propeller
+  appears to generally be greater than CW rotating propeller at otherwise equivalent test points
+  for ip ≤ 90◦ . The yawing moment magnitude is close to that of the axial torque at high
+  incidence angles, particularly at high propeller rotational speeds and for the CCW propeller.
+
+ All off-axis propeller forces and moments (Ty , Tz , Qy , and Qz ) appear to have significant
+  magnitude at incidence. While most of these components are generally significant for all
+  propellers operating at incidence, some of these effects in this study can be partially attributed
+  to blade flapping due to the folding propeller design, which places a component of the nominal
+  blade lift and drag forces outside of the plane normal to the axis of rotation.
+
+ Vortex ring state (VRS) like phenomena are observed in Figure 16-17 as decreases in axial
+  thrust in descent, or high incidence (ip near 180◦ ), conditions. This also coincides directly
+  with large thrust fluctuations visible in continuous data time histories and blade flapping
+  fluctuations seen in video camera footage of the test points. The specific test points where
+  VRS-like phenomena were noted for both propeller orientations were:
+
+     – q̄ = 1.0 psf, ip = 160◦ to 180◦ , and PWM = 1538 µs (n ≈ 4950 RPM)
+     – q̄ = 1.0 psf, ip = 150◦ to 160◦ , and PWM = 1600 µs (n ≈ 5700 RPM)
+     – q̄ = 1.5 psf, ip = 160◦ to 180◦ , and PWM = 1600 µs (n ≈ 5700 RPM)
+
+  The advance ratio where this VRS-like phenomena occurs is between 0.23 ≤ J ≤ 0.28 in
+  descent. A sample plot of the frequency spectrum of a data point with VRS-like phenomena
+  is shown in Figure 65, which is described later in this section.
+
+
+                                              20
+    The larger magnitude axial thrust and torque (both mean value and dynamic fluctuations)
+     drive the choice of the wind tunnel balance load limits and resolution. Consequently, lower
+     magnitude off-axis force and moment measurements will have a lower signal-to-noise ratio
+     relative to axial measurements, which should be considered when making observations from
+     the collected data.
+
+    Figures 30-36 show the propeller force and moment coefficients plotted against advance ratio
+J for the CW rotating propeller. Each figure corresponds to a specific incidence angle. The plots
+also show dynamic pressure q̄ and propeller blade Reynolds number Re. Additionally, the plots at
+ip = 0◦ show freestream velocity V∞ , propeller rotational speed n in RPM, axial thrust Tx , and
+axial torque Qx (CTy , CTz , CQy , and CTz are zero at ip = 0◦ ). The specific incidence angles shown
+are ip = [0◦ , 30◦ , 60◦ , 90◦ , 120◦ , 150◦ , 180◦ ]. The equivalent plots for the CCW rotating propeller are
+shown in Figures 37-43. Since incidence angle is held constant, and advance ratio is plotted on the
+horizontal axis, overall trends in otherwise-equivalent data points for different PWM settings can
+be interpreted as propeller blade Reynolds number Re effects. Key observations from these figures
+are summarized as follows:
+
+    The axial thrust coefficient CTx has a strong dependence on advance ratio at each incidence
+     angle condition. At the lower incidence angle conditions (ip ≤ 60◦ ), the thrust coefficient
+     decreases as advance ratio increases. At the higher incidence angle conditions (ip ≥ 90◦ ), the
+     thrust coefficient is first level or slightly decreases, then increases as advance ratio increases.
+     At high incidence angles approaching a descent condition (ip ≥ 150◦ ), a sharp valley is
+     observed near 0.23 ≤ J ≤ 0.28 reflecting an approach to VRS. Thrust coefficient degradation
+     with Re is apparent at lower incidence angles (ip ≤ 60◦ ) for the lower two PWM settings
+     (1350 µs and 1413 µs) where Re is less than 100,000. For higher PWM settings where Re is
+     greater than 100,000 and higher incidence angles (ip ≥ 90◦ ), Reynolds number effects are not
+     as evident in the data.
+
+    The axial torque coefficient CQx decreases in absolute magnitude as advance ratio increases
+     for low incidence angles near ip = 0◦ and increases in absolute magnitude as advance ratio
+     increases for high incidence angles. The transition between these two trends occurs near
+     ip = 60◦ , where the data trends are somewhat ill-defined. Re effects for CQx can be seen in
+     the data at lower PWM settings, particularly at lower incidence angle conditions.
+
+    The normal force coefficient CTz is generally negative and increases relatively linearly in
+     absolute magnitude as advance ratio increases for ip ≤ 90◦ . Re-based trends for CTz are
+     observed in the plots where ip = 30◦ , but are less apparent at other incidence angles.
+
+    The side force coefficient CTy is generally observed to have a smaller magnitude compared
+     to CTx and CTz in each plot. However, there still appears to be deterministic attributes in
+     the data where trends for the CW and CCW rotating propellers are opposite, as would be
+     expected. Rough Re-based trends are observed for CTy at lower nonzero incidence angles. For
+     incidence angles ip ≤ 90◦ there is an apparent sign change in CTy as advance ratio increases.
+
+    The pitching moment coefficient CQy is generally positive for ip ≤ 120◦ , except for several
+     data points typically associated with lower PWM settings. Re-based trends are noted in the
+     data for ip ≤ 90◦ .
+
+    The yawing moment coefficient CQz increases in absolute magnitude as advance ratio increases
+     for ip ≤ 90◦ ; CQz for the CW rotating propeller is generally negative and CQz for the CCW
+
+
+                                                     21
+      rotating propeller is generally positive for ip ≤ 90◦ . The yawing moment for the CW and CCW
+      rotating propellers appear to both become positive for high incidence angles approaching
+      ip = 180◦ , which is potentially caused by sting interaction (all nonzero off-axis force and
+      moment coefficients at ip = 180◦ are also likely caused partially by sting interactions). Rough
+      Re attributed trends in CQz are observed for ip ≤ 90◦ .
+
+    Figures 44-52 show the dimensionless forces and moment coefficients for the CW rotating pro-
+peller against conventional advance ratio J (Equation (3)), normal advance ratio Jx (Equation (8)),
+and tangential advance ratio Jz (Equation (9)). The plots are broken up by range of incidence angle
+from 0◦ to 60◦ , 70◦ to 110◦ , and 120◦ to 180◦ where each legend entry corresponds to a specific inci-
+dence angle. Either J, Jx , or Jz is shown on the horizontal axis for each plot. Figure 53 shows the
+forces and moment coefficients for the CW rotating propeller against both Jx and Jz in a 3D plot.
+The plots only show data for the highest three PWM commands (1475 µs, 1538 µs, and 1600 µs)
+to display data at higher propeller blade Reynolds number such that Re effects are less prominent.
+Figures 54-63 show equivalent plots for the CCW rotating propeller. Plotting the data against Jx
+and Jz is highlighted because these variables were important to identifying propeller aerodynamic
+models in connected research [10]. The key takeaways from these figures are summarized as follows:
+
+    Axial thrust coefficient CTx and torque coefficient CQx variation are well characterized by
+     Jx at low incidence angles, as can be seen in Figure 45 and Figure 55. Similar observations
+     were made in previous research [31]. Both Jx and Jz are useful for describing CTx and CQx
+     variation at higher incidence angles.
+
+    The normal force coefficient CTz variation is well described by Jz at low incidence angles, as
+     can be seen in Figure 46 and Figure 56. The yawing moment coefficient CQz is also reasonably
+     well characterized by Jz at low incidence angles. Both Jx and Jz is useful for describing CTz
+     and CQz variation at higher incidence angles as well as side force coefficient CTy and pitching
+     moment coefficient CQy at all incidence angles.
+
+    These figures (particularly the 3D plots shown in Figure 53 and Figure 63) show that all
+     the propeller force and moment coefficients variations are well described using both Jx and
+     Jz , absent of significant propeller blade Reynolds number effect. The relationship of force
+     and moment coefficients to Jx and Jz is also highly nonlinear across Jx –Jz space, which also
+     reflects that propeller aerodynamics are highly dependent on advance ratio J and incidence
+     angle ip . From Figure 53 and Figure 63, it can be seen that a response surface could be fit
+     through the data points to develop an aerodynamic model describing the aerodynamics for
+     the LA-8 vehicle across its large flight envelope. A similar approach, which also considered
+     propeller blade Reynolds number effects, was taken to develop propeller aerodynamic models
+     for the LA-8 aircraft [10].
+
+    Figure 64 shows the propeller propulsive efficiency ηp against advance ratio at zero incidence
+angle with different PWM command settings shown in the legend. The plots show that the pro-
+pellers are generally less efficient at the lower two PWM settings (1350 µs and 1413 µs) as a result
+of lower propeller blade Reynolds number operation decreasing performance. The plots also show
+that the CW rotating propeller has a higher propulsive efficiency compared to the CCW rotating
+propeller. Both propellers have a peak efficiency at around J = 0.55.
+    Figure 65 shows the time histories and power spectrum for individual data points for the CW
+rotating propeller at a dynamic pressure of 1.5 psf and a PWM command of 1600 µs. One test point
+is at ip = 0◦ representing a forward flight or ascent condition. The other test point is at ip = 180◦
+
+
+                                                  22
+representing a descent condition where VRS-like characteristics were noted in testing. The time
+history plots for the two test points show the raw measured axial thrust Tx signal subtracted from
+its mean value Txave , and the data signal smoothed using a global optimal Fourier smoother [41, 43]
+with a cutoff frequency of 15 Hz. The time history plot for the data point at ip = 0◦ shows a nearly
+constant smoothed signal with high frequency vibrations apparent in the raw measured signal
+with peaks at approximately ±2 lbf. The smoothed measurement time history for the data point
+at ip = 180◦ varies with the time with the non-attenuated low frequency content varying up to
+approximately 2 lbf. Higher amplitude low frequency content is also seen in the raw measured signal
+peaking at roughly ±12 lbf. The corresponding frequency domain plots show the power spectrum
+calculated using three methods: a high accuracy Fourier transform technique (FINT) [41, 42]
+(discussed above in Section 3.5), the discrete Fourier transform (DFT), and Welch’s method.3 The
+measured RPM provided by the ESC is also shown on the plot. The power spectrum for the data
+point at ip = 0◦ shows that the power of the vibrations is concentrated at higher frequencies.
+The largest peak occurs at the propeller rotation speed frequency, as was discussed previously in
+Section 3.5 and as was shown in Reference [35]. The power spectrum for the data point at ip = 180◦
+shows overall greater power magnitude across the frequency range compared to the data point at
+ip = 0◦ . The power for the ip = 180◦ data point is particularly high at low frequencies (less than
+20 Hz) and between 200 Hz to 300 Hz. The amplitude of the low frequency vibrations present in
+the ip = 180◦ data point are up to two orders of magnitude higher than the amplitude of the low
+frequency vibrations present in the ip = 0◦ data point.
+
+
+5        Conclusions
+    This report described a wind tunnel study performed to characterize propeller aerodynamics
+for subscale eVTOL vehicles. Specifically, an isolated propeller wind tunnel test was conducted
+over the expected flight envelope for the LA-8 aircraft using propellers from the aircraft. Both the
+clockwise and counterclockwise rotating propellers were tested to characterize their performance
+differences. Observations from this research effort are summarized as follows:
+
+         Propeller aerodynamics have a strong, nonlinear dependence on incidence angle, resulting
+          in significant off-axis force and moment components in addition to axial thrust and torque
+          performance changes when operating at high incidence angles. While certain aerodynamic
+          phenomena are predicted by theoretical analyses, experimental testing provides the most
+          accuracy for characterizing the complex and nonlinear nature of propeller aerodynamics at
+          incidence.
+
+         The force and moment coefficients for the propellers investigated in this study appear to
+          be mainly dependent on the advance ratio J, propeller blade Reynolds number Re, and
+          propeller incidence angle ip . The use of the normal component of advance ratio Jx = J cos ip
+          and the tangential component of advance ratio Jz = J sin ip suggest an alternate formulation
+          to advance ratio J and incidence angle ip that could be used for aerodynamic database
+          development.
+
+         Propellers operating at low Reynolds number (approximately less than 100,000) will experi-
+          ence performance degradation, including differences in the propeller force and moment coef-
+          ficient values at incidence.
+    3
+   Welch’s method calculations were performed using the pwelch.m function available in the MATLAB   ® Signal
+Processing Toolbox.
+
+
+
+                                                    23
+    Since eVTOL vehicle aerodynamics are highly dependent on propulsive effects, accurate
+     propulsion characterization is essential for understanding vehicle aerodynamics and devel-
+     oping aerodynamic databases used for high-fidelity simulator development.
+
+    Different manufacturing practices for propeller production can significantly change perfor-
+     mance characteristics. Manufacturing techniques for different propeller orientations should
+     be identical to the largest extent possible to avoid propulsive asymmetries.
+
+    This report documented several testing techniques that could be useful for future isolated pro-
+peller tests for eVTOL vehicles and provides progress in a new area of aerodynamic research sup-
+porting introductions of a future UAM transportation system. Future eVTOL propulsion testing
+studies are anticipated to further refine testing strategies and understand phenomena occurring for
+propellers operating at incidence.
+
+
+Acknowledgments
+   This research was funded by the NASA Aeronautics Research Mission Directorate (ARMD)
+Transformational Tools and Technologies (TTT) project. Testing support was provided by Earl
+Harris, Ronald Busan, Sue Grafton, and Wes O’Neal. Photography support was provided by
+Lee Pollard. LA-8 hardware support was provided by David North, Gregory Howland, Steven
+Geuther, and Robert McSwain. Propeller wind tunnel testing advice and lessons learned obtained
+from John Foster were crucial to the success of this research effort. Additionally, discussions with
+Paul Rothhaar, Ronald Busan, Patrick Murphy, Barton Bacon, and Kasey Ackerman about their
+experience with the GL-10 aircraft assisted this effort.
+
+
+References
+ 1. Silva, C., Johnson, W., Antcliff, K. R., and Patterson, M. D., “VTOL Urban Air Mobility Concept Ve-
+    hicles for Technology Development,” 2018 Aviation Technology, Integration, and Operations Conference,
+    AIAA Paper 2018-3847, Jun. 2018. https://doi.org/10.2514/6.2018-3847.
+
+ 2. Antcliff, K. R., Whiteside, S. K. S., Kohlman, L. W., and Silva, C., “Baseline Assumptions and Future
+    Research Areas for Urban Air Mobility Vehicles,” AIAA SciTech 2019 Forum, AIAA Paper 2019-0528,
+    Jan. 2019. https://doi.org/10.2514/6.2019-0528.
+
+ 3. Rothhaar, P. M., Murphy, P. C., Bacon, B. J., Gregory, I. M., Grauer, J. A., Busan, R. C., and Croom,
+    M. A., “NASA Langley Distributed Propulsion VTOL TiltWing Aircraft Testing, Modeling, Simulation,
+    Control, and Flight Test Development,” 14th AIAA Aviation Technology, Integration, and Operations
+    Conference, AIAA Paper 2014-2999, Jun. 2014. https://doi.org/10.2514/6.2014-2999.
+
+ 4. North, D. D., Howland, G., and Busan, R. C., “Design and Fabrication of the LA-8 Distributed Electric
+    Propulsion VTOL Testbed,” AIAA SciTech 2021 Forum, AIAA Paper 2021-1188, Jan. 2021. https:
+    //doi.org/10.2514/6.2021-1188.
+
+ 5. Geuther, S. C., North, D. D., and Busan, R. C., “Investigation of a Tandem Tilt-wing VTOL Aircraft
+    in the NASA Langley 12-Foot Low-Speed Tunnel,” NASA TM-2020-5003178, Jun. 2020.
+
+ 6. McSwain, R. G., Geuther, S. C., Howland, G., Patterson, M. D., Whiteside, S. K., and North, D. D.,
+    “An Experimental Approach to a Rapid Propulsion and Aeronautics Concepts Testbed,” NASA TM-
+    2020-220437, Jan. 2020.
+
+
+
+
+                                                   24
+ 7. Busan, R. C., Murphy, P. C., Hatke, D. B., and Simmons, B. M., “Wind Tunnel Testing Techniques
+    for a Tandem Tilt-Wing, Distributed Electric Propulsion VTOL Aircraft,” AIAA SciTech 2021 Forum,
+    AIAA Paper 2021-1189, Jan. 2021. https://doi.org/10.2514/6.2021-1189.
+
+ 8. Murphy, P. C., Simmons, B. M., Hatke, D. B., and Busan, R. C., “Rapid Aero Modeling for Urban
+    Air Mobility Aircraft in Wind-Tunnel Tests,” AIAA SciTech 2021 Forum, AIAA Paper 2021-1644, Jan.
+    2021. https://doi.org/10.2514/6.2021-1644.
+
+ 9. Cook, J., and Gregory, I., “A Robust Uniform Control Approach for VTOL Aircraft,” VFS Autonomous
+    VTOL Technical Meeting and Electric VTOL Symposium, Jan. 2021.
+
+10. Simmons, B. M., “System Identification for Propellers at High Incidence Angles,” AIAA SciTech 2021
+    Forum, AIAA Paper 2021-1190, Jan. 2021. https://doi.org/10.2514/6.2021-1190.
+
+11. Simmons, B. M., and Murphy, P. C., “Wind Tunnel-Based Aerodynamic Model Identification for a Tilt-
+    Wing, Distributed Electric Propulsion Aircraft,” AIAA SciTech 2021 Forum, AIAA Paper 2021-1298,
+    Jan. 2021. https://doi.org/10.2514/6.2021-1298.
+
+12. Geuther, S. C., and Fei, X., “LA-8 Computational Analysis and Validation Studies Using FlightStream,”
+    AIAA SciTech 2021 Forum, AIAA Paper 2021-1191, Jan. 2021. https://doi.org/10.2514/6.2021-1191.
+
+13. Stratton, M., and Landman, D., “Wind Tunnel Test and Empirical Modeling of Tilt-Rotor Performance
+    for eVTOL Applications,” AIAA SciTech 2021 Forum, AIAA Paper 2021-0834, Jan. 2021. https://doi.
+    org/10.2514/6.2021-0834.
+
+14. McCormick, B. W., Aerodynamics, Aeronautics, and Flight Mechanics, 2nd ed., John Wiley & Sons,
+    New York, NY, 1995.
+
+15. Dommasch, D. O., Elements of Propeller and Helicopter Aerodynamics, Pitman Publishing Corporation,
+    1953.
+
+16. Phillips, W. F., Mechanics of Flight, 2nd ed., John Wiley & Sons, Hoboken, NJ, 2010.
+
+17. Greitzer, E. M., Spakovszky, Z. S., and Waitz, I. A., “Thermodynamics and Propulsion,” Lecture
+    Notes, Massachusetts Institute of Technology, 2006. URL http://web.mit.edu/16.unified/www/FALL/
+    thermodynamics/notes/node86.html, accessed March 2021.
+
+18. Singleton, J. D., and Yeager, W. T., “Important Scaling Parameters for Testing Model-Scale Helicopter
+    Rotors,” Journal of Aircraft, Vol. 37, No. 3, 2000, pp. 396–402. https://doi.org/10.2514/2.2639.
+
+19. Leishman, J. G., Principles of Helicopter Aerodynamics, 2nd ed., Cambridge University Press, Cam-
+    bridge, UK, 2016.
+
+20. Brandt, J., and Selig, M., “Propeller Performance Data at Low Reynolds Numbers,” 49th AIAA
+    Aerospace Sciences Meeting including the New Horizons Forum and Aerospace Exposition, AIAA Paper
+    2011-1255, Jan. 2011. https://doi.org/10.2514/6.2011-1255.
+
+21. Deters, R. W., Ananda, G. K., and Selig, M. S., “Reynolds Number Effects on the Performance of
+    Small-Scale Propellers,” 32nd AIAA Applied Aerodynamics Conference, AIAA Paper 2014-2151, Jun.
+    2014. https://doi.org/10.2514/6.2014-2151.
+
+22. Ribner, H. S., “Propellers in Yaw,” NACA TR-820, 1945.
+
+23. Ribner, H. S., “Formulas for Propellers in Yaw and Charts of the Side-Force Derivative,” NACA TR-819,
+    1945.
+
+24. Crigler, J. L., and Gilman Jr., J., “Calculation of Aerodynamic Forces on a Propeller in Pitch or Yaw,”
+    NACA TN-2585, Jan. 1952.
+
+
+
+                                                    25
+25. De Young, J., “Propeller at High Incidence,” Journal of Aircraft, Vol. 2, No. 3, 1965, pp. 241–250.
+    https://doi.org/10.2514/3.43646.
+
+26. Smith, H. R., “Engineering Models of Aircraft Propellers at Incidence,” Ph.D. thesis, University of
+    Glasgow, Jan. 2015.
+
+27. McCormick, B. W., Aljabri, A. S., Jumper, S. J., and Martinovic, Z. N., “The Analysis of Propellers
+    Including Interaction Effects,” NASA CR-158111, 1979.
+
+28. Theys, B., Dimitriadis, G., Hendrick, P., and De Schutter, J., “Experimental and Numerical Study of
+    Micro-Aerial-Vehicle Propeller Performance in Oblique Flow,” Journal of Aircraft, Vol. 54, No. 3, 2017,
+    pp. 1076–1084. https://doi.org/10.2514/1.C033618.
+
+29. Leng, Y., Yoo, H., Jardin, T., Bronz, M., and Moschetta, J.-M., “Aerodynamic Modeling of Propeller
+    Forces and Moments at High Angle of Incidence,” AIAA SciTech 2019 Forum, AIAA Paper 2019-1332,
+    Jan. 2019. https://doi.org/10.2514/6.2019-1332.
+
+30. McLemore, H. C., and Cannon, M. D., “Aerodynamic Investigation of a Four-Blade Propeller Operating
+    through an Angle-of-Attack Range from 0◦ to 180◦ ,” NACA TN-3228, Jun. 1954.
+
+31. Yaggy, P. F., and Rogallo, V. L., “A Wind-Tunnel Investigation of Three Propellers Through an Angle-
+    of-Attack Range from 0◦ to 85◦ ,” NASA TN D-318, May 1960.
+
+32. Kuhn, R. E., and Draper, J. W., “Investigation of the Aerodynamic Characteristics of a Model Wing-
+    Propeller Combination and of the Wing and Propeller Separately at Angles of Attack up to 90◦ ,” NACA
+    TR-1263, 1956.
+
+33. Johnson, W., Rotorcraft Aeromechanics, Cambridge University Press, 2013.
+
+34. Foster, J. V., and Hartman, D. C., “High-Fidelity Multi-Rotor Unmanned Aircraft System (UAS)
+    Simulation Development for Trajectory Prediction Under Off-Nominal Flight Dynamics,” 17th AIAA
+    Aviation Technology, Integration, and Operations Conference, AIAA Paper 2017-3271, Jun. 2017.
+    https://doi.org/10.2514/6.2017-3271.
+
+35. Theys, B., Dimitriadis, G., Andrianne, T., Hendrick, P., and De Schutter, J., “Wind Tunnel Testing
+    of a VTOL MAV Propeller in Tilted Operating Mode,” 2014 International Conference on Unmanned
+    Aircraft Systems (ICUAS), May 2014, pp. 1064–1072. https://doi.org/10.1109/ICUAS.2014.6842358.
+
+36. Leng, Y., Jardin, T., Bronz, M., and Moschetta, J.-M., “Experimental Analysis of Propeller Forces and
+    Moments at High Angle of Incidence,” AIAA SciTech 2019 Forum, AIAA Paper 2019-1331, Jan. 2019.
+    https://doi.org/10.2514/6.2019-1331.
+
+37. Bronz, M., and Karaman, S., “Preliminary Experimental Investigation of Small Scale Propellers at
+    High Incidence Angle,” 2018 AIAA Aerospace Sciences Meeting, AIAA Paper 2018-1268, Jan. 2018.
+    https://doi.org/10.2514/6.2018-1268.
+
+38. Ol, M., Zeune, C., and Logan, M., “Analytical – Experimental Comparison for Small Electric Unmanned
+    Air Vehicle Propellers,” 26th AIAA Applied Aerodynamics Conference, AIAA Paper 2008-7345, Aug.
+    2008. https://doi.org/10.2514/6.2008-7345.
+
+39. Merchant, M. P., and Miller, L. S., “Propeller Performance Measurement for Low Reynolds Number
+    UAV Applications,” 44th AIAA Aerospace Sciences Meeting and Exhibit, AIAA Paper 2006-1127, Jan.
+    2006. https://doi.org/10.2514/6.2006-1127.
+
+40. Johnson, W., “Model for Vortex Ring State Influence on Rotorcraft Flight Dynamics,” NASA TP-2005-
+    213477, Dec. 2005.
+
+41. Morelli, E. A., and Klein, V., Aircraft System Identification: Theory and Practice, 2nd ed., Sunflyte
+    Enterprises, Williamsburg, VA, 2016.
+
+
+                                                    26
+42. Morelli, E. A., “High Accuracy Evaluation of the Finite Fourier Transform Using Sampled Data,” NASA
+    TM-110340, Jun. 1997.
+
+43. Morelli, E. A., “Estimating Noise Characteristics from Flight Test Data using Optimal Fourier Smooth-
+    ing,” Journal of Aircraft, Vol. 32, No. 4, 1995, pp. 689–695. https://doi.org/10.2514/3.46778.
+
+
+
+
+                                                   27
+Appendix A
+
+Additional Figures
+
+   This appendix contains additional figures to accompany the discussion of isolated propeller wind
+tunnel test results in Section 4.
+
+
+
+
+Figure 11. CW propeller rotational speed variation with airspeed V∞ and the normal component
+of airspeed V∞ cos ip .
+
+
+
+
+                                                28
+Figure 12. CCW propeller rotational speed variation with airspeed V∞ and the normal component
+of airspeed V∞ cos ip .
+
+
+
+
+                                             29
+Figure 13. Static CW and CCW propeller data (q̄ = 0 psf).
+
+
+
+
+                           30
+Figure 14. CW and CCW propeller forces and moments variation with ip at q̄ = 0.25 psf.
+
+
+                                         31
+Figure 15. CW and CCW propeller forces and moments variation with ip at q̄ = 0.5 psf.
+
+
+                                         32
+Figure 16. CW and CCW propeller forces and moments variation with ip at q̄ = 1 psf.
+
+
+                                        33
+Figure 17. CW and CCW propeller forces and moments variation with ip at q̄ = 1.5 psf.
+
+
+                                         34
+Figure 18. CW and CCW propeller forces and moments variation with ip at q̄ = 2.5 psf.
+
+
+                                         35
+Figure 19. CW and CCW propeller forces and moments variation with ip at q̄ = 3.5 psf.
+
+
+                                         36
+Figure 20. CW and CCW propeller forces and moments variation with ip at q̄ = 4.5 psf.
+
+
+                                         37
+Figure 21. CW and CCW propeller forces and moments variation with ip at q̄ = 6 psf.
+
+
+                                        38
+Figure 22. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 0.25 psf.
+
+
+                                               39
+Figure 23. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 0.5 psf.
+
+
+                                              40
+Figure 24. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 1 psf.
+
+
+                                             41
+Figure 25. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 1.5 psf.
+
+
+                                              42
+Figure 26. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 2.5 psf.
+
+
+                                              43
+Figure 27. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 3.5 psf.
+
+
+                                              44
+Figure 28. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 4.5 psf.
+
+
+                                              45
+Figure 29. CW and CCW propeller force and moment coefficients variation with ip at q̄ = 6 psf.
+
+
+                                             46
+Figure 30. CW propeller thrust, thrust coefficient, torque, and torque coefficient variation with J
+at ip = 0◦ .
+
+                                                47
+Figure 31. CW propeller force and moment coefficients variation with J at ip = 30◦ .
+
+
+                                        48
+Figure 32. CW propeller force and moment coefficients variation with J at ip = 60◦ .
+
+
+                                        49
+Figure 33. CW propeller force and moment coefficients variation with J at ip = 90◦ .
+
+
+                                        50
+Figure 34. CW propeller force and moment coefficients variation with J at ip = 120◦ .
+
+
+                                         51
+Figure 35. CW propeller force and moment coefficients variation with J at ip = 150◦ .
+
+
+                                         52
+Figure 36. CW propeller force and moment coefficients variation with J at ip = 180◦ .
+
+
+                                         53
+Figure 37. CCW propeller thrust, thrust coefficient, torque, and torque coefficient variation with
+J at ip = 0◦ .
+
+                                               54
+Figure 38. CCW propeller force and moment coefficients variation with J at ip = 30◦ .
+
+
+                                         55
+Figure 39. CCW propeller force and moment coefficients variation with J at ip = 60◦ .
+
+
+                                         56
+Figure 40. CCW propeller force and moment coefficients variation with J at ip = 90◦ .
+
+
+                                         57
+Figure 41. CCW propeller force and moment coefficients variation with J at ip = 120◦ .
+
+
+                                         58
+Figure 42. CCW propeller force and moment coefficients variation with J at ip = 150◦ .
+
+
+                                         59
+Figure 43. CCW propeller force and moment coefficients variation with J at ip = 180◦ .
+
+
+                                         60
+Figure 44. CW propeller force and moment coefficients variation with J for 0◦ ≤ ip ≤ 60◦ .
+
+
+                                           61
+Figure 45. CW propeller force and moment coefficients variation with Jx for 0◦ ≤ ip ≤ 60◦ .
+
+
+                                            62
+Figure 46. CW propeller force and moment coefficients variation with Jz for 0◦ ≤ ip ≤ 60◦ .
+
+
+                                            63
+Figure 47. CW propeller force and moment coefficients variation with J for 70◦ ≤ ip ≤ 110◦ .
+
+
+                                            64
+Figure 48. CW propeller force and moment coefficients variation with Jx for 70◦ ≤ ip ≤ 110◦ .
+
+
+                                             65
+Figure 49. CW propeller force and moment coefficients variation with Jz for 70◦ ≤ ip ≤ 110◦ .
+
+
+                                             66
+Figure 50. CW propeller force and moment coefficients variation with J for 120◦ ≤ ip ≤ 180◦ .
+
+
+                                             67
+Figure 51. CW propeller force and moment coefficients variation with Jx for 120◦ ≤ ip ≤ 180◦ .
+
+
+                                             68
+Figure 52. CW propeller force and moment coefficients variation with Jz for 120◦ ≤ ip ≤ 180◦ .
+
+
+                                             69
+Figure 53. CW propeller force and moment coefficients variation with Jx and Jz .
+
+
+
+
+                                      70
+Figure 54. CCW propeller force and moment coefficients variation with J for 0◦ ≤ ip ≤ 60◦ .
+
+
+                                            71
+Figure 55. CCW propeller force and moment coefficients variation with Jx for 0◦ ≤ ip ≤ 60◦ .
+
+
+                                            72
+Figure 56. CCW propeller force and moment coefficients variation with Jz for 0◦ ≤ ip ≤ 60◦ .
+
+
+                                            73
+Figure 57. CCW propeller force and moment coefficients variation with J for 70◦ ≤ ip ≤ 110◦ .
+
+
+                                             74
+Figure 58. CCW propeller force and moment coefficients variation with Jx for 70◦ ≤ ip ≤ 110◦ .
+
+
+                                             75
+Figure 59. CCW propeller force and moment coefficients variation with Jz for 70◦ ≤ ip ≤ 110◦ .
+
+
+                                             76
+Figure 60. CCW propeller force and moment coefficients variation with J for 120◦ ≤ ip ≤ 180◦ .
+
+
+                                             77
+Figure 61. CCW propeller force and moment coefficients variation with Jx for 120◦ ≤ ip ≤ 180◦ .
+
+
+                                              78
+Figure 62. CCW propeller force and moment coefficients variation with Jz for 120◦ ≤ ip ≤ 180◦ .
+
+
+                                              79
+Figure 63. CCW propeller force and moment coefficients variation with Jx and Jz .
+
+
+
+
+                                       80
+Figure 64. CW and CCW propeller propulsive efficiency ηp variation with advance ratio J at
+ip = 0◦ separated by motor PWM command.
+
+
+
+
+                                           81
+Figure 65. Time history and power spectrum of individual data point measurement histories for
+the CW propeller in forward flight (leftward plots at ip = 0◦ ) and VRS-like conditions (rightward
+plots at ip = 180◦ ).
+
+
+
+                                               82
+                                                                                                                                                   Form Approved
+                                   REPORT DOCUMENTATION PAGE                                                                                     OMB No. 0704–0188
+The public reporting burden for this collection of information is estimated to average 1 hour per response, including the time for reviewing instructions, searching existing data sources,
+gathering and maintaining the data needed, and completing and reviewing the collection of information. Send comments regarding this burden estimate or any other aspect of this collection
+of information, including suggestions for reducing this burden, to Department of Defense, Washington Headquarters Services, Directorate for Information Operations and Reports
+(0704-0188), 1215 Jefferson Davis Highway, Suite 1204, Arlington, VA 22202-4302. Respondents should be aware that notwithstanding any other provision of law, no person shall be
+subject to any penalty for failing to comply with a collection of information if it does not display a currently valid OMB control number.
+ PLEASE DO NOT RETURN YOUR FORM TO THE ABOVE ADDRESS.
+1. REPORT DATE (DD-MM-YYYY)     2. REPORT TYPE                                                                                  3. DATES COVERED (From - To)
+01-05-2021                                         Technical Memorandum
+4. TITLE AND SUBTITLE                                                                                               5a. CONTRACT NUMBER
+Investigation of High Incidence Angle Propeller Aerodynamics for Subscale
+eVTOL Aircraft
+                                                                                                                    5b. GRANT NUMBER
+
+
+
+                                                                                                                    5c. PROGRAM ELEMENT NUMBER
+
+
+
+6. AUTHOR(S)                                                                                                        5d. PROJECT NUMBER
+Benjamin M. Simmons and David B. Hatke
+Langley Research Center, Hampton, Virginia
+                                                                                                                    5e. TASK NUMBER
+
+
+
+                                                                                                                    5f. WORK UNIT NUMBER
+                                                                                                                     109492.02.07.07.05
+
+7. PERFORMING ORGANIZATION NAME(S) AND ADDRESS(ES)                                                                              8. PERFORMING ORGANIZATION
+NASA Langley Research Center                                                                                                       REPORT NUMBER
+Hampton, Virginia 23681-2199
+
+
+
+9. SPONSORING/MONITORING AGENCY NAME(S) AND ADDRESS(ES)                                                                         10. SPONSOR/MONITOR’S ACRONYM(S)
+National Aeronautics and Space Administration                                                                                    NASA
+Washington, DC 20546-0001
+                                                                                                                                11. SPONSOR/MONITOR’S REPORT
+                                                                                                                                    NUMBER(S)
+                                                                                                                                 NASA/TM–20210014010
+12. DISTRIBUTION/AVAILABILITY STATEMENT
+Unclassified-Unlimited
+Subject Category
+Availability: NASA STI Program (757) 864-9658
+13. SUPPLEMENTARY NOTES
+
+
+
+14. ABSTRACT
+Propellers used for electric vertical takeoff and landing (eVTOL) aircraft propulsion systems experience a wide range of aerodynamic conditions,
+including significant incidence angles relative to oncoming airflow. Propellers in oblique flow exhibit deviations in thrust and torque oriented along
+their axis of rotation, as well as significant off-axis forces and moments. Although important for understanding eVTOL aircraft aerodynamics,
+sparse experimental data exist for propellers operating at incidence. This report describes an experimental wind tunnel study of isolated
+propeller aerodynamics across a wide range of flight conditions expected to be experienced by the LA-8 tandem tilt-wing, eVTOL aircraft. The
+experimental data obtained from the study are graphically presented and a discussion of observed aerodynamic phenomena is compared to
+theoretical expectations and past experimental work. The content of this report is intended to provide guidance to future propeller testing efforts
+and describe pertinent propeller aerodynamic behavior expected to be experienced by eVTOL vehicles.
+
+
+
+15. SUBJECT TERMS
+propeller aerodynamics, wind tunnel testing, Urban Air Mobility (UAM), vertical takeoff and landing (VTOL), electric
+propulsion, Langley Aerodrome No. 8 (LA-8)
+
+16. SECURITY CLASSIFICATION OF:                               17. LIMITATION OF                 18. NUMBER         19a. NAME OF RESPONSIBLE PERSON
+a. REPORT           b. ABSTRACT          c. THIS PAGE             ABSTRACT                          OF               HQ-STI-infodesk@mail.nasa.gov
+                                                                                                    PAGES
+                                                                                                                   19b. TELEPHONE NUMBER (Include area code)
+       U                     U                    U                         UU                         87           (757) 864-9658
+                                                                                                                                                     Standard Form 298 (Rev. 8/98)
+                                                                                                                                                     Prescribed by ANSI Std. Z39.18
+

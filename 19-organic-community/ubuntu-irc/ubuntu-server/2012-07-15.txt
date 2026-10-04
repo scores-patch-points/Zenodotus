@@ -1,0 +1,301 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2012-7-15"
+lang: "en"
+messages: "292"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<uvirtbot`> New bug: #999614 in php5 (main) "new SoapClient() with connection_timeout = NULL breaks multi-dimensional arrays" [Undecided,Expired] https://launchpad.net/bugs/999614
+<crass> has anyone needed to append some dns entries to a pppd created link? with dhcp its easy, but pppd seems unworkable without some major changes.
+<Syria> Hi, VirtualBox Failed to open the X11 display!
+<Syria> Please help me with this.
+<Syria> SSH -X, Found it, Thank you.
+<uvirtbot`> New bug: #1024926 in clamav (main) "package clamav-base 0.97.3+dfsg-2.1ubuntu1 failed to install/upgrade: subprocess installed post-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/1024926
+<RoyK> anyone that knows a good online backup solution? crashtest looks ok, but it's dead slow, ETA for backing up 2,3TB is 29 days(!), and I'm on a 60Mbps symmetric line
+<patdk-lap> all of them will go like that royk
+<patdk-lap> ya, why I don't like any of the current solutions
+<patdk-lap> some people will offer to ship you a 2tb restore drive though
+<patdk-lap> as I already have an offsite rack, I just do it myself it there
+<RoyK> I have an offsite server, but not with very much space
+<glosoli> Hey kinda stupid question, but how can I set Up Ubuntu server without having monitor ?
+<trimeta> glosoli: You'll probably need a monitor during the installation, but after that if you've got ssh set up you can remove the monitor and administer it that way.
+<glosoli> trimeta: ash that what I was wondering for
+<trimeta> There may be a way to perform the entire installation remotely...I've never tried. I don't know if any of the LiveCDs automatically set up ssh.
+<glosoli> trimeta: ah no prob
+<Katronix> Hi all, can someone point me to a good page to learn how to configure my ubuntu server to be name servers?
+<glosoli> was just curiosity mainly
+<RoyK> glosoli: try a serial console
+<RoyK> !dns
+<ubottu> To set up a Domain Name Service see the !serverguide - https://help.ubuntu.com/10.04/serverguide/C/dns.html
+<glosoli> Well I am not doing it at the moment, just thinking of
+<glosoli> as I will be in need tomorrow
+<Katronix> thanks Roy
+<trimeta> Out of curiosity, why does the zfsutils package only install helpful system maintenance cronjobs on kfreebsd, not on regular Linux-based systems?
+<RoyK> trimeta: ask the package maintainer...
+<trimeta> Fair enough...it also seems like the Linux version is many versions behind, which may be related...but again, same answer.
+<RoyK> mhm - seems ubuntu 12.04 only has up to zpool v23
+<RoyK> which is something like two years old
+<Katronix> http://pastebin.com/DH03puUu should this work?
+<trimeta> illumos? What's that?
+<RoyK> trimeta: opensolaris-descendant :)
+<trimeta> Ah.
+<RoyK> trimeta: it's the "kernel" of the free solaris-based distros around
+<RoyK> openindiana, omnios, nextos, nexenta ...
+<RoyK> s/nextos/smartos/
+<trimeta> Also, oops, I think I upgraded my zpool past the version that the FUSE module can handle...I'm using the zfs-native thing, which goes up to v28.
+<trimeta> I think I remember hearing about the continuation of Solaris, but I forgot what it was being called nowadays.
+<RoyK> trimeta: oh, native zfs on linux? I've never tried that
+<trimeta> It builds a kernel module with DKMS.
+<RoyK> trimeta: solaris is solaris
+<RoyK> trimeta: but opensolaris was forked to openindiana, and then illumos was separated as a new project for OS/Net (kernel + important userbits)
+<trimeta> Ah...I've just stuck with Ubuntu, I like being able to use PPAs to add up-to-date software on top of a stable base.
+<Katronix> can anyone look at that pastebin I put up?
+<RoyK> trimeta: I use ubuntu for most stuff, but in my last job, I setup some 400TB spread out on seven storage servers - fun ;)
+<RoyK> all on openindiana...
+<trimeta> Katronix: I don't know much about DNS records, sorry...
+<Katronix> trimeta np
+<RoyK> Katronix: $ORIGIN your.tld
+<Katronix> Sorry Roy, I don't understand
+<RoyK> try this http://pastebin.com/Etvf2hbB
+<Katronix> Roy OK I put that in, I suppose for now I would have to dig to the server to see if it worked?
+<RoyK> make sure you updated serial
+<Katronix> yep I did
+<Katronix> the server itself does not recognize the domain yet :(
+<RoyK> what's in the logs?
+<Katronix> RoyK http://pastebin.com/mvB8gdUe I guess lines 7 to 10 is the issue?
+<RoyK> what's on those lines?
+<Katronix> sorry I mean lines 7 to 10 of the pastebin results
+<RoyK> perhaps just change to $ORIGIN your.tld on top
+<RoyK> and drop the other
+<Katronix> Jul 15 11:36:17 ubuntu named[31439]: /etc/bind/chrisamoody.com.zone:4: SOA record not at top of zone (chrisamoody.com.chrisamoody.com)
+<Katronix> Jul 15 11:36:17 ubuntu named[31439]: zone chrisamoody.com/IN: loading from master file /etc/bind/chrisamoody.com.zone failed: not at top of zone
+<Katronix> so I guess getting closer
+<RoyK> oh, change back to $ORIGIN . at the top
+<RoyK> then place $ORIGIN your.tld just after the SOA
+<RoyK> $ORIGIN chrisamoody.com, that is
+<Katronix> ok
+<Katronix> so add it after the MX line?
+<Katronix> RoyK I have several lines saying in part, "/etc/bind/chrisamoody.com.zone:4: ignoring out-of-zone data (.)" different lines though
+<RoyK> what's on line 4?
+<RoyK> Katronix: pastebin the zone file again, please
+<Katronix> k
+<Katronix> http://pastebin.com/ALv5SNQJ
+<Katronix> bind complains about lines 4, 11, 12 and 14
+<RoyK> Katronix: try to move the origin line above those three records
+<Katronix> so move line 15 to line 10?
+<RoyK> something like that, yes
+<RoyK> otherwise '@' will reflect origin '.', which doesn't make sense
+<Katronix> http://pastebin.com/8PXFqRhv
+<Katronix> seems to still not like the SOA line
+<Skaag> hey I have an old old old karmic server lying around, how do I get it upgraded to the next release?
+<Skaag> I'm going to try a do-release-upgrade and see if that works
+<Skaag> I'm asking because an apt-get update can no longer find most of the repositories.
+<Katronix> is your sources.list updated?
+<guntbert> !upgrade | Skaag do it step by step (or LTS->LTS)
+<njin> kamic has 5 years too
+<njin> of support
+<guntbert> !upgrade | Skaag
+<ubottu> Skaag: For upgrading, see the instructions at https://help.ubuntu.com/community/UpgradeNotes - see also http://www.ubuntu.com/desktop/get-ubuntu/upgrade
+<Skaag> ok let's see how the do-release-upgrade goes
+<Skaag> ah thanks
+<Skaag> it's a server.
+<RoyK> Katronix: oh - the soa is wrong
+<njin> why it cannot found the repo
+<RoyK> change the @ to your domain name
+<RoyK> Skaag: karmic hasn't been supported for a while ;)
+<Katronix> RoyK so it should be chrisamoody.com IN SOA ns1.chrisamoody.com. hostmaster.chrisamoody.com. ( ?
+<RoyK> try that
+<Skaag> I know, i've been upgrading regularly all of my boxes but this one somehow remained because it's one of those customers who have totally embraced the "if it ain't broken don't touch it" idiom ;-)
+<qman__> karmic was not an LTS and did not get 5 years
+<qman__> you have to change your repositories to the old-releases to get updated
+<Katronix> RoyK so http://pastebin.com/q9f2GRji would indicate its successfully loaded?
+<Skaag> somehow do-release-upgrade is working. according to the docs it was supposed to give me an error message, and I was then supposed to use -d to upgrade anyway. but it just seems to work without the -d switch.
+<RoyK> Katronix: looks right
+<Katronix> RoyK cool, is there a way to test it? leafdns still says it can't talk to ns1/ns2 but its also set to a ttl of 48 hours
+<RoyK> ttl of 48 hours???
+<Katronix> http://leafdns.com/index.cgi?testid=A169BAD2
+<RoyK> just type "host chrisamoody.com x.x.x.x" where x.xx.x.x is your server's ip
+<RoyK> Katronix: have you added a zone section for that domain in the named.conf or named.conf.local file?
+<RoyK> well, obviously, otherwise you wouldn't have gotten an error
+<Katronix> actually my named.conf file includes zone.conf which loads chrisamoody.com
+<Katronix> RoyK I guess its not working yet http://pastebin.com/v1Fd0RjH
+<RoyK> Katronix: no, guess something is wrong - sorry - tired
+<Katronix> np, thanks for your efforts
+<zakk> anyone have a fast mirror of ubuntu-server 12.04 64?
+<TheLordOfTime> use the torrents?
+<zakk> where are they?
+<seekwill> http://www.ubuntu.com/download/desktop/alternative-downloads
+<zakk> thx
+<seekwill> I agree, it's a bit hard to find
+<resno> my boss is considering hosting our servers in our office, they are currently under someone elses control, what is a "good" internet speed to start with?
+<resno> on a daily basis, i believe our site gets 1,000 hits or so
+<Katronix> resno, is this an intranet site? or an internet site?
+<lifeless> resno: the speed and bandwidth you need depends on : the peak concurrent traffic; the response time you want to give your users. 1000/day could mean 1000 in 5 minutes, for an end of day accounting site, or it might be totally random. You'll need to do more analysis to know.
+<Katronix> anyone available to help me with a dns configuration issue?
+<tonyyarusso> Katronix: I can try
+<Katronix> Cool, I'm trying to get chrisamoody.com to be recognized by the net
+<tonyyarusso> Um, pretty sure I see your issue
+<Katronix> cool
+<Katronix> I know the nameservers don't work, but the question is why?
+<tonyyarusso> Katronix: You have it set to use ns1.chrisamoody.com and ns2.chrisamoody.com to resolve the domain, but it needs to be able to resolve the domain to see those nameservers.
+<tonyyarusso> In other words, you have a cart before the horse issue.
+<Katronix> ok, how do I get it to recognize the nameservers?
+<tonyyarusso> So you'll need to update that to either a) point to NS records on some other domain, or b) do it by IP address
+<Katronix> well Ideally the server will be its own nameservers and hosting the domain
+<Katronix> it was working before I updated to percise
+<tonyyarusso> ORLY?
+<Katronix> yep
+<tonyyarusso> That...shouldn't have worked.
+<tonyyarusso> Or at least I don't think so.  I guess I could be wrong.
+<Katronix> lol, you mean a server can't be both a name server and a web host?
+<qman__> no, you need glue records
+<tonyyarusso> nah, I mean the nameservers set on the domain itself.  But maybe they do.
+<tonyyarusso> Yeah, what he said
+<qman__> http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records
+<tonyyarusso> I'm not entirely sure how registrar's create those, or how to check them though
+<Katronix> well I have already registered the name servers
+<qman__> how you actually get it done depends on your registrar
+<Katronix> I just the need the server to start doing it
+<Katronix> so I guess first question, how do I get the nameservers to start working?
+<qman__> basically, when you have that circular dependency, your registrar needs glue records to provide the IP
+<tonyyarusso> As an example, this is what the page for creating them looks like on my registrar's panel:  http://files.tonyyarusso.com/glue-records.png
+<qman__> so that when someone asks "who knows about asdf.com?" the parent server says "ns1.asdf.com, which btw, is 1.2.3.4"
+<tonyyarusso> It's labeled "Name Server Registration" in their menu.
+<Katronix> yes I have done that already
+<Katronix> I'm now working on getting the server to work
+<shauno> you've specified a name, but no IP address
+<qman__> also can be called vanity name servers
+<Katronix> http://leafdns.com/index.cgi?testid=C476D608 shows the IPs for it
+<tonyyarusso> Eh?  Why does it say not authoritative?
+<qman__> zone's not configured right
+<Katronix> well that is what I'm trying to figure out , is why its not configured properly
+<tonyyarusso> Can you pastebin the relevant BIND configs?
+<Katronix> yep
+<Katronix> http://pastebin.com/K8EYeu3R
+<qman__> line 4, remove ns1
+<Katronix> remove just ns1.chrisamoody.com ?
+<qman__> no, remove the ns1.
+<qman__> should just be chrisamoody.com in that spot
+<Katronix> ok
+<armaan> Hi folks ... while setting up LDAP i am getting this error--> ldap_bind: Invalid credentials (49)
+<armaan> how should i resolve this ???
+<Katronix> host chrisamoody.com 173.193.86.158 still returns Host chrisamoody.com not found: 2(SERVFAIL) :(
+<tonyyarusso> Katronix: did you restart bind?
+<Katronix> yes
+<tonyyarusso> and increase the serial
+<tonyyarusso> ?
+<Katronix> may have forgotten that, one sec
+<Katronix> ok no effect
+<qman__> try this http://pastebin.com/zN4SbKad
+<tonyyarusso> Also, I don't think you want the domain in there twice.  Just "@ IN SOA chrisamoody.com. hostmaster.chrisamoody.com. ("
+<tonyyarusso> I have no idea what $ORIGIN is for
+<Katronix> me niether, someone else suggested it
+<tonyyarusso> qman__'s paste looks good to me
+<Katronix> one sec
+<Katronix> chrisamoody.com mail is handled by 10 mail.chrisamoody.com. well I guess this is better :)
+<tonyyarusso> Indeed
+<tonyyarusso> anthony@timmins:~$ host chrisamoody.com
+<tonyyarusso> chrisamoody.com has address 173.193.86.158
+<tonyyarusso> chrisamoody.com mail is handled by 10 mail.chrisamoody.com.
+<tonyyarusso> You're in business.
+<Katronix> now getting a mismatched glue issue but we are doing better
+<armaan> Hi folks ... while setting up LDAP i am getting this error--> ldap_bind: Invalid credentials (49)
+<Katronix> chrome says it doesn't know my site yet...
+<koolheadd17> armaan, is there specific documentation you are following
+<tonyyarusso> Katronix: is 173.193.86.158 correct for your web host?
+<jacobw> armaan: sudo ldap* -h localhost -Y EXTERNAL ...
+<Katronix> yes
+<jacobw> -Y specifies an SASL mechanism, EXTERNAL is 'let root in'
+<armaan> koolheadd17: http://comtech247.net/2012/05/13/how-to-set-up-an-ldap-server-on-ubuntu-12-04-lts/
+<tonyyarusso> Katronix: is Apache running?
+<armaan> koolheadd17: also tried it
+<Katronix> tonyyarusso yes
+<tonyyarusso> Katronix: Actually, hrm, yes it is.  Now you have Apache redirecting http://chrisamoody.com/ to http://www.chrisamoody.com/, and www isn't resolving.
+<Katronix> hmmm, ok will work on that
+<tonyyarusso> It is properly looking at your nameservers for it though, so something in the BIND config for that subdomain.
+<Katronix> should the two zone files be basically the same?
+<tonyyarusso> It's not a separate zone
+<tonyyarusso> it should be in the file you were working on before
+<tonyyarusso> Unless you have a REALLY good reason to maintain a subzone.
+<qman__> delegation would be the only good reason I know of
+<koolheadd17> armaan, please check ubuntu server guide
+<koolheadd17> it has a section openldap
+<r0tha> koolheadd17: rofl essentially saying RTFM
+<qman__> we can't support $random_blog_guide
+<qman__> following the server guide first, and other sanctioned resources, is important
+<koolheadd17> qman__,  +1
+<jacobw> rtfm is a valid response
+<koolheadd17> r0tha,  jacobw  nopes i don`t see it that way
+<qman__> especially with something as complicated as openldap
+<armaan> jacobw: it says -h not compatible with -H
+<koolheadd17> age for RTFM are over now :)
+<armaan> koolheadd17: okiez :)
+<jacobw> if were, there would be no manuals
+<koolheadd17> jacobw, i meant to say we are more tolerant these days. :)
+<r0tha> koolheadd17: i mean RTFM is more of a benefit for everyone.
+<qman__> that's not to say random blog guides aren't useful, because they are, but having not written and never used said random blog guide, I can't help you with it
+<r0tha> if the manual is unclear it should be reviewed and revised
+<koolheadd17> r0tha, qman__ +1 i just feel rude to say RTFM :)
+<Katronix> yay my site is back up
+<koolheadd17> Katronix, was it some apache issue
+<Katronix> koolheadd17 no I just had to remove the code to for www.chrisamoody.com
+<koolheadd17> oh k
+<JenniferB2> hi folks... if I install ubuntu-server lts ( latest ) ... can I install gnome 2 on top of it thorugh apt-get install ?
+<qman__> nope
+<qman__> you'd have to compile it or get it from a third party, ubuntu only has gnome3 in its repositories
+<JenniferB2> yes... but is it possible ? stable through other repositoroes ?
+<qman__> in theory but it wouldn't be a supported configuration
+<qman__> I recommend lubuntu as an alternative
+<JenniferB2> why not xubuntu ?
+<JenniferB2> i need it as desktop computer
+<JenniferB2> not actually a server
+<TheLordOfTime> JenniferB2:  you could install any Desktop version and install server packages on it
+<TheLordOfTime> JenniferB2:  but GNOME2 is no longer part of Ubuntu
+<qman__> you could use xubuntu, but I like lubuntu better
+<TheLordOfTime> and I like Kubuntu, so...
+<TheLordOfTime> its a personal preference of desktop envirionment
+<qman__> lubuntu can have a pretty similar feel to gnome2 if you want it to
+<JenniferB2> TheLordOfTime: I dont want all these fancy pancy new stuff ... i am a developer.. i dont need fancy big ugly buttons... kubuntu video i saw was a turnoff ... ubuntu 12 as well.
+<qman__> then you will like lubuntu
+<TheLordOfTime> JenniferB2:  gnome-shell or gnome-classic in Ubuntu
+<JenniferB2> nice ... lts to ?
+<TheLordOfTime> i needed Kubuntu for stuff
+<TheLordOfTime> but personally i do everything via CLI
+<TheLordOfTime> except IRC
+<TheLordOfTime> JenniferB2:  Kubuntu, Lubuntu, etc. 12.04 will be LTS
+<JenniferB2> TheLordOfTime: I heard that gnome-classic is a bit buggy
+<TheLordOfTime> JenniferB2:  it is, that's why i said gnome-shell too :P
+<JenniferB2> TheLordOfTime: haha
+<TheLordOfTime> as for them being LTS, some might be community maintained
+<qman__> I don't think the lubuntu bits are LTS, but you'll get base system updates
+<qman__> and will be able to upgrade to the next LTS directly
+<JenniferB2> http://lubuntu.net/blog/lubuntu-1204-now-available
+<JenniferB2> qman__: yes.. it says that on the page
+<qman__> practically, I don't think it makes much difference
+<qman__> the important part is the kernel and base system updates, and the applications don't usually get much love later on anyway
+<JenniferB2> qman__: yes.. I am sure ... is lubuntu nicer than xubuntu ?
+<qman__> in my opinion, yes
+<qman__> but there are plenty who disagree
+<qman__> but it's all free, so give it a try
+<TheLordOfTime> what qman__ said about LTS
+<TheLordOfTime> parts of it won't be LTS-supported
+<qman__> but those parts don't normally get updates that late in the cycle anyway
+<TheLordOfTime> mhm
+<JenniferB2> ok... this is an off question .. but what about linux mint ... could it be said it is equally stable as ubuntu or likely less ?
+<JenniferB2> I want to use this desktop for years
+<TheLordOfTime> MINT MUST DIE
+<TheLordOfTime> i mean...
+<TheLordOfTime> !mint
+<ubottu> Linux Mint is not a supported derivative of Ubuntu. Please seek support in #linuxmint-help on irc.spotchat.org
+<TheLordOfTime> (continuing to ask about mint in Ubuntu channels... well... not exactly advised)
+<JenniferB2> hehe .. it is based on ubuntu!
+<TheLordOfTime> there is ##linux here if you *really* want to risk it with questions about mint
+<TheLordOfTime> do not make me pull the factoid out again
+<TheLordOfTime> or ping ops
+<JenniferB2> hehe
+<JenniferB2> #linux
+<TheLordOfTime> (they will just say the same thing i just did - mint support in ubuntu channels is bad)
+<JenniferB2> sorry
+<uvirtbot`> New bug: #1025066 in samba (main) "package winbind 2:3.6.3-2ubuntu2.3 failed to install/upgrade: subprocess installed post-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/1025066

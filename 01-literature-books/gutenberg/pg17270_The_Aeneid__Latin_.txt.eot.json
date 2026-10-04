@@ -1,0 +1,442 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+  "sha256": "b438f44a469be7115a78bc1733c85aa741123f6058b7e75a8400164f962a1ebf",
+  "bytes": 57452,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 57452,
+  "bodyOffset": 0,
+  "bodyChars": 57452,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7785,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 5687,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 141,
+  "surfaces": 49,
+  "referentEvents": 4,
+  "distinctReferents": 4,
+  "examined": true,
+  "edgesFound": 7,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 15
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 7,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 7,
+  "excerptOk": 7,
+  "rawChecked": 7,
+  "rawOk": 7,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 7,
+  "heard": 7,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "this early english text|was printed|in a black-letter font",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "This early English text was printed in a black-letter font",
+    "subject": "This early English text",
+    "verb": "was printed",
+    "object": "in a black-letter font",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#247-306",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "This early English text was printed in a black-letter font."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this|means|with",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "This means with",
+    "subject": "This",
+    "verb": "means",
+    "object": "with",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#551-567",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "This means with."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that waley|printed|an edition is therefore to be presumed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "That Waley printed an edition is therefore to be presumed",
+    "subject": "That Waley",
+    "verb": "printed",
+    "object": "an edition is therefore to be presumed",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#2409-2607",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "That Waley printed an edition is therefore to be presumed, but it does not necessarily follow that the extant copy, which though perfect bears neither date nor printer's name, ever belonged to it."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "in 1691 langbaine|wrote|'_wealth and health_",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "In 1691 Langbaine wrote '_Wealth and Health_",
+    "subject": "In 1691 Langbaine",
+    "verb": "wrote",
+    "object": "'_Wealth and Health_",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#3271-3357",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "In 1691 Langbaine wrote '_Wealth and Health_, a Play of which I can give no Account.'"
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "by which wealth|means|the seventeenth] century",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "by which Wealth means the seventeenth] Century",
+    "subject": "by which Wealth",
+    "verb": "means",
+    "object": "the seventeenth] Century",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#3445-3617",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "Chetwood, in 1752, classes it among 'Plays Wrote by Anonymous Authors in the 16th [by which he means the seventeenth] Century,' calls it 'an Interlude' and dates it 1602."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "by no|means|the worst printed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "by no means the worst printed",
+    "subject": "by no",
+    "verb": "means",
+    "object": "the worst printed",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#4672-4923",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "In the first hundred lines, which are by no means the worst printed, there are thirty-two cases in which the letter is indistinguishable, eighteen cases of an apparent 'u' which should be 'n,' and seven cases of an apparent 'n' which should be 'u.'"
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the original|is printed|in the ordinary black letter of the period",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The original is printed in the ordinary black letter of the period",
+    "subject": "The original",
+    "verb": "is printed",
+    "object": "in the ordinary black letter of the period",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#6694-6799",
+      "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+      "text": "The original is printed in the ordinary black letter of the period, of the body known as English (20 ll."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 7,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "by no|means|the worst printed",
+   "subject": "by no",
+   "verb": "means",
+   "object": "the worst printed",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#4672-4923",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "In the first hundred lines, which are by no means the worst printed, there are thirty-two cases in which the letter is indistinguishable, eighteen cases of an apparent 'u' which should be 'n,' and seven cases of an apparent 'n' which should be 'u.'"
+    }
+   ]
+  },
+  {
+   "id": "by which wealth|means|the seventeenth] century",
+   "subject": "by which Wealth",
+   "verb": "means",
+   "object": "the seventeenth] Century",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#3445-3617",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "Chetwood, in 1752, classes it among 'Plays Wrote by Anonymous Authors in the 16th [by which he means the seventeenth] Century,' calls it 'an Interlude' and dates it 1602."
+    }
+   ]
+  },
+  {
+   "id": "in 1691 langbaine|wrote|'_wealth and health_",
+   "subject": "In 1691 Langbaine",
+   "verb": "wrote",
+   "object": "'_Wealth and Health_",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#3271-3357",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "In 1691 Langbaine wrote '_Wealth and Health_, a Play of which I can give no Account.'"
+    }
+   ]
+  },
+  {
+   "id": "that waley|printed|an edition is therefore to be presumed",
+   "subject": "That Waley",
+   "verb": "printed",
+   "object": "an edition is therefore to be presumed",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#2409-2607",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "That Waley printed an edition is therefore to be presumed, but it does not necessarily follow that the extant copy, which though perfect bears neither date nor printer's name, ever belonged to it."
+    }
+   ]
+  },
+  {
+   "id": "the original|is printed|in the ordinary black letter of the period",
+   "subject": "The original",
+   "verb": "is printed",
+   "object": "in the ordinary black letter of the period",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#6694-6799",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "The original is printed in the ordinary black letter of the period, of the body known as English (20 ll."
+    }
+   ]
+  },
+  {
+   "id": "this early english text|was printed|in a black-letter font",
+   "subject": "This early English text",
+   "verb": "was printed",
+   "object": "in a black-letter font",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#247-306",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "This early English text was printed in a black-letter font."
+    }
+   ]
+  },
+  {
+   "id": "this|means|with",
+   "subject": "This",
+   "verb": "means",
+   "object": "with",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt#551-567",
+     "ref": "01-literature-books/gutenberg/pg17270_The_Aeneid__Latin_.txt",
+     "text": "This means with."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:33.769Z"
+ }
+}

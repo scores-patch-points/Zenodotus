@@ -1,0 +1,2018 @@
+---
+title: Computational methods for ideal compressible flow
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19830026406
+source_url: https://ntrs.nasa.gov/citations/19830026406
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONTRACTOR_REPORT
+center: Legacy CDMS
+publication_date: 2019-06-23
+retrieved: 2026-09-22
+sha256: 1bfb98609ebd235cbe50ada74b1c9d75cfee0db74ca523bb420358eefc6b18a7
+pages: 36
+words: 3372
+cv_look_pages: 6
+---
+
+N AS.A Contractor Report 172180
+
+                                                                                      NASA-CR-172180
+
+
+leASE                                                                                 19830026406
+
+
+
+
+ COMPUTATIONAL METHODS FOR IDEAL COMPRESSIBLE FLOW
+
+
+
+
+ Bram van Leer
+
+
+
+
+ Contract No. NASl-l58l0
+ July 1983
+
+
+
+
+INSTITUTE FOR COMPUTER APPLICATIONS IN SCIENCE AND ENGINEERING
+NASA Langley Research Center~ Hampton, Virginia 23665
+
+Operated by the Universities Space Research Association
+
+
+                             1111111111111 1111 11111 1111111111 11111 1111 1111
+                                            NF02533
+
+
+
+N/lS/\
+National Aeronautics and
+Space Administration                                                                    , ,- f' 1 1...',
+                                                                                        .; :~, '   - ~lQo",
+                                                                                                   ~   I(I.~;
+
+
+Langley Research Center                                                            LANGLEY RESEAR(:H CENTE1,(,
+Hampton, Virginia 23665                                                                  Li8Rl\fN, N~\SA
+                                                                                      H.c.M:)T~)N, IJIW,INtA
+     -I
+          11111111111111111
+               31176014168257
+                              ~1]~liji~lijl ~j 111~)m   11111111111111
+
+
+                                                                         r:
+
+
+
+
+                                    COMPUTATIONAL METHODS FOR IDEAL COMPRESSIBLE FLOW
+
+
+
+
+                                                                               Bram van Leer*
+
+          Leiden Observatory, P.O. Box 9513, 2300 RA Leiden, The Netherlands
+
+
+
+
+Lectures presented at the Von Karman Institute for Fluid Dynamics, Rhode-St-
+
+Genese, Belgium, in Lecture Series 1983-04 on Computational Fluid Dynamics.
+
+
+
+1.   Conservative dissipative difference schemes                                                               p.   I
+
+2.   The recognition and representation of discontinuities                                                     p. 13
+
+3.   Multi-dimensional methods                                                                                 p. 18
+
+
+
+
+The research reported here was partially supported                                                       under N<\SA Contract No.
+
+NAS1--15810 while the author was in residence at ICASE, NASA Langley Research
+
+Center,          Hampton,                     VA           23665,             and   partially   by   Leiden   Observatory   of   the
+
+University of Leiden, The Netherlands.
+
+
+
+
+*presently at Delft University of Technology, Department of Mathematics and
+
+Computer Science, P.O. Box 356, 2600 AJ Delft, The Netherlands
+
+                                                                                      i
+1. CONSERVATIVE DISSIPATIVE DIFFERENCE SCHEMES
+
+
+
+1.1. Introduction: Why Conservative Dissipative Difference Schemes?
+
+
+
+        In solving problems of gas dynamics it is often permitted to ignore the
+
+dissipative          processes       in    the     gas,        that    is,     viscous   friction        and     heat
+
+conduction.          This     simplification        of     the physical picture          boils        down,    mathe-
+
+matically,          to    a   degeneration        of     the    partial        differential     equations        from
+
+second-order             conservation     laws,     the Navier-Stokes             equations,     to    first-order
+
+conservation laws,             the equations of            ideal compressible flow (ICF).                     Even in
+
+this    approximation           there     remains      a bewildering variety of                complicated flow
+
+problems.
+
+        Particularly           notorious      are        the     problems         involving    such      a     strong
+
+compression of the gas that, in spite of the a priori assumption, dissipation
+
+sooner    or        later     dominates     the    flow,       at     last   in    certain    regions     known as
+
+shocks.    In a          shock the flow quantities undergo a significant change over a
+
+distance typical of the dissipative interaction, i.e. the molecular mean free
+
+path.
+
+        It is,       of course,      impossible to infer the structure of a shock from the
+
+equations of rCF.              The concept of IeF traditionally is saved and extended by
+
+representing a shock as a flow discontinuity.
+
+        The motion of           such an idealized shock may be derived from an integral
+
+version        of    the      first-order        conservation          laws,      expressing    the     particular
+
+conservation             principle   for a       finitE~    volume of        fluid and a       finite        lapse of
+
+time. Mathematically, this leads to the theory of weak solutions of nonlinar
+
+conservation equations. The algebraic equations relating the propagation speed
+
+of a discontinutiy to its amplitude are called the jump equations.
+
+        Weak    solutions        are not     unique.           Shock discontinuties in which friction
+
+produc:es kinetic energy instead of dissipating it, and heat flows from lower
+                                                       2
+
+
+
+to   higher        temperatures,         are   as   eligible     as   their     physically          realizable
+
+counterparts. Clearly a selection criterion must be invoked. We shall accept a
+
+weak solution of the first-order conservation equations only if it is the
+
+limit     solution,         for     vanishingly      small     dissipation,         of    the     second-order
+
+conservation equations.              For gasdynamics this is equivalent to the following
+
+requirement:         the entropy of the gas,               measure of the accumulated effect of
+
+dissipation,         must    not     decrease       in a     shock.   This     is    called       the   entropy
+
+i neq uali ty.
+
+        Thus, the advantage of lowering the order of the flow equations is partly
+
+offset by the need to introduce extra equations and an extra inequality. rn
+
+consequence, analytic treatment of rCF problems is impossible in all but a few
+
+cases. The numerical treatment, however, can be entirely successful. The key
+
+to success is the combination of conservation and artificial dissipation.
+
+        The idea behind artificial dissipation is that, since in rCF the effect
+
+of dissipation is ignored,                 it may as well be           ~~aggerated.           By providing a
+
+difference         scheme    for    rCF with sufficiently large dissipative terms it is
+
+possible to achieve that shocks, whenever these appear,                                  posses a structure
+
+coarse enough to be resolved in the computational grid.
+
+        The   concept       of     conservation enters         if we make       the       difference     scheme
+
+consistent with the integral form, rather than the differential form, of the
+
+equations of rCF. The scheme is then said to be "conservative" or to have the
+
+"conservation         form";        another     often-heard       description            is     "finite-volume
+
+scheme".      It    has     been shown,        in theory and in practice,                 that,    in using a
+
+conservative         scheme,       the   numerical    stability       of   a   solution containing an
+
+admissible shock automatically guarantees the correct motion of the shock. But
+
+in order to achieve numerical stability and to select the proper shocks, the
+
+scheme indeed has to be dissipative.
+                                                            3
+
+
+
+
+        The first example of a conservative dissipative difference scheme was the
+
+first--order-accurate Lax-Friedrichs (LF) scheme, presented and analyzed by Lax
+
+(1954). It is the least accurate of its kind and has no practical value today.
+
+More    influential           was   its      second-order-accurate              successor,     the Lax-Wendroff
+
+(LW) scheme (I960) which still is widely used by aerodynamicists in the two-
+
+step form derived by MacCormack (1969).
+
+        The survivor among first-order schemes is Godunov's (1959) method based
+
+on up,dnd differencing. The decision which direction is upwind is made on the
+
+basis     of    the     speeds      of    the   finite'-amplftude waves by which discrete fluid
+
+volumes interact. With this strategy, the solution of Riemann's initial-value
+
+problem -        the shock-tube or diaphragm problem - becomes a building block of
+
+the d:lfference scheme. At present we see a rapid expansion of the literature
+
+on "approximate Riemann solvers":                         Roe    (1980),      Osher (1980),        darten and Lax
+
+(1981), Van Leer (1982), Colella (1982); these find their way in first-order
+
+as well as higher-order upwind schemes. A review of this subject was given by
+
+Harten, Lax and Van Leer (1983);                      I    shall return to it later in the present
+
+lecture.
+
+        It     turns    out     that     the    history         of   conservative dissipative            difference
+
+schemes is divided more or less by the decades.
+
+        During        the     fifties,       first-order-accurate              methods     were     developed    and
+
+tested.        These    methods        are   what     now is         called     "robust"    and,    schematically
+
+speaking,        had     no    other      problems        than       their    modest    accuracy.    Particularly
+
+annoyi.ng was the numerical diffusion of entropy.
+
+        The sixties gave us the second--order-accurate schemes, meaning different
+
+kinds     of    trouble.        Numerical       oscillations and              nonlinear     instabilities       near
+
+shock     waves        largely      spoiled     the       pleasure       of    the     reduction    in   artificial
+
+dissipation.
+                                                         4
+
+
+
+        During the seventies the design problems of the sixties were gradually
+
+solved.    For instance,             the prevention of numerical oscillations is now well
+
+understood.       As    this         knowledge     has   not     been      fully    absorbed    by    the    IeF
+
+community, I have made it the subject of the second lecture.
+
+        The eighties have started with an increased interest in explicitly using
+
+the physics embedded in the IeF equations for improving the numerical methods.
+
+In particular, there is a strong emphasis on upwind differencing. Some modern
+
+ideas     on how       to        compute   one-dimensional flow are                covered by   the present
+
+lecture;    how    well           these    ideas   carry       over   to    multi-dimensional         flow   is
+
+investigated in the third lecture.
+
+
+
+
+1.3. A family of second-order finite-volume schemes
+
+
+
+        I shall illustrate the recent developments in computing one-dimensional
+
+IeF on the basis of a family of second-order-accurate difference schemes. The
+
+initial-value representation and algorithm structure are the same as in Van
+
+Leer (1980);       the notation is also the same, except for the present use of a
+
+superscript to indicate the time level.
+
+        We start with schemes for the scalar linear convection equation
+
+
+
+
+                            0,       a = constant,                                      (1)
+
+
+
+
+assumin~    a piecewise linear initial-value distribution
+
+
+              n
+        q(x,t )                                                - xi -   !h x < x < Xi+! ,            ( 2)
+
+
+
+as in Van Leer (1980), Fig. 4.                   The gradient is computed by averaging the
+                                                                          5
+
+
+
+numerieal gradient values in the neighborhood of                                            x. :
+                                                                                                1
+
+
+
+
+                    n
+           IS. q                                                                                                             (3)
+             1
+
+
+
+
+For       the moment,             the weight             K   is assumed to           be    independent         of       q.   The       three
+
+possible values of                  K   most frequently met are
+
+
+
+           I(    = sgn a - s, 0 and -s                                                                                       (4)
+
+
+
+leading to the LW scheme, Fromm's (1967) scheme and Moretti's (1979)
+
+A -scheme, respectively.
+
+          The           evolution        in        one       time--step         of   the     initial-value               distribution
+
+discretized               as     above        is     now          computed       exactly,           namely,    by       shifting         the
+
+distribution               over     a    distance            ~t.      Averaging         over         the   finite       volumes         then
+                                                     n+1
+yields the updated values qi                                  '    from which the gradient in each volume can
+
+again be determined.
+                                                                                                                                          n
+          The LW          scheme        involves only the downwind value of the gradient of q •
+
+Shifting            the    inital-value              distributfon brings upwind information to xi'                                        so
+
+that the LW scheme ultimately is independent of the sign of a. The LW scheme
+                                                                                                           n        n              n
+is    a    so-called             central-difference                  scheme and           involves qi-l' qi' and qi+l to
+
+f'1nd qjln+l • It is stable for
+
+
+
+           II crl       ~ 1,                                                                                                 (5.1)
+
+where
+
+          IIJ 1= a/::' t//::,x                                                                                               (5.2)
+
+
+
+is    the        Courant-Friedrichs-Lewy                          (CFL)       number,     and       produces    a       predominantly
+
+negative phase error (see Fromm (1967)).
+
+          Fromm's scheme is upwind biased,                                    involves qi-2s' qi-s' qi and qi+s' and
+                                                    6
+
+
+
+has a zero phase error at         0   = s/2 for all frequencies. Its stability domain is
+given by (5.1).
+
+      The A-scheme,       involving only the upwind value of the gradient of qn ,
+
+remains    fully     one-sided;       the    values                         and           are     used    to
+           n+1
+compute qi
+
+      Its stability condition is
+
+
+
+                                                                                                 (6)
+
+
+
+but in practice we have to put up with (5.1), in order not to complicate the
+
+preservation of monotonicity. Under (5.1) the phase error of the A-scheme is
+
+predominantly positive (see Fromm (1967».
+
+
+
+
+1.4. From convection to IeF
+
+
+
+      In order to convert the above difference schemes for a single linear
+
+convection equation into schemes for the hyperbolic system of the nonlinear
+
+conservation       laws   of   IeF,     we   must       regard   equation    (1)     as    one     of    the
+
+characteristic (diagonalized) equations, q as a characteristic state quantity
+
+and   a   as a characteristic speed; see Van Leer (1980).                    Since    a     now depends
+
+on    q, so does     K,   and it suddenly appears impractical (although feasible) to
+
+use any other value than          K   = O.   This leads to the following observation:
+
+      In upwind-biased schemes the discretized initial-value distribution is
+
+independent of the direction in which the various physical signals propagate;
+
+see Van Leer (1977).
+
+      Restricting ourselves to Fromm's scheme, we follow the recipe from [24]
+
+for advancing in time (the approach by Van Leer (1979) is different).                                    We
+
+first update the distribution in each volume over a half step in time,
+                                                     7
+
+
+
+without regard to the neighboring volumes, with a central-difference scheme.
+
+For the characteristic quantities (other state quantities may be used) this
+
+boils down to
+
+
+
+                                                                             (7.1)
+
+
+
+                                                                             (7.2)
+
+
+with sufficient accuracy.
+
+       Subseqm~ntly,       time-centered values are obtained on the upwind side of
+
+each interface. For IeF, described by the system of conservation laws
+
+
+
+       wt + [few)] x = 0,                                                    ( 8)
+
+
+
+this means we must compute the complete states wL and wR on the left and right
+
+side   of    eaeh      interface       and   solve   the   local   Riemann problem,   exactly or
+
+approximately, to find out what the upwind components are. In formula:
+
+
+         n+t                                                                 (9.1)
+       q(iH ):~
+
+
+
+                       w( q (ift )+)                                         (9.2)
+
+
+
+                                                                             (9.3)
+
+
+
+
+here   ~(wL' w )      is the flux resulting at an interface after resolution of the
+                  R
+initial discontinuity and F is the numerical flux vector used to approximately
+
+integrate the system (8) over one time step and one finite volume:
+
+
+
+            t.t           +                                                  (10)
+                                                    8
+
+
+
+
+        Note       that   twice    in this    second-order scheme there is an exchange of
+
+information between neighboring volumes.
+
+        The first exchange, finite-differencing of qi at t n , is purely numerical
+
+- initial-value interpolation - and involves no physics. We may at this stage
+
+use     any       complete   set    of   state   quantities;     the     choice     of    characteristic
+
+quantities is imperative only near boundaries and advisable near discontinui-
+
+ties.
+
+        The second exchange, solving the Riemann problem defined by w(i+!-) - and
+
+w(i+!-)+'         is   purely     physical:   interaction      through     waves.        Simplifying   the
+
+solution of the Riemann problem, while desirable for numerical reasons, is a
+
+matter of simplifying the physics of the wave interactions.
+
+
+
+
+1.5. Approximate Riemann solvers
+
+
+
+
+        I       shall discuss two distinct approximate solvers of Riemann's problem:
+
+the one by Roe (1980), based on linear waves, and the one by Van Leer (1982),
+
+based on material transport'.
+
+        Roe solves the Riemann problem defined by the initial values
+
+
+                                x <0
+            w                                                                                  (11)
+                                x >0
+
+
+by solving it for a linearization of Eq. (10):
+
+
+
+                                  w =0                                                         (12)
+                                   x
+                                            9
+
+
+          "
+wherE~    A (wV wR) is some average of
+
+
+
+         A(w) :: df(w)/dw                                         (13)
+
+over the interval (wL ' wR).
+
+         Mathematically it is clear that
+
+
+
+                                                                  (14)
+
+
+
+which is fine for weak waves. Roe demands that the solution also be exact i f
+
+therE! is only one wave with a nonzero amplitude;         this wave, however, maybe
+
+arbitrarily strong. This can be achieved only by chosing A such that
+
+
+          "
+         A(wL,wR)·(wR-w )                                        (15)
+                       L
+
+
+
+the   discretli! analogue   of   (13).   If w   and w can be connected by a single
+                                            R        L
+discontinuity with speed U, the          jumps in wand f are connected by the jump
+
+equation
+
+
+
+                                                                  (16)
+
+
+
+Upon comparison of (15) and (16) it follows that wR-wL is an eigenvector of A,
+
+andU the corresponding eigenvalue.
+
+         Harten (1981) has shown for hyperbolic systems (8) admitting an entropy
+
+condition, that the mean value
+
+
+
+                                                                 (17)
+
+
+
+not only satisfies (15) but also has a complete set of real eigenvectors and
+
+eigenvalues, making Eq. (12) hyperbolic under all circumstance.
+                                              10
+
+
+      Roe (1981) has indicated an algebraic procedure to construct matrices
+
+A(WL,W ) of the form A(w) where w is some average of w and wR • His arguments
+      R                                               L
+bear heavily on the specific homogeniety properties of the conservation laws
+
+involved.
+                                                                            "+
+      Once A has been found, it is split in its positive and negative parts A
+
+and           positive   and   negative    refer   to   the   eigenvalues   of   the   matrix.
+
+Correspondingly we may split ~f           = f(wR) - f(wL) in
+
+                                                                        (18.1)
+
+
+
+       (~f)                                                             (18.2)
+
+
+
+the changes of the flux across the forward moving and backward moving waves,
+
+respectively. This is called flux-difference splitting.
+
+      It is easy to see that the flux ~(wL,wR)            needed in Eq. (9.3) equals
+
+
+
+                                                                        (19.1)
+
+
+
+                                                                        (19.2)
+
+
+
+see also ApI, Fig. 8.
+
+      A word of caution:        the jump condition (16) does not imply the entropy
+
+condition: wL and wR may be exchanged. Likewise, if
+
+
+
+                                                                        (20)
+
+
+
+the scheme incorporating A can not recognize inadmissible shocks and may not
+
+destroy these. Some asymmetry must therefore be introduced in the dependence
+
+of A on wL and wR; see Harten and Lax (1981).
+                                                              11
+
+
+
+
+        An alternative to (18) is to split the flux itself:
+
+
+
+         few)         f + (w)     + f - (w)                                                    (21)
+
+
+
+f +(w) and f - (w) may be called the forward and the backward flux, respectively.
+
+In the review by Harten, Lax and Van Leer (1983) it is demonstrated that this
+
+kind     of     splitting            follows       from    interpreting         the    conservation        laws    (8)    as
+
+moments         of     the        collisionless            Boltzmann          equation,     using     a     numerically
+
+convenient particle-velocity distribution.
+
+        Van Leer (1982) shows how to achieve a splitting like (21) for the flux
+
+in the Euler equations.                                   Care must be taken to ensure that                 f+(w)        and
+
+f-(w)     are continuously differentiable functions of                                  w, so that Eq. (8) can be
+
+consistently           approximated.                                                                               in    the
+
+flux- difference             splitting         (18)       just have      to    be     continuous.         In any    case,
+
+second-order           terms         with     split       fluxes    or    split        flux-differences           must    be
+
+avoidE~d;       see Mulder and Van Leer (1983).
+
+
+
+1.6     Alternative ways of time-stepping
+
+
+
+If temporal accuracy is not needed, for instance, in marching toward a steady
+
+state, we retain from the scheme from Sec. 1.4 only the steps relating to the
+
+approximation of f x • Following                      JamE~son     et al.       (1981) we may advance in time
+
+with an m-stE~p Runge-Kutta algorithm:
+
+
+         w(O)=        n
+           i         ~"i
+                                  (k)
+           (k.)       n      ex               6. F(k-l) /6.
+         W',
+           l.
+                  .. Wi
+                                k!
+                                        6.t    i              x, k=l, •• ,m,
+                                                                       12
+
+
+
+             (m)  n+l
+            w. = W.                                                                                                         (22)
+                1         1
+
+
+Once       a        steady     state is achieved i t is                     independent      of t::. t.     The same steady
+
+state would be                     found    with the     two-step           scheme from Sec.              1.4,    in the limit
+
+of t::.t    +       O.
+
+           Unfortunately,                  the   stability         condition      associated          with        upwind-biased
+
+spatial-differencing                       operators        is    rather      restrictive,          due      to    the    sizable
+
+negative real part of the eigenvalues of such operators. This is illustrated
+
+in Figure 1 (taken from work done in collaboration with E. Turkel                                                        (1982)),
+
+for the combination of Fromm's space-differencing and fourth-order four-step
+
+Ringe-Kutta               time-stepping            (a(k)     = 1, k = 1,2,3,4).               The         stability      conditon
+
+after four steps is a meagre
+
+
+
+                                                                                                                         (23.1)
+
+
+
+changing the coefficients a(3) and a(4) improves this up to
+
+
+
+            I a ( ~ 1. 9 •                                                                                               (23.2)
+
+
+
+In contrast,                  the central-differencing operator of                        the LW scheme,                which has
+
+purely imaginary eigenvalues, leads to a stability condition
+
+
+
+            [01          ~     2.8,                                                                                      (23.3)
+
+
+
+see        Jameson            et    ale     (1981).    We        conclude      that    upwind       differencing           is     not
+
+efficient in combination with Runge-Kutta time-stepping.
+
+           Another            possibility         is   to        use   implicit       time     stepping,          such     as      the
+
+"backward                Euler"       or     "implicit       Euler"         method.     In     practice           the     implicit
+
+difference scheme must be linearized in time to make inversion possible. The
+                                                           13
+
+
+
+linear:ization is only feasible i f the numerical flux-function F is differen-
+
+tiable with n~spect to its arguments. This requirement favors the use of flux-
+
+vector splitting; see Mulder and Van Leer (1983).
+
+
+
+
+2. THE RECOGNITION AND REPRESENTATION OF DISCONTINUITIES
+
+
+
+
+                                            n
+         The formula (3) for <5.q                is based on the assumption that the gradient of
+                                       1
+
+w varies      smoothly     between x i -l            and x i + 1 •       If   w or its first       derivative is
+
+discontinuous in this interval, the value of 0 thus computed is meaningless
+
+and, when used, may give rise to numerical oscillations. The sight of a shock
+
+with numerical oscillations is well known and needs no illustration here.
+
+         A local discontinuity in w or Wx may be recognized,                                    in a sequence of
+
+mesh-refinements, by a local extremum of fli-'-J. w/fl. J.w that goes to infinity or
+                                                                     --'2       1-2
+
+to   a    finite   value    .f    1.       The    only     place         in a     smooth   solution where       this
+
+behaviour is also seen is at an extremum.
+
+         It: has been demonstrated by Van Leer                       (1972, 1974, 1977) that meaningful
+
+values of <5 are obtained under the extra constraint                                  of monotonicity.        For a
+
+linear convection equation it says that the updated discrete distribution must
+
+be monotone if the discrete initial--value distribution is monotone;                                         this of
+
+course" is true for the exact solution. Satisfying this condition turns out to
+
+simply be a matter of monotonicly                          interpolating the initial values inside
+
+volumes.
+                                                 n          n        n
+         To fix our thoughts, let qi-l ' qi ' qi+l and 0 ,                             a , 1; We shall use the
+
+abbreviations fl      :: fl. lqn, fl+             fl.+lqn       o.qn _ o. It is easily seen that,                for
+                           1-'2                      1"2        1
+
+the pn~servation of monotonicity at tn+l, we must limit                                    0   as follows:
+                                                           14
+
+
+
+                       _2_1'. (no overshoot in x + for a ~ 0)
+                       I-a +                    i 1
+              8 .. {                                                                                 (34)
+                       ~I'.       (no overshoot in xi for a                   1)
+                       a
+
+Note that,        regardless of the value of a, 0 mus t vanish if 1'.+ or I'. _ vanishes.
+
+Taking the minimum of condition (34) over all values of 0, we arrive at
+
+
+
+                                                                                                     (35)
+
+
+
+With 0 within these bounds, the initial va+ues (2) inside volume i will not go
+
+beyond the neighboring zone averages; see Van Leer (1980).
+
+        For     the    three      schemes          of   Sec.    1.3,   (35)    means   that   no   limiting is
+
+necessary if
+
+
+
+         (LW)           o " I'. +It:. - "2,                                                        (36.1)
+
+
+
+         (Fromm)                                                                                   (36.2)
+
+
+
+         ( A)           t .. I'. +II'. - ..   00                                                   (36.3)
+
+
+
+Using
+
+
+
+                                                                                                   (37)
+
+
+
+as a "smoothness monitor" (the logarithmic second derivative is a measure of
+
+curvatu~e),       we can write (36) as
+
+
+                                         1
+         (LW)           -1 .. S       .. -                                                         (38.1)
+                                  1      3
+
+
+
+         (Fromm)                                                                                   (38.2)
+                                                           15
+
+
+
+
+        ( A)                                                                               (38.3)
+
+
+
+       For the Fromm scheme,                    the permitted range         (36.2)   or (38.2)       remains the
+
+same   ~"hen        thE! sign of      (J   is flipped; this is not true for the ranges associated
+
+with   the          other     schemes.       Hence,       the   initial-value dicretization for          Fromm's
+
+scheme remains independent of the physics.
+
+
+
+2.2. 1imiters, switches and artificial dissipation
+
+
+
+Eq. (35) can be satisfied by limiting 0:
+
+
+
+                                                                                            (39)
+
+
+
+but a smoother dependence on f::,+/f::,._ is preferable. Harmful effects of clippi.ng
+
+caused by suddenly acting limiters like (39) are described by Van Leer (1977),
+
+Woodward and Colella (1982) and Van Albada et a!. (1982).
+
+       In the latter paper a smooth limiter for Fromm's scheme was described:
+
+                               2         2              2       2
+                          (f::,+ + £ )f::, + (f::, + £ )f::,+
+                °lim
+                     -.                  2       2        2                                 (40.1)
+                                     f::,+ + f::,_ + 2£
+                                           2
+                        2f::,+f::,_ + 2£            f::,+ + f::,_
+                          2         2         .
+                                              2           2
+                                                                                            (40.2)
+                        b.+ + f::, + 28
+                                                2
+                                 (f::, +- f::,_)
+                     = {I - --..r2--';"'-"2~-""'2     }   .                                 (40.3)
+                            f::,+ + f::,_ + 2£
+
+            2
+here   EO        is a small threshold that also prevents zerodivide.                            The treshold can
+
+be chosen sueh that the limiting effect disappears in the neighborhood of a
+                                                                                            2
+smooth extremum, that is, when f::,+ and f::,                       have values   "" (f::, x) •
+                                                                  16
+
+
+                  2                  3
+Clearly, e               -    (~x)       will do.
+
+         Eq.    (40.1)           shows that 0lim is a weighted average of ~ + and ~                             ,biased
+
+toward the smaller of the two. In the limit of ~                                     /~    =   00   or 0 , the average
+                                                                                   + -
+equals the smaller value. Eqs.                                 (40.2) and (40.3) show that 0lim equals its
+
+unlimited value (3) multiplied by a switch factor; this factor falls about
+
+
+                                                    2
+                                         (In w ) }                                                  (40.4)
+                                             x x
+
+
+
+short of unity in a smooth solution. The appearance of the logarithmic second
+
+derivative is no surprise.
+
+         A tighter fit to (39) is
+
+
+
+
+                             (2~ 2 + e2)~ + (2~ 2 + e2)~
+                                +               -        +
+          °  ,
+           1 1m
+                              ~~ + 21~+~-I + ~2 + 2e 2
+                                                                                                    ( 41)
+
+
+
+
+which      tends               toward        twice        the      smaller     of ~ _ and ~ + '          in   the   limit
+
+of ~ /~         =   00       or O.
+    + -
+         Eqs.         (40)           and     (41)        alIso     limit     the   value       of    °   if   the   signs
+
+of ~+ and ~                  are different,             that     is,   if   the initial-value sequence is not
+
+monotone. The numerical experiments of Mulder and Van Leer (1983) suggest that
+
+(40) gives a cleaner representation of the solution near a steady shock than
+
+(41) •
+
+         The effect of the switch factor in (40) on the scheme can be interpreted
+
+in seveFal ways. According to (40.2) the switch turns off the nominal gradient
+
+in a zone; since it is the gradient that leads to second-order accuracy, the
+
+switch can be said to turn off the second-order term of the scheme. Symbolicly
+
+(ignoring the conservation form):
+                                                    17
+
+
+
+
+                                                                                                  (42.1)
+
+
+here   L2     and    L1     are    the    second-order     operator        and     embedded       first-order
+
+operator.     Since L 1-L 2        is    predominantly     a   dissipative         term,    52    must be an
+
+artificial-dissipation coefficient.
+
+       Writing (42.1) as
+
+
+
+       (L2) lim                                                                                   (42.2)
+
+
+
+reveals that (L 2 )lim symbolizes a so-called hybrid scheme, see Harten (1978).
+
+Writing (42.1) as
+
+
+
+                                                                                                   (42.3)
+
+
+
+reminds us of         the Flux-Corrected Transport (FCT)                   methods of Boris and Book
+
+(1973),      where a       first-order     result   is improved by adding a limited second-
+
+order term.         These, however, are the methods mentioned earlier that show the
+
+disastrous clipping effect.
+
+
+
+2.3 Nonlinear case
+
+
+
+       The    analysis       in    2.1   shows   that    for   a    linear convection equation the
+
+monotonicity         of     the     numerical     solution         can   be      preserved       by   monotone
+
+interpolation         of     the     solution     inside       each      volume.     This        recipe     works
+
+surprisingly well for nonlinear convection and seldom needs adjustments; see,
+
+however, Woodward and Colella (1982), Colella and Woodward (1982). For s:l.ng1e
+
+nonlinear conservation laws it can be made exact; see Harten (1982).
+                                                    18
+
+
+
+        What do shock profiles, computed with monotonicity preserving schemes,
+
+look like? To answer this question an example of shock propagation by three
+
+upwind-biased schemes based on monotone initial-value interpolation is given
+
+in Figure 2, taken from Woodward (1980).
+
+
+
+
+2.4 Related subjects
+
+
+
+        So   far     we     have      only   discussed      the    role   of   the   initial-value
+
+representation in preserving monotonicity. Obviously the choice of the time-
+
+stepping algorithm will               influence     the numerical results.       The sharpness of
+
+steady shocks, for instance, depends on the Riemann solver used, although the
+
+differences        among    second-order        schemes   are much less important        than among
+
+first-order schemes; see e.g. Van Leer (1981) •. (This subject will be reviewed
+
+in a forthcoming paper by Enquist, Osher, Roe, and Van Leer (1983».
+
+        Discontinuities          that    have    spread    too    much,   in   particular    contact
+
+discontinuities,           may   be     steepened   by    applying Harten's     (1977)   artificial
+
+compression method (ACM).
+
+        It is possible to use a smoothness monitor for other purposes than to
+
+limit    gradient     values.         Some applications are:        to indicate ,where      the grid
+
+should be refined or moved, and where shock-fitting or shock-recovery should
+
+be carried out; for the latter subject see Morton (1982).
+
+
+
+
+3. MULTI-DIMENSIONAL METHODS
+
+
+
+3.1 Multi-dimensional convection
+
+
+
+        In order to illustrate how the one-dimensional schemes of Section 2 can
+                                                19
+
+
+
+be    applied   in multi-dimensional           problems,      I   shall discuss              two    first-order
+
+sche~mes   for convection in two dimensions.
+
+       Godunov's   one-dimensional         scheme     is   what        we   get   if,        in    the    schemes
+
+studied    pr,evious1y, oq is         always   set    equal       to   zero.      In    other       words,       the
+
+initial values in each volume are chosen to be uniform, which accounts for the
+
+loss of the second-order accuracy. The Lax-Friedrichs scheme also uses uniform
+
+initial values in each volume but the grid is staggered in time. I shall start
+
+with the latter.
+
+
+
+       The convection equation to be approximated is
+
+
+
+                              0,      a > 0, b > O.                                    (43)
+
+
+
+For convenlence the points (xi' Yj)' (xi-I' Yj)' (xi' Yj-l) and (xi-I' Yj-l)'
+
+and    the volumes     centered at these         points are indicated by A,                        B,    C and    D,
+
+respectively; the center (xi-t' Y j-t) of the staggered volume is indicated by
+
+M. This is shown in Figure 3a.
+
+       Af ter moving    the        piecewise-uniform distribution with                   a    velocity       (a, b)
+
+over a time interval La we find~ by weighting q according to area (see Figure
+
+3b):
+
+
+
+
+                                                                       o ,0 ~      t .              (44.1)
+                                                                        x Y
+
+
+For comparison with Eq. (10) we ~lY rewrite this as
+                                               20
+
+
+
+
+                                                                  n
+      - a [{( t-t a )q n + O+t a ) qn }- {( t-t a )q ne + (t+ta )qD }]
+         y         x A          x B              x             x
+
+
+                               n+!            n+t      n+!)
+                              q W)       ay ( q N - q S        •                   (44.2)
+
+
+
+      n+!
+Here q E is the time-average of the space average of q on the East side (Ae)
+
+of volume M;      the other averages are defined similarly. This formula differ$
+
+from the version given orignally by Lax (1954), where the fluxes through the
+
+sides of volume M are not centered in time. This removes the cross-difference
+             n    n    n    n
+term Ox ay(q A - qB - qe + qD) from           the     scheme       and     reduces         the   scheme's
+
+stability domain.
+
+     Scheme      (44)   can   be     written as     the product      of    two   one-dimensional LF
+
+schemes:
+
+
+
+                     [t(l+T -1) _ a (l-T -l))[t(l+T -1)                            -1      n
+                           y       y    y          x                     a(1-T          )]qi'
+                                                                          x    x             J
+
+
+
+      -    LLF(At)
+               u   L LF (b t) qi
+                               n.                                                  ( 45)
+            Y        x           J
+
+
+
+where Tx and Ty denote a forward translation by one volume in the x- and y-
+
+direction.     Hence,    the method of fractional          time-steps or time-splitting is
+
+exact for the linear LF scheme.
+
+     Godunov's scheme, illustrated in Figure 4, can be written as
+
+
+
+       n+1                       n                   n               n        n
+      q A        (1- a ) 0- a ) qA     + a (1- a ) q B + a (1- a ) q e + a a qD
+                      x      y            x     y         y     x         xy
+
+
+
+or
+                                                   21
+
+
+
+
+                                    n+t)                 n+t)                         (46.2)
+                                   q W                  q s     '
+
+
+
+whE!re E,     W,    Nand S now refer to the sides of volume A. Again the proper
+
+cross-difference term is included and exact factorization is possible:
+
+
+
+                    { (1-0 (I-T -I ) } { 1-0 (I-T -1 ) }qi.
+                                                         n
+                          Y     Y           x     x        J
+
+
+
+                                                                                      (46)
+
+
+3.2   From convection to IeF
+
+
+
+
+The   LF    scheme         can    be     exactly   implemented      for     a   nonlinear       system   of
+
+conservation laws
+
+
+
+                                            o"                                        (47)
+
+
+
+The flux aq~ through the East side of M is changed into F~,                                  with
+
+
+                                  n 1
+        n+t            1         t + A      n
+       FE        = /).t/).y fn      f    f(wAC(t,y)) dy dt ,                          (48)
+                            t       c
+
+       n
+where wAC (t,y) is the time-dependent solution of the one-dimensional Riemann
+
+problem     on     the     line    CA with    initial   values      at    tn.   The    other   fluxes    are
+
+obtained similarly.
+
+      An lllseful approximation of (48) results i f we first average w:
+                                                      22
+
+                         1         n+1 .A
+                     = ~t~y tItn
+              1
+          n-H                          f1"1 n ( )
+        WE 2                          C WAC t,y dy dt
+
+
+
+
+                                                                                          (49)
+
+
+
+
+and then adopt
+
+
+
+                                                                                          (50)
+
+
+
+which     differs 0((~x)2) from              (48).   Note    that,    owing   to   conservation,    the
+
+computation of the average wE
+                                             n+t does not require knowledge of the detailed
+
+Riemann solution.
+
+        Eq. (49) is, of course, the               one-dimensio~al     LF scheme for flow along the
+
+line CA. This inspires the following implementation of the LF scheme for Eq.
+
+(47).
+
+
+
+         ""Il.+t        LLF(~) wn..                                                       (51.1)
+         wi'J-"21        Y 2    1J
+
+
+         ~
+        w.1-"2l J'      LLF(~t) Wn..                                                      (51. 2)
+                         X   2   1J
+
+
+
+
+                             ~t   (fU+t                                                   (51.3)
+                             ~x     ij-t
+
+
+
+This version is symmetric in x and y, just as the time-splitting suggested by
+
+Strang (1968) for two-dimensional operators:
+
+
+
+                             t {L x (~t)L Y(~t) + LY(~t)L x (~t)} ,                       (52.1)
+                                                            23
+
+
+
+
+It     must        be       said,        however,     that       computational         fluid      dynamists        almost
+
+exclusively use pure product operators like                                  (45).      To reduce the asymmetry
+
+betwen      x      and        y, the sequence          LyLx      is alternated with             LyLx:
+
+
+
+
+                             L (At)L (At)L (At)L (At) •                                          (52.2)
+                              x     y     y     x
+
+
+       The exact formulation of Godu!lov's scheme for Eq. (47) requires knowledge
+
+of the solution of Riemann's problem in two dimensions, with initial values
+
+uniform           in    each       quadrant.        Th:ls    solution        is      only   known       for    a   single
+
+conservation law and was obtained by Wagner (1980). In the same way as (51) is
+
+derived from (44b), we may derive from (46.2)                                     an approximation to Godunov's
+
+scheme based entirely on the solution of one-dimensional Riemann problems:
+
+
+
+         "1:1+t             At n
+                        LG (Z)w
+         wi'J                                                                                    (53.1)
+                         y      ij
+
+
+         ~t
+         w
+                            At n
+                        LG (Z)w                                                                  (53.2)
+          ij             x      i;
+
+
+          n+1
+         wi .
+              J
+                         n
+                        w..
+                         1J
+                                  At (in+ t
+                                  t.x  i+1 j
+                                                    :fD+: .)
+                                                      i-2]
+                                                                  t.t :::n+t
+                                                                  t.y (G i i_ +!.2
+                                                                                      ~~~t 1)
+                                                                                       1J-"2
+                                                                                                              (53.3)
+
+
+
+Here
+
+
+
+                            . . ("'n+!                 ~+!                                       (53.4)
+                        -   'if  W ••
+                                  1J                   Gij+t
+
+
+
+with the Riemann flux tl'1(w ,w ) defined previously. Thus,                                     the one-dimensional
+                            L R
+Riemann solver is used twice in ea.ch space dimension.
+
+       ExpreBsing (53) in terms of L~D only leads to
+                                                      24
+
+
+                                  G
+        L~O(f1t) = I + (Lx (f1t) - I) LG(f1t)
+                                       y 2
+
+
+
+                           + (LG (f1 t) - 1) LG(~)                                         (54.1)
+                               y              x 2
+
+
+       G
+Since LIO(T) is linear in T, this may also be written as
+
+
+
+         G                      G               G
+        L (M)
+         20
+                          I + (L (f1t) - I) t(L y (f1t)
+                                x
+                                                                + I)
+
+
+                                   G
+                                 (L (f1t) - I)
+                                   y
+                                                     HL xG(f1t) + I)      .                (54.2)
+
+
+
+Using the homogeneity property of the Euler equations and,                                   therefore, of the
+
+Riemann solution, we may further work this out:
+
+
+
+        L
+            G
+            20
+               (f1t)      HL~ (f1 t) (LG(M)
+                                       y
+                                            + 1) - LG
+                                                    x
+                                                      (f1 t).
+
+
+
+                            G                                (f1 t) ] ,
+                        + Ly (f1t)     (LG(f1 t)
+                                         x
+                                                   + I) - LG
+                                                           y
+                                                                                           (54.3)
+
+
+
+This     would         reduce     to     Strang's         splitting     (52.1)      if   L~D would        have    the
+
+distributive property. This, of course, is only true in the linear case.
+
+
+
+3.3. Second-order schemes
+
+
+
+        The    examples         of the previous section teach us that                      it    is possible to
+
+mimic    two-dimensional               wave-interactions        by     combinations       of     one-dimensional
+
+wave interactions.              These schemes contain terms" (f1t)2, but only have first-
+
+order accuracy.           It is possible to apply the ideas of Section 3.1 and 3.2 to
+
+the second-order schemes of Section 2. This clearly involves more algebra and
+
+will not be carried out here. One of the reasons is that none of these two-
+
+dimensional            schemes    has     yet      been    programmed.        It   remains      to   be   shown    in
+                                                25
+
+
+
+practice if the more subtle ways of splitting like (53) are indeed preferable
+
+to a pure product operator like (52.2).
+
+
+
+
+3.4. Related subjects
+
+
+
+     In two dimensions the grid plays an even more important role than in one
+
+dimension. Various ingredients of the schemes discussed in these lectures may
+
+be used more than once,           in order to make decisions about refining the grid,
+
+moving the grid or        just rotating the frame in which the solution of a one-
+
+dimensional Riemann problem is considered.
+
+     For the latter decision we may use the direction of the gradient of the
+
+solution -      readily available from 0 wand 0 w in a second-order scheme -              or
+                                        x      y
+the projection angle at which the initial values in a Riemann problem could be
+
+best connected ("best" in some least-squares sense) by a single running wave.
+
+The latter idea is due to Harten (private communication).
+
+     Moving a grid interface at the speed of the best-fitting single wave was
+
+reallzed in one dimension by Harten and Hyman (1982); two-dimensional results
+
+will soon follow. It appears that the improvement due to the grid movement is
+
+dramatic   for    a    first-order   scheme and not nearly so much for second-order
+
+schemes.
+
+     A two-dimensional extension of Roe"s matrix theory is being considered
+
+(Baines,   M.    J.,    (1982),    University   of   Reading,   United   Kingdom,   private
+
+communicati()n).
+                                         26
+
+
+
+
+REFERENCES
+
+   1.   J. P. Boris and D. L. Book (1973), J. Computational Phys.~, 38.
+
+   2.   P. Colella and P. R. Woodward (1982), "The piecewise-parabolic method
+
+             for gasdynamical simulations", Lawrence Berkeley Lab. Report LBL-
+
+             14661.
+
+   3.   P.   Colella (1982),    "Approximate solution of the Riemann problem for
+
+             real gases", Lawrence Berkeley Lab. Report LBL-14442.
+
+   4.   J. E. Fromm (1967), J. Computational Phys. ~, 176.
+
+   5.   S. K. Godunov (1959), Matern. Sb • .i, 271.
+
+   6.   A. Harten (1977), Comm. Pure Appl. Math. ~, 611.
+
+   7.   A. Harten (1978), Math. Compo ~, 363.
+
+   8.   A. Harten (1981),      "On the symmetric form of systems of conservation
+
+             laws with entropy", ICASE Report 81-34.
+
+   9.   A. Harten (1982), "High-resolution schemes for hyperbolic systems of
+
+             conservation laws", Report DOE/ER/03077-67, New York Univ.
+
+  10.   A. Harten and J. M. Hyman (1981), "Self-adjusting grid methods for one-
+
+             dimensional    hyperbolic conservation laws",   Los Alamos   Sci.   Lab.
+
+             Report LA 9105.
+
+  11.   A. Harten and P. D. Lax (1981), SIAM J. Numer. Anal. ~, 289.
+
+  12.   A. Harten, P. D. Lax and B. van Leer (1983), "On upstream differencing
+
+             and Godunov-type schemes for hyperbolic conservation laws",         SIAM
+
+             Rev. 32, 35.
+
+  13.   A. Jameson, W. Schmidt and E. Turkel (1981), AlAA Paper 81-1259.
+
+  14.   P. D. Lax (1954), Comm. Pure Appl. Math. ~, 159.
+
+  15.   P. D. Lax and B. Wendroff (1960), Comm. Pure Appl. Math. ~, 217.
+
+  16.   R. W. MacGormack (1969), AlAA Paper 69-354.
+
+  17.   G. Maretti (1979), Computers and Fluids~, 191.
+                                              27
+
+
+
+
+18.    K.   W. Morton (1982), "Shock capturing, fitting and recovery", Lecture
+
+            Notes in Physics 170, 77.
+
+19.    W. A. Mulder and B. van Leer (1983), "Implicit upwind methods for the
+
+            Euler   equations",       Proc.   AlAA   6th    Computational   Fluid    Dynamics
+
+            Conference, Danvers, Mass., July 1983, Paper 83-1930, pp. 303-310.
+
+20.    S. J. Osher (1981), North-Holland Math. Studies!!2., 179.
+
+2l.    P. L. Roe (1980), Lecture Notes in Physics 141, 354.
+
+22.    P. L. Roe (1981), J. Computational Phys. 43_, 357.
+
+23.    G. Strang (1968), SIAM J. Numer. Anal. .2., 506.
+
+24.    G. D. van Albada, B. van Leer and W. W. Roberts, Jr. (1982), Astron.
+
+            Astrophys. 108, 76.
+
+25.    B. van Leer (1972), Lecture Notes in Physics .!!' 163.
+
+26.    B. van Leer (1974), J. Computational Phys. ~, 36l.
+
+27.    B. van Leer (1977), J. Computational Phys. ~, 276.
+
+28.    B. van Leer (1979), J. Computational Phys. .E., 10l.
+
+29.    B. van Leer (1980) , in "Numerical Methods for Engineering", Eds. E.
+
+            Absi,   R.   Glowinski,     P. Lascaux and H.      Veysseyre, Vol. 1, p.        137,
+
+            Durand, Paris.
+
+30"    B.   van Leer (1981),       "On the relation between the upwind-differencing
+
+            schemes of Godunov, Enquist-Osher and Roe,             ICASE Report 81-11,        to
+
+            appear in SIAM J. Sci. Stat. Compo
+
+31..   B.   v~m   Leer (1982), Lecture Notes in Physics 170, 507.
+
+32.    D. Wagner (1980),         "The Riemann problem in two space dimensions for a
+
+            sllngle conservation law", Report TSR 112363, University of Wisconsin.
+
+33.    P. R. Woodward (1980),           "Trade-offs in designing explicit hydrodynamic
+
+            sehemes      for   Vector   Computers",    in    Parallel   Computing,    Ed.     G.
+
+            Rodrigue, Academic Press, New York.
+                                    28
+
+
+
+
+34.   P. R. Woodward and P. Colella (1982), "The numerical simulation of two-
+
+         dimensional fluid flow with strong shocks", Lawrence Livermore Lab.
+
+        Report UCRL 86952.
+                                                                29
+
+
+
+
+                                                                         (b)
+                                                                                                 5
+
+
+
+
+                                       5
+                                                                                                 5
+
+
+
+
+F:lg.    1.        Stability          domain of           four-step   Runge-Kutta      methods   in   the   complex
+
+plane.
+                   (1)          (2)          (3)          ef)
+a) With ex               = ex         = ex         = ex         = 1. The inner contour is the locus of the
+
+Fourier       transform of                 the     second-order upwind spatial-differencing operator,
+
+forcr=1.3.
+               ( 1)
+b) With       (X                                            .86,         .44;   0   = 1.9.
+                                              2.5
+
+                                              2.0
+
+                                              1.5
+
+                                              1.0
+
+                                 (a)
+                               GOOUNOV         .Sll \\ll0~
+                                              0.0
+                                                                               (b)
+                                                                              MUSCL
+
+                    .     .
+                                                                 -.               .      .
+    c:;;:,   Ln                          In     CS)
+
+
+                  - -
+                  CS)   IJ.)                              IJ.)         IJ.)   CS)      IJ.)
+                               ~ X N
+                                                                       -
+                                                                 CS)     •
+
+
+    ~ELOCITY                   C'-J
+                                                ~ElOCITY                      C'-I     C'-I
+                                                                                              w
+                                                                                              0
+
+
+
+
+                                              2.5                                      ~
+
+Fig. 2. Propagation of a one-dimensional      2.0
+shock, as represented by first-order (a),     1.5
+second-order (b) and third-order (c) up-
+                                              1.3                ..." " " , \~,
+wind methods. Note that the overall dis-
+
+tribution is always monotone. Reproduced
+                                               .5                ~\\~~        (c)
+                                                                               PPl'l
+                                              ~.0
+from Woodward (1980).
+
+                                                      .
+                                                    CS)
+                                                            .
+                                                          IJ.)   CS)    Ln    cs)
+                                                                                  .       .
+                                                                                       IJ.)
+
+
+
+                                                    ~ELOCITY
+                                                                              C'-I     C'-I
+                                                      31
+
+
+                                                                                                 (a)
+
+              yt
+              y.1
+
+              y.1- 1
+                    2
+                                     B
+                                               -=+=         M
+                                                                                A
+
+
+
+              ~-1                   0
+                                               -=                               C
+
+
+
+
+                                             x·1- 1                      x·1               x
+
+
+
+
+                                                                                                (b)
+
+
+
+                                         r ---- - - - - - I - - - - - ,
+                                                                                            I
+              y.                                                                            I
+                1                                                                           I
+                                                                                         --1
+                        b~t
+                                         I                                                  I
+                                         I                                                  f
+                                         L___ _                                          --'
+                                                                                            I
+
+
+
+
+                                              -L            r
+                                                                a~t
+                                                                     ,
+                                               X·1-1        X·1- 1
+                                                                 2
+                                                                          X·1                     X
+                                                                                                       ...
+
+F:lg. 3. Two-dimensional convection by the Lax-Friedrichs scheme. (a) Staggered
+
+grid of finite volumes.             (b) Contours of the convected distribution after one
+
+time   step    (broken lines).          The updated average                    value     in zone M is an area-
+
+wc~ighted     average   of    the    values            in   A,   B,      C and      D;    the    areas       are   shaded
+
+d:lstinctively.
+                                            32
+
+
+                                                                                (a)
+
+             yt
+             y                     B                       A
+               I
+
+
+             Y.1- 12
+
+             Y.1- 1                 0                      C
+
+
+
+
+                                   X.1-1                   X.
+                                                            I
+                                                                      x    ..
+
+                                                                                (b)
+
+
+
+
+                               r - - ----I-N---'
+                               I                I
+              Yj               /             WE/
+                               L-__                                 _./
+                       bAt                                             I
+                               /                       I               I
+                               I                       I               I
+                               L __ _                               _..J
+                                                 - -L---
+
+                                                 QAt
+
+                                   X.1- 1                  X.
+                                                                I
+                                                                                x
+
+
+Fig. 4. Two-dimensional convection by Godunov's scheme. Same as Fig. 3, except
+
+updating is done in zone A.
+ 1. RepeIrt No.                                         2. Government Accession No.                          3 . Recipient's Catalog No.
+       NA.,SA CR-172180
+ 4. Title and Subtitle
+                                                    I                                                         5. Report Date
+                                                                                                                 July 1983
+      Co mputational Methods for Ideal Compressible Flow                                                     6. Performing Organization Code
+
+
+ 7. Auth orIs)                                                                                                8. Performing Organization Report No.
+
+       Br am van Leer                                                                                            83-38
+                                                                                                             10. Work Unit No.
+ 9. PerfeIrming Organization Name and Address
+      In.stitute for Computer Applications in Science
+        and Engineering                                                                                      11. Contract or Grant No.
+      Ma.il Stop l32C, NASA Langley Research Center                                                              NASl-158l0
+      Ha.mpton, VA 23665                                                                                     13. Type of Report and Period Covered
+12. Spon soring Agency Name and Address
+                                                                                                              Contractor report
+       Na.tional Aeronautics and Space Administration                                                        14. Sponsoring Agency Code
+       Wa.shington, D.C.  20546
+
+15. Suppdementary Notes
+
+
+       Langley Technical Monitor:                        Robert H. Tolson
+       Fj.nal Report
+
+16. Abst ract
+
+
+
+       LE!ctures presented at the Von Karman Institute for Fluid Dynamics, Rhode-St--Genese,
+       B~ !lgium, in Lecture Series 1983-04 on Computational Fluid Dynamics.
+
+       1.       Conservative dissipative difference schemes                                                   p.l
+
+       2.       The recognition and representation of discontinuities p.13
+
+       3.       Mul ti·-dimensional methods                                                                   p.18
+
+
+
+
+17. Key Words (Suggested by Author(s))                                          18. Distribution Statement
+
+        co nservative difference schemes                                                64 Numerical Analysis
+        Euler equations
+        sh ock waves                                                                    Unclassified-Unlimited
+
+
+19. SecUI' ity Classif. (of this report)         20. Security Classif. (of this page)        21. No. of Pages          22. Price
+        Un classified                             Unclassified                                     34                     A03
+
+                                    For sale by the National Technical Information Service, Springfield, Virginia 22161
+                                                                                                                                         NASA-Lang1 ey, 1983
+End of Document
+

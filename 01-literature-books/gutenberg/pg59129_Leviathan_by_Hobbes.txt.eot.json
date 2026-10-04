@@ -1,0 +1,542 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+  "sha256": "533b81a6a8e5cdc7a909958ca0ffbfa8e719f0fa65ae682bba6ecf271362c932",
+  "bytes": 961144,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 961144,
+  "bodyOffset": 0,
+  "bodyChars": 961144,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7818,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 5653,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 69,
+  "surfaces": 52,
+  "referentEvents": 8,
+  "distinctReferents": 7,
+  "examined": true,
+  "edgesFound": 9,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 10,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 25
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 10,
+  "excerptOk": 10,
+  "rawChecked": 10,
+  "rawOk": 10,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 9,
+  "heard": 9,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "the continued existence of any organisation of the kind|is|peculiar to england",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the continued existence of any organisation of the kind is peculiar to England",
+    "subject": "the continued existence of any organisation of the kind",
+    "verb": "is",
+    "object": "peculiar to England",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#2328-2542",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "Attempts to found such a system of poor relief in the sixteenth century were common to most of the countries of Western Europe, but the continued existence of any organisation of the kind is peculiar to England."
+     },
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#3464-3754",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "But although the continuous existence of a system of public poor relief for nearly three centuries is peculiar to England, the English organisation was at first only one of a series of similar systems which began to arise during the sixteenth century in most of the countries of Europe."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of the efforts made by english|justices|of the peace as a result of that policy",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of the efforts made by English justices of the peace as a result of that policy",
+    "subject": "of the efforts made by English",
+    "verb": "justices",
+    "object": "of the peace as a result of that policy",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#4195-4280",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "and of the efforts made by English justices of the peace as a result of that policy."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "experiments|had|been made in the organisation of public poor relief",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "experiments had been made in the organisation of public poor relief",
+    "subject": "experiments",
+    "verb": "had",
+    "object": "been made in the organisation of public poor relief",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#4284-4414",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "For nearly a century before the time of Charles I., however, experiments had been made in the organisation of public poor relief."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "compulsory taxation|was|levied by the common council as early as 1547",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "compulsory taxation was levied by the Common Council as early as 1547",
+    "subject": "compulsory taxation",
+    "verb": "was",
+    "object": "levied by the Common Council as early as 1547",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#4715-4934",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "Collections by the aldermen at the church doors were decreed by the Court of Aldermen in 1532: compulsory taxation was levied by the Common Council as early as 1547, while the Bishop and citizens persuaded Edward VI."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the history of relief in england|is|parallel to that of france and scotland",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the history of relief in England is parallel to that of France and Scotland",
+    "subject": "the history of relief in England",
+    "verb": "is",
+    "object": "parallel to that of France and Scotland",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6268-6467",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "Until the end of the sixteenth century the history of relief in England is parallel to that of France and Scotland; there were in all three countries many poor laws but none were well administered."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the execution of the law|is|developed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the execution of the law is developed",
+    "subject": "the execution of the law",
+    "verb": "is",
+    "object": "developed",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6499-6661",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "the machinery for the execution of the law is developed, and henceforward the history of poor relief in England differs from that of the neighbouring countries."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "in england|differs|from that of the neighbouring countries",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "in England differs from that of the neighbouring countries",
+    "subject": "in England",
+    "verb": "differs",
+    "object": "from that of the neighbouring countries",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6499-6661",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "the machinery for the execution of the law is developed, and henceforward the history of poor relief in England differs from that of the neighbouring countries."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "on the|justices|of the peace",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "on the justices of the peace",
+    "subject": "on the",
+    "verb": "justices",
+    "object": "of the peace",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6665-6795",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "The machinery for the execution of the law is created by means of the pressure of the Privy Council on the justices of the peace."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "work|was|provided for the unemployed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "work was provided for the unemployed",
+    "subject": "work",
+    "verb": "was",
+    "object": "provided for the unemployed",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#7722-7863",
+      "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+      "text": "Moreover the whole of the Elizabethan Poor Law was administered: work was provided for the unemployed, as well as pensions for the impotent."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 9,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "compulsory taxation|was|levied by the common council as early as 1547",
+   "subject": "compulsory taxation",
+   "verb": "was",
+   "object": "levied by the Common Council as early as 1547",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#4715-4934",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "Collections by the aldermen at the church doors were decreed by the Court of Aldermen in 1532: compulsory taxation was levied by the Common Council as early as 1547, while the Bishop and citizens persuaded Edward VI."
+    }
+   ]
+  },
+  {
+   "id": "experiments|had|been made in the organisation of public poor relief",
+   "subject": "experiments",
+   "verb": "had",
+   "object": "been made in the organisation of public poor relief",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#4284-4414",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "For nearly a century before the time of Charles I., however, experiments had been made in the organisation of public poor relief."
+    }
+   ]
+  },
+  {
+   "id": "in england|differs|from that of the neighbouring countries",
+   "subject": "in England",
+   "verb": "differs",
+   "object": "from that of the neighbouring countries",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6499-6661",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "the machinery for the execution of the law is developed, and henceforward the history of poor relief in England differs from that of the neighbouring countries."
+    }
+   ]
+  },
+  {
+   "id": "of the efforts made by english|justices|of the peace as a result of that policy",
+   "subject": "of the efforts made by English",
+   "verb": "justices",
+   "object": "of the peace as a result of that policy",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#4195-4280",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "and of the efforts made by English justices of the peace as a result of that policy."
+    }
+   ]
+  },
+  {
+   "id": "on the|justices|of the peace",
+   "subject": "on the",
+   "verb": "justices",
+   "object": "of the peace",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6665-6795",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "The machinery for the execution of the law is created by means of the pressure of the Privy Council on the justices of the peace."
+    }
+   ]
+  },
+  {
+   "id": "the continued existence of any organisation of the kind|is|peculiar to england",
+   "subject": "the continued existence of any organisation of the kind",
+   "verb": "is",
+   "object": "peculiar to England",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#2328-2542",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "Attempts to found such a system of poor relief in the sixteenth century were common to most of the countries of Western Europe, but the continued existence of any organisation of the kind is peculiar to England."
+    },
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#3464-3754",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "But although the continuous existence of a system of public poor relief for nearly three centuries is peculiar to England, the English organisation was at first only one of a series of similar systems which began to arise during the sixteenth century in most of the countries of Europe."
+    }
+   ]
+  },
+  {
+   "id": "the execution of the law|is|developed",
+   "subject": "the execution of the law",
+   "verb": "is",
+   "object": "developed",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6499-6661",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "the machinery for the execution of the law is developed, and henceforward the history of poor relief in England differs from that of the neighbouring countries."
+    }
+   ]
+  },
+  {
+   "id": "the history of relief in england|is|parallel to that of france and scotland",
+   "subject": "the history of relief in England",
+   "verb": "is",
+   "object": "parallel to that of France and Scotland",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#6268-6467",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "Until the end of the sixteenth century the history of relief in England is parallel to that of France and Scotland; there were in all three countries many poor laws but none were well administered."
+    }
+   ]
+  },
+  {
+   "id": "work|was|provided for the unemployed",
+   "subject": "work",
+   "verb": "was",
+   "object": "provided for the unemployed",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt#7722-7863",
+     "ref": "01-literature-books/gutenberg/pg59129_Leviathan_by_Hobbes.txt",
+     "text": "Moreover the whole of the Elizabethan Poor Law was administered: work was provided for the unemployed, as well as pensions for the impotent."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:35.016Z"
+ }
+}

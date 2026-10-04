@@ -1,0 +1,315 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2013-3-15"
+lang: "en"
+messages: "306"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<xubuntu652> hola
+<xubuntu652> alguien hablaspñol
+<xubuntu652> español
+<Unit193> !es | xubuntu652
+<ubottu> xubuntu652: En la mayoría de los canales de Ubuntu, se habla sólo en inglés. Si busca ayuda en español entre al canal #xubuntu-es; escriba "/join #xubuntu-es" (sin comillas) y presione intro. Si nadie responde, puedes intentar preguntando en #ubuntu-es.
+<xubuntu652> okgracias
+<xubuntu831> Hey can anyone help me with a custom live cd?  I want to configure what the default settings will be for my desktop ( Panels/Wallpaper/Default Apps )
+<GridCube> !customcd
+<GridCube> !costumcd
+<GridCube> !customlivecd
+<ubottu> Interested in remastering the Ubuntu !LiveCD or !Alternate installer? See: https://help.ubuntu.com/community/LiveCDCustomization and https://help.ubuntu.com/community/InstallCDCustomization - Or use tools such as http://uck.sourceforge.net/ or http://linux.dell.com/wiki/index.php/DRU_Disc_Remastering_Utility
+<xubuntu831> thanks ubottu but they don't say anything on xfce customization for live cds
+<GridCube> its the same
+<xubuntu831> gnome  != xfce
+<xubuntu831> live cd creation isn't my problem, customization of default settings for a live cd is
+<Unit193> xubuntu831: That's not really a supported topic for this channel, but look under /etc/xdg/xdg-xubuntu/
+<xubuntu831> thanks
+<xubuntu831> thats perfect thanks
+<aperson> this happens to me quite a bit with xfce4-terminal in dropdown mode: does this happen to anyone else and is there a fix (or maybe just some insight I can follow)?: http://i.imgur.com/aPYEMP3.png  The window accepts keyboard and mouse input, but it just is grey and blank.
+<n2diy> my SD card reader isn't working, is there a way to restart it?
+<airlynx> my Toshiba has several recovery partitions, how do I set those so that they don't show up on my desktop (but I still want my Windows partition to show)?
+<louigi> hey guys! I booted my machine up today and something happened
+<louigi> it is as if I am logged under a different user
+<louigi> settings are different (like, I had two workspaces, but only 1 is present)
+<louigi> it also says trash is empty while showing some files there
+<louigi> many windows do not have a tab and I cannot move them
+<louigi> in firefox I cannot click any menus, like Bookmarks.
+<louigi> Anything happened after some upgrade?
+<nikolam> louigi, probably something wrong with that account
+<nikolam> what xubuntu you are using?
+<louigi> xubuntu 12.04
+<nikolam> do you have pre-prepared alternative account on machine with administration rights?
+<nikolam> when was the last time you update it? I also have 12,04.2 but 32 bit
+<louigi> no pre-prepared account
+<louigi> I also use 32 bit
+<louigi> it was updated yeterday
+<louigi> updates came in
+<louigi> and today there is a problem
+<nikolam> can you make new one now?
+<louigi> sure. what should it be?
+<nikolam> You have it under GUI: System>Users and Groups
+<louigi> man, I now cannot move windows - there are no handles
+<louigi> and I cannot access the menu - it is covered by another window
+<nikolam> that means window manager is not working
+<louigi> ok, could access
+<louigi> what there?
+<nikolam> try alt+f2 and run xfwm4 to start windows manager.
+<nikolam> well make new account with administrative rights and log it with it next time
+<louigi> nikolam, WOW, FIXED THE ISSUE
+<louigi> sorry for caps
+<louigi> unintended
+<louigi> hm
+<nikolam> well, you can also report a bug for package that wm is coming from
+<louigi> so the problem is that the window manager is not loaded at boot
+<nikolam> also check if your xfce session is recorded on logout, so it don't behave like that again
+<nikolam> if it happens every time, then might be something with user configuration
+<nikolam> make new account anyway, log with it next time, then make YOUR new account login , logoff, and migrate all data you need from old user account
+<nikolam> that way you will get default settings, new account and copied important data to a new one.
+<nikolam> it is under /home/usernames
+<louigi> nikolam, thank you for info, will do that if it happens again
+<nikolam> louigi, i suggest you disinfect you account like that and always have reserve admin account in that case and to report WM bug to see why it stopped working.
+<louigi> nikolam, will do!
+<louigi> thank you for your help!
+<LionDGemHeart> Hi there, my Xubuntu usually works very fine, but sometimes there is a strange error. Especially when the processor is working very hard suddenly I can't move my mouse anymore (touchpad) and it seems, that the whole touchpad i used for scrolling. If I press Strg+Alt+F1 and then Strg+Alt+F7 everything works again.
+<kvarley> What font does XUbuntu use as its system wide font?
+<Oweoqi> can anyone else confirm this and make sure I'm not going crazy? https://bugs.launchpad.net/ubuntu/+source/libxfce4ui/+bug/1131044
+<ubottu> Launchpad bug 1131044 in libxfce4ui (Ubuntu) "Shortcuts such as Ctrl+F9 set but are unresponsive" [Undecided,Confirmed]
+<john_rambo> is it possible make xubuntu look like osx ?
+<ochosi> john_rambo: partly yes
+<pog> hello
+<ochosi> !hi
+<ubottu> Hi!, Welcome to #xubuntu! Feel free to ask questions and help people out. The channel guidelines are at https://wiki.ubuntu.com/IRC/Guidelines. Enjoy your stay!
+<john_rambo> ochosi, Can you tell me how ?
+<pog> can I bookmark in gigolo for example /home/user ?  which is already mounted, but I like to have an index to access all of my directories.
+<ochosi> john_rambo: first off it depends on what aspects you want to look like osx. if it's just some simple visual aspects, google for a gtk-theme that looks like osx
+<ochosi> pog: gigolo is mostly for managing remote bookmarks, why would you bookmark your home-dir there?
+<pog> it seem's that nautilius can handle sshfs but it's not possible to bookmark.
+<john_rambo> ochosi, I want to get rid of the panels & add that floating panel
+<ochosi> john_rambo: try docky or avant-window-navigator or cairodock
+<john_rambo> Okay
+<pog> ochosi: I see the gigolo icon in the tray, so I thougt it would be practical (but I can live without this function).
+<john_rambo> ochosi, But what about the notification area? WIll it appear in avant ?
+<ochosi> john_rambo: i guess so, haven't used that in a while myself
+<pog> i can possibly add mein home it the tray.
+<pog> i use tunar 1.2.3. as fm
+<pog> I could try with nautilius, to be able to bookmark external files.
+<pog> o.k thanks for the moment.
+<pog> by the way I'm very happy with XFCE, much faster than other wm (on a low powered laptop).
+<ochosi> pog: what version of xubuntu are you using?
+<nooooo> hello
+<nooooo> how can i use the powersaving-settings also while the electric cable of my notebook is plugged?
+<pog> 12.04
+<pog> ochosi: 12.04
+<pog> I installed xfce after the installation
+<nooooo> the fan is loud
+<nooooo> when i unplug the electrical cable, running on battery
+<nooooo> its slower
+<nooooo> more silent
+<nooooo> and colder
+<nooooo> would be nice if it would be always in this mode
+<nooooo> as im afraid that it's gonna burn everything
+<pog> I had a applet o 10.04, where it was possible to control the cpu and i think also reduce the frequenzy.
+<bekks> nooooo: The fan wouldnt burn anything - check the temperature.
+<john_rambo> how to remove both panels ?
+<nooooo> it's hot, thats why im afraid that it would burn. I'm running xubuntu since more than a year now and the fan will be dead some day... then the cpu gonna burn all up
+<nooooo> im installin acpi now
+<nooooo> how can i see hardware info in terminal?
+<john_rambo> How to remove both panels ? I have already removed 1
+<nooooo> lshw
+<nooooo> john_rambo u dont want any panel anymore?
+<john_rambo> nooooo, No
+<nooooo> ?
+<john_rambo> nooooo, No I dont want anymore panels
+<nooooo> so only shell?
+<nooooo> no graphic mouse clicking thing anymore?
+<john_rambo> nooooo, No ihave installed vanat window navigator I will use that
+<john_rambo> avant
+<nooooo> sudo apt-get remove xubuntu-desktop
+<bekks> Thats a meta package and will not remove any panels.
+<nooooo> sudo apt-get autoremove # removes dependencies of xubuntu-desktop
+<john_rambo> nooooo, But that will remove the entire desktop ....I only want the panel to be removed
+<nooooo> ok then i dont know
+<nooooo> sorry
+<john_rambo> K
+<Wizard> Hi!
+<ChesterX> hey everybody, i installed gedit however i can find its folder/plugin folder (~/.gnome2/gedit). any idea why that might be?
+<Unit193> ChesterX: . means it is hidden, ctrl+h to show.
+<ChesterX> Unit193, i know. still couldn t find it
+<ChesterX> i have been using the program for some time now, but for some reason its not where it is supposed to be xD
+<Unit193> Try locate gedit | grep $user-here
+<Wizard> Ubuntu 12.04 and 12.10 doesn't have Gnome 2 in repos anymore.
+<ChesterX> the .gnome and .gnome2 folders appear in my tree but not this specific subfolder
+<ChesterX> alright, it seems like the gedit folder is within /usr/lib
+<koegs> ChesterX: i think you have to create that subfolder yourself
+<ChesterX> koegs, tried it and didn t work
+<ChesterX> all the plugins are in the aforementioned folder
+<koegs> ok, i thought you want to "install" a plugin yourself, then you would put it there
+<ChesterX> alright, using sudo & cp -R i finally managed to get the result i wanted. lets see whether it works
+<ChesterX> and it doesnt ....
+<ChesterX> = ="
+<ChesterX> btw, i m trying to install zencoding. any suggestions?
+<Wizard> Google for "gedit 3 local plugin folder" :P
+<ChesterX> friking greatfirewall...
+<ChesterX> thanks Wizard it looks promising. i ll give it a shoot later
+<ChesterX> right now nothing wants to load...
+<Wizard> Great what?
+<Wizard> Ah, of China?
+<ChesterX> yeah... luckily i wont stay here forever x-)
+<ChesterX> but it can be a pain in the ass
+<ChesterX> anywho, thanks for the tip
+<Wizard> I didn't help much.
+<ChesterX> lets decide that once i got access to the content ;-)
+<louigi> hey fellas! I am on xubuntu 12.04 and on ASUS laptop. After yesterday's update (or so I think) my hardware buttons, which, for instance, can turn on and off the touchpad, stopped working
+<louigi> anything I can do about it?
+<rzito> Hello all, can anyone recommend eclipse J2EE channels? thx!!!
+<Pici> !alis | rzito
+<ubottu> rzito: alis is a services bot that can help you find channels. Read "/msg alis help list" for help and ask any questions about it in #freenode. Example usage: /msg alis list #ubuntu* or /msg alis list *http*
+<xubuntu879> why does my wifi disconnect randomly and will only reconnect if I reboot?
+<baizon> xubuntu879: check dmeg for errors
+<xubuntu879> how do I do that?
+<baizon> xubuntu879: open terminal and type "dmesg"
+<xubuntu879> what am I looking for after that
+<baizon> wifi stuff
+<huy> Hello everyone
+<huy> I have a problem with boot time, it solved BUT in weird way
+<baizon> huy: more details please
+<huy> It's took more than 5 mins to boot
+<huy> but everythings normal when I plus my external optical mouse
+<GridCube> huy, from time to time the system will perform a large system check on boot
+<huy> After plus the mouse (USB port) it took seconds for booting
+<huy> without external mouse it's took nearly 10 mins again :(
+<baizon> huy: you could install bootchart and compare it. Then you can analyze it
+<baizon> huy: more info here http://ubuntuforums.org/showthread.php?t=868189
+<huy> Thank you, I will try it
+<huy> Have a nice day.
+<baizon> you too
+<baizon> GridCube: is this a problem?
+<GridCube> mmm what problem?
+<xubuntu879> 20.447409] wlan0: authenticate with 00:1d:d0:84:f8:b4 [   20.462845] wlan0: send auth to 00:1d:d0:84:f8:b4 (try 1/3) [   20.464241] wlan0: authenticated [   20.474730] wlan0: associate with 00:1d:d0:84:f8:b4 (try 1/3) [   20.476968] wlan0: RX AssocResp from 00:1d:d0:84:f8:b4 (capab=0x411 status=0 aid=2) [   20.477149] wlan0: associated [   20.478161] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+<GridCube> oh no, no, i was saying to huy that sometimes it might take a long time to boot because it does a system check
+<xubuntu879> bazion  that is the only thing i see
+<holstein> !paste | xubuntu879
+<ubottu> xubuntu879: For posting multi-line texts into the channel, please use http://paste.ubuntu.com | To post !screenshots use http://imagebin.org/?page=add | !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+<baizon> xubuntu879: please use paste.ubuntu.com
+<xubuntu879> baizon http://paste.ubuntu.com/5616702/
+<baizon> xubuntu879: this is the info, when your wifi connects. Keep watching until you get disconnected and save the output
+<xubuntu879> oh ok
+<huy> Hey baizon! I found a new way to fix my last problem (boot time too long)
+<baizon> huy: nice to hear :)
+<baizon> what was the problem?
+<huy> I went to BIOS and change SATA ... mode ... I'm not sure ... and change AHCI mode to compatible ...
+<huy> Boot as fast as thunder :))
+<baizon> and how did you get this idea?
+<huy> Google :)
+<huy> But your help really helpful
+<baizon> ok :)
+<bez> hi
+<Ormus> So yea I just compiled stuff and installed it here
+<Ormus> but when i type the app's name in terminal it says command not found
+<john_rambo> how to keep the xfce panel installed but stop it from loading ?
+<baizon> john_rambo: remove it
+<Ormus> it is inside /usr/local/games, it only opens if i type ./usr/local/games/prboom-plus
+<baizon> john_rambo: right click and panel preferences, then just remove
+<Pici> Ormus: is /usr/local/games/ in your $PATH ?
+<baizon> john_rambo: or add at startup a script where you kill the xfce panel
+<john_rambo> baizon, That can be done with one panel but not the other I tried
+<Ormus> pici well i don't know, how do i check?
+<Pici> Ormus: echo $PATH
+<Ormus> no
+<Pici> Well, thats the issue then.
+<baizon> john_rambo: then kill the process at startup
+<john_rambo> what is the command ? baizon
+<baizon> john_rambo: "killall xfce4-panel"
+<baizon> try that
+<Ormus> great, googled and solved, thank you pici :D
+<john_rambo> baizon, Thanks it worked
+<baizon> np
+<kissadam9> Hi!
+<kissadam9> CAn you help me?
+<baizon> kissadam9: it depends
+<kissadam9> My problem is the following: When i reboot my notebook, the touchpad settings reverts to the default settings, so every time i boot up the os i have to set up some settings to work as it should work
+<GridCube> how do you set those settings?
+<kissadam9> in the settings manager
+<GridCube> if they are terminal commands you can add them to the login stage
+<kissadam9> they are not terminal commands
+<GridCube> mmm
+<kissadam9> simple ubuntu was working well (everything worked) with unity, but i wanted a bit less energy consumer graphical interface, but a lot of thing is different, but much much faster
+<Ormus> so yea is there a driver or lib i must install for this webcam to work??
+<Ormus> lsusb: Bus 004 Device 003: ID 0c45:612f Microdia PC Camera (SN9C110)
+<Ormus> I have tried another one and it works ok but this microdia just doesn't work. complaining about the driver
+<Ormus> it does show another error regarding v4L, telling that it couldn't be found (guvcview)
+<holstein> http://ubuntuforums.org/showthread.php?t=1393742
+<holstein> !info gspca
+<ubottu> Package gspca does not exist in quantal
+<holstein> http://www.linuxquestions.org/questions/blog/uinseann-360763/webcam-in-ubuntu-1966/
+<holstein> though all the information i find is old.. i usually dont waste much time on older hardware, but if it used to work, you should be able to find a backport or build support in manually
+<Ormus> oh well
+<xubuntu365> ,
+<xubuntu434> just installed the beta on a USB stick. Curious: What's the big difference between 13.04 and 12.10?
+<ochosi> there won't be huge differences
+<ochosi> a few default apps will be back by default
+<ochosi> but that doesnt matter if you already have 12.10 installed
+<ochosi> (read the release announcement ;))
+<Ormus> libreoffice will be back then? :V
+<GridCube> libreoffice was never in
+<GridCube> so nope
+<EDinNY> Any idea why Xubuntu 12.04.1 is not spell checking?
+<EDinNY> ...In Firefox, anyway
+<EDinNY> Abi spell checks ok
+<EDinNY> My FB posts look like crap!
+<EDinNY> My default language is set to US Eng
+<donnie> Ok. How do I set Chrome Incognito as default? It seems to be working a lot better
+<GridCube> EDinNY, have you installed your dictionary packs on firefox?
+<EDinNY> How can I tell? Firefox was part of the default install, and Abiword does check spel
+<GridCube> abiword uses aspell, firefox uses its own dictionary, by default there is no one installed
+<GridCube> https://addons.mozilla.org/en-US/firefox/language-tools/
+<GridCube> EDinNY, ^
+<baizon> EDinNY: http://support.mozilla.org/en-US/kb/how-do-i-use-firefox-spell-checker
+<GridCube> find your language there and download your dictionary
+<EDinNY> And xubuntu does not add it by default? odd
+<EDinNY> Thanks. works now
+<GridCube> no
+<GridCube> :) yw
+<donnie> Is there an mp3 tagging program?
+<GridCube> yes
+<GridCube> ex falso
+<GridCube> !info exfalso
+<ubottu> exfalso (source: quodlibet): audio tag editor for GTK+. In component universe, is optional. Version 2.4-1 (quantal), package size 708 kB, installed size 2732 kB
+<GridCube> there might be others, but thats the one i know
+<donnie> I found "Audio tag tool"...
+<ninjahattori> hi i've set autologin on xubuntu 12.10 and sometimes after get into desktop, trash bin and network link in thunar's side panel often missing. i had to logout and back in to get them back there. any idea why?
+<baizon> ninjahattori: try to clear the .cache folder
+<ninjahattori> baizon, ty
+<baizon> ninjahattori: np
+<QJT> hello :) i am currently on xubuntu 12.10 and i'm looking forward to upgrading to 13.04 next month. i usually perform clean installs when upgrading, but i do not want to lose my current set up and applications. would it be safe to do an in-place upgrade? im a bit worried not only because it would be my first time doing so, but also because i have the xfce-4.12 ppa installed. is that going to be problematic?
+<knome> QJT, backup. you'll most probably be fine.
+<David-A> QJT: I don't do in-place installs often, but I believe that if you try that, it will recognize the previous install and keep your /home where all your personal settings are stored.
+<knome> yes, settings and files in /home are kept intact. unless something goes wrong, which is why you should always backup
+<David-A> QJT: manually installed packages and ppa:s will not be preserved. but if you remember/document what you have done you can relatively simply redo them
+<knome> i believe ppa's are simply commented so it should be relatively easy to re-enable them
+<QJT> thank u so much for the replies, gentlemen :)  i know i should have installed my /home on a seperate partition to make things easier when it came time to upgrade but i was lazy lol... i will follow the advice and back up /home before upgrading. it shouldnt be difficult to re enable the xfce-4.12 ppa, i just wanted to be sure it would not interfere with the upgrade process.
+<ninjahattori> sorry dc. Settings > Users and Groups > Password > Don't ask for password on login doesn't seem to be working
+<David-A> QJT: when re-adding ppa:s, check if the new system need another version of that ppa
+<QJT> David-A: thats good advice. unfortunately, im not sure were to look to find out... could you give me some insight?
+<QJT> i was simply planning on un-checking them from my source list before upgrade, then re-check them after i upgrade...
+<QJT> i was not planning on completely removing them, simply disableing them so i wont have to re adding or re installing them...
+<bazhang> PPa are disabled by default
+<David-A> QJT: could be a good idea to uncheck them before an "upgrade", but before a "re-install" the previous system is just over-written, so should not matter
+<bazhang> check the PPA maintainer for a new version
+<bluesfreak72> Hi!  I'm running 12.04 Precise on my laptop and trying to use nomachine's nx_client package to connect.  I have set the server up properly.  When I try to connect, it goes through the entire connect procedure.  The large window pops up, but before the desktop shows up, the entire program kills itself.  The server is Arch Linux with nomachine's freenx server package.  HELP!!!
+<bluesfreak72> Oh - I'm also using xfce as the default desktop on the Arch machine.
+<QJT> thanks again for the replies, gentlemen :)  i am not planning to re-install my system. im planning on doing an in-place upgrade and it was my understanding that my previous configuration will remain intact with my /home. there for upgrading should not over right my ppa source list...
+<bazhang> they are disabled by default as I said QJT
+<QJT> bazhang: i see... thank you :)  well, i think i've gathered enough info to help me with the upgrade next month. i really appreciate the help from all who have replied! im off to take care of some work, take care everyone :)
+<louigi> hey guys!
+<louigi> looks like after an upgrade acpi stopped working - at least so I think
+<louigi> the button on the laptop which is responsible to switch the touchpad on and off stopped working
+<louigi> it worked before
+<louigi> xubuntu 12.04
+<louigi> any advice?
+<n-iCe> My battery laptop icon is missing any idea? ( I still see the wireless, sound, bluetooth icons)
+<Kiara> is xfce-power-manager running?
+<n-iCe> how can I check
+<Kiara> open the task manager and check if its listed as a process
+<n-iCe> yes it is running
+<Kiara> rick click on your user name -> panel -> panel prefrences -> items tab -> click Notification Area then click the gear -> is power management listed? is it hidden?

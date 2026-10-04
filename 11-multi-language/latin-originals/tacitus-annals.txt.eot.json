@@ -1,0 +1,3667 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "11-multi-language/latin-originals/tacitus-annals.txt",
+  "sha256": "7554935264efa8062a6d5046812711c6901e64d59b7e077018d137fe79cbfec3",
+  "bytes": 556192,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "32f5d633f55fac53",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "language": "en",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver Universal Dependencies, native/priors/pos-eng.json, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "sameStem": "omitted — no declension prior for language \"en\" (normalized \"eng\") in this environment",
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "8475992b9e19455cf011834280680337d99e96f6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "02add77b0b20a2f17cb2eabe72972af6575789dd",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "f25419ff61933eba46129da5bdce83854bd693a1",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 556192,
+  "bodyOffset": 0,
+  "bodyChars": 556192,
+  "frontMatter": {
+   "detected": false
+  },
+  "catalogBlankedChars": 45,
+  "excerptChars": 8000,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6455,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null,
+  "bySentence": [
+   {
+    "order": 0,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 1,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 2,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 3,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 4,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 5,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 6,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 7,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 8,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 9,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 10,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 11,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 12,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 13,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 14,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 15,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 16,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 17,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 18,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 19,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 20,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 21,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 22,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 23,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 24,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 25,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 26,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 27,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 28,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 29,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 30,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 31,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 32,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 33,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 34,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 35,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 36,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 37,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 38,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 39,
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  ]
+ },
+ "reading": {
+  "sentences": 40,
+  "surfaces": 81,
+  "referentEvents": 15,
+  "distinctReferents": 14,
+  "examined": true,
+  "edgesFound": 53,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 54,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 62
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 53,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 53,
+  "excerptOk": 53,
+  "rawChecked": 53,
+  "rawOk": 53,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 53,
+  "heard": 53,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0,
+  "sentenceCount": 40,
+  "admittedSpans": 28,
+  "coverage": 0.7
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "non sullae|longa|dominatio",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "non Sullae longa dominatio",
+    "end1": "non Sullae",
+    "label": "longa",
+    "end2": "dominatio",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "non Cinnae, non Sullae longa dominatio; et Pompei Crassique potentia cito in Caesarem, Lepidi atque Antonii arma in Augustum cessere, qui cuncta discordiis civilibus fessa nomine principis sub imperium accepit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360"
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "pompei crassique|potentia|cito in caesarem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Pompei Crassique potentia cito in Caesarem",
+    "end1": "Pompei Crassique",
+    "label": "potentia",
+    "end2": "cito in Caesarem",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "non Cinnae, non Sullae longa dominatio; et Pompei Crassique potentia cito in Caesarem, Lepidi atque Antonii arma in Augustum cessere, qui cuncta discordiis civilibus fessa nomine principis sub imperium accepit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360"
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "lepidi|atque|antonii arma in augustum cessere",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Lepidi atque Antonii arma in Augustum cessere",
+    "end1": "Lepidi",
+    "label": "atque",
+    "end2": "Antonii arma in Augustum cessere",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "non Cinnae, non Sullae longa dominatio; et Pompei Crassique potentia cito in Caesarem, Lepidi atque Antonii arma in Augustum cessere, qui cuncta discordiis civilibus fessa nomine principis sub imperium accepit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360"
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "sed veteris populi romani|prospera|vel adversa claris scriptoribus memorata sunt",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "sed veteris populi Romani prospera vel adversa claris scriptoribus memorata sunt",
+    "end1": "sed veteris populi Romani",
+    "label": "prospera",
+    "end2": "vel adversa claris scriptoribus memorata sunt",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "sed veteris populi Romani prospera vel adversa claris scriptoribus memorata sunt; temporibusque Augusti dicendis non defuere decora ingenia, donec gliscente adulatione deterrerentur.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543"
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "temporibusque augusti|dicendis|non defuere decora ingenia",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "temporibusque Augusti dicendis non defuere decora ingenia",
+    "end1": "temporibusque Augusti",
+    "label": "dicendis",
+    "end2": "non defuere decora ingenia",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "sed veteris populi Romani prospera vel adversa claris scriptoribus memorata sunt; temporibusque Augusti dicendis non defuere decora ingenia, donec gliscente adulatione deterrerentur.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543"
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "tiberii gaique et claudii|ac|neronis res florentibus ipsis ob metum falsae",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Tiberii Gaique et Claudii ac Neronis res florentibus ipsis ob metum falsae",
+    "end1": "Tiberii Gaique et Claudii",
+    "label": "ac",
+    "end2": "Neronis res florentibus ipsis ob metum falsae",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "Tiberii Gaique et Claudii ac Neronis res florentibus ipsis ob metum falsae, postquam occiderant, recentibus odiis compositae sunt.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1544-1674"
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "mox tiberii|principatum|et cetera",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "mox Tiberii principatum et cetera",
+    "end1": "mox Tiberii",
+    "label": "principatum",
+    "end2": "et cetera",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "inde consilium mihi pauca de Augusto et extrema tradere, mox Tiberii principatum et cetera, sine ira et studio, quorum causas procul habeo.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1675-1814"
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "postquam bruto et cassio|caesis|nulla iam publica arma",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Postquam Bruto et Cassio caesis nulla iam publica arma",
+    "end1": "Postquam Bruto et Cassio",
+    "label": "caesis",
+    "end2": "nulla iam publica arma",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "pompeius|apud|siciliam oppressus exutoque lepido",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Pompeius apud Siciliam oppressus exutoque Lepido",
+    "end1": "Pompeius",
+    "label": "apud",
+    "end2": "Siciliam oppressus exutoque Lepido",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "interfecto antonio|ne|iulianis quidem partibus nisi caesar dux reliquus",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus",
+    "end1": "interfecto Antonio",
+    "label": "ne",
+    "end2": "Iulianis quidem partibus nisi Caesar dux reliquus",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "opibus et honoribus extollerentur|ac|novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent",
+    "end1": "opibus et honoribus extollerentur",
+    "label": "ac",
+    "end2": "novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "ceterum augustus|subsidia|dominationi claudium marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Ceterum Augustus subsidia dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate",
+    "end1": "Ceterum Augustus",
+    "label": "subsidia",
+    "end2": "dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "III [ recensere ] Ceterum Augustus subsidia dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate, M.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#2682-2831"
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "agrippam|ignobilem|loco",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Agrippam ignobilem loco",
+    "end1": "Agrippam",
+    "label": "ignobilem",
+    "end2": "loco",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "Agrippam ignobilem loco, bonum militia et victoriae socium, geminatis consulatibus extulit, mox defuncto Marcello generum sumpsit; Tiberium Neronem et Claudium Drusum privignos imperatoriis nominibus auxit, integra etiam tum domo sua.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066"
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "mox defuncto marcello|generum|sumpsit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "mox defuncto Marcello generum sumpsit",
+    "end1": "mox defuncto Marcello",
+    "label": "generum",
+    "end2": "sumpsit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "Agrippam ignobilem loco, bonum militia et victoriae socium, geminatis consulatibus extulit, mox defuncto Marcello generum sumpsit; Tiberium Neronem et Claudium Drusum privignos imperatoriis nominibus auxit, integra etiam tum domo sua.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066"
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "claudium drusum|privignos|imperatoriis nominibus auxit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Claudium Drusum privignos imperatoriis nominibus auxit",
+    "end1": "Claudium Drusum",
+    "label": "privignos",
+    "end2": "imperatoriis nominibus auxit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "Agrippam ignobilem loco, bonum militia et victoriae socium, geminatis consulatibus extulit, mox defuncto Marcello generum sumpsit; Tiberium Neronem et Claudium Drusum privignos imperatoriis nominibus auxit, integra etiam tum domo sua.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066"
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "nam genitos agrippa gaium|ac|lucium in familiam caesarum induxerat",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "nam genitos Agrippa Gaium ac Lucium in familiam Caesarum induxerat",
+    "end1": "nam genitos Agrippa Gaium",
+    "label": "ac",
+    "end2": "Lucium in familiam Caesarum induxerat",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nam genitos Agrippa Gaium ac Lucium in familiam Caesarum induxerat, necdum posita puerili praetexta principes iuventutis appellari, destinari consules specie recusantis flagrantissime cupiverat.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261"
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "destinari consules|specie|recusantis flagrantissime cupiverat",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "destinari consules specie recusantis flagrantissime cupiverat",
+    "end1": "destinari consules",
+    "label": "specie",
+    "end2": "recusantis flagrantissime cupiverat",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nam genitos Agrippa Gaium ac Lucium in familiam Caesarum induxerat, necdum posita puerili praetexta principes iuventutis appellari, destinari consules specie recusantis flagrantissime cupiverat.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261"
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "ut agrippa|vita|concessit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "ut Agrippa vita concessit",
+    "end1": "ut Agrippa",
+    "label": "vita",
+    "end2": "concessit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "lucium caesarem|euntem|ad hispaniensis exercitus",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Lucium Caesarem euntem ad Hispaniensis exercitus",
+    "end1": "Lucium Caesarem",
+    "label": "euntem",
+    "end2": "ad Hispaniensis exercitus",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "gaium|remeantem|armenia et vulnere invalidum mors fato propera vel novercae liviae dolus abstulit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit",
+    "end1": "Gaium",
+    "label": "remeantem",
+    "end2": "Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "drusoque|pridem|extincto nero solus e privignis erat",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Drusoque pridem extincto Nero solus e privignis erat",
+    "end1": "Drusoque",
+    "label": "pridem",
+    "end2": "extincto Nero solus e privignis erat",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "consors tribuniciae potestatis adsumitur omnisque per|exercitus|ostentatur",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur",
+    "end1": "consors tribuniciae potestatis adsumitur omnisque per",
+    "label": "exercitus",
+    "end2": "ostentatur",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "nam senem augustum|devinxerat|adeo",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "nam senem Augustum devinxerat adeo",
+    "end1": "nam senem Augustum",
+    "label": "devinxerat",
+    "end2": "adeo",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nam senem Augustum devinxerat adeo, uti nepotem unicum Agrippam Postumum, in insulam Planasiam proiecerit , rudem sane bonarum artium et robore corporis stolide ferocem, nullius tamen flagitii conpertum.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877"
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "in insulam planasiam|proiecerit|, rudem sane bonarum artium et robore corporis stolide ferocem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "in insulam Planasiam proiecerit , rudem sane bonarum artium et robore corporis stolide ferocem",
+    "end1": "in insulam Planasiam",
+    "label": "proiecerit",
+    "end2": ", rudem sane bonarum artium et robore corporis stolide ferocem",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nam senem Augustum devinxerat adeo, uti nepotem unicum Agrippam Postumum, in insulam Planasiam proiecerit , rudem sane bonarum artium et robore corporis stolide ferocem, nullius tamen flagitii conpertum.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877"
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "at hercule germanicum druso|ortum|octo apud rhenum legionibus inposuit adscirique per adoptionem a tiberio iussit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "at hercule Germanicum Druso ortum octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit",
+    "end1": "at hercule Germanicum Druso",
+    "label": "ortum",
+    "end2": "octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "at hercule Germanicum Druso ortum octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit, quamquam esset in domo Tiberii filius iuvenis, sed quo pluribus munimentis insisteret.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079"
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "domo tiberii|filius|iuvenis",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "domo Tiberii filius iuvenis",
+    "end1": "domo Tiberii",
+    "label": "filius",
+    "end2": "iuvenis",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "at hercule Germanicum Druso ortum octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit, quamquam esset in domo Tiberii filius iuvenis, sed quo pluribus munimentis insisteret.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079"
+     }
+    ],
+    "seq": 25,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "abolendae magis infamiae ob amissum cum quintilio varo|exercitum|quam cupidine proferendi imperii aut dignum ob praemium",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "abolendae magis infamiae ob amissum cum Quintilio Varo exercitum quam cupidine proferendi imperii aut dignum ob praemium",
+    "end1": "abolendae magis infamiae ob amissum cum Quintilio Varo",
+    "label": "exercitum",
+    "end2": "quam cupidine proferendi imperii aut dignum ob praemium",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "bellum ea tempestate nullum nisi adversus Germanos supererat, abolendae magis infamiae ob amissum cum Quintilio Varo exercitum quam cupidine proferendi imperii aut dignum ob praemium.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4080-4263"
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "domi|res|tranquillae",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "domi res tranquillae",
+    "end1": "domi",
+    "label": "res",
+    "end2": "tranquillae",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "domi res tranquillae, eadem magistratuum vocabula; iuniores post Actiacam victoriam, etiam senes plerique inter bella civium nati: quotus quisque reliquus qui rem publicam vidisset?",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4264-4445"
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "igitur|verso|civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Igitur verso civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare",
+    "end1": "Igitur",
+    "label": "verso",
+    "end2": "civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "IV [ recensere ] Igitur verso civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare, nulla in praesens formidine, dum Augustus aetate validus seque et domum et pacem sustentavit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679"
+     }
+    ],
+    "seq": 28,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "dum augustus|aetate|validus seque et domum et pacem sustentavit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "dum Augustus aetate validus seque et domum et pacem sustentavit",
+    "end1": "dum Augustus",
+    "label": "aetate",
+    "end2": "validus seque et domum et pacem sustentavit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "IV [ recensere ] Igitur verso civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare, nulla in praesens formidine, dum Augustus aetate validus seque et domum et pacem sustentavit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679"
+     }
+    ],
+    "seq": 29,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "trucem agrippam et ignominia accensum non|aetate|neque rerum experientia tantae moli parem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem",
+    "end1": "trucem Agrippam et ignominia accensum non",
+    "label": "aetate",
+    "end2": "neque rerum experientia tantae moli parem",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "pars multo maxima inminentis dominos variis rumoribus differebant: trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem, Tiberium Neronem maturum annis, spectatum bello, set vetere atque insita Claudiae familiae superbia, multaque indicia saevitiae, quamquam premantur, erumpere.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170"
+     }
+    ],
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "tiberium neronem|maturum|annis",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Tiberium Neronem maturum annis",
+    "end1": "Tiberium Neronem",
+    "label": "maturum",
+    "end2": "annis",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "pars multo maxima inminentis dominos variis rumoribus differebant: trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem, Tiberium Neronem maturum annis, spectatum bello, set vetere atque insita Claudiae familiae superbia, multaque indicia saevitiae, quamquam premantur, erumpere.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170"
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "set vetere|atque|insita claudiae familiae superbia",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "set vetere atque insita Claudiae familiae superbia",
+    "end1": "set vetere",
+    "label": "atque",
+    "end2": "insita Claudiae familiae superbia",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "pars multo maxima inminentis dominos variis rumoribus differebant: trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem, Tiberium Neronem maturum annis, spectatum bello, set vetere atque insita Claudiae familiae superbia, multaque indicia saevitiae, quamquam premantur, erumpere.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170"
+     }
+    ],
+    "seq": 32,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "quibus rhodi|specie|secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "quibus Rhodi specie secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum",
+    "end1": "quibus Rhodi",
+    "label": "specie",
+    "end2": "secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "hunc et prima ab infantia eductum in domo regnatrice; congestos iuveni consulatus, triumphos; ne iis quidem annis, quibus Rhodi specie secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#5171-5391"
+     }
+    ],
+    "seq": 33,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "haec|atque|talia agitantibus gravescere valetudo augusti",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Haec atque talia agitantibus gravescere valetudo Augusti",
+    "end1": "Haec",
+    "label": "atque",
+    "end2": "talia agitantibus gravescere valetudo Augusti",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "V [ recensere ] Haec atque talia agitantibus gravescere valetudo Augusti, et quidam scelus uxoris suspectabant.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#5541-5654"
+     }
+    ],
+    "seq": 34,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "planasiam|vectum|ad visendum agrippam",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Planasiam vectum ad visendum Agrippam",
+    "end1": "Planasiam",
+    "label": "vectum",
+    "end2": "ad visendum Agrippam",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quippe rumor incesserat, paucos ante menses Augustum, electis consciis et comite uno Fabio Maximo, Planasiam vectum ad visendum Agrippam; multas illic utrimque lacrimas et signa caritatis spemque ex eo fore ut iuvenis penatibus avi redderetur: quod Maximum uxori Marciae aperuisse, illam Liviae.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950"
+     }
+    ],
+    "seq": 35,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "quod maximum|uxori|marciae aperuisse",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "quod Maximum uxori Marciae aperuisse",
+    "end1": "quod Maximum",
+    "label": "uxori",
+    "end2": "Marciae aperuisse",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quippe rumor incesserat, paucos ante menses Augustum, electis consciis et comite uno Fabio Maximo, Planasiam vectum ad visendum Agrippam; multas illic utrimque lacrimas et signa caritatis spemque ex eo fore ut iuvenis penatibus avi redderetur: quod Maximum uxori Marciae aperuisse, illam Liviae.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950"
+     }
+    ],
+    "seq": 36,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "auditos in funere eius marciae|gemitus|semet incusantis",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "auditos in funere eius Marciae gemitus semet incusantis",
+    "end1": "auditos in funere eius Marciae",
+    "label": "gemitus",
+    "end2": "semet incusantis",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "gnarum id Caesari; neque multo post extincto Maximo, dubium an quaesita morte, auditos in funere eius Marciae gemitus semet incusantis, quod causa exitii marito fuisset.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#5951-6120"
+     }
+    ],
+    "seq": 37,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "utcumque se ea|res|habuit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "utcumque se ea res habuit",
+    "end1": "utcumque se ea",
+    "label": "res",
+    "end2": "habuit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "utcumque se ea res habuit, vixdum ingressus Illyricum Tiberius properis matris litteris accitur; neque satis conpertum est, spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310"
+     }
+    ],
+    "seq": 38,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "illyricum tiberius|properis|matris litteris accitur",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Illyricum Tiberius properis matris litteris accitur",
+    "end1": "Illyricum Tiberius",
+    "label": "properis",
+    "end2": "matris litteris accitur",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "utcumque se ea res habuit, vixdum ingressus Illyricum Tiberius properis matris litteris accitur; neque satis conpertum est, spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310"
+     }
+    ],
+    "seq": 39,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "spirantem adhuc augustum|apud|urbem nolam an exanimem reppererit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit",
+    "end1": "spirantem adhuc Augustum",
+    "label": "apud",
+    "end2": "urbem Nolam an exanimem reppererit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "utcumque se ea res habuit, vixdum ingressus Illyricum Tiberius properis matris litteris accitur; neque satis conpertum est, spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310"
+     }
+    ],
+    "seq": 40,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "donec provisis quae tempus monebat simul excessisse augustum et rerum potiri neronem|fama|eadem tulit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem fama eadem tulit",
+    "end1": "donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem",
+    "label": "fama",
+    "end2": "eadem tulit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "acribus namque custodiis domum et vias saepserat Livia, laetique interdum nuntii vulgabantur, donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem fama eadem tulit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6311-6507"
+     }
+    ],
+    "seq": 41,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "primum|facinus|novi principatus fuit postumi agrippae caedes",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Primum facinus novi principatus fuit Postumi Agrippae caedes",
+    "end1": "Primum",
+    "label": "facinus",
+    "end2": "novi principatus fuit Postumi Agrippae caedes",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "VI [ recensere ] Primum facinus novi principatus fuit Postumi Agrippae caedes, quem ignarum inermumque quamvis firmatus animo centurio aegre confecit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6511-6663"
+     }
+    ],
+    "seq": 42,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "nihil de ea re tiberius|apud|senatum disseruit: patris iussa simulabat",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "nihil de ea re Tiberius apud senatum disseruit: patris iussa simulabat",
+    "end1": "nihil de ea re Tiberius",
+    "label": "apud",
+    "end2": "senatum disseruit: patris iussa simulabat",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nihil de ea re Tiberius apud senatum disseruit: patris iussa simulabat, quibus praescripsisset tribuno custodiae adposito, ne cunctaretur Agrippam morte adficere, quandoque ipse supremum diem explevisset.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868"
+     }
+    ],
+    "seq": 43,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "cunctaretur agrippam|morte|adficere",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "cunctaretur Agrippam morte adficere",
+    "end1": "cunctaretur Agrippam",
+    "label": "morte",
+    "end2": "adficere",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nihil de ea re Tiberius apud senatum disseruit: patris iussa simulabat, quibus praescripsisset tribuno custodiae adposito, ne cunctaretur Agrippam morte adficere, quandoque ipse supremum diem explevisset.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868"
+     }
+    ],
+    "seq": 44,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "propius vero tiberium|ac|liviam",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "propius vero Tiberium ac Liviam",
+    "end1": "propius vero Tiberium",
+    "label": "ac",
+    "end2": "Liviam",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "propius vero Tiberium ac Liviam, illum metu, hanc novercalibus odiis, suspecti et invisi iuvenis caedem festinavisse.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7109-7226"
+     }
+    ],
+    "seq": 45,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "neque imperasse sese et rationem facti reddendam|apud|senatum respondit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "neque imperasse sese et rationem facti reddendam apud senatum respondit",
+    "end1": "neque imperasse sese et rationem facti reddendam",
+    "label": "apud",
+    "end2": "senatum respondit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "nuntianti centurioni, ut mos militiae, factum esse quod imperasset, neque imperasse sese et rationem facti reddendam apud senatum respondit.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7227-7367"
+     }
+    ],
+    "seq": 46,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "quod postquam sallustius crispus|particeps|secretorum (is ad tribunum miserat codicillos) comperit",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit",
+    "end1": "quod postquam Sallustius Crispus",
+    "label": "particeps",
+    "end2": "secretorum (is ad tribunum miserat codicillos) comperit",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+     }
+    ],
+    "seq": 47,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "metuens|ne|reus subderetur",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "metuens ne reus subderetur",
+    "end1": "metuens",
+    "label": "ne",
+    "end2": "reus subderetur",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+     }
+    ],
+    "seq": 48,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "monuit liviam|ne|arcana domus",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "monuit Liviam ne arcana domus",
+    "end1": "monuit Liviam",
+    "label": "ne",
+    "end2": "arcana domus",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+     }
+    ],
+    "seq": 49,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "neve tiberius|vim|principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi",
+    "end1": "neve Tiberius",
+    "label": "vim",
+    "end2": "principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+     }
+    ],
+    "seq": 50,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "at romae|ruere|in servitium consules",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "At Romae ruere in servitium consules",
+    "end1": "At Romae",
+    "label": "ruere",
+    "end2": "in servitium consules",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "VII [ recensere ] At Romae ruere in servitium consules, patres, eques.",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7776-7848"
+     }
+    ],
+    "seq": 51,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "tanto magis falsi|ac|festinantes",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "tanto magis falsi ac festinantes",
+    "end1": "tanto magis falsi",
+    "label": "ac",
+    "end2": "festinantes",
+    "witnesses": [
+     "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+    ],
+    "spans": [
+     {
+      "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+      "text": "quanto quis inlustrior, tanto magis falsi ac festinantes, vultuque composito, ne laeti excessu principis neu tristiores primordio, lacrimas gaudium, qu",
+      "at": "11-multi-language/latin-originals/tacitus-annals.txt#7849-8000"
+     }
+    ],
+    "seq": 52,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 53,
+  "admits": [
+   "NUL",
+   "SIG",
+   "INS",
+   "SEG",
+   "CON",
+   "SYN",
+   "DEF",
+   "EVA",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "abolendae magis infamiae ob amissum cum quintilio varo|exercitum|quam cupidine proferendi imperii aut dignum ob praemium",
+   "end1": "abolendae magis infamiae ob amissum cum Quintilio Varo",
+   "label": "exercitum",
+   "end2": "quam cupidine proferendi imperii aut dignum ob praemium",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "bellum ea tempestate nullum nisi adversus Germanos supererat, abolendae magis infamiae ob amissum cum Quintilio Varo exercitum quam cupidine proferendi imperii aut dignum ob praemium.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4080-4263"
+    }
+   ],
+   "subject": "abolendae magis infamiae ob amissum cum Quintilio Varo",
+   "verb": "exercitum",
+   "object": "quam cupidine proferendi imperii aut dignum ob praemium"
+  },
+  {
+   "id": "agrippam|ignobilem|loco",
+   "end1": "Agrippam",
+   "label": "ignobilem",
+   "end2": "loco",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "Agrippam ignobilem loco, bonum militia et victoriae socium, geminatis consulatibus extulit, mox defuncto Marcello generum sumpsit; Tiberium Neronem et Claudium Drusum privignos imperatoriis nominibus auxit, integra etiam tum domo sua.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066"
+    }
+   ],
+   "subject": "Agrippam",
+   "verb": "ignobilem",
+   "object": "loco"
+  },
+  {
+   "id": "at hercule germanicum druso|ortum|octo apud rhenum legionibus inposuit adscirique per adoptionem a tiberio iussit",
+   "end1": "at hercule Germanicum Druso",
+   "label": "ortum",
+   "end2": "octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "at hercule Germanicum Druso ortum octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit, quamquam esset in domo Tiberii filius iuvenis, sed quo pluribus munimentis insisteret.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079"
+    }
+   ],
+   "subject": "at hercule Germanicum Druso",
+   "verb": "ortum",
+   "object": "octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit"
+  },
+  {
+   "id": "at romae|ruere|in servitium consules",
+   "end1": "At Romae",
+   "label": "ruere",
+   "end2": "in servitium consules",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "VII [ recensere ] At Romae ruere in servitium consules, patres, eques.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7776-7848"
+    }
+   ],
+   "subject": "At Romae",
+   "verb": "ruere",
+   "object": "in servitium consules"
+  },
+  {
+   "id": "auditos in funere eius marciae|gemitus|semet incusantis",
+   "end1": "auditos in funere eius Marciae",
+   "label": "gemitus",
+   "end2": "semet incusantis",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "gnarum id Caesari; neque multo post extincto Maximo, dubium an quaesita morte, auditos in funere eius Marciae gemitus semet incusantis, quod causa exitii marito fuisset.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5951-6120"
+    }
+   ],
+   "subject": "auditos in funere eius Marciae",
+   "verb": "gemitus",
+   "object": "semet incusantis"
+  },
+  {
+   "id": "ceterum augustus|subsidia|dominationi claudium marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate",
+   "end1": "Ceterum Augustus",
+   "label": "subsidia",
+   "end2": "dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "III [ recensere ] Ceterum Augustus subsidia dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate, M.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2682-2831"
+    }
+   ],
+   "subject": "Ceterum Augustus",
+   "verb": "subsidia",
+   "object": "dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate"
+  },
+  {
+   "id": "claudium drusum|privignos|imperatoriis nominibus auxit",
+   "end1": "Claudium Drusum",
+   "label": "privignos",
+   "end2": "imperatoriis nominibus auxit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "Agrippam ignobilem loco, bonum militia et victoriae socium, geminatis consulatibus extulit, mox defuncto Marcello generum sumpsit; Tiberium Neronem et Claudium Drusum privignos imperatoriis nominibus auxit, integra etiam tum domo sua.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066"
+    }
+   ],
+   "subject": "Claudium Drusum",
+   "verb": "privignos",
+   "object": "imperatoriis nominibus auxit"
+  },
+  {
+   "id": "consors tribuniciae potestatis adsumitur omnisque per|exercitus|ostentatur",
+   "end1": "consors tribuniciae potestatis adsumitur omnisque per",
+   "label": "exercitus",
+   "end2": "ostentatur",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+    }
+   ],
+   "subject": "consors tribuniciae potestatis adsumitur omnisque per",
+   "verb": "exercitus",
+   "object": "ostentatur"
+  },
+  {
+   "id": "cunctaretur agrippam|morte|adficere",
+   "end1": "cunctaretur Agrippam",
+   "label": "morte",
+   "end2": "adficere",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nihil de ea re Tiberius apud senatum disseruit: patris iussa simulabat, quibus praescripsisset tribuno custodiae adposito, ne cunctaretur Agrippam morte adficere, quandoque ipse supremum diem explevisset.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868"
+    }
+   ],
+   "subject": "cunctaretur Agrippam",
+   "verb": "morte",
+   "object": "adficere"
+  },
+  {
+   "id": "destinari consules|specie|recusantis flagrantissime cupiverat",
+   "end1": "destinari consules",
+   "label": "specie",
+   "end2": "recusantis flagrantissime cupiverat",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nam genitos Agrippa Gaium ac Lucium in familiam Caesarum induxerat, necdum posita puerili praetexta principes iuventutis appellari, destinari consules specie recusantis flagrantissime cupiverat.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261"
+    }
+   ],
+   "subject": "destinari consules",
+   "verb": "specie",
+   "object": "recusantis flagrantissime cupiverat"
+  },
+  {
+   "id": "domi|res|tranquillae",
+   "end1": "domi",
+   "label": "res",
+   "end2": "tranquillae",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "domi res tranquillae, eadem magistratuum vocabula; iuniores post Actiacam victoriam, etiam senes plerique inter bella civium nati: quotus quisque reliquus qui rem publicam vidisset?",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4264-4445"
+    }
+   ],
+   "subject": "domi",
+   "verb": "res",
+   "object": "tranquillae"
+  },
+  {
+   "id": "domo tiberii|filius|iuvenis",
+   "end1": "domo Tiberii",
+   "label": "filius",
+   "end2": "iuvenis",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "at hercule Germanicum Druso ortum octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit, quamquam esset in domo Tiberii filius iuvenis, sed quo pluribus munimentis insisteret.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079"
+    }
+   ],
+   "subject": "domo Tiberii",
+   "verb": "filius",
+   "object": "iuvenis"
+  },
+  {
+   "id": "donec provisis quae tempus monebat simul excessisse augustum et rerum potiri neronem|fama|eadem tulit",
+   "end1": "donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem",
+   "label": "fama",
+   "end2": "eadem tulit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "acribus namque custodiis domum et vias saepserat Livia, laetique interdum nuntii vulgabantur, donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem fama eadem tulit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6311-6507"
+    }
+   ],
+   "subject": "donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem",
+   "verb": "fama",
+   "object": "eadem tulit"
+  },
+  {
+   "id": "drusoque|pridem|extincto nero solus e privignis erat",
+   "end1": "Drusoque",
+   "label": "pridem",
+   "end2": "extincto Nero solus e privignis erat",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+    }
+   ],
+   "subject": "Drusoque",
+   "verb": "pridem",
+   "object": "extincto Nero solus e privignis erat"
+  },
+  {
+   "id": "dum augustus|aetate|validus seque et domum et pacem sustentavit",
+   "end1": "dum Augustus",
+   "label": "aetate",
+   "end2": "validus seque et domum et pacem sustentavit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "IV [ recensere ] Igitur verso civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare, nulla in praesens formidine, dum Augustus aetate validus seque et domum et pacem sustentavit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679"
+    }
+   ],
+   "subject": "dum Augustus",
+   "verb": "aetate",
+   "object": "validus seque et domum et pacem sustentavit"
+  },
+  {
+   "id": "gaium|remeantem|armenia et vulnere invalidum mors fato propera vel novercae liviae dolus abstulit",
+   "end1": "Gaium",
+   "label": "remeantem",
+   "end2": "Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+    }
+   ],
+   "subject": "Gaium",
+   "verb": "remeantem",
+   "object": "Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit"
+  },
+  {
+   "id": "haec|atque|talia agitantibus gravescere valetudo augusti",
+   "end1": "Haec",
+   "label": "atque",
+   "end2": "talia agitantibus gravescere valetudo Augusti",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "V [ recensere ] Haec atque talia agitantibus gravescere valetudo Augusti, et quidam scelus uxoris suspectabant.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5541-5654"
+    }
+   ],
+   "subject": "Haec",
+   "verb": "atque",
+   "object": "talia agitantibus gravescere valetudo Augusti"
+  },
+  {
+   "id": "igitur|verso|civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare",
+   "end1": "Igitur",
+   "label": "verso",
+   "end2": "civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "IV [ recensere ] Igitur verso civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare, nulla in praesens formidine, dum Augustus aetate validus seque et domum et pacem sustentavit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679"
+    }
+   ],
+   "subject": "Igitur",
+   "verb": "verso",
+   "object": "civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare"
+  },
+  {
+   "id": "illyricum tiberius|properis|matris litteris accitur",
+   "end1": "Illyricum Tiberius",
+   "label": "properis",
+   "end2": "matris litteris accitur",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "utcumque se ea res habuit, vixdum ingressus Illyricum Tiberius properis matris litteris accitur; neque satis conpertum est, spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310"
+    }
+   ],
+   "subject": "Illyricum Tiberius",
+   "verb": "properis",
+   "object": "matris litteris accitur"
+  },
+  {
+   "id": "in insulam planasiam|proiecerit|, rudem sane bonarum artium et robore corporis stolide ferocem",
+   "end1": "in insulam Planasiam",
+   "label": "proiecerit",
+   "end2": ", rudem sane bonarum artium et robore corporis stolide ferocem",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nam senem Augustum devinxerat adeo, uti nepotem unicum Agrippam Postumum, in insulam Planasiam proiecerit , rudem sane bonarum artium et robore corporis stolide ferocem, nullius tamen flagitii conpertum.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877"
+    }
+   ],
+   "subject": "in insulam Planasiam",
+   "verb": "proiecerit",
+   "object": ", rudem sane bonarum artium et robore corporis stolide ferocem"
+  },
+  {
+   "id": "interfecto antonio|ne|iulianis quidem partibus nisi caesar dux reliquus",
+   "end1": "interfecto Antonio",
+   "label": "ne",
+   "end2": "Iulianis quidem partibus nisi Caesar dux reliquus",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+    }
+   ],
+   "subject": "interfecto Antonio",
+   "verb": "ne",
+   "object": "Iulianis quidem partibus nisi Caesar dux reliquus"
+  },
+  {
+   "id": "lepidi|atque|antonii arma in augustum cessere",
+   "end1": "Lepidi",
+   "label": "atque",
+   "end2": "Antonii arma in Augustum cessere",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "non Cinnae, non Sullae longa dominatio; et Pompei Crassique potentia cito in Caesarem, Lepidi atque Antonii arma in Augustum cessere, qui cuncta discordiis civilibus fessa nomine principis sub imperium accepit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360"
+    }
+   ],
+   "subject": "Lepidi",
+   "verb": "atque",
+   "object": "Antonii arma in Augustum cessere"
+  },
+  {
+   "id": "lucium caesarem|euntem|ad hispaniensis exercitus",
+   "end1": "Lucium Caesarem",
+   "label": "euntem",
+   "end2": "ad Hispaniensis exercitus",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+    }
+   ],
+   "subject": "Lucium Caesarem",
+   "verb": "euntem",
+   "object": "ad Hispaniensis exercitus"
+  },
+  {
+   "id": "metuens|ne|reus subderetur",
+   "end1": "metuens",
+   "label": "ne",
+   "end2": "reus subderetur",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+    }
+   ],
+   "subject": "metuens",
+   "verb": "ne",
+   "object": "reus subderetur"
+  },
+  {
+   "id": "monuit liviam|ne|arcana domus",
+   "end1": "monuit Liviam",
+   "label": "ne",
+   "end2": "arcana domus",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+    }
+   ],
+   "subject": "monuit Liviam",
+   "verb": "ne",
+   "object": "arcana domus"
+  },
+  {
+   "id": "mox defuncto marcello|generum|sumpsit",
+   "end1": "mox defuncto Marcello",
+   "label": "generum",
+   "end2": "sumpsit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "Agrippam ignobilem loco, bonum militia et victoriae socium, geminatis consulatibus extulit, mox defuncto Marcello generum sumpsit; Tiberium Neronem et Claudium Drusum privignos imperatoriis nominibus auxit, integra etiam tum domo sua.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066"
+    }
+   ],
+   "subject": "mox defuncto Marcello",
+   "verb": "generum",
+   "object": "sumpsit"
+  },
+  {
+   "id": "mox tiberii|principatum|et cetera",
+   "end1": "mox Tiberii",
+   "label": "principatum",
+   "end2": "et cetera",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "inde consilium mihi pauca de Augusto et extrema tradere, mox Tiberii principatum et cetera, sine ira et studio, quorum causas procul habeo.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1675-1814"
+    }
+   ],
+   "subject": "mox Tiberii",
+   "verb": "principatum",
+   "object": "et cetera"
+  },
+  {
+   "id": "nam genitos agrippa gaium|ac|lucium in familiam caesarum induxerat",
+   "end1": "nam genitos Agrippa Gaium",
+   "label": "ac",
+   "end2": "Lucium in familiam Caesarum induxerat",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nam genitos Agrippa Gaium ac Lucium in familiam Caesarum induxerat, necdum posita puerili praetexta principes iuventutis appellari, destinari consules specie recusantis flagrantissime cupiverat.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261"
+    }
+   ],
+   "subject": "nam genitos Agrippa Gaium",
+   "verb": "ac",
+   "object": "Lucium in familiam Caesarum induxerat"
+  },
+  {
+   "id": "nam senem augustum|devinxerat|adeo",
+   "end1": "nam senem Augustum",
+   "label": "devinxerat",
+   "end2": "adeo",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nam senem Augustum devinxerat adeo, uti nepotem unicum Agrippam Postumum, in insulam Planasiam proiecerit , rudem sane bonarum artium et robore corporis stolide ferocem, nullius tamen flagitii conpertum.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877"
+    }
+   ],
+   "subject": "nam senem Augustum",
+   "verb": "devinxerat",
+   "object": "adeo"
+  },
+  {
+   "id": "neque imperasse sese et rationem facti reddendam|apud|senatum respondit",
+   "end1": "neque imperasse sese et rationem facti reddendam",
+   "label": "apud",
+   "end2": "senatum respondit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nuntianti centurioni, ut mos militiae, factum esse quod imperasset, neque imperasse sese et rationem facti reddendam apud senatum respondit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7227-7367"
+    }
+   ],
+   "subject": "neque imperasse sese et rationem facti reddendam",
+   "verb": "apud",
+   "object": "senatum respondit"
+  },
+  {
+   "id": "neve tiberius|vim|principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi",
+   "end1": "neve Tiberius",
+   "label": "vim",
+   "end2": "principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+    }
+   ],
+   "subject": "neve Tiberius",
+   "verb": "vim",
+   "object": "principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi"
+  },
+  {
+   "id": "nihil de ea re tiberius|apud|senatum disseruit: patris iussa simulabat",
+   "end1": "nihil de ea re Tiberius",
+   "label": "apud",
+   "end2": "senatum disseruit: patris iussa simulabat",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "nihil de ea re Tiberius apud senatum disseruit: patris iussa simulabat, quibus praescripsisset tribuno custodiae adposito, ne cunctaretur Agrippam morte adficere, quandoque ipse supremum diem explevisset.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868"
+    }
+   ],
+   "subject": "nihil de ea re Tiberius",
+   "verb": "apud",
+   "object": "senatum disseruit: patris iussa simulabat"
+  },
+  {
+   "id": "non sullae|longa|dominatio",
+   "end1": "non Sullae",
+   "label": "longa",
+   "end2": "dominatio",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "non Cinnae, non Sullae longa dominatio; et Pompei Crassique potentia cito in Caesarem, Lepidi atque Antonii arma in Augustum cessere, qui cuncta discordiis civilibus fessa nomine principis sub imperium accepit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360"
+    }
+   ],
+   "subject": "non Sullae",
+   "verb": "longa",
+   "object": "dominatio"
+  },
+  {
+   "id": "opibus et honoribus extollerentur|ac|novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent",
+   "end1": "opibus et honoribus extollerentur",
+   "label": "ac",
+   "end2": "novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+    }
+   ],
+   "subject": "opibus et honoribus extollerentur",
+   "verb": "ac",
+   "object": "novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent"
+  },
+  {
+   "id": "planasiam|vectum|ad visendum agrippam",
+   "end1": "Planasiam",
+   "label": "vectum",
+   "end2": "ad visendum Agrippam",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quippe rumor incesserat, paucos ante menses Augustum, electis consciis et comite uno Fabio Maximo, Planasiam vectum ad visendum Agrippam; multas illic utrimque lacrimas et signa caritatis spemque ex eo fore ut iuvenis penatibus avi redderetur: quod Maximum uxori Marciae aperuisse, illam Liviae.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950"
+    }
+   ],
+   "subject": "Planasiam",
+   "verb": "vectum",
+   "object": "ad visendum Agrippam"
+  },
+  {
+   "id": "pompei crassique|potentia|cito in caesarem",
+   "end1": "Pompei Crassique",
+   "label": "potentia",
+   "end2": "cito in Caesarem",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "non Cinnae, non Sullae longa dominatio; et Pompei Crassique potentia cito in Caesarem, Lepidi atque Antonii arma in Augustum cessere, qui cuncta discordiis civilibus fessa nomine principis sub imperium accepit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360"
+    }
+   ],
+   "subject": "Pompei Crassique",
+   "verb": "potentia",
+   "object": "cito in Caesarem"
+  },
+  {
+   "id": "pompeius|apud|siciliam oppressus exutoque lepido",
+   "end1": "Pompeius",
+   "label": "apud",
+   "end2": "Siciliam oppressus exutoque Lepido",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+    }
+   ],
+   "subject": "Pompeius",
+   "verb": "apud",
+   "object": "Siciliam oppressus exutoque Lepido"
+  },
+  {
+   "id": "postquam bruto et cassio|caesis|nulla iam publica arma",
+   "end1": "Postquam Bruto et Cassio",
+   "label": "caesis",
+   "end2": "nulla iam publica arma",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "II [ recensere ] Postquam Bruto et Cassio caesis nulla iam publica arma, Pompeius apud Siciliam oppressus exutoque Lepido, interfecto Antonio ne Iulianis quidem partibus nisi Caesar dux reliquus, posito triumviri nomine consulem se ferens et ad tuendam plebem tribunicio iure contentum, ubi militem donis, populum annona, cunctos dulcedine otii pellexit, insurgere paulatim, munia senatus magistratuum legum in se trahere, nullo adversante, cum ferocissimi per acies aut proscriptione cecidissent, ceteri nobilium, quanto quis servitio promptior, opibus et honoribus extollerentur ac novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478"
+    }
+   ],
+   "subject": "Postquam Bruto et Cassio",
+   "verb": "caesis",
+   "object": "nulla iam publica arma"
+  },
+  {
+   "id": "primum|facinus|novi principatus fuit postumi agrippae caedes",
+   "end1": "Primum",
+   "label": "facinus",
+   "end2": "novi principatus fuit Postumi Agrippae caedes",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "VI [ recensere ] Primum facinus novi principatus fuit Postumi Agrippae caedes, quem ignarum inermumque quamvis firmatus animo centurio aegre confecit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6511-6663"
+    }
+   ],
+   "subject": "Primum",
+   "verb": "facinus",
+   "object": "novi principatus fuit Postumi Agrippae caedes"
+  },
+  {
+   "id": "propius vero tiberium|ac|liviam",
+   "end1": "propius vero Tiberium",
+   "label": "ac",
+   "end2": "Liviam",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "propius vero Tiberium ac Liviam, illum metu, hanc novercalibus odiis, suspecti et invisi iuvenis caedem festinavisse.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7109-7226"
+    }
+   ],
+   "subject": "propius vero Tiberium",
+   "verb": "ac",
+   "object": "Liviam"
+  },
+  {
+   "id": "quibus rhodi|specie|secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum",
+   "end1": "quibus Rhodi",
+   "label": "specie",
+   "end2": "secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "hunc et prima ab infantia eductum in domo regnatrice; congestos iuveni consulatus, triumphos; ne iis quidem annis, quibus Rhodi specie secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5171-5391"
+    }
+   ],
+   "subject": "quibus Rhodi",
+   "verb": "specie",
+   "object": "secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum"
+  },
+  {
+   "id": "quod maximum|uxori|marciae aperuisse",
+   "end1": "quod Maximum",
+   "label": "uxori",
+   "end2": "Marciae aperuisse",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quippe rumor incesserat, paucos ante menses Augustum, electis consciis et comite uno Fabio Maximo, Planasiam vectum ad visendum Agrippam; multas illic utrimque lacrimas et signa caritatis spemque ex eo fore ut iuvenis penatibus avi redderetur: quod Maximum uxori Marciae aperuisse, illam Liviae.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950"
+    }
+   ],
+   "subject": "quod Maximum",
+   "verb": "uxori",
+   "object": "Marciae aperuisse"
+  },
+  {
+   "id": "quod postquam sallustius crispus|particeps|secretorum (is ad tribunum miserat codicillos) comperit",
+   "end1": "quod postquam Sallustius Crispus",
+   "label": "particeps",
+   "end2": "secretorum (is ad tribunum miserat codicillos) comperit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quod postquam Sallustius Crispus particeps secretorum (is ad tribunum miserat codicillos) comperit, metuens ne reus subderetur, iuxta periculoso ficta seu vera promeret, monuit Liviam ne arcana domus, ne consilia amicorum, ministeria militum vulgarentur, neve Tiberius vim principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi, ut non aliter ratio constet quam si uni reddatur.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772"
+    }
+   ],
+   "subject": "quod postquam Sallustius Crispus",
+   "verb": "particeps",
+   "object": "secretorum (is ad tribunum miserat codicillos) comperit"
+  },
+  {
+   "id": "sed veteris populi romani|prospera|vel adversa claris scriptoribus memorata sunt",
+   "end1": "sed veteris populi Romani",
+   "label": "prospera",
+   "end2": "vel adversa claris scriptoribus memorata sunt",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "sed veteris populi Romani prospera vel adversa claris scriptoribus memorata sunt; temporibusque Augusti dicendis non defuere decora ingenia, donec gliscente adulatione deterrerentur.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543"
+    }
+   ],
+   "subject": "sed veteris populi Romani",
+   "verb": "prospera",
+   "object": "vel adversa claris scriptoribus memorata sunt"
+  },
+  {
+   "id": "set vetere|atque|insita claudiae familiae superbia",
+   "end1": "set vetere",
+   "label": "atque",
+   "end2": "insita Claudiae familiae superbia",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "pars multo maxima inminentis dominos variis rumoribus differebant: trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem, Tiberium Neronem maturum annis, spectatum bello, set vetere atque insita Claudiae familiae superbia, multaque indicia saevitiae, quamquam premantur, erumpere.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170"
+    }
+   ],
+   "subject": "set vetere",
+   "verb": "atque",
+   "object": "insita Claudiae familiae superbia"
+  },
+  {
+   "id": "spirantem adhuc augustum|apud|urbem nolam an exanimem reppererit",
+   "end1": "spirantem adhuc Augustum",
+   "label": "apud",
+   "end2": "urbem Nolam an exanimem reppererit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "utcumque se ea res habuit, vixdum ingressus Illyricum Tiberius properis matris litteris accitur; neque satis conpertum est, spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310"
+    }
+   ],
+   "subject": "spirantem adhuc Augustum",
+   "verb": "apud",
+   "object": "urbem Nolam an exanimem reppererit"
+  },
+  {
+   "id": "tanto magis falsi|ac|festinantes",
+   "end1": "tanto magis falsi",
+   "label": "ac",
+   "end2": "festinantes",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "quanto quis inlustrior, tanto magis falsi ac festinantes, vultuque composito, ne laeti excessu principis neu tristiores primordio, lacrimas gaudium, qu",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7849-8000"
+    }
+   ],
+   "subject": "tanto magis falsi",
+   "verb": "ac",
+   "object": "festinantes"
+  },
+  {
+   "id": "temporibusque augusti|dicendis|non defuere decora ingenia",
+   "end1": "temporibusque Augusti",
+   "label": "dicendis",
+   "end2": "non defuere decora ingenia",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "sed veteris populi Romani prospera vel adversa claris scriptoribus memorata sunt; temporibusque Augusti dicendis non defuere decora ingenia, donec gliscente adulatione deterrerentur.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543"
+    }
+   ],
+   "subject": "temporibusque Augusti",
+   "verb": "dicendis",
+   "object": "non defuere decora ingenia"
+  },
+  {
+   "id": "tiberii gaique et claudii|ac|neronis res florentibus ipsis ob metum falsae",
+   "end1": "Tiberii Gaique et Claudii",
+   "label": "ac",
+   "end2": "Neronis res florentibus ipsis ob metum falsae",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "Tiberii Gaique et Claudii ac Neronis res florentibus ipsis ob metum falsae, postquam occiderant, recentibus odiis compositae sunt.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1544-1674"
+    }
+   ],
+   "subject": "Tiberii Gaique et Claudii",
+   "verb": "ac",
+   "object": "Neronis res florentibus ipsis ob metum falsae"
+  },
+  {
+   "id": "tiberium neronem|maturum|annis",
+   "end1": "Tiberium Neronem",
+   "label": "maturum",
+   "end2": "annis",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "pars multo maxima inminentis dominos variis rumoribus differebant: trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem, Tiberium Neronem maturum annis, spectatum bello, set vetere atque insita Claudiae familiae superbia, multaque indicia saevitiae, quamquam premantur, erumpere.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170"
+    }
+   ],
+   "subject": "Tiberium Neronem",
+   "verb": "maturum",
+   "object": "annis"
+  },
+  {
+   "id": "trucem agrippam et ignominia accensum non|aetate|neque rerum experientia tantae moli parem",
+   "end1": "trucem Agrippam et ignominia accensum non",
+   "label": "aetate",
+   "end2": "neque rerum experientia tantae moli parem",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "pars multo maxima inminentis dominos variis rumoribus differebant: trucem Agrippam et ignominia accensum non aetate neque rerum experientia tantae moli parem, Tiberium Neronem maturum annis, spectatum bello, set vetere atque insita Claudiae familiae superbia, multaque indicia saevitiae, quamquam premantur, erumpere.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170"
+    }
+   ],
+   "subject": "trucem Agrippam et ignominia accensum non",
+   "verb": "aetate",
+   "object": "neque rerum experientia tantae moli parem"
+  },
+  {
+   "id": "ut agrippa|vita|concessit",
+   "end1": "ut Agrippa",
+   "label": "vita",
+   "end2": "concessit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "ut Agrippa vita concessit, Lucium Caesarem euntem ad Hispaniensis exercitus, Gaium remeantem Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit, Drusoque pridem extincto Nero solus e privignis erat, illuc cuncta vergere: filius, collega imperii, consors tribuniciae potestatis adsumitur omnisque per exercitus ostentatur, non obscuris, ut antea, matris artibus, sed palam hortatu.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673"
+    }
+   ],
+   "subject": "ut Agrippa",
+   "verb": "vita",
+   "object": "concessit"
+  },
+  {
+   "id": "utcumque se ea|res|habuit",
+   "end1": "utcumque se ea",
+   "label": "res",
+   "end2": "habuit",
+   "witnesses": [
+    "11-multi-language/latin-originals/tacitus-annals.txt@32f5d633f55fac53"
+   ],
+   "spans": [
+    {
+     "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+     "text": "utcumque se ea res habuit, vixdum ingressus Illyricum Tiberius properis matris litteris accitur; neque satis conpertum est, spirantem adhuc Augustum apud urbem Nolam an exanimem reppererit.",
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310"
+    }
+   ],
+   "subject": "utcumque se ea",
+   "verb": "res",
+   "object": "habuit"
+  }
+ ],
+ "propositions": [
+  {
+   "order": 0,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#0-53",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 1,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#100-315",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 2,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#317-325",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 3,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#335-361",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 4,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#363-912",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 5,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#919-1003",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 6,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1004-1021",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 7,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1022-1149",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 8,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360",
+     "subject": "Lepidi",
+     "verb": "atque",
+     "object": "Antonii arma in Augustum cessere"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360",
+     "subject": "non Sullae",
+     "verb": "longa",
+     "object": "dominatio"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1150-1360",
+     "subject": "Pompei Crassique",
+     "verb": "potentia",
+     "object": "cito in Caesarem"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 9,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543",
+     "subject": "sed veteris populi Romani",
+     "verb": "prospera",
+     "object": "vel adversa claris scriptoribus memorata sunt"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1361-1543",
+     "subject": "temporibusque Augusti",
+     "verb": "dicendis",
+     "object": "non defuere decora ingenia"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 10,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1544-1674",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1544-1674",
+     "subject": "Tiberii Gaique et Claudii",
+     "verb": "ac",
+     "object": "Neronis res florentibus ipsis ob metum falsae"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 11,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1675-1814",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1675-1814",
+     "subject": "mox Tiberii",
+     "verb": "principatum",
+     "object": "et cetera"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 12,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478",
+     "subject": "interfecto Antonio",
+     "verb": "ne",
+     "object": "Iulianis quidem partibus nisi Caesar dux reliquus"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478",
+     "subject": "opibus et honoribus extollerentur",
+     "verb": "ac",
+     "object": "novis ex rebus aucti tuta et praesentia quam vetera et periculosa mallent"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478",
+     "subject": "Pompeius",
+     "verb": "apud",
+     "object": "Siciliam oppressus exutoque Lepido"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#1818-2478",
+     "subject": "Postquam Bruto et Cassio",
+     "verb": "caesis",
+     "object": "nulla iam publica arma"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 13,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#2479-2678",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 14,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#2682-2831",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2682-2831",
+     "subject": "Ceterum Augustus",
+     "verb": "subsidia",
+     "object": "dominationi Claudium Marcellum sororis filium admodum adulescentem pontificatu et curuli aedilitate"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 15,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066",
+     "subject": "Agrippam",
+     "verb": "ignobilem",
+     "object": "loco"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066",
+     "subject": "Claudium Drusum",
+     "verb": "privignos",
+     "object": "imperatoriis nominibus auxit"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#2832-3066",
+     "subject": "mox defuncto Marcello",
+     "verb": "generum",
+     "object": "sumpsit"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 16,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261",
+     "subject": "destinari consules",
+     "verb": "specie",
+     "object": "recusantis flagrantissime cupiverat"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3067-3261",
+     "subject": "nam genitos Agrippa Gaium",
+     "verb": "ac",
+     "object": "Lucium in familiam Caesarum induxerat"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 17,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673",
+     "subject": "consors tribuniciae potestatis adsumitur omnisque per",
+     "verb": "exercitus",
+     "object": "ostentatur"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673",
+     "subject": "Drusoque",
+     "verb": "pridem",
+     "object": "extincto Nero solus e privignis erat"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673",
+     "subject": "Gaium",
+     "verb": "remeantem",
+     "object": "Armenia et vulnere invalidum mors fato propera vel novercae Liviae dolus abstulit"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673",
+     "subject": "Lucium Caesarem",
+     "verb": "euntem",
+     "object": "ad Hispaniensis exercitus"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3262-3673",
+     "subject": "ut Agrippa",
+     "verb": "vita",
+     "object": "concessit"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 18,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877",
+     "subject": "in insulam Planasiam",
+     "verb": "proiecerit",
+     "object": ", rudem sane bonarum artium et robore corporis stolide ferocem"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3674-3877",
+     "subject": "nam senem Augustum",
+     "verb": "devinxerat",
+     "object": "adeo"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 19,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079",
+     "subject": "at hercule Germanicum Druso",
+     "verb": "ortum",
+     "object": "octo apud Rhenum legionibus inposuit adscirique per adoptionem a Tiberio iussit"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#3878-4079",
+     "subject": "domo Tiberii",
+     "verb": "filius",
+     "object": "iuvenis"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 20,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#4080-4263",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4080-4263",
+     "subject": "abolendae magis infamiae ob amissum cum Quintilio Varo",
+     "verb": "exercitum",
+     "object": "quam cupidine proferendi imperii aut dignum ob praemium"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 21,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#4264-4445",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4264-4445",
+     "subject": "domi",
+     "verb": "res",
+     "object": "tranquillae"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 22,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679",
+     "subject": "dum Augustus",
+     "verb": "aetate",
+     "object": "validus seque et domum et pacem sustentavit"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4449-4679",
+     "subject": "Igitur",
+     "verb": "verso",
+     "object": "civitatis statu nihil usquam prisci et integri moris: omnes exuta aequalitate iussa principis aspectare"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 23,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#4680-4852",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 24,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170",
+     "subject": "set vetere",
+     "verb": "atque",
+     "object": "insita Claudiae familiae superbia"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170",
+     "subject": "Tiberium Neronem",
+     "verb": "maturum",
+     "object": "annis"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#4853-5170",
+     "subject": "trucem Agrippam et ignominia accensum non",
+     "verb": "aetate",
+     "object": "neque rerum experientia tantae moli parem"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 25,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#5171-5391",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5171-5391",
+     "subject": "quibus Rhodi",
+     "verb": "specie",
+     "object": "secessus exul egerit aliud quam iram et simulationem et secretas lubidines meditatum"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 26,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#5392-5537",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 27,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#5541-5654",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5541-5654",
+     "subject": "Haec",
+     "verb": "atque",
+     "object": "talia agitantibus gravescere valetudo Augusti"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 28,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950",
+     "subject": "Planasiam",
+     "verb": "vectum",
+     "object": "ad visendum Agrippam"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5655-5950",
+     "subject": "quod Maximum",
+     "verb": "uxori",
+     "object": "Marciae aperuisse"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 29,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#5951-6120",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#5951-6120",
+     "subject": "auditos in funere eius Marciae",
+     "verb": "gemitus",
+     "object": "semet incusantis"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 30,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310",
+     "subject": "Illyricum Tiberius",
+     "verb": "properis",
+     "object": "matris litteris accitur"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310",
+     "subject": "spirantem adhuc Augustum",
+     "verb": "apud",
+     "object": "urbem Nolam an exanimem reppererit"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6121-6310",
+     "subject": "utcumque se ea",
+     "verb": "res",
+     "object": "habuit"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 31,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#6311-6507",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6311-6507",
+     "subject": "donec provisis quae tempus monebat simul excessisse Augustum et rerum potiri Neronem",
+     "verb": "fama",
+     "object": "eadem tulit"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 32,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#6511-6663",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6511-6663",
+     "subject": "Primum",
+     "verb": "facinus",
+     "object": "novi principatus fuit Postumi Agrippae caedes"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 33,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868",
+     "subject": "cunctaretur Agrippam",
+     "verb": "morte",
+     "object": "adficere"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#6664-6868",
+     "subject": "nihil de ea re Tiberius",
+     "verb": "apud",
+     "object": "senatum disseruit: patris iussa simulabat"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 34,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#6869-7108",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 35,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#7109-7226",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7109-7226",
+     "subject": "propius vero Tiberium",
+     "verb": "ac",
+     "object": "Liviam"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 36,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#7227-7367",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7227-7367",
+     "subject": "neque imperasse sese et rationem facti reddendam",
+     "verb": "apud",
+     "object": "senatum respondit"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 37,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772",
+     "subject": "metuens",
+     "verb": "ne",
+     "object": "reus subderetur"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772",
+     "subject": "monuit Liviam",
+     "verb": "ne",
+     "object": "arcana domus"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772",
+     "subject": "neve Tiberius",
+     "verb": "vim",
+     "object": "principatus resolveret cuncta ad senatum vocando: eam condicionem esse imperandi"
+    },
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7368-7772",
+     "subject": "quod postquam Sallustius Crispus",
+     "verb": "particeps",
+     "object": "secretorum (is ad tribunum miserat codicillos) comperit"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 38,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#7776-7848",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7776-7848",
+     "subject": "At Romae",
+     "verb": "ruere",
+     "object": "in servitium consules"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 39,
+   "at": "11-multi-language/latin-originals/tacitus-annals.txt#7849-8000",
+   "ref": "11-multi-language/latin-originals/tacitus-annals.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "11-multi-language/latin-originals/tacitus-annals.txt#7849-8000",
+     "subject": "tanto magis falsi",
+     "verb": "ac",
+     "object": "festinantes"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  }
+ ],
+ "lastRun": {
+  "recipeId": "32f5d633f55fac53",
+  "at": "2026-09-13T18:22:21.680Z"
+ }
+}

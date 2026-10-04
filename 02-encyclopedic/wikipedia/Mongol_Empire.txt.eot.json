@@ -1,0 +1,122 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Mongol_Empire.txt",
+  "sha256": "8002bcee909c6d8713fa2990acc88407b0f18d7d13147108d79dedbf4ac4eb70",
+  "chars": 79500,
+  "declaredIdentity": {
+   "title": "Mongol Empire",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 37,
+  "debrisChars": 541,
+  "debrisFraction": 0.007,
+  "headingCount": 39,
+  "headings": [
+   "Name",
+   "Background",
+   "Early organization",
+   "Push into Central Asia",
+   "Invasions of Kievan Rus' and China",
+   "Push into Central Europe",
+   "Administrative reforms",
+   "Division of the empire",
+   "Dispute over succession",
+   "Mongol Civil War",
+   "Competing entities",
+   "Development of the khanates",
+   "Rump states of the Mongol Empire",
+   "Military",
+   "Focus and aims",
+   "Soldiers, horses, and equipment",
+   "Organisation and preparation",
+   "Strategy and tactics",
+   "Society",
+   "Religions",
+   "Arts and literature",
+   "Science",
+   "Mail system",
+   "Silk Road",
+   "Legacy",
+   "Destruction",
+   "See also",
+   "References",
+   "Notes",
+   "Citations",
+   "Sources",
+   "Further reading",
+   "General surveys",
+   "Administration, economy, and finance",
+   "Culture, arts, and science",
+   "Institutions",
+   "Biography, society, and gender",
+   "Diplomatic and military",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 39,
+   "debrisFraction": 0.007
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 0.2819464479547608,
+   "debrisFractionZ": 0.2649756297801222,
+   "priorSeenSoFar": 31
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.093Z"
+ }
+}

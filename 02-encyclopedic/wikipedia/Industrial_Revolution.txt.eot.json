@@ -1,0 +1,156 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Industrial_Revolution.txt",
+  "sha256": "6c0633fdcefb0bab70bf458c03c2cfb7c02570f6c4be9bdaeabe1401ad38835c",
+  "chars": 130261,
+  "declaredIdentity": {
+   "title": "Industrial Revolution",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 9,
+  "debrisChars": 238,
+  "debrisFraction": 0.002,
+  "headingCount": 73,
+  "headings": [
+   "Etymology",
+   "Requirements",
+   "Important technological developments",
+   "Textile manufacture",
+   "British textile industry",
+   "Wool",
+   "Silk",
+   "Cotton",
+   "Trade and textiles",
+   "Pre-mechanized European textile production",
+   "Invention of textile machinery",
+   "Metallurgy",
+   "British iron production",
+   "Iron process innovations",
+   "Copper smelting",
+   "Steam power",
+   "Machine tools",
+   "Chemicals",
+   "Concrete",
+   "Gas lighting",
+   "Glass making",
+   "Paper machine",
+   "Agriculture",
+   "Mining",
+   "Transportation",
+   "Canals and improved waterways",
+   "Roads",
+   "Railways",
+   "Social effects",
+   "Factory system",
+   "Standards of living",
+   "Food and nutrition",
+   "Housing",
+   "Water and sanitation",
+   "Literacy",
+   "Clothing and consumer goods",
+   "Population increase",
+   "Urbanization",
+   "Effect on women and family life",
+   "Labour conditions",
+   "Social structure and working conditions",
+   "Factories and urbanisation",
+   "Child labour",
+   "Organisation of labour",
+   "Luddites",
+   "Shift in production's centre of gravity",
+   "Beyond Great Britain",
+   "Europe",
+   "Belgium",
+   "France",
+   "Germany",
+   "Sweden",
+   "Austria-Hungary",
+   "Japan",
+   "United States",
+   "Causes",
+   "Causes in Europe",
+   "Causes in Britain",
+   "Protestant work ethic",
+   "Transfer of knowledge",
+   "Criticisms",
+   "Humanism and harsh conditions",
+   "Primitivism",
+   "Environmental harm",
+   "Opposition from Romanticism",
+   "See also",
+   "Industrial Revolution in the United States",
+   "Economic history of the United Kingdom",
+   "History of capitalism",
+   "Footnotes",
+   "References",
+   "Sources",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 73,
+   "debrisFraction": 0.002
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 2.649021017030307,
+   "debrisFractionZ": -0.15834555182571813,
+   "priorSeenSoFar": 20
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.085Z"
+ }
+}

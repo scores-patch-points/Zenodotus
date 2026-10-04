@@ -1,0 +1,1432 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+  "sha256": "a2450c804bb4cc2d0b0f13551b4e85417d86fe8764f5d491fd13c02df72b52d7",
+  "bytes": 1437572,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 1437572,
+  "bodyOffset": 0,
+  "bodyChars": 1437572,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7827,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6199,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 67,
+  "surfaces": 69,
+  "referentEvents": 11,
+  "distinctReferents": 10,
+  "examined": true,
+  "edgesFound": 29,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 15,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 40
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 29,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 29,
+  "excerptOk": 29,
+  "rawChecked": 29,
+  "rawOk": 29,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 29,
+  "heard": 29,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "six years|have|been the best of friends to me",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "SIX YEARS have BEEN THE BEST OF FRIENDS TO ME",
+    "subject": "SIX YEARS",
+    "verb": "have",
+    "object": "BEEN THE BEST OF FRIENDS TO ME",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#540-767",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "TO MY FORMER PUPILS IN BALLIOL COLLEGE AND IN THE UNIVERSITY OF OXFORD, WHO DURING FORTY-SIX YEARS HAVE BEEN THE BEST OF FRIENDS TO ME, THIS VOLUME IS INSCRIBED, IN GRATEFUL RECOGNITION OF THEIR NEVER FAILING ATTACHMENT."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this volume|is|inscribed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "THIS VOLUME is INSCRIBED",
+    "subject": "THIS VOLUME",
+    "verb": "is",
+    "object": "INSCRIBED",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#540-767",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "TO MY FORMER PUPILS IN BALLIOL COLLEGE AND IN THE UNIVERSITY OF OXFORD, WHO DURING FORTY-SIX YEARS HAVE BEEN THE BEST OF FRIENDS TO ME, THIS VOLUME IS INSCRIBED, IN GRATEFUL RECOGNITION OF THEIR NEVER FAILING ATTACHMENT."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "desire to|be|read as he is at his best",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "desire to be read as he is at his best",
+    "subject": "desire to",
+    "verb": "be",
+    "object": "read as he is at his best",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#1601-2039",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "Having regard to the extent of these alterations, and to the annoyance which is felt by the owner of a book at the possession of it in an inferior form, and still more keenly by the writer himself, who must always desire to be read as he is at his best, I have thought that some persons might like to exchange for the new edition the separate edition of the Republic published in 1881, to which this present volume is the successor."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the republic|published|in 1881",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Republic published in 1881",
+    "subject": "the Republic",
+    "verb": "published",
+    "object": "in 1881",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#1601-2039",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "Having regard to the extent of these alterations, and to the annoyance which is felt by the owner of a book at the possession of it in an inferior form, and still more keenly by the writer himself, who must always desire to be read as he is at his best, I have thought that some persons might like to exchange for the new edition the separate edition of the Republic published in 1881, to which this present volume is the successor."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and|is|certainly the greatest of them",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and is certainly the greatest of them",
+    "subject": "and",
+    "verb": "is",
+    "object": "certainly the greatest of them",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2452-2573",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "THE Republic of Plato is the longest of his works with the exception of the Laws, and is certainly the greatest of them."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the politicus or statesman|is|more ideal",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Politicus or Statesman is more ideal",
+    "subject": "the Politicus or Statesman",
+    "verb": "is",
+    "object": "more ideal",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2574-2860",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "There are nearer approaches to modern metaphysics in the Philebus and in the Sophist; the Politicus or Statesman is more ideal; the form and institutions of the State are more clearly drawn out in the Laws; as works of art, the Symposium and the Protagoras are of higher excellence."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the state|are|more clearly drawn out in the laws",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the State are more clearly drawn out in the Laws",
+    "subject": "the State",
+    "verb": "are",
+    "object": "more clearly drawn out in the Laws",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2574-2860",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "There are nearer approaches to modern metaphysics in the Philebus and in the Sophist; the Politicus or Statesman is more ideal; the form and institutions of the State are more clearly drawn out in the Laws; as works of art, the Symposium and the Protagoras are of higher excellence."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the symposium and the protagoras|are|of higher excellence",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Symposium and the Protagoras are of higher excellence",
+    "subject": "the Symposium and the Protagoras",
+    "verb": "are",
+    "object": "of higher excellence",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2574-2860",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "There are nearer approaches to modern metaphysics in the Philebus and in the Sophist; the Politicus or Statesman is more ideal; the form and institutions of the State are more clearly drawn out in the Laws; as works of art, the Symposium and the Protagoras are of higher excellence."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "or contains more of those thoughts which|are|new as well as old",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "or contains more of those thoughts which are new as well as old",
+    "subject": "or contains more of those thoughts which",
+    "verb": "are",
+    "object": "new as well as old",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2861-3109",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "But no other Dialogue of Plato has the same largeness of view and the same perfection of style; no other shows an equal knowledge of the world, or contains more of those thoughts which are new as well as old, and not of one age only but of all."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "any other of plato writings|is|the attempt made to interweave life and speculation",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "any other of Plato writings is the attempt made to interweave life and speculation",
+    "subject": "any other of Plato writings",
+    "verb": "is",
+    "object": "the attempt made to interweave life and speculation",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3218-3348",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "Nor in any other of his writings is the attempt made to interweave life and speculation, or to connect politics with philosophy."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the other dialogues|may be|grouped",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the other Dialogues may be grouped",
+    "subject": "the other Dialogues",
+    "verb": "may be",
+    "object": "grouped",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3349-3547",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "The Republic is the centre around which the other Dialogues may be grouped; here philosophy reaches the highest point (cp. especially in Books V, VI, VII) to which ancient thinkers ever attained."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "an abstraction of science which|was|not yet realized",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "an abstraction of science which was not yet realized",
+    "subject": "an abstraction of science which",
+    "verb": "was",
+    "object": "not yet realized",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3548-3850",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "Plato among the Greeks, like Bacon among the moderns, was the first who conceived a method of knowledge, although neither of them always distinguished the bare outline or form from the substance of truth; and both of them had to be content with an abstraction of science which was not yet realized."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the greatest metaphysical genius whom the world|has|seen",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the greatest metaphysical genius whom the world has seen",
+    "subject": "the greatest metaphysical genius whom the world",
+    "verb": "has",
+    "object": "seen",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3851-4014",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "He was the greatest metaphysical genius whom the world has seen; and in him, more than in any other ancient thinker, the germs of future knowledge are contained."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the germs of future knowledge|are|contained",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the germs of future knowledge are contained",
+    "subject": "the germs of future knowledge",
+    "verb": "are",
+    "object": "contained",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3851-4014",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "He was the greatest metaphysical genius whom the world has seen; and in him, more than in any other ancient thinker, the germs of future knowledge are contained."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "which|have|supplied so many instruments of thought to after-ages",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "which have supplied so many instruments of thought to after-ages",
+    "subject": "which",
+    "verb": "have",
+    "object": "supplied so many instruments of thought to after-ages",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4015-4171",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "The sciences of logic and psychology, which have supplied so many instruments of thought to after-ages, are based upon the analyses of Socrates and Plato."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and other great forms of thought|are|all of them to be found in the republic",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and other great forms of thought are all of them to be found in the Republic",
+    "subject": "and other great forms of thought",
+    "verb": "are",
+    "object": "all of them to be found in the Republic",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4172-4676",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "The principles of definition, the law of contradiction, the fallacy of arguing in a circle, the distinction between the essence and accidents of a thing or notion, between means and ends, between causes and conditions; also the division of the mind into the rational, concupiscent, and irascible elements, or of pleasures and desires into necessary and unnecessary--these {ii} and other great forms of thought are all of them to be found in the Republic, and were probably first invented by Plato."
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the one of which writers on philosophy|are|most apt to lose sight",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the one of which writers on philosophy are most apt to lose sight",
+    "subject": "the one of which writers on philosophy",
+    "verb": "are",
+    "object": "most apt to lose sight",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4677-4882",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "The greatest of all logical truths, and the one of which writers on philosophy are most apt to lose sight, the difference between words and things, has been most strenuously insisted on by him (cp. Rep."
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "although plato|has|not always avoided the confusion of them in plato own writings (e",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "although Plato has not always avoided the confusion of them in Plato own writings (e",
+    "subject": "although Plato",
+    "verb": "has",
+    "object": "not always avoided the confusion of them in Plato own writings (e",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4912-5010",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "435, 436 ff.), although he has not always avoided the confusion of them in his own writings (e.g."
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "logic|is|still veiled in metaphysics",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "logic is still veiled in metaphysics",
+    "subject": "logic",
+    "verb": "is",
+    "object": "still veiled in metaphysics",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5025-5290",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "But he does not bind up truth in logical formulae,--logic is still veiled in metaphysics; and the science which he imagines to 'contemplate all truth and all existence' is very unlike the doctrine of the syllogism which Aristotle claims to have discovered (Soph."
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "claims to|have|discovered (soph",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "claims to have discovered (Soph",
+    "subject": "claims to",
+    "verb": "have",
+    "object": "discovered (Soph",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5025-5290",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "But he does not bind up truth in logical formulae,--logic is still veiled in metaphysics; and the science which he imagines to 'contemplate all truth and all existence' is very unlike the doctrine of the syllogism which Aristotle claims to have discovered (Soph."
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the third part of a still larger design which|was|to have included an ideal history of athens",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the third part of a still larger design which was to have included an ideal history of Athens",
+    "subject": "the third part of a still larger design which",
+    "verb": "was",
+    "object": "to have included an ideal history of Athens",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5312-5504",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "Neither must we forget that the Republic is but the third part of a still larger design which was to have included an ideal history of Athens, as well as a political and physical philosophy."
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the fragment of the critias|has given|birth to a world-famous fiction",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The fragment of the Critias has given birth to a world-famous fiction",
+    "subject": "The fragment of the Critias",
+    "verb": "has given",
+    "object": "birth to a world-famous fiction",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5505-5744",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "The fragment of the Critias has given birth to a world-famous fiction, second only in importance to the tale of Troy and the legend of Arthur; and is said as a fact to have inspired some of the early navigators of the sixteenth century."
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "a fact to|have|inspired some of the early navigators of the sixteenth century",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "a fact to have inspired some of the early navigators of the sixteenth century",
+    "subject": "a fact to",
+    "verb": "have",
+    "object": "inspired some of the early navigators of the sixteenth century",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5505-5744",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "The fragment of the Critias has given birth to a world-famous fiction, second only in importance to the tale of Troy and the legend of Arthur; and is said as a fact to have inspired some of the early navigators of the sixteenth century."
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|would have|told of a struggle for liberty (cp",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "It would have told of a struggle for Liberty (cp",
+    "subject": "It",
+    "verb": "would have",
+    "object": "told of a struggle for Liberty (cp",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6034-6089",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "It would have told of a struggle for Liberty (cp. Tim."
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "in what manner plato|would have treated|this high argument",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "in what manner Plato would have treated this high argument",
+    "subject": "in what manner Plato",
+    "verb": "would have treated",
+    "object": "this high argument",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6155-6352",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "We may judge from the noble commencement of the Timaeus, from the fragment of the Critias itself, and from the third book of the Laws, in what manner Plato would have treated this high argument."
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the great design|was|abandoned",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the great design was abandoned",
+    "subject": "the great design",
+    "verb": "was",
+    "object": "abandoned",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6353-6799",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "We can only guess why the great design was abandoned; perhaps because Plato became sensible of some incongruity in a fictitious history, or because he had lost his interest in it, or because advancing years forbade the completion of it; and we may please ourselves with the fancy that had this imaginary narrative ever been finished, we should have found Plato himself sympathising with the struggle for Hellenic independence (cp. Laws iii."
+     }
+    ],
+    "seq": 25,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the growth of the athenian empire--'how brave a thing|is|freedom of speech",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the growth of the Athenian empire--'How brave a thing is freedom of speech",
+    "subject": "the growth of the Athenian empire--'How brave a thing",
+    "verb": "is",
+    "object": "freedom of speech",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6800-7099",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "698 ff.), singing a hymn of triumph over Marathon and Salamis, perhaps making the reflection of Herodotus where he contemplates the growth of the Athenian empire--'How brave a thing is freedom of speech, {iii} which has made the Athenians so far exceed every other state of Hellas in greatness!'"
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and of the numerous other imaginary states which|are|framed upon the same model",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and of the numerous other imaginary States which are framed upon the same model",
+    "subject": "and of the numerous other imaginary States which",
+    "verb": "are",
+    "object": "framed upon the same model",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#7441-7582",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "Augustine's City of God, of the Utopia of Sir Thomas More, and of the numerous other imaginary States which are framed upon the same model."
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "many affinities|may be|traced",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "many affinities may be traced",
+    "subject": "many affinities",
+    "verb": "may be",
+    "object": "traced",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#7940-8000",
+      "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+      "text": "In English philosophy too, many affinities may be traced, n"
+     }
+    ],
+    "seq": 28,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 29,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "a fact to|have|inspired some of the early navigators of the sixteenth century",
+   "subject": "a fact to",
+   "verb": "have",
+   "object": "inspired some of the early navigators of the sixteenth century",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5505-5744",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "The fragment of the Critias has given birth to a world-famous fiction, second only in importance to the tale of Troy and the legend of Arthur; and is said as a fact to have inspired some of the early navigators of the sixteenth century."
+    }
+   ]
+  },
+  {
+   "id": "although plato|has|not always avoided the confusion of them in plato own writings (e",
+   "subject": "although Plato",
+   "verb": "has",
+   "object": "not always avoided the confusion of them in Plato own writings (e",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4912-5010",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "435, 436 ff.), although he has not always avoided the confusion of them in his own writings (e.g."
+    }
+   ]
+  },
+  {
+   "id": "an abstraction of science which|was|not yet realized",
+   "subject": "an abstraction of science which",
+   "verb": "was",
+   "object": "not yet realized",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3548-3850",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "Plato among the Greeks, like Bacon among the moderns, was the first who conceived a method of knowledge, although neither of them always distinguished the bare outline or form from the substance of truth; and both of them had to be content with an abstraction of science which was not yet realized."
+    }
+   ]
+  },
+  {
+   "id": "and of the numerous other imaginary states which|are|framed upon the same model",
+   "subject": "and of the numerous other imaginary States which",
+   "verb": "are",
+   "object": "framed upon the same model",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#7441-7582",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "Augustine's City of God, of the Utopia of Sir Thomas More, and of the numerous other imaginary States which are framed upon the same model."
+    }
+   ]
+  },
+  {
+   "id": "and other great forms of thought|are|all of them to be found in the republic",
+   "subject": "and other great forms of thought",
+   "verb": "are",
+   "object": "all of them to be found in the Republic",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4172-4676",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "The principles of definition, the law of contradiction, the fallacy of arguing in a circle, the distinction between the essence and accidents of a thing or notion, between means and ends, between causes and conditions; also the division of the mind into the rational, concupiscent, and irascible elements, or of pleasures and desires into necessary and unnecessary--these {ii} and other great forms of thought are all of them to be found in the Republic, and were probably first invented by Plato."
+    }
+   ]
+  },
+  {
+   "id": "and|is|certainly the greatest of them",
+   "subject": "and",
+   "verb": "is",
+   "object": "certainly the greatest of them",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2452-2573",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "THE Republic of Plato is the longest of his works with the exception of the Laws, and is certainly the greatest of them."
+    }
+   ]
+  },
+  {
+   "id": "any other of plato writings|is|the attempt made to interweave life and speculation",
+   "subject": "any other of Plato writings",
+   "verb": "is",
+   "object": "the attempt made to interweave life and speculation",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3218-3348",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "Nor in any other of his writings is the attempt made to interweave life and speculation, or to connect politics with philosophy."
+    }
+   ]
+  },
+  {
+   "id": "claims to|have|discovered (soph",
+   "subject": "claims to",
+   "verb": "have",
+   "object": "discovered (Soph",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5025-5290",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "But he does not bind up truth in logical formulae,--logic is still veiled in metaphysics; and the science which he imagines to 'contemplate all truth and all existence' is very unlike the doctrine of the syllogism which Aristotle claims to have discovered (Soph."
+    }
+   ]
+  },
+  {
+   "id": "desire to|be|read as he is at his best",
+   "subject": "desire to",
+   "verb": "be",
+   "object": "read as he is at his best",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#1601-2039",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "Having regard to the extent of these alterations, and to the annoyance which is felt by the owner of a book at the possession of it in an inferior form, and still more keenly by the writer himself, who must always desire to be read as he is at his best, I have thought that some persons might like to exchange for the new edition the separate edition of the Republic published in 1881, to which this present volume is the successor."
+    }
+   ]
+  },
+  {
+   "id": "in what manner plato|would have treated|this high argument",
+   "subject": "in what manner Plato",
+   "verb": "would have treated",
+   "object": "this high argument",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6155-6352",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "We may judge from the noble commencement of the Timaeus, from the fragment of the Critias itself, and from the third book of the Laws, in what manner Plato would have treated this high argument."
+    }
+   ]
+  },
+  {
+   "id": "it|would have|told of a struggle for liberty (cp",
+   "subject": "It",
+   "verb": "would have",
+   "object": "told of a struggle for Liberty (cp",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6034-6089",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "It would have told of a struggle for Liberty (cp. Tim."
+    }
+   ]
+  },
+  {
+   "id": "logic|is|still veiled in metaphysics",
+   "subject": "logic",
+   "verb": "is",
+   "object": "still veiled in metaphysics",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5025-5290",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "But he does not bind up truth in logical formulae,--logic is still veiled in metaphysics; and the science which he imagines to 'contemplate all truth and all existence' is very unlike the doctrine of the syllogism which Aristotle claims to have discovered (Soph."
+    }
+   ]
+  },
+  {
+   "id": "many affinities|may be|traced",
+   "subject": "many affinities",
+   "verb": "may be",
+   "object": "traced",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#7940-8000",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "In English philosophy too, many affinities may be traced, n"
+    }
+   ]
+  },
+  {
+   "id": "or contains more of those thoughts which|are|new as well as old",
+   "subject": "or contains more of those thoughts which",
+   "verb": "are",
+   "object": "new as well as old",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2861-3109",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "But no other Dialogue of Plato has the same largeness of view and the same perfection of style; no other shows an equal knowledge of the world, or contains more of those thoughts which are new as well as old, and not of one age only but of all."
+    }
+   ]
+  },
+  {
+   "id": "six years|have|been the best of friends to me",
+   "subject": "SIX YEARS",
+   "verb": "have",
+   "object": "BEEN THE BEST OF FRIENDS TO ME",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#540-767",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "TO MY FORMER PUPILS IN BALLIOL COLLEGE AND IN THE UNIVERSITY OF OXFORD, WHO DURING FORTY-SIX YEARS HAVE BEEN THE BEST OF FRIENDS TO ME, THIS VOLUME IS INSCRIBED, IN GRATEFUL RECOGNITION OF THEIR NEVER FAILING ATTACHMENT."
+    }
+   ]
+  },
+  {
+   "id": "the fragment of the critias|has given|birth to a world-famous fiction",
+   "subject": "The fragment of the Critias",
+   "verb": "has given",
+   "object": "birth to a world-famous fiction",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5505-5744",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "The fragment of the Critias has given birth to a world-famous fiction, second only in importance to the tale of Troy and the legend of Arthur; and is said as a fact to have inspired some of the early navigators of the sixteenth century."
+    }
+   ]
+  },
+  {
+   "id": "the germs of future knowledge|are|contained",
+   "subject": "the germs of future knowledge",
+   "verb": "are",
+   "object": "contained",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3851-4014",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "He was the greatest metaphysical genius whom the world has seen; and in him, more than in any other ancient thinker, the germs of future knowledge are contained."
+    }
+   ]
+  },
+  {
+   "id": "the great design|was|abandoned",
+   "subject": "the great design",
+   "verb": "was",
+   "object": "abandoned",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6353-6799",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "We can only guess why the great design was abandoned; perhaps because Plato became sensible of some incongruity in a fictitious history, or because he had lost his interest in it, or because advancing years forbade the completion of it; and we may please ourselves with the fancy that had this imaginary narrative ever been finished, we should have found Plato himself sympathising with the struggle for Hellenic independence (cp. Laws iii."
+    }
+   ]
+  },
+  {
+   "id": "the greatest metaphysical genius whom the world|has|seen",
+   "subject": "the greatest metaphysical genius whom the world",
+   "verb": "has",
+   "object": "seen",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3851-4014",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "He was the greatest metaphysical genius whom the world has seen; and in him, more than in any other ancient thinker, the germs of future knowledge are contained."
+    }
+   ]
+  },
+  {
+   "id": "the growth of the athenian empire--'how brave a thing|is|freedom of speech",
+   "subject": "the growth of the Athenian empire--'How brave a thing",
+   "verb": "is",
+   "object": "freedom of speech",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#6800-7099",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "698 ff.), singing a hymn of triumph over Marathon and Salamis, perhaps making the reflection of Herodotus where he contemplates the growth of the Athenian empire--'How brave a thing is freedom of speech, {iii} which has made the Athenians so far exceed every other state of Hellas in greatness!'"
+    }
+   ]
+  },
+  {
+   "id": "the one of which writers on philosophy|are|most apt to lose sight",
+   "subject": "the one of which writers on philosophy",
+   "verb": "are",
+   "object": "most apt to lose sight",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4677-4882",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "The greatest of all logical truths, and the one of which writers on philosophy are most apt to lose sight, the difference between words and things, has been most strenuously insisted on by him (cp. Rep."
+    }
+   ]
+  },
+  {
+   "id": "the other dialogues|may be|grouped",
+   "subject": "the other Dialogues",
+   "verb": "may be",
+   "object": "grouped",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#3349-3547",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "The Republic is the centre around which the other Dialogues may be grouped; here philosophy reaches the highest point (cp. especially in Books V, VI, VII) to which ancient thinkers ever attained."
+    }
+   ]
+  },
+  {
+   "id": "the politicus or statesman|is|more ideal",
+   "subject": "the Politicus or Statesman",
+   "verb": "is",
+   "object": "more ideal",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2574-2860",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "There are nearer approaches to modern metaphysics in the Philebus and in the Sophist; the Politicus or Statesman is more ideal; the form and institutions of the State are more clearly drawn out in the Laws; as works of art, the Symposium and the Protagoras are of higher excellence."
+    }
+   ]
+  },
+  {
+   "id": "the republic|published|in 1881",
+   "subject": "the Republic",
+   "verb": "published",
+   "object": "in 1881",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#1601-2039",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "Having regard to the extent of these alterations, and to the annoyance which is felt by the owner of a book at the possession of it in an inferior form, and still more keenly by the writer himself, who must always desire to be read as he is at his best, I have thought that some persons might like to exchange for the new edition the separate edition of the Republic published in 1881, to which this present volume is the successor."
+    }
+   ]
+  },
+  {
+   "id": "the state|are|more clearly drawn out in the laws",
+   "subject": "the State",
+   "verb": "are",
+   "object": "more clearly drawn out in the Laws",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2574-2860",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "There are nearer approaches to modern metaphysics in the Philebus and in the Sophist; the Politicus or Statesman is more ideal; the form and institutions of the State are more clearly drawn out in the Laws; as works of art, the Symposium and the Protagoras are of higher excellence."
+    }
+   ]
+  },
+  {
+   "id": "the symposium and the protagoras|are|of higher excellence",
+   "subject": "the Symposium and the Protagoras",
+   "verb": "are",
+   "object": "of higher excellence",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#2574-2860",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "There are nearer approaches to modern metaphysics in the Philebus and in the Sophist; the Politicus or Statesman is more ideal; the form and institutions of the State are more clearly drawn out in the Laws; as works of art, the Symposium and the Protagoras are of higher excellence."
+    }
+   ]
+  },
+  {
+   "id": "the third part of a still larger design which|was|to have included an ideal history of athens",
+   "subject": "the third part of a still larger design which",
+   "verb": "was",
+   "object": "to have included an ideal history of Athens",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#5312-5504",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "Neither must we forget that the Republic is but the third part of a still larger design which was to have included an ideal history of Athens, as well as a political and physical philosophy."
+    }
+   ]
+  },
+  {
+   "id": "this volume|is|inscribed",
+   "subject": "THIS VOLUME",
+   "verb": "is",
+   "object": "INSCRIBED",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#540-767",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "TO MY FORMER PUPILS IN BALLIOL COLLEGE AND IN THE UNIVERSITY OF OXFORD, WHO DURING FORTY-SIX YEARS HAVE BEEN THE BEST OF FRIENDS TO ME, THIS VOLUME IS INSCRIBED, IN GRATEFUL RECOGNITION OF THEIR NEVER FAILING ATTACHMENT."
+    }
+   ]
+  },
+  {
+   "id": "which|have|supplied so many instruments of thought to after-ages",
+   "subject": "which",
+   "verb": "have",
+   "object": "supplied so many instruments of thought to after-ages",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt#4015-4171",
+     "ref": "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt",
+     "text": "The sciences of logic and psychology, which have supplied so many instruments of thought to after-ages, are based upon the analyses of Socrates and Plato."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:34.922Z"
+ }
+}

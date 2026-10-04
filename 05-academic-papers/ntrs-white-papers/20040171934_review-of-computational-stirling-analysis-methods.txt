@@ -1,0 +1,1303 @@
+---
+title: Review of Computational Stirling Analysis Methods
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20040171934
+source_url: https://ntrs.nasa.gov/citations/20040171934
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Glenn Research Center
+publication_date: 2019-08-14
+retrieved: 2026-09-22
+sha256: 7ad76262ff894e09abc0c787be3b39144032a677202a8b7bceda7f66a9dd656a
+pages: 28
+words: 9076
+cv_look_pages: 6
+---
+
+NASA/TM—2004-213300                      AIAA–2004–5582
+
+
+
+
+Review of Computational Stirling
+Analysis Methods
+Rodger W. Dyson
+Glenn Research Center, Cleveland, Ohio
+
+Scott D. Wilson
+Sest, Inc., Middleburg Heights, Ohio
+
+Roy C. Tew
+Glenn Research Center, Cleveland, Ohio
+
+
+
+
+October 2004
+                                   The NASA STI Program Office . . . in Profile
+
+
+Since its founding, NASA has been dedicated to                 •   CONFERENCE PUBLICATION. Collected
+the advancement of aeronautics and space                           papers from scientific and technical
+science. The NASA Scientific and Technical                         conferences, symposia, seminars, or other
+Information (STI) Program Office plays a key part                  meetings sponsored or cosponsored by
+in helping NASA maintain this important role.                      NASA.
+
+The NASA STI Program Office is operated by                     •   SPECIAL PUBLICATION. Scientific,
+Langley Research Center, the Lead Center for                       technical, or historical information from
+NASA’s scientific and technical information. The                   NASA programs, projects, and missions,
+NASA STI Program Office provides access to the                     often concerned with subjects having
+NASA STI Database, the largest collection of                       substantial public interest.
+aeronautical and space science STI in the world.
+The Program Office is also NASA’s institutional                •   TECHNICAL TRANSLATION. English-
+mechanism for disseminating the results of its                     language translations of foreign scientific
+research and development activities. These results                 and technical material pertinent to NASA’s
+are published by NASA in the NASA STI Report                       mission.
+Series, which includes the following report types:
+                                                               Specialized services that complement the STI
+•   TECHNICAL PUBLICATION. Reports of                          Program Office’s diverse offerings include
+    completed research or a major significant                  creating custom thesauri, building customized
+    phase of research that present the results of              databases, organizing and publishing research
+    NASA programs and include extensive data                   results . . . even providing videos.
+    or theoretical analysis. Includes compilations
+    of significant scientific and technical data and           For more information about the NASA STI
+    information deemed to be of continuing                     Program Office, see the following:
+    reference value. NASA’s counterpart of peer-
+    reviewed formal professional papers but                    •   Access the NASA STI Program Home Page
+    has less stringent limitations on manuscript                   at http://www.sti.nasa.gov
+    length and extent of graphic presentations.
+                                                               •   E-mail your question via the Internet to
+•   TECHNICAL MEMORANDUM. Scientific                               help@sti.nasa.gov
+    and technical findings that are preliminary or
+    of specialized interest, e.g., quick release               •   Fax your question to the NASA Access
+    reports, working papers, and bibliographies                    Help Desk at 301–621–0134
+    that contain minimal annotation. Does not
+    contain extensive analysis.                                •   Telephone the NASA Access Help Desk at
+                                                                   301–621–0390
+•   CONTRACTOR REPORT. Scientific and
+    technical findings by NASA-sponsored                       •   Write to:
+    contractors and grantees.                                      NASA Access Help Desk
+                                                                   NASA Center for AeroSpace Information
+                                                                   7121 Standard Drive
+                                                                   Hanover, MD 21076
+NASA/TM—2004-213300                                                   AIAA–2004–5582
+
+
+
+
+Review of Computational Stirling
+Analysis Methods
+Rodger W. Dyson
+Glenn Research Center, Cleveland, Ohio
+
+Scott D. Wilson
+Sest, Inc., Middleburg Heights, Ohio
+
+Roy C. Tew
+Glenn Research Center, Cleveland, Ohio
+
+
+
+
+Prepared for the
+Second International Energy Conversion Engineering Conference
+sponsored by the American Institute of Aeronautics and Astronautics
+Providence, Rhode Island, August 16–19, 2004
+
+
+
+
+National Aeronautics and
+Space Administration
+
+
+Glenn Research Center
+
+
+
+
+October 2004
+                                           Acknowledgments
+
+
+
+
+ This work was performed for NASA Headquarters, Office of Space Science (Code S), under Project Prometheus,
+                                     the Nuclear Systems Program.
+
+
+
+
+                       Trade names or manufacturers’ names are used in this report for
+                         identification only. This usage does not constitute an official
+                          endorsement, either expressed or implied, by the National
+                                    Aeronautics and Space Administration.
+
+
+
+
+                                               Available from
+NASA Center for Aerospace Information                                     National Technical Information Service
+7121 Standard Drive                                                                        5285 Port Royal Road
+Hanover, MD 21076                                                                          Springfield, VA 22100
+
+
+                             Available electronically at http://gltrs.grc.nasa.gov
+                  Review of Computational Stirling Analysis Methods
+                                              Rodger W. Dyson
+                                National Aeronautics and Space Administration
+                                           Glenn Research Center
+                                           Cleveland, Ohio 44135
+
+                                               Scott d. Wilson
+                                                  Sest, Inc.
+                                        Middleburg Heights, Ohio 44130
+
+                                                Roy C. Tew
+                                National Aeronautics and Space Administration
+                                           Glenn Research Center
+                                           Cleveland, Ohio 44135
+
+
+
+        Nuclear thermal to electric power conversion carries the promise of longer duration
+     missions and higher scientific data transmission rates back to Earth for a range of missions,
+     including both Mars rovers and deep space missions. A free-piston Stirling convertor is a
+     candidate technology that is considered an efficient and reliable power conversion device for
+     such purposes. While already very efficient, it is believed that better Stirling engines can
+     be developed if the losses inherent in current designs could be better understood. However,
+     they are difficult to instrument and so efforts are underway to simulate a complete Stirling
+     engine numerically. This has only recently been attempted and a review of the methods
+     leading up to and including such computational analysis is presented. And finally it is
+     proposed that the quality and depth of Stirling loss understanding may be improved by
+     utilizing the higher fidelity and efficiency of recently developed numerical methods. One
+     such method, the Ultra HI-FI technique is presented in detail.
+
+
+                                            I.   Introduction
+    ower conversion with free-piston Stirling engines1, 2 has the potential to deliver high efficiency, low mass
+P   solutions for longer and more varied space missions.3, 4 NASA’s goal of achieving 35% system efficiency
+(approximately 45% convertor efficiency) will require increasing the percentage of Carnot efficiency that
+is achievable to 55%. In addition to using advanced high-temperature materials to increase the Carnot
+temperature ratio, it is anticipated that advanced computational fluid dynamics (CFD) will help to identify
+the following losses6, 7, 8 (also shown in figure I):
+
+  1. Inefficient heat exchange and pressure loss in the regenerator, heater and cooler,
+  2. Gas spring and working space loss due to hysterisis and turbulence,
+  3. Appendix gap losses due to pumping and shuttle effects,
+  4. Mixing gas losses from nonuniform temperature and flow distributions perpendicular to primary engine
+     flow axis,
+  5. Conduction losses from the hot to cold regions
+
+
+
+
+NASA/TM—2004-213300                                    1
+  6. Losses due to combined radiation, conduction and convection in hollow spaces
+  7. And in general, inaccurate loss representations due to use of 1-D flow design codes to account for
+     flow and heat transfer through area changes (between components) where phenomena such as flow
+     separation and jetting from tube into regenerator may occur.
+
+   In addition, the following artificial numerical losses must be considered when computational simulations
+are performed (also shown in figure 1I):
+
+  1. Moving/deforming mesh losses from repeated low order flow field interpolations,
+  2. Transient/Unsteady heat transfer and flow loss from inconsistent and inaccurate time discretization,
+  3. Flow loss from low order approaches resulting in effectively adding artificial dissipation terms along
+     sliding interfaces, at structured/unstructured grid interfaces, and within interior.
+
+   Minimizing those artificial losses is best accomplished through higher order approaches.9 While this
+approach is common in aeroacoustics, computational electromagnetics, and exterior flow problems, high
+order techniques have not yet been applied to simulating a Stirling device. Moreover, the following difficulties
+are often encountered when using high-order approaches:
+
+  1. Generation of high-order, smooth, body-fitted grids around complex configurations can be difficult.10
+
+  2. High-order formulations can lack nonlinear robustness.10
+  3. The general usefulness of high-order methods is limited by first order accurate shock capturing.11
+
+   Fortunately, with the exception of the possibly random geometry in the regenerator, the free-piston
+design is essentially smooth and admits curvilinear structured grids. The issue of nonlinear robustness is an
+open issue, but a proposed approach is detailed later. And finally, the working gas is subsonic and shockless
+throughout the entire region.12 For these reasons, a high-order approach should be investigated for ”whole
+engine” Stirling analysis.
+   This paper will highlight the past and present Stirling analysis techniques and discuss their relative
+merits.
+
+
+
+
+NASA/TM—2004-213300                                    2
+         Figure 1. Schematic of Actual and Artificial Numerical Losses in a Free-Piston Convertor
+
+
+
+                                 II.    Description of the Problem
+   The dual opposed configuration shown in figure 2 13, 17, 18 is being developed for multimission use (i.e., for
+use in atmospheres and space), including providing electric power for potential missions such as unmanned
+Mars rovers and deep space missions.19
+
+
+
+
+                 Figure 2. Dual Opposed Stirling Convertors Reduce Vibration (Schreiber)
+
+   An example of the desired full Stirling engine simulation is shown in Fig. 3.16 The pseudo design is
+presented to avoid export control issues. It is anticipated that full 3D simulations will provide a level of
+geometric and flow detail necessary for further design improvements. For example, hardware experiments
+
+
+
+
+NASA/TM—2004-213300                                    3
+have shown that large performance gains can be made by varying manifolds and heat exchanger designs to
+improve flow distributions in the heat exchangers.13, 14, 15
+   The kinds of flow and geometry that occur in a Stirling engine for
+which a modeling technique must address are as follows:8, 7
+
+     1. Oscillating flow which changes the effective conduction, flow friction
+        coefficients and heat diffusion.20
+     2. Low mach number flow (no shocks),
+
+     3. Compressible flow due to enclosed varying volumes and heat transfer
+        effects,
+                                                                                 Figure 3.   Example Transient
+     4. Laminar, Transitional, and Turbulent flow with Reynolds numbers          Simulation of Pseudo Stirling
+        from 100 to 10000 (based on various length scales pertinent to the       Convertor-Colored by Velocity
+        flow region),                                                            Magnitude
+
+     5. Conjugate heat transfer, thermal dispersion and local thermal
+        nonequilibrium in the porous media regenerator,
+     6. Micron to Millimeter scale geometry21
+
+     7. Sliding Interfaces in the appendix gap
+     8. Deforming Flow Regions Due to Compression and Expansion
+
+                             III.    Stirling Cycle Analysis Approaches
+    The techniques of analysis for Stirling engines can be categorized with Martini’s22, 23 nomenclature as
+follows:
+
+A.     Zeroth Order Analysis
+William Beale observed24 that most modern engines operate under similar conditions of the parametric
+ratios: dead volume ratio, temperature ratio, swept volume ratio, displacer-piston phase angle advance.
+Thus correlating the experimental data available on various engines, he found that one could represent the
+engine performance as:
+
+                                              P0 = 0.015pmean Vsw f                                        (1)
+
+
+
+B.     First Order Analysis
+The first analysis of Stirling engines was done in 1871 by Gustav Schmidt in which he obtained closed-form
+solutions for the special case of sinusoidal volume variations and isothermal hot and cold spaces.25 In Fig. B
+(a), the model equations from the isothermal assumption shown in Fig. 4 is shown. These can be integrated
+with a computer but a closed form solution is available in which sinusoidal motion is assumed.
+    The relative volume changes can be calculated using the phasor diagram and schematic in Figs. 5 (b and
+c). This analysis is loss-free and a correction factor is normally applied in practical designs to account for
+the losses.
+
+
+
+
+NASA/TM—2004-213300                                      4
+                                  Figure 4. Ideal Isothermal Model (Urieli)
+
+
+
+
+     (a) Ideal Isothermal model set of equations                      (b) Volume Vector Diagram
+
+
+                              Figure 5. Closed Form Solution Process (Urieli)
+
+
+
+
+NASA/TM—2004-213300                                  5
+C.    Second Order Analysis
+This level of analysis may be based on an adiabatic
+analysis that subtracts losses caused by heat trans-
+fer and flow power losses. It relies on a modified
+Schmidt analysis (Schmidt analysis normally implies
+isothermal hot and cold spaces) and requires nonlin-
+ear time integration of the model equations. It as-
+sumes adiabatic expansion and compression regions
+as shown in Fig. 6(a).
+
+1.   Heat Transfer Losses
+Heat transfer loss occurs throughout the system but
+notably in the appendix gap region (space between
+displacer and heat exchangers) through the follow-                     (a) Ideal Adiabatic Model
+ing processes:24
+
+     • Shuttle heat transfer in which a conduction
+       loss down the displacer or piston and associ-
+       ated cylinder is enhanced by one wall’s oscil-
+       latory motion27
+
+     • Gas enthalpy transfer (pumping) which is the
+       net enthalpy transport down the gap by virtue
+       of the working gas motion, pressure and tem-
+       perature.
+     • Hysteresis heat transfer which is the net heat
+       transfer from the gas to the cylinder due to
+       temperature gradients set up by the pressure
+       variations in the expansion space.
+
+   In addition, conduction losses through the wall
+and displacer must be accounted for.
+
+2.   Flow Power Losses
+Flow power loss occurs mostly in the regenerator re-
+gion due to pressure drop across the matrix (which
+may be enhanced by non-uniform flow). The vis-
+cosity of the working gas and gas spring hysteresis
+losses must also be accounted for.
+                                                                  (b) Ideal Adiabatic Model Equations
+3. Berchowitz Dynamic and Thermondynamic
+Closed Form                                                 Figure 6. Adiabatic Solution Process (Urieli)
+
+A closed form expression (Fig. 7) which included
+masses for dynamic as well as thermodynamic anal-
+ysis was derived by Berchowitz.26
+
+
+
+
+NASA/TM—2004-213300                                     6
+D.    Third Order Analysis
+Third order analysis uses control volumes or nodes
+to directly solve one-dimensional governing equa-
+tions. Some of the first analysis at this level
+of fidelity was by Finkelstein,28 Urieli,29 and
+Berchowitz.30
+    The codes by David Gedeon referred to
+as GLIMPS31, 32 and Sage33, 34, 35 are one-
+dimensional and solve the governing equations
+implicitly in space and time. The grid in-
+cludes all time because a periodic solution is as-
+sumed/forced. Therefore, it is not possible to
+model transient startup behavior.
+    The linearized harmonic analysis code re-
+ferred to as HFAST36 solved a steady-state pe-
+riodic problem in the frequency domain. Again,
+transient behavior is not modeled.
+    The code by Martini engineering37 was never
+validated but claimed transient modeling capa-
+bility. It is not clear the governing equations are
+being solved since it appears many simplifications
+based on experimental correlations are used.
+    Another unvalidated but interesting code by
+Renfroe38 attempted a one-dimensional analysis      Figure 7. Closed Form Adiabatic Solution (Schreiber)
+using explicit Runge-Kutta time stepping and a
+Newton solver to solve the nonlinear equations.
+    Finally, the Stirling dynamic model (SDM),39 uses a one-dimensional analogy of an entire Stirling con-
+vertor by linking together representative elements within the Simplorer(TM) commercial software package
+by Ansoft Corp. This tool enables approximate whole convertor dynamic analysis. Recent work attempts
+to incorporate thermodynamics via David Gedeon’s Sage code described earlier.
+
+E.   Fourth Order (Multi-Dimensional) Analysis
+At this level of analysis, relatively little has been completed because the third order analysis is faster and for
+the most part has been an adequate engineering tool. However, to improve efficiency further (to understand
+and reduce losses) it will likely require a better understanding of the actual flow features and heat transfer
+throughout the engine.
+
+1.   Modified Computer Aided Simulation of Turbulence (CAST)
+The modified CAST code40 is based upon the Semi-Implicit Method for Pressure-Linked Equations SIM-
+PLE41 method but is restricted to two dimensions.42 It was modified to include oscillatory boundary condi-
+tions and conjugate heat transfer. It has been used to model Stirling components but has not been extended
+to a whole engine simulation tool.
+    A pressure-splitting technique was added43 to reduce the computational requirements. It was based on
+separating the thermodynamic and hydrodynamic pressures so that these widely varying scales could be
+solved with less round-off error and better efficiency.
+
+
+
+
+NASA/TM—2004-213300                                     7
+2.   CFD-ACE
+This commercial code has been used to model a two-dimensional representative Stirling engine.44, 45 It is
+also based upon the SIMPLE technique. The regenerator is not currently modeled correctly since thermal
+equilibrium is assumed between the gas and solid. The code does not currently support sliding interfaces on
+parallel computers which is critical for modeling the appendix gap region.
+    This finite volume code can utilize both structured and unstructured grids.
+
+3.   Fluent
+This commercial code is also based upon the SIMPLE method (and PISO method for high speed flows). It
+currently has similar regenerator modeling limitations in that it is designed for non-oscillating flows. It does
+however have a sliding interface that could be used for appendix gap modeling on parallel computers. It
+is being used by several commercial manufacturers for this purpose (references are proprietary). It is also
+finite volume based and can utilize both structured and unstructured grids.
+
+4.   STAR-CD
+The Simulation of Turbulent Flow in Arbitrary Regions (STAR)46 code also uses SIMPLE and PISO methods.
+Its companion product (STAR-HPC) is the parallel computer version. It also has sliding interfaces and
+deforming mesh capability. It has been used in the related field of internal combustion engine piston modeling,
+and some Stirling engines have been modeled with it.47
+
+5.   CFX
+This code also used SIMPLE and PISO methods on unstructured grids. It also has sliding interfaces imple-
+mented, but no stirling engine modeling with this software has been publicly published.48
+
+6.   Others
+While there are other in-house codes, they are usually limited to modeling only specific regions of the Stirling
+engine such as the regenerator, or the displacer.
+
+                                   IV.     Whole Engine Modeling
+    The use of two-dimensional CFD models can significantly extend the capabilities, compared to third-order
+analysis, for the more detailed analysis of the complex heat transfer and gas dynamical processes which occur
+in the internal gas circuit.52 A standard κ −  turbulence model has been used for such two-dimensional
+simulations, but the flow is constantly transitioning from laminar to turbulent and back. A better numerical
+model would be large eddy simulation due to the transient nature of the flow. More recently, full 3-D
+calculations have been performed with a commercial code.53 The temperature results are similar to the
+second order method results.54 The multidimensionally computed power, however, was about half of the
+second order prediction. Moreover, along the axis of the compression space it was found the change of the
+temperature of the working gas was quite different from harmonic in time. Third order modeling efforts can
+resolve higher harmonics of periodic time functions and therefore if enough grid points are available in time
+they can achieve similar results. However, turbulence is inherently a-periodic and it is not clear if third order
+modeling efforts which assume periodic solutions can fully capture this.
+
+
+
+
+NASA/TM—2004-213300                                    8
+                                   V.    Regenerator Modeling
+                                                  A very important specific area of modeling difficulty is the
+                                              regenerator. As shown in Fig. 8, since the regenerator (depend-
+                                              ing upon one’s definition of effective) has roughly 3 to 40 times
+                                              more effective heat transfer than the heater,55 any inefficiency
+                                              of the regenerator represents a significant loss for the entire
+                                              Stirling engine. Hence, any numerical losses in this region will
+                                              disproportionately influence the entire Stirling simulation. A
+                                              new low loss numerical method will be proposed later to ad-
+                                              dress this.
+
+                                              A.    Manifest
+                                              The code referred to as Manifest21 solved the porous medium
+                                              model equations shown below:
+                                                             k
+Figure 8. Importance of Properly Modeling      ∂M     J ∂     G
+the Regenerator for System Studies (Urieli)    ∂τ + β∂yk     J k
+                                                                    =0
+                                                                                                                     
+                                                  n                        β       ∂yk
+                                               ∂G         ∂     G                              ∂    P ∂yk                 ∂yn
+                                                ∂τ  +  J ∂yk    J  u j −  J τ eij ∂xi   + βJ ∂yk   J ∂xj   + βψ jk u k   ∂xj = 0
+                                                                                                              
+                                               ∂E    J ∂      E    k     1          k    1           k    β k
+                                               ∂τ + β ∂yk     J βu + J (P βV ) − J (τe − βV ) + J qe − Q = 0
+                                               ∂
+                                               ∂τ (λTs ) + Q = 0
+                                                                                                      (2)
+                                             where M = ρ, G = βρV, E = ρe, using the Beam and Warm-
+                                             ing56 implicit time stepping approach. This code was written
+in curvilinear coordinates and seemed to perform well for low Reynolds number jets impinging the matrix.
+It was not developed further because of excessive computational time.
+
+
+
+
+      (a) Idealized Geomertry             (b) Regularized Geometry                  (c) Photographed Geometry
+
+
+                                     Figure 9. Regenerator Geometry
+
+
+   Another important issue is the geometrical shape of the matrix in the regenerator. As shown in Fig. 9,
+most regenerator models don’t assume a precise geometrical shape for the elements of the regenerator.
+However, as reported in Park,49 a simple-to-fabricate woven mesh, consisting of bonded laminates of two-
+dimensional plain-weave conductive screens can be manufactured to have a wide range of porosity and a
+highly anisotropic thermal conductivity vector. In addition to providing superior performance in many
+
+
+
+
+NASA/TM—2004-213300                                    9
+cases,50 the regular geometry greatly simplifies the analysis. However, those mesh sheets are not woven wire
+screens formed by etching used in regenerators which may in practice not be as precisely formed as mesh
+sheets.
+
+                               VI.     Numerical Error and Efficiency
+     The critical issues in simulating a Stirling engine are:
+
+     1. The artificial numerical losses should be a small percentage of the actual losses
+
+     2. The simulation must complete in a reasonable amount of time.
+
+    The first issue is a problem with many commercial codes that utilize low order methods. For example,
+this problem can be observed with a simple first order approximation of the first derivative:
+
+                                        dF (t)   ∆F   F (t + ∆t) − F (t)
+                                               ≈    =                                                         (3)
+                                         dt      ∆t          ∆t
+   We may assume we are computing the derivative of a simple harmonic function, F (t) = eiωt . We find
+the first order derivative approximation in Eq. (3) results in the solution:
+                                                            ∆t              ∆t
+                                                                                  ∆t 
+                            ∆F    eiωt (eiω∆t −1)      iωt    eiω 2 −e−iω 2          eiω 2
+                            ∆t =         ∆t       = iωe               2i              ω ∆t
+                                                                                        2
+                                                                            
+                                                                 sin( ω∆t
+                                                                           )       ∆t
+                                                    = iωeiωt         ω∆t
+                                                                        2
+                                                                               eiω 2
+                                                                      2
+                                                                              !                    (4)
+                                                                sin ω∆t
+                                                                            
+                                                      dF (t)             2          iω ∆t
+                                                    = dt            ω∆t
+                                                                                  e| {z2}
+                                                                      2
+                                                             |       {z       } Dispersion
+                                                                Dissipation
+
+     Higher order approximations of the derivative introduce similar errors, but their relative effect is less.
+
+A.     Time Advance Error
+In addition to the spatial and temporal discretizations which produce the dispersive and dissipative errors
+as discussed, another form of error which is important for oscillating flows is improperly modeled multi-
+dimensionsal boundary conditions.
+    As an example, consider the pressure near the displacer wall. The numerical approach can be expanded
+as a Taylor series in time:
+
+                                                                   ∂p ∆t2 ∂ 2 p
+                               p(x, y, t + ∆t) = p(x, y, t) + ∆t      +         + ...                         (5)
+                                                                   ∂t   2! ∂t2
+
+     If the time derivatives are written as space derivatives (for simplicity consider 2D Euler flows):
+                                                                         
+                                    ∂p         ∂p      ∂p         ∂u ∂v
+                                       =− u        +v     + γp        +                                       (6)
+                                    ∂t         ∂x      ∂y         ∂x ∂y
+
+   Then clearly these spatial derivatives must be properly defined at a surface for the time derivative to be
+correct. Unfortunately, most commercial codes only impose the no-flow condition and these spatial derivative
+terms are not properly posed at the boundary.51 This error represents the wrong time-accurate physics near
+walls. If the walls are moving (such as in a displacer) this error is more pronounced.
+
+
+
+
+NASA/TM—2004-213300                                      10
+    Higher time derivatives have many more terms in them that
+are generally incorrectly modeled at surfaces. For example
+in Fig. 10, the colored terms represent commonly improperly
+posed terms. The pink represents first order or dispersive error,
+the green represents diffusive error, and the blue represents an
+error in the entropy terms. In an oscillating flow loss study,
+these terms can become significant as time accumulates.
+
+B. Description of the SIMPLE method commonly
+used
+The Semi-Implicit Method for Pressure-Linked Equations
+(SIMPLE) is used in most of the commercial codes today. An
+understanding of its effect on Stirling simulations is important
+for interpreting the losses found from present computational
+analysis.                                                               Figure 10. Second Time Derivative
+
+C.   Improving Efficiency
+One of the primary limitations of using commercial codes today
+for three-dimensional analysis of Stirling cycle engines is the
+time it takes for second order accurate analysis. A recent trend which improves this situation is relatively
+low-cost parallel computers (pictured in Fig. 11(a)). The trend is for more processors on a single board and
+for higher speed communications linking many boards together. Many commercial codes using the SIMPLE
+method can now utilize parallel computing, however, there still seems to be a practical limit due to the
+implicit nature of the method. Further improvement in performance can be expected by utilizing high order
+methods as shown in Fig. 11(b). The higher order methods in conjuction with parallel computing offer the
+promise of design speed analysis. An explicit method with these properties is presented in the next section.
+
+
+
+
+     (a) Cluster Computing                                      (b) Efficiency Chart
+
+
+                             Figure 11. Enhancing Simulation Performance
+
+
+
+
+NASA/TM—2004-213300                                   11
+      VII.     Proposed Computational Stirling Analysis Numerical Approach
+                                                   Computational Stirling Analysis (CSA) requires efficient,
+                                              high-resolution simulation tools. Most current CSA techniques
+                                              utilize low order finite-volume approaches because high order
+                                              accuracy is considered too difficult or expensive to achieve and
+                                              hopefully unnecessary for some problems. As shown in Fig. 12,
+                                              these low order techniques require a relatively dense grid com-
+                                              pared to the high order approaches. Two notable exceptions
+                                              are the finite-volume WENO and finite element Discontinuos
+                                              Galerkin Methods (DGM).57 However, they tend to be inef-
+                                              ficient computationally due to their use of unstructured grids
+                                              and complicated mathematics.
+                                                   Although finite difference techniques have been developed
+                                              which maintain low losses over time, they have great difficulty
+Figure 12. Points Per Wavelength Compar- insuring flow conservation in crucial locations (i.e. appendix
+ison                                          gap, moving geometry). Moreover, the finite difference form
+                                              produces grid singularities at block corners of a multiblock
+curvilinear grid. In three dimensions, grid singularities become lines of only first order accuracy which
+swirling turbulent flow will force convected disturbances through.
+    It’s accepted common practice to use low-order finite volume techniques in computational fluid dynamics58
+precisely because of the drawbacks of finite-difference techniques in complex geometry. CSA has focused on
+low order finite-volume techniques because it is not currently clear how to extend finite-volume techniques
+to very high order. Only recently have modest improvements in the accuracy been achieved. For example,
+Agarwal59 has developed a fourth order finite volume technique for the Euler equations on unstructured
+grids. And, Wang60 developed a fourth order optimized structured/curvilinear finite-volume technique. And,
+Rezgui61 has developed a third-order finite-volume Euler solver. A low dispersion finite volume technique
+by Nance62 used Tam’s dispersion relationship preservation on the interpolated flux to improve spatial
+resolution. And most recently, Z.J. Wang63 developed a spectral volume method in which more degrees of
+freedom are made available by using subcells within a cell. As shown in Figs. 13 and 14, the third order
+method produced better results while using exactly the same number of degrees of freedom.
+    These recent developments demonstrate the feasibility and importance of high order low dissipation low
+dispersion finite-volume techniques. But their basic approaches severely limit their potential for very high-
+order extensions which are known to produce significant performance improvements51 without the need for
+special optimizations.
+    Building upon previously established Hermitian finite-difference approaches,51 this work utilizes the spa-
+tial derivatives of the convective fluxes to insure exceptionally high resolution and efficiency in complex
+geometries. The technique can be used to model a complete Stirling engine.
+
+                                   VIII.      Numerical Approach
+    For pedagogical simplicity, the two-dimensional Euler equations will be shown, but the extension to fully
+viscous flows is straight-forward. The finite-volume form of the Euler equations is normally solved in physical
+
+
+
+
+NASA/TM—2004-213300                                   12
+       (a) 2nd Order Faceted                       (b) 2nd Order Curved                (c) 3rd Order
+
+
+Figure 13. Density Contour-Comparing faceted geometry (a), curved geometry (b), and curved geomtry higher
+order (c)
+
+
+
+
+       (a) 2nd Order Faceted                       (b) 2nd Order Curved                (c) 3rd Order
+
+
+Figure 14. Entropy Production-Comparing faceted geometry (a), curved geometry (b), and curved geomtry
+higher order (c)
+
+
+
+coordinates and can be written as:58
+                                       ∂~ dΩ +     F~ dS = Ω QdΩ
+                                                              ~
+                                           R   H            R
+                                    ∂tW     Ω ∂Ω c 
+                              ρ                ρV
+                             ρu  ~       ρuV + nx p 
+                                                    
+                        ~ =
+                        W       , Fc =               , V ≡ ~v · ~n = nx u + ny v                   (7)
+                            ρv          ρvV + ny p 
+                             ρE             h ρHV       i    2   2
+                                   p = (γ − 1)ρ E − u +v
+                                                      2              , H = E + ρp
+
+   However, recently structured multiblock grid generators have become available that can generate a very
+smooth curvilinear grid. Therefore, the following finite-volume form of the Euler equations can be used
+with many advantages over the traditional physical coordinate system finite volume (used in commercial
+packages) and the curvilinear multiblock finite difference methodologies.67, 68
+                               R  ∂W~1
+                                                       R  ∂ F~1   ∂G~1
+                                                                         
+                                Ω   ∂t    dξdη   =    −  Ω   ∂ξ   +  ∂η    dξdη
+                                                        H                                           (8)
+                                                 = − ∂Ω F~1 dη − G     ~ 1 dξ
+
+
+
+
+NASA/TM—2004-213300                                        13
+where
+                                  ~1
+                                  W       = JW ~
+                                  F~1          ~ ∂ξ
+                                          = J F ∂x  + JG~ ∂ξ = F~ ∂y − G
+                                                          ∂y      ∂η
+                                                                       ~ ∂x
+                                                                         ∂η                                (9)
+                                  G~1     = J F~ ∂η + J G
+                                                        ~ ∂η = −F~ ∂y − G~ ∂x
+                                                   ∂x          ∂y         ∂ξ       ∂ξ
+The jacobian determinant, J, is defined by:
+                                                                ∂x   ∂y
+                                            J ≡ ∂(x,y)
+                                                ∂(ξ,η) ≡
+                                                                ∂ξ
+                                                                ∂x
+                                                                     ∂ξ
+                                                                     ∂y                                   (10)
+                                                                ∂η   ∂η
+
+   And the original Cartesian solution and flux vectors are:
+                                                                         
+                           
+                              ρ           
+                                                   ρu     
+                                                                 
+                                                                       ρv    
+                                                                              
+                                                 2
+                                                                            
+                              ρu                 ρu   + p              ρuv
+                                                                         
+                     ~
+                     W =                ~
+                                      , F =                    ~
+                                                             , G=                                         (11)
+                           
+                           
+                             ρv 
+                                  
+                                             
+                                             
+                                                  ρuv     
+                                                           
+                                                           
+                                                                  
+                                                                  
+                                                                    ρv 2 + p 
+                                                                              
+                                                                              
+                              ρE                ρuE + pu            ρvE + pv
+                                                                         
+
+                                                                                                2
+E is total energy (internal energy plus kinetic energy) per unit mass, E = e + V2 .
+    The surface integrals can be simply performed in the computational space since all cells have unit spacing.
+Since derivatives of the solution are also available one can assume a polynomial shape function69 and the
+integrals become:
+                      R1
+                         F~1 (ξ, η)dη =
+                                          R
+                       0
+                                            (~a00 + ~a10 ξ + ~a01 η + ~a11 ξη)dη
+                                       = ~a00 ∆η + ~a10 ξ∆η + ~a01 12 (∆η)2 + ~a11 12 ξ(∆η)2
+                      R1                                                                                   (12)
+                          ~ 1 (ξ, η)dξ =
+                                          R
+                       0
+                         G                  (~a00 + ~a10 ξ + ~a01 η + ~a11 ξη)dξ
+                                       = ~a00 ∆ξ + ~a10 12 (∆ξ)2 + ~a01 (∆ξ)η + ~a11 12 (∆ξ)2 η
+where ∆ξ = ∆η = 1. The ai,j coefficients can be found using Hermitian divided differences51 As was done by
+Agarwal59 and similar to Goodrich70 the governing equations may be differentiated as follows in curvilinear
+coordinates:            R  ∂ m+n+1 W               H  m+n ~                     
+                                      ~1                               m+n ~
+
+                         Ω  ∂ξ m ∂η n ∂t   dξdη = − ∂Ω ∂∂ξm ηFn1 dη − ∂∂ξm ηGn1 dξ                     (13)
+   The fluxes may be calculated either using Jameson71 style centered, but high order flux differences or by
+using a pseudo one-dimensional Riemann solution between the left and right states as follows:59
+                                                                                
+                                1
+                        F~1m,n = F~1m,n + F~1m,n −S|∆|∆−1 S −1 (F~1m,n − F~1m,n )                       (14)
+                                                                                  
+                                2 | {z } | {z }                  | {z } | {z }
+                                        Right     Lef t                        Right    Lef t
+
+where S is the similarity matrix for diagonilizing the Jacobian ∂ F~1m,n /∂Wm,n , ∆ is the eigenvalue diagonal
+matrix, and |∆| refers to the spectral radius of ∆.
+    With these developments many arbitrary accuracy finite volume schemes can be implemented to arbitrary
+order accuracy in space. The time advancement may be implemented with Runge-Kutta schemes for low
+frequency Stirling simulations that contain high wavenumber requirements (steep flow gradients). Or the
+recursive time advance technique51 could be used to achieve arbitrary accuracy in time as well.
+
+                                   IX.          Curvilinear Grid Issues
+   One of the primary advantages of this finite-volume formulation over the common finite difference ap-
+proach is in resolving grid singularity issues as shown in Fig. 15.
+   For the following reasons, a structured curvilinear multiblock arbitrary accuracy finite volume CSA code
+should be developed:
+
+
+
+
+NASA/TM—2004-213300                                       14
+          (a) Metric Term Gradient Distribution               (b) Grid Singularity Avoided With Finite Volume
+
+
+Figure 15. Grid singularities are unavoidable in complex geometries and act as a source of 1st order noise for
+finite difference methods. For example, calculating a derivative with a 7-point stencil (marked with ”A” or
+”B”) is indeterminate. A finite volume (with volumes ”V”) method communicates through faces and hence
+this grid poses no problems for it.
+
+
+
+   • Calculating spatial derivatives is reduced to 1st order accuracy at grid singularities with a finite-
+     difference method. However, a finite-volume method communicates through cell faces only and for the
+     grid singularity shown all faces are uniquely defined.
+   • In three-dimensions this advantage is significant because grid singularities become lines of first order
+     error. The swirling turbulent flow in the expansion and compression spaces will cause all convected
+     disturbances to travel through this region with many undesirable side effects.
+   • In addition to enabling high accuracy everywhere this formulation will resolve high curvature without
+     requiring as many grid points when the fluxes are written in strong conservation form.
+   • Parallel implementation is direct as well and does not require changing the wave propagation speeds
+     that converting from an implicit compact to an explicit centered scheme does.
+   • Flat plates are easily solved and therefore code validation can be performed on standard oscillating
+     flow flat plate heat exchanger before trying more complex problems.
+
+                                     X.     Time-Stepping Options
+    One significant difference with time-stepping finite-volume cells relative to finite-difference and finite-
+element cells is the time derivatives are actually cell averages. So it is possible to contain physical shocks
+within a cell and its cell average derivatives still are defined. Thanks to the property that integration ignores
+singularities, it seems plausible to have both high order accuracy and shocks without sacrificing either.
+    Standard Runge-Kutta time-stepping can be used, but it’s not recommended because fidelity and stability
+is sacrificed since currently available methods effectively widen the stencil because they do not properly
+account for the presence of spatial derivative information on the grid.
+
+
+
+
+NASA/TM—2004-213300                                    15
+ A.     Arbitrary Time Accuracy
+ If higher operating frequencies in Stirling devices are encountered then a recursive51 technique of time-
+ stepping can be used on each cell. Again, since the mixed space-time derivatives are actually cell averages,
+ they are still defined even in shocked flow.
+
+                                          XI.      Flux Interpolation
+     It is necessary to convert the spatially-averaged cell quantities to a form for interpolating the fluxes at the
+ cell edges. The spatially averaged flow variables can be used as constraints as done by Lomax.72 This requires
+ solving a matrix system for a polynomial that when volume integrated matches the spatially-averaged cell
+ quantity. If Hermite data is on the grid, then for example, a single cell interpolation with f, fx , fxx produces
+ a fourth order technique if the left and right interpolated fluxes are averaged. However, by using data from
+ two neighboring cells we can get 6th order accuracy.
+     If we have up to s derivatives in each cell, as shown in the figure 16,
+
+
+                                                  j-1/2               j+1/2
+                                                             ∆x
+                                                                 -
+
+                                       t          t      t     t               t
+                                       j-2        j-1    j     j+1             j+2
+                                                     L R   L R
+
+
+
+
+                                   Figure 16. Control volume in one dimension
+
+
+      we can assume that the polynomial interpolating the flow variables looks like for cells j and j + 1:
+                                                             2s+1
+                                                             X
+                                                    u(ξ) =          ai ξ i                                     (15)
+                                                              i=0
+
+      The following constraints are applied to find the coefficients ai :
+                                                1
+                                                   R ∆x/2 ∂ m u(ξ)   ∂ m u¯j
+                                              ∆x −∆x/2 ∂xm dξ = ∂xm
+                                              1
+                                                  R 3∆x/2 ∂ m u(ξ)  ∂ m uj+1
+                                                                          ¯                                    (16)
+                                             ∆x ∆x/2        ∂xm dξ = ∂xm
+
+ with m=0 up to s.
+    The flux can then be calculated at the cell faces using the high order interpolant.
+    A 41st order method using two cells would require inverting a 41 × 41 matrix which gets expensive.
+ The problem is worse in multiple dimensions. Instead, we can use the extended divided differences51 and a
+ process known as reconstruction via the primitive function64 or RP (see Colella and Woodward.73
+    Steps are for all m=0 up to s:
+Step 1 Find Fm (x−1/2 ) = 0, Fm (x1/2 ) = ∆xf¯m j Fm (x3/2 ) = ∆xf¯m j + ∆xf¯j+1
+Step 2 Use Hermitian divided differences on the data in Step 1 to create an interpolation polynomial. Choose
+       a local coordinate system with ξ = 0 somewhere in the two cells. The coefficients of P (ξ) = b0 + b1 ξ +
+       1     2
+       2 b2 ξ + . . . can be found. This function is also easily differentiated.
+
+
+
+
+ NASA/TM—2004-213300                                         16
+Step 3 And then, since the sample function f (ξ) = ∂F
+                                                   ∂x and F (x) ≈ P (x), a function approximating f(x) is
+       p(x) = dPdx(x)
+     For constant ∆x can use reconstruction via deconvolution.
+     With these developments high order finite volume integration is possible. The spatial accuracy is high
+ via the previous step. Now we can time advance by converting higher order cell averaged time derivatives
+ to first order cell averaged time derivatives using the Cauchy-Kowalewski approach.
+     So we time advance the averages (using the fluxes and their derivatives). We get new cell-averaged
+ quantities at the next time level. We repeat the reconstruction to get new flux interpolants.
+
+                                            XII.     Conclusion
+     A review of the techniques used for analyzing the Stirling cycle has been presented. As the fidelity of this
+ analysis has improved, so has the efficiency of the cycle in realized designs. Recent attempts at modeling
+ a full Stirling engine have utilized commercial codes which have recently enhanced their ability to simulate
+ moving, deforming, and sliding meshes. Further improvements in the analysis will require additional research
+ in the key areas of regenerator modeling and higher fidelity numerical approaches.
+     The regenerator is perhaps at the same time the most difficult and important region to model. A
+ combination of direct numerical simulation, better theoretical representations, and high efficiency numerical
+ methods on parallel computers will be required. Some of the more recent higher fidelity simulations of porous
+ media were presented and appeared to indicate a trend towards modeling with higher order methods.
+     Also, a review of the advantages of recently developed high fidelity finite volume methods was presented
+ and a novel numerical approach for achieving extraordinary levels of fidelity in Stirling engine simulations
+ was described. And, for completeness, the bibliography contains additional references that expand upon the
+ review presented but due to the constraints of space and time have not been specifically commented on here.
+
+
+
+
+ NASA/TM—2004-213300                                   17
+                                                       References
+       1 Beale, W.T.:”Free Piston Stirling Engines - Some Model Tests and Simulations”, [Preliminary investigation of free-piston
+
+Stirling engines.], SAE International Automtive Engineering Conference, Jan. 1969
+       2 : Wood, J.G. : ”Status of Free-Piston Stirling Technology at Sunpower, Inc.”, 1st IECEC, AIAA 2003-6056, Aug. 2003
+       3 Thieme, L.G.; Schreiber, J.G. : ”NASA GRC Stirling Technology Development Overview”, NASA/TM-2003-212454,
+
+Aug. 2003
+       4 Oleson, S., Benson, S., Gefert, L., Patterson, M., Schreiber, J. : ”Radioisotope Electric Propulsion for Fast Outer
+
+Planetary Orbiters”, NASA/TM-2002-211893, Sept. 2002
+       5 Cengel, Y.A.; Boles, M.A. : ”Thermodynamics: An Engineering Approach”, McGraw-Hill, 1989
+       6 Tew, R.C., Thieme, L.G., Dudenhoefer, J.E. : ”Recent Stirling Engine Loss-Understanding Results”, 25th IECEC,
+
+NASA TM 103122, 1990
+       7 Hirata, K., Kagawa, N., Takeuchi, M., Yamashita, I., Isshiki, N., Hamaguchi, K. : ”Test Results of Applicative 100 W
+
+Stirling Engine”, 96204.
+       8 Ibrahim, M.B., Tew, R.C., Zhang, Z., Gedeon, D. Simon, T. : ”CFD Modeling of Free-Piston Stirling Engines”,
+
+NASA/TM-2001-211132, IECEC2001-CT-38, Sept. 2001.
+       9 Dyson, R.W., ”Technique For Very High Order Nonlinear Simulation and Validation”, J. Comp. Acoustics, Vol. 10, No.
+
+2, pp. 211-229, 2002.
+      10 Carpenter, M.H., Nordstrom, J., Gottlieb, D. ”A Stable andConservative Interface Treatment of Arbitrary Spatial
+
+Accuracy”, Institute for Computer Applications in Science and Engineering (ICASE) Report No. 98-12, 1998.
+      11 Carpeneter, M.H., Casper, J.H. ”The Accuracy of Shock Capturing in Two Spatial Dimensions”, AIAA 97-2107, July
+
+1997.
+      12 Tew, R.C., Ibrahim, M.B. : ”Two-dimensional Compressible Non-Acoustic Modeling of Stirling Machine-Type Compo-
+
+nents”, J. of Prop. and Power, Vol. 19, No. 5, Sept.-Oct. 2003
+      13 Thieme, L.G., Schreiber, J.G., Mason, L.S. : ”Stirling Technology Development at NASA GRC”, NASA/TM-2001-
+
+211315/REV1, Jan. 2002
+      14 Tew, R.C., Cairelli, J.E., Ibrahim, M., Simon, T.W., Gedeon, D.: ”Overview of NASA Multi-Dimensional Stirling
+
+Convertor Code Development and Validation Effort”, NASA/TM-2002-211997, Dec. 2002.
+      15 Tew, R., Ibrahim, M., Simon, T., Mantell, S., Gedeon, D., Qui, S., Wood, G.: ”Overview 2003 of NASA Multi-D
+
+Stirling Convertor Code Development and DOE & NASA Stirling Regenerator R & D Efforts”, NASA TM-2004-212908, Space
+Technology Applications Int. Forum 2004.
+      16 Widmann, J.F. : Developed while author at Fluent training in Lebanon, N.H., 2004
+      17 Schreiber, J. : ”Tutorial on Free-Piston Stirling Power Conversion Technology (How Does it Work?), Space Technology
+
+and Applications International Forum, Feb. 2001
+      18 Schreiber, J.G., Thieme, L.G., Mason, L.S.: ”Status of Free-piston Stirling Power Conversion in the United States Space
+
+Program”, 10th International Stirling Engine Conference, Osnabruk, Germany, Sept. 2001.
+      19 Furlong, R., Shaltens, R. : ”Technology Assessment of DOE’s 55-We Stirling Technology Demonstrator Convertor
+
+(TDC)”, NASA/TM-2000-210509, Oct. 2000
+      20 Kaviany, M. : ”Performance of a Heat Exchanger Based on Enhanced Heat Diffusion in Fluids by Oscillation: Analysis”,
+
+J. of Heat Transfer, Vol. 112 (49), Feb. 1990
+      21 Gedeon, D. : ”Manifest: A Computer Program for 2-D Flow Modeling in Stirling Machines”, NASA CR-182290, 1989
+      22 Martini, W.R.: ”Stirling Engine Design Manual, 2nd Ed.”, NASA CR-168088, Jan. 1983
+      23 West, C.D. : ”Principles and Applications of Stirling Engines”, Van Nostrand Reinhold Company, New York, 1986.
+      24 Urieli, I., Berchowitz, D.M. : ”Stirling Cycle Engine Analysis”, Adam Hilger Ltd., Bristol, 1984.
+      25 Schmidt, G. : ”The Theory of Lehmann’s Calorimetric Machine Z. Ver. Dtsch Ing.”, Vol. 15, Part 1, 1871
+      26 Berchowitz, D.M. : ”Stirling Cycle Engine Design and Optimization”, Aug. 1986
+      27 Zimmerman, F.J. and Longsworth, R.C. : ”Shuttle Heat Transfer”, Cryogenic Engineering Conference paper H-5 Boul-
+
+der, CO.
+      28 Finkelstein, T. :”Computer Analysis of Stirling Engines”, Proc. 10th IECEC, Aug. 1975.
+      29 Urieli, I., Rallis, C.J., Berchowitz, D.O.M.: ”Computer Simulation of Stirling Cycle Machines”, Proc. 12th IECEC, Aug.
+
+1977.
+      30 Berchowitz, D.M. : ”A Computer and Experimental Simulation of Stirling Cycle Machines”, Master’s Thesis, University
+
+of Witwatersrand, March 1978.
+      31 Gedeon, D. : ”GLIMPS Version 4: User’s Manual”, Gedeon Associates, July 1992.
+      32 : Geng, S.M., Tew, R.C. : ”Comparison of GLIMPS and HFAST Stirling Engine Code Predictions with Experimental
+
+Data”, NASA TM-105549, 27th IECEC, Aug. 1992
+      33 Gedeon, D. : ”Sage - Object-oriented software for Stirling machine design”, AIAA Paper 94-4106. 1994
+      34 Gedeon, D. : ”Sage:Stirling-Cycle Model-Class Reference Guide, Third Ed.”, Gedeon Assocatiates, 1999
+      35 Gedeon, D. : ”Sage:User’s Guide, Third Edition” Gedeon Assocatiates, 1999
+
+
+
+
+NASA/TM—2004-213300                                            18
+        36 Huang, S.C. :   ”HFAST Version 2.00: User Manual”, Mechanical Technology, Inc., NASA Contract NAS3-25330, Jan.
+1993.
+     37 Martini, W.R. : ”A Computer Simulation of the Transient Response of a 4 Cylinder Stirling Engine with Burner and
+
+Air Preheater in a Vehicle”, Martini Engineering, DOE/NASA/0226-1, NASA CR-165262, March 1981
+     38 Renfroe, D.A. : ”A Computer Model of a Stirling Engine Using a Two-Phase Two-Component Working Fluid”, Ph.D.
+
+Dissertation, Texas A&M University, May, 1981.
+     39 : Regan, T.F., Gerber, S.S., Roth, M.E. : ”Development of a Dynamic, End-to-End Free Piston Stirling Convertor
+
+Model”, NASA/TM-2004-212941
+     40 Peric, M., Scheuerer, G.: ”CAST - A Finite Volume Method for Predicting Two-dimensional Flow and Heat Transfer
+
+Phenomena”, GRS-Technische Notiz, SSR-89-01, Sept. 1989.
+     41 Patankar, S.V., Spalding, D.B. : ”A Calculation Procedure for Heat, Mass, and Momentum Transfer in Three-
+
+Dimensional Parabolic Flows”, Int. J. Heat Mass Transfer, Vol. 15, p. 1787, 1972
+     42 Ibrahim, M., Kannapareddy, M. : ”Computational Heat Transfer Analysis for Oscillatory Channel Flows”, NASA-CR-
+
+199238, 1992
+     43 Guo, G., Kurzweg, U.H. : ”2D Numerical Simulation of Heat Transfer in a Stirling Microrefrigerator Model”, AIAA
+
+Paper 96-1807, 31st AIAA Thermophysics Conference, New Orleans, LA, June, 1996
+     44 Ibrahim, M., Mittal, M.: To be presented at AIAA IECEC conference, Rhode Island, 2004.
+     45 Wilson, S.D., Dyson, R.W., Tew, R.C. : ”Multi-D CFD Modeling of Free-Piston Stirling Convertor at NASA GRC”,
+
+2nd AIAA IECEC, Aug. 2004.
+     46 Star    CD,      ”Methology”,Computational        Dynamics      Limited,    2002     http://www.fnb.maschinenbau.tu-
+darmstadt.de/de/software/starcd/manuals/method/star method.pdf
+     47 Zhang, Z. Posted on the web at http://www.cfdreview.com/jobs.pl?op=view res&rid=264, No specific details since
+
+proprietary, 2003
+     48 Computational Fluids Dynamics Company website at http://www-waterloo.ansys.com/cfx.
+     49 Park, J., Ruch, D., and Wirtz, R.A. : ”Thermal/Fluid Characteristics of Isotropic Plain-weave Screen Laminates as
+
+Heat Exchange Surfaces”, AIAA 2002-0208, 2002.
+     50 Kitahama, D., Takizawa, H., Kagawa, N., Matsuguchi, A., Tsuruno, S.L: ”Performance of New Mesh Sheet for Stirling
+
+Engine Regenerator”, 1st IECEC, Portsmouth, VA, Aug. 2003
+     51 Dyson, R.W. : ”Towards Arbitrary Accuracy Inviscid Surface Boundary Conditions”, AIAA Paper 2002-2438, June
+
+2002
+     52 Makhkamov, K., Ingham, D.B. : ”Theoretical Investigations on the Stirling Engine Working Process”, A00-37715,
+
+AIAA-2000-2815, 2000
+     53 Makhkamov, K., Djumanov, D. : ”Three-dimensional CFD modeling of a Stirling engine”, ST TA1 15, 11th Int. Stirling
+
+Engine Conf., Rome, Italy, Nov. 2003
+     54 Mahkamov, K., Djumanov, D., Orunov, B., Korobkov, A. : ”A γ - Type Stirling Engine: Some Results of Second-Order
+
+Numerical Simulations and Experimentals Tests”, 1st Int. Energy Conversion Eng. Conf., AIAA 2003-5933, Aug. 2003
+     55 Gedeon, D., Tew, R. : Personal Communication, 2004
+     56 Beam, R.M., Warming, R.F. : ”An Implicit Finite-Difference Algorithm For Hyperbolic Systems in Conservation Law
+
+Form”, J. Comp. Phys., Vol. 22, No. 1, pp. 87-110, 1976
+     57 Shu, C., ”High-order Finite Difference and Finite Volume WENO Schemes and Discontinuous Galerkin Methods for
+
+CFD”, Int. Journal of Comp. FluidDynamics, Vol. 17, No. 2, pp. 107-118, 2003
+     58 Blazek, J., ”Computational Fluid Dynamics: Principles and Applications”, Elsevier, New York, 2001
+     59 Agarwal, R.K. and Halt, D.W., ”A Compact High-Order Unstructured Grids Method for the Solution of Euler equa-
+
+tions”, Int. Journal For Numerical Methods in Fluids, Vol. 31, pp. 121-147, 1999
+     60 Wang, G. and Sankar, L.N., ”Prediction of Rotorcraft Noise with aLow-Dispersion Finite Volume Scheme”, Vol. 38, No.
+
+3, March 2000
+     61 Rezgui, A., Cinnella, P., Lerat, A., ”Third-order Accurate Finite Volume Schemes for Euler Computations on curvilinear
+
+meshes”, Computers & Fluids, Vol. 30, pp. 875-901, 2001
+     62 Nance, D.V., Viswanathan, K., Sankar, L.N., ”Low-Dispersion Finite Volume Scheme for Aeroacoustic Applications”,
+
+AIAA J., Vol. 35, No. 2, Feb. 1997
+     63 Wang, Z.J. : ”The spectral-volume method for the Euler equations with high-order boundary representations”, Com-
+
+putational Fluid and Solid Mechanics, K.J. Bathe (Editor), 2003
+     64 Laney, C. B., ”Computational Gasdynamics”, Cambridge University Press, New York, 1998
+     65 Stanescu, D., Habashi, W.G., ”2N-Storage Low Dissipation and Dispersion Runge-Kutta Schemes for Computational
+
+Acoustics”, Journal of Computational Physics, Vol 143, no. 2, 1998, pp. 674.
+     66 Ralston, A., Rabinowitz, P., ”A First Course in Numerical Analysis”, McGraw-Hill Book Company, New York, 1978.
+     67 Anderson, J.D., ”Computational Fluid Dynamics: the Basics with Applications”, McGraw-Hill, 1995
+     68 Hoffman, K.A., Chiang, S.T., ”Computational Fluid Dynamics ForEngineers – Volume II”, Engineering Education
+
+System, Wichita, Kansas, 1993
+
+
+
+
+NASA/TM—2004-213300                                           19
+     69 Ferziger, J.H., Peric, M., ”Computational Methods for Fluid Dynamics”, Springer-Verlag, 1999
+      70 Goodrich, J.W., ”Accurate finite difference algorithms for computational aeroacoustics, ” in Computational Fluid Dy-
+
+namics Review 1998, ed. M.M. Hafez and K. Oshima (World Scientific, Singapore, 1998).
+      71 Jameson, A.; Schmidt, W.; Turkel, E.: ”Numerical Solutions of the Euler Equations by Finite Volume Methods Using
+
+Runge-Kutta Time-Stepping Schemes. AIAA Paper 81-1259, 1981.
+      72 H. Lomax, T.H. Pulliam, D.W. Zingg, ”Fundamentals of Computational Fluid Dynamics”, Springer-Verlag, 2001
+      73 Collela, P., and Woodward, P.R. 1984. ”The Piecewise Parabolic Method (PPM) for Gas-Dynamical Simulations”,
+
+Journal of Comp. Physics,54: 174-201.
+      74 Daniele, C.J., Lorenzo, C.F. A Four-Cylinder Stirling Engine Computer Program with Dynamic Energy Equation,
+
+NASA-TM-83053, May, 1983
+      75 Lorenzo, C.F. and Daniele, C.J. A Four-Cylinder Stirling Engine Controls Model, NASA-TM-81648, Automotive Tech-
+
+nol. Develop. Contractor Coordination Meeting, Dearborn, MI, Nov. 1980
+      76 Daniele, C.J., Lorenzo, C.F. Preliminary results from a Four-Working Space, Double-Acting Piston, Stirling Engine
+
+Controls Model NASA-TM-81569, Intersoc. Energy Conversion Eng. Conf., Aug. 1980
+      77 Daniele, C.J., Lorenzo, C.F. Energy-state Formulation of Lumped Volume Dynamic Equations with Application to a
+
+Simplified Free Piston Stirling Engine International Conference on Energy and the Environment, Pittsburgh, PA, May 1979
+      78 Chen, N.C.J., and Griffin, F.P. A Review of Stirling Engine Mathematical Models, ORNL/CON-135, August, 1983.
+      79 Weisend, J.G. : ”Handbook of Cryogenic Engineering”, Taylor & Francis, 1998
+      80 Muskat, M. : ”The Flow of Homogeneous Fluids Through Porous MEdia”, McGraw-Hill, 1937
+      81 Spanos, T.J.T. : ”The Thermophysics of Porous Media”, Chapman & Hall/CRC, 2002
+      82 Cortis, A. : ”Dynamic Acoustic Parameters of Porous Media; a theoretical, Numerical, and Experimental Investigation”,
+
+Delft University Press, 2002.
+      83 Ingham, D.B. : ”Transport Phenomena in Porous Media II”, Pergamon, 2002.
+      84 Organ, A.J. : ”The Regenerator and the Stirling Engine”, Mechanical Engineering Publications Limited, 1997.
+      85 Rizzo, J.G. : ”Modelling Stirling and Hot Air Engines”, Patrick Stephens, Wellingborough, 1985.
+      86 Dragutinovic, G.D. and Baclic, B.S.: ”Operation of Counterflow Regenerators”, Volume 4, Computational Mechanics
+
+Publications, Boston, 1998
+      87 D. Y. Goswami, Kreith, F., Kreider, J.F. : ”Principles of Solar Engineering, 2nd Ed.”, Taylor & Francis, 2000
+      88 Bauwens, L. : ”Numerical Modeling of Stirling Crycoolers”, AIAA 94-0130, 32nd Aerospace Sciences Meeting & Exhibit,
+
+Jan., 1994.
+      89 Hargreaves, C.M. : ”The Philips Stirling Engine”, Elsevier, New York, 1991.
+      90 Organ, A.J. : ”Thermodynamics and Gas Dynamics of the Stirling Cycle Machine”, Cambridge University Press, 1992
+      91 Bastian, P. : ”Higher Order Discontinuous Galerkin Methods for Flow and Transport in Porous Media”, 2003
+      92 Simon, T.W. and J.R. Seume : ”A Survey of Oscillating Flow in Stirling Engine Heat Exchangers”, NASA-CR-182108,
+
+Mar. 1988.
+      93 Gedeon, D. : ”Computational Techniques for the two-dimensional Gasdynamic Equations in Stirling Engine Regenerators
+
+and Associated Manifolds”, 1985.
+      94 Niu, Y., Ibrahim, M., Tew, R., Gedeon, D. : ”Measurements of Unsteady Convective Heat Transfer Rates Within a
+
+Stirling Regenerator Matrix Subjected to Oscillatory Flow”, AIAA, 2003
+      95 Niu, Y., Ibrahim, M., Tew, R., Gedeon, D. : ”Jet Penetration into a Stirling Engine Regenerator Matrix with Various
+
+Regenerator-to-Cooler Spacings”, AIAA, 2003
+      96 Adolfson, D.A., Simon, T.W., Ibrahim, M.B., Gedeon, D.: ”Unsteady Fluid Dynamics Simulation of a Stirling Engine
+
+Heater Head”, AIAA, 1st Int. Energy Conversion Engineering Conference, Aug. 2003
+      97 Bartolotta, P.A., Bowman, R.R., Krause, D.L., and Halford, G.R. : ”Long-term Durability Analysis of a 100,000+ HR
+
+Stirling Power Convertor Heater Head”, AIAA, A00-37736, 2000
+      98 Yuan, S.W.K. and Spradley, I.E. : ”A Third Order Computer Model for Stirling Refrigerators”, Advanced in Cryogenic
+
+Engineering, Vol. 37, Part B, Plenum Press, New York, 1992
+      99 Chung T.J.: ”Computational Fluid Dynamics”, Cambridge University Press, 2003
+     100 Daniele, C.J., Lorenzo, C.F. : ”Preliminary Results from a Four-Working Space, Double-Acting Piston, Stirling Engine
+
+Controls Model”, 15th IECEC, Aug., 1980.
+     101 Taylor, D.R. : ”The method of characteristics applied to Stirling engines”, 19th IECEC, Aug. 1984
+     102 Simon, T.W., Niu, Y., Sun, L. : ”Some Comments on Dynamic Similitude as Applied to Our Physical Simulations of
+
+Stirling Engines”, Memorandum, Sept. 2003.
+     103 Bauwens, L. : ”Pressure Gradients in Stirling Engines”, AIAA Paper 94-3956, 29th IECEC, 1994.
+     104 Gogineni, S.P., Joslin, R.D., Gaitonde, D.V. : ”Fluid Dynamics”, Aerospace America, Dec. 2003.
+     105 Guidry, D.J., Parker, J.T., McCandless, A.B., Motakef, S., Kelly, K.W. : ”X-Ray Lithography Fabricated Microchannel
+
+Regenerators for Cryocoolers”, International Mezzo Technologies Report.
+     106 : Tomlinson, B.J. : ”Parametric Cryocooler Performance Prediction Modeling”, AIAA 99-4626, Sept. 1999
+
+
+
+
+NASA/TM—2004-213300                                          20
+     107 : Qui, S., Peterson, A.A. : ”Linear Dynamic Modeling and Numerical Simulation of an STC Stirling Convertor”, 1st
+
+Int. Energy Conv. Eng. Conf., Aug. 2003
+     108 : Regan, T. : ”Free-Piston Stirling Convertor Controller Development at NASA Glenn Research Center”, 1st IECEC,
+
+AIAA Paper 2003-5931, Aug. 2003
+     109 : Guo, G., Kurzweg, U.H. : ”2D numerical simulation of heat transfer in a Stirling microrefrigerator model”, AIAA,
+
+Thermophysics Conference, June, 1996.
+     110 Ibrahim, M.B., Tew, R.C., Dudenhoefer, J.E. : ”Two-Dimensional Numerical Simulation of a Stirling Engine Heat
+
+Exchanger”, NASA TM-102057, 24th IECEC, Aug. 1989.
+     111 Allen, D.J., Cairelli, J.E. : ”Test Results of a 40-kW Stirling Engine and Comparison with the NASA Lewis Computer
+
+Code Predictions”, NASA TM-87050, 20th IECEC, Aug. 1985.
+     112 Oseid, K.L. : ”Numerical Prediction of Turbulent Oscillating Flow and Heat Transfer in Pipes with Various End
+
+Geometries”, NASA CR 198416, Oct. 1995
+     113 Koehler, W.J., Patankar, S.V., Ibele, W.E. : ”Numerical Prediction of Turbulent Oscillating Flow and Associated Heat
+
+Transfer”, NASA CR 187177, Aug. 1991.
+     114 Morgan, P.E., Visbal, M.R., Sadayappan, P. : ”Development and Application of a Parallel Implicit Solver for Unsteady
+
+Viscous Flows”, Int. J. of Comp. Fluid. Dyn., 2002, Vol. 16(1), pp. 21-36
+     115 Yonglin, J., Jiang, Y., Zhou, Y. : ”Experimental study of the oscillating flow Characteristics for a Regenerator in a
+
+Pulse Tube Cryocooler”, Elsevier, Cryogenics, Vol. 38, pp. 649-656, 1998
+     116 Gedeon, D. : ”Numerical advection errors in Stirling cycle nodal analyses”, IECEC, Aug. 1984.
+     117 Walker, G., Senft, J.R. : ”Free Piston Stirling Engines”, Stirling Machine World, Springer-Verlag, 1985.
+
+
+
+
+NASA/TM—2004-213300                                          21
+                                                                                                                                               Form Approved
+                       REPORT DOCUMENTATION PAGE                                                                                               OMB No. 0704-0188
+Public reporting burden for this collection of information is estimated to average 1 hour per response, including the time for reviewing instructions, searching existing data sources,
+gathering and maintaining the data needed, and completing and reviewing the collection of information. Send comments regarding this burden estimate or any other aspect of this
+collection of information, including suggestions for reducing this burden, to Washington Headquarters Services, Directorate for Information Operations and Reports, 1215 Jefferson
+Davis Highway, Suite 1204, Arlington, VA 22202-4302, and to the Office of Management and Budget, Paperwork Reduction Project (0704-0188), Washington, DC 20503.
+1. AGENCY USE ONLY (Leave blank)                        2. REPORT DATE                               3. REPORT TYPE AND DATES COVERED
+                                                                   October 2004                                               Technical Memorandum
+4. TITLE AND SUBTITLE                                                                                                             5. FUNDING NUMBERS
+
+       Review of Computational Stirling Analysis Methods
+
+                                                                                                                                       WBS–22–972–30–01
+6. AUTHOR(S)
+
+       Rodger W. Dyson, Scott D. Wilson, and Roy C. Tew
+
+7. PERFORMING ORGANIZATION NAME(S) AND ADDRESS(ES)                                                                                8. PERFORMING ORGANIZATION
+                                                                                                                                     REPORT NUMBER
+       National Aeronautics and Space Administration
+       John H. Glenn Research Center at Lewis Field                                                                                    E–14747
+       Cleveland, Ohio 44135 – 3191
+
+9. SPONSORING/MONITORING AGENCY NAME(S) AND ADDRESS(ES)                                                                           10. SPONSORING/MONITORING
+                                                                                                                                      AGENCY REPORT NUMBER
+       National Aeronautics and Space Administration
+                                                                                                                                       NASA TM—2004-213300
+       Washington, DC 20546– 0001
+                                                                                                                                       AIAA–2004–5582
+
+11. SUPPLEMENTARY NOTES
+
+       Prepared for the Second International Energy Conversion Engineering Conference sponsored by the American Institute
+       of Aeronautics and Astronautics, Providence, Rhode Island, August 16–19, 2004. Rodger W. Dyson and Roy C. Tew,
+       NASA Glenn Research Center; Scott D. Wilson, Sest, Inc., 18000 Jefferson Park, Suite 104, Middleburg Heights,
+       Ohio 44130. Responsible person, Rodger W. Dyson, organization code 5490, 216–433–9083.
+12a. DISTRIBUTION/AVAILABILITY STATEMENT                                                                                          12b. DISTRIBUTION CODE
+
+       Unclassified - Unlimited
+       Subject Categories: 20, 64, and 91                                           Distribution: Nonstandard
+       Available electronically at http://gltrs.grc.nasa.gov
+       This publication is available from the NASA Center for AeroSpace Information, 301–621–0390.
+13. ABSTRACT (Maximum 200 words)
+
+       Nuclear thermal to electric power conversion carries the promise of longer duration missions and higher scientific data
+       transmission rates back to Earth for both Mars rovers and deep space missions. A free-piston Stirling convertor is a
+       candidate technology that is considered an efficient and reliable power conversion device for such purposes. While
+       already very efficient, it is believed that better Stirling engines can be developed if the losses inherent its current designs
+       could be better understood. However, they are difficult to instrument and so efforts are underway to simulate a complete
+       Stirling engine numerically. This has only recently been attempted and a review of the methods leading up to and
+       including such computational analysis is presented. And finally it is proposed that the quality and depth of Stirling loss
+       understanding may be improved by utilizing the higher fidelity and efficiency of recently developed numerical methods.
+       One such method, the Ultra HI-Fl technique is presented in detail.
+
+
+
+
+14. SUBJECT TERMS                                                                                                                             15. NUMBER OF PAGES
+                                                                                                                                                                   27
+       High resolution; Efficient radioisotope; Prometheus                                                                                    16. PRICE CODE
+
+
+17. SECURITY CLASSIFICATION                    18. SECURITY CLASSIFICATION                      19. SECURITY CLASSIFICATION                    20. LIMITATION OF ABSTRACT
+    OF REPORT                                      OF THIS PAGE                                     OF ABSTRACT
+             Unclassified                                    Unclassified                                    Unclassified
+NSN 7540-01-280-5500                                                                                                                      Standard Form 298 (Rev. 2-89)
+                                                                                                                                          Prescribed by ANSI Std. Z39-18
+                                                                                                                                          298-102
+

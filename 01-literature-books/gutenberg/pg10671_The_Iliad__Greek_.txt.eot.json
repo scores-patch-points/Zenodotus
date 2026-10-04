@@ -1,0 +1,1246 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+  "sha256": "7f4592f1225cde2b29702dea1ad4da7c6d10c1c227eb3fe633b1b2e0421278c9",
+  "bytes": 334446,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 334446,
+  "bodyOffset": 0,
+  "bodyChars": 334446,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7790,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 5958,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 132,
+  "surfaces": 75,
+  "referentEvents": 15,
+  "distinctReferents": 15,
+  "examined": true,
+  "edgesFound": 25,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 11,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 21
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 25,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 25,
+  "excerptOk": 25,
+  "rawChecked": 25,
+  "rawOk": 25,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 25,
+  "heard": 25,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "their particular design|is|to induce the ingenious to cultivate the knowledge of botany",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "their particular design is to induce the ingenious to cultivate the knowledge of BOTANY",
+    "subject": "their particular design",
+    "verb": "is",
+    "object": "to induce the ingenious to cultivate the knowledge of BOTANY",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#879-1132",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "While their particular design is to induce the ingenious to cultivate the knowledge of BOTANY; by introducing them to the vestibule of that delightful science, and recommending to their attention the immortal works of the Swedish Naturalist LINNEUS."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the physiology of plants|is|delivered",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the physiology of Plants is delivered",
+    "subject": "the physiology of Plants",
+    "verb": "is",
+    "object": "delivered",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1136-1323",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "In the first Poem, or Economy of Vegetation, the physiology of Plants is delivered; and the operation of the Elements, as far as they may be supposed to affect the growth of Vegetables."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the publication of this part|is|deferred to another year",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the publication of this part is deferred to another year",
+    "subject": "the publication of this part",
+    "verb": "is",
+    "object": "deferred to another year",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1324-1472",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "But the publication of this part is deferred to another year, for the purpose of repeating some experiments on vegetation, mentioned in the notes."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "which|is|here presented to the reader",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "which is here presented to the Reader",
+    "subject": "which",
+    "verb": "is",
+    "object": "here presented to the Reader",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1473-1659",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "In the second poem, or LOVES OF THE PLANTS, which is here presented to the Reader, the Sexual System of LINNEUS is explained, with the remarkable properties of many particular plants."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of linneus|is|explained",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of LINNEUS is explained",
+    "subject": "of LINNEUS",
+    "verb": "is",
+    "object": "explained",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1473-1659",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "In the second poem, or LOVES OF THE PLANTS, which is here presented to the Reader, the Sexual System of LINNEUS is explained, with the remarkable properties of many particular plants."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that he|is|less able",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that he is less able",
+    "subject": "that he",
+    "verb": "is",
+    "object": "less able",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1663-1989",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The author has withheld this work, (excepting a few pages) many years from the press, according to the rule of Horace, hoping to have rendered it more worthy the acceptance of the public,--but finds at length, that he is less able, from disuse, to correct the poetry; and, from want of leizure, to amplify the annotations."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and cannabis|are inserted|with two additional prints of flowers",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and Cannabis are inserted with two additional prints of flowers",
+    "subject": "and Cannabis",
+    "verb": "are inserted",
+    "object": "with two additional prints of flowers",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1993-2272",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "In this second edition, the plants Amaryllis, Orchis, and Cannabis are inserted with two additional prints of flowers; some alterations are made in Gloriosa, and Tulipa; and the description of the Salt-mines in Poland is removed to the first poem on the Economy of Vegetation."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the description of the salt-mines in poland|is removed|to the first poem on the economy of vegetation",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the description of the Salt-mines in Poland is removed to the first poem on the Economy of Vegetation",
+    "subject": "the description of the Salt-mines in Poland",
+    "verb": "is removed",
+    "object": "to the first poem on the Economy of Vegetation",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1993-2272",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "In this second edition, the plants Amaryllis, Orchis, and Cannabis are inserted with two additional prints of flowers; some alterations are made in Gloriosa, and Tulipa; and the description of the Salt-mines in Poland is removed to the first poem on the Economy of Vegetation."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "these orders|contain|about 2000 families",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "these Orders contain about 2000 Families",
+    "subject": "these Orders",
+    "verb": "contain",
+    "object": "about 2000 Families",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#2294-2595",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "Linneus has divided the vegetable world into 24 Classes; these Classes into about 120 Orders; these Orders contain about 2000 Families, or Genera; and these Families about 20,000 Species; besides the innumerable Varieties, which the accidents of climate or cultivation have added to these Species."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the classes|are|distinguished from each other in this ingenious system",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The Classes are distinguished from each other in this ingenious system",
+    "subject": "The Classes",
+    "verb": "are",
+    "object": "distinguished from each other in this ingenious system",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#2599-2762",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The Classes are distinguished from each other in this ingenious system, by the number, situation, adhesion, or reciprocal proportion of the males in each flower."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "which|are|propagated by grafts or layers",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "which are propagated by grafts or layers",
+    "subject": "which",
+    "verb": "are",
+    "object": "propagated by grafts or layers",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#2984-3287",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The Species are distinguished by the foliage of the plant; and the Varieties by any accidental circumstance of colour, taste, or odour; the seeds of these do not always produce plants similar to the parent; as in our numerous fruit-trees and garden flowers; which are propagated by grafts or layers."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the first eleven classes|include|the plants",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The first eleven Classes include the plants",
+    "subject": "The first eleven Classes",
+    "verb": "include",
+    "object": "the plants",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#3291-3644",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The first eleven Classes include the plants, in whose flowers both the sexes reside; and in which the Males or Stamens are neither united, nor unequal in height when at maturity; and are therefore distinguished from each other simply by the number of males in each flower, as is seen in the annexed PLATE, copied from the Dictionaire Botanique of M."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the males or stamens|are|neither united",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Males or Stamens are neither united",
+    "subject": "the Males or Stamens",
+    "verb": "are",
+    "object": "neither united",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#3291-3644",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The first eleven Classes include the plants, in whose flowers both the sexes reside; and in which the Males or Stamens are neither united, nor unequal in height when at maturity; and are therefore distinguished from each other simply by the number of males in each flower, as is seen in the annexed PLATE, copied from the Dictionaire Botanique of M."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "as|is|well seen in the last figure of no",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "as is well seen in the last Figure of No",
+    "subject": "as",
+    "verb": "is",
+    "object": "well seen in the last Figure of No",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#4592-4691",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "Twenty Stamens inserted on the calyx or flower-cup; as is well seen in the last Figure of No. xii."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "as|is|well seen in the first figure of no",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "as is well seen in the first Figure of No",
+    "subject": "as",
+    "verb": "is",
+    "object": "well seen in the first Figure of No",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#4750-4857",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "From 20 to 100 Stamens, which do not adhere to the calyx; as is well seen in the first Figure of No. xiii."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "as|is|seen in the two first figures of no",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "as is seen in the two first Figures of No",
+    "subject": "as",
+    "verb": "is",
+    "object": "seen in the two first Figures of No",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#5049-5154",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "Four Stamens, of which two are lower than the other two; as is seen in the two first Figures of No. xiv."
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of which four|are|taller",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of which four are taller",
+    "subject": "of which four",
+    "verb": "are",
+    "object": "taller",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#5191-5337",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "Six Stamens; of which four are taller, and the two lower ones opposite to each other; as is seen in the third Figure of the upper row in No. 15."
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "many stamens|attached|to the pistil",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Many Stamens attached to the pistil",
+    "subject": "Many Stamens",
+    "verb": "attached",
+    "object": "to the pistil",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6097-6133",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "Many Stamens attached to the pistil."
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the next three classes|consist|of plants",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The next three Classes consist of plants",
+    "subject": "The next three Classes",
+    "verb": "consist",
+    "object": "of plants",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6139-6323",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The next three Classes consist of plants, whose flowers contain but one of the sexes; or if some of them contain both sexes, there are other flowers accompanying them of but one sex."
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "some of them|contain|both sexes",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "some of them contain both sexes",
+    "subject": "some of them",
+    "verb": "contain",
+    "object": "both sexes",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6139-6323",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The next three Classes consist of plants, whose flowers contain but one of the sexes; or if some of them contain both sexes, there are other flowers accompanying them of but one sex."
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the last class|contains|the plants whose flowers are not discernible",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The last Class contains the plants whose flowers are not discernible",
+    "subject": "The last Class",
+    "verb": "contains",
+    "object": "the plants whose flowers are not discernible",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6654-6723",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The last Class contains the plants whose flowers are not discernible."
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "as|is|seen in no",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "as is seen in No",
+    "subject": "as",
+    "verb": "is",
+    "object": "seen in No",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6978-6999",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "as is seen in No. i."
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "supersede",
+    "task_id": "as|is|seen in no",
+    "operator": "SYN",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "SYN·Figure",
+    "stance": "Making",
+    "terrain": "Link",
+    "mode": "Generate",
+    "domain": "Structure",
+    "description": "heard again: as is seen in No",
+    "subject": "as",
+    "verb": "is",
+    "object": "seen in No",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6978-6999",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "as is seen in No. i."
+     },
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#7506-7708",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The Class of TWO POWERS, is divided into two natural Orders; into such as have their seeds naked at the bottom of the calyx, or flower cup; and such as have their seeds covered; as is seen in No. xiv."
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "in one of these the seeds|are|inclosed in a silicule",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "in one of these the seeds are inclosed in a silicule",
+    "subject": "in one of these the seeds",
+    "verb": "are",
+    "object": "inclosed in a silicule",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#7727-7866",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "The Class of FOUR POWERS, is divided also into two Orders; in one of these the seeds are inclosed in a silicule, as in _Shepherd's purse_."
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the other they|are|inclosed in a silique",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the other they are inclosed in a silique",
+    "subject": "the other they",
+    "verb": "are",
+    "object": "inclosed in a silique",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#7885-7951",
+      "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+      "text": "In the other they are inclosed in a silique, as in _Wall-flower_."
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 25,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "and cannabis|are inserted|with two additional prints of flowers",
+   "subject": "and Cannabis",
+   "verb": "are inserted",
+   "object": "with two additional prints of flowers",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1993-2272",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "In this second edition, the plants Amaryllis, Orchis, and Cannabis are inserted with two additional prints of flowers; some alterations are made in Gloriosa, and Tulipa; and the description of the Salt-mines in Poland is removed to the first poem on the Economy of Vegetation."
+    }
+   ]
+  },
+  {
+   "id": "as|is|seen in no",
+   "subject": "as",
+   "verb": "is",
+   "object": "seen in No",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6978-6999",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "as is seen in No. i."
+    },
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#7506-7708",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The Class of TWO POWERS, is divided into two natural Orders; into such as have their seeds naked at the bottom of the calyx, or flower cup; and such as have their seeds covered; as is seen in No. xiv."
+    }
+   ]
+  },
+  {
+   "id": "as|is|seen in the two first figures of no",
+   "subject": "as",
+   "verb": "is",
+   "object": "seen in the two first Figures of No",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#5049-5154",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "Four Stamens, of which two are lower than the other two; as is seen in the two first Figures of No. xiv."
+    }
+   ]
+  },
+  {
+   "id": "as|is|well seen in the first figure of no",
+   "subject": "as",
+   "verb": "is",
+   "object": "well seen in the first Figure of No",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#4750-4857",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "From 20 to 100 Stamens, which do not adhere to the calyx; as is well seen in the first Figure of No. xiii."
+    }
+   ]
+  },
+  {
+   "id": "as|is|well seen in the last figure of no",
+   "subject": "as",
+   "verb": "is",
+   "object": "well seen in the last Figure of No",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#4592-4691",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "Twenty Stamens inserted on the calyx or flower-cup; as is well seen in the last Figure of No. xii."
+    }
+   ]
+  },
+  {
+   "id": "in one of these the seeds|are|inclosed in a silicule",
+   "subject": "in one of these the seeds",
+   "verb": "are",
+   "object": "inclosed in a silicule",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#7727-7866",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The Class of FOUR POWERS, is divided also into two Orders; in one of these the seeds are inclosed in a silicule, as in _Shepherd's purse_."
+    }
+   ]
+  },
+  {
+   "id": "many stamens|attached|to the pistil",
+   "subject": "Many Stamens",
+   "verb": "attached",
+   "object": "to the pistil",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6097-6133",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "Many Stamens attached to the pistil."
+    }
+   ]
+  },
+  {
+   "id": "of linneus|is|explained",
+   "subject": "of LINNEUS",
+   "verb": "is",
+   "object": "explained",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1473-1659",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "In the second poem, or LOVES OF THE PLANTS, which is here presented to the Reader, the Sexual System of LINNEUS is explained, with the remarkable properties of many particular plants."
+    }
+   ]
+  },
+  {
+   "id": "of which four|are|taller",
+   "subject": "of which four",
+   "verb": "are",
+   "object": "taller",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#5191-5337",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "Six Stamens; of which four are taller, and the two lower ones opposite to each other; as is seen in the third Figure of the upper row in No. 15."
+    }
+   ]
+  },
+  {
+   "id": "some of them|contain|both sexes",
+   "subject": "some of them",
+   "verb": "contain",
+   "object": "both sexes",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6139-6323",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The next three Classes consist of plants, whose flowers contain but one of the sexes; or if some of them contain both sexes, there are other flowers accompanying them of but one sex."
+    }
+   ]
+  },
+  {
+   "id": "that he|is|less able",
+   "subject": "that he",
+   "verb": "is",
+   "object": "less able",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1663-1989",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The author has withheld this work, (excepting a few pages) many years from the press, according to the rule of Horace, hoping to have rendered it more worthy the acceptance of the public,--but finds at length, that he is less able, from disuse, to correct the poetry; and, from want of leizure, to amplify the annotations."
+    }
+   ]
+  },
+  {
+   "id": "the classes|are|distinguished from each other in this ingenious system",
+   "subject": "The Classes",
+   "verb": "are",
+   "object": "distinguished from each other in this ingenious system",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#2599-2762",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The Classes are distinguished from each other in this ingenious system, by the number, situation, adhesion, or reciprocal proportion of the males in each flower."
+    }
+   ]
+  },
+  {
+   "id": "the description of the salt-mines in poland|is removed|to the first poem on the economy of vegetation",
+   "subject": "the description of the Salt-mines in Poland",
+   "verb": "is removed",
+   "object": "to the first poem on the Economy of Vegetation",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1993-2272",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "In this second edition, the plants Amaryllis, Orchis, and Cannabis are inserted with two additional prints of flowers; some alterations are made in Gloriosa, and Tulipa; and the description of the Salt-mines in Poland is removed to the first poem on the Economy of Vegetation."
+    }
+   ]
+  },
+  {
+   "id": "the first eleven classes|include|the plants",
+   "subject": "The first eleven Classes",
+   "verb": "include",
+   "object": "the plants",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#3291-3644",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The first eleven Classes include the plants, in whose flowers both the sexes reside; and in which the Males or Stamens are neither united, nor unequal in height when at maturity; and are therefore distinguished from each other simply by the number of males in each flower, as is seen in the annexed PLATE, copied from the Dictionaire Botanique of M."
+    }
+   ]
+  },
+  {
+   "id": "the last class|contains|the plants whose flowers are not discernible",
+   "subject": "The last Class",
+   "verb": "contains",
+   "object": "the plants whose flowers are not discernible",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6654-6723",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The last Class contains the plants whose flowers are not discernible."
+    }
+   ]
+  },
+  {
+   "id": "the males or stamens|are|neither united",
+   "subject": "the Males or Stamens",
+   "verb": "are",
+   "object": "neither united",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#3291-3644",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The first eleven Classes include the plants, in whose flowers both the sexes reside; and in which the Males or Stamens are neither united, nor unequal in height when at maturity; and are therefore distinguished from each other simply by the number of males in each flower, as is seen in the annexed PLATE, copied from the Dictionaire Botanique of M."
+    }
+   ]
+  },
+  {
+   "id": "the next three classes|consist|of plants",
+   "subject": "The next three Classes",
+   "verb": "consist",
+   "object": "of plants",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#6139-6323",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The next three Classes consist of plants, whose flowers contain but one of the sexes; or if some of them contain both sexes, there are other flowers accompanying them of but one sex."
+    }
+   ]
+  },
+  {
+   "id": "the other they|are|inclosed in a silique",
+   "subject": "the other they",
+   "verb": "are",
+   "object": "inclosed in a silique",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#7885-7951",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "In the other they are inclosed in a silique, as in _Wall-flower_."
+    }
+   ]
+  },
+  {
+   "id": "the physiology of plants|is|delivered",
+   "subject": "the physiology of Plants",
+   "verb": "is",
+   "object": "delivered",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1136-1323",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "In the first Poem, or Economy of Vegetation, the physiology of Plants is delivered; and the operation of the Elements, as far as they may be supposed to affect the growth of Vegetables."
+    }
+   ]
+  },
+  {
+   "id": "the publication of this part|is|deferred to another year",
+   "subject": "the publication of this part",
+   "verb": "is",
+   "object": "deferred to another year",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1324-1472",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "But the publication of this part is deferred to another year, for the purpose of repeating some experiments on vegetation, mentioned in the notes."
+    }
+   ]
+  },
+  {
+   "id": "their particular design|is|to induce the ingenious to cultivate the knowledge of botany",
+   "subject": "their particular design",
+   "verb": "is",
+   "object": "to induce the ingenious to cultivate the knowledge of BOTANY",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#879-1132",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "While their particular design is to induce the ingenious to cultivate the knowledge of BOTANY; by introducing them to the vestibule of that delightful science, and recommending to their attention the immortal works of the Swedish Naturalist LINNEUS."
+    }
+   ]
+  },
+  {
+   "id": "these orders|contain|about 2000 families",
+   "subject": "these Orders",
+   "verb": "contain",
+   "object": "about 2000 Families",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#2294-2595",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "Linneus has divided the vegetable world into 24 Classes; these Classes into about 120 Orders; these Orders contain about 2000 Families, or Genera; and these Families about 20,000 Species; besides the innumerable Varieties, which the accidents of climate or cultivation have added to these Species."
+    }
+   ]
+  },
+  {
+   "id": "which|are|propagated by grafts or layers",
+   "subject": "which",
+   "verb": "are",
+   "object": "propagated by grafts or layers",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#2984-3287",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "The Species are distinguished by the foliage of the plant; and the Varieties by any accidental circumstance of colour, taste, or odour; the seeds of these do not always produce plants similar to the parent; as in our numerous fruit-trees and garden flowers; which are propagated by grafts or layers."
+    }
+   ]
+  },
+  {
+   "id": "which|is|here presented to the reader",
+   "subject": "which",
+   "verb": "is",
+   "object": "here presented to the Reader",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt#1473-1659",
+     "ref": "01-literature-books/gutenberg/pg10671_The_Iliad__Greek_.txt",
+     "text": "In the second poem, or LOVES OF THE PLANTS, which is here presented to the Reader, the Sexual System of LINNEUS is explained, with the remarkable properties of many particular plants."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:32.811Z"
+ }
+}

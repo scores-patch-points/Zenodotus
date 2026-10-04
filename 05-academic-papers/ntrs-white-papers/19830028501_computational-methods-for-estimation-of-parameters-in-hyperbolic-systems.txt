@@ -1,0 +1,848 @@
+---
+title: Computational methods for estimation of parameters in hyperbolic systems
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19830028501
+source_url: https://ntrs.nasa.gov/citations/19830028501
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONTRACTOR_REPORT
+center: Legacy CDMS
+publication_date: 2019-06-23
+retrieved: 2026-09-22
+sha256: 11971c0d39efbac4878484b9289116dc7a386e045d18180c90a4255f855fb4d2
+pages: 20
+words: 4170
+cv_look_pages: 6
+---
+
+NASA Contractor Report 172234                                     NASA-CR-172234
+                                                                  19830028501
+
+
+
+
+ICASE
+COMPUTATIONAL METHODS FOR ESTIMATION             OF
+PARAMETERS IN HYPERBOLIC SYSTEMS
+
+
+
+
+H. T. Banks
+
+K. Ito
+
+K. A. Murphy
+
+
+
+
+Contract Nos. NASI-15810,        NASI-16394,       NASI-17070
+               NASI-17130
+September 1983
+
+
+
+
+INSTITUTE    FOR COMPUTER     APPLICATIONS      IN SCIENCE       AND ENGINEERING
+NASA Langley      Research   Center,    Hampton,      Virginia     23665
+
+Operated    by the Universities        Space   Research    Association
+
+
+
+
+NationalAeronauticsand
+Space Administration                                              Lt,_GLEY_ESE/,,_a_,,;,:_ r_F_
+                                                                        LI_R2,RY, r'.J_,S _,
+Langley Research Center                                               H.,,....""°=O.,,"
+                                                                                   ,,,R_u,_
+                                                                                   ......
+Hampton,Virginia 23665
+                            COMPUTATIONAL METHODS FOR ESTIMATION                OF
+
+                                  PARANETERS IN HYPERBOLIC SYSTEMS
+
+
+
+
+                                               H. T. Banks*
+                                          Brown University
+                                                 and
+                                   Southern Methodist University
+
+
+                                                   K. Ito
+           Institute       for Computer      Applications      in Science     and Engineering
+
+
+                                           K. A. Murphy*
+                                          Brown University
+                                                and
+                                   Southern Methodist University
+
+
+
+
+                                                   ABSTRACT
+
+     We     discuss        approximation      techniques       for   estimating       spatially   varying
+
+coefficients     and        unknown     boundary     parameters       in     second   order   hyperbolic
+
+systems.      Methods       for   state    approximation       (cubic      splines,   tau-Legendre)   and
+
+approximation         of     function      space     parameters      (interpolatory        splines)   are
+outlined    and numerical         findings    for use of the resulting           schemes   in model   "I-D
+
+seismic    inversion"       problems    are summarized.
+
+
+
+
+ Part of this research            was carried      out while    the first author was a visitor          at
+ICASE, NASA Langley Research Center,Hampton, VA, which is operatedunder NASA
+Contract Nos. NASI-15810and NASI-16394. This researchwas also supportedin
+part by NSF Grant No. MCS-8205335,by AFOSR Contract No. 81-0198, and ARO
+Contract No. ARO-DAAG-29-79-C-0161.
+
+**Research supported by the National Aeronautics and Space Administration
+under NASA Contract Nos. NASI-17070 and NASI-17130while the author was in
+residenceat ICASE, NASA Langley Research Center,Hampton,VA 23665.
+
+
+                                                       i
+
+                                                                                                       7
+      i.    Introduction.        We discuss      here   some   of our continuing      efforts
+on the development   of computational  techniques   for estimation  or
+"identification"   of parameters  in second order hyperbolic    systems (e.g.,
+the acoustic wave equation).     The parameters   of interest include bound-
+ary parameters   such as coefficients  of elasticity and source terms in
+elastic boundary conditions    as well as spatially varying moduli of
+elasticity   in the partial differential   equation itself.    Among the
+features of our approach are the following: We do not require an impulse
+or delta function for the source term; indeed the source term need not
+even be parameterized   a priori (although it is in the numerical examples
+presented below).    Furthermore, the elastic moduli in the system
+equations   can be estimated with or without a priori paran:eterization
+(i.e., assumption   of a specific form or shape class).  Our ideas are,
+in principle,    applicable   to vector            systems     in appropriately       defined
+multidimensional     domains.
+
+      We combine       results   from    the theory     of dissipative      operators,     linear
+semigroups,          approximation      theory   (splines,     spectral   methods),      and
+optimization  techniques  in our attempts to develop theoretically  sound
+and numerically  attractive  procedures.  While our long term goals
+include development   of efficient methods for use in 2-D and 3-D problems
+such as those that arise in "surface seismic" and "bore hole" inversion
+(we have made progress in this direction), we illustrate some of our
+ideas here with a scalar "model problem" in I-D.  The system in this
+model      problem    is given   by
+
+                                  _u
+(i)        p(x)utt    = _-_ (E(x) _x ),            0 i x j i,       t > 0
+
+
+
+(2)        Ux(t,0)    + klU(t,0)      = S(t,q) ,
+
+
+
+(3)        ut(t,l) + kzUx(t,l) = 0,
+
+
+(4)        u(0,x)    = 0,    ut(0,x)     = 0 .
+                                                      _2-
+
+
+
+
+ Here 0 is the medium mass density and E is an elastic modulus in (i)
+ while the boundary  condition (2) is an elastic surface (x= 0) condition
+ involving       a restoring    force     parameter     k I a s well     as a parameter      (_)
+ dependent source term          S. This source term is assumed to be the result
+ of a perturbing shock          to the medium which occurs on the surface at some
+ distance       from the point of observation.    The medium is initially at rest
+ (initial       conditions  (4)) and it is assumed that no Waves are reflected
+ at a finite lower boundary   (x = i); this is given by the absorbing bound-
+ ary condition  (3)--(this condition can be obtained formally by factoring
+
+ the equation       (i) at x= i and taking           k 2 = / E(1)/p(1)).         We make     the
+
+physically       motivated     assumptions     kI < 0, k 2 > 0 throughout.
+
+       Our model   problem     consists     of using     observations      of the system       (I)-
+ (4) to estimate       the parameters        q = (p,E,kl,k2,_) "          More   precisely
+we consider        the mathematical       problem     of minimizing       the fit-to-data
+criterion
+
+
+
+
+ (5)      J(q)   = i,j_ ]u(ti'xj'q)' - Yij
+                                       ^   12
+
+
+over     a given   admissible     parameter     set Q.        Here we assume     we have     obser-
+
+vations     Yij for u(ti,xj)--(the           "bore    hole"    problem)--or      for u(t.I' 0)--
+(the "surface       seismic"     problem),     where    u is the solution         to (i)-     (4)
+corresponding       to q.
+
+       It is convenient      for our    theoretical         discussions    to reformulate          this
+problem     in terms of an abstract           evolution       equation    in a Hilbert      space.
+To do this we first assume that the system (i) - (4) has been                         trans-
+formed to a system with homogeneous boundary conditions
+
+                           _v
+         Pvtt    = _-_ (m _x) + g(t,x,q)
+
+
+           vx (t,0) + klV(t,0 ) = 0
+(6)
+           vt(t,l) + k2Vx(t,l) = 0
+
+          v(0,x) = ¢(x,q), vt(0,x ) = _(x,q) .
+
+This    can be done    in a straightforward            fashion    (see [ii]).
+                                               -3-
+
+
+
+
+   As our state space we choose Z = HI(0,1) × HO(o,I) with parameter
+dependent inner product
+                        i                                      i
+         <z,w>       = f Ezlwldx-    m(O)klZl(O)Wl(O) + f Pz2w2dx ,
+                 q     0                                0
+
+
+for z = (Zl,Z2),         w = (Wl,W 2) in Z.     Under    reasonable   assumptions    on
+
+p, E and k I, this yields a Hilbert space Z = Z(q) with topology equiv-
+alent to the usual HI x H0 topology.   The transformed system (6) can
+then be written in abstract form as (we don't distinguish  between a
+vector    and its transpose)
+
+         z(t)    = A(q)z(t)    + G(t,q)
+(7)
+         z(0)=
+
+where    z = (v,vt),        _ = (_,_),   G = (O,g),     and the operator   A(q)   defined
+
+on dom(A(q))         = {z _ H 2 × Hllzi(0)
+                                         + klZl(0)
+                                                 = O, z2(i)+ k2zi(1)= O}
+is given by
+
+
+
+
+It can then be shown that under boundedness    assumptions   on Q, there
+exists a constant m independent   of q in Q such that A(q) - _I is
+dissipative  in Z (i.e., <A(q)z,z> _< m<z,z>).   Furthermore   A(q) generates
+a strongly continuous   semigroup S(t;q), t _ O, that is the family of
+solution operators  for (7).
+
+   This framework provides           a convenient setting for discussion   of
+semidiscrete  approximation          schemes (and their convergence  properties)
+for solving the problem of minimizing   (5) over Q. In the case under
+consideration  here both the state space for (i)- (4) and the parameter
+set Q are infinite dimensional.   We first turn to a description  of
+state approximation  ideas that we have employed.
+                                                    -4-
+
+
+
+       Abstractly,     one approximates         (7)--at   least     in its state     variable--
+
+by choosing        a sequence    of finite       dimensional      subspaces      ZN, N= 1,2,...,
+
+of the state         space Z.    Letting      pN be the projection         of Z onto    ZN and
+
+AN: ZN . ZN be a family              of approximating       operators     for A, one can
+
+define     the sequence      of approximating        systems      in ZN by
+
+
+          zN(t)    = AN(q)zN(t ) + pNG(t,q)
+(s)
+          zN(0) = pN_
+
+
+and the corresponding           fit-to-data      criterion
+
+
+
+
+The problem        of minimizing      jN over Q is then a finite             dimensional   state
+problem     which    can in some      cases     (e.g., when    the functional        parameters
+
+are assumed        in parameteric   form) be readily solved for approximate
+                  -N
+parameters        q , N = 1,2, ....     In this situation one then desires to
+
+argue that the sequence {_N} (or some subsequence)       converges to a
+parameter q* in Q that provides a minimum for (5). However,          in other
+cases where the parameter    functions   (such as p and E in (i)) are not
+assumed to possess a priori finite dimensional      parameterizations,    the
+proDlems   involving (8), (9) still entail optimizations     over an infinite
+dimensional   set and thus a parameter approximation     scheme must further
+be introduced before the approximating      problems are easily solved.
+We defer discussion   of this aspect of our methods until section 4
+below.   Instead we first discuss two state approximation       schemes
+(cubic spline and tau-Legendre)     that we have used with some success.
+
+   2.      Cubic_s_line      state    approximations.         These    methods    are founded
+
+on ideas given in [i],[3],[9]  where cubic B-splines B_ (see                         [13]for
+general concepts and discussions)   are used to generateJ basis                       elements
+
+for subspaces ZN in which             the elements satisfy the boundary   conditions
+inherent in the problem.              For the problems under consideration   in this
+
+note,    this     results   in parameter      dependent     basis     elements
+                                                                         B_ = B_(q).
+                                                                          J    J
+Thus    the dependence       of ZN = zN(q)       on q is not only because of the
+parameter       dependent    inner    product    but also     through    the explicit
+                                               -5-
+
+
+
+
+dependence      of the basis     elements
+                                    BN on the parameters.    This aspect
+                                     J
+leads to nontrivial   technical difficulties    (from both a theoretical
+and a numerical viewpoint)    in extending the ideas of [3].    One can
+however   overcome  these difficulties   to obtain a theoretically   sound
+and computationally   feasible scheme (see [8], [Ii] for more detailed
+discussions).
+
+
+   To give      a brief     idea of the theoretical      aspects   of this method,         we
+
+first observe that the above considerations lead to subspaces ZN= zN(q)
+in the context of the Galerkin approach of [3], [7].  One then desires
+
+to define      Galerkin     approximations    AN = AN(q N) = pN(qN)A(qN)pN(qN)
+
+associated      with   a given   sequence    of parameter   estimates   {qN}.       Here
+
+pN(q) is the orthogonal  projection of Z(q) onto zN(q).    To establish
+a state convergence  theory for (8), it suffices to argue stability
+and consistency  for the schemes (see [3], [7]).  Stability follows
+readily from the uniform dissipativeness  of the operators
+
+A(q) : <AN(q)z,z>         = <pN(q)A(q)pN(q)z,z>      = <A(q)pN(q)z,pN(q)z>      <
+
+m<pN(q)z,pN(q)z>        < m<z,z>.      Consistency is somewhat more      delicate
+                                                N   *
+since   one wishes        to argue   that for q . q   in Q one has
+
+AN(qN)z . A(q )z. More generally in the process of discussing con-
+sistency and state convergence   one must deal with statements    [nvolvin_
+                               N
+the convergence   of elements z in zN(qN)--which     satisfy boundary con-
+                     N                *            *
+ditions involving q --to elements z in dom(A(q )).         Hence one must
+construct some device to express convergence    of the boundary condition
+parameters  as well as that of the parameters   defined directly in the
+
+operators AN(qN).    With care this can be done and one can employ the
+Trotter-Kato  approximation   theorem from linear semigroup theory [12]
+along with estimates from spline approximation      theory [13] to establish
+consistency  and state convergence    (see [8], [ii] for details).
+
+   These spline based schemes have proven               quite satisfactory in
+numerical computations  with test examples              as we shall see in the
+numerical section below.
+
+
+    3. Tau-Legendre  state approximations.   The tau method (due to
+Lanczos) is a special case (see V. ii of [i0]) of the spectral methods
+discussed in [iO] and involves use of eigenfunctions    that are in
+general not related to the natural modes of the system being approxi-
+mated.   As outlined above, one again rewrites the system (6) as an
+abstract system in the state space Z = Z(q) defined in section i.
+The system (7) is written in the form
+
+        z(t)    = L(q)z(t)     + G(t,q)
+(io)
+        z(0) = _(q)
+                                               -6-
+
+
+
+(ii) B(q)z(t) = O,
+
+where L(q) is the same as the operator A(q) in (7) except that we do
+not   include   the boundary     conditions       in defining   the domain     of L(q);
+
+i.e., dom(L(q)) = H2 × HI. Instead the boundary operations are
+imbedded in an operator B and we impose the side conditions (Ii).
+
+      The approximatingsubspaces ZN are then defined in terms of an
+orthonormal family that is complete in HO(o,I). Members in this family
+are not required to individuallysatisfy the boundary conditions; these
+are imposed on the approximationsto the solution of (i0), (ii) by
+requiring that the approximationssatisfy exactly the conditions (Ii).
+To be more specific, suppose we begin with N+I elements {¢I,...,1N+I}
+(e.g., Legendre functions) to generate the appropriate subspaces
+zN(q) of Z(q)--(thezN(q) have dimension 2N= (N+ i) + (N- i) in this
+case--the analogous cubic spline approximatingsubspaces have dimension
+2N+3).       Then we assume that the first components of solutions z= (v,vt)
+                                                                        N+I
+of    (10)--i.e.,    of   (6)--are    approximated     by vN(t,x)   =     _ wj(t)¢j(x)
+                                                                         j=l
+where    the first N- i coefficients          w. are determined         by imposing the
+                                               3
+equation  (I0) and the remaining           coefficients     are determined      by imposing
+the boundary conditions  (ii).
+
+   We observe that the tau method is not a Galerkin procedure.   It also
+differs from the cubic spline method described above in that the
+
+approximating       subspaces   satisfy    ZN C    ZN+K, K > 0.
+
+   Our efforts have been devoted to the use of the tau-Legendre                      method
+in the model problem of section i.  In this case, we chose
+
+_j(x) = Pj -- l(2X-l),   0 --< x --
+                                 < i, j = 1,2 .... ,N+I, where P.J  is the
+Legendre polynomial     of degree j.     For a convergence   analysis, one can
+employ the same Hilbert space framework described in discussing            the
+cubic spline schemes.       In this operator formulation     one again estab-
+lishes convergence     via demonstrating    stability and consistency.      The
+arguments involve dissipative       estimates,   the Gronwall inequality,    and
+approximation    properties    of Legendre polynomials.
+
+    One interesting    (and potentially  highly advantageous)    aspect of
+the tau-Legendre    methods involves their use in layered media problems
+(e.g., see Example 4 below) where the coefficients       p, E in (i) possess
+discontinuities.     In this case one can include (in addition to the
+boundary conditions)     in the conditions   (ii) the continuity   conditions
+
+v N(t,xj-)   = vN(t,xj+)--on         displacement--and     E(xj - )vx
+                                                                    N(t, xj-) =
+                                                                                  This
+E(xj+)v_(t'xj
+        +)--°n-x            stress--at    interfaces     x.J in the medium.
+                                                  -7-
+
+
+
+could   lead to methods          that are computationally   superior         to methods in
+which   these interface          continuity conditions   are imposed         directly on the
+
+basis   elements      for ZN.
+
+
+   4.    Parameter      approximations.         As we have     noted    above,   the problem
+
+of minimizing   jN of (9) over Q subject to the state approximation
+equations   (8) is still a difficult infinite dimensional   optimization
+problem in cases where Q has nonparameterized     function space components
+(e.g., in situations    where we estimate p and/or E in (i) choosing from
+some infinite dimensional     function classes).  In such situations it is
+
+useful to introduce a family of finite dimensional   parameter sets QM
+that approximate,  in some sense, the original parameter set Q--i.e.,
+
+,,QM . Q,, as M . =.        We may    then   consider   the problem       of minimizing
+
+jN of    (9) over QM, which         is finite    dimensional     in both     the states        and
+
+parameters      and may be easily       solved    for judicious        choices   of QM,
+                         -N
+producing      estimates qM "
+
+   We have, with some success, used               such double approximation procedures
+to estimate functional coefficients               in parabolic transport equations
+[4],    [5],   [6] and in higher       order    equations    of elasticity       [2].     In
+
+these efforts we employed approximating                 sets QM consisting   of either
+linear or cubic interpolatory  splines.                 Under reasonable   assumptions
+
+on Q and on the approximation    properties of QM (e.g., see [2], [4],
+[6] where theoretical    results are also given for the systems mentioned
+above), one can prove a double limit convergence    result:   Given any
+                           -N
+sequence of estimates    {q_} as defined above, there exists a subsequen-
+            ,         -N k
+tial limit      q    = lim qMj In Q that provides            a minimum     for J of     (5)
+over Q.
+
+    In the next section we shall present a sample                      of some of our
+numerical results using such procedures.
+
+   5.   Numerical examples.   We present here a summary of some of our
+numerical findings for the methods described above when used with the
+model problem involving   (I)- (5). The estimation   schemes were tested
+on examples in the following manner.     First, known "true" values
+(denoted by q    in the tables below) of the parameters   to be estimated
+were chosen and a numerical method independent    of the one being tested
+was used to solve the forward problem for a solution u = u(q ). Values
+of this numerical solution were used for "observations"     or data for
+ the inverse        algorithm.      The minimization
+                                            problems were solved itera-
+                                              0
+ tively (with "start-up"   or initial guess q   listed in each example)
+ employing an IMSL version (ZXSSQ) of the Levenberg-Marquardt     algorithm.
+ The ordinary differential   equations for the approximate  states were
+                                                        -8-
+
+
+
+
+ solved     using       either   DVERK      or DGEAR    in the IMSL packages.          The test
+ calculations  were carried out on an IBM 370 at Brown University,  a
+ CDC 6600 at Southern Methodist University,   and CDC Cyber 170 at NASA
+ Langley Research Center.   In the first two examples we compare the
+ cubic spline state approximation  scheme with the one based on tau-
+Legendre state approximations.   In the third example we give a sample
+of our findings on a problem where the double approximation  ideas of
+section 4 were used while in the last example we detail results for a
+multilayered  media problem.
+
+
+       Example     i.     In this example        we    considered  (i) - (4) with E/p = ql
+                                                      -5t) q3 t
+constant,        source       S(t,q)   = q2(l-e           e     and kl, k2 to be estimated.
+The "true" values q*, start-up values qO, along with findings for the
+cubic spline state approximations  and the tau-Legendre  state schemes
+are given below in tabular form.   Observations  included values
+u(ti,xj;q*)         for t. values           .5, i and 1.5, xo values        0, .5, and i.    The
+residual  (jN($N)  for the converged parameter values                              along with CPU
+time in seconds is listed for each level (N) of state                              approximation.
+
+
+                          -N
+                          ql           -N
+                                       q2         -N
+                                                  q3            -N
+                                                                kl        -N
+                                                                          k2        jN(_N)         CPU
+
+CUBIC     SPLINES
+
+N = 4                   3.014      2.001       -1.084         -1.883        .992      .6x10 -5     124
+
+N = 8                   2.992      2.017       - .958         -2.082        .999     .17x10 -5     108
+
+TAU-LEGENDRE
+
+N = 4                   2.940      2.098       -1.026         -2.034        .994      .7xlO -3      31
+
+N = 8                   3.017      1.957       -i.001         -1.979      1.008       .6x10 -5      40
+
+TRUE
+VALUES      (q )        3.0        2.0         -i.0           -2.0        1.0
+
+
+START A
+UP   (qU)               2.0       1.5          - .5        -i.0           2.0
+
+
+
+     Example     2.      We considered        the transformed          system   (6) with p = i,
+g = 0, parameterized modulus
+                     x        E(x) = 1.5 + _ Arctan (ql(x-  q2)) and
+initial data i(x) = e , _(x) = - 3e x. Observations  at values
+t. = .16, .33, .5, .66, .83, i and x. = O, .5, i were used     The
+ i                                   j                      •
+following converged values were obtained.
+                                        -9-
+
+
+
+
+                      -N       -N       -N        -N      jN(_N)        CPU
+                      ql       q2       kl        k2
+
+CUBIC       SPLINES
+
+N =     4             2.964    .487    -.990     3.006     .8x10 -4      60
+                                                                 -5
+N =     8             3.051    .501    -.999     2.996    .28xi0         54
+
+N = 16                3.012    .5002   -.9999    2.999     .19xlO -6    146
+
+
+
+TAU LEGENDRE
+N =     4             3.191    .516    -1.028     3.015    .12x10-2      14
+N =     8             2.942    .496    -i.001     2.997     .8x10-4      57
+N = 16                2.991    .4992   - .9998   2.999     .15x10-5     520
+
+
+TRUE           ,
+VALUES       (q )     3.0      .5      -i.0       3.0
+
+
+START _
+UP (qO)               5.0      1.0     -2.0       2.0
+
+
+      Example 3.      We considered the system (6) with 0 = I, g = 0,
+              X                                               *
+9(x) = e , 9(x) = - 3ex and parameters to be estimated E (x) = 1.5 +
+
+tanh(6(x- .5)), kI =-I.0, k2 = 3.0. We did not assume an a priori
+parameterization for E, but used linear interpolatory splines for the
+parameter approximation procedure as described in section 4. Cubic
+spline state approximations were used. Observations were taken at
+the same ti, xj as in Example 2. The initial guesses were E0(x) = 1.0
+                        0   - 2.0    0   2.0   Graphs for -N
+(a constant function), kI =       , k2 =     •            EM are given
+in the figures below for N = 4 (2N+ 3 = ii cubic elements in the basis
+for ZN) and N = 16 with parameter approximations corresponding to
+M = 3 (M+ i = 4 linear elements to approximate E). For N = 4, the
+                      -4   - 1.054, -4   3 357 j4(_4) = 25xi0-2
+results obtained were kI =          k2 = .    ,           •       ,
+  •   -4
+IE - E31 = . 81xlO-l, CPU = 38 set., while for N = 16 the
+                                                   •   -16 results were
+-16ki= - i.I00, k2-16
+                    = 3.070, j16(_16) = .47xi0-4, IE       - E3 I = •29xi0-i,
+CPU = 118 sec.
+                                                  -10-
+
+
+
+
+      3
+
+
+
+
+      2
+
+
+
+
+1.5
+
+
+
+
+      1
+
+
+
+
+_                 S                                               t_o       .......
+
+      0       -          I      I      I      i         I     i       I    I      i
+          0           0.1    0.2    0,3    0.4       0.5    0.6    0.7    0 S   O.g   1
+                                               -ii-
+
+
+
+
+   Example 4.   We considered   system (l)-              (4) for a multilayered medium
+(i.e., a discontinuous   elastic modulus).                We chose p = I, E piecewise
+constant      (E* given below) and S = 2(1- e-5t) e -t and used the tau-
+Legendre     method for the state approximations    as described in section                     3
+to estimate        E, kl, k 2.     Observations     consisted    of surface      observations
+
+(xj = 0) at 40 evenly spaced times                ti in [0,2] (i.e., t.z = .05, .I,
+.15, ...).  For N = 4, we obtained                the estimates listed below with
+
+j4(_4)    = .3xi0-3,        CPU   time = 172 sec.
+
+
+INITIAL     GUESS
+
+
+
+
+   E0(x)     =      1.5             .2 < x_<   .8
+
+                    1.5
+                    i.5             .8
+                                     0 << x_<
+                                          x < 1.0
+                                               .2               kk0
+                                                                  0 =
+                                                                  Z    2.0
+                                                                    = -2.0
+
+
+TRUE VALUES
+
+
+                    2.0              0 < x <   .3               k I = -i.0
+
+   E (x) = _        3.0             .3 < x <   .7
+
+
+                    1.0             .7 < x < 1.0                k2 =   3.0
+
+
+ESTIMATES        (N = 4)
+
+
+
+
+   _4(x)     =       .986            .299   < x_<     .7006
+
+                     o
+                    1"996
+                      996            .7006 _<
+                                           < x_<
+                                               _< 1.0
+                                                   .299         _4Z = - 2..998
+                                                                k41        987
+
+
+
+   Concluding remarks. As we have outlined above, a convergence
+theory can be developed for both the state and parameter approximation
+schemes described in this note. We have tested the methods on a
+number of examples in addition to the ones presented here. The schemes
+perform well on both "bore hole" and "surface seismic" type model
+problems. In some cases (see Example i) the tau-Legendre state
+approximations perform slightly better than the cubic spline approxi-
+mations.  In others (see Example 2), the cubic spline schemes appear
+to be more desirable.
+
+   While our test examples are clearly very simple, they do serve the
+purpose of illustrating  the potential for use of the methods and ideas
+                                            -12-
+
+
+
+
+in estimating variable (continuous and/or discontinuous) coefficients
+and unknown boundary parameters in second order hyperbolic systems.
+
+
+                                     REFERENCES
+
+
+ [i]   H.T.   BANKS   and J.M.   CROWLEY,    Parameter     estimation     for disbrib-
+       uted systems arising in elasticity,  Symp. on Engineering Sciences
+       and Mechanics,  National Cheng Kung Univ., Taiwan, Dec. 28-31,
+       1981, pp. 158-177; LCDS Rep. No. 81-24, Brown Univ., Providence
+       RI, Nov., 1981.
+
+ [2]   H.T. BANKS and J.M. CROWLEY, Parameter identification                  in
+       continuum models, LCDS rep. No. M-83-I, Brown Univ.,                  Providence,
+       RI, March, 1983; in Proc. Amer. Control Conf., IEEE,                  June 22-24,
+       1983, San Francisco,  pp. 997-1001.
+
+ [3]   H.T. BANKS, J.M. CROWLEY, and K. KUNISCH, Cubic spline approxi-
+       mation techniques for parameter estimation  in distributed
+       systems, IEEE Trans. Auto. Control 28 (1983), to appear.
+
+ [4]   H.T.   BANKS   and P.L. DANIEL,      Estimation     of variable     coefficients
+       in parabolic distributed  systems, LCDS Rep. No. 82-22, Sept.
+       1982, Brown Univ., Providence,   RI; IEEE Trans. Auto. Control,
+       to appear.
+
+ [5]   H.T. BANKS, P.L. DANIEL, and P. KAREIVA, Estimation of tempor-
+       ally and spatially varying coefficients  in models for insect
+       dispersal, LCDS Rep. No. 83-14, Brown Univ., Providence,  RI,
+       June 1983.
+
+ [6]   H.T. BANKS, P.L. DANIEL, and P. KAREIVA, Estimation   techniques
+       for transport equations, Proc. Intl. Conf. on Mathematics    in
+       Biology and Medicine, July 18-22, 1983,   Bari, Italy,    to appear.
+
+ [7]   H.T. BANKS and K. KUNISCH, An approximation   theory for nonlinear
+       partial differential  equations with applications   to identifica-
+       tion and control, SIAM J. Control and Optimization    20 (1982),
+       pp. 815-849.
+
+ [8]   H.T. BANKS and K.A. MURPHY, Inverse problems for hyperbolic
+       systems with unknown boundary parameters,   in Control Theory for
+       Distributed Parameter  Systems and Applications,   F. Kappel et al,
+       editors, Springer Lecture Notes in Control and Info. Sci., 54
+       (1983), pp. 35-44.
+
+ [9]   J.M.   CROWLEY,   Numerical   Methods       of Parameter   Identification     for
+       Problems Arising in Elasticity,            Ph.D.   Dissertation,    Brown   Univ.,
+       Providence,  RI, May, 1982.
+
+[i0]   D. GOTTLIEB and S. ORSZAG, Numerical Analysis of Spectral
+       Methods: Theory and Applications,  Vol. 26, CBMS-NSF Reg. Conf.
+       Series in Applied Math, SIAM, Philadelphia,  1977.
+                                       -13-
+
+
+
+
+[ii]   K.A. MURPHY, A Spline-Based   Approximation  Method for Inverse
+       Problems for a Hyperbolic   System Includin$ Unknown Boundary
+       Parameters,  Ph.D. Dissertation,   Brown Univ., Providence, RI,
+       May, 1983.
+
+[12]   A. PAZY, Semisroups of Linear Operators        and Applications    to
+       Partial Differential  Equations, Lecture       Notes i0, Univ.    of
+       Maryland, College Park, 1974.
+
+[13]   M.H. SCHULTZ,   Spline   Analysis,   Prentice-Hall,   Englewood   Cliffs,
+       N.J., 1973.
+ 1. ReportNo.                                 2, GovernmentAccessionNo.                      3, Recipient'sCatalogNo.
+NASA CR- 172234
+'"4. Title andSubtitle                                                                       5. Report Date
+
+Computational    Methods           for Estimation       of Parameters        in              September      1983
+                                                                                             6. PerformingOrganization
+                                                                                                                     Code
+Hyperbolic    Systems
+
+ 7. Author(s)                                                                                8. Performing
+                                                                                                         OrganizationReportNo.
+H.   T. Banks,      K.   Ito,      and K. A. Murphy                                             83-53
+                                                                                            10. Work Unit No.
+ 9. Performing
+             Organization
+                        NameandAddress
+!Institute    for Computer Applications        in Science
+   and Engineering
+                                                                                            _A_n_      _G, r_      - 16394
+Mail Stop 132C, NASA Langley          Research   Center                                     NASI-17070,     NASI-17130
+Hampton,    VA 23665                                                                        13. Typeof Report and PeriodCovered
+12. Sponsoring
+             AgencyNameandAddress                                                           Contractor     Report
+National   Aeronautics    and Space            Administration
+Washington,    D.C.   20546                                                                 14.Sponsoring
+                                                                                                       AgencyCode
+
+
+15. _pplementary NotesAdditional support:               NSF   Grant    No.   MCS-8205335,         AFOSR    Contract     81-0198,
+ARO Contract ARO-DAAG-29-79-C-0161.
+
+Langley Technical           Monitor:      Robert     H. Tolson
+Finol Report
+16. Abstract
+      We discuss approximation       techniques   for estimating    spatially    varying   coefficients
+and unknown boundary      parameters   in second order hyperbolic       systems.     Methods   for state
+approximation     (cubic splines,    tau-Legendre)    and approximation     of function    space
+parameters    (interpolatory    splines)   are outlined   and numerical     findings    for use of the
+resulting   schemes    in model "I-D seismic     inversion"   problems   are summarized.
+
+
+
+
+                                                                                                                             f
+17. Key Words(Suggested
+                      by Author(s))                                 18. DistributionStatement
+hyperbolic    systems                                                   64 Numerical Analysis
+parameter   estimation                                                  66 Systems Analysis
+approximation     techniques
+spline                                                                  Unclassified-Unlimited
+tau-Legendre
+
+19. S_urity _a_if.(ofthisreport)         20. SecurityClassif.(ofthispega)         21. No. of Pages      22. Dice
+      Unclassified                            Unclassified                             15                  A02
+
+
+                              Forsale by the NationalTechnicalInformation
+                                                                        Service,Springfield,Virginia 22161            NASA-Langley,
+                                                                                                                                1983
+

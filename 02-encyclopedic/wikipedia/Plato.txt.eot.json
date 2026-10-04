@@ -1,0 +1,113 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Plato.txt",
+  "sha256": "21c6091c14c7d19fb7f34632d02582c90bdcb9c3fd4fec12fc66bdce1eda93f7",
+  "chars": 33829,
+  "declaredIdentity": {
+   "title": "Plato",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 36,
+  "debrisChars": 635,
+  "debrisFraction": 0.019,
+  "headingCount": 30,
+  "headings": [
+   "Life",
+   "Socrates",
+   "Thirty tyrants and Trial of Socrates",
+   "Later philosophical development",
+   "Heraclitus and Parmenides",
+   "Mathematics",
+   "Pythagoreanism",
+   "First trip to Syracuse",
+   "Foundation of the Academy",
+   "Second and third trips to Syracuse",
+   "Final years and death",
+   "Philosophy",
+   "The Forms",
+   "The Soul",
+   "Epistemology",
+   "Ethics",
+   "Politics",
+   "Rhetoric and poetry",
+   "Unwritten doctrines",
+   "Works",
+   "Themes",
+   "Textual sources and history",
+   "Authenticity",
+   "Chronology",
+   "Legacy",
+   "Medieval era",
+   "Modern",
+   "Notes",
+   "References",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 30,
+   "debrisFraction": 0.019
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": -0.18143949396930473,
+   "debrisFractionZ": 1.6070027911465945,
+   "priorSeenSoFar": 35
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.095Z"
+ }
+}

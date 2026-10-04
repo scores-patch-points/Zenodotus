@@ -1,0 +1,1027 @@
+---
+title: Conceptual Design for a Dual-Bell Rocket Nozzle System Using a NASA F-15 Airplane as the Flight Testbed
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20140017156
+source_url: https://ntrs.nasa.gov/citations/20140017156
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Armstrong Flight Research Center
+publication_date: 2019-07-11
+retrieved: 2026-09-22
+sha256: ed4cd88618acd49a0cc1bd41a735bb09be586e3258deecd70d3c9dd58054711d
+pages: 29
+words: 9752
+cv_look_pages: 6
+---
+
+NASA/TM—2014–218376
+
+
+
+
+Conceptual Design for a Dual-Bell Rocket Nozzle
+System Using a NASA F-15 Airplane as the Flight
+Testbed
+Daniel S. Jones
+Armstrong Flight Research Center, Edwards, California
+
+Joseph H. Ruf
+Marshall Space Flight Center, Huntsville, Alabama
+
+Trong T. Bui, Martel Martinez and Clinton W. St. John
+Armstrong Flight Research Center, Edwards, California
+
+
+
+
+                    Click here: Press F1 key (Windows) or Help key (Mac) for help
+
+
+
+
+October 2014
+               This page is required and contains approved text that cannot be changed.
+
+                                  NASA STI Program ... in Profile
+
+Since its founding, NASA has been dedicated              •   CONFERENCE PUBLICATION.
+to the advancement of aeronautics and space science.         Collected papers from scientific and technical
+The NASA scientific and technical information (STI)          conferences, symposia, seminars, or other
+program plays a key part in helping NASA maintain            meetings sponsored or
+this important role.                                         co-sponsored by NASA.
+
+The NASA STI program operates under the auspices         •   SPECIAL PUBLICATION. Scientific,
+of the Agency Chief Information Officer. It collects,        technical, or historical information from NASA
+organizes, provides for archiving, and disseminates          programs, projects, and missions, often
+NASA’s STI. The NASA STI program provides access             concerned with subjects having substantial
+to the NASA Aeronautics and Space Database and its           public interest.
+public interface, the NASA Technical Reports Server,
+thus providing one of the largest collections of         •   TECHNICAL TRANSLATION.
+aeronautical and space science STI in the world.             English-language translations of foreign
+Results are published in both non-NASA channels and          scientific and technical material pertinent to
+by NASA in the NASA STI Report Series, which                 NASA’s mission.
+includes the following report types:
+                                                         Specialized services also include organizing
+•   TECHNICAL PUBLICATION. Reports of                    and publishing research results, distributing
+    completed research or a major significant phase of   specialized research announcements and feeds,
+    research that present the results of NASA            providing information desk and personal search
+    Programs and include extensive data or theoretical   support, and enabling data exchange services.
+    analysis. Includes compila-
+    tions of significant scientific and technical data   For more information about the NASA STI program,
+    and information deemed to be of continuing           see the following:
+    reference value. NASA counter-part of peer-
+    reviewed formal professional papers but has less     •   Access the NASA STI program home page at
+    stringent limitations on manuscript length and           http://www.sti.nasa.gov
+    extent of graphic presentations.
+                                                         •   E-mail your question to help@sti.nasa.gov
+•   TECHNICAL MEMORANDUM.
+    Scientific and technical findings that are           •   Fax your question to the NASA STI Information
+    preliminary or of specialized interest,                  Desk at 443-757-5803
+    e.g., quick release reports, working
+    papers, and bibliographies that contain minimal      •   Phone the NASA STI Information Desk at
+    annotation. Does not contain extensive analysis.         443-757-5802
+
+•   CONTRACTOR REPORT. Scientific and                    •   Write to:
+    technical findings by NASA-sponsored                     STI Information Desk
+    contractors and grantees.                                NASA Center for AeroSpace Information
+                                                             7115 Standard Drive
+                                                             Hanover, MD 21076-1320
+NASA/TM—2014–218376
+
+
+
+
+Conceptual Design for a Dual-Bell Rocket Nozzle
+System Using a NASA F-15 Airplane as the Flight
+Testbed
+Daniel S. Jones
+Armstrong Flight Research Center, Edwards, California
+
+Joseph H. Ruf
+Marshall Space Flight Center, Huntsville, Alabama
+
+Trong T. Bui, Martel Martinez and Clinton W. St. John
+Armstrong Flight Research Center, Edwards, California
+
+
+
+                      Insert conference information, if applicable; otherwise delete
+
+
+
+
+                    Click here: Press F1 key (Windows) or Help key (Mac) for help
+
+
+
+
+National Aeronautics and
+Space Administration
+
+Armstrong Flight Research Center
+Edwards, CA 93523-0273
+
+October 2014
+                                         Acknowledgments
+
+   The authors acknowledge the contributions made by a previous NASA AFRC F-15/PFTF project
+called the ducted Rocket Experiment (D-Rex). Conceptual designs from this effort were greatly utilized
+and leveraged for this dual-bell nozzle propellant feed system conceptual design.
+
+   This effort was made possible by several organizations within the agency. In particular, the authors
+express their appreciation to the following six groups: (1) the NASA Headquarters Center Innovation
+Fund; (2) the NASA AFRC Center Chief Technologist Office; (3) the NASA AFRC Exploration and
+Space Technology Mission Directorate Office; (4) the NASA Langley Research Center Game Changing
+Development Program; (5) the NASA MSFC Technology Development and Transfer Office; and (6) the
+NASA Kennedy Space Center Launch Services Program. Each of these groups has shown support for the
+ACN project, and has continued to foster the advancement of this technology for the nation.
+
+
+
+
+                    Click here: Press F1 key (Windows) or Help key (Mac) for help
+
+                                           Available from:
+
+                               NASA Center for AeroSpace Information
+                                      7115 Standard Drive
+                                    Hanover, MD 21076-1320
+                                          443-757-5802
+
+
+
+
+                    Click here: Press F1 key (Windows) or Help key (Mac) for help
+                                                 Abstract
+    The dual-bell rocket nozzle was first proposed in 1949, offering a potential improvement in rocket
+nozzle performance over the conventional-bell nozzle. Despite the performance advantages that have
+been predicted, both analytically and through static test data, the dual-bell nozzle has still not been
+adequately tested in a relevant flight environment. In 2013 a proposal was constructed that offered a
+National Aeronautics and Space Administration (NASA) F-15 airplane as the flight testbed, with the plan
+to operate a dual-bell rocket nozzle during captive-carried flight. If implemented, this capability will
+permit nozzle operation into an external flow field similar to that of a launch vehicle, and facilitate an
+improved understanding of dual-bell nozzle plume sensitivity to external flow-field effects. More
+importantly, this flight testbed can be utilized to help quantify the performance benefit with the dual-bell
+nozzle, as well as to advance its technology readiness level. Toward this ultimate goal, this report
+provides plans for future flights to quantify the external flow field of the airplane near the nozzle
+experiment, as well as details on the conceptual design for the dual-bell nozzle cold-flow propellant feed
+system integration within the NASA F-15 Propulsion Flight Test Fixture. The current study shows that
+this concept of flight research is feasible, and could result in valuable flight data for the dual-bell nozzle.
+
+                                             Nomenclature
+ACN          altitude-compensating nozzle
+AFRC         Armstrong Flight Research Center (Edwards, California)
+AoA          angle of attack
+CB           conventional-bell
+CCIE         Channeled Centerbody Inlet Experiment
+CDE          Cone Drag Experiment
+CFD          computational fluid dynamics
+COPV         composite overwrapped pressure vessel
+DOF          degrees-of-freedom
+GN2          gaseous nitrogen
+Isp          specific impulse
+LEO          low-Earth orbit
+LMI          Local Mach Investigation
+MEOP         maximum expected operating pressure
+MSFC         Marshall Space Flight Center (Huntsville, Alabama)
+NASA         National Aeronautics and Space Administration
+NNPR         normalized nozzle pressure ratio
+NPR          nozzle pressure ratio (Pc/Pamb)
+NTF          Nozzle Test Facility
+OML          outer mold line
+Pamb         ambient pressure
+Pc           nozzle chamber pressure
+PFTF         Propulsion Flight Test Fixture
+PRA          pressure reducing assembly
+RAGE         Rake Airflow Gage Experiment
+RFS          rocket forebody simulator
+SSME         Space Shuttle Main Engine
+STS          Space Transportation System
+TRL          technology readiness level
+
+
+
+
+                                                                                                             1
+                                             Introduction
+    Development of the dual-bell rocket nozzle has been proposed, including the goal of advancing the
+technology readiness level (TRL) of the dual-bell nozzle through flight testing and flight research in a
+relevant environment (ref. 1). A more thorough investigation on the performance of the dual-bell nozzle is
+warranted since this nozzle has been predicted to offer a performance advantage over the
+conventional-bell (CB) nozzle. If the performance benefit of the dual-bell nozzle is proven in a relevant
+environment, utilization of this technology could lead to a capability of delivering higher mass payloads
+to low-Earth orbit (LEO).
+
+    The dual-bell nozzle is one type of altitude-compensating nozzle (ACN), which has a fixed geometry
+with an inner contour consisting of two overlapped bells. During rocket ascent at low altitudes, the
+dual-bell nozzle operates in mode 1, only utilizing the smaller bell of the nozzle. During rocket ascent at
+higher altitudes, the dual-bell nozzle operates in mode 2, also utilizing the larger bell of the nozzle. The
+inherent dual-mode operation of the dual-bell nozzle theoretically permits near optimal expansion at two
+altitudes, and overall, a higher mission integrated performance over the CB nozzle since the flow within
+the dual-bell nozzle will never be significantly over- or under-expanded. The concept of the dual-bell
+nozzle was first proposed in 1949, offering a potential method of mitigating the high performance losses
+incurred by the CB nozzle (ref. 2). Since then, analytical studies and static tests with the dual-bell nozzle
+have continued worldwide, but to the authors’ knowledge, the dual-bell nozzle has still not been
+adequately tested in a relevant flight environment.
+
+   The National Aeronautics and Space Administration (NASA) Marshall Space Flight Center (MSFC)
+(Huntsville, Alabama) is one of the few organizations that has complemented their analytical effort on the
+dual-bell nozzle with static tests to verify their performance predictions. MSFC conducted static testing of
+the dual-bell nozzle at the MSFC Nozzle Test Facility (NTF), utilizing a non-reacting flow which
+exhausted from the nozzle into a quiescent environment. Nozzle testing was conducted over a wide range
+of nozzle pressure ratio (NPR) conditions, while quantifying the nozzle performance and flow behavior at
+each condition. Figure 1 shows a photo of the test setup at the MSFC NTF with a dual-bell nozzle.
+Testing with a similar CB nozzle was also conducted at the MSFC NTF. During these tests, the dual-bell
+nozzle proved to provide a greater performance than the CB nozzle over a range of NPR conditions.
+
+   The NASA Armstrong Flight Research Center (AFRC) (Edwards, California), formerly the NASA
+Dryden Flight Research Center, has a unique capability with its fleet of F-15 airplanes (McDonnell
+Douglas, now The Boeing Company, Chicago, Illinois), one of which can be used as a flight testbed for
+dual-bell rocket nozzle research (ref. 1). Captive-carried flight research expertise at AFRC led to the
+creation of the Propulsion Flight Test Fixture (PFTF), which was specifically created to facilitate the
+advancement of propulsion-focused technologies through captive-carried flight research. Figure 2 shows a
+photo of the PFTF (in black) mated to the centerline pylon of an F-15 airplane, while conducting
+captive-carried flight research with a simulated rocket (in red) (ref. 3).
+
+   Several of the F-15/PFTF capabilities and limitations for the dual-bell rocket nozzle flight system have
+been documented (ref. 1). Among these documented capabilities and limitations are: (1) an overview of
+the F-15/PFTF capability; (2) the proposed nozzle placement and sizing criteria; (3) the PFTF internal
+capacity; (4) the PFTF thrust limitations of the force balance (a system that permits dual-bell nozzle thrust
+forces to be measured in flight); and (5) the F-15/PFTF flight envelope. These criteria were used to
+develop the conceptual design presented in this report.
+
+    The flight-research campaign is designed to include three phases, which will all require tests at various
+flight conditions. These three flight-research phases are as follows: (Phase I) initial flight research to
+quantify the external (local) flow-field conditions near the nozzle; (Phase II) flights while operating cold
+
+
+2
+flow through various nozzles; and (Phase III) flights while operating reacting flow through various
+nozzles. Rationale for conducting each of the three phases of the flight-research campaign has been
+documented, as well as the rationale for conducting dual-bell rocket nozzle research through
+captive-carried flight (ref. 1). The conceptual design presented within this report covers Phase I and
+Phase II of the flight-research campaign. The conceptual design for Phase III of the flight-research
+campaign will be detailed in a separate publication.
+
+          Conceptual Design for the External Flow-Field Flights (Phase I)
+    Phase I of the dual-bell nozzle flight-research campaign will be conducted to quantify the local
+external flow-field conditions under the F-15/PFTF near the dual-bell nozzle. A survey of the external
+flow field is crucial to a greater understanding of the nozzle plume transitional behavior and must be
+understood prior to flights which include nozzle operation. This section will provide details on three main
+topics related to the Phase I flight-research campaign: (1) previous flight experiments that have been
+conducted with the F-15/PFTF; (2) the conceptual design for the dual-bell nozzle external flow-field
+flights; and (3) the initial results from the external flow-field predictions.
+
+                      Previous Flight Experiments Utilizing the F-15/PFTF
+    The conceptual design for the Phase I flight system is based on the utilization of existing flight-proven
+hardware, with the F-15/PFTF as the flight testbed. Combined with one of the AFRC F-15 research
+airplanes, the PFTF provides an innovative and cost effective method for conducting flight testing and
+flight research of advanced propulsion concepts. AFRC expertise with captive-carried flight research led
+to the creation of the PFTF, which has been integrated with the centerline pylon of an F-15 airplane. The
+PFTF also has a six-degrees-of-freedom (6-DOF) in-flight force measurement capability for a propulsion
+flight research experiment carried below the PFTF (ref. 4). The PFTF has been utilized for captive-carried
+flight research with four previous experiments:
+
+   1) The Cone Drag Experiment (CDE), in which a cylindrical duct with a conical nose cap was used as
+      a simulated rocket. This flight research facilitated the validation of the PFTF integral 6-DOF force
+      balance system against aerodynamic and inertial forces in flight (ref. 5).
+   2) The Local Mach Investigation (LMI) flights, in which an air data boom was attached to the front of
+      a simulated rocket. This flight research led to a quantified assessment of the local Mach number and
+      the local flow angle at a single point under the F-15/PFTF over a wide range of flight conditions
+      (ref. 6).
+   3) The Rake Airflow Gage Experiment (RAGE), in which a cruciform array of nine five-hole conical
+      probes was attached to the front of a simulated rocket by a cylindrical boom. This flight research
+      led to a quantified assessment of the local flow conditions at the aerodynamic interface plane of an
+      advanced inlet experiment, over a local range of Mach 1.45 through Mach 1.6 (ref. 7).
+   4) The Channeled Centerbody Inlet Experiment (CCIE), in which an advanced experimental inlet was
+      mounted under the PFTF. This flight research led to a quantified assessment of the airflow through
+      an advanced experimental inlet, which was also compared to the airflow through a standard inlet.
+      The CCIE flight hardware included two interchangeable center bodies, which were installed in an
+      air inlet tube. One center body was channeled, and the other center body was a conventional smooth
+      shape. Slots cut along the length of the channeled center body simulated a simple device that, in an
+      actual inlet, would allow optimization of the amount of air flowing into the engine (ref. 8).
+
+                              External Flow-Field Conceptual Design
+    Figure 3 shows a sketch of the conceptual design of an F-15 airplane in the ACN dual-bell nozzle
+flight-research configuration, which has great similarities to the previous flight-research experiments, as
+
+
+                                                                                                           3
+noted above. The conceptual design for the flight-research testbed is based on the philosophy of utilizing
+existing flight-proven hardware to the greatest extent possible. The rationale behind this philosophy is
+three-fold: (1) to reduce cost; (2) to minimize schedule; and (3) to mitigate risk.
+
+   The ACN-specific hardware that is captive-carried by an F-15 airplane is called the ACN stack, and
+consists of the following three primary components: (1) the PFTF; (2) the PFTF experiment adapter; and
+(3) the rocket forebody simulator (RFS). Figure 3 shows the ACN stack, which is mounted to an
+F-15 airplane via the centerline pylon. Both the airplane and the RFS will have air data booms to measure
+the incoming Mach number and flow angles, with the airplane air data boom measuring freestream
+conditions, and the RFS air data boom measuring incoming RFS local flow conditions. The rocket nozzle
+will be mounted in the aft-region of the RFS, with the nozzle exit plane coplanar with the RFS close-out
+plate. For the Phase I flow field survey flights, the entire RFS outer mold line (OML) will be heavily
+instrumented, especially near the nozzle exit plane, such that the local flow field can be quantified prior to
+nozzle operational flights. Although previous flight experiments have measured the local flow field near
+the front of the RFS (via an air data boom, or a rake), the flow field near the aft region of the RFS has
+never been quantified. The same RFS OML pressure instrumentation plan will be used for all three phases
+of flight research, to facilitate comparisons. The RFS OML instrumentation will be used to determine the
+local flow-field pressures along the RFS, especially near the nozzle experiment. Data from this
+instrumentation will also lead to the validation of computational fluid dynamics (CFD) predictions and
+facilitate refined analytical predictions prior to flight activity with nozzle operation.
+
+    The PFTF has an internal capacity that can be used for the dual-bell rocket nozzle propellant feed
+system, which will be described in greater detail in the next section of this report. The PFTF main
+structure was fabricated from a solid billet of 6061-T6 aluminum, with an overall length of 107 inches, an
+overall height of 19 inches, and an overall width of 10 inches. The RFS will be mounted underneath the
+PFTF, and will be utilized to spatially and inertially simulate a rocket utilizing a dual-bell rocket nozzle in
+flight. The RFS has a cylindrical diameter of 10 inches and a 60 degree half-angle conical nose with an air
+data boom. All ACN flights (including non-operational nozzle flights) will utilize the PFTF 6-DOF force
+balance system to measure forces in flight. The limitations and accuracy of the force balance have
+previously been documented (refs. 4 and 5). For Phase I flights, the force balance will measure
+aerodynamic and inertial forces on the RFS, whereas the Phase II and Phase III flights will utilize the
+force balance to also measure dual-bell nozzle thrust forces in flight.
+
+   Figures 4(a) and 4(b) show external images of the ACN conceptual design. Figure 4(a) shows a
+rear-isometric view of the ACN stack, and figure 4(b) shows a zoomed-in view with the dual-bell rocket
+nozzle installed within the aft section of the RFS. The purpose of the RFS is partially to help simulate a
+rocket in flight and aid in aligning the local flow field as it approaches the nozzle exit plane. The RFS will
+also be utilized to house the propellant feed system plumbing from the PFTF to the rocket nozzle, as well
+as to house the routing of instrumentation. As noted earlier, the conceptual design of the RFS also
+includes an air data boom, although an air data boom is not shown in figure 4(a).
+
+    From figures 4(a) and 4(b), one can note the slight nose-up attitude of the RFS. Flight research with
+previous experiments utilized a nose-up attitude to align the forward end of the simulated rocket with the
+local flow field under the F-15/PFTF in that region, due to the local flow-field downwash from the
+F-15 airplane. The existing design allows for the articulation of this angle prior to flight, up to an
+inclination angle of five degrees with respect to the PFTF. The appropriate angle will be determined and
+set prior to flight to align the primary axis of the RFS with the local flow field near the nozzle for the
+flight-test condition planned. As noted earlier, the external (local) flow field is expected to have a
+significant effect on dual-bell nozzle plume behavior, including the dual-bell nozzle plume mode
+transition. In addition to the research benefit of aligning the nozzle with the external flow field, the RFS
+
+
+
+4
+inclination angle also provides a flight-safety benefit by providing a greater separation of the nozzle
+plume from the F-15/PFTF flight hardware for nozzle operational flights.
+
+   The primary objective of the Phase I flow-field survey flights is to obtain the local flow field pressure
+data underneath the F-15/PFTF in preparation for future nozzle operational flights. CFD analysis has been
+completed to help predict this flow field in preparation for Phase I flight activity, and Phase I flight data
+will lead to the validation of this analysis. Flight data and CFD analysis will lead to a more thorough
+understanding of dual-bell nozzle plume sensitivity to local flow-field effects.
+
+    As noted earlier, the conceptual design for the flight-research testbed is based on the philosophy of
+utilizing existing flight-proven hardware to the greatest extent possible. Following this philosophy, a
+thorough inventory of existing flight hardware was taken against the Phase I conceptual design. The
+conclusion of this inventory led to the Phase I conceptual design shown in figure 3, figure 4(a), and
+figure 4(b). With the exception of the base-plate assembly (labeled in figure 3), all components have
+already been flight-proven.
+
+                               Initial External Flow-Field Predictions
+   As can be seen in figure 3, the ACN exit plane is not exposed to the incoming freestream static
+pressure, but rather, it is subjected to flow perturbations caused by the F-15 airplane, the centerline pylon,
+the air data booms, the PFTF, the PFTF adapter, and the RFS. ACN operation greatly depends on the
+nozzle exit pressure, and accurate predictions of this exit pressure are required for the design of the nozzle
+and the propellant feed system, as well as for the final selection of the flight-test conditions required. The
+main objective of this initial analysis was to determine the flow-field effects caused by the F-15 airplane
+with the ACN stack, and ultimately the local flow-field conditions near the ACN exit plane. This initial
+flow-field analysis includes:
+
+    1) airplane-only inviscid/Euler CFD analysis for the airplane with blocked airplane inlets,
+    2) airplane plus ACN stack inviscid/Euler CFD analysis for the airplane and the ACN stack with
+       blocked airplane inlets, with the ACN not operating, and
+    3) airplane plus ACN stack inviscid/Euler CFD analysis for the airplane and the ACN stack with
+       blocked airplane inlets, with the ACN operating.
+
+In addition, analysis is currently underway to determine the airplane and the ACN stack
+viscous/Navier-Stokes CFD flow-field predictions with and without experimental nozzle operation. Both
+the flow viscosity and the nozzle plume affect the base flow of the RFS and will influence the nozzle exit
+pressure. Therefore, these considerations will be included in a separate analysis. Finally, all CFD
+predictions will be validated using the Phase I flow field survey flight data.
+
+   All nozzle operation with an F-15 airplane will occur during a low angle of attack (AoA), and the local
+flow field is expected to remain mostly attached. Based on this assumption, the initial predictions were
+completed with an inviscid/Euler CFD analysis, and should yield satisfactory results for this preliminary
+design and sizing effort.
+
+   A comparison of the airplane-only and airplane plus ACN stack predictions was initially conducted to
+isolate the effects of the ACN stack on the ACN exit plane, and permit the investigation of possible flow
+anomalies. Blocked airplane inlets potentially produce the most disturbances to the local flow field
+underneath the airplane, so the addition of blocked airplane inlets was included in this initial analysis
+effort. No airplane engine parameters were needed for this blocked airplane inlet approximation.
+
+
+
+
+                                                                                                            5
+   The Star-CCM+ polyhedral finite-volume unstructured CFD code was used for this analysis effort.
+Figure 5 illustrates an inviscid/Euler CFD grid that was created for an F-15 airplane and the complete
+experimental stack. Since only changes in AoA are considered, only half of the airplane is modeled. The
+base-plate assembly was not modeled in the current CFD analysis, but this difference in the model is not
+expected to change the basic conclusions for the current results. The base-plate assembly should be
+included in future CFD analysis should it become a permanent fixture in the flight experiment.
+
+  Two different flight-test conditions were initially considered for this analysis to gain a greater
+understanding of the local flow field near the nozzle exit plane:
+
+    1) 46 kft altitude, Mach 0.9, and 4.2-deg airplane AoA.
+    2) 46 kft altitude, Mach 1.2, and 2.6-deg airplane AoA.
+
+   The 46 kft altitude was selected to provide a clean, undisturbed freestream static pressure value of
+2 psi used in the current nozzle and propellant feed system design and sizing effort. The transonic and
+supersonic flight conditions were selected to evaluate compressibility effects on the ACN exit pressure.
+For the two flight conditions under consideration, the corresponding airplane AoA values were found
+from the F-15 airplane flight simulation deck in the Aerodynamics and Propulsion Branch at NASA
+AFRC. Figures 6(a) and 6(b) illustrate some preliminary CFD predictions for the local flow field
+underneath a clean F-15 airplane. The static pressure contours on the airplane for the Mach 0.9 flight
+condition are shown in figure 6(a), and the static pressure contours for the Mach 1.2 flight condition are
+shown in figure 6(b). It can be seen that the flow disturbances in the supersonic flight condition are more
+pronounced than the transonic flight condition. For each condition, an average of pressures was obtained
+in the location of the nozzle exit plane. The averaged nozzle exit pressure for the transonic flight
+condition is 1.93 psi, and is only slightly less than the freestream static pressure value of 2 psi. For the
+supersonic flight condition, the averaged nozzle exit pressure value is 1.70 psi and is further below the
+freestream static pressure. Despite the disturbances created by the airplane nose and inlet, it can be seen
+from the streamlines that smooth flow exists underneath the airplane for both the transonic and supersonic
+cases.
+
+    It can be seen in both cases that the blocked airplane inlet produces a very large disturbance in the
+pressure field underneath the airplane, and therefore, there are large variations in static pressure in the
+streamwise direction. However, the location of the nozzle exit is in an area where the static pressure is
+relatively close to the freestream static pressure value of 2 psi, for both cases. These preliminary results
+indicate a well-chosen location for the dual-bell nozzle experiment, with a relatively benign local flow
+field.
+
+   It is expected that the inclusion of the ACN stack, as well as the ACN plume, will change the ACN
+exit pressure. Therefore, preliminary inviscid/Euler CFD solutions were obtained for an F-15 airplane
+with the full experimental stack. Figures 7(a) and 7(b) illustrate some preliminary CFD predictions for the
+local flow field underneath an F-15 airplane and the ACN stack with no flow through the ACN. The static
+pressure contours on the airplane for the Mach 0.9 flight condition are shown in figure 7(a), and the static
+pressure contours for the Mach 1.2 flight condition are shown in figure 7(b). As expected, the local ACN
+exit pressures are further below the clean airplane only results that are shown in figure 6. The averaged
+ACN exit pressure for the transonic flight condition is 1.74 psi, and the supersonic flight condition is
+0.98 psi. The supersonic value is only about half of the freestream static pressure, so the stack is
+producing more disturbance than just the clean airplane. In all cases, the flow streamlines show that the
+flow remains nice and smooth beneath the airplane, even with the full ACN stack.
+
+   Figures 8(a) and 8(b) illustrate some preliminary CFD predictions for the local flow field underneath
+an F-15 airplane and the ACN stack with the nozzle experiment operating. The nozzle total pressure and
+
+
+6
+temperature are 150 psi and 610°R, respectively. Similar to figure 6 and figure 7, the static pressure
+contours on the airplane for the Mach 0.9 flight condition are shown in figure 8(a), and the static pressure
+contours for the Mach 1.2 flight condition are shown in figure 8(b). The averaged ACN exit pressure for
+the transonic flight condition is 1.73 psi, and the supersonic flight condition is only 0.26 psi. At this
+supersonic flight condition, the ACN exit pressure is only a small fraction of the freestream static
+pressure, emphasizing that the design of the ACN flight experiment for supersonic flight conditions must
+take into account the nozzle installation and plume effects. These results also show the advantage of
+slightly pitching-up the attitude of the RFS, revealing that the ACN exhaust flow is angled away from the
+airplane before straightening out to be parallel with the freestream flow field.
+
+   In summary, for the clean airplane only case, the ACN exit pressure from both the transonic and
+supersonic cases do not vary much from the freestream static pressure. The addition of the stack reduces
+the ACN exit pressure. Finally, operating the ACN reduces the ACN exit pressure still further below the
+freestream static pressure. This further reduction in the ACN exit pressure from the freestream static
+pressure is expected to be caused by the induced flow entrained by the nozzle plume (during operation).
+The supersonic flight Mach number produced the greatest change from the freestream pressure, especially
+with the ACN operating, going down to only 0.2-0.3 psi (for a freestream static pressure of 2 psi). In all
+cases, the ACN exit pressure is sub-ambient, which is beneficial from a propellant feed system design
+perspective.
+
+   Figures 9(a) and 9(b) provide a close-up view of the operating ACN for both the transonic and
+supersonic flight conditions. The RFS has been made invisible to show the internal nozzle flow more
+clearly. The flow in the local area of the ACN reveals no areas of concern. Shown here again, the ACN
+flow curves away from the airplane, and then straightens out to be parallel with the incoming freestream
+flow, providing sufficient clearance from the F-15 airplane. Finally, it can be seen that the ACN flow is
+significantly over-expanded at these flight conditions.
+
+  Conceptual Design for the Cold-Flow Nozzle Operational Flights (Phase II)
+    Phase II of the dual-bell nozzle flight-research campaign is to conduct flights while operating cold
+flow through the nozzle test articles. Flight operations with two different nozzles are planned: flights with
+a dual-bell nozzle; and flights with a CB nozzle. The rationale behind conducting Phase II of the
+flight-research campaign is two-fold: (1) to allow cold-flow data from MSFC static testing to be
+leveraged and compared against flight-test data; and (2) to permit an intermediate or build-up approach in
+system complexity (prior to tests with reacting flow), partially for risk mitigation purposes. This section
+will focus on the conceptual design of the cold flow propellant feed system, as well as the nozzle scaling
+and preliminary performance analysis. The primary goal of this conceptual design is not to provide the
+final design solution, but rather, to provide design options and insight into the feasibility of operating a
+dual-bell nozzle system with the F-15/PFTF as the flight testbed.
+
+                             Propellant Feed System Design: Option 1
+   The conceptual design for the Phase II flight system is based on a schematic of the propellant feed
+system, which is shown in figure 10. The dual-bell nozzle cold flow propellant feed system is a
+propulsion system that uses high-pressure gaseous nitrogen (GN2) propellant. The entire system is
+contained within two primary structures: the PFTF OML, and the RFS OML. The propellant feed system
+design also draws on AFRC experience with several projects, but primarily on the propellant feed systems
+for the X-43A Hyper-X program and on the Orion Abort Flight Test project (refs. 9 and 10).
+
+   The propellant feed system utilizes two propellant tanks that both deliver high-pressure GN2 to a
+pressure reducing assembly (PRA). The purpose of the PRA is to receive high-pressure GN2 and reduce it
+
+
+                                                                                                           7
+to an appropriate pressure for test article operation. Components of the PRA are also designed to prevent
+feed system over-pressurization, for flight safety and for system health. The PRA also includes a film
+coolant system, or a bleed system, as shown by the purple feed lines in figure 10. The film coolant system
+will be injected between the first and the second bells, and will be used to control the nozzle flow state,
+facilitating the plume mode transition (filling the second bell). Pressurization and depressurization of the
+system during ground operations can be accomplished through the service valve assembly, via two
+manual service (fill/drain) valves accessed from the exterior of the PFTF. One service valve will provide
+access to the high-pressure side, while the other will provide access to the low-pressure side. The vent
+assembly consists of a non-propulsive vent used to direct the exhaust from the vent and relief valves to
+the rear of the PFTF.
+
+   The test article assembly will be integrated within the RFS and will be easily interchangeable for either
+type of nozzle (either for a CB nozzle or for a dual-bell nozzle). Propellant lines connect the various
+subassemblies together, and pressure and temperature transducers will be used in every isolated segment
+of the system. These measurements will enable a real-time health monitoring assessment during flight, as
+well as enable a real-time and post-flight performance assessment of the nozzle experiment and the
+propellant feed system. Figure 11(a) shows an isometric view of the PFTF external shell, and figure 11(b)
+shows the primary components of the PFTF propellant feed system (from the same angle). The two
+propellant tanks are vertically mounted in the aft bay of the PFTF and are shown in red and blue. The
+PRA plate is also mounted in the aft bay of the PFTF and is located between the two propellant tanks,
+shown in orange in figure 11(b). Several components will be mounted to the PRA plate, as noted within
+the schematic. An additional, smaller aft-bay PRA plate is also available for mounting components, if
+component packaging proves challenging.
+
+   The two propellant tanks will be vertically mounted, identical, and made of stainless steel, with a
+maximum expected operating pressure (MEOP) of 3,500 psi. Each propellant tank has an estimated
+volume capability of 409 cubic inches. Although a composite overwrapped pressure vessel (COPV)
+would provide a far more efficient means of high-pressure gaseous propellant storage, the propellant
+tanks shown in this conceptual design are also intended to be compatible with propellants that will be
+used during Phase III flights. The hardware selected within this conceptual design was also greatly
+influenced by an inventory of existing flight hardware at NASA AFRC.
+
+                             Propellant Feed System Design: Option 2
+   Preliminary analysis of the option 1 propellant feed system immediately revealed the minimal test
+duration available per F-15 flight due to the lack of propellant storage capability, as well as due to the
+minimal energy content of the cold-flow propellant. Several options were considered in the propellant
+feed system design to lengthen the test duration for the Phase II system, and most were immediately
+discarded. The following options were considered in greater detail, but were also ultimately discarded:
+
+    1) the addition of an on-board air compressor (discarded due to system mass and volume
+       requirements);
+    2) the addition of a ram-air inlet and valve close-off system (discarded due to system complexity);
+       and
+    3) utilization of air compression through the F-15 airplane engine bleed system (discarded since the
+       compression provided is too low).
+
+   A final option that is still under consideration is the addition of PFTF side-mounted propellant tanks,
+and is being considered as the option 2 propellant feed system conceptual design. Both the option 1 and
+option 2 conceptual designs are currently being considered in a trade study to determine the final
+
+
+
+8
+propellant feed system design. This trade study is also being considered in parallel with the conceptual
+design for the Phase III propellant feed system.
+
+   Figure 12 shows a schematic of the propellant feed system for the option 2 conceptual design, and
+should be considered in addition to the propellant feed system schematic outlined in figure 10. As shown
+in figure 12, two additional PFTF tank structures are added, each of which contain two propellant tanks.
+The four additional propellant tanks feed into the two vertically mounted PFTF propellant tanks via the
+smaller aft-bay PRA plate, which was shown earlier in figure 11(b), and components on this PRA plate
+are used to reduce the pressure from the four higher pressure tanks to a lower pressure for the two PFTF
+tanks. Figure 13(a) shows the external shell of the option 2 conceptual design with the additional
+side-mounted structures on the original PFTF. Figure 13(b) shows an isometric view (from the same
+angle) of the major components of the propellant feed system for the option 2 conceptual design.
+
+   The four horizontally mounted propellant tanks will be identical. The propellant tanks selected for this
+conceptual design are extremely robust, each of which is a highly efficient COPV with an MEOP of
+8,000 psi. Each propellant tank has an estimated volume capability of 451 cubic inches.
+
+             Propellant Feed System Design and PFTF Architecture Trade Study
+   The conceptual design options detailed above are intended to provide insight into the feasibility of
+integrating a dual-bell nozzle propellant feed system within the F-15/PFTF. Although the option 2
+propellant feed system has great advantages over the option 1 system when considering the propellant
+loading capability, especially during Phase II (cold-flow) flights, this advantage must be weighed against
+the additional complexity of modifying and building onto the flight-proven (option 1) PFTF hardware.
+Ultimately, the propellants chosen for the Phase III (reacting flow) conceptual design will greatly
+influence the final architecture of the Phase II propellant feed system design, since the goal is for these
+systems to be fundamentally similar. Also, the external configuration for Phase I must be identical to all
+Phase II and Phase III flights for the external flow-field survey to be consistent. A trade study is currently
+in progress on the appropriate propellant feed system and PFTF architecture for dual-bell nozzle flight
+research throughout all three phases of the flight-research campaign. The final design will also be
+influenced by the hardware that currently exists at NASA AFRC and NASA MSFC.
+
+                                     ACN System Instrumentation
+   Top-level details of the instrumentation requirements are noted within the propellant feed system
+schematic for each of the design options. Several measurements will be made throughout the system to
+enable a real-time health monitoring assessment during flight, as well to enable a real-time and post-flight
+performance assessment of the nozzle experiment and the propellant feed system.
+
+   Inside the dual-bell nozzle test article, there will be three static pressure measurements upstream of the
+settling chamber and one high frequency pressure measurement in the settling chamber just upstream of
+the nozzle throat, as noted in figure 10. These pressure measurements, along with three thermocouples,
+will be used to measure the working fluid total conditions (i.e. the combustion chamber conditions) of the
+test article. These measurements will be used to determine the performance metrics by which the
+performance of a nozzle is assessed.
+
+   Downstream of the nozzle test article throat, 30 static pressure measurements and 24 high frequency
+pressure measurements will be required. These 54 pressure measurements will be used to determine the
+behavior of the flow within the dual-bell nozzle; whether the nozzle is in mode 1 or mode 2, and how the
+flow transitions between modes. The flight nozzle will follow the same instrumentation philosophy as
+was conducted for previous tests at MSFC, as shown in figure 1.
+
+
+                                                                                                            9
+   As noted earlier, film coolant will be injected between the first and the second bells and will be used to
+control the nozzle flow state. Three static pressure measurements and three thermocouples in the film
+coolant manifold will be required to quantify the film coolant mass flow and properties.
+
+   Two separate video camera locations will be required for recording and monitoring each of the nozzle
+tests. One camera location will be within a small aeroshell on an airplane engine nacelle, and the other
+will be within the aft-bay of the PFTF. From each of the two camera view points, two video capabilities
+will be provided: (1) a high-resolution/frame-rate video, to permit a qualitative assessment of nozzle
+performance, which will complement the quantitative performance instrumentation; and (2) a
+medium-resolution/frame-rate video, for nozzle operation situational awareness and safety reasons. The
+high-resolution/frame-rate video will be recorded and viewed after each flight, and this video will not be
+down-linked real-time. The medium-resolution/frame-rate video will be made available for real-time
+monitoring by the flight-test engineer in the back seat of the F-15, and this video will also be down-linked
+for real-time monitoring and observation by those within the AFRC flight research control room. In
+addition, infrared cameras are also being considered for Phase III of the flight-research campaign.
+
+                                 Dual-Bell Nozzle Design Philosophy
+    The dual-bell nozzle has been predicted to achieve a higher performance over the CB nozzle, both
+analytically and through static test data. This predicted higher performance is possible because a dual-bell
+nozzle expands the nozzle flow to two different area ratios, or nozzle modes, during vehicle ascent. The
+dual-bell nozzle design philosophy will likely be driven by the desire to maximize the performance of the
+nozzle through control of the mode transition of the nozzle. One of the primary objectives of the flight
+test is to demonstrate that the dual-bell nozzle flow state can be controlled (ref. 1). This objective will
+require active methods for controlling the nozzle flow state; mode 1 for the relatively high back pressure
+of low altitudes; and mode 2 for the relatively low back pressure of high altitudes.
+
+   At the lower initial altitudes, the dual-bell flow will naturally stay in a mode 1 flow state because of
+the high ambient pressure. The high back pressure causes the flow to separate at the geometric inflection
+point between the two bells. Since the ambient pressure decreases with increasing altitude, the nozzle
+flow will expand to fill the second bell at these higher altitudes. The natural tendency of any nozzle is to
+flow full too soon, and the dual-bell nozzle is no different. Without active control, the flow of a dual-bell
+nozzle will attempt to flow full into the second bell prematurely, which would result in reduced thrust
+(due to overexpansion) and a less-than-optimal mission integrated specific impulse (Isp). A higher mission
+integrated Isp can be achieved by delaying this transition. This delayed mode transition allows the first bell
+to produce thrust at its near-optimal conditions longer and saves the second bell for later in the trajectory
+for near-vacuum conditions. When optimized for near-vacuum conditions, the relatively large second bell
+enables a higher vacuum Isp to be attained. The vacuum Isp of any Earth-to-orbit engine is by far the
+largest contributor to the mission integrated Isp of a rocket engine.
+
+   Likely methods to control mode transition will involve throttling the main combustion chamber
+pressure and/or variation of the nozzle film coolant flow rate. It is envisioned that the second bell will be
+a thin-walled, radiatively-cooled nozzle that would benefit from nozzle wall film coolant. This film
+coolant will be injected near the inflection point between the two bells. It is also believed that changes in
+the injected film flow can induce the second bell to flow full at the desired time.
+
+   A representative Space Transportation System (STS) trajectory is used as a starting point for a
+dual-bell nozzle design. Figure 14(a) illustrates the Space Shuttle Main Engine (SSME) power level and
+normalized nozzle pressure ratio (NNPR) for a representative STS trajectory. The NNPR is defined in
+equation (1).
+
+
+10
+                                                             Pc     
+                                                             P 
+                                  NNPR  NPR                   amb 
+                                                                                                           (1)
+                                               NPRdesign                  Pc     
+                                                                          P 
+                                                                             amb  design
+
+
+
+    When NNPR is 1.0, the nozzle is at its design altitude: the altitude where the nozzle area ratio is most
+efficient. The design altitude for the SSME is approximately 39 kft, as indicated in figure 14(a). Values of
+NNPR less than 1.0 indicate the nozzle flow is overexpanded, or the nozzle is operating below its design
+altitude. As indicated in figure 14(b), thrust is reduced because the nozzle exit pressure is below ambient
+pressure (i.e. drag). Values of NNPR greater than 1.0 indicate the nozzle flow is underexpanded, or the
+nozzle is operating above its design altitude. When above the design altitude, the Isp produced is less than
+would be possible if the nozzle had a larger area ratio. For any launch vehicle the choice of the engine
+design altitude is a balance between needing thrust to get off the launch pad (best with small nozzle area
+ratios) and trying to maximize the vacuum Isp (best with large nozzle area ratios).
+
+    Figure 15(a) helps to explain the drop in SSME power level in the STS trajectory. The STS reduced
+the SSME thrust to keep the flight dynamic pressure loads on the vehicle at manageable levels. The
+modulation of the engine Pc for this thrust bucket lends itself to incorporation of a dual-bell nozzle in a
+flight trajectory, not just for STS-like launch vehicles, but for any vehicle with an engine-throttling
+capability.
+
+    The basic approach envisioned is to start the engine at full power level with the first bell of the
+dual-bell nozzle flowing full. The first bell would have a relatively low area ratio, producing higher thrust
+at lower altitudes. A notional mode 1 design altitude and an NNPR curve are sketched in dark green in
+figure 15(b). As altitude increases, the ambient pressure (Pamb) decreases, and the dual-bell nozzle will
+begin to approach the NPR at which it will transition to mode 2. At this time, the engine would be
+throttled back to keep the mode transition from occurring, at the same time reducing thrust for the thrust
+bucket. Once the launch vehicle has passed through maximum aerodynamic pressure, the engines would
+be throttled up rapidly to induce mode transition, flowing full in the second bell of the nozzle. A notional
+NNPR curve for the second bell is sketched in light green in figure 15(b). The second bell would have a
+relatively large area ratio, with a relatively high design altitude (notionally shown as the light green dot),
+thus increasing the potential vacuum Isp. The limit on the mode 2 area ratio would be set by trades on
+nozzle physical size, nozzle mass and stiffness, and managing the necessary, but momentary induced drag
+due to overexpansion of the mode 2 flow during nozzle mode transition.
+
+   The key to deriving the maximum possible benefit from a dual-bell nozzle is the ability to control the
+mode transition while the nozzle is exhausting into a relevant flight environment. With a predictable and
+controllable mode transition, the design altitudes (i.e. area ratios) of the first and second bells can be
+optimized for the greatest possible performance that a dual-bell nozzle offers.
+
+                                  Dual-Bell Nozzle Design Approach
+   Figure 16 illustrates the general approach for the dual-bell nozzle test article design for flight on an
+F-15 airplane. The key design variables of the dual-bell nozzle during F-15 flight testing are shown on the
+representative profiles at the bottom of figure 16. The test article mode is shown on the first profile and
+indicates that the dual-bell nozzle is initially in mode 1. After throttle down, the nozzle will remain in
+mode 1. The transition to mode 2 will be induced during the throttle-up portion of the profile, by
+increasing the Pc of the test article, which is shown on the second profile. The initial Pc setting is 150 psi,
+as shown for this example. The throttle-down results in a Pc of 105 psi or to a 70 percent power level in
+
+
+
+                                                                                                            11
+the thrust bucket. The throttle-up would require a Pc of approximately 300 psi to induce transition into
+mode 2.
+
+   Throttling up to 300 psi, or twice the initial Pc, is done for these dual-bell nozzle flight tests to
+compensate for the fact that the back pressure will not rapidly decrease during tests on the F-15 airplane.
+One difference between a launch vehicle trajectory and the planned F-15 dual-bell nozzle flight tests is
+that the launch vehicle is continuously flying higher during engine commands within the thrust bucket,
+and Pamb continues to drop rapidly. Hence, the NPR increases continuously due to the decreasing Pamb.
+The nozzle operational tests during Phase II with an F-15 airplane will be at a constant altitude, or with
+minimal variation of Pamb over the relatively short test times. For this reason, the NPR during flight testing
+will be increased by increasing the Pc of the test article. Increasing NPR either way will produce the same
+nozzle flow fluid dynamics. After the initial nozzle operational flights at constant F-15 flight conditions,
+future tests may include nozzle operation on an F-15 airplane while rapidly varying the flight conditions.
+
+   The NPR for the test article is shown on the third profile, and the NNPR profile is shown on the last
+profile. NNPR is a similarity parameter that enables cold flow test articles to simulate hot fire nozzle
+performance.
+
+                                    Dual-Bell Nozzle Sizing Trades
+    A one-dimensional test article nozzle sizing trade was done for the cold flow test article with the
+working fluid as GN2. The throat area was an input, and assumptions were made as to the total
+temperature and total pressure for the GN2, enabling an estimate of the mass flow rate. Consumption of
+the available GN2 is one of the primary design constraints for sizing the test article. The test article area
+ratios were chosen based on the expected local flow-field pressures during operational tests on an
+F-15 airplane. The ratios of the first and second bell NPRdesign values were based on the cold flow test
+article previously tested at MSFC. With a throat area defined, the nozzle exit area and diameter were then
+calculated, and a one-dimensional thrust equation was used to estimate the thrust generated. Another
+constraint in the sizing trade is that the thrust should be large enough and steady conditions should last
+long enough that thrust can be measured accurately on the PFTF force balance. PFTF force balance
+limitations and expected accuracy have previously been reported (refs. 4 and 5). Another design
+consideration is that the cold flow flight-test article should be sized so that it can also be tested in the
+MSFC NTF. The NTF test data will establish the reference performance for the dual-bell nozzle. Based
+on the initial trades it appears the flight-test article will fit within the NTF test capability.
+
+   Figures 17(a) and 17(b) illustrate some results from the one-dimensional sizing trades. The mass flow
+rate for two different throat diameters at three flight-test altitudes is shown in figure 17(a). The
+one-dimensional thrust corresponding to mode 1 and mode 2 operations is shown in figure 17(b).
+Figure 18 plots the mass fraction consumed for test times of approximately six seconds, with the option 2
+propellant feed system architecture. This plot shows that if the flight tests are at low altitudes, requiring a
+high test article Pc (to maintain desired NPR), there is an upper limit to the size of the test article.
+Conversely, figure 18 also shows that there is plenty of design space to develop a test article of a
+reasonable size, based on the region below the black dashed line.
+
+    Figure 19 plots the approximate nozzle test conditions within the F-15/PFTF flight envelope. The
+F-15/PFTF flight envelope is a subset of an F-15 flight envelope (ref. 1). Three different altitude
+conditions are noted within figure 19, with the Mach number range of interest also indicated. Nozzle test
+points at high subsonic and low supersonic Mach numbers are required to match those of typical launch
+vehicle trajectories in order to examine nozzle performance and behavior during operation into a relevant
+flight environment. Nozzle tests conducted during Phase II of the flight-research campaign are expected
+to be conducted while the F-15 airplane is maintaining constant flight conditions. A large variation in the
+
+
+12
+flight Mach number is not required within each test; however, nozzle tests with an increasing freestream
+Mach number may be of value.
+
+                                              Conclusion
+   NASA AFRC and NASA MSFC have formed a collaborative effort to advance the TRL of the
+dual-bell rocket nozzle. This report expands on the effort initially proposed, to conduct dual-bell nozzle
+research during captive-carried flight on the NASA F-15/PFTF, permitting this nozzle to be tested in a
+relevant flight environment while under well-controlled flight conditions. The ultimate goal of this
+research is to utilize the F-15/PFTF as a flight testbed to help quantify the performance benefit with the
+dual-bell nozzle, as well as to advance its TRL. The conceptual designs presented here are focused on
+providing insight into the feasibility of conducting dual-bell nozzle flight research with a NASA
+F-15 airplane. These conceptual designs are based on the utilization of existing flight-proven hardware to
+the greatest extent possible, with the F-15/PFTF as the flight testbed; a testbed that has been utilized on
+previous captive-carried flight research experiments.
+
+   The feasibility assessment of this effort was aided by an initial inviscid/Euler CFD analysis under
+various flight conditions. Despite the disturbances created by the F-15/PFTF flight testbed, it can be seen
+that smooth flow exists underneath the airplane near the nozzle for the transonic and supersonic
+conditions analyzed. This analysis also included flow-field predictions with and without nozzle operation,
+while operating with GN2 propellant during Phase II flights. A viscous/Navier-Stokes CFD flow field
+analysis will be documented in a separate publication. All CFD predictions of the external flow field and
+of the nozzle operation will eventually be validated against flight data, and nozzle operational flight data
+will also be compared with MSFC NTF nozzle static test data.
+
+   Two conceptual design options were presented for the Phase II test article propellant feed system, and
+a trade study is currently in progress to aid in the selection of the final system. Under both options, a
+relatively simple GN2 system is anticipated, and the final propellant feed system chosen will be
+fundamentally consistent with the final pressure-fed reacting-flow propellant feed system design planned
+for Phase III of the flight-research campaign. An instrumentation system is planned to aid with an
+in-flight health and status assessment of the propellant feed system, as well as to fully characterize the
+performance benefit of the dual-bell nozzle.
+
+    The dual-bell nozzle design philosophy was presented with discussion of how this technology could
+ultimately be implemented in an Earth-to-orbit launch vehicle with engine-throttling capability. The
+engine-throttling capability could be beneficial for optimizing dual-bell nozzle performance. A conceptual
+method for demonstrating this technology on a cold-flow subscale dual-bell nozzle was presented.
+Finally, dual-bell nozzle sizing trades were presented that combine the design philosophy and design
+approach within the scaling constraints required for captive-carried flight on the F-15/PFTF, yielding a
+design space of possible dual-bell nozzle solutions for future flight testing and flight research.
+
+    Although the dual-bell rocket nozzle is predicted to have greater performance over the CB nozzle, the
+dual-bell nozzle has still not been adequately tested in a relevant flight environment. These predictions,
+both analytical and through static test data, warrant further investigation in a relevant flight environment.
+The preliminary analysis and conceptual design presented within this report add greater confidence on the
+feasibility of conducting dual-bell nozzle research on a NASA F-15 airplane. If the dual-bell nozzle
+performance predictions are accurate and proven in a relevant flight environment, this performance
+advantage would be extremely beneficial in a full-scale rocket engine. The potential benefit is significant
+and could result in reducing the cost of delivering payloads to LEO.
+
+
+
+
+                                                                                                          13
+                                           References
+1. Jones, Daniel S., Trong T. Bui, and Joseph H. Ruf, “Proposed Flight Research of a Dual-Bell Rocket
+   Nozzle Using the NASA F-15 Airplane,” AIAA 2013-3954, 2013.
+
+2. Foster, Charles R., and Frederick B. Cowles, “Experimental Study of Gas-Flow Separation in
+   Overexpanded Exhaust Nozzles for Rocket Motors,” Jet Propulsion Laboratory, Progress Report
+   No. 4-103, 1949.
+
+3. NASA Armstrong Flight Research Center, F-15B Local Mach Investigation Instrumentation,
+   EC04-0176-2, 2004, URL: http://www.nasa.gov/centers/armstrong/multimedia/imagegallery/F-
+   15B/index.html#lowerAccordion-set4-slide32. Accessed August 13, 2014.
+
+4. Corda, Stephen, M. Jake Vachon, Nathan Palumbo, Corey Diebler, Ting Tseng, Anthony Ginn, and
+   David Richwine, “The F-15B Propulsion Flight Test Fixture: A New Flight Facility for Propulsion
+   Research,” AIAA 2001-3303, 2001.
+
+5. Palumbo, Nathan, Tim Moes, and M. Jake Vachon, “Initial Flight Tests of the NASA F-15B
+   Propulsion Flight Test Fixture,” AIAA 2002-4131, 2002.
+
+6. Vachon, Michael Jacob, Timothy R. Moes, and Stephen Corda, Local Flow Conditions for
+   Propulsion Experiments on the NASA F-15B Propulsion Flight Test Fixture,
+   NASA/TM-2005-213670, 2005.
+
+7. Frederick, Michael A., and Nalin A. Ratnayake, “Flight Test Results from the Rake Airflow Gage
+   Experiment on the F-15B Airplane,” AIAA 2010-4573, 2010.
+
+8. St. John, Clinton W., and Michael A. Frederick, “Flight Test Results of an Axisymmetric Channeled
+   Center-body Supersonic Inlet at Off-Design Conditions,” AIAA 2013-3680, 2013.
+
+9. Vachon, Michael Jacob, Thomas J. Grindle, Clinton W. St. John, and David B. Dowdell, “X-43A
+   Fluid and Environmental Systems: Ground and Flight Operation and Lessons Learned,”
+   AIAA 2005-3337, 2005.
+
+10. Jones, Daniel S., Syri J. Koelfgen, Marvin W. Barnes, Rachel J. McCauley, Terry M. Wall, Brian D.
+    Reed, and C. Miguel Duncan, “Executive Summary of Propulsion on the Orion Abort Flight-Test
+    Vehicles,” AIAA 2012-3891, 2012.
+
+
+
+
+14
+                                    Figures
+
+
+
+
+                                                           Photo Courtesy: NASA/MSFC
+         Figure 1. Dual-bell nozzle during testing at the NASA MSFC NTF.
+
+
+
+
+                                                                           EC04-0176-2
+Figure 2. Photo of a NASA AFRC F-15 airplane, with the PFTF and a simulated rocket.
+
+
+
+                                                                                         15
+          Figure 3. F-15 airplane in the ACN dual-bell nozzle flight-research configuration.
+
+
+
+
+     (a) Rear-isometric view of ACN stack.          (b) Zoomed-in rear-isometric view of ACN stack,
+                                                    showing dual-bell nozzle.
+                             Figure 4. Conceptual design of ACN stack.
+
+
+
+
+16
+Figure 5. Star-CCM+ inviscid/Euler CFD grid for an F-15 airplane and the full experimental stack.
+
+
+
+
+                                                                                                    17
+(a) Freestream Mach 0.9, averaged ACN exit           (b) Freestream Mach 1.2, averaged ACN exit
+pressure = 1.93 psi.                                 pressure = 1.70 psi.
+
+Figure 6. Static pressure contours from inviscid/Euler clean F-15 airplane analysis, both at a freestream
+static pressure of 2 psi.
+
+
+
+
+(a) Freestream Mach 0.9, averaged ACN exit (b) Freestream Mach 1.2, averaged ACN exit
+pressure = 1.74 psi.                       pressure = 0.98 psi.
+
+Figure 7. Static pressure contours from inviscid/Euler F-15 airplane analysis, with full stack and
+non-flowing ACN, both at a freestream static pressure of 2 psi.
+
+
+
+
+18
+(a) Freestream Mach 0.9, averaged ACN exit (b) Freestream Mach 1.2, averaged ACN exit
+pressure = 1.73 psi.                       pressure = 0.26 psi.
+
+Figure 8. Static pressure contours from inviscid/Euler F-15 airplane analysis, with full stack and ACN
+operating, both at a freestream static pressure of 2 psi.
+
+
+
+
+             (a) Freestream Mach 0.9.                             (b) Freestream Mach 1.2.
+
+Figure 9. Close-up view of Mach contours from inviscid/Euler F-15 airplane analysis, with full stack and
+ACN operating, both at a freestream static pressure of 2 psi.
+
+
+
+
+                                                                                                     19
+                Figure 10. Propellant feed system schematic, option 1.
+
+
+
+
+     (a) PFTF external shell.               (b) PFTF internal view with primary components.
+
+                    Figure 11. F-15/PFTF for the ACN experiment.
+
+
+
+
+20
+                        Figure 12. Propellant feed system schematic, option 2.
+
+
+
+
+(a) PFTF showing the additional side-mounted (b) PFTF internal view of primary components.
+structures.
+
+        Figure 13. F-15/PFTF for the ACN experiment, for the option 2 propellant feed system.
+
+
+
+
+                                                                                                21
+(a) Typical engine parameters on the STS/SSME.     (b) Performance losses due to off-design altitude
+                                                   nozzle operation.
+
+               Figure 14. Engine parameters based on an STS trajectory with the SSME.
+
+
+
+
+       (a) Description of the thrust bucket.       (b) Notional NNPR curves and design altitudes for
+                                                   a dual-bell nozzle.
+
+               Figure 15. Engine parameters based on an STS trajectory with the SSME.
+
+
+
+
+22
+Figure 16. Nozzle test article design variables.
+
+
+
+
+                                                   23
+(a) Mass flow as a function of throat size and back (b) Thrust generated as a function of throat size,
+pressure.                                           back pressure, and operational mode.
+
+           Figure 17. Test article performance as a function of throat size and back pressure.
+
+
+
+
+           Figure 18. GN2 propellant consumed as a function of throat size and back pressure.
+
+
+
+24
+Figure 19. Approximate mapping of Phase II flight-test points on the F-15/PFTF flight envelope.
+
+
+
+
+                                                                                                  25
+

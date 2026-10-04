@@ -1,0 +1,1079 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2007-3-15"
+lang: "en"
+messages: "1070"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<vrkhans> hi i dont know what i did, i lost my application button on my taskbar
+<vrkhans> does there any way to get it back
+<vidd_laptop> right click on the taskbar....
+<vidd_laptop> ghoose add
+<vidd_laptop> select application from the list
+<vidd_laptop> make that xfce menu
+<vrkhans> I dont see any application button
+<vrkhans> there is an xface menue
+<vidd_laptop> that one
+<vrkhans> but the what happen to the old one
+<vrkhans> which says application
+<vidd_laptop> no idea....
+<vidd_laptop> try [Ctrl] [alt] [bkspc]  that witll restart your desktop
+<Prisoner_> hello all
+<vidd_laptop> *wave* Prisoner_
+<Prisoner_> Xubuntu rocks
+<Prisoner_> I need to try and get my webcam working
+<Prisoner_> I did some research on webcams and it looks like mine might work, I have to download and install something, can't remember what
+<Prisoner_> I have it printed out somewhere
+<vidd_laptop> wb vrkhans
+<vidd_laptop> did it work?
+<vrkhans> hi
+<vrkhans> it work
+<vidd_laptop> cool
+<vrkhans> but does there any way i can reset my desktop to the default
+<vrkhans> like i install
+<vrkhans> when i install it
+<vrkhans> sorry
+<vrkhans> back again
+<vidd_laptop> there IS a way....
+<vidd_laptop> make a new user,,,,
+<vrkhans> hmm
+<vidd_laptop> give it sudo rights,,,,
+<vidd_laptop> log in to it,
+<vrkhans> how i can make a new user
+<vrkhans> mkuser
+<vrkhans> or
+<vrkhans> ;-)
+<vrkhans> something else
+<vidd_laptop> there is a users thing in the system menu
+<vidd_laptop> when you log in to the new user....
+<vidd_laptop> you want to delete the entire /.config file of your old user,
+<vrkhans> let me try
+<vrkhans> i just created a new user
+<vrkhans> now let see how it work
+<vidd_laptop> copy the entire /.config folder of the new user into the old user
+<vrkhans> ok
+<vrkhans> i will be back
+<MagicFab> Hi
+<MagicFab> I have a proble using the sudoer file. Could anyone take a look at this report:
+<MagicFab> https://bugs.launchpad.net/ubuntu/+source/sudo/+bug/92401
+<Ubugtu> Malone bug 92401 in sudo "regular user can't start admin application with sudo as specified in sudoers" [Undecided,Unconfirmed]
+<MagicFab> I am not sure why this doesn't work... any help appreciated
+<vidd_laptop> welcome back
+<vrkhans> hi any body here using mutt fechmail and procmail
+<vrkhans> i just install it
+<Prisoner_> not I
+<vrkhans> Prisoner_: are you useing
+<vrkhans> these
+<vidd_laptop> vrkhans, did you get your default desktop back?
+<vrkhans> vidd_laptop: ya thanks :-)
+<vrkhans> got it
+<vrkhans> Prisoner_: are you using mutt
+<Prisoner_> Thunderbird
+<vrkhans> hmm
+<vrkhans> no i want to learn how to use mutt and fetch mail and proc mail
+<Prisoner_> I was able to copy all my info from Thunderbird in WIndows to Xubuntu
+<vidd_laptop> Prisoner_, you fire M$ after the relocaton of mail?
+<vidd_laptop> lol
+<Prisoner_> I seldome boot XP anymore
+<Prisoner_> I still don't have a DVD authoring program like Nero on Linux yet, and I don't have a Linux equivalent of Acronis True Image Backup yet
+<vidd_laptop> what DO you boot it for?
+<vidd_laptop> lin-nero dont work?
+<vidd_laptop> nero has a linux version now
+<Prisoner_> I don't have it
+<vidd_laptop> well...so ive heard anyway
+<Prisoner_> I went to the Nero site and couldn't find it
+<vidd_laptop> thats odd....id think they would have that as a big banner on thier site
+<Prisoner_> maybe I need to go look again
+<Prisoner_> However, I did find this cool program for linux that took an MPEG file that was in PAL in converted it to a file that was NTSC suitable for DVD
+<Prisoner_> I burned it in Nero on the Windows site and it worked well
+<K3nto> can somebody help me with getting wireless working with ubuntu?
+<K3nto> xubuntu*
+<vidd_laptop> K3nto, sure
+<vidd_laptop> what card you using?
+<Prisoner_> haven't tried anythign WiFi yet
+<Prisoner_> by the way, are you a ham?
+<K3nto> linksys pci card
+<K3nto> its a lptop
+<vidd_laptop> run lspci | grep Network
+<vidd_laptop> post the output
+<K3nto> ok
+<vidd_laptop> !paste | K3nto
+<ubotu> K3nto: pastebin is a service to post large texts so you don't flood the channel. The Ubuntu pastebin is at http://paste.ubuntu-nl.org (be sure to give the URL of your paste - see also the #ubuntu channel topic)
+<K3nto> the terminal is not on the desktop. how do i put it there (for future reference. i can get to it np
+<K3nto> ?
+<K3nto> anyway, heres the outout:   http://paste.ubuntu-nl.org/10423/
+<vidd_laptop> you have the same card as me...
+<vidd_laptop> its easy
+<K3nto> k
+<K3nto> i know ubuntu, but xfce is alien to me
+<vidd_laptop> what version you running?
+<K3nto> 6.06
+<vidd_laptop> dapper, edgy, or fiesty?
+<K3nto> the latest right?
+<K3nto> edgy
+<vidd_laptop> 6.06 is dapper, 6.10 is edgy, 7.04 is fiesty
+<K3nto> nuts
+<K3nto> dont know how i ended up with dapper, but i guess i got that one. (in xubuntu). im on my main pc (ubuntu edgy)
+<vidd_laptop> u know how to enable the multi and universe repo's?
+<K3nto> yep
+<vidd_laptop> you need to enable them
+<vidd_laptop> then sudo apt-get install bcm43xx-fwcutter
+<K3nto> couldnt find the package (prolly cause the card doesnt work?)
+<vidd_laptop> you have the repo's added and run sudo apt-get reload?
+<vidd_laptop> and do you have network access via the integrated NIC?
+<K3nto> could not download all repository indexes
+<K3nto> ok hold on them
+<vidd_laptop> are you connected?
+<K3nto> no, the laptop only has wireless. thats why i had to get on my main pc
+<vidd_laptop> you dont have an integrated wired card?
+<K3nto> nope
+<vidd_laptop> hmmmm.
+<vidd_laptop> let me do some research....
+<Prisoner_> I download software for my UPS, can't find where it went
+<vidd_laptop> K3nto, http://ftp.ch.debian.org/debian/pool/contrib/b/bcm43xx-fwcutter/
+<sponix> I want the smallest setup for my boys that will play dvd's and avi/mpeg/divx movies  ... should I got xubuntu, or ubuntu-server, then just apt-get mplayer ?
+<sponix> K3nto: you want the proper way, or the easy way ?
+<K3nto> either
+<K3nto> proper i guess
+<vidd_laptop> sponix, im TELLING him the easy way
+<vidd_laptop> AND the proper way
+<sponix> vidd_laptop: ndiswrapper ?
+<vidd_laptop> hell nop
+<sponix> vidd_laptop: sorry for intruding, please continue ;)
+<vidd_laptop> the two step method
+<K3nto> ok
+<sponix> K3nto: ignore me, I'm a n00b ;)
+<K3nto> theres like 50 on tha page
+<K3nto> which one do i get?
+<vidd_laptop> K3nto, dl the latest version
+<K3nto> ok
+<vidd_laptop> if its the one i think it is.....the one used in fiesty.....it will LOAD the firmware as well
+<K3nto> ok i have ubuntu 6.10 but xubuntu 6.06?
+<K3nto> retarded
+<sponix> vidd_laptop: when you get K3nto up and going, if you have a sec I'd like a quick overview of the process. I ended up using the win2k/xp driver from dell with ndiswrapper-1.8 and blocking the linux bcm43xx module in /etc/modprobe.d/blacklist to make mine work... With the Linux module it would detect, and even find the AP, just not send packets (for me) -- I'm pretty sure
+<sponix> my wifi chip is a dell 1390
+<vidd_laptop> K3nto, dont matter
+<K3nto> k
+<K3nto> while this is going, how can i put shortcuts on the desktop
+<K3nto> its flippin confusing
+<vidd_laptop> K3nto, no idea here
+<K3nto> see. xfce....
+<vidd_laptop> sponix, you will need to un blacklist the bcm43xx, and purge ALL the ndiswrapper crap
+<vidd_laptop> activate the multi and universe repo's
+<vidd_laptop> then sudo apt-get update && sudo apt-get install bcm43xx-fwcutter
+<vidd_laptop> then sudo /usr/share/bcm43xx-fwcutter/install_bcm43xx_firmware.sh
+<K3nto> temporary failure in resolution?
+<vidd_laptop> K3nto, huh?
+<sponix> vidd_laptop: and then ?
+<vidd_laptop> set up your network
+<vidd_laptop> told ya...2 steps
+<sponix> vidd_laptop: thats it, it gives the proper module, and so forth ?
+<sponix> vidd_laptop: on the config, what device does it show as wlan0 or eth1 ?
+<vidd_laptop> yep
+<vidd_laptop> eth1
+<K3nto> yeah its not installing
+<vidd_laptop> hmm
+<vidd_laptop> what is the error messgae?
+<sponix> and the module name shows as what bcm43xx-fwcutter ?
+<vidd_laptop> sponix, shows as bcm43xx
+<K3nto> Resolving boredlink.googlepages.com... failed: Temporary failure in name resolution.
+<sponix> vidd_laptop: umm, but you had me blacklist bcm43xx still, correct ?
+<sponix> crap, I see _un_blacklist bcm43xx you said, sorry
+<sponix> ok, getting ready to give it a shot
+<sponix> brb
+<vidd_laptop> gl sponix
+<vidd_laptop> K3nto, http://ftp.ch.debian.org/debian/pool/contrib/b/bcm43xx-fwcutter/
+<vidd_laptop> TRY THAT
+<K3nto> i got http://ftp.ch.debian.org/debian/pool/contrib/b/bcm43xx-fwcutter/bcm43xx-fwcutter_005-2_i386.deb
+<K3nto> and i put it on the xubuntu one
+<K3nto> and i got that error
+<vidd_laptop> ???
+<sponix> tells me something about extracting older firmware
+<vidd_laptop> did you download the file?
+<sponix> going to try giving it a shot with the module though
+<K3nto> ....yeah
+<sponix> I just ran the  /usr/share/bcm43xx-fwcutter/install_bcm43xx_firmware.sh as root
+<sponix> and it did the download
+<vidd_laptop> what happened when you copied the file to the new pc?
+<K3nto> well, it appeared on the desktop. at which point i proceeeded with a double click operation followed by the error mentioned above
+<Centinul> is there a DVD ISO of Xubuntu?
+<sponix> hmm, I ran apt-get install bcm43xx-fwcutter on the laptop, then the /usr/share/bcm43xx-fwcutter/install_bcm43xx_firmware.sh ... thats all I need riiight ?
+<K3nto> Centinul: just burn the cd one to a dvd. worked for me
+<vidd_laptop> sponix, yes...just need to set up your network
+<Centinul> hmmm interesting never thought of that
+<K3nto> vidd_laptop: what now lol
+<vidd_laptop> im not sure
+<vidd_laptop> which version did you dl K3nto ?
+<K3nto> http://ftp.ch.debian.org/debian/pool/contrib/b/bcm43xx-fwcutter/bcm43xx-fwcutter_005-2_i386.deb
+<vidd_laptop> get the 006
+<vidd_laptop> K3nto, it would be SO much easier if you had a network cable to your lappy
+<vidd_laptop> =]
+<K3nto> no nic card
+<K3nto> lol
+<vidd_laptop> so you dl it to the desktop...what does it show up as?
+<vidd_laptop> a box icon?
+<K3nto> yes
+<vidd_laptop> copy it to disk [usb whatever]
+<K3nto> did that
+<vidd_laptop> then copy it to the new computer
+<K3nto> did that
+<vidd_laptop> what does it look like on the new lappy?
+<K3nto> a box icon
+<vidd_laptop> what options you get when you right click on it?
+<K3nto> open with GDebi
+<K3nto> open with other
+<K3nto> extract...
+<sponix> vidd_laptop: hmm, got it working .. Thanks
+<vidd_laptop> sponix, cool
+<sponix> vidd_laptop: wanna here the funny part ? I was getting 2.5MB/s transfers before with the win driver, now I'm getting 18-20KB/s ... Honestly ;)
+<sponix> vidd_laptop: needless to say, I might try switching back, and see if its the driver/module, or if its just my network being under higher load right now
+<vidd_laptop> sponix, =\
+<vidd_laptop> K3nto, open with gdebi
+<K3nto> ok
+<vidd_laptop> you should get prompted to enter your password
+<K3nto> i did the first time
+<vidd_laptop> D'OH.....you need the firmware!
+<K3nto> now i get to the package installer and i have teh option to reinstall
+<vidd_laptop> give me a sec......
+<K3nto> kk
+<vidd_laptop> you need to get http://svit.epfl.ch/stuff/wl_apsta.o.
+<vidd_laptop> then sudo bcm43xx-fwcutter -w /lib/firmware/`uname -r` <downloaded file>
+<vidd_laptop> where <downloaded file> is the path to the second file i told you to get
+<vidd_laptop> sorry K3nto i forgot you have no access =]
+<K3nto> ok its on the new laptop
+<K3nto> wl_apsta.o
+<vidd_laptop> then sudo bcm43xx-fwcutter -w /lib/firmware/`uname -r` <downloaded file>
+<vidd_laptop> where <downloaded file> is the path to the second file i told you to get
+<K3nto> o ok
+<K3nto> cannot open input file
+<K3nto> input il*
+<K3nto> input file*
+<K3nto> nvm its a goin
+<sponix> vidd_laptop: ok, network is under a bit of load, but even at that I went from 20KB/s to 550KB/s going back to the bcmwl5.inf && ndiswrapper-1.8 ... I love Linux, and like to support it, but if the win driver in Linux gets me that much of a speed boost -- I'm sticking with it :P
+<vidd_laptop> thats your choice
+<vidd_laptop> K3nto, awesome
+<K3nto> ok im getting the same error
+<sponix> vidd_laptop: I'm getting corrupt in my old age, I even have wine/crossover with dvdshrink, utorrent, && ms office ... man I'm sick
+<K3nto> the fw you game me worked
+<K3nto> but the fwcutter doesnt
+<vidd_laptop> is it asking you to get a file or to configure it during its install?
+<K3nto> no
+<K3nto> it did the first time
+<sponix> is debian still one of the smallest installs around ?
+<sponix> I'm debating if I should put it on the kids box instead of ubuntu, the machine they have only has a 4gig drive
+<vidd_laptop> K3nto, try getting the fwcutter from http://ubuntu.cafuego.net/pool/edgy-cafuego/bcm43xx/bcm43xx-firmware_1.3-1ubuntu2_all.deb
+<vidd_laptop> its a *buntu .deb and not a debian .deb
+<vidd_laptop> it MIGHT be the issue
+<K3nto> ok
+<vidd_laptop> sponix, if you are looking for an ULTRA-ultra lightwieght distro.....get Damn Small Linux
+<sponix> vidd_laptop: might look into that, but a bare server install of ubuntu && just installing xfce4 and mplayer might work ok as well
+<sponix> vidd_laptop: thinking xubuntu/mplayer/vlc ... can probably get that on there in under a gig
+<K3nto> screw this im gonna get ubuntu
+<vidd_laptop> K3nto, you will have the same issue with ubuntu.....
+<sponix> K3nto: what are you on debian ?
+<vidd_laptop> check this howto.....
+<vidd_laptop> https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx/Edgy
+<K3nto> nah
+<K3nto> probs started with xfce
+<vidd_laptop> K3nto, your wireless up then?
+<K3nto> no
+<K3nto> im getting rid of xubuntu
+<K3nto> and im using something i know how to
+<vidd_laptop> the howto i posted https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx/Edgy works for ubuntu as well as xubuntu
+<sponix> ubuntu/xubuntu/kubuntu .... its all the same :)
+<sponix> diff DE is all
+<Jester45> ubuntu and kubuntu have some core diffrences
+<sponix> Jester45: honestly ? so if I install kubuntu, and then apt-get install ubuntu-desktop .. when I log into gnome, there are different programs running than the normal ubuntu-desktop ?
+<Jester45> one thing is the kubuntu doesnt have all the libs that ubutnu has it has diffrent ones
+<sponix> and so forth, because, when I add xubuntu-desktop && kubuntu-desktop to an ubuntu install they seem to run the same
+<Jester45> it uses some still but try a apt-get ubuntu-desktop and you will see core libs get installed not only the DE libs
+<sponix> Jester45: true, but if you have kubuntu, and install ubuntu-desktop, doesn't it snag all the libs a normal ubuntu-desktop install would have ?
+<sponix> see, I had kubuntu before, when easyubuntu was young, ended up getting ubuntu-desktop just for lib support before it would run :P
+<Jester45> yes will will get all the libs ubuntu has but.. kubuntu has some allready
+<Jester45> its not a diffrent distro but they are not just a DE change
+<sponix> anyone done the ubuntu-server install before ?
+<Jester45> i change installs monthly
+<Jester45> yes
+<sponix> does it install lamp by default ?
+<DiscoStu> hi
+<Jester45> umm yes i think if you were to just keep pressing enter
+<Jester45> hi
+<tonyyarusso> sponix: yes
+<DiscoStu> anyone experienced in tightvncserver problem fixing?
+<sponix> I'm looking for something bare, that I can just apt-get install xfce4 vlc-plugin-alsa mplayer w32codecs && my kids presto, have media player box
+<tonyyarusso> Whatcha need?
+<DiscoStu> mine won't start
+<DiscoStu> font problems
+<sponix> maybe I should just snag debian for this
+<sponix> hate to though, because all the other boxen in the house run some flavor of ubuntu
+<tonyyarusso> sponix: Server would work; also, the alternate CD should have a minimal option - the difference being mostly that the server install will give you the server-optimized kernel by default
+<Jester45> sponix so you want mulimedia try easyubuntu
+<clarklinux> hi: i'm hung up in a xubuntu 6.10 installation on a newworld g3 powerbook (ppc), can anyone tell me what I should do?
+<vidd_laptop> *wave*cell
+<Jester45> hello cellofellow i havent see you in long time
+<vidd_laptop> *wave* cellofellow
+<cellofellow> *wave*
+<sponix> tonyyarusso: but does server give apache/mysql/php default, with no option to turn them off .. if so I want alt install if it has a bare bones option
+<cellofellow> how are you Jester?
+<Jester45> cellofellow doing fine i got a few more pcs
+<cellofellow> cool
+<vidd_laptop> sponix, there is a command-line only option on the alt cd
+<tonyyarusso> sponix: Nope - LAMP is an option itself actually
+<vidd_laptop> Jester45, you got more pc's?
+<vidd_laptop> tying to catch up to me>
+<clarklinux> does anyone have any recommendations for a hung up installation?
+<Jester45> cellofellow they are older but run :)  im gonna put nice video cards on them and a custom case and have the media center thing for linux on them
+<vidd_laptop> clarklinux, you trying to install from the live cd?
+<cellofellow> MythTV?
+<Jester45> each tv in my house  all connected to fileserv
+<Jester45> yea that one
+<clarklinux> vidd: nope, alt install...i was talking to you last night...I finally got the cd to work, now it's hung up haha
+<sponix> vidd_laptop tonyyarusso : ok, I'll try alt install first, then might look at server install just for the hell of it ... wanted to see what the others are like anyway
+<sponix> vidd_laptop tonyyarusso : thanks guys
+<tonyyarusso> np
+<vidd_laptop> np
+<vidd_laptop> clarklinux, where is it hanging?
+<Jester45> cellofellow i got 3 gigabit pcs now :)  my house is a nice little network
+<cellofellow> :)
+<cellofellow> No new additions here.
+<clarklinux> vidd: on the "select and install step", it is at 6% and "configuring xserver-xorg"
+<vidd_laptop> Jester45, i have 8 PCs and only 2 still run windows
+<Jester45> i might make one of the pcs a ummm firewall (linux distro not sure name)
+<clarklinux> vidd: i had this problem a little earlier so i rechecked the md5 sum and reburned it
+<Jester45> i got 12
+<vidd_laptop> clarklinux, it always takes me a wile at that point....you sure its hung?
+<clarklinux> vidd: well, I left the house about 3 hours ago
+<Jester45> cellofellow i been off irc working one them :) i uninstalled gaim so i wouldnt get borthed by irc
+<clarklinux> vidd: i could try leaving it over night
+<vidd_laptop> clarklinux, hit [ctrl] [alt] [f4] ....see what its doing
+<Jester45> 3 are broken with parts for 2 running ones i think the 3rd needs new ram
+<clarklinux> vidd: k, gimme a sec
+<vidd_laptop> Jester45, im not COUNTING the parts boxes...only running, fully functional machines....
+<Jester45> Offtopic: anyone know why my internet speed is higher than what i pay for?
+<vidd_laptop> Jester45, as soon as i can find a keyboard, mouse and monitor for this older MAC, ill have 9
+<Jester45> i got 9 running 11 capible just havnen got to changing parts
+<clarklinux> vidd: the last thing it says is "Obsolete command TITLE Configuring xserver-xorg called"
+<Jester45> make it headless
+<clarklinux> and then
+<vidd_laptop> clarklinux, this box have internet access?
+<clarklinux> vidd: xserver-xorg postinst warning: not updating /etc/X11/X;file has been customized
+<clarklinux> vidd: it can but currently it is not hooked up to the internet
+<vidd_laptop> connect it to the internet, do a command line install.....
+<clarklinux> how do I do that
+<vidd_laptop> plug the nic card to your router....
+<vidd_laptop> restart the alt cd,,,,
+<clarklinux> no i mean a command line install
+<vidd_laptop> choose "command ine"
+<clarklinux> oh
+<clarklinux> hah
+<clarklinux> okay
+<clarklinux> i did not know i had to be online to install?
+<vidd_laptop> it might say minimum, or something similar
+<vidd_laptop> you dont HAVE to be.....
+<clarklinux> it helps, though?
+<vidd_laptop> but this way we see if there is any issue with your command line system using DHCP....
+<vidd_laptop> which you will need for phase 2
+<clarklinux> I need to sign off this computer to connect the other to the internet
+<clarklinux> what should I do after i restart the install connected to the internet
+<vidd_laptop> once the command line system is up....
+<vidd_laptop> you want to edit the repo's....
+<clarklinux> sorry, don't know what that is  / how to do it
+<vidd_laptop> sudo nano /etc/apt/sourses.list
+<clarklinux> okay
+<vidd_laptop> bear with me....im giving a step by step and i type slow
+<vidd_laptop> =]
+<clarklinux> sure
+<vidd_laptop> you only need to remove the cd from the sourses list....make the SECOND line that references the cd the same as the first.....
+<vidd_laptop> by adding "# "
+<vidd_laptop> not sure if the space is needed but i always add it
+<vidd_laptop> then [ctrl] [x]  ... [y] [enter]  ... [enter]
+<vidd_laptop> then sudo apt-get install [distro of choose] -desktop
+<Jester45> cellofellow i would make that mac a headless just take the things you need to isntall then run a server of somthing on it
+<vidd_laptop> sit back, relax, go to dinner.....you get the idea
+<clarklinux> distro of choice...
+<clarklinux> what format is that
+<clarklinux> xubuntu6.10?
+<Jester45> just xubuntu
+<clarklinux> oh
+<clarklinux> okay
+<clarklinux> thanks a lot!
+<clarklinux> i'll let you know how it turns out
+<vidd_laptop> xubuntu-desktop
+<Jester45> sorry vidd_laptop i beat you to it
+<vidd_laptop> Jester45, was tat comment about the mac directed at me?
+<Jester45> yes he does
+<Jester45> ooo
+<Jester45> it was for you
+<Jester45> darn irc program only 2 colors for user names
+<Jester45> red for me blue for notme
+<vidd_laptop> question Jester45 ...how do you install a system with no input devices????
+<vidd_laptop> wb K3nto
+<K3nto> lol
+<K3nto> could you paste that tut in here again
+<vidd_laptop> Jester45, i can see installing blind [no monitor]  but no keyboard or mouse???
+<vidd_laptop> its the ONLY mac in the house
+<vidd_laptop> K3nto, which link did you need?
+<K3nto> the one with the walkthrough
+<vidd_laptop> https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx/Edgy
+<vidd_laptop> K3nto, dapper, edgy, fiesty...they all work the same
+<vidd_laptop> just dont work on older then dapper
+<K3nto> kk
+<vidd_laptop> about when does support for breezy end? anyopne know?
+<Jester45> vidd_laptop i dont know much about macs... could you use usb or ps/2 keyboard?
+<tonyyarusso> vidd_laptop: end of April
+<vidd_laptop> ty tonyyarusso
+<vidd_laptop> Jester45, no usbs on this older mac...so i NEED the keyboard and mouse (and a monitor would be nice)
+<Jester45> so macs use special boards?
+<vidd_laptop> pre-intel ones did
+<ormiret> Jester45: yes, the older the mac the further they are from PCs
+<vidd_laptop> this is an OS8 mac
+<Jester45> o
+<Jester45> i dont know macs
+<vidd_laptop> it was gifted to me
+<Jester45> all good
+<Jester45> maybe borrow one?
+<PuMpErNiCkLe> Pre-iMac ones used ADB - since then, it's all USB.
+<Jester45> thats one pro of laptops cant lose keyboard
+<Jester45> unless you try
+<vidd_laptop> Jester45, yeah...but try to replace it if you spill coffee in it!
+<Jester45> clean it off
+<ormiret> keyboards are easilly removable from most laptops, just expensive to replace.
+<vidd_laptop> Jester45, do you OWN a laptop?
+<vidd_laptop> ormiret, tell me about it
+<Jester45> nope but i seen a guide only to clean/repair/customize one
+<vidd_laptop> the screens are pricey too
+<clarklinux> vidd: i could not find the command line option
+<clarklinux> what do I do specifically from yaboot
+<vidd_laptop> clarklinux, what choices you have?
+<vidd_laptop> NETSPLIT!!!!!!
+<Jester45> NO!!!!!
+<ormiret> we've lost the bots!
+<Jester45> man
+<Jester45> they are lucky
+<Jester45> !anybotleft
+<Jester45> hehe we got a person back
+<clarklinux> vidd: i have install, expert-powerpc, oem, cli, cli-expert-powerpc, ltsp-server, check, rescue-powerpc, install-powerpc, install-powerpc64, oem-powerpc, cli-powerpc, cli-powerpc64, ltsp-server-powerpc, check-powerpc, check-powerpc64, expert, expert-powerpc64, oem-powerpc64, cli-expert, cli-expert-powerpc64, ltsp-server-powerpc64, rescue, rescue-powerpc64
+<vidd_laptop> clarklinux, you want cli
+<clarklinux> so I do that, and then i do all the steps you just told me?
+<vidd_laptop> yep
+<clarklinux> thanks a lot
+<clarklinux> i'll be back a little later
+<vidd_laptop> cli = command line interface
+<vidd_laptop> get to know that ....its used alot!
+<vidd_laptop> clarklinux, you have power pc 64 or regular powerpc?
+<Jester45> and gui
+<cellofellow> ok, I'm back.
+<vidd_laptop> gui = [guess] [u] [idiot] ? lol
+<|omegabeta|> Question : None of the windows in xubuntu have borders, any ideas?
+<sponix> anyone in here running ubuntu on a mac ?
+<MagicFab> vidd_laptop, leave that attitude elsewhere please
+<vidd_laptop> cellofellow, new as in BRAND new...or new as in new-to-you?
+<cellofellow> |omegabeta|: alt+f2 and type xfwm4
+<vidd_laptop> MagicFab, sorry...poor taste
+<|omegabeta|> cellofellow: okies
+<|omegabeta|> xfwm4
+<|omegabeta|> oh wow
+<|omegabeta|> bingo
+<|omegabeta|> now will this stay like this?
+<vidd_laptop> it should
+<Jester45> thats xfce's window manger
+<Jester45> just so you know
+<|omegabeta|> alright, would it have anything to do with kgm? like when i login (i screwed gdm up) it says xfce session, is that the issue, should it just say xfce or some such?
+<|omegabeta|> that sounded stupid, did not know how to word it
+<cellofellow> vidd_laptop: new to me. Nearly identical to the one I've got here.
+<|omegabeta|> main reason i need xfce is for wow, will run faster then kde i assume
+<sponix> |omegabeta|: everything will probably run a bit faster ;)
+<vidd_laptop> |omegabeta|, wow has a linux version!!!!
+<sponix> |omegabeta|: xfce has a pretty small footprint compared to gnome/kde
+<vidd_laptop> we ARE talking World of Warcraft?
+<cellofellow> |omegabeta|: it will save the session on logout and start xfwm4 on its own next time
+<sponix> vidd_laptop: wow on linux is through wine/crossover/cedega
+<vidd_laptop> oh
+<vidd_laptop> =[
+<|omegabeta|> Well my gnome is screwed (gnome panel decided to die) and kde is my only option, so i decided to try xfce, kde reminds me to much if windows and i dont want that
+<sponix> vidd_laptop: hear it runs pretty good, in fact wine has patch sets just for it etc
+<|omegabeta|> vidd_laptop: na, using wine
+<MagicFab> vidd_laptop, np, justs remember we like it family-friendly here :)
+<cellofellow> I like KDE, when I can make it look like Mac OS X.
+<sponix> cellofellow: I've seen it done, but never could get it to have the look for me :P
+<Jester45> bye bye
+<cellofellow> http://mellowcellofellow.googlepages.com/screenshots
+<|omegabeta|> hah, same background as my kde
+<sponix> cellofellow: in my dreams, apple goes open source with OS X ... I use to think it was impossible, but after Sun took Solaris Open Source, my dream continues
+<vidd_laptop> sponix, that would be awesome....
+<cellofellow> OS X core stuff is open, but the top stuff is closed. I think that's the way Apple likes it.
+<vidd_laptop> our hardest customers to work with are mac users...cuzz we have no mac machines in the office to play with
+<cellofellow> :(
+<cellofellow> To bad getting Mac to run any non-Apple hardware is all but impossible, even with the Intel switch.
+<sponix> cellofellow: dude, you should config my DE's for me !
+<vidd_laptop> dont it like violate something to run OSX on non-Mac hardware?
+<sponix> cellofellow: I love both your setups
+<cellofellow> you can run Darwin with X and KDE if you liked on a Dell.
+<vidd_laptop> night all
+<cellofellow> I'm still trying to find a good Fluxbox setup.
+<sponix> there are webpages showing OS  X ran on a sony laptop
+<cellofellow> vidd works for an ISP. I think to be able to debug Mac problems he'd have to be running on Apple hardware. He'd probably need both IBM and Intel versions too.
+<|omegabeta|> stupid question - in xfce - how do you manage to theme the desktop, i just downloaded something from xfce-look.org but im having trouble finding the theme option in settings
+<cellofellow> |omegabeta|: their aren't overreaching XFCE themes. You've got GTK themes, XFWM themes, and other themes.
+<sponix> hmm, no wonder the system is lagginga bit, got utorrent/wine using over 2G of ram/swap :P
+<cellofellow> Deluge is a nice Torrent client. In backports.
+<cellofellow> !deluge-torrent
+<ubotu> deluge-torrent: A Bittorrent client written in Python/PyGTK. In component universe, is optional. Version 0.4.0-2~edgy1 (edgy-backports), package size 1466 kB, installed size 3888 kB
+<sponix> not sure, I've tried tons of torrent clients, and utorrent (even with emulation) still wins
+<grazie> cellofellow: do you know who updates the bot? That info wasn't there a day ago.
+<sponix> it gets great transfer speeds
+<sponix> wtf, might as well fire it over
+<sponix> if it doesn't meet my needs I can alwasy apt-get remove deluge-torrent && apt-get autoremove ;)
+<sponix> that deluge-torrent does look nice ... thanks guys
+<ius> hi fellas
+<odat> hi everyone
+<odat> anyone here?
+<maxamillion> hello
+<odat> hi
+<odat> my usplash is blank and i'm not sure how to fix it
+<maxamillion> odat: you running AMD64 install?
+<odat> no
+<odat> regular i386
+<maxamillion> oh ... interesting
+<maxamillion> what resolution you running?
+<odat> 1024 X 768
+<maxamillion> hmmmm
+<maxamillion> lemme check something
+<odat> the system starts up and runs great just no splash screen
+<maxamillion> yeah, same with all my amd64 machine's but its apparently a known issue that is said to be fixed in feisty
+<maxamillion> i'm at a loss .... i thought i had a link that might help, but i apparently don't :(
+<maxamillion> lemme see if the bot does
+<maxamillion> !usplash
+<ubotu> To select the usplash artwork you want, use "sudo update-alternatives --config usplash-artwork.so && sudo update-initramfs -u" - See https://help.ubuntu.com/community/USplashCustomizationHowto for adding your custom artwork
+<maxamillion> hrmmm...
+<maxamillion> not sure if that would help, but it might be worth a try
+<grazie> maxamillion: hi maxamillion ... not seen in here for a bit
+<odat> thanks
+<odat> i will try it
+<maxamillion> maxamillion: yeah ... its spring break and i sadly have been busier than when semester is in session :(
+<maxamillion> lol
+<maxamillion> grazie: *
+<maxamillion> ^^
+<grazie> maxamillion: exam revision?
+<grazie> maxamillion: do you know who updates the bot?
+<maxamillion> grazie: well i am taking a compiler class and i have to write a lexical analyzer and syntax parser over the break and i also have a take home exam i need to complete
+<maxamillion> grazie: yeah ... Seveas is the bot admin
+<grazie> maxamillion: Thanks for. Breaks cetainly sound busier than term time. for you
+<maxamillion> grazie: yeah ... it mainly just gives me the time to catch up
+<maxamillion> grazie: the worst part is that coding each assignment will be easy, its planning it out on paper that is the hard/time consuming part
+<maxamillion> buuuut anyhoo .... basically i am going to have to fight to find time to help with xubuntu testing and such
+<grazie> maxamillion: yeah, crafting code is rewarding...drawing design diagrams and writing documents is rarely as much fun
+<maxamillion> yeah ... especially because i am having to design automatas (finite and push down) for different functions and then making sure its correct before coding it otherwise i will get bad results and be tracing code that may or may not be correct and ..... well, you get the idea :)
+<maxamillion> .... interesting .... gnome 2.18 already made it into feisty
+<maxamillion> i might have to try it out .... maybe they fixed some of my complaints
+<grazie> still use gnome maxamillion?
+<maxamillion> nope
+<maxamillion> not since 2.8
+<grazie> you run it to complain about it ..now and then :)
+<maxamillion> when debian released sarge as stable i ran gnome, which was 2.8, and haven't touched it since ... i read the release notes to see if they have addressed the speed issues i have with it and i think they might have this time
+<maxamillion> not over all speed issues, but the main thing that drove me away from gnome was the fact that i couldn't open a menu without the icons lagging on an amd64 machine with 1gb of ram and a sata hdd .... that's sad
+<maxamillion> gnome will never be _fast_ but it could become less slow
+<tonyyarusso> maxamillion: Gnome's spent a lot of time on speed over the last two years or so, yes.  (Although Xorg itself is killing me this week on Feisty - no idea why)
+<grazie> I think gnome lost it when they tried to complete with kde
+<maxamillion> grazie: why? ... they are better than kde
+<maxamillion> tonyyarusso: good to know, i will probably run gnome with feisty on the new laptops we just ordered at work ... but for now, xfce stays on my desktop :)
+<tonyyarusso> maxamillion: I have gnome, xfce, and e17 atm - fluxbox and kde have also lived on this box.  :)  comparison shopping is good
+<grazie> maxamillion: I don't like kde much, the plantherhora of heavy apps, although some are very good. I just think gnome copied this approach and just got fat
+<maxamillion> tonyyarusso: i did alot of comparison shopping 5 years ago and read up daily ... i swore off kde/qt long time ago, but e17 and flux i have high respects for
+<maxamillion> grazie: ah, yes ... i guess i would have to agree there ...
+<grazie> yeah if e17 didn't crash so often I'd be using it daily
+<maxamillion> if e17 ever goes stable i might have to look into learning how to develop in their gui toolkit environments
+<grazie> failing to setup ppc netboots at moments, not  alot of info around but I'm sure I can do it
+<maxamillion> grazie: debian etch ftw ;)
+<grazie> yeah I'm using a debian kernel, can't remember if it's edge rright now
+<grazie> etch*
+<maxamillion> grazie: oh ... awesome
+<maxamillion> grazie: is the net install not working on etch?
+<grazie> maxamillion: never done it before so I reckon I'm mising something...so not workig right now no
+<maxamillion> grazie: what's it seem to be doing?
+<grazie> maxamillion: not a lot :)
+<grazie> maxamillion: server is x86, client is ppc. makes it a bit more tricky perhaps
+<maxamillion> grazie: it shouldn't because the server should just be hosting files ... the TCP/IP stack should be the same both places
+<grazie> maxamillion: oh yeah..just subtle tweaks I'm sure
+<maxamillion> grazie: actually ... i did a net install of etch on my ibook g4 back when i owned it
+<maxamillion> grazie: went fine
+<maxamillion> grazie: have you tried their new gui installer?
+<grazie> maxamillion: no just using the netboot or minimal cd I think they call it
+<grazie> nite maxamillion
+<maxamillion> grazie: ah ...
+<maxamillion> laters
+<BFTD> bye!!
+<florg> hi, when i login to xfce, there is always mozilla thunderbird getting started although it's not in the autostart list
+<florg> where can i look to avoid that?
+<TheSheep_> florg: you must have saved your session with it running. just cklose it and save your session again
+<grazie|zZZ> on starting up a tftp server no port appears to get opened...am I forgettng something?
+<hyper> !w32codecs
+<ubotu> Seveas has a popular 3rd party repository for several packages, including the win32 codecs: see http://wiki.ubuntu.com/SeveasPackages - See also !Codecs
+<grazie> hi hyper
+<hyper> !compile
+<ubotu> Compiling software from source? Read the tips at https://help.ubuntu.com/community/CompilingSoftware (But remember to search for pre-built !packages first: not all !repositories are enabled by default!)
+<B|nTaRa> !winedbg
+<ubotu> Sorry, I don't know anything about winedbg - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<BFTD> !wine-dbg
+<ubotu> Sorry, I don't know anything about wine-dbg - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<B|nTaRa> !flash
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats - See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html - But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<ubotu> Flash 9 (Final release) is now available for dapper-backports and edgy-backports. See !backports and !flash
+<B|nTaRa> !backports
+<ubotu> If new updated Ubuntu packages are built for an application, then they go into Ubuntu Backports. See https://help.ubuntu.com/community/UbuntuBackports
+<soweto76> What is the difference between linux-image generic and 386?
+<TheSheep_> soweto76: the generic has enabled optimisations for a pentium-class processor, I think
+<TheSheep_> soweto76: it will not work on a 486 or 386
+<vrkhans> hi
+<soweto76> TheSheep_, Thanks.
+<vrkhans> how i can locate realplayer and add it in the menu
+<TheSheep_> vrkhans: do you have it installed?
+<vrkhans> TheSheep_: i already install it
+<vrkhans> but dot know where is the executable file
+<vrkhans> it is running when i use fire fox
+<TheSheep_> vrkhans: there should be alink to it in 'multimedia'
+<TheSheep_> if no, try to open a terminal and tpye 'which realplayer'
+<vrkhans> no that is the whole problem
+<vrkhans> ok
+<vrkhans> noting happen
+<soweto76> which realplay
+<vrkhans> when i did which realplayer
+<TheSheep_> maybe it's 'realplay' or 'rplay' or somethng
+<vrkhans> hmm
+<TheSheep_> you installed it from the repository or from a .deb file?
+<vrkhans> from repository
+<vrkhans> bacially its the rpm
+<vrkhans> use what xine or something
+<TheSheep_> um... ubuntu doesn't use rpms
+<vrkhans> to compile it
+<TheSheep_> nevermind, you can select the package properties in synaptic and look at the 'files' tab
+<vrkhans> i found it to add a link in the menu do i need to add the realplayer file to realplayer.bin file
+<vidd_laptop> can someone point me in the direction of the net instal cd?
+<vidd_laptop> nvm i found it....its in archive.ubuntu.com
+<vidd_laptop> hmmm'
+<vidd_laptop> i THOUGHT that was it
+<vidd_laptop> it was not
+<TheSheep_> !minicd
+<ubotu> Sorry, I don't know anything about minicd - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<colorred> !ping
+<ubotu> pong
+<dannydog> how do i kill process in xubuntu?
+<colorred> dannydog: man kill
+<dannydog> in terminal?
+<colorred> yes
+<colorred> kill [process-id]
+<dannydog> how do i see the running process?
+<colorred> system -> admin -> system monitor
+<colorred> go to tab "processes", pick a process, and hit "end process"
+<dannydog> whats name of the add/remove application?  taskmanager?
+<colorred> oh. um... that's gnome.
+<dannydog> k
+<dannydog> don't know wtich one to kill then
+<colorred> type ps -A in terminal to see all running processes
+<dannydog> PID TTY          TIME CMD
+<dannydog> 4314 pts/0    00:00:00 ps
+<dannydog> got it
+<dannydog> well is it possible to install fluxbox on xubuntu?
+<TheSheep_> yes
+<TheSheep_> sudo apt-get install fluxbox
+<dannydog> E: could not find package fluxbox
+<TheSheep_> !fluxbox
+<ubotu> fluxbox is a lightweight and responsive window manager for GNU/Linux. For how to set it up and more information see https://help.ubuntu.com/community/Fluxbox
+<TheSheep_> !info fluxbox
+<ubotu> fluxbox: Highly configurable and low resource X11 Window manager. In component universe, is optional. Version 0.9.15.1+1.0rc2-1 (edgy), package size 899 kB, installed size 2888 kB
+<TheSheep_> dannydog: enable the universe repository
+<dannydog> sorry how do i do that?
+<TheSheep_> !repos
+<ubotu> The packages in Ubuntu are divided into several sections. More information at https://help.ubuntu.com/community/Repositories and http://www.ubuntu.com/ubuntu/components - See also !EasySource
+<dannydog> .8
+<dannydog> how do i Enable the universe repositories in sources.list?
+<colorred> !repos
+<ubotu> The packages in Ubuntu are divided into several sections. More information at https://help.ubuntu.com/community/Repositories and http://www.ubuntu.com/ubuntu/components - See also !EasySource
+<ScribbleJ> Not sure this is the right place to ask; I installed xubuntu via debootstrap, then installed konqueror using apt, and my "tools" menu is blank.  Any idea how to fix that?
+<TheSheep_> ScribbleJ: what's normally in th tools menu?
+<ScribbleJ> Well,, the important thing I'm looking for is usually there's an option there to change the browser's Agent header... it says something like "Change browser identification"
+<TheSheep_> ScribbleJ: maybe there are some additional packages you should install for that?
+<TheSheep_> ScribbleJ: try asking at #kubuntu
+<ScribbleJ> Thanks - yeah, I asked over there already.  I might have an answer....
+<looping_> ScribbleJ: I know my ktorrent is not the same with xubuntu it used to be with kubuntu. Did you try installing konqueror extension packages? I guess you could find something like that.
+<ScribbleJ> looping, perhaps your ktorrent is different because it was just updated for everyone. :)
+<ScribbleJ> The answer was to install konq-plugins
+<looping_> ScribbleJ: no no. s I don't have konqueror installed, ktorrent doesn't give me the search tab.
+<looping_> as*
+<ScribbleJ> Oh... huh!
+<ScribbleJ> I guess because it uses KHTML for it.
+<looping_> I thought maybe you have a similar problem
+<ScribbleJ> I love xubuntu but I also love konqueror... and amarok... can't live without 'em.
+<looping_> I never manageg to get used to amarok
+<looping_> beep-media-player suits my needs
+<ScribbleJ> Well, once I signed up at last.fm, it was all over for me.
+<ScribbleJ> Amarok's last.fm integration is what really makes it a "killer app."
+<ScribbleJ> I also use ktorrent but I don't feel any particular attachment to that.
+<looping_> I use beep-media-player and Flock.
+<looping_> Like Last.fm from time to time
+<looping_> oh, I forgot to install it on my new xubuntu
+<looping_> :)
+<looping_> Mhmh, I can't launch this multimedia encyclopedia of scifi I have on cd. Wine doesn't want it.
+<ScribbleJ> Wine's gotten a lot better in recent years.
+<oopsy> !ralink
+<ubotu> Wireless documentation can be found at https://help.ubuntu.com/community/WifiDocs
+<ScribbleJ> But a Sci-Fi specific encyclopedia sounds like a kind of niche market that may not be coded to standards so well.
+<oopsy> can someone redirect me to the ralink native linux drivers?
+<oopsy> nevermind found it
+<oopsy> http://www.ralinktech.com/ralink/Home/Support/Linux.html
+<looping_> ScribbleJ: this cd was made in 1995... :) It is coded for windows from 3 version...
+<ScribbleJ> ah, back when multimedia CD-ROM encyclopedias were the cool thing.
+<looping_> I have the paper version of this encyclopedia since yesterday though... :p
+<ScribbleJ> Going to compare to see what's changed?
+<looping_> ScribbleJ: :) They are working on a new version. Online.
+<looping_> The book is, in fact, older, by two years, than the cd version
+<looping_> :)
+<looping_> but it's great
+<looping_> The book is from 1993
+<looping_> so alien, terminator and ariginal The Outer Limits articles. :)
+<ScribbleJ> Hehe
+<ScribbleJ> I still subscribed to 2600 in '93.
+<oopsy> !console
+<ScribbleJ> good times.
+<ubotu> Sorry, I don't know anything about console - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<oopsy> !basiccommands
+<ubotu> Sorry, I don't know anything about basiccommands - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<oopsy> !basic commands
+<ubotu> Sorry, I don't know anything about basic commands - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<oopsy> thanks a lot ubotu -.-'
+<looping_> !terminal
+<ubotu> The linux terminal or command-line interface is very powerful. Open a terminal via Applications -> Accessories -> Terminal (Gnome) or K-menu -> System -> Konsole (KDE).  Manuals: https://help.ubuntu.com/community/BasicCommands
+<looping_> :)
+<looping_> you're welcome oopsy
+<looping_> !cli
+<ubotu> The linux terminal or command-line interface is very powerful. Open a terminal via Applications -> Accessories -> Terminal (Gnome) or K-menu -> System -> Konsole (KDE).  Manuals: https://help.ubuntu.com/community/BasicCommands
+<looping_> oh good!
+<ScribbleJ> "The command-line interface is very powerful."  I guess they never used tsh.
+<looping_> What's that?
+<ScribbleJ> Just the first stripped-down shell that came to mind.
+<ScribbleJ> I'm not very funny. :/
+<looping_> ok
+<looping_> I thought it was something like that... :)
+<guevara> hi
+<looping_> hola
+<looping_> :p
+<ScribbleJ> Hello Geuvara.  May I call you Che?
+<looping_> ScribbleJ: oh my god, that's deeeeeep!
+<ScribbleJ> No, deep would have been if I asked him how his legs are.
+<looping_> are you high?
+<guevara> ScribbleJ yep no problem...:-P
+<ScribbleJ> I should be so lucky.
+<guevara> can xubuntu run on a celeron 700mhz ,112mb ram, 8 mb video?
+<guevara> i mean, it would fast or slowly?
+<BFTD> guevara yes
+<BFTD> a bit slow but yes
+<Jasperk> hey hi i am newbie in linux...and i don't know how install my scann and my keyboard and webcam....some of you know a page with some good tutorial with that information......please!!!
+<guevara> BFTD and fluxbuntu?
+<BFTD> fluxubuntu is better
+<guevara> so it would be a bit fast? :-P
+<BFTD> not a bit, A LOT faster
+<ScribbleJ> I run my mythtv server off a PIII-750 128mb RAM, using a ubuntu install and it's just great, but i've disabled X11, which I'm sure helps a lot.
+<ScribbleJ> It's a lot easier to make that machine useful if you don't use it as a "desktop."
+<looping_> and if you don't have a use for a server ?
+<looping_> duh! :p
+<guevara> xD
+<Jasperk> hey hi i am newbie in linux...and i don't know how install my scann and my keyboard and webcam....some of you know a page with some good tutorial with that information......please!!!
+<ScribbleJ> Well, then, uh... I'll take it off your hands for you... ?
+<ScribbleJ> JasperK, has google failed you?
+<looping_> Jasperk: google.com/linux   ?
+<Jasperk> looping_:yeah...but the information that i found is for persons with experience use linux...but i'm haven't this experience.....
+<looping_> Jasperk: http://tldp.org/
+<ScribbleJ> Linux is a lot to learn, it's a big pill.  But it's worth it.
+<ScribbleJ> Unfortunatley, you'll probably have to be somewhat comfortable with the command line and "scary linux things" before you really have a desktop that does it /all/.
+<Jasperk> looping_: Tnx men....a lot....
+<looping_> and on my way to eat instant noodles
+<B|nTaRa> !torrent
+<ubotu> Torrent clients: Azureus (Java), BitTornado (Shell with python front-end), KTorrent (KDE/Qt)  -  Bittorent FAQ: http://www.bittorrent.com/FAQ.html
+<B|nTaRa> !memory
+<ubotu> A quick FAQ on Memory Management: http://gentoo-wiki.com/FAQ_Linux_Memory_Management For Lubos Lunak's desktop memory usage comparison, see: http://ktown.kde.org/~seli/memory/desktop_benchmark.html
+<looping_> !camera
+<ubotu> Sorry, I don't know anything about camera - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<looping_> !digital camera
+<ubotu> Sorry, I don't know anything about digital camera - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<rici> i've got xubuntu edgy. i don't seem to have the "compositor" tab on the window manager tweaks configuration? is that normal? is there a way i can enable it?
+<B|nTaRa> !space
+<ubotu> Sorry, I don't know anything about space - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<B|nTaRa> whats the command to know how much space i have ?
+<rici> df
+<oopsy> hey
+<oopsy> can someone help me out?
+<oopsy> can someone explain me those "make" and "make" install commands?
+<oopsy> I just cd then type them?
+<oopsy> because I did it before, but they didn't worked
+<rici> !composite
+<ubotu> Sorry, I don't know anything about composite - try searching on http://bots.ubuntulinux.nl/factoids.cgi
+<rici> !compositor
+<ubotu> For instructions on how to enable the compositor in Xubuntu, please see http://www.xfce.org/index.php?page=documentation&lang=en#xcomposite
+<oopsy> the console said something like "bash: make command unknown"
+<rici> you probably don't have any dev stuff
+<rici> apparently xubuntu doesn't install it until you ask for it
+<rici> damn, that link doesn't work.
+<oopsy> dev stuff? sorry, I'm a xubuntu newbie :(
+<rici> a default xubuntu install doesn't have a compiler, or make, or headers, or anything else you might want to compile a program
+<rici> i.e. a development environment
+<rici> so you can't install source packages until you first install all the dev tools
+<GhostFreeman> where does Thunar send all of its deleted files
+<oopsy> I need to download those then
+<oopsy> rici: could you give me a link to them please?
+<oopsy> I don't have a ethernet connection
+<oopsy> and I'm trying to get my wireless one to work
+<B|nTaRa> rici, thank you
+<Ademan> i know it's stupid, but the one thing holding me back from using xfce full time is the fact that right clicking the desktop has always given me the main menu, which i hate, is there any way to disable that? (make it pop up a context menu regarding the desktop instead?)
+<rici> ok, i got compositor enabled, thanks to a google on bugs.
+<rici> but it slows my machine down to a crawl.... do i need to install the proprietary nvidia driver or something?
+<rici> !nvidia
+<ubotu> To install the Ati/NVidia drivers for your video card, see https://help.ubuntu.com/community/BinaryDriverHowto
+<Lilandra> hi
+<rici> apparently, the answer was "yes"
+<rici> thanks for providing a space for my internal dialogue :)
+<grazie> rici: adding Option "RenderAccel" "true" and Option "AllowGLXWithComposite" "true" to the Device section of xorg.conf may also improve response
+<grazie> rici: although they may be already set
+<Lilandra> i installed opera and now all my links open in it by default :(
+<grazie> Lilandra: do you mean every link in your bookmarks? That's very odd
+<Lilandra> grazie, when i click on links in thunderbird
+<rici> grazie: actually they seem to be in the "Screen" section
+<Lilandra> i kinda uninstalled xfce, but even when i had xfce i couldn't change it. is there a file somewhere that i can edit the preferred applications?
+<rici> grazie: they were in the device section, but the nvidia driver config program moved them
+<rici> do you think it knows what it's doing? Or not?
+<grazie> rici: if nvidia config prog moved them i'd say that was best
+<grazie> Lilandra: Don't follow you completely but preferred app can be set in Applications  > Settings > Preferred Applications
+<rici> checking the log, it seems that it enabled acceleration
+<rici> for some reason, it munged my font setting, but otherwise it seems to be working, mostly.
+<grazie> rici: the font size problem is  described here >> http://xubuntuguide.org/tiki-index.php?page=En:Edgy&redirectpage=HomePage#Small_font_sizes
+<Lilandra> grazie, i don't have xfce anymore :(
+<grazie> Lilandra: still confused....what do you have?
+<Lilandra> icewm on xfce-less xubuntu
+<rici> grazie: that looks useful. thanks. or grazie :)
+<grazie> np
+<rici> actually, i don't mind the font size, it's reasonably clear.
+<rici> it was a bit irritating when i started to set up this machine on the weekend, because the actual monitor resolution is not in any list.
+<rici> i had to add it manually to the xorg.conf file, even though it shows up during the discovery process.
+<grazie> Lilandra: so you installed xubuntu-desktop originally?
+<rici> 1440x900
+<Lilandra> yes grazie
+<grazie> Lilandra: have you tried installing again?
+<rici> afaics, all 19" wide flat monitors on the market these days have that as their native resolution.
+<rici> at least, on the market in Per
+<Lilandra> grazie: reinstalling the OS???
+<grazie> Lilandra: xubuntu-desktop
+<Lilandra> grazie: well it didn't used to work before when i had it...
+<XubuntuLover> For the Opera question, can I assume you want Firefox by defailt?
+<grazie> Lilandra: sounds like you've got into a bit of a mess....not sure I can help
+<Lilandra> oh ok. it was like this from the start for me. i think even on a different computer. very weird
+<XubuntuLover> New Question: xubuntu-desktop has a wonderful feature in the Settings Manager -> Screen Saver to define the delay between Screen Saver, and Lock Screen. Ubuntu-Desktop only has Lock Screen when Screensaver comes on. Is this just a feature difference between Gnome and Xfce?
+<clarklinux> hi--when I select the cli option in the xubuntu 6.10 installation, it just goes straight to the regular installer...what's going on?
+<clarklinux> anyone there?
+<clarklinux> is there anyone who can help me figure out how to get into the command line interface from yaboot?
+<grazie|away> hi clarklinux ... give me minute
+<clarklinux> grazie: nvm, i'm going to try somthing else...
+<grazie> clarklinux: what you saying doesn't  make a lot of sense
+<grazie> ok
+<OldeDirtyGrubLoa> ..
+<vidd_laptop> anyone here running fiesty?
+<OldDirtyGrubLDR> whats that
+<vidd_laptop> that is the version that will be publicly released in april
+<OldDirtyGrubLDR> !fiesty
+<ubotu> The next version of Ubuntu (7.04; codenamed "Feisty Fawn"), it should be released in April 2007. At the moment it is alpha. Schedule: https://wiki.ubuntu.com/FeistyReleaseSchedule - Specifications (goals): https://features.launchpad.net/distros/ubuntu/feisty - Help and support in #ubuntu+1 (NOT #ubuntu)
+<OldDirtyGrubLDR> whats the difference between ubuntu and xubuntu
+<vidd_laptop> i had Terminal just close on me .....well... actually it seams to have just hid itself....
+<vidd_laptop> OldDirtyGrubLDR, the desktop manager
+<vidd_laptop> ubuntu uses gnome, while xubuntu uses xfce
+<OldDirtyGrubLDR> oh thats it? huh. i thought it was more than that
+<vidd_laptop> Kubuntu uses KDE
+<OldDirtyGrubLDR> is one any better than the others or is it just preference
+<vidd_laptop> well....xubuntu is alot lighter bacause the default apps are chosen for thier lightness
+<vidd_laptop> mostly just personal preference.....
+<OldDirtyGrubLDR> i see..
+<vidd_laptop> however, if you have limited resources, you may have to stick to xubuntu....
+<vidd_laptop> cuzz your system may not have the resources needed to run gnome or KDE desktops
+<OldDirtyGrubLDR> yea thats why i originally got it. Xubuntu. using it on an old p3 lappy with just a slice of ram
+<vidd_laptop> KDE is (from what i understand) the most resource hungry *buntu
+<rici> or you might just not like the clutter
+<vidd_laptop> rici, hence my statement about it being mostly personal preference
+<vidd_laptop> B|nTaRa, having issues?
+<B|nTaRa> yea
+<vidd_laptop> anything i might be able to help with?
+<B|nTaRa> i wanna run a MS app
+<B|nTaRa> i managed to installed it using wine
+<vidd_laptop> B|nTaRa, sorry to hear that
+<vidd_laptop> =]
+<B|nTaRa> but cant get it connect to the server
+<vidd_laptop> did you tell wine where the server is and what connection wine needs to use to get to it?
+<B|nTaRa> vidd_laptop, http://www.marketiva.com/index.ncre?page=downloads
+<B|nTaRa> vidd_laptop, how to tell wine ?
+<vidd_laptop> B|nTaRa, sorry...i have no idea......
+<B|nTaRa> ive been trying to search for manuals
+<vidd_laptop> if it dont run native, it dont run on my machine!
+<B|nTaRa> vidd_laptop> did you tell wine where the server is and what connection wine needs to use to get to it? <<-- how ?
+<B|nTaRa> prolly thats the solution
+<vidd_laptop> B|nTaRa, i have no idea....i refuse to learn wine cuzz it bucks my phylosophy
+<vidd_laptop> i refuse to even TRY to run non linux apps
+<B|nTaRa> ohh
+<B|nTaRa> i have to since , that apps is my work
+<grazie> B|nTaRa: what app are trying to run?
+<B|nTaRa> streamster
+<B|nTaRa> from marketiva.com
+<grazie> B|nTaRa: don't see it in the wineHQ db
+<vidd_laptop> We currently directly support Windows 98 / Me / 2000 / XP / Vista. There is a development version that can work through Wine simulator on Linux and some other Unix operating systems, but we do not have a release version at this moment. If you have Mac OS, you may use PC simulator.
+<vidd_laptop> =\
+<vidd_laptop> grazie, dont you need to tell wine what network ports are available and translate the linux file-name for it into a windows connection?
+<B|nTaRa-> <B|nTaRa> from marketiva.com
+<B|nTaRa-> * Disconnected ().
+<B|nTaRa-> something is wrong with my Xchat and torrent ..
+<AaronMT> only reason ill wine is for visual studio
+<B|nTaRa-> im lagging like hell
+<B|nTaRa-> and my CPU load is more than 50%
+<vidd_laptop> AaronMT, the only reason ill wine is if someone breaks my arm or steals my car!
+<vidd_laptop> =]
+<B|nTaRa-> brb
+<grazie> vidd_laptop: don't use wine much..after initial set up most config is done from windows app
+<vidd_laptop> grazie, i never used wine myself
+<vidd_laptop> im a purist
+<AaronMT> http://www.cnn.com/2007/US/03/15/dog.head.ap/index.html
+<grazie> vidd_laptop: there's one fantastic app I use and there no linux alternative
+<vidd_laptop> what is it?
+<grazie> vidd_laptop: http://www.memory-map.co.uk/
+<vidd_laptop> a GPS locator program?
+<Eagle_101> why would you use wine for Visual studio?
+<Eagle_101> kdevelop beats the living crap out of :P
+<Eagle_101> and then some :P
+<Eagle_101> hehe
+<grazie> vidd_laptop: digital maps
+<grazie> Eagle_101: VS?
+<vidd_laptop> hhmmmm'
+<Eagle_101> VS as in Visual studio :P
+<grazie> Eagle_101: VS + Wine? Wherre does this come from?
+<vidd_laptop> no....VS vs KDevelop
+<Eagle_101> <AaronMT> only reason ill wine is for visual studio
+<grazie> ok...missed that
+<AaronMT> I make ASP.NET web applications
+<Eagle_101> mmm yeah it does suck that Microsoft has the only compiler in town for that :S
+<vidd_laptop> i thought that whole "work together" thing with Novell was so one could make .NET apps from open sourse apps
+<grazie> well there's mono....but if you have to develop .net I think it's best sticking with windows
+<Eagle_101> yeah...
+<vidd_laptop> If you ask me...if you have to design .net apps...its time to find a new job!
+<vidd_laptop> *wave* Jester45
+<Jester45> *wave*
+<Jester45> what the highest preforamce drive type? like ata ide scii(whatever you call it)
+<vidd_laptop> ata is best for storage...from what i hear.....
+<vidd_laptop> ide is best for your operating system
+<vidd_laptop> so i guess a mix of the two would be the most ideal
+<Jester45> ok what about gameing
+<clarklinux> grazie: I'm having a problem with the live cd...halfway through loading (after selecting "live" in yaboot)I get an error about activating swap
+<Jester45> so ide would be better for speed and ata is for longterm storage
+<grazie> clarklinux: that's odd, I didn't think the live cd used a swap
+<grazie> clarklinux: what version live cd?
+<clarklinux> grazie: xubuntu 6.10...I got past the partitioning part in the alternate install process, do you think that may have screwed it up for this installation?
+<grazie> clarklinux: you used alternate cd first and had problems?
+<grazie> clarklinux: and now you can't even boot the live cd due to swap problem?
+<Jester45> if a live cd detects a linuxswap partition it will try to use that as swap to speed things up sorta
+<Jester45> but if the partiting part only got half of the swap the live cd might mess up trying to mount it
+<Jester45> its a good idea to use swap when possible becuase it will make a slow cd experience into a part cd one
+<Jester45> if you can boot to the live cd try deleting the parttion
+<grazie> clarklinux: we can sort this in a number of ways. Can you say what happened with the alternate cd?
+<clarklinux> grazie: yes...the problem with the alt install was that it got hung up on the "select and install software" step...so i figured I would try the live cd instead
+<grazie> clarklinux: you've tried the live cd a few times?
+<clarklinux> grazie: this is the second time it has done this
+<LaTso> Hi! iam trying ton install xubutu on a computer. but it only loads and nothing happends. any generall tips ?
+<clarklinux> grazie: i'm also not sure if I'm using the disk correctly...when yaboot comes up I just press enter
+<cellofellow> yaboot is grub for mac, right?
+<Jester45> hey cellofellow
+<grazie> clarklinux: yes that's fine. can you still boot os9?
+<Jester45> *wave*
+<cellofellow> hi
+<cellofellow> *wave*
+<LaTso> the installation process is beeing loaded but the dvd-reader have issues. sounds like a old engine tick tack tick tack
+<grazie> cellofellow: yes ..more like lilo really
+<clarklinux> grazie: no, the point in which the alt install hung up was after the part that erased and partitioned the hd
+<Jester45> cellofellow you can remove my account from your dns account i stoped using it
+<cellofellow> FATAL: Error running install command for nvidia
+<Jester45> but thanks
+<cellofellow> I came to ask what that was.
+<cellofellow> Jester45: ok
+<Jester45> cellofellow whats it from
+<cellofellow> I figured it out though. :)
+<cellofellow> sudo modprobe nvidia
+<vidd_laptop> clarklinux, on the alt cd..... did you try the command line install?
+<cellofellow> I didn't have linux-restricted-modules
+<LaTso> Buffer I/O error on device hdc.
+<grazie> clarklinux: have you tried booting the alternate again?
+<cellofellow> Jester45: so, why you not using DNS no more?
+<clarklinux> vidd: yes, I did, as you suggested...but when I did "cli" and pressed return it just went into the normal installation
+<cellofellow> you want your own account?
+<Jester45> cellofellow took my site down i have somthing else
+<vidd_laptop> clarklinux, hmmm
+<clarklinux> grazie: no, I burned over that (I only have one cd-rw in the house, and I think the reason it worked is that it was 5 years old and had a max burning speed of 4x)
+<cellofellow> you can still use that DNS address, if you like.
+<clarklinux> grazie: so I don't want to risk it with another disk to put me back at square one, where I was two nights ago
+<grazie> clarklinux: I understand
+<vidd_laptop> you try the net install?
+<grazie> clarklinux: may be a good idea to get some more CD-RWs
+<cellofellow> there's net-install for Ubuntu? I thought that was just Debian.
+<grazie> vidd_laptop: problem solved by using CD-RW
+<grazie> cellofellow: yes it very good
+<vidd_laptop> still might wanna use net install
+<clarklinux> grazie: for now, what should I do? is there any option? is there a "server" iso for xubuntu
+<cellofellow> I've wondered if it's possible to morph a Debian Sarge install into Ubuntu by changing the repos.
+<cellofellow> I tried it, but I was using QEMU and it couldn't connect to the network for some reason.
+<Jester45> cellofellow yes but its probly not gonna be the same
+<grazie> vidd_laptop: booting is the problem...net-install (or minimal) still requires booting a kernel
+<clarklinux> grazie: booting isn't the problem anymore
+<cellofellow> I just finished a half-net install. Command-line install from Ubuntu DVD and then apt-get install xubuntu-desktop
+<grazie> clarklinux: yes. with CD-RWs
+<grazie> clarklinux: let me look at my aternate cd.....I'd get some more CD-RWs asap
+<clarklinux> grazie: is there a net install anywhere? like a server iso or whatever? sorry i'm not too hip with the lingo, don't know if I'm using it right
+<vidd_laptop> so try to put the net install on the -rw
+<grazie> clarklinux: the terms are very confusing
+<grazie> clarklinux: net-install or minimal install means using a very small system to boot and then install the os over the internet
+<clarklinux> grazie: so that's even harder?
+<vidd_laptop> cellofellow, let me find you the link for the net install iso.....
+<grazie> clarklinux: netboot (what I think you're getting) means booting you machine over a network after setting up a server
+<grazie> getting at* ^^
+<null__> whoa, man is not installed by default?
+<clarklinux> grazie: oh, no that's not what I mean...I mean an iso (I know there's one for ubuntu, it's like 12 megs or something) that you boot from that obtains the installation materials from the internet
+<null__> see, i would choose kmail over thunderbird (eats less resources) and with those 5 MB saved, install man instead
+<grazie> clarklinux: the netboot for mac is certainly possible. but it not very well documentated
+<grazie> clarklinux: so you need some more CD-RWs
+<clarklinux> grazie: why is that
+<clarklinux> grazie: i can just keep reburning over the same one
+<cellofellow> use Sylpheed-claws-gtk2 (aka Clawsmail) if T-bird is too heavy for you.
+<grazie> clarklinux: I thought you said you didn't want to overwrite it
+<vidd_laptop> http://archive.ubuntu.com/ubuntu/dists/feisty/main/
+<vidd_laptop> cellofellow, try it.... clarklinux there is a powerpc here too
+<cellofellow> try tthat ur?l?
+<vidd_laptop> the net installer
+<clarklinux> grazie: oh, no, I'm sorry, I meant the opposite: that I had found this really old cd-rw and I don't want to buy a bunch  more new ones if I don't think they'll work (I think the reason the cd-rw worked is because it's as old as the mac and has a low max writing speed)
+<cellofellow> ok
+<clarklinux> vidd: wait, isn't that for fiesty?
+<vidd_laptop> yeah....
+<grazie> clarklinux: I'll get you a link for the minimal iso...it's not easy to find
+<clarklinux> oh, I'm going with xubuntu edgey
+<vidd_laptop> go up a couple levels to get the lvl you want
+<clarklinux> low specs on the computer
+<clarklinux> grazie: oh, thank you
+<grazie> clarklinux: did you say the cli option didn't  boot?
+<clarklinux> grazie: it just booted to the normal install...as if I had just typed "install"
+<cellofellow> vidd_laptop: which is the net-installer?
+<vidd_laptop> clarklinux,  http://archive.ubuntu.com/ubuntu/dists/edgy/main/installer-powerpc/
+<grazie> clarklinux: and now you've got the live cd only?
+<vidd_laptop> which arch you need?
+<vidd_laptop> installer-[needed arch]
+<clarklinux> grazie: up
+<clarklinux> vidd: thanks a lot
+<clarklinux> grazie: ^^yup
+<cellofellow> did you know debian even has a windows installer? It uses some GRUB windows thing to boot you into debian net-install.
+<grazie> clarklinux: the full link >> http://archive.ubuntu.com/ubuntu/dists/edgy/main/installer-powerpc/current/images/powerpc/netboot/mini.iso
+<clarklinux> grazie: thanks, I'll try it out and let you know...gotta sign off this computer to use the ethernet cable for the mac...can't wait till I have it up and running with the pcmia wifi card haha...i'm guessing that will be a whole other struggle I have to look forward to
+<clarklinux> bye for now
+<grazie> best of luck
+<clarklinux> thanks
+<grazie> clarklinux: if you get the same swap problem with the minimum cd...you could try the gentoo minimal cd (55M)
+<cellofellow> gentoo?
+<grazie> absolutely

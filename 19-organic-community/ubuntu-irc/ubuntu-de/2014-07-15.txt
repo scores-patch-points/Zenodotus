@@ -1,0 +1,99 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2014-7-15"
+lang: "de"
+messages: "90"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<dadrc> zerwas, weiß nicht wo der MFC hin ist, aber müsste ein DCP7055 gewesen sein
+<dadrc> ups.
+<blobbb> Hallo, ich möchte auf einen ubuntu14.04 pc teamviewer installieren. Leider kommen viele Abhängigkeitsprobleme. http://pastebin.com/DRVhfnN5 Ich habe die 32 und 64 bit Version schon versucht. Wie kann ich das lösen?
+<blobbb> Das ubuntu wurde gestern frisch installiert
+<dadrc> blobbb, beide versionen wieder runter, die passende installieren, dann `sudo apt-get install -f`
+<dadrc> das installiert automatisch die fehlenden abhängigkeiten, das kann dpkg nicht
+<zerwas> Meist löst sogar sudo apt-get install -f allein das Problem und entfernt das Paket
+<blobbb> was heist "wieder runter"? dpkg hat doch die installation immer abgebrochen oder nicht?
+<dadrc> nein
+<blobbb> ah ich sehs grad, das apt-get hat in der tat geholfen
+<blobbb> danke vielmals
+<dadrc> gerne :)
+<LupusE> moin moin
+<foofoobar> Hi zusammen. k1l, wir hatten vor einiger Zeit gesprochen mit meinem Dell XPS 13 und den WLAN Problemen (sporadische Verbindungsabbrüche). Ich habe mir vor einigen Wochen die WLAN Karte von Dell austauschen lassen zu einer Intel Advanced-N 6235.
+<foofoobar> Ich habe auch hier ab und zu Verbindungsabbrüche, was kann ich hier noch machen?
+<foofoobar> So ungefähr jede Stunde habe ich eine neue Verbindung
+<dadrc> Liegt's eventuell am WLAN?
+<foofoobar> dadrc, hab das Problem leider in verschiedenen Netzen..
+<foofoobar> Bin derzeit in einem Telekom Hotspot.
+<k1l> trennen die nicht eh jede stunde einmal?
+<k1l> guck dir halt mal nach einem reconnect dmesg an, was dort gemeldet wrid
+<foofoobar> k1l, so sieht das bei mir aus: http://paste.ubuntu.com/7797954/
+<schoenemann> Hi, ich möchte auf einem Lenovo T440p (Ubuntu 12.04) beide Grafikkarten (Nvidia und Intel) zum Laufen bekommen. "lspci" listet beide "xrandr --listproviders" listet nur die Intel-Karte.
+<schoenemann> ich bin für Hinweise, warum das die Nvidia Grafikkarte von X nicht als Provider erkannt wird sehr dankbar
+<hckjck> leute, was ist nur los mit eclipse unter ubuntu??? egal welche eclipse version ich installiere nichts geht
+<dadrc> schoenemann, was sagt `prime-select query`?
+<dadrc> hckjck, die Eclipse-Pakete sind eher nicht so gut. Von deren Homepage runterladen, entpacken, benutzen ist meistens die bessere Wahl
+<schoenemann> dadrc: das prime-select kommt mit den orginalen Nvidia Treibern (wenn ich das richtig sehe), ich verwende allerdings die offenen (nouveau)
+<hckjck> die idee hatte ich auch schon, hab schon fast alle versionen durchprobiert, überall gibts irgend einen anderen fehler der das ding zum absturz pring. egal ob openjdk oder oracle
+<dadrc> schoenemann, wüsste nicht, dass das mit dem opensource-treiber geht
+<dadrc> sowohl bumblebee als auch prime brauchen die binärdinger
+<schoenemann> http://wiki.ubuntuusers.de/Hybrid-Grafikkarten/Prime?redirect=no
+<dadrc> hmhm. stimmt.
+<schoenemann> und soweit ich mich jetzt durch so viele Seiten geklickt habe, scheint der Support mit den freien Treibern sogar besser zu sein
+<schoenemann> bzw. man muss nicht so viele Abstriche machen in der Verwendung
+<dadrc> schoenemann, hast du den neusten LTS-Stack installiert?
+<dadrc> Also, die Pakete hier: linux-generic-lts-saucy-eol-upgrade linux-generic-lts-saucy xserver-xorg-lts-saucy libgl1-mesa-glx-lts-saucy?
+<bekks> Das ist nicht der aktuelle LTS enablement stack.
+<bekks> Der aktuelle ist *-trusty :)
+<dadrc> stimmt, oder den
+<dadrc> Also, den da oder die Teile mit -trusty? :)
+<bekks> Der saucy stack ist am 8.7. aus dem Support gelaufen.
+<schoenemann> um was genau handelt es sich bei den Paketen? bedeutet das, ich muss ein Upgrade machen _
+<dadrc> Uh, bin ich 7 Tage zu spät :P
+<bekks> schoenemann: https://wiki.ubuntu.com/Kernel/LTSEnablementStack - und ersetz dann einfach "saucy" durch "trusty".
+<dadrc> schoenemann, das ist ein neuerer Kernel und ein neueres Xorg, was bei 12.04 für die Nutzung von Prime nötig ist
+<dadrc> Dein System bleibt aber weiterhin ein 12.04
+<dadrc> Also, es ist kein Upgrade auf 14.04 oder so
+<schoenemann> okay, danke. werde das mal installieren und mich dann nochmal melden
+<schoenemann> mir ist gerade aufgefallen, der Stack für Saucy ist schon installiert
+<schoenemann> X11 hat ja nochmal eigene Grafiktreiber, wie finde ich denn raus, welcher gerade von X verwendet wird?
+<stevieh> /var/log/Xorg.0.log anschauen
+<bekks> schoenemann: Der Stack für Saucy ist seit dem 8.7. nicht mehr supported. Bitte installier den trusty stack.
+<schoenemann> ich finde de trusty nicht
+<bekks> apt-get install ...
+<schoenemann> bekks: in welchem Repo befinden sich denn diese Pakete?
+<bekks> In den "normalen" Ubuntu repos.
+<bekks> 0715 134431 < bekks> schoenemann: https://wiki.ubuntu.com/Kernel/LTSEnablementStack - und ersetz dann einfach "saucy" durch "trusty".
+<schoenemann> bekks: ich nehme nicht an dass die pakete sich in Multiverse befinden
+<schoenemann> bekks: gibt es die denn für 64bit ?
+<bekks> Sie befinden sich in precise-update und selbstverständlich gibt es sie in 64bit.
+<schoenemann> bekks: entschuldige mein Fragen, aber da es sich hierbei um einen Firmen-Rechner handelt, habe ich dummerweise nicht mehr alle orginal-Repos eingetragen (aus rechtlichen Gründen)
+<schoenemann> bekks: wo finde ich denn die URL zu dem precise-update repo?
+<schoenemann> ah, okay
+<schoenemann> bekks: ich glaube ich hab sie "wiedergefunden"
+<bekks> In den Original-Repos (nach der Installation) steckt nur freie Software. Was sind denn da "rechtliche Gründe"?
+<testdr> . staats..rechtliche.. ?
+<schoenemann> (firmen-policies)
+<bekks> schoenemann: Die Firmenpolicy verbietet also die Nutzung von Opensource. OK.
+<testdr> soll es geben ... wer linux nutzt .. ist terrorverdächtig ..
+<schoenemann> bekks: ganz so einfach ist es nicht
+<schoenemann> testdr: :-D
+<stevieh> "bei uns dated sich keine Software von selbst up" .
+<bekks> Wobei es reichen würde, die Updates abzuschalten :)
+<testdr> schoenemann: wenn es "nicht einfach ist" .. wie schaffst Du es dann bei der Installation das alles auseinander zu halten? Da muss es doch eine einfach zu schreibende Vorgehensweise geben?
+<stevieh> bekks: dafür isses ja der harte weg ;-)
+<bekks> testdr: Och, dass ich keine Antwort auf meine Frage nach den Gründen bekomme, ist mir mittlerweile klar ;)
+<bekks> stevieh: :P
+<schoenemann> testdr: ich bin sozusagen das Versuchskaninchen, an einem neuen Rechner. Besondere Regeln ;-)
+<testdr> ach so .. da wurde einer in den "clean-room" gesteckt .. mit seperatem i-net-anschluss (natürlich breitband) . .und dann ...?? Aber welche Einschränkungen sollte es dann geben?
+<stevieh> schoenemann: und ihr habt alle so eklige rechner? Alternativ: bau das ganze erst ordentlich mit nem normalen rechner und merk dir dann, was passiert war.
+<schoenemann> *argh* ... das Update hat natürlich nicht funktioniert
+<schoenemann> denn was will man schon erwarten von einem lenovo Laptop. Booten tut er nicht mehr, denn es treten durch Verwendung der trusty updates die hier beschriebenen Fehler auf: https://answers.launchpad.net/ubuntu/+question/246834
+<schoenemann> (FYI)
+<dadrc> Ist der ältere Kernel noch da?
+<schoenemann> ich bin momentan dabei noch ein backup von ein paar daten zu machen
+<schoenemann> werde dann die Wiederherstellung in Angriff nehmen ;-)
+<schoenemann> gibt es eine Möglichkeit, alle trusty Pakete zu entfernen? Oder ein Downgrade der pakete durchzuführen (inklusive der Abhängigkeiten)?
+<dadrc> Solltest eigentlich einfach die Saucy-Variante der Pakete wieder installieren können
+<schoenemann> da muss ich jetzt jedes paket einzeln angeben, denn apt kann die Abhängigkeiten nicht automatisch downgraden

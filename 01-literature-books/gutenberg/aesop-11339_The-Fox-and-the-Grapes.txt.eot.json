@@ -1,0 +1,293 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+  "sha256": "fc73ec6abcb10f91a0406efd29ed32b6abd6ac2fe77fe9d8f32d7691fad42f58",
+  "bytes": 419,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "1ff2e4381bf5ecf6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "language": "en",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver Universal Dependencies, native/priors/pos-eng.json, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "sameStem": "omitted — no declension prior for language \"en\" (normalized \"eng\") in this environment",
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "0c88129ed1a6ab404c00618eedbbca6c02569d25",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "06dda2da883f252ed5da2354606a3358f0470e74",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "f8305877b926b09942ca3aa2a5afcde85c851b4e",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 419,
+  "bodyOffset": 0,
+  "bodyChars": 419,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 419,
+  "truncated": false
+ },
+ "script": {
+  "casedLetters": 322,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null,
+  "bySentence": [
+   {
+    "order": 0,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 1,
+    "dominant": "cased",
+    "casedShare": 1
+   },
+   {
+    "order": 2,
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  ]
+ },
+ "reading": {
+  "sentences": 3,
+  "surfaces": 2,
+  "referentEvents": 1,
+  "distinctReferents": 1,
+  "examined": true,
+  "edgesFound": 2,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 4,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 5
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 2,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 2,
+  "excerptOk": 2,
+  "rawChecked": 2,
+  "rawOk": 2,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 2,
+  "heard": 2,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0,
+  "sentenceCount": 3,
+  "admittedSpans": 1,
+  "coverage": 0.3333333333333333
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "they|were|just out of reach: so he gave up trying",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "they were just out of reach: so he gave up trying",
+    "end1": "they",
+    "label": "were",
+    "end2": "just out of reach: so he gave up trying",
+    "witnesses": [
+     "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt@1ff2e4381bf5ecf6"
+    ],
+    "spans": [
+     {
+      "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+      "text": "But it was all in vain, for they were just out of reach: so he gave up trying, and walked away with an air of dignity and unconcern, remarking, \"I thought those Grapes were ripe, but I see now they are quite sour.\"",
+      "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418"
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "those|were|ripe",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "those were ripe",
+    "end1": "those",
+    "label": "were",
+    "end2": "ripe",
+    "witnesses": [
+     "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt@1ff2e4381bf5ecf6"
+    ],
+    "spans": [
+     {
+      "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+      "text": "But it was all in vain, for they were just out of reach: so he gave up trying, and walked away with an air of dignity and unconcern, remarking, \"I thought those Grapes were ripe, but I see now they are quite sour.\"",
+      "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418"
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 2,
+  "admits": [
+   "NUL",
+   "SIG",
+   "INS",
+   "SEG",
+   "CON",
+   "SYN",
+   "DEF",
+   "EVA",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "they|were|just out of reach: so he gave up trying",
+   "end1": "they",
+   "label": "were",
+   "end2": "just out of reach: so he gave up trying",
+   "witnesses": [
+    "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt@1ff2e4381bf5ecf6"
+   ],
+   "spans": [
+    {
+     "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+     "text": "But it was all in vain, for they were just out of reach: so he gave up trying, and walked away with an air of dignity and unconcern, remarking, \"I thought those Grapes were ripe, but I see now they are quite sour.\"",
+     "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418"
+    }
+   ],
+   "subject": "they",
+   "verb": "were",
+   "object": "just out of reach: so he gave up trying"
+  },
+  {
+   "id": "those|were|ripe",
+   "end1": "those",
+   "label": "were",
+   "end2": "ripe",
+   "witnesses": [
+    "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt@1ff2e4381bf5ecf6"
+   ],
+   "spans": [
+    {
+     "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+     "text": "But it was all in vain, for they were just out of reach: so he gave up trying, and walked away with an air of dignity and unconcern, remarking, \"I thought those Grapes were ripe, but I see now they are quite sour.\"",
+     "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418"
+    }
+   ],
+   "subject": "those",
+   "verb": "were",
+   "object": "ripe"
+  }
+ ],
+ "propositions": [
+  {
+   "order": 0,
+   "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#0-22",
+   "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 1,
+   "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#24-203",
+   "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted",
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  },
+  {
+   "order": 2,
+   "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418",
+   "ref": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418",
+     "subject": "they",
+     "verb": "were",
+     "object": "just out of reach: so he gave up trying"
+    },
+    {
+     "at": "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt#204-418",
+     "subject": "those",
+     "verb": "were",
+     "object": "ripe"
+    }
+   ],
+   "script": {
+    "dominant": "cased",
+    "casedShare": 1
+   }
+  }
+ ],
+ "lastRun": {
+  "recipeId": "1ff2e4381bf5ecf6",
+  "at": "2026-09-09T19:55:31.339Z"
+ }
+}

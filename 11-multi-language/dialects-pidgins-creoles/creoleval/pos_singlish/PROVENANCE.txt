@@ -1,0 +1,16 @@
+Source: Singlish STB-ACL treebank (Colloquial Singapore English / "Singlish", gold POS split)
+Fetched directly from: https://github.com/wanghm92/Sing_Par
+(ACL17_dataset/treebank/gold_pos/{train,dev,test}.conll)
+This is the exact dataset CreoleVal's own nlu/pos/download_singlish_upos.sh script fetches --
+CreoleVal does not vendor the raw text in-repo, only the download script and MaChAmp training
+config (nlu/pos/configs/upos_singlish.json), so this pocket fetched the real upstream files
+directly, the same way CreoleVal's own script would. Note: Singlish is an English-lexified contact
+variety / creoloid rather than a canonical Atlantic/Pacific creole, but it is one of CreoleVal's
+own included languages/tasks (see its README: "Singlish Treebank", UDPoS task), so it is in scope
+for this pocket as part of representing CreoleVal's actual task coverage.
+License: MIT License, confirmed by fetching and reading
+https://raw.githubusercontent.com/wanghm92/Sing_Par/master/LICENSE directly (full MIT text,
+"Copyright (c) 2017 Hongmin Wang"). CreoleVal's own top-level README benchmark table independently
+lists this dataset as "MIT" too -- both sources agree.
+Domain: web scrape (forum/web text in Colloquial Singapore English).
+Format: CoNLL-U-style dependency parse with gold POS tags, UTF-8.

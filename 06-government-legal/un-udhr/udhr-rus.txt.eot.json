@@ -1,0 +1,692 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "06-government-legal/un-udhr/udhr-rus.txt",
+  "sha256": "12b1e0aa9e19e86e3450683f8f45038e8daab1dbf3a44218c2841046ad0dfbcf",
+  "chars": 12872,
+  "declaredIdentity": {
+   "identityClaim": "Universal Declaration of Human Rights",
+   "language": "Russian",
+   "code": "ru",
+   "mechanism": "the file's own 4-line OHCHR header, read verbatim"
+  }
+ },
+ "recipe": {
+  "id": "3de79fccd66b6da3",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "language": "ru",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver Universal Dependencies, native/priors/pos-rus.json, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver Universal Dependencies, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "verbForms": null,
+   "createLemmatizer": null,
+   "sameStem": "declension-rus.json (giver UniMorph, CC BY-SA 3.0) — widens namesCorefer past exact-token comparison, pairwise only (see eoreader7 native/adapters/text/declension.js's own header for why)",
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "5dc67f65c76c94cde86dfaf7b262ec5a7fcdb877",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "103a8582810a769aaa364d6f973efad62a596323",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "1f31662da00cb962a97418833684806be116eb1b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 12872,
+  "bodyOffset": 222,
+  "bodyChars": 12650,
+  "frontMatter": {
+   "detected": false
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint — rosetta skeleton: preamble + 30 article acts, 107 prop expectations (a projection of the live goldens; recompiled, never edited)"
+ },
+ "reading": {
+  "sentences": 67,
+  "surfaces": 12,
+  "referentEvents": 1,
+  "distinctReferents": 1,
+  "examined": true,
+  "edgesFound": 2,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 2,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 3
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 2,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 2,
+  "excerptOk": 2,
+  "rawChecked": 2,
+  "rawOk": 2,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 2,
+  "heard": 2,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0,
+  "sentenceCount": 67,
+  "admittedSpans": 2,
+  "coverage": 0.029850746268656716
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "объединенных наций|подтвердили|в уставе свою веру в основные права человека",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Объединенных Наций подтвердили в Уставе свою веру в основные права человека",
+    "subject": "Объединенных Наций",
+    "verb": "подтвердили",
+    "object": "в Уставе свою веру в основные права человека",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-rus.txt@3de79fccd66b6da3"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-rus.txt#1122-1404",
+      "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+      "text": "принимая во внимание, что народы Объединенных Наций подтвердили в Уставе свою веру в основные права человека, в достоинство и ценность человеческой личности и в равноправие мужчин и женщин и решили содействовать социальному прогрессу и улучшению условий жизни при большей свободе; и"
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "настоящую всеобщую|декларацию|прав человека в качестве задачи",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "настоящую Всеобщую декларацию прав человека в качестве задачи",
+    "subject": "настоящую Всеобщую",
+    "verb": "декларацию",
+    "object": "прав человека в качестве задачи",
+    "witnesses": [
+     "06-government-legal/un-udhr/udhr-rus.txt@3de79fccd66b6da3"
+    ],
+    "spans": [
+     {
+      "at": "06-government-legal/un-udhr/udhr-rus.txt#1786-2352",
+      "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+      "text": "провозглашает настоящую Всеобщую декларацию прав человека в качестве задачи, к выполнению которой должны стремиться все народы и государства с тем, чтобы каждый человек и каждый орган общества, постоянно имея в виду настоящую Декларацию, стремились путем просвещения и образования содействовать уважению этих прав и свобод и обеспечению, путем национальных и международных прогрессивных мероприятий, всеобщего и эффективного признания и осуществления их как среди народов государств-членов Организации, так и среди народов территорий, находящихся под их юрисдикцией."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 2,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "настоящую всеобщую|декларацию|прав человека в качестве задачи",
+   "subject": "настоящую Всеобщую",
+   "verb": "декларацию",
+   "object": "прав человека в качестве задачи",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-rus.txt@3de79fccd66b6da3"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-rus.txt#1786-2352",
+     "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+     "text": "провозглашает настоящую Всеобщую декларацию прав человека в качестве задачи, к выполнению которой должны стремиться все народы и государства с тем, чтобы каждый человек и каждый орган общества, постоянно имея в виду настоящую Декларацию, стремились путем просвещения и образования содействовать уважению этих прав и свобод и обеспечению, путем национальных и международных прогрессивных мероприятий, всеобщего и эффективного признания и осуществления их как среди народов государств-членов Организации, так и среди народов территорий, находящихся под их юрисдикцией."
+    }
+   ]
+  },
+  {
+   "id": "объединенных наций|подтвердили|в уставе свою веру в основные права человека",
+   "subject": "Объединенных Наций",
+   "verb": "подтвердили",
+   "object": "в Уставе свою веру в основные права человека",
+   "witnesses": [
+    "06-government-legal/un-udhr/udhr-rus.txt@3de79fccd66b6da3"
+   ],
+   "spans": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-rus.txt#1122-1404",
+     "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+     "text": "принимая во внимание, что народы Объединенных Наций подтвердили в Уставе свою веру в основные права человека, в достоинство и ценность человеческой личности и в равноправие мужчин и женщин и решили содействовать социальному прогрессу и улучшению условий жизни при большей свободе; и"
+    }
+   ]
+  }
+ ],
+ "propositions": [
+  {
+   "order": 0,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#222-255",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 1,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#264-273",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 2,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#281-464",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 3,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#472-772",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 4,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#780-1005",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 5,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#1013-1114",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 6,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#1122-1404",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-rus.txt#1122-1404",
+     "subject": "Объединенных Наций",
+     "verb": "подтвердили",
+     "object": "в Уставе свою веру в основные права человека"
+    }
+   ]
+  },
+  {
+   "order": 7,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#1412-1599",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 8,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#1607-1748",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 9,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#1756-1778",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 10,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#1786-2352",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "proposition",
+   "propositions": [
+    {
+     "at": "06-government-legal/un-udhr/udhr-rus.txt#1786-2352",
+     "subject": "настоящую Всеобщую",
+     "verb": "декларацию",
+     "object": "прав человека в качестве задачи"
+    }
+   ]
+  },
+  {
+   "order": 11,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#2363-2371",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 12,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#2379-2448",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 13,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#2449-2539",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 14,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#2550-2558",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 15,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#2566-2889",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 16,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#2897-3210",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 17,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3221-3229",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 18,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3237-3316",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 19,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3327-3335",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 20,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3343-3463",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 21,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3474-3482",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 22,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3490-3606",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 23,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3617-3625",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 24,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3633-3720",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 25,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3731-3739",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 26,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3747-3837",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 27,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#3838-4013",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 28,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4024-4032",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 29,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4040-4225",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 30,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4236-4244",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 31,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4252-4329",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 32,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4340-4349",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 33,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4357-4659",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 34,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4670-4679",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 35,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4693-4951",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 36,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#4965-5182",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 37,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5183-5319",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 38,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5332-5341",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 39,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5349-5554",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 40,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5555-5647",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 41,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5658-5667",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 42,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5681-5794",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 43,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5808-5913",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 44,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5926-5935",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 45,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#5949-6054",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 46,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6068-6281",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 47,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6294-6303",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 48,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6317-6359",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 49,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6373-6466",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 50,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6479-6488",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 51,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6502-6668",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 52,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6669-6789",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 53,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6803-6898",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 54,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#6912-7026",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 55,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7039-7048",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 56,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7062-7150",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 57,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7164-7220",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 58,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7233-7242",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 59,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7250-7565",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 60,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7576-7585",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 61,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7593-7864",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 62,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7875-7884",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 63,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7898-7965",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 64,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#7979-8043",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 65,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#8056-8065",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  },
+  {
+   "order": 66,
+   "at": "06-government-legal/un-udhr/udhr-rus.txt#8079-8222",
+   "ref": "06-government-legal/un-udhr/udhr-rus.txt",
+   "kind": "gap",
+   "reason": "no_relation_extracted"
+  }
+ ],
+ "lastRun": {
+  "recipeId": "3de79fccd66b6da3",
+  "at": "2026-08-31T01:59:48.622Z"
+ }
+}

@@ -1,0 +1,614 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2008-7-15"
+lang: "en"
+messages: "605"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<dav010> I am installing all of ubuntu-server onto a 10GB drive, and then doing a software RAID1 mirror two 1 TB drives that I will keep data on. I am currently installing the OS, and I set the TB drives to be "physical volume for RAID" I then went to "configure software RAID", "Create MD Drive" and then it asked me how many active drives and then inactive drives for the RAID? WHat do I set. (I set 2...
+<dav010> ...and 0). Additionally, after I did that, it told me I had to select two drives, except only gave me the option of selecting one of my TB drives. Did I do this correctly?
+<dav010> It looks like I should of set one inactive, and one active. The installer won't let me delete my RAID thats screwed it. It says "it might be in use." Any suggestions on what to do?
+<dav010> anyone?
+<dav010> anyreason that the RAID can't be deleted? Should I restart the install?
+<dav010> screw it, I'm restarting the install
+<sly2guy> i have set up an ftp server using proftpd, everything seems to work correctly locally, but I can't seem to access it using a global/remote reference, what might the problem be?
+<nealmcb> sly2guy: firewall?
+<jords> Er.... something weird is going on. The mysql on my new ubuntu server install will accept a login with any username and no password, but not give any priviliges. More a problem, though, is that the only user you can actually login as and get priviliges is root - all the other users only login with no password even though i've set one for them, and don't get priviliges to do anything
+<Kludge^WalesUK> hai
+<jords> hey
+<Kludge^WalesUK> aha :) Wondering if i could get some seemingly basic assistance? :)
+<Kludge^WalesUK> i'm due to have a "ubuntu server" seedbox soon, i've been virtualizing the distro as best i can over win64 vista and VMWare. Just wondering if anyone can help out on any technicalities for remote administration and/or torrent client help?
+<jords> I run a ubuntu  server seedbox also...
+<Kludge^WalesUK> i've managed to nail installation of X+Wine+Fluxbox+webui+(hopefully) VNC... But i'm aiming for a native client
+<jords> I just use transmission-daemon, and then transmission-remote over ssh....
+<Kludge^WalesUK> rTorrent and a webui... all my efforts so far (in over 14hrs) have failed (i've re-used the same ubuntu server image)
+<Kludge^WalesUK> hmm. not heard of that combo... a webui is nice, but not necessary. I could if need be VNC/FreeNX (another failure on my part) in
+<jords> You don't really need a gui, but if you want one I find torrentflux-b4rt works well just by itself if your not too worried about system resource usage (bitcomet is a pig)
+<Kludge^WalesUK> i think bitcomet is still banned on many sites for its `behaviour`... I've tried torrentflux-b4rt and wasn't impressed =/ Although it "just works"... I'd still probably prefer WINE+X+WebUI+VNC
+<jords> What client are you using with WINE? I'm a utorrent fan myself, but I find transmission is almost as good, and runs on linux natively
+<Kludge^WalesUK> would be using uTorrent 1.7.x as i've read that 1.8 beta still has a few problems.. i'm very used to uTorrent as I run it on my server at home. transmission i've not looked into AT ALL to be fair... Just want something functional that has a lot of control..... rTorrent does, but ugh... i find its intuition quite "WTFH IS THIS?"
+<Kludge^WalesUK> and not managed once to get a webui working at all =(
+<Kludge^WalesUK> you still lurking, jords? :)
+<jords> yes :D
+<Kludge^WalesUK> aha! just installed transmission... looks very simple... it can't find "transmission-remote" and it doesnt appear in the repos i have
+<jords> I donno how complicated your requirements are, but have a look at transmission-daemon and clutch, which is a very nice webui for it. some tricks to get it to run though
+<jords> the transmission packages in ubuntu are old, I just compiled the latest version  myself....
+<Kludge^WalesUK> i don't have transmission-remote here
+<Kludge^WalesUK> gah! *hides* wanna teach a n00b how to compile?
+<jords> it's a reasonably new feature. I'll try - ok first step is to remove the old transmission
+<jords> it's quite easy really, as long as you don't have dependancy problems
+<Kludge^WalesUK> ok, do you want to see how exactly i've bodged a wine+X+utorrent install?
+<Kludge^WalesUK> i can just reuse a base vmware image so no need to uninstall :)
+<jords> heh nice
+<Kludge^WalesUK> it's a well worn image i assure you ;)
+<Kludge^WalesUK> ok here's the list of crap i go through (all manually written thanks to VMWare :( )
+<Kludge^WalesUK> #
+<Kludge^WalesUK> sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get install openssl ssh xserver-xorg xfonts-base xinit xterm xauth wine fluxbox synaptic firefox-3.0 tightvncserver
+<Kludge^WalesUK> (62.7MB / 225MB diskspace)
+<Kludge^WalesUK> cd /home/kludge && mkdir incoming && mkdir storage && wget http://download.utorrent.com/1.8/utorrent-1.8.exe
+<Kludge^WalesUK> vncserver
+<Kludge^WalesUK> sudo reboot
+<Kludge^WalesUK> startx
+<Kludge^WalesUK> open an terminal and command; xrandr -s 1024x768 && winecfg
+<Kludge^WalesUK> wine utorrent-1.8.exe
+<Kludge^WalesUK> install in c:\windows\system32
+<Kludge^WalesUK> run from anywhere wine utorrent
+<Kludge^WalesUK> #
+<ScottK> !pastebin | Kludge^WalesUK
+<ubottu> Kludge^WalesUK: pastebin is a service to post multiple-lined texts so you don't flood the channel. The Ubuntu pastebin is at http://paste.ubuntu.com (make sure you give us the URL for your paste - see also the channel topic)
+<Kludge^WalesUK> okie *hides some more*
+<Kludge^WalesUK> how does that `look`? n00bish? LOL
+<jords> ok... do you want to give transmission a try? good to lean how to do a basic build of a program too
+<Kludge^WalesUK> yeah, just decompressing the 7z archive i have now :)
+<Kludge^WalesUK> ok she's booting
+<Kludge^WalesUK> ok, booted, i'm at the terminal. just logged in as kludge (non root)
+<jords> ok, make a new directory, call it "transmission-build" or something
+<Kludge^WalesUK> in ~ /
+<jords> yeah, that's your home directory
+<Kludge^WalesUK> ok done
+<jords> ~ means /home/<your username>
+<Kludge^WalesUK> ok, i'm in that dir now
+<jords> wget http://download.m0k.org/transmission/files/transmission-1.22.tar.bz2
+<jords> tar -xjvf transmission-1.22.tar.bz2 to extract it
+<Kludge^WalesUK> ok, done
+<Kludge^WalesUK> changed directory to in there as well
+<jords> ok... ./configure
+<jords> and hope theres no errors
+<Kludge^WalesUK> no acceptable C compiler in path
+<jords> ooh, forgot that. apt-get install build-essential :D
+<Kludge^WalesUK> ;) thanks... quite a few other things missing in the debug too... one sec
+<ScottK> Transmission is packaged for Intrepid.
+<jords> ScottK: it's packeged, but the version in the repos is very old
+<ScottK> It's probably much easier to grab the Intrepid source package and build a .deb locally for your system.
+<ScottK> 1.22 is in Intrepid.
+<Kludge^WalesUK> this could take a while i'm on dialup :(
+<ScottK> https://launchpad.net/ubuntu/intrepid/+source/transmission/1.22-1ubuntu1
+<Kludge^WalesUK> ;) just kidding... configure went fine this time
+<jords> cool... now type make
+<Kludge^WalesUK> no makefile found
+<ScottK> Generally you'll be happier in the long run using the packaging system even for local stuff.
+<Kludge^WalesUK> aye. well i don't wanna step on toes :)
+<jords> ScottK: well I can't claim to know enough about apt to do that...
+<ScottK> Easy enough.
+<ScottK> Make a new directory to work in.
+<Kludge^WalesUK> who am i following now? :X
+<ScottK> Your call.
+<Kludge^WalesUK> make seems to be failing for some reason
+<jords> Kludge: follow him, he knows much more apt than i do :D
+<Kludge^WalesUK> you cool with that, jords?
+<ScottK> sudo apt-get install devscripts build-essential
+<Kludge^WalesUK> done
+<ScottK> dget -x https://launchpad.net/ubuntu/intrepid/+source/transmission/1.22-1ubuntu1/+files/transmission_1.22-1ubuntu1.dsc
+<Kludge^WalesUK> gah, copy and paste doesnt work over vmware ;( one sec, this'll take a moment
+<ScottK> Or you can change the deb-src line for main in /etc/at/sources.list to intrepid, apt-get update, apt-get source transmission
+<Kludge^WalesUK> unable to establish SSH connection
+<Kludge^WalesUK> SSL*
+<ScottK> OK.  Change /etc/apt/sources.list
+<Kludge^WalesUK> one sec
+<Kludge^WalesUK> what am i adding at the end?
+<ScottK> Change hardy to intrepid on the deb-src line (make sure it's deb-src)
+<jords> I'm just using ---insecure ... is that any worse?
+<Kludge^WalesUK> i have multiple deb-src variables
+<ScottK> The first one that has main in it.
+<ScottK> Mine would be:
+<ScottK> deb-src http://us.archive.ubuntu.com/ubuntu/ intrepid main restricted
+<Kludge^WalesUK> the deb-src http://bleg/ubuntu/ hardy-updates main restricted ?
+<Kludge^WalesUK> gotcha
+<ScottK> Where bleg/ubuntu/ is the path to your local mirror, yes.
+<ScottK> Then sudo apt-get update
+<ScottK> then sudo apt-get source transmission
+<Kludge^WalesUK> fark i didnt sudo edit it... one moment
+<Kludge^WalesUK> ok, done
+<Kludge^WalesUK> ( fetched 1185KB )
+<ScottK> So you have the source?
+<Kludge^WalesUK> yeah, i believe so
+<ScottK> ls in that dir and see if it's there
+<Kludge^WalesUK> yeah, im in that dir still
+<ScottK> Then try sudo apt-get build-dep transmission
+<Kludge^WalesUK> getting an error, want me to type?
+<ScottK> Is it the libcurl-dev one?
+<Kludge^WalesUK> no idea =\
+<ScottK> Does it mumble about a virtual package?
+<ScottK> Trying to save you some typing ...
+<Kludge^WalesUK> getting an "E: build-depends dependancy for transmission cannot be satisfied because no available versions of package debhelped can satisfy cersion requirements"
+<Kludge^WalesUK> excuse typo's its 5:14am and i'm reading from a VMWare terminal ;)
+<ScottK> That's painful.
+<ScottK> Let me look at the package
+<ScottK> Idiots
+<Kludge^WalesUK> :D
+<ScottK> The set the version dependency to debhelper 7, but looking at it, I'm almost certain it doesn't need it.
+<ScottK> The/They
+<ScottK> cd into the package dir
+<Kludge^WalesUK> still in thre
+<ScottK> then cd into the debian dir.
+<Kludge^WalesUK> not one, only daemon
+<ScottK> Hmmm.
+<ScottK> After you got the source, there should have been a dir called transmission-1.22 there
+<jords> there is a debian directory for me
+<ScottK> debian is in that one.
+<Kludge^WalesUK> wget -x https://launchpad.net/ubuntu/intrepid/+source/transmission/1.22-1ubuntu1/+files/transmission_1.22-1ubuntu1.dsc <- that one?
+<ScottK> That one failed for you, right?
+<jords> oh.... dget
+<jords> not wget?
+<Kludge^WalesUK> if you meant to write Dget it wasn't installed, i assumed you meant wget
+<ScottK> We did apt-get source transmission instead.
+<ScottK> No, I meant dget
+<ScottK> Did you install devscripts?
+<Kludge^WalesUK> dget not installed then
+<ScottK> It's in that pakcage
+<Kludge^WalesUK> yeah. maybe not at the right time... one sec
+<ScottK> jords: dget uses wget, but it knows about debian package structure so can grab the whole package.
+<Kludge^WalesUK> ok, made dir transmission-build sudo apt-get install build-essentails devscripts
+<Kludge^WalesUK> changed first line to read intrepid FROM hardly, and to main restricted
+<ScottK> Then apt-get update
+<ScottK> apt-get source transmission
+<ScottK> That should get you transmission-1.22 just sitting there ready to go.
+<Kludge^WalesUK> yeah, does now... i rm'd what was in there to make sure
+<ScottK> cd into transmission-1.22 and then cd into debian
+<Kludge^WalesUK> now dget ?
+<Kludge^WalesUK> aha, deb is there now!
+<ScottK> No.  We used apt-get source instead.
+<Kludge^WalesUK> ok in debian
+<ScottK> There's a file called control.
+<Kludge^WalesUK> yup
+<ScottK> Open it in the editor of your choice
+<Kludge^WalesUK> done
+<ScottK> See the line called Build-Depends:
+<ScottK> It's actually two lines.
+<Kludge^WalesUK> yeah i see it... debhelper (>= 7)
+<ScottK> Change the 7 to a 6 (we are cheating now, but I'm almost certain it's OK).
+<Kludge^WalesUK> done
+<ScottK> Next is to install those packages.
+<Kludge^WalesUK> ok, so parent dir?
+<ScottK> Doesn't matter
+<ScottK> When you install binary packages, the current dir doesn't matter.
+<Kludge^WalesUK> aha, okie... how'd i install? :)
+<ScottK> If you apt-get source, the source gets shoved in the current dir so it matters.
+<Kludge^WalesUK> thankyou so much for your patience :)
+<ScottK> sudo apt-get install .... the list of packages.
+<Kludge^WalesUK> uhm. Did you just miss a step? I just changed "debhelp (>=7 to 6
+<ScottK> Right.  Save and exit.
+<Kludge^WalesUK> yup;
+<ScottK> Then sudo apt-get install debhelper autotools-dev libgtk2.0-dev libevent-dev libglib2.0-dev
+<ScottK> Then sudo apt-get install libssl-dev chrpath python intltool
+<Kludge^WalesUK> ah the joys of a fast connection, almost done the first bit
+<Kludge^WalesUK> ok with ya
+<ScottK> Your on Hardy, right?
+<Kludge^WalesUK> yeah 8.0x LTS
+<ScottK> Then sudo apt-get install libcurl4-openssl-dev
+<Kludge^WalesUK> done
+<ScottK> Then you've got all the stuff to build the package installed
+<Kludge^WalesUK> awesome ;o
+<ScottK> Now you want to be in the transmission-1.22 dir
+<ScottK> cd .. from debian if you're still there
+<Kludge^WalesUK> yep, im there now
+<ScottK> Also sudo apt-get install fakeroot
+<ScottK> I always forget that one
+<Kludge^WalesUK> done
+<Kludge^WalesUK> one sec, need a pee
+<ScottK> Then debuild -us -uc (the options just mean you aren't going to sign the pakcage)
+<ScottK> Do this next one first.
+<ScottK> It'll take a while.
+<Kludge^WalesUK> ok BACK
+<Kludge^WalesUK> next one first still?
+<ScottK> debuild -us -uc
+<Kludge^WalesUK> fakeroot debian/rules clean failed
+<ScottK> Shoot
+<Kludge^WalesUK> permission denied... sudo ?
+<ScottK> No
+<ScottK> let me look
+<Kludge^WalesUK> says it cannot remove `third-party/libeven/test/regress.gen.c` premission denied
+<Kludge^WalesUK> gugh the typos... *looks at a waiting pint of coffee* <3
+<Kludge^WalesUK> debuild fatal error at line 1247
+<ScottK> OK.
+<Kludge^WalesUK> how may i ask is a n00b supposed to just `know` this? :S
+<ScottK> Usually it's easier.
+<ScottK> Usually it's apt-get source, apt-get build-dep ..., debuild and you're done.
+<Kludge^WalesUK> usually because n00bs install the whole desktop environment?
+<Kludge^WalesUK> which has all the dev stuff already?
+<ScottK> No, because transmission can be a PITA.
+<ScottK> Mostly n00bs stick with the version in the archve.
+<Kludge^WalesUK> fair enough LOL... i'm keeping a .txt file on the process, so if/when it works 100% ok, i'll try from the first step
+<Kludge^WalesUK> as would i :X
+<ScottK> It looks like debian rules is actually using one debhelper 7 feature.
+<Kludge^WalesUK> ouch =/ no cheating for ScottK & kludge
+<Kludge^WalesUK> if you need me to start again from scratch up to a certain point i can do that :) no worries
+<ScottK> The odd bit is it failed for me to, but in a different place.
+<Kludge^WalesUK> hmm. you want a transcript (of sorts) of what i've done?
+<ScottK> I think I got it.
+<Kludge^WalesUK> http://pastebin.ca/1072036
+<ScottK> There's a file in debian dir called compat
+<Kludge^WalesUK> thats my `transcript`
+<ScottK> It'll contain the number 7.
+<ScottK> Change the 7 to 6 and try the debuild again
+<Kludge^WalesUK> nopers ;(
+<Kludge^WalesUK> line 1247 still
+<ScottK> OK.  It's working for me.
+<Kludge^WalesUK> still cannot remove that file
+<ScottK> Let's back up a bit.
+<ScottK> Let's rm -rf your transmission-1.22 dir (just the dir, not the other files in the parent directory.
+<ScottK> The do dpkg-source -x transmission_1.22-1ubuntu1.dsc
+<Kludge^WalesUK> uh permission denied -_-
+<ScottK> Ah.
+<ScottK> Did you do sudo apt-get source transmission?
+<Kludge^WalesUK> it appears so :(
+<ScottK> What does ls -l transmission-1.22 tell you?
+<ScottK> No problem.  We can fix this.
+<Kludge^WalesUK> yup, root owns it
+<ScottK> sudo chown -r username:username transmission-1.22 where username is your username
+<ScottK> -R sorry
+<Kludge^WalesUK> ok kludge owns it now \o/
+<ScottK> cd back into transmission-1.22
+<ScottK> Then debuild -us -uc
+<Kludge^WalesUK> 1247 again
+<Kludge^WalesUK> dpkg-source -b transmission-1.22 failed
+<Kludge^WalesUK> also can't create some files
+<ScottK> OK.  Let's back up.
+<Kludge^WalesUK> shall i follow my transcript from scratch?
+<ScottK> cd out of your transmission-1.22 dir and rm -rf it
+<ScottK> Then do dpkg-source -x transmission_1.22ubuntu1.dsc
+<Kludge^WalesUK> ugh, got weirdass file differences now
+<Kludge^WalesUK> ok can you check this transcript? if it looks good i'll start over
+<Kludge^WalesUK> http://pastebin.ca/1072042
+<ScottK> http://pastebin.ca/1072044
+<Kludge^WalesUK> right... i'm gonna nuke the work done so far, and follow that spot on... won't be long (Y)
+<Kludge^WalesUK> thanks for your patience, you're a GOD amongst men
+<ScottK> There's more.
+<ScottK> I'm now ahead of you and finding some other stuff.
+<Kludge^WalesUK> okie. well i'll follow that until you update the link, i'll inform you of any erroring :)
+<ScottK> K.
+<ScottK> Updated http://pastebin.ca/1072050
+<ScottK> Kludge^WalesUK: Did you see the extra steps I added.
+<Kludge^WalesUK> hmm. i have a much older version now (1.06)
+<ScottK> Then we didn't get the sources.list done right.
+<ScottK> Go back to the dget approach.
+<ScottK> That worked for you.
+<Kludge^WalesUK> a bit of a mix-up on the `transcript`, my bad
+<Kludge^WalesUK> i have it sorted now, will rm un-needed files
+<ScottK> http://pastebin.ca/1072052
+<ScottK> OK.
+<Kludge^WalesUK> almost with you ScottK :)
+<ScottK> I've run into another problem I haven't sorted yet.
+<Kludge^WalesUK> right, well i'm about to load that URL... everythings worked spot on so far! NO errors \o/ just need to re-write it a little bit
+<Kludge^WalesUK> ok finding dh_prep atm
+<Kludge^WalesUK> ok found it under install: build (few lines down) dh_prep >> dh_clean -k ?
+<ScottK> Yes
+<ScottK> One more rules change will be needed.
+<Kludge^WalesUK> okie! i'm upto speed, no errors so far ;o
+<ScottK> Go on down in debian/rules
+<ScottK> Find the line dh_install -a (not -i)
+<ScottK> add --sourcedir=debian/tmp to it
+<Kludge^WalesUK> where do I hadd the --sourcedir?
+<ScottK> Did you find dh_install -a?
+<ScottK> You want:
+<Kludge^WalesUK> yup, CTRL+W ;)
+<nxvl> dh_install --sourcedir=debian/rmp
+<nxvl> s/rmp/tmp
+<ScottK> What nxvl says.
+<nxvl> :D
+<Kludge^WalesUK> so now -a at all?
+<ScottK> nxvl: Actually we want the -a
+<ScottK> Sorry.
+<ScottK> dh_install -a --sourcedir=debian/rmp
+<Kludge^WalesUK> k done
+<ScottK> Save that
+<ScottK> then cd ..
+<ScottK> so you are in the transmission-1.22 dir
+<ScottK> Then debuild -us -uc
+<ScottK> I just did it and it worked here.
+<nxvl> ScottK: i come in on the middle of the discussion, just write what i understand about it
+<nxvl> :D
+<ScottK> No problem.
+<Kludge^WalesUK> sweet, just going to update my transcript thingo, its lagging a little
+<Kludge^WalesUK> dependancies not met DOH!
+<ScottK> What does it complain about
+<ScottK> It'll tell you what's missed
+<Kludge^WalesUK> typo my end i'm thinking line 993
+<Kludge^WalesUK> says i don't have all build dependencies met
+<Kludge^WalesUK> its wanting `pbuilder` package
+<Kludge^WalesUK> will check line 993 somehow
+<ScottK> Pastbin the error
+<Kludge^WalesUK> i can't :( bloody VMWare
+<ScottK> Ah
+<Kludge^WalesUK> hmm, the "rules" file has just disappeared... OR i'm going blind
+<ScottK> Then sudo apt-get install pbuilder , but I find that a little suprising.
+<Kludge^WalesUK> 50/50% of either really
+<Kludge^WalesUK> nope still screwing up ;(
+<Kludge^WalesUK> dh_install -a --sourcedir=debian/tmp
+<Kludge^WalesUK> rmp jesus
+<Kludge^WalesUK> one sec, this end (ofcourse)
+<nxvl> ScottK: for sync request on universe after IF do i need 2 ACKs or with one is enought?
+<Kludge^WalesUK> ok whatever --sourcedir=?? it doesn't exist if that helps?
+<ScottK> nxvl: One is fine.
+<nxvl> ok, so i just need to wait
+<nxvl> :D
+<ScottK> Kludge^WalesUK: I've got a better idea (you've been very patient doing advanced stuff).
+<Kludge^WalesUK> I'm happy learning if you're happy with spending the time :) it's only 6:30am here ;)
+<Kludge^WalesUK> gotta love sleeping disorders \o/ LOL
+<ScottK> It's 1:30 AM here and I've got to get to bed soon.
+<ScottK> What I did is I uploaded my version to my PPA.
+<ScottK> It should appear here shortly: https://launchpad.net/~kitterman/+archive
+<ScottK> That or soyuz has eaten it.
+<Kludge^WalesUK> i see it (good start)
+<nxvl> soyuz is slow for showing things on LP
+<ScottK> So add deb http://ppa.launchpad.net/kitterman/ubuntu hardy main to your /etc/apt/sources.list to get ready.
+<ScottK> Not eaten.
+<ScottK> Building now.
+<ScottK> Kludge^WalesUK: When you install from a PPA it's just like the regular archives, except not signed.
+<ScottK> You'll get asked if you want to install it anyway.
+<Kludge^WalesUK> ok altered the sources.list and done a apt-get update
+<ScottK> Presumably you'll want to say yes.
+<ScottK> It's still building.
+<ScottK> What architecture are you running?
+<Kludge^WalesUK> atm under VMWare i386 ubuntu server, most likely the same flavour as the seedbox to be
+<ScottK> OK.
+<ScottK> PPA only builds i386, amd64, and lpia.
+<ScottK> I had a sudden fear you might be on a sparc or something.
+<Kludge^WalesUK> that would be far too much of a challenge at 1:36am letalone 6:36am ;)
+<ScottK> nxvl: Are you going to be around for a bit?
+<nxvl> ScottK: 10 or 20 minutes
+<nxvl> i want to finish the dvipdfmx MIR
+<ScottK> nxvl: Do you think you could take over here and help Kludge^WalesUK with installing from my PPA after it builds?
+<nxvl> ScottK: installing as in adding to the sources and apt-getting?
+<Kludge^WalesUK> source added :)
+<ScottK> apt-getting
+<nxvl> ok
+<ScottK> Thanks.
+<nxvl> what package?
+<ScottK> transmission
+<ScottK> I think he wants transmission-cli
+<nxvl> transmission is kewl
+<ScottK> Kludge^WalesUK: I'm going to go to bed.  I have to be in the car starting a 2 hour drive at which I need to be concious enough for complex data analysis in about 6 hours.
+<Kludge^WalesUK> used to uTorrent atm
+<Kludge^WalesUK> gah! sleep well ScottK, and thankyou <3
+<ScottK> I'm sure nxvl will be able to help you the rest of the way.
+<nxvl> ScottK: sleep thingt
+<nxvl> \o/
+<ScottK> Kludge^WalesUK: Let me a note here if it works.
+<Kludge^WalesUK> will do!
+<nxvl> Kludge^WalesUK: ok, what are we doing and in which stage have be stoped?
+<ScottK> This will be enough testing that if it works, I can get an official backport done.
+<nxvl> yup
+<Kludge^WalesUK> nxvl: uh... bit of a mess really... I can throw you a pastebin of what i've done now if you want?
+<ScottK> nxvl: He's added my ppa to his sources.list.
+<ScottK> Kludge^WalesUK: We're skipping all that now and using the results of me doing the same thing.
+<ScottK> Good night.
+<Kludge^WalesUK> oh sweet ;o ok, so where'd that replace from in the transcript i wonder hehe
+<Kludge^WalesUK> night ScottK and thanks again <3
+<nxvl> if i have got it correctly
+<nxvl> you should just need to write on a terminal: sudo apt-get update ; sudo apt-get install transmission
+<ScottK> Actually I think transmission-cli
+<ScottK> He's on a server.
+<ScottK> He doesn't want the gtk one.
+<ScottK> But I really am going to bed ...
+<Kludge^WalesUK> seems to have grabbed both
+<Kludge^WalesUK> except 1.06 versions, nxvl
+<nxvl> ScottK: go sleep!
+<nxvl> mm
+<nxvl> for some reason ScottK's ppa hasn't build transmission-cli
+<nxvl> checks
+<nxvl> oh!
+<nxvl> there aren't build still
+<nxvl> :D
+<Kludge^WalesUK> oh o_O
+<nxvl> let's wait a little
+<nxvl> soyuz is slow sometimes
+<Kludge^WalesUK> i have no idea what of my `transcript` i even need anymore ;( LMAO
+<Kludge^WalesUK> feel free to have a look at the mess of; http://pastebin.ca/1072071
+<nxvl> ok
+<nxvl> it's installed
+<nxvl> Kludge^WalesUK: now run: sudo apt-get update ; sudo apt-get install transmission-cli
+<Kludge^WalesUK> done \o/
+<Kludge^WalesUK> told me about them being unverified (correct)
+<nxvl> yep
+<nxvl> that correct
+<Kludge^WalesUK> coolioage!
+<Kludge^WalesUK> whats next sir nxvl? i'm in a world of `terminal` pain ;)
+<nxvl> what are you trying to do?
+<Kludge^WalesUK> uhm. transmission with a webui?
+<nxvl> doesn't know transmission that far
+<Kludge^WalesUK> theres no X server or window environment installed at the moment
+<Kludge^WalesUK> eep LOL great! LOL
+<nxvl> you need to search for a web frontend to transmission
+<nxvl> or just run it from CLI
+<Kludge^WalesUK> i've done that before for rTorrent but none of the frontends i can get working
+<nxvl> ypu can still use it from the terminal
+<nxvl> well
+<nxvl> i need to sleep
+<Kludge^WalesUK> same, its 7:13am here ;(
+<nxvl> i have already finished with my MIR
+<nxvl> Kludge^WalesUK: i need to go work at that time :P
+<nxvl> read you!
+<Chipzz> Kludge^WalesUK: rtorrent has some issues anyway
+<Chipzz> or rather a lib it depends on
+<Chipzz> only does 32-bits ints
+<Chipzz> signed even
+<Kludge^WalesUK> the way things are going, i'm still heading toward WINE+X+fluxbox+utorrent with webui LOL
+<Chipzz> so files >2gb don't show correctly
+<Kludge^WalesUK> what'd you recommend? >_>
+<Kludge^WalesUK> i'm quite impressed by Deluge, its easy to install, navigate, use, and the webui just works out-of-the-box... unlike everything else
+<Chipzz> dunnow - have been fucking around a bit with some code for an rtorrent webfrontend of my own, but hit that bug
+<Chipzz> there's also this python-based torrent webinterface
+<Kludge^WalesUK> ouch ;-/ Might mess about some more tomorrow. See what kTorrent can come up with
+<Kludge^WalesUK> oh?
+<Chipzz> torrentflux
+<Chipzz> I do not recommend it
+<Kludge^WalesUK> yeah, tried it, hated it =/ although it CAN use the transmission backend
+<Chipzz> eats lots of CPU
+<Kludge^WalesUK> AJAX is probably its biggest fault i guess
+<jords> I only use torrentflux when i'm on someone else's server :Z
+<Kludge^WalesUK> LOL! thats the only ways its `acceptable` :innocent:
+<jords> also, install pastebinit
+<Chipzz> no, torrentflux's biggest fault is doing torrents in python :P
+<jords> it can pastebin for you and should work in vmware
+<jords> Chipzz: Is it python or just just bitcomet sucking?
+<Kludge^WalesUK> without an X environemt?
+<jords> yes
+<jords> you can paste the output of a whole command by doing:
+<jords> command | pastebinit
+<jords> just tells you the url
+<Kludge^WalesUK> awesome ;o
+<jords> indeed
+<Kludge^WalesUK> will test now
+<Kludge^WalesUK> mmm think i'm too tired even for that </3
+<Kludge^WalesUK> rest time me thinks, its Tue Jul 15 07:29:30 2008
+<Kludge^Sl-_-p> BBIAB \o/ thanks for all your help jords ScottK and others <3
+<jords> np
+<exot> hello, I would like to connect to my server using pptp , any leading points ?
+<levander> I remember there was some talk about implementing restore points in Ubuntu.  Did that ever get done?
+<kraut> moin
+<sommer> morning all
+<StonedToo> howdy
+<knurra> StonedToo: great nick you got!
+<nealmcb> levander: can you essentially do restore points via lvm snapshots?
+<Shane-S> is there a command to run a hardware check? My server was left in an overheated closet because they shut the air off and is now having LAMP issues, I am not finding anything in sylog, daemon.log, or apache2 error.log
+<ivoks> meeting in couple of minutes, right?
+<mathiaz> ivoks: yes
+<ivoks> ok
+<ivoks> mathiaz: i've added Packages affected to https://wiki.ubuntu.com/MigrateOffSSL2
+<ivoks> mathiaz: and those are all that we should take care of (some of them are in universe)
+<habesh> I have a list of installed packages I saved as pkgs.lst a while ago and want to compile a current list of installed packages to do a diff. Problem is I forgot how I got the first list, it could have been dpkg -l >pkgs.lst, any better ways of getting a list of installed packages on my machine?
+<ivoks> dpkg --get-selections
+<ivoks> has anyone installed hardy on sparc?
+<mathiaz> ivoks: great - thanks
+<nealmcb> the meeting is in #ubuntu-meeting - https://wiki.ubuntu.com/ServerTeam/Meeting
+<Kludge^WalesUK> lo nxvl :D
+<pubo> Hi
+<culpritcz> hi
+<Kludge^WalesUK> lo
+<pubo> Can anybody help me with Apache VirtualDomains?
+<pubo> I've set a new virtualdomain, but now I only can enter by using the URL: http://mydomain.com but not with http://www.mydomain.com
+<culpritcz> I got problem with fibre channel connection, I loose connection. Can someone help me?
+<pubo> should I create a new one file inside of sites-available with this name?
+<ivoks> pubo: ServerAlias is your friend
+<Kludge^WalesUK> sadly i'm not a tech supporter, but i'm sure someone can help, i'm awaiting someone here myself :)
+<pubo> ok, thanks!
+<culpritcz> nobody could help me with connection trough fibre channel? ;(
+<uvirtbot> New bug: #244411 in samba (main) "Samba shares don't always work with winbind installed (8.04)" [Undecided,Confirmed] https://launchpad.net/bugs/244411
+<culpritcz> nobody could help me with connection trough fibre channel? ;(
+<ivoks> culpritcz: what's the problem?
+<culpritcz> ivoks: 2 hours ago I loose fibre connection, and now I could not connect to SAN
+<ivoks> and your SAN is working?
+<culpritcz> ivoks: sure, I could not find why the connection is not working, It's on server but where
+<ivoks> (i'm on gprs, so i might be 'slow' in response)
+<ivoks> so, what FC card do you have?
+<culpritcz> hihi, it's in server room, early compaq HBA
+<ivoks> umm... which driver is that?
+<culpritcz> where I could find it, could not go to the server room
+<ivoks> It seems that the Linux 2.6 kernel does not support this card anymore.
+<ivoks> The Compaq FibreChannel HBA's has been removed from later 2.6 kernels
+<ivoks> like the 2.6.11.
+<culpritcz> Emulex Corporation LP8000
+<ivoks> i'm talking about FC controller on your server, not SAN
+<culpritcz> that is the card in system
+<ivoks> i guess you'll need:
+<ivoks> http://sourceforge.net/projects/cpqfc
+<ivoks> but i don't think that's developed anymore
+<ivoks> aaaaaa
+<ivoks> lpfc
+<ivoks> try modprobing lpfc
+<culpritcz> no report on modeprobe lpfc
+<ivoks> check dmesg
+<culpritcz> for what?
+<ivoks> to see if there's any info on LUNs from controller
+<culpritcz> no
+<ivoks> well, that's the driver for your card
+<ivoks> paste dmesg on pastebin
+<culpritcz> ????
+<ivoks> pastebin.ubuntu.com
+<culpritcz> don't know what I should paste there
+<ivoks> /var/log/dmesg
+<Brazen> ok, so I didn't want to go off on a stupid tangent in the meeting, but would it be possible to keep sslv2 in OpenSSL but just disable it by default?
+<culpritcz> thans
+<culpritcz> thnx
+<ivoks> Brazen: disable as a compile time option?
+<ivoks> point of my job is to keep sslv2 in openssl, but disable it on services like apache, postfix, etc...
+<Brazen> well, I'm thinking keep it compiled in, but have like a config file or something that can either enable or disable it
+<ivoks> i don't thnik that's possible; enable ssl2 for whole sistem trough config file
+<Brazen> yeah, ivoks, I get that, but like someone said, compiling it out of Openssl would make SURE it was gone.  I'm thinking the package could keep it compiled in, but disabled.  That way people with legacy clients could enable it if needed
+<Brazen> keep in mind, I'm not a developer, so I just thought I would toss that idea out there
+<ivoks> it's impossible, cause openssl is a library
+<Brazen> well, that's kinda what I figured
+<ivoks> one can't just disable part of the library
+<ivoks> well do exactly the same thing per package
+<Brazen> okey dokey
+<fungo> looks like imq isn't enabled on hard default kernel, how could i recompile the kernel the best way possible?
+<uvirtbot> New bug: #237115 in nss-ldapd (universe) "nscd: nss_ldap: server is unavailable" [Undecided,New] https://launchpad.net/bugs/237115
+<fungo> i'm interested on using IMQ to shape my download speed
+<nealmcb> fungo: in what way do you want to shape it?  kernel compiling info is at https://help.ubuntu.com/community/Kernel/Compile
+<fungo> i want to do ingress shaping
+<fungo> classfull ingress shaping :P
+<nealmcb> e.g.?
+<fungo> droping http download packets to reduce acks and overall download speed when i'm playing counter-strike
+<ivoks> seems like a sane reason
+<ivoks> :D
+<nealmcb> :)
+<nealmcb> but why not just stop asking for the http traffic?
+<fungo> that would kill the connection, wouldn't it?
+<fungo> i could stop the downloads, etc, but everything working autonomously would be neat
+<nealmcb> fungo: ahh - so you want to be able to browse media-heavy sites while gaming, but want the http traffic to just be slow, so you'll get it to back off by dropping some packets - I guess that makes sense :)
+<lukehasnoname> NASA uses Nagios, heh
+<FragtioN> Hey guys, anyone know of a bug where traceroutes will report higher (clearly false) latencies than ping, using the same packet size? Im on ubuntu server 8.10 using 2.6.26 @ 1000Hz (i switched to this thinking it might help - default kernel gave the symptom originally)
+<FragtioN> if i ping the remote host from windows, i get a pretty stable 2-5ms ping. same thing if i ping it from the ubuntu server; but if I do a traceroute, it will report it as like 35ms ? - every time...
+<FragtioN> also tried uninstalling traceroute deb and compiling the latest version - 2.0.11 and that gives the same problem
+<FragtioN> running x86_64 on an AMD64 3400+
+<tacone> hello. is there any ubuntu room targetting webdevelopers ? (about how to make ubuntu more suitable for them and push them to adopt ubuntu as their developing platform ?)
+<lukehasnoname> not that I know of
+<lukehasnoname> tacone: ping
+<lukehasnoname> ubuntuforums.org might be useful
+<FragtioN> seem to have found the problem for anyone who ever gets a similar problem - seems like it was async routing (box was routing through a routerboard with some b0rked routes)
+<tacone> lukehasnoname: ok. I was looking for a "team" or something like that.
+<lukehasnoname> ask #ubuntu-devel if you must, they aren't web-focused, they're Ubuntu focused.
+<lukehasnoname> as in, they actually develop Ubuntu, not just devs who use it.
+<tacone> lukehasnoname: ok, there's not yet a team to take care of this kind of thing. I'll search for a team I launchpad or maybe open my own then.
+<tacone> I have no problem, just looking for alikes. thanks for now, good evening :-)
+<veNom_bz> tacone what do you use for web-development? perhaps you could look for a language specific team.
+<tacone> I am a php professional. btw I am the main developer of rapache project (apache easy  configuration tool).
+<tacone> I was just looking for people to share best practices or ideas with.
+<veNom_bz> perhaps an apache or php channel then or try web developers group on ubuntu server http://ubuntuforums.org/group.php?groupid=2 feel free to discuss ubuntu server specific intricacies here
+<tacone> very nice
+<nealmcb> FragtioN: very odd.  my offhand guess would be that they are using different kinds of pings somehow (like icmp vs udp or the like), or that the successive ttl values cause the routers to do something odd
+<nealmcb> ahh - I see your update now
+<AtomicSpark> so i've been messing with samba for 2 days now. trying to get two shares working under two differnt user names (office and manager). turns out, the xp pro machine doesnt want to, for some reason, conenct to the server with two shares of different user names. i'm not sure if this is a problem with windows itself or with the samba server. any ideas?
+<AtomicSpark> i might have to add the manager user to the office group, so they can access it via their username too.
+<veNom_bz> this is not an ubuntu server probelm. to address your question though windows will not allow it. it is not a samba problem. samba can however be configured to accept only one connection per username at a time though.
+<AtomicSpark> veNom_bz: thanks. figured it was a windows limitation. i suppose ill set it up properly. ;)
+<d0m1n0ez> this may be a dumb question, but I am looking for documentation for apache on their website.  I installed apache2, but I not sure as to what version of apache the install is (ex: 2.0, or 2.2) is there a way to find out?
+<hads> Sure. `dpkg -l | grep apache` will tell you the pacage version installed.
+<hads> From that you can derive the apache version
+<AtomicSpark> lets say i someday manage to get rid of windows. whats the best way to create network shares? sftp + ssh? samba? that other linux to linux one i cannot think of...
+<AtomicSpark> ubuntu doesnt have it installed by default. maybe i shouldn't use it.
+<veNom_bz> nfs
+<AtomicSpark> yes that one. why isnt it installed?
+<nealmcb> jdstrand: I knew there was another factoid we needed: ufw...  and updating !firewall
+<nealmcb> !firewall
+<ubottu> Ubuntu, like any other linux distribution, has firewall capabilities built-in. The firewall is managed using the 'iptables' command (see https://help.ubuntu.com/community/IptablesHowTo), or GUI applications such as Firestarter (Gnome) or Guarddog (KDE).
+<veNom_bz> samba is not linux networks. install what you need. nfs is my recommendation to you however. do some reading http://nfs.sourceforge.net/.
+<AtomicSpark> veNom_bz: nfs relys on local group to determin access? not groups on server? seems kind of like a secuirty issue.
+<veNom_bz> samba is not *for* linux networks. install what you need. nfs is my recommendation to you however. do some reading http://nfs.sourceforge.net/.
+<veNom_bz> if you want a domain style system configured you'd use nis or connect to an ldap server in addition
+<AtomicSpark> yes. i started playing around with open ldap server, but didn't get very far.
+<ScottK> Kludge^WalesUK: Did you ever get transmission to work?
+<veNom_bz> AtomicSpark, this is perhaps the best how to http://times.usefulinc.com/2005/09/25-ldap

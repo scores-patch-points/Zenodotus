@@ -1,0 +1,15 @@
+Source: UD_Naija-NSC (Universal Dependencies treebank for spoken Naija / Nigerian Pidgin, "pcm")
+Fetched directly from: https://github.com/UniversalDependencies/UD_Naija-NSC
+(pcm_nsc-ud-{train,dev,test}.conllu)
+This is the exact dataset CreoleVal's own nlu/pos/download_ud_naija.sh script fetches -- CreoleVal
+does not vendor the raw text in-repo, only the download script and MaChAmp training config
+(nlu/pos/configs/upos_naija.json), so this pocket fetched the real upstream files directly, the
+same way CreoleVal's own script would.
+License: CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International), confirmed by
+fetching and reading https://raw.githubusercontent.com/UniversalDependencies/UD_Naija-NSC/master/LICENSE.txt
+directly ("The treebank is licensed under the Creative Commons License Attribution-ShareAlike 4.0
+International"). CreoleVal's own top-level README benchmark table lists this as "CC 4.0" (a
+slightly loose paraphrase of the more precise CC BY-SA 4.0 this repo verified directly).
+Domain: transcribed spoken dialogues/monologues (market, food, church, etc. conversations), with
+English translations included per sentence as CoNLL-U comment metadata (# text_en = ...).
+Format: CoNLL-U (Universal Dependencies dependency-parse format), UTF-8.

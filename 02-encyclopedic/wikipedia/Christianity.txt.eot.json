@@ -1,0 +1,139 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Christianity.txt",
+  "sha256": "da659f1e14f0d4dd74f93edb31b652d5317453d22dcbcd5153875b49c84e8ca9",
+  "chars": 148090,
+  "declaredIdentity": {
+   "title": "Christianity",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 9,
+  "debrisChars": 325,
+  "debrisFraction": 0.002,
+  "headingCount": 56,
+  "headings": [
+   "Etymology",
+   "History",
+   "Early Christianity",
+   "Apostolic Age",
+   "Ante-Nicene period",
+   "Spread in the Roman Empire",
+   "Middle Ages",
+   "Early Middle Ages",
+   "High and Late Middle Ages",
+   "Modern era",
+   "Reformation and response",
+   "Post-Enlightenment",
+   "Beliefs",
+   "Creeds",
+   "Jesus",
+   "Death and resurrection",
+   "Salvation",
+   "Trinity",
+   "Trinitarianism",
+   "Nontrinitarianism",
+   "Eschatology",
+   "Death and afterlife",
+   "Practices",
+   "Communal worship",
+   "Sacraments or ordinances",
+   "Liturgical calendar",
+   "Symbols",
+   "Baptism",
+   "Prayer",
+   "Marriage",
+   "Scriptures",
+   "Catholic interpretation",
+   "Protestant interpretation",
+   "Qualities of Scripture",
+   "Original intended meaning of Scripture",
+   "Demographics",
+   "Catholic Church",
+   "Eastern Orthodox Church",
+   "Oriental Orthodox Churches",
+   "Church of the East",
+   "Protestantism",
+   "Restorationism",
+   "Other",
+   "Cultural influence",
+   "Influence on Western culture",
+   "Ecumenism",
+   "Criticism, persecution, and apologetics",
+   "Criticism",
+   "Persecution",
+   "Apologetics",
+   "See also",
+   "Notes",
+   "References",
+   "Bibliography",
+   "Further reading",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 56,
+   "debrisFraction": 0.002
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 1.305721916957022,
+   "debrisFractionZ": -0.5227676845497016,
+   "priorSeenSoFar": 5
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.073Z"
+ }
+}

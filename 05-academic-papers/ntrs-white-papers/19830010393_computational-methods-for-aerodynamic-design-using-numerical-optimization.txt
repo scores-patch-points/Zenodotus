@@ -1,0 +1,4904 @@
+---
+title: Computational methods for aerodynamic design using numerical optimization
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19830010393
+source_url: https://ntrs.nasa.gov/citations/19830010393
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONTRACTOR_REPORT
+center: Legacy CDMS
+publication_date: 2019-06-23
+retrieved: 2026-09-22
+sha256: 82a22c814b03a55fac0b813069c9b41c9bfce2460d1e1d2f0b9a8810aa31ba7f
+pages: 103
+words: 5917
+cv_look_pages: 4
+---
+
+                                    General Disclaimer
+
+    One or more of the Following Statements may affect this Document
+
+
+
+      This document has been reproduced from the best copy furnished by the
+      organizational source. It is being released in the interest of making available as
+      much information as possible.
+
+
+
+      This document may contain data, which exceeds the sheet parameters. It was
+      furnished in this condition by the organizational source and is the best copy
+      available.
+
+
+
+      This document may contain tone-on-tone or color graphs, charts and/or pictures,
+      which have been reproduced in black and white.
+
+
+
+      This document is paginated as submitted by the original source.
+
+
+
+      Portions of this document are not fully legible due to the historical nature of some
+      of the material. However, it is the best reproduction available from the original
+      submission.
+
+
+
+
+Produced by the NASA Center for Aerospace Information (CASI)
+   ARTMEW Of
+AERONAUTICS ANC► ASTRONMITICS,
+MASSr4CHUSE I I INSTITUTE OF TECHNOLOGY
+CAMMDW. MASSACHUSETTS 01139
+                        COMPUTATIONAL METHODS
+                       FOR AERODYNAMIC DESIGN
+                    USING NUMERICAL OPTIAIZATION
+
+                                   by
+                           Martin F. Peeters
+
+
+            CFDL-TR-83-1                       February 1983
+
+
+
+
+This research was performed in the Computational Fluid
+Dynamics Laboratory, MIT, and was supported by NASA
+Ames Research Center grant NAG 2-115.
+
+
+
+
+    Department of Aeronautics and Astronautics
+      Massachusetts Institute of Technology
+         Car-abridge, Massachusetts 02139
+                                    ORIGINAL. PA P: i3
+                                    OF POOR QUAUN
+
+
+
+
+                  COMPUTATIONAL METHODS FOR AERODYNAMIC DESIGN
+                          USING NUMERICAL OPTIMIZATION
+
+
+                                       by
+
+                               Martin F. Peeters
+
+
+
+                                   ABSTRACT
+
+         Five methods to increase the computational efficiency of aerodynamic
+     design using numerical optimization, by reducing the computer time required
+     to perform gradient calculations, are examined. Four of these methods have
+     flaws, while one shows promise. The promising method consists of drastically
+     reducing the size of the computational domain on which aerodynamic calcula-
+     tions are made during gradient calculations. Since a gradient calculation
+     requires the solution of the flow about an airfoil whose geometry has been
+     slightly perturbed from a base airfoil, the flow about the base airfoil is
+     used to determine boundary conditions on the reduced computational domain.
+     This method worked well in subcritical flow, but some unresolved problems
+     remain if it is used in supercritical flow.
+
+
+
+
+                                              -2-
+l
+i.
+               PRECEDING PAGE BLANK NOT FILMED
+
+
+
+                            TABLE OF CONTENTS
+
+
+
+
+     Abstract ...............................................2
+
+     List of Symbols .........................................6
+
+     1) Introduction..... ....... o ............... o ............ 8
+
+             Optimization Concepts ...........................9
+
+             Examples of Airfoil Optimization ................15
+
+             Limitations of Airfoil Design Using
+             Numerical Optimization ..........................16
+
+     2) Methods for Fast Gradient Calculations ...............18
+
+             Perturbation Equations ..........................18
+
+             Local Methods ...................................19
+
+             Local Linearization .............................20
+
+             Method of Integral Relations ....................23
+
+             Method of Reduced Domains ....................... 25
+
+             Wind Tunnel Analogy .............................28
+
+     3) Results of Studies Using the Method of
+        Reduced Domains ......................................30
+
+              Exploratory Studies .............................30
+
+             Boundary Condition Modi., ications ................33
+
+              Summary of Results of Exploratory Studies....... 40
+
+             Full Potential Equation Calculations ............ 41
+
+             Optimization Calculation ........................44
+
+     4) Conclusions and Recommendations ......................47
+
+     References and Bibliography .............................49
+
+     Table..... .............................................51
+
+     Figures.................................................52
+
+
+                                    -4-
+LA
+AFpenaix - Method of Solution of the Small Disturbance
+           Transonic Potential Equation ................. 101
+
+
+
+
+                             -5-
+                                                       OF POOR QUALITY
+                         L157 OF SYMBOLS
+
+
+
+a        speed of sound (m/sec)
+
+c        airfoil chord (m)
+
+Cd       drag coefficient
+
+C1       lift coefficient
+
+Cp       pressure coefficient
+
+(D       doublet strength
+
+f        airfoil geometry
+
+G        constraint function
+
+h        shape function
+
+K        transonic similarity parameter
+
+Ku       curvature -     d
+                             Ax          l        1
+M        Mach number
+
+OBJ      objective function
+
+r        coefficient of shape function
+
+t        airfoil thickness (m)
+
+u,v       perturbation        velocity       in   x   and   y   direction,
+
+respectively
+
+Vol      area within airfoil divided by 6
+
+x,y      Cartesian coordinates
+
+z,y      dimensional   values of x,y (m)
+
+y        transonic lateral coordinate
+
+
+
+         ratio of specific heats
+
+d        thickness/churn
+
+         pertubation velocity potential
+
+
+                                  -6-
+                                OF POOR (^..._..
+
+         velocity potential
+
+
+
+Subscripts
+
+
+b        base flow
+
+i,j          mesh point indices in x and           y   directions,
+
+respectively
+
+L        local condition
+
+is       lower surface
+us       upper surface
+CY'      freestream condition
+
+
+
+Superscripts
+
+
+q        design iteration number
+
+'        pertubation from base flow
+
+
+
+
+                              -7-
+                              CHAPTER 1 . INTRODUCTION                        ORiGMAL
+                                                                              OF POOR QUALI .1 Y
+
+
+
+      Improved methods for the design of airfoils are always a
+
+subject: of interest in aeronautical engineering.                                    To date the
+
+most      successful           analytical              methods        for     the     design        of
+
+airfoils have relied on some form of                             inverse          calculations.
+
+An     inverse     calculation              is     one        in which the desirea flow
+
+field is specified and the                       airfoil       shape         is     solved        for,
+
+which     generates           this     flow        field.        Examples of the use of
+
+inverse methods can be found in the work of Henne (ref.                                            1),
+
+or Chin ana Rizzetta (ref. 2).
+
+       Inverse methods can be a definite aide in the design                                         of
+
+airfoils     but        they     do    have            some    inherent           drawbacks:        1)       J
+
+
+
+Inverse methods require apriori                          knowledge          of      the     desired
+
+pressure     or     velocity distibution along the airfoil,                                  2) The
+
+desired flow field may be impossible                             to     realize           with     any   t
+
+physically        realistic           airfoil           shape,       and 3) Constraints on
+
+the airfoils characteristics are not easy to implement.
+
+       An alternative approach for the design of                                  airfoils         has
+
+been     proposed        by Hicks, Murman,                and Variderplaats (ref. 3)•
+
+The     technique        is     to     desgn            airfoils            using         numerical
+
+optimizaton         in        which     an        aerodynamic           analysis           code     is
+
+coupled to a numerical optimization code.                               This method              woula
+
+allow      the      designer           to        optimize        a     single        performance
+
+characteristic           of     the     airfoil           while        at     the     same        time
+
+constraining            other         performance              characteristics              of     the
+
+airfoil     to     be     within        certain           values        prescibed           by     the
+
+
+                                                 -8-
+                             ONNOM rpm M
+                             of   0M
+designer.
+
+    This method for designing airfoils is very flexible. It
+
+gives the designer freedom to choose which performance
+
+characteristics to optimize and how much degradation in
+
+other performance characteristics is tolerable. Which
+
+performance characterlstic is to be optimized and which
+
+performance characteristics are to be constraints can be
+
+varied, giving the designer accurate information on design
+
+tradeoffs.
+
+    Initial work with this method has shown that while it
+
+seems to work, it requires a considerable amount of c.p.u.
+
+time, limiting its usefullness.                  The objective of this
+
+present      research   is        to         explore ways in which the
+
+computational effciency            of        designing   airfoils   using
+
+numerical optimization can be increased.
+
+   The basic concepts involved in optimization will be
+
+reviewed first. Thereafter modifications to the method that
+
+could improve the computational efficiency will oe
+
+discussed. Conclusions and recomendations will then be made.
+
+
+Optimization Concepts
+
+
+   Consider an airfoil in which the upper burface is defined
+
+by the functional relationship •F vs (x/c) and the lower
+
+surface is defined by the functional relationship fis (x/c).
+
+It is desired that a certain performance characteristic of
+
+the airfoil is optimized. For example, assume that the drag
+
+at zero angle of attack is to be m4nimzed. In this case the
+
+
+                                       -9-
+r
+
+                             CMINAL PAGE IS
+                             0W POOR QUALITY
+
+    drag would be called the objective function. In doing the
+
+    optimization, it is desired that constraints be imposed on
+
+    other performance chr icteristics of the airfoil. For
+
+    example, the airfoil volume is constrained to be greater
+
+    than a specified minimum and the lift is constrained to be
+
+    greater than a specified minimum.
+
+        To perform the optimization, modifications will have to
+
+    be made to the airfoil geometry. This is accomplished by
+
+    adding shape functions to the initial airfoil so the urner
+
+    surface of the airfoil would be given by
+
+
+        (x/c) = fus ( x /c) + r, *h, (x/c) +...+ r+ *hh(x/c)
+                  )4;h./
+
+
+    and similarly for the lower surface. The function h„(x/c) is
+
+    a shape function. Figure 1 illustrates some examples of
+
+    shape functions that have been used by Hicks and
+
+    Vanderplaats (ref. u) for optimization. The r„'s determine
+
+    the magnitude of each shape function added to the initial
+
+    airfoil. These are the only quantities that are varied in
+
+    the optimization process so the r„ 's are ref ered to as the
+
+    design variables.
+
+       The statement of the problem can be summarized as
+
+    follows:
+
+
+           Minimize OBJ(X)
+
+           Subject to: G; (X) < 0        i=1,m
+
+           where X is a design vector
+
+
+
+
+                                  -10-
+                                 0. t
+
+
+
+
+                             ORIGINA       L P,at   ;.^
+
+                             OF POOR QUALITY
+
+
+    The following terminology is useful when discussing
+
+opt:'mization. The n dimensional space spanned by the vector
+X is refered to as the design space. A constraint is said
+                             J
+to be inactive if G;(X) < 0; it is said to be violated if G;
+
+(X) > 0 ; it is said to be active if G; (X)                    a0. Since an
+
+exact zero is rarely found on a computer, a more reasonable
+
+definition for an active constraint is lG; (X)+ < d where a is
+a small value. This will be the definition of an active
+
+constraint used in this paper. A design is feasible if for
+
+all i G;(X) <0. ine minimal feasible design is said to be
+
+optimal.
+
+    How the optimization procedure actually works is best
+
+explained by illustating a simple exampl- Consider the
+
+problem:
+
+
+                 Minimize Cd
+
+            Subject to :
+                 Cl,04 -C^ < 0             (lift constraint)
+
+           and
+
+            Vol k ,, - Vol               < 0   (airfoil volume constaint)
+
+           whereX = Q
+                    ^a
+                                    r,     and r Z are the coefficients of
+
+two shape functions
+
+
+The design space for this hypothetical problerr, is shown in
+
+figure 2. Contours of constant objective function ( Cd ) and
+
+the constraints are illustrated in the design space. assume
+
+that the initial airfoil is given by
+                                    ORIGINAL PA(;:: iS
+                                    OF POOR QUALITY
+
+                     r, = 0
+
+                     r^ = 0
+
+
+     and that this initial airfoil is a feasible design.
+
+        The optimization process is an iterative procedure in
+
+     which the following recursive relationship is used
+
+
+              X I's = X              S                        Cl)
+
+
+     where q is the iteration number, vector S is the direction
+
+     of search in the design space and a is a scalar defining
+
+     the distance of tra ,: _ in the direction given by S. Each
+
+     optimization iteration thus procedds in two steps: First the
+
+     vector S giving the direction of travel is found, then the
+
+     scalar A is determined.
+
+         The procedure for determining S is somewhat different
+
+     depending on whether any constraints are active. In the
+
+     example of figure 2, it is assumed that no constraints are
+
+     active initially so the determination of S proceeds as
+
+     follows. Each design variable is separately perturbed to
+
+     determine its efY'ect on the objective function; thus a
+
+     finite difference approximation to the gradient of the
+
+     objective function is constructed as
+
+
+
+                          a x,                    v x,
+       708J                 013J)         v      a Cv
+                          a X^                   o xi
+f
+t
+
+                          a x„                   a x„
+fi
+
+
+S
+f
+
+
+
+                                         -12-
+4
+
+
+
+
+`k
+                       r ^^
+
+
+
+
+                      ukiGMA:. PA :. W
+                      OF POOR OUALI t'.
+
+In this example there are only two design variables. F,,.r
+
+each one an aerodynamic calculation must be performed .,;th
+
+the design variable perturbed to determine the change in the
+
+objective function.
+
+    Whith a finite difference arpro::imation to the gradient
+
+of the objective function found, S can now be determines.
+
+Different optimization schemes use different nethods to
+          ^                                            J
+determine S. A steepest descent method would just make S the
+
+negative of the gradient. Conjugate gradient methods (ref.
+
+5) or quasi Newton methods (ref, 6) determine S as some
+
+function of the gradient. In general, optimization schemes
+
+determine S as some function of the gradient of the
+
+objective function.
+
+    With S known, d must now be found. G( is found by
+
+conducting a linear search in the direction of S until a
+
+minimum is found, or until a constraint becomes active.
+
+Again, different optimization codes will use different
+
+methods to find a . A typical method would be to perform 3
+
+evaluations of the objective function on the line defined by
+
+S. A quadratic fit is then made with these 3 points and the
+
+minimum is found. Similar ideas are used in other methods.
+
+    Now equation 2 can be used to determine a new airfoil
+
+geometry. In the example given in figure 2 this would cause
+
+a movement in the design space from A to B. This procedure
+
+is repeated until either a minimum is found in the objective
+
+function, or a constraint becomes active. In the example of
+
+figure 2 the optimization procedure would move the design to
+                           ORIGINAL
+                                         S
+                           OF POOR QUALITY
+
+
+C where the lift constraint becomes active.
+
+    At this point a somewhat differe:t procedure is used to
+
+find the vector S. In addition to finding a Finite
+
+difference approximation to the gradient of the objective
+
+function, a finite difference approximation to the gradient
+
+of the constraint function must be foun(,. This is done in
+
+the same manner as before. Each design variable is perturbed
+
+separately to determine its effect and the objective and
+
+constraint functions. The determination of S again varies
+
+from program to program, but usually the optimization
+
+program will try to move the design closer to a minimum and
+
+at the same time push it away slightly from the constraint.
+
+   Constrained and unconstrained optimization iterations are
+
+performed as necessary until a feasible design is found
+
+which minimzes the objective function (optimal design). In
+
+the example of figure 2, this would move the design to point
+
+E. There is no guarantee that this design is at an absolute
+
+minimum. There may be rany local minima in the design space.
+
+In general an improvement in the design will have been made,
+
+but to have more assurance in finding the absolute minimum
+
+the optimization procedure should be started at different
+
+points in the design space. In the example of figure 2 point
+
+E is a relative minimum. If the procedure was begun at point
+
+F, the absoulute minimum, point G, would have been found.
+
+
+
+
+                           -14-
+
+                                                               t. —J
+                                                                  .
+                                   OF POOR QJWL VV
+
+Examples of Airfoil Optimization
+
+
+    The concepts outlined above have been tested by numerous
+
+people. Numerical optimization has been used to optimize low
+
+speed, high lift airfoils (ref. 7) ; it has been used to
+
+optimize airfoils in transonic flow (ref. 8,9). The results
+
+obtained by hicks, Murman ano Vanderplaats (ref.     3) in which
+airfoils in transonic flow are optimized, will be presented
+
+as an example demonstrating the potential that this method
+
+has for the design of airfoils.
+
+     Their optimization procedure couplea together an
+
+aerodynamic analysis code based on the small disturbance
+
+transonic potential equation and CONMIN (ref.10), a FORTRAN
+
+program for constrained function minimization.
+
+    Some results from their work are presented in figure 3.
+
+In each case the objective was to minimze drag (the only
+
+drag present in this inviscid calculation is wave drag ). In
+
+each case the freestream Mach number was 0.5; there were
+
+seven design variables; the airfoils were symmetric. In the
+
+cases of figures 3a and 3b the only constraint was an
+
+airfoil volume constraint, the cases of figures 3c and 3d
+
+imposed a curvature constraint on the airfoil and a
+
+thickness/chord constraint in addition to the airfoil volume
+
+constraint. In every case a significant reduction in drag
+
+was realized.
+
+
+
+
+                           -15-                                    -
+                              6 1/
+
+
+
+
+                                UH16;Nt%L i _._ .:'
+                                OF POUR QUALITY
+
+
+
+
+    Limitations of Airfoil Design Using Numerical Optimization
+
+
+        The above examples indicate that improved            airfoil
+
+    designs can be realized using numerical optimization as a
+
+    design tool. This method is, however, limited by its
+
+    excessive appetite for c.p.u. time. The examples presented
+
+    utilized an aerodynamic analysis code based on the small
+
+    disturbance transonic equation and had only seven design
+
+    variables.    A snore realistic problem would utilize         an
+
+    aerodynamic analysis code based on the full potential
+f
+
+
+    equation and might have fifteeen or more design variables.
+
+    In this case the c.p.u. requirements of numerical
+
+    optimization would generally be considered too large for the
+
+    method to be used.
+
+        It is found that a significant fraction of the time
+
+    spent in designing airfoils using numerical optimization is
+
+    spent on calculating the finite difference approximations to
+    the gradients of the objective and constraint functions.
+
+    Recall that a gradient calculation is made by separately
+
+    perturbing each design variable and then performing an
+
+    aerodynamic    analysis          to determine the change in the
+
+    objective function and the active constraint functions.      The
+
+    flow about the unperturbed airfoil provides a good initial
+
+    guess for the solution of the perturbed airfoil,             but
+
+    computer times are still very large.
+
+        The objective of this research is to find a method for
+
+    computing the gradients of the objective ana constraint
+
+
+
+                                      -16-
+                                     ORIGINAL PAGE W
+                                     OF POOR QUALITY
+
+
+
+functions that require significantly less computer time than
+
+the   method         outlined       above.      The    finite   difference
+
+approximatiin         to      the    gradients used only one sided
+
+differencing to approximate the gradients. One sided
+
+differencing is only first order accurate, suggesting that
+
+numerical optimization does not require extremely accurate
+
+gradient information. This research will take advantage of.
+
+this fact and will try to make better use of the fact that
+
+the solution for the perturbed body is only slightly
+
+different from that of the unperturbed body. It is also an
+
+objective of this research to find a method to calculate
+
+gradients that is not specific to a particular set of
+
+governing      equations.           That is, the method should be
+
+applicable to the small disturbance transonic potential
+
+equation,      the         full     potential     equation, and Eu.ler's
+
+equations.
+
+
+
+
+                                      -17-
+                                0106MM PAGE It
+                                OF POOR Qt1AUW
+
+
+         CHAPTER 2. METHODS FOR FAST GRADIENT CALCULATIONS
+
+
+        Five different methods were examined tha'^ could quickly
+
+    solve for the flow about an airfoil whose getmetry has been
+
+    slightly perturbed. One of these methods shows promise in
+
+    meeting all the objectives stated above. The five methods
+
+    are: 1)Perturbation Equations, 2) Local Methods , 3) Local
+
+    Linearization 4) Method of Integral Relations, 5) Method of
+
+    Reduced Domains.
+
+     The first four methods listed were found to have various
+
+    shortcomings while the final method listed shows some
+
+    promise. This section will begin with a brief review of the
+
+    first four methods listed above ; after which a more
+
+    extensive review of the Method of Reduced Domains will be
+
+    given.
+
+        All preliminary investigations were performed using the
+
+    small disturbance transonic potential equation. A review of
+
+    the important details involved in solving this equation is
+
+    presented in the Appendix.
+
+
+    1)Perturbation Equations:
+
+        An obvious first step in solving a flow problem which is
+
+    a perturbation from a known base flow is to rewrite the
+
+    governing equations with the parameters split into two
+
+    parts. The first part would satisfy the base solution and
+
+    the second part would be a perturbation from the base
+
+    solution. Writing the potential as
+
+                   (^ — 4)ti}$,
+
+                                 —1   b-
+
+a
+                                               ORIGINAL Pj .t;-: I::-'
+                                               OF POOR QUAL11"V
+
+
+ana plugging this into the small disturbance potential
+
+equation yields
+                                       /                                                              (31
+
+Discarding higher order terms in the perturbation potential
+
+and ncting that the base potential satisfies the equation
+
+yields the desired perturbation equation
+
+
+                          tax - (^*i) ¢x0, *p ^y y = O                                           Cat)
+
+    The perturbation form of the potential must also be
+
+substituted into the shock jump relations for a complete
+
+formulation of the problem. The method was not pursued,
+
+however, because equation 4 is essentially no simpler to
+
+solve than the original small disturbance equation.
+
+
+2) Local Methodz
+
+    Local methods try to relate the pressure at the airfoil
+
+surface with the local geometry of the airfoil. This is a
+
+method proposed by Davis (ref. 11) in which he uses the work
+
+of Spreiter and Alksne and                                 their             method       of     local
+
+linearization (ref.                     12) as a basis to derive the following
+
+equations:
+                                                ' ^^ 11t C^ t^) {;^ J
+          Z^hl(Ytt,^l! (n^i r ) - I ( ^` 'i1
+                                                                                 M4 > l        (Sa)
+  Cp
+
+
+  C PZ         rt          (I' f1m ' r ^l'/`1 "^^ ^L   3   /`^'   ^^rf^} J       ^3 1
+
+
+
+
+where
+
+        ^: ( I /( /- ( YW/ .I C^
+                      URiGSNA'-     :`4
+                      OF POOR QUALITY
+
+and
+
+
+                                 do
+
+
+      To obtain these very simple equations, a considerable
+
+number of questionable assumptions had to be made in
+
+addition to the original assumptions made by Spreiter and
+
+Alksne in their development of local linearization. Becuase
+
+of all the assumptions made, the validity of equation 5 was
+
+put in doubt so the method was not pursued further.
+
+
+3) Local Linearization:
+
+      An attempt was made to use the work done by Spreiter and
+
+Alksne that did not require the plethora of assumptions made
+
+in local. methods. Local linearization is valid for purely
+
+subsonic flow, purely supersonic flow, and flow with free
+
+stream Mach number very close to 1. The method will be
+
+outlined for purely subsonic flow. The ideas used in this
+
+case are also usea in the supersonic case and the case where
+
+freestream Maoh number is near 1.
+
+      The analysis begins with the small disturbance transonic
+
+potential equation
+
+
+
+
+Let
+
+
+
+
+and initially treat       as a constant. This yielcs the simple
+
+equation
+
+
+
+
+                              -20-
+                                   ^: F'Un^t Qlir,1 iTY
+
+the solution of which is
+
+
+                                       r) o x         t
+This equation can now be differentiated with                    respect      to      x
+
+yielding
+              du_
+              d-X
+                               ^                                            C /off
+                                     x
+
+The expression for a         is now substituted back into                 equation
+
+10      and   this    ordinary       differential         equation   is     solved
+
+yielding
+
+
+
+
+where
+
+              k=      17,E C^t^)
+
+and C is a constant of integration. The above step is an
+
+attempt to compensate for the approximation made initially
+
+in the analysis in which ^ is treated as a constant. The
+
+above steps may seem somewhat arbitrary, but Spreiter and
+
+Alksne have shown that this sequence of steps leads to the
+
+most reasonable approximation.
+
+The only thing that remain: to be done is the evaluation of
+
+the constant of integration. The method given by Spreiter
+
+and Alksne for the evaluation of C is not used. Equation 11
+
+can be rewritten as
+
+
+                     3k
+The flow about a base airfoil is known so substituting in
+
+U: band (/ b in the above equation yielas an expression for
+
+
+
+                                         -21-
+                                 ORIGINAL PAGE 19
+                                 OF POOR QUALITY
+
+
+
+C.   Note    that     C   will       now        be a function of x.      With C(x)
+
+known, u(x,0) can be found from equation 11                       yielding
+
+       u (x, o) :   I< I(k2l (ud 0 c(X))) 1', - /7,01 ►     I                   / 1)
+     Equation 13 was used to solve for Cp for the perturbed
+
+airfoil. The base airfoil used was a parabolic arc with ; =
+
+.08. The freestream Mach number was .75• This yielded a flow
+
+that was subsonic everywhere. Four perturbations in the
+
+fora, of shape functions were separately added to the base
+
+airfoil. The four shape functions are presented in figure 4.
+
+Each shape function was multiplied by a factor of .004.
+
+     The flow about the perturbed airfoil was solved using
+
+equation 13 and also using the finite difference solver
+
+outlined in Appendix A. The changes in pressure coefficient
+
+from the base to perturbed airfoil for each perturbation is
+
+shown in figure 5. The results look very promising. The
+
+curves obtained using equation 13 or the finite difference
+
+method lie nearly on top of each other. The computer time
+
+required to solve the problem with equation 13 is 3 orders
+
+of magnitude less than the time required by the finite
+
+difference method.
+
+      Attempts were           made         to      extend       this   method      to
+
+supercritical flow, but these failed. The fundamental
+
+problem is that the ideas used in local linearization cannot
+
+be applied to mixed flow. The ability to extend this methoc
+
+to the full potential equation or Euler's equations also
+
+seems doubtful.
+
+
+
+                                       -22-
+                                   OF POOR QUALITY
+
+
+    For these reasons, the method was abandonned. If,
+
+however, there Is a need to design subcritical airfoils
+where the small disturbance potential equation is a
+
+reasonable approximation, then this method should work very
+
+well.
+
+
+4) Method of Integral Relations
+
+
+    The purpose of this method is to reduce the dimension of
+
+an equation by 1. How this is done is best explained by
+
+illustrating a simple example. Consider the following two
+
+dimensional equation
+
+                     aT           ^S       o                           (^y
+                     J^A          jj
+
+where the boundary conditions
+
+    6 (x ) U)         9,               c (x, yo). y ) =   9
+are given. This equation can be integrated with respect to y
+
+yielding               YA.Y
+
+
+                ^x     o
+
+If F can be written as a(x)*b(x,y) where b(x,y)               is   a   known
+
+function then the integral can be performed yielding
+
+
+        ^x
+where
+
+            Qlx) = J b<x, y) cry
+                              a
+
+    This one dimensional equation is much simpler to solve
+
+than the original two dimensional equation. The success of
+
+
+                                          -23-
+                                 Ii
+
+
+
+
+                                      ",   'I I Nrc^. '
+                                              P;JC 4J
+                                      OF POOR QUALITY
+
+
+this method depends on the accuracy with which b(x,y) is
+
+known. It was hoped that since a solution of a flow that is
+
+,just slightly perturbed from a base flow is desired, the
+
+base flow should provide a reasonable approximation to the
+
+function b(x,y).
+
+    To use this method on the small disturbance transonic
+
+pote c, tial equation, the equation must be written in
+
+divergence form as follows
+
+
+         ^                                       y
+thus in this case
+             F= k       ^x _ (^t ^)/^ ^X^                  (/q4)
+             G         Oy                                 (lg 6^
+
+07 is given at y = 0 and goes to 0 as y goes to infinity so
+
+the limits of integration are 0 and infinity. Writing F as
+
+
+
+
+gives for the function b(x,"r)
+
+       b rx,     y ) = Fb l x , ,^ /Fb c x, ^)             (a.07
+
+ The problem with this is that Fb(x,0) may be equal to zero
+
+at some point in the flow. In fact F d (x,y) may be zero at
+
+some point in the flow so that with b(x,9) written as a
+
+ratio, the possibility always exists that the denominator
+
+will be zero.
+
+    Other forms for b(x,y) were investigated such as
+
+assuming that b(x,y) was an exponential function or an
+
+algebraic function. Again, the flow about the base airfoil
+
+
+                                      -24-
+                                                                   a
+                            6. t/
+
+
+
+
+                                        ORIGINAL         (i
+                                        OF POUR QUr,'-I i Y
+
+
+    was used as a guide to determine the exact form that b(x,y)
+
+    should take. No reasr-:able way of using the base airfoil to
+
+    determine bix,y) was found. For this reason the method coulo
+
+    not be used.
+
+
+    5) Method of Reduced Domains
+
+        The basic idea behind this method is very simple. When
+
+    calculating the flow about the perturbed airfoil the same
+
+    solver is useci as the one used to calculate the flow about
+
+    the base airfoil, but the size of the domain on which the
+
+    calculation is made is greatly reduced. The motivation
+
+    behind this is that a perturbation in airfoil geometry will
+
+    primarily affect the flow very close to the airfoil so that
+    the base flow will provide reasonable boundary conditions
+
+    for the reduced domain. Figure 6 is a typical comparison of
+
+    the domain size used to calculate the flow about the base
+
+    airfoil -Id the perturbed airfoil.
+
+        The reduction in c rputer time that can be expected
+
+    using the method of reduced domains comes about not only
+
+    t.case the number of mesh points is fewer so the number of
+
+    calculations per iteration is fewer, but also because fewer
+
+    mesh points generally lead to a higher convrgence rate.
+
+        Suppose that a problem is solved using an iterative,
+
+    finite difference scheme and that we want to reduce the size
+
+    of the error by 10-1". The number of :teraticns to ao this,
+
+    p, is given by
+                                    J
+
+
+
+
+i
+
+                                         -25-
+                            OF POOR QilALITY
+
+
+where 3 is the spectral radius.
+
+    For a Laplace equation
+
+            ^Px. f u r y = o                           ^^ ^- l
+
+solved with a Jacobi iterative scheme on a square domaic
+
+with ax and ay equal, we have
+
+
+                    '/( N                               3)
+
+where N is the number of mesh points.
+
+    The rate of convergence is thus dependent on the number
+
+of mesh points in this case. While the rate of convergence
+
+for the small disturbance potential equation or the full
+
+potential equation cannot be found analytically, it is
+
+expected that the rate of convergence will be a function of
+
+the number of mesh points.
+
+    Unlike the first four methods tried this method makes
+
+its a,proximation in the boundary condtions used when
+
+solving for the flow about the pert.tirbed airfoil, not in the
+
+actual method of solution. Some advantages to this are
+
+immediately apparent:1) MaJor changes to existing cones are
+
+not requirea since the same solver is used, 2) Application
+
+of this method to codes based on different governing
+
+equations is possible, 3) A tradeoff exists between accuracy
+
+and speed, the larger the domain the more accurate the
+
+solution,   but also the greater the c.p.u. requirement. This
+
+last advantage is important because it gives flexibility in
+
+using the method of reduced domains. In soiue applications
+
+the size of the cc.main coulc be reuuced substatiaily thereby
+
+
+                              -26-
+                                   URIUNIVAL      ':,
+                                   OF POOR QU,.! iTY
+
+
+    greatly reducing c.p.u. requirements. However, the size of
+
+    the aomain could always be increased if accuracy became a
+
+    problem.
+
+        Some trends can be found in the accuracy of using the
+
+    base flow for boundary conditions by examining the inner and
+
+    outer expansions used at different Mach numbers to derive
+
+    the small disturbance potential equation from the full
+
+    potential equation.
+
+        To derive the small disturbance potential equation valid
+
+    for subsonic and supersonic flaw
+
+               (/- lye ) ox   f   ^ yy   = O                   (Z y ^
+
+
+    from the full potential equation
+
+
+
+
+    requires the use of inner and cuter expansions of the form
+
+
+
+
+    where
+
+                   Y - 116,
+    and E, is a small parameter related to              the   airfoil
+    thickness.
+
+        To derive the small disturbance potential equation valid
+
+    for transonic flow
+
+
+
+
+                                         -27-
+t
+                                         a
+
+
+
+
+                                   N L PAUL L;
+                               ORIGM
+                               OF POOR QUALITY
+
+
+      from the full potential equation requires the use           of the
+
+      following inner and out er expansions
+
+                              El ^^` (x,y^ t f 3 ^i (X,^ r .. .
+
+                                                                     Cz^`1
+      where
+
+
+
+
+      and ej. is a small parameter related to             the     airfoil.
+
+      thickness.
+
+          The important point is that for supersonic and subsonic
+
+      flow the inner solution is valid only for y of order 6, ,
+
+      while for transonic flow the solution is valid for y of
+
+      order 1. This means that a perturbation in airfoil geometry
+
+      will affect the flow for a greater distance from the airfoil
+
+      in transonic flow than in subsonic or supersonic flow. The
+
+      accuracy of using the base flow for boundary conditions at
+
+      the edge of a given reduced domain should therefore be less
+
+      in transonic flow than in subsonic or supersonic flow.
+
+          A complete outline of the inner and outer expansion
+
+      procedure can be found in reference 13.
+
+
+      Wind Tunnel Analogy
+
+
+          There is a physical analog to computing the flow about
+
+      the perturbed airfoil on a reduced domain that offers
+
+      insight into the problem.      Determining the         aerodynamic
+
+      characteristics of an airfoil          by performing wino tunnel
+
+      tests is similar , to the methou of reduced domains.        In each
+
+
+                                  _2b_
+
+
+_ Y
+                   OF POOR QUALITY
+
+
+case the flow is affected by the outer boundary.
+
+    The hypothetical wind tunnel in which the perturbec
+
+airfoil is tested is, however, special. The solution fcr the
+
+base airfoil is obtained on the full domain so that if the
+
+domain is reduced, the exact boundary conditions are
+
+availiable at the edge of the reduced domain. If the flow in
+
+the interior of the reduced domaii. is perturbed and then the
+
+problem is solved with the Name airfoil as before, exactly
+
+the same answer as that found on the full domain will be
+
+computed.   This means that the hypothetical windtunnel has
+
+been constructed in such a way as to give aerodynamic
+
+characteristics for the base airfoil which are the same as
+
+if the base airfoil had been tested in free air. Figure 7
+
+shows the base airfoil in the hypothetical windtunnel.
+
+Solving for the flow about a slightly perturbed airfoil is
+
+thus like testing the slightly perturbed airfoil in the
+
+hypothetical windtunnel.
+
+
+
+
+                           -29-
+                      ORIGINAL !','^:.' t'
+                      O F POOR QUALITY
+
+
+CHAPTER 3. RESULTS OF STUDIES USING THE METHOD OF' REDUCED
+                          DOMAINS
+
+
+Exploratory Studies
+
+
+    Results presented in this section compare the change in
+
+Cp caused by perturbations in airfoil geometry as computed
+
+on the full domain and the reduced domain. The base airfoil
+
+in each case was a parabolic arc at zero angle of attack,
+
+and the four perturbations of figure 4 multiplied by a small
+
+factor were separately added to the base airfoil.
+
+    It is difficult to quantify the performance of the
+
+method of reduced domains without doing an optimization run.
+
+A subjective assessment of the resultz will be used
+
+initially in this chapter to develop confidence in the
+
+method. Later in this chapter an actual optimization test
+
+will be performed.
+    Initially all results presented will be frocn subcritical
+
+tests. Greater difficulty was anticipated for supercritical
+
+tests and these are discussed after the subcritical results
+
+are properly understood.
+
+    In solving the flow on the reduced domain, using as the     {
+
+basis for the solution the small disturbance potential
+
+equation, two different tyres of boundary conditions can be
+
+specified. Either the potential can be specified at the edge
+
+of the domain (Dirichlet boundary condition) or the normal
+
+derivative of the potential, the transverse velocity, can be
+
+specified (Neumann boundary condition).
+
+
+
+                             -30-
+                         II
+
+
+
+                                        .,,.
+                          111L ^'r'3- — .v
+                     QRiGV'1
+                     OF POOR QUALITY
+
+
+    Solving the flow about the perturbea airfoil on the
+
+reduced domain and specifying the potential to be that of
+
+the base flow on the outer boundary is analogous to testing
+
+the perturbed airfoil in the hypothetical windtunnel with a
+
+freejet boundary condition at the tunnel walls. That is, the
+
+specification of the potential to be that of the base flow
+
+on the outer boundary forces the pressure to be that of the
+
+base flow on the upper boundary of the reduced domain. In a
+
+windtunnel with free jet boundaries, one expects the peak
+
+perturbation velocitie:3 to be underestimated thus
+
+underestimating the peak perturbation Cp.
+
+    Figure 8 shows the results where the base potential was
+
+specified at the edge of the reduced domain. The flow
+
+conditions in this case were:
+
+             freestream Mach number = 0.7
+             thickness/chord        = 0.1
+             perturbation multiplication factor = 0.001
+
+The size of the reduced domain is shown in figure 9. The
+number of mesh points in this reduced domain was 116 while
+
+is was X965 for the full domain. The underprediction of the
+
+change in Cp is consistent with the above arguements. The
+
+results are, however , reasonably accurate and the average
+
+c.p.u. requirement in computing the flow on the reduced
+
+domain was approximentaly 60 times smaller than the c.p.u.
+
+requirement for computing the flow on the full comain.
+
+    The next boundary condition tested was a         Neumann
+
+boundary condition on the upper boundary of the reduced
+
+domain.   The finite difference algorithm used in these
+
+                                                               k
+
+                              -31-
+                          0RIG11 ;- r'-', *iCiC E0
+                          OF POOR QUALITY
+
+computations required the specification of the potential at
+
+the upstream boundary, so the potential at the upstream
+
+boundary was specified to be that of the base flow. For
+
+convenience, the potential was specified to be that of the
+
+base flow at the downstream boundary also. In all
+
+computations where a Neumann boundary condition was used at
+
+the upper boundary, the above outlined boundary conditions
+
+were used at the upstream and downstream bounaaries.
+
+    Specifying the transverse velocity to be that of the
+
+base flow on the edge of the reduced domain is analogous to
+
+solid wall boundaries on the hypothetical windtunnel. Solid
+
+wall boundaries on a windtunnel constrain the flow to be
+
+tangential to the solid wall. In this case one would expect
+
+a test in the hypothetical wind tunnel on the perturbed
+
+airfoil to overestimate peak velocities thus overestimating
+
+the perturbation in Cp.
+
+    The results presented in figure 10 are consistent with
+
+this prediction. The flow conditions in this case were:
+
+            freestream Mach number = 0.7
+            thickness/chord          = 0.1
+            perturbation multiplication factor = 0.001
+
+The size of the domain used in this case is presented in
+
+figure 9. The average c.p.u. requirement for computing the
+
+flow on the reduced domain was reduced by a factor of 45 as
+
+compared to the c.p.u. requirement of the full domain. The
+
+smaller reduction in c.p.u. time in this case as compared to
+
+the previous case was anticipated since Neumann bounaary
+
+conditions generally lead tc slower convergence.
+
+
+                               -32-                            w
+                          URiGIPI AL"I
+                                    :.:
+                          OF POOR QUALITY
+
+
+
+   Windtunnels usually have ventilated walls to try to
+
+   ;en the effect of the walls on the flow. The next section
+
+   tribes attempts to correct the boundary conditions used
+
+   ;he edge of the reduced domain in the hope of yieldig a
+
+     accurate solution.
+
+
+   idary Condition Modifications
+
+
+    Modifications were made to each of        the   boundary
+
+   U tions used above. The Dirichlet boundary condition was
+
+   .fied by treating the perturbation in geometry of the
+
+airfoil as a perturbation doublet and then adding the
+
+perturbation in potential caused by this doublet to the base
+
+potential on the outer boundary. The Neumann boundary
+
+condition was modified by treating the perturbation in
+
+geometry of the airfoil as a wavy wall and using a
+
+simplified analysis to determine the effect of this
+
+perturbation on the transverse velocity at the boundary.
+
+    In Appendix A it is shown that in the far field the
+
+airfoil is treated as though it were a doublet. This
+
+treatment of the airfoil allows the potential to be
+
+determined in the Car field by use of equation A5. This
+
+equation is accurate only if it is used at points a
+
+considerable distance from the airfoil ( at least 1 chord
+
+length ).The accuracy of equation A5 diminishes when it is
+
+applied closer and closer to the airfoil, but how rapidly
+
+the accuracy decays is not known. As an approximation,     this
+equation was used to determine the change in potential at
+
+
+                           -33-
+
+                                                                  :^i
+ i
+ a
+
+
+                                OF POOR QUALITY
+
+     the edge of t,",e reduced domain caused by the perturbation in
+
+     airfoil geometry.
+
+         The doublet was positioned on the airfoil at the chord
+
+     station where the amplitude of the perturbation was at a
+
+     maximum. Equation A6 is the equation for the doublet
+
+     strength. The equation has one part due to the airfoil
+
+     volume and a second nonlinear part. The contribution. from
+
+     the nonlinear part is generally small so in computing the
+
+     perturbation doublet strength it was negleted. The equation
+
+     for the doublet strength was therefore
+
+
+
+
+     where f '(f) is the perturbation in airfoil geometery.
+
+     Figure 11 presents the results obtained with the above
+
+     outlined boundary conditions. The flow conditions for this
+
+     test were:
+
+               freestream Mach number = 0.7
+               thickness/chord        = 0.1
+               perturbation multiplication factor = 0.001
+
+     The size of the reduced domain is given in figure 9. The two
+
+     curves lie reasonably close to each other. The average
+
+     computing time required on the reduced domain was
+
+     approximately 40 times less than that required on the full
+
+     domain.
+
+         Modifications of Neumann boundary conditions is similar
+
+     to changing the hypothetical windtunnel shape. The problem
+
+     is to determine the extent of the modifications required.
+
+     This problem can be restated as the problem of determining
+
+
+
+                                  -34-
+
+L,
+                               OF POOR QUALITY
+
+how much of the perturbation in transverse velocity at the
+
+airfoil surface is translated to the edge of the reduced
+domain. As a guideline to determine the decay in the
+
+transverse velocity a simple wavy wall model for the
+perturbation is used.
+
+      Consider the small disturbance transonic                     potential
+
+equation
+
+                                    t   0- y = U                     (3v)
+subject to the boundary conditions
+
+
+        ^x       ^y         are {ini^              40
+
+
+and
+
+         V N, u) _      y C'X, u)       t9 roc 6 r,
+
+Let us solve this equation for subsonic flow where
+( 1(-()'"') ox       ) is always greater than zero.             To make the
+
+mathematics tractable let us approximate the coefficient of
+                                        a.
+the fix„ term as a constant, A                 This equation, with the
+
+boundary conditions given, can be solved in closed form
+
+using separation of variables. The solution is
+                                              ti
+           '^ (x, y) = B(CosdX)e                                    C3l}
+
+Note that the local value of                 is used at every point.
+
+      The important information from equation 31 is the rate
+
+at which velocities at Y = 0 decay. Using the aecay rate of
+
+this equation gives for the velocity at any point Y
+                                                    9 ()C, 0)
+             4y (-X y l -y ^'^, ^) e `y `                           ` 3 2-
+
+
+
+
+                                    -35-
+i
+                              ORIGINAL K*'.^„L 1i
+                              OF POOR QUALITY
+
+    Equation 32 can be used to approximate the perturbation
+
+    velocity at the edge of the reduced domain. To use equation
+
+    32 ,B , which determines the wavelength of the wavy wall
+
+    must be known. Since the airfoil is similar to a half sine
+
+    wave, B was made to be 77' .
+
+        Figure 12 presents the results of using the
+
+    approximations just oulined. The flow conditions in this
+
+    test were:
+
+                 freestream Mach number   = 0.7
+                 thickness/chord          = 0.1
+                 perturbation multiplication factor = 0.001
+
+     The size of the reduced domain is given by figure 9.     The
+
+    two curves lie very nearly on top of each other, indicating
+
+    that the above approximation is a very good one. The average
+
+    computing time required on the reduced domain was 50 times
+
+    less than that required on the full domain.
+
+        These subcritical results are encouraging. The results
+
+    obtained with the four different boundary conditions used
+
+    above appear to be at least reasonably accurate and
+
+    sometimes very accurate. The saving in c.p.u. time in each
+
+    case was substantial.
+
+        The same four boundary conditions outlined above were
+
+    tested in supercritical flow. The one difference is that the
+
+    wavy wall formula given above is valid only in subsonic
+
+    flow. A supersonic wavy wall formula is required for cases      A
+
+
+
+
+    where the flow at the eage of the outer bounaary is
+
+    supersonic. The derivation of this formula is completely
+
+    analogous to the aerivation presented for the subsonic flow.
+
+
+                                  -36-
+                           ORIGIAAL Pi-AGi IS
+                          OF POUT: QUALITY
+
+
+    The result is
+
+
+
+
+        As can be seen, the transverse velocity at the airfoil
+
+    surface does not decay but propogates along characteristics.
+
+    In locally supersonic flow the boundary condition was
+
+    therefore applied as follows: The slope of the
+
+    characteristic was determined from the local Mach number at
+
+    the boundary. The characteristic was then approximated as a
+
+    st-raight line. This line was followed to the airfoil surface
+
+    where the perturbation transverse velocity was known. This
+
+    transverse velocity was then propogated 'back up along the
+
+    approximation of the characteristic to the boundary of the
+
+    reduced domain, where it wa- added to the base transverse
+
+    velocity. This procedure is illustrated in figure 13.
+
+        The runs made with the boundary conditions being: 1) The
+
+    base potential, 2) The base transverse velocity, and 3) The
+
+    base potential with the potential due to a perturbation
+
+    doublet added to it, were all ruv under the same conditions:
+
+              freeesteam Mach number   = 0.32
+              thickness/chord          = 0.1
+              perturbation multiplication factor = 0.001
+
+    The size of the domain used is shown in figure 9.
+
+        Figure 14 shows the results where the base potential was
+
+    specified on the edge of the reduced domain. The effect of
+
+    the perturbation doublet was negligible , the results being
+
+    essentially those presented in figure 14. The results in
+
+    these cases are not very goon. The largest changes in Cp
+
+
+
+                                -37-
+
+
+u
+                                    a
+
+
+
+
+                            ORIGINAL PAGE   fs
+                            OF POOR QUALITY
+
+occur near the shock and these are not captured wel
+
+the base transverse velocity was specified at t
+
+boundary of the reduced domain, the computations we
+
+converge to a solution.
+
+     The tests in subcritical flow using the wa
+
+approximation yielded the best results so it was hoped that
+
+they would yield good results in the supercritical case. The
+
+initial test was a conservative one in which the flow was
+
+only slightly supercritical. The test conditions in this
+
+case were:
+
+             freestream Mach number   = 0.78
+             thickness/chord          = 0.10
+             perturbation multiplication factor = 0.0011
+
+The size of the reduced domain used is shown in figure 9.
+
+    Results are presented in figure 15. As can be seen the
+
+results are not very accurate. It seems that supercritical
+
+flow is much more sensitive to boundary conditions than
+
+subcritical flow.
+
+    The flexibility of the reduced domain method was put to
+
+use to try to overcome these difficulties. The outer edge of
+
+the domains used generally crossed through a region with
+
+supersonic flow. This was the probable cause of
+
+dissappointing results just presented. To get around this,
+
+the shape of the domain was altered so that the outer
+
+boundary was always in subsonic flow. A typical dcmain for
+
+supercritical flow calculations is presented in figure 16.
+
+Figure 16 also shows the boundary conditions tested. The
+
+base potential was specified everywhere except at the very
+
+
+                             —38—
+
+
+                                                               a^
+                  OF POOR QUTAL'ITY
+
+
+top of the "notch" part of the domain.
+
+base potential was specified or the base t
+
+was specified.
+
+    For each boundary condition a series of tests were
+
+conducted in which the domain size was increased until
+
+consistently acceptable results were obtained. For these
+
+tests the flow conditions were:
+
+          freestream Mach number = 0.82
+          thickness/chord = 0.10
+          perturbation multiplicatin factor = 0.001
+
+     Figure 17 presents what are considered acceptable
+
+results for• the Dirichlet boundary condition and figure 19
+
+shows results for the Neumann boundary condition. The
+
+corresponding domain size required to achieve these results
+
+is shown in figure 19. The number of mesh points in the
+
+reduced domain with Neumann boundary conditions was 218
+
+while the number of mesh points in the reduced domain with
+
+Dirichlet boundary conditions was 1140. Recall that the the
+
+number of mesh points in the full domain was 3965.    As can
+
+be seen, the size of the domain required to obtain
+
+reasonable results using the Dirichlet boundary condition is
+
+considerably larger than the domain required to achieve
+
+reasonable results using the Neumann boundary condition. An
+
+explanation for this phenomena has not yet been found.
+
+    The average c.p.u. time required to get the results on
+
+the reduced domain is about 30 times less than on the full
+
+domain if a Neumann boundary condition is used and about 6
+
+times less if a Dirichlet boundary condition is used. While
+
+
+                           -39-
+                            URIGi ;'A-- ,   ; iS
+                           OF POOr^ QUALMY
+
+
+
+the reduction in c.p.u.        time is not as      large as tl^e
+
+reduction      realized   in subcritical flow,     it is still
+
+substantial.
+
+
+Summary of Results of Exploratory Studies
+
+    The results can be summarized as follows:
+            Sucbritical Flow
+
+                 1) Reasonably accurate results can be obtained
+
+                 on a substantially reduced domain.
+
+                 2) There is flexibility in applying boundary
+
+                 conditions. Different boundary conditions
+
+                 yield different results but all of these
+
+                 results seem acceptable.
+
+                 3)   The c.p.u. requirement of the reduced
+
+                 domain calculations is from 40 to 60 times
+
+                 lower than the c.p.u. requirement for full
+
+                 domain calculations, depending on boundary
+
+                 conditions applied.
+
+            Supercritical Flow
+
+                 1) Reasonably accurate results can be obtained
+
+                 on a substantially reduced domain but the
+
+                 outer t undary of the reduced domain must be
+
+                 in subsonic flow.
+
+                 2)   There is no flexibility in applying
+
+                 boundary conditions. Fast and reliable results
+
+                 can only be obtained with the use of Neumonn
+
+                 boundary conditions.
+
+
+                                -40-
+                 3) The c.p.u.requirement of the reduced aomain
+                 calculations is 30 times smaller than the
+
+                 c.p.0 requirement of full eomain calculations.
+    Note that the savings in computer time using the method
+
+of reduced domains cam p about primarily because of the
+
+reduction in the number of calculations required per
+
+iteration. The reduction in the actual number of iterations
+
+on the reduced domain was not urge, always being less than
+
+a factor of 2.
+
+
+Pull Potential Equation Calculations
+
+
+    The knowledge gained from applying the method of reduced
+
+domains to an aerodynamic analysis code based on the small
+
+disturbance potential equation is now applied to the full
+
+potential equation. The        full   potential   equation   is
+
+considerably more accurate than the small disturbance
+
+potential equation and so is used much more frequently in
+
+the design of airfoils.
+
+   A computer code that solves the full potential equation
+
+is much more complex than one that solves the small
+
+disturbance potential equation. PL.06, a nonconservative full
+
+potential equation solver written by Antony Jameson, was
+
+used in these tests. PL06 was chosen because it is the
+
+aerodynamic analysis code in use at NASA Ames for numerical
+
+optimization of airfoils. A complete outline of the
+
+fundamentals involved in solving the full potential equation
+
+can be found in reference 14.
+
+
+                              -41-
+       Test s were                   conduct e           us i n    FLC6 i n which the s Z of the
+computational domain was                                  greatly            reduced.         FLOb          maps         the
+
+airfoil             onto             a      unit circle and then performs an inversion
+
+such that infinity                           is mapped into the                   origin           of        the        unit
+
+circle.                  Thus            the computational                  domain used in FLOb                       is the
+
+inside of a unit circle .                                 The outer           boundary        of the             reduced
+
+domain must                   be     in subsonic            flow,       so for          a   typical          case       of a
+                                                                                                                                  1
+lifting             airfoil with a 3uper• 3unic zone on                                     the upper surface
+                                                                                                                                  9
+
+of    the airfoil,                       the computational                  domain woulu           be       like        that
+
+shown       in figure -1 0.                     Because      of    the coordinate                 system used              i::,   r
+FLOb,       a     reduction                 in domain size              like    the reduction shown                        in
+                                                                                                                                  fi
+t'igur• e         .'U,        reduced           the number         of mesh         points         by    a    factor       of
+                                                                                                                                  i
+only    5 or             U.
+
+
+       FLOG also user two steps                                   in        solving         the        equation:             a
+
+relaxation step,                          and a t'a3t solver step.                      The relaxation step
+
+gives           slew convergence,                        but can        be    used on ir• r• (-gular•domain                       a
+
+shapes and                l;a valid for- , upersonic flow.                                  The        fart           solver•
+step        give3              very           r':apid     CO11Ver'gence            in subsonic               t'low,      but      =
+
+becomes less and                            lean        sLable>        as     theylocal.               Mach           11Umber
+
+increase::                and            goes        unstable      in aupet, 3onic.           flow.          A1so,       the
+
+fait :3oIvrr•can only                            be used on            regular•donlvin             shape3.               Tile
+
+two     :at.epS               combined               converge          reasonably           fast       in    tr'an3.1nlc
+
+flow.
+
+       11 eOJIIZIe            tAlC       reduced compuL,Itional                 domain        1^       11'r et ular        in
+
+shape,          the       f:a3t          :+ol veer    Cannot      be used       over        the whole:           domain.
+
+Therefore,                theyfait.             Solver      i:: usey u only             1n the     region              shown
+in     CI       LI r v        :U.         The        r el.1xtlon        ate p   i:..I   u:ed over            t. tic    whole
+                                                                                                                                  I
+
+
+
+
+                                                                                                                                  5
+domain. Not being able to j-e the fast sclver on the
+
+complete reduced domain does not slow convergence since that
+
+part of the domain where it is not used is a region of
+
+supersonic flow.
+
+       Tests were run on the airfoil shown in figure 21 at zero
+
+angle of attack, with a freestream Mach number of 0.8
+
+resulting in a supersonic zone on the upper and lower
+
+surface of the airfoil. A single perturbation givenby
+                                                     /
+           Pert = o.00/ t 5i 1, ( A x )              ( 3 It
+was added to the upper and lower surface of the airfoil. The
+
+boundary conditions used at the edge of the reduced domain
+
+were: 1) Potential specified to be that of the base flow
+
+everywhere, 2) Potential specified to be that of the base
+
+flow everywhere except on the "notch" part of the grid where
+
+the normal velocity was specified to be that of the base
+
+flow. An unexpected result was found from these tests. While
+
+in case 1 the solution did not capture the shock movement as
+
+expected from tests performed on the small disturbance
+
+potential solver, case 2 converged so slowly that the
+
+required c.p.u. time was as large as that needed to solve
+
+for the perturbed flow on the full domain.
+
+       This fundamental difference in results from the small
+
+disturbance potential solver and FL06 did not seem
+
+reasonable. One important difference in the two codes was
+
+that      FL06 is a nonconservative code while the small
+
+disturbance solver is a conservative code. A comparison was
+
+
+
+                                 -43-
+made on the rate of convergence of the conservative and
+
+nonconservative forms of the small disturbance code. These
+
+tests showed that while the two forms of the code had nearly
+
+identical convergence rates on the full domain, the
+
+conservative form of the code converged in fewer than half
+
+the number of iterations required by the nonconservative
+
+form of the code on the reduced domain. While not a
+
+conclusive result, this strongly suggests that the method of
+
+reduced domains can be made to work for supercritical flow
+
+if the aerodynamic analysis code is conservative.
+
+
+Optimization Calculation
+
+
+    Since the method of reduced domains could not be made to
+
+work in supercritical flow using FLO6, the method was tried
+
+on a subcritical case. The objective of this test was not to
+
+design a better airfoil but was to demonstrate that the
+
+method of reduced domains will produce reasonable results in
+
+an actual optimization test.
+
+    The optimization code used for this test is called
+
+QNMDIFF. It employs a quasi -Newton method for unconstrained
+
+Dptimization. The base airfoil used for this test was a 17
+
+percent thick airfoil designed for general aviation
+
+applications (GA(W)-1). The airfoil geometry can be found in
+
+reference 15.    Computations were made at a Mach number of
+
+0.22 and at zero angle of attack. The objective function
+
+used was the sum of the differences between a target
+
+pressure distribution along the upper surface of the airfoil
+
+
+                           -44-
+                           ORIGINAL PAGE 19
+                           OF pOCR QUALrff
+
+
+and the actual pressure distribut4on, that is
+             ^                  L
+
+
+
+
+The target pressure distrabution used was that of the
+
+(GA(W)-1) airfoil. The initial airfoil used was
+
+(GA(W)-1) airfoil to which four shape functions ha(
+
+added. Thus the optimized airfoil would be one in whict
+
+magnitude of the four shape f,.nctions was 0. The four shape
+
+functions used were the ones shown in figure 4. The initial
+
+magnitudes of the shape functions were:
+
+          function 1 magnitude = 0.0100
+          function 2 magnitude = 0.0087
+          function 3 magnitude = 0.0093
+          function 4 magnitude = 0.0021
+
+
+    Table 1 compares the design vector and value of the
+
+objective function at the end of each optimization iteration
+
+as computed in the regular way and using the method of
+
+reduced domains. Figure 22 presents graphically the
+
+objective function history of the two methods. In each case
+
+the objective function had been reduced substantially after
+
+6 iterations and the design vector was very close to the
+
+exact answer of 0,0,0,0.
+
+    This optimization test required 40 aerodynamic
+
+evaluations in gradient calculations and 21 aerodynamic
+
+evaluations in line search calculations. QNMAIFF sometimes
+
+requires central differences in gradient calculations which
+
+is why the number of aerodynamic evaluations for gradient
+
+calculations is not 4*6-24. Each gradient calculation. took
+
+
+
+                              -45-
+approximately one tenth the c.p.u. time on the reduced
+
+domain as comparea to the full domain. The total amount of
+
+computer time required for this optimization calculation
+
+using the method of reduced domains was aproximately 45% of
+
+the time required in using the standard method.
+
+
+
+
+                           -46-
+                                                              i   _pit
+                                            1
+t
+
+
+
+
+                   CHAPTER 4. CONCLUSIONS AND RECOMMENDATIONS
+
+
+
+            The method of reduced domains has the potential to
+
+        significantly reduce the computer time required in designing
+
+        airfoils using numerical optimization. There are, however,
+
+        unresolved complications in using the method if the flow is
+
+        supercritical.     The use of a nonconservative potential code
+
+        leads to      unacceptably   slow       convergence   rates   when
+
+        computations are performed on the reduced domain. It is
+
+        probable that this problem would be eliminated if                a
+
+        conservative potential code was used.
+
+            Future work on the method of reduced domains should
+
+        concentrate on understanding the effect that different
+
+        boundary conditions have on computations using a reduced
+
+        domain. This paper has presented results of using different
+
+        boundary conditions. Explaining why one boundary condition
+
+        works better than another has proved elusive. With the
+
+        proper understanding of the effect of boundary conditions,
+
+        the full potential of this method would be known.
+
+            This research has concentrated on reducing the computer
+    '   time required to determine the gradients needed by the
+
+        optimization program. Research is also warranted on
+
+        increasing the efficiency of the line search. Making full
+
+        use of the fact that the line search is a one dimensional
+
+        problem could yield a signifigant reauction in c.p.u.
+
+        requirements. Another area of possible research is in
+
+        determining the best way to modify the airfoils shape.
+
+
+                                     -47-
+Different design variables will yield different design
+
+spaces and one design space may be much more conducive to
+
+numerical optimization than another.
+
+
+
+
+                           -48-
+                    REFERENCES AND BIBLIOGRAPHY
+
+
+    1) Henne, P.A., "An Inverse Transonic Wing Design Method",
+    AIAA Paper 80 - 0330, January 1960
+
+    2) Chin, W.C. and Rizzetta, D.P., "Airfoil Design in
+    Subcritical and Supercritical Flows", Journal of Applied
+    Mechanics, Vol 46, No 4, December 1979, pp 761-766
+
+    3) Hicks, R.M.; Murman, E.M. and Vanderplaats, G.N., " An
+    Assesment of Airfoil Design by Numerical Optimization
+    NASA TM X 3092, July 1974
+
+    4) Hicks,  R.M. and Vanderplaats,    G.N., "Application of
+    Numerical   Optimization to the Design of Supercritical
+    Airfoils Without Drag Creep", Society of Automotive
+    Engineers Business Aircraft Meeting :entury 11, Witchita
+    Kansas, March 29 - April 1 1977, 770440
+
+    5) Fletcher, R. and Reeves, C.M., "Functional Minimization
+    by Conjugate Gradients", Computer J.,     Vol 7, No 2, July
+    1964, pp 149-154
+
+    6)Broyden, C.G., "Quasi - Newton Methods and Their
+    Application to Function Minimization", Math. of Comp., Vol
+    21, No 99, 1967, pp 368-380
+
+    7) Hicks, R.M. and Vanderplaats, G.N., "Application of
+    Numerical Optimization to the Design of Low-Speed Airfoils",
+    NASA TM X 3213, March 1975
+
+    8) Aidala, P.V., "Transonic Fighter Design Using Numerical
+    Optimization", ICAS Paper No 80-2.1, October 1980
+
+    9) Haney, H.P.; Johnson, R.R. and Hicks R.M., "Computational
+    Optimization and Windtunnel Tests of Transonic Wing
+    Designs", AIAA paper 79-0080, January 1979
+
+    10) Vanderplaats,G.N., "CONMIN, A FORTRAN Program         for
+    Constrained Function Minimization", NASA TM X 62,282, 1973
+    11) Davis, W.H., "Technique for Developing Design Tools From
+    the Analysis Methods of Computational Aeroaynamics", AIAA
+    paper 79-1529, July 1979
+
+    12) Spreiter, J.R. and Alksne, A.Y., "Thin Airfoil Theory
+    Based on the Approximate Solution of the Transonic Flow
+    Equation", NACA Report 1359, 1958
+
+    13) Ashley, H. and Landahl, M. , Aerodynamics of Wings and
+    bodies, Addison - Wesley Publishing Company Inc,. 1965
+
+
+
+                               -49-
+
+
+L
+                           i
+
+
+
+
+14) Jameson, A., "Transonic Flow Calculations", Numerical
+Methods in Fluid Dynamics, Wirz, H.J. and Smolderen, J.J.,
+Editors, Hemisphere Publishing Corporation,1978
+
+15) McGhee, R.J. and Beasley, W.D. , "low Speed Aerodynamic
+Characteristics of a 17 Percent Thick Airfoil Section Design
+for General Aviation Applications" , NASA TN D 7428,
+December 1973
+
+16) Murman, E.M. and Cole, J.D., "Calculation of Plane
+Steady Transonic Flo ,as", AIAA Journal, Vol 9, No 1, January
+1971 , pp 1 14-1 21
+
+17) Murman, E.M., "Analysis of Embedded Shock Waves
+Calculated by Relaxation Methods", AIAA journal, Vol 12, No
+5, May 1974
+
+18) Isaacson, E. and Keller,  H.B.,  Analysis of Numerical
+Methods, John Wiley and Sons Inc., 1966
+
+19) Liepmann,   H.W. and Roshko,    A.   ,   Elements of Gas
+Dynamics, John Wiley and Sons Inc., 1963
+
+20) Smith, G.D., Numerical Solution of Partial Differential
+Equations: Finite Difference Methods, Claredon Press, 1979
+
+
+
+
+                               -50-
+                                                  I/
+
+
+
+
+                                        oh ,,CINAL C'A-—:r 143
+                                        OF pooR QUA,11-Y
+
+
+
+
+                                                                   C14               10                  Ic              to
+                    V1            J               N                _                 ^{
+                                  O               O                O                 6M                                  en
+         m
+         O
+                    S
+
+                                  C               O                C
+                                                                                     ^o                  N               .,
+                                                                                                                          -
+
+
+
+     N
+C               OO       co ON           V) r^            fn n              ^Q z                 CN C                    --^
+O               f\ -+    r\ Q 1          NN               ^T rT             ^1 N                 ON             ..I .-+
+L        is     00 C14   ON              .-r O            .-^ O             OO                   CO             OC
+L
+v         >+    CO       OO              OO               CO                CO                   OC             OO
+Z        uu                   1               I       I        I        I        I           I             I         I    I
+ c                                                                                                                             L
++^        v                                                                                                                    v
+         >
+C         C     OO       O•^                 1
+                                                          d r`
+                                                          in       n        O 10
+                                                                            Or-4
+                                                                                                 r` ^
+                                                                                                     ;
+                                                                                                 &+ V1
+                                                                                                                c
+                                                                                                                s  N
+                                                                                                                r-,O           Fv
+                                                                                                                               C:
+                O^       ^s              .-r-+            OC                CO                   OO             OO             r,
+7         to
+u                   O    O O             O O              O C               O O                  O O            C O            L
+                                                                                                                               N
+QJ                                                                                                                             +i
+
+a
+          w                                                                                                                    L
+          4J        O             .-c             N                c•                S                   ^! 1            ^p    d
+         u                                                                                                                     C
+         r••I
+                                                                                                                               w
+                                                                                                                               O
+                                                                                                     rn
+                    ^a                            s                                  O                   C               O
+                    un            a%              n                S                 .-c                 —4              11
+     aC
+     C
+                                  n
+                                  C^
+                                  d
+                                                  N
+                                                  O
+                                                  C
+                                                                   C
+                                                                   O
+                                                                                     re
+                                                                                     v1
+                                                                                     u'^
+                                                                                                         ie
+                                                                                                         --;
+                                                                                                         O
+                                                                                                                         ie
+                                                                                                                         cu
+                                                                                                                         r^
+                                                                                                                               +d
+
+                                                                                                                               Lcc
+                    O                                                                N                   .0              co    v
+                                  o               O                d                                                           a
+
+
+     N                                                                                           r` N           f CJ
+     O                   n N             s s              v1 O                                                  n s
+                                  nn
+                                                                            ^Q ON                O 00                          4l
+                O        O, .T           n Ln             ^z                .1 un                —4 ?           .7 —•
+p               r\ .-i   14                 N             CC -^              C'4                 OO             CC
+O    *             N     O                1O              OO                CO                   OO             CO
+u     :r        OO       cc              CO               OC                CO                   OO             00
+                                                                                                                               F
+w        O                1               i       I        I        I        1           I       I               1
+         u
+         u
+$w       41                                                                                                              N
+m    >                        ^                                             ^l1                  v1n            In       .-i
+0                        00 en           ^C C             ^O ^G             ^T CID               v ^+           -IT      G
+O        c      CO       mN              co n                               N Ln                   rn
+to
+v    -+
+         to     O
+                O O^
+                    n    n  a\
+                         0 .7
+                                         ao C
+                                         O --
+                                                          =^
+                                                          O cc              O C14                O C
+                                                                                                                O O
+                                                                                                                O C
+                                                          O C               d 0                  O O            0 0
+^        y
+         v      -+c      co              oc               o0                oc                   o..            _o
+
+
+
+         L
+
+     ^-d
+      1.0
+
+
+
+
+      0.6
+
+
+
+
+      0.0
+
+
+
+7/c
+
+      0.40
+
+
+
+
+      0.20
+
+
+
+
+      0.0
+             0.0           0.20          0.40           0.60     0.80   1.0
+
+
+
+
+                                         C
+
+
+                                                          .
+                                                          3
+                        3) 7/c         sin 77(,^,/C)3
+
+
+
+
+                   Figure 1.      F-xamples of Shape Functions
+
+
+
+                                                                              fi
+
+
+
+
+                                        -52-
+r
+
+
+
+
+                                       r2
+
+
+
+
+    Figure 2. - Design Space Example
+
+
+
+
+                   -53-
+ t
+
+
+
+
+                          ORIGINAL. WAGS Js
+                          OF POOR QUALITY
+1+
+
+                I
+
+-.6                  /\                               /
+                                                                           C'
+                                                                                           710
+     co -.2                                                            \
+           0                                                                               I   G     v
+                                                                                                   10 a
+                           INITIAL AIRFOIL (ARBITRARY), C 0 4 0.0083, V-0.721         \\
+           .4              FINAL AIRFOIL, C 04 0.0 )03, v-0.644
+
+
+
+.           60       10 20 30 40 50 60 70 80 90 100
+                                       z/c, percent chord
+
+      a) Constraint: Vol t 0.4                 n - 71 M            0.8, C 1 - 0.0
+
+
+       -1.0 r
+
+
+
+
+                                                                   \            Cpr
+           -4
+      cp                                                                                   110 rv
+           -2
+            0                                                                                  0 v
+                                                                                      \        -10 a
+            .2
+                             INITIAI     *"OIL (ARBITRARY), CO . 0.0003, V-0.721
+.              4--•          FINAI     1t  OIL, C O . 0.0003, V -0.645
+
+
+
+
+                60    10 20 30 40 50 60 70 80 90 100
+                                       z/c, percent chord
+        b) Constraint: Vol ? 0.6 . V - 7, M - 0.8, C 1 - 0.0
+
+
+        Figure 3. - Drag Minimization
+
+
+
+
+                                               -54-
+          -.s
+
+          -.6
+
+          —,4
+     Cp
+          -.2
+
+
+            0
+
+
+           .2
+
+
+           .4
+
+
+
+
+            60           10 20 30 40 50 60 70 80 90 100
+                                      z/c, percent chord
+
+
+   c) Constraints: Vol Z 0.7, jKu +` 100, (t / c)                            .125 at (x/c) • 0.41
+      n - 7. M   0.8. C. - 0.0
+
+          -1.0
+
+
+
+
+                     I
+                                                                      1      C*
+           - ,q                                                               p
+
+   C p\
+
+-.2                                                                                       ►0
+                                                                                      '        c
+                                                                                               a,
+                0                                                                     ^0
+                                                                                               (IJ
+                                                                                               a
+.2                                                                                   - -10
+                              INITIAL AIRFOIL (ARBITRARY), Co o 0.0083, 3 •0.721
+                4        --   FINAL AIRFOIL, Co S O.0028, v n 0.789
+
+
+
+                .6
+                     0   10 20 30 40 50 60 70 80 90 100
+                                        z/c, percent chord
+
+   d) Constraints: Vol > 0.7, IKul ^ 100, (t/c)                              .125 at (h/c)           0.51
+      n - 7, M -0.8, C 1 - 0.0
+
+
+
+
+                                         -55-
+                               ORIGIN I                       ,
+                               OF Pc) C)t '
+                                           ^            a I ^y
+
+
+
+
+                      Pert I        Pert 2                Pert 3   Pert 4
+    1.0
+
+
+
+
+    0.75
+
+
+
+
+    0.50
+
+
+
+c
+
+
+
+
+    0.25
+
+
+
+
+    0.0
+           0.0            0.25                     0.50            0.75     1.0
+
+                                               7-/r.c
+
+
+
+                 peri    I -     ( 5.., ( 17
+
+
+                 PC                        77,
+
+
+
+
+                 Pet i
+
+
+
+
+      Figuie y . - Shape Functions
+
+
+                                      cc
+               .0^'
+
+
+                                        ORIGIN .",?.`,^
+
+                                        OF p o()€^ QJ?- L,'CY
+             0.06           r
+
+
+
+                                                     Finite Difference
+                                                          Method
+             0.04
+                                           —          Local Linearization
+       C7.
+      U
+
+             0.02
+      J
+      W
+
+             0.00
+
+
+
+
+             -0.02
+
+
+
+             -0.04'
+                      0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.9 0.9 1.0
+
+
+                                          7/CHORD
+
+             a) Perturbation 1
+
+
+    Figure 5. - Perturbation in Cp as Computed Using Local Linearization
+                and Finite Difference Method. M . 0.75, It/c) - 0.08
+
+
+
+
+s                                —5^—
+                            0"?'iGIIVAL
+                            OF POOPQ.
+                                            ij
+                                     QDAL17y
+
+       7=
+
+                                           2
+     0.u6
+
+
+
+
+    0.04
+a
+U
+
+    0.02
+J
+W
+G
+    0.00
+
+                    1
+    -0.02
+
+
+
+    -0 04
+                        1                           ^
+
+
+
+
+        0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.2 C,9 1.0
+
+
+                                          X/CHORD
+
+
+
+      b) Perturbation 2
+
+
+
+
+                             -58-
+                        ORIGINAL FIA , :, ° ;S
+                        OF POOR QJA i I-Y
+
+
+                  ^                                     I
+
+
+
+     ^^   L   J
+
+
+
+
+     0.Po
+
+Q
+
+Q
+
+w 0.02
+0
+
+     0.00
+
+
+
+    -0.02
+
+
+
+    -O.iu4
+              0.0 0.1 0.2 0.3 0.4 0.5 0.E 0.7 0. g 0.9 1.0
+
+
+                                        X/rHORD
+          c) Perturbation 3
+
+
+
+
+                              -59-
+                       ORIGINAL PAGE IS
+                       OF POOR QUALITY
+
+
+
+
+     0. It 10
+
+
+     0.08
+
+
+     0.06
+
+
+     0.04
+
+
+W 0.02
+n
+     0.00
+
+
+    -0.02
+
+
+    -0.04
+
+
+    -0 . 06
+           0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 O.G 0.9 1.0
+
+
+
+
+d) Perturbation 4
+
+
+
+
+                      -60-
+                   ORIGINAL
+                   ORIGINAL,   -`- i
+                   OF POOR t;'.
+
+
+
+
+             t
+
+
+
+
+      3.0
+
+
+
+
+                                                      Full
+      2.0                                             Domain
+
+y/c
+
+
+
+
+      1.0
+
+
+
+
+                                                         %duced
+                                                        Domain
+      0.0
+            -1.0       0.0             1.0        2.0
+                             X/c
+
+
+ Figure 6. - Comparison of Computational Domains
+
+
+
+
+                           1— perturbation
+
+
+
+                                       base airfoil
+
+
+
+
+ Figure 1. - Airfoil in Hvootheticai Windtunnel
+
+
+
+
+                    -61-
+r^ ,
+5^'
+                                . it
+                                       0R;(,'ts'!r! pp, -.. ,
+                                       OF POC)R
+
+
+                     i
+
+                 'v i       !   Y                                        I
+
+
+
+
+        CL      10
+       U
+       ~         5
+       J
+       W
+
+
+
+                -S
+
+
+               -10
+
+
+        -15E-3
+                  0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 O.B 0.9 1.0
+
+
+                                                 X/CHGRD
+
+
+             a) Pertubation 1
+
+
+
+       Figure 8. - Perturbation in Cp as Computed on Full Domain and
+                   Reduced Domain. Base Potential Specified at Edge of
+                   Reduced Domain. M = 0.7, (t/c) = 0.1
+
+
+
+
+                                       -62-
+                          1/
+
+
+
+
+                     ORICiN .
+                     OF pook QUAILL',I-Y
+
+ n o r r^
+
+
+
+
+       0
+
+
+
+       5
+
+
+
+
+      -5
+
+
+
+- 10E- 3
+        0.0 0.1     0.2 03.3 0.4 0,5 0.6 0.7 0.6 0.9 1.0
+
+
+                                  X/CHORD
+
+
+
+
+b) Perturbation 2
+                       ORIGII4,A'L          . - ^;-
+                       OF POOR QUALITY
+
+
+      .1r
+
+
+            25
+
+
+            20
+
+
+            15
+
+
+^           10
+Q
+
+^            5
+L.,
+0
+             0
+
+
+            -5
+
+
+        -10
+
+
+ -15E-3
+             0.0 0.1     0.2 0.3 0.4 0.5 0.6 0.7 0.B 0.9 1.0
+
+
+                                                  X/CHORD
+
+
+
+ c) Perturbation 3
+
+
+
+
+                                     _64-
+            i
+
+
+
+
+    10.02
+C
+
+    0.01
+
+
+    0.00
+
+
+
+    -0.01
+
+
+     I Ill,
+
+            0. 0.1   0.   0.3 0.^ L70.6 0 7 0.6
+
+
+                                   /CHCC, o
+
+
+
+
+    d) Perturbation 4
+
+
+
+
+                                                  a
+
+
+
+                            -65-                  a
+                               QU
+                      of
+
+
+
+
+                     AIRFOIL
+                                    1.0
+     0.0
+
+
+
+
+Figure 9. - Reduced Domain
+
+
+
+
+                       -66-
+                          ORIGIN L PAGE
+                          OF POOR QUALITY
+
+
+
+
+      -^c
+      CJ
+
+      ?©
+
+ ^ 15
+       10
+ J
+ W
+
+        0
+
+
+       -5
+
+     -10
+
+
+ - 15E - 3
+             I   I   I     I          I      I      I   ^^   I     I
+
+        0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.B 0.9 1.0
+
+
+                                          7/CHORD
+
+
+a) Perturbation 1
+
+
+
+
+Figure 10. - Pertubation in Cp as Computed on Full Domain and
+             Reduced Domain. Base Transverse Velocit y Specified
+             at Top of Reduced Domain. 4 - 0.7, (t/c) . 0.1
+
+
+
+
+                               -67-
+                     Id.
+
+
+
+
+                               ORIG;Ni',\',-
+                               OF POUR QUAL11,%,
+
+
+
+
+0. 03,
+
+
+0. 0 2
+
+
+0.01
+
+
+0.00
+
+
+-0.01
+
+
+-0.02
+     0.0 0.1 0.2 0.3 0-4 0.5 0.6 0.7 O.e 0. 19 11.0
+
+                            R/CHORD
+
+
+
+
+ b) Perturbation 2
+
+
+
+
+                     -68-
+                                                                            ^-41
+
+
+
+
+                         OWGINAL
+                         OF POOR QUALITY
+
+
+
+
+  0.03
+
+
+
+  D . 02
+
+  0.01
+
+
+
+  10.00
+
+
+
+ -0.01,
+
+
+ - (7, rA 0
+
+          0.0 0. 1   0. 2 0          C). 4 B, 5 D.6   0   0 ,9 0 .9 1 . D
+
+                                       7/CHORD
+
+
+
+
+c) Perturbation 3
+
+
+
+
+                              -69-
+                           ORICINII t. ►"A,.:e^: r.G
+                           OF POOR QUALITY
+
+
+
+                                                       I^
+
+
+     0.04
+
+
+
+     0.03
+
+
+
+     0.02
+c
+
+W 0.01
+0
+     ©-00
+
+
+    -B.al
+
+
+
+    -0.pip
+         0.0 0.1    0.2 0.3 0.4 0.5 0.6 0.7 0.9 0.9 1.0
+
+
+                                     7/CHORD
+
+
+
+       d) Perturbation 4
+
+
+
+
+                           -70-
+                                   ORICINAt P    M
+                                   OF POOR
+
+
+
+         ^L                 X^ ~
+                            'J
+
+                i
+
+
+
+
+         l^
+
+
+
+V
+                I                                                           I
+                ^   I
+
+
+
+F"-
+
+
+W
+          l^
+                                                                            Y
+
+                                                            +t`"k^ fl X +
+                                                                            I
+
+                                                                            I
+         1 Li
+
+
+
+
+        aJ Farturaation 1
+
+
+      Figure 11. - Perturbation in Cp As Computed on Full Domain
+                   and Reduced Domain. Perturbation Potential Added
+                        to Ssso PotonC:al at tEdbc of Reduced Domain.
+                        M  - 0., , It :) - c1.1
+                            ORIGINAL PAGE IS
+                            OF POOR QUALITY
+
+
+
+                                                                    I
+
+
+        23
+
+
+
+        i5
+
+a
+
+Q
+w        5
+0
+
+
+
+         S
+
+
+             ^^ I       I      ^      I      ^      I   I   I   I
+-1@E
+         0.01 0.i 0.2 d.3 d.4 0.5 D.6 ©.7 0.E 0.9
+
+
+                                          X/CHORD
+                                                                        .9
+
+
+
+
+    b) Perturbation 2
+
+
+
+
+                                                                        y
+
+                               -72-
+r
+s
+
+8
+b
+
+
+
+
+                                 OF
+         v'IL^ ..     I     I    I                I   ^   i
+
+
+
+
+              25
+
+
+              C^
+
+
+              15
+
+
+    ^         10
+    Q
+
+    w0         5
+
+              -5
+
+
+            -18
+
+
+
+                0.0 0.1 ©.2 8.3 0.4 ©.5 0.6 0.7 0.B 0.9 i.0
+
+
+                                        X/CHORD
+
+
+
+             c) Perturbation 3
+
+
+
+
+                                 -73-
+r
+                          ORIG NAL PACZ i3
+                          OF POOR QUALITY
+
+
+
+
+     ^.0^3
+
+
+
+     0.02
+
+U
+    0.01
+J
+
+    0.00
+
+
+
+
+    -0.01
+
+
+
+    -0.02
+         0.0 0.1    0.2 0.3 0.4 0.5 0.6 0..7 O.e 0.9 1.0
+
+                                                           ,:L
+                                   VCHORD
+
+
+
+
+      d) Perturbation w
+
+
+
+
+                            -74-
+                                                                         t
+
+
+
+
+                              OF POOR QUALITY
+
+
+
+
+               I
+
+
+
+
+L         ^J
+L1
+
+
+
+          5
+J
+
+          5^
+
+
+
+         1L
+
+
+
+     5
+          0 0 0.1 0.21 0.] '0.4 0.5 Li ' s 0. 7 0.6 0.° 1.0
+
+
+                                    Y C,HC
+
+     a) Perturbation 1
+
+
+     Figure 1Z. - Perturbation in Cp as Computed on Full Domain
+                  and Reduced Domain. Perturbation Transverse Velocity
+                  Added to Base Transverse Velocity at Top or Reduced
+                   Domain. M - 0.7, (t,'c) - 0.1
+
+
+
+
+                            _'S_
+                                       L
+
+
+
+
+                                 OF POJ:l Q-X
+
+
+
+
+     Li
+     L:)
+
+
+
+
+             -5
+
+
+            -10
+
+
+
+       - 1 51 E 3
+                0 0 J     C) 2                 5 0       7   0/
+
+
+
+
+                                             Li
+                                           L, C R-^ D,
+
+
+
+
+            b) Perturbation 2
+
+
+
+
+Li
+                             OF POUR QUALITY
+
+
+         3
+
+
+
+
+       20 r                                       ^^
+
+
+        15
+
+
+^      10
+Q
+
+w       5
+U
+        0
+
+       _J
+
+
+      -10
+
+-
+    15E-3 !     II       1      (             I        I   I   ►   i
+
+
+
+        .0 .0 0.1 0.2 0.3 9.4 0.5 0.6 0.7 0.2 0.9 1.9
+
+
+                                    X/CHORD
+
+
+
+
+     c) Perturbation 3
+                                   i
+
+
+
+
+                       OF POOR QUALITY
+
+
+
+
+    0.02
+U
+    ©.01
+J
+W
+D
+    12.00
+
+
+    -0.0i
+
+
+    -a.a2
+         0.© 3.i 0.2 0.3 D., 0.5 0.6 0.7 0.6 0.6 1.0
+
+                                  VCHORD
+
+
+
+
+     d) Perturbation
+
+
+
+
+                           -78-
+                                     t
+                  Ufdl INA 1":
+
+
+
+
+                           Supersonic Point
+
+
+                                 i
+
+
+
+
+PertL
+Veloc
+
+                        Airfoil
+
+
+
+
+   Figure 13. - Use of Characteristic Boundar y Conditions in
+                Supersonic Flow
+
+
+
+
+                         ;o_
+                           OF pOCR GJALITV
+
+1-
+
+
+
+
+     a
+
+
+
+
+ -10
+
+ -i5
+
+ -00
+
+
+
+
+  3D
+
+
+
+     Q.a 0-.i LD .9 9.3 0.4 ©.5 9.E 0.7 ©,9 0.9 1.0
+
+
+                                 CHORD
+
+a) Perturbation 1
+
+
+Figure 14. - Perturbation in Cp as Computed on Full Domain and
+             Reduced Domain. Base Potential Specified at Edge
+             of Reduced Domain. `1 -0.32, (t,"c) - 0.1
+
+
+
+
+                    -80-
+                            dhia !N1"^' t
+                            OF POOH
+
+
+
+
+              i
+
+
+
+
+                                     t
+
+,^            I
+
+
+Q
+F-
+
+
+      a.ala^-
+
+      a.0!
+
+     -0.01
+
+
+
+     - 0.03
+          0.0 0.!    0.? 0.3 0.4 0.5 0.c 0.7 0 g 0.9 1.0
+
+
+                                     X CH pD
+
+
+
+        b) Perturbation 2
+
+
+
+
+                              -81-
+                             r +i
+
+
+
+
+                                      p l— Ea
+                           ORIGINAL P G
+                           OF POOR QUALITY
+
+
+
+
+    ^ 1r
+
+
+
+
+    o. oe
+CL ,6
+Q a.^4
+J
+     0.02
+
+     0.00
+
+
+    -0.02
+
+    -0.04
+
+
+    -1.(7.6
+          O.0 0.1 0.22.? 2.40.52.62.70.22.9 1.2,
+
+                                      V CHORD
+
+
+       c) Perturbation 3
+
+
+
+
+                               _R2-
+                              ORIGINAL PAGE i$
+                              OF POOR OUAIL.:TY
+
+
+
+
+            j-1 A
+
+
+
+
+    0. 03
+
+
+    0.02
+
+
+    L.Oi
+
+    f61. . ( / 'A 0
+             Ld
+
+
+
+
+-   0. 0 11,
+
+
+-0-02
+
+
+
+
+                0.0 0   0. 2 .
+                             O\2' D                    020
+                                                   0.7 (     0
+
+
+                                        71"CHORD
+
+
+
+
+          d) Perturbation ^
+                            ORIGINAL PAk'--- t-:
+                            OF POOR QUALITY
+
+
+
+                      i
+
+               C ^'
+
+
+
+
+               15
+
+
+               10
+         a
+         `^      5
+         Q
+
+         w 0
+         0
+                 r
+
+
+              -10
+
+
+              -15
+
+
+         -20E-3 >                                                          i
+
+                 0.0 0.1 0.2 0.3 0.4 0.5 0.E 0.7 0.e 0.9 1.0
+
+
+                                            X/CHORD
+
+
+              a) Perturbation 1
+
+
+
+              Figure 15. - Perturbation in Cp as Computed on Full Domain
+     {                     and Reduced Domain. Perturbation Transverse Velocity
+'s                         Added to Base Velocit y at Top of Reduced Domain.
+t                          a - 0.75, (t/c) -0.1
+     U. clf
+
+
+
+a 0.0    2^
+
+L)
+
+
+     1. 0:
+Ll
+^ 0.01
+
+     1.10
+
+
+
+     -0.01
+
+
+
+
+          00        0 L"? 0 31       0    0 6 01 7 0,   Ll
+                                   X, CHORD
+
+
+
+
+      b) Perturbation 2
+
+
+
+
+                            _ac_
+                          ORIGINAL
+                          OF POOR QUALI
+
+
+
+
+     L7.0
+
+
+     '".oG
+
+
+     0.05
+
+     0.OL,
+C1
+U
+
+
+
+     0.02
+w
+     0.01
+
+
+
+    -0.01
+
+
+
+    -'0.X72
+           0.0 0.1 0.2 0.2 D.Y 0.5 0.6 0.7 0.E 0,   l.d
+
+                                7//CHORD
+
+
+      c) Perturbation 3
+                                                         i
+
+
+
+
+    0.03
+
+
+
+    0.02
+Q
+
+J ^► .01
+
+
+    0.00
+
+
+    0.01
+
+
+    -0.02
+        0.0 0.1    0.2 0.3 0.4 0.5 0.6 O 7 0.2 0.9 1.0
+
+
+                                  X/CHORD
+
+
+
+
+       d) Perturbation 4
+
+
+
+
+                           -67-
+r,
+
+
+
+
+                              ORIGINAL, PAGE IS
+                              OF POOR QUALITY
+
+
+
+
+                   (Y' wn      r_   0y w   re
+
+
+
+
+                                                              m,
+
+
+                                                        i.V
+      0.0
+                             Airfoil
+
+
+
+
+     Figure 16. - Typical Notch Shaped Reduced Domain
+
+
+
+
+                            -88-
+                               oV Pooa
+
+
+
+
+Cr
+J
+
+
+
+
+J
+W
+
+
+
+     0.02
+
+
+
+     -0.03
+
+
+
+     -0.14
+         0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.9 0.9 1.0
+
+
+                                   X/CHORD
+
+
+
+        a) Perturbation 1
+
+
+        Figure 17. - Perturbation in Cp as Computed on Full Domain and
+                     Reduced Domain. Base Potential Specified at Edge
+                     of Reduced Domain. M = 0.82, (t/c) - 0.1
+
+
+
+
+                            -89-
+         1
+         . -1.
+
+
+                                                 k
+                                                 i\
+
+                         ORIW AAL PAS 1^
+                                                 j2
+
+
+
+
+                  i
+    a
+         21. 0
+Q
+_^
+         ,0 . 00 1I
+1
+J
+         ".01
+
+        -0.02
+
+
+
+        -0.0,3 `-
+                 0.0 0.1 0, .2 0.3 0.4 0.5 0.6 0.? 0.5 0.9 1.0
+
+
+                                      X'CN',nD
+
+
+         b) Perturbation 2
+              I_
+
+              i
+
+  3 . , n, ri
+  ILI   .Oc
+              Ii
+
+
+
+
+  0.04
+J
+,J
+p 0.02
+
+  0.00
+
+ -0.02
+
+ -0.04
+
+  0. 016
+          0.0 0.1 0.2 0.3 0.4 0.5 0. 16 0.7 O.B 0.9 1.0
+
+
+                                   X/CHORD
+
+
+
+
+        c) Perturbation 3
+
+
+
+
+                            -41-
+                        ..   .. .... ... ...._.-   e.°........   ..   .. ...    „._,_   s- ..^.   .-•   `u^cmu sx   ._   a. ^'v^'m.   "atr   â^a^x=.   5   ......   ,9
+
+
+
+
+                                                                                                                                                                         7
+
+
+
+
+     1   n
+
+
+
+
+         IL"
+
+
+
+
+     U . '0 I
+
+
+
+
+     0.03
+(1
+     0 02
+Q
+r
+     0 0 IL
+G
+     0.00
+
+
+     -©.01
+
+
+     -0.02
+
+
+
+
+                k^.O a.1 0.2 0.3 D.7 0.5 0.6 0.7 0.B 0,(9 1.D
+
+
+                                                                               X/^NORD
+
+
+
+
+               d) Perturbation 4
+
+
+
+
+                                                                      _o2_
+    n „
+
+
+     -^ n r
+
+
+
+
+    0.01
+
+
+    0.00
+
+x-0.01
+J
+W
+x-0.02
+
+    -0.03
+
+    -0.04
+
+    -0.05
+          0.0 0.1 0.2 0.3 PDA, 0.5 a.6 0,7 0.9 0.9 1.0
+
+                                   x/ CHORD
+
+
+       a) Perturbation 1
+
+
+       Figure 18. - Perturbation in Cp as Computed on Full Domain and
+                    Reduced Domain. Base Transverse Velocity Specified
+                    at Top of Reduced Domain. M - 0.82, (t/c) a 0.1
+
+
+
+
+                            -93-
+
+
+                                                                         33
+    0.02
+
+a
+
+Q
+
+    0.00
+0
+    -®.01
+
+
+    0.0,2
+
+
+    -x.03
+         0.0 0.1 0.2 ©.3 0.4 a.5 D.6 @.7 0.a @.° '.a
+
+                                  7/CHORD
+
+
+       b) Perturbation 2
+
+
+
+
+                           -94-
+     L'.
+
+
+
+
+    0 . L%
+
+    a.^6
+Q 0.04
+J
+0 0.02
+
+    0.00
+
+    -0.02
+
+    -0.04
+
+    0. 06 1         1     1    1      1        1      1   1   1   1   1
+
+
+
+             0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.B 0.9 1.0
+
+                                            nl I
+                                          Xi^^ CORD
+
+
+
+
+           a) Perturbation 3
+
+
+
+
+                               -95-
+                                             i
+
+
+
+
+    L   L^             I     I     ^             ^   j   I
+
+
+
+
+    n ^^
+    u L v
+
+
+    a . 0^
+
+    0.OJ
+
+
+    0.02
+Q
+W 0.01
+0
+    V).uiu
+
+
+    -©.01
+
+
+    -8.02
+
+
+    -a .M
+               ^7
+         0.x.J U. 1   0.2 9.3 0.4 0.5 0.6 0.7 0.9 0.9 1 0
+
+
+                                       7/CHORD
+
+
+
+
+        d) Perturbation 4
+
+
+
+
+                            -96-
+                           p "',GE !S
+               uRiGIN PI -
+                   pOOR QUALITY
+               OF
+
+
+
+
+      a) Neumann Boundary Condition
+
+
+
+
+         0.0                            1.0
+
+
+       b) Dirichlet Boundary Condition
+
+
+Figure 19. - Comparison of Domain Sizes Used
+
+
+
+
+                    _97-
+                  ORIGINAL PACE IS
+                  OF POOR QUALITY
+
+
+
+
+Figure 20. - Reduced Domain Used in Solving Full Potential
+              Ecuat-Jon
+
+
+
+
+                     C-2
+                  -98-
+G:
+
+
+
+
+                 ORIGINAL PAGE       i
+                 OF POOR QUALM(
+
+
+
+
+                                                                 I
+
+
+
+
+                  i              S       yz
+     y/^ ' ^(•0 ^^ ^^      .51
+
+
+
+
+                                              (p4pr4i"I'( Grc)
+
+
+
+      Figure 21. -
+             Airfoil Shape Tested
+
+
+
+
+                        -99-
+ii
+
+
+
+
+                                    ORIGINAL !3 k,.'22 iJ
+                                    OF POOR QUALITY
+                  0.0
+
+
+
+
+                                                    Reduced Domain
+                                                       Method
+
+
+                                                    Regular Method
+
+              -2.0
+
+
+
+     log 10 OBJ
+
+
+
+              -3.0
+
+
+
+
+                                                                 r
+              -4.0
+
+
+
+
+                        0   1   2         3     4       5    6
+                                     Iterations
+
+
+
+             Figure 22. - Iteration History of Objective Function
+                              J T ,-.
+
+
+                        OF F'OUit QUALITY
+
+      APPENDIX. METHOD OF SOLUTION OF THE SMALL DISTURBANCE
+                   TRANSONIC POTENTIAL EQUATION
+
+
+
+       Cor^sider the similarity form of the small disturbance
+transonic potential equation
+
+                       (^J
+                         t+ ^^^) +s1^ Cry) =                           .^ 1
+          ^^                                     Y
+where
+
+           K C ^- r1.0 ) /N o i'l,
+
+and
+
+          y ; g y3 MAy
+
+The pressure coefficient is the y, given by
+
+        cP :      ^x C ^^ ^„^ y )                             ^,^ z )
+
+       If the profile of the airfoil is given by
+
+                y- J, fox )                                  (43)
+then the Neumann boundary condition, transferrer to the axis
+i^
+               ^ y -                                         .4 ;^ )
+
+                         ax
+In the far field the airfoil is treated as a doublet. This
+
+gives for the potential in the far field
+
+ (t(x , ^) = (^'^'') ( xr'(x^^Ky.>>                         (AS)
+where       = doublet stength                    40
+
+                  J'PO d^                - 2. -f f I ^r 7
+
+                                                                              w
+                                        --i0i-
+                                      ORIGINAL PAC- 19
+                                   OF POOR QUALITY
+
+    The numerical method used to solve this              equation
+
+proceeds as follows.         Let p,,` be a central difference
+
+approimation to the x derivatives
+
+
+                l            Q, y L
+
+where
+                    ot ')      .., -
+                              4__
+
+          y                       2 G -X
+
+
+and let qi,y be a central difference approximation to the y
+
+derivatives
+
+
+                            471
+Define the following switching func'ion
+
+
+
+
+Then a fully conservative finite difference scheme to solve
+
+the small disturbance potential equa               is
+
+
+
+
+    Details of this method can be found in references 14,16,
+
+and 17.
+

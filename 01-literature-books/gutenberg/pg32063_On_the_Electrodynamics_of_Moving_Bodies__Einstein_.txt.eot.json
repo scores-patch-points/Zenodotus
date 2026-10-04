@@ -1,0 +1,532 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+  "sha256": "2f3fa4d8b9a4a907be1e665de833e48a019dc8b5e7623324c1a7d441547028c6",
+  "bytes": 347157,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 347157,
+  "bodyOffset": 0,
+  "bodyChars": 347157,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7830,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6109,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 66,
+  "surfaces": 28,
+  "referentEvents": 28,
+  "distinctReferents": 18,
+  "examined": true,
+  "edgesFound": 9,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 4,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 9
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 9,
+  "excerptOk": 9,
+  "rawChecked": 9,
+  "rawOk": 9,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 9,
+  "heard": 9,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "when letters|are|subscripted",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "When letters are subscripted",
+    "subject": "When letters",
+    "verb": "are",
+    "object": "subscripted",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#268-350",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "When letters are subscripted, they are preceded by an underscore, like C_n."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "they|are|preceded by an underscore",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "they are preceded by an underscore",
+    "subject": "they",
+    "verb": "are",
+    "object": "preceded by an underscore",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#268-350",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "When letters are subscripted, they are preceded by an underscore, like C_n."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "letters topped by macron|are represented|as [=x]",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Letters topped by Macron are represented as [=x]",
+    "subject": "Letters topped by Macron",
+    "verb": "are represented",
+    "object": "as [=x]",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#441-494",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "(3) Letters topped by Macron are represented as [=x]."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the following typographical errors|have|been corrected:",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The following typographical errors have been corrected:",
+    "subject": "The following typographical errors",
+    "verb": "have",
+    "object": "been corrected:",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#599-658",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "(5) The following typographical errors have been corrected:"
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "those substances which|are|generally called insulators or non-conductors",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "those substances which are generally called insulators or non-conductors",
+    "subject": "those substances which",
+    "verb": "are",
+    "object": "generally called insulators or non-conductors",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3528-3839",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "The third class includes those substances which are generally called insulators or non-conductors, but which are better denominated dielectric conductors; it comprises such solid substances as mica, ebonite, shellac, india-rubber, gutta-percha, paraffin, and a large number of liquids, chiefly hydrocarbons."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "they|are|spoken of as bad or good insulators",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "they are spoken of as bad or good insulators",
+    "subject": "they",
+    "verb": "are",
+    "object": "spoken of as bad or good insulators",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3840-3998",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "These substances differ greatly in insulating power, and according as the conductivity is more or less marked, they are spoken of as bad or good insulators."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this class of substance becomes possessed of electric conductivity|are|considered in section iii",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "this class of substance becomes possessed of electric conductivity are considered in section III",
+    "subject": "this class of substance becomes possessed of electric conductivity",
+    "verb": "are",
+    "object": "considered in section III",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#4665-4817",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "The conditions under which this class of substance becomes possessed of electric conductivity are considered in section III., on conduction in gases."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|is found|that this metallic contact",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "it is found that this metallic contact",
+    "subject": "it",
+    "verb": "is found",
+    "object": "that this metallic contact",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5268-5590",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "Thus if a steel point, such as a needle, presses very lightly against a metallic plate, say of aluminium, it is found that this metallic contact, if carefully adjusted, is non-conductive, but that if an electric wave is created anywhere in the neighbourhood, this non-conducting contact passes into a conductive state."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "convenient multiples and subdivisions of the ohm|are|the microhm and the megohm",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Convenient multiples and subdivisions of the ohm are the microhm and the megohm",
+    "subject": "Convenient multiples and subdivisions of the ohm",
+    "verb": "are",
+    "object": "the microhm and the megohm",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6646-6808",
+      "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+      "text": "Convenient multiples and subdivisions of the ohm are the microhm and the megohm, the former being a millionth part of an ohm, and the latter a million ohms."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 9,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "convenient multiples and subdivisions of the ohm|are|the microhm and the megohm",
+   "subject": "Convenient multiples and subdivisions of the ohm",
+   "verb": "are",
+   "object": "the microhm and the megohm",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#6646-6808",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "Convenient multiples and subdivisions of the ohm are the microhm and the megohm, the former being a millionth part of an ohm, and the latter a million ohms."
+    }
+   ]
+  },
+  {
+   "id": "it|is found|that this metallic contact",
+   "subject": "it",
+   "verb": "is found",
+   "object": "that this metallic contact",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#5268-5590",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "Thus if a steel point, such as a needle, presses very lightly against a metallic plate, say of aluminium, it is found that this metallic contact, if carefully adjusted, is non-conductive, but that if an electric wave is created anywhere in the neighbourhood, this non-conducting contact passes into a conductive state."
+    }
+   ]
+  },
+  {
+   "id": "letters topped by macron|are represented|as [=x]",
+   "subject": "Letters topped by Macron",
+   "verb": "are represented",
+   "object": "as [=x]",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#441-494",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "(3) Letters topped by Macron are represented as [=x]."
+    }
+   ]
+  },
+  {
+   "id": "the following typographical errors|have|been corrected:",
+   "subject": "The following typographical errors",
+   "verb": "have",
+   "object": "been corrected:",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#599-658",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "(5) The following typographical errors have been corrected:"
+    }
+   ]
+  },
+  {
+   "id": "they|are|preceded by an underscore",
+   "subject": "they",
+   "verb": "are",
+   "object": "preceded by an underscore",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#268-350",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "When letters are subscripted, they are preceded by an underscore, like C_n."
+    }
+   ]
+  },
+  {
+   "id": "they|are|spoken of as bad or good insulators",
+   "subject": "they",
+   "verb": "are",
+   "object": "spoken of as bad or good insulators",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3840-3998",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "These substances differ greatly in insulating power, and according as the conductivity is more or less marked, they are spoken of as bad or good insulators."
+    }
+   ]
+  },
+  {
+   "id": "this class of substance becomes possessed of electric conductivity|are|considered in section iii",
+   "subject": "this class of substance becomes possessed of electric conductivity",
+   "verb": "are",
+   "object": "considered in section III",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#4665-4817",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "The conditions under which this class of substance becomes possessed of electric conductivity are considered in section III., on conduction in gases."
+    }
+   ]
+  },
+  {
+   "id": "those substances which|are|generally called insulators or non-conductors",
+   "subject": "those substances which",
+   "verb": "are",
+   "object": "generally called insulators or non-conductors",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#3528-3839",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "The third class includes those substances which are generally called insulators or non-conductors, but which are better denominated dielectric conductors; it comprises such solid substances as mica, ebonite, shellac, india-rubber, gutta-percha, paraffin, and a large number of liquids, chiefly hydrocarbons."
+    }
+   ]
+  },
+  {
+   "id": "when letters|are|subscripted",
+   "subject": "When letters",
+   "verb": "are",
+   "object": "subscripted",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt#268-350",
+     "ref": "01-literature-books/gutenberg/pg32063_On_the_Electrodynamics_of_Moving_Bodies__Einstein_.txt",
+     "text": "When letters are subscripted, they are preceded by an underscore, like C_n."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:34.609Z"
+ }
+}

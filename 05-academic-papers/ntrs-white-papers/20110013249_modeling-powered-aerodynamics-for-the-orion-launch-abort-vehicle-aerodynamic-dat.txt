@@ -1,0 +1,1786 @@
+---
+title: Modeling Powered Aerodynamics for the Orion Launch Abort Vehicle Aerodynamic Database
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20110013249
+source_url: https://ntrs.nasa.gov/citations/20110013249
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Langley Research Center
+publication_date: 2019-07-12
+retrieved: 2026-09-22
+sha256: a03c92e69c5fbdca74579ad42ca419cd7eef8ea91b09cbaef25f3b184a30ff31
+pages: 31
+words: 11543
+cv_look_pages: 6
+---
+
+Modeling Powered Aerodynamics for the Orion Launch
+  Abort Vehicle Aerodynamic Database (Invited)
+
+                                  David T. Chan∗ and Eric L. Walker†
+                           NASA Langley Research Center, Hampton, VA, 23681
+
+
+                            Philip E. Robinson‡ and Thomas M. Wilson§
+                             NASA Johnson Space Center, Houston, TX, 77058
+
+
+        Modeling the aerodynamics of the Orion Launch Abort Vehicle (LAV) has presented
+     many technical challenges to the developers of the Orion aerodynamic database. During
+     a launch abort event, the aerodynamic environment around the LAV is very complex as
+     multiple solid rocket plumes interact with each other and the vehicle. It is further compli-
+     cated by vehicle separation events such as between the LAV and the launch vehicle stack or
+     between the launch abort tower and the crew module. The aerodynamic database for the
+     LAV was developed mainly from wind tunnel tests involving powered jet simulations of the
+     rocket exhaust plumes, supported by computational ﬂuid dynamic simulations. However,
+     limitations in both methods have made it diﬃcult to properly capture the aerodynamics of
+     the LAV in experimental and numerical simulations. These limitations have also inﬂuenced
+     decisions regarding the modeling and structure of the aerodynamic database for the LAV
+     and led to compromises and creative solutions. Two database modeling approaches are
+     presented in this paper (incremental aerodynamics and total aerodynamics), with exam-
+     ples showing strengths and weaknesses of each approach. In addition, the unique problems
+     presented to the database developers by the large data space required for modeling a launch
+     abort event illustrate the complexities of working with multi-dimensional data.
+
+
+                                              Nomenclature
+Symbols                                                    d                   Distance between balance force
+                                                                               gauges, inches
+CA                LAV axis axial force coeﬃcient           F                   Attitude control motor individual
+Cl                LAV axis rolling moment                                      nozzle force, lbf
+                  coeﬃcient                                Fres                Attitude control motor resultant
+Cm                LAV axis pitching moment                                     force, lbf
+                  coeﬃcient                                k                   Data coverage factor
+CN                LAV axis normal force coeﬃcient          Mexit               Jet exit Mach number
+Cn                LAV axis yawing moment                   MI                  Margin Index
+                  coeﬃcient                                N1                  Balance force gauge 1
+CT                Thrust coeﬃcient                         N2                  Balance force gauge 2
+Cx                LAV axis generic force or moment         NF                  Normal force, lbf
+                  coeﬃcient (CA , CN , Cm , CY , Cn ,      PM                  Pitching moment, in-lbf
+                  or Cl )                                  q∞                  Dynamic pressure, psf
+CY                LAV axis side force coeﬃcient
+  ∗ Research Aerospace Engineer. Conﬁguration Aerodynamics Branch. NASA Langley Research Center. Member AIAA.
+  † Research Aerospace Engineer. Conﬁguration Aerodynamics Branch. NASA Langley Research Center. Lifetime Senior
+
+Member AIAA.
+  ‡ Aerospace Engineer. EG311 Division. NASA Johnson Space Center.
+  § Aerospace Engineer. ERC Inc. NASA Johnson Space Center. Member AIAA.
+
+
+
+
+                                                      1 of 31
+
+                                American Institute of Aeronautics and Astronautics
+Sref             Vehicle reference area, ft2              boost                 Boost (AM+ACM) eﬀect
+SS               Sum of squares                           sep, separation       Separation eﬀect
+Tbal             Thrust balance                           total                 Total eﬀect
+U                Total uncertainty                        unpowered             Unpowered eﬀect
+u                Uncertainty component
+                                                          Units
+α                Angle of attack, deg
+                                                          ◦
+β                Angle of sideslip, deg                    , deg                degrees
+                                                          ◦
+Δ                denotes increment or diﬀerence            F                    degrees Fahrenheit
+ΔX               Axial separation distance                atm                   atmospheres
+                 measured in CM heat shield               ft2                   square feet
+                 diameters                                in-lbf                inch-pound force
+ΔY               Lateral separation distance              lbf                   pounds force
+                 measured in CM heat shield               psf                   pounds per square foot
+                 diameters                                psi                   pounds per square inch
+ΔZ               Normal separation distance               psia                  pounds per square inch absolute
+                 measured in CM heat shield               sec                   seconds
+                 diameters                                Acronyms
+Δα               Relative angle of attack diﬀerence
+                                                          ACM                   Attitude Control Motor
+                 between separating vehicles, deg
+                                                          AM                    Abort Motor
+Δβ               Relative angle of sideslip
+                                                          API                   Application Programming
+                 diﬀerence between separating
+                                                                                Interface
+                 vehicles, deg
+                                                          CAP                   CEV Aerosciences Project
+                Random number between -1 and 1
+                                                          CEV                   Crew Exploration Vehicle
+                 drawn from a uniform distribution
+                                                          CFD                   Computational Fluid Dynamics
+γjet             Ratio of speciﬁc heats for a jet
+                                                          CLV                   Crew Launch Vehicle
+                 plume
+                                                          CM                    Crew Module
+ρ                Correlation parameter
+                                                          DOF                   Degrees of Freedom
+σ                Standard deviation
+                                                          GN&C                  Guidance, Navigation, and
+θ                Attitude control motor individual
+                                                                                Control
+                 nozzle ﬁring azimuth angle, deg
+                                                          ISS                   International Space Station
+θres             Attitude control motor resultant
+                                                          ITAR                  International Traﬃc in Arms
+                 ﬁring azimuth angle, deg
+                                                                                Regulations
+θthrust          Attitude control motor resultant
+                                                          JM                    Jettison Motor
+                 thrust azimuth angle, deg
+                                                          LAS                   Launch Abort System
+Subscripts                                                LAT                   Launch Abort Tower
+()ACM sym        ACM Symmetry                             LAV                   Launch Abort Vehicle
+()Bal            Balance                                  LEO                   Low-Earth Orbit
+()CF D           Computational Fluid Dynamics             MRC                   Moment Reference Center
+()DBM            Database Model                           NASA                  National Aeronautics and Space
+()Interp         Interpolation                                                  Administration
+()Rep            Repeatability                            OML                   Outer Mold Line
+ACM, acm         ACM eﬀect                                SBU                   Sensitive But Unclassiﬁed
+AM               AM eﬀect                                 WT                    Wind Tunnel
+
+
+                                           I.    Introduction
+
+T   he Orion Crew Exploration Vehicle (CEV) was NASA’s planned replacement for the Space Shuttle to
+    carry future astronauts into orbit for missions to low-earth orbit (LEO) and the International Space
+                                                                            1
+Station (ISS) and for missions to the moon, to Mars, and beyond. The CEV is similar in shape to the
+Apollo spacecraft, but signiﬁcantly larger. The CEV was designed to launch atop the Ares I Crew Launch
+Vehicle (CLV), a two-stage booster employing both solid and liquid-fueled rocket motors. For crew safety, the
+CEV utilized a launch abort system (LAS) that is capable of pulling the Crew Module (CM) capsule away
+from the CLV in the event of an emergency on the launch pad or at any point along the ascent trajectory
+until nominal tower jettison. The combination of the LAS mated to the CM is referred to as the Launch
+
+
+                                                     2 of 31
+
+                               American Institute of Aeronautics and Astronautics
+Abort Vehicle (LAV).
+    The LAV, shown in Fig. 1, consists of an ogive-conical fairing that surrounds the CM and connects to
+a cylindrical tower containing three solid rocket motors used during an abort. The abort motor (AM) is
+a high-thrust, high-impulse engine utilizing four exposed, reverse-ﬂow nozzles to quickly pull the CM away
+from the CLV. The attitude control motor (ACM) is used to provide steering and control of the vehicle
+during an abort and consists of a single solid rocket motor connected to eight axisymmetric nozzles arranged
+circumferentially around the tower and perpendicular to the centerline axis of the vehicle. The jettison
+motor (JM) lies approximately in the middle of the tower and is used to pull the launch abort tower (LAT)
+away from the CM in the ﬁnal stages of an abort before the CM begins its free-ﬂight. The JM employs four
+nozzles that are scarfed ﬂush with the surface of the tower.
+    A typical abort sequence is shown in Fig. 2. In the event of an emergency, the AM ﬁres to pull the
+LAV away from the CLV while the ACM ﬁres to provide steering and control. After the AM burns out, the
+vehicle continues to coast, with the ACM providing trim near zero angle of attack. The ACM then turns
+the LAV to a heat-shield-forward orientation, damping out pitch rates prior to tower jettison. Pyrotechnic
+bolts discharge to separate the LAT from the CM, while the JM ﬁres nearly simultaneously to clear the LAT
+from the CM prior to parachute deployment. The entire abort sequence takes approximately 20-30 seconds
+to complete.
+    The Orion aerodynamic database has been developed by the CEV Aerosciences Project (CAP), and
+is regularly updated with improvements to the aerodynamic modeling of the various Orion vehicles (crew
+module, LAV, etc.) through the diﬀerent ﬂight phases. The database covers the aerodynamics of the CM
+for nominal on-orbit and atmospheric re-entry scenarios and covers the aerodynamics of the LAV, LAT,
+and CM for launch abort scenarios, beginning with separation from the launch vehicle to the point when
+the crew module lands safely.2 It incorporates aerodynamic data primarily from wind tunnel (WT) testing
+and computational ﬂuid dynamics (CFD) analyses. The primary function of the database is to provide
+aerodynamic data to the trajectory simulations that are used to develop the guidance, navigation, and control
+(GN&C) systems for the vehicles. The CAP team provides this data through an Application Programming
+Interface3 (API) that is integrated into the trajectory simulation tools. When invoked, the API computes
+and returns the aerodynamic forces and moments at the desired vehicle state.
+    The largest portion of the aerodynamic database is dedicated to the launch abort vehicle. Modeling the
+aerodynamics of the LAV as it travels through the abort trajectory is diﬃcult because of the jet interaction
+eﬀects between the multiple sets of solid rocket motor plumes and because of the two-body proximity eﬀects
+during vehicle separation events. Furthermore, since the database covers all launch aborts from the pad to
+over Mach 7, it includes data over a large range of Mach numbers, vehicle attitudes and separation positions,
+and motor thrust levels. To simplify the problem, the database was developed with the philosophy that each
+major phase of the abort sequence was to be analyzed separately. Experimental and numerical simulations
+were conducted to model the aerodynamics of the LAV in each of the ﬂight phases. However, due to the
+diﬃculties in simulating multiple jet plume and two-body proximity eﬀects in both wind tunnel testing and
+CFD analyses and the need to obtain suﬃcient data to cover the large multi-dimensional data space under
+time and resource constraints, certain compromises were needed in the development and structure of the
+aerodynamic database. This paper will discuss the diﬀerent approaches taken in modeling the aerodynamics
+of the LAV and the challenges in working within a large multi-dimensional data space.
+    The Orion LAV and its aerodynamics have been designated sensitive but unclassiﬁed (SBU) due to export
+control restrictions under the International Traﬃc in Arms Regulations (ITAR). Therefore, to comply with
+SBU rules, some details have been removed from plots and ﬁgures in this paper.
+
+                     II.   Powered Aerodynamics Modeling Approach
+    As the LAV travels through the diﬀerent phases of the abort sequence (Fig. 2), at least one of the
+three sets of solid rocket motors are ﬁring at all times. Simulating the jet plumes in a wind tunnel or a
+computational analysis is diﬃcult and each technique has limitations and shortcomings. Early on in the
+program, it was believed that CFD simulations would provide the bulk of the data for the aerodynamic
+database. However, the LAV presented a major challenge because it is a blunt body vehicle ﬂying in a
+plume-dominated, turbulent ﬂowﬁeld.4, 5 The CFD simulations required more computational and personnel
+resources than originally estimated. Although CFD solvers could provide a solution, the CFD solutions
+had larger than desired uncertainty levels without validation data from a wind tunnel test. The CFD team
+
+
+                                                     3 of 31
+
+                               American Institute of Aeronautics and Astronautics
+spent considerable time developing simulation guidelines for computational analyses of the LAV in order
+to establish a standard process and also gain conﬁdence in the solutions.6, 7 The process required stepping
+through each major component of the powered LAV. This included ﬁrst modeling the unpowered LAV, then
+modeling one stand-alone jet plume, then modeling multiple jet plumes, and ﬁnally modeling multiple jet
+plumes in proximity to the vehicle.
+    On the experimental side, the CAP team also ran into challenges. It was diﬃcult to ﬁnd test facilities
+available with the Mach number, Reynolds number, and auxiliary air capabilities necessary for testing of the
+LAV. Facilities were available to provide the jet plume simulation, but at the cost of lower Reynolds numbers,
+and vice versa. There was also the diﬃculty of simulating the jet plumes. Because cold high-pressure air is
+readily available at wind tunnel facilities, it is commonly used as the simulant gas to model rocket exhaust
+plumes. However, proper scaling is necessary to account for the diﬀerences between the ﬂight plumes and the
+WT-simulated plumes. Many parameters can be used, and each parameter attempts to capture a diﬀerent
+aspect of the plume/ﬂowﬁeld interaction. For most of the wind tunnel tests, it was decided that some
+                                                             2
+combination of nozzle exit Mach number (Mexit or γjet Mexit     ) and thrust coeﬃcient would be the scaling
+             8–10
+parameters.       This allowed the exit pressure ratio and momentum ratio to be matched simultaneously,
+but not the velocity ratio.
+    Furthermore, designing one or more air ﬂowpaths in a scale model is challenging. If a ﬂow-through
+balance is chosen, the ﬂow path design is much simpler, but one of the six balance components would be lost
+(usually axial force) when the air is ﬂowing. If all six balance components are desired, the ﬂowpath design
+must include a mechanism for the ﬂowing air to cross the balance from its non-metric end to its metric end.
+This usually involves high-pressure bellows, which can be diﬃcult to design and fabricate. The bellows need
+to be strong enough to handle the high pressure and momentum of the ﬂowing air, but also ﬂexible enough to
+not overwhelm the balance measurements. Given the model scale and mass ﬂow requirements needed for the
+LAV, this task proved very diﬃcult. The alternative to using an internal strain gauge balance is to instead
+used a gauged sting to measure forces and moments. This is also diﬃcult to design, and the uncertainty in
+the measurements could be larger than for an internal balance.
+    The diﬃculties encountered in both WT testing and CFD simulations inﬂuence the way the aerody-
+namics can be modeled in the database. This section describes two approaches to modeling the powered
+aerodynamics of the LAV for the database: incremental aerodynamics and total aerodynamics. The main
+focus will be on the boost phase portion of the abort sequence, but some material will be presented for the
+coast, re-orientation, and LAT jettison phases. Figure 3(a) shows a visual illustration of the LAV total aero-
+dynamics model for the boost phase of the abort sequence, while Fig. 3(b) gives the contrasting illustration
+of the incremental aerodynamics model.
+    The reference axes and deﬁnitions of various quantities for the LAV are given in Fig. 4. For reference,
+all data in the database is presented on the LAV axis in the LAV aerodynamic coordinate system (Fig.
+4(b)) before being rotated 13.3◦ to the body axis by the API. This axis was chosen to take advantage of
+the symmetry characteristics of the LAV. Also, all aerodynamic coeﬃcients are presented at the moment
+reference center (MRC), unless stated otherwise. The MRC for the LAV is located at the theoretical apex
+of the crew module.
+
+II.A.   Incremental Aerodynamics Model
+One approach to modeling the aerodynamics of the LAV is to use an incremental method where major eﬀects
+are isolated and studied separately, then combined by superposition to produce the ﬁnal result. The major
+pitfall in this superposition approach is the assumption that each of the eﬀects are separate and independent
+of each other. This assumption is often not valid for aerodynamics, but if the correlation and coupling
+between the eﬀects are small, then this approach is at least viable. The advantage to this approach is that
+it simpliﬁes the requirements for experimental and numerical simulations, giving each technique the best
+chance for successful results. The CAP team adopted this incremental approach for early versions of the
+aerodynamic database because of the diﬃculties in experimental and numerical simulations of the LAV.
+
+Boost Phase
+For the boost phase, the eﬀects of the ACM, AM, and vehicle proximity were separated. Figure 3(b) shows
+the progression from an unpowered vehicle to the total powered vehicle as each incremental eﬀect is added.
+The choice of model was by necessity, but the CAP team felt the incremental approach could work because
+
+
+                                                      4 of 31
+
+                                American Institute of Aeronautics and Astronautics
+it was believed that the comparatively small ACM jets would have minimal eﬀect on the vehicle because
+the larger AM jets would dominate the response. The belief was that the ACM eﬀects would be minimal
+downstream of the upper tower while the AM eﬀects would be on the ogive, which, given its larger surface
+area and volume, would be a larger factor to vehicle controllability. The team learned later that the ACM
+and AM eﬀects were more closely coupled because the ACM would change the ﬂowﬁeld upstream of the abort
+motors enough to aﬀect the location of the AM jet plume boundaries and their proximity to the vehicle,
+especially in the transonic regime.11
+    Nonetheless, in the versions of the aerodynamic database that were based on the incremental model, the
+boost phase database equation12 is as follows
+
+                         Cxtotal = Cxunpowered + ΔCxAM + ΔCxACM + ΔCxseparation                           (1)
+
+where Cx refers to the LAV axis aerodynamic coeﬃcients: CA , CN , CY , Cm , Cn , and Cl . There is also a
+dynamic modeling component in this equation that is not shown because it is not pertinent to this discussion.
+Each of the terms was developed using either WT data or CFD results, and sometimes a mix of the two.
+Figure 5 shows a graphical representation of how the increments were calculated from the WT and/or CFD
+data. Since each term came from diﬀerent data sources, each term also had diﬀerent uncertainty levels.
+   For version 0.60 of the database, the AM increment was derived from CFD results designed to characterize
+the eﬀect of AM CT and a small thrust oﬀset angle on the LAV (CFD tasks AR-104,11 AR-111, and AR-
+11813 ). It was calculated by subtracting the integrated forces and moments of the unpowered vehicle from
+the integrated forces and moments of the powered vehicle. The thrust component of the AM was removed
+from the powered results by not integrating the AM exit planes. The ACM increment was also derived
+from CFD results (CFD tasks AR-5014 and AR-5215 ). The increment was also calculated by subtracting
+unpowered vehicle results from powered vehicle results, but it was done only for the section of the vehicle
+ahead of the abort motors (upper tower). This was done because it was assumed the eﬀect of the ACM
+would be most prevalent on the upper tower. Finally, the separation increment was derived from WT results
+(CAP test 60-AA) that were focused on the eﬀect of AM CT and axial separation distance (ΔX) on the
+LAV. The portion of the vehicle from the nose tip to just below the abort motors, including the AM thrust,
+was on the non-metric end of the balance, and hence, during the WT test, forces exerted on that portion
+were not measured. This was a consequence of the model design, but the separation eﬀects were assumed
+to be constrained to the back of the LAV. The eﬀect of the other separation parameters were not examined
+during the test, but were modeled in the database using either limited CFD results, old Apollo data, or
+engineering judgment.
+
+Coast and Re-orientation Phases
+During the coast and re-orientation phases, the abort motor has burned out and the ACM is the only motor
+ﬁring for control of vehicle attitude. Development of the coast phase portion of the database is based on
+two powered ACM wind tunnel tests (CAP tests 75-AA16 and 76-AA17 ), which covered Mach numbers from
+0.3 to 4.6, angles of attack from -14◦ to +14◦ , and angles of sideslip from -10◦ to +10◦ . The model used a
+ﬁve-component ﬂow-through balance that allowed measurement of all components except axial force when
+air was ﬂowing, and allowed all components to be measured when air was not ﬂowing. The static ACM
+thrust was also removed from the ﬁnal balance data measurements.
+    The coast phase database equation12 is shown in Eq. (2), which includes unpowered data and an ACM
+increment.
+                                       Cxtotal = Cxunpowered + ΔCxACM                                    (2)
+The ACM increment was isolated in the wind tunnel data in order to use symmetry to expand the data
+set. Figure 6 illustrates how the ACM increment was calculated from the wind tunnel data. Also, a high
+Reynolds number test of the unpowered LAV (CAP test 83-AA18, 19 ) provided a better set of data from
+Mach 0.3 to 0.95 for the unpowered term in Eq. (2).
+    During the re-orientation phase, the LAV travels through higher angles of attack as it is ﬂipped around
+to a heat shield forward conﬁguration. In the database for this phase, the ACM increment is based solely
+on CFD data (CFD task AR-10820 ) with assumptions on ACM ﬁring directions at some re-orientation
+positions. The unpowered component is also derived from CFD data with some support from WT data
+(CAP test 27-AD21 ) at angles of attack near 180◦ .
+
+
+
+                                                     5 of 31
+
+                               American Institute of Aeronautics and Astronautics
+LAT Jettison Phase
+In the LAT jettison phase, the JM ﬁres to move the LAT away from the crew module so that the CM
+may begin its controlled descent under parachutes. In this separation event, the aerodynamics of the CM is
+crucial to ensure vehicle stability, but the aerodynamics of the LAT is also important to prevent re-contact
+between the LAT and the CM after the separation has begun.
+    Development of the LAT jettison portion of the database is based on three wind tunnel tests (CAP tests
+24-AA,22, 23 25-AA,22, 24 and 61-AA25 ) that simulated the JM jets and the separation eﬀects between the
+CM and LAT. The tests covered Mach numbers from 0.13 to 2.5, angles of attack from 150◦ to 190◦ , and
+angles of sideslip from -10◦ to +10◦ . It also covered various thrust levels of the JM and various longitudinal
+separation conﬁgurations. A balance in the CM model measured CM forces and moments, while a balance
+in the LAT measured both LAT and CM loads. As a consequence of the model design, the portion of the
+LAT from the nose tip to just below the jettison motors including the JM thrust was on the non-metric end
+of the balance, and thus forces on this portion were not measured by the balance.
+    The database buildup equation12 for both the CM and LAT during this phase of ﬂight is
+
+                                     Cxtotal = Cxunpowered + ΔCxseparation                                 (3)
+
+The separation increment includes the eﬀect of the JM jets and the proximity eﬀects between the CM and
+LAT. Similar to the ACM increment, the separation increment was broken out to expand the data set by
+leveraging symmetry assumptions. Figure 7 illustrates how the separation increment was calculated for the
+CM and LAT from the wind tunnel data.
+
+II.B.   Total Aerodynamics Model
+The ultimate goal of the database is to model the complete aerodynamics of the LAV as it travels through
+each phase of the abort sequence. Thus, a total aerodynamic model is the most desirable approach, since
+it would simultaneously capture jet interactions between the rocket plumes and the vehicle and capture
+proximity interactions between separating vehicles. The CAP team had envisioned using this approach from
+the beginning, but realized early on that both experimental and computational simulations were not mature
+enough at the time to accomplish the task. It would take a few years to develop the conﬁdence in using both
+techniques to adequately model the aerodynamics of the LAV.
+
+Boost Phase
+Simulating the boost phase in CFD has provided many challenges because of the interactions between two
+diﬀerent sets of jet plumes. The jet interactions and corresponding eﬀects on the vehicle are non-linear
+with respect to the AM thrust coeﬃcient and highly sensitive to small changes in thrust levels of the AM.
+The problem stems from the varying distance between the AM jet plume boundaries and the vehicle outer
+mold line (OML).11, 13 A very dense set of CFD simulations were needed to uncover this nonlinearity and
+sensitivity. This required a signiﬁcant amount of time and computing resources, despite the simulations not
+even accounting for the ACM to AM plume interaction.
+    On the experimental side, after repeated eﬀorts to build a wind tunnel model capable of simulating the
+AM and ACM jets simultaneously, the CAP wind tunnel testing team successfully completed such a model
+and conducted a wind tunnel test of the boost phase LAV in the summer of 2010. The 6%-scale model (Fig.
+8) used in CAP wind tunnel test 26-AA contained separate high-pressure air ﬂowpaths for the AM and ACM
+nozzles, with each ﬂowpath requiring custom-built bellows to be able to bridge the internal strain-gage force
+balance. The thrust level of the AM and ACM nozzles could be controlled independently during the test.
+The test covered Mach numbers from 0.3 to 2.5, angles of attack from -14◦ to +14◦ , and angles of sideslip
+from -10◦ to +10◦ .
+    Since both the AM and ACM powered eﬀects were modeled simultaneously, this wind tunnel test provided
+the data to update the boost phase portion of the LAV aerodynamic database into a total aerodynamic model.
+Eq. (4) shows the resulting buildup equation12 for database version 0.61.
+
+                                       Cxtotal = Cxboost + ΔCxseparation                                   (4)
+
+The superposition of the separate unpowered, AM, and ACM eﬀects in Eq. (1) have been replaced by a
+single term in Eq. (4). The separation eﬀects between the boosting LAV and the launch vehicle stack were
+
+
+                                                      6 of 31
+
+                                American Institute of Aeronautics and Astronautics
+not updated in this database due to a lack of data. Test 26-AA only acquired a small set of vehicle separation
+data, therefore the separation eﬀects from the previous database were still used.
+   In the development of the new Cxboost term, CFD data were used to provide a WT-to-ﬂight correction to
+the wind tunnel data. This correction was found to be signiﬁcant at some conditions and underscores the
+non-linear nature of the AM plume aerodynamic interaction. The process can be summarized as follows
+                                                                     
+                       Cxboost = W TAM + (ΔCF DAM )W T −to−f light + ΔW TACM                               (5)
+
+                                    ΔW TACM = W TAM +ACM − W TAM                                           (6)
+                       (ΔCF DAM )W T −to−f light = (CF DAM )F light − (CF DAM )W T                         (7)
+where the CFD-derived WT-to-ﬂight correction is applied to the powered AM-only wind tunnel data and
+then the eﬀect of the powered ACM is added. The eﬀect of the powered ACM is obtained by diﬀerencing
+the powered AM-only data from the powered AM+ACM data (Fig. 9).
+    Also, the CFD-derived WT-to-ﬂight correction is computed by diﬀerencing CFD at WT conditions from
+CFD at ﬂight conditions. The correction not only incorporates scaling to ﬂight Reynolds number, but
+includes scaling to ﬂight jet plumes (hot gas vs. cold gas), and accounts for diﬀerences in geometry between
+WT models and the ﬂight vehicle. An important distinction between this model and the incremental model
+presented earlier is that the data increments calculated here come from the same data source.
+    There are several reasons why the chosen model separates the AM and ACM data, even though the
+stated goal of the database was to model the aerodynamics of the LAV with both sets of motors ﬁring
+simultaneously. First, to model the powered AM and ACM together requires ﬁve parameters in addition
+to Mach number and vehicle attitude. Due to time and resource constraints, data were only obtained at a
+small subset of the total data space. However, by separating the AM and ACM data and by making a few
+assumptions regarding vehicle symmetry, and by extension, jet interaction symmetry, the dataset can be
+expanded considerably by reﬂecting existing ACM data appropriately across symmetry planes. This will be
+discussed further in a later section. Second, the CFD-derived WT-to-ﬂight correction was computed with
+the AM ﬁring only. The assumption is that the eﬀect of the ACM on this correction would be minimal and
+the potential error in this assumption would be covered in the uncertainty buildup.
+
+Coast and Re-orientation Phases
+The coast and re-orientation phases were only modeled using an incremental aerodynamics model as discussed
+in an earlier section.
+
+LAT Jettison Phase
+The LAT jettison phase was only modeled using an incremental aerodynamics model as discussed in an
+earlier section.
+
+II.C.   Uncertainty Quantiﬁcation
+Regardless of which modeling approach is taken, the uncertainty in the ﬁnal database values must be quan-
+tiﬁed. Uncertainty quantiﬁcation of the aerodynamic model is dependent on the steps taken in producing
+a data point in the database table. This takes into account the error in the experimental and numerical
+simulations in producing the initial data point and the error associated with the process used to transform
+that initial data point into the ﬁnal database point. The error construction is diﬀerent for each modeling
+approach and multi-dimensional data analysis technique.
+    For example, as mentioned earlier, the data from CAP wind tunnel test 26-AA were used to update the
+boost phase portion of the LAV aerodynamic database. With the database buildup process in mind (Eq.
+(5)), the uncertainty quantiﬁcation equation was constructed as
+                                 √
+                      U Cx =       SS
+                                                    2                 2 
+                       SS = MIW2 T 2kBal   2
+                                                 u Cx            2
+                                                            + kRep    uCx
+                                                                           Rep
+                                                                                                 
+                                                       Bal
+
+                                      2      2
+                                                              2            2
+                                                                                         2
+                                 +MIDBM     kACM   sym
+                                                          u Cx ACM sym
+                                                                        +  k Interp
+                                                                                      u Cx Interp
+                                                                       2 
+                                      2                       2
+                                 +MICF D 2 (1 − ρCF D ) kCF D uCx                                        (8)
+                                                                       CF D
+
+
+
+
+                                                      7 of 31
+
+                                American Institute of Aeronautics and Astronautics
+where uCx quantities are standard deviation estimates of each uncertainty term, k quantities are data coverage
+factors (≥ 1), and MI quantities are margin index factors (≥ 1). The ρCF D quantity is a correlation parameter
+relating the error in CFD at WT conditions to the error in CFD at  ﬂight conditions.
+                                                                                       The uncertainty buildup
+includes the data uncertainty from the wind tunnel test ( uCx            and uCx       ) and any uncertainty or
+                                                              Bal              Rep
+error related to the database modeling steps ( uCx            , uCx          , and uCx        ).
+                                                      ACM sym         Interp             CF D
+    The standard deviation estimates (uCx quantities) are determined either from calibration results or
+more frequently, from range analyses of the data (commonly used in statistical process control26, 27 ). The
+uncertainty coverage factors (k quantities) are determined through inspection of the range analysis results
+and are chosen to cover √ approximately 95% (similar to 2σ for a normal distribution) of the residual data.
+This is frequently set at 3 because most of the data tends to exhibit an uniform distribution as opposed to
+a normal distribution, but the coverage factor can be higher or lower depending on the standard deviation
+estimate and the residual data. The margin index (MI quantities) can be thought of as bump-up factors
+to the estimated data uncertainty to cover known errors or deﬁciencies in the analysis techniques and to
+cover unknown errors or unmodeled eﬀects. There are separate MI quantities for each block of terms related
+to wind tunnel data uncertainty, database modeling process uncertainty, and CFD-derived WT-to-ﬂight
+correction uncertainty. This formulation allowed the CAP team to set each margin index based on the
+strength and knowledge of the uncertainty analyses of each block.
+    Error correlation is also investigated when possible (i.e., when enough data is available). To properly
+propagate errors in database modeling system equations, the correlation of errors between terms in the
+equation must be known. The common mistake is to assume a conservative stance is achieved by claiming
+no correlation between errors (i.e., ρ=0); in fact, the existence of positive or negative correlation of errors
+can increase or decrease the overall uncertainty. For example, the strain gauge balance used in the 26-AA
+wind tunnel test was a force-type balance with two gauges (N1 and N2 ) that are used together to measure
+normal force and pitching moment (Fig. 10). With the balance moment center at the midpoint between the
+two gauges, the balance load transformation equations for normal force and pitching moment for this type
+of balance are shown below
+                                               N F = N1 + N2                                                  (9)
+                                                               
+                                                                 d
+                                            P M = (N1 − N2 )                                                 (10)
+                                                                 2
+where d is the distance between the N1 and N2 gauges.
+   The balance calibration report provided standard deviations of the curve ﬁt error for the N1 and N2
+gauges (σN1 and σN2 ). The errors in the NF and PM measurements can be determined by using the
+load transformation equations (Eqs. 9-10) and the error measures for N1 and N2 . The error propagation
+equations28, 29 for σN F and σP M can be written as
+
+                                        σN F =          2 + σ 2 + (2ρ) σ 2 σ 2
+                                                       σN                                                             (11)
+                                                          1  N2         N1 N2
+
+
+
+                                               2                       2                               
+                                  2
+                                            d          2
+                                                                     d               2
+                                                                                               d    2
+                                                                                                                  d
+                       σP M =    σN                 + σN         −           + (2ρ) σN             σN         −       (12)
+                                    1       2            2           2                 1       2      2           2
+where ρ is the error correlation parameter between σN1 and σN2 . It is clear in Eqs. 11-12 that the existence
+of error correlation (ρ = 0) between σN1 and σN2 can lead to an increase or decrease in σN F and σP M . As it
+turned out, examination of the N1 and N2 residuals from the balance calibration curve ﬁt revealed a strong
+negative correlation (ρ ≈ −1) as shown in Fig. 11.
+    Using this negative correlation parameter in Eq. (11) produced a much lower value for σN F than what
+would have resulted had the uncorrelated assumption remained. This contributed to lowering of the overall
+uncertainty level for normal force. On the ﬂip side, however, using the negative correlation parameter in
+Eq. (12) increased the value for σP M . But, with the nature of the root-sum-square, the increase was not as
+signiﬁcant as the decrease seen in σN F .
+
+II.D.   Data Comparison of Modeling Approaches
+Comparing the boost phase data from two recent versions of the LAV aerodynamic database illustrates the
+diﬀerences between the total aerodynamic model (database version 0.61) and the incremental aerodynamic
+
+
+                                                             8 of 31
+
+                                American Institute of Aeronautics and Astronautics
+model (database version 0.60). Figure 12 shows a comparison of the longitudinal aerodynamic coeﬃcients
+at Mach 1.1 with the abort motor ﬁring at an AM CT of 3, and a max ACM ﬁring in the south direction
+(θres = 180◦ ). This comparison shows large bias and slope diﬀerences in the normal force and pitching
+moment coeﬃcients between the two databases. The pitching moment slope change was in the negative
+direction in this example, which may help with vehicle stability, but there are other conditions where the
+slope change went in the positive direction. Besides the changes in the nominal values, the comparison
+also shows a large diﬀerence in the uncertainty levels for all three coeﬃcients, which has at least as much
+eﬀect on the GN&C simulations as the changes to the nominal values. Figure 13 shows a comparison of the
+directional aerodynamic coeﬃcients at Mach 0.9 with the abort motor ﬁring at an AM CT of 3.5, and a max
+ACM ﬁring in the east direction (θres = 90◦ ). This comparison also shows bias diﬀerences in the side force
+and yawing moment coeﬃcients between the two databases and diﬀerent levels of uncertainty. The size of
+the database is too large to present comparisons at every possible condition or to make generalizations of
+the diﬀerences. The eﬀect of the diﬀerences will be evident in the GN&C simulation failure metrics.
+    In addition to the diﬀerences in the baseline database values, the uncertainty formulation can have a
+large eﬀect on the ﬁnal dispersed answer. In the incremental approach for the boost phase, the equation for
+computing a dispersed aerodynamic coeﬃcient is as follows
+
+                          Cxdispersed   =   Cxunpowered + unpowered UCxunpowered
+                                            +ΔCxAM + AM UCxAM
+                                            +ΔCxACM + ACM UCxACM
+                                            +ΔCxseparation + separation UCxseparation                   (13)
+
+where the  quantities are randomly drawn between -1 and 1 from a uniform distribution and the UCx
+quantities are the total uncertainty values for the aerodynamic coeﬃcients. Each of the terms came from
+diﬀerent data sources (i.e., diﬀerent wind tunnel tests or CFD results) and hence have diﬀerent uncertainty
+levels. One limitation with this approach is that it is very diﬃcult in practice to determine the possible
+correlation between each of these terms. As discussed earlier, without this information, the total uncertainty
+level could be unnecessarily large or could be too small. Another fear is the possibility of accounting for an
+error source multiple times (i.e., double-counting) in this process. A consequence of Eq. (13) is that the
+superposition of multiple uniform distributions results in a trapezoidal distribution. This means that the
+GN&C simulations have less chance of drawing the largest uncertainty level from each term (worst-on-worst).
+This was not obvious to the CAP team at ﬁrst, but this realization changed how the simulation results were
+viewed.
+    For the total aerodynamic model for the boost phase, the equation for computing a dispersed aerodynamic
+coeﬃcient is
+
+                          Cxdispersed   =   Cxboost + boost UCxboost
+                                            +ΔCxseparation + separation UCxseparation                   (14)
+
+The main diﬀerence between Eq. (13) and Eq. (14) is that the six terms related to the unpowered, AM, and
+ACM eﬀects have been replaced by just two terms related to the combined AM and ACM eﬀect. This also
+eliminates the superposition of three uniform distributions.
+    Figure 14 shows a comparison of the histograms for 2,000 random drawings of database uncertainty for
+pitching moment coeﬃcient and axial force coeﬃcient between two recent versions of the database. Database
+version 0.60 had the incremental aerodynamics approach as exempliﬁed in Eq. (13) while database version
+0.61 switched over to the total aerodynamics approach discussed in Eq. (14). The comparison shows the
+diﬀerence between adding up uniform distributions for the separate unpowered, AM, and ACM uncertainties
+in version 0.60 (notice the trapezoidal distribution) and the uniform distribution for the combined AM and
+ACM uncertainty of version 0.61. Also, the magnitude of the maximum uncertainty levels between the two
+databases is diﬀerent. For the total aerodynamics approach in version 0.61, the data came mainly from
+one source (wind tunnel test 26-AA), which simpliﬁed the uncertainty model. For example, the axial force
+measurements from the test were very accurate and repeatable, and the eﬀects of that accuracy can be seen
+in the uncertainty result as compared to version 0.60.
+
+
+
+
+                                                      9 of 31
+
+                                American Institute of Aeronautics and Astronautics
+                       III.    Complexities of Multi-Dimensional Data
+    Modeling the aerodynamics of the LAV requires a large multi-dimensional data space, which introduces
+a set of potential problems. The correct independent parameters must be determined to accurately describe
+the model, however, the data space quickly grows with each added dimension. It is nearly impossible to ﬁll
+in all areas of the data space, especially with the time and resource constraints attached to any experimental
+or numerical simulation. This section describes the problems encountered by the CAP team in working with
+multi-dimensional data and includes examples of solutions adopted by the database developers.
+
+III.A.   Parameterization
+Since the data space can grow rapidly, it is important to determine the best parameters to describe the
+model and avoid adding extraneous parameters. The chosen parameters must be unique, well-deﬁned, and
+easily measurable. Sometimes, when there are many candidate parameters to describe a model, it is possible
+to combine them, resulting in fewer parameters to describe the model.
+    An example of this is with the attitude control motor. Recall that the ACM is a solid rocket motor ﬁred
+through eight variable-thrust, circumferential nozzles (Fig. 15). The nozzles are designated N1 through N8
+with N1 at an azimuth angle of 22.5◦ from the top and the others following at 45◦ increments. Because
+of the circumferential nature of the thrust proﬁles, the ACM has a large number of ﬁring combinations.
+A thrust allocation algorithm is used to deﬁne the individual nozzle thrusts required to obtain a speciﬁed
+overall thrust level and direction. Figure 16 shows some of the ACM thrust allocation proﬁles.
+    The database team was able to describe all of the possible ACM ﬁring combinations with only three pa-
+rameters: resultant ﬁring direction, thrust coeﬃcient, and thrust balance. However, this three-parameter set
+is only valid given the current ACM thrust allocation algorithm and an assumed nominal engine performance
+level. Oﬀ-nominal engine performance is accounted for in increased uncertainty levels.
+    The ﬁrst parameter is the resultant ﬁring direction, which is simply the vector resultant of the individual
+nozzle force vectors. The resultant thrust direction is sometimes used and this is deﬁned as being in the
+opposite direction of the resultant ﬁring direction
+
+                                                θthrust = 180 − θres                                      (15)
+
+    Thrust coeﬃcient is deﬁned as total thrust non-dimensionalized by freestream dynamic pressure and
+vehicle reference area. For the ACM, the thrust from each nozzle is resolved along the resultant thrust
+vector and then summed. In the current thrust allocation algorithm, the thrust components perpendicular
+to the resultant thrust vector cancel out by design. The total thrust coeﬃcient is then deﬁned as
+                                                      8
+                                                           Fi |cos(θi − θres )|
+                                                     i=1
+                                          CTACM =                                                         (16)
+                                                               q∞ Sref
+
+The thrust balance is deﬁned as the ratio of a) thrust only in the direction of the resultant thrust to b) the
+total thrust aligned along the thrust vector (thrust in either direction along the thrust vector)
+                                      8
+                                           Fi cos(θi − θres )
+                                     i=1
+                         TbalACM =                                   for 0 ≤ cos(θi − θres ) ≤ 1          (17)
+                                          q∞ Sref CTACM
+
+The thrust balance parameter is needed because the ACM cannot operate with all of its nozzles closed
+simultaneously due to overpressurization of the motor plenum. Therefore, to produce a zero resultant thrust,
+it must command a directional null thrust proﬁle, where thrust on one side of the tower is counter-balanced
+with thrust on the opposite side. In the ACM thrust allocations, the thrust balance number can be between
+0.5 (null thrust) and 1 (max thrust). Figure 17 shows deﬁnitions of the thrust vector quantities used in Eqs.
+(16) and (17).
+    Vehicle separation is another example that showcases the large number of independent parameters re-
+quired in the database. During the boost phase and LAT jettison phase, two vehicles are separating from
+each other. In addition to the jet thrust parameters for the AM or JM, the position of the vehicles relative
+
+
+                                                          10 of 31
+
+                                American Institute of Aeronautics and Astronautics
+to each other must be known in order to correctly describe the proximity aerodynamics present in these
+scenarios. This includes translational separation distances in 3-dimensions (ΔX, ΔY, ΔZ) and diﬀerences in
+the vehicle rotational angles (Δα, Δβ). Figure 18 shows the separation parameter deﬁnitions for the LAV
+separation from the launch stack and for the CM separation from the LAT. In wind tunnel tests, it is diﬃcult
+to design a model to be able to vary each of these parameters independently. Understandably, only a subset
+of the parameters can be varied, typically the parameters in the longitudinal plane are especially important
+for vehicle control. Figure 19 shows examples of vehicle separation mechanisms in CAP wind tunnel tests
+that were designed to allow independent variation of the longitudinal separation parameters (ΔX, ΔZ, Δα).
+
+III.B.   Response Surface Methods
+The experimental and numerical simulations produce a ﬁnite set of data points within the multi-dimensional
+data space. Time, resource, and various other constraints prevent obtaining data points at every possible
+combination of independent parameters. Careful planning and prioritizing before an experimental or nu-
+merical simulation helps to select the most important data points to obtain. In addition, it is sometimes
+important to pick data points at corners of the data space in order to avoid extrapolation.
+    As a result, multi-dimensional response surface methods have been utilized in the development of the
+Orion aerodynamic database. Figure 20 shows an example of a response surface for the coast phase ACM
+pitching moment coeﬃcient increment. The response surface methods are sometimes used simply to produce
+data at cardinal setpoints from an input set of experimental data. Other times, they are used to ﬁll in areas
+that were not addressed in the simulations by interpolating within the input data set. This comes with an
+additional uncertainty, which can vary depending on the distance the interpolated point is from any input
+data points.
+    One of the response surface tools used in the Orion database development has been the Kriging response
+surface. It belongs to the family of linear least squares estimation algorithms and seeks to perform optimal
+interpolation based on regression against observed values of surrounding data points, weighted according to
+spatial covariance values.30–32 A Matlab toolbox is available that implements the Kriging algorithm33, 34 and
+allows the choice of underlying regressor as well as a choice of correlation models. It was chosen for database
+development because it can handle multiple dimensions of data, it has ﬂexibility in tuning of response surface
+details, and it provides an estimated interpolation error. The technique works well with data that are fairly
+dense and uniformly distributed in all dimensions. When this was not the case, the data needed to be split
+into subsets to avoid the pitfalls of the technique.
+    An example where the data needed to be split into subsets is with the development of the LAT jettison
+portion of the database. Because of the proximity eﬀects between the CM and LAT and the jet interaction
+eﬀects of the JM, this data space would need nine dimensions (Mach, α, β, JM CT , ΔX, ΔY, ΔZ, Δα, Δβ)
+to fully describe it. CAP wind tunnel test 24-AA was not able to investigate the eﬀect of ΔY or Δβ, so
+the resulting database was a seven degrees of freedom (DOF) database. The wind tunnel test could not test
+all possible combinations of ΔX, ΔZ, and Δα, so the response surface was relied upon to produce this data
+(Fig. 21). However, with 7-DOF, the amount of data was overwhelming to the Kriging tool. Therefore, the
+data were split into “zones” by Mach number and angle of attack because those two dimensions were the
+most dense. The other dimensions were held intact. Each zone overlapped with a neighboring zone by at
+least one Mach number and one angle of attack setpoint (Fig. 22). The zones were then treated as separate
+response surfaces and run through the Kriging tool. Finally, each separate zone was patched together to
+produce the ﬁnal response surface (Fig. 23) where the overlapping portions were averaged.
+
+III.C.   Extending Data Across the Data Space
+The data tables in the Orion aerodynamic database are required to be “square”, meaning that there must
+be a data value at every combination of the independent parameter values. This is a consequence of the
+original database design. Inevitably, there are always areas of the data space that have not been covered by
+the experimental or numerical simulations or ﬁlled in by a response surface. In order to ﬁll in these areas,
+additional information is used, such as trending information from neighboring points or vehicle symmetry
+assumptions that can be leveraged.
+    In the LAV aerodynamic coordinate system (Fig. 4(b)), the vehicle is nearly axisymmetric with a few
+OML features, such as the tower raceway and the umbilical cutout in the ogive, that prevent total symmetry.
+However, the eﬀects of those features are small, and the database developers have used symmetry assumptions
+
+
+                                                     11 of 31
+
+                                American Institute of Aeronautics and Astronautics
+to ﬁll in untested areas of the data space with reﬂected data. Doing this does not come without a penalty,
+though. Some extra uncertainty is added for leveraging vehicle symmetry, usually through analysis of wind
+tunnel or CFD data that seeks to test the validity of the assumption.
+    An example where the vehicle symmetry assumption is used in the development of the LAV database is
+with the coast phase ACM jet interaction increments (Eq. (2)). In wind tunnel tests of the coast phase looking
+at ACM jet interaction eﬀects, only a limited set of ACM ﬁring combinations were tested. These were chosen
+carefully with the knowledge that symmetry would be used to ﬁll in data for untested ﬁring combinations.
+This helped to keep the test matrix within resource constraints. Figure 24 summarizes the ACM ﬁring
+directions that were either tested or covered using symmetry. The ﬁring directions tested lay in quadrant
+4 and cover east to south ﬁrings. Figure 25 presents the equations used to reﬂect ACM jet interaction
+increment data from ﬁring directions in quadrant 4 to ﬁring directions in the other three quadrants. It is
+important to note that reﬂecting data as such states that the ACM jet interaction aerodynamic increment
+data is symmetric, and not just the vehicle. When data is reﬂected, special consideration must be made
+regarding conditions at the boundaries of the reﬂection plane. Data inﬂections or asymptotic jumps in the
+data can occur at the boundaries. To prevent this, a set of symmetry “rules” for the ACM jet interaction
+increment data were created and are shown in Fig. 26.
+    Examples showing the application of the symmetry rules are shown in Fig. 27. For a max south ACM
+ﬁring, the yawing moment coeﬃcient needs to be symmetric about β=0◦ . As shown in Fig. 27(a), the
+original WT data is pretty close to being symmetric. The symmetry rule is applied by ﬁnding the average
+magnitude of the yawing moment coeﬃcient between the positive and negative sideslip data, then reﬂecting
+the result to the opposite sign. Similar examples are shown for pitching moment coeﬃcient for a max east
+ACM ﬁring and for side force coeﬃcient for a null south ACM ﬁring.
+    The CM and LAT separation increment data (Eq. (3)) during the LAT jettison phase provides another
+example where the vehicle symmetry assumption is used. In this case, there are a few features that violate
+the assumption. For the LAT, in addition to the small OML details mentioned earlier, the jettison motor
+plumes are also not symmetric because one nozzle has a smaller throat than the other nozzles. For the CM,
+various OML details such as windows and doors prevent complete axis symmetry. In the wind tunnel test,
+an angle of attack range between 150◦ and 190◦ was acquired. Also, only negative Z-separation distances
+(-ΔZ) and positive relative angle of attack diﬀerences (+Δα) were tested. To ﬁll in up to 210◦ angle of
+attack and to ﬁll in for positive Z-separation distances and negative relative angle of attack diﬀerences, the
+separation increment data were reﬂected about the α=180◦ , ΔZ=0, and Δα=0 point (Fig. 28). Figure 29
+shows the reﬂection equations for this scenario.
+    An example showing the reﬂection of separation increment data for the crew module is shown in Fig.
+30. The original pitching moment coeﬃcient data is from a conﬁguration with ΔZ = -0.2 and Δα = +6◦ .
+To get the data for the reﬂected conﬁguration (ΔZ = +0.2 and Δα = -6◦ ), the original pitching moment
+coeﬃcient data is ﬁrst mirrored across α = 180◦ , then the sign is reversed on the result to produce the ﬁnal
+data curve.
+
+                                     IV.     Concluding Remarks
+    The Orion CAP team has overcome many challenges in modeling the aerodynamics of the LAV for the
+aerodynamic database. Wind tunnel and CFD techniques for simulating powered aerodynamics of the LAV
+were not mature enough early in the project, but gained major improvements during the development process
+as the LAV progressed through several design cycles. Two powered aerodynamics modeling approaches
+were presented: one involved an incremental approach where multiple powered jet eﬀects were investigated
+separately and the results were combined by superposition, and the other was a total aerodynamics approach
+where all powered jet eﬀects were investigated simultaneously as a whole. Comparisons between the two
+approaches were made including database comparisons of nominal and uncertainty values for the boost phase
+of the launch abort sequence. Finally, examples were presented detailing the methods used by the database
+developers to tackle the diﬃculties of a large multi-dimensional data space needed for the LAV. These include
+intelligent parametrization of the data space, use of advanced response surface methods, and methods for
+extending data across the data space such as leveraging vehicle symmetry.
+
+
+
+
+                                                     12 of 31
+
+                                American Institute of Aeronautics and Astronautics
+                                                 Acknowledgments
+   The authors would like to acknowledge the hard work and dedication of the Orion CAP team in develop-
+ment of the LAV aerodynamic database. The wind tunnel and CFD groups took major steps in improving
+the state of the art for powered aerodynamic simulations for vehicles such as the LAV and their eﬀorts
+produced quality data for use in the database. The database and uncertainty groups also worked to improve
+modeling and uncertainty quantiﬁcation methods to ensure the highest quality database and ease of use for
+end-users.
+
+                                                      References
+     1 NASA, “http://www.nasa.gov/mission pages/constellation/orion,” .
+     2 Robinson, P. E. and Wilson, T. M., “Orion Aerodynamic Databook, Ver 0.61,” NASA CXP-72167, Mar. 2011.
+     3 A.Thompson, J., “CEV Aerodynamic Database Application Programming Interface User’s Guide,” CEV Aerosciences
+
+Project, Rept. EG-CAP-09-138, NASA Johnson Space Center, Houston, TX, March 2011.
+      4 Rogers, S. E. and Pulliam, T. H., “Computational Challenges in Simulating Powered Flight of the Orion Launch Abort
+
+Vehicle,” 29th AIAA Applied Aerodynamics Conference, Honolulu, HI, 27-30 June 2011 (submitted for publication), American
+Institute of Aeronautics and Astronautics, Reston, VA.
+      5 Shestopalov, A. J., Childs, R. E., and Melton, J. E., “Turbulence Model Assessment for Hot Plumes,” 29th AIAA Applied
+
+Aerodynamics Conference, Honolulu, HI, 27-30 June 2011 (submitted for publication), American Institute of Aeronautics and
+Astronautics, Reston, VA.
+      6 Childs, R. E., Garcia, J. A., Melton, J. E., Rogers, S. E., Shestopalov, A. J., and Vicker, D. J., “Overﬂow Simulation
+
+Guidelines for Orion Launch Abort Vehicle Aerodynamic Analyses,” 29th AIAA Applied Aerodynamics Conference, Honolulu,
+HI, 27-30 June 2011 (submitted for publication), American Institute of Aeronautics and Astronautics, Reston, VA.
+      7 Rogers, S. E., Olsen, M. E., Childs, R. E., Manning, T. A., Garcia, J. A., and Vicker, D. J., “LAV CFD Simulation
+
+Guidelines for the OVERFLOW 2 Navier-Stokes Solver,” CEV Aerosciences Project, Rept. EG-CAP-10-06, NASA Ames
+Research Center, Moﬀett Field, CA, 2010.
+      8 Brauckmann, G. J., Greathouse, J. S., and White, M. E., “Rocket Plume Scaling for Orion Wind Tunnel Testing,” 29th
+
+AIAA Applied Aerodynamics Conference, Honolulu, HI, 27-30 June 2011 (submitted for publication), American Institute of
+Aeronautics and Astronautics, Reston, VA.
+      9 Brauckmann, G. J., “Abort Motor Nozzle Scaling for Test 26-AA,” CEV Aerosciences Project, Rept. EG-CAP-11-04,
+
+NASA Langley Research Center, Hampton, VA, 2011.
+     10 Brauckmann, G. J., “Attitude Control Motor Nozzle Scaling for Test 59-AA,” CEV Aerosciences Project, Rept. EG-
+
+CAP-10-101, NASA Langley Research Center, Hampton, VA, Sept. 2010.
+     11 Vicker, D., “OVERFLOW Analysis of AM Thrust Oﬀset and ACM/AM Interaction Eﬀects,” CEV Aerosciences Project,
+
+Rept. EG-CAP-09-84, NASA Johnson Space Center, Houston, TX, Nov. 2009.
+     12 Robinson, P. E. and A.Thompson, J., “Formulation of the Orion Aerodynamic Database,” CEV Aerosciences Project,
+
+Rept. EG-CEV-06-37, NASA Johnson Space Center, Houston, TX, Mar. 2011.
+     13 Vicker, D., “OVERFLOW Analysis of AM Thrust Oﬀset Eﬀects Part 2 and 3,” CEV Aerosciences Project, Rept. EG-
+
+CAP-10-73, NASA Johnson Space Center, Houston, TX, Jul. 2010.
+     14 Aftosmis, M. J. and McMullin, M., “LAV-068 ACM Assessment using Cart3D,” CEV Aerosciences Project, Rept. EG-
+
+CAP-07-107, NASA Ames Research Center, Moﬀett Field, CA, Aug. 2007.
+     15 Rogers, S., “LAV-068 ACM Assessment using OVERFLOW,” CEV Aerosciences Project, Rept. EG-CAP-07-89, NASA
+
+Johnson Space Center, Houston, TX, Jul. 2007.
+     16 Murphy, K. J., Brauckmann, G. J., Chan, D. T., Walker, E. L., Mayﬁeld, D., and Cross, J., “Final Report for Test
+
+75-AA - Attitude Control Motor Jet Interaction Testing of ALAS-11 Rev. 3c in the Ames Unitary Plan Wind Tunnel,” CEV
+Aerosciences Project, Rept. EG-CAP-10-87, NASA Langley Research Center, Hampton, VA, 2011.
+     17 Paschal, K. B., Murphy, K. J., Chan, D. T., Brauckmann, G. J., Fuchs, A., Mayﬁeld, D., and Cross, J., “Attitude Control
+
+Motor Jet-Interaction Testing of the ALAS-11-Rev3c LAV in the Langley Unitary Plan Wind Tunnel,” CEV Aerosciences
+Project, Rept. EG-CAP-10-90, NASA Langley Research Center, Hampton, VA, 2011.
+     18 Chan, D. T. and Brauckmann, G. J., “Flight Reynolds Number Testing of the Orion Launch Abort Vehicle in the NASA
+
+Langley National Transonic Facility (Invited),” 29th AIAA Applied Aerodynamics Conference, Honolulu, HI, 27-30 June 2011
+(submitted for publication), American Institute of Aeronautics and Astronautics, Reston, VA.
+     19 Chan, D. T., Brauckmann, G. J., and Walker, E. L., “Final Report for Test 83-AA - High Reynolds Number Test of
+
+the Unpowered Launch Abort Vehicle in the NASA LaRC National Transonic Facility,” CEV Aerosciences Project, Rept.
+EG-CAP-09-54, NASA Langley Research Center, Hampton, VA, May 2009.
+     20 Schwing, A., “OVERFLOW Analysis of High Alpha ACM Analysis,” CEV Aerosciences Project, Rept. EG-CAP-10-46,
+
+NASA Johnson Space Center, Houston, TX, Nov. 2009.
+     21 Owens, B., “27-AD Subsonic-Transonic Launch Abort Vehicle Dynamic Stability Test in the NASA LaRC Transonic
+
+Dynamics Tunnel,” CEV Aerosciences Project, Rept. EG-CAP-08-79, NASA Langley Research Center, Hampton, VA, 2008.
+     22 Rhode, M. N., Chan, D. T., Niskey, C. J., and Wilson, T. M., “Aerodynamic Testing of the Orion Launch Abort Tower
+
+Separation with Jettison Motor Jet Interactions,” 29th AIAA Applied Aerodynamics Conference, Honolulu, HI, 27-30 June
+2011 (submitted for publication), American Institute of Aeronautics and Astronautics, Reston, VA.
+     23 Rhode, M. N., “CAP Wind Tunnel Test 24-AA Final Report,” CEV Aerosciences Project, Rept. EG-CAP-10-89, NASA
+
+Langley Research Center, Hampton, VA, 2011.
+
+
+
+                                                           13 of 31
+
+                                    American Institute of Aeronautics and Astronautics
+     24 Niskey, C. J., “CAP Wind Tunnel Test 25-AA Final Report,” CEV Aerosciences Project, Rept. EG-CAP-10-88, NASA
+
+Langley Research Center, Hampton, VA, 2011.
+     25 Wilson, T. M., “61-AA LAS Jettison Motor and Proximity Wind Tunnel Test for PA-1 and ALAS 11 Rev3c at the
+
+Langley 14x22 Facility,” CEV Aerosciences Project, Rept. EG-CAP-09-05, NASA Johnson Space Center, Houston, TX, Mar.
+2009.
+     26 Wheeler, D. and Chambers, D., Understanding Statistical Process Control, SPC Press, Knoxville, 2nd ed., 1992.
+     27 Wheeler, D., Advanced Topics in Statistical Process Control, SPC Press, Knoxville, 1995.
+     28 “U.S. Guide to the Expression of Uncertainty in Measurement,” Tech. Rep. ANSI/NCSL Z540-2-1997, October 1997.
+     29 Bevington, P. R. and Robinson, D. K., Data Reduction and Error Analysis for the Physical Sciences, McGraw-Hill, 3rd
+
+ed., 2002.
+     30 Chiles, J.-P. and Delﬁner, P., Geostatistics, Modeling Spatial Uncertainty, Probability and Statistics, Wiley, 1999.
+     31 Cressie, N., Statistics for spatial data, Wiley, New York, 1993.
+     32 Sacks, J., Welch, W. J., Mitchell, T. J., and Wynn, H. P., “Design and Analysis of Computer Experiments,” Statistical
+
+Science, Vol. 4, No. 4, 1989, pp. 409–435.
+     33 Lophaven, S. N., Nielsen, H. B., and Sondergaard, J., “DACE - A Matlab Kriging Toolbox,” Informatics and Mathematical
+
+Modeling, Rept. IMM-TR-2002-12, Technical University of Denmark, Aug. 2002.
+     34 Lophaven, S. N., Nielsen, H. B., and Sondergaard, J., “Aspects of the Matlab Toolbox DACE,” Informatics and Mathe-
+
+matical Modeling, Rept. IMM-REP-2002-13, Technical University of Denmark, 2002.
+
+
+
+
+                                                          14 of 31
+
+                                    American Institute of Aeronautics and Astronautics
+                                                                         Attitude Control Motor
+                                                                                 (ACM)
+                                                                                8 nozzles
+
+                                                                             Jettison Motor
+                                                                                   (JM)
+                                                                               4 nozzles
+
+
+                                                                               Abort Motor
+                                                                                  (AM)
+                                                                                4 nozzles
+
+
+
+
+                                                                                   ALAS ogive-
+                                                                                  conical fairing
+
+
+
+
+                                                                                  Crew Module
+                                                                                     (CM)
+
+                                                  Figure 1. Orion Launch Abort Vehicle.
+
+
+
+
+                                                                           %&# $ %!
+                                            %#$ %)" %$!#'#
+                                         &#  !$%"$                                    "$%&# #!& 
+                                                                                                 #%$!#%!'#%%$! 
+               ! %#!$ '
+              ! % &$%!"& 
+             '(#! 
+                                                                                                                  # %!'#
+                                                                                !# %%!                       $"#%
+                                                          !$%
+ !#% %!  
+$"#%! #!
+ 
+                                 !!$%
+                                                                                            %%$! 
+
+                                                                                                                                  "#&%
+                                                                                                                                 "!(
+
+                                                                                                      # %
+                                                       $! %#
+
+
+                                                 Figure 2. Phases of LAV abort sequence.
+
+
+
+
+                                                                     15 of 31
+
+                                            American Institute of Aeronautics and Astronautics
+                                  (a) Total Aero Model
+
+
+
+
+    Unpowered
+
+
+
+         +
+       Abort
+       Motor
+
+
+         +
+      Attitude
+      Control
+       Motor
+
+
+         +
+    Separation
+
+
+
+                                (b) Increment Aero Model
+Figure 3. Comparison between LAV boost phase aerodynamic database modeling approaches.
+
+
+
+
+                                         16 of 31
+
+                    American Institute of Aeronautics and Astronautics
+                                        (a) Axes system deﬁnitions and sign conventions
+
+                                               +ZLAV
+                                    +Zbody
+                                                0°
+
+
+                                       13.3°
+
+
+
+
+ +YLAV
+  90°
+
++Ybody                                                                -Ybody
+
+                                                                   -YLAV
+                                                                   270°
+
+                                                                                                  MRC
+
+
+         View looking aft
+
+                            -ZLAV   -Zbody
+                            180°
+
+                  (b) LAV aerodynamic coordinate system                        (c) Moment Reference Center (MRC) location
+                                         Figure 4. LAV axes system and deﬁnitions.
+
+
+
+
+                                                           17 of 31
+
+                                      American Institute of Aeronautics and Astronautics
+     Abort
+     Motor         =
+                                                                    _
+
+    Attitude
+    Control        =
+                                                                    _
+     Motor
+
+
+
+
+  Separation      =
+                                                                    _
+    Figure 5. Illustration showing how the increment data in Eq. (1) were derived from WT and/or CFD data.
+
+
+
+
+  Attitude
+              =
+                                                                _
+  Control
+   Motor
+Figure 6. Illustration showing how the ACM increment data (Eq. (2)) was derived in CAP Tests 75-AA and 76-AA.
+
+
+
+
+     CM
+  Separation       =
+                                                                            _
+
+     LAT
+  Separation       =
+                                                                            _
+Figure 7. Illustration showing how the separation increment data (Eq. (3)) was derived in CAP Tests 24-AA, 25-AA,
+and 61-AA.
+
+
+
+
+                                                     18 of 31
+
+                                American Institute of Aeronautics and Astronautics
+                          (a) Photo of model in NASA Ames Unitary Wind Tunnel
+
+
+                    Balance
+
+
+
+
+                     AM bellows
+
+
+
+
+                                                              ACM bellows
+
+                                      (b) AM and ACM ﬂowpath bellows
+
+                Figure 8. 6%-scale wind tunnel model of the LAV used in CAP Test 26-AA.
+
+
+
+
+WTACM
+          =
+                                                               _
+   Figure 9. Illustration showing how the ACM increment data (Eq. (6)) was derived in CAP Test 26-AA.
+
+
+
+
+                                                   19 of 31
+
+                              American Institute of Aeronautics and Astronautics
+                                                                       +NF
+
+
+                                                  N1                                             N2
+
+
+                                    x
+                                                 Forward                                         Aft
+                                                  Gage                 +PM                      Gage
+
+                                                                          d
+
+              Figure 10. Example free-body force diagram for a force-type strain gauge balance.
+
+
+
+
+                                                                   MC40AirBal Balance
+                                            6
+
+
+
+
+                                            4
+                                                                                             ρ = −0.97
+               Standardized N2 Residuals
+
+
+
+
+                                            2
+
+
+
+
+                                            0
+
+
+
+
+                                           −2
+
+
+
+
+                                           −4
+
+
+
+
+                                           −6
+                                            −6    −4          −2              0          2               4   6
+                                                                Standardized N1 Residuals
+
+Figure 11. Strong negative correlation seen between N1 and N2 residuals from the balance calibration curve ﬁt.
+
+
+
+
+                                                                      20 of 31
+
+                                                 American Institute of Aeronautics and Astronautics
+       Mach     β    AM C    ACM T        ACM θ         ACM C                                  Mach        β         AM C      ACM T      ACM θ       ACM C
+                         T        bal           res           T                                                          T          bal         res         T
+       1.1      0      3        1           180          0.06818                               1.1         0           3          1         180        0.06818
+
+
+
+
+C                                                                                 C
+ N                                                                                    m
+
+
+
+
+                                                        V0.60 Max Uncert
+                                                        V0.61 Max Uncert
+                                                        V0.60 Undispersed
+                                                        V0.61 Undispersed
+
+
+                                                                                                                                                      V0.60 Max Uncert
+                                                                                                                                                      V0.61 Max Uncert
+                                                                                                                                                      V0.60 Undispersed
+                                                                                                                                                      V0.61 Undispersed
+
+ −15      −10       −5         0              5             10               15       −15           −10             −5             0          5           10              15
+                             α, deg                                                                                            α, deg
+
+                    (a) CN comparison                                                                               (b) Cm comparison
+
+                                             Mach       β          AM C       ACM T         ACM θ         ACM C
+                                                                       T           bal            res           T
+                                             1.1        0            3           1            180          0.06818
+
+
+
+
+                                C
+                                   A
+
+
+
+
+                                                                                                          V0.60 Max Uncert
+                                                                                                          V0.61 Max Uncert
+                                                                                                          V0.60 Undispersed
+                                                                                                          V0.61 Undispersed
+
+                                   −15            −10            −5               0             5              10             15
+                                                                              α, deg
+
+                                                                 (c) CA comparison
+
+Figure 12. Comparison of longitudinal aerodynamic coeﬃcients between database version 0.60 (increment aero) and
+version 0.61 (total aero).
+
+
+
+
+                                                                            21 of 31
+
+                                         American Institute of Aeronautics and Astronautics
+                                Mach       β    AM C       ACM T       ACM θ      ACM C                                                      Mach       β      AM C            ACM T       ACM θ          ACM C
+                                                    T           bal         res         T                                                                          T                bal         res             T
+                                0.9        0      3.5         1          90        0.07955                                                   0.9        0        3.5              1          90            0.07955
+
+                                                                                                                                                                            V0.60 Max Uncert
+                                                                                                                                                                            V0.61 Max Uncert
+                                                                                                                                                                            V0.60 Undispersed
+                                                                                                                                                                            V0.61 Undispersed
+
+
+
+
+C                                                                                                            C
+           Y                                                                                                             n
+
+
+
+
+                                                                                  V0.60 Max Uncert
+                                                                                  V0.61 Max Uncert
+                                                                                  V0.60 Undispersed
+                                                                                  V0.61 Undispersed
+
+         −15                       −10         −5            0             5          10                15           −15                        −10           −5                 0              5            10               15
+                                                           α, deg                                                                                                              α, deg
+
+                                                (a) CY comparison                                                                                              (b) Cn comparison
+
+Figure 13. Comparison of lateral aerodynamic coeﬃcients between database version 0.60 (increment aero) and version
+0.61 (total aero).
+
+
+
+
+                        90                                                                                                           300
+                                                                                            V0.60                                                                                                                 V0.60
+                                                                                            V0.61                                                                                                                 V0.61
+                        80                                                                  Max V0.60                                                                                                             Max V0.60
+                                                                                            Max V0.61                                                                                                             Max V0.61
+                                                                                                                                     250
+                        70
+Number of Occurrences
+
+
+
+
+                                                                                                             Number of Occurrences
+
+
+
+
+                        60                                                                                                           200
+
+
+                        50
+                                                                                                                                     150
+                        40
+
+
+                        30                                                                                                           100
+
+
+                        20
+                                                                                                                                      50
+                        10
+
+
+                         0                                                                                                             0
+                        −0.06      −0.04       −0.02          0          0.02        0.04             0.06                            −0.5   −0.4     −0.3   −0.2       −0.1         0    0.1       0.2    0.3       0.4   0.5
+                                                    UC (Unpow+AM+ACM)                                                                                               U       (Unpow+AM+ACM)
+                                                                                                                                                                    C
+                                                       m                                                                                                                A
+
+
+                                               (a) Cm Uncertainty                                                                                             (b) CA Uncertainty
+Figure 14. Comparison of histograms for 2,000 random draws of LAV aerodynamic uncertainty between database
+version 0.60 (increment aero) and version 0.61 (total aero).
+
+
+
+
+                                                                                                      22 of 31
+
+                                                                      American Institute of Aeronautics and Astronautics
+(a) Test ﬁring of the ACM                                            (b) Sketch of ACM nozzle locations, pilot’s view
+                               Figure 15. Overview of attitude control motor.
+
+
+
+
+                                          Resultant Firing Direction
+                            90°         112.5°      135°        157.5°                  180°
+                             E           ESE         SE          SSE                     S
+
+                     Max
+    Thrust Balance
+
+
+
+
+                     Null
+
+
+
+                             Figure 16. Example ACM thrust allocation proﬁles.
+
+
+
+                                                  ZLAV
+
+
+                                                                         Fres
+                                                         res
+                                                    i
+                                                                        Fi
+
+                                                                             YLAV
+
+
+
+
+                                  Figure 17. ACM thrust vector deﬁnitions.
+
+
+
+
+                                                   23 of 31
+
+                              American Institute of Aeronautics and Astronautics
+          (a) LAV separation from launch vehicle or service module
+
+
+
+
+                       (b) CM separation from LAT
+Figure 18. Separation parameter deﬁnitions in LAV aerodynamic database.
+
+
+
+
+                                  24 of 31
+
+            American Institute of Aeronautics and Astronautics
+ (a) LAV separation from launch vehicle or service module in wind tunnel test 26-AA
+
+
+
+
+              (b) CM separation from LAT in wind tunnel test 24-AA
+Figure 19. Examples of vehicle separation mechanisms in CAP wind tunnel tests.
+
+
+
+
+                                      25 of 31
+
+                American Institute of Aeronautics and Astronautics
+                                                             Response Surface
+                                                             Wind Tunnel Data
+
+
+
+
+           ΔC
+                m, ACM
+
+
+
+
+                   2.5
+                            2                                                                                     0.5
+                                 1.5                                                                        0.4
+                                         1                                                        0.3
+                                                                                       0.2
+                                                0.5                        0.1
+                                                            00
+                         Mach number                                                     ACM CT
+
+Figure 20. Example response surface ﬁt of wind tunnel data for the ACM pitching moment coeﬃcient increment.
+
+
+
+
+                                                                                 Tested in WT
+                                                                                 Interp/Extrap from Response Surface
+
+
+
+
+                 −0.2
+
+                −0.18
+
+                −0.16
+
+                −0.14
+
+                −0.12
+           ΔZ
+                 −0.1
+
+                −0.08
+
+                −0.06
+
+                −0.04
+
+                −0.02                                                                                   6
+                   0                                                                         4
+                   0
+                         −0.2                                                      2
+                                 −0.4
+                                         −0.6
+                                                     −0.8              0
+                                                                 −1
+                                                                                        Δα, deg
+                                                ΔX
+
+                    Figure 21. Portions of LAT jettison data space ﬁlled in by response surface.
+
+
+
+
+                                                            26 of 31
+
+                                 American Institute of Aeronautics and Astronautics
+                           1.4
+
+                           1.3
+
+                           1.2
+
+                           1.1
+
+                            1
+             Mach number
+
+
+
+
+                           0.9
+
+                           0.8
+
+                           0.7
+
+                           0.6
+
+                           0.5
+
+                           0.4
+
+                           0.3
+
+                           0.2
+                             145       150      155     160       165         170         175         180     185     190     195    200       205
+                                                                                     α, deg
+
+                                            Figure 22. Data space split into overlapping zones of patches.
+
+
+
+
+                                                                                                                                     Zone 41
+                                                                                                                                     Zone 42
+                                                                                                                                     Zone 43
+                                                                                                                                     Zone 44
+                                                                                                                                     Zone 45
+                                                                                                                                     Zone 46
+
+
+             ΔC
+                       m, sep
+
+
+
+
+                           164
+
+
+                                 163
+
+
+                                        162
+
+
+                                               161                                                                                         1
+                                                                                                                                    0.9
+                                                                                                                            0.8
+                                                                                                                    0.7
+                                                                                                            0.6
+                                   α, deg                                                       0.5
+                                                      160                           0.4
+                                                                        0.3
+                                                            0.2
+                                                                                                Mach number
+Figure 23. Example showing overlapping response surfaces of wind tunnel data for the CM pitching moment coeﬃcient
+separation increment.
+
+
+
+
+                                                                                27 of 31
+
+                                                  American Institute of Aeronautics and Astronautics
+                                                                  N
+                                                  NNW             0º           NNE
+                                                  337.5º                       22.5º
+                                      NW                                                    NE
+                                      315º                                                  45º
+
+
+                           WNW                                                                      ENE
+                           292.5º                                                                   67.5º
+
+                                                                 res
+                            W                                                                            E
+                           270º                           Resultant Firing                              90º
+                                                             Direction
+
+                           WSW                                                                      ESE
+                           247.5º                                                                  112.5º
+
+
+                     Tested in        SW                                                     SE
+                     Tunnel           225º                                                  135º
+                     Covered with
+                     Symmetry                     SSW                           SSE
+                     Assumptions                  202.5º          S            157.5º
+                                                                 180º
+  Figure 24. Summary of ACM ﬁring directions tested during coast phase ACM jet interaction wind tunnel tests.
+
+
+
+
+                                                 CA, acm’ = CA, acm (Mach, ’, ’, CT, TBal, ’res)
+                    360 / 0
+                                                 CN, acm’ = KLONG * CN, acm (Mach, ’, ’, CT, TBal, ’res)
+                Q2         Q1
+                                                 Cm, acm’ = KLONG * Cm, acm (Mach, ’, ’, CT, TBal, ’res)
+        270                         90
+                 Q3        Q4                    CY, acm’ = KLAT * CY, acm (Mach, ’, ’, CT, TBal, ’res)
+
+                                                 Cn, acm’ = KLAT * Cn, acm (Mach, ’, ’, CT, TBal, ’res)
+                     180
+                                                 Cl, acm’ = KLAT * KLONG * Cl, acm (Mach, ’, ’, CT, TBal, ’res)
+
+
+           Quadrant 4                     Quadrant 1                    Quadrant 2               Quadrant 3
+         90  ’res  180                0  ’res < 90               270 < ’res < 360        180 < ’res  270
+
+     ’ =                          ’ = -                     ’ = -                      ’ = 
+     ’ =                          ’ =                       ’ = -                      ’ = -
+     ’res = res                   ’res = 180-res            ’res = 180+res             ’res = 360-res
+     KLONG = 1                      KLONG = -1                  KLONG = -1                   KLONG = 1
+     KLAT = 1                       KLAT = 1                    KLAT = -1                    KLAT = -1
+Figure 25. Data reﬂection rules for mirroring ACM jet interaction increment data for ACM ﬁring directions in quadrant
+4 to ﬁring directions in the other quadrants.
+
+
+
+
+                                                           28 of 31
+
+                                     American Institute of Aeronautics and Astronautics
+Max res=180, =0, all  :                Max res=90, =0, all  :                   All Null res, =0, =0 :
+      CY,acm = 0                              CN,acm = 0                                  CN,acm = 0
+       Cn,acm = 0                             Cm,acm = 0                                  Cm,acm = 0
+       Cl,acm = 0                              Cl,acm = 0                                 CY,acm = 0
+                                                                                            Cn,acm = 0
+                                                                                            Cl,acm = 0
+
+
+Max res=180, 0, all  :                Max res=90, 0, all  :                   All Null res, 0, 0 :
+
+CA,acm(+) = CA,acm(-)                CA,acm(+) = CA,acm(-)                CA,acm(+,+) = CA,acm(-,-)
+CN,acm(+) = CN,acm(-)                CY,acm(+) = CY,acm(-)                 Cl,acm(+,+) = Cl,acm(-,-)
+Cm,acm(+) = Cm,acm(-)                 Cn,acm(+) = Cn,acm(-)               CN,acm(+,+) = -CN,acm(-,-)
+CY,acm(+) = -CY,acm(-)               CN,acm(+) = -CN,acm(-)               Cm,acm(+,+) = -Cm,acm(-,-)
+Cn,acm(+) = -Cn,acm(-)               Cm,acm(+) = -Cm,acm(-)               CY,acm(+,+) = -CY,acm(-,-)
+Cl,acm(+) = -Cl,acm(-)                Cl,acm(+) = -Cl,acm(-)              Cn,acm(+,+) = -Cn,acm(-,-)
+
+                                                                                     Similar for -,+ to +,-
+
+   (a) Max south ﬁre                         (b) Max east ﬁre                              (c) Null ﬁre
+Figure 26. ACM jet interaction data symmetry rules to prevent data inﬂections when mirroring data.
+
+
+
+
+                                                   29 of 31
+
+                             American Institute of Aeronautics and Astronautics
+                                                                                                                                                                                                    β = 0° Original
+               β = −10° Original                                                                                                                                                                    β = 0° After Applying Symmetry Rule
+               β = −10° After Applying Symmetry Rule
+               β = +10° Original
+               β = +10° After Applying Symmetry Rule
+
+
+
+
+ΔCn, ACM                                                                                                              ΔCm, ACM
+           0                                                                                                                      0
+                                                                      Symmetric about β = 0°
+
+
+
+
+                                                                                                                                                                      Anti−symmetric about α = 0°
+
+
+
+
+       −20     −15           −10          −5                0           5            10          15             20               −20          −15        −10          −5           0           5           10            15               20
+                                                       α, deg                                                                                                                   α, deg
+
+                   (a) Cn example for max south ﬁre                                                                                             (b) Cm example for max east ﬁre
+
+                                                                                                      β = −10° Original
+                                                                                                      β = −10° After Applying Symmetry Rule
+                                                                                                      β = +10° Original
+                                                                                                      β = +10° After Applying Symmetry Rule
+
+
+
+
+                                                       ΔCY, ACM
+                                                                                                      Symmetric about α = 0° and β = 0°
+                                                                  0
+
+
+
+
+                                                                −20            −15         −10             −5            0             5            10         15          20
+                                                                                                                      α, deg
+
+                                                                                  (c) CY example for null south ﬁre
+                        Figure 27. Examples showing application of ACM jet interaction data symmetry rules.
+
+
+                                                        8
+                                                                                                                                                           WT Data
+                                                                                                                                                           Filled by Symmetry
+                                                        6
+
+
+                                                        4
+
+
+                                                        2
+
+
+                                       Δα, deg
+                                                        0
+
+
+                                                                                     Symmetric about
+                                                       −2
+                                                                                     Δα = 0°, ΔZ = 0,
+                                                                                     and α = 180°
+
+                                                       −4
+
+
+                                                       −6
+
+
+                                                       −8
+                                                       −0.3                 −0.2                 −0.1                        0                0.1                   0.2                0.3
+                                                                                                                          ΔZ
+
+   Figure 28. Example of methods used to ﬁll in areas of CM/LAT jettison database not tested in the wind tunnel.
+
+
+
+
+                                                                                                            30 of 31
+
+                                                                American Institute of Aeronautics and Astronautics
+                                                                        =210°
+Flow                                                                    +Z
+                                                                        -
+
+                                                                                        Mirrored Data
+
+                                                                        =180°                             Reflection Equations
+Flow                                                                    +Z
+                                                                        -                                ’ = -
+                                                                                                           ’ = 
+                                                                                                           Z’ = -Z
+                                                                                                           ’ = -
+                                                                        =180°
+Flow                                                                    Z=0            Reflection point
+                                                                        =0                               C’A, sep = CA, sep
+                                                                                                           C’N, sep = -CN, sep
+                                                                                                           C’m, sep = -Cm, sep
+                                                                                                           C’Y, sep = CY, sep
+                                                                        =180°                             C’n, sep = Cn, sep
+Flow                                                                    -Z                                C’l, sep = -Cl, sep
+                                                                        +
+
+                                                                                        Wind tunnel data
+
+                                                                        =150°
+Flow                                                                    -Z
+                                                                        +
+
+
+
+       Figure 29. Illustration showing method for mirroring of CM and LAT separation increment data.
+
+
+
+                                                               Original Data
+                                                               Mirrored Data across α = 180°
+                                                               Final Result (anti−symmetry for Cm)
+
+
+
+                                                                                 ΔZ = −0.2
+                                                                                 Δα = +6°
+                   Crew Module
+                           m, sep
+
+
+
+
+                                    0
+                      ΔC
+
+
+
+
+                                                                   ΔZ = +0.2
+                                                                   Δα = −6°
+
+
+
+                                    150       160        170               180               190     200    210
+                                                                         α, deg
+
+                  Figure 30. Example showing mirroring of CM separation increment data.
+
+
+
+
+                                                                   31 of 31
+
+                                          American Institute of Aeronautics and Astronautics
+

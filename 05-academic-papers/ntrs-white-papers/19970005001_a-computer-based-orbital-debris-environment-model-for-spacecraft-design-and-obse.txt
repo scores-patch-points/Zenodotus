@@ -1,0 +1,2556 @@
+---
+title: A Computer-Based Orbital Debris Environment Model for Spacecraft Design and Observation in Low Earth Orbit
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19970005001
+source_url: https://ntrs.nasa.gov/citations/19970005001
+rights: Public-use permitted (NTRS copyright determination PUBLIC_USE_PERMITTED); no third-party material
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Johnson Space Center
+publication_date: 2025-04-15
+retrieved: 2026-09-22
+sha256: 6dfc8b99d8d8c7a64afc12eeb13554d0a85492afb90e0c162173bb839f1bb39e
+pages: 57
+words: 5079
+cv_look_pages: 6
+---
+
+Technical Memorandum 104825
+
+
+
+
+A Computer-Based Orbital Debris
+Environment Model for Spacecraft Design
+and Observation in Low Earth Orbit
+D.J. Kessler, J. Zhang, M.J. Matney, P. Eichler, R.C. Reynolds,
+P.D. Anz-Meador, and E.G. Stansbery
+
+                                      International Space Station
+                                    Pruh~tbilitf of No hnpaci from ;:': 1nn t-:> tkhrls
+
+
+
+
+November 1996
+Technical Memorandum 104825
+
+
+
+
+A Computer Based Orbital Debris Environment Model for
+Spacecraft Design and Observation in Low Earth Orbit
+D.J. Kessler, and E.G. Stansbery
+NASA Johnson Space Center
+
+J. Zhang, M.J. Matney, P. Eichler, and R.C. Reynolds
+Lockheed Martin Engineering and Sciences Services
+
+P.D. Anz-Meador
+Viking Science and Technology, Inc.
+
+
+
+
+November 1996
+ This publication is available from the NASA Center for Aerospace Information,
+800 Elkridge Landing Road, Linthicum Heights, MD 21090-2934, (301) 621-0390.
+                                                                                 Contents
+
+Section                                                                                                                                                                       Page
+
+Abstract                                                                                                                                                                         V
+
+
+I.   Introduction .... ...... .. .... ... ...... ... ..... .. ... ... ...... .... .. .. ... ... ... ......... ... ... ... ... ... ... ... ... ...... .. .... ..                  1
+
+II. New Model Approach ...............................................................................................                                                           1
+
+     Basic Concept .. .. ... ... ......... .... .. .... ......... ........ ... ...... .......... ...... .. ...... .. .... ... ...... ... ... ... ... ..                          1
+
+     Assumptions ..............................................................................................................                                                  3
+
+     Functional Forms Describing the Particle Numbers                                                        ....................... ... .......................                 5
+
+     Collision Probability Equations                                   ................................................................................                          6
+
+     Comparison with Measurement Data ........................................................................                                                                   6
+
+     Limitations               .. ... ... . .... .. .. ... ..... ................ .... ..... ... ... ... ... ... ... .... ..... ... ... ........ ....... ... ... ... ... ..      8
+
+m. Program ORDEM 96                                                                                                                                                              9
+
+     Running the Program                                                                                                                                                        10
+
+     Input Parameters ......... ... ... ... .... ...... ....... .. ...... .. ... ... ...... ... ... ... ... ...... ... .. ........ ..... ... .. .... ..                         10
+
+     Output                                                                                                                                                                     12
+
+References                                                                                                                                                                      18
+
+Appendix A: Functional Forms Describing the Particle Numbers.....................................                                                                              A-1
+
+Appendix B: Collision Probability Equations .................................................................                                                                  B-1
+
+Appendix C: Modifying Source Code .......................................................................... ...                                                               C-1
+
+
+
+
+                                                                                           lll
+                                                                  Figures
+
+Figure                                                                                                                                  Page
+1.   The source components in circular orbits in the 98°
+     inclination band ........................................................................................................ .        19
+2.   Altitude distribution of aluminum oxide particles and paint flakes ......................... .                                     20
+3.   Modeled number density of particles in circular orbits and
+     elliptical orbits as a function of altitude ................................................................... .                  21
+4.   Comparison of the model with U.S. Space Command catalogue
+     as of early 1995 for the altitudes of 300 km, 500 km, and 800 km .......................... .                                      22
+5.   Comparison of the model with U.S. Space Command catalogue
+     as of early 1995 for the altitudes of 1000 km and 1500 km..................................... .                                   23
+6.   Comparison of the model with Haystack radar measurements
+     over size........................................... :........................................................................ .   24
+7.   Comparison of the model with Haystack radar measurements
+     over altitude .............................................................................................................. .     25
+8.   Comparison of the model with Haystack data collected in
+     1994 using a staring mode at 10° elevation angle to the south
+     and for a limiting particle diameter of 3 cm ............................................................. .                       26
+9.   Comparison of the model with LDEF data (comparing fluxes
+     to a limiting particle size on an forward facing surface 52° off
+     the ram and on the rear surface 172° off the ram) .................................................... .                           27
+10. Comparison of the model with LDEF data (comparing fluxes
+     to a limiting crater size for the same parameters as fig. 9) ....................................... .                             28
+11. Modeled fluxes for a typical Space Shuttle mission and for the
+     LDEF mission .......................................................................................................... .           29
+12. Flow chart of program ORDEM96.......................................................................... .                            30
+13. Angles Az and El used to describe the velocity vector of an
+      .
+     1mpac  t on an orb·t· 1 1ng spacecraft .............................................................................. .             31
+14. Angles Az used to describe the velocity vector of a particle
+     crossing a fixed point over the Earth ........................................................................ .                    31
+A-1 Technique used to obtain a function from two elementary functions ...................... .                                          A-8
+B-1 Velocity vector relationships .................................................................................... .                B-5
+B-2 Definition of angle y..................................................................................................             B-6
+B-3 Definition of angle a .................................................................................................             B-6
+
+
+
+
+                                                                         lV
+                                                                      Tables
+
+Table                                                                                                                                        Page
+1.  The Six Inclination Bands.........................................................................................                        2
+2.  The Six Source Components.....................................................................................                            3
+3.  Default Values of the solar Activity (F10.7 in 104 Jy) and the
+     Production Rate of New Debris to the Historical Rate (N) as a
+     Function of the Mission Time .... ..... ... ... ... ... ... ... ....... ..... ... ... ....... .. ... ... .. ....... ... ..... ... ...   11
+4.   Output of ORDEM96 If Considering a Spacecraft...................................................                                        14
+5.   Output of ORDEM96 If Considering a Point Over the Earth ...................................                                             17
+
+
+
+
+                                                                             V
+                                            Abstract
+
+A semi-empirical orbital debris model has been developed which combines direct measurements
+of the environment with the output and theory of more complex orbital debris models. This
+model is computer based. It approximates the environment with six different inclination bands.
+Each band has a unique distribution of semi-major axis, for near circular orbits, and a unique
+perigee distribution, for highly elliptical orbits. In addition, each inclination band has unique size
+distributions which depend on the source of debris. Collision probability equations are used to
+relate the distributions of orbital elements to the flux measured on a spacecraft or to the flux
+measured through the field of view of a ground sensor. The distributions of semi-major axis,
+perigee, and inclination are consistent with the U.S. Space Command catalogue for sizes larger
+than about 10 cm, taking the limitations of the sensors into account. For smaller sizes, these
+distributions are adjusted to be consistent with the flux measured by ground telescopes, the
+Haystack radar, and the Goldstone radar as well as the flux measured by the LDEF satellite and
+the Space Shuttle. The computer program requires less than 1 second to calculate the flux and
+velocity distribution for a given size debris relative to an orbiting spacecraft.
+
+
+
+
+                                                   vii
+I. Introduction
+For an environmental model to be useful, it must be consistent with existing data, use sound
+theory to predict the environment in regions where the environment has not been measured,
+describe the environment in terms that are of interest to the user, and be reasonably easy to use.
+In the past, the most easily used orbital debris models were semi-empirical sets of equations
+which described the orbital debris flux as a function of debris diameter and spacecraft orbital
+altitude, inclination, and time of interest (Kessler, et. al., 1989). Such a simple model was
+possible because the small amount of available data justified simplifying assumptions. For
+example, all spacecraft were assumed to equally generate smaller debris. This and other
+simplifying assumptions led to an environment which could be approximated with a few
+equations.
+
+However, we now know, primarily as a result of measurements by the Haystack radar and the
+LDEF satellite, that small debris particles are generated in certain inclinations in larger quantities
+than in others. Some of these preferred inclinations for small debris were consistent with
+explosion sources, but other preferred inclinations require the presence of previously unmodeled
+sources. In addition, the LDEF measurement clearly demonstrated that small debris was more
+likely to be found in highly elliptical orbits than large debris. For these findings to be accurately
+reflected in an orbital debris model, a more complex approach is required.
+
+Because the inclination distribution has been found to be a function of size, another difficulty
+results from use of previous simple models. Whereas the flux on an orbiting spacecraft (which
+crosses debris orbits at all inclinations) is not very sensitive to the inclination distribution of
+orbital debris, the flux through the field of view of a ground sensor (which only detects
+inclinations which are larger than the latitude of the sensor field of view) can be very sensitive to
+the inclination distribution. Consequently, a model which does not accurately reflect the
+inclination distribution will not accurately relate the flux measured by a ground sensor to the flux
+measured by an orbiting sensor. This complicates the testing of models using ground
+observations. Therefore, a more complex approach is required to be consistent with all available
+data, as well as to meet the needs of various users.
+
+
+II. New Model Approach
+
+Basic Concept
+The model approximates the orbital debris environment with a limited number of representative
+orbits (each with its own number distribution as a function of size, altitude, and eccentricity
+family) then calculates the flux on a spacecraft or through the field of view (FOV) of a ground
+sensor using a computer program.
+The number of representative orbits should be as few as possible to keep the model simple and
+easy to use. On the other hand, the number of representative orbits should be sufficient to
+approximate the environment accurately. Based on theoretical considerations and on the analysis
+of today's knowledge about the environment, a reasonable compromise has been found to
+approximate the environment with six inclination bands and two eccentricity families (circular
+orbits and highly elliptical orbits). In addition, the model uses six source components to
+approximate the size distribution of debris particles.
+
+               Table 1 - The Six Inclination Bands
+
+
+
+              70                    0° ~ i < 19°
+              28°                   19° ~ i < 36°
+              51 °                  36° $; i < 61 °
+              65°                   61° ~ i < 73°
+              82°                   73° $; i < 91 °
+              980                   91 ° $; i $; 180°
+
+The six inclination bands and the representative inclinations for each band are shown in table 1.
+In each inclination band, the orbits are divided into circular orbits and highly elliptical orbits. The
+"circular orbits" family represents orbits with an eccentricity of 0.2 or less, and the "elliptical
+orbits" family represents orbits with an eccentricity larger than 0.2. Each inclination band has a
+unique altitude distribution of circular orbits, and a unique perigee distribution of highly elliptical
+orbits, with the apogee of all highly elliptical orbits fixed at 20000 km altitude.
+
+To characterize the size distribution, six source components are used: intact objects, large
+fragments, small fragments, sodium/potassium particles, paint flakes, and A}iO3 particles. The
+six source components and their typical dominating size ranges are depicted in table 2.
+
+The intact objects represent spent satellites, rocket bodies and operational debris. Each type of
+fragmentation (i.e., collisions and low or high intensity explosions) produces large fragments, but
+small fragments originate mainly from high intensity explosions or from collisions. In addition,
+aluminum or aluminum oxide slag particles possibly produced by solid rocket motors are also
+assigned to small fragments. The sodium/potassium particles are assumed to originate from leaks
+of nuclear reactor coolant used in certain satellites. Paint flakes originate from degradation of
+satellite surfaces. Aluminum oxide (A}iO3) particles, which represent the lowest size range in the
+model, are the result of solid rocket motor bums. An example illustrating how the various source
+components form the total population is shown in fig. 1, in this case for circular orbits in the 98°
+inclination band.
+
+
+
+
+                                                    2
+                    Table 2 - The Six Source Components
+
+
+
+               Intact objects           d>50cm
+               Large fragments          1 cm < d < 50 cm
+               Small fragments          200 µm < d < 1 cm
+               Na/K. particles          200µm<d< 1 cm
+               Paint flakes             20µm<d<200µm
+               AbO3 particles           d<20 m
+
+Even though dividing the orbits into only two eccentricity families may appear to be an enormous
+simplification, it turns out to actually be a good approximation. As long as the resulting number
+density or spatial density is maintained, the flux and the velocity of debris relative to spacecraft
+do not depend strongly on the orbital eccentricity. In the model, the particle numbers were
+derived in such a way to maintain the correct spatial density. In addition, the use of highly
+elliptical orbits ensures that the right directionality of fluxes on the various surfaces of a satellite
+can be obtained also. The two-particle orbits model in ref. 4 can be considered a justification of
+this simplification. It shows that using only two-particle orbits, the fluxes on the 12 surfaces of
+LDEF can be approximated very well.
+
+
+Assumptions
+
+Intact Objects
+The number of intact objects has been obtained based on the US Space Command catalogue. The
+model fits the catalogue data in each inclination band at 12 cm diameter and larger. The number
+of intact objects in elliptical orbits in 65°, 82° and 98° inclination bands, and in 7° circular orbit
+is negligible, so those orbits are not included in the model. The Molniya-type orbits are excluded
+from modeling due to their special dynamic nature, as discussed later.
+
+
+Large Fragments
+The number of large fragments has been obtained based on the US Space Command catalogue
+and the output of NASA's orbital debris evolutionary model EVOLVE (ref. 10). Because of the
+limitation of the Space Command network, the catalogue of large fragments seems to be
+incomplete, especially in highly elliptical orbits of low inclinations. Thus, for those orbits, the
+result from the EVOLVE model is used to supplement the catalogue data. The catalogue is used
+for circular orbits in the 51 °, 65°, 82° and 98° inclination bands. EVOLVE is used for 28°
+circular orbits, and for elliptical orbits in the 7° and 51 ° inclination bands. In other orbits, no
+fragmentation was recorded, and the number of large fragments is negligible. Again, the model
+fits the catalogue data at 12 cm diameter and larger.
+
+
+
+
+                                                   3
+Small Fragments
+Small fragments originate from collisions and high intensity explosions. Aluminum or aluminum
+oxide slag particles possibly produced by solid rocket motors are also assigned to this category.
+Small fragments are assumed to be in circular orbits in the inclination bands 65°, 82° and 98°
+(based on numerous fragmentations recorded in these regions) and in 28° highly elliptical orbits.
+No high intensity explosion or collision has been recorded in 28° highly elliptical orbits;
+however, the impacts on LDEF' s rear surface and measurements by the Haystack radar show the
+existence of small debris particles in those orbits. Chemical analysis of LDEF craters suggests
+that either fragmentations or slag particles from solid rocket motors were the origin of those
+small particles.
+
+The number of small fragments has been determined in such a way that the flux at 1 cm and
+larger, combined with large fragments, is consistent with Haystack measurements; and the flux in
+the size range from 100 µm to 1 mm, combined with paint flakes, is consistent with LDEF data.
+
+
+Sodium/Potassium Particles
+Haystack radar measured a concentration of debris less than 2 cm in size between 850 km and
+1000 km altitude, with an inclination near 65°. The most likely sources identified to date are
+Russian RORSATS. It is believed that they may be leaking their liquid metal sodium/potassium
+coolant. The model assumes this source to be consistent with the Haystack measurements.
+
+
+Paint Flakes
+Paint flakes have been found to be an important source of debris particles, as evidenced by
+chemical analysis of craters on satellite surfaces returned from space. The CME experiment on
+LDEF (ref. 6) exhibited a large number of craters due to paint flakes on the 52° forward-facing
+surface, but only one on the trailing surface. This suggests that there is no need to add the paint
+flakes as a debris source for highly elliptical orbits of low inclinations, because only those orbits
+contribute to impacts on LDEF's trailing surface (ref. 7). The best explanation of the craters on
+the 52° forward-facing surface is to assume high inclination orbits as the source (ref. 4).
+Therefore the model adds paint flakes as a source for circular orbits in the 98°, 82° and 65°
+inclination bands.
+
+The dashed line in fig. 2 illustrates the number of paint flakes for the year 1995 as a function of
+altitude for circular orbits in the 98° inclination band with limiting particle diameter of 100 µm.
+The same altitude distribution is also used for other inclination bands although the absolute
+number may vary. This distribution is based on the assumption that the number of paint flakes is
+proportional to the number of large structures in orbit, and they are produced at a rate
+proportional to the density of atomic oxygen that structures encounter at various altitudes in the
+Earth's exosphere.
+
+
+
+
+                                                   4
+Aluminum Oxide (Al&J,) Particles
+Aluminum oxide particles are added as a source for elliptical orbits in the 28° inclination band
+and for circular orbits in the 98°, 82° and 65° inclination bands. This is primarily based on the
+historical rate of solid rocket motor bums. The number of particles has been adjusted in such a
+way that the magnitude and the directionality of the flux agree with LDEF measurements.
+The number of particles in altitudes where no direct measurement was available is based on
+theoretical considerations. The solid line in fig. 2 shows the altitude distribution of circular orbits
+in the 98° inclination band for a limiting particle diameter of 10 µm, a F 1o.7 value of 120, and the
+year 1995. The same altitude distribution is also used for other inclination bands, but the number
+of particles may be higher or lower. The curve is flat in higher altitudes where the solar radiation
+pressure dominates the orbital dynamic of micron particles, causing an oscillation of the perigee
+altitude and resulting in a flat particle density distribution. For altitudes below 400 km, however,
+the atmospheric drag becomes the dominating force, leading to a rapid decrease of particle
+density with decreasing altitude.
+
+
+Functional Forms Describing the Particle Numbers
+The functional forms used to represent the number of particles, as a function of both size and
+altitude, result from either theoretical or experimental considerations, with greater emphasis on
+experimental considerations which represent direct measurements of the environment. Theory
+was used to extrapolate when no direct measurements were available. For example, there are few
+direct measurements of debris smaller than 1 mm at altitudes above 470 km. However, ground
+experiments predict that these small particles will be produced as a result of explosions, the
+disintegration of spacecraft surfaces, and solid rocket motor bums. In addition, solar radiation
+pressure will strongly affect the orbits of particles smaller than 0.1 mm; this effect increases with
+decreasing size. In order to properly consider this effect in the model, another model was
+developed which assumed various sources and calculated the orbit changes as a result of both
+solar radiation pressure and atmospheric drag. The results of these calculations were then used to
+determine the functional forms of the size and altitude distributions of these small particles. The
+functional forms were then constrained to fit the available data in this size region, which
+primarily came from the analysis of LDEF satellite and Shuttle surfaces.
+
+The functional forms consist of 12 sets of equations. Each set describes the number of particles
+in either circular or elliptical orbits, in one of the six inclination bands. For circular orbits, the
+number of particles is a function of altitude, particle size, mission time and solar activity. For
+elliptical orbits, it is a function of perigee altitude, particle size and mission time. The equations
+are provided in appendix A.
+
+Fig. 3 shows an example of particle numbers utilizing the functional forms. The numbers are
+obtained for the year 1995, an F 10.7 value of 120, and an N value of 0.1 for five limiting particle
+diameters. The left diagram shows the number of particles in circular orbits, summed over all six
+inclination bands. The right diagram shows the number of particles in highly elliptical orbits, also
+summed over all six inclination bands. Note that the altitude distribution of particle numbers
+varies with the particle size.
+
+
+
+                                                   5
+Collision Probability Equations
+In order to relate orbital elements to fluxes, four assumptions are made concerning the
+distribution of orbits for a particular orbital debris size: ( 1) the distributions of orbital perigee,
+apogee, and inclination are known; (2) the location (mean anomaly) of an object along any
+particular orbit is random; (3) the distribution of orbital right ascension of ascending node is
+random; (4) the distribution of argument of perigee is random. Equations which relate orbital
+elements to flux under these assumptions can be found in ref. 2, and they are repeated in
+appendix B.
+
+The assumptions used to obtain the distributions of orbital perigee, apogee, and inclination were
+just discussed. Several days after the generation of orbital debris, the distribution of objects along
+any particular orbit is observed to be random for objects in low Earth orbit, so this assumption is
+reasonable. Several months after debris generation, the right ascension of ascending node is
+observed to be random; and within this period of time, the distribution of argument of perigee,
+for inclination NOT near 63°, is observed to be random also.
+
+The only orbits which do not follow these assumptions are those orbits which have been called
+"Molniya" orbits. The special behavior of this group will be discussed further in the section
+entitled "limitations."
+
+For objects in orbits near 90° inclination such as Sun-synchronous orbits, the precession of the
+ascending node is much slower than at other inclinations, so the debris in such orbits takes longer
+to randomize in ascending node. In general, however, the ascending node of the target spacecraft
+is random relative to that of the debris family, so the assumption of random distributions in
+ascending node is still approximately correct.
+
+
+Comparison With Measurement Data
+During the development, it has been one of the primary goals for the model to be consistent with
+today's available measurement data. Emphasis has been placed on the US Space Command
+catalogue, the Haystack radar observation and the LDEF data.
+
+Figs. 4 and 5 illustrate a comparison of the model with the US Space Command catalogue as of
+early 1995, for five selected altitudes from 300 km to 1500 km. In order to make this
+comparison, spatial density was first calculated, then converted to flux under the assumption of
+an average collision velocity of 7 km/s.
+
+Fig. 6 compares the model with Haystack radar measurements over particle size. The Haystack
+data in this graph were collected from 1991 to 1993 using a staring mode at 90° elevation angle.
+The model is for the year 1992 with a value of 0.1 for the parameter N. Good agreement can be
+seen from 1 cm to 2 cm particle diameter. At larger particle sizes, the discrepancy is due to poor
+counting statistics in the Haystack data.
+
+Fig. 7 compares the model with Haystack measurements over altitude and for a 1 cm limiting
+particle diameter. The same collection of Haystack data as in the previous graph is used. It shows
+
+
+                                                     6
+a favorable agreement throughout the altitude range. Also the peak around 950 km, as a result of
+sodium/ potassium particles from Russian nuclear reactors, are well reflected by the model.
+
+Fig. 8 shows another comparison with the Haystack data. This observation was conducted in
+1994 at an elevation angle of 10° to the south. Pointed in this direction, the Haystack radar can
+detect orbits at inclinations lower than the radar latitude of 42.6°. The minimum detectable
+inclination changes with the range; the longer the range, the lower the minimum measurable
+inclination. For instance, at 1000 km range, the radar is able to see orbits with inclination of 34°
+and larger; and at 1750 km range, the radar is able to see orbits with inclination of 28° and larger.
+For radar ranges less than 1750 km, the model seems to predict a flux which is lower than the
+Haystack measurement. The real reason for this under prediction is the limitation of the model
+due to the use of representative inclinations. The range of 1750 km represents a minimum
+detectable inclination of 28°. The model uses an 28° inclination band which actually represents
+all inclinations in the range from 19° to 36°. As a single inclination of 28° is used, at ranges less
+than 1750 km, the whole inclination band is not taken into account by the model, resulting in the
+under prediction.
+
+At ranges larger than 1800 km, the model over predicts the environment by a factor of about two.
+The model cannot be adjusted to fit the data without changing some of the basic assumptions,
+such as the slope of log(N)/log(d) for large and small fragments. Removal of this discrepancy is
+put off for future model modification. The Haystack data should be better understood before a
+decision is made to change the basic assumptions of the model.
+
+Fig. 4 to fig. 7 underline the consistency of the model with measurement data in the larger
+particle size range. At smaller size ranges, measurement data were obtained from impacts on
+surfaces returned from space. The LDEF data represent by far the most significant impact data to
+date. Figs. 9 and 10 compare the model with LDEF data. Fig. 9 illustrates the flux to a limiting
+particle diameter, while fig. 10 shows the flux to a limiting crater diameter. LDEF was
+gravity-gradient stabilized, and its 14 surfaces maintained a fixed orientation with respect to its
+velocity vector. Two surfaces are considered: a forward-facing surface 52° off the ram direction;
+and the rear surface 172° off the ram direction. The good agreement on a forward-facing surface
+and on the rear surface shows that the model predicts the right flux in magnitude as well as in
+directionality. The good agreement in both figures shows also that the model is consistent in
+converting particle flux (flux to a limiting particle diameter) to cratering flux (flux to a limiting
+crater diameter).
+
+The Space Shuttle provides a means of monitoring the environment over time. Shuttle windows
+are examined after each flight for damage by orbital debris and meteoroid impacts, and numerous
+windows have been replaced due to impact damage. The Shuttle usually flies in altitudes around
+300 km, considerably lower than the 460 km altitude of LDEF. Previous models predicted a
+considerably lower orbital debris flux on the Shuttle at these lower altitudes than on LDEF.
+However, the orbital debris flux indicated by the Shuttle is comparable to the LDEF flux,
+probably due partly to the dispersion of small particles by solar radiation pressure, and partly as a
+result of particles in highly elliptical orbits. Fig. 11 shows how this is reflected in the new model.
+This figure shows the flux for a typical Shuttle mission in comparison with the flux for the LDEF
+
+
+
+                                                  7
+mission. Indeed, the fluxes in the sub-millimeter region to micron region are of the same order,
+indicating the new model is consistent with the Shuttle data. The flux on the Shuttle decreases
+rapidly in the centimeter range and larger, where the effects of solar radiation pressure and
+elliptical orbits are less important.
+
+
+Limitations
+The current model has been formulated to eliminate many of the limitations of previous versions
+of the engineering model, and it is valid for the vast majority of cases which are of interest for
+collision risk assessment, shielding design, and the planning or evaluation of observations.
+However, it is impossible to develop a model applical;,le for any condition. Therefore, it is
+important to understand the model's limitations, in order to use it properly.
+
+One limitation results from the use of six representative inclinations. This does not affect the
+calculations if an orbiting spacecraft is considered; but it may lead to an inaccurate flux on a
+stationary point over the Earth if the model is not used carefully. The problem may be illustrated
+by considering an example point at some altitude above the Earth at 32° latitude. As an orbit does
+not reach latitudes higher than the inclination of the orbit, the model 28° inclination band does
+not produce any flux on this point. However, the 28° band actually represents an inclination
+range from 19° to 36°. That means that some of the orbits represented by the 28° family should
+be visible overhead to a radar at 32° latitude, but the model will not represent them because it
+assigns all objects a single inclination of 28°.
+
+The effect of this limitation can be minimized using proper technique. The program ORDEM96,
+which will be described in detail in the next section, handles the problem in such a way that not a
+single latitude, but a range of ~±6° for any given latitude is used. For the above example of 32°
+latitude, this technique is equivalent to averaging the flux by spreading the FOV of the sensor
+from 26° to 38° latitude, which covers the 28° inclination band.
+
+Another limitation comes from the use of only two eccentricity families. In the model, orbits with
+eccentricity lower than 0.2 are assigned to circular orbits which do not give any radial component
+of debris velocity. As a result, the model makes some error in fluxes on the top or bottom surface
+(whose normal vector is pointing to space or Earth along the radial direction) if considering a
+gravity-gradient stabilized satellite like LDEF. However, the effect of this limitation is not
+important because the fluxes on the top or bottom surface are usually negligible for spacecraft in
+low altitudes. Consequently, the program ORDEM96 does not attempt to compute the fluxes on
+these surfaces. In principle, however, the fluxes on the top and bottom surfaces may be computed
+from their largest contributing source, the highly elliptical orbits.
+
+Because the right ascension of ascending node and the argument of perigee are assumed to be
+random, the model is designed to predict the flux produced by an object over long time periods
+or the flux produced by a large number of objects in well distributed orbits. It is not designed to
+assess short-temi risks. For instance, the model cannot be used to plan an evasive maneuver for
+the Space Station against a large object. It cannot predict transient events of small particles, like
+
+
+
+                                                   8
+those observed by the Interplanetary Dust Experiment (IDE) flown on LDEF; however, it does
+predict its average flux over a time period of months or years.
+
+Molniya-type orbits are not included in the model. Molniya-type orbits are highly elliptical with
+an inclination around 63° and typically have their perigee in the southern hemisphere. Satellites
+occupying these orbits are either Russian Molniya communications spacecraft with perigee near
+their southernmost point (argument of perigee initially at 280° or 288°) or Russian Kosmos
+spacecraft with argument of perigee initially at 316° or 318°. The inclinations of these orbits are
+chosen to maintain a fairly stable argument of perigee, so that any debris generated in these orbits
+will also have orbits with perigees in the southern hemisphere.
+
+There are two reasons why Molniya-type orbits have been ignored in this model. First, little data
+exist on the amount of orbital debris produced from spacecraft in these orbits. This is because it
+is difficult to detect this debris, either from ground sensors (few radars and telescopes are located
+far enough south to detect the debris) or from returned spacecraft surfaces (no surfaces have been
+returned from spacecraft in sufficiently high inclination orbits although Russian MIR surfaces
+might be a candidate). Second, the collision probability equations applied to relate orbital
+elements to fluxes (appendix B) are only valid under the assumption of random argument of
+perigee. As mentioned above, the argument of perigee of Molniya-type orbits does not meet this
+assumption.
+
+When sufficient data become available in the future, these orbits will be added using an approach
+that does not assume random argument of perigee.
+
+
+
+III. Program ORDEM96
+The computer program ORDEM96 has been written to relate the number of particles to the flux
+onto an orbiting spacecraft, or the flux crossing a fixed point over the Earth, such as the FOV of a
+ground-based radar or telescope. The equations of Kessler ( 1981) are used to calculate the
+collision probability (appendix B).
+
+A flowchart of the program is depicted in fig. 12. The input parameters are the time in terms of
+calendar year, the solar activity in the year previous to the time, the limiting particle diameters,
+the altitude and the inclination of the spacecraft's orbit or the latitude of the fixed point.
+
+For output, the most important data, such as flux, average velocity and velocity distribution, are
+displayed on the screen. More detailed results are retained in the output file which contains size,
+velocity and angular distribution. All of the data are given in terms of cross-sectional flux. Flux
+on an oriented surface is not directly provided; however, the data provided in the output file are
+sufficient for further processing to obtain the oriented surface flux, or to calculate the cratering
+flux or penetration flux.
+
+
+
+
+                                                  9
+Running the Program
+The software is a DOS application. Copy the file ORDEM96.EXE onto your PC, go to the
+directory where the program is located, type ORDEM96 and press ENTER. A menu system will
+appear on the screen. To select an item to change its value, press ENTER. After the value has
+been changed, press ENTER again.
+
+After running the program, the detailed results are retained in the ASCII file ORDEM96.OUT.
+
+
+Input Parameters
+
+l.fName
+    The name of the output file which contains detailed results.
+
+2. FixPoint
+    A decision parameter which determines if the program will calculate the flux onto an orbiting
+    spacecraft or the flux crossing a fixed point, such as the FOV of a ground-based sensor. Enter
+    the letter y if you are calculating for a fixed point, and enter the letter n for an orbiting
+    spacecraft.
+
+3. Time
+    The time in calendar year. In order to use the default values of the solar activity, the program
+    only runs for the time from 1971 to 2030.
+
+4. FJ0.7
+    The 13-month, smoothed F 10.7 value of the solar activity in the year previous to time, in units
+    of 104 Jy. If no value is entered, the program will take the default value (table 3).
+
+   The program limits F10.1 to be between 40 and 220. The F10.7 dependency in the model is
+   based on the analysis of the variation of the cataloged population from the mid seventies to
+   the end of the eighties when the 13-month, smoothed values of F10.7 experienced a range from
+   74 to 205. More investigation is required in the future to validate this dependency and to
+   extend the limits.
+
+5. Inc/La,t
+    The inclination of the orbit of a spac~craft or the latitude. of the point depending on the choice
+    of FixPoint. The unit is in degrees.
+
+6.Alt
+   The altitude (of the orbit of the spacecraft or of the fixed point) in km.
+
+
+
+
+                                                  10
+Table 3 - Default Values of the Solar Activity (F10•7 in 104 Jy) and the Production Rate of
+New Debris to the Historical Rate (N) as a Function of the Mission Time
+
+
+Year      Fl0.7      N     year Fl0.7         N      year      Fl0.7        N
+          in year-1                in year-1                   in year-1
+1971      146        1     1991 195           0.1    2011       163         0.2
+1972      118        1     1992 205           0.1 2012          198         0.2
+1973      120        1     1993 145           0.1 2013          190         0.2
+1974      93         1     1994 109           0.1 2014          180         0.2
+1975      87         1     1995 80            0.1    2015       137         0.2
+1976      80         1      1996   76         0.2    2016       118         0.2
+1977      75         1      1997 74           0.2 2017          80          0.2
+1978      78         1      1998 75           0.2 2018          76          0.2
+1979      122        1      1999 106          0.2 2019          74          0.2
+1980      172        1     2000 163           0.2 2020          75          0.2
+1981      201        1     2001 198           0.2 2021          106         0.2
+1982       196       1      2002 190          0.2 2022          163         0.2
+1983       195       1      2003 180          0.2 2023          198         0.2
+1984       149       1      2004 137          0.2 2024          190         0.2
+1985       115        1     2005 118          0.2 2035          180         0.2
+1986      77          1     2006 80           0.2 2026          137         0.2
+1987      74          1     2007 76           0.2 2027          118         0.2
+1988      82          1     2008 74            0.2 2028         80          0.2
+1989       155       0.6 2009 75               0.2 2029         76          0.2
+1990      205        0.6 2010 106              0.2 2030         74          0.2
+(NOTE: Forecast of F10., to the year 2005 was taken from ref. 9, and the last cycle is repeated for
+time after 2005. The 13-month, smoothed F 10_7 is used.)
+
+7. DiaMin, DiaMax, nDia
+    These three parameters give the limiting particle diameters in cm. nDia gives the number of
+    particle diameters which will be considered. They are ranged from DiaMin to DiaMax. The
+    diameters are divided into equal steps on a logarithm scale. For example, if DiaMin = 1,
+    DiaMax = 100, and nDia =3, the fluxes will be computed for debris sizes of 1 cm, 10 cm and
+    100 cm. On the screen, only results for DiaMin are displayed, while the output file contains
+    the complete results.
+
+    The lower limit of the particle diameter is 10·4 cm (1 µm). A maximum of 18 diameters can
+    be processed at one time.
+
+    The results always refer to cumulative fluxes. For instance, the flux of particle diameter d
+    means the flux of particles with diameters ~d.
+
+
+
+
+                                                 11
+8.N
+   The ratio of the production rate of new debris in low altitudes to the historical rate. If no
+   value is entered, the program will take the default value (table 3).
+
+9.dV
+   The step size of velocities in km/s. The program does not allow a step size less than 0.1 km/s.
+   The program sets the minimum velocity to 0.5dV and the maximum velocity to
+   17km/s+0.5dV.
+
+
+Output
+While the most important results are displayed on the screen, the detailed results are retained in
+the file ORDEM96.OUT. The form of the output depends on the choice of FixPoint.
+
+
+Flux on an Orbiting Spacecraft
+
+1. Display on the screen
+
+The results on the screen are only for DiaMin. If more than one diameter has been chosen, the
+complete results are saved in the file ORDEM96.OUT.
+
+a) Default parameters
+   Because the user can let the program choose default values for Fl0.7 and N, the actual values
+   used for the calculation are displayed on this line.
+
+b) Flux and average velocity
+   This block of output shows the flux and average velocity of impacting particles with a
+   diameter~ DiaMin. The flux is the cross-sectional flux expressed in #/m2/yr, while the
+   average velocity is expressed in km/s. The results are in three groups: "Total" = flux of all
+   particles, "Circ." = flux of particles only in circular orbits and "Ellipt." = flux of particles
+   only in elliptical orbits.
+
+c) Velocity distribution
+   This block shows the velocity distribution. The velocity is expressed in km/s.
+
+    The term "#Cir" represents the velocity distribution of particles in circular orbits expressed in
+    normalized flux per km/s velocity at the given velocity. The normalizing factor is the flux of
+    particles in circular orbits, shown in the previous output block.
+
+
+
+
+                                                  12
+  The term "#Ell" represents the similar velocity distribution for elliptical orbits.
+
+  Note the term "flux per km/s velocity," not the term "flux per velocity interval" is used.
+  Mathematically, it means:   L               L
+                               ft' LiV = l, J/11 LiV = l , where fv represents the flux per
+  km/s velocity at velocity V, and Li Vis the velocity step size. Without the term Li V, the sum
+  may not be 1.
+
+2. File ORDEM96.0UT
+
+  An example of the output file is illustrated in table 4. This file consists of a brief summary of
+  the input parameters, and two blocks of results. The parameters nd and np in the header give
+  the number of limiting diameters and the number of velocity intervals, respectively. The first
+  block of results under "a) Circular orbits" shows the flux resulting from particles in circular
+  orbits. The flux resulting from particles in elliptical orbits is illustrated in the subsequent
+  block under "b) Elliptical orbits." Both blocks are structured in the same way.
+
+
+
+
+                                                 13
+                Table 4 - Output of ORDEM96 If Considering a Spacecraft
+---------------=------================-----============================-
+ Considering a spacecraft.
+ Incl= 51.6, Altitude= 400, Time= 1995, FlO(yr-1)=         80, N=    .10
+  nd = 6, np = 18, dv = 1.00
+a) Circular orbits:
+            d [cm]= 1. OOE-03 1.00E-02 1.00E-01 1.00E+OO 1.00E+Ol 1.bOE+02
+Ave. vel. [ km/s] =      11. 35    11.39   11.52      9.66      9.53      9.75
+  Flux[#/m2/yr]= 4.69E+02 4.32E+OO 7.0SE-04 2.53E-06 4.04E-07 2.19E-07
+ V[km/s] Az[deg] flux per km/s velocity, normalized with above flux
+     .50       88.0    .00000    .00000   .00002   .00234   .01068    .01537
+    1.50       83.1    .00445    .00423   .00361   .00740   . 00911   .00919
+    2.50       80.6    .01330    .01264   .01080   .02109   .02250    .02069
+    3.50       76.8    .00447    .00425   .00559   .05349   .04530    .03367
+    4.50       73.5    .02715    .02562   .01661   .04806   .05778    . 05814
+    5.50       69.2    .01847    .01746   .01272   .04402   .04943    .04743
+    6.50       65.3    .08229    .08332   .08950   .08259   .07017    .06469
+    7.50       60.7    .05443    .05489   .05751   .06453   . 06103   .05868
+    8.50       56.3    .04844    .04822   .04877   .08865   .07969    .06880
+    9.50       51.7    .05359    .05327   .05616   .13593   .11475    .09082
+   10.50       47.0    .05510    .05482   .05280   .04275   .05630    .06536
+   11.50       41.7    .08052    . 07972  .07458   .07060   .11686    .14411
+   12.50       35.2    .10778    .10546   .09479   .09466   .08544    .07633
+   13.50       28.4    .16981    .16875   .15511   .09637   .12075    .14345
+   14.50       18.6    .28020    .28736   .32142   .14752   .10020    .10325
+   15.50          .o .00000      .00000   .00000   .00000   .00000    .00000
+   16.50          .0   .00000    .00000   .00000   .00000   .00000    .00000
+   17.50          .0   .00000    .00000   .00000   .00000   .00000    .00000
+b) Elliptical orbits:
+            d[cm]= 1.00E-03 1.00E-02 1.00E-01 1.00E+OO 1.00E+Ol 1.00E+02
+Ave. vel. [km/s]=         8.21       8.21    8.21     8.20      8.09      8.10
+  Flux[#/m2/yr]= 1.09E+02 1.28E+OO 3.82E-03 4.22E-06 2.49E-08 8.91E-09
+ V[km/s] Az[deg] flux per km/s velocity, normalized with above flux
+      .so         .0   .00000    .00000   .00000   .00000   .00000     .00000
+    1.50          .0   .00000    .00000   .00000   .00000   .00000     .00000
+    2.50      157.8    .00000    .00000   .00005   .00365   .07375     .07022
+    3.50      115.7    .00000    .00000   .00001   .00089   .01802     .01716
+    4.50      103.5    .16402    .16402   .16396   .15936   .07091     .07673
+    5.50       93.9    .09507    .09507   .09503   .09230   .03962     .04306
+    6.50       86.2    .08508    .08508   .08509   .08587   .10044     .09904
+    7.50       78.7    .09594    .09595   .09600   .10032   .18264     .17601
+    8.50       72.5    .09847    .09847   .09854   .10361   .20027     .19254
+    9.50       67.4    .10166    .10166   .10163   .09913   .05105     .05432
+   10. 50      61. 7   . 21299   . 21299  . 21291  . 20679  . 08891    . 09663
+   11.50       58.4    .14676    .14676   .14672   .14329   .07746     .08200
+   12. 50      50 .1   . 00000   . 00000  . 00002  . 00152  . 03066    . 02919
+   13.50       45.2    .00000    .00000   .00004   .00328   .06626     .06310
+   14. 50         .0   . 00000   . 00000  . 00000  . 00000  . 00000    . 00000
+   15. 50         .0   . 00000   . 00000  . 00000  . 00000   . 00000   . 00000
+   16. 50         .0   . 00000   . 00000  . 00000  . 00000   . 00000   . 00000
+   17. 50         .0   . 00000    . 00000 . 00000  . 00000   . 00000   . 00000
+
+   The first column is the velocity, and the second column shows the azimuth angle to the
+   corresponding velocity. The azimuth angle is defined as the angle between the velocity vector
+   of an impact and the velocity vector of the spacecraft in the frame of the spacecraft (fig. 13).
+   Note that the azimuth angle here has a different meaning from the definition when a fixed
+
+
+                                                14
+   point is considered (compare fig. 13 with fig. 14). Because of symmetry of impact angles
+   with respect to spacecraft's velocity vector, only the positive azimuth angles are given in the
+   table. It should be understood that 50% of the flux approaches the spacecraft at +Az and 50%
+   at -Az. The number of the subsequent columns is equal to the number of particle diameters
+   considered, with each column representing the velocity distribution for one particle diameter.
+   The velocity distribution is expressed in normalized flux per km/s velocity (the description of
+   the screen output).
+
+   The particle diameter, the average velocity and the flux for each diameter are shown at the
+   top of each column. This flux is the cross-sectional flux and cumulative with respect to the
+   particle diameter, and it is also the normalizing factor for the velocity distribution of that
+   column.
+
+   For particles in circular orbits, there is a unique relation between velocity and azimuth angle.
+   For particles in elliptical orbits, the relation between velocity and azimuth angle is, strictly
+   speaking, not unique. However, a fixed apogee of all elliptical orbits is assumed in the model,
+   so over the small variations in perigee (relative to the apogee), this relation is approximately
+   unique.
+
+   It should be noted that the velocity distribution is a function of particle size, as can be seen in
+   file ORDEM96.0UT. In particular, attention must be paid when calculating penetration flux
+   or cratering flux which requires the velocity distribution. It may not be accurate to apply a
+   velocity distribution obtained for one particle diameter throughout the whole particle
+   diameter range.
+
+
+Flux at a Fixed Point Over the Earth
+
+1. Display on the screen
+
+The results on the screen are only for the first particle diameter DiaMin, as when considering an
+orbiting spacecraft. Results for other diameters, if any, are saved in the file ORDEM96.0UT.
+
+a) Default parameters
+   Because the user can let the program choose default values for Fl0.7 and N, the actual values
+   used for the calculation are displayed on this line.
+
+b) Flux and velocity
+   This block of output shows the flux and the velocity of particles crossing the point. The flux
+   is the cross-sectional flux expressed in #/m2/yr, while the velocity is expressed in km/s. The
+                                       =                               =
+   results are in three groups "Total" flux of all particles, "Circ." flux of particles only in
+   circular orbits and "Ellipt." = flux of particles only in elliptical orbits.
+
+
+
+
+                                                  15
+c) Distribution of angles entering FOV
+   This block illustrates the angular distribution of particles entering the FOV. The azimuth
+   angle is defined clockwise from north (fig. 14). For instance, if the particle enters the FOV
+   from the west, the azimuth angle is -90°. Note that the azimuth angle here has a different
+   meaning from the definition when an orbiting spacecraft is considered.
+
+   The flux at a given azimuth is the flux of particles entering the FOV at that azimuth,
+   normalized with the flux of all particles in circular orbits (or elliptical orbits). This flux is
+   neither per azimuth degree, nor per azimuth interval. Because the model uses six
+   representative inclinations, there is no continuous function of azimuth angles; instead, there
+   are only up to 12 discrete azimuth angles which are illustrated here.
+
+2. File ORDEM96.OUT
+
+    An example of the output file is illustrated in table 5. It consists of a brief summary of the
+    input parameters, and two blocks of results. The parameters nd and np in the header give the
+    number of limiting diameters and the number of azimuth angles, respectively. The first block
+    of the results under "a) Circular orbits" shows the flux resulting from particles in circular
+    orbits. The flux resulting from particles in elliptical orbits is illustrated in the subsequent
+    block under "b) Elliptical orbits."
+
+
+
+
+                                                  16
+Table 5 - Output of ORDEM96 If Considering a Stationary Point Over the Earth
+---------------------------====----=-========------=====================
+ Considering a point on the Earth.
+ Latitude= 20.0, Altitude= 400, Time= 1995, FlO{yr-1)=       80, N=    .10
+  nd = 6, np = 10, dv = 1.00
+a) Circular orbits:
+            Velocity [km/s] =     7.67
+  Angular velocity [deg/s] =      1.10
+           d[cm]= 1.00E-03 l.OOE-02 l.OOE-01 l.OOE+OO 1.00E+Ol 1.00E+02
+  Flux[#/m2/yr]= 3.13E+02 2.86E+OO 4.76E-04 3.56E-06 5.llE-07 2.37E-07
+ Az[deg] flux at angle Az, normalized with above flux
+  -171.5            .10479    .09908   .04611   .01818   .07683     .12888
+  -153.3            .11692    .11177   .09361   .07899   .05857     .03529
+  -138. 0           . 00000   . 00000  . 00028  . 01636  . 08311    .14016
+  -110.0            .00001    .00006   .02847   .31517   .24177     .15577
+   -70.0            .00001    .00006   .02847   .31517   .24177     .15577
+   -42.0            .00000    .00000   .00028   .01636   . 08311    .14016
+   -26.7            .11692    .11177   .09361   .07899   .05857     .03529
+    -8.5            .10479    .09908   .04611   .01818   .07683     .12888
+      8.5           .27828    .28909   .33153   .07131   .03972     .03990
+   171.5            .27828    .28909   .33153   .07131   .03972     .03990
+b) Elliptical orbits:
+            Velocity [km/s]       9.68
+  Angular velocity [deg/s]        1.38
+           d[cm]= 1.00E-03 l.OOE-02 l.OOE-01 1.00E+OO 1.00E+Ol l.OOE+02
+  Flux[#/m2/yr]= 3.46E+02 4.06E+00 l.21E-02 l.30E-05 3.48E-08 l.34E-08
+ Az[deg] flux at angle Az, normalized with above flux
+  -171.5            .00000    .00000   .00000   .00000   .00000     .00000
+  -153.3            .00000    .00000   .00000   .00000   .00000     .00000
+  -138.0            .00000    .00000   .00004   .00273   .12158     .10722
+  -110.0            .50000    .50000   .49996   .49727   .37842     .39278
+   -70.0            .50000    .50000   .49996   .49727   .37842     .39278
+   -42.0             .00000   .00000   .00004   .00273   .12158     .10722
+   -26.7             .00000   .00000   .00000   .00000   .00000     .00000
+    -8.5             .00000   .00000   .00000   .00000   .00000     .00000
+      8. 5           . 00000  . 00000  . 00000  . 00000  .00000     .00000
+   171.5             .00000   .00000   .00000   .00000   .00000     .00000
+
+   The first column in each block shows the azimuth angle. The number of the subsequent
+   columns is equal to the number of particle diameters considered, with each column
+   representing the angular distribution for one particle diameter. Like the output on the screen,
+   the azimuth distribution is expressed as the flux of particles entering the FOV at that azimuth,
+   normalized with the flux of all particles in circular orbits (or elliptical orbits).
+
+   The particle diameter and the flux for each diameter are shown at the top of each column.
+   This flux is the cumulative flux with respect to the particle diameter, and is also the
+   normalizing factor for the azimuth distribution of that column.
+
+
+
+
+                                                17
+                                         References
+1. Kessler, D.J.; Reynolds, R.C.; Anz-Meador, P.D. "Orbital debris environment for spacecraft
+   designed to operate in low Earth orbit," NASA TM 100471, April 1989.
+
+2. Kessler, D.J. "Derivation of the collision probability between orbiting objects: The lifetimes
+   of Jupiter's outer moons," ICARUS 48, pp. 39-48, 1981.
+
+3. Stansbery, E.G.; Kessler, D.J.; Tracy, T.E.; Matney, M.J.; Stanley, J.F. "Haystack Radar
+   Measurements of the Orbital Debris Environment," NASA Johnson Space Center,
+   JSC-26655, May 20, 1994.
+
+4. Zhang, J. and Kessler, D.J. "Orbital debris and meteoroid population as estimated from
+   LDEF impact data," Proceedings of the 3rd LDEF post-retrieval symposium, NASA
+   CP 3275, pp.373-384, 1993.
+
+5. Stansbery, E.G.; Kessler, D.J.; Matney, M.J.; "Recent Results of Orbital Debris
+   Measurements from Haystack Radar," AIAA 95-0664, 33rd Aerospace Sciences Meeting and
+   Exhibit, Reno, NV, January 9-12, 1995.
+
+6. Horz, F.; Bernhard, R.P.; See, T.H.; Brownlee, D.E. "Natural and Orbital Debris Particles on
+   LDEF's Trailing and Forward-Facing Surfaces," Proceedings of the 3rd LDEF post-retrieval
+   symposium, NASA CP 3275, pp.415-430, 1993.
+
+7. Kessler, D.J. "Origin of Orbital Debris Impacts on LDEF's Trailing Surfaces," Proc. of the
+   2nd LDEF Post-Retrieval Symposium, NASA CP-3194, pp.585-593, 1993.
+
+8. Humes, D.H. "Small Craters on the Meteoroid and Space Debris Impact Experiment,",
+   Proceedings of the 3rd LDEF post-retrieval symposium, NASA CP 3275, pp.287-322, 1993.
+
+9. National Oceanic and Atmospheric Administration, "Preliminary report and forecast of solar
+   geophysical data," published weekly by the joint NOAA-USAF Space Environment Services
+   Center, SESC PRF 1053, 7 November 1995.
+
+10. Reynolds, R.C. "Documentation of program EVOLVE: A numerical model to compute
+    projections of the man-made orbital debris environment," System Planning Corporation,
+    OD91-002-U-CSP, 1991.
+
+
+
+
+                                                 18
+             104 '
+             103         •""--'------'----'I -         Total
+             102    b---__._. ::-...----,------'I      Micron particles
+                                                    ---·
+.....,                                         , ..... Paint flakes
+  '-
+  >-
+..........
+             101               \
+                                ·'------1
+                                                 --- Small fragments
+C\I
+
+  E          10° b-------\_-"---'->""\____: - Large fragments                    1---1
+
+..........
+ ~
+ .......,    10·1 ---,.--~'--'_, ::\,--·--
+                                       ·......
+                                               • ---- Intact objects
+  X          10·2
+  ::J
+ ;::
+             10-3
+  C
+  0          10-4
+ +:i
+ 0
+  (I)
+  en         10·5
+      I
+  en         10-s
+  en
+  0
+  '-
+ (.)
+             10·7                              f-----L--~~--1 ___
+             10-s                                               \ i
+                                                                 \i
+                                                                   \j
+
+
+             10·9
+             10·10
+                  10-4     10·3     10·2      10·1         10°    101       102       103
+                                           Diameter [cm]
+ Fig. 1: The source components in circular orbits in the 98° inclination band. The flux is
+ calculated for the LDEF orbit at 460 km altitude, 28.5° inclination and for the year 1985.
+ AF 10.1 value of 115 and a N value of 1 are used.
+
+
+
+
+                                               19
+ Q)                                                                                                                                                                                     .................    ;. .................. .
+
+
+"O
+ ::::s                                                 ·:.;:,::_··   .
+
+±::                                                      '
+                                                        ,i ..... .
+
++""
+ as                                                                                                              ·>                -Aluminum oxide
+ E                                                                                  i                                  ·········     Paint flakes
+                                                                                                                                       ----·
+
+..x:                                                                     . ,..    .-~---..                  1
+
+                                                                                                   .... ·····,
+                                                                                                                                                                                                                              '"•'
+
+
+
+
+ '-
+ Q)
+ a.
+en
+ Q)
+0
+ ...as
+·-
++""                                                       ,----+-----+---+------+----=--'·--····-f·---+----+--
+                                                              --+-------i-----+---+!_ __.'~~ ... --:- - 1 - - - - - + - - - - - t
+                                                                                                                                                   I
+
+
+
+
+                                                                                                                                                   !
+                                                                                                                                                       '
+
+
+
+
+                                                                                                                                                           •.         'i
+                                                                                                                                                                        ;
+
+
+
+
+ Q.
+
+0                                                                                                '
+                                                                             ---+---"---+----~--·
+ '-
+ Q)                                                                                     1
+                                                                                 - - - 4 - - - - - + - - - - +1_ _ .... ,                                               t---~;_'               ..             .
+                                                                                                                                                                                                    ;\1i; ......·'-i_                  __,
+
+                  ......                                                  - - - + - - - - - + - - - ·•· ······--········ ........... !. . , . __, . . . . .,.,_ ......~.--. .                                     ..
+.0
+ E 104                                                                                                                             i                                                ;                                  ',,,,
+                                                                                                                                                                                                                                        '"',:
+ ::::s
+z                                                                                                                                  I
+
+                                 ..........................1
+                                                           !
+                           I             I                I              I           I        '              I     I               I               I                    !       I   I                        I
+                 0             200 400 600 800 1000 1200 1400 1600 1800 2000
+                                                                                                  Altitude [km]
+         Fig. 2: Altitude distribution of aluminum oxide particles and paint flakes. The number of
+         particles is calculated for circular orbits in the 98° inclination band for a F 10.1 value of 120
+         and for the year 1995. The limiting particle diameter is 10 µm for aluminum oxide and
+         100 µm for paint flakes.
+
+
+
+
+                                                                                                                 20
+      1013 . - - - - - - - - - - - - - - ,                                                                             1013 ....----,------------
+      1012                                                                                                                                    ~1µm
+             1 , - -_        _ . - ; ._ __ _ ; _ _ - - - - " - - - - ' - - - - l
+                                                                                                                       1012 ~--;,---;--~........L.=-~==""4
+                                                                         ~1µrh
+      1011                                                                                                             1011
+(I)                                                                                                                (I)
+
+21010 ____,_---.--,Circular orbits                                                                                -g 1010 b-'----.;_r-------,__ _-1
+                                                                                                                  .....                                        Elliptical orbits
+~ 109 t , - - - - t - - i . . - - - - - - - 1 - - - t ~ 109 - - - + - L_ _ _ _ __,..Ji--------i
+E 1as 1 , - - - - - + - - - . , . . . , " ' . - - - - - - ' - - - - I ~ 108
+~
+ a3 107 1----- _.,___ _. . ._-, .,.                                       a3 107 1.---1---+--_.:::,,..~--'
+ a. 6                                                                     a.
+ ,.,, 10 1 , - - - - . . . , - - - - - , - - - - - - - ~ UJ 106 - - - - - - - - - + - - - - + - - - - - - I
+ (I)                                                                      Cl)
+
+
+
+-
+:0 105 r . . - - - - - - - - - - , - - - · · \ - - ~ - - - - - 1
+ ,._                                                                     "i::
+                                                                              105                                  a
+ ~ 104 b - - - - - ' - · · - , L - - - - - = = - - - - : S . . - - - - l
+                                                                          ~ 10
+                                                                                4
+
+0 103 r . . - - - - - , - + - - - - + - - - - + - - - - f 15 103 i . - - - - - - - - - - ~ - - - = - - . . . , - - - - 1
+ ,._                                                                      '-
+~ 102 1--L--+---...-,,:::                                                ~ 102 k----+--+--'~-__,__---+--~=I
+ E::, 101                                                                 § 101
+z                                                                                                                 z 100
+      10-1                                                                                                                10·1 1,---_              ___;.__ _____;_~---~~!..+------I
+
+
+      10-2    1..,....L--J.-..l.-..L...-J-.l.o-'--,1.-..L...-.l....,L....1--l.---l-.........._....,_,,l,,__.__J           10·2   i.--i....1....1....i..............._..1....1,...i...,.J.-.1.,...1....1,...i...,.......,....r...;;;i:-.1-.1
+
+
+             0                   500                   1000                    1500                   2000                       0                   500                      1000                      1500                      2000
+
+                                          Altitude [km]                                                                                                        Altitude [km]
+
+             Fig. 3: Modeled number density of particles in circular orbits and elliptical orbits as a
+             function of altitude. The left diagram shows the number of particles in circular orbits
+             within a 1 km bin centered about a given altitude, and the right diagram shows the number
+             of particles in elliptical orbits whose perigees are within a 1 km bin centered about a given
+             altitude and apogee at 20,000 km altitude, both summed over all inclination bands.
+             Parameters used for the calculation: t = 1995, F 10.1 = 120, N = 0.1.
+
+
+
+
+                                                                                                                  21
+                                                                     -Model, 800 km
+                                                                         o Catalog, 800 km_
+r-,
+    L
+                                                                     .......... Model, 500 km
+    >-
+..........
+                                                                        o Catalog, 500 km
+N
+    E              1-----4-----=--~_..._----1 -                       -       -Mode 1, 300 km
+..........                 \\·..                                        x Catalog, 300 km
+#                            \       \
+L.....J
+                                 \       \
+                                     \       .....
+    X                                    \        ·..
+    :j
+.---I
+
+'--
+ c
+    0
+.+-)
+    u
+    QJ
+    U1
+    I
+    U1                                                           I   ---               I
+    U1                                                           : XXXXX5<X" - - i-I ...... .._
+    0                                                                             XX, XXx'
+    L
+u                                                                                                 X'
+
+
+
+
+                                                                                     10 2
+                                                    Particle diameter [cm]
+
+        Fig. 4: Comparison of the model with US Space Command catalogue as of early 1995, for
+        the altitudes of300 km, 500 km and 800 km. An N value of 0.1 is used for the model.
+        Discontinuity of the data is due to assignment of default radar cross-sections to some
+        objects.
+
+
+
+
+                                                            22
+                      Comparison with USSPACECOM Catalogue
+             1f:r2
+
+                                                     -Model, 1500 km
+r-,          H'.f 3         \                          o Catalog, 1500 km
+                                                      --•Model , 1000 km
+    L                           \
+   >-
+-.........
+                                    \
+
+N                                                      o Catalog, 1000 km -
+    E
+-.........   H'.f 4
+#
+1......1
+
+
+
+
+,-t
+    X
+    :::l     Hr5
+c:...-
+    C
+    0
+........     10-Ei
+..µ
+    u
+    QJ
+    U1
+    I
+    U1
+             10-7
+    U1
+    0
+    L
+u            10-s
+
+
+
+                                                    10 1          10 2
+                                        Particle diameter [cm]
+
+    Fig. 5: Comparison of the model with US Space Command catalogue as of early 1995, for
+    the altitudes of 1000 km and 1500 km. An N value of0.1 is used for the model.
+    Discontinuity of the data is due to assignment of default radar cross-sections to some
+    objects.
+
+
+
+
+                                               23
+r,
+           u2r 1
+  >-
+    L                                                                    -h=900km
+-......                                                                  -h=700km
+N
+    E      10-2
+-......                                                                  ······ h=500k m
+::t+
+L-.....J
+                                                                           o Haystack data,900km
+                                                                           x Haystack data,700km
+:::>
+C)
+           10-3                                                            o Haystack data,500km
+LL
+    Ul
+~          10-4
+    u
+    ru
+-I-)
+    Ul
+  >-
+  ru       10-5
+::r::
+    0,
+    C
+• r--t     10-5                  -----1·!i', .........Q.._
+                                                     ', .._       x        _;.~tr--~
+                                                                              X . .,:.::::::~--
+                                                                                     ..         =-- -k:- - - -                           I
+    Ul                                               .........                    0
+    Ul                                                           -0. . . . . .
+    0
+    L
+    u                                                                            ·------------------
+           10-7                                                                                        -·-   ··--- i ··---•••
+    X
+    :::i                                                                                                                    •   ..
+.---i                                                                                                                            .•
+LL
+           10-8                                                                                                                    .•
+                                                                                                                                   •
+
+
+               tfr 1                     10°                                      10 1                          10 2                    10 3
+                                         Particle diameter [cm]
+           Fig. 6: Comparison of the model with Haystack radar measurements over size. Data were
+           collected from 1991 to 1993 at 42.6° latitude, using a staring mode at 90° elevation angle
+           with 0.058° field of view. The model is for the year 1992 using N = 0.1.
+
+
+
+
+                                                                     24
+            10 1
+ C
+                    ..___
+• .--I
+
+..0                    -Haystack data, 91-93
+  I
+...c.                  -----· Mode 1 , t=1991
+                    I--•~---·~--··
+
+
+ E
+                       -Model, t=1992
+~
+            10° ,____ -Model, t=1993
+                ,...__
+                    >---·
+                                __
+
+
+
+(S)                 --                                                                                     .
+                                                                                                           I\
+Ln                                                                                                         ~
+                                                                                                                ~
+                                                                                                       j
+ L
+ OJ
+ o_                                                                                                    J            \
+ L
+ :::5     10- 1                                                                             ,
+                                                                                                  ,/
+                                                                                                  _;
+                                                                                                  I
+                                                                                                                    ,\                           .
+                                                                                                                                             ,,,--
+                                                                                                                                                     I
+                                                                                                                            ---~
+                                                                                           •' I
+  0                                                                                    ,    I
+                                                                                                                                          _,_
+...c.                                                                               .11-----
+                                                                                   iJ I                                      I     ---~---
+                                                                                  //,--J                                     L-
+ L                                                                                i~
+  OJ
+ o_                                                                       .VI
+                                                                          I   ,
+
+  lJ1
+  C
+  0       10-2                                                        /(I.
+• .--I                                                               ·7
+                                                                   . I
+_µ                                                             I
+  u                                                           /,
+  OJ                                                      11
+_µ
+  OJ                                                 -   //
+D
+                                                 Jw
+          10-3                       I   I   I   I                            .     . . .                               I    I        .          .
+                   0                                      500          1000                                                                          1500
+                                                            Altitude [kmJ
+         Fig. 7: Comparison of the model with Haystack radar measurements over altitude. The
+         same data collection as in Fig. 6 is used. The model is for the years 1991, 1992 and 1993
+         using N = 0.1. The limiting particle diameter is 1 cm.
+
+
+
+
+                                                                          25
+                  10 1         ...............              ; ................ ; ................ ,,: .............. -~:--:·~ ............ ~-:--:-·:---::-·:---:-~··:----:-................. .
+                               . . . . . . . . . . . . . . ·- ...................................................................................................... .
+                               ··············<·················=················•:••··············<················<················· ............... .
+                                                                                  ·················:·················:················· ............... .
+   L                           ::::,-Haystack Data                                                                            f :::::::::::::::: ::::::::::::::: :::::::::::::::: ::::::::::::::::
+  0
+   :::i                        ···· ---Model Prediction .............................................................. .
+...c                           ·······•······· . •································ .. ·················=·················:·-···············:- .. -.. , ........ .
+   L
+   OJ                                                                                         .                                                                        .
+   0..
+..........
+                  10°
+                               :11111111111111 111111111111111 ll 11111111111111111111111111111111I11111111111: 11: I: 111!1IJ;)~HP1~~t/fr
+   OJ
+...µ
+                               ...........................                            ····:·· .............................. ·:··--·· ... ··~·;,.·.;;,_,"'.'."':............ ·:· .............. .
+                               ··············· ···············•:•···············                                                                                                  ,, ,                                                         ............... .
+   ro                                                                                              . ,,
+0::::                          ··············· ················'················
+                                                               .                 ····················"'·············                                                    ~
+                                                                                                                                                                                                                                               ················
+                                                                                                                                                                     1:
+   C
+   0
+• .--I
+                 10- 1         ··············· ·································
+                               ···············
+                                                             ................ :................
+                                                             ·································
+                                                                                                                                                                                                   ...............
+                                                                                                                                                                                                   .               ..
+                                                                                                                                                                                                   ............... .
+...µ                           • • • • • • • • • • • • • • • • •••••••••.••••• • • • • • • • • • • • • • • • • • • • • • • • • • • • f ••• ·:· ••••••••••••••• ·:· • • • • • • • • • • • • • • • • • •••••...•••••••
+                                                                                              ~
+
+
+
+
+   u                           ::::::::::::::: ::::::::::::::::::::::::::::::::: ......... ::: ::::\::::::::::::::;; :~:::::::::::::::: ::::::::::::::::
+   OJ                          ............................... ; .......................... ·• ... .;................ -:- ............................... .
+...µ                                                                                                                                                        ...
+                               . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . . . . . . . . . . . . . . . . . I . . . ·:· ............... ·:·• ............................... .
+ OJ                                                                                                                                                          I
+0                              ··············· ················=················ ..... ·~·,"!"····••:••·············••:••··············· ............... .
+                                                                                : _,,
+   OJ                                                                   ,,':
+   >
+• r-1
+                 10-2 . .:::::::::::::: :::::::::::::: :;::::::::;:;.:-:'::::;:::::::::::::::::::::::::: ::: ::::::;::::::::::::::::: ::::::::::::::::
+...µ
+   ro
+                               ::::::::::::::: :::: :::::::: :: :~::;~:~~:: :::::: f ::::::::::::::: }::::: :: ::: :: ::::;: :::::::::: ::::: ::: ::: ::::::: :::
+                               ··············· ·············· .:< .................................................... ·................................. .
+                                                                                             ~
+
+.....-t                        ··············· ············:,· ....................................................................................... .
+   :::i                                                                          ~.
+                                                      ,,        .                                  .                -
+                               • • • • • • • • • • • • • • •   • • • • • • • • • •••'- • •   • I • • • • • • • • • • • • • • • •       • • • • • • • • • • • • • • • • ••• • • • • • • • • • • • • • • • ••• • • • • • • • • • • • • • • • •   • • • • • • • • • • • • • • • •
+
+   E                                                                     ,                     .                                   .                                    .                                 .
+   :::i                        ··············· ...., , ......... ··················-·························· ... ························ ........ ········
+u                                                              /
+                                                         ,
+                 10-3
+                        1000                       1200                              1400                              1500                                  1800                              2000                               2200                              2400
+                                                                                                                        Range (km)
+
+             Fig. 8: Comparison of the model with Haystack data collected in 1994 using a staring
+             mode at 10° elevation angle to the South and for a limiting particle diameter of 3 cm. An
+             N value of O. 1 is used for the model.
+
+
+
+
+                                                                                                                      26
+              105
+r-1
+    L         10 4                                                      -Model,52° surface
+   >-
+...........
+N             10 3                                                       o LDEF data,52° surface
+    E
+...........                                                             ----- Mode 1,172° surface
+#
+l,__J
+              10 2                                                       + LDEF data,172° surface
+                                         ',
+    (1.J      10 1
+    u
+    ro        10°
+4-,
+
+
+
+
+TI
+    L
+    :J
+    Lfl
+
+
+    (1.J
+              10- 1
+              10-2
+                      --7                                                                                        --,-----f-------1
+                                                                                        .............,-,,.J---·...
+
+
+
+
+...µ
+    C
+    (1.J
+              10-3
+• ,-i
+
+    L         10-4
+    0                                                                               '
+                                                                                        ''
+    C
+              10-s                                                                           ',·:~----+---1
+    ro                                                                                            '
+                                                                                                      \!
+                                                                                                         i
+
+
+    C
+              10-0                       .................. _...                                         ~
+
+
+    0
+
+    X
+              10-7                                                                                                   ''
+    :J                                                                                                                    ''
+,--t
+
+LL
+              10-8                                                                                                             ''
+                                                                                                                                    ' I
+                                                                                                                                     1-.
+                                                                                                                                     I --
+              10-9
+                  10-5     10-4       10-3                         10-2     10- 1               10°                                 10 1    10 2
+                                     Particle diameter [cm]
+      Fig. 9: Comparison of the model with LDEF data. It compares fluxes to a limiting particle
+      size on an forward-facing surface 52° off the ram and on the rear surface 172° off the ram.
+      Parameters used: t = 1985, i = 28.5°, h = 460 km, N = 1.
+
+
+
+
+                                                                   27
+                       105       ''
+                                       '
+                          4
+                       10
+                       10 3                  ······4_·······
+                                                               !
+                                                          ',, !';.;.·
+                       10 2                           ....   .
+
+                                                                      '
+                          1                                             ''
+                       10
+                       10°                                                  ~-+· .
+  X
+ :::; u
+             (lJ      10- 1                                                . - · +- '-~-1-··-------i-------,.-
+                                                                                   i
+
+
+
+        ro
+                      10-2
+...---i                                                                        '   i
+                                                                                       '
+c....- c....-
+  0, L
+  C          ~        10-3
+  L-o
+  (lJ        (lJ      10-4
+                      10-5 . . . . . . -Model, 52° surf ace
+..j.....) ..j.....)
+  ro         C                                                                                   '
+                                                                                       ·················- ~,   -···--"'-<:--l----1
+  L          (lJ                                                                                   '
+U . ...-1                 5              o LDEF data,52° surface
+             L        10-         · · · -----Model, 172° surf ace
+             0
+                      10- 7
+                                         + LDEF data,172° surface
+                      10-B L.-~=e,,;=='==t'==~===;==:!_-+-----1'                                                        '·~----i
+
+
+
+
+                      10-9
+                          10-5
+                                                      Crater diameter [cm]
+      Fig. 10: Comparison of the model with LDEF data. It compares fluxes to a limiting crater
+      size for the same parameters as in Fig. 9.
+
+
+
+
+                                                                 28
+         10 5 1
+         10 4
+                  ~
+
+
+
+
+         10 3 1~~
+                                                                                                   I
+                                                                                                   l
+,---,
+  L                                              ---h=450 ,t=1985 (LDEF)
+                                                         .
+
+-..... 10 2 E ~ '
+N
+  >--                      j
+                           i                     -h=300 ,t=1992 (Shuttle)
+  E
+-..... 10 1       I ~'
+                  ~
+#
+L......J
+
+         10°
+                     ~.'                .
+
+
+
+
+~
+  X
+  :J
+        10- 1 ~                             \~
+~
+
+  C     10-2 ~
+                                             \\j
+  0
+.......
+..µ
+  u
+        10- 3     l
+                  ;         !
+                                                 t '.
+  QJ              l
+  l.f1  10- 4                                       ~'
+   I
+  l.f1
+  l.f1  10-5      ~
+                                                             \,
+  0                                                           \ ' ...
+                                                               I\ ' ...
+                            !
+  L
+(_)     10-G      ~
+                                                                  !
+                                                                           "?-,
+
+
+           10-7   ~
+                            '
+                                                                      ~    1      '   ...... ...   ~
+
+                                                                                                       I   -.
+                                                                          ~
+                            !                                                                          i
+                                                                                                       !        '   \
+
+           10-B           ,,I       "                                                                      ~            ~   '   .
+              10-4      10-3      10-2           10- 1        10°         10 1
+                                            Diameter [cm]
+
+    Fig. 11: Modeled fluxes for a typical Space Shuttle mission (h = 300 km, i = 28.5°,
+    t = 1992, N = 0. I) and for the LDEF mission (h = 460 km, i = 28.5°, t = 1985, N=l).
+
+
+
+
+                                                  29
+                                           Input
+
+                                           Flux on sic or relative to the Earth
+                                           h, is or /j, d, t, N. Fzo.7
+
+
+                                           S/C'sData
+                                                            +
+                                           Calculate Vs; Ss(R) using E'.q.(9)
+
+
+
+                                  :.
+                                       1
+                                                             +
+                                           Select particle inclination: i=7° to 98°               j
+                                                             ♦
+                                           Functional forms
+
+                                           Ne(h,F10.1,d, t, i),NJ.jq,d,t,i)
+
+
+
+
+        Circular ••
+                                       I
+                                                            •
+                                           Circular or Elllptical?
+                                                                         I
+                                                                         1
+                                                                                        Elllptical
+                                                                                                                  •
+        ~alculate Vp;                                                                   Calculate Vp;
+        Sp(R) using E'.q.(9)                                                                        h
+                                                                                         sP<R>   =       I NE<q>sp,qCR}dfJ.
+                                                                                                       q=lOO
+
+
+                                                             •
+                                                                                                                  I
+
+
+                        Yes                I                                 I          No
+                                               Relative to the Earth? I
+                 ♦                                                                                ♦
+       Calculate Az;                                                 ICalculate           ,8(1) -fj(np) from is, ip
+                                                                                                                      I
+      ip(/3) using E'.q.(10)
+      Fe1 E = Sp(R)jp(fj)Vf
+                                                                                                 ...
+       Add F C1E to the rigb                                                     :- I   /J=P(_t),-, /j(np)    I
+       bin of NC1E(Az)
+
+                                                                      Calculate dU, Vrel
+                                                                                                 +
+                                                                    is<P>.ip<P>using E.q. (10)
+                                                                     Fe1 E = Ss(R)is<P)Sp(R)jp(P}Vrezl,.U
+                                                                      Add F C1E to the right bin of NCIE (V)
+
+
+                                                                                                 +I
+                                                                                             ; nextfj
+                                                                                                   I
+                                   y
+                               ; nextip         I
+                                   +
+                               Output
+
+                               Fe, FE, nc(V)lnc(Az). nE(V)lnE(Az)
+
+
+
+Fig. 12: Flowchart of program ORDEM96.
+
+
+
+
+                                                                         30
+                   z (Zenith)
+
+
+
+
+     X (Flight path)
+
+
+Fig. 13: Angles Az and El used to describe the velocity vector of an impact on an orbiting
+spacecraft.
+
+
+
+
+                             North
+
+
+
+
+Fig. 14: AngleAz used to describe the velocity vector ofa particle crossing a fixed point
+over the Earth.
+
+
+
+
+                                             31
+Appendix A: Functional Forms Describing the Particle Numbers
+For each inclination band, there are two basic functions which are defined as follows:
+
+Nc(t,d,h,s): Number of particles in circular orbits within a I km bin centered about the altitude h,
+             with diameter ~d, at time t and for solar activity s;
+NE(t,d,q): Number of particles in elliptical orbits with diameter ~d and whose perigees are
+             within a I km bin centered about altitude q, apogees at 20000 km, at time t.
+
+
+Symbol         Unit           Meaning
+
+               cm             Particle diameter
+                              Growth factor as a function of time
+               km             Altitude
+                              Size distribution factor oflarge fragments
+                              Size distribution factor of intact objects
+                              Size distribution factor of micron particles (Ah03)
+                              Size distribution factor of paint flakes
+                              Size distribution factor of small fragments
+                              Ratio of the production rate of new debris to the historical rate
+               #              Number of particles in circular orbits per km
+               #              Number of perigees of elliptical orbits per km
+                              Ratio of the release rate of debris by SS l\1IR to the historical rate
+               km             Perigee altitude
+               104Jy          Solar activity (F10.1 value) in the previous year of the mission
+               year           Mission time in calendar year
+               #              Altitude distribution of large fragments
+               #              Altitude distribution of intact objects
+               #              Altitude distribution of micron particles (Ah03)
+               #              Altitude distribution of paint flakes
+               #              Altitude distribution of small fragments
+
+A distribution function used in the functional forms, such as the size distribution or the altitude
+distribution, consists of 2 or more elementary functions which are, in a logarithm scale, mostly a
+linear function, or in a few cases a hyperbolic function. To obtain a function above two
+elementary functions, the two elementary f\mctions are summed up, as the upper curve in Fig. Al
+shows. To obtain a function under two elementary functions, the reverse of the two elementary
+functions are summed up, as the lower curve in Fig. Al shows.
+
+
+
+
+                                                 A-1
+                                                7° Inclination, Circular Orbits
+
+
+
+                                               7° Inclination, Elliptical Orbits
+
+NE(t,d,q) = g(t)[</J;(q)F;(d)+¢1 (q)F1 (d)]
+a) Growth factor:                              g(t) = 1 + 0.08(t - 1995).
+b) Intact objects:
+   - Altitude distribution: ¢;(q) =                        'P;,L'Pi,u    , .
+                                                      'Pi,L + g(t)¢i,U
+    where /4. = 10(cq-200)1100-o.1sJ                /4.    = 10(-<q-200)13so-o.1sJ
+          '1'1,L                     ,              '1'1,U                               •
+                                                                                     5
+      . d. t .b t·    17   0.732(d / 270)-0.J (d / 270f
+   - S1ze 1s n u 10n: r, = - - - -0 - - - - 5-
+                       1     (d/270)- .1+(d/270f
+c) Large fragments:
+   -Altitude distribution: ¢1 (q) =                              'Pt.L'Pt.u      ,
+                                                          <p f,L + g(t)cp f ,U
+    where /4           = 10(cq-300)1100J       /4          = 10[-(q-3oo)t4oo)]
+            'I' f ,L                       >   'I' f ,U                          •
+                                                    5        2
+      . d.1stn·bu .on: F = ------'----'--.;___...,:__
+   - S1ze                  3.25x10- (d/270fu(d/270f
+                 0      1                        5
+                                                 (d /270fu +(d /270f
+
+
+
+
+                                                                        A-2
+                                         28° Inclination, Circular Orbits
+
+Nc(t,d,h,s) = 0.1 x g(t)[¢;(h,s)F;(d) +¢1 (h,s)F1 (d)]
+a) Growth factor:                        g(t) = 1 + 0.04(t - 1995).
+b) Intact objects:
+    - Altitude distribution: ¢.(h,s) =
+                                     1
+                                             <P;,L</J;,u
+                                        <Pi,L + g(t)¢;,u
+           where <Pi,L = 0.14(1+101.88-s/l 10) X lO(h-600)/200+0.6, ¢; V = 1o(1370(1/h-1/600)+0.6).
+                                                 1            5
+       . d" tn"bU0.on:r,
+    - SIZe IS           17   O.732(d /27O)--0· (d /27Of
+                           =---'---"-----'-----"--
+                         1     (d/27O)-0.1+(d/27Of5
+c) Large fragments:
+    -Altitude distribution: ¢ (h,s) =               <P1,L¢1.v
+                             1
+                                                {p f,L + g(t)<p f,V
+            where ¢f,L = 0.448(1 + N x 1O2.1s-s1110) x 10ch-600)t2oo+1, ¢i.u = io(-Ch-600)11010+1)).
+
+                                                2
+       . d" tn"b .   F              3.25 x 10- (d I 21or1.1 (d 121ors
+    - S1ze 1s u0 on:               =-  --------                  5
+                                                                   -
+                               1          (d I 27Ofu + (d I 270t
+
+                                         28° Inclination, Elliptical Orbits
+NE(t,d,q) = g(t)[¢;(q)F;(d)+¢s(q)F:(d) + ¢m(q)Fm(d)]
+a) Growth factor:             g(t) = 1 + 0.04(t - 1995).
+b) Intact objects:
+    - Altitude distribution:
+             ¢; (q) =        <P;,L ¢;,u    , where <Pi,L =10[cq-200)1100],   r/>; v = 10[-Cq-200)1320].
+                        fP;,L + g(t)r/J;,u
+        . di tn'b .                  O.732(d/27O)-o.i(d/27Ot5
+    - S1ze s u0 on: r,          17
+                                   = - - - -0- - - - 5-
+                                 ,    (d /270f .1 +(d /27Of
+c) Small fragments and SRM slag particles:
+    - Altitude distribution:
+               887,/, ,1,
+     ¢ (q) =        'l's,L'f's,U where ¢ = IO(q-300)/100 ¢s.u = 10-(q-300)/400.
+       s     fPs,L + g(t)r/Js,U ,          s,L            ,
+      .   . . .                  450d-1.S d- 3
+   -Size d1stnbut1on: E: =             d_u + d_ 3 •
+                                45O
+d) Micron particles (Al2O3):
+   - Altitude distribution:
+                   . 8710,/, ,1.
+           ,I. (q) =       'I' m,L 'I' m,U where ,I. = 1oCq-300)/100 ,I.       1
+           'I'm       lp + ,1.            ,         'I' m,L         , 'I' m,U = ·
+                        m,L 'l'm,V
+      . d" .b .         F       d-2 x 2.673 x 1o-s d-s
+   - S1ze 1stn ut1on: m = 2                             8   5 •
+                                d- +2.673 x 10- d-
+
+
+
+
+                                                          A-3
+                                                   51 ° Inclination, Circular Orbits
+
+Nc(t,d,h,s) = 0.1 x g(t)[¢;(h,s)F;(d) +¢1 (h,s)F1 (d)]
+a) Growth factor:                                  g(t) = 1 + 0.04(t - 1995).
+b) Intact objects:
+    -Altitude distribution:
+     rp.(h s) =   ¢i,1L¢i,1u                   +
+                                        ¢i,2L¢i,w     + </>i,3L¢i,3u + ¢i.4L¢i,4U
+      1
+       ,     </>i,IL + g(t)</>i,IU fPi,2L + g(f)</>i,W </>i,3L + 1Pi,3U ¢i,4L + </>i,4U
+   where ¢i,L = 0.14(1+101.88-s/l 10) X 1 oCh-600)/200+0.48' ¢i,IU =1 o(l6!0(!/h-!/600)+0.48],
+             /4        _   N       rch-400)1100+0.<1s)J          .,/,.   _ 1 r-ch-400)/4o+o.4s)J
+             'l'i,ZL - S X 1O                                  , 'l'i,ZU - O.                    ,
+             .,t,._  = lQ[(h-1000)/60+0.3)] .,t,._             = lQ(-(h-1000)/210+0.3))
+             '1'1,3L                               , '1'1,3U                              ,
+             /4_       = lof(h-1500)/150+0.48)] /4.                = io(-(h-1500)/150+0.48))
+             '1'1,4L                                 , '1'1,4U                                 •
+
+    Ns is the release rate of objects by the Space Station at 400 km, its current value is 1.
+                                                1         5
+       . di tn·b .        F 0.132(d /270)-0· (d /270f
+    - Size s u11on: . = --~-~--'----'---
+                           '     (d/270f0.1+(d/270f5
+c) Large fragments:
+    - Altitude distribution: ¢ (h,s) =              ¢1.ifP1.u<P1.R
+                                           1
+                                      'PJ,L<PJ,U +tpf,L'Pf,R + g(f)tpf,Utpf,R
+    where </>1.L =0.448(1 + N X 1O2.18-s/llO) X 10<h-650)/200-0.7' ¢1.u = 0.2, ¢1.R =10[-(h-1800)/280-0.7)).
+                                                               2                                   5
+       . d.1stn·buu.· on: F =-----'-------'---'---_.;_-
+    - S1ze                   3.25 X 10- (d I 270fl.l (d I 270f
+                                                           5
+                                   1                (d I 270fu + (d I 270f
+
+                                                   51 ° Inclination, Elliptical Orbits
+
+NE(t,d,q) = g(t)[</J;(q)F;(d) +¢1 (q)F1 (d)]
+a) Growth factor: g(t) = 1 + 0.04(t - 1995).
+b) Intact objects:
+  - Altitude distribution: <f>i(q) =               'Pi,L¢i.u     ,
+                                             </Ji,L + g(t)</Ji,U
+    where /4.        = 1 o<q-200)1100-0.22 /4. = 1 o-<q-200)12so-o.22 .
+            '1'1,L                             >'1'1,U
+                                                                                      5
+      . d.1stn·b uti. on: F. =--~-~--'----'---
+    -S1ze                     0.732(d/270)-0\d/270)-
+                                                  5
+                                   ,           (d /270)-0.1 +(d /270f
+c) Large fragments:
+    -Altitude distribution: ¢1 (q) =                             <P1.L'P1.u    ,
+                                                           tp f,L + g(t)<p f,U
+          .,/,. _ 1 rcq-350)1100-o.1J /4 _ 1O r-<q-350)1soo-o.1)J
+    where 'l'f,L - O                 , 'l'J,u -                   ·
+       . di tn·b .  F   3.25x10-2 (d/270fu(d/270f5
+    - S1ze s u0 on:   = ----------            5
+                                                -
+                                       1             (d I 270fu + (d I 270f
+
+
+
+
+                                                                           A-4
+                                                    65° Inclination, Circular Orbits
+
+Nc(t,d,h,s) = 0.1 x g(t)[¢;(h,s)F;(d) +</>1 (h,s)F1 (d) + </>s(h,d,s)F:(d) +¢ p(h)Fp(d) + </>m(h,s)Fm(d)]
+a) Growth factor: g(t) = 1 + 0.04(t - 1995).
+b) Intact objects:
+    -Altitude distribution: ¢;(h,s) =             ¢;,ii</>;,w     + </J;,2L</>;,w + 'P;, 3 i</J;, 3u
+                                            </Ji,IL + g(t)</J;,tu  </>;,2L + </>;,2U </Ji,3L + <P;_w
+    where      ,I,_      = Q 14(1 + 1O1.88-s/JJ0) X lQ(h-500)/200 ,1,_ = 10(730(1/h-J/500)) ,1,_ = lQ[(h-900)/75+1.48)
+               'f'1,IL        ·                                                            • 'f'1,1U                             • 'f'1,2L          •
+               ,1,       _    lQ[-(h-900)/125+1.48)          ,1,        _     lQ[(h-1350)/70+0.3)              ,1,     _   1 [-(h-1350)/50+0.3)
+               'f'i,2U -               • 'f'i,3L -                                                     ,       'f'i,3U -    O                   •
+                                                0      5
+                             0 732(d / 27Of \ d I 27Of
+     -Size distribution: F = -·_...;.__---'---'-------'-
+                                                     5
+                                           1
+                          1    (d/27O)--0· +(d/27Of
+c) Large fragments:
+
+     - Altitude distribution: ¢ (h,s) =
+                               1
+                                                                             + </>1,2i</>f, 2u
+                                                                   </> f.1L</> f.!V
+                                                        q> f.JL + g(t)q> f,IU ¢ f,2L + q> f,2U
+     where ¢J,L = 0.448(1+Nx102.1s-s1110) x 10<h-700)/200+J.24, ¢ f,JU = l o(l230(J/h-J/700)+J.24),
+               ,1,        -   lO[(h-900)/200+1.7)         ,1,            -    lQ[-(h-900)/160+!.7)
+               'f'f,2L -                            '     'f'f,2U -                                        •
+                                                         2                                             5
+                                     3 25 x 10- d 121or1.1 (d I 27Of
+                                                             (
+     - Size distribution: F1        =-  · - - - - - - - - -5- -
+                                             (d /27Ofu +(d /27Of
+d) Small fragments and Na/K. particles:
+                                                        1.179 X 103 ,I, /4
+     -Altitude distribution: ¢ s(h, d) =                              'f' s,L 'f' s,u
+                                                            </> s,L + <p s,U
+                                                                                                   6
+     where     </>s,L = l o[(h-950)/a+0.6]          with a= 50(1- 20d ) + 110, ,I, = 1 or-(h-950)/60+0.6].
+                                                              1+20d6           'f's,U
+                               450d-l.Sd-3
+     -Size distribution: F: =     d_1.5 +d_3 •
+                              450
+e) Paint flakes:
+
+     -Altitude distribution: </> p(h)        = </> p,1 p,U , where </> p,1 = 1 o<h-600)/350+4.98 '</> p,u = l o-(h-600)/400+4.98 .
+                                                q> p,L               q> p,U
+                              d-1.S X 4.1 X 10-1 d- 5
+     -Size distribution: FP = d-1.s + .1 x _7 d-s .
+                                                4                10
+f) Micron particles (Al2O3):
+                                                        1660 X </> m L </> m U
+     -Altitude distribution: ¢m(h,s) =                                        ·       · , where
+                                                             </> m,L    + </> m,U
+      'Pm,L =0.128(1 + 1O1.88-s/JIO) X lQ(h-300)/100 ,<Pm,U =1.
+                                       d- 2 X 2 673 X 1O-s d-S
+     -Size distribution: Fm =                   •                                     •
+                                       d- 2 +2.673 x 10-8d-5
+                                                    650 Inclination, Elliptical Orbits
+
+
+
+
+                                                                                          A-5
+                                                   82° Inclination, Circular Orbits
+
+Nc(t,d,h,s) = 0.1 x g(t)[</J;(h,s)F;(d) +¢1 (h,s)F1 (d)+¢s(h,s)F:(d) +¢p(h)Fp(d)+¢m(h,s)Fm(d)]
+a) Growth factor:                                  g(t) = 1 + 0;04(t - 1995).
+b) Intact objects:
+    -Altitude distribution: </J;(h,s) =                                  </J;,JL</J;,iu + </J;,n</J;,w
+                                                                   'Pi,IL + g(t)</Ji,IU </Ji,2L + </Ji,W
+    where 'f',,IL
+          /4_     = 014(1 + 1O1.88-s/llO) X 1o<h-700)/200+1.6 /4_ = 1o(-(h-700)/520+1.6]
+                     ·                                       • '1"1,IU                   ,
+               /4_       = 1Q[(h-1450)/5o+2]       ,1.._           = ld-(h-1450)/100+2]
+               'f',,2L                         , 'f'1,2U                                  ·
+                                                                          0               5
+       . di stn"buu·on: F. = -0.732(d
+    - Size                             /270f \d /270f
+                               - - - - - - - ' - - - ' - -5 -
+                         '      (d /270)-o.i +(d /270f
+c) Large fragments:
+    -Altitude distribution: ¢ (h,s) =                                  ¢1.iL<Pf.lu    + ¢1,2L<Pf.w + fP1,3d>t,3u
+                                          1
+                                                                  <pf,IL + g(t)</Jf,IU <pf,2L + ¢f,2U </J f,3L + ¢f,3U
+    where 'f',,IL
+          /4_     =0·448(1 + N X 102.18-s/110) X lO(h-800)/200+0.3 , 'f',I..f,IU =10[-(h-800)/6oo+0.3)] •
+               ,,f..     -   lQ[(h-950)/80+1.6)]     ,1..     _ 1 [-(h-950)/115+1.6)]
+               'f' f,2L -                          • 'f' f,2U - 0                     •
+               ,,f..     _   lO[(h-1500)/130+1.2)]         ,1..       _ lQ[-(h-1500)/220+1.2)]
+               'f' f ,3L -                           • 'f' f ,3U -                               ·
+                                                    2                          5
+       . distn"buti"on: F
+    - Size                                 3.25_
+                                          =_    x_    (d_I 21or1.1
+                                                 10-__;_             (d /_270f
+                                                            ___;_....;..._ __:__
+                                      1              (d /270fu +(d /270f5
+d) Small fragments:
+    - Altitude distribution: <Ps(h,s) = 16.8¢1 (h,s).
+       .     . . .               450d- 1'5d- 3
+    - Size distnbutton: Fs =           I5      3 ·
+                               450d- · +d-
+e) Paint flakes:
+  - Altitude distribution·· 'f',1.. p(h) = <p¢ p.L+¢¢p,u • where 'f'/4 p,l = 1o<h- 600>135 o+ 4 .9s, 'f',,f.. p,u = 1o-<h-600>1400+4.93 ·
+                                                           p,L         p,U
+      .    . . .           d-1.s               x 4.1 x 10-1            d-s
+   - Size d1stnbut1on: FP = 1 5                  •
+                           d- · +4.1 x 10-7 d- 5
+t) Micron particles (Al2O3):
+                                  1660 X <Pm <Pm
+    -Altitude distribution: 'Pm(h,s) =               ,L ,u , where
+                                           'Pm,L +</Jm,U
+     <p m,L = OJ 28( 1+1Ql.88-s/110) X 1 Q(h-300)/100' <p m,U = 1.
+
+    . d" .b .      F   d-2 x 2.673 x 1o-s d-s
+   S
+  - 1ze 1stn ut1on: m = 2               8   5 •
+                       d- +2.673 x 10- d-c
+
+                                                   82° Inclination, EHiptical Orbits
+
+
+
+
+                                                                              A-6
+                                                    98° Inclination, Circular Orbits
+
+
+
+a) Growth factor:                                   g(t) = 1 + 0.04(t - 1995).
+b) Intact objects:
+    -Altitude distribution: ¢;(h,s) =          ,P;,iLr/J;,w   + r/J;,n¢;,w
+                                          ,Pi,IL + g(t),P;,IU </>;,2L + </>;,2U
+    where 'f'1,IL
+          ,1,_    = 014(1
+                     ·    +1O1.88-s/ll0) X1o<h-750)/200+1.3 , 'f'1,IU
+                                                              ,I,_    =10(3390(1/h-l/750)+1.3] ,
+               ,1,       _   1o[(h-!450)/9o+l.3]     ,1,     _    IQ[-(h-1450)/50+1.3]
+               'f'i,2L -                           • 'f'i,2U -                              ·
+                                                                                        5
+    •S1ze
+         .   diStn"bU11·on: r,v =---'-------'----'---'--
+                                 O.732(d /27O)-0.l(d 121or
+                                      1           (d /270)-0.1 +(d /27Or5
+c) Large fragments:
+    -Altitude distribution: ¢ (h,s)=                   ef>t,iL¢nu         + </>1.n¢1.w
+                                              1
+                                                  </>f,IL +g(t)¢1.w </>f,2L +¢1.2u
+    where 'f'1,lL
+          ,I,_      = 0·448(1+NX102.18-s/l 10) X1o(h-800)/200+1.48 ' 'f',I,f,IU =1o[-(h-800)/73S+l.48) ,
+          ,I,        _    rch-1soo)111s+1.6J ,I,         _    r-<h-1soo)11S+1.6J
+          'f' f ,2 L - 10                   • 'f' f ,2U - 10                     ·
+                                                              2                                  5
+       . di stn"b u11·on: F = -3.25
+    - S1ze                          x 10- (d 121or1.1 (d I 21or
+                                 - - - - ' - - - - ' - - - - -5' - -
+                                          1          (d /27oru + (d /27Or
+d) Small fragments:
+    - Altitude distribution: ¢/h,s) = 16.8¢ih,s).
+         .     .     .     450d-1. 5d-3
+                             .
+    -Size distnbu11on: ~ = d_1. 5 +d_3 •
+                          450
+e) Paint flakes:
+  -Altitude distribution·· 'f',1, p(h) = ¢¢ p.L+</> ,1,p,u            ,
+                                                                          where 'f',1, p,l = 1o<h-6oo)r3so+5A3, 'f',1, p,u = 1o-<h- 6oo)t4oo+sA3·
+                                   p.L 'f'p.U
+    .    . • .            d-1.S X4.1 X10-7d- 5
+  -Size d1stnbut1on: FP = d-1.s + .l x _7 d-s .
+                                 4 10
+f) Micron particles (A1203):
+                                                           4160
+  - Altitude distribution: ¢m(h,s) =                           x ¢m,L¢m.u ,
+                                                            ¢m.L +,Pm,U
+    where </Jm,L =0.128(1 + 101.88-s/!!O) XIO(h-300)/100 ,¢m,U = 1.
+    s· d. .b .     F    d- x 2.673 x 1o- d-s
+                          2             8
+
+  - 1ze 1stn utlon: m = d-2 + 2.673 X1o-8 d-s .
+
+                                                    98° Inclination, Elliptical Orbits
+
+
+
+
+                                                                             A-7
+ c+-!
+
+
+
+ -
+  bO
+  0
+
+
+
+
+Fig. Al: Technique used to obtain a function from two elementary functions.
+
+
+
+
+                                   A-8
+Appendix B: Collision Probability Equations
+The functional fonns describe the number of particles in circular and elliptical orbits. Fly a
+spacecraft through the environment, these particles cause a certain flux on the spacecraft. Look a
+ground sensor into the environment, these particles cause a certain flux crossing the field of view
+of the sensor. Orbital collision theories can be applied to relate the particle numbers to fluxes. In
+the model, equations about orbital collision probability in Re£ 2 are used. In the .following, we
+give a brief summary of the most important equations used in the model. For details and better
+understanding of the equations, we refer to the original publication.
+
+The technique in Re£ 2 is based on the concept of spatial density. An object in an earth orbit
+passes through a large volume around the earth. Consider a unit volume, the object may spend a
+fraction ofits time passing through this unit volume. The probability that this object is seen in this
+unit volume is the spatial density S.
+
+For the object in an orbit with perigee q, apogee q' and inclination i, the spatial density is a
+function of R, the distance from the center of the earth, and p, the latitude, assumed that the right
+ascension of ascending node and the argument of perigee of an orbit are random. Averaged over
+all latitude, the radius-dependent spatial density can be expressed as:
+
+               1
+s(R)- - 2- - - - - -      2
+                                                                               (1)
+   - 41r Ra[(R-q)(q'-R)]1' '
+
+where a is the semi-major axis.
+
+The ratio of the spatial density at latitude Pto the spatial density averaged over all latitudes can be
+expressed as:
+
+                   2
+f(P) =                        1/2 •                                            (2)
+         7!( sin i - sin P)
+               2       2
+
+
+
+
+The actual spatial density at a distance R from the center of the earth and at latitude p can be
+obtained by combining Eqs. (1) and (2), resulting in:
+
+                                                l
+S(R,P) = f (/3) x s(R) =                                            112
+                                                                          •    (3)
+                                  3     2      2
+                              2:r Ra[ (sin i - sin P)(R-q)(q'-R)]
+
+Flux on a Stationary Detection Area over the Earth
+
+The flux F, or the number of impacts per unit cross-sectional area per unit time, is given by:
+
+F=SV                                                                           (4)
+
+where Vis the velocity of the object relative to the detection area.
+
+Setting Eq. (3) in Eq. (4) leads to:
+
+
+
+                                                    B-1
+                         V
+F=                                          112 ·                             (5)
+     21r Ra[ (sin i- sin /J)(R-q)(q'-R)]
+        3        2       2
+
+
+
+
+This equation gives the flux on a stationary detection area over the earth, such as the field of view
+of a ground sensor.
+
+Flux on an Orbiting Spacecraft
+
+The flux on an orbiting spacecraft caused by an orbiting object can be handeled by considering the
+collision between two orbiting objects. Assume the first object is in an orbit with orbital elements
+q1, q '1 and i1, and the second object is in an orbit with orbital elements q2, q '2 and i2. The
+collision between these two objects is only possible ifthere are some regions both objects are able
+to pass through. Assume that both objects can pass through the volume element dU, and the
+spatial density of the first object in that volume is S1, and of the second object is S2. Under the
+condition that the first object is already in the volume, the rate that the second object will collide
+with the first object is S2Vcrwhere Vis the relative velocity between the two objects, o-is their
+collision cross-section area. As the first object is not always in the volume, but only with the
+probability S1dU, the real collision rate in that volume element is therefore S1dUxS2Vcr=
+S1S2VadU. The total collision rate can be obtained by integrating over all volume elements
+accessible to both objects:
+
+                                                                               (6)
+
+and the cross-sectional area flux is:
+
+
+                                                                               (7)
+
+
+Numerical Solution
+
+Eq. (3) has singularities near perigee, apogee or at latitudes near the inclination of the orbit.
+However, those singularities are not real, as orbits around the earth never have an exact perigee,
+apogee or inclination, as a result of various periodic or permanent perturbations. Consequently,
+there is always some uncertainties about the location of an object. It is therefore meaningful to
+determine the average spatial density within some finite volume; in addition, an integration over a
+large volume makes also computing faster.
+
+In the following, we provide a numerical solution which is derived in Appendix A of Re£ 2. This
+solution which avoids singularities and allows large volume size is implemented in the program
+ORDEM96.
+
+Consider a finite volume defined between Rand R ', and between /3 and /3', the average spatial
+density in that volume can be expressed as:
+
+S(R,R' ,P,/3') = J(/3,/J')s(R,R'),                                             (8)
+
+where
+                                                    B-2
+_ , J:· s(R)R dR             2
+
+s(R,R) = --R.---
+          JR R2dR
+                  1          2    2
+         =      2    [sin-1 ( R'- a)+n-], whenR:5:qandR':{q',
+             4n- aMR           q'-q   2
+
+         =      2 1 - [n- . _1 (2R-2a)]
+                       --sm              h R~andR'~.,
+                                - - - , wen                                      (9)
+             4n- aMR. 2          q'-q
+                1
+         =---                                   when RS<] and R •~ ',
+             4n-R2M'
+
+and
+
+                 p•
+_           JP f (/3) cos /3 d/J
+f (/3,/3') = JP'
+                          cosf3df3
+                      p
+
+
+         = - -2- - - [ sm
+                        . _1 (sin/3')
+                              - - - sm. -i(sin/3)]
+                                           --                  when i> /3',      (10)
+             n-(sin/31-sin/3)            sini       sini   '
+
+                    2
+         = ;,r(sin/31-sin/3) 2 - sm
+                                     [K . _1
+                                    (sin/3)]
+                                      sini '
+                                                               when f3<i5/3',
+
+         =O,                                                   when i</3,
+
+In Eqs. (9) and (10), the following relations are used:
+ M=R'-R, li/3= /31-/3, R = (R+R')/2.
+
+Thus Eq. (5) to calculate the flux on a stationary detection area over the earth can be written as
+
+                                                                                 (11)
+      j=volume
+
+where Vi-is the velocity of the object relative to the detection area,
+
+and Eq. (7) to calculate the flux on an orbiting spacecraft can be written as:
+
+                                                                                 (12)
+      j=volume
+
+where Vi· is the relative velocity between the two objects.
+
+Relative Velocity
+
+Since the relative velocity is required to calculate collision probabilities, the equations giving the
+relative velocity between two orbiting objects which were derived in Ref 2 will be provided here.
+The relative velocity follows from the vector relationship
+
+                                                                                 (13}
+
+
+
+                                                  B-3
+where  Vi  and ~ are the respective velocities of the two objects orbiting the earth. The magnitude
+of the relative velocity is
+
+                                                                               (14)
+
+where <I> is the angle between the vectors Vi and ~ . Fig. B 1 illustrates these two vectors in a
+stationary coordinate system centered at the point of intersection. In the figure, the x axis points
+toward the central body, while they axis is along a line of constant latitude. This makes the y-z
+plane to be tangent to the spherical surface shown in Fig. B2. The angle y is defined as the angle
+between the velocity vector of an object and the tangent of the sphere shown in Fig. B2, and the
+angle a, is the angle between the path of the object and the line of constant latitude.
+
+Those definitions of a, and y are used in Fig. B1, resulting in
+
+                                                                               (15)
+
+The value for y can be obtained from conservation of angular momentum:
+
+cos2 r =        qq'                                                            (16)
+            R(2a-R)'
+
+and the value for a, is found from spherical trigonometry in Fig. B3:
+
+            cosi
+cosa=--.                                                                       (17)
+            cos/J
+
+Values for either y or a, may be either positive or negative, resulting in 16 combinations of a.1, a.2,
+y 1 and y2 found within a particular volume element. However, as found from Eqs. (14) and (15),
+the number of possible intersection velocities within a volume element is reduced to four. Each of
+these four possible velocities are equally probable to be found within the volume element. Thus,
+for calculating collision probabilities, it is valid to use an average of these four velocities in
+Eq. (12). However, this is not the same as saying that the probability of collision with each
+velocity is equal. As the probability of collision is proportional to the relative velocity within the
+volume element, the higher velocities are the more probable collision velocities.
+
+
+
+
+                                                  B-4
+        z
+
+        •
+
+
+
+X   a1 -a2
+
+
+
+
+    Fig. B 1: Velocity vector relationships.
+
+
+
+
+                     B-5
+                        Orbit of
+                        object
+
+
+
+
+Fig. B2: Definition of angle y.
+
+                             z       Path of object with
+                                     constant R and
+                                     argument of pericentron
+                                     angular velocity
+
+
+
+
+              X
+
+
+ Fig. B3: Definition of angle a..
+
+
+
+
+                                    B-6
+Appendix C: Modifying Source Code
+As new data become available, modification of the model will be necessary in the future. It then
+requires the change of the functional forms describing the number of particles in the six inclination
+bands.
+
+The functional forms are coded in the FORTRAN file FCTS0S.FOR, using 12 functions. The
+number 12 results from the combination of the six inclination band with the two eccentricity
+families. The name of one of the 12 functions consists of 3 letters and two digits of number; for
+instance the function CIR28 calculates the particle numbers in circular orbits in the 28° inclination
+band, or the function ELL28 calculates the particle numbers in elliptical orbits in the 28°
+inclination band.
+
+In each function, the numbers of particles are computed for each of the six source components,
+and added up at the end. The block computing a source component is documented using a
+comment such as "intact objects", "large fragments", etc.
+
+Parameters describing the altitude distribution begin with the letters "ph", followed by one of the
+letters "i", standing for intact objects, "f', for large fragments, "s", for small fragments or Na/K
+particles, "p" for paint flakes, or "m", for micron particles (AhO3). Parameters describing the size
+distribution begin with the letter "f', followed by a letter using the same system as the altitude
+distribution parameters. Table Cl gives a list of the parameter names in the 12 functions, their
+respective symbols used in the functional forms and the physical meaning.
+
+The parameter gg represents the growth factor.
+
+Table Cl: Parameter names used in ORDEM96.
+
+Paramter name in      Symbol used in the      Meaning
+FORTRAN               functional forms
+                      (Appendix A)
+fi                    Fi                      Size distribution factor of intact objects
+ff                    Fr                      Size distribution factor oflarge fragments
+fs                    Fs                      Size distribution factor of small fragments or Na/K
+fp                    Fp                      Size distribution factor of paint flakes
+fin                   Fm                      Size distribution factor of micron particles (AhO3)
+phi                   cl>i                    Altitude distribution of intact objects
+phf                   cl>r                    Altitude distribution of large fragments
+phs                   cl>s                    Altitude distribution of small fragments or Na/K
+php                   <l>p                    Altitude distribution of paint flakes
+phm                   <l>m                    Altitude distribution of micron particles (Al2 O3)
+
+
+
+
+                                                 C-1
+                                                                                                                                                Form Approved
+                                    REPORT DOCUMENTATION PAGE                                                                                   0MB No. 0704-0188
+Public reporting burden for this collection of information is estimated to average 1 hour per response, including the time for reviewing instructions, searching existing data sources, gathering and
+maintaining the data needed, and completing and reviewing the collection of Information. Send comments regarding this burden estimate or any other aspect of this collection of information,
+including suggestions for reducing this burden, to Washington Headquarters Services, Directorate for information Operations and Reports, 1215 Jefferson Davis Highway, Suite 1204, Arlington,
+VA 22202-4302, and to the Office of Management and Budget, Paperwork Reduction Project (0704-0188), Washington, DC 20503.
+1. AGENCY USE ONLY (Leave Blank) 12. REPORT DATE              13. REPORT TYPE AND DATES COVERED
+                                         November 1996         NASA Technical Memorandum
+4. TITLE AND SUBTITLE                                                            5. FUNDING NUMBERS
+    A Computer Based Orbital Debris Environment Model for Spacecraft Design and
+    Observation in Low Earth Orbit
+
+6. AUTHOR($)
+      D. J. Kessler; J. Zhang*; M. J. Matney*; P. Eichler*; R. C. Reynolds*;
+      P. D. Anz-Meador**; E. G. Stansbery
+
+7. PERFORMING ORGANIZATION NAME(S) AND ADDRESS(ES)                                                                                       8. PERFORMING ORGANIZATION
+                                                                                                                                            REPORT NUMBERS
+      Lyndon B. Johnson Space Center
+      Earth Science and Solar System Exploration Division                                                                                      S-822
+      Houston, Texas 77058
+9. SPONSORING/MONITORING AGENCY NAME(S) AND ADDRESS(ES)                                                                                  10. SPONSORING/MONITORING
+                                                                                                                                             AGENCY REPORT NUMBER
+      National Aeronautics and Space Administration
+      Washington, D. C. 20546-0001                                                                                                              TM-104825
+
+
+11. SUPPLEMENTARY NOTES
+     *Lockheed Martin Engineering and Sciences Services; **Viking Science and Technology, Inc.
+
+
+12a. DISTRIBUTION/AVAILABILITY STATEMENT                                                       12b. DISTRIBUTION CODE
+Unclassified/Unlimited
+Available from the NASA Center for AeroSpace Information (CASI)
+800 Elkridge Landing Road
+Linthicum Heights, MD 21090-2934
+(301) 621-0390                                                Subject Category: 199
+13. ABSTRACT (Maximum 200 words)
+A semi-empirical orbital debris model has been developed which combines direct measurements of the environment with the
+output and theory of more complex orbital debris models. This model is computer based. It approximates the environment with
+six different inclination bands. Each band has a unique distribution of semi-major axis, for near circular orbits, and a unique
+perigee distribution, for highly elliptical orbits. In addition, each inclination band has unique size distributions which depend on
+the source of debris. Collision probability equations are used to relate the distributions of orbital elements to the flux measured on
+a spacecraft or to the flux measured through the field of view of a ground sensor. The distributions of semi-major axis, perigee,
+and inclination are consistent with the U.S. Space Command catalogue for sizes larger than about 10 cm, taking the limitations of
+the sensors into account. For smaller sizes, these distributions are adjusted to be consistent with the flux measured by ground
+telescopes, the Haystack radar, and the Goldstone radar as well as the flux measured by the LDEF satellite and the Space Shuttle.
+The computer program requires less than 1 second to calculate the flux and velocity distribution for a given size debris relative to
+an orbiting spacecraft.
+
+
+
+
+ 14. SUBJECT TERMS                                                                                                                                       15. NUMBER OF PAGES
+      space debris; orbital mechanics                                                                                                                                55
+                                                                                                                                                         16. PRICE CODE
+
+ 17. SECURITY CLASSIFICATION 18. SECURITY CLASSIFICATION                                               19. SECURITY CLASSIFICATION 20. LIMITATION OF ABSTRACT
+     OF REPORT                   OF THIS PAGE                                                              OF ABSTRACT
+          Unclassified                                             Unclassified                                 Unclassified                  Unlimited
+ NSN 7540-01-280-5500                                                                                                              Standard Form 298 (Rev 2-89)
+                                                                                                                                                         Prescribed by ANSI Std. 239-18
+                                                                                                                                                         298-102
+

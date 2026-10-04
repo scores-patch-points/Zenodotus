@@ -1,0 +1,255 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2013-7-15"
+lang: "en"
+messages: "246"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<w30> tigrang, Cool! You "r" da man *smile*
+<w30> tigrang, Now show it to a Windows 8 user  so they know what they don't have.
+<w30> tigrang, hehheh
+<tigrang> lol
+<tigrang> One more issue, sorry :P
+<tigrang> I have compositing enable and have checked shadows under panels, but I don't see any shadows
+<tigrang> nvm I read read dock windows as panel
+<Doomtickle> hello everyone.  I'm an ultimate noob, and am having problems with nvidia drivers.  I have a NVIDIA GeForce GTX750M card in my laptop.  Am I able to install the 319.32 drivers? I keep getting API mismatch errors when I try
+<Doomtickle> the only drivers that seem to work is 310 experimental
+<Doomtickle> or are there open source alternatives that I can use?
+<w30> Doomtickle, you can install the opensource nv driver but you won't like it. It won't take the stress of 3d graphics.
+<Doomtickle> ok, thanks.  this has been driving me crazy for a day or so.  guess i'll just stick with 310 version.  it seems ok, i'm just getting horizontal tearing during video playback
+<w30> Doomtickle, My GeForce GT520 uses the 313 driver and nothing higher
+<Doomtickle> ok, i'll try that one.  thank you!
+<w30> Doomtickle, try playing with the sync to VBlank settings in the /usr/bin/nvidia-settings app
+<w30> Doomtickle, or image settings high Quality etc.
+<Doomtickle> w30, i have and still no luck. been trying to figure this out since yesterday.
+<w30> Doomtickle, nvidia-settings has a reset to default so you can undo what you play with
+<Doomtickle> w30, great, thanks!
+<_aiden> hello..
+<_aiden> when booting from the 32bit live cd on an asus eee pc, i get a grub prompt instead of the normal booting of the live cd. what could be the problem?
+<[0gb_us]> Since formatting my flash drive as ext4, I've been having file permission-related issues when using the drive on different user accounts. However, I need case sensitivity for some of my files. Is there a file system format that is case sensitive but lacks file ownership?
+<pleia2> [0gb_us]: is this a thumb drive?
+<[0gb_us]> Something similar, yes.
+<pleia2> it's more likely that it's just getting corrupted, permission problems are very common when that happens, and most thumb drives aren't really built for running an OS
+<[0gb_us]> It doesn't run the OS. It holds files for transfering to other computers.
+<[0gb_us]> The OS is on the hard drive.
+<pleia2> ah, probably want to do a filesystem check of the disk
+<pleia2> my guess is still corruption
+<[0gb_us]> The file system works perfectly, as long as it is accessed from the same user account that created the files.
+<[0gb_us]> Other accounts can't edit the files though.
+<[0gb_us]> And if you chech the owner of the file, it belongs to the account that created it.
+<[0gb_us]> *check
+<Unit193> Same owner and all, would make sense I'd think.  You can check which ones have the needed (or don't have) on http://en.wikipedia.org/wiki/Comparison_of_file_systems#Metadata though it may not be 100% right.  I don't know if F2FS does or not.
+<[0gb_us]> Thanks!
+<Unit193> (Still using normal fat here, compatibility and all that.)
+<pleia2> oh I see, I think you'll want to add write permissions to everyone (not just the owner)
+<[0gb_us]> I can't use FAT. FAT makes it impossible to transfer any directory where case sensitivity is vital.
+<pleia2> this can be done in thunar by changing the permissions on the files by the user that creating them
+<[0gb_us]> That requires changing the permissions EVERY time I add a file though, right?
+<Unit193> chmod +w too.  I was using that as a reason why I don't know much about different types on a flash drive. :P
+<Sysi> [0gb_us]: ntfs?
+<[0gb_us]> NTFS has file ownership.
+<Sysi> but it can be mounted to be owned by current user, should work on usb stick
+<[0gb_us]> So the current user would own all the files, not just the root directory of the drive?
+<Sysi> should work so, I haven't used it but I know some people do
+<Sysi> I'm using exfat on my external drive (because osx can't write to ntfs) but it requires PPA for fuse-exfat
+<[0gb_us]> Okay, I'll try that then.
+<[0gb_us]> Thanks!
+<deckard_> is it safe to remove Rhythmbox if i dont use it?
+<ochosi> deckard_: certainly
+<deckard_> braserio and xfburn to?
+<deckard_> nrasero
+<deckard_> brasero*
+<elfy> you can remove those - removing xfburn will remove xubuntu-desktop I expect - nothing to worry about though
+<deckard_> ty
+<cida> Hey guys... I'm having issues with my computer dropping me from the network. And it's only doing this to THIS laptop.
+<[0gb_us]> I had that issue with Debian. It might be a wireless card driver issue.
+<cida> So do you think I just need to go find another driver?
+<cfhowlett> cida, try reinstalling first
+<cida> If just had the 20 foot ethernet cord this wouldn't even bother me lol.
+<cida> cfhowlett, okay... But I honestly don't remember what driver I downloaded or where I got it.
+<cfhowlett> cida, you mean you did NOT use the default ubuntu driver?
+<cida> It hasn't always been doing this. I think it may be an issue with our newer router...but it seems to "pick on" my laptop the most where I'll drop for a minute or two, then I'll get back on. But every so often, the router just quits for fifteen minutes, and restarting it doesn't help. But we also got the router weeks ago and this issue has only started like a few days ago.
+<cfhowlett> cida, funky router is quite likely to give funky results ...
+<cida> OH, and out of the box, the ubuntu driver didn't work. I had to install newer broadcom drivers
+<cfhowlett> cida, and we have a winner... broadcom!  that said, if properly installed the broadcom drivers seem to be pretty bulletproof.
+<cfhowlett> cida, does wifi work at other locations?  if yes, it's not the laptop, it's your router ...
+<cida> Last I checked, it did. But we've had this router  a while, and it didn't do anything like this until a few days ago. So I'm not sure if it wouldn't constantly drop me if I were to, for example, go to my friend's house and get on their router.
+<cfhowlett> cida, EZ test: use a different router and see what happens.
+<cfhowlett> cida, routers DO fail and/or get configured wrong.
+<cida> I really hope it's just the driver...because that doesn't cost money to replace.
+<cida> I'll be right back.
+<cfhowlett> cida, takes only a few minutes to reinstall the bcm driver ...
+<cida> Okay, I'm back. And can I get the link to the driver's list?
+<cfhowlett> cida, https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx
+<cfhowlett> cida, for what it's worth, I used the STA no internet access method; 2 minutes in the terminal and had live wifi ... didn't even need a reboot
+<cida> cfhowlett, thanks. I'll probably be back tomorrow if the problem persists.
+<cfhowlett> cida, best of luk
+<cfhowlett> *luck*
+<xubuntu571> hello how to mount open a cd dvd in xubutu ??
+<xubuntu571> loda ghanta h koi ya maar gaye sb bahan chodo
+<cfhowlett> xubuntu571  errr, in english?  or what is your preferred language?
+<xubuntu182> ciaooo
+<xubuntu182> hi! I have a problem for install Divine Divinity 3Cds a game. It uses the platform Wicrosoft windows. How can i install it on xubuntu?
+<cfhowlett> xubuntu048, wine perhaps
+<cfhowlett> !wine
+<ubottu> WINE is a compatibility layer for running Windows programs on GNU/Linux - More information: https://help.ubuntu.com/community/Wine - Search the !AppDB for application compatibility ratings - Join #winehq for application help - See !virtualizers for running Windows (or another OS) inside Ubuntu
+<xubuntu182> I have used wine but it install only one cd and not the other two cds
+<cfhowlett> xubuntu182, see winehq for assistance.  as it's a MICROSOFT program, you should not expect it to run in linux natively 100% ... at least not without some help
+<knome> xubuntu182, have you looked in the wine appdb to check how well the game is supposed to work on wine, or if it needs some fixes or tweaks to get it installed?
+<xubuntu182> okok thank you very much to all for your answers
+<cfhowlett> xubuntu182, best of luck
+<xubuntu182> ;)
+<jacta> Hi all :) - Is there a default samba share gui in 12.04?
+<jacta> Anyone?
+<bgardner> jacta: Yes?
+<jacta> Hi all :) - Is there a default samba share gui in 12.04?
+<jacta> I want to share a folder on my network, cant find a good gui tool?
+<bgardner> jacta: Looking, one moment.
+<jacta> bgardner: thanks a bunch!
+<bgardner> jacta: I don't have experience with it, but you might try system-config-samba
+<onr> it seems my notification box is crashed
+<onr> it's at top left corner, with no style other than bg/fg color
+<onr> have you seen this before? how to fix it?
+<ToZ> onr, have you tried restarting xfce4-notifyd?
+<onr> ToZ: it's in case for several weeks
+<onr> ToZ: just tried reinstalling xfce4-notifyd, nothing changed
+<ToZ> onr, is xfce4-notifyd running? "ps -ef | grep xfce4-notifyd"
+<onr> ToZ: no..
+<ToZ> onr, try restarting it. Are you running 32 or 64 bit?
+<onr> ToZ: 64-bit. how to restart it?
+<ToZ> onr, try: "/usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd &"
+<onr> ToZ: it says another notify daemon is running, which is xndaemon
+<ToZ> onr, do you recall ever installing xndaemon?
+<onr> ToZ: nope
+<onr> btw, https://bugs.launchpad.net/ubuntu/+source/xfce4-notifyd/+bug/1024630
+<ubottu> Launchpad bug 1024630 in xfce4-notifyd (Ubuntu) "12.04 using xfce + lxdm, rapid login will lose xfce4-notifyd pid" [Undecided,Confirmed]
+<ToZ> onr, are notify-osd or notification-daemon installed?
+<ToZ> onr, what does "ps -ef | grep notif" say?
+<onr> ToZ: nothing
+<onr> ToZ: no they are not installed
+<ToZ> onr, what does "ps -ef | grep notif" say? Does it identify another notification daemon?
+<onr> ToZ: http://sprunge.us/EcIR
+<ToZ> onr, did you try changing settings in "Settings Manager -> Notifications"?
+<onr> ToZ: yes, also in xfce4-notifyd-config
+<ToZ> onr, there must be another notification daemon running. dunst?
+<onr> ToZ: dunst
+<onr> ToZ: i have no idea where did it come from
+<ToZ> onr, "ps -ef | grep dunst"
+<ToZ> onr, if exists, "killall dunst"
+<onr> ToZ: yup, purged it. now everything works fine
+<ToZ> onr, cool
+<onr> ToZ: thank you very much
+<JCD> Hello! Your website says Xubuntu 12.04 will be supported three years per the Xubuntu LTS plan.
+<JCD> Is that correct?
+<[0gb_us]> Yes.
+<[0gb_us]> So it has two years left.
+<JCD> Why is it not until April 2017?
+<elfy> becasue that would be 5 years
+<JCD> I mean why is it different from Ubuntu?
+<[0gb_us]> I wondered that myself ....
+<JCD> :-(
+<[0gb_us]> It's the same packages ...
+<SonikkuAmerica> elfy: lol "becasue that would be 5 years"
+<holstein> [0gb_us]: the xubuntu specifics will be officially supported as per the xubuntu terms
+<JCD> Yes most of them are the same. Guess it yould be great to see some statement yout the changes.
+<elfy> JCD [0gb_us] - just trying to find
+<JCD> ?
+<SonikkuAmerica> [0gb_us]: Remember, no flavor is required to support its LTS (if it has one) for the same amount of time as another.
+<JCD> Thats true but for me this would be great because some people and I want to use it for work.
+<[0gb_us]> Right. Lubuntu has no LTS version at all, proving that an LTS version isn't even required.
+<SonikkuAmerica> [0gb_us]: I think Lubuntu 14.04 will only last 3 years too
+<[0gb_us]> Lubuntu has no LTS>
+<[0gb_us]> .
+<[0gb_us]> OH! 14.04. My bad.
+<SonikkuAmerica> [0gb_us]: 14.04 will be Lubuntu's 1st LTS, as per the project lead. And Ubuntu GNOME won't have one, I understand.
+<SonikkuAmerica> At least for the time being
+<JCD> Anyways upgrades cost time and may break environments, settings, etc. So I politely ask the Xubuntu team to extend the LTS to 5 years.
+<[0gb_us]> I see.
+<holstein> JCD: you can always use ubuntu, and add xfce
+<[0gb_us]> Why not just upgrade every two years?
+<[0gb_us]> Yeah, or use Ubuntu/Xfce and extend that to four. Your system will be less up to date that way though.
+<JCD> Too late, holstein. I installed it already on 19 computers of postgraduates here in the lab.
+<holstein> JCD: i would just think about what is being updated.. what "support" means
+<holstein> JCD: it wouldnt bother me at all to be using lubuntu 12.04, or a xubntu version that is not "officially" supported, but the repos are hot and security updates are coming in for the kernel and the core
+<JCD> Yes, I also came up with this question ("<JCD> Yes most of them are the same. Guess it yould be great to see some statement yout the changes.").
+<JCD> So is there a list?
+<holstein> JCD: where it will be an issue, potentially, is, you have an issue, and ask a question, or file a bug that is specific to xubuntu
+<JCD> Hm... you mean aplication specific questions or bugs for backports. Yeah I did that when hardy went eol. May work out or may not, but it's an approach -- you're right.
+<JCD> But basicly ho can I see with apt-cache, dpkg-query or something else whether a package in the repos is "unsupported"?
+<JCD> How can I see whether Abiword or some Xubuntu specific application receives no updates anymore so that I can remove or upgrade them manually?
+<holstein> JCD: no.. it will be more like this.. something specific happens to your xubuntu session.. you come here, and someone would say "its EOL"
+<holstein> JCD: abiword, generally in the repos, for example, would be getting no verions updates anyway.. just security patches
+<JCD> Hm... ok then the other way round is there a delta of "dpkg-query -l" of a fresh Xubuntu and a fresh Ubuntu (+depends optionaly)?
+<holstein> JCD: not that im aware of.. if your quesiton is, "i want to know what is not supported", then, at the end of the official xubuntu support cylce, the xubuntu specific things will not be supported
+<holstein> JCD: what does that mean? maybe you have an xfce bug that you havent noticed, or one that somehow a kernel upgrade introduces an issue.. maybe no one will address that
+<holstein> JCD: that would be pretty unlikely, and i if i were you, i would either choose an OS that meets your needs, with an official 5 year support cylce, or just wait til you have an issue, which you likely wont
+<[0gb_us]> True. THis isn't WIndows, so issues are less likely.
+<JCD> I agree, holstein. Hoever in an organization or corporate environment things are a bit different. I'd like to know when an application does not receive continous bugfixes and support anymore.
+<JCD> Is there at least a list of packages that are Xubuntu specific? I mean how do the developers keep track on what softeware they have in their distribution?
+<holstein> JCD: its documented.. no xubuntu specific bug fixes or support at the end of the support term.. the repos will be up, and the core packages will get support..
+<holstein> !purexfce
+<ubottu> If you want to remove all !KDE and !Gnome packages and have a default !Xubuntu system follow the instructions here « http://www.psychocats.net/ubuntu/purexfce »
+<holstein> JCD: ^^ you can do that if you prefer.
+<cr3> how can I have a keyboard layout icon in the top menu or specify a key binding to alternate between the layouts?
+<cr3> note that I haven't tried to re-login nor reboot after adding a layout, so that might be the "problem"
+<cr3> holstein: xfce4-xkb-plugin is already the newest version.
+<holstein> cr3: and you added it to the panel?
+<cr3> holstein: is there some magical incantation to enable it in the panel?
+<holstein> cr3: right click and add it to the panel
+<cr3> holstein: worked like a charm, thanks@!
+<holstein> cr3: cheers
+<XubuntuLiveUser> Hello, I just tried to reinstall Xubuntu 13.04 using the GRML Rescue System. After I did, it spit out the common error message that "you will have to manually reinstall some programs after rebooting," Ubiquity dies and the cursor changes to busy. After rebooting, I can't move the mouse using any method other than my Wacom tablet and the network config doesn't accept Wi-Fi (it does for Ethernet). Big rpoblem!
+<XubuntuLiveUser> *problem!
+<xubuntu321_Leon> Can anybody tell me how to manually edit xfce main menu items? I created a custom launcher using Settings-->Main Menu-->Create launcher, and now the entry doesn't appear in the app list, so I can't remove it.
+<xubuntu321_Leon> Found it @.local/share/applications/alacarte-made-*.desktop
+<hitsugaya97315> slt
+<hitsugaya97315> who is french?
+<bogu> hello
+<bogu> is anyone here
+<knome> !anyone
+<ubottu> A high percentage of the first questions asked in this channel start with "Does anyone/anybody..." Why not ask your next question (the real one) and find out? See also !details, !gq, and !poll.
+<bogu> smy bad
+<bogu> i'm a real newbie
+<knome> bogu, no problem
+<bogu> i'm trying to boot xubuntu on a virtual machine
+<bogu> but my processor doesn't seem to support pae and it's unable to boot
+<bogu> is there any way to work around this
+<knome> the virtual machine processor?
+<bogu> i'm not sure
+<knome> there is no non-pae support after 12.04
+<knome> so you might want to go with that
+<knome> you are able to upgrade with non-pae kernels when starting with that release to certain extent
+<bogu> oh man, i seemed to not have been checked "Enable PAE" under the settings of my VM
+<bogu> nevermind, I think it should be okay now
+<knome> i was thinking there's an option for that as well
+<knome> good luck/enjoy!
+<bogu> thanks man
+<WeberEInc> Hello - looking for suggestions on how to try to troubleshoot Xubuntu simply freezing up and intermittent times... I have loaded 13.04 on an old eMachine that has 1.5 GB memory, an AMD Sempron CPU, and an integrated S3 Unichrome video adapter.
+<WeberEInc> Anyone have a suggestion for a graphics card that will definitely work with Xubuntu?
+<Poisoned_Dragon> anything not VIA S3
+<Poisoned_Dragon> If intel made a card, that would still be better. lol
+<holstein> yeah, intel is the way to go, but the user will never know :/
+<Sysi> new amd ones might require some effort and nvidia might too, old intels have problems with newer kernels
+<user76547> When installing xubuntu, if i choose to make different partitions for /tmp /home etc... Does xubuntu installer sets good settings to thease partitions or i need to configure thease later...
+<user76547> ?
+<GridCube> what do you mean by "good settings"?
+<user76547> sorry, text cutted
+<user76547> when i installing xubuntu, i can choose which partitioning scheme to use...
+<user76547> so if i choose using /tmp /home etc.. in separate partitions
+<user76547> does installer make all work, or i need to configure them latter
+<user76547> i mean permisions and so on...
+<GridCube> yes... ofcourse it makes all work
+<GridCube> why wouldnt it...
+<user76547> then good :)
+<user76547> but why then using whole partion for all these folders is for "new users". If installer does all work, then user dont need to worry anyway...
+<user76547> its something different using system ?
+<knome> most users have no need for a separate /tmp.
+<GridCube> you dont actually need them to be in any other partition, thats just for people who needs it
+<GridCube> if you feel you need that then you are perfectly free to do so
+<user76547> i read that this improve security...
+<David-A> user76547: where do you read that?
+<GridCube> never heard of that, but again, if you feel like it will make you safer please do use a different partition.
+<user76547> maybe i missunderstood something, i read in OpenBSD book, that they use "per-partition security and privileges" ...
+<user76547> ok, anyway, going to install system :0

@@ -1,0 +1,425 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2014-7-15"
+lang: "en"
+messages: "416"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<axiom> question, I'm new to linux, been off and on with the desktop, with that being said. I want to fully move away from windows. I have a desktop pc that I dont use and want to install ubuntu server on it. My primary focus on it as of right now is setting it up to do backups of my labtop and possibly external hd. What all area's of a server system should I start and focus on?
+<sarnold> axiom: I'd give a quick read to the server guide: https://help.ubuntu.com/14.04/serverguide/
+<sarnold> axiom: feel free to skip things that don't make sense (and skip DM-multipath entirely)
+<sarnold> hopefully you'll find interesting things to do with it :)
+<axiom> I'm also new to irc, not sure how u replied in red but ty for the link. hopefully that will help get me going. Would u recommend backup software or a cron script for it?
+<sarnold> axiom: I just typed your name in the front of the line :) -- most irc clients will highlight whatever lines have the nickname in it..
+<sarnold> axiom: .. and to type 'axiom' it's even easier than that, I just type 'ax<tab>' and my client fills in the rest -- yours probably does too
+<axiom> sarnold, lol that it does. learn something new every day :)
+<sarnold> axiom: I use rsnapshot for backups; there's a lot of choices for backups, it's hard finding the "right" one to use..
+<Patrickdk> but dm-multipath is nice :)
+<Patrickdk> works good for my dual ported disks :)
+<sarnold> axiom: bacula, amanda, rsnapshot, dejadup, duplicity, etc. etc. etc. you can go crazy trying to compare them all.
+<Patrickdk> wait? all you want is to backup your laptop to it?
+<axiom> sarnold, I have a book on backup and restore, and they talk about bacula, ntbackup, tar, dd, amanda,
+<sarnold> Patrickdk: hehe yeah, I had a fun two days reading the dm-multipath docs before coming to terms with the fact that I just can't afford that kind of hardware
+<Patrickdk> simple to just use the build in backup in ubuntu to other server ssh account :)
+<Patrickdk> sarnold, heh
+<sarnold> axiom: tar and dd are fantastic tools but you wouldn't want to start there for a full backup system :)
+<axiom> Patrickdk, thats just a start to get me working with the server side. eventually i'm going to build a rackmout to host vm's firewall and other things
+<Patrickdk> ya, tar/dd aren't really for backups, unless your doing offline backups
+<sarnold> Patrickdk: though I did get to wondering about some sata<-> sas interposers I've heard about... would they increase reliability by adding new lanes? or decrease reliability because HOLY COW SATA WASN"T MEANT FOR THAT!! :)
+<Patrickdk> sarnold, depends on how you use it :)
+<Patrickdk> you must only use one lane at a time, normally with those
+<Patrickdk> they increase reliability, due to path failure (cable/hba/...)
+<Patrickdk> not due to disk failure
+<Patrickdk> and your still limited to 1/4th the bandwidth sas would have
+<sarnold> not 1/2?
+<Patrickdk> nope
+<sarnold> cripes
+<Patrickdk> two ports, bi-directional
+<Patrickdk> sata is half duplex
+<sarnold> omg how am I just now learning that?
+<Patrickdk> though I will say, most sas systems don't use both ports at once
+<Patrickdk> I'm doing a loadbalancing thing
+<sarnold> *sigh* I wish you were close enough to answer my stupid questions over beers or something. :)
+<Patrickdk> do keep down cache clutter on the disks :)
+<Patrickdk> it switches sas path's every other 1MB of disk space
+<sarnold> wow, why so fast?
+<Patrickdk> hmm?
+<Patrickdk> I have the extra wires, why not make them do something more than failover
+<sarnold> isn't that switching some 20-30 times per second?
+<Patrickdk> no, no
+<Patrickdk> the disk appears as two disks
+<Patrickdk> cause of the two ports
+<sarnold> *boggle*
+<Patrickdk> for odd megs, I read/write using port 1, and evens on port 2
+<Patrickdk> do double speed, and better latency
+<Patrickdk> the issue normally with using both ports randomly
+<FFForever2> How do I solve ingoring unknown interface eth0=eth0 when trying to configure a static IP after installation without networking? I added it the debian way in /etc/network/interfaces (with auto eth0)
+<Patrickdk> is they have a habbit of flushing cache when you access the same place on both ports
+<Patrickdk> and that happens suprisingly often
+<sarnold> Patrickdk: oh! I could see that.
+<sarnold> FFForever2: can you pastebin your /etc/network/interfaces file?
+<sarnold> Patrickdk: at least, if I were a drive firmware author, I'd be sorely tempted to do the same :)
+<sarnold> Patrickdk: how do those drives show up if they look like two drives? how do you add them to your pools?
+<Patrickdk> really though, I normally use linux multipath for iscsi/fc
+<Patrickdk> and do most of my sas multipath on solaris
+<sarnold> ahhhhhh
+<Patrickdk> they show up as two disks
+<Patrickdk> you use dm-multipath to join them into a single disk (based on wwn)
+<FFForever2> sarnold, I'm an idiot. I had to save locally and cp it as I forgot to sudo vi. I copied it to /etc/interfaces... whoops. Fixed. Sorry to waste your guy's time.
+<Patrickdk> then add the dm-multipath devices to your pool
+<sarnold> FFForever2: success :)
+<sarnold> Patrickdk: cool :) so.... would those interposers fit into a standard disk chassis? or do they only work for desktop-style systems with loads of clearance behind the drives?
+<Patrickdk> both, depending
+<Patrickdk> like dell, their trays have two mounting options
+<Patrickdk> sas and sata
+<Patrickdk> the sata is where you mount a sata with interposer
+<Patrickdk> and sas if you don't use the interposer
+<Patrickdk> so it will depend on your chassis
+<FFForever2> I added two nameserver entries for 8.8.8.8/8.8.4.4 to /etc/resolv but I still can't ping google.com. I can ping both of the addresses though.
+<sarnold> FFForever2: resolv or resolv.conf?
+<FFForever2> sarnold, I need coffee and fast.
+<sarnold> FFForever2 :) might be good to go take care of that before much more typing, hehe
+<Patrickdk> sarnold, just setup iscsi :)
+<Patrickdk> that is the most simple solution to playing with dm-multipath
+<sarnold> Patrickdk: well, the box I hope to build -would- make a nice iscsi target
+<sarnold> Patrickdk: and i'd given up on mutlipath on that both but now you've got me wondering again :)
+<Patrickdk> it's fun to play with :)
+<Patrickdk> multipath wins over lacp any day :)
+<sarnold> Patrickdk: oooooo
+<Patrickdk> well, lacp caps you at the max speed of a single one
+<Patrickdk> sure you could make like 8 connections, but no guarrentee they will load up evenly
+<Patrickdk> multipath makes one per path, and depending on how you want to use them, loads them all up evenly
+<Patrickdk> and just stops using broken ones as needed
+<Patrickdk> goes through ip addresses quicker though
+<sarnold> Patrickdk: does the linux iscsi stuff work well enough with multipath? or is that another case where you'd rather use illumos / solaris?
+<Patrickdk> I haven't attempted it as a server
+<Patrickdk> but shouldn't matter much
+<Patrickdk> for client side, on linux it's much simpler, as it's just normal iscsi clients and normal dm-multipath
+<Patrickdk> but for iscsi target, it would matter
+<Patrickdk> I would be suprised though, if it fell apart on you, as it should be a normal usecase for esxi
+<axiom_1> that was a pain trying to register a nickname lol
+<sarnold> axiom_1: yes :)
+<axiom_1> should I set the server to install security updates automatically or whats best for a sys admin approach?
+<Patrickdk> depends on how much you watch it :)
+<Patrickdk> do you want it to randomly break on it's own? or only when you break it?
+<Patrickdk> that last php security update, cause some breakage
+<axiom_1> well i'm always on my computers, i have no life lol. and wanting to get a jump start to my cs career
+<Patrickdk> if you don't mine random issues sometimes, I would go for autoupdate
+<Patrickdk> as you can be more lazy
+<axiom_1> well either way, the logs should be able to tell me what happen, I would hope lol
+<Patrickdk> if you do maintain it every week, manual is fine
+<axiom_1> guess im going for the manual to learn the hard way :)
+<sarnold> well, that's just "apt-get update && apt-get -u dist-upgrade"  every day or so :)
+<Patrickdk> well, for all updates not just security :)
+<Patrickdk> but that is what I do
+<Patrickdk> I watch the security bullitens, and run an update on my test machine
+<Patrickdk> then I push it out to the others
+<Patrickdk> probably why I don't have that apt-cacher-ng multiaccess issue you have sarnold
+<Patrickdk> test run is good for something :)
+<axiom_1> Patrickdk, ok i know this is going to sound dumb, how do u push it down to your other clients?
+<sarnold> Patrickdk: well, I abused the heck out of that poor cacher; a dozen build schroots, a dozen VMs, plus local use. I'd routinely start up a handful of updates at a time just to keep the cache hot :) hehe
+<Patrickdk> push it down?
+<axiom_1> yea
+<sarnold> axiom_1: updates are best pulled on every client machine on their own schedule..
+<sarnold> axiom_1: if you've got more than a handful of systems to do updates, you'd want a tool like landscape or puppet or chef or ansible to help you keep track of them all
+<Patrickdk> or cluster-ssh, apt-get dist-upgrade :)
+<Patrickdk> na, I just have a nice large bash script I use to kick them all off
+<Patrickdk> puppet I use, chef, I dunno, I just can't get around that one
+<sarnold> heh, understood
+<Patrickdk> but I like my bash script :)
+<axiom_1> sarnold, ah k, yea i was thinking of a script or some tool like you said.
+<axiom_1> yea i can't rap my head around bash or python :(
+<Patrickdk> it tells my loadbalancer to take it offline, runs the updates, reboots, then turns it back on the loadbalancer
+<Patrickdk> around bash? it's just command line in a file
+<Patrickdk> just like dos batch files :)
+<axiom_1> I never really messed with dos batch files
+<sarnold> except less horrible
+<sarnold> Patrickdk: nice; how far apart between your updates?
+<Patrickdk> between systems?
+<Patrickdk> normally 1 or 2 min
+<Patrickdk> it waits for it to come backon, before moving to the next server in the same cluster
+<axiom_1> Patrickdk, is this your personal setup or your work environment?
+<Patrickdk> both
+<sarnold> :)
+<axiom_1> nice
+<Patrickdk> my personal work enviroment, as I own the company
+<axiom_1> what kind of company is that if you don't mind me asking?
+<Patrickdk> this one, just webhosting/email
+<axiom_1> see, I have no clue how any of that would work lol
+<sarnold> axiom_1: apt-get install apache    or apt-get install nginx  and start fiddling with it :) hehe
+<axiom_1> should I let kexec-tool handle reboots?
+<FFForever2> How can I figure out why post-up isn't executing?
+<FFForever2> (in /etc/network/interfaces for eth0)
+<sarnold> axiom_1: email is far more complicated. time was you'd just throw up a mail server, imap server, and call it a day, but modern anti-spam means mail servers need tons of love and care. it's a royal hassle.
+<axiom_1> lol i got alot of reading to do. There goes what life I had if any
+<Patrickdk> web is the same, as soon as you install your first cgi :)
+<sarnold> FFForever2: check exec bits on referenced files, use full paths...
+<sarnold> Patrickdk: *shudder*
+<axiom_1> ya'll are going to make my brain explode :)
+<sarnold> axiom_1: that's my feeling every time talking with Patrickdk :) hehe
+<Patrickdk> heh, my issue is, I like to learn
+<Patrickdk> and I must know everything from the base up
+<sarnold> *nod* *nod*
+<axiom_1> my issue is I have a hard time learning
+<Patrickdk> just grab some rfc's and have a bathroom break :)
+<sarnold> axiom_1: you're here, you're tring things :) that's most of it, right there
+<sarnold> dinner time :)
+<axiom_1> sarnold, enjoy
+<Patrickdk> I've been playing, since I was 8
+<Patrickdk> and on linux since well, v1.2
+<axiom_1> I started late, I've been off and on with ubuntu desktop. But I finally getting my hands around the desktop portion somewhat. Still having issues with the terminal but I'm sure time will get me there
+<Patrickdk> big thing is, don't follow tutorials/blogs
+<axiom_1> well damn
+<Patrickdk> if something looks ok, make sure you crosscheck it with the manual
+<axiom_1> maybe thats why im having issues :)
+<Patrickdk> I even apply that to ubuntu serverguide
+<axiom_1> Patrickdk, would u recommend kexec-tools to handle reboots or should I do it manually?, the ubuntu server guide doesn't say anything about it.
+<Patrickdk> mainly cause the serverguide is normally the bare basics to make it work, not specifically functional
+<Patrickdk> I thought kexec was a payed for service
+<axiom_1> nope, I just downloaded and installed it
+<Patrickdk> so the tools will be useless without the kexec patches you get from that service
+<axiom_1> well damn
+<Patrickdk> and that would only handle kernel vaunerabilities, and cause it so you don't need to reboot
+<Patrickdk> but you still need to install and restart applications
+<Patrickdk> s/install/update
+<Patrickdk> oh, kexec isn't what I thought it was
+<axiom_1> lol
+<Patrickdk> it's like solaris fastboot
+<axiom_1> oh k
+<Patrickdk> it will depend on your hardware and drivers
+<Patrickdk> if it works or not
+<axiom_1> well i pressed no for it to handle reboots
+<axiom_1> I can always play around with it and see how it goes
+<axiom_1> it's just a learning comp atm anyways
+<Patrickdk> I was thinking of ksplice
+<sarkis> hey all, i can't get libcurl.a to install on 14.04
+<sarkis> anyone know which package provides it? it's apparently not libcurl4-openssl-dev
+<soren> sarkis: http://packages.ubuntu.com/search?searchon=contents&keywords=libcurl.a&mode=exactfilename&suite=trusty&arch=any
+<soren> sarkis: apt-file will also answer that sort of question for you.
+<Abhijit> kindly help me with ubuntu preseed issue as described here http://ubuntuforums.org/showthread.php?t=2234480&p=13073762#post13073762
+<Abhijit> this is not a cobbler issue.
+<Abhijit> its purely preseed + ubuntu issue.
+<sarnold> Abhijit: are you confident the mini iso supports the preseed files?
+<Abhijit> sarnold, i tried with serveriso too. same issue.
+<Abhijit> let me try once again to be sure.
+<Abhijit> sarnold, same issue with server iso. why does it try to configure network with dhcp? centos never ask me for dhcp. dhcp server is already running and its already assigned the ip to nic of target machine. then why ubuntu again ask me to run dhcp? how can i disable dhcp from kickstart or preseed?
+<Abhijit> also i tried both kickstart and preseed file for ubunt. both gives same error.
+<sarnold> Abhijit: sorry, I've never used preseed files, no idea why it is failing
+<Abhijit> ok
+<Abhijit> sarnold, did you used kickstart/
+<sarnold> Abhijit: no
+<Abhijit> ok.np.
+<Abhijit> sarnold, is there any other alternate automating and provisioning softaware which works 100% compatible with ubuntu / debian?
+<see1> hello
+<see1> what means this? W: GPG error: http://de.archive.ubuntu.com precise-security Release: Unknown error executing gpgv
+<hxm> i have installed the package gitweb and it asked nothing, how can I see what is the url path?
+<hxm> ah, found the gitweb.conf
+<Chris_hubu> hi guys
+<Chris_hubu> has anyone ever used opennebula on ubuntu server here?
+<MACscr> for a server, is ok to completely disable and possibly remove plymouth? Its a headless system, so i dont see a point in having it
+<MACscr> and is the only option for disabling it in grub?
+<rberg_> I found that you do need to have plymouth installed or else you break the recovery system
+<rberg_> at least on 12.04
+<rberg_> eg: if A disk is missing during boot you will be asked "skip or manual recovery" without plymouth installed there is no way to answer that question and the system will wait forever
+<qman> Same on 10.04
+<qman> Or at least very similar, mine just sat there with a blinking cursor, no messages
+<MACscr> that stinks
+<qman> Yep, but that's the way it is, just have to put up with plymouth if you want ubuntu to work properly
+<rberg_> you can install the txt theme
+<MACscr> i see a lot of these i my dmesg output http://pastie.org/pastes/9393758/text?key=asmwxhqvj6h1ksw7wbexqw
+<lordievader> Good afternoon.
+<RoyK> afternoon
+<lordievader> Hey RoyK, how are you?
+<RoyK> fine, thanks
+<rberg_> "install-keymap us-latin1" "unknown charset unicode - ignoring charset request"  what does this mean?
+<hxm> how to run a cron every 61 seconds?
+<rberg_> crontab to run every min with a sleep 1 ?
+<hxm> yes I was thinking that right now
+<punkgeek> how to encrypting root partition with LUKS?
+<pmatulis> punkgeek: use the installer
+<punkgeek> ont unstand :D
+<pmatulis> hm?
+<punkgeek> https://help.ubuntu.com/community/EncryptedFilesystem is it good for me?
+<lordievader> punkgeek: The installer will guide you through setting up an luks encrypted install.
+<xnox> punkgeek: desktop installer -> full disk encryption is one tickbox + password.
+<xnox> punkgeek: in server installer it's change default to encrypted + password.
+<punkgeek> ???
+<lordievader> !ir | punkgeek
+<ubottu> punkgeek: #ubuntu-ir baraye Farsi zabanan mibashad ke channele rasmie goroohe Iran-ie ubuntu ast. #ubuntu-ir  برای فارسی زبانان می‌باشد که کانال رسمی گروه ایرانی اوبونتو است.
+<lordievader> Might be easier ;)
+<punkgeek> its empthy :-"
+<ses1984> hi, i'm trying to use php5-imap module from the repositories and running into some weird problem. i do apt-get install php5-imap and it says i have the latest version installed. but then i try php -m | grep -i imap and it is not listed...what's going on? is there something else i need to do to complete the install?
+<zartoosh> hi I am trying to download a binary debian package (not install) and all it dependencies to a particular directory is this possible? thx
+<Chris_hubu> zartoosh, do you mean that you want to only download packages from apt-get?
+<Chris_hubu> apt-get has a "download only" option
+<Chris_hubu> -d, --download-only
+<Chris_hubu> Download only; package files are only retrieved, not unpacked or installed.
+<Chris_hubu> Configuration Item: APT::Get::Download-Only.
+<rberg_> I was thinking that except it wont download deps that are already installed
+<Chris_hubu> apt-get source maybe?
+<billy_ran_away> Can anyone help me with my ldap server at home? Upgrading the slapd package broke it...
+<billy_ran_away> This is what syslog says http://pastie.org/9394730
+<pmatulis> billy_ran_away: says 'invalid dn (cn=admin,dn=therobotis,dn=us)', are you sure that's correct?
+<pmatulis> and not 'cn=admin,dc=therobotis,dc=us' ?
+<billy_ran_away> pmatulis: It was last time I set it up
+<punkgeek> can i remove passphrase when booting?
+<pmatulis> punkgeek: remove passphrase of what?
+<punkgeek> see, i set password on file system, when i reboot my os, when is boot, need password
+<punkgeek> can i remove this?
+<pmatulis> punkgeek: what filesystem?
+<punkgeek> root
+<pmatulis> punkgeek: well how would the system boot?
+<zartoosh> Chris_hubu, that worked and thank you.
+<Chris_hubu> you're very welcome zartoosh, I'm glad I could help
+<punkgeek> ???
+<pmatulis> punkgeek: is / needed to boot up properly?  yes or no?
+<billy_ran_away> I don't get what changed in my LDAP setup...
+<billy_ran_away> God I wish LDAP wasn't so stupidly complicated...
+<pmatulis> billy_ran_away: use ldapwhoami to verify your root dn, the admin guy referred to above
+<billy_ran_away> pmatulis: missed that, I'm not on my regular irc client because I can't log in to my regular account and start znc
+<punkgeek> yes
+<punkgeek> i need boot without passpharse
+<pmatulis> punkgeek: so you need to decrypt it first right?
+<billy_ran_away> pmatulis: Here's the output http://pastie.org/9394750
+<pmatulis> billy_ran_away: you need to provide the usual arguments to ldapwhoami
+<billy_ran_away> pmatulis: Like what?
+<punkgeek> no no, see i need encrypt my file system, when done it, i see passphare on boot, so i need remove this, what should i do?
+<billy_ran_away> root@robot:~# ldapwhoami -h ldapi://ldap Could not create LDAP session handle for URI=ldap://ldapi:%2F%2Fldap (-9): Bad parameter to an ldap routine
+<punkgeek> just need remove passphare on booting
+<guntbert> punkgeek: thats the point of encryption
+<punkgeek> when booting is done, then i need enter passpharse
+<punkgeek> is it crazy thing?
+<pmatulis> billy_ran_away: ldapwhoami -x -D "cn=admin,dc=example,dc=com,dc=au" -w secret
+<pmatulis> punkgeek: no, it's not crazy.  you need to supply a password in order to decrypt your root filesystem.  that's all.  you might be able to keep some filesystems encrypted that are not necessary for booting however
+<billy_ran_away> pmatulis: Sweet that did it, but now what? http://pastie.org/9394769
+<pmatulis> billy_ran_away: congratulations.  you verified your root dn
+<billy_ran_away> pmatulis: Great, but that's exactly what I have in my ldap.conf
+<punkgeek> so what should i do?
+<pmatulis> billy_ran_away: now you need to figure out why your logs show a different root dn
+<pmatulis> punkgeek: supply the password
+<rberg_> punkgeek: maybe you can embed your passphrase in the initramfs.. but then why encrypt root at all?!
+<billy_ran_away> Jul 15 17:20:26 robot slapd[27226]: conn=1063 op=5 do_bind: invalid dn (cn=admin,dn=therobotis,dn=us)
+<billy_ran_away> pmatulis: They do?
+<pmatulis> billy_ran_away: yup.  now what is triggering that
+<billy_ran_away> pmatulis: Oh dn vs dc?
+<pmatulis> billy_ran_away: yep
+<pmatulis> i gotta go guys, good luck
+<punkgeek> can i encrypt just apache files?
+<sarnold> punkgeek: what is your goal?
+<billy_ran_away> grep -ri dn=therobotis /etc/ shows nothing...
+<punkgeek> see, i have any files in /var/www and i need encrypt this file, and then get backup os, and send it to users
+<punkgeek> php encyption is not good, so i need to do this work
+<sarnold> punkgeek: so, you want to serve encrypted files to your clients, and them decrypt the file?
+<punkgeek> and, php should be work on the web server
+<punkgeek> no
+<DeltaHeavy> punkgeek: PHP encryption is as good as the algo you use.
+<billy_ran_away> Anyone know much about slapd?
+<punkgeek> can i just encypt /var/www ?
+<DeltaHeavy> punkgeek: It sounds like you're going about this in all the wrong way. What exactly ware you trying to encrypt?
+<sarnold> punkgeek: who will decrypt its contents? how? why?
+<sarnold> punkgeek: what threat are you trying to mitigate?
+<billy_ran_away> anyone know how to change the dn slapd binds to?
+<sarnold> billy_ran_away: would that be in /etc/ldap/slapd.conf, rootdn? see e.g. https://help.ubuntu.com/community/OpenLDAPServer
+<billy_ran_away> sarnold: I don't have that file...
+<billy_ran_away> sarnold: root@robot:~# ls /etc/ldap/ sasl2  schema  slapd.d  ssl
+<sarnold> billy_ran_away: ahhh, I just found https://help.ubuntu.com/14.04/serverguide/openldap-server.html -- which has a the slapd.d configuration ... interesting
+<sarnold> it looks Complicated :)
+<billy_ran_away> why does this package have to break so often?
+<billy_ran_away> setting up an ldap server on ubuntu was a horrible mistake...
+<billy_ran_away> I'm stuck.
+<billy_ran_away> I'm just so pissed off.
+<billy_ran_away> I hate LDAP and I hate Ubuntu.
+<DeltaHeavy> billy_ran_away: Take a break :p
+<billy_ran_away> I don't understand why the package maintainers feel it necessary to break existing installs.
+<rbasak> billy_ran_away: it is *incredibly* difficult to manage feature updates in packages while also not breaking some user somewhere. There are hundreds of use cases, most of them unknown to package maintainers.
+<rbasak> billy_ran_away: this is the nature of server packages.
+<rbasak> billy_ran_away: to mitigate this, the only reasonable thing to do is to maintain your installation as a codified delta of the default, eg. with configuration management.
+<billy_ran_away> rbasak: That nature breaks Ubuntu for the hobbyist.
+<rbasak> billy_ran_away: it's a fundamental problem with the way server components are used. This nature isn't Ubuntu-specific. All distros have the same essential issue.
+<rbasak> billy_ran_away: we're trying to solve it with Juju and charms to codify specific use cases, rather than having users install some default and then customize it in some way that we don't know so can't provide an upgrade path for.
+<sarnold> it's rare software that the developers stop poking at it and changing things. if they do, people complaint it's "no longer maintained" and re-write it without learning the lessons from the existing tools. heh.
+<billy_ran_away> rbasak: Well I'm stuck and I have no idea where slapd is getting it's bind dn set from.
+<billy_ran_away> Because it's not /etc/ldap.conf as it used to be.
+<rbasak> sarnold: well, that happens too. But if you don't want to change things, then no need to upgrade to a new release.
+<rbasak> sarnold: if a majority did that, then we'd have longer supported LTSes :)
+<billy_ran_away> Jul 15 18:05:47 robot slapd[28299]: conn=1144 op=5 do_bind: invalid dn (cn=admin,dn=therobotis,dn=us)
+<billy_ran_away> where in the world is it getting those dn's from?
+<billy_ran_away> grep -r dn=therobotis /etc returns nothing
+<sarnold> billy_ran_away: grep -r therobotis /etc  ?
+<billy_ran_away> sarnold: grep -r dc=therobotis returns lots of stuff
+<rbasak> Isn't the bind DN a client thing?
+<billy_ran_away> but dn
+<rbasak> And how is dn= there twice? That makes no sense.
+<billy_ran_away> rbasak: That's what I'm wondering and I have no idea.
+<rbasak> billy_ran_away: I'm pretty sure that you have a client configuration problem there. Not slapd.
+<rbasak> But it's been a long time since I touched LDAP.
+<bitfury_> hi
+<billy_ran_away> LDAP is frustrating because all of it's configuration is in LDAP itself...
+<billy_ran_away> Like I want to raise the logging level so I can figure out where those errors are coming from
+<bitfury_> I'm trying to set up a simple load balancing in apache2 as follows: http://pastebin.com/ujP3Jtyp
+<bitfury_> but get: [proxy:crit] [pid 5543] AH02432: Cannot find LB Method: byrequests
+<bitfury_> [proxy_balancer:emerg] [pid 5543] (22)Invalid argument: AH01183: Cannot share balancer
+<bitfury_> [:emerg] [pid 5543] AH00020: Configuration Failed, exiting
+<bitfury_> what did i miss? :\
+<sarnold> bitfury_: try "a2enmod lbmethod_byrequests" ?
+<bitfury_> sarnold: wow it worked, not sure how I would live without IRC experts :D
+<bitfury_> thank you
+<bitfury_> been going at it for more than an hour. fml.
+<sarnold> bitfury_: heh, it's just a knack for finding the gems amongst the weeds of the internet..
+<bitfury_> ;)
+<Patrickdk> is sarnold a gem or weed
+<sarnold> Patrickdk: depends if I'm asking or answering the questions :) haha
+<Patrickdk> oh, I lately setup the apache lb
+<rbasak> billy_ran_away: AFAICS, they're coming from an LDAP client. Configuration of how your client connects to LDAP cannot be in LDAP  itself.
+<billy_ran_away> rbasak: Yea that makes sense... but the only client I have up right now is the server itself...
+<rbasak> I suppose it could be some kind of loopback thing
+<billy_ran_away> My one other server that uses ldap is currently fscking its filesystem after going 222 days without a check, ugh
+<rbasak> tcpdump/wireshark to eliminate network LDAP traffic?
+<rbasak> ANd if you do see network traffic and it's loopback, then track that down to a binary using lsof or netstat
+<billy_ran_away> oh shit I know what it is!
+<billy_ran_away> rbasak: THANK YOU!
+<billy_ran_away> rbasak: It was fucking kerio-connect that I never got working but left installed
+<K4k> has anyone here had any luck setting up auto-failback using heartbeat? I've gotten it to where node2 will assume the shared IP address if node1 goes offline but when node1 comes back up and re-assumes the shared IP, node2 doesn't release the IP. This results in node1 serving up the web traffic and node2 responding to pings and a myriad of other messiness...
+<sarnold> rbasak: magic as always :)
+<billy_ran_away> But now I think I know one reason why it didn't work...
+<rbasak> billy_ran_away: np. Glad you fixed it. Hope your impression of Ubuntu is better now :)
+<billy_ran_away> rbasak: thanks to you, yes
+<billy_ran_away> :)
+<Patrickdk> k4k, haven't used hearbeat
+<Patrickdk> I normally stick to pacemaker
+<K4k> Patrickdk: I wonder how they compare. I'm open to suggestion
+<Patrickdk> made by the same people
+<Patrickdk> but heartbeat almost never fit my needs
+<K4k> How does pacemaker differ?
+<K4k> I'm just looking for a way to get my web proxy to be aware if it goes down and fail the IP over to some other system.
+<Patrickdk> pacemaker doesn't any of that stuff
+<Patrickdk> it only manages resources
+<Patrickdk> it doesn't monitor, normally
+<Patrickdk> I think heartbeat monitors
+<rbasak> According to the package descriptions, heartbeat is "one of the messaging layers supported by the Pacemaker cluster resource manager."
+<Patrickdk> yep
+<rbasak> pacemaker depends on libheartbeat2
+<Patrickdk> heh? don't think so
+<Patrickdk> oh ya, it does have that
+<rbasak> Oh no, sorry
+<Patrickdk> but not the userland config
+<rbasak> Well
+<rbasak> also corosync | heartbeat
+<rbasak> Anyway, I don't know HA stuff very well
+<Patrickdk> yep, I use corosync
+<Patrickdk> corosync -> pacemaker
+<rbasak> I only know that it exists, and pacemaker+corosync seems to be the standard on Ubuntu.
+<Patrickdk> ya, I can't answer for his heartbeat issues
+<Patrickdk> I know pacemaker won't let that happen
+<Patrickdk> but he would likely want the stick resources options, so they don't auto-fallback
+<K4k> Yeah, it's something to do with the auto-failback I think. I'll look into the corosync|pacemaker
+<Patrickdk> how to do that on heartbeat, dunno
+<bitfury> !info redmine
+<ubottu> redmine (source: redmine): flexible project management web application. In component universe, is extra. Version 2.4.2-1 (trusty), package size 4434 kB, installed size 13445 kB
+<K4k> stupid firewall
+<K4k> iptables was blocking the udp port that heartbeat was using to communicate
+<K4k> chears
+<K4k> cheers*
+<Patrickdk> :)

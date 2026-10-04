@@ -1,0 +1,130 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Ludwig_Wittgenstein.txt",
+  "sha256": "0027d5aa197ae01b9d844438c960c5c03ff2ce43a807b63e23e10e6c2265ee35",
+  "chars": 105035,
+  "declaredIdentity": {
+   "title": "Ludwig Wittgenstein",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 20,
+  "debrisChars": 510,
+  "debrisFraction": 0.005,
+  "headingCount": 47,
+  "headings": [
+   "Early life",
+   "Family temperament and brothers' suicides",
+   "Realschule in Linz",
+   "Faith",
+   "Influence of Otto Weininger",
+   "Jewishness",
+   "Engineering at Berlin and Manchester",
+   "Arrival at Cambridge",
+   "Cambridge Moral Sciences Club",
+   "Cambridge Apostles",
+   "Frustrations at Cambridge",
+   "Work on Logik",
+   "Military service",
+   "Completion of the Tractatus",
+   "Teacher training in Vienna",
+   "Teaching posts in Austria",
+   "Publication of the Tractatus",
+   "Visit from Frank Ramsey, Puchberg",
+   "The Vienna Circle",
+   "Haus Wittgenstein",
+   "PhD and fellowship",
+   "Return to Cambridge Moral Sciences Club",
+   "Anschluss",
+   "Professor of philosophy",
+   "Final return to Cambridge",
+   "Death",
+   "Posthumous work",
+   "Other posthumous publications",
+   "Legacy",
+   "Assessment",
+   "Scholarly interpretation",
+   "The New Wittgenstein",
+   "Bertrand Russell",
+   "Saul Kripke",
+   "Daniel Dennett",
+   "Other recognition",
+   "Works",
+   "See also",
+   "Footnotes",
+   "References",
+   "Sources",
+   "Further reading",
+   "Bergen and Cambridge archives",
+   "Papers about his Nachlass",
+   "Other",
+   "Works referencing Wittgenstein",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 47,
+   "debrisFraction": 0.005
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 0.7439946572578052,
+   "debrisFractionZ": 0.06820599126318624,
+   "priorSeenSoFar": 27
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.090Z"
+ }
+}

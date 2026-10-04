@@ -1,0 +1,1615 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+  "sha256": "2a947ee66d29c9b2406626f4b39eaeffcf4932d39ebe832379d4e5b42a7cfa30",
+  "bytes": 3304582,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 3304582,
+  "bodyOffset": 20877,
+  "bodyChars": 3283705,
+  "frontMatter": {
+   "detected": true,
+   "skipTo": 20877,
+   "runLength": 49,
+   "used": true
+  },
+  "excerptChars": 7838,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6144,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 55,
+  "surfaces": 63,
+  "referentEvents": 15,
+  "distinctReferents": 10,
+  "examined": true,
+  "edgesFound": 33,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 17,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 32
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 33,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 33,
+  "excerptOk": 33,
+  "rawChecked": 33,
+  "rawOk": 33,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 33,
+  "heard": 33,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "books of the nature of les misérables|cannot fail|to be of use",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "books of the nature of Les Misérables cannot fail to be of use",
+    "subject": "books of the nature of Les Misérables",
+    "verb": "cannot fail",
+    "object": "to be of use",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#20877-21530",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "So long as there shall exist, by virtue of law and custom, decrees of damnation pronounced by society, artificially creating hells amid the civilization of earth, and adding the element of human fate to divine destiny; so long as the three great problems of the century—the degradation of man through pauperism, the corruption of woman through hunger, the crippling of children through lack of light—are unsolved; so long as social asphyxia is possible in any part of the world;—in other words, and with a still wider significance, so long as ignorance and poverty exist on earth, books of the nature of Les Misérables cannot fail to be of use."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "he|was|an old man of about seventy-five years of age",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "He was an old man of about seventy-five years of age",
+    "subject": "He",
+    "verb": "was",
+    "object": "an old man of about seventy-five years of age",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#21648-21809",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "In 1815, M. Charles-François-Bienvenu Myriel was Bishop of D—— He was an old man of about seventy-five years of age; he had occupied the see of D—— since 1806."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the very moment when he|arrived|in the diocese",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the very moment when he arrived in the diocese",
+    "subject": "the very moment when he",
+    "verb": "arrived",
+    "object": "in the diocese",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#21813-22139",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Although this detail has no connection whatever with the real substance of what we are about to relate, it will not be superfluous, if merely for the sake of exactness in all points, to mention here the various rumors and remarks which had been in circulation about him from the very moment when he arrived in the diocese."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|was|said that his father",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "It was said that his father",
+    "subject": "It",
+    "verb": "was",
+    "object": "said that his father",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#22404-22626",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "It was said that his father, destining him to be the heir of his own post, had married him at a very early age, eighteen or twenty, in accordance with a custom which is rather widely prevalent in parliamentary families."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|was|said that charles myriel created a great deal of talk",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "it was said that Charles Myriel created a great deal of talk",
+    "subject": "it",
+    "verb": "was",
+    "object": "said that Charles Myriel created a great deal of talk",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#22627-22725",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "In spite of this marriage, however, it was said that Charles Myriel created a great deal of talk."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "from which she|had|long suffered",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "from which she had long suffered",
+    "subject": "from which she",
+    "verb": "had",
+    "object": "long suffered",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23134-23214",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "There his wife died of a malady of the chest, from which she had long suffered."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "he|had|no children",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "He had no children",
+    "subject": "He",
+    "verb": "had",
+    "object": "no children",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23215-23234",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "He had no children."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "all that|was|known was",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "all that was known was",
+    "subject": "all that",
+    "verb": "was",
+    "object": "known was",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23902-24000",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "No one could have told: all that was known was, that when he returned from Italy he was a priest."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "italy he|was|a priest",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Italy he was a priest",
+    "subject": "Italy he",
+    "verb": "was",
+    "object": "a priest",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23902-24000",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "No one could have told: all that was known was, that when he returned from Italy he was a priest."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "myriel|was|the curé of b—— [brignolles]",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Myriel was the Curé of B—— [Brignolles]",
+    "subject": "Myriel",
+    "verb": "was",
+    "object": "the Curé of B—— [Brignolles]",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24004-24056",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "In 1804, M. Myriel was the Curé of B—— [Brignolles]."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "among other powerful persons to whom he went to solicit aid for his parishioners|was|m",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Among other powerful persons to whom he went to solicit aid for his parishioners was M",
+    "subject": "Among other powerful persons to whom he went to solicit aid for his parishioners",
+    "verb": "was",
+    "object": "M",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24264-24372",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Among other powerful persons to whom he went to solicit aid for his parishioners was M. le Cardinal Fesch."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "who|was|waiting in the anteroom",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "who was waiting in the anteroom",
+    "subject": "who",
+    "verb": "was",
+    "object": "waiting in the anteroom",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24373-24526",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "One day, when the Emperor had come to visit his uncle, the worthy Curé, who was waiting in the anteroom, found himself present when His Majesty passed."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "on finding charles myriel|observed|with a certain curiosity by this old man",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "on finding Charles Myriel observed with a certain curiosity by this old man",
+    "subject": "on finding Charles Myriel",
+    "verb": "observed",
+    "object": "with a certain curiosity by this old man",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24527-24641",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Napoleon, on finding himself observed with a certain curiosity by this old man, turned round and said abruptly:—"
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the emperor|asked|the cardinal the name of the curé",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the Emperor asked the Cardinal the name of the Curé",
+    "subject": "the Emperor",
+    "verb": "asked",
+    "object": "the Cardinal the name of the Curé",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24809-24990",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "That very evening, the Emperor asked the Cardinal the name of the Curé, and some time afterwards M. Myriel was utterly astonished to learn that he had been appointed Bishop of D——"
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that he|had|been appointed bishop of d——",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that he had been appointed Bishop of D——",
+    "subject": "that he",
+    "verb": "had",
+    "object": "been appointed Bishop of D——",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24809-24990",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "That very evening, the Emperor asked the Cardinal the name of the Curé, and some time afterwards M. Myriel was utterly astonished to learn that he had been appointed Bishop of D——"
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "what truth|was|there",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "What truth was there",
+    "subject": "What truth",
+    "verb": "was",
+    "object": "there",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24994-25107",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "What truth was there, after all, in the stories which were invented as to the early portion of M. Myriel’s life?"
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "myriel|had|to undergo the fate of every newcomer in a little town",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Myriel had to undergo the fate of every newcomer in a little town",
+    "subject": "Myriel",
+    "verb": "had",
+    "object": "to undergo the fate of every newcomer in a little town",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25210-25352",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "M. Myriel had to undergo the fate of every newcomer in a little town, where there are many mouths which talk, and very few heads which think."
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "he|was|obliged to undergo it although he was a bishop",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "He was obliged to undergo it although he was a bishop",
+    "subject": "He",
+    "verb": "was",
+    "object": "obliged to undergo it although he was a bishop",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25354-25438",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "He was obliged to undergo it although he was a bishop, and because he was a bishop."
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "because he|was|a bishop",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "because he was a bishop",
+    "subject": "because he",
+    "verb": "was",
+    "object": "a bishop",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25354-25438",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "He was obliged to undergo it although he was a bishop, and because he was a bishop."
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the rumors with which his name|was|connected were rumors only",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the rumors with which his name was connected were rumors only",
+    "subject": "the rumors with which his name",
+    "verb": "was",
+    "object": "connected were rumors only",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25439-25622",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "But after all, the rumors with which his name was connected were rumors only,—noise, sayings, words; less than words—_palabres_, as the energetic language of the South expresses it."
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the energetic language of the south|expresses|it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the energetic language of the South expresses it",
+    "subject": "the energetic language of the South",
+    "verb": "expresses",
+    "object": "it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25439-25622",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "But after all, the rumors with which his name was connected were rumors only,—noise, sayings, words; less than words—_palabres_, as the energetic language of the South expresses it."
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "myriel|had arrived|at d—— accompanied by an elderly spinster",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Myriel had arrived at D—— accompanied by an elderly spinster",
+    "subject": "Myriel",
+    "verb": "had arrived",
+    "object": "at D—— accompanied by an elderly spinster",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25933-26069",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "M. Myriel had arrived at D—— accompanied by an elderly spinster, Mademoiselle Baptistine, who was his sister, and ten years his junior."
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "who|was|his sister",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "who was his sister",
+    "subject": "who",
+    "verb": "was",
+    "object": "his sister",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25933-26069",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "M. Myriel had arrived at D—— accompanied by an elderly spinster, Mademoiselle Baptistine, who was his sister, and ten years his junior."
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "mademoiselle baptistine|was|a long",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Mademoiselle Baptistine was a long",
+    "subject": "Mademoiselle Baptistine",
+    "verb": "was",
+    "object": "a long",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26328-26529",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Mademoiselle Baptistine was a long, pale, thin, gentle creature; she realized the ideal expressed by the word “respectable”; for it seems that a woman must needs be a mother in order to be venerable."
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "she|had|never been pretty",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "She had never been pretty",
+    "subject": "She",
+    "verb": "had",
+    "object": "never been pretty",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26530-26786",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "She had never been pretty; her whole life, which had been nothing but a succession of holy deeds, had finally conferred upon her a sort of pallor and transparency; and as she advanced in years she had acquired what may be called the beauty of goodness."
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "paris youth|had|become transparency in paris maturity",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Paris youth had become transparency in Paris maturity",
+    "subject": "Paris youth",
+    "verb": "had",
+    "object": "become transparency in Paris maturity",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26787-26916",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "What had been leanness in her youth had become transparency in her maturity; and this diaphaneity allowed the angel to be seen."
+     }
+    ],
+    "seq": 25,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "she|was|a soul rather than a virgin",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "She was a soul rather than a virgin",
+    "subject": "She",
+    "verb": "was",
+    "object": "a soul rather than a virgin",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26917-26953",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "She was a soul rather than a virgin."
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "madame magloire|was|a little",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Madame Magloire was a little",
+    "subject": "Madame Magloire",
+    "verb": "was",
+    "object": "a little",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#27165-27349",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Madame Magloire was a little, fat, white old woman, corpulent and bustling; always out of breath,—in the first place, because of her activity, and in the next, because of her asthma."
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the episcopal palace|was|a huge and beautiful house",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The episcopal palace was a huge and beautiful house",
+    "subject": "The episcopal palace",
+    "verb": "was",
+    "object": "a huge and beautiful house",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#27826-28048",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "The episcopal palace was a huge and beautiful house, built of stone at the beginning of the last century by M. Henri Puget, Doctor of Theology of the Faculty of Paris, Abbé of Simore, who had been Bishop of D—— in 1712."
+     }
+    ],
+    "seq": 28,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this palace|was|a genuine seignorial residence",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "This palace was a genuine seignorial residence",
+    "subject": "This palace",
+    "verb": "was",
+    "object": "a genuine seignorial residence",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28049-28096",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "This palace was a genuine seignorial residence."
+     }
+    ],
+    "seq": 29,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "everything about it|had|a grand air",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Everything about it had a grand air",
+    "subject": "Everything about it",
+    "verb": "had",
+    "object": "a grand air",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28097-28361",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Everything about it had a grand air,—the apartments of the Bishop, the drawing-rooms, the chambers, the principal courtyard, which was very large, with walks encircling it under arcades in the old Florentine fashion, and gardens planted with magnificent trees."
+     }
+    ],
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "which|was|very large",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "which was very large",
+    "subject": "which",
+    "verb": "was",
+    "object": "very large",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28097-28361",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "Everything about it had a grand air,—the apartments of the Bishop, the drawing-rooms, the chambers, the principal courtyard, which was very large, with walks encircling it under arcades in the old Florentine fashion, and gardens planted with magnificent trees."
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "henri puget|had|entertained in state",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Henri Puget had entertained in state",
+    "subject": "Henri Puget",
+    "verb": "had",
+    "object": "entertained in state",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28362-28877",
+      "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+      "text": "In the dining-room, a long and superb gallery which was situated on the ground floor and opened on the gardens, M. Henri Puget had entertained in state, on July 29, 1714, My Lords Charles Brûlart de Genlis, archbishop; Prince d’Embrun; Antoine de Mesgrigny, the capuchin, Bishop of Grasse; Philippe de Vendôme, Grand Prior of France, Abbé of Saint Honoré de Lérins; François de Berton de Crillon, bishop, Baron de Vence; César de Sabran de Forcalquier, bishop, Seignor of Glandève; and Jean Soanen, Priest of"
+     }
+    ],
+    "seq": 32,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 33,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "all that|was|known was",
+   "subject": "all that",
+   "verb": "was",
+   "object": "known was",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23902-24000",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "No one could have told: all that was known was, that when he returned from Italy he was a priest."
+    }
+   ]
+  },
+  {
+   "id": "among other powerful persons to whom he went to solicit aid for his parishioners|was|m",
+   "subject": "Among other powerful persons to whom he went to solicit aid for his parishioners",
+   "verb": "was",
+   "object": "M",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24264-24372",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Among other powerful persons to whom he went to solicit aid for his parishioners was M. le Cardinal Fesch."
+    }
+   ]
+  },
+  {
+   "id": "because he|was|a bishop",
+   "subject": "because he",
+   "verb": "was",
+   "object": "a bishop",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25354-25438",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "He was obliged to undergo it although he was a bishop, and because he was a bishop."
+    }
+   ]
+  },
+  {
+   "id": "books of the nature of les misérables|cannot fail|to be of use",
+   "subject": "books of the nature of Les Misérables",
+   "verb": "cannot fail",
+   "object": "to be of use",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#20877-21530",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "So long as there shall exist, by virtue of law and custom, decrees of damnation pronounced by society, artificially creating hells amid the civilization of earth, and adding the element of human fate to divine destiny; so long as the three great problems of the century—the degradation of man through pauperism, the corruption of woman through hunger, the crippling of children through lack of light—are unsolved; so long as social asphyxia is possible in any part of the world;—in other words, and with a still wider significance, so long as ignorance and poverty exist on earth, books of the nature of Les Misérables cannot fail to be of use."
+    }
+   ]
+  },
+  {
+   "id": "everything about it|had|a grand air",
+   "subject": "Everything about it",
+   "verb": "had",
+   "object": "a grand air",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28097-28361",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Everything about it had a grand air,—the apartments of the Bishop, the drawing-rooms, the chambers, the principal courtyard, which was very large, with walks encircling it under arcades in the old Florentine fashion, and gardens planted with magnificent trees."
+    }
+   ]
+  },
+  {
+   "id": "from which she|had|long suffered",
+   "subject": "from which she",
+   "verb": "had",
+   "object": "long suffered",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23134-23214",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "There his wife died of a malady of the chest, from which she had long suffered."
+    }
+   ]
+  },
+  {
+   "id": "he|had|no children",
+   "subject": "He",
+   "verb": "had",
+   "object": "no children",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23215-23234",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "He had no children."
+    }
+   ]
+  },
+  {
+   "id": "he|was|an old man of about seventy-five years of age",
+   "subject": "He",
+   "verb": "was",
+   "object": "an old man of about seventy-five years of age",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#21648-21809",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "In 1815, M. Charles-François-Bienvenu Myriel was Bishop of D—— He was an old man of about seventy-five years of age; he had occupied the see of D—— since 1806."
+    }
+   ]
+  },
+  {
+   "id": "he|was|obliged to undergo it although he was a bishop",
+   "subject": "He",
+   "verb": "was",
+   "object": "obliged to undergo it although he was a bishop",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25354-25438",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "He was obliged to undergo it although he was a bishop, and because he was a bishop."
+    }
+   ]
+  },
+  {
+   "id": "henri puget|had|entertained in state",
+   "subject": "Henri Puget",
+   "verb": "had",
+   "object": "entertained in state",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28362-28877",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "In the dining-room, a long and superb gallery which was situated on the ground floor and opened on the gardens, M. Henri Puget had entertained in state, on July 29, 1714, My Lords Charles Brûlart de Genlis, archbishop; Prince d’Embrun; Antoine de Mesgrigny, the capuchin, Bishop of Grasse; Philippe de Vendôme, Grand Prior of France, Abbé of Saint Honoré de Lérins; François de Berton de Crillon, bishop, Baron de Vence; César de Sabran de Forcalquier, bishop, Seignor of Glandève; and Jean Soanen, Priest of"
+    }
+   ]
+  },
+  {
+   "id": "it|was|said that charles myriel created a great deal of talk",
+   "subject": "it",
+   "verb": "was",
+   "object": "said that Charles Myriel created a great deal of talk",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#22627-22725",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "In spite of this marriage, however, it was said that Charles Myriel created a great deal of talk."
+    }
+   ]
+  },
+  {
+   "id": "it|was|said that his father",
+   "subject": "It",
+   "verb": "was",
+   "object": "said that his father",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#22404-22626",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "It was said that his father, destining him to be the heir of his own post, had married him at a very early age, eighteen or twenty, in accordance with a custom which is rather widely prevalent in parliamentary families."
+    }
+   ]
+  },
+  {
+   "id": "italy he|was|a priest",
+   "subject": "Italy he",
+   "verb": "was",
+   "object": "a priest",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#23902-24000",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "No one could have told: all that was known was, that when he returned from Italy he was a priest."
+    }
+   ]
+  },
+  {
+   "id": "madame magloire|was|a little",
+   "subject": "Madame Magloire",
+   "verb": "was",
+   "object": "a little",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#27165-27349",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Madame Magloire was a little, fat, white old woman, corpulent and bustling; always out of breath,—in the first place, because of her activity, and in the next, because of her asthma."
+    }
+   ]
+  },
+  {
+   "id": "mademoiselle baptistine|was|a long",
+   "subject": "Mademoiselle Baptistine",
+   "verb": "was",
+   "object": "a long",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26328-26529",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Mademoiselle Baptistine was a long, pale, thin, gentle creature; she realized the ideal expressed by the word “respectable”; for it seems that a woman must needs be a mother in order to be venerable."
+    }
+   ]
+  },
+  {
+   "id": "myriel|had arrived|at d—— accompanied by an elderly spinster",
+   "subject": "Myriel",
+   "verb": "had arrived",
+   "object": "at D—— accompanied by an elderly spinster",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25933-26069",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "M. Myriel had arrived at D—— accompanied by an elderly spinster, Mademoiselle Baptistine, who was his sister, and ten years his junior."
+    }
+   ]
+  },
+  {
+   "id": "myriel|had|to undergo the fate of every newcomer in a little town",
+   "subject": "Myriel",
+   "verb": "had",
+   "object": "to undergo the fate of every newcomer in a little town",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25210-25352",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "M. Myriel had to undergo the fate of every newcomer in a little town, where there are many mouths which talk, and very few heads which think."
+    }
+   ]
+  },
+  {
+   "id": "myriel|was|the curé of b—— [brignolles]",
+   "subject": "Myriel",
+   "verb": "was",
+   "object": "the Curé of B—— [Brignolles]",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24004-24056",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "In 1804, M. Myriel was the Curé of B—— [Brignolles]."
+    }
+   ]
+  },
+  {
+   "id": "on finding charles myriel|observed|with a certain curiosity by this old man",
+   "subject": "on finding Charles Myriel",
+   "verb": "observed",
+   "object": "with a certain curiosity by this old man",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24527-24641",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Napoleon, on finding himself observed with a certain curiosity by this old man, turned round and said abruptly:—"
+    }
+   ]
+  },
+  {
+   "id": "paris youth|had|become transparency in paris maturity",
+   "subject": "Paris youth",
+   "verb": "had",
+   "object": "become transparency in Paris maturity",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26787-26916",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "What had been leanness in her youth had become transparency in her maturity; and this diaphaneity allowed the angel to be seen."
+    }
+   ]
+  },
+  {
+   "id": "she|had|never been pretty",
+   "subject": "She",
+   "verb": "had",
+   "object": "never been pretty",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26530-26786",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "She had never been pretty; her whole life, which had been nothing but a succession of holy deeds, had finally conferred upon her a sort of pallor and transparency; and as she advanced in years she had acquired what may be called the beauty of goodness."
+    }
+   ]
+  },
+  {
+   "id": "she|was|a soul rather than a virgin",
+   "subject": "She",
+   "verb": "was",
+   "object": "a soul rather than a virgin",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#26917-26953",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "She was a soul rather than a virgin."
+    }
+   ]
+  },
+  {
+   "id": "that he|had|been appointed bishop of d——",
+   "subject": "that he",
+   "verb": "had",
+   "object": "been appointed Bishop of D——",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24809-24990",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "That very evening, the Emperor asked the Cardinal the name of the Curé, and some time afterwards M. Myriel was utterly astonished to learn that he had been appointed Bishop of D——"
+    }
+   ]
+  },
+  {
+   "id": "the emperor|asked|the cardinal the name of the curé",
+   "subject": "the Emperor",
+   "verb": "asked",
+   "object": "the Cardinal the name of the Curé",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24809-24990",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "That very evening, the Emperor asked the Cardinal the name of the Curé, and some time afterwards M. Myriel was utterly astonished to learn that he had been appointed Bishop of D——"
+    }
+   ]
+  },
+  {
+   "id": "the energetic language of the south|expresses|it",
+   "subject": "the energetic language of the South",
+   "verb": "expresses",
+   "object": "it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25439-25622",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "But after all, the rumors with which his name was connected were rumors only,—noise, sayings, words; less than words—_palabres_, as the energetic language of the South expresses it."
+    }
+   ]
+  },
+  {
+   "id": "the episcopal palace|was|a huge and beautiful house",
+   "subject": "The episcopal palace",
+   "verb": "was",
+   "object": "a huge and beautiful house",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#27826-28048",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "The episcopal palace was a huge and beautiful house, built of stone at the beginning of the last century by M. Henri Puget, Doctor of Theology of the Faculty of Paris, Abbé of Simore, who had been Bishop of D—— in 1712."
+    }
+   ]
+  },
+  {
+   "id": "the rumors with which his name|was|connected were rumors only",
+   "subject": "the rumors with which his name",
+   "verb": "was",
+   "object": "connected were rumors only",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25439-25622",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "But after all, the rumors with which his name was connected were rumors only,—noise, sayings, words; less than words—_palabres_, as the energetic language of the South expresses it."
+    }
+   ]
+  },
+  {
+   "id": "the very moment when he|arrived|in the diocese",
+   "subject": "the very moment when he",
+   "verb": "arrived",
+   "object": "in the diocese",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#21813-22139",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Although this detail has no connection whatever with the real substance of what we are about to relate, it will not be superfluous, if merely for the sake of exactness in all points, to mention here the various rumors and remarks which had been in circulation about him from the very moment when he arrived in the diocese."
+    }
+   ]
+  },
+  {
+   "id": "this palace|was|a genuine seignorial residence",
+   "subject": "This palace",
+   "verb": "was",
+   "object": "a genuine seignorial residence",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28049-28096",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "This palace was a genuine seignorial residence."
+    }
+   ]
+  },
+  {
+   "id": "what truth|was|there",
+   "subject": "What truth",
+   "verb": "was",
+   "object": "there",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24994-25107",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "What truth was there, after all, in the stories which were invented as to the early portion of M. Myriel’s life?"
+    }
+   ]
+  },
+  {
+   "id": "which|was|very large",
+   "subject": "which",
+   "verb": "was",
+   "object": "very large",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#28097-28361",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "Everything about it had a grand air,—the apartments of the Bishop, the drawing-rooms, the chambers, the principal courtyard, which was very large, with walks encircling it under arcades in the old Florentine fashion, and gardens planted with magnificent trees."
+    }
+   ]
+  },
+  {
+   "id": "who|was|his sister",
+   "subject": "who",
+   "verb": "was",
+   "object": "his sister",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#25933-26069",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "M. Myriel had arrived at D—— accompanied by an elderly spinster, Mademoiselle Baptistine, who was his sister, and ten years his junior."
+    }
+   ]
+  },
+  {
+   "id": "who|was|waiting in the anteroom",
+   "subject": "who",
+   "verb": "was",
+   "object": "waiting in the anteroom",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt#24373-24526",
+     "ref": "01-literature-books/gutenberg/pg135_Les_Mis_rables__French_.txt",
+     "text": "One day, when the Emperor had come to visit his uncle, the worthy Curé, who was waiting in the anteroom, found himself present when His Majesty passed."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:33.529Z"
+ }
+}

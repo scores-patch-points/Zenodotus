@@ -1,0 +1,526 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2010-7-15"
+lang: "en"
+messages: "517"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<James147> eMyller: possibally a desktop effect called "zoom"?
+<eMyller> James147: nope, that up to X
+<eMyller> desktop effects aren't enabled (and even can't in that graphic card)
+<James147> eMyller: then you need to say what graphics drivers you are using
+<eMyller> will check, sec
+<eMyller> James147: aw, that's a SiS
+<eMyller> 771/671
+<eMyller> James147: i got that working
+<James147> eMyller: :)
+<eMyller> just needed to install sis drivers.
+<eMyller> thanks :)
+<cato37> i am confused about samba. the network that i need to connect is not on the internet. it is a home system with several computers. what do i need to install from apt-get for samba
+<cato37> ?
+<James147> cato37: connecting to a samba share I beleave you dont need to install anything extra (could be wrong) for sharing folder you need the "samba" package (install it anyway just to be sure)
+<cato37> James147: thanx.
+<James147> cato37: note that there is not good gui for creating samba shares (might be one, not sure how well it works) atm in kde :( I think its being worked on and planed for the next vresion
+<cato37> James147: k. bash reads samba installed manually.
+<James147> cato37: then all should be good :)
+<cato37> James147: you are a great help, here. thank you.
+<demism> For some reason my default character encoding on mozilla is western, but pages i visit are showing up as UTF-8 and so I get all the funny characters... is there a way to change this permanently so that I don't have to change it? Does it have to do with my LANG variable being US_en.UTF8?
+<dorian> Anyone use konqueror?
+<ussher_> dorian: yep, konqueror rocks
+<dorian> But it looks like IE6 and it runs really slow
+<ussher_> Best FTP client i have ever used.
+<dorian> yeah
+<ussher_> not sure why dolphin became the default file browser.  I prefer konqueror
+<ussher_> if you do ctrl+shift+l  then you can copy files to the server like your copying on your local machine
+<dorian> I think dolphin has more features
+<dorian> KHTML is a great invent,but now it seems webkit is better
+<ussher_> and use kate and you can edit them from there too.  makes the remote server feel like your local machine
+<ussher_> i havent used khtml or webkit sorry
+<dorian> KHTML is the engine of konqueror
+<dorian> and webkit is based on KHTML and used by safari and chrome
+<dorian> here is a test page of javascript runtime http://wd-testnet.world-direct.at/mozilla/dhtml/funo/jsTimeTest.htm
+<ussher_> too technical for me.  are you talking about the base that the browsers are built off?
+<dorian> Chrome just use 17ms
+<ussher_> I use Firefox for a browser and konqueror for a file manager.
+<dorian> Konqueror is about 444ms
+<dorian> Yup,konqueror is a great file manager
+<ussher_> cant say i use it much for a browser.   i just ran "run all tests" in FF an Konq and they were 149ms and 143ms from here
+<ussher_> not that i know what that means though
+<dorian> Maybe your computer is better^-^
+<dorian> That are some functions used in browser
+<ussher_> not sure.  cant say javascript runtimes are something i have ever thought about before.  it runs and takes as long as it takes.  I have heard that chrome is fast though.
+<dorian> So I think konqueror should be a file manager not a browser as it's speed
+<rodrox> Why konqueror has 89/100 in the acid test?
+<rodrox> http://acid3.acidtests.org/
+<dorian> 100/100 ，chrome gets
+<rodrox> someone knows about this issue?
+<chx> hi. how can i change the icon that appears besides an application in Alt+F4? qmpp and konversation are too similar.
+<rodrox> acid test
+<rodrox> bye
+<noaXess> good morning.
+<noaXess> whats the simplest way to complete remove kubuntu-desltop and all kde apps/lib's?
+<genii> !puregnome
+<genii> Hm. Pricechild seems to have removed it
+<noaXess> !purge
+<noaXess> !purgekde
+<noaXess> hm...
+<genii> noaXess: The old !puregnome factoid guided the user to https://help.ubuntu.com/community/PureGnome  for what it might be worth to you
+<noaXess> genii: but this command sudo aptitude remove kubuntu-desktop just uninstall this single package
+<genii> noaXess: "kubuntu-desktop" is a meta package. Which means it's just a name for a collection of other actual packages like kdelibs and so on
+<noaXess> think i need go trought the manual way
+<Alazare> hey can someone help me im having a problem configuring nview seperate screens under kde
+<Alazare> just removed gnome
+<Alazare> anyone have an idea why seperate x monitor doesnt work and yet twinview does
+<Rogasch> Hi, i have a question about CouchDB, i tried to save severel Contacts via Evolution. Well i didnt work at all because my CouchDB has no Tables. Do i have to create them by my self?
+<Rogasch> no one can help :(
+<jussi> Rogasch: Im not sure if there is a couchdb specific channel, but the lads in #ubuntuone probably know hwere to point you.
+<Rogasch> @jussi thanks
+<ussher_> Alazare: i use the arandr package from gnome to set up my dual monitors.  works great until a kde alternative comes around
+<AciD> hi
+<AciD> somehow, I don't have any icons in any kde apps menu. I'm using lucid with kde 4.4.2 and the oxygen theme (air). Is there an option I missed somewhere to activate those icons in menus ?
+<Mamarok> AciD: make sure you have all oygen-them packages installed, they splitted the package for space reasons on the CD
+<Mamarok> oxygen-theme*
+<AciD> I have openoffice.org-style-oxygen, oxygen-cursor-theme, oxygen-icon-theme and oxygen-icon-theme-complete
+<Mamarok> oxygen-iocn-theme I meant
+<gunsofbrixton> hi, where do I specify my email signature in kmail?
+<Mamarok> ham, the colete is installed? Then I don't know
+<Mamarok> gunsofbrixton: in the signature tab, check the tabs on top when you configure your account
+<AciD> colete ? anyway, it looks like i have all the oxygen-icon-theme installed. Still, no icons in any kde apps menu :(
+<AciD> i'll try to change to another icon theme, just to see if it comes from oxygen
+<gunsofbrixton> Mamarok: hmm wait, I go to settings->configure kmail->accounts?
+<Mamarok> yes
+<AciD> it doesn't seem to change anything, still no icons in menu
+<gunsofbrixton> aahh it's under identities... got it
+<Mamarok> yes, sorry, I told from memory and don't go there very often
+<Mamarok> AciD: try reinstalling those packages, maybe that helps (do not remove them, just force a reinstallation)
+<AciD> will do
+<AciD> still no icons, should i restart kde though ?
+<Mamarok> AciD: yes, try logging out and in again
+<bb_> Hi - i need some tip for updateing to 4.5 rc 2. After adding the repos, aptitude gives me some output which I do not know how to handle. You can find it here: http://paste.ubuntu.com/463949/ - I really would appreciate some help on that issue. Thx!
+<fairy> hi there everyone I'm new to kubuntu and i need help
+<bb_> The problem seems to be the package libqt4-assistant - do I need that for anything? Is it save to remove it?
+<fairy> hiii
+<bb_> hm - even when I say no to aptitude dist-upgrade the suggestions do not seem to get any better. Dont think it is helpfull to remove kdm or kubuntu-desktop... ;)
+<bb_> and my kontact in the current version is soooo broken - it keeps crashing and I really hope to get that fixed with an update to 4.5 RC2
+<blain> bb_ you can install the 4.5rc2 already but there's is always risk involved in unfinished packages
+<tdn> What program do you recommend for designing pgsql databases? Right now, I am evaluating DbWrench. It is ok. I can create tables/foreign keys/etc in a diagram view and then generate DDL for creating the table in PG. But it is, unfortuneately, non-free. Can you recommend something that is easy to use and FOSS?
+<blain> non-free or not open source?
+<bb_> blain: thx - I know - I just would like / hope to get a tipp of how to actually get the update working, as the feedback from aptitude is rather scary atm
+<blain> use apt-get
+<blain> and see the outcome, it will tell how what will be done
+<gorgonizer> bb_: you will need need to do a full upgrade, such as   sudo apt-get update && sudo apt-get dist-upgrade
+<blain> exactly
+<bb_> gorgonizer: I know - take a look at http://paste.ubuntu.com/463949/ to see the problems I have with that
+<bb_> you find the output of either aptitude save-upgrade as well the one from aptitude dist-upgrade there
+<blain> bb_ give me the output of apt-get update && sudo apt-get dist-upgrade
+<bb_> blain: sec
+<gorgonizer> bb_: you will need to remove libqt4-assisstant..
+<bb_> gorgonizer: I think so too - but is that save? Dont i need that for anything?
+<gorgonizer> if that is the only package that is blocking the update (as I have limited understanding of German) then you should be okay to proceed..
+<gorgonizer> bb_: I am running KDE SC 4.5 RC 2, and I don't have libqt4-assisstant installed, I guess it was removed during one of my various upgrades to 4.5..
+<blain> bb_ if you need it, apt-et will tell you
+<bb_> gorgonizer: ok I will try
+<bb_> blain: the output of apt-get dist-upgrade is basically the same as for aptitude dist-upgrade in previous pastebin link
+<blain> as i said, i really cant read german to help ya
+<gorgonizer> bb_: there are a number of packages that, whilst required for KDE SC 4.4, have been removed (or renamed) for KDE SC 4.5...
+<blain> but if gorgonizer got it then follow his advice
+<bb_> blain: apt-get output is german too
+<bb_> gorgonizer: seem that I am not able to remove libqt4-assistant without a lot of bad things to follow
+<bb_> gorgonizer: see here http://paste.ubuntu.com/463967/
+<gorgonizer> bb_: so it wants to remove those other packages as well?  If you do it as part of the dist-upgrade, it shouldn't remove those other packages..I still have ubufox and usb-creator-kde installed..
+<Mamarok> gorgonizer: you probably upgrade to Qt 4.7, libqt4-assistant is a 4.6.3 app
+<Mamarok> upgraded*
+<bb_> gorgonizer, Mamarok: so what should I do?
+<gorgonizer> Mamarok: good point, forgot that I had updated QT as well... cheers for the reminder..
+<Mamarok> gorgonizer: it's Qt, not QT = Quick Time
+<Mamarok> bb, let me read the backlog, don't know your problem yet
+<gorgonizer> Mamarok: apologies, still asleep, my Shift key release is not up to scratch yet :)
+<Mamarok> gorgonizer: np :)
+<Mamarok> bb_: are you sure you have your sources.list update correctly?
+<Mamarok> updated*
+<Mamarok> bb_: normally you should be able to do apt-get dist-upgrade without problems
+<Mamarok> if you don't want to upgrade to Qt 4.7, you need to deselect it, else libqt4-assistant will be removed
+<bb_> Mamarok: this is my sources.list: http://paste.ubuntu.com/463971/
+<Mamarok> bb_: so maybe upgrading in kpackagekit or synaptic and selecting/deselecting manually the Qt 4.7 packages is a solution
+<bb_> wouldnt mind to upgrade to Qt 4.7 :)
+<Mamarok> bb_: you should also add the default kubuntu ppa, not only the beta, there have been a lot of updates in there, too
+<bb_> Mamarok: which is?
+<Mamarok> bb_: deb http://ppa.launchpad.net/kubuntu-ppa/ppa/ubuntu lucid main
+<Mamarok> that one
+<Mamarok> add this line to your sources list, and the updates PPA is worth it, too, especially if you want to run the beta stuff
+<Mamarok> which is this line: deb http://ppa.launchpad.net/kubuntu-ppa/updates/ubuntu lucid main
+<Mamarok> bb_: but be careful with beta updates, you should really check where the updates come from in the future
+<bb_> Mamarok: no updates available when adding that to sources.list and removing the beta repro
+<bb_> Mamarok: yeah i know - I do all on my own risk (TM)
+<Mamarok> bb_: I did't tell you to remove the beta repo
+<Mamarok> I told you to add two other repos
+<bb_> Mamarok: though I do that step by step
+<bb_> Mamarok: two?
+<Mamarok> no use now, since you already have the packages downloaded
+<Mamarok> read what I wrote above
+<josh-N> Anyone here experienced with Akonadi errors? I pasted a log at http://ubuntu.pastebin.com/BcDbYdph but i don't really get what's wrong.
+<bb_> Mamarok: ok, I try the deselction of Qt 4.7 if I find that as problem stays the same with both repros on
+<Mamarok> josh-N: either there is already a running MySQL server instance or you miss some packages
+<Mamarok> bb_: well, it works fine here, you don't need libqt4-assistant, don't you?
+<bb_> Mamarok: wouldnt know what for
+<Mamarok> bb_: well, then proceed with update, then dist-upgrade
+<Mamarok> sudo apt-get update && sudo apt-get dist-upgrade
+<slow-motion> hi
+<Mamarok> and of course it will remove a lot of packages that have change or are obsolete now
+<ionut> whi when i want to transfer images with pidgin, it doesn't work anymore
+<Mamarok> changed*
+<ionut> ?
+<josh-N> Mamarok: there is a mysql server running... but it shouldn't be using the same files, since it's just for a testing environment with apache/php
+<bb_> Mamarok: i am a little confused now :(
+<Mamarok> ionut: that was not for you
+<ionut> Mamarok: ok ok
+<Mamarok> josh-N: well, you can't run two servers side by side
+<ionut> whi when i want to transfer images with pidgin, it doesn't work anymore ?
+<bb_> Mamarok: dist-upgrade offers me a couple of solutions
+<bb_> Mamarok: can you read german?
+<Mamarok> bb_: yes, pastebin it, please
+<Mamarok> josh-N: disable the other instance and try again, then try restarting the other one
+<Mamarok> maybe it's a question of priorities
+<josh-N> Mamarok: thanks... the other mysql is being started at system boot, it's a LAMP configuration... can't akonadi just use the existing server?
+<Mamarok> it should, maybe check for missing akonadi packages?
+<bb_> Mamarok: http://paste.ubuntu.com/463979/
+<josh-N> Mamarok: I usually keep everything up to date. How would i check for missing Akonadi packages? (sorry if that's a stupid question)
+<bb_> Mamarok: aptitude offers different solutions when pressing "n" - so I put the first couple in the output
+<Mamarok> josh-N: apt-cache search akonadi
+<Mamarok> it tells you what is installed
+<Mamarok> bb_: too many options, did you try sudo apt-get install -f ?
+<bb_> Mamarok: no - should I?
+<Mamarok> bb_: yes, that was a suggestion :)
+<josh-N> Mamarok: anything i should compare that list to?
+<bb_> Mamarok: basically says "137 nicht aktualisiert"
+<bb_> Mamarok: thats it
+<Mamarok> josh-N: no, just check if there are akonadi packages that are not installed (unless those are -dev)
+<Mamarok> bb_: try reinstalling the libqt4-install package
+<bb_> Mamarok: remove then install?
+<Mamarok> bb_: no, if you can remove it without it removing half of KDE then do so,  no need to reinstall it then
+<Mamarok> but first pastebin the respult if you try to remove it
+<Mamarok> result* sorry
+<bb_> Mamarok: it is not installed
+<bb_> Mamarok: http://paste.ubuntu.com/463981/
+<josh-N> Mamarok: when i look in "system settings - software", there are several akonadi related packages that are not installed, but most look optional (e.g. Akonadi Ruby bindings)... how do i know what i really need?
+<Mamarok> bb_: sorry, that makes no sense now, were you able to remove it?
+<bb_> Mamarok: actually there is no libqt4-install package at all available
+<Mamarok> bb_: what are you talking about? it's about libqt4-assitant
+<Mamarok> oh, my bad, sorry, typo :)
+<Mamarok> josh-N: if there are bindings you can ignore those, nothing else, no agent package?
+<bb_> Mamarok: got it now - reinstalled the package
+<Mamarok> bb_: now try sudo aprt-get dist-upgrade again
+<Mamarok> apt-get*
+<Mamarok> I really need food soon
+<bb_> Mamarok: same as before
+<bb_> Mamarok: me too :)
+<josh-N> Mamarok: what apt-cache search akonadi gave me is here http://ubuntu.pastebin.com/tYgFTZMp ... in software management when i search for "akonadi" i see two installed packages: "akonadi-server" and "libakonadiprivate1" - and several that are not installed
+<blain> bb_ nooo, i think your problem has priority over lunch
+<Mamarok> bb_: still here, was just getting something from the kitchen :)
+<josh-N> Mamarok: the not installed include several bindings, some libraries, a transitional package and "management and debugging console" as well as "google calendar and contacts resource"
+<Mamarok> josh-N: hm, try aptitude search akonadi, it puts letters in front so I can see what is installed
+<Mamarok> you should definitely install the console and the kde libraries
+<josh-N> Mamarok: http://ubuntu.pastebin.com/4xEnR0FC
+<josh-N> Mamarok: ok, will install those
+<Mamarok> josh-N: in the newst paste this would be lines 6, 8 and 9
+<josh-N> Mamarok: ok, now it looks like this http://ubuntu.pastebin.com/hVcdAgDi ... do you think that's enough to make it work?
+<Mamarok> josh-N: try it, if that doesn't solve the issue, you should try running thess two lines:
+<Mamarok> sudo aa-complain mysqld
+<Mamarok> sudo /etc/init.d/apparmor reload
+<Mamarok> these*
+<Mamarok> ubottu: !akonadi
+<josh-N> Mamarok: thank you very much. can't tell whether it worked yet, but you helped alot.
+<Mamarok> josh-N: you are welcome, but I would like to know if it works, what happens if you start akonadi again?
+<josh-N> how do i manually restart akonadi?
+<Mamarok> akonadictl start
+<josh-N> it just says akonadi is already running
+<Mamarok> hm, then do akonadictl stop
+<Mamarok> $and start it again
+<Mamarok> -$
+<Mamarok> but you shouldn't have kontact running
+<josh-N> yeah i closed it first...
+<josh-N> this is what i got on the terminal: http://ubuntu.pastebin.com/PBAcQDRV
+<Mamarok> hm, it still doesn't connect to MySQL, did you run the two lines above?
+<josh-N> no, not yet... going to do that now
+<Mamarok> stop akonadi first
+<josh-N> i see no FATAL ERROR line this time... http://ubuntu.pastebin.com/FKFFHCJA
+<Mamarok> yay, it worked :)
+<josh-N> yay :D thanks a ton
+<Mamarok> could you please type akonadictl status? Just to make sure you get only three lines telling you it is running and the backend is virtuoso
+<josh-N> what exactly does that aa-complain thing do?
+<Mamarok> the problem is apparmor
+<Mamarok> whihc doesn't let akonadi connect to the server
+<Mamarok> wich
+<Mamarok> and apparmor is running as default on Kubuntu
+<josh-N> Akonadi Control: running    Akonadi Server: running    Akonadi Server Search Support: available (backend: Virtuoso)
+<Mamarok> josh-N: yep, that's perfect :)
+<josh-N> sweet :)
+<Mamarok> now if you start Kontact it will use it directly, and if you start KDE next time, akonadi will start as soon as you start Kontact
+<josh-N> so apparmor is some kind of security thing that controls what an application can/cannot do?
+<Mamarok> yes
+<Mamarok> it limits the ressources for the apps and is directly integrated in the kernel
+<josh-N> but we only installed a few packages, did their installation "tell" apparmor to be less restrictive?
+<josh-N> i hope i'm not bugging you too much, just trying to understand what we just did ;)
+<Mamarok> well, we did telly apparmor to ignore access tries to mysqld, which did shut it down, then we restarted it and it keeps the settings
+<Mamarok> I got most of my information from techbase.kde.org/Akonadi and man apparmor :)
+<Mamarok> http://userbase.kde.org/Akonadi, sorry
+<josh-N> oh i see... that's what the complain was for. thanks again. i never stop learning :)
+<Mamarok> btw, the userbase wiki is a good ressource for a lot of KDE apps
+<Mamarok> josh-N: same for me, I learn new things every day :)
+<josh-N> next time i'll search the userbase wiki first. see you.
+<Mamarok> josh-N: see you :)
+<bb_> Mamarok, blain: back from lunch
+<bb_> obviously there has been no magical lunchtime solution to my problem :)
+<Mamarok> bb_: well, I was waiting for you to come back
+<Mamarok> you said "the same as before" which means?
+<bb_> Mamarok: I hoped that :)
+<bb_> Mamarok: this is still the situation: http://paste.ubuntu.com/464007/
+<Mamarok> bb_: do it, we will see if that breaks KDE although it shouldn't. If it does, you can do the following in a terminal (Ctrl+Alt+F1):
+<Mamarok> sudo apt-get install kdebase-workspace kdebase-workspace-bin
+<bb_> Mamarok: ok - taking the risky path :) - aptitude has different solutions to offer (they even get higher "Bewertungsnoten") - take a look at my old pastebin: http://paste.ubuntu.com/463979/ - perhaps accept a different solution?
+<Mamarok> bb_: interesting, try the 1869 solution then, looks like the less risky
+<bb_> Mamarok: ok, thought so to
+<bb_> rescue commands stay the same?
+<Mamarok> I doubt it will break KDE, but if yes, do a sudo apt-get dist-ugrade in the terminal
+<bb_> Mamarok: the 1869 solution does not update all packages to 4.5 though
+<bb_> Mamarok: still think it should be the one to go for?
+<Mamarok> bb_: I know, that is not a problem, we can update that afterwards
+<Mamarok> yes
+<bb_> Mamarok: ok, then wish me luck :)
+<Mamarok> bb_: good luck :)
+<bb_> Mamarok: thx! ;)
+<bb_> Mamarok: how do i know update has been a success?
+<bb_> Mamarok: this is the output http://paste.ubuntu.com/464012/
+<bb_> Mamarok: heaps of errors in that output file
+<Mamarok> bb_: not a problem, try running dist-upgrade now
+<bb_> Mamarok: almost the same: http://paste.ubuntu.com/464014/
+<bb_> Mamarok: the error moves through the libqt packages :)
+<Mamarok> bb_: don't use aptitude, please use apt-get
+<bb_> Mamarok: I learnd somewhere that aptitude is the replacement of apt-get
+<bb_> but ok
+<Mamarok> aptitude has problems with dist-upgrades (and it should read save-upgrade in Aptitude)
+<Mamarok> no, it is not a replacement at all
+<Mamarok> from experience it works not as good as apt-get
+<bb_> Mamarok: same with apt-get: http://paste.ubuntu.com/464017/
+<bb_> that seems somehow trustworthy :)
+<Mamarok> where do you see a problem there? It doesn't sow any
+<Mamarok> so it'ŝ not the same at all
+<Mamarok> show*
+<bb_> "same" as in "same command"
+<bb_> so I will run that one
+<Mamarok> ah, OK
+<bb_> Mamarok: not as in "same problem"
+<bb_> ok - is running
+<Snapzilla> Hello, I am running Kubuntu 8.04 on my asus netbook. It didn't recognize my wireless card (atheros AR81 family). I installed the driver but its asking for a module installed. I have tried the ones from the files I downloaded but to no prevail. Keeps saying 'Invalid module format'.
+<bb_> Mamarok: is there dpkg command to check everything is fine?
+<bb_> Mamarok: arg: http://paste.ubuntu.com/464020/
+<Mamarok> bb_: sudo apt-get install --force-overwrite /var/cache/apt/archives/libqt4-help_4%3a4.7.0~beta2-0ubuntu1~lucid1~ppa1_amd64.deb
+<bb_> Mamarok: E: Kommandozeilenoption --force-overwrite konnte nicht ausgewertet werden
+<Mamarok> Snapzilla: 8.04 is very old and no longer maintained, you should upgrade
+<Mamarok> hm, let me check
+<Snapzilla> Mamarok, I'm in Iraq. Don't have best internet to download newer versions
+<Mamarok> Snapzilla: you could order a CD
+<Mamarok> bb_: that is correct, are you sure you typed that correctly?
+<bb_> Mamarok: i copied your command
+<Mamarok> bb_: my bad, sorry, its sudo dpkg -i --force-overwrite /var/cache/apt/archives/libqt4-help_4%3a4.7.0~beta2-0ubuntu1~lucid1~ppa1_amd64.deb
+<bb_> just doing another apt-get dist-upgrade -f
+<Mamarok> bb_: that is useless
+<Mamarok> do what I told you
+<bb_> Mamarok: ok, wait till it stops
+<bb_> Mamarok: seems to run through this time *crossing thumbs*
+<bb_> Mamarok: so you would really suggest not to use aptitude in future?
+<Mamarok> bb_: I use aptitude for it's search and show capablities, as the display is nicer than the one made by apt-cache, but apt-get gives better results with dist-upgrades than aptitude, don't know where the problem is, though
+<Mamarok> and yes,  I strongly suggest to not use it for dit-upgrades
+<Mamarok> dist*
+<Misterio> I recently installed Kubuntu (I changed from Ubuntu), but I don't remember command to purge cache. Anybody knows that command?
+<bb_> Mamarok: ok - seems to have been (part of) the problem  - apt-get ran through this time
+<Mamarok> Misterio: which cache do you want to purge?
+<bb_> Mamarok: cool - and thanks 1000 times! Everything seems to fine - no more updates available
+<Misterio> Mamarok: When I install a package, .deb files are stored. I want to clean that packages
+<Mamarok> bb_: you are welcome, nice it worked :)
+<Mamarok> Misterio: sudo apt-get clean
+<bb_> I will now reboot - be back to tell you everything worked out hopefully in a few minutes :)
+<Misterio> Mamarok: Okay, thank you
+<Mamarok> bb_: no need to reboot
+<Mamarok> just restart KDE
+<bb_> Mamarok: ok
+<Mamarok> Misterio: you are welcome
+<bb_> Mamarok: then I will hopefully be back in a less couple of minutes ;)
+<bb_> Mamarok: back on KDE 4.5 RC2 :)
+<Mamarok> bb_: nice :)
+<bb_> Mamarok: indeed - hope Kontact will be more stable now
+<Mamarok> it was stable as well before, never had problems with it in 4.4.2 or later
+<bb_> Mamarok: I just experienced a lot of problems with it the last couple of days
+<bb_> Mamarok: crashed every couple of minutes
+<Misterio> It uses a lot of CPU for me
+<Mamarok> not here
+<bb_> Mamarok: and it does it again :(
+<Misterio> Mamarok: Well, my PC starts going slow with OpenArena, so imagine how is it, heh
+<Mamarok> I don't know what OpenArena is
+<Mamarok> bb_: try with a new user, could be your settings
+<bb_> Mamarok: that's a good idea -will do that later, now need to get some work done - this whole update did take much more time than i hoped it would ;)
+<bb_> Mamarok: thanks again - I be off for now
+<Mamarok> bb_: well, yeah, when you run into such problems that is annoying and time-consuming
+<fairy> hi everyone
+<fairy> how do i install nvidia drivers for my kubuntu 10.04
+<slhk> fairy: application -> system -> hardware drivers
+<slhk> in the K menu
+<fairy> ok thanks
+<serenity> does anyone know in which package (kubuntu) the dbg symbols for kwin are located?
+<Riddell> hi serenity
+<Riddell> kdebase-workspace-dbg is likely
+<serenity> hi Riddell
+<serenity> ah fine
+<serenity> need to put it under mgraesslin's nose ;)
+<dihae> hello
+<dihae> for some reason or another, Kmail forgot all the stanard reply templates, and now uses %BLANK everywhere
+<dihae> does anyone still have these templates? that would be a lot easier than to recreate them myself
+<superbob> Quick question for someone who might know about using keyboard layouts in KDE:  I have changed my keyboard layout to Dvorak (Programmer Dvorak, specifically).  I am using Compiz and have mapped some actions using the Super.  The problem is that sometimes, when I start up the computer, the Super key will act as a temporary layout switcher, and sometimes not, such that sometimes I have to press <Super>K  to get <Super>K  and sometimes I have to press
+<superbob> <Super>V  ....    is there anyway of making the behavior consistent, one way or the other????   I would prefer it not to change layout, if possible
+<realversus> hi I installed windows to a partition, is there a way to reinstall grub with windows 7? something like grubinstall.exe?
+<psynautic> anybody have a clue as to why my dual monitor settings (set in the Display config) won't stick upon restart?
+<psynautic> realversus, you can reinstall grub if you boot to a linux iso
+<psynautic> with a cd or flashdrive iso
+<realversus> I have none available and my internet is very slow
+<psynautic> there are really small isos
+<psynautic> damn small linux is like 50mb
+<realversus> and what needs to be done then? sudo grub-install?
+<psynautic> http://www.damnsmalllinux.org/wiki/index.php/Installing_Grub
+<psynautic> looks like you mightnt need the entire distro even
+<realversus> thanks for your help I will see to try it
+<psynautic> np
+<psynautic> good luck :)
+<psynautic> anybody have a clue as to why my dual monitor settings (set in the Display config) won't save upon restart?
+<ali_> connect pardus
+<ali_> :)
+<john___> can anyone help me?
+<Mamarok> !ask | john___
+<ubottu> john___: Please don't ask to ask a question, simply ask the question (all on ONE line and in the channel, so that others can read and follow it easily). If anyone knows the answer they will most likely reply. :-)
+<john___> ok
+<Blasphemie> moin
+<john___> why my kubuntu slow in performance?
+<Blasphemie> ill just updated my rc1 1 times.. now kubuntu wont boot properly anymore
+<john___> why my kubuntu slow in performance or works so slow?
+<john___> why my kubuntu wifi unable to connect?
+<snarkster> if i wanted to run multiple commands from command line, can i use ; to seperate commands? IE: mv *.jpg 1-jpg/;mv *.gif 2-gif/
+<tsimpson> snarkster: yes
+<snarkster> excellant thank you
+<tsimpson> they will run one after the other, but immediately
+<snarkster> im good with that
+<Xyt> anyone able to help me fixing my problem of playing dvd's on kubuntu?
+<snarkster> medibuntu repo has what you need
+<snarkster> nvm then
+<BluesKaj> !synergy
+<reagleBRKLN> My partner and I are sharing the desktop, "switch user" works great, but not so much for sound. arts use to have a "suspend arts" if not used for X seconds, I don't see anything similar in KDE4, how do we share the audio?
+<zenzamy> Yo evry One :)
+<steveire> How do I permanently change the ulimit? I have edited /etc/security/limits..conf, but it seems that is not enough
+<|rapidsp|> re
+<|rapidsp|> hi
+<|rapidsp|> katimon is not in repas?
+<|rapidsp|> and can katimon work with radeon driver or it need amd driver?
+<|rapidsp|> !test
+<ubottu> hrm?
+<slow-motion> re
+<demism> what package is kubuntu using to automount my usb drives?
+<mcurran> anyone know how to fix icon placement on desktop in kde3
+<blain> kde3 is EOL
+<mcurran> I know but I run BT4
+<blain> ask in #backtrack
+<mcurran> yes
+<demism> anyone know what program is being used to automount my usb drives?
+<mcurran> I would have to google that, so that's your best bet.
+<mcurran> I've been trying to fix these stupid icons that get moved around every startup for over a year but nope?  I even created startup scripts that create and delete a txt file on desktop, but that didn't work, I just need the arrange desktop icons command (-v) but can't find it anywhere.
+<inteliwasp> i am trying to get the nvidia drivers to work but i am always met with the tty screen, i have followed the steps on the wiki but to no avail
+<blain> you just have to use the application hardware drivers
+<blain> and activate them
+<inteliwasp> blain: i did
+<inteliwasp> but when i reboot, i get the tty login
+<blain> hmm
+<blain> are the drivers for the kernel you're using?
+<inteliwasp> what do you mean?
+<inteliwasp> do you mean 32/64 bit?
+<|rapidsp|> and xserver version?
+<inteliwasp> |rapidsp|: how do i check?
+<darthganesh_> what the error "failed to open pty" means
+<|rapidsp|> inteliwasp: i dont know
+<inteliwasp> well i am useing 10.4
+<darthganesh_> What is pty? What are the possible reasons for error "failed to open pty"?
+<Dark_Hackse> https://wiki.ubuntu.com/IRC/TermsOfService
+<ikonia> Dark_Hackse: ?
+<Dark_Hackse> Sorry, I was just wondering how I'm able to chat here without typing my password via  /msg NickServ identify <password>. That's kinda interesting.
+<naresh_> hello
+<Ezro> Hey guys, I am loving kubuntu netbook edition and I was wondering if it's safe to put it on a laptop.
+<Ezro> I don't know if the netbook edition will mess up or something if I do.
+<DT[AtWork]> are there any really easy to set up remote desktop applications that allow a windows machine control a linux machine with out having both comp accessable at the same time?
+<Ezro> Anyone?
+<avihay> it shouldn't cause a problem
+<|rapidsp|> DT[AtWork]: rdesktop?
+<ridin> ezro, meaning having the netbook edition on a regular laptop?
+<DT[AtWork]> |rapidsp|: link?
+<ridin> ezro, i have lubuntu netbook on my 1680x1050 resolution desktop, and it works fine
+<|rapidsp|> DT[AtWork]: http://www.rdesktop.org/
+<Tonglebeak> hello folks. my gf is tired of people using her computer and trashing it, so she asked me to put linux on it. I'm  a gentoo user and i'm not famliar with kubuntu's installation process
+<Ezro> ridin: Ty for the info
+<Ezro> I'm installing it on my friend's laptop lol
+<Tonglebeak> she has windows vista on it right now. can gparted handle vista partitioins (i think they're an updated ntfs format)
+<Tonglebeak> *i'm also guessing kubuntu has gparted in its installer
+<Ezro> Tonglebeak: You put the cd in and hit install
+<Ezro> lol
+<ridin> partitionmanager for kubuntu i think
+<ridin> gparted for regular ubuntu
+<ridin> ubuntumanager for ubuntuntuntutnutnu
+<ridin> and so on
+<ridin> slide your partitions
+<Tonglebeak> alright, what about the bootloader? does kubuntu use grub or lilo? she intends on dual-booting (stupid itunes, perhaps libmtp supports ipods. i'll have to check on that)
+<ridin> grub
+<Tonglebeak> alright, does it set itself up or does it have to be manually config'd for a dualboot?
+<ridin> mmmmm, no
+<ridin> but i've heard some problems that you can't boot back to windows
+<ridin> via grub
+<ridin> i'm sure you can handle that, since you're mr. gentoo
+<Tonglebeak> lol yeah
+<ridin> asdf, grub sets up itself
+<Tonglebeak> just wanted to know what all the installer did before i go and trash her computer
+<Tonglebeak> lol
+<Tonglebeak> alright thanks
+<ridin> ok, have fun with kde
+<Tonglebeak> i figured kubuntu would be the most user-friendly distro out there
+<Ezro> It definitely is
+<Ezro> lol
+<Ezro> The netbook edition is so gosu.
+<Tonglebeak> she wanted what i have, but i don't think she wants to spend battery power compiling every package
+<Tonglebeak> take care everyone
+<ridin> gasp
+<ridin> i always thought mint (distro) or lxde was more user friendly
+<pipo> KUBUNTU super distro
+<ridin> you have that windows xp feeling
+<DT[AtWork]> |rapidsp|: thanks
+<mero> It is "safe" to upgrade to new version of kde in repos ? is kde 4.4.2 official more stable than 4.4.4 from repos ?
+<Listener> I just upgraded to 4.4.5 using backports with no problems so far.
+<blain> good for you
+<mero> also I've got hangup sometimes when starting kdm - error like cannot get uid() and system stopped. anybody know about this error - is it fixed ?
+<mIKEjONES> anyone know I can write my X config out to a file?
+<mIKEjONES> there's no xorg.conf anymore :/
+<derdon> does konqueror automatically save a session if it is terminated "the hard way"?
+<liam_> My ubuntu splash screen isn't displaying, anyone having the same problem or know how to fix this ?
+<ridin> terminated the hard way, meaning killing the process?
+<derdon> ridin: yes
+<derdon> ridin: it is freezed
+<ridin> i never use konqueror (i use swiftfox)
+<derdon> ridin: and there are 4 windows opened, each with about 5-10 tabs
+<ridin> ee
+<ridin> alt+f2 and type in pkill konqueror
+<ridin> and hope your tabs are saved
+<derdon> ridin: but I want to have the ability to restore all the pages then!
+<ridin> let me boot into kde, let's see what happens
+<derdon> oh, thanks :)
+<ridin> derdon: on konqueror on my machine i opened 50 tabs and then did pkill konqueror while the tabs were still loading. i had the option to restore my session or start with a clean slate
+<ridin> laim_, it the splash screen with the logo title and 5 dots?
+<derdon> ridin: very good!
+<derdon> ridin: thank you again!
+<nobarking> hey everyone
+<nobarking> what's a good vnc client for Kubuntu KDE4 friendly, Qt4 based preferably?
+<derdon> konqueror doesn't like me :(
+<liam_> ridin: yeah it is ... it doesn't display on boot anymore or shutdown :-s

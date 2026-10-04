@@ -1,0 +1,106 @@
+ENDIVE / EnDive — dataset and methodology description
+=======================================================
+(Written from primary sources: the introducing paper's own text and the
+HuggingFace dataset repositories' own metadata, fetched directly on
+2026-08-27. No dialect-translated text or row content from the dataset
+itself is reproduced here — see the manifest's license finding for why.)
+
+Citation / origin
+------------------
+Gupta, A., Cheung, J., Meng, P., Sayyed, S., Zhu, K., Liao, A., & O'Brien, S.
+"EnDive: A Cross-Dialect Benchmark for Fairness and Performance in Large
+Language Models." Findings of the Association for Computational
+Linguistics: EMNLP 2025. Also posted as arXiv:2504.07100 and reviewed on
+OpenReview (id: C7Mwox3C1u).
+
+What EnDive is
+---------------
+EnDive translates twelve widely-used English NLU / reasoning / coding /
+math benchmarks from Standard American English (SAE) into five
+underrepresented English dialects, using few-shot prompting with
+native-speaker-verified example translations, then validates the
+translations for fidelity. The paper's own framing: the benchmark exists
+to measure whether large language models perform and behave fairly across
+dialects they were not primarily trained on, rather than only on SAE.
+
+The five dialects (matching this pocket's brief exactly):
+  - AAVE   — African American Vernacular English
+  - JamE   — Jamaican English
+  - ChcE   — Chicano English
+  - IndE   — Indian English
+  - CollSgE — Colloquial Singaporean English (Singlish)
+
+Underlying source benchmarks translated (per the HuggingFace repository
+list under the abhaygupta1266 account, confirmed directly against the API
+on 2026-08-27):
+  BoolQ, COPA, FOLIO, GSM8K, HumanEval, MBPP, MultiRC, SST-2, SVAMP, WSC,
+  LogicBench (two sub-tasks hosted separately: MCQ and Yes/No), and
+  NovelHopQA.
+
+That is 13 individual per-task HuggingFace dataset repositories, plus one
+combined repository (`EnDive_All_Datasets`) that — per its own file
+listing — holds only per-dialect `filtered_bleu_scores.csv` BLEU-score
+files for each task/dialect pair, not the translated text bodies
+themselves (those live in the 13 per-task repos).
+
+Twelve of the thirteen per-task repos (all except NovelHopQA) share one
+schema, confirmed directly from each repo's own `dataset_info` metadata:
+five splits named exactly `AAVE`, `IndE`, `JamE`, `CollSgE`, `ChcE`, each
+row carrying (per BoolQ's own feature list, representative of the others):
+  - "SAE Passage" (string) — the original Standard American English source
+  - "SAE Question" (string) or task-equivalent field
+  - "Actual Label" (task-appropriate type)
+  - "Dialect (SAE Passage)" (string) — which dialect this row was
+    translated into
+  - "BLEU Score SAE Passage" (float64) — the paper's own automatic fidelity
+    check for the translation
+
+NovelHopQA's schema differs and was NOT observed to carry the same
+dialect-split structure: its four splits are named `hop_1` through
+`hop_4` (multi-hop reasoning depth, over `book`/`context`/`question`/
+`answer`/`token_count`/`number_of_hops`/`keywords` fields), with no
+dialect column visible in its own published schema. This is noted as an
+open discrepancy against the paper's "12 NLU benchmarks x 5 dialects"
+framing, not resolved here (resolving it would require reading actual row
+content, which this pocket declined to fetch — see the manifest).
+
+Per-dialect row counts, read directly from each of the 12 dialect-split
+repositories' own published `dataset_info.splits` metadata (API metadata
+only — no data files were downloaded to produce these counts):
+
+  task            AAVE   IndE   JamE  CollSgE  ChcE
+  ------------- ------ ------ ------ -------- ------
+  wsc               580    511    658     648    657
+  sst-2             865    807    919     956    943
+  multirc           986    376   1000     989   1000
+  copa              423    422    499     487    481
+  boolq             917    400    995     979    994
+  folio             925    298    996     983    994
+  gsm8k             836    435    999     977    890
+  humaneval          26     25     82      76    103
+  mbpp              259    200    367     338    324
+  svamp             478    273    698     662    597
+  logic_bench_mcq   480    239    480     480    478
+  logic_bench_yn    498    132    499     499    496
+  ------------- ------ ------ ------ -------- ------
+  TOTAL            7273   4118   8192    8074   7957
+
+Grand total across the 12 dialect-split task repos: 35,614 rows of
+dialect-translated benchmark content (this repo's own count from the
+published per-split example counts, not from reading the rows).
+
+Licensing status — the finding this pocket acted on
+-----------------------------------------------------
+See manifests/endive-manifest.json for the full account. In short: none
+of the 14 HuggingFace dataset repositories under abhaygupta1266 carry a
+`license` tag or a `license:` field anywhere in their card metadata or
+raw README.md YAML frontmatter (checked directly via the HF API and raw
+README fetches for every one of the 14 repos on 2026-08-27); the
+introducing paper (arXiv HTML/PDF, OpenReview, ACL Anthology page) states
+no license, terms of use, or redistribution grant for the dialect-
+translated text anywhere in its readable text either. The repos are not
+HF-"gated" (no access request is required to download them), but the
+complete absence of any license statement anywhere the data or the paper
+appears is exactly the "cannot determine the license" case this repo's
+staging rules require treating as ambiguous rather than open. No
+dialect-translated row content was downloaded or reproduced as a result.

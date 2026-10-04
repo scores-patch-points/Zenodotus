@@ -1,0 +1,460 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2011-7-15"
+lang: "en"
+messages: "451"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<rdvonz> How do I get my domain name connected through BIND?
+<twb> Well, personally I would be using nsd instead of bind.
+<twb> rdvonz: have you already gone through https://help.ubuntu.com/10.04/serverguide/C/dns.html ?
+<rdvonz> @twb: I'll give it a look!
+<twb> OK, feel free to ask again if you still have trouble
+<rdvonz> @twb: Ah yes, I browsed through this article.
+<twb> rdvonz: you don't need the "@" btw
+<patdk-lap> but the @ is cool :)
+<rdvonz> I'm too used to twitter/facebook/etc., sorry.
+<rdvonz> twb: Do you know anything about webmin? I was using that because it gave me easier access to the config files. However, I still don't quite understand how all of this works. I have a computer right now that is running Apache without any virtual hosts. I have all the  information for the domain name, I have no idea how to translate it into my server.
+<twb> I know: don't use it.
+<twb> rdvonz: vhosts are trivial to set up in the default ubuntu /etc/apache2/sites-enabled/ layout, but if webmin is installed it may have broken that.
+<twb> rdvonz: normally all you do is write a virtualhost entry in a new file in that dir, then a2ensite and run apache2ctl graceful.
+<rdvonz> twb: Should I get rid of it?
+<twb> rdvonz: unfortunately if you have used webmin already, its greasy prints may be all over the system even after you uninstall it.  A clean install would be best, but if that's a pain then you can avoid that and hope for the best
+<rdvonz> twb: That still leaves the question of using the domain I have, how do I got about that?
+<twb> rdvonz: uh, could you be more specific?
+<twb> "use" how?
+<rdvonz> twb: configure BIND so that it points to my server.
+<patdk-lap> heh?
+<patdk-lap> you mean configure bind and point dns to your bind server?
+<patdk-lap> that sounds very unreliable
+<twb> patdk-lap: you mean because bind tries to be both a caching resolver and a zone master/slave server?
+<twb> rdvonz: there are broadly two roles for a DNS server -- firstly, to serve your own domain(s) to the world; secondly, to serve the world's domains to your LAN.
+<twb> rdvonz: BIND mixes the two together, when they really ought (IMO) to be totally separate services.  nsd and unbound are an alternative implementation that keeps them separate.
+<twb> Of course, Ubuntu seems to recommend bind, whereas I'm just some guy
+<patdk-lap> atleast for recursor
+<patdk-lap> I should test nsd sometime
+<twb> nsd was built by norwegians to run on the root servers, so me like big hug
+<patdk-lap> same for powerdns, but just wasn't norwegians
+<patdk-lap> I think it was germans
+<twb> Also unlike mara, it has the same file format for zones as named, which is handy when e.g. Emacs has a major mode  that automatically updates the serial number whenever you save the file.
+<patdk-lap> the only thing that I would use bind for, is if I had to support dynamic updates
+<patdk-lap> and it had to be done via dns/dhcp
+<twb> patdk-lap: I use dnsmasq for that
+<twb> Basically cyber.com.au is "split horizon" -- laptops are added in dnsmasq and resolve internally only, but static allocations are served from quack.cyber.com.au (nsd) and dnsmasq points at it for parts of cyber.com.au it can't resolve on its own
+<patdk-lap> heh, I refuse to do split horizon
+<patdk-lap> I do install dnsmasq for small installations
+<twb> I have five LANs, (limited) split horizon makes sense for me
+<patdk-lap> I'm way over 5
+<patdk-lap> I'm in about 40 lans
+<twb> It's not full bind-style split horizon, you basically just say to dnsmasq "work it out" and it does some heuristics based on source iface and such
+<patdk-lap> spit horizon muddies it too much
+<twb> I can certainly see the argument for that :-)
+<patdk-lap> pretty much did away with all of the need for that by using proxy-arp
+<patdk-lap> or other mac tricks
+<twb> I'd actually like to just disable ARP entirely
+<twb> Have a static ip neighbours table hard-coded for the LDAP server, and then get all the other entries from machine objects in LDAP or something
+<twb> I might end up doing that for prisons, but for the office ICBF.  And of course IPv6 ICMPv6 will obviate the problem Real Soon Now.
+<twb> (problem = ARP poisoning &c)
+<patdk-lap> ya, where I are about arp poisoning, I use ipsec
+<patdk-lap> to cross between the user accessable lan, to the more secure lan
+<twb> At one of the prisons, we actually have each switch port set to a specific MAC, and if it sees any other MAC, to lock that port until further notice
+<twb> So you can still do spoofing, but you have to guess right first time :-)
+<twb> (Oh, and there's physical security to prevent you bringing in boot media or unauthorized computers.)
+<patdk-lap> all my users are rdp
+<patdk-lap> so I just care if they attempt to use their rdp machine to mess with the control machines
+<patdk-lap> mainly the windows ad servers
+<patdk-lap> if they do screw with mac/arp, the ad will just get dos
+<patdk-lap> only affects themselfs really
+<patdk-lap> and since all traffic from that ad outside that lan uses ipsec, no info is gained
+<twb> patdk-lap: so basically they are thin clients, except RDP instead of rlogin or X?
+<patdk-lap> no
+<patdk-lap> you don't do any work on your own machine, it's all done on these machines you rdp into
+<patdk-lap> one machine per user
+<twb> patdk-lap: that's called a thin client
+<patdk-lap> one lan per customer
+<patdk-lap> a thin client would be on the user side
+<patdk-lap> I'm on the other end
+<patdk-lap> we don't do the clients stuff
+<patdk-lap> the clients log into us
+<patdk-lap> I guess you could say, we run a whole thin client lab, without thinclients, only the backend hardware
+<DanaG> Interesting... I tried the Broadcom (5723) card again...
+<DanaG> Merely having it enabled, brought everything to a near halt.
+<DanaG> It took over 1 minute to go from hitting enter after password, to getting the console.
+<qman__> that happens sometimes, it may have nothing to do with your card
+<DanaG> But disabling it fixed it.
+<DanaG> And re-enabling it re-broke it.
+<DanaG> And that's with no ethernet plugged in.
+<DanaG> So for now, I'm using the Intel.
+<qman__> the update checker may be attempting to use said broadcom for something
+<qman__> you'd have to disable it to find out for sure
+<DanaG> It literally went like this: boot enabled.... slow.  Reboot with disabled: fast.  Enabled: slow.  Disabled: fast.
+<DanaG> ANd that was even with NO interfaces up.
+<DanaG> Not even the Intel.
+<qman__> a fair point, but the login time is not a good indicator of anything
+<qman__> due to the number of things that happen in the motd and such
+<DanaG> Heck, it was making even TYPING be slow.
+<DanaG> I think.
+<qman__> type rates, that's different
+<qman__> top would clear it up
+<DanaG> It felt like the driver was eating 60% of my cpu cycles.
+<DanaG> I'll have to try that some time.
+<DanaG> Anyway, for now I'm happy with the Intel ( http://www.newegg.com/Product/Product.aspx?Item=N82E16833106033 )
+<qman__> I installed a similar model in my file server when the onboard died
+<qman__> other than having to upgrade to lucid for lack of drivers in hardy, it worked out well
+<qman__> I've since gotten a new board, but kept the intel NIC
+<DanaG> hmm, anyone know of a realtime large-dir sync tool?  Aside from Unison, which took a long time to run with all files on one end and nothing on the other end.
+<Defectz> Hello all, so I have a question about Ubuntu server, I Downloaded ubuntu Server 64 bit v11.04 and i burned it onto a dvd-r disk to install on my other computer. So it says to put in the cd, restart your computer, and follow the instructions on my screen. I did this but there is no instructions only something saying Solinux 4.01, copyright ect. What do i do now?
+<nonotza> when I'm generating an ssl key and csr using openssl, how can I specify 2048 encryption?
+<joschi> nonotza: with the last parameter of `openssl genrsa`, see `man genrsa`
+<nonotza> thanks
+<yann2> hello - is there any tutorial on how to use kvm-clock with Lucid? Is this even recommended? My guests currently don't, and drift a lot, even *with* ntpd installed :(
+<stetho> Hi - Anyone know where I can get support on ircd-hybrid (installed on Ubuntu Server)? I have installed it and it seems to work fine - with one exception. Even with one room and one user trying to get a room list results in "server load too heavy" message. /list works fine
+<iclebyte-work> quick question. Lets say I have domain.com. If I want to receive email for domain.com I only have to create an MX record on domain.com which points to mail.domain.com - I can then have the actual A record for domain.com point to another server correct?
+<andol> iclebyte-work: yes
+<iclebyte-work> okay thanks, i've got some support guys telling me I need to have mydomain.com point to my mail server in order to receive email other wise I can only get user@mail.mydomain.com - I just wanted this verifying. Thankyou
+<andol> iclebyte-work: http://en.wikipedia.org/wiki/MX_record#History_of_fallback_to_A
+<iclebyte-work> thanks.
+<uvirtbot> New bug: #810977 in openldap (main) "slapd remove/reinstall fails" [Undecided,New] https://launchpad.net/bugs/810977
+<jamespage> zul: around?  could you do a NEW upload for me?
+<jamespage> RoAkSoAx: morning
+<jamespage> RoAkSoAx: any chance you could do a couple of NEW uploads for me?
+<Ethos> What's the preferred method for emailing logs from ubuntu-server (apache logs etc...)
+<jMCg> Ethos: why would you do that?
+<jMCg> Ethos: what problem are you trying to solve?
+<Pici> Ethos: Does logwatch fit what you're looking for?
+<Tommy_nmw> hi
+<Tommy_nmw> who can help me pointing proxy in server to get internet?
+<Tommy_nmw> hello
+<Tommy_nmw> hello
+<Tommy_nmw> is anyone there?
+<Ursinha> !patience
+<ubottu> Don't feel ignored and repeat your question quickly; if nobody knows your answer, nobody will answer you. While you wait, try searching https://help.ubuntu.com or http://ubuntuforums.org or http://askubuntu.com/
+<Tommy_nmw> ok
+<Tommy_nmw> in IRC, how  can i reply to the someone who answered me?
+<Tommy_nmw> how to join #asterisk channel from webchat.freenode.net. it is hard because it needs port 6667
+<Ursinha> Tommy_nmw: well, you're in freenode already, you just need to /j #asterisk
+<Ursinha> :)
+<Tommy_nmw> it really didn't work
+<Tommy_nmw> as it also need specifc port
+<Tommy_nmw> http://www.asterisk.org/support
+<Tommy_nmw> hello
+<uvirtbot> New bug: #811035 in euca2ools (main) "euca-upload-bundle: ImportError: cannot import name Connection " [Undecided,New] https://launchpad.net/bugs/811035
+<Ursinha> Tommy_nmw: I just joined #asterisk and it's fine. In this window you just need to /j #asterisk
+<Tommy_nmw> i m  using from webchat.freenode.net. not IRC client software
+<Tommy_nmw> i got the following errors. [19:40] == #asterisk Cannot join channel (+r) - you need to be identified with services [19:47] == #asterisk Cannot join channel (+r) - you need to be identified with services [19:47] == #asterisk Cannot join channel (+r) - you need to be identified with services
+<patdk-wk> just register your nick
+<Ursinha> ah
+<Ursinha> yeah, what patdk-wk said
+<RoAkSoAx> jamespage: sure! point me to them and I'll upload later today
+<jamespage> RoAkSoAx: thanks
+<Tommy_nmw> how can I ?
+<Tommy_nmw> complete command please
+<Ursinha> Tommy_nmw: hehe, ask on #freenode
+<Tommy_nmw> I donn't know what command I have to type
+<Tommy_nmw> i m new to IRC command
+<Ursinha> Tommy_nmw: so if you're new, first thing you should know is that we're all volunteers here
+<Ursinha> demanding stuff may cause you to be ignored ;)
+<Ursinha> Tommy_nmw: try /msg nickserv help register
+<Ursinha> it will explain what you should do
+<Tommy_nmw> I can register
+<Tommy_nmw> but i can't verify
+<Tommy_nmw> Can't use this command in this window eror appears
+<Ursinha> Tommy_nmw: what's the error?
+<Ethos> Could anyone recommended a good up-to-dateish Ubuntu server book?
+<Ethos> http://www.amazon.com/dp/0137081332/?tag=stackoverfl08-20
+<Ethos> Anygood?
+<hggdh> Daviey: +1 sent
+<Tommy_nmw> IRC sucks
+<_ruben> then don't use it
+<Daviey> hggdh: hurray
+<pltmnky> Tommy_nmw: /msg nickserv identify yourpassword
+<Daviey> hggdh: just need one from bdmurray then?
+<Tommy_nmw> i tried
+<Tommy_nmw> I kept getting #asterisk Cannot join channel (+r) - you need to be identified with services
+<pltmnky> then you didnt match your passwords, or nickserv didnt recognize
+<pltmnky> spacing is important
+<pltmnky> nickserv isnt intelligent, only useful
+<hggdh> Daviey: just need one more +1, from anybody in -control (of course, members of the server team are suspect due to conflict of interest)
+<Tommy_nmw> [20:19] -NickServ- You are now identified for Tommy_nmw. [20:19] == #asterisk Cannot join channel (+r) - you need to be identified with services
+<Daviey> hggdh: okay, will wait and see then.
+<Pici> !register
+<ubottu> Information about registering your nickname: https://help.ubuntu.com/community/InternetRelayChat/Registration - Type « /nick <nickname> » to select your nickname. Registration help available by typing /join #freenode
+<Pici> Tommy_nmw: ^
+<RoAkSoAx> Daviey: Howdy... is it still a target to get collectd in main?
+<Daviey> RoAkSoAx: Should be, yes
+<Daviey> I thought there was a MIR for it
+<RoAkSoAx> Daviey: it is assigned to you and it is BLOCKED
+<Daviey> bug #801721
+<uvirtbot> Launchpad bug 801721 in collectd "[MIR] collectd" [Undecided,Incomplete] https://launchpad.net/bugs/801721
+<RoAkSoAx> Daviey: ahhh lol :)
+<RoAkSoAx> smoser: ping
+<smoser> RoAkSoAx, howdy
+<RoAkSoAx> smoser: howdy!! I'm trying your devenv. Are the VM's gonna use virbr0 (192.168.122.0/24?
+<smoser> they go on their own bridge
+<smoser> hole thing is isolated
+<RoAkSoAx> smoser: ok, but if the host is the squid-deb-proxyu
+<RoAkSoAx> smoser: i'm building cobbler and it is using a network on 192.168.122.0/24 I think, cause otherwise it wont be accessible to squid-deb-proxy which I'm pointing to it at 192.168.122.1
+<smoser> i think it still should hit your squid dep proxy
+<smoser> the dev-env builds its own cobbler vm
+<smoser> that you stick on that isolated network
+<smoser> oh... when you build that cobbler-vm, it just uses kvm guest net
+<smoser> which wont hit your proxy unless you tell it to
+<smoser> is that what you were asking RoAkSoAx ?
+<RoAkSoAx> smoser: yeah
+<smoser> see the README.txt in that subdir
+<smoser> and in the preseed file there, is commented out a line for proxy
+<smoser> give it some valid IP for your proxy server
+<RoAkSoAx> smoser: yeah I know how to give the proxy IP, though my question is that it has correctly obtained the debs through the proxy, it has rebooted, and now it is stuck
+<smoser> how stuck ?
+<RoAkSoAx> smoser: nevermind, it is unstuck now lol
+<smoser> so, it does a reboot and then does more stuff
+<smoser> the reason was that adding orchestra-server to the list of packags brought in mcollective
+<RoAkSoAx> smoser: but anyways... my point is that whenever we deploy a new machine that uses that cobbler server that was created... how do we ensure that the network is accessible to squid-deb-proxy
+<smoser> and mcollective was failing to install during the installer
+<smoser> i didn't open a bug on that...
+<RoAkSoAx> given that you say that it is a new network created, which means we need to manually modify squid-deb-proxy?
+<smoser> lynxman, ^
+<smoser> does your squid-deb-proxy only listen on some network ?
+<smoser> i think it will all "just work"
+<smoser> oh wait.. .maybe not. maybe you will.
+<smoser> wait. no it should work
+<RoAkSoAx> smoser: on s-d-p you have to list the allowed networks
+<RoAkSoAx> smoser: but let me finish testing
+<lynxman> smoser: mvo did some modifications so we can tweak that through debconf, we do in orchestra
+<smoser> RoAkSoAx,  i did not know that.
+<smoser> lynxman, well ideally, it would "just work" from the installer.
+<smoser> or at least not crash the installer
+<smoser> :)
+<lynxman> smoser: it worked last time I did it, just sayin'
+<lynxman> smoser: not implying that you broke it ;)
+<lynxman> smoser: and about mcollective waiting for Daviey to upload 1.2.1 with some fixes, including the dependency for stomp that was dropped somehow
+<Voziv> Hello, how I can I specify static dns servers while still having my network interface use dhcp?
+<smoser> Voziv, you have to configure the dhcp server
+<Voziv> And for those of us who don't have access to their dhcp server?
+<patdk-wk> na you don't
+<patdk-wk> you just have to remove the dns lines from dhclient
+<patdk-wk> or override them
+<RoAkSoAx> smoser: ok after installing the cobbler image I cannot connect to the squid-deb-proxy server on 192.168.122.1
+<RoAkSoAx> which is obvious as it is a different network
+<patdk-wk> there is even an example in /etc/dhcp3/dhclient.conf
+<Voziv> patdk-wk: that file is empty for me
+<patdk-wk> what version you running?
+<Voziv> 10.04
+<patdk-wk> strange, same as me, so it should exist
+<smoser> jamespage, around ?
+<jamespage> smoser: yep
+<jamespage> wassup
+<Voziv> it exists, it's just empty
+<smoser> you easily able to test http://paste.ubuntu.com/644828/
+<smoser> if that makes euca2ools 1.3.1 happy as it is, i'll hold off a bit on the upload of a newer version
+<smoser> RoAkSoAx, yeah, that makes sense.
+<smoser> RoAkSoAx, so you run a squid-deb-proxy in a guest ?
+<jamespage> smoser: yep - give me 5
+<RoAkSoAx> smoser: nope actually I was running it on the host
+<RoAkSoAx> smoser: but telling the VM's to use the ipaddress of virbr0
+<RoAkSoAx> instead of the IP address of the host itself
+<smoser> RoAkSoAx, right.
+<smoser> jamespage, http://paste.ubuntu.com/644831/
+<smoser> is against full installed file names
+<smoser> i tested at least no import error
+<RoAkSoAx> smoser: so in the preseed, I change the mirror to the ip that I have in wlan0 and it fails
+<jamespage> smoser: http://paste.ubuntu.com/644833/
+<jamespage> no so happy
+<smoser> right.
+<smoser> i'll poke some more
+<SpamapS> Hey do we have a jenkins setup available to us by any chance? Been thinking it would be good to setup continuous functional testing of Ensemble.
+<smoser> jamespage, http://paste.ubuntu.com/644839/
+<smoser> that one worked for me in a : uec-publish-image --type image -vv x86_64 euca2ools.spec smoser-test
+<RoAkSoAx> smoser: why are you installing cman?
+<RoAkSoAx> smoser: http://paste.ubuntu.com/644848/
+<jamespage> smoser: that worked nicely
+<robbiew> SpamapS: RoAkSoAx: who should own this blueprint now -> https://blueprints.launchpad.net/ubuntu/+spec/server-o-ensemble-orchestra-openstack-support
+<robbiew> Daviey: fyi ^^^
+<Daviey> robbiew: Great!  RoAkSoAx has committed to sending us a status update towards the end of day.
+<robbiew> Daviey: cool...but we should update the blueprint, right?
+<robbiew> to reflect reality
+<robbiew> currently the effort is assigned to SpamapS and has ZERO workitems done :/
+<SpamapS> Lets look again tho..
+<Daviey> robbiew: yeah, adding it to the overview tracking page
+<robbiew> https://blueprints.launchpad.net/ubuntu/+spec/server-o-install-experience  needs some love too....I think the boot-experience is already known ;)
+<Daviey> hell. yes.
+<SpamapS> robbiew: refresh
+<RoAkSoAx> Daviey: towards end of the weekend more likely :)
+<Daviey> RoAkSoAx: Yeah, best not send emails whislt intoxicated.
+<RoAkSoAx> Daviey: hehehe
+<RoAkSoAx> smoser: ping
+<RoAkSoAx> smoser: how cna I ensure that the host is listening
+<smoser> RoAkSoAx, here.
+<smoser> where host = cobbler server ?
+<RoAkSoAx> smoser: err host where the cobbler server is running
+<RoAkSoAx> as virsh cannot connect
+<RoAkSoAx> to start the machine
+<smoser> you are wanting to start one of the nodes?
+<smoser> is that right ?
+<RoAkSoAx> smoser: never mind, figured it out... so anyways
+<smoser> did you see the 'HOWTO' there ?
+<RoAkSoAx> smoser: ensemble is working with your devenv beautifully
+<RoAkSoAx> smoser: spoke too soon :)
+<SpamapS> RoAkSoAx: can you take a look at https://blueprints.launchpad.net/ubuntu/+spec/server-o-ensemble-orchestra-openstack-support and add a WI for what you've been doing, and any extra info to help us track the status?
+<pltmnky> anybody have time to help me out with an infiniband network problem?
+<smoser> RoAkSoAx, whats going wrong ? i'd like to help.
+<smoser> i'd like to make the "build cobbler server" work better, and "just work" with as little config from user as possible
+<RoAkSoAx> smoser: is a prblem with the preseed
+<RoAkSoAx> SpamapS: sure
+<RoAkSoAx> smoser: on the cobbler dev image can you make that /etc/hosts  points to the IP of the cobbler server instead of 127.0.0.1 or whatever is there
+<smoser> RoAkSoAx, you mean 'cobbler' entry in /etc/hosts, you want it to point to its "real IP" ?
+<roasted> Question - if I'm running an Ubuntu DHCP server with 2 NICs, would each NIC hand out IP addresses?
+<smoser> i think the debian policy is that /etc/hosts for 'hostname' should have 127.0.1.1.  the installer actually sets that.
+<Daviey> RoAkSoAx: Early next week, are you able to look at the cobbler bugs? https://bugs.launchpad.net/ubuntu/+source/cobbler
+<RoAkSoAx> smoser: yes, otherwise the "nopxe" will make the installation fail as for node0X cobbler server would be 127.0.0.X instead of 192.168.123.2
+<Daviey> smoser: This disucssion is deja-vu.
+<smoser> exactly.
+<smoser> :)
+<RoAkSoAx> Daviey: yeah I was planning to that :)
+<Daviey> RoAkSoAx: rocking!
+<smoser> RoAkSoAx, it shouldnht fail
+<RoAkSoAx> smoser: right, it is either that, or tell /etc/cobbler/settings that next_server and server are the IP instead of "cobbler"
+<smoser> we write into /etc/cobbler/settings that the 'server' is "cobbler"
+<smoser> if it uses that string as the 'http_server' value, then that should work
+<RoAkSoAx> smoser: yes, but in /etc/hosts , cobbler is 127.X.X.X
+<smoser> as the client will correctly resolve 'cobbler' to a read host
+<RoAkSoAx> smoser: so that tells the preseed that the cobbler server is "127.X.X.X"
+<smoser> RoAkSoAx, but cobbler should not attempt to resolve locally that name
+<smoser> really?
+<smoser> i dont think thats what is happening
+<RoAkSoAx> smoser: yes, just tried it
+<smoser> oh.
+<smoser> nho
+<smoser> the devenv doesn't set 'server' right i think
+<RoAkSoAx> smoser: i just changed /etc/hosts to 192.168.123.2 cobbler
+<RoAkSoAx> and it works
+<smoser> thats just completley wrong
+<smoser> oh.. here.
+<smoser> on your cobbler server
+<smoser> get the preseed values for a node
+<smoser> i think you will see 127.0.1.1 in there.
+<smoser> i swear i went though this.
+<smoser> s/went through this/hit this and made it work with 'cobbler'/
+<RoAkSoAx> smoser: yes I see 127.0.1.1 but it is wrong as it should be the public IP of the cobbler server
+<RoAkSoAx> smoser: otherwise node0X won't be able to access the cobbler server to set the nopxe stuff
+<Daviey> smoser / RoAkSoAx: I thought we were agreeing not to rely on name resolution?
+<RoAkSoAx> Daviey: that's just the dev environment, not on the real thing
+<Daviey> ah
+<smoser> RoAkSoAx, agreed that is wrong tha tyou see that.
+<smoser> but i think you just have to set something int he /etc/settings correctly
+<RoAkSoAx> smoser: yeah either way works
+<RoAkSoAx> smoser: but I do prefer that the /etc/cobbler/settings are set correctly
+<smoser> so what do you have in /etc/cobbler/settings for 'server' ?
+<utlemming> smoser: do you want to chat now, or do you want to put it off for a bit? It looks like you guys are in a grove now.
+<RoAkSoAx> smoser: server and next_server are both the IP address
+<smoser> RoAkSoAx, but you should be able to put 'cobbler' there.
+<smoser> it absolutely is wrong for cobbler to resolve that for http server
+<smoser> *especially* to resolve it via /etc/hosts
+<smoser> RoAkSoAx, it "works for me"
+<smoser> http://paste.ubuntu.com/644879/
+<smoser> utlemming, yeah, we can chat
+<RoAkSoAx> smoser: it doesn't work for me but you should not be using cobbler becuase cobbler is never mapped to 192.168.123.2
+<smoser> RoAkSoAx, it is mapped to that
+<smoser> via dns
+<RoAkSoAx> smoser: right, so maybe in my setup something is not working well with the dns sstuff
+<smoser> $ ps axw | grep dnsm.*cobb
+<smoser> RoAkSoAx, ^ what does that show?
+<smoser> and /var/lib/libvirt/dnsmasq/cobbler-devnet.hostsfile
+<smoser> should be populated
+<RoAkSoAx> 4105 pts/0    S+     0:00 grep --color=auto dnsm.*cobb
+<RoAkSoAx> 22819 ?        S      0:00 dnsmasq --strict-order --bind-interfaces --pid-file=/var/run/libvirt/network/cobbler-devnet.pid --conf-file= --except-interface lo --listen-address 192.168.123.1 --dhcp-range 192.168.123.2,192.168.123.254 --dhcp-leasefile=/var/lib/libvirt/dnsmasq/cobbler-devnet.leases --dhcp-lease-max=253 --dhcp-no-override --dhcp-hostsfile=/var/lib/libvirt/dnsmasq/cobbler-devnet.hostsfile --dhcp-boot pxelinux.0,,192.168.123.2
+<RoAkSoAx> it is
+<smoser> RoAkSoAx, i never tried it the whole way through
+<smoser> but if the nodes do dns lookup, they should be good
+<RoAkSoAx> smoser: "The 'server' field in /etc/cobbler/settings must be set to something other than localhost, or kickstarting features will not work. This should be a resolvable hostname or IP for the boot server as reachable by all machines that will use it."
+<RoAkSoAx> 2 : For PXE to be functional, the 'next_server' field in /etc/cobbler/settings must be set to something other than 127.0.0.1, and should match the IP of the boot server on the PXE network.
+<smoser> RoAkSoAx, right...
+<smoser> absolutely
+<RoAkSoAx> smoser: so maybe it is not resolving as when it creates the kickstart it passes 127.0.1.1 when it should not be like that
+<uvirtbot`> New bug: #811149 in mysql-5.1 (main) "package mysql-server-5.1 (not installed) failed to install/upgrade: ErrorMessage: subprocess new pre-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/811149
+<uvirtbot`> New bug: #811151 in mysql-5.1 (main) "package mysql-server-5.1 (not installed) failed to install/upgrade: ErrorMessage: subprocess new pre-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/811151
+<uvirtbot`> New bug: #811154 in openssh (main) "package openssh-server 1:5.8p1-1ubuntu3 failed to install/upgrade: ErrorMessage: subprocess installed post-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/811154
+<CrazyGir> hello! with ufw, how do you remove an entry
+<robbiew> jdstrand: ^^^
+<martyn> Okay, I'd like to get openMPI 1.5.3 (or .4 when it's released in a week) into oneric
+<martyn> if I create the source deb, what's needed to get it included?
+<roasted> Would it be a headache to set up two DHCP scopes within Ubuntu and tag each scope to a different VLAN?
+<patdk-wk> no, that is simple
+<roasted> is the tagging done in the dhcp scope or in the interface file per eth1 or eth2, etc?
+<SpamapS> roasted: VLAN tagging would be the network interface's responsibility
+<jdstrand> CrazyGir: re ufw> either prepend 'delete' in front of the rule you used to add it, or use 'sudo ufw status numbered' followed by 'sudo ufw delete #'
+<jdstrand> CrazyGir: see 'man ufw' for details
+<roasted> SpamapS, so I wouldn't put any VLAN tags within the dhcp scope at all then?
+<SpamapS> roasted: no, you would configure a vlan interface which you'd bind dhcpd to
+<RoAkSoAx> smoser: for some reason in the devenv, the oinstalled host didn't disable PXE
+<roasted> SpamapS, would it just be done by a single vlan=1 tag or something like that?
+<patdk-wk> heh?
+<patdk-wk> normally vlans are named like, eth0.1, eth0.10, eth0.11
+<roasted> I never did vlaning in linux
+<SpamapS> roasted: I think this works https://wiki.ubuntu.com/vlan
+<patdk-wk> you could name them otherways, but it gets hard then whe nyou have more than one nic
+<patdk-wk> that is pretty confusing
+<smoser> RoAkSoAx, so you mean it looped ?
+<patdk-wk> I only do the last part, modify the interfaces file
+<SpamapS> man interfaces doesn't mention 'vlan-raw-device'
+<smoser> the preseed file that i supplied int hat image does not have any snippit or varialbe for nopxe callback
+<RoAkSoAx> smoser: yeah just realized that
+<RoAkSoAx> smoser: i though it did :)
+<roasted> SpamapS, that looks good. and easy. thank you!
+<SpamapS> ahh.. looks like the 'vlan' package implementes it in if-pre-up.d
+<smoser> no. RoAkSoAx so we want to have that added.
+<roasted> SpamapS, that a good thing, I assume?
+<patdk-wk> well, it won't work till you apt-get install vlan
+<smoser> RoAkSoAx, i'll update it with http://paste.ubuntu.com/643466/
+<smoser> was the preseed otherwise correct?
+<roasted> oh right
+<roasted> its like 3 steps
+<SpamapS> doc needs updating then
+<patdk-wk> apt-get install vlan; vim /etc/network/interfaces; ifup eth0.x
+<roasted> apt-get install vlan, add eth# to vlan#, assign static ip/subnet, etc
+<smoser> RoAkSoAx, ok. that is done. and pushed.
+<smoser> RoAkSoAx, did you use the 'setup.py' stuff to populate nodes ?
+<smoser> id' be interested in modifying that to support tagging the management class to assign it to an ensemble user also
+<RoAkSoAx> smoser: yeah I already corrected the preseed
+<RoAkSoAx> smoser: we need to start merging this stuff into lp:orchestra (basically the preseed)
+<smoser> right. we do.
+<kirkland> smoser: RoAkSoAx: +1
+<smoser> kim0, around ?
+<smoser> RoAkSoAx, i think after that long discussion we decided to use a snippet for the ensemble late_command so we'll need to do that. and i would suggest that we do the same for the nopxe
+<smoser> RoAkSoAx, SpamapS i think the late_command ends up looking something like this:
+<smoser> d-i   preseed/late_command string true && \
+<smoser> $SNIPPET('ENSEMBLE_LATE_COMMAND') && \
+<smoser> $SNIPPET('DISABLE_PXE') && \
+<smoser> true # add your late_commands here
+<RoAkSoAx> smoser: looks good to me
+<robbiew> RoAkSoAx: so are you the only person on the team not attending a sprint Aug 8-12 ?
+<robbiew> :)
+<robbiew> RoAkSoAx: interested in joining us in Austin...would probably help the Ensemble team...figure millbank isn't an option for you atm
+<RoAkSoAx> robbiew: yeah I'm the only one not attending :'(
+<RoAkSoAx> robbiew: and sure I'll be more than glad to travel
+<robbiew> that's easily rectified
+<robbiew> RoAkSoAx: perfect...add your name to the wiki page and let marianna know you'll need accommodation
+<RoAkSoAx> robbiew: hehe wanted to go to Dublin/London for a loooooooooooooooooooooooong time :)
+<RoAkSoAx> robbiew: cool, will do
+<robbiew> then book the flight
+<robbiew> yeah....poor timing, I guess
+<RoAkSoAx> robbiew: Will do. Thanks
+<utlemming> RoAkSoAx: fly Delta out of St. Paul...then we can give Robbie a little heartburn.
+<ChmEarl> boot succeeds but hangs for 40s at init-bottom script and throws timeout error on `watershed vgscan`. My root in on LVM
+<ChmEarl> this is oneiric with custom kernel from git (dom0)
+<RoAkSoAx> utlemming: St.Paul as in MN?
+<ChmEarl> if I install mdadm (don't need it) the hang time goes away, but I have tons of raid modules loaded that I don't need
+<utlemming> RoAkSoAx: Yeah, but from where you are that would be a miserable conncetion
+<RoAkSoAx> utlemming: heh.. I actually did depart from St. Paul once (To Detroit through ) and wouldn't do it twice :)
+<RoAkSoAx> in delta
+<utlemming> lol, worst I had was a flight from Seattle to Salt Lake through Dallas. Last time I want to fly American
+<utlemming> s/want to/did/
+<RoAkSoAx> utlemming: heh... AA for me has been great so far
+<robbiew> utlemming: lol
+<uvirtbot`> New bug: #811273 in php5 (main) "FTBFS due to libpng (and lesser libjpeg)" [Undecided,New] https://launchpad.net/bugs/811273
+<uvirtbot`> New bug: #811275 in dovecot (main) "package mail-stack-delivery 1:2.0.13-1ubuntu2 failed to install/upgrade: Unterprozess installiertes post-removal-Skript gab den Fehlerwert 1 zurück" [Undecided,New] https://launchpad.net/bugs/811275
+<xibalba_> hi folks, has anyone here done nic-boning with Ubuntu 10.04 LTS ? I am trying to create 2 BOND groups, but only my first bond is showing up
+<xibalba_> and actually my first bond isn't applying the correct settings
+<xibalba_> hmm, this chan seems a little inactive, and #ubuntu is a little too active

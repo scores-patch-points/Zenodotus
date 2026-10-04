@@ -1,0 +1,471 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2007-7-15"
+lang: "en"
+messages: "462"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<Jester45> i dont even use qemu so i cant be to much help
+<cheeseboy> Jester45, youve use it though right?
+<Jester45> cheeseboy, a few times but i didnt do anything special
+<student1> trying to use xboard to teach myself chess.  extends so far down the screen that 1/2 the pieces are covered by the panel(?) at the bottom.  anyone know how to resize it so the bottom rests above the panel?
+<student1> further note : half the pieces in the bottom row (rooks, knights, bishops, etc)
+<Jester45> student1, whats your screen resolution? and have you looked at man xboard to see is there is a flag for the board size
+<TheSheep> you can resize the window with alt+shift+arrows, I think
+<Jester45> thats pretty cool TheSheep
+<Jester45> but the program might be stopping the window from being resized
+<student1> screen resolution : 1024 * 768 ... have to look at man xboard ... will do that right now ... tried alt+shift+arrows and no luck ... thanks
+<Jester45> TheSheep, do you know how find out a servers subnet?
+<TheSheep> Jester45: sure, run ipconfig and look at its ip and mask
+<Jester45> im trying to setup bandwidthd but it wants my subnet. but i dont know it (vidd's server at work
+<Jester45> jester@vidd:~$  ipconfig
+<Jester45> -bash: ipconfig: command not found
+<student1> looks like the size of the board is controlled by the program ... still reading
+<TheSheep> ifconfig
+<TheSheep> sorry
+<TheSheep> mixed it up with windoiws :)
+<TheSheep> student1: you can probably use --geometwy=widthxheight
+<TheSheep> geometry
+<TheSheep> Jester45: het the ip and mask with ifconfig, then run ipcalc -n ip -m mask
+<TheSheep> s/het/get
+<student1> xboard -size Medium ... yes !!!    thanks
+<student1> found it in the man page
+<KingPython> when i enter youtube ,open a login wiindow ,how can i solve this problem?
+<TheSheep> KingPython: what problem?
+<KingPython> when i enter youtube,open a htaccess window like porn sites!
+<KingPython> how can i pass this window?
+<KingPython> and windows text is "Webduex"
+<TheSheep> KingPython: what address do you visit exactly?
+<KingPython> all routes of youtube
+<BFTD> I need a powerful CLI IDE
+<KingPython> i cant enter youtube
+<BFTD> other then vim
+<BFTD> I like nano
+<BFTD> so if it can be like that
+<TheSheep> BFTD: try emacs :)
+<BFTD> yuck
+<BFTD> ok
+<TheSheep> KingPython: maybe your dns gives you a false ip number?
+<KingPython> but i try several dns
+<TheSheep> KingPython: try http://208.65.153.251
+<KingPython> TheSheep: how can chance my dns ?
+<KingPython> TheSheep: ohh thanx a lot
+<KingPython> but now how can i change my dns settings
+<TheSheep> dos that url work?
+<KingPython> ??
+<KingPython> yes
+<TheSheep> *does
+<TheSheep> ok, system->network
+<TheSheep> there is a tab named 'dns'
+<KingPython> yes
+<TheSheep> you can enter the polish servers I use, 150.254.65.21 and 150.254.78.2
+<TheSheep> for example
+<KingPython> ohh i understand when Turkey closed youtube,i had chanced domain
+<KingPython> ok thanx TheSheep
+<TheSheep> I'm sure you can find a lot of other dns servers around the world
+<KingPython> TheSheep if i dont use dns,what will happen?
+<Jester45> TheSheep, on the bandwidthd config there is a line for mysql login stuff. but i dont understand whats they are asking
+<TheSheep> Jester45: no idea either
+<Jester45> this is the line pgsql_connect_string "user = bwduser password = bwdpass dbname = bandwidthd host = localhost"
+<TheSheep> KingPython: dns (domain name server) is a service that translates names, like youtube.com, into ip numbers, like 208.65.153.251
+<KingPython> opps ,
+<KingPython> i understand
+<TheSheep> KingPython: the internet works with these numbers internally
+<TheSheep> KingPython: if you don't have a dns set up, you just can't use the 'human-friendly' names, you'd have to use the numbers directly
+<KingPython> hmm ,if i use dns for some sites ,can i enter or walk in there faster?
+<Jester45> a bit
+<KingPython> hmm
+<TheSheep> KingPython: you mean if you use the ip number directly?
+<TheSheep> KingPython: a split second, yes, but it won't work with all sites
+<Jester45> like google
+<KingPython> hmm
+<Jester45> they have a lot of ips
+<TheSheep> KingPython: some servers will have multiple web pages on the same ip, and will serve different pages depending on the name you use
+<KingPython> TheSheep : so thanx again
+<Jester45> like vidd.us :)
+<TheSheep> for example, if you go to sheep.art.pl, you will end up on my blog, but if you go to gallery.sheep.art.pl, which technically points to the same ip, you will find my gallery
+<KingPython> subdomain ha?
+<Jester45> hiya OGDA
+<TheSheep> KingPython: but it point to the same ip
+<KingPython> yes i know
+<TheSheep> KingPython: this mechanism is called 'virtual host'
+<KingPython> yes
+<TheSheep> KingPython: if a server uses virtual hosts, you cannot use the ip alone to access it
+<KingPython> i has made a lot of web site,i know a bit
+<BFTD> hi
+<TheSheep> KingPython: because it won't know which of the vhosts you mean
+<TheSheep> KingPython: ah, sorry then for my lenghty explanations :)
+<KingPython> i use subdomain and virtual hosts and i configure apache for virtual hosts.. but i dont think a this about my  myotube problem
+<KingPython> TheSheep: no need sorry,i like this subject
+<KingPython> but now i dont make any web site
+<KingPython> i use java now
+<cheeseboy> can i resize my root partion?
+<TheSheep> cheeseboy: if there is space, yes
+<cheeseboy> TheSheep, how?
+<TheSheep> cheeseboy: what filesystem?
+<cheeseboy> ext3
+<TheSheep> hmm, I never done it with ext3
+<TheSheep> but it seems you can do it easily with gparted
+<KingPython> yes gParted is seriously super program
+<TheSheep> but you need to boot from livecd, so that your root partition is not being used at the time
+<cheeseboy> TheSheep, all options are greyed out
+<cheeseboy> i cant boot cd
+<TheSheep> cheeseboy: you wanted to enlarge or shrink it?
+<cheeseboy> shrink
+<TheSheep> cheeseboy: you can't boot a livecd?
+<cheeseboy> no cd drive
+<cheeseboy> lost it :(
+<TheSheep> hmm... you could probably boot a second linux from other partition
+<TheSheep> or from an usb drive
+<TheSheep> or usb pendrive
+<cheeseboy> other artitiom is my swap
+<cheeseboy> i have no usb stick
+<TheSheep> you have any external storage?
+<cheeseboy> nope
+<cheeseboy> :(
+<TheSheep> you can't rsize a partition that is being used :/
+<TheSheep> it's a laptop?
+<cheeseboy> yes
+<TheSheep> so you cannot remove the hard disk and put it into another computer temporarily?
+<cheeseboy> no
+<TheSheep> I'm out of ideas :/
+<cheeseboy> TheSheep, you know acronis thing for windows?
+<cheeseboy> or partition magic
+<cheeseboy> they do it
+<cheeseboy> when you reboot it does for you
+<TheSheep> cheeseboy: well, command to do it is 'resize2fs', see man resize2fs for details
+<TheSheep> cheeseboy: maybe it can work with the filesystem mounted read-only
+<TheSheep> cheeseboy: ah, it can only enlarge the partition if it's mounted :/
+<TheSheep> (actually only the filesystem, not the partition, but that's a detail)
+<TheSheep> cheeseboy: if you had any way to run a linux without using that disk
+<cheeseboy> TheSheep, can i resize my swap while in linux?
+<TheSheep> cheeseboy: yes
+<cheeseboy> its only 300mb tho
+<TheSheep> cheeseboy: you can do 'swapoff' to disable the swap
+<cheeseboy> wat linux could i get on there
+<cheeseboy> to resize my root
+<TheSheep> dsl is about 50MB
+<cheeseboy> can i get it o n there w/o install?
+<gerro> yeah live cd
+<cheeseboy> gerro, no cd
+<gerro> hmm usb then
+<TheSheep> cheeseboy: it's possible, but may be a little complicated
+<gerro> cheeseboy: are you having trouble installing xubuntu?
+<cheeseboy> TheSheep, can you help?
+<cheeseboy> gerro, no im on ubuntu now
+<gerro> oh ok
+<TheSheep> cheeseboy: it's 2am here at the moment and I was going to bed :(
+<cheeseboy> :(
+<gerro> TheSheep: good night
+<cheeseboy> prentd its 8pm like it is here
+<cheeseboy> :P
+<TheSheep> cheeseboy: I'm sure there is a tutorial somewhere
+<TheSheep> gerro: thanks
+<TheSheep> cheeseboy: basically, you'd have to unpack the iso on that partition and add an option to grub pointing to the kernel image file
+<cheeseboy> TheSheep, id need a step by step :(
+<TheSheep> cheeseboy: maybe tomorrow
+<BFTD> is there a program that lets me monitor all the ports?
+<gerro> BFTD: umm wireshark or tcpdump?
+<phonohead> how do you install icon themes? there is no "icons" folder to add them to
+<Jester45> phonohead, just a second there is one but i have to find it
+<phonohead> ok Jester45 :)
+<Jester45> its in ~/.icons
+<Jester45> at least for that user
+<Jester45> idk for a system wide install
+<Jester45> you make a folder for each theme
+<Jester45> or should
+<Jester45> like ~/.icons/glass-theme/otherfiles for glass-theme
+<phonohead> let me check
+<Jester45> i think a system wide install goes into /usr/share/icons/
+<Jester45> .icons is a hidden directory all files//folders with . at the beginning are hidden if you didnt know that
+<Jester45> ctrl+h shows them in thunar
+<phonohead> Jester45, i am not a newbie, just new to adding icon themes to Xfce :):)
+<phonohead> but, there is no .icons folder in my home directory
+<Jester45> just telling
+<phonohead> it's nice of you
+<Jester45> make it then
+<Jester45> you can put it into /usr/share/icons/ like the defualt ones
+<Jester45> if you put it in your home root will not have it
+<phonohead> i just need it for my own user, so i guess it will do just fine in my home
+<phonohead> why not make it possible to just drag it in the icon theme list
+<Jester45> maybe the devels didnt want it
+<phonohead> probably, but it's easy to just make a .icon folder and add the files yourself :)
+<Jester45> and that would make xfce that much more bloated
+<Cruzer> hello
+<Cruzer> how long does it take to partition a HDD?
+<Pumpernickel> Not terribly long.
+<Pumpernickel> Unless you hit bug 107259.
+<ubotu> Launchpad bug 107259 in ubiquity "Xubuntu partitioning can fail because ubiquity does not prevent thunar from automounting new partitions" [High,Fix released]  https://launchpad.net/bugs/107259
+<Cruzer> mine has been partitioning to install for a while now
+<Jester45> is it a older computer or drive
+<Jester45> newer drives are much faster than older ones
+<Cruzer> drive
+<Cruzer> its an older drive
+<Cruzer> seagate bought the company
+<Jester45> i have installed on a lot of diffrent drives even on the same computer and it can make a big diffrence
+<Cruzer> xubuntu deleted windows xp :D
+<Cruzer> on my HD
+<hansin321> Hello.  I think I jacked my XFCE setup a little.  I just aquired a laptop (500Mhz/192Meg) and after install of Xubuntu 7.04, I was customizing options.  Under 'Window Manager Tweaks' (I think) I tried setting 'use composite'.  I should have know better given the age of the laptop.  XFCE locked up, and now I can't get into XFCE.  I can get to the DM, but after loging in I get the mouse pointer and a solid color screen, nothing else.
+<hansin321> BTW, I tried fixing by removing the DRI section at the end of /etc/X11/xorg.conf, but this didn't help anything.  It was more of a guess than anything.
+<Jester45> hansin321, do you know if your card hard direct rendering and what driver its using
+<Jester45> also have you tried using the recovery options when in grub
+<Jester45> option* its the same kernel but in single user mode
+<hansin321> Jester45: Not sure.  I'll try and figure it out.  I think I may have screwed up either the xorg configuration or I setting a configuration that hangs my laptop (composite; I should have known better 'cuz this laptop is too old for that sort of thing).
+<hansin321> An XFCE configuration that is...
+<Jester45> hansin321, i ran beryl on a machine with  400mhz 256mb machine
+<Jester45> you dont need a new machine for that stuff only on Aero do you need a highend machine to do anything with some kind of speed
+<hansin321> But I think the video chip I have is ultra low end, and that is an issue I think.  I found the config setting under (something like -- ~/.config/xfce4/msc_configure/wmtweaks.xml).  At least I am in again, so I am happy ;)
+<cellofellow> yeah! I got my joystick working.
+<cellofellow> now, it doesn't work with gl-117 cause it needs 4 axis stick.
+<maxamillion> why you need a joystick on linux?
+<radioaktivstorm> how would i delete unused sessions?
+<bitform> where are icon files stored???
+<TheSheep> bitform: in /usr/share/icons!!!
+<bitform> Thank you!!!!!!!!!!
+<TheSheep> bitform: you are weolcome!!111!11!
+<bitform> What's a good usenet program???
+<bart_17> heya thesheep
+<TheSheep> !ntfs
+<ubotu> To view your Windows/Mac partitions see https://help.ubuntu.com/community/AutomaticallyMountPartitions . For write access see !ntfs-3g or !fuse
+<TheSheep> !ntfs-3g
+<ubotu> ntfs-3g is a Linux driver which allows read/write access to NTFS partitions. Installation instructions at https://help.ubuntu.com/community/MountingWindowsPartitions
+<vidd> ok...this is annoying....
+<vidd> how do I stop that session from restarting every time? where is it stored @?
+<vidd> anyone have any ideas?
+<TheSheep> vidd: ~/.cache/sessions/
+<vidd> ty
+<vidd> delete the one that says -session? or can i safely delete them all?
+<TheSheep> you can delet them all
+<vidd> ty again....brb to test
+<vidd> ty TheSheep
+<vidd> worked like a champ
+<cheeseboy> can i get my motherboard type without opening the pc?
+<Pumpernickel> You can check the documentation that came with the machine.
+<cheeseboy> dont have that
+<Pumpernickel> You can check the manufacturer's website.
+<cheeseboy> has anyone tried linux bios?
+<vidd> *wave* maxamillion
+<maxamillion> hiya vidd
+<Apsenti> hello. could anyone tell me how to add a "create folder" option in xfce's menu?
+<vidd> Apsenti, create folder?
+<vidd> what do you mean?
+<Apsenti> by right-clicking on the xfdesktop, I want to have an option in the menu of creating a new folder (on the desktop or elsewhere).
+<Apsenti> I can edit the menu, but don't know which command to use (looking for some sort of a graphical mkdir)
+<vidd> Apsenti, right-clicking on the desktop DOES give you the option to create a folder there
+<Apsenti> I just get the xfce menu
+<Apsenti> how do I do it?
+<vidd> ah...you changed the default right-click option....
+<Apsenti> yes, I think so... can't remember :) ... how do I reset that back?
+<vidd> got to the settings>desktopsettings
+<vidd> then the behavior tab
+<vidd> remove the check from "show menu"
+<Apsenti> well, it says about enabling the window list by middle click there
+<Apsenti> there's no option for creating a folder in there
+<vidd> remove the check from "show menu"
+<Apsenti> ok. I did.
+<vidd> close the window and right-click on your desktop
+<Apsenti> nothing happens...
+<vidd> ???
+<Apsenti> no menu appears
+<Apsenti> no window... etc
+<vidd> you dont get a menu at all?
+<Apsenti> no menu...
+<vidd> ok...
+<vidd> go back to the desktop preferences....
+<vidd> got to the settings>desktopsettings
+<Apsenti> see, that's why I was thinking of adding a command for creating a folder by editing the menu...
+<vidd> on the "appearences" tab.....
+<Apsenti> ok. I'm there
+<vidd> is "allow xfce to manage your desktop" checked?
+<Apsenti> yep
+<vidd> hrm.....
+<vidd> did you install from an upgrade, or a live cd?
+<Apsenti> are you able of creating a folder this way?
+<Apsenti> a cd
+<Apsenti> I use dapper btw
+<vidd> ah....
+<vidd> THAT explains everything
+<Apsenti> had some video-card problems with feisty
+<vidd> to the best of my knowledge, you cant right-click to make folders on the desktop in dapper
+<vidd> get edgy
+<vidd> =]
+<Apsenti> only when on a folder
+<Apsenti> +the mouse-pointer is
+<Apsenti> I had the same v-card trouble with edgy as well
+<Apsenti> if I click on say a folder I get the create new folder... but that folder will be _inside_ the one I've clicked on
+<Pablo> and how would you expect it to work?
+<Apsenti> no!
+<Apsenti> well it created it on the desktop!
+<Apsenti> at last!
+<Apsenti> I had the idea that it would create the folder _inside_ the folder the pointer was over... when I click on clean desktop I don't get that menu... anyhow...
+<Apsenti> another thing, it appears that thunar and nautilus are both running. how do I disable nautilus?
+<vidd> so Apsenti ya good then?
+<Apsenti> yes, thanks for the help
+<vidd> nautilus???? that is a gnome app
+<Pablo> o.O
+<Apsenti> hehe I know
+<Apsenti> I have gnome installed too
+<vidd> sudo apt-get remove nautilus
+<vidd> oh...then not that.....
+<Apsenti> but?
+<vidd> menu>system>process manager
+<vidd> find the app and KILL IT!!!!!
+<vidd> =]
+<vidd> there is also the CLI method....but i assume you want the graphical way
+<Apsenti> I can do that with xkill too, but... when I logout and then login, nautilus is still there
+<vidd> yeah
+<Apsenti> there's no other way, right?
+<Apsenti> nop
+<vidd> then...ummm....i dont think there is any other way.....
+<Apsenti> ok. thanks for all. bye.
+<vidd> unless you make a custom script to auto-kill nautilus on load
+<Nergar> hello
+<Nergar> i have gnome and compiz fusion as default session, and i installed xfce, but now every time i start xfce, compiz is also started, how do i stop it from starting?
+<Nergar> hello?
+<vidd> anyone have any recomended reading for dial-up in (*)buntu?
+<Bassetts> hi, the live cd seems to be hanging on the partitioner
+<Bassetts> I have 1.8Ghz and 768MB RAM
+<Bassetts> I just cancelled and re-run the install program and it hangs at 46% now
+<vidd> Bassetts, this may sound like a silly question....
+<vidd> how big is the HD?
+<Bassetts> 60GB I believe
+<Bassetts> I will check
+<Bassetts> am I just being impatient because I am used to sata?
+<vidd> possibly.....
+<vidd> this way i KNOW what is going on....
+<Bassetts> I forgot about using it I am used to faster systems these days
+<vidd> its not like im NOT going to install....=]
+<vidd> Bassetts, you might want to get the network installer
+<Bassetts> there is one?
+<vidd> its only 8.8 meg.....and gets everything from the internet
+<Bassetts> it is definatly hanging on 46%
+<vidd> sure....check out my downloads page:
+<vidd> www.vidd.us/downloads
+<Bassetts> mini.iso vidd ?
+<vidd> the REALLY cool thing about the mini iso (yes)
+<vidd> is that you can install ANY official flavor from it
+<Bassetts> nice
+<Bassetts> you made it?
+<vidd> pluss the LAMP....DNS server....
+<vidd> no...i just dug it out of the official archives and made it easier for ppl to find
+<Bassetts> it is official?
+<Bassetts> never knew that
+<vidd> yeah....you can see how much press it gets.....
+<vidd> =]
+<Bassetts> what do you use for your downloads vidd? looks nice
+<vidd> php
+<vidd> want the code?
+<Bassetts> sure =)
+<Bassetts> will help me with my learning
+<vidd> gimme a sec....
+<Bassetts> sure
+<vidd> !paste
+<ubotu> pastebin is a service to post large texts so you don't flood the channel. The Ubuntu pastebin is at http://paste.ubuntu-nl.org (make sure you give us the URL for your paste - see also the #ubuntu channel topic)
+<vidd> Bassetts, http://paste.ubuntu-nl.org/30035/
+<vidd> jester45 is the actual individual that made it for me
+<Bassetts> cool, thanks
+<Bassetts> vidd, do I want to just press enter to boot the default on the mini iso
+<vidd> yep
+<Bassetts> thanks
+<vidd> unless you need to do strange stuff like turn off acpi
+<Bassetts> nope
+<vidd> i dont suppose you know anything about dial-up in linux....do ya?
+<Bassetts> vidd, nope, never tried it
+<Bassetts> vidd, when will it ask me if I want xubuntu
+<vidd> at the VERY end
+<Bassetts> OK, just worried I have missed it =)
+<Bassetts> so this will install server, (k)(x)ubuntu?
+<vidd> yep...and MORE
+<vidd> wait till you see the list
+<Bassetts> that makes all my previous cds so useless
+<Bassetts> technicians dream right here
+<Bassetts> vidd, what like ubuntu studio?
+<Bassetts> base = server?
+<vidd> no...base as in base
+<Bassetts> =s it seems to be hanging
+<vidd> CLI only
+<vidd> at the partioning?
+<Bassetts> after loading the modules
+<Bassetts> just the blue screen with grey bar at the bottom
+<Bassetts> HD activity is constant
+<vidd> it is working on identifying your network card
+<maximilian1st> Hi folks, I am looking for some page that helps on troubleshooting the computer when it hangs after some suspend or resume action. My toshiba notebook just freezes after 5 or 10 minutes of inactivity!!!
+<Bassetts> vidd, I really think its hanging, might try the gparted live cd to just wipe all ntfs off this hdd
+<vidd> Bassetts, good idea
+<jasdasdsa> hi
+<Bassetts> if I can find it
+<jasdasdsa> does anyone know the command the install Open Office ?
+<jasdasdsa> under xubuntu
+<jasdasdsa> using 6.10 atm
+<jasdasdsa> at the moment
+<vidd> jasdasdsa, sudo apt-get (or aptitude) install openoffice.org
+<jasdasdsa> cheers vidd
+<vidd> maximilian1st, thry this: https://answers.launchpad.net/ubuntu/+question/5537
+<jasdasdsa> it says
+<jasdasdsa> invaild operation
+<jasdasdsa> when I try apt-get
+<Bassetts> jasdasdsa, did you put install before openoffice.org
+<jasdasdsa> yes
+<jasdasdsa> oh no
+<jasdasdsa> I forgot
+<jasdasdsa> sorry
+<Bassetts> =)
+<vidd> Bassetts, did you get gparted to wipe that drive?
+<Bassetts> vidd, its loading
+<Bassetts> looks like that is going to hang on scanning devices too
+<vidd> woops
+<Bassetts> if ultimate boot cd doesnt work i give up
+<vidd> how old is the comp?
+<Bassetts> good few years
+<Bassetts> its had xubuntu on before
+<Bassetts> ill get ubcd to check the hdd
+<vidd> and format it to a decent file system?
+<Bassetts> ill just wipe it
+<Bassetts> let xubuntu format
+<vidd> Bassetts, you might want to pre-partition the drive....
+<vidd> unless you want to use the entire drive in one partion for the install
+<vidd> ie / and /home on the same partition
+<Bassetts> yep
+<Bassetts> well i might not
+<vidd> might not?
+<vidd> might not what?
+<Bassetts> put them on the same partition
+<TheSheep> vidd: lots of them already
+<TheSheep> vidd: usually called rescue cd
+<Bassetts> d
+<vidd> TheSheep, can you point me to a deb - based one that you would recomend?
+<TheSheep> vidd: sorry, I wasn't into deb-based distros before ubuntu
+<vidd> Bassetts, is that a "live CLI"?
+<Redimere> Well we're a chatty bunch
+<Redimere> Anybody know anything about sound and sound drivers?
+<Pumpernickel> Many people do.
+<phonohead> <Redimere> what about it?
+<Redimere> phonohead: my sound won't play music without the vocals being echoey and quit
+<Redimere> quiet
+<phonohead> you got a plugin activated
+<Redimere> phonohead: A what?
+<phonohead> plugin
+<phonohead> some sort of "effect" that adds echo and removes the vocals, if i'm not wrong that's the cause of your sound problem
+<Redimere> phonohead: How do I turn it off then
+<phonohead> what program are you playing your music with?
+<Redimere> XMMS
+<phonohead> hmm, go to preferences and look for "plugins"
+<Redimere> okay
+<Redimere> I found the plugins
+<Redimere> but they'
+<Redimere> they're not enabled
+<phonohead> do you have any surround settings on?
+<Redimere> how do I check
+<phonohead> check your amp, if you have an external amplifier unless you run the sound from the default computer speakers
+<Redimere> I run headphones diret
+<Redimere> direct*
+<phonohead> ok, check if XMMS has some surround settings on
+<phonohead> check the "output" channel
+<phonohead> it should be stereo 2.1, not 5.1 or 7.1
+<Redimere> how do I check that
+<phonohead> preferences again
+<Redimere> been through that, nuffin to check on stereo settings
+<gothenburg> How can i get the standard xfce options?
+<gothenburg> found the xfce menu

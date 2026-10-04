@@ -1,0 +1,531 @@
+{
+ "schema": "EOTReading@2",
+ "supersedes": "EOTReading@1 — erased 2026-08-31 (LP7)",
+ "source": {
+  "path": "14-holy-texts/sblgnt-books/62-Mk.txt",
+  "sha256": "e3f472c36f027654204f01f7f8aa8bad819f669eb259dd79042216aebb2cb593",
+  "chars": 76378
+ },
+ "reader": {
+  "kind": "hand-adjudication",
+  "recipeId": "cdc1ebe31991a3d4",
+  "descriptor": {
+   "generator": "scripts/eot-sidecar2.mjs@1",
+   "law": "POLICIES.md LP7 + 2026-08-31 amendment (surprise is hypergraph delta)",
+   "rule": "goldens/reading/RULE.md R1-R12 + fourth amendment (triadic minimum)",
+   "priors": {
+    "path": "derived-priors/reading-priors/reading-priors-v1.json",
+    "sha256": "df77decb3988597560e24d42bc6845a14359b845ec9eedf5436955c3b92d055a"
+   },
+   "actPrior": {
+    "path": "derived-priors/act-priors/act-prior-en.json",
+    "sha256": "67b97d1e10ba75a1c5ce34c05350181ae07033f74b7fd02f810b2d180115240c"
+   },
+   "livePriors": {
+    "commit": "483a0de7bfd51cc72493c8bd36b20f11322b366d"
+   }
+  },
+  "specimens": [
+   "mark-1-15@cdc1ebe31991a3d4",
+   "mark-15-38@cdc1ebe31991a3d4",
+   "mark-16-6@cdc1ebe31991a3d4"
+  ]
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint (a projection of the live goldens at the recipe's named commit — LP7 second amendment: checkpoints, never weights)",
+  "consumed": [
+   "act expectations (non-self + VerbNet)",
+   "the proposition bar"
+  ]
+ },
+ "windows": [
+  {
+   "specimen": "mark-1-15",
+   "start": 1574,
+   "startText": "02:1:14 ",
+   "end": 1802,
+   "endText": "ἐν τῷ εὐαγγελίῳ.",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "mark-15-38",
+   "start": 72752,
+   "startText": "02:15:38 ",
+   "end": 72825,
+   "endText": "ἕως κάτω.",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "mark-16-6",
+   "start": 74468,
+   "startText": "02:16:6 ",
+   "end": 74611,
+   "endText": "ὅπου ἔθηκαν αὐτόν·",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  }
+ ],
+ "admission": {
+  "gate": "hand-adjudication under RULE.md",
+  "offered": 12,
+  "heard": 12,
+  "turnedAway": 0
+ },
+ "spanSelfVerification": {
+  "checked": 12,
+  "ok": 12,
+  "bad": [],
+  "method": "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "note": "this source founds its own specimens' propositions; it joins no rosetta graph yet — its evidence seeds the act lexicon for the spiral"
+  },
+  "frame": {
+   "standing": "own-census",
+   "census": {
+    "mark-1-15": {
+     "SIG·Ground": 2,
+     "SIG·Figure": 1,
+     "SYN·Ground": 1,
+     "REC·Pattern": 1,
+     "EVA·Pattern": 1
+    },
+    "mark-15-38": {
+     "SEG·Figure": 1
+    },
+    "mark-16-6": {
+     "SIG·Figure": 2,
+     "EVA·Figure": 1,
+     "INS·Figure": 1,
+     "NUL·Figure": 1
+    }
+   }
+  },
+  "actExpectations": {
+   "act-agreement": 0,
+   "act-departure": 0,
+   "no-expectation": 11,
+   "no-verb-head": 1,
+   "departures": [],
+   "note": "checked against non-self witnesses + the received VerbNet tier only"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "hand-adjudication (the favored reading)",
+   "recipeId": "cdc1ebe31991a3d4"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading",
+  "note": "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists"
+ },
+ "propositions": [
+  {
+   "specimen": "mark-1-15",
+   "language": "grc",
+   "subject": "ὁ Ἰησοῦς",
+   "relation": "ἦλθεν",
+   "object": "εἰς τὴν Γαλιλαίαν",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "mark:jesus-came-galilee",
+   "ground": "mark-1.14.1",
+   "role": "declared",
+   "because": "translocation (A5): came INTO Galilee — the motion lands on a territory-field, so ground grain by A5's own letter",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 163,
+    "end": 1802
+   },
+   "anchor": "ἦλθεν ὁ Ἰησοῦς εἰς τὴν Γαλιλαίαν",
+   "cell": {
+    "op": "SIG",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-1-15",
+   "language": "grc",
+   "subject": "ὁ Ἰησοῦς",
+   "relation": "κηρύσσων",
+   "object": "τὸ ⸀εὐαγγέλιον τοῦ θεοῦ",
+   "polarity": "+",
+   "clause": "participial-adjunct",
+   "prop": "mark:proclaiming-gospel",
+   "ground": "mark-1.14.1.1",
+   "role": "declared",
+   "because": "κηρύσσων (heralding) — the gospel-sign publicly emitted: Relate·Existence at figure grain; the participle shares the matrix subject",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the participle agrees with ὁ Ἰησοῦς",
+   "alternate": {
+    "op": "DEF",
+    "grain": "Figure",
+    "because": "proclamation readable as the bounded public act of definition, the assembly-proclaims family"
+   },
+   "span": {
+    "start": 163,
+    "end": 1802
+   },
+   "anchor": "κηρύσσων τὸ ⸀εὐαγγέλιον τοῦ θεοῦ",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-1-15",
+   "language": "grc",
+   "subject": "ὁ καιρὸς",
+   "relation": "Πεπλήρωται",
+   "object": null,
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:time-fulfilled",
+   "ground": "mark-1.15.1",
+   "role": "declared",
+   "because": "Πεπλήρωται (has been FULFILLED, perfect passive) — the season brought to completed fullness as one closed whole: Generate·Structure at GROUND grain (the καιρός is a whole time-field, not an event); quoted proclamation, rowed with embedded per the UDHR proclamation precedent — the frame is the λέγων ὅτι of the matrix",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "INS",
+    "grain": "Ground",
+    "because": "readable as the era's arrival rather than its closure into wholeness"
+   },
+   "span": {
+    "start": 163,
+    "end": 1802
+   },
+   "anchor": "Πεπλήρωται ὁ καιρὸς",
+   "cell": {
+    "op": "SYN",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-1-15",
+   "language": "grc",
+   "subject": "ἡ βασιλεία τοῦ θεοῦ",
+   "relation": "ἤγγικεν",
+   "object": null,
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:kingdom-near",
+   "ground": "mark-1.15.2",
+   "role": "declared",
+   "because": "ἤγγικεν (has drawn near) — translocation (A5) of a whole reign-field toward the present: ground grain; quoted, embedded as above",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 163,
+    "end": 1802
+   },
+   "anchor": "ἤγγικεν ἡ βασιλεία τοῦ θεοῦ",
+   "cell": {
+    "op": "SIG",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-1-15",
+   "language": "grc",
+   "subject": "the hearers",
+   "relation": "μετανοεῖτε",
+   "object": null,
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:repent",
+   "ground": "mark-1.15.3",
+   "role": "declared",
+   "because": "the re-zero verb ITSELF, as a plural normative imperative: μετάνοια is the re-grounding of one's whole mind — Generate·Interpretation, and PATTERN grain because the norm ranges over the hearers as a kind (the Swahili usifanye precedent: a normative deontic over a kind asserts and rows; a situational directive would fold)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the imperative's 2pl subject is the proclamation's generic audience",
+   "alternate": {
+    "op": "REC",
+    "grain": "Ground",
+    "because": "each act commanded lands on one hearer's whole interpretive ground — the distributive reading"
+   },
+   "span": {
+    "start": 163,
+    "end": 1802
+   },
+   "anchor": "μετανοεῖτε",
+   "cell": {
+    "op": "REC",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-1-15",
+   "language": "grc",
+   "subject": "the hearers",
+   "relation": "πιστεύετε",
+   "object": "ἐν τῷ εὐαγγελίῳ",
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:believe-gospel",
+   "ground": "mark-1.15.4",
+   "role": "declared",
+   "because": "believing is a content held by a holder — the keep-in-mind/faith family: Relate·Interpretation, pattern grain over the hearers-kind; normative imperative as above",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "coordinated imperative shares the generic audience",
+   "alternate": null,
+   "span": {
+    "start": 163,
+    "end": 1802
+   },
+   "anchor": "πιστεύετε ἐν τῷ εὐαγγελίῳ",
+   "cell": {
+    "op": "EVA",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-15-38",
+   "language": "en",
+   "subject": "τὸ καταπέτασμα τοῦ ναοῦ",
+   "relation": "ἐσχίσθη",
+   "object": "εἰς δύο",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "mark:veil-torn",
+   "ground": "mark-15.38.1",
+   "role": "declared",
+   "because": "ἐσχίσθη (was torn/split) — ONE identified hanging SEVERED into parts (εἰς δύο): Differentiate·Structure at figure grain, the tempest break-staff cell in Greek; ἀπ' ἄνωθεν ἕως κάτω (top to bottom) is the cut's extent, folded (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 163,
+    "end": 72825
+   },
+   "anchor": "τὸ καταπέτασμα τοῦ ναοῦ ἐσχίσθη εἰς δύο",
+   "cell": {
+    "op": "SEG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "mark-16-6",
+   "language": "grc",
+   "subject": "ὁ δὲ",
+   "relation": "λέγει",
+   "object": "αὐταῖς",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "mark:angel-says",
+   "ground": "mark-16.6.1",
+   "role": "declared",
+   "because": "the say-act: speech emitted to the women — Relate·Existence at figure grain; the quoted content's assertions row below with embedded",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "'ὁ δὲ' → the young man in the white robe of verse 5",
+   "alternate": null,
+   "span": {
+    "start": 163,
+    "end": 74611
+   },
+   "anchor": "ὁ δὲ λέγει αὐταῖς",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-16-6",
+   "language": "grc",
+   "subject": "αὐταῖς",
+   "relation": "ζητεῖτε",
+   "object": "Ἰησοῦν τὸν Ναζαρηνὸν τὸν ἐσταυρωμένον",
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:you-seek-jesus",
+   "ground": "mark-16.6.2",
+   "role": "declared",
+   "because": "ζητεῖτε (you seek) — the sought one held as the aim of a search: Relate·Interpretation at figure grain, the directed-holding family; indicative description of the women's own act, quoted (embedded); the epithet 'τὸν ἐσταυρωμένον' is presupposed-referential and folds (R1)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the 2pl subject → the women addressed (αὐταῖς)",
+   "alternate": {
+    "op": "SIG",
+    "grain": "Figure",
+    "because": "seeking readable as reaching-toward, the A5 family"
+   },
+   "span": {
+    "start": 163,
+    "end": 74611
+   },
+   "anchor": "Ἰησοῦν ζητεῖτε τὸν Ναζαρηνὸν τὸν ἐσταυρωμένον",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-16-6",
+   "language": "grc",
+   "subject": "Ἰησοῦν",
+   "relation": "ἠγέρθη",
+   "object": null,
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:he-was-raised",
+   "ground": "mark-16.6.3",
+   "role": "declared",
+   "because": "ἠγέρθη (was raised) — one identified figure brought up into standing being: Generate·Existence at figure grain; quoted (embedded)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the aorist passive's subject → Ἰησοῦν, the one just named",
+   "alternate": {
+    "op": "SIG",
+    "grain": "Figure",
+    "because": "readable as the rising motion itself, A5"
+   },
+   "span": {
+    "start": 163,
+    "end": 74611
+   },
+   "anchor": "ἠγέρθη",
+   "cell": {
+    "op": "INS",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-16-6",
+   "language": "grc",
+   "subject": "Ἰησοῦν",
+   "relation": "οὐκ ἔστιν",
+   "object": "ὧδε",
+   "polarity": "+",
+   "clause": "complement",
+   "prop": "mark:not-here",
+   "ground": "mark-16.6.4",
+   "role": "declared",
+   "because": "οὐκ ἔστιν ὧδε (he is not here) — ONE identified figure's absence-at-this-place as the asserted act: A4's rule at FIGURE grain, polarity + (the absence IS the act); quoted (embedded)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the null subject → Ἰησοῦν",
+   "alternate": {
+    "op": "SIG",
+    "grain": "Figure",
+    "because": "the sibling construction: presence-here negated, polarity − — the same mirror the UDHR's negative existentials carry"
+   },
+   "span": {
+    "start": 163,
+    "end": 74611
+   },
+   "anchor": "οὐκ ἔστιν ὧδε",
+   "cell": {
+    "op": "NUL",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "mark-16-6",
+   "language": "grc",
+   "subject": "the buriers",
+   "relation": "ἔθηκαν",
+   "object": "αὐτόν",
+   "polarity": "+",
+   "clause": "restrictive-relative",
+   "prop": "mark:where-laid",
+   "ground": "mark-16.6.5",
+   "role": "declared",
+   "because": "ἔθηκαν (they laid) — placement of one figure at a spot: the A5 landing family, Relate·Existence at figure grain; the relative restricts ὁ τόπος (the ἴδε directive folds per R11)",
+   "embedded": true,
+   "unresolved": false,
+   "resolution": "the 3pl subject is the unnamed buriers; 'αὐτόν' → Ἰησοῦν",
+   "alternate": null,
+   "span": {
+    "start": 163,
+    "end": 74611
+   },
+   "anchor": "ὅπου ἔθηκαν αὐτόν",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  }
+ ],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "cdc1ebe31991a3d4",
+  "at": "2026-08-31T19:09:25.578Z"
+ }
+}

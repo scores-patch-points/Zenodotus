@@ -1,0 +1,690 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-es"
+date: "2011-7-15"
+lang: "es"
+messages: "681"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<marti1125> alguien me ayuda con libreoffice writer como giro una imagen
+<Triviox> Alguien usa Kdenlive? mi novia está tratando de aprender a manejarlo; alguien sabe por qué puede ser que no muestra todas las miniaturas a la hora de editar un video? les paso un screen para que vean lo que digo (al principio veran las miniaturas, luego ya no están)  http://www.uploadimage.com.ar/images/52192613798125729711.jpg  ..desde ya, gracias!
+<dimitruss> buenas noches alguien podria ayudarme estoy instalando gtk 3.0.11
+<dimitruss> bueno quiero saber como encontrar un archivo por que me pide miles de dependencias y quiero saber como actualizaria las fuentes de mi synaptic
+<dimitruss> me manda error al momento de hacer ./configure me dice que no encuentra una libreria DONDE DEBE ESTAR osea la encuentra en otro lado
+<dimitruss> este es el error http://paste.ubuntu.com/644545/
+<dimitruss> quiza alguien tenga algo de tiempo
+<dimitruss> por supuesto que seria algo que synaptic deberia resolver solo pero las versiones son recientes y no estan en las repos o no estoy buscando bien
+<delpiero48> buenas noches a todos
+<dzup> dimitruss: sudo apt-get build-dep <paquete>
+<dimitruss> es un paquete nuevo osea es el gtk 3.0.11 probare con lo que dices solo el paquete o tambien le pongo   la version?
+<dzup> lo estas compilando?
+<dimitruss> el problem es que eso = a doble click instalar
+<dimitruss> aja
+<dimitruss> si
+<dimitruss> los programas que necesito no corren en menos
+<dzup> el error ice que glib tuyo es mas viejo del nuevo
+<dimitruss> ahorita estoy buscando en mi pc find / -name  glib.....   y bueno las cosas se ponen medio lentejas pero el esfuerzo
+<dzup> ahi fijate si puedes hacer make config   ...
+<dimitruss> al pricipio peroluego encuentra otro "el que acabo de instalar"
+<dzup> *ahi alli
+<dimitruss> que es de mayor version
+<dimitruss> 2.28.8 acabo de instalar
+<dimitruss> pero parece que han cambiado algunas ubicaciones de variables o prefijos le llaman
+<dimitruss> entonces lo estoy buscando para ponerlo en el configure
+<dzup> que es lo que instalas?
+<dimitruss> gtk 3.0.11
+<dzup> para instalar que?
+<dimitruss> necesita atk gdk esos dos me estan dando problemas pero ya estoy viendo que la solucion es parecida a esto
+<dimitruss> ./configure PKG_CONFIG_PATH=/home/dimitruss/Downloads/glib-2.28.8/glib-2.0.pc
+<dimitruss> disculparas pero quiero el murina engine , si se que soy un vago haciendo tonterias , pero total queria experimentar
+<dimitruss> bueno el truco que al instalar algunos gtk themes no reconocen tener el murine asi que se ven mal con el tipico cuadrado
+<dzup> ohh, vaya heh es bueno exprimentar :p
+<dimitruss> ya esta empezando a verse mejor alguien sabe para que sirve ldconfig?
+<dzup> man idconfig
+<dimitruss> si ya me lo imaginaba
+<dzup> http://manpages.ubuntu.com/manpages/gutsy/es/man8/ldconfig.8.html
+<dimitruss> bueno llegue ala conclusion que mejor me buelvo SID
+<fosco__> buenas
+<erAbuelo> ta lueg
+<antonio__> Holla!!!!!!
+<antonio__> venía para que me aconsejaran una distribución
+<fosco__> antonio__, ubuntu
+<antonio__> sí
+<antonio__> pero ubuntu me va lento
+<antonio__> mi pc tiene muy bajos requerimientos
+<antonio__> tine 350mb de ram mas o menos
+<fosco__> puedes usar un escritorio más ligero
+<antonio__> ademas el uso que le quiero dar es sólo navegar por internet
+<fosco__> ganarás velocidad a costa de perder algunas funcionalidades
+<antonio__> s
+<antonio__> qué me aconsejas?
+<fosco__> pues depende
+<antonio__> sólo quiero usar un navegador
+<antonio__> para ver videos en youtube y poco mas
+<fosco__> hay muchos "niveles" de simplificación
+<fosco__> el primer paso es el escritorio xfce
+<fosco__> casi igual q gnome pero algo más ligero
+<antonio__> si
+<antonio__> yo ahora tengo lubuntu
+<antonio__> pero quisiera algo más especializado
+<antonio__> sólo para navegar por internet
+<fosco__> especializado en que
+<antonio__> en la web
+<fosco__> la navegacion por internet no depende del escritorio
+<antonio__> mi idea es un so que se centralice en darle más procesos a un navegador
+<antonio__> es decir que dedique pocoa las carpetas y cosas de esas
+<antonio__> lo más simple que pueda haber
+<antonio__> pra bajos requerimientos
+<fosco__> tu idea es buena, pero estaría que pensaras qué estas dispuesto a sacrificar para conseguir eso
+<fosco__> estaría bien*
+<antonio__> pues
+<antonio__> a qué te refieres con sacrificar
+<antonio__> el pc es viejo y me da igual ponerle lo que sea
+<fosco__> por ejemplo openbox es muy ligero
+<fosco__> pero te quedas sin iconos en el escritorio
+<fosco__> te quedas sin paneles
+<fosco__> te quedas sin applets
+<fosco__> ...
+<antonio__> pero tiene entorno grafico?
+<Infernet> hola
+<antonio__> hola
+<Infernet> vengo a flotar
+<fosco__> http://lewk.org/img/securityspin.png <- esto es un escritorio openbox para que te hagas una idea
+<Infernet> antonio__: como va
+<antonio__> estaba hablando con fosco
+<Infernet> solucionaste?
+<antonio__> en ello estoy
+<Infernet> fosco_: hola
+<antonio__> quieor lo más simple
+<Infernet> excelente
+<antonio__> para apenas 350mb de ram
+<fosco__> antonio__, "lo más simple" es un concepto que seguro está muy claro en tu cabeza
+<fosco__> pero no tiene significado real
+<fosco__> lo que puedes hacer es probar diferentes alternativas
+<antonio__> es decir
+<fosco__> y quedarte con la que mejor se ajuste a tus necesidades
+<antonio__> algo que haga revivir mi pc con 350mb de ram
+<antonio__> para navegar básicamente por internet
+<fosco__> haz la prueba, abre un terminal, ejecuta sudo apt-get install openbox
+<fosco__> cierra sesion y al poner nombre de usuario elige la sesion openbox
+<antonio__> ok
+<antonio__> pillará mucho?
+<Infernet> ya vuelvo
+<antonio__> ok
+<antonio__> pues voy a descargarlo a ver que tal
+<Ubuntu___> Hola buenas,
+<Ubuntu___> He instalado LAMP, pero no sé dónde se guardan los datos MySQL. ¿Alguien sabe dónde están?
+<Infernet> estoy corriendo el kubuntu y es realmente bueno
+<Ubuntu___> Hola buenas. Cuando presiono Alt + F2 para introducir la linea de comandos, ¿Qué comando meto para poder ver el explorador de archivos como root?
+<cripter_> hola a todos alguien sabe como hacer jalñar matlab en ubuntu 11.04 es que me tiro unos errores
+<cripter_> http://pastebin.com/85bgUDHa
+<cripter_> estoy sigueindo el tutorial de ubuntu es pero nose por que me salio eso
+<erAbuelo> no uses matlab
+<erAbuelo> buenas tardes
+<cripter_> pero es que me lo piden en la escuela
+<erAbuelo> y te lo dan ?
+<cripter_> si
+<cripter_> bueno me dieron el disco ellos
+<cripter_> y yo lo copie
+<erAbuelo> que versión es ?
+<cripter_> la 2010a
+<cripter_> segui este tutorial http://www.ubuntu-es.org/node/31913
+<cripter_> y pues ya en el punto 6 y 7
+<cripter_> me tiro el error ahora complete totods los puntos y me saco lo siguiente
+<cripter_> http://pastebin.com/68XyfFNm
+<cripter_> en la vercion de mi lap de ubuntu 10.10 no me da problemas
+<erAbuelo> basicamente no tienes java instalado
+<cripter_> solo en la 1.04
+<cripter_> pero le di en centro de software ubuntu y le di java y me dice que si o lo necesito instalar de nuevo??
+<erAbuelo> tienes el jre ?
+<cripter_> nose sicreo si por que = le di y lo tenia marcado en el centro de software
+<cripter_> como puedo saber de otra forma si lo tengo instalado?
+<erAbuelo> cripter_: aptitude search jre
+<erAbuelo> y mira que sale
+<cripter_> ok
+<cripter_> me salio esto http://pastebin.com/TRNppfJM
+<erAbuelo> tienes el de openjdk
+<erAbuelo> ejecuta: matlab -n
+<cripter_> ok
+<cripter_> me salio todo esto http://pastebin.com/wqjrL45K
+<cripter_> es muy raro es la primera ves que me tira ese error en ubuntu nose si se a por la vercion de ubuntu?? u_u
+<erAbuelo> fijate que no tienes definida la ruta al java
+<cripter_> pero es que no se como definirla es la primera ves que me pasa esto :S
+<erAbuelo> yo creo que puede ser por usar la openjdk en lugar de la version de sun
+<cripter_> es que yo lo deje asi por defecto no le instale nada ni nada
+<cripter_> solo instale ubuntu 11.04 y ya
+<cripter_> entonces puede que si instalo jdk de sun ya jale?'
+<cripter_> de la pagina de sun
+<erAbuelo> puede ser, no garantizo nada
+<erAbuelo> cripter_: esta en los repos de ubuntu
+<cripter_> ok
+<cripter_> y es la ultima vercion??
+<cripter_> de sun
+<erAbuelo> ni idea, no uso ubuntu ;)
+<cripter_> ok n_n
+<gonzo> hola
+<cripter_> bueno probare instalando la jdk de sun la vercion 7
+<cripter_> y de paso instalare netbeans
+<cripter_> aver que sale
+<gonzo> acabo de instalar ubuntu 11.04,estoy configurando,alguna sugerencia?
+<gonzo> sigo la guia de sliceoflinux
+<gonzo> hay alguna forma de grabar el sistema despues de configurarlo,para poder grabarlo en cd o dvd e instalarlo tal cual?
+<gonzo> hay alguien??
+<cripter_> si yo acabo de instalar ubuntu 11.04y la verdad es muy inestable pero pues si le quieres meter efectos pus hay que tener cuidado
+<cripter_> tiene un truco para que te salga el cubo y lo demas
+<gonzo> no es que quiera efectos,si no usarlo sin cagarla,dices que es inestable?
+<gonzo> no me gustaria destrozarlo y tener k reinstalar
+<cripter_> si en muchas cxosas si da mucha lata
+<gonzo> solo lo uso para navegar y jugar a un mmorpg,escuchar musica,pelis,etc
+<cripter_> sino le pones asi nada mas que lo que bein por defecto = y sijala mejor yo lo digo por que instale efectos y eso y pues se me colgaba y pues apenas lo ando reconfigurando
+<gonzo> lo que si me gustaria seria una vez configurado con mis programas y juegos es
+<gonzo> poder hacer una imagen para que cuando reinstale me salga asi todo commo yo quierp
+<gonzo> sigo la guia de slice of linux para instalar restricted extras,java,flash y demas
+<gonzo> para no tener k volver ha hacerlo al reinstalar s.o,hay manera?
+<cripter_> si eso creo si se puede yo si me sigue dando lata si lo eliminare y me esperare a la nueva version aver si ya la sacan mas estabel
+<gonzo> buscaremos en google,a ver como defino la busqueda
+<cripter_> erAbuelo ya instale la jdk pero creo aun asi no jala
+<cripter_> me tiro esto
+<cripter_> * ElWuilMeR (~wuilkary@ubuntu/member/elwuilmer) ha entrado en #Ubuntu-es
+<cripter_> http://pastebin.com/Kves58be
+<ElWuilMeR> cripter_, o.O
+<cripter_> si es que matlab lo instale pero no me jala
+<cripter_> nose por que
+<fosco_> buenas
+<cripter_> segui este tuto http://www.ubuntu-es.org/node/31913
+<cripter_> hola
+<cripter_> y ya no jalo desde hay
+<cripter_> me tiro un error acerca de la jre
+<cripter_> alguien sabe como desisntalar matlab y ya mejor lo buelvo ha hacer desde el principio??
+<gonzo> siento no poder ayudar soy  novato,es mas,pdo ayuda xD
+<cripter_> jaja yo = soy novato pero me gusta probar n_n
+<gonzo> a mi pregunta anterior,parece ser que si,el software se llama Remastersys,voy a ver primero alguna guia
+<gonzo> no si a mi tambien,he tenido k reinstalar por destrozarlo probando cosas
+<gonzo> ahora busco si hay forma de una vez configurado,puedo hacer una live cd,para tenerlo como a mi me gusta
+<cripter_> si eso es bueno yo = quiero hacer algo similar xD
+<gonzo> por ahora he visto en google el programa Remastersys,pero para instalarlo hay k añadir repositorios
+<gonzo> mucho rollo,no se
+<fosco_> cripter_: con dejar el directorio /home en una particion diferente al sistema ya te ahorras la mayoría de cosas
+<gonzo> te pego link??
+<cripter_> como??
+<cripter_> es que lo instale normal como decia el tuto
+<gonzo> si os pego el link que vi el Remastersys
+<cripter_> pero pues es que matlab me tira este error http://pastebin.com/Kves58be
+<fosco_> te falta el java
+<fosco_> sudo apt-get install ubuntu-restricted-extras
+<cripter_> ok
+<gonzo> una pagina buena es slice of linux,tienen buenas guias para novatos
+<gonzo> hay 1 guia para ubuntu 11.04,de como instalar restricted extras,skype,java y demas
+<gonzo> he encontrado un software para hacer live cd a tu gusto y se puede instalar desde centro de software
+<gonzo> se llama uck
+<gonzo> a ver si puedo dejarlo tal cual a mi gusto
+<cripter__> fosco_ si ya le instale manualmente la jdk 7 de sun no pasa nada?? es que me creo una carpeta en home
+<fosco_> si instalas cosas manualmente tendrás que saber muy muy bien lo que haces
+<sisa_> hola, hay alguan forma de organizar el menu aplicaciones por grupos, subgrupos y mas subgrupos? Porque por ejemplo, acesorio ya es inmanejable...
+<fosco_> y no creo que sea el caso
+<fosco_> sisa_: abre un terminal y ejecuta alacarte
+<gonzo> estas con unity o cn gnome??puedes cambiar a gnome si te es mas sencillo
+<cripter__> solo le di chmod +x jdk7 y ya despues lo ejecute con ./
+<fosco_> cripter__: por eso digo que no tienes mucha idea de lo que has hecho
+<cripter__> ya instale los restrictivos y me tiro esto al tratar de ejecutar matlab http://pastebin.com/UviiRFbs
+<cripter__> o sera por qe instale matlab sin antes aver instalado los extras??
+<Nearby> porque si en el applet de empathy le doy a configurar, cuando selecciono no, solo deseo ver los ordenadores de cerca...no me permite continuar, solo cerrar?
+<sisa_> fosco_: ya, pero el problema es que me duplica las entradas de aplicaciones. Creo una subcarpeta en accesorio y meto ahi aplicaciones. Al ir al menu las tengo duplicadas...
+<Nearby> ayuda plz
+<fosco_> sisa_: elimina o desactiva la que no quieres que se vea
+<gonzo> algun profesional d ubuntu o informatica en genersl?
+<cripter_> fosco_ sabes como puedo mejos desistalar completamente matlab para despues volver a instalarlo aver si ya no me tira errores es que aun asi no jala?
+<fosco_> deshaciendo los pasos que hayas hecho para instalarlo
+<fosco_> matlab no está en los repos así q no hay una forma estandar de instalarlo
+<fosco_> y por lo tanto tampoco de desinstalarlo
+<cripter_> osea que necesito eliminar la carpeta donde esta y ya con eso o como?'
+<fosco_> no lo se, yo no lo hice
+<fosco_> repasa la guía que seguiste y deshaz los pasos
+<cripter_> segui exactamente estos paso http://www.ubuntu-es.org/node/31913
+<cripter_> pero es que no se cuales comandos los desasen
+<cripter_> es en el primer ubuntu que me tira ese error
+<cripter_> al instalr matlab
+<gonzo> hola
+<mante66> que version de linux puedo instalar en un portatil que tiene 512 de ram y 60 gb de disco duro
+<fosco_> mante66: ubuntu desktop
+<gonzo> alguien sabe instalar y configurar tor,es que siempre que lo hago siguiendo guias,acaba por dejar de funcionarme
+<dylan66> te va a andar lento el ubuntu capaz
+<mante66> pero el desktop me correria bien?
+<fosco_> mante66: funcionará
+<fosco_> bien o mal es subjetivo
+<dylan66> yo tengo un debian en una pc con esas caracteristicas y anda bastante bien
+<mante66> de que funcionará creo que si, pero que tan lento?
+<fosco_> mante66: eso solo puedes decirlo tú
+<fosco_> para algunos esperar 1 segundo a que se abra una ventana es insignificante
+<fosco_> para otros es intolerable
+<gonzo> hola
+<gonzo> que raro,acabo de reinstalar ubuntu,actualize a 11.04,configure y instale aplicaciones
+<gonzo> reinicie para k saliera gnome y no veo en el panel la fecha y hora
+<mante66> bueno a esos extremos tampoco, simplemente que no se tarde un minuto en abrir una ventana
+<fosco_> no digo q tarde un segundo digo q es subjetivo
+<fosco_> te podemos decir si algo funcionará o no funcionará
+<fosco_> pero no podemos decirte si algo funcionará como a ti te gusta
+<mante66> gracias por la sugerencia probare y haber como me va
+<fosco_> lo mejor q puedes hacer es probarlo
+<mante66> si gracias eso voy hacer...
+<maestrolinux> buenas alguna sabe como puedo ver cuando prende ubuntu informa de un error pero no me dice cual
+<maestrolinux> si no se cual es como lo arreglo ===??
+<maestrolinux> bastante inteligente lo que hicieron ubuntu .. informate de un error y no mostrar cual es
+<XXXsystem> hi
+<XXXsystem> hi
+<XXXsystem> is  there anyone
+<XXXsystem> i need  help plz
+<Yukiteru> hola a todos
+<wicope> hola, quiero organizar todos mis contactos, nombre, teléfono, dirección.. etc.. quiero algo que me dure, algo que no tenga que cambiar durante por lo menos 2 años, he usado osmo, kmail ... Me recomendais Thunderbird?
+<xangua> si tienes cuenta google puedes simplemente usar google contacts y sincronizarlo con cualquier cliente de correo, kmail, evolutio thunderbird y más lo soportan
+<wicope> perfecto xangua
+<xangua> se sincronizan pues
+<xangua> igual pasé todos mis números y también se sincroniza con mi android :D
+<wicope> me ganaste xangua :D
+<Xriveryk> buenas estoy interesado en comenzar con la seguridad informatica pero no se por donde comenzar... algun canal o pagina que me recomienden???
+<wicope> hola
+<Yukiteru> Xriveryk, comienza con todo lo que tiene que ver redes
+<Yukiteru> como se estructuran y esas cosas
+<Xriveryk> yukiteru: algun lugar que me recomiendes para comenzar... creo tener el programa de cisco pero no se que tan efectivo sea??
+<Yukiteru> cisco...jajajaja ese es uno de los mejores XD
+<Yukiteru> pero que quieres aprender
+<Yukiteru> asegurar servers y esas cosas
+<Yukiteru> para eso debes saber usar firewall, sistema de deteccion de intrusos
+<Yukiteru> manejarte con los logs
+<Xriveryk> yukiteruse podria decir que comenzaria de cero.... no tengo definido aun por que lado irme..... pero ps si conocer todo lo relacionado con la seguridad de pc redes y demas
+<Yukiteru> entonces aprende de redes y como estan estructuradas
+<Xriveryk> ok si me dices que ciscoes buena entonces comezare por ahi .... gracias
+<wicope> seguridad informática empieza por la definición, creo que es algo amplio y ambiguo de describir
+<Yukiteru> yo empece con redes, estructuracion de un red, capas de una red, todo eso con un curso de IBM
+<Xriveryk> y que tal te va ??? si funciono?
+<Jelou> Buenas tardes
+<Jelou> Alguien me puede decir los permisos por defecto del directorio home
+<wicope> Jelou: hola esto es lo que tengo, espera que alguien lo verifique,  4 drwxr-xr-x   5 root root  4096 2010-09-08 19:43 home
+<Jelou> osea, 755 root:root
+<Jelou> y los directorios de los usuarios? 755 usuario:usuario
+<Jelou> es que me cambié la home a otra partición y al parecer se me quedó con mi usuario en lugar de root
+<Jelou> y claro, si añado otro usuario no tiene permisos y no inicia la sesión
+<wicope> una conclusión curiosa al menos
+<Jelou> me puedes confirmar los permisos de los usuarios?
+<Jelou> dentro de home
+<wicope> 4 drwxr-x--x 95 usuario usuario 4096 2011-07-15 19:07 usuario
+<wicope> por ejemplo uso: ls -ls /home/
+<Jelou> sí...
+<Jelou> 751?
+<wicope> rwxr-x--x yo creo que es 751 que divertido verdad?
+<Jelou> pensaba que sería 750
+<berarma> un poco raro
+<berarma> Jelou: prueba a crear un usuario con adduser y sales de dudas
+<berarma> ahora mismo no estoy en Ubuntu, pero Debian usa 755
+<wicope> w significa 4 . x significa 2 . r significa 1 (creo recordar, aunque ya me pones en duda con la r... sería cuestión de probar en una carpeta vacia antes de hacerlo bien)
+<berarma> de todas maneras puede ser lo que quieras según el nivel de seguridad que quieras
+<Jelou> 755 tengo yo, pero como hice lo de la copia de home a una partición... no sé si estaba así antes o no
+<Jelou> bueno, creo que me debería funcionar... a ver si ahora entra el otro usuario... brb
+<wicope> a ver pienso una cosa y escribo mal... con lo que no escribo de momento
+<Jelou> rwx = 4+2+1
+<Jelou> ok, funciona :)
+<wicope> bien
+<Glooskep> Buenos días (México)
+<berarma> Jelou: para que te mantenga los permisos al copiar debería usar el parámetro -a o usa tar, con eso te habría mantenido todos los permisos y tiempos de los archivos
+<Glooskep> Que tal
+<Vianstak> saludos a todos
+<Glooskep> Vianstak, saludos
+<Vianstak> Glooskep==> wenas
+<Jelou> berarma, sí, creo que lo hice así, pero el problema lo tenía en el directorio home en sí, que lo creé directamente con mi usuario y con esos permisos quedó
+<Jelou> pero en /home/miusuario mantuve los permisos bien
+<jose__> buenas tardes, a ver si alguien me puede ayudar. como vuelvo a colocar los iconos de maximizar, minimizar y cerrar en los programas?????
+<wicope> hola, yo hace tiempo lo hacia a través de la consola, entrando al gconf-editor y cambiando la clave de los iconos
+<jose__> si... eso intente pero hago lo que leo en algunas pag pero lo tengo asi
+<wicope> http://ubuntulife.wordpress.com/2009/03/01/tip-cambiar-el-orden-de-los-botones-en-un-tema-gtk/
+<jose__> el problema es que no me deja editarlo
+<wicope> cambiar valores de claves es fácil desde mi punto de vista
+<jose__> si lo se...
+<jose__> pero es q no me sale ni la barra donde van
+<katarcis> entonces en la terminal pon metacity --replace
+<katarcis> y enter
+<katarcis> usas compiz?
+<jose__> ese fue el problema... lo instale y desaparecieron al poner lo de cube3d y lo desinstale
+<jose__> pero sigue igual
+<wicope> llegas a la clave y pulsas dos veces encima de button_layout y editas, al pulsar dos veces encima de la clave te sale el cuadro de dialogo para editar: menu:minimize,maximize,close Yo lo hize uname -r (2.6.32-28-generic)
+<wicope> claro si tienes compiz la cosa cambia
+<katarcis> jose
+<katarcis> ve a sistema>preferencias>aplicaciones de inicio
+<jose__> wicope,  eso ya lo hice...
+<jose__> ok voy
+<wicope> hola
+<katarcis> le das añadir
+<katarcis> nombre
+<katarcis> compiz
+<katarcis> comando
+<katarcis> compiz --replace
+<katarcis> comentario compiz
+<katarcis> y en consola undes sudo shutdown now
+<katarcis> o cierras sesion
+<katarcis> y abres de nuevo
+<jose__> ok te digo
+<wicope> ping
+<wicope> que tal? jose__
+<jose__> katarcis, sigue igual. no me salen esas opciones. no puedo maximizar las ventanas ni na...
+<jose__> creo q mientras ceno reinstalare todo
+<katarcis> jose__, no
+<katarcis> no es tan grave
+<katarcis> a ver
+<katarcis> si instalaste bien la tarjeta grafica?
+<jose__> katarcis,  te lo agradezco... tu paciencia y tus ganas de ayudar pero creo que terminamos mas rapido formateando
+<jose__> la grafica si...
+<katarcis> a ver
+<katarcis> si undes metacity --replace en consola ?
+<jose__> te digo ahora
+<jose__> joder... era eso????
+<jose__> ya esta
+<jose__> voy copiar eso en todos los laos que se me ocurran jejejeje
+<jose__> gracias katarcis por tu paciencia
+<wicope> bien
+<jose__> y ahora voy abusar. jejejeje. todo lo que instalo desde gnome clasis lo hace tb en unity?????
+<jose__> clasic queria decir
+<katarcis> es raro porque compiz deberia gestionar eso
+<katarcis> no lo has movido?
+<jose__> no
+<jose__> lo instale y puffff me hizo eso
+<katarcis> y los efectos funcionan?
+<jose__> lo de la gelatina si q fue lo unico que puse
+<jose__> voy reiniciar... vuelvo ahora
+<katarcis> la gelatina xD
+<julian_> hola! no puedo hacer andar google sketchup en naty
+<julian_> alguien me puede ayudar
+<piratux> buenas
+<katarcis> hi
+<piratux> alguien sabe como eliminar el icono de skype en ubuntu 11.04 unity?
+<fosco_> eliminar el icono? que sentido tiene eso?
+<piratux> estetico
+<piratux> si ya lo tengo en el dock de unity
+<katarcis> eliminarlo de donde?
+<piratux> eliminarlo del panel
+<katarcis> cuando lo abres que no salga en el panel?
+<piratux> eso es
+<piratux> se queda ahí el muy cabrón
+<piratux> eh ido a gconf-editor
+<piratux> y no me he aclarado
+<katarcis> pues podrias quitarlo del panel pero no te saldria ningun programa que abras alli
+<piratux> katarcis:  eso no es problema
+<katarcis> ok
+<katarcis> entonces
+<katarcis> mira en el panel
+<piratux> katarcis:  estoy usando unity
+<piratux> y al pinchar en el panel
+<piratux> no me deja agregar nuevos programas o demás
+<piratux> así que no sé a que te refieres con que mire en panel
+<katarcis> pues donde sale el icono de skype al lado hay una barrita de punticos diminuta le das click derecho ahi y quitar del panel
+<katarcis> se te quitara el icono de la red y todo eso
+<piratux> katarcis:  eso era en el gnome viejo
+<piratux> en unity no aparece esa dichosa barrita
+<katarcis> puedes enviar screenshot.. yo veo como es entonces xD
+<erAbuelo> buenas
+<piratux> buenas
+<manuel_> hola a todos
+<manuel_> seria tan amable alguno de explicarme un par de cosas, soy nuevo en ubuntu y quiero ocultar del menu lugares y de equipo las particiones para no tocar nada que no deba
+<manuel_> muchas gracias
+<manuel_> como podria hacer eso? hay algun manual en alguna web?
+<manuel_> si no quieren liarse a escribir, porfavor diganme en que web esta y yo lo leere
+<erAbuelo> manuel_: paciencia, si alguien lo sabe te lo dirá
+<manuel_> ok, es mas que nada por precaucion, ustedes estan seguramente acostumbrados a este sistema y sabran tocar lo que sea pero yo no llevo ni 2 dias
+<erAbuelo> yo no idea, no uso gnome
+<katarcis> manuel_,
+<katarcis> mira
+<katarcis> dale click derecho arriba donde dice aplicaciones.. luego le das editar menu
+<katarcis> y "chuleas" o "deschuleas" lo que quieras
+<manuel_> lo he intentado, pero me abre una ventana donde editar que solo tiene aplicaciones y sistema
+<manuel_> pero no Lugares
+<manuel_> que es la que me interesa
+<manuel_> gracias katarcis por responder pero eso no me sirvio
+<katarcis> y que quieres quitar de lugares?
+<katarcis> manuel_,
+<manuel_> quiero ocultar las particiones para no tocar nada que no deba porque es la primera vez que toco este sistema operativo
+<manuel_> del menu Lugares
+<manuel_> y de la ventana Equipo
+<fosco_> las ocultarás y luego nos preguntarás como mostrarlas porque necesitas acceder a ellas
+<fosco_> creo que es más práctico aprender a usar el sistema q ocultar funciones
+<katarcis> manuel_, lo maximo que podrias hacer
+<katarcis> seria abrirla
+<manuel_> es posible, y seguramente debido a mi ignorancia lo haga en su momento, pero preferiria tenerlas ocultas por el momento
+<katarcis> y eso no tiene nada de malo
+<manuel_> estoy deacuerdo contigo fosco, y mi intencion al poner ubuntu en mi pc no es otra que esa, sin embargo yo tengo que aprender lentamente buscando en internet porque no conozco gente que use este sistema y no quiero tocar nada que pueda romper la maquina, es posible que lleves en esto mucho, yo trato de pedir ayuda
+<katarcis> manuel_, yo estube igual.. pero te aseguro que el que esten las particiones en ese menu no va hacer que dañes nada
+<katarcis> para empezar si es la particion del sistema
+<katarcis> asi la abras asi
+<katarcis> no te deja hacer nada
+<katarcis> porque no entras como administrador si no como usuario normal
+<katarcis> y no puedes ni borrar ni modificar nada asi
+<Jelou> Pero podría borrar archivos de Windows, por ejemplo, si monta su partición. ¿Cómo se establece quén puede o no puede montar según qué partición?
+<katarcis> quien dijo que tenia windows?
+<Jelou> nadie, es un ejemplo
+<katarcis> mmm
+<katarcis> pues se fue
+<katarcis> no lo sabremos
+<katarcis> xD
+<pacoloco> hola
+<katarcis> hi
+<ProfeMGL> maestrolinux:  yo soy la profe de ayer
+<ProfeMGL> no recuerdo el canal al que me invitaste
+<pacoloco> tengo un problema... estoy intentando instar ubuntu desde una memoria usb... es un portatil mini de dell, el punto es que llego a una parte donde me pide detectar y montar el cd-rom y no se que hacer
+<pacoloco> ???
+<katarcis> pacoloco, le puedes dar siguiente?
+<pacoloco> le doy siguiente..
+<pacoloco> sale una ventana que dice detectar y montar cd-rom
+<pacoloco> me pregunta que si deseo cargar los controladores del cd-rom de un medio extraible
+<pacoloco> ...
+<katarcis> pues si es usb
+<katarcis> es extrainble
+<pacoloco> si pero habla de los controladores de la unidad de cd
+<pacoloco> creo
+<pacoloco> ahora si me equivoco diganme..
+<katarcis> segun yo.. no creo que sea problema eso
+<pacoloco> pero no me deja continuar la instalación
+<pacoloco> ahora si conocen otra forma de instalar ubuntu desde una pendriver...
+<pacoloco> que no me pida unidad de cd...
+<cousteau> puedes mandar un pantallazo y pegarlo en imagebin?
+<pacoloco> no porque es de otro pc
+<pacoloco> el mensaje es el siguiente: No se ha detectano nindún lector de cd-rom común. El lector de cd-rom pueder ser un mitusmi antiguo y otro lector de CD-rom que no sea IDE ni SCSI.
+<cousteau> ah... bueno, ese error no me suena, pero ¿le puedes dar a "Sí"?
+<pacoloco> En ese caso, debería elegir qué modulo desea cargar y que dispositivo utilizar.
+<cousteau> espera, ¿tienes lector de CD-ROM?
+<pacoloco> Busque documentación o intente una instalacion en red en lugar de ina instalacion desde cd-rom si no conoce que modulo o que dispositivo es necesario..
+<pacoloco> no
+<pacoloco> tengo lector de cd-rom
+<pacoloco> es una mini de dell... de las que vienen sin el lector
+<cousteau> eso te lo pregunta porque no ha detectado lector de CD, lo que no es muy común, así que te pregunta si tienes para estar seguro
+<cousteau> pues entonces dale a "No"
+<pacoloco> la pregunta es: quiere selecionar manualmente el modulo y el dispositivo del cd-rom?
+<pacoloco> y las opciones son si y no
+<cousteau> pues si no tienes CD, dale a "No"
+<cousteau> eso te lo pregunta por si tu unidad de CD es rara y no te la detecta automáticamente, pero en tu caso simplemente no tienes
+<pacoloco> bueno le di no  y me sale este error: falló un paso de la instalacion. Fallo un paso de la instalacion. Puede intentar ejecutar el paso que falló de nuevo desde el menú, saltarselo o elegir otro paso. El paso que falló es: Detectar y montar el CD-ROM .
+<pacoloco> opcion...< continuar>
+<pacoloco> cuando le doy continuar... sale el menu principal del instalador de ubuntu... no es la ventana grafica normal sino en texto...
+<pacoloco> me sale una lista de pasos... escoja idioma...configure the keyboard,,, detecar y montar el cdrom...cargar componentes del instalador desde cdrom.... etc
+<katarcis> dale en cargar componentes
+<cousteau> qué raro...
+<pacoloco> le di en cargar componentes y vuelvo a lo mismo....
+<pacoloco> detectar y montar el cd-rom....
+<pacoloco> no se ha detectado ningun lector.............
+<pacoloco> Desea cargar los controladores del cd-rom de un medio extraible?
+<katarcis> dale ke si
+<pacoloco> <si> o <no>
+<katarcis> con el TAB te mueves
+<pacoloco> bueno le di si... Se produjo un error al leer los datos del disco extraible. Por favor, asegurese de que ha insertado el medio correcto. Si continua teniendo problemas puede tratarse de un dispositivo defectuoso.   No se pudo leer el medio extraible o no se encontro ningun controlador. <continuar>
+<pacoloco> al dar continuar vuelvo al mismo meno principal del instalador de ubuntu
+<cousteau> no, dale que "no", porque no tienes CD-ROM
+<aprendis> hola a todos alguien sabe como conectar en red una maquina con ubuntu 10.10 y otra con ubuntu 11.04 para que se puedan transferir archivos
+<cousteau> aprendis, se puede hacer con samba o mediante ssh (sftp)
+<aprendis> y cual seria mas rapido??
+<aprendis> estan en mi cuarto pero necesito pasar unas cosas a mi pc
+<aprendis> sin usb y eso por que es mucha info
+<cousteau> si en una de las dos máquinas tienes instalado el servidor ssh, en la otra puedes abrir nautilus y poner Ctrl-L sftp://maquina2.local/home/usuario
+<cousteau> pues la verdad, no sé cuál sería más rápida
+<cousteau> a lo mejor se puede con rsync
+<aprendis> eso seria de forma inalambrica??
+<fosco_> yo creo que lo más cómodo es un samba y arreando
+<fosco_> la velocidad de transmision la marcará la velocidad de la red
+<aprendis> es que las 2 usan internet inalambrico del mismo modem
+<fosco_> pues samba
+<aprendis> y samba esta en los repositorios?'
+<fosco_> comparte una carpeta en cada una de las dos máquinas
+<aprendis> pero se los tendria que instalar a las 2 no??
+<fosco_> no necesitas instalar nada
+<cousteau> samba te lo instala automáticamente cuando le das a "Compartir carpeta"
+<cousteau> eso el servidor de samba; el cliente viene instalado por defecto
+<aprendis> ok en home creo una carpeta y le doy compartir en ambas y ya seria todo?'
+<katarcis> si
+<katarcis> xd
+<cousteau> creo que sí
+<aprendis> ok boy a intentar aver que pasa n_n
+<pacoloco> ya le di si y no... creo que el asunto es por este lado llego a una parte que dice... para acceder al lector de cd-rom, por favor, teclee el fichero de dispositivo que se deberia utilizar. los lectores del CD-ROM no estandares emplean ficheros de dispositivos no estandares (como /dev/mcdx). Puede cambiar a la consola del segundo terminal (alt+f2) para comprobar los dispositivos disponibles en /dev con <<ls /dev>>. puede volver aqui con alt+f1.  Fiche
+<pacoloco> ro de dispositivo para acceder al cd-rom:   ......
+<pacoloco> sale una linea con la /dev/cdrom
+<Glooskep> alguien sabe como borrar por completos los mensajes que se muestran al apagar/reiniciar ubuntu? en ocasiones me aparecen en ocasiones me aparece el splash como debería ser
+<katarcis> te refieres al log?
+<Glooskep> katarcis, supongo
+<katarcis> mm pues no se.. nunca los eh intentado quitar
+<katarcis> me gusta verlos
+<katarcis> para ver si todo inicia bien
+<Glooskep> al inicio no es el problema
+<Glooskep> el problema es al apagar o reiniciar
+<Glooskep> en ocaciones me muestra cuando cierra las tty el pylmoth etc etc
+<katarcis> mm
+<katarcis> pues yo los veo siempre no se
+<katarcis> im sorry xD
+<Glooskep> :D
+<katarcis> chao
+<aprendis> ya le di en comparticon y me instalo un servicio y despues le di es permitir que escrivan en esta carpeta pero como sabran las maquinas que  quiero que se conecten??
+<cousteau> Glooskep, en el grub tienes las opciones "quiet splash"?
+<Glooskep> cousteau, ni idea deja checar
+<aprendis> mas bien que se comuniquen
+<cousteau> grep GRUB_CMDLINE_LINUX /etc/default/grub
+<cousteau> aprendis, enciende las dos, ve a la otra máquina y ve a Lugares > Red
+<Glooskep> cousteau, GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" <--- si la gento
+<Glooskep> tengo*
+<cousteau> gentoo? (lol)
+<aprendis> ok
+<cousteau> lisdexia... Bueno, pues entonces ni idea. A mí a veces me pasa al revés, que al arranque no me aparece el splash (a menos que sea le que es en modo texto) pero al apagar sí
+<cousteau> tampoco es que sea una cosa crítica, vaya
+<aguitel> [GuS], estas?
+<Glooskep> cousteau, si lo se enrealidad no me afecta en lo mas minimo
+<aguitel> cual es el mejor router inalambrico con mayor potencia de señal?
+<Glooskep> cousteau, la idea es que me gusta que las cosas funcionen bien y yo no veo eso bien :S
+<aprendis> ya le di y solo me salio un icono que dice red de windows
+<[GuS]> aguitel: a mi me preguntás lo del router?
+<aguitel> [GuS], como vas ,si queria saber tu opinion
+<aguitel> [GuS], en mi casa tengo problemas y no me llega la señal a todos lados
+<[GuS]> aguitel:  ni idea che, no ando probando routers por la vida jejeje
+<aguitel> [GuS],probe un linksys WRT120n
+<[GuS]> Yo tengo un tp-link de 3 antenas que anda de 10
+<aguitel> [GuS],y donde carajo puedo encontrar la posta?
+<aguitel> [GuS],ese me dijeron
+<[GuS]> aguitel:  probaste en google? :P
+<sisa_> pregunta sobre baterias para portatil, alguien sabe de fisica electrica?
+<aguitel> [GuS] mira:http://articulo.mercadolibre.com.ar/MLA-117035265-router-wi-fi-tp-link-tl-wr941nd-norma-n-300mbps-el-mejor-_JM
+<[GuS]> aguitel:  ahh, y no te puedo permitir decir "carajo" en este canal eh.. ojo jeje
+<aprendis> le di en el icono de red de windows y me dice que fallo el servicio
+<aprendis> que falo al obtener la lista de comparticiomn
+<aguitel> [GuS], como ves ese modelo ?
+<[GuS]> aguitel:  yo tengo el TL-WR1043ND
+<aprendis> en mi lap le di en la opcion que dice conectar con el servidor y me da varias opcciones pero no se con ual le debo de dar le di el ssh y me da las opciones y dice que ponga nombre del servidor e informacion opcional luego sale puerto carpeta y nombre de usuari
+<aprendis> pero no se cual de todas sea segura
+<cousteau> y yo el TL;DR1043ND
+<aguitel> [GuS], que potencia tiene?
+<[GuS]> aguitel: creo que es lo mismo, nada más que tiene para conectar dispositivos de almacenamiento USB y poder compartirlo por la red
+<cousteau> aprendis, no ibas a usar samba?
+<aguitel> [GuS], 226 mangos sale
+<aprendis> si pero nose como es que le di en compartir carpeta en ambas maquinas y en ambas me instalo samba
+<aprendis> pero ya despues nose como se comunicacn entre si
+<[GuS]> Se
+<cousteau> aprendis, ni siquiera si vas a Lugares > Red?
+<aprendis> si ya fui a ese lugar pero solo me aparece un icono que dice red de windows y ya
+<aprendis> no veo otra cosa
+<aguitel> [GuS], instale arch ,corre muy bien
+<Infernet> hola
+<aprendis> que diferencia hay entre nano y gedit es que ando biendo la guia de ubuntu y dice que le de en nano
+<aprendis> para editar y le de un nombre de trabajo
+<omikron4> aprendis: si eres aprendis, primero trabaja con gedit, cuando sepas mas te metes en nano o cuando aprendas a manejar nano bien
+<[GuS]> aguitel: que bueno
+<Infernet> alguien esta corriendo en kubuntu?
+<aprendis> si ya de hecho ando siguiendo este tuto pero enves de darle nano le di con gedit y creo es lo mismo xD
+<aprendis> solo cambia el editor
+<[GuS]> Infernet:  yo
+<aprendis> no??
+<omikron4> yo a veces Infernet
+<aprendis> http://www.guia-ubuntu.org/index.php?title=Samba
+<cousteau> aprendis, que nano funciona también en las TTY y gedit no... pero creo que gedit es más cómodo
+<aprendis> si eso me parecio el otro tiene un aspecto mas arcaico
+<Infernet> hola [GuS]
+<Infernet> hola omikron4
+<Infernet> que les parece?
+<omikron4> a mi me gusta bastante Infernet
+<[GuS]> Infernet: siempre he usado KDE toda mi vida, y he probado varias distros hace años atrás... y como me gusta "debian-based", Kubuntu está bien.. lo vengo usando desde la primera versión.
+<Infernet> excelente punto de vista
+<Infernet> y es exactamente lo q siento yo tambien...detesto a grandes rasgos GNOME
+<Infernet> y justamente lo q le faltaba a una distro potente como esta era un buen entorno grafico
+<Infernet> q desconocia totalmente
+<omikron4> disculpa Infernet el que te guste una no quiere decir que la otra no vale.. yo tengo kde y sin embargo aunque la veo mas potente, me siento mas comodo en gnome.. es cuestion de gustos
+<[GuS]> Bueno, cada uno usa el entorno que más le gusta.
+<[GuS]> omikron4: él no dijo que Gnome no sirva...
+<[GuS]> No empecemos con las guerras..
+<[GuS]> Simplemente dijo que a él no le gusta.
+<omikron4> no dijo que no le gusta.. "detesto a grandes rasgos GNOME"
+<[GuS]> omikron4: pero es su opinión, no dijo que Ud tenga que pensar lo mismo
+<Infernet> claro, es un punto de vista nada mas
+<omikron4> bueno, da igual, aki estamos para soporte no para opiniones.. ni discusiones que no llegan a ningun sitio, lo siento
+<Infernet> omikron4: disculpa si ofendi...en realidad no fueron las mejores palabras empleadas, simplemente es lo q siento y fui totalmente genuino...nunca me cayo bien gnome
+<[GuS]> omikron4:  ¿Perdón?
+<omikron4> que no voy a seguir con esta disyuntiva.. cambiamos el chip y ya esta
+<[GuS]> omikron4: bueno, calma que nadie está discutiendo
+<Infernet> [GuS]: de donde sos?
+<[GuS]> Infernet: Argentina
+<Infernet> se nota, hola camarada
+<Infernet> soy de La Plata
+<Infernet> vos?
+<omikron4> jodeeer aun disculpandome parece que ofendo.... lo sientooo... no comments
+<Infernet> omikron4: nadie se ofendio :P
+<[GuS]> Infernet: que grande! yo de Baires, capi, liniers.
+<[GuS]> Infernet: tengo una prima que vive por La Plata..
+<Infernet> [GuS]: ciudad ricotera
+<omikron4> !ot
+<kubot> #Ubuntu-es es un canal de soporte de Ubuntu, por favor no lo ocupen con temas no relacionados, visita #ubuntu-es-offtopic para charlar « /join #ubuntu-es-offtopic » ¡Gracias!
+<Infernet> :P
+<[GuS]> omikron4: ud sabe que yo soy OP?
+<[GuS]> Digo..
+<aprendis> si le doy una carpeta en publico no hay posibilidad que se metan ami equipo y vacien toda mi informacion
+<omikron4> y?
+<aprendis> o nosesito encriptar toda mi maquina
+<[GuS]> brb
+<aprendis> y mensajes y eso
+<Infernet> omikron4: dejando de lado los malos entendidos :)
+<pablo> hola tengo una multifuncion hp officejet 4400 ypuedo imprimir desde otra maquina pero no puedo escanear. Como puedo hacer?
+<lali-meli> :o
+<SergioMeneses> buenas...
+<Infernet> SergioMeneses: hola
+<pablo> hola tengo una hp officejet 4400 compartida en una red, el tema es que puedo imprimir desde otra maquina pero no puedo escanear. Se puede hacer algo?
+<Infernet> pablo: perdon si no te ayuda mucho mi comentario, pero supongo por la informacion q das q es seguramente un tema de configuracion mas q de funcionamiento
+<pablo> Infernet gracias supongo que si
+<Infernet> pablo: como se llama el soft?
+<pablo> Tenes razón el xsane no ve el dispositivo
+<Infernet> pablo: a ver, ahi te digo
+<Infernet> pablo: que distro tenes?
+<fzeta> hi
+<Infernet> fzeta: hola
+<fzeta> hola Infernet
+<Infernet> como va?
+<Infernet> pablo: http://ubuntuforums.org/showthread.php?t=1011572
+<pablo> Infernet gracias
+<Infernet> pablo: por nada
+<xaval22> join #triviterra
+<mreseau> hola
+<XuMuK> hola
+<Infernet> mreseau: hola
+<mreseau> que tal?
+<Infernet> todo bien
+<Infernet> vos
+<mreseau> super
+<XuMuK> !pm | mreseau
+<kubot> mreseau: Por favor haz tus preguntas en el canal para que otros puedan ayudarte; beneficiarse de tus preguntas y asegurarse de que no recibes "ayuda" peligrosa. Ten en cuenta que muchos consideran de mala educacion que se les haga privado sin preguntar primero.

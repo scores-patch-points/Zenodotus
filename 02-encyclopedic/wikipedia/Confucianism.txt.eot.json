@@ -1,0 +1,118 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Confucianism.txt",
+  "sha256": "afd823b04423b6cd273c3c6739f24d2044cfb7bf1ccc9407a0769eaaec7b00e4",
+  "chars": 76396,
+  "declaredIdentity": {
+   "title": "Confucianism",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 46,
+  "debrisChars": 469,
+  "debrisFraction": 0.006,
+  "headingCount": 35,
+  "headings": [
+   "Five Classics and the Confucian vision",
+   "Doctrines",
+   "Theory and theology",
+   "Tian and the gods",
+   "Social morality and ethics",
+   "Ren",
+   "Rite and centring",
+   "Loyalty",
+   "Filial piety",
+   "Relationships",
+   "Junzi",
+   "Rectification of names",
+   "History",
+   "Metaphysical antecedents",
+   "Zhou traditions wane",
+   "Confucianism rises",
+   "Decline",
+   "Organisation and liturgy",
+   "Governance",
+   "Meritocracy",
+   "Institutional design",
+   "Promotion system",
+   "Influence",
+   "On Islamic thought",
+   "In modern times",
+   "On Chinese martial arts",
+   "Criticism",
+   "Contradiction with modernist values",
+   "Women in Confucian thought",
+   "Chinese Rites controversy",
+   "See also",
+   "Notes",
+   "Citations",
+   "Bibliography",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 35,
+   "debrisFraction": 0.006
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": -0.1885816141888811,
+   "debrisFractionZ": 0.3034977334354022,
+   "priorSeenSoFar": 7
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.075Z"
+ }
+}

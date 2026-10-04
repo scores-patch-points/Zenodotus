@@ -1,0 +1,674 @@
+---
+title: Survey and Assessment of Crew Performance Evaluation Methods Applicable to Human Spacecraft Design
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20190002710
+source_url: https://ntrs.nasa.gov/citations/20190002710
+rights: Public-use permitted (NTRS copyright determination PUBLIC_USE_PERMITTED); no third-party material
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Ames Research Center
+publication_date: 2019-07-12
+retrieved: 2026-09-22
+sha256: 9b623b4240bbaeb22e3827c7dbfb8f2a871990af35e11c5e96b07fb1cc9414f0
+pages: 10
+words: 6415
+cv_look_pages: 6
+---
+
+   Survey and Assessment of Crew Performance Evaluation
+      Methods Applicable to Human Spacecraft Design
+  Christine Fanchiang, University of Colorado, Boulder, CO, USA (650) 302-2692, christine.fanchiang@colorado.edu
+Jessica J. Marquez, NASA Ames Research Center, Moffett Field, CA, USA, (650) 604-6364, jesssica.j.marquez@nasa.gov
+     Brian F. Gore, NASA Ames Research Center, Moffett Field, CA, USA, (650) 604-2542, brian.f.gore@nasa.gov
+             David Klaus, University of Colorado, Boulder, CO, USA, (303) 492-3525, klaus@colorado.edu
+
+
+Abstract— Space is an unforgiving environment where the                        design prior to flight. The need to protect and appropriately
+actions of the crew play a critical role in their health and                   utilize the crew demands even more stringent requirements
+safety. Given the limited number of crewmembers typically                      for safety and operability of the system.
+onboard a spacecraft and the multitude of complex systems
+they must operate, the performance of each individual is of                    Crew members provide a number of functions that enhance
+paramount importance. Spacecraft habitat layout and
+                                                                               the capabilities of the spacecraft, including but not limited
+operations are two main drivers affecting crew performance
+efficiency. Having the capability to analyze and compare crew                  to conducting complex science objectives, executing
+performance across various spacecraft configurations can help                  contingency plans in the event of failures, and being test
+identify improvements early in the conceptual design process                   subjects themselves for human research in space. As such,
+where changes are less costly to implement, ultimately                         maintaining adequate levels of crew performance is critical
+reducing overall project costs and improving long-term                         when analyzing spacecraft design. Various design choices
+operations of the system. Currently, there are few                             ranging from controls and display designs to cabin
+comprehensive methods readily available for evaluating crew                    architecture and layout all have an impact on crew
+integration within a spacecraft in the conceptual design phase.                performance.
+In order to address this shortcoming, the goal of this work was
+to analyze various specialized evaluation methods found in                     Human factor engineers and practitioners are well-aware of
+analogous industries that have potential application to human
+spacecraft design. A survey of more than 400 human
+                                                                               these design challenges, and over the years have helped
+performance evaluation methods was completed. Over twenty                      publish a number of standards and guidelines for spacecraft
+different attributes were identified for each method and a                     designers [1-6]. Even with the helpful documentation,
+variety of analyses were conducted to characterize and                         evaluating whether the design appropriately accommodates
+evaluate their potential use for assessing human spacecraft                    and utilizes the crew is still a challenge for a number of
+design options. The analysis revealed a particular deficiency of               reasons. A National Research Council Report (2007) [7]
+quantitative evaluation methods that are applicable early in                   lists three general categories as contributing to inadequate
+the systems engineering design phase. It also identified five                  human integration into complex systems: 1) poor research to
+existing methods that could be supplemented to achieve the
+                                                                               practice translation 2) lack of effective methods and tools,
+needs of an early design evaluation method. Additional
+discussion describes potential issues that must be overcome
+                                                                               and 3) poor documentation of human task performance.
+when developing a method specific for use in human spacecraft                  Consequently, there is often little advocacy and inadequate
+evaluations.                                                                   resource allocation for human systems integration (HSI) in
+                                                                               organizations.
+
+                                                                               NASA has also noted that there is a lack of effective
+                    TABLE OF CONTENTS                                          methods and tools available to quantify human factor
+                                                                               measures for spacecraft design. As reported in NASA’s
+1. INTRODUCTION .................................................1             Human Research Roadmap, one of the gaps points to a lack
+2. BACKGROUND ...................................................2             of: “[m]ethodologies and metrics for integrated
+3. METHODOLOGY ................................................4               vehicle/system level evaluations leveraging multiple,
+4. RESULTS ............................................................4       complementary tools/methods such as digital modeling,
+                                                                               [human-in-the-loop] HITL evaluations, and population
+6. CONCLUSION .....................................................9           analysis.” [8]
+
+                                                                               The combination of these factors leads to a growing interest
+1. INTRODUCTION                                                                in finding and defining effective tools or methods for
+                                                                               understanding how humans can be effectively integrated
+Designing a human spacecraft is a complex engineering                          into a complex system. Because of this apparent dearth of
+process of balancing performance and safety while                              existing crew performance metrics for spacecraft design, the
+minimizing mass, volume, power, and cost. The tight                            goal of this paper is to review and assess the few that have
+engineering and budget constraints as well as the extreme                      been developed for spacecraft, as well as investigate
+environmental conditions of space drive the need for critical                  methods from analogous industries and determine whether
+and thorough evaluations and analyses of the spacecraft
+                                                                           1
+they might be useful to adapt for the evolving human                 Project Phase A: Concept and Technology Development:
+spacecraft industry.                                                 determines feasibility and desirability of suggested system
+                                                                     and establishes an initial baseline compatibility with
+2. BACKGROUND                                                        NASA’s strategic plans.
+A. A Growing Human Spaceflight Industry                              Project Phase B: Preliminary Design and Technology
+                                                                     Completion: define project in enough detail to establish an
+As prospective missions are being developed for human                initial baseline capable of meeting mission needs.
+spaceflight, a variety of new providers and users have joined
+in the industry. While historically human spaceflight has            Project Phase C: Final Design and Fabrication: complete
+been in the realm of government control, the recent years            detailed design of the system (and its associated subsystems,
+have seen a growing interest in commercialization of space           including its operations systems), fabricate hardware, and
+through tourism [9]. The mission concepts range from a few           code software.
+minutes of suborbital experience to a one-way journey to
+Mars, while the anticipated users range from veteran pilots          Project Phase D: System Assembly, Integration and Test,
+to retired grandmothers. The diversity of participants in this       Launch: assemble integrate the products and create the
+new industry is important to consider when ensuring safety           system, meanwhile developing confidence that it will be
+and accommodation requirements for the spacecraft.                   able to meet the system requirements, conduct launch and
+                                                                     prepare for operations.
+In recognition of the changing landscape of human
+spaceflight, the Federal Aviation Administration (FAA) and           Project Phase E: Operations and Sustainment: conduct the
+NASA have been proactively developing recommendations                mission and meet the initially identified need and maintain
+and standards for evaluation and analysis of spacecraft prior        support for that need.
+to flight. NASA has established their own Human-Rating
+Requirements (NPR 8705.2B) [10] that ensures compliance              Project Phase F: Closeout: implement the systems
+by their commercial crew providers, while the FAA has                decommissioning/disposal plan developed in Phase C and
+more recently published a list of recommended practices for          analyzed returned data and samples [12].
+supporting good human systems integration [11].
+                                                                     Each of the project phases correspond to different activities
+Using the currently available recommendations and                    that occur throughout the system design lifecycle. Several
+requirements is one of the first steps to build a foundation         tools and methods have been developed to help designers
+for identifying effective tools and methods for spacecraft           integrate crewmembers at different stages of the systems
+design analysis. It is important to understand how human             engineering design process. They can be classified into four
+spacecraft have historically been evaluated, and whether             main categories as aggregated in this study. Figure 1
+lessons learned are extensible to the new era of spacecraft          illustrates when each tool or method is applied across the
+designs.                                                             different systems engineering process. Phase F is not
+                                                                     included here as it does not typically influence vehicle
+B. Defining Tools, Methods, and Framework                            design impacts on crew performance.
+A number of methods and tools have previously been                   These four methods have been used frequently on historical
+developed to help evaluate and assess various aspects of             space missions, but have a number of limitations that drive
+designs and user interfaces. But before determining the best         the need for improvements in the methods as is described in
+method to use for spacecraft design, it is necessary to define       the following paragraphs.
+three central terms used throughout this paper; tools,
+methods, and frameworks. A tool is a device to measure,              Phase A- Historical data on spacecraft design impacts to
+collect and analyze data; a method is a technique to measure         crew performance is often in the form of anecdotal reports
+data that can integrate a number of tools to establish a             and are limited to a unique and limited set of users. To-date
+process; and a framework provides the foundation for how             there have been about eleven different space vehicles ever
+the data is construed. To improve readability, this paper uses       flown with humans aboard [13] and close to 500 people who
+the word ‘methodologies’ to bundle these three terms                 have been in space [14]. The data gathered from these
+together.                                                            missions while useful are limited and particular to a unique
+                                                                     user population of highly skilled, educated, trained, and
+C. Current Methodologies for Human Spacecraft Design                 healthy individuals. Therefore, it can be difficult to
+                                                                     extrapolate and generalize the data to future users that do
+Historically, NASA has developed and relied on the systems           not fit the same criteria.
+engineering process as a systematic, requirements-based
+methodology to ensure compliance of the design. The                  Phase B - Lessons learned from analogous industries can
+systems engineering process is broken down in the NASA               play a large role in defining many basic human factor
+Systems Engineering Handbook (2007) [12] into six main               requirements from anthropometric constraints to sensory
+phases.                                                              limitations. Many accident investigation reports from the
+
+                                                                 2
+                                                                    tools have made computational modeling more accessible
+                                                                    and approachable for analyzing spacecraft systems [17].
+
+                                                                    One methodology that has become more prevalent in the
+                                                                    human spaceflight industry is the application of risk-based
+                                                                    assessments for human error. As described by Chandler et
+                                                                    al. (2006) [18] in a NASA Technical Report, NASA’s
+                                                                    adoption of Human Reliability Analysis (HRA) methods has
+                                                                    been driven in part by the large number of mishaps
+                                                                    attributed to human error in the industry. While
+                                                                    incorporating human error into overall system reliability
+                                                                    establishes early consideration and planning for human
+                                                                    performance impacts, there are still limitations to this
+                                                                    method. No HRA methods (with the exception of the
+                                                                    Human Factors Process Failure Mode and Effects Analysis
+                                                                    (HF PFMEA)) have been specifically designed for an
+                                                                    aerospace application; most methods have been developed
+     Figure 1. Current methodologies for evaluating                 for nuclear power plant operations. Three specific
+   human performance in a system mapped to systems                  limitations that fall out from this have been identified in the
+                  engineering phases.                               Technical Report as: “1) coverage of [performance shaping
+                                                                    factors] PSF’s and task characteristics unique to space
+aviation industry have revealed critical human and systems          missions; 2) applicability of the underlying data, [human
+integration issues. This is a wealthy source of data, but is        error probability] HEP estimates, and PSF weights to space
+limited to ground based interactions. The microgravity,             environment; and 3) significant differences in human action
+radiation, and lighting environments of space are unique and
+                                                                    time scales between nuclear plant operation and space
+create a number of effects that are detrimental to the human
+                                                                    missions” [18].
+and can affect performance in a variety of ways that are not
+fully understood.
+                                                                    Another more computationally intensive methodology that
+Phase C and D – Prototype and analog environments can               is gaining traction in human spaceflight is computer-aided
+provide relevant and insightful research, but high fidelity         modeling and simulation of spacecraft design. A number of
+simulations can be expensive to produce and also come late          the computational tools have been adapted from the aviation
+in the process. There have been attempts to use ground-             industry and applied in specific simulations for spacecraft
+based analogs as indicators for future spaceflight conditions       design. An example of a well-known computational model
+[15], but again are limited by the realism due to limited           is the Man-machine Integration Design and Analysis
+crew selection bias or non-similar operational dynamics (i.e.       Systems (MIDAS), where it has been used previously for
+large polar expeditions vs small astronaut crew).                   analysis of task and workload applications on space shuttle
+Alternatively cheap and quick prototypes can be very useful         orbiter glove box design. [17]. The use of these human
+early in the concept design, but consequently does not              performance models (HPM) can help reduce design cost and
+provide enough detail for requirement verification.                 improve efficiency, but still have many challenges to
+                                                                    overcome. A major setback to human performance models
+Phase D and E - Crew member selection and training                  is their complexity and difficulty for the spacecraft designer
+continues to be a highly involved process. But as the               to use [19].
+industry evolves to include new populations of users a
+number of concerns have been brought up. In anticipation of         Given the limitations of the methods available for
+the larger range of user age and health, the FAA has                evaluating human spacecraft design, an alternative source of
+supported research in characterizing health and performance         existing methodologies can be gleaned from industries that
+concerns of future spaceflight participants who may not be
+                                                                    have similarities to human spaceflight. The authors chose to
+as healthy or fit as the typical NASA astronaut [16]. The
+                                                                    look across these analogous industries, and determine if they
+expanded user population brings additional complication to
+ensuring quality spacecraft designs that can account for all        have tools, methods, or frameworks that could be adaptable
+ranges of human health and performance.                             to human spaceflight. Ultimately, the goal of this work is
+                                                                    two-fold: 1) to aggregate a number of methodologies for
+These methods lack flexibility, are limited by resources, and       evaluating human system performance and 2) to establish a
+are constrained by the scarcity of spaceflight data. These          formal analysis that identifies what methodologies are
+limitations have driven the development of more                     appropriate to utilize for the growing human spaceflight
+quantitative and objective approaches that attempt to               industry.
+address those shortcomings. More powerful and capable
+computer hardware coupled with improved algorithms and
+                                                                3
+3. METHODOLOGY                                                         robotics and automation. A second literature review then
+                                                                       looked specifically at the methodologies used that pertain to
+To establish a formal survey and analysis of the various               measuring or understanding human performance. Through
+human performance evaluation methodologies, three main                 this process, over 400 methodologies were collected and
+steps were involved:                                                   reviewed.
+Step 1: Aggregate as many methodologies from aerospace                 B. Characterization of Spacecraft Design Process
+and analogous industries.
+                                                                       For each tool, method, or framework, twenty-two
+Step 2: Determine important characteristics specific to the            characteristics were recorded for comparison and analysis.
+spacecraft design process.                                             The characteristics ranged from general classifications (e.g.
+                                                                       models or simulation, performance assessment) to the
+Step 3: Establish a formal evaluation criteria for analyzing           required resources needed for using the methodology. The
+the crew performance evaluation methodologies.                         characteristics were selected because they were deemed by
+                                                                       the authors as potential indicators that could be useful for
+This section describes each of these steps and how over 400
+                                                                       spaceflight.
+methodologies were aggregated and reviewed. It also
+describes how the various characteristics were identified and          C. Establish Evaluation Criteria
+deemed important for the human spacecraft design process.
+                                                                       A formalized evaluation process was established to help
+A. Aggregating Tools, Methods, and Frameworks                          identify what criteria were most important for a spacecraft
+                                                                       design methodology. The four criteria of interest were: early
+The initial step in aggregating the various methodologies
+                                                                       design phase, quantitative output, state driven, and flexible
+was identifying existing ones in the human spaceflight
+                                                                       architecture. Each of these criteria could be defined by
+industry. This was done through a literature search for
+                                                                       filtering the twenty-two characteristics identified from Step
+human performance models specific for spaceflight. Key
+                                                                       2. A more detailed description of each of the four criteria is
+word choices for the literature search included: human and
+                                                                       captured in the results section.
+crew performance models, evaluation tools, spacecraft
+design process, and human factor design tools.                         From the collection method to characterization and
+                                                                       establishment of the evaluation criteria, a final list of
+Due to the evolution occurring in the spaceflight industry, it
+                                                                       methodologies was identified as potential candidates for
+was important to look across a number of other analogous
+                                                                       future development.
+industries to determine if there were existing methodologies
+that would be appropriate or applicable for human
+spacecraft design.                                                     4. RESULTS
+                                                                       The collection of 400 human systems integration evaluation
+In order to find these other methodologies, it was critical to         methods were categorized based on specific attributes
+identify what is considered an analogous industry. A                   required for spacecraft design.
+number of unique attributes of human spaceflight were
+defined and listed in the first column of Table 1. The                 A. Methodology Classification
+authors then identified various industries that possessed
+similar attributes. Five industries stood out for their likeness       The first analysis classified the various types of methods
+to human spaceflight: commercial aviation, naval                       into one of nine categories as shown in the Figure 2.
+operations, industrial engineering, nuclear power plant, and
+
+                          Table 1. Comparison table of industries analogous to human spaceflight.
+
+                                                         Commercial   Naval     Industrial   Nuclear                   Robotics/
+        Unique Human Spaceflight Attributes
+                                                          Aviation  Operations Engineering Power Plant                Automation
+  1 Small cramped living/working quarters                      X                X             X             X
+  2 Limited people                                             X                X             X             X              X
+  3 People stay or get exchanged a few times                   X                              X             X              X
+  4 Highly selected people                                     X                X                           X
+  5 Dangerous outside environment                              X                X
+  6 Live/work inside 99% of time                                                X
+  7 Highly-esteemed work                                       X                                            X
+  8 Highly-technical work                                      X                X             X             X              X
+  9 Lots of training required for crew                         X                X             X             X
+ 10 Environment fully controllable                             X                X
+
+                                                                   4
+                                                                    models, postural analysis tools, various software and
+                                                                    standards specific to anthropometric data.
+
+                                                                    Human Computer Interaction: This category is for methods
+                                                                    that are specific to the human computer interface. It includes
+                                                                    information regarding design as well as methods for
+                                                                    analysis of good computer interactions.
+
+                                                                    Data: This category is for any type of methods and tools
+                                                                    that can help sort through various types of data sets and
+                                                                    organize or analyze them specific methods include data
+                                                                    mining tools and data analysis tools.
+
+                                                                    The results from the classification of the 400 methodologies
+                                                                    show a diverse spread across each methodology, with the
+                                                                    Human & System Performance Assessments representing a
+                                                                    majority of the grouping.
+
+                                                                    B. Quantitative vs Qualitative Methodologies
+
+                                                                    Methodologies were divided by their output type showing
+   Figure 2. Breakdown of methodology classification.               whether it has quantitative or qualitative outputs.
+                                                                    Quantitative outputs are those that have a number or value
+A definition for each of the categories is described below in       associated with the evaluation, while qualitative outputs
+order of the most methodologies per category.                       were descriptors of the system often more subjective in
+                                                                    nature. It should be noted that in certain methodologies, the
+Human & System Performance Assessment: These types of
+                                                                    operator or observer could define a quantitative output but it
+methods include cognitive testing, function allocation,
+                                                                    is still subjective in nature. For example, an operator’s
+generic performance measurements, physiological tools,
+                                                                    rating of workload is subjective, but can be ranked on a
+secondary task evaluations, situation awareness, stress, and
+                                                                    numerical scale. In such a case, the methodology was
+workload specific tools.
+                                                                    classified as having a quantitative output but with a
+Modeling and Simulation: These methods leverage any type            subjective rating. Table 2 shows an even split between
+of model or simulation that has been created to analyze             quantitative and qualitative methodologies.
+human performance.
+                                                                          Table 2. Number of quantitative vs qualitative
+Safety: These methods are pulled from literature for                                    methodologies
+evaluating accident investigations, human errors, human
+reliability, and risk assessments.
+
+Knowledge Elicitation: These methods are used during
+usability tests in which the information can be elicited from
+the user in a variety of ways. These include cognitive task
+analysis, interviews, observation, questionnaires, and task         The equal division between the output types could be an
+analysis.                                                           indicator of the multidisciplinary field in which there is a
+                                                                    mix between the more descriptive social sciences and the
+Human Factors Knowledge: This category captures any                 more data driven engineering disciplines. To gather more
+documentation that has been generated to help guide                 insight regarding what methodologies tended to be more
+designers, including databases, guidelines, glossaries,             qualitative or quantitative, Table 3 divides the output types
+standards, and technical reports.                                   across the different methodology classifications. The darker
+                                                                    green colors indicate which classification tended towards
+Human Factors Program Planning: This category holds any             which output type.
+methods and tools that are useful for managing a large and
+complex human system including cost/risk benefit analyses,          Classifications that are strongly quantitative include
+data item descriptions, decision-making tools, economic             modeling and simulation, data tools, and safety, while the
+cost analyses, and project management methods.                      more qualitative outputs appear from the knowledge
+                                                                    elicitation tools or human factors knowledge tools. The
+Physical Ergonomics: This set of methods is specific to any         results reflect the general intuition in which models and
+ergonomic or anthropometric models meant to help the                simulations produce numerical values based on data or
+designer appropriately size and place items for ease of use         algorithm driven results while the knowledge based tools
+with minimal strain and injury. They include empirical
+
+                                                                5
+often are in the form of questionnaires or observers              D. Unique Attributes for Spacecraft Design
+recording their own insights.
+                                                                  To determine which methodologies could potentially be
+                                                                  applicable for human spacecraft design, a number of
+        Table 3. Output type across classification.               pertinent attributes were identified from a mix of literature
+                                                                  review on the future of human spacecraft design as
+                                                                  anticipated by FAA and NASA as well as insights on the
+                                                                  human spacecraft design process itself. The following
+                                                                  attributes that would be valuable for a potential human
+                                                                  spacecraft design evaluation methodology are listed below
+                                                                  with a brief rationale.
+
+                                                                  1)       Early Design Phase: Due to the high costs of
+                                                                  spaceflight, having an evaluative methodology early in the
+                                                                  process will help to reduce downstream costs. The analysis
+                                                                  shows a lack of methodologies in this early design phase.
+
+                                                                  2)      Quantitative Output: Having a quantified value for
+C. Methodology Application in Systems Engineering
+                                                                  crew performance is necessary to make objective
+Process
+                                                                  comparisons across various designs similar to what is done
+Methodologies were analyzed across the systems                    with metrics like mass, volume or power.
+engineering process. Figure 3      shows the spread of
+                                                                  3)      State-Driven: With the variety of upcoming human
+methodologies in the different phases and where they are
+                                                                  space missions whether for commercial or government, the
+most often used.
+                                                                  model should be able to handle a range of mission types,
+From Figure 3 it can be seen that the majority of the             human occupants, and task requirements.
+methods and tools are used later in the systems engineering
+                                                                  A state-driven methodology is one that can be updated with
+lifecycle. This can be interpreted as a factor of hardware
+                                                                  a number of different mission profiles, users, and various
+design in which it is much easier to obtain direct user
+                                                                  tasks that could be performed. The methodologies that have
+feedback and evaluation from an already designed and built
+                                                                  this type of state-driven capability appear in the models and
+system.
+                                                                  simulation type classification.
+The result of the analysis illustrates the lack of
+                                                                  4)       Flexible Architecture: Since human spaceflight is
+methodologies early in the systems engineering phase. In
+                                                                  fairly young, there are unknown unknowns that are still to
+addition, it is interesting to note that 60% of the
+                                                                  be discovered, therefore having a flexible architecture is
+methodologies available in the earlier design phases (Phase
+                                                                  crucial in adapting to new information that is learned with
+A through C) produce qualitative outputs.
+                                                                  each new mission.
+
+                        Figure 3. Methodology breakdown across systems engineering process.
+
+
+
+
+                                                              6
+A methodology that has a flexible architecture is one that             Table 4. Filtered methodologies for relevant human
+can adapt to new information or poorly understood                                      spaceflight attributes.
+information.
+
+5)       Comprehensive: Each subsystem can be well-
+optimized for their required task or need, but when they are
+integrated into a full system, it is important to understand
+how each subsystem might impact others. The total system
+performance needs to be considered as an aggregation of
+subsystems which must perform well as a whole.
+
+A comprehensive methodology integrates different aspects
+of the human spacecraft interactions. The purpose of the
+evaluation is to provide a high-level concept design
+comparisons, it must encompass all aspects of how the
+spacecraft design might influence the crew performance.
+Therefore such a methodology should include the quality of
+the habitation environment as well as the controllability of
+the spacecraft. It would entail understanding how the space
+is properly used as both a workspace and living area. To
+evaluate methodologies for “comprehensiveness” required a
+deeper understanding of each methodology and what
+information and foundational knowledge it contained.
+
+From the first three filtering mechanisms (early design
+phase, quantitative, and state-driven), sixteen methodologies
+remained and are listed below in Table 4. Filtering for the
+last two attributes (flexible and comprehensive) required a
+more in-depth and subjective review of each methodology.            • Uses built-in micro model functions that represent basic
+After reviewing each of the remaining methodologies, five           human actions and behaviors such as the rate at which text
+stood out as adaptable as a human spaceflight evaluation            is read or the time to reach or move a motor control [20].
+methodology, and have been identified on Table 4 with a
+thick dashed line.                                                  Getting access requires a license. . There is are also five day
+                                                                    training courses available from time to time in Boulder, CO.
+Each of five methods is described with more detail in the           This seems to be a flexible and extensible platform, but
+following sections with the recommended extensible aspects          requires more contact with the company for access to
+that would be needed to create a more standardized method           software.
+of evaluating human spacecraft design.
+                                                                    2. Improved Performance Research Integration Tool
+1. Integrated Performance Modeling Environment (IPME)               (IMPRINT)
+
+IPME is a Unix-based integrated environment of simulation           IMPRINT is an embedded discrete event task network
+and modeling tools for answering questions about systems            modeling language (Micro Saint) that uses task-level
+that rely on human performance to succeed. It combines              information to construct networks representing flow and
+both the top-down approach of task network modeling with            performance time and accuracy for operations and
+bottom-up approaches for simulating human behavior. It is           maintenance missions. Workload profiles are generated so
+interoperable with other models and external simulations.           that crew-workload distribution and soldier-system task
+IPME has enhanced usability through a user friendly                 allocation can be examined. Manpower requirements
+graphical user interface, and provides a full-featured              estimates can be generated for a single system or Army-
+discrete event simulation environment built on Micro-Saint          wide. Additionally, outputs can be used as a basis for
+modeling software. The following are specific functions it          estimating manpower lifecycle costs [21]. This system also
+can perform:                                                        uses Micro Saint as a backbone for the structure and would
+                                                                    require a license for use.
+• Allows the user to select from two different workload
+models                                                              3. Man Machine Integrated Design and Analysis System
+                                                                    (MIDAS)
+• Supports performance shaping function (PSF) approaches
+and built-in micro models                                           MIDAS is a dynamic, integrated human performance model
+                                                                    (HPM) environment that facilitates design, visualization,
+                                                                    and computational evaluation of complex human-system
+
+                                                                7
+concepts in simulated           operational environments;              5. DISCUSSION
+symbolically represents many mechanisms that underlie and
+cause human behavior; it combines graphical equipment                  There are a number of tools, methods, and frameworks
+prototyping, dynamic simulation, and HPMs to reduce                    available focused on human and complex system integration
+design cycle time, support quantitative predictions of                 efforts. It is important to note that while a number of
+human-system effectiveness, and improve design of crew                 methodologies were gathered for this analysis, it does not
+stations and their operating procedures[22].          MIDAS            represent a comprehensive list of every human performance
+consists of three components, the basic operator model, a              evaluation methodology.
+Micro Saint Sharp task simulator, and an anthropometric
+model. While there is no direct cost in acquiring the MIDAS            Through the process of collecting the methodologies, it
+package, the anthropometric model requires specific                    became clear that there are no systematic or standard
+software which would need to be purchased.                             processes readily available to help find, much less,
+                                                                       characterize and understand the methodologies that
+4. Cognitive Reliability and Error Analysis Model                      currently exist outside of intensive literature searches. In
+(CREAM)                                                                general, there is a need for a better database and collection
+                                                                       of these various methodologies to be helpful for future
+CREAM is a human reliability analysis approach for                     designers of complex human systems.
+probabilistic safety assessments. It is a stand-alone method
+that can be used for accident analysis and for larger design           Besides the process itself, the analysis from the collected
+methodologies for more interactive systems. CREAM                      data also provided a number of interesting insights on the
+would allow for the designer to do particular tasks                    type of methodologies available. The first analysis grouped
+including:                                                             methodology type into a specific classification. While useful
+                                                                       as an exercise and as an early analysis tool, it can greatly
+“• identify tasks that require human cognition and therefore           vary depending on the definition and creation of different
+depend on cognitive reliability                                        classifications. There may be another set of classifications
+                                                                       that could help better distinguish the type of tools, methods,
+• determine the conditions where cognitive reliability and             or frameworks in a more useful form such as field of
+ensuing risk may be reduced                                            application (aviation, nuclear power plant operations, or
+                                                                       military operations.). Future analysis needs to include more
+• provide an appraisal of the consequences of human
+                                                                       meaningful ways to classify the methodologies.
+performance on system safety which can be used in
+PSA.”[23]                                                              The analysis also shows that there are few methodologies
+                                                                       that exist or are used early in the concept design phase of
+The purpose of CREAM is to help designers evaluate how
+                                                                       the systems engineering process. The number of
+likely a particular design could induce performance errors
+                                                                       methodologies currently in use might be an indicator of both
+by the operators. It provides a risk assessment to understand
+                                                                       the difficultly of creating an early concept design
+the error propagation throughout a system.
+                                                                       methodology or that designers have not found them
+5. Performance and Reliability Analysis via Dynamic                    particularly useful for this early phase. Both these
+Modeling (PARADyM)                                                     considerations must be addressed for adoption of future
+                                                                       approaches.
+A model developed by Draper Laboratory to analyze
+human-in-the-loop performance. The model uses Matlab®                  Also evident from this work is that while there are a number
+and Simulink ® to model different components of a system               of methodologies for human performance evaluation in
+capturing individual dynamics, failure modes, and any                  complex systems, there still doesn’t seem to be one that
+dependencies. One of the unique aspects of this tool is its            supports all the attributes that would be required for human
+use of Markov modeling to determine the systems reliability            spacecraft design. For example, the CREAM approach helps
+over a given mission timeline. Initial probabilities are set for       designers quantify error probabilities for one design, but it
+various Markov states and are propagated to other states               lacks flexibility in changing efficiently to another design
+over the systems lifetime via specified transition rates based         without having to re-map errors and any coupling of factors.
+on the failure rates of the components [24].
+                                                                       Another option besides adapting and modifying existing
+The limitation for this system for adding the human-in-the-            methodologies is to create a new one from scratch. The
+loop is similar to the CREAM model in that it lacks real               creation of a new methodology can be a completely new
+data from human spaceflight mission failure rates. While               framework, or it could be a merger of various other
+error probabilities and failure rates of the human can and             methodologies. The considerations for each must be
+have been adapted from error rates found in nuclear power              thoroughly weighed, as it could be largely useless to add
+plant operations, it has not been thoroughly verified as a tool        another methodology to the over 400 existing ones, but if it
+for spacecraft design.                                                 proves to be more beneficial and well-targeted to the human
+                                                                       spacecraft designer, then the effort could be worthwhile.
+
+                                                                   8
+6. CONCLUSION                                                     r_HSF_Occupant_Safety-Version1.pdf. Last accessed 1 Oct
+                                                                  2014.
+Numerous tools, methods, and frameworks have been                 [12] NASA (2007). NASA Systems Engineering Handbook.
+created to evaluate human integration into complex systems.       NASA/SP-2007-6105 Rev 1.
+These methods are often applied for specific uses and hard        [13] Cohen, M. M. (2008), ‘Testing the Celentano Curve:
+to adapt to new or different systems. Through a number of         An Empirical Survey of Predictions for Human Spacecraft
+analyses on the various methodologies, five stood out as          Pressurized Volume”, 38th International Conference on
+most applicable, extensible, and accessible for human             Environmental Systems, San Francisco, CA, June 30-July 2,
+spaceflight: IMPE, IMPRINT, MIDAS, CREAM, and                     2008
+PARADyM. While each of these methodologies has their              [14] Romero, J. J. (2007). “How Many People Have Been in
+specific limitations, a predominant concern for all of them       Space?-asks Gail”.By Joshua J Romero Posted March 26,
+includes the limited data regarding human performance             2007       on      http://scienceline.org/2007/03/ask-romero-
+issues in spaceflight.                                            people_in_space/ Last Accessed 1 Oct 2014.
+                                                                  [15] Sandal, G. M., Leon, G. R., and Palinkas, L. (2006).
+As human spaceflight becomes more accessible and routine,         Human challenges in polar and space environments. Rev
+there will be a continued push for better methodologies to        Environ Sci Biotechnol (2006) 5:281-296.
+ensure efficient and high-quality spacecraft designs. This        [16] FAA (2014). The Annual Compendium of Commercial
+work is a proactive step in developing the right tools,           Space Transportation: 2013. February 2014.
+methods, and frameworks for future designers. Ultimately          [17] Gore, B. F., and Smith, J. D. (2006). ‘Risk assessment
+the goal of having better methodologies is to ensure the          and human performance modelling: the need for an
+humans are protected, appropriately accommodated, and             integrated systems approach’, Int. J. Human Factors
+efficiently utilized by the spacecraft to achieve the best        Modelling and Simulation, Vol. 1, No. 1, pp.119-139.
+mission outcomes.                                                 [18] Chandler, F. T., Chang, Y. H., J., Mosleh, A., Marble,
+                                                                  J. L., Boring, R. L., and German, D. I. (2006). Human
+                     REFERENCES                                   Reliability Analysis Methods Selection Guidance for
+                                                                  NASA. NASA/OSMA Technical Report. July 2006.
+[1] NASA (2014). “Human Integration Design Handbook
+                                                                  [19] Pew, R. W. (2008). More Than 50 Years of History and
+(HIDH)”, NASA/SP-2010-3407/REV1, June 5, 2014.
+                                                                  Accomplishments in Human Performance Model
+[2] NASA (2006), “Health and Medical Policy for Human
+                                                                  Development. Human Factors: The Journal of the Human
+Space Exploration” NPD-8900.5A, May 2006.
+                                                                  Factors and Ergonomics Society. 2008 50:489.
+[3] NASA (2007a), “Design, Development, Test, and
+                                                                  [20] Fowles-Winkler, A. M. (2003). Modelling with the
+Evaluation (DDT&E) Considerations for Safe and Reliable
+                                                                  Integrated      Performance       Modelling     Environment.
+Human Rated Spacecraft Systems”, NASA Engineering and
+                                                                  Proceedings 15th European Simulation Symposium.
+Safety Center Technical Report: RP-06-108 Vol 1, V.1. 1
+                                                                  [21] U.S. Army (2010). United States Army Research
+May 2007.
+                                                                  Laboratory.
+[4] NASA (2007b), “NASA Space Flight Human System
+                                                                  http://www.arl.army.mil/www/default.cfm?page=445 Last
+Standard Volume 1: Crew Health”, NASA-STD-3001,
+                                                                  accessed 20 May 2014.
+March 2007.
+                                                                  [22] Gore, B. F. (2010). Man-machine integration design
+[5] NASA (2008), “Health and Medical Requirements for
+                                                                  and analysis system (MIDAS) v5: Augmentations,
+Human Space Exploration”, NPR-8900.1, May 2008.
+                                                                  motivations, and directions for aeronautics applications. In
+[6] NASA (2011), “NASA Space Flight Human System
+                                                                  P. C. Cacciabu, M. Hjalmdahl, A. Luedtke and C. Riccioli
+Standard Volume 2: Human Factors, Habitability, and
+                                                                  (eds.) Human Modelling in Assisted Transportation.
+Environmental Health”, NASA-STD-3001, January 2011.
+                                                                  Heidelberg, Springer-Verlag Berlin Heidelberg.
+[7] NRC (2007). Human-systems Integration in the System
+                                                                  [23] Hollnagel, E. (1998) Cognitive Reliability and Error
+Development Process. The National Academies Press,
+                                                                  Analysis Method (CREAM) 1998, New York: Elsevier
+National Research Council.
+                                                                  Science.
+[8] NASA (2013). Evidence Report: Risk of Incompatible
+                                                                  [24] Bortolami, S. B., Duda, K. R., and Borer, N. K. (2009).
+Vehicle/Habitat Design. Human Research Program Space
+                                                                  Markov Analysis of Human-In-The-Loop System
+Human Factors and Habitability Element. 8 March 2013.
+                                                                  Performance. IEEEAC paper #1200, Version 1, updated
+[9] Tauri Group (2010). Suborbital Reusable Vehicles: A
+                                                                  December 29, 2009.
+10-Year Forecast of Market Demand.
+[10] NASA (2011). “NASA Procedural Requirements
+(NPR) Human-Rating Requirements for Space Systems,”
+NPR-8705.2B change 3, Nov 2011.
+[11] FAA (2014). Recommended Practices for Human
+Space Flight Occupant Safety. Version 1.0. August 27,
+2014.
+http://www.faa.gov/about/office_org/headquarters_offices/a
+st/news_announcements/media/Recommended_Practices_fo
+
+                                                              9
+                                                                  development and deployment of a variety of NASA
+                                                                  planning and scheduling software tools for space
+                     BIOGRAPHY                                    operations, focusing on the International Space Station
+                                                                  Program. Her research interests include human space
+                                                                  exploration, human and automation-robotic integration,
+                    Christine Fanchiang received her              human-computer      interactions,  and     Earth-analog
+                    Bachelor’s Degree in Aerospace                missions.
+                    Engineering from MIT and is now in
+                    the doctoral program in the
+                    Aerospace Engineering Sciences                                      Dr. Brian Gore is a Principal
+                    Department at the University of                                     Investigator for San Jose State
+                    Colorado at Boulder with an                                         University in the Human Systems
+                    emphasis in Bioastronautics. Her                                    Integration Division at NASA Ames
+                    research focuses on defining an                                     Research Center. Dr. Gore holds a
+operability index for human-rating space vehicles to                                    PhD in Mechanical and Industrial
+better understand the effects of spacecraft design on crew                              Engineering from the University of
+performance. She is currently funded through the NASA                                   Toronto and has 17 years of Human
+Harriet G. Jenkins Graduate Fellowship.                                                 Factors and Ergonomics research
+                                                                  experience in the surface transportation and aerospace
+                                                                  domains using human-in-the-loop simulation and
+                                                                  computational modeling methodologies. Dr. Gore holds
+                                                                  membership in a number of professional organizations
+                   Dr. David M. Klaus received his BS             and standards committees and has taken on elected and
+                   in mechanical engineering from West            lead roles within these organizations (HFES, SAE, IEEE,
+                   Virginia University in 1984 and his            AIAA, SIGMA Xi). Dr. Gore currently leads a number of
+                   MS and PhD in aerospace                        research projects aimed at increasing the fidelity of
+                   engineering sciences from the                  human performance models, and at predicting human-
+                   University of Colorado Boulder in              system performance in the aerospace domain.
+                   1991 and 1994, respectively.
+                   Between 1985 and 1990, he worked
+at the Kennedy Space Center in Florida and the Johnson
+Space Center in Houston as a Systems Engineer on the
+Space Shuttle Program. He spent 1994/95 as a postdoc at
+the German Institute of Aerospace Medicine (DLR) in
+Cologne on a Fulbright Scholarship. Dr. Klaus is
+currently an Associate Professor in the aerospace
+engineering sciences department at the University of
+Colorado Boulder. He is an AIAA Associate Fellow and
+CU President’s Teaching Scholar, and has received
+various teaching and research awards including the
+ASGSB Thora W. Halstead Young Investigator’s Award
+(2003); AIAA Rocky Mountain Section Educator of the
+Year Award (2004); CU Provost Faculty Achievement
+Award (2007); CU Boulder Faculty Assembly Excellence
+in Teaching Award (2007); and the CU Charles
+Hutchinson Memorial Teaching Award (2011).
+
+
+                       Dr. Jessica Marquez received her
+                       BSE in mechanical & aerospace
+                       engineering      at      Princeton
+                       University and her MS and PhD
+                       in human systems engineering
+                       from MIT in 2007. Her research
+                       is in the Human System
+                       Integration Division at Ames. As
+                       a researcher, she develops tools
+                       for people who support human
+space exploration, including trainers, flight controllers,
+and astronauts. She previously supported the
+                                                             10
+

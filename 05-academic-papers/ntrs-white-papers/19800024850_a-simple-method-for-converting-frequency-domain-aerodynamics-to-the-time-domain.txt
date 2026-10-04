@@ -1,0 +1,1937 @@
+---
+title: A simple method for converting frequency domain aerodynamics to the time domain
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19800024850
+source_url: https://ntrs.nasa.gov/citations/19800024850
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-21
+retrieved: 2026-09-22
+sha256: df6d573d99b9fa152a83e7590347feeac5114fdaf02aa9399b68d38dad1a0a24
+pages: 40
+words: 4843
+cv_look_pages: 6
+---
+
+NASA                     Technical   Memorandum   81844
+
+
+
+
+                                                          ,L
+
+
+
+
+ A Simple Method fi)r Converting
+ Frequency-Domain Aerodynamics
+ to the Time Domain
+
+
+
+
+ Earl         H. Dowcll
+
+Langl£}' l_esca,','l, Cent,_"
+Hampton,    I'irginia
+
+
+
+
+mA.q&
+Nlltt0nlll/'_!,10llfltlllCs
+
+imd Spi_co Admlt_h;triltqon
+
+Scientific and Technical
+Information Branch
+
+I _)80
+                                             SUMMARY
+
+
+      A   simple,   direct   procedure   is developed     for   converting   frequency-domain
+aerodynamics    into indicial   aerodynamics.     The data required   for aerodynamic
+forces in the frequency     domain may be obtained     from any available     (linear)
+theory.    The method  retains   fleKibilJty    for the analyst  and is based upon the
+particular   character  of the frequency-domain      results.   An evaluation    of the
+method   is made for incompressible,      subsonic,  and transonic  two-dimensional     flows.
+
+
+
+                                           I_rRODUCTION
+
+
+      For many years,   unsteady   aerodynamic    theories  and applications    have f_cusod
+primarily   on the frequency   domain   since the aerodynamic     calculation    is simpli-
+fied if the motion    of an airfoil or lifting      surface  is restricted    to be simple
+harmonic   (refs. I and 2).    However,   for applications    to aeroelastic    systems   with
+feedback  control  and for aeroelastic      systems with structural     n¢_nlinearities,    it
+is of considerable    value to represent     the aerodynamic   forces   ir the time domain.
+
+
+       For an aerodynamic     theory which is linear        in the motion o| the aeroelastic
+system,   there is a fundamental       correspondence     between    the frequency    and time
+domains   through   a Fourier    transform   pair (refs. ] to 3).         Such a linear     theory
+may still include      important   physical   effects    such as shock wave motions         in the
+transonic    r_gime which are sometimes,        incorrectly,     thought   of as being invari-
+ably nonlinear.       In principle,    if the aerodynamic      forces    are _nown at a suffi-
+cient number of frequencies,        a numerical     inversion    to the ti_-domain       represen-
+tatlon _s always possible.         Such an inversion       is rarely practical,      however,
+because   the aerodynamic     forces are only known at a relatively            small number of
+frequencies.      Instead,   a parameter    identification     approach     is usually employed
+whereby   time histories     of aerodynamic     forces are assumed       te be sums of exponen-
+tials.    The time constants      and coefficients      are chosen    to give a best fit to
+the frequency     representation    of the aerodynamic       forces which has been obtained
+numerically    by some appropriate      aerodynamic     solution   procedure.
+
+
+      Suzh representations      in the time domain date from the early work of Jones                    L
+(ref. 4) and extend      to the recent interesting      work of Roger      (refs. 5 and 6)              L
+and Vepa    (ref. 7).    Roger employs    a particularly     straightforward     procedure     for
+determining    his representations     while Vepa uses Pade approximants          and a least-
+squares method.      Abel (ref. 8) and Dunn (ref. 9) have subsequently              improved     upon
+these methods.      It is the purpose     here to develop     a simple, systematic        _rocedure
+for time-domain     representations    which retains     flexibility    for the analyLt       and i_
+based upon the particular       character   of the frequency-domain       results.      _   evalua-
+tion of the method      is made for incompressible,       subsonic,    and transonic      two-
+dimensional    flows.    No difficulty    is anticipated     in using the method for three-
+dimensional    flows where results     are available     for the frequency      representation
+of the aerodynamics.       Finally,   although   not emphasized     here, the general       proce-
+dures may be useful when it is desired          to convert    from time-domaln      representa-
+tions t:O frequency-domain      representations.      Such applications      might arise when
+finite-difference      aerodynamic  calculations                 lead directly    to time-domain   results
+(ref. 10).    Marc    H. Wil]iams,  of Pr_ncPton                 UniversJty_   p|ovidPd   the frPqtlPnc_'-
+domain data used      in th_ compressib]e-flow                  examples.
+
+
+
+                                                      SYMBOLS
+
+
+ai         coefficients         of ex_-onential          time    representation
+
+b          airfoil      half-chord
+
+
+bi         exponents         of ek1_onential         time    representation
+
+C          Theodorsen         function
+
+
+CL         lift     coefficient
+
+
+CL_        lift     coefficient        due    to heaving
+
+CL_        lift     coefficient        due    to pitching
+
+CM         moment      coefficient
+
+
+CM_        moment      coefficient        due    to heavina
+
+CMu        moment      coefficient        due    to pitching
+
+D          _nominator          in polynomial          representation      of Theodorsen     function
+
+F          real     part    of Theodorsen           function
+
+
+G          imaginary        part     of Theodorsen          function
+
+h          heaving      displacement
+
+I          total     number     of    terms     in sum
+
+
+i           (_])]/2;       also,     index    for    summation
+
+
+k          reduced      frequency,           _|b/U
+
+L          lift
+
+M          Mach     number
+
+
+N          numerator         in polynomial          representation      of Theodorsen     function
+
+t          time
+
+
+U          free-stream         velocity
+
+u          angle     of attack;        also,     angle      of pitch
+
+2
+¢                fluid         density
+
+t                dimensional                  time,   Ut,'b
+
+                 Waqner            function
+
+
+_c,_(_m          transient               aerodynamic          functions
+
+                 frequency
+
+Super:,cr   i pt :
+
+PT               p_ ston           t_leor     y
+
+
+Su_cripts.
+
+
+I                imaginary               part
+
+
+I¢               real      pa_ t
+                                                                                                                                           L
+
+
+max              maximum
+
+
+         A bar    over         a symb._  der,ot_s             Fourier     transform;       a dot over     a s}_mbol denotes
+derivativ_        with         respect  to time.
+
+
+
+                                                              B_.g I C APPR(_CH
+
+
+       For deflniteness,  eonsidJer s,lme aerodynamic                                   generalized   foroe,   say     C L,
+due   to sQme step change  in a motion   variable,                                say     _/U.   "_'hus,
+
+
+
+                 h/U     = I                                                                                (t > 0)           (la)
+
+
+                 h U _ 0                                                                                    (t < 0)           (Ib)
+
+
+
+Assume      CL     may       be reI_esented              by
+
+
+
+                               I
+                           _                b_
+                 CL =                ale     _                                                              (I " 0)           (2a)     "
+
+
+
+
+                 CL = 0              ,                                                                      (_ - 0)           (2b)
+
+
+
+where the  ai, b i are yet to he _etermined                                 but it       is anticipated    that      bi <     O.
+Taking the Fourier  transform of equatlc.n_                                (1) and       (2),
+
+                                                                                                                                   ]
+                                I
+
+                          =                                                                                                                 (])
+                  _'U          __ (-bi * ik_
+                               i=I
+
+
+
+     where a bar above               a quantity   _tes       Fc_ri_      _ransfocm   and             k     is        the        transfocs
+     variable.  Taklng               the real   and ilag_nary      parts   of equation              (3),
+
+
+
+
+                  iCL\ I               VI ,ibi
+
+
+     At this   point,         there     are   two        important       questions:
+
+           (I) Is a representation such as equation (3) or equations (4) capable of
+     matching the known behavior to arbitrary accuracy by increasing the number of
+     terms retained in the series? This question is answered in the affirmative by
+     numerical examples _d,    in the special case of inocapressible flow, the ana-
+     lytical results of Desmarais (ref. 11).
+
+          (2) How can  ai,b i De determined conveniently, simply, and unambiguously?
+     Vepa has suggested a (modified) least-squares procedure for determining   ai
+     and b i   Here a simpler pzocedure is used. The b i are detelmined by the
+                        #--    T_,
+
+
+     extre_a of          CI'/h I; then the                 ai    are determined           by a least-squares                fit to the
+                                                    /-      -!
+     frequency-domain           data fo_            \CL/_ I          only,    subject to the two constraints                        that
+
+     the real part is identically satisfied                              at    k = 0 and _.      The resultant
+
+
+      CL/       is      then     predicted      at        intermediate           k    values.   Noreover        it         is    assumed
+
+     that the     b i, which are the poles     o_ the aerodynamic        transfer     function      (see
+     eq.  (3)),   are independent     of the particular    generalized       focoe    and moti_l       and
+     are inherent     characteristics    of the dynamics     of the fluid.         Vepa anticipated
+     this  assumption     would be useful   but did not pursue       it.     The prooedure        is shown
+     in this    paper to give good results.        Du_n (ref.    9) has adopted        this    assumption
+     partially _ usirig the same bi for each distinct type of motion, e g., hea_qe
+     and pitch.
+
+
+
+
+v*
+        Pot   completeness,                P_xjer's      prooedure    is   also   briefly        des_ibed        here
+ {refs. $ and 6).                  & maxlmm   value           of reduced    frequency          kaa x is     selected          which
+is an upper limit                  on the frequency             ranqe of   interest,         lext   the     bi     are       chosen
+as
+
+
+
+                      i
+         bi   =--                                                                           (i   = O, 1,    2,    3,     .     .,     I}
+                      I   k_x
+
+
+
+The     ai    are then determined        by a least-squares         procedure        usinq     both real       and
+imaginary       parts    of the aerodynamic        transfer   functions        (matrix     elesents).
+&nothe_     characteristic        of Boger's     prooedure,     though     not absolutely          e, sential,
+is that     the prooedure       is applied     to the aerodlmamic          infl,;enoe      matrix     relating
+pressure      to downwasb_ rather        than to the matrix         relatinq        qeneraliz_d       fo¢ces     to
+generalized        _ordi_t<      ;.  Th_s autnmatically         insures     all     m0tio_      and resultent
+aerodynamic        :_o¢ces are treated       on a camion basis.          Finally,       the limits         k _ 0
+and     k _ m i_e not enfo¢oed           as oonstraints       in itoger's       method.       J_el     (ref.    S)
+has modified        _ger's     method to enfo¢ce         the constraints         at    k = 0.
+
+        Frcm both s theoretical             and practical         point     of view,      it is better        to select
+only the baaginary           part o_ the aerodynamic              transfer       function     to constrl_-t        the
+representation          and to allow      the real part         to be predicted.             From a practical
+point     of view,      this  apt_oach      provides      an internal         check against:          (1) n,--'erical
+errors      in the frequency-domain            data and (2) deviations                 of aerodynamic       data from
+linearity       in the sotion       i_ they are taken fros               experinent       or finite-difference
+calculations.          From a theoretical          point     of view,       t_     real   and iaa_jinary        parts
+are those       associated     with a single         time-dependent           function.       Thus,     constructing
+a valid      representation        of the iaaginary          part    is sufficient          to insure      a valid
+representation         of the real       part.     In principle,          of oourse,        an alternate        approach
+is to construct          t_e representation          using the real           part     of the aerodynamic          trans-
+fer function         and .ocedict     the imaginary        part.       It will      beo_Ae clear        in the fol-
+lowing examples,           however,     why this     alternate       approach        is not the preferred
+choi ce.
+
+
+                                                       I"MOOIG'I_SS13_r_    ff.,OM
+
+        For linear,      potential,       incompressible,      two-diaensional       flow,   the fluid
+unstea6iness       is characterized           in the frequency     domain by a single        function,
+the Theod_rsen        function      C(k).       It is related     to the Wagner function           _ which
+is the tilt       due to _ step change            in dbwnwash at the airfoil         three-quarter      chord
+ (u_ually    said to be a step         chan_e      in angle of a_tack)       through    a Fourier    trans-
+focm pair      (refs.    1 and 2),      i.e.,
+
+
+
+
+                               I            C(k)
+               ¢'r)       --                --        e ikt   dk                                                                      (5)
+                               2_     ,-       ik
+
+
+
+                                                                                                                                      5
+                                                   g
+
+
+
+
+                    C(k.)        - Ik          S_(_)e-ikT           d_                                                                     (6)
+
+
+
+
+       Following    the         basic        approach,          ass,me    that      #        may be represented        by
+
+
+
+
+                    _(T)         • _          ai ebiT
+                                                                                                                       (T > 0)           (7s)
+                                      i=I
+
+
+
+                    +(T) = 0                                                                                           (T < O)           (?b)
+
+
+       Usin9 equations            (E}        and       (7),   the   corresponding            representation       of   Theodorsen's
+       Function  is
+
+
+
+                                        I
+
+                    C(k)        = _                    ikai                                                                               (8)
+                                               (-b i + Ik)
+                                      iIl
+
+
+
+       Or,   in terns      of     its        real       and imaginary       oomponents            C = F + JG,
+
+
+
+
+                    F = _                   aik2
+                             '2        b_ + k 2                                                                                          (,a)
+                            i=l
+
+
+
+                                  I
+
+                                             aibi k
+                    G = -_i=l               b_ + k2                                                                                      (SYo)
+
+
+
+
+             The   _requ_mcF-damain                      resu,;ts   for     F    and         G   are well     known    (refs.    I and 2)
+       and are shown as dashed lines           in figure   1.  The q_.stion      is how to                               determine         ai
+       :rod b i.     First   consider    the   a i.  As  k        r         and as    k                                       F + 1/2.
+       These  limits      are well    known foe any aerod_q,amic    theory,    since    k                                     is the
+
+       6
+
+
+
+
+_m-_                                                                                    mr
+steady-flow        limit       and    k " = is given                      in general        _though          not     for      N - O) by
+the piston       theo(y        (refs.   _ and 2).
+
+        ;_equirin9 equation (9a)                   to satisfy              these   II_its           means        _      - 6      and
+a1 -    F(k=0) = 1 so that
+
+
+
+                al     + a2 + • • • -             F(k=.)         = 1/2                                                                           {10)
+
+
+Consider       now equation,    (gb)             and, fo_ sbmplicity,     let   I                        = 2     so that only     b2
+remains       "o be determined.                  There are various    ways this                          night    be dk)ne, e.g.:
+
+        (1)   Collocation,             i.e.,     require             b2     to be such          that       equation           (9a)       or   (9b)
+                 is exactly            satisfied       at        m         intermediate            k
+
+                0<k<=
+
+        (2)   Least squares,  i.e.,                 require           equation         {ga)     an4/or           (9b)   be satisfied
+                in a least-equates                  sense
+
+Strictly,        this    second   approach               leads      in general          to a nonlinear     equation    for
+the      b i.   Vepa     (ref.  7) avoids                this     difficulty           by rewriti_     equation     (8} as
+a ratio       of two     polynomials=
+
+
+
+                              m(ik)
+                C(k)     =-                                                                                                                      (lt}
+                              D(ik)
+
+
+
+and    then   multiplying             equation          (11)     through      by    D,      i.e.,
+
+
+                D(Ik)C(k)         = N(Ik)                                                                                                        (12)
+
+
+
+before     applying    the least-_quares           procedure      to determine      the ooe_flclents          !_n the
+pol_nominals        of  N and D.           This aptoroach       _oes lead to linear          algebraic     equa-
+tions     for these    coefficients.          While     the ixocedure       put forward      below is no more
+rigorous      fundamentally        than that     of Vepa,     it avoids       two objections       whl-.h might
+be raised      about Vepa's        Ixocedure.       First,    the    bi     retain    their    Individual
+identity     and are not lost           in cmpllcated        expressions        for t_m pollm_mial        coef-
+ficients     of     14 and     D; second,      equation      ($),   or actually       equation      (gb),  is
+satisfied       in a least-squares         sense     (to determine        a i) and not the m_di_le-3
+equation      (12).    Satisfying        equation      (12) in a least-squares           sense gives undue
+weighting      to high      k values.
+
+    The procedure             suggested          here     for     deternining            b2         is    siaq)le.         For       I    = 2,
+since   b 1 = 0,
+
+
+
+
+                                                                                                                                                     7
+
+
+
+
+                                                                                                                                                         I
+                           a2b2k
+                      m         ill
+
+
+
+               G ,,       b22
+                           m
+                                                                                                                         (1 3)
+
+
+
+
+Mow G = 0 at     k - 0,_                (which eq. (1 t) already  satisfies)                   and has an extremus
+at   k = 0.2.  (See fig.              1.)   _ju_.tion  (1J) has a_ extremum,                   using elementary
+calculus,   at
+
+
+
+               k = ±b 2                                                                                                  (14)
+
+
+Hence,  select   b2 = -0.2s     the minus sign gives         the correct    sign of     G and
+also provi4es   a stable    aerodynellc     system.     The corresponding       approxLsants     to
+F and O are shown as solid            lines   in figure    I along with their       exact   counter-
+parts.   The agrement     is reasonable,       though   certainly    imperfect.
+
+        The approxJJumt            can be Isqxoved        by increasing            I.    The question         then
+becomes how to determine                 the other       bi.      If there were several            extrema for            G
+ (and they were well             separated      as is typical          for the ismglnary         parts      of aero-
+dymmic       generalized         forces     when multiple         peaks occur),         then a value of            bi
+would be selected            to be equal         to the     -k      value    at each p_.ak.        In the present
+ex_ple,        however,      since      no other    extrema       are present,        additional         bi     are
+simply     added on either            side    of -0.2    to improve        the approximation.             In figure        2,
+results      are shown for            bI = O, b 2 - -0.1,              b3 = -0.2,       and b4 = -0.4            and in
+figure     3 for        b1 = 0,       b2 - -0.05,        b3 - -0.2,        and b4 = 0.6.           Note that        the      bi
+on either        side of an extreBus            are chosen        here by inspection           and iteration.             This
+sispltfies         the procedure         but presumably         incurs     sole    loss    of accuracy        compared       to
+determintn_          the    bi     as part of a least-squares                solution      proceddre.         The cor-
+responding           a I were determined,           after     the      b i were selected,          by a least-
+squares      fit     to equation        (gb) fo_ a selected            n_ber     of     k values       subject      to the
+constraints         of equation         (10).     The procedure          is standard       using   Lagrange        multi-
+pliers     to invoke        the constraints,          and the details           are ositted.         Up to 27 val_es
+of     k were used,          although        15 gave essentially           the same results           and as few as 5
+gave reasonable           results.
+
+       The relxasentations        of figures    2 and 3 are much improved         over    those   of
+figure   1, with those       of figure    3 being somewhat    better    than those      of figure    2.
+They could    be i=Ixoved      further    by increasing    I.    H(_eever,   this    seems unneces-
+s_ry_ instead,      _parisons        with alternative   representations       are considered.
+
+       The wel!-knoen       representation        of Jones      (refs.    1, 2, and 4) is shown in fig-
+ure 4.    This corresponds          to    I = 3 with        b} = 0e       b 2 = -0.0455,      b 3 = -0.3       in
+the present    model,     but the       a i were not determined             by Jones    using  a least-
+squares   procedure.       Using Jones'        values   of the         bi   and a least-so_uares        proce-
+dure to determine       the      a i changes      the deta;ls        of the representation,          although
+ it is not noticeably         l_proved.       (See fig.     5.)     Thus,    it is concluded       that Jones'
+approximant     is less     accurate      than _be present           I = 2 approxiaant;         the basic
+reason   for this    is the n_abe.r and choice            of poles.
+
+
+8
+        In figure     6 the       bi  are chosen    fr_   Deslarais'     continued      fraction     repre-
+sentation       (re_.   II) of Theodorsen'r       :_wtlon     for    I = 4      (to t_ dlsc,:_:. _ ,'ur-
+ther in following          sections).      The results    are conl_rable       to t_>s-..-.;_';n     e&:     ,.,_
+for     I = 4, but are not better           as far as on_ can Judge.           Flnally,      _'- _hould     _,
+noted     that   Veps (ref.       7) uning h_s ._ore elaborate       _oceduLe      :,as also     obtained
+excellent      representations        of   F and      G,
+
+        The quantity        b_ is assumed to be te._,                 alt_ough       from a sethenati_l           point
+of view0 complex         cen;_,ga_.e     pairs    are petsissible.             Also,     all   po:es    are assumed
+to _, simple       ones,    e.g.,     no double       poles.      Cosple% and double            poles    were inves-
+tigated     n,nertcatly,        but _heir      inclusion       ga,t-_ no noticeable          lmprovaent.         This
+result    is consistene.        "ai(:h Desgarais'        cov:inued      f_.action      representation        which
+shous that only siBple             poles    exist     alm._ the negative,            imaginary       k-plane   axis   to
+any order      of approximation.            Also,     see the discussi>n           o_ Edeard_        in reference     3.
+
+
+                                    Cont';nued   Fraction      Representaeion
+
+        Let   us now turn to a brief       review      of the very interasting     results     of
+Dessarais       (ref.    11) for the support      they     lend to the adlittedly    heuristic
+procedure       descrlbe¢:   _bove.   Desmarais      has establishe_    the following      continued
+fraction      representation      of Theodorsen's        function:
+
+
+
+                           (-1/2)
+       C(k)    = 1 *
+                                    1
+                        1 +
+                              14k +1
+
+
+                                                 3
+                                        1 +
+                                              14k + 3
+
+
+                                                                  5
+                                                      1 +
+                                                            14k       + 5
+
+                                                                       I     .   .
+
+
+
+This infinite        fraction      _aay be truncated     to obtain     approximations       of various
+orders,   and Desmarais           has developed     convenient     recurslon    formulas      for these.
+At any order       of approximation,          C(k)     is represented       by a r_tio     of polynomials.
+All oE the poles are along the negative                   imaginary    k-axls    (corresponding      to
+negative,     real      bi),    i.e.,   the branch cut of Theodorsen's            lunch.ton.     The _x)les
+become inflnitely          dense as the order of the approximation                 is ir_reased.      The
+contin_ed     _ractlon       representation      converges everywhere         in the cc_.olex k-plane
+except along the branch cut.                Thus, Thsodorsen's        _un_tion    .has no poles,     except
+possibly    along      the branch      cut.
+
+
+
+
+                                                                                                                           I
+           The ixacticel     =lgnificance    of the above results       is that,    altho,_     in fact
+     there are no poles of        C (k), one may expect to obtain         an aplxoximatior,     ot
+     any desired    accuracy    by reWesentin      f C(k)    as a rational     function     whose poles
+     are all   along the negative,        bmagl;lary k-axis.
+
+              Fo_ additional           discussion      of the continued           fraction      erode1, see Desaarai_
+      (ref.    11).      Even t_ough there is no knoun counterpart                         for c_mpresstble           flow,     It
+     is possible         a similar        situation      exists.       For subsonic        flow,      at small       k the
+     aerodynamic         forces      behave     very much as for in_pressible                     f'low, while      for large
+     k the aerodynamic               forces     rill   mlmptotically           apixoach      those of "piston           theory."
+     Finally,       |t is worth mentioning               that,    for a give_        nueber     of poles      the least-
+     squares      prooedure uay be used to obtain                     a bottar      match with the true             C(k)      than
+     the oontinued          fraction        repre_.ntatton         (ref.   11).      This is not to say that the
+     latter     is,     in general,         inferior     to the focs*-_.          Indeed,      Just the opposite           is
+     true,     as w_ll be clear to the reader.                      It is simply to say that for the purpose
+     of providin_         -_._ a_curate        relxesentation         of   C(k)      by a ratio         of polynomials,         a
+     better     numerical        fit     can be obtained         using the least-_quares                procedure than that
+     given     by any specific            or&_r trunca'ion          of t_      continued      fraction       relxesentation.
+     It is the fact           that     the latt_.r     stay be. used _o generate             a systsm,ltic        and conve_9-
+     ing rel_esentation              of any order,         as well      as the theoretical            support     it gives      for
+     t._ least        squares      method,      which underscores          its    fundamental         importance.
+
+
+                                                       Wag;;er    Function
+
+             Once the      ai,b i are known, one has a representation                        of the Wa_Jner func-
+     tion    from equations        (7).     Results      were obtained        for the       I = 2 approximant          (of
+     fig.    1) and the better          of the two        I = 4 approxiAants             (of fig.     3).      For the
+     I = 4 representations              whose results        are shown in figure            3, the corresponding
+     Wagner function         representation         is indistinguishable            from published         results
+      (refs.     | and 2).      By contrast,        the    I = 2     result      is somewhat       different       and it
+     is shown along with the exact                result     in figure      ?.    Figure      7 and its co_resa-
+     lble    co_nterpart_       are the ultimate          results   of the present           procedure.         The excel-
+     lent    agreement     between      the   I - 4 approxi_ant             and the exact         result     is very
+     satisfying.
+
+
+                                           _PLI_TIOH          TO t_OM_PJ_SIBI_
+
+              Now let   us turn to the effects             of COml_essibility.             _h,o examples     will
+     be considered.          They are a two-dimena_.onal             _lat    plate     at   N • 0.?      and an
+     l_Ca 64N)06 airfoil            at    N = 0.84.      The numerical        data     are, respectively,         from
+     classical      aerodynamic        theory,   which ass,,,es       an infinitesimal          perturbation        about
+     a uniform      mean flo_,        and the transonic       aerodynmlc          theory    of Hillims       (rare.     12
+     and I 3), which considers             an infinitesimal        _ynasic      perturbation       about a non-
+     uniform      mean flow including          a shock wave.         The shock motio_          due to the airfoil
+     motion     is also taken into account              in Wiiliasa'       theory      and is consistently
+      treated     as infinitesimal.
+
+
+
+
+     10
+
+
+
+
+r_
+                                          Flat Plate at       M = 0.7
+
+          For the flat plate at M - 0.7,  the lift and moment (abo,t midchord)
+     due to heaving and pitching (about mldchora)are considered.   Hence, four
+     aerodynalic   transfer functions       are c_apu_d:       CL_/u,     C-,,     CM_/U, and    CMa.
+
+     These are shown in figures 8, 9, 10, and 11 along with an eight-term (pole)
+     representation using the present _ethod.  The bi were chosen from an examina-
+     tion of the lJaglna_y parts of          CL_/_I,   CLa,    CM_/U,     and    CMa,   In general,     it
+
+     is found that the extre_a   of the imaglnary parts of these functions occur at
+     the same k values,      l_wever, they are more distinct for some functions than
+
+     for others.   FoL e_-'_4_le,compare         _//CL_/u_I in figure 8(b) to           .(CI_
+                                                                                            3/   in fig-
+     ure 9(b). The latter actually offers a better definition of the extrema                      than
+     the former. The bi are as follows:
+
+               t_-0
+
+               b 2 = 0.03
+
+               b 3 = -0.1     (where imaginary part has one extremum)
+
+               b 4 = -0.3
+
+               b 5 --0.8      (where imaginary part has a near extremum)
+
+               b 6 = -1.2
+
+               b 7 "-1.75      (another    extreuum)
+
+               b 8 = -3.5
+
+     The corresp_dlng   _i are given in table I. TE_ results shown are good repre-
+     sentations and no others were studied; hcMever, moderate changes in the b i
+     values and even a reduction Jn their total number would probably still lead to
+     satisfactory results. These   b i were, in fact, suggested _v the results for
+     the second example, which chronoloqlcall_ were obtained first.  It should _e
+     noted here that the results for CM_   at high k are even better than indi-
+     cated as the dominant piston theory-terN has been subtracted out. ,_ee subse-
+     quent discussion following the next example.
+
+          Using the above results, the aerodyn_Ic  indlcial fu_ctlons ,_ere com_uted.
+     These are shown in figures 12 and 1 3. The definitions of the var[oua aero-
+     dynamic terms are:
+
+     h/U       ratio of heaving       velocity to free-stream           velocity
+
+               angle   of   pitch
+
+
+
+
+                                                                                                         11
+
+
+
+
+e_
+    cT           ---
+                   Lm b
+    CM           -- M/pU2b2
+
+    where   L   and  M   _e  di=ensional     lift and moment,    respectively,    about midohord
+    and   b   is the dimensional    h_f-chord.      As with the inccmpreszible       counterpart,
+    the Wagner function,    figures    12 and 13 ate the ult_.mate results       of the imesent
+    method.    They are the time histories       the experimentalist    :_uld measure     and the
+    inputs to the ._e_.oelastic an's equations       of Notion.    At short times     (correspond-
+    ing to high fr_qenc/es)     the results    are expected    to be less accurate,     even
+    though at • = 0      the results    _:e exact because     of the enforoement     of i_e _iston
+    theory constraint    in tt_ frequenc.y d_ain      as   k                _.
+
+
+          Th(- previously  publishe_   values   (ref. ]) of indicial aerodynamic   funcT.ions
+    for pitch and moment     about the. qmn'_er-chord   are avail_ble  in a scmswhat   dLT-
+    ferent form.     For heaving,  the nondimensonal    lift and m_mlt   are defined by
+
+
+
+:                               L
+                 _c -
+                              PU 2
+                        2. -_- (2b)_
+
+
+
+
+                                     M
+                 _om-
+                               OU2
+                         2, -_- (2b)2hU
+
+
+
+
+    For pitchirg,    the published    results  are for a step change in pitching       velocity,
+    but zero pitch angle - a mathematically         well defined   but physically    artificial
+    motion.    No comparisons   were made for this case since com_arisons          of th- results
+    for heaving which are shown in figure         ]4 were so encouraging.     Not£ that not all
+    of the differences    between the present      results  and those previously     published
+    should necessarily    be attributed     to inaccuracies   in the present    approach.    See
+    Ashley's   discussion  on pages 347 to 350 of reference        ], as well an the original
+    papers   cited in reference    ].   Also see Edwards    (ref. ]4).
+
+
+          Vepa    (ref. 7) has made a similar   comparison  to published  results  using                   his
+    procedure    for   M = D.5.   Similar agreement   (and differenu_s)  were noted.
+
+
+
+                                         NACA   64A006   Airfoil    at   M =   0.84
+
+
+         [_he example of an NAC_% 64A006 airfoil       at   M = 0.84   motivated   the present
+.   work and, in fact, was completed      first.    Hence,   it is considered    in somewhat
+    more c_tail, including    a study of the effects       of number of terms retained     in
+    the e_ponential   time-history   representation     and, also, the number     of   k  values
+    used   in the   least-squares          determination     of    the   coefficients   of   the exponentials.
+
+    ]2
+A.    R. Seebass, ] of the University  of Arizona,   has also                             noted    the effectiveness
+of    such representations  for transonic  aerodynamics.
+
+
+        In    figures      15 to 18 the      transfer       function_        are       shown    along   with    represen-
+tations obtained   by the present method.   Consider   figure   15 first.   Results  are
+shown for eight and _our term representations;     and, for the latter,     17 and 28
+k   values are used for the least-square-   appruximation.      These results   give an
+indication  of the senl_itivity of the method   to changes    in these parameters.    The
+bi  are the same as those                used     in the        M = 0.7      flat-plate          example,      and    the     ai
+are given in table II.
+
+
+       It is clear from (._mparing the results of                           figures       15 to 18 to each            other
+and   to the earlier results  for  M = 0 and 0.7                            that
+
+
+      (1) More           terms   are   required     at    the higher         M     to obtain       a good
+representation.
+
+
+        (2) More         terms   aze   required     for pitching           than    heaving       motion.
+
+        (3) More         terms   are   required     for moment       than        for    lift.
+
+
+These    conclusions         are     intuitive     but,    nevertheless,           important.
+
+
+      Consider  in particular    the results of figure 18 for moment        due to pitching.
+There  is a substantial   degradatinn    of the representation      at high    k  values as
+the number of terms retained      in the representation      is reduced   from eight to
+four.   The effect   is exaggerated,    however,   because  in figure 18 (as in fig. 11
+for   M = 0.7) the piston-theory     contribution     (r_fs. I and 2) which is dominant
+at high frequencies    has been subtracted     out.    The piston-theory    contribution  is
+given by
+
+
+
+                    PT      /4
+
+
+
+For a step change in    e, this gives                     a delta function              at     I = 0    which is sup-
+pressed  in the present presentation                      of the results.               For    simple   harmoDic _tion,
+this gives
+
+
+
+                    PT       4
+                C        = - -- Ike ik_                                                             (_ = e ik_)
+                    M        _M
+
+
+
+
+which    clea_ly         dominates     for high      k     over    the     residual       shown    in figure         18.
+
+
+
+
+        ]In    private      communication         with    the    author.
+
+
+
+
+                                                                                                                                   I
+      Finally,   consider   the in,3icial functions      which are displayed      in fig-
+ures ] 9 to 22.    They are shown for both a four-term           and eight-term    approxi-
+mation   using 28    k  values.   Comparing     these results     to those for     M-   0.7
+(cf. figs. ]2 _n_ 13), it is seen the indicia1            lift behaves     in a rather   similar
+fashion.    Euwever,   the indicial    mo.T.ents are different      and generally   smaller    in
+magnitude.     This fact may explain      the relatively     greater   difficulty   of obtaining
+a good representation     of the moments     at   M = 0.84     com_mared to    M = 0.7.     There
+are, of course,    no previously    p_lished     results    to which those of figures       ]9
+to 22 may be compared.
+
+
+      Using his procedure  for supersonic   and transonic    flow, Vepa   (ref. 7) main-
+tains "for higher order approximants     the poles behaved    in an erratic   manner,
+often moving  into the right half of the     sl= ik]   plane."    Although   Vepa sug-
+gested a possible   way of overcoming  these problems,    the present   procedure   by
+its n_tu_e avoids the difficulty.     Roge:   (ref° 6) has also noted this behavior
+in his work and    chooses    the   bi   to be. negative to avoid the problem.    Durra
+(ref. 9) allows    both    ai   and   b i to be determined optimally    in a least-squares
+series but _oes    ir_oke the constraints       that the  bi  be negative.
+
+
+
+                                        CONCLUDING   R_MARKS
+
+
+      A simple,   direct procedure     is suggested    for converting    frequency-domain
+aerodyn_,ics    into indicial    aerodynamics°     The time-domain    presentation     is in
+the form of a sum of exponentials.          Examples   for classical    incompressible    and
+subsonic,   compressible    flow suggest    that known results     can be reproduced     accu-
+rately.    Ne,I results   are presented    for transonic    flow based upon Williams'
+frequency-domain     theory   (AIAA J., vol. ]8, rio. 6, Jtme ]980).         All examples
+studied are two-dimensional;       _owever,    no difficulty    is expected   in treating
+three-dimensional     flows where the appropriate       frequency-domain     aerodynamic
+representations     are available.
+
+
+      Not unexpectedly,   it is shown that more terms are required     in the repre-
+sentation   for (1) higher transonic    Mach numbers (though presumably   for suffi-
+ciently   high Mach numbers   this trend reverses),  (9) pitching  compared  to heaving
+motion,   and (3) moment  compared  to lift.
+
+
+
+Langley Research     Center
+National   Aeronautics    and   Space   Administration
+Hampton,   VA 236_5
+August   14, 1980
+
+
+
+
+14
+                                                 _CES
+
+
+ I. Bisplinghoff,     Raymond  L.;         Ashley,  Holt; and Halfman,             Robert   L.:      Aeroelas-
+       ticity.    Addison-Wesley           Pub. Co., Inc., c.I 955.
+
+ 2. Dowell,     Earl   H.,   ed.;   Curtiss..    Howard       C.,   Jr.;    Scanlan,    Robert     H._   and
+        Sisto, Fernando:     A Modern         Course        in AeroelastJcity.          Sijtnoff     & Noordhoff
+        (Netherlands),   ] 978.
+
+
+ 3. Edwards, John W. : Unsteady Aerodynamic Modeling   for Arbitrary                               Motions.
+      AIAA J., vol. 15, no. 4, Apr. ]977, pp. 593-595.
+
+
+ 4. Jones,     Robert T.:  The       Unsteady        Lift    of   a Wing    of Finite    Aspect     R_tio.
+      NACA     Rep. 68], 1940.
+
+
+ 5. Roger,   Kenneth L. ; Hodges,    Garold E. ; and Felt, Larry:    Active Flutter
+       Suppression  - A Flight    Test Demonstration.     J. Aircr.,  vol. 12, no. 6,
+       June 1 775, pp. 551-556.
+
+
+ 6. Roger, Kenneth   L. : Airplane  Math Modeling  Methods  for Active Control
+       Design.  Structural  Aspects  of Active Controls,   AGARD-CP-228,  1978,
+       pp. 14-1 - lq-11.
+
+
+ 7. Vepa, Ranjan:    On the Use of Pade Approximants                        To Represent    Unsteady        Aero-
+       dynamic  Loads for Arbitrarily  Small Motions                       of Wings.    AIAA Paper
+       No. 76-17, Jan. 1976.
+
+
+ 8. Abel, Irving:   An Analytical    Technique    for Predicting    the Characterlstlcs                              of
+       a Flexible Wing Equipped   With an Active Flutter-Suppression         System  and
+       Comparison With Wind-Tunnel    Data.    NASA TP-1367,    1979.
+
+
+ 9. Dunn, H. J.:        An Analytical       Technique  for Approximating                Unsteady     Af ro_ynam-
+       ics in the      Time Domain.        NASA TP-1738,  1980.
+
+
+10.   Ballhaus,  W. F.; and Goorjian,   r. M.:                 Computation       of Unsteady       Transonic
+         Flows by the Indicial  Method.   AIAA                J., vol. 16,       no. 2, Feb.       1978,
+        pp. ]]7-124.
+
+
+1]. Desmarais,     R.:   A Continued         Fraction        Representation       for Theo_orsen's          Cir-
+       culation    Function.    NASA        TM-8] 838,       1980.
+
+
+12. Williams,   M. H.:   Unsteady Thin Airfoil  Theory for Transonic                             Flows   With
+       Embedded  Shocks.   AIAA J., vol. 18, no. 6, June 1980.
+
+13. Williams,     M. H.:      Unsteady     Airloads         in Supercrltlcal       Transonic       Flows.
+        AIAA   Paper   79-0767,     ApE.    1 979.
+
+]4. Edwards,   John. W.:   Applications    of Laplace   Transform   Methods  to Airfoil
+      Motion   and Stability   Calculations.     Technical   _apers on S.ructures     and
+      Materials    - AIAA 20th Structures,    Structural    Dynamics,   and Materials
+      Conference,    April 1979, pp. 465-481.       (Available   as AIAA Paper 79-0772.)
+
+
+
+                                                                                                                    15
+                     TABLE     I.- _C                  TRANSFER     I_NCTIGRS         FCR
+
+                                   A FI_T      PI_TE    AT      Pl = 0o7
+
+
+
+
+                                                                                                 bi
+
+
+
+         a]         8.798           8.798               4° 41                 (. 41          0
+
+
+         a2        -1. 361 3       -1. 054]             -.5378               -I. 0241        -. 03
+
+
+.        a3   i    -2.]095         -2.5259             -_..6484               -.1414         -.I
+
+
+         a4   i    -3. 2864        -I. 60 87             .0058               -5. 2324        -. 3
+              i
+         a5        ]4.8169          5.2806              -.0369               42.879          -.8
+              I
+
+
+         a6       -29.5748         -3. 5559            -5. ]654            -] 02. 021 2     -1.2
+              !
+
+
+         a7   I    23.2814          4.493               2.4296               76. 506_       -1.75
+
+
+         a8   !    -4.8503         -4.1129               .5431              -]5.3762        -3.5
+              I
+
+
+
+
+    16
+              _3_BI_ If.- AEROD3EN&NIC               TR&_SFER      FII_C?IONS
+
+
+                          N&CA      64A006      AIRFOIL      AT    X = 0.84
+
+
+
+
+"i
+       '
+       I CL_/u
+       ,J                     I     %
+                                                 1 1
+                                              Four
+                                                      C_,,U
+                                                     terms
+                                                                          C_
+                                                                                      ]   _1_,
+                                                                                               bi
+
+
+
+
+aI           a9.2                   9.2                0                  0
+             bg. 2                                                                         0
+
+
+a2          a-5.8886               -4.9091             1.7081                 .7379
+            b-5. 981 5                                                                     -. 1
+
+
+a3           a_. 0909               3.1 026           -2. 2094           -4. 8973
+             b_. 5006                                                                      -. 8
+
+
+a4           al. 541 5             -2. 631 4               .5012          4.1594
+             b2. 0442                                                                     -I .75
+
+
+                                             Eight   terms
+
+
+aI           a9.2                   9.2               -0.!               -0.1              0
+
+
+a2              .550]               1. 3655            -. 31 35          -I. 31 47         -. 03
+
+
+a3           -5. ]476              -6. 384             I. 6297            3.0863           -. I
+
+
+a4           -2. 4487               ]. 3039                .379          -3. 098]          -. 3
+
+a_            5.1096              -17.141_             -.2292            20.9301           -.8
+
+
+a6           -7.8209               45.251 9           -3. 922          -54. 9848          -1.2
+
+
+
+
+             -2. 5421               5.7225              .81 25           -7.6470          -._•5
+aa78          7.8616              -34.5566             1.7436            43.1282          -1.75
+
+     a28    values     with       kma x = 3.75.
+     hi7    values     with       kma x = 1.0.
+
+
+
+
+                                                                                                    17
+                 .9
+
+                                                                                    Ey_act
+
+                                                                       _-Approxt             mare
+
+
+
+
+                   7               \
+                  •                    \\
+
+
+
+
+                  .5            I             I         l           I                I         1          I      I     _    _-']
+                       0       .2            .4        .6         .8               l.O        1.2       1.4    1.6    1.8           2.0
+                                                                                    k
+
+
+                                                                  (a) Real               pact.
+
+
+              - .25
+
+
+
+
+              - .20
+
+
+
+
+                                            ,1        i           1                1          I         I      I      I             J
+                 0            .2            .4        .6          .8           1.0           1.2       1.4    1,6    1.8           2.0
+                                                                                k
+
+
+                                                            (bl   ImaginarY                  l_arL.
+
+     Figure   1.-          Theodorsen             function        for  I - 2,                       b1 = 0,   b2 - -0.2,              a 1 = 1.0,
+                                                                   a2 = -0.5.
+18
+                    L0
+
+
+
+
+                    .9   /               ....           Eu_
+
+
+
+
+                                                    k
+
+                                       (a) Real pare.
+
+
+
+
+             -.20
+
+
+
+
+             -.|0
+
+
+
+
+            -.0
+
+
+
+
+                                                k
+
+
+                                 (b)   ZmagLnary part.
+
+Fiqure    2.- Thecdorsen function   for   I = 4, bl - 0,     b2 = -0.I,   b3 = -0.2,
+         b4 = -0.4,  aI = 1.0,   a2 = -0.3S76,   a3 = 0.1417,    a4 = -0.2841.
+
+
+                                                                                       19
+                                (a) Real part.
+
+
+
+
+                             (b} Imaginary part.
+
+
+ F_gure 3.- Theodorsen function fo_ Z - 4, b I _ 0, b 2 - -0.05_  b3 - -0.2,
+      b 4 _ -0.6, aI - 1.0, a2 = -0.146S, a3 = -0.2435,   a4 - -.0.1100.
+
+
+2O
+          0!
+          .9
+
+
+                                                        _       J,mi's ° _ppri_xlq,_n_
+
+
+
+
+                   !        !         1
+                                                 .8I         I
+                                                                         i.,I         !         l      J
+          "So      .,       .4       ._                     1.o                      ,.4       1.o    1.8    _o
+                                                            k
+
+
+                                              (a) Real       part.
+
+          -.25
+
+
+
+
+          ..201
+
+
+
+
+          -.10
+
+
+
+
+          - .05
+
+
+
+
+                        I        J        _         l            _          J             l     l       I      I
+               0        2       .4        6        .8           l.O        1.2           1.4    1.6    1.8    2.0
+                                                                k
+
+
+                                      (b) I_aginary part.
+
+
+Figuro 4.- ?heodorsen function for I = 3, bI = 0, b2 = -0.0455,                                                   b 3 = -0.3,
+                    a I = 1.0, a2 = -0.165, a3 = -0._35.
+
+                                                                                                                            21
+                   I0
+
+
+
+
+                        _l     t    t      t          t         1     I     1     1     I
+                        .2    .4   .6     .8         t.o       1.2   !.4   t.6   t.8   2.0
+                                                     k
+
+                                   (b)   Imaginary         part.
+
+         Figure 5.- Theodorsen function for _ = 3, bI = 0, bI _ 0, b2 = -0.0455,
+            b3 - -0.3, a I - 1.0, 12 = -0.1740,  a3 _ -0.3166. (ai calculated by
+            least-squares proceOure.)
+
+    22
+j                                                                                            !
+I
+                                                                    ----   Exact
+          .9                                                        _      Approxlmant for    I =4
+                                                                           USing D_smarais'    poles
+
+
+
+
+          .5        I        i           i           I         I            I         I          I       I
+                   .2       .4         .6           .8        1.0          1.2       1.4        1.5     1.8     2.0
+
+                                                              k
+
+                                                 1_1 Real      part:.
+
+
+
+
+         -.25 I
+          - .20
+
+
+
+
+         -.15
+
+
+
+    13
+
+
+         -,10
+
+
+
+
+                        i        I           I           I          I        l         ;           I      I       l
+               0    .2       .4          .6              .8    1.0          1.2       1.4         1.6     1.8     2.0
+
+                                                                  k
+
+                                     (b) Imaginary part.
+
+Figure 6.- Theodors_-n function for I = 4, bI = 0, b 2 = -0.0594,
+   b3 = -0.2536,   b 4 = -0.65]9, a] = 1.0, a2 = -0.187.3, a3 = -0.2358,
+   a4 = -0.0769.   (ai calculated by least-squares procedure.)
+
+                                                                                                                        23
+     1.0-                                                    0           0
+                                             0
+
+
+
+
+                                            0         I--2
+
+      .6                                             • I=4        and exact
+      •
+      .4
+
+                                                                              |
+                                                                              l
+      9.    --
+
+
+
+
+                     I           I              I             I           l
+       0            4           8           12               16          20
+                                            T
+
+
+                 Figure   7.-   Wagner   function.
+
+
+
+
+24
+                                                                                                                                                             JlP
+
+
+
+
+               +I                                     _."Z,I ",",IV,| ] tIh'O r",
+
+
+
+
+                    4_                          t_    I++I_iII-tt'rnl        rt, llre,,t',It,lt    non                                  A_.Xnlptote-_
+
+
+
+
+               0                                I                                                        2                         3
+
+                                                                         k
+
+
+
+
+                                                           (a) Real                 part,
+
+
+
+
+                                                                                                                                                                   ++
+
+               1
+
+
+                                                                                                                                        A_vmpt                     +
+
+      CL
+
+           I
+
+
+
+
+                   t}                       I                                                        2                             3
+
+                                                                        k
+
+
+
+
+                                                     (b) Imaginary                           part.
+
+
+      Figure       8.-    Lift   due   to hec        +ng     for        a flat                    plate       at    M = 0.7.      25k     values,
+                         kma x = 3.0.     (See table                    I for values                         of    ai   and    b i. )
+
+
+
+                                                                                                                                                        25
+
+
+
+
+IL
+ _,
+_.             10 --
+
+
+
+
+                     )
+
+
+
+
+               5-                                                        0       _ight-termrepresentation
+
+                                                                       -_,Class,cal            theory
+
+
+
+
+                         i    i        i       _    I     A        I          a           *     I        i     l   I    I     J
+               0                                   1.0                                        2.0                           3.0
+                                                                             k
+
+
+                                                              (a) Real part.
+
+              2 -
+
+
+
+
+              I-                                         0         0
+
+
+
+
+              -2 _       I   ,         ,      ,     I    ,         i         i        l        I         ,     A   i
+                                                   1.0                                        2.0                           3.0
+                                                                         k
+
+
+                                                         (b) Imaginary part.
+
+     Figure    9.- Lift          due       to pitching       for       a flat         plate         at       M = 0.7.   (See table   I for
+                                                     values of               ai       and        hi.)
+
+
+
+     26
+                                                                                         --            Classical     theor3"
+
+                                                                                              0       Eight-term      repre._entat aon
+
+
+
+
+                                                                                                                                             0    0
+
+
+
+
+           -5           _.____.._.L_..,_               L        1          ,        A             ,      ,      I         ,     A        ,   *    I
+                    0                                         1.0                                              2.0                               3.0
+                                                                                        k
+
+
+                                                                (a)        Real     part.
+
+                1-
+
+
+
+
+                0
+
+
+
+
+                1
+
+
+
+
+            -2               ,   __L            A      *       J           I        *         ,          A      l        ,     *         L   i    J
+                    (1                                        1.0                                              2.0                               3.0
+                                                                                        k
+
+
+                                                           (b) Imaginary                    part.
+
+
+Figure   ]0.-       Moment       due       to       heavxng     fOE        a flat           plate        at    M = 0.7.            (See table    I for
+                                                       values         of       ai       and           b i.)
+
+
+
+                                                                                                                                                      17
+            )                                                                   Cta.'<s.'al      theo_'
+                                                                           0    Etghl-ll.,r|ll       reprrsr,tlat       ion
+
+
+
+
+                     ++,.._
+
+
+
+
+     (?/[                                                                                                          ooo
+
+
+      -5C                                        I                                  2                                             3
+                                                                 k
+
+
+                                                      (a) Real   part.
+
+
+
+
+       l-
+
+
+
+
+       II
+
+
+
+
+      -1
+
+
+
+
+       -20      ,             ,      ,    9 --_1         ....                        f2          ,         ,        •         _   _J
+                                                                                                                                   3
+                                                                     k
+
+                                                [b)    Imaginary part.
+                                                                                                      at       M        0.7.
+       Figure       ]I.-          M_ent   due   to pltrhl,Jg         for   a flat       plate
+                                  (Se_ table I for valuea of               ai   and        bi.)
+
+26
+
+
+
+
+                                                                                                                                       I
+29
+3O
+                                                                             •_<V Mptote   --_
+                 1.4
+
+
+
+
+                        r
+
+
+                  ,6--
+
+
+
+
+                  .4 ___    I ._________.Z.____ _J_____.     J                 J                  1     I
+                        0   4         8         12          16                20                 24    28
+
+
+
+
+                        V
+               -0.30-                            --        Classwal     theory
+
+
+
+
+                        |                             O    F,_ht-term        r_pr_sentat |on
+
+
+
+
+     _,"   ;   -0.2_
+
+
+
+
+       _._ c 4_0 11_ _
+
+
+
+
+                            l         I          I           1        ....      1                 J     I
+                            2         4         _           8                  I0                12    14
+
+
+
+
+Figure 14.- Indicial llft and moment for heaving of a flat plate at                                   M = 0.7.
+                   (See table I for values of a i and hi.)
+
+
+                                                                                                             31
+                 l0                                                                     O         E_t:ht    terms:       28   k 'talues:    kma.. '   3.75
+
+                                                                                        []        I-our     term:,:      2R k values:       kma x     3.75
+
+                                                                                        .A.       Four     terms:        17 k '.alues:      kma x     1.0
+
+                        )                                                              --      - M         0.84:      WdlJams"      theo_
+
+
+
+
+                 0                             1.0                       2.0                                       3.0                                      4.0
+
+                                                                          k
+
+
+
+                                                            {a)   Real   part.
+
+                 5 -
+
+
+
+
+                                               I ,_                      2 0                                       3 0                                      4.0
+
+                                                                          k
+
+
+
+                                                      (b)    Imaginary         part.
+
+        Figure        15.-   Lift   due   to   heaving    for an NACA 64&006                  airfoil.                   (See      table         II   for
+                                                   values    of a i and  bi.}
+
+
+
+        32
+
+
+
+
+-   j
+     10                                                    0        l.Teh!   h, rms
+
+                                                           n        Four tl.rtus
+                                                                    M    0 84; Wzlham_'   [h_'orx
+
+          _.
+
+
+
+
+      0                  I                 2                    3                              4
+                                           k
+
+
+
+                                  (a) Real part.
+
+
+
+
+                         1                 2                    3                             4
+                                           k
+
+
+
+                               (b) Imaginary Fart.
+
+Figure 16.- Lift due to pitching for an hi,CA 64A006 airfoil.        (See table II for
+                            values of ai and b_.)
+
+
+
+
+                                                                                              33
+            [
+                                                                              O        _It:ht term.,;
+       I                                                                      []       Four terms
+                                                                                   M        0.84, Wzlilams'   lheo_"
+
+
+
+
+                                                 [3
+ IA,l 0                                               ° ° ° o o               FI ID---_-I-_
+
+                                                      0          _"
+                                                          0      0    0   0   0    0        0      0    0
+
+
+
+
+      -1        I   '   I   A   I   l      I      I   A   _.L_    J   I   A   I    I ....                      I        I
+            0                   1                          2                       3                                   4
+                                                           k
+
+
+                                               (a) Real pact.
+
+
+
+
+       't
+\ -_-_& o
+
+
+
+
+                                1                         2                        3                                   4
+                                                          k
+
+
+                                        (b) Imaginary      part:.
+
+Pigure _7.- Moment due to heaving for an NACA 64A006 airfoil.                             (See table IX for
+                            values of ai and bi.)
+
+54
+                          L-
+                   .6     I                                               --           li,| = 0.84.        Wl|llJms'        theory
+                          i                                                    O       Eight       term.*,
+
+                   .4     _                                                    1"7 Four            terms
+
+
+
+
+                    o(                n
+
+       l\--T-I,,l _.,                                                                                                                o   o     o    o
+               °.4           --
+
+
+
+
+               -.6--                         13                                                                                          13    []   []
+
+                                                                                                                   0
+
+              -1.o -                              []                                           O
+                                                                                   O
+              -1.2                                     O                 D
+
+              -1.4                '                    l   D   13   f3             I           ,             ,         ,       _     1   ,     _    ,    ,   I
+                         0                             I                           2                                                 3                       4
+
+                                                                                   k
+
+
+
+
+                                                               (a} Real        part.
+
+               12 F
+
+
+
+                          I                                                                    L J                                                  ©
+
+
+                        '; -                                                       /                       _           13      []    O   1-3   []   O
+
+
+
+
+"              "          i           D _/
+
+                         0                             I                           2                                                 _                       4
+
+                                                                                   k
+
+
+
+
+                                                           (b) Imaginary part.
+
+    Figure 18.- Moment due to pitching for an NACA 64&006 airfoil.                                                                            (See table II for
+                                 values of a i and bi.)
+
+
+                                                                                                                                                                 35
+                       I OF]
+                         OFf                                                ._._o
+              o
+              ""                  OO                                        ¢,D,.,I
+
+
+              t_
+                                  OD
+
+,                                  OD                                       -_
+
+                                       0 D                                                ._
+                                                                                          -r,I
+
+
+
+                                                                                          §
+
+                            I.,                                                           •
+                       "_                   OD                                   o        _,
+                       _                                                                  o
+                       _                     O0                                       _   ®
+                       OD                                                                 '_
+                                             OD                             -_            _.
+                                                                                          °PI
+
+
+                                                  OD                                       •
+                                                                                           U
+
+
+                                                  O0                        -_             "
+                                                                                           I
+
+                                                       OD                                 o,
+
+                                                           OO               -,_            _,
+                                                                                          °w,,I
+
+
+                                                            OD
+
+
+
+
+                   I                    I              I                1   ,
+
+    ,_                                                            b-1
+                                                                r_
+
+
+         36
+(/_ 00 []                   -_
+_,     []
+_u
+_    O D                    -_
+m
+
+     O D
+
+
+
+
+I       I   ,   l   I   _
+o
+
+
+
+
+                                 37
+                                                    []              _             -_
+                                                                        I
+
+                                                                        S
+
+                                                   []        0          _
+
+                                               []           0
+
+
+
+                                            []           0                        I _
+                                           []           0
+                                                                                  I
+                                          []            0                         I "_          g
+
+
+                                                                                                0
+
+           m                     []                0                                       ,-   •
+         OE]
+                         O                     0                                       _
+
+
+
+
+                    []                0                                           - _'          "_
+
+
+
+
+               []            0                                                    -_            ®
+                                                                                                _
+                                                                                                °_
+
+
+               []        0
+
+
+
+
+     I   l      I
+                                 oO%oo
+                                    o      i
+                                                   []
+                                                        u _,_cJ
+                                                            T,..J
+                                                                _
+                                                                            _   ,, _
+
+
+
+
+3_
+                           []                0
+
+                           []            0          -_            _,
+
+      -_ _               0               0
+
+
+      _    _                                             _         0
+      --   0                                                      .,u
+
+
+
+      O0               0             0                       '-
+
+
+
+
+                   []0           0(                  I_           N
+                                                                  E
+                                                                  _
+                                                                  *,-4
+                                                     i            U
+                                                                  *r,I
+
+                                                                   r,
+                                                                  i-i
+
+                                                                   I
+                   []           0                   l_
+
+                                                                  t-I
+
+
+
+
+                   0            []
+
+
+
+                                     c OOoOcgq_-_
+ •
+I-i            ,                     _o          _ %_o
+                                     o               _
+
+
+
+
+                                                                         39
+

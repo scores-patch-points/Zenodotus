@@ -1,0 +1,1466 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2009-7-15"
+lang: "en"
+messages: "1457"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<aleksio> can anyone help me with ffmpeg?
+<AlexZion> I need to install a package called "build-deb" to compile and install a Kwin decoration but this package isn't on the repo ...., it could be ?, can I use something different ?
+<ctp> hi folks. a dumb question but where can i redefine the sortcuts for switching between desktops in 4.2 & 4.3?
+<ctp> AlexZion: build-essentials?
+<AlexZion> I already have but it doesn' work actually ...
+<ctp> AlexZion: which app/lib is missing exactely?
+<AlexZion> I don't know mate , I just try to change the Kwin decoration whic is horrible, and I can't install it, when I try with "cmake .. -DCMAKE_INSTALL_PREFIX=/usr" an error occurred saying that miss the file "CMakeLists.txt", but actually I can see the file, it's right there on the folder ...
+<AlexZion> and I thought something was missing , because the instruction to install the decoration says "
+<AlexZion> sudo apt-get build-deb kdeplasma-addons"
+<AlexZion> but I can't get it so ....
+<AlexZion> anyway it's unbeliavable....., to change a decoration it's something for engeneer
+<AlexZion> i was using dekorator but now with kde 4.3 doesn't look so good without the trasparency on the rounded corner ....
+<AlexZion> I will just keep going with this horrible decoration ... :(
+<bobbob1016> I can't seem to disable the drum sounding noises when I press buttons, I've gone into system settings, but I can't find the setting.  Any ideas?
+<pucko-> ctp, in settings->keyboard & mouse-> global keys... but you have to pick the "kwin" component before you see the option.
+<CleanLaundry> when trying to install a windows program, I get this error : " Unable to find a volume for file extraction. Please verify that you have proper permissions."
+<genii> CleanLaundry: Try asking in #winehq
+<CleanLaundry> genii, tx
+<genii> np
+<macho_> hey guys
+<macho_> is there a faster way to download torrent files on linux
+<genii> macho_: If you have 2 boxes, start up ktorrent on both and set ktorrent on both boxes to also share with each other on their lan addresses
+<genii> Kids these days. No waiting around for answers for them.
+<moroki> YO
+<dennister> hey guys, how can I remove ekiga from automatically starting up?
+<micahg> is kivio in koffice-kde4?
+<aru_s> dennister: look in the autostart option in System Settings
+<dennister> aru_s: where is it? I don't see it anywhere
+<dennister> and i'm in system settings
+<BluesKaj> hi dennister , system settings /advanced/autostart
+<dennister> BluesKaj: hi :-) i don't see an autostart option in system settings-->advanced
+<BluesKaj> dennister, which kubuntu are running ?
+<dennister> 3.5
+<aru_s> ahhh
+<aru_s> ok
+<dennister> hardy
+<aru_s> look in ~/.kde/Autostart
+<BluesKaj> kde 3.5 = intrepid ?
+<dennister> aru_s: i did that before coming into the channel, the only thing in .kde/autostart was an empty .directory file
+<dennister> kde 3.5 = hardy
+<dennister> aru_s: BluesKaj will tell ya, I usually google these tiny, rare, annoying probs before I come into the channel...only when googling doesn't work...:P
+<aru_s> case matters
+<aru_s> make sure you don't have both an autostart and Autostart dir
+<sharif> hi
+<sharif> I want to know how to start ftp server with my linux ?
+<sharif> !help
+<ubottu> Please don't ask to ask a question, simply ask the question (all on ONE line, so others can read and follow it easily). If anyone knows the answer they will most likely reply. :-)
+<sharif> I want to know where i can start ftp as service and control user accounts ?
+<dennister> aru_s: i'm looking for both
+<aru_s> interesting
+<dennister> well, there was a lot of stuff under /usr/share/autostart
+<aru_s> weird
+<rcintra> hi! anyone knows how can I organize my desktop widgets in KDE (resize and move) manually? The problem is that KDE keeps applying this annoying auto resize / positioning feature.
+<shadeslayer> rcintra: when you hover over the widgets do you see a bar pop out on the sides
+<EDinNY> what do I apt-get to auto mount my thumb drives and cdroms?
+<rcintra> yes
+<dennister> aru_s: but none of the stuff under /usr/share/autostart was related to ekiga as far as I could see...went into gnome for a bit, as it is easier to autostart apps from gnome, but I didn't see it there, either...
+<rmrfslash> Anyone notice Konsole flickers ridiculously in Kubuntu w/ KDE 4.3
+<rcintra> but even if I move them, the KDE automatically moves it to a "ideal" position
+<rmrfslash> when scrolling
+<shadeslayer> rcintra: when you left click it and drag it it repositions the widget and the first square button on the handle resizes it
+<dennister> brb folks, restarted x and will have a cancer stick while it loads
+<rcintra> shadeslayer: yeah, the problem is that after it the KDE automatically moves my widget to another location
+<shadeslayer> rcintra: works here...
+<shadeslayer> rcintra: is this after you repostion them and reboot??
+<rcintra> shadeslayer: no. just after i reposition it
+<shadeslayer> EDinNY: just apt-cache search package too see what you need ;)
+<KittyBoots> Hello, I am running Ubuntu 9.04 and I just installed KDE.  I have a problem with KDE, there is not any program to manage the network connectivity installed what am I missing?
+<rcintra> shadeslayer: it auto reposition the widget
+<shadeslayer> rcintra: hmm...lemme see
+<shadeslayer> KittyBoots: is it fully updated?
+<KittyBoots> I have updated
+<shadeslayer> KittyBoots: then there should be a network manager widget in the add widget box
+<KittyBoots> I am using GNOME to connect
+<KittyBoots> OK I will try to find it.
+<shadeslayer> KittyBoots: so youre using wifi?? if you use wpa it wont work
+<KittyBoots> I am going to try to find the widgit, thanks!
+<rcintra> shadeslayer: "With widgets unlocked, you can rearrange your widgets and move the Plasma icon to where you want it. The Plasma desktop will help you arrange widgets. It is easy to resize them. " ....... according to http://www.kde.org/announcements/4.2/desktop.php
+<shadeslayer> rcintra: i see no bug...youre on your own on this one :(
+<shadeslayer> rcintra: yes...so the widgets are unllocked arent they?
+<rcintra> shadeslayer: this auto position feature that is killing me
+<shadeslayer> rcintra: there is no such feature ;)
+<shadeslayer> rcintra: what widget is this?
+<rcintra> shadeslayer: yes, but i can move them to the corners od the screen. it keeps postioning the widgets in the up left corner
+<rcintra> shadeslayer: sorry, i meant "i can't move them to the corners of the screen"
+<shadeslayer> rcintra: oh....you mean out of the screen...you cant do that i think
+<shadeslayer> rcintra: btw that link you gave me has a video of kde 4.3! haha
+<rcintra> shadeslayer: no, i mean in the corner of the screen. not out of the screen
+<rcintra> shadeslayer: ops :)
+<shadeslayer> rcintra: yeah i get what you mean...like trying to drag them to one corner and theres always some space left out
+<rcintra> shadeslayer: exactly
+<shadeslayer> rcintra: its not possible ;)
+<dennister> aru_s: ok, i've looked under usr/share/autostart, and /home/user/.kde/Autostart, but can't find any mention of ekiga or konversation, both of which start automatically when kde starts, and since this user only got his internet hooked up recently, there's no way he would have set these two apps to start at kde launch
+<aru_s> hmm
+<aru_s> ahhh
+<aru_s> maybe a session is being restored
+<rcintra> shadeslayer: but it doesn't make sense. i was supposed to arrange de widgets the way i want. don't you think?
+<dennister> and I would never have done that myself before giving him this pc back in December
+<aru_s> try setting it to load a fresh session on login and see
+<dennister> aru_s: that's possible, while he was exploring his computer...how do I do that?
+<shadeslayer> rcintra: yes...but this prevents the widgets from getting accidentaly obsucred ot getting dragged out of the screen
+<aru_s> 3.5?
+<aru_s> I think its under the login part of the system settings
+<rcintra> shadeslayer: what if i want to keep the widgets at the bottom of the screen? is it no possible?
+<aru_s> haven't touched it for ages
+<shadeslayer> rcintra: never tried that...
+<shadeslayer> rcintra: then the taskbar might have to go up :P
+<dennister> i'll look
+<rcintra> shadeslayer: actually mine is at the top :) well, that's ok, i thought it was a bug. anyways, i really appreciate your help
+<shadeslayer> rcintra: no problem...
+<shadeslayer> brb
+<KittyBoots> I am having trouble finding the widget that Kubuntu uses to manage the network, I think that it is not installed.  What should I do to install it?
+<KittyBoots> I am using Gnome
+<aru_s> network management
+<KittyBoots> I am in a Gnome session because I can not connect to internet with KDE
+<shadeslayer> KittyBoots: install knetworkmanager
+<aru_s> kitty: if you can start knetworkmanager or networkmanager (the gnome version) you should be able to connect
+<shadeslayer> KittyBoots: also run " sudo apt-get install kubuntu-desktop " to ensure you have all KDE packages
+<KittyBoots> I'll do that
+<aru_s> ^ indeed
+<dennister> aru_s: k, i set session manager to start with clean session, and am rebooting into new kernels from updates
+<dennister> correction, after all those updates there's not a new kernel yet, but session manager had been set to restore previous session
+<aru_s> yay
+<KittyBoots> this is fun
+<shadeslayer> KittyBoots: so was the package installed?
+<KittyBoots> it is installing
+<KittyBoots> I will try now!
+<sharif> What do you use to constantly monitor your bandwidth & Net speed/traffic?
+<aru_s> There's a network monitor plasmoid
+<dennister> aru_s: problem 3 or 4 solved :)
+<shadeslayer> btw is anyone experincing slow startup times with KDM?? my KDM starts up in like 3 secs
+<dennister> no bad autostart probs
+<aru_s> huzzah
+<BluesKaj> widget-network-manager is flaky... ive said this many times in the last few weeks , install wicd
+<BluesKaj> !info wicd
+<ubottu> wicd (source: wicd): wired and wireless network manager. In component universe, is optional. Version 1.5.9-2 (jaunty), package size 247 kB, installed size 1860 kB
+<shadeslayer> BluesKaj: of course it is...its in work in the svn under playground
+<aru_s> wicd is not without its own issues
+<aru_s> for the best solution, go with knetworkmanager
+<BluesKaj> well, aru_s , it sure works on my linux machines a hell of alot better than that widget thing does
+<shadeslayer> this is whats great with linux...too many choices
+<aru_s> XD
+<aru_s> BluesKaj: most definitely. I'm lucky that the widget works for me
+<aru_s> I'm just glad people acknowledge this as being a distro issue and not a KDE issue
+<BluesKaj> anyway folks , have a good day/evening/morning ..whatever time of aday it is in your area ..sacktime here
+<aru_s> gnight BluesKaj
+<shadeslayer> KittyBoots: did it work?
+<KittyBoots> No
+<dennister> but get this: new problem since reboot, nic isn't working...icon in systray shows disconnect, no ip address from ifconfig, tried restarting with /etc/init.d/networking restart...getting permission denied errors :(
+<KittyBoots> knetworkmanager is already the newest version.
+<shadeslayer> KittyBoots: can you see the widget?
+<KittyBoots> It wont start
+<dennister> of course, the updates got stuck so had to do a dpkg --confiure -a, so that might be the problem...updates
+<shadeslayer> KittyBoots: what wont start?
+<KittyBoots> When I add it to the to the tool bar it dosent stay
+<KittyBoots> how can I start Knetwtorkmanager without using the widget?
+<shadeslayer> KittyBoots: hmm....ive gtg right now...hope someone else can clear this
+<aru_s> Kitty: do you have knetworkmanager installed?
+<KittyBoots> yes
+<aru_s> open a terminal
+<KittyBoots> How do I start it?
+<KittyBoots> ok
+<aru_s> and type: knetworkmanager
+<aru_s> then hit enter
+<KittyBoots> I will try it, I am in gnome so I have to log out and into a different session
+<dennister> should udev be a system service that starts up at boot?
+<aru_s> yes
+<dennister> thx...just waiting for all these past updates to actually be installed...a few packages are still failing the setup :(
+<dennister> what about resolvconf?
+<wizz> hi
+<wizz> hola
+<wizz> hay alguien hay?
+<dennister> resolveconf isn't even listed in system services on this, my favourite machine
+<dennister> and udev was not configured to start at boot on this one, either
+<KittyBoots> I can get knetworkmanager to start but it will not connect to my router?
+<KittyBoots> How do I resolve the problem?
+<aru_s> are you using wireless, or are you wired?
+<dennister> this is really wierd...why the nic doesn't wanna work all of a sudden
+<calamari> hi
+<calamari> what happened to kpdf in intrepid?
+<KittyBoots> aru_s wireless
+<calamari> should I be using something else now?
+<aru_s> calamari: Okular
+<aru_s> KittyBoots: did it work under Gnome?
+<KittyBoots> I have not tried
+<calamari> aru_s: I'll check it out, thanks
+<KittyBoots> it works with Gnome
+<aru_s> hmm
+<aru_s> you pulled kubuntu-desktop?
+<KittyBoots> yes
+<KittyBoots> What is the command to start the newtorkmanager that gnome uses, I can try that one in kde
+<aru_s> try just plain ol networkmanager
+<jussi01> KittyBoots: nm-applet
+<KittyBoots> cool I'll try it
+<Guest68103> It is driving me crazy.
+<Guest68103> Does anyone know how to get sound to work with Kubuntu 9.04?
+<aru_s> it works for me
+<jussi01> Guest68103: elaborate please, which sound card, what steps have you followed?
+<Guest68103> I have been going through page after page of tips, hits, fixes etc and I get nothing.
+<deusr> hi
+<dennister> ok, nic is working again, but i'm in dependency hell with problematic updates, dpkg --configure -a isn't working, neither is apt-get install -f...what's that long comand with fuser or something?
+<deusr> anyone know tell me because kubuntu is with 4 packages, kernel, and not block updates?
+<aru_s> Deusr: could you rephrase that?
+<deusr> aru_s, whats ?
+<deusr> linux-generic linux-headers-generic linux-image-generic linux-restricted-modules-generic
+<rudi_> oh, you are talking about blocked updates...
+<deusr> 4 updates blocked
+<deusr> rudi_, yes
+<aru_s> on a command line you can do dist-upgrade
+<aru_s> as in: sudo apt-get dist-upgrade
+<aru_s> but those may be blocked for a reason
+<aru_s> so I'd avoid doing that unless you really need the kernel updates
+<deusr> aru_s, thanks
+<rudi_> yes,probably blocked for a reason, give it time
+<KittyBoots> STILL NOT WORKING AGGG!!!!
+<KittyBoots> how do i diaplay a list of running applications
+<KittyBoots> I need to killall firefox but it is not working
+<aru_s> if you're using firefox 3.5, you need to do killall firefox-3.5
+<rudi_> pkill?
+<rudi_> just do pkill firefox
+<aru_s> or just xkill then point and click :-)
+<rudi_> or go into system monitor and end process =)
+<aru_s> Or take an electromagnet to your hard drive
+<rudi_> hehe
+<KittyBoots> what is the command to display all processes?
+<rudi_> ps aux | less
+<rudi_> or  ps -A
+<aru_s> ps -ef
+<rudi_> kittyboots what exactly is your problem
+<dennister> aru_s: i've got a real problem now...bloody dependency hell now has caused the machine to finish loading neither gnome or kde
+<aru_s> ouch
+<aru_s> does it dump you to a login shell?
+<aru_s> try removing kubuntu-desktop and then reinstalling it
+<dennister> actually, it doesn't, i get login screen, and in the rare occasions when it actually goes past the password step, it's just a solid blue
+<dennister> i'm going into recovery mode
+<dennister> at one point it told me doc-base was the first big problem, and so corrupt I should reinstall it, so I did, but it's still trying to setup and install the old doc-base, too, and all the other (20?) packages that depend on doc-base
+<aru_s> it might be worth it to reinstall from the disc
+<dennister> actually, i just thought i'd try the 'dpkg repair broken packages' option...Noooooooooo
+<aru_s> won't overwrite the home dir if you don't reformat
+<dennister> user brought it here this eve, along with another one I have to do a whole install on, and it had some minor problems...I just don't have time to do a new reinstall for the first box, too
+<aru_s> you dont need to watch the install...
+<dennister> oh, yes i will :(
+<dennister> i typically use a certain method...using mini.iso so less can go wrong, but do a lot of extras for my users that take time
+<dennister> I don't want to give him back less than what he came here with
+<patricio> olas
+<patricio> alguien?
+<DaskreeCH> dennister: Hello
+<dennister> sorry, was out for a cig, and magically the dependency hell is fixed :)
+<DaskreeCH> i HATES that
+<DaskreeCH> It's the most aggravating thing
+<dennister> i forgot to reinstall the ubuntu-desktop, which was removed after I followed direction to purge the problematic doc-base
+<dennister> really
+<dennister> now to restart so kde and gnome can be tested
+<dennister> who knows, with all the updates maybe the remaining annoyances will be fixed, too
+<jdcnyc> k
+<dennister> I really want to start the next box, with at least the base system and xubuntu started before I hit the sack...will finish up in the morning
+<jdcnyc> I clone a Hardy Heron parttion to the second half of the same hard drive. Ibex isn't booting correctly. What's the best way to remove that Ibex partition and make Heron bootable?
+<DaskreeCH> dennister: You are using the alternate CD ?
+<DaskreeCH> jdcnyc: You don't need to remove Ibex just point Grub at the kernel on hardy
+<jdcnyc> Isn't Grub fully associated with Ibex?
+<dennister> DaskreeCH: I haven't started the new install yet, i'm just trying to fix a user's 'working' system...seemed minor things, but then updates...
+<DaskreeCH> jdcnyc: Grub isn't associated with *anything* outside of some *nix type kernel that can take parameters
+<dennister> nope...kde & gnome weren't fixed...was able to install vlc, but login screen hung after entering password
+<DaskreeCH> dennister: what does ~/.xsession-errors say?
+<DaskreeCH> also if you are using the alternate CD to install might as well get it running
+<dennister> haven't checked that yet, back in recovery mode
+<jdcnyc> DaskreeCH: Sounds like a very good plan. I boot Hardy by typing EXIT<cr> during the Ibex bootup, so maybe there is kernel parameter for the Hardy parition. THANKS!
+<dennister> also want to do the remaining 124 upgrades
+<dennister> apt-get install update?
+<dennister> no, upgrade
+<DaskreeCH> jdcnyc: If the grub is obeying the parameters set in the Ibex partition just copy over the /boot/grub/menu.lst from hardy
+<DaskreeCH> dennister: try dist-upgrade
+<dennister> wouldn't that start the intrepid or ibix process? don't want those, just to keep hardy
+<dennister> upgrade worked
+<DaskreeCH> dennister: Maybe I'd need to know jdcnyc's partition layout but it's pretty simple to swap out the default
+<jdcnyc> DaskreeCH: Thanks. I'll copy the older grub setup.
+<jdcnyc> The partitioning is simple: hda1 has bootable defective Ibex, hda2 has reliable older Heron and a small swap file.
+<dennister> well, this had better fix most of it...from what I remember before the dependency hell broke out, the main remaining thing is to fix the cd burner errors when I try to play an audio cd with it
+<DaskreeCH> hda2 cannot hold swap and heron
+<dennister> jdcnyc: he's right, swap is always a partition by itself
+<jdcnyc> I failed to explain hda2 holds Heron. There's a swap file in it's own partiton. And that's about it.
+<dennister> what's confusing is that there's no such thing as 'swap *file*'
+<jdcnyc> I stand corrected: Swap partition.
+<dennister> sorry to be a picky one :)
+<DaskreeCH> dennister: actually there is You can do it but it's really unlikely
+<dennister> ok, u know more than I DaskreeCH
+<DaskreeCH> dennister: No need to be sorry partitions are not something you want to be fuzzy on when you are making changes to how a system boots
+<DaskreeCH> jdcnyc: First thing of course is to make a backup of the Ibex files you are going to change
+<dennister> yeah, that's true, this computing stuff requires precision when it comes to partitions
+<jdcnyc> I'm planning on editing /etc/x11/xorg.conf as Ibex boots to a login screen where the keyboard and mouse don't work. But for now, I need to get things done with heron.
+<jdcnyc> I'm aware others have the frozen Ibex login screen, but it was working fine for weeks. So, editing configuration files might work, or not.
+<DaskreeCH> jdcnyc: back up the config you have and run sudo dpkg-reconfigure -phigh xserver-xorg
+<zarakolik> YARDIM!!!
+<zarakolik> TÜRKÇE BİLEN BİRİSİ YOKMU?
+<jdcnyc> DaskreeCH: If the configuration isn't working and all data was copied to the Heron partition, why bother backing anything up? I'm this close to just wiping that partition away and write off this version of Kubuntu.
+<DaskreeCH> jdcnyc: Well what you want is to make sure that grub is booting from hardy
+<DaskreeCH> actually
+<DaskreeCH> !grub | jdcnyc
+<ubottu> jdcnyc: GRUB is the default Ubuntu boot manager. Lost GRUB after installing Windows? See https://help.ubuntu.com/community/RestoreGrub - GRUB how-tos: https://help.ubuntu.com/community/GrubHowto
+<dennister> ok, rebooted after all the updates were done, but it's taking too long after login screen was inputted with password
+<DaskreeCH> That should walk you through and you should be fine
+<DaskreeCH> dennister: jump to a tty and see if something is hung
+<dennister> and I started the other box in the other room
+<dennister> alt-f#, right? that's not working
+<DaskreeCH> if nothing is taking an obscene amount of Mem/CPU then try sudo /etc/init.d/kdm stop && startx
+<DaskreeCH> dennister: alt+ctrl+F#
+<dennister> oops,...i don't use that much
+<DaskreeCH> F7 is back to X
+<dennister> yep, lots of -bash: /dev/null: permission denied
+<dennister> what to do?
+<DaskreeCH> dennister: sorry what was that?
+<DaskreeCH> you logged in and got kicked back out?
+<dennister> got to tty and were lots of "-bash: /dev/null: permission denied
+<DaskreeCH> can you login there?
+<dennister> yes, i had to login on tty
+<dennister> and got the ^^ after login before i got user prompt back
+<DaskreeCH> Alright you say bash /dev/null on login or before you lagged in?
+<DaskreeCH> ah
+<DaskreeCH> something is wrong there
+<dennister> no kidding :)
+<DaskreeCH> run top and see what's using up CPU
+<dennister> lots of stuff by root
+<dennister> not to familiar with top feedback
+<dennister> hold on...need to check other machine
+<zarakolik> TÜRKÇE BİLEN BİRİ YOKMU!
+<DaskreeCH> !tr
+<ubottu> Turk ubuntu kullanıcıları, Türkçe yardım ya da geyik için #ubuntu-tr hizmetinizde.
+<DaskreeCH> dennister: The top item is which process? How much CPU is it using?
+<dennister> DaskreeCH: that's hard to say, the top item keeps changing
+<DaskreeCH> dennister: Ok that's good
+<dennister> sometimes it's root user, very high virt number, by xorg
+<DaskreeCH> can you install pastebinit ?
+<dennister> probably, just hold a sec, is it the high virt number that's the important info?
+<DaskreeCH> I would like to see the errors in ~/.xsession-errors
+<DaskreeCH> dennister: partly but the number under CPU% is the one I'm interested in
+<DaskreeCH> High memory usage won't kill progress if you wait you;ll see a desktop High CPU usage will stop anything from moving foward
+<DaskreeCH> q to get out of top if you don't know
+<dennister> ok, installing pastebinit...
+<DaskreeCH> just run pastebinit ~/.xsession-errors
+<dennister> well xorg, top and kjournald are all using 0,7 of cpu
+<dennister> http://pastebin.com/f38a629f5
+<Shdwdrgn> just upgraded kubuntu from hardy to jaunty, reinstalled kde3.5... mostly up and running again, but scrolling in firefox is abysmally slow.  Any suggestions?
+<Shdwdrgn> desktop effects are turned off
+<DaskreeCH> dennister: Looks like your dbus is not there
+<DaskreeCH> dennister: does sudo apt-get dist-upgrade say anything ?
+<DaskreeCH> Shdwdrgn: Justi n Firefox?
+<Shdwdrgn> so far
+<Shdwdrgn> I had  bad problem getting kde to come back up... have an older ati card, read there's a lot of problems in xorg1.6
+<Shdwdrgn> thunderbird seems to scroll just fine
+<Shdwdrgn> oh, and smooth-scrolling is off in firefox
+<dennister> yes, seems 4 packages were held back, but I can install them now linux-generic, restricted modules headers...
+<DaskreeCH> Shdwdrgn: Oh yeah >_<
+<DaskreeCH> how old?
+<dennister> DaskreeCH: installing them now
+<DaskreeCH> dennister: ok
+<Shdwdrgn> radeon 2400
+<DaskreeCH> check to see if it's one of the problem abandoned cards. Though I think the radeon driver should cover that
+<Shdwdrgn> running a dual display.  Used to have a pair of nvidia's, but one died recently, and every time I did an upgrade, I had to re-run the nvidia setup util.
+<Shdwdrgn> video playback looks fine as well... so far only firefox seems affected
+<Shdwdrgn> ok here's another issue... dragging windows around is choppy as well.
+<dennister> DaskreeCH: rebooted into new kernel, same issue, am in tty
+<dennister> tried installing dbus, but was told it was already the newest version
+<dennister> probably just not running, so I need to get it running from tty i guesss
+<dennister> DaskreeCH: can u tell me how?
+<DaskreeCH> dennister: hold on try sudo /etc/init.d/kdm stop && startx
+<DaskreeCH> Shdwdrgn: KDE3 ?
+<Shdwdrgn> yes
+<DaskreeCH> Is resizing windows choppy?
+<dennister> DaskreeCH: k, tried you line, only using 'gdm' instead of 'kdm' and that killed the running xorg, but I got: can't create /dev/null permission deniedpermission denied
+<Shdwdrgn> nope, resizing kwrite works pretty smooth, but dragging the whole window around is choppy.
+<dennister> going out for a smoke, bbk in 5
+<joseph_> any freelance web programmers out there?
+<joseph_> i want to buy your services
+<dennister> DaskreeCH: k, back, would switching from gdm to kdm do the trick?
+<joseph_> i need a website
+<DaskreeCH> joseph_: Wrong room
+<Shdwdrgn> DaskreeCH, doing a page-down in firefox responds immediately as well, it's only scrolling with mouse or arrow keys that is slow
+<joseph_> what room should i go toi?
+<DaskreeCH> dennister: Not if dbus isn't starting. Try running startx to see what it does
+<DaskreeCH> Shdwdrgn: Using kwin or compiz?
+<DaskreeCH> joseph_: ##linux ?
+<Shdwdrgn> nope
+<Shdwdrgn> just the basic desktop
+<DaskreeCH> umm ok which wm ?
+<Shdwdrgn> kde3.5/xorg
+<Shdwdrgn> sorry, is kwin the defult wm?
+<Shdwdrgn> I'm NOT using compiz
+<dennister> DaskreeCH: i did try, but it just flashed, and gave me error: (long list) ending with line: /usr/bin/startx line 176 /dev/null: Permission Denied
+<DaskreeCH> ok kwin then
+<DaskreeCH> dennister: ok what's the history of this machine?
+<Shdwdrgn> ok one more piece... in thunderbird, scrolling through the list of emails works great, but when I open a long email and try to scroll through it, same results as in FF
+<dennister> gave it to user in dec; he had difficulties at first with his hub, getting an ip address, solved that a little while ago, then had problem with sound, brought it back with his daughter's (other machine i'm working on); preliminary problems were solved, haldaemon with media, sound (parts of his mixer had been turned all the way down), then real problems started when I tried doing almost 300 updates
+<dennister> doc-base had probs,  that caused the dependency hell, got it fixed, then more updates, then can't get back into x
+<dennister> done
+<dennister> user's actually a really great guy, not a dummy by any means, his whole family now wants to go linux-only
+<Shdwdrgn> gonna test removing the fglrx driver, brb
+<dennister> DaskreeCH: any advice to get this dbus runnig?
+<DaskreeCH> dennister: how much stuff do they install themselves?
+<DaskreeCH> dennister: oh also which version of Kubuntu is this?
+<dennister> they don't install much themselves, michael is of the belief: if it's not broke, don't fix it and he's only had ip address/ internet a couple of weeks
+<dennister> kubuntu hardy
+<dennister> but xubuntu and gnome are also installed, using gdm
+<DaskreeCH> can you loginto Gnome?
+<dennister> so no wonder he didn't do almost 300 updates
+<DaskreeCH> :-)
+<DaskreeCH> where is the system now? still in startx mode ?
+<dennister> still in refusing-to-do-startx modei doubt i can get into gnome, but will reboot and try
+<DaskreeCH> dennister: No need to reboot
+<dennister> k...?
+<DaskreeCH> ctrl+C on startx and run sudo /etc/init.d/kdm start
+<DaskreeCH> on the login screen press alt+T and choose gnome
+<DaskreeCH> or gdm start
+<DaskreeCH> whichevr
+<DaskreeCH> ctrl+C can be written as ^C by the way
+<DaskreeCH> so if you see me say ^D or something that's what it means
+<dennister> remember, I normally use gdm on this machine over kdm, so when I tried  sudo /etc/init.d/gdm start it gave me same old problem: enter username, passwrod, and it freezes
+<dennister> I can't get into any of xubuntu, kubuntu, or ubuntu
+<DaskreeCH> ok yeah your dbus needs to get sorted out
+<DaskreeCH> you can try remove --purge it
+<DaskreeCH> but that's going to dump a LOT of packages
+<dennister> well, i can always put them back with ubuntu-desktop and the like
+<DaskreeCH> well sure then
+<DaskreeCH> sudo apt-get remove dbus --purge
+<dennister> 136 packages
+<DaskreeCH> then sudo apt-get update && sudo apt-get install kubuntu-desktop ubuntu-desktop xubuntu-desktop
+<DaskreeCH> that's all?
+<dennister> the other system's almost done, lol
+<DaskreeCH> :-D
+<DaskreeCH> Told you to start it
+<dennister> actually, i think i forgot the --purge
+<DaskreeCH> I've 189 packages to remove here
+<dennister> i'm tired :(
+<DaskreeCH> dennister: --purge is probably better for this problem
+<dennister> yeah, like i said, i forgot
+<DaskreeCH> Yeah I have to get up in a few hours to drive into the country
+<dennister> and i'm trying to start a nonprofit here....tons of work
+<dennister> as far as the other machine is concerned i've got so much friggin hardware here i didn't think i could use the semi-setup in the other room for the other machine
+<DaskreeCH> I'm normally surprised by how unfussy Linux is to get things done
+<DaskreeCH> normally I just need A CPU Ram Keyboard and net
+<dennister> yeah, normally, but every once in a while you get huge messes like this
+<DaskreeCH> More or less when I hit like 60-80 updates I always use dist-upgrade instead of upgrade
+<dennister> a server I'm very excited about was delivered at the same time as these 3 machines of my client's and I haven't even had a chance to turn it on yet
+<DaskreeCH> much smarter about not just cocking things up
+<DaskreeCH> sounds lke you and the server have a nice weekend lined up :-D
+<dennister> they picked it up for me across town...the builder really knows her stuff, and this was her home server...huge scsi drives...
+<Nameless_au> hi. i'm trying to install kdm4 themes, but no matter what i try to do it says it's an invalid kdm theme. what do i do to install it?
+<seraphim> hi
+<dennister> never mind the weekend, after I get these two sytems outa here tomorrow aft, and orient/tutor the new user in that family, another guy's coming over to put a debian lamp and pxe install server on this hardware server
+<seraphim> I'm the only one or sombody else uses ldap authentication with kubuntu ?
+<DaskreeCH> Nameless_au: where are you getting them from
+<Nameless_au> DaskreeCH: kde-look.org
+<DaskreeCH> Nameless_au: Ok which one?
+<Nameless_au> i know i'm just doing something wrong
+<Nameless_au> i just dunno what lol
+<DaskreeCH> seraphim: Doubtful you are the only one but I'm guessing you have a question?
+<seraphim> no, I'm just talking
+<Nameless_au> DaskreeCH: any of them, but circuit blue in particular
+<seraphim> DaskreeCH: aus der schweit ?
+<dennister> well, it is purging config files, so maybe i didn't forget the --purge switch after all...the other machine now has xubuntu, ubuntu, and now kubuntu is being installed
+<dennister> along with all the restricted-extras
+<DaskreeCH> dennister: Hardy or jaunty?
+<Nameless_au> dennister: you could of done it all in one distro
+<dennister> hardry
+<veck> how do i install yhe auth key for 4.3 rc 2?
+<veck> cannot seem to import it to software sources any way to add it from command?
+<dennister> for newbies i think lts and kde3.5 is better choice
+<dennister> i tried jaunty a bit, but decided I'd wait for the maintenance release
+<veck> not what i ASKED!
+<DaskreeCH> veck: He wasn't speaking to you. please wait for someone to respond
+<DaskreeCH> dennister: maintenance releae?
+<veck> DaskreeCH: SRY HE DIDNT STATE WHO HE WAS TALKING TO
+<dennister> yeah, like hardy was lousy at first until 8.04.1 came out
+<veck> DaskreeCH: oops caps
+<DaskreeCH> dennister: only lts versions get those releases.
+<dennister> well, as i said, for newbies...they feel more comfortable with a k/start button
+<dennister> jaunty was quite gorgeous tho, i have to admit
+<DaskreeCH> Kde 4 has a k start button :)
+<DaskreeCH> but youare servicing it if you feel more comfortable with giving them KDE 3 please go ahead
+<dennister> yeah, yeah...i have 3.5 and 4 here, but the way the menus work in 4 will be confusing to toehrs
+<DaskreeCH> !kde3 | Oh Should mention this dennister
+<ubottu> Oh Should mention this dennister: Kubuntu 8.04 ships with KDE3 and full support. Jaunty does not include KDE3 but a remix install CD can be obtained at  https://wiki.kubuntu.org/Kubuntu/Kde3/Jaunty . This is not officially supported. Support, instructions and ways to contribute can be found on the wiki page
+<DaskreeCH> dennister: tried right clicking and selecting Classic menu?
+<dennister> oh, ok...i thought kde wanted to stop supporting3.5, and had been dropped from k/ubuntu since intrepid
+<dennister> oh, so 3.5 is possible with intrepid and jaunty?
+<DaskreeCH> veck: https://edge.launchpad.net/+help/soyuz/ppa-sources-list.html
+<dennister> it's still a risk tho, to use a non LTS version...i was really ticked off when they stopped supporting gutsy so soon
+<DaskreeCH> veck: https://edge.launchpad.net/~kubuntu-ppa/+archive/backports you can click on what's this to get the above page
+<DaskreeCH> Jaunty
+<DaskreeCH> None semi official for Ibex AFAIK
+<veck> DaskreeCH: thank you
+<DaskreeCH> There are 3rd party ones but the packages conflict with the offical ones. The Jaunty one noted above works flawlessly with the official ones
+<DaskreeCH> Not so much wanting to remove KDE 3 as not having anything in the manner of resources to handle two desktops
+<DaskreeCH> veck: you are welcome
+<DaskreeCH> dennister: I'll try to hang around for 10 more minutes
+<dennister> ok, finally reinstalling, but dbus, dbus-x11, ubuntu-desktop, kubuntu-desktop and xubuntu-desktop only added up to 129 packages instead of 136
+<dennister> DaskreeCH: ok, i think that's all i can stay awake for too...othe machines almost done
+<DaskreeCH> yeah most likely they added some little apps that they will have to notice are missing and reinstall
+<dennister> it's kinda wild that installing happens faster than the purging did
+<DaskreeCH> yeah well you have to be careful when scrubbing to make sure you don't do anything rash
+<DaskreeCH> installing is just following a scriptto drop files in certain places
+<dennister> yeah, well, i think i've been futsing around with this long enough :P
+<dennister> well i just saw dbus being started :)
+<DaskreeCH> I think that it was started before
+<DaskreeCH> it just wasn't allowing anything to bind to it
+<dennister> ah, ok, well we shall see before too long I hope
+<dennister> setting up gnome-user-gruide seems to be taking awhile
+<DaskreeCH> it's lots of little files
+<seraphim> arte there some real kubuntu developers online ?
+<DaskreeCH> seraphim: Why ldap?
+<seraphim> hmm ?
+<DaskreeCH> yes
+<seraphim> ldap is for authentication in our companie
+<seraphim> I use it for heterogen  networking, linux and windows wit one single point of useraccount administration
+<DaskreeCH> Good anwser
+<seraphim> thanks
+<dennister> DaskreeCH: yeah, but i do get worried when one file takes forever to setup
+<seraphim> what ?
+<COm_BOY> I guys. .. i cant hear audio in my Kubuntu  8.04 ...
+<DaskreeCH> dennister: I tend to make sandwiches when things install so I don't do that
+<seraphim> the problem is the (k) ubuntu network manager
+<DaskreeCH> !sound
+<ubottu> If you're having problems with sound, first ensure ARTS is running, by going to K Menu -> System Settings -> Sound System and making sure "Enable the sound system" is checked. If that fails, see https://help.ubuntu.com/community/Sound - https://help.ubuntu.com/community/SoundTroubleshooting - For playing audio files, see !Players and !MP3
+<COm_BOY> yesterday it was working fine.. some other guy used my PC ...... and i think the problem occured from there !!!!
+<DaskreeCH> seraphim: which version of Kubuntu ?
+<seraphim> 9.04
+<DaskreeCH> COm_BOY: and they didn't just mute kmix ?
+<DaskreeCH> seraphim: What's the machine used for?
+<dennister> other machine is done...i think i need to eat something or i'll never be able to sleep
+<DaskreeCH> dennister: Have tea
+<COm_BOY> tno KMIX is working fine
+<DaskreeCH> you really don't want to eat and sleep righ after
+<COm_BOY> KMIX has audio fulll
+<DaskreeCH> and none of the mute checkboxes are ticked?
+<dennister> my stomach is so empty i don't think tea will cut it :)
+<COm_BOY> thanks working fine now
+<COm_BOY> but the Voice has some problem , i willl adjust it
+<DaskreeCH> COm_BOY: Glad to help
+<DaskreeCH> dennister: Ok but I think you'd be quite surprised
+<seraphim> a working linux ldap client needs to have
+<seraphim> first : network - sometimes there is no network after boot because the network manager wort no propperly
+<seraphim> second : the home shares are mountet via nfs. so no network -> no nfs-home -> no login
+<seraphim> third : nscd is not working witout network -> no authent
+<seraphim> this means, the network manager is grap for buisnes networks because it come to late
+<FloodBotK1> seraphim: Please don't flood, use http://paste.ubuntu.com to paste, don't use Enter as punctuation.
+<DaskreeCH> You'd have to have a good breakfast though
+<seraphim> can you read my last writing ?
+<DaskreeCH> seraphim: all good points. what's the time where you are?
+<seraphim> the machine is used for office working
+<dennister> peanut butter mmmmmm
+<seraphim> time ? its 9.05 in the morning
+<DaskreeCH> seraphim: I'd say try upgrade to KDE 4.3 the network manager is a lot more capable but your setup does require some consideration
+<dennister> anyway, i'm going to say good night here...and u should, too DaskreeCH :)
+<dennister> thanks for all your help
+<seraphim> for 2 years, in /etc/network/interfaces I was able to configure a network device. but now, the networkmanager starts after ifup and delete the alrady found devices and make some mistyery sthings
+<DaskreeCH> seraphim: ok then can you file a bug on the network manager and state the situation and that you are willing to work with the team to get it resolved. Then join #kubuntu-devel and state you are having issues with ldap nfs and the network manager and give the URL to the bug
+<DaskreeCH> Most people are sleeping now but they will get in contact with you
+<DaskreeCH> dennister: Damn you I want PBJ now :(
+<DaskreeCH> dennister: has it finished installing?
+<DaskreeCH> seraphim: don't use NM then is a quick solution
+<dennister> nope, it was getting hung at spots, so I'll have to babysit, ctrlc, and then do a fix
+<DaskreeCH> how do you know it was hung?
+<DaskreeCH> you can run a sudo dpkg --configure -a && sudo apt-get -f install
+<dennister> i would, but it's still trying to setup other stuff
+<DaskreeCH> dennister: right then I'm off :)
+<dennister> sorry, misread you...good night
+<Shdwdrgn> need help with xorg.conf dual-head setup?  ATI radeon card, the fglrx drivers gave me speed problems.  Trying to use the rdeon driver now, but I can't seem to get dual-head to work.
+<Shdwdrgn> best I managed was the kde screen on one monitor, and a generic screen on the other
+<seraphim> anyone here to explame me some details
+<Mamarok> !ask | seraphim
+<ubottu> seraphim: Please don't ask to ask a question, simply ask the question (all on ONE line, so others can read and follow it easily). If anyone knows the answer they will most likely reply. :-)
+<seraphim> about bug reports. where is the right place to send it. is there a kubuntu bug report repository or is everything based on the ubuntu platform
+<seraphim> im asking again... about community : is everything for kubuntu based on the ubuntu bug repositories ?
+<Blizzz> seraphim: bugs.launchpad.net
+<leaf-sheep> I use Gnome for about a year.  I'm experimenting with KDE4.  Can you suggest the good packages for Internet, Video Player, AIM, IRC, etc.  I know you guys don't always use default-kde-packages.
+<khaije|amalt> internet: aurora, video player: dragon/kaffeine, irc: konversation
+<anaxa> greetings
+<khaije|amalt> many of the apps in kde are in the process of migrating from kde3 to kde4, so what might be typical defaults are skewered a little to present an all-kde4 default install
+<anaxa> after long search and digging i end up here for help with pulsaudio in kde4. i keep having problems to disable the annoying POKE sound of some applications.
+<leaf-sheep> Ahh.
+<anaxa> i hope someone can help me out?
+<ikonia> anaxa: with what ?
+<anaxa> like with compiz or nvidia control pannel, when i click OK buttons
+<anaxa> this while all KDE notification sounds are disabled
+<anaxa> and pulsaudio control itself
+<anaxa> pidgin does it too, anoying drum sound on ever button
+<KlavKalashj_> hm, why is the default location "documents"? When opening tilda, it opens in /home/oscar/documents... and if some program calls the filemanager it also opens there
+<KlavKalashj_> can I change it anywhere?
+<leaf-sheep> I take it that cryptsetup (crypto_LUKS) does not work on KDE4?
+<leaf-sheep> I plugged in the external HDD. It shows up. I toggle the HDD and it prompts me for password. I type in. Nothing. Repeat. Repeat.
+<leaf-sheep> Ahh. Solved.
+<mobi-sheep> !bug | mobi-sheep
+<ubottu> mobi-sheep, please see my private message
+<ForeverSmurf> hello
+<ForeverSmurf> how do I get a list of all install packages from the command line?
+<ForeverSmurf> in plain text
+<llutz> ForeverSmurf: dpkg -l|grep ^ii
+<leaf-sheep> Err if I want to file a bug for Kubuntu, will that be under Ubuntu?
+<ForeverSmurf> thank you llutz
+<dwarder__> how do you access ext3 from dual boot windows XP?
+<dwarder__> all of this http://www.howtoforge.com/access-linux-partitions-from-windows doesn't work for me
+<sidus> Greetings, i would know how i can remove totally Gnome with it's libraries, i have not so much space in my hd and i use kde for my activities PS. I'm sorry for my English
+<ka> dwarder__: Strange  http://www.fs-driver.org/index.html always worked for me...
+<ka> dwarder__: Doesn't work with ext4 though...
+<ka> sidus: really you can't in my experience. You will almost always need some gnome libraries for firefox for instance...
+<KlavKalashj_> wtf
+<KlavKalashj_> how do I make a screenshot in kde? :P
+<dwarder__> KlavKalashj_: use camera ;)
+<KlavKalashj_> dwarder__: rofl :P
+<KlavKalashj_> isn't there any app... like Skreenshot or something :P
+<dwarder__> ka: total commander plugin worked for me
+<Mamarok> KlavKalashj_: ksnapshot
+<KlavKalashj_> Mamarok: is it installed by default?
+<Mamarok> KlavKalashj_: well, try launching it from Alt+F2, you will see
+<KlavKalashj_> Mamarok: ah, thanks!
+<KlavKalashj_> I had it :)
+<KlavKalashj_> Strange it is not mapped to the print screen button
+<Mamarok> KlavKalashj_: it's not part of the default installation, so of course not
+<KlavKalashj_> it is not?
+<Mamarok> KlavKalashj_: you can add the shortcut yourself
+<KlavKalashj_> So why did I have it? :)
+<Mamarok> KlavKalashj_: well, aptitude show ksnapshot tells me it is not installed automaticallay, hence no, but easy to isntall
+<KlavKalashj_> Mamarok: Hm, I see. How do I map it then?
+<Mamarok> KlavKalashj_: some other package has isntalled it then
+<Mamarok> KlavKalashj_: right click on the Blue Menu button, choose Menu Editor
+<Mamarok> then in "Graphics" go to ksnapshot and open the Advanced tab
+<Mamarok> there you click on the shortcut, then press the PrtScreen button
+<Mamarok> then restart KDE and you are done
+<Mamarok> oh, save the Menu settings, of course
+<KlavKalashj_> Mamarok: oh, thanks man :)
+<Mamarok> KlavKalashj_: you are welcome :)
+<mobi-sheep> Any KSolitare games?
+<Mamarok> mobi-sheep: kKpatience
+<Mamarok> it's part of the kdegames meta-package
+<Mamarok> kpatience even
+<mobi-sheep> Mamarok: Thanks. I'm learning how to use KDE.  Been using Gnome for a year. :)
+<mobi-sheep> And already filed a first KDE bug. >_>
+<mobi-sheep> /my first KDE bug/
+<Mamarok> mobi-sheep: what bug?
+<mobi-sheep> Mamarok: https://bugs.launchpad.net/ubuntu/+bug/399649
+<Mamarok> not really a bug, cryptsetup is just not installed by default
+<mobi-sheep> Well, yes -- but lack of information.
+<mobi-sheep> I even typed passphrase in.  Why did I do that if it wasn't going to work?
+<mobi-sheep> I mean... lack of notification, not information.  Well both.
+<Mamarok> mobi-sheep: yeah, a notification should pop up indeed, hence a bug, but you should change the description to "Missing notification ..." or such
+<mobi-sheep> I like how Konsole is.  Bottom tabs.  Easier than top tabs, I suppose. :)
+<Mamarok> mobi-sheep: that's probably a mattor of personal taste, and you can change the tab position anyway
+<mobi-sheep> Props to KDE developers.  I now think all Ubuntu moms should use KDE instead of Gnome.  Much cleaner and easier on transition from Window-alike experience. :o
+<mobi-sheep> And Solitaires!
+<Mamarok> mobi-sheep: not only moms :)
+<mobi-sheep> Mamarok: Yes. Matter of personal taste and I find this easier to work with. Lol. I think I'll enjoy playing with KDE and possibly move or both. :)
+<mobi-sheep> Well, my mom still use Windows XP.  It's really lagging.  256MB ram.  She even is afraid of Vista. (eg, afraid of new thing, unknown objects).
+<Mamarok> well, then switch her over to KDE, but buy her some ram anyway
+<mobi-sheep> Mamarok: Anything useful (eg, kde packages) I should know about?
+<said> hi
+<said> hi
+<said> hello evry bqdy
+<Mamarok> mobi-sheep: nothing in particular, but 1 Gb of Ram is not a luxury for a modern Desktop IMHO
+<Mamarok> mobi-sheep: get hold of a Kubuntu 9.04 CD and install it
+<valgaav> mobi-sheep:  kgtk is a very nice thing  http://www.kde-apps.org/content/show.php?content=36077 if  you like consistent desktop experience but must use some gtk apps anyway
+<said> how I can learn more about linux kubuntu
+<mobi-sheep> valgaav: I'm using Shiro(Firefox) + XChat.
+<mobi-sheep> said: Be more specific, please. :)
+<mobi-sheep> said: I'm learning KDE right now. :P
+<valgaav> mobi-sheep: I would also install Smplayer ASAP as it's the best linux player
+<mobi-sheep> Will do.
+<Mamarok> valgaav: I think you miss the point...
+<mobi-sheep> It's front-end for mplayer.  Hmm.
+<Mamarok> mobi-sheep: use Konqueror as default browser, if you have Java installed it should work correctly
+<valgaav> Mamarok:  why ?
+<said> how I can learn more about linux kubuntu
+<Mamarok> mobi-sheep: also, upgrade the default Amarok to 2.1.1 from the backports, 2.0.2 is quite old
+<mobi-sheep> Mamarok: Well, I like Firefox plugins.
+<Mamarok> valgaav: suggestion external packages is not a recommendation in this channel, the default apps run quite well
+<mobi-sheep> Dragon ran H264 just fine for me.
+<Mamarok> said: you can check the documentation on the website: http://kubuntu.org
+<said> thank you Mamarok
+<Mamarok> mobi-sheep: oh, and use the xine backend, avoid pulseaudio and gstreamer until further notice, there are too many bugs currently with those and phonon
+<valgaav> Mamarok:  I really wouldn't agree about that ... for example konqueror just doesn't work with a lot of webpages... that's why next kubuntu will have arora right ?
+<Mamarok> valgaav: I doubt that, Arora has too many bugs right now, doesn't work well for me, Konqueror works much better
+<mobi-sheep> Err, I can't run Firefox 3.0 + Firefox 3.5 in KDE.  Do I need.. KGtk (Use KDE Dialogs in GTK Apps).
+<valgaav> you do not need it
+<valgaav> it's just for people who hat gtk file dialogs
+<valgaav> hat = hate
+<valgaav> btw what's the problem firefox works for me just fne
+<Mamarok> mobi-sheep: then something could be missing in the installation, or another instance is running already
+<valgaav> also when installing firefox you should use do it from command line with " apt-get --no-install-recommends
+<valgaav> install firefox
+<valgaav> ups paste didn't work ... "apt-get --no-install-recommends install firefox'   with that firefox will not install ubufox and all the gnome dependencies
+<mobi-sheep> valgaav: Solved.
+<mobi-sheep> valgaav: I didn't try your command btw. :P
+<mobi-sheep> It didn't get along with my .mozilla so I tried a clean one.
+<barbapa> hello
+<barbapa> I have a little bug, I got this kind of pop-up : "Starting KTTSD Failed". What can I do, please?
+<xocolate> help! I need change my resolution to 1024x768 at X
+<mobi-sheep> barbapa: Seems like it's for KDE Text-To-Speech System.  You need that?  If not, you could toggle it off.  It's my guess.
+<xocolate> help! I need change my resolution to 1024x768 at X, but when I do this, the monitor turns off
+<Mamarok> xocolate: we need some more information: what is the current resolution?
+<Mamarok> and how do you change the settings?
+<etfb> I've used Amarok, and I have to say: all those people who rave about it are on crack.  It's hideous.  It's slow, it's clunky, and a feature like the ability to browse my music collection seems to be totally beyond it.  Horrible.  So: what's the alternative?  is there a music player that works in Kubuntu and doesn't crash on startup just because I have a few dozen gigabytes of music files?
+<KlavKalashj> etfb: why don't use mpd with some nice frontend?
+<bazhang> etfb, then try something else; there are a number to choose from
+<KlavKalashj> etfb: mpd really is a great thing
+<etfb> bazhang: I have no doubt.  However, any time anyone asks on any forum indexed by Google, the answer is always "but Amarok is lovely I don't understand the question OW MY BRAIN HURTZ" which is not terribly helpful.
+<etfb> KlavKalashj: Thank you: I'll look it up.
+<bazhang> etfb, well complaining about is not going to make it more to your liking, choose something else--let me get a partial list for you
+<bazhang> !players | etfb check this
+<ubottu> etfb check this: Audio (Ogg, MP3...) players: Audacious, Banshee, Beep Media Player, Listen, Quod Libet, Rhythmbox, Exaile, XMMS2 (GTK/Gnome based) and Amarok, JuK (Qt/KDE based).  Video players: Totem, Xine, MPlayer, VLC, Kaffeine - See also !codecs
+<KlavKalashj> wow, cool bot :)
+<etfb> Gives me a place to start, anyhow.  Thank you.
+<xocolate> mamarok: K > system settings > display
+<[-Haza-]> How can i set my KDE to have one taskbar per desktop?#
+<[-Haza-]> Instead of sharing the one taskbar for all desktops?
+<[-Haza-]> KDE 4.2.2
+<mobi-sheep> [-Haza-]: You're serious? o.O
+<mobi-sheep> [-Haza-]: I found it!
+<mobi-sheep> [-Haza-]: Right-click on the panel. Under Filters, click "Only show tasks from the current desktop" -- I have been using KDE for few hours now. :P
+<Hirato> I've a fresh install of kubuntu 8.10 here; I'm curious as to why the upgrade to 9.04 installs lilo, despite the presence of grub
+<[-Haza-]> mobi-sheep: Yeah ive done it before on my desktop. But im pretty sure version of Kubuntu on my desktop has more options...
+<[-Haza-]> mobi-sheep: Right click only seems to brong up the options: Add Widgets, Add panel, Lock Widgets, Panel Settings and Remove this Panel
+<mobi-sheep> [-Haza-]: Task Manager Setting.
+<[-Haza-]> mobi-sheep: If i remember correctly i have to run some KDE update that isn't enables in the repository by default
+<etfb> Right: add Audacious to the list of music players that don't work, along with Amarok.  Trying then next one...
+<[-Haza-]> mobi-sheep: Task manager?
+<mobi-sheep> [-Haza-]: That's what I see it when I right-click on the panel (not Windows List or any other widgets).
+<[-Haza-]> mobi-sheep: Makes me think we are not using exactly the same version :) Even though i installed this about a month ago from the latest CD
+<mobi-sheep> [-Haza-]: Few hours ago. :)
+<mobi-sheep> I'll look what version I have.
+<[-Haza-]> mobi-sheep: just click Help on any application then About KDE
+<[-Haza-]> Think you will find it there
+<mobi-sheep> I got it but I don't see the version.
+<mobi-sheep> [-Haza-]: kubuntu-kde4-desktop for sure.
+<mobi-sheep> [-Haza-]: Oh wait...
+<mobi-sheep> Yup it is.
+<Mamarok> xocolate: did you read all my questions?
+<annma> hi
+<annma> is the file /usr/share/kubuntu-default-settings/kde4-profile/default/share/config/kickoffrc from KDE or added by KUbuntu?
+<annma> grep in my vanilla kde install dir shows no kickofrc file
+<annma> so I'd like to know if https://bugs.kde.org/show_bug.cgi?id=200297 is KDE or KUbuntu
+<annma> thanks in advance
+<annma> hello?
+<KlavKalashj> Is there no one except me who has troubles with facebook in newest konqueror?
+<Hirato> I'm more annoying about the upgrade to 9.04 installed lilo, and the 9.04 KDE being dependant on libpulse0 which is causing all sorts of problems for me :P
+<Hirato> I still don't have answers regarding the why of either
+<mobi-sheep> annma: The link you posted... shows where kickoffrc can be found.
+<annma> mobi-sheep: I want to know if this is specific KUbuntu
+<annma> as I said I don't have such installed file on my vanilla KDE
+<annma> so I want to know if this kickoffrc file is made up by KUbuntu people
+<annma> and give them the bugreport
+<mobi-sheep> annma: I don't know.  I'm not the developer here. It seems that the comment left by the earlier link pointed out that it's kubuntu-specific problem.
+<mobi-sheep> annma: I'm sure it's Kubuntu.
+<annma> someone else triaged it and sent it back to you
+<annma> yup
+<tolonuga> hi. if openoffice tells me (kubuntu 9.04 amd64) that it doesn't have the filter to load a png file (e.g. for a presentation) - which package is missing / what do I need to install to change that?
+<Hirato> libpng sounds like a good place to start tolonuga
+<tolonuga> libpng12 is already installed :(
+<inch> господи какой отстой четверка!
+<inch> 3.5 вещ
+<felipe__> aew
+<felipe__> alguem aew
+<felipe__> ?
+<bazhang> !br
+<ubottu> Por favor, use #ubuntu-br para ajuda em português. Obrigado.
+<felipe__> ?
+<bazhang> felipe__, /join #ubuntu-br
+<felipe__> sim
+<[-Haza-]> How do i increase the size of the wastebin?
+<felipe__> naum
+<felipe__> kubuntu
+<bazhang> felipe_, both kubuntu and ubuntu in #ubuntu-br
+<felipe__> ?
+<felipe__> ?
+<felipe__> ?
+<FloodBotK1> felipe__: Please don't flood, use http://paste.ubuntu.com to paste, don't use Enter as punctuation.
+<bazhang> felipe__, both Ubuntu and Kubuntu in #ubuntu-br
+<bazhang> felipe__, /join #ubuntu-br
+<felipe__> kubuntu
+<bazhang> kubuntu ----> #ubuntu-br
+<felipe__> estou perdidoaim nu kubuntu
+<felipe__> uaihIU
+<bazhang> felipe__, English here
+<felipe__> BR
+<bazhang> felipe__, I told you.  /join #ubuntu-br for Kubuntu BR
+<felipe__> ok
+<felipe__> #ubuntu-br
+<mckim25> gsgafafds
+<mckim25> hi
+<bazhang> felipe__, /join #ubuntu-br
+<bazhang> mckim25, English please
+<mckim25> I'm korean
+<bazhang> mckim25, if you wish a Korean channel..
+<bazhang> !ko | mckim25
+<ubottu> mckim25: 도움이 필요하시면 다음 채널에 조인하십시오. /join #ubuntu-ko
+<felipe__> alguem do brazil aew porra
+<felipe__> ?
+<p_quarles> felipe__: not in this channel
+<namelessjon> If I want to be able to restore my system to its state pre-upgrade, which folders should I backup beforehand?
+<p_quarles> namelessjon: depends on what parts of the system you're upgrading
+<namelessjon> p_quarles: kubuntu version. (from Hardy -> Jaunty)
+<p_quarles> namelessjon: pretty much everything, then
+<p_quarles> namelessjon: that's why it says "this cannot be undone" when you tell it to do the upgrade
+<mobi-sheep> I'm not quite sure what "Show A Plamsa Dashboard" is for.
+<ratts> omg someone help me.....i get this really annoying beep and it makes my ears go deaf since i have headphones on....basically like a bios beep or something....i usually get it when holding the delete key in my chat program when theres no more text to delete. please help me turn this thing off
+<BluesKaj> hi folks
+<Refraxx> Hello All
+<shadeslayer> Refraxx: hi
+<Refraxx> I have a question about the software updates.
+<shadeslayer> Refraxx: shoot
+<Refraxx> How do they know what my computer needs? And when it needs it?
+<shadeslayer> Refraxx: thats easy..it reads them off a list ;)
+<Refraxx> cool. I didn't know that.
+<Refraxx> What about the "blocked" updates?
+<shadeslayer> Refraxx: run sudo apt-get update...it updates the list and reads about new packages
+<Refraxx> I have 4 that I cannot get download and/or delete
+<martin____> \join #amarok
+<shadeslayer> Refraxx: those are version upgrades..run sudo apt-get dist-upgrade
+<Refraxx> ok, I will. Thank you.
+<shadeslayer> no problem
+<Refraxx> .....I forgot, how do I "loggoff" of this chat?
+<shadeslayer> Refraxx: /quit
+<shadeslayer> Refraxx: or /part will leave this channel
+<Refraxx> ahha.
+<namelessjon> p_quarles: What is 'almost everything' though? I'm guessing I need /etc /boot /usr /home /lib /lib32 /root /bin /sbin and don't need /proc, /dev.  But there are a bunch of other folders in / that I'm not sure about.
+<BluesKaj> namelessjon, you /proc  and /dev
+<BluesKaj> need
+<namelessjon> BluesKaj: Well, I need the folders there, but to restore my system, do I need the contents?
+<shadeslayer> isnt /proc cleared out when the system is shut down?
+<BluesKaj> namelessjon, I'm quiite sure /dev looks all your devices /drives
+<shadeslayer> best to use something to image your entire HD onto a external drive and then upgrade...
+<BluesKaj> shadeslayer, dunno
+<shadeslayer> hmmm
+<BluesKaj> namelessjon, exactly what is your situation/problem , maybe there are other ways to fix it ?
+<shadeslayer> [#kubuntu]
+<namelessjon> BluesKaj: I'm currently running Hardy.  I want to upgrade to Jaunty.  But I'd also like to be able to go back to Hardy, should things go wrong.
+<shadeslayer> whoops....putty is weird sometimes....
+<shadeslayer> namelessjon: i would advise you to image your HD,download a ISO and reinstall completely.....but thats just me
+<BluesKaj> ok namelessjon , if I'm not mistaken , you should just do a clean jaunty install on a different partition
+<namelessjon> shadeslayer: I plan to go for doing a clean install, not just an upgrade via updater, but I was just trying to work out what should be copied, vs stuff linux makes for itself.
+<BluesKaj> upgrading from Hardy to Jaunty has too many steps in between
+<namelessjon> Hence my plan to back things up first :)
+<shadeslayer> namelessjon: imho you should rsync the / partition and do a clean install
+<shadeslayer> namelessjon: the HD to which you rsync should be ext..
+<BluesKaj> namelessjon, don't copy anything except data and media
+<shadeslayer> BluesKaj: also the permissions...
+<BluesKaj> i thought the permissions set in the new OS would be sufficient
+<BluesKaj> but I've never done such an upgrade so....
+<shadeslayer> BluesKaj: it would be best advised i think to use rsync... any other ideas guys??
+<namelessjon> Well, the external harddisk is formatted as ext3, so any and all perms should be copied.
+<bigjools> BluesKaj: FYI, I fixed my wifi connection issue by deleting the connection and re-defining it in NM
+<BluesKaj> bigjools, the widget nm ?
+<BluesKaj> BBL ...got errands to do
+<bigjools> yep
+<kris_> Hi. Perusing my logs, and I get an alarmist, "TCP: Treason uncloaked!" message. My research has revealed that it may be just a bug, or it may be an attack. Thoughts, please? TIA.
+<griselio> lalala
+<griselio> hi leuten
+<SeanTater> I have a file transfer that somehow hung and now stays permanently in the notification applet. How can I remove it?
+<geronimo89_> does anyone know how I can restore the kde4 default network manager and wlan-applet?
+<Captain_Haddock> geronimo89_: what are you using now?
+<geronimo89_> Captain_Haddock: tried wicd, but it crashes :>
+<Captain_Haddock> wicd works great for me :) If you want the old one back, try installing the network manager plasma widget back
+<Captain_Haddock> plasma-widget-network-manager from the looks of things
+<Captain_Haddock> (remove wicd first)
+<geronimo89_> Captain_Haddock: that's what I needed, thanks!
+<Captain_Haddock> :)
+<BluesKaj> Captain_Haddock,  interesting , that's the first time I've heard of wicd crashing.  Usually it's the widget that either freezes or forgets it's settings
+<Captain_Haddock> BluesKaj: me neither
+<cristian_> hi everybody
+<Captain_Haddock> I'm very happy with it and was a little miffed when I couldn't install it in Fedora as well (no official packages)
+<Captain_Haddock> hi cristian_
+<cristian_> I've a cuestion... has anybody install amsn?
+<cristian_> sorry for my english, is bad...
+<Shura> Hi dudes
+<cristian_> amsn 0.98
+<Shura> Someone has a fix for this : https://bugs.kde.org/show_bug.cgi?id=199729  ? ^^
+<bazhang> cristian_, any reason for the newer version? 0.97.2 is in the repos
+<cristian_> bazhang: 0.98 have the option to videoconferencies
+<cristian_> audio and video
+<bazhang> cristian_, that version is not in the repos yet
+<cristian_> bazhang: no, but thereis repos to that
+<bazhang> cristian_, a PPA?
+<cristian_> yes
+<bazhang> cristian_, best to be very careful with PPA's, unless it is a trusted source
+<cristian_> ok, but it works
+<bazhang> cristian_, so what was your question, if you have already installed it?
+<cristian_> bazhang: yes, but i can't make run farsight2 necessary to make videoconferences with audio
+<bazhang> cristian_, so it does not work?
+<cristian_> bazhang: no, and i have it installed
+<bazhang> cristian_, do you have a link to the PPA?
+<cristian_> i have the repos
+<bazhang> no idea then
+<cristian_> fuck... i don't know what to do :P
+<bazhang> please no cursing cristian_
+<bazhang> cristian_, contact the maintainer of the PPA is my suggestion
+<cristian_> bazhang: jaja ok, sorry for the coursing
+<cristian_> cursing
+<cor> I have a default session in Kate. I make changes. I save it.. I load it. All changes are gone. what's that about?
+<bazhang> cor, what file were you editing
+<cor> just regular files
+<The-Jesus> in which directory?
+<cor> I make changes to the Kate settings via regular pref dialogs
+<bazhang> cor, in your home directory?
+<cor> what difference does it make what documents I have loaded?
+<cor> they aren't the issue
+<bazhang> cor, quite a lot, unless I am misunderstanding your question
+<cor> kate's appaling, unintuitive session handling is the issue. I'm just curious if anyone knows how to work around it.
+<bazhang> choose a different editor?
+<cor> I'd love to, and pretty much have. BUT, I'd love to be using Kate, because it's built in, and should be well-supported, plugins, and I could add code, etc.
+<The-Jesus> because you only "own" files in your home dir, try sudo kate from a terminal window and config away
+<utimothy> good day room
+<mobi-sheep> bazhang: You using Gnome + KDE?
+<cor> that I HAVE to chose a different editor saddens me, is all
+<cor> Kubuntu
+<bazhang> mobi-sheep, have both installed lxde as well
+<cor> so I have to be root to configure my text editor, right?
+<bazhang> kdesu kate
+<bazhang> The-Jesus, should use kdesu with graphical apps
+<mobi-sheep> bazhang: Nice. I'm experimenting KDE at the moment.  Is QTParted the KDE for Gparted?
+<bazhang> mobi-sheep, just parted iirc
+<bazhang> !info parted
+<ubottu> parted (source: parted): The GNU Parted disk partition resizing program. In component main, is standard. Version 1.8.8.git.2008.03.24-11.1ubuntu6 (jaunty), package size 65 kB, installed size 176 kB
+<mobi-sheep> !info iirc
+<ubottu> Package iirc does not exist in jaunty
+<mobi-sheep> What is IIRC? Some phrase?
+<bazhang> !find parted
+<ubottu> Found: gparted, libparted1.8-10, libparted1.8-dbg, libparted1.8-dev, parted (and 2 others)
+<cor> if I save settings in a sessioin, they should stay there, as a user. no effin way should I have to be root to make permanent changes - that's nuts
+<Mamarok> mobi-sheep: If I Remember Correctly
+<mobi-sheep> Mamarok: Thanks.
+<utimothy> my flash drive and my usb head phone are not working my flash drive not mounting
+<cor> 64 bit version of UEx comes out next week. something to look forward to
+<cor> a real text editor for Linux. Blow me!
+<bazhang> cor, please mind the language
+<cor> eh?
+<cor> oops, americans have different connotations,  guess
+<Dragnslcr> cor- do you have Kate set to save the session automatically when you exit?
+<cor> yes
+<cor> and to load automatically on launch
+<utimothy> i am using ubuntuu on a HP pavillion my usb drive not mounting can i be help
+<cor> but even doing it manually, any changes just vanish the instant you reload the session
+<Dragnslcr> Then it should open the same files you had open when you last exited
+<cor> same files, yes, that works fine
+<cor> it's the settings, external tools, toolbars, etc
+<cor> all gone#
+<Dragnslcr> I don't think any of that is part of the session
+<cor> even shortcuts!!!#
+<cor> there is a preference specifically to make them part of the session
+<cor> I could have sworn this worked a couple of versions ago. och well
+<Dragnslcr> Hm, guess they are. I'm looking at a session file now
+<cor> lol
+<Dragnslcr> It's certainly possible that it's a bug. What version of Kate are you using?
+<cor> I just went to edit Kate's shortcuts and it crashed!
+<cor> and when I re=-opened it.. my session was completely intact!
+<cor> that's a first! I mean, out of hundreds of launches in the last week
+<cor> wow
+<cor> 3.2.2 in KDE 4.2.2
+<Dragnslcr> Might be something that's fixed in 4.2.4 or 4.3
+<The-Jesus> thanks bazhang, my bad
+<Dragnslcr> I would suggest filing a bug report, but probably the first thing you'll get told is to try upgrading to at least 4.2.4, if not the 4.3 RC
+<cor> I'm kidding, in fact I've seen it do this once or twice. then later, when you login, kate comes up blank again. all the docs are there, but everything else is vanilla. I need to do more testing.
+<mobi-sheep> Which filesystem makes more sense for pure media storage? ext2 for less read-write. I see that ext3/ext4 is journaled but is that even necessary for data?
+<cor> I'm new to (K)Ubuntu, and upgrading is still something I'm working out. I can';t seem to get latest kernels to appear in my updates. in fact, very little does. I suspect I need more juuicy sources
+<cor> Life in Slackware was so much easier! but also, less fun.
+<Dragnslcr> Might be worth asking in #kde if it's a problem that the devs know about or know that it was fixed recently
+<cor> I might do that, cheers.
+<Dragnslcr> In KPackageKit, the Settings section has a button to edit your sources list
+<cor> imho KPackageKit is an abomination
+<ka> Hi. My / is full. Butthe partition size is twice as big as recommended in Beginning Ubuntu. What should I do. My machne is very slow this way...
+<ka> http://pastebin.ca/1496052
+<cor> I discovered synaptic, which is quite nice
+<Dragnslcr> It's a lot better than the KDE4 version of Adept
+<cor> ka, gparted.iso
+<ka> Are you saying I need more space on my / partition?
+<cor> ka, you might want to wipe unnecessary files, /tmp stuff, etc. perhaps boot into recovery mode and ask to free space
+<cor> ka, how big is your partition?
+<ka> 6,7 gb
+<Dragnslcr> ka- run this command and pastebin the output: sudo du -h --max-depth=1 /
+<Dragnslcr> It might take a couple minutes to finish
+<cor> of course, that's after he checks the man page to ensure you didn't just ask him to wipe his machine, of course
+<cor> ;o)
+<ka> I always check ;-)
+<cor> heh good man.
+<cor> I usually just do df -h
+<cor> it's quick#
+<ka> Besides I just made a backup...
+<Dragnslcr> df only shows mounted partitions
+<cor> yeah, but that's usually my problem!
+<Dragnslcr> The command I gave you will show which directory in / is sucking up your disk space
+<cor> yup, it's handy
+<cor> there's a visial version too, I think, but I've not used it
+<cor> *visual
+<Dragnslcr> ka- obviously, you'll want to ignore directories that are on other partitions, like /home
+<ka> Results from : sudo du -h --max-depth=1 /  = http://pastebin.ca/1496058
+<ka> seems like var is sucking 2.8gb
+<Dragnslcr> Well, /usr is a bit bigger than what I have, but it's normal
+<Dragnslcr> Yeah, /var is about 2 GB bigger than what I have
+<cor> logs?
+<Dragnslcr> You can run the same command, but with /var instead of /
+<Dragnslcr> Yeah, log files would be my first guess
+<cor> maybe a mad samba error or something
+<ka> Yikes; 2,5G    /var/cache
+<cor> woah
+<Dragnslcr> Yep, that's what I was about to say
+<Dragnslcr> Most of the space in /var for me is /var/cache
+<Dragnslcr> Mostly apt
+<Dragnslcr> Run it again on /var/cache
+<ka> Can I just delete the contene?
+<utimothy> my usb ports not working......using ubuntu on a Hp
+<ka> Can I just delete the content?
+<cor> remember mc has a directory sizes command, too. very handy
+<cor> especially because you can just hit F8!
+<ka> yes it is /var/cache/apt 2.5gb
+<cor> in future, ka, when you read a recommended partitioni size; double it.
+<ka> I did :-)
+<cor> haha
+<Dragnslcr> ka- sudo apt-get clean
+<Dragnslcr> That'll clear out the package cache
+<peabody> ok this is weird and the most annoying thing ever
+<peabody> is there some "feature" that makes it so once I left click my mouse it stays clicked down?
+<Dragnslcr> I have a 500 GB disk that I'll never fill anyway, so I just my root partition 25 GB
+<peabody> because everything is dragging and selecting, and I logged out and back in, and it wasn't selecting anything until I clicked something then it started all over again and it won't stop
+<Dragnslcr> peabody- might be some accessibility feature
+<peabody> this has never happened to me before and I have no idea how to turn it off
+<The-Jesus> i said that two external hdds ago
+<ka> Dragnslcr: Thanks. Now I don't need to reinstall.
+<cor> ka, gparted.iso
+<peabody> Dragnslcr: that's what I'm thinking but how do I make it stop? It's like the worst thing ever
+<Dragnslcr> peabody- I dunno. I don't see anything in the Accessibility settings
+<cor> peabody, is this a laptop?
+<peabody> everything I mouse over gets selected it's a pain in the ass just to stay in this channel because as I mouse over my buffers it swtiches to them
+<peabody> cor yes and my trackpad is disabled
+<cor> single-click to select
+<peabody> how do I turn it off?
+<The-Jesus> yep sincle click option is on settings-mouse
+<cor> that's the default now (at last) - mouse settings
+<cor> although the implementation still leaves some stuff to be desired, it's a welcome change
+<cor> door - brb
+<The-Jesus> btw thanks all, i finally got the problem with my dvd sorted - had to set the region and voila
+<peabody> cor I have single click to open enabled, but I don't see this single click to select, and quite honestly it's selected on mouse over, so that as I move over the menu on the left it changes the options available and when I click something on the taskbar it tries to drag it around
+<peabody> this is an insane navigation style if it is intentional because opening a menu from kicker takes like 12 clicks
+<The-Jesus> peabody settings-mouse & keyboard - mouse - Automatically select icons - it's a the very bottom
+<peabody> it's unchecked
+<peabody> :(
+<Dragnslcr> Yeah, this definitely doesn't sound like intentional behavior
+<Dragnslcr> Maybe it's the mouse itself or the USB port that's messed up?
+<peabody> it wasn't even a system update I was just in the middle of webbrowsing and it started happening
+<peabody> bluetooth mouse
+<Dragnslcr> Bleh
+<Dragnslcr> I gave up on my Bluetooth mouse a while ago. I could never get it to work very well
+<The-Jesus> or dirt, is your mouse old?
+<peabody> mine has worked fine since I bought it two months ago
+<peabody> let me plug in the usb cable and see if there's something with teh bluetooth
+<peabody> nope that's not it
+<The-Jesus> as an experiment switch to left-handed mouse and see if it stops
+<peabody> let me reboot entirely, brb
+<peabody> strange it was doing it for the first few minutes when I rebooted but now it seems to have stopped
+<cor> sounds like transmission gremlins. maybe your cell phone is messing with it
+<peabody> whatever it was it seems to have stopped
+<peabody> strange, let's hope that doesn't happen again
+<cor> if only hope were that powerful
+<Dragnslcr> peabody- yeah, sounds kinda like the sort of problems I had with a Bluetooth mouse. It just wasn't very reliable
+<cor> WiFi mouse have never let me down, so far
+<peabody> Dragnslcr: I've been using bluetooth for literally years never had an issue except for an occassional key "stuck" for a few seconds on the bt keyboard
+<Dragnslcr> Guess your keyboard and mouse are better than mine were
+<cor> do bluetooth keyboards have the transmissions encrypted?
+<Dragnslcr> I would assume so
+<peabody> depends on which mode they are in
+<Dragnslcr> Pretty sure that's a basic part of the Bluetooth spec
+<cor> took me an age to find an encrypted WiFi keyb/mouse setup
+<peabody> the mouse is always encrypted, the keyboard is unencrypted under basic pairing
+<peabody> but once it is in hdi? transmission mode it should be encrypted
+<cor> wireless keyboards just seem like such an easy way to snoop someone's keystrokes
+<peabody> they are
+<peabody> there's free tools online to snoop bt keyboards
+<cor> the average cell phone could probably be programmed to do it
+<cor> just stand close
+<peabody> I was even reading an article a few months back about using a long wire antenna to snoop them from as far as 300m away
+<cor> heh, nice
+<cor> when I was shopping for a wireless keyboard, it was the first thing I looked for. almost every vendor I contacted treated me like I was from outer space for making such a wild request
+<cor> encryption?? huh?
+<peabody> lol
+<peabody> I guess the new standard is going to be over wireless n or something
+<cor> what is interesting is how many wireless keyboard users haven't even considered it
+<cor> I ask every time I see someone using one, and only once has someone actually known
+<cor> cords rock!
+<peabody> cor msot people don't keep privacy and security utmost in their minds, just look at how many facebook apps there are that take all your personal info just to say some stupid shit like your android name means...
+<cor> it's a mad mad world!
+<The-Jesus> dunno, never used a cordless kb, but just for the record, cor what's the make of yours?
+<cor> but fortunately, at least for me, I've been released from a contract with, inportantly, required me to use a Windows desktop, Now it's Linux all the way, baby!
+<cor> happy days
+<cor> mine's a Logi
+<cor> S500 desktop I think
+<cor> #it's through the house, I'm on the lappy
+<cor> S510, and an LX5 mouse
+<cor> gotta love RDC!#
+<The-Jesus> thanks
+<The-Jesus> 42.50 on amazon... wonder how much for bulk
+<cor> heh
+<peabody> I'm not sure how much I would trust the encryption on a wireless device that wasn't standards based like bluetooth
+<peabody> at least with bt you know it's rc128
+<peabody> it's like 99% of thumb drives with encryption can be easily defeated
+<cor> I hear that
+<peabody> because they take stupid shortcuts or have horrible implementations
+<cor> I guess, in the future, keyvoards and mice will have linux installed, and we can choose
+<cor> and dynamos, for power
+<cor> AT LAST!
+<peabody> cor have you seen the asus computer in a keyboard?
+<cor> nah, sounds good though
+<peabody> yeah, complete pc in a keyboard and has like a 5" touchscreen on the side
+<cor> woah
+<cor> damn that's nice
+<peabody> http://www.geardiary.com/2009/01/07/asus-reveals-512-gb-ssd-keyboard-computer-and-other-prototypes-at-ces/
+<fede_> hello
+<cor> dude! I been drooling for a good minute already!
+<Dragnslcr> "complete pc in a keyboard"  You mean like what Commodore did 25 years ago?
+<darkhamm> why in kde 4.3.0 rc2 i can't open a terminal????
+<cor> better pic: http://www.engadget.com/2009/03/03/hands-on-with-asus-eee-keyboard/
+<cor> darkham - konsole
+<cor> bbiab
+<The-Jesus> is it me or does it look a bit apple-ish?
+<Dragnslcr> darkhamm- because you aren't doing it right. If you want a more detailed answer, we need more details about the problem
+<peabody> could anything like a keyboard computer look anything BUT appleish?
+<barraponto> hey guys, i wanted to mount /dev/sda6 as /var/www is there a GUI way?
+<Dragnslcr> peabody- http://en.wikipedia.org/wiki/Commodore_64
+<Dragnslcr> barraponto- I haven't found a good GUI for /etc/fstab
+<peabody> how does that not look like an apple ][e?
+<peabody> :p
+<Pici> !offtopic
+<ubottu> #kubuntu is the official Kubuntu support channel, for all Kubuntu-related support questions. Please use #kubuntu-offtopic for general chatter. Thanks!
+<Dragnslcr> Yeah, I knew that was coming
+<Guest28114> ciao
+<peabody> chococlate chip cookie dough in a bag that you just scoop and bake has been one of the greatest culinary inventions of my time
+<dwarder__> http://scfire-mtc-aa03.stream.aol.com:80/stream/1026
+<dwarder__> ttp://scfire-mtc-aa03.stream.aol.com:80/stream/1026
+<dwarder__> damn
+<dwarder__> how it was copied
+<dwarder__> ?
+<dwarder__> is this a touch pad
+<dwarder__> ?
+<dwarder__> how can i copy with touchpad?
+<dwarder__> i mean paste
+<peabody> there's an option to use right and left simultaneously as a middle click
+<peabody> I think it's a default even
+<dwarder__> left and right buttons?
+<dwarder__> i did't clicked any buttons
+<peabody> u mean how do it paste the url?
+<dwarder__> peabody: yes
+<peabody> because it looks like your question is how do you paste with a touchpad
+<peabody> you pressed the up arrow
+<dwarder__> i think it was with the touchpad
+<dwarder__> i'm man because last time it was a root password
+<dwarder__> man=mad
+<peabody> I'm in ur box stealing ur internetz
+<dwarder__> peabody: you are welcome
+<dwarder__> ;)
+<dwarder__> up arrow doesn't paste anything
+<peabody> well it repeats your last message
+<dwarder__> yeah this url wasn't my last message
+<peabody> if you pasted the url twice in a row then I would think you should know how you are pasting it ;P
+<dwarder__> hmm
+<dwarder__> yeah, but i don't ..
+<peabody> this is why I disable my trackpad and use a mouse with my laptop
+<dwarder__> peabody: how can i disable it?
+<peabody> because my palm always bumps the cursor away or something stupid
+<The-Jesus> bios?
+<peabody> mine has a button at the top that turns it on and off
+<dwarder__> in kubuntu
+<dwarder__> i don't want to reboot
+<peabody> it would be in your xorg.conf
+<peabody> and would require a xorg restart
+<peabody> but I would look at a hardware way to disable it
+<peabody> ie toggle button or bios
+<dwarder__> well, i have got a hammer
+<Slavyanin> НАШИ ЕСТЬ?
+<dwarder__> i think this is the only hardwere way to disable it on my sony vayo
+<peabody> nah, there's certainly an option to disable it in the bios
+<peabody> nah, there's certainly an option to disable it in the bios
+<dwarder__> i wish i could access my bios from kubuntu
+<cor> synclient all the way
+<cor> probably only toshiba, though
+<peabody> dwarder__: that would be very very expensive technology... the closest I can think of is virtual domains in solaris that allow you to allocate cards, processors, & ram on the fly
+<cor> horizontal scroll settings, pressure sensitivity adjustment, width, accelleration, it's all there
+<cor> hehe
+<peabody> which was technology they acquired when they bought Cray supercomputers
+<cor> they blought Cray???
+<cor> I am so out of that loop
+<peabody> cor it's an osd setup or software drivers?
+<cor> man: synaptic
+<peabody> well then I should tell you they are owned by Oracle now
+<cor> it's tosh only I think
+<cor> aren't Oracle owned by?....
+<peabody> Oracle is public traded
+<peabody> and acquired Sun a few months ago
+<peabody> time fow me to watch last night's daily show and colbert
+<peabody> later
+<bob__> salu
+<c_anthony07> hey everybody
+<c_anthony07> I'm new to Linux, and I'm trying to install Kubuntu 9.04 on my desktop from a LiveCD. I keep getting Status 127 when I run either the Demo or the Install option though.
+<c_anthony07> Can anyone help me?
+<c_anthony07> Anyone alive?
+<Dragnslcr> Bit slow right now, so it might take some time for someone to respond
+<c_anthony07> Do you have any ideas?
+<Dragnslcr> Unfortunately, no. I tried a quick search on Google, but I didn't see anything right off
+<c_anthony07> :S Do you think maybe if I downloaded an older version and installed it then upgraded that it would work?
+<Dragnslcr> Might be worth checking the md5sum of your disc image and doing a media check of the disc
+<Dragnslcr> Could be a bad download or burn
+<cor> what sort of computer is it?
+<c_anthony07> custom made from spare (old) parts. The memory and such checks fine though. Processor is 2.7 ghz with 1 gb ram.
+<cor> ahh ok. not a laptop then. cool
+<c_anthony07> yeah
+<cor> do other deb-based CDs work? Like Knoppix?
+<c_anthony07> I dunno... Kubuntu is the first one I've tried.
+<c_anthony07> I'm kinda short on CDs at the moment.
+<cor> and you are running the correct CD, right? like 64 bit for 64 bit Peecee?
+<c_anthony07> the error I'm getting is rc-default main process (2787) terminated with status 127
+<cor> Kubuntu is usually a good first choice.
+<c_anthony07> Yes. Using the 32 bit one.
+<c_anthony07> I think I read in the verbose install mode that is was something like a sasquatchfs error. Or something of that nature.
+<cor> is the machine overclocked?
+<c_anthony07> No, don't believe so.
+<c_anthony07> If it is it was done befor e I got it.
+<cor> sasquatchfs? never heard of that
+<c_anthony07> I could have the wrong word
+<c_anthony07> maybe squash?
+<cor> check your bios, do one of those "reset to default" commands
+<The-Jesus> squashfs maybe
+<c_anthony07> yeah that's it
+<cor> ahh right, of course!
+<cor> but sasquatchfs sounds like it would be excellent!
+<The-Jesus> lol
+<cor> for MONSTER files
+<The-Jesus> check the integrity of the cd
+<cor> my install CD failed its integrity check
+<cor> worked great, though
+<cor> lol
+<c_anthony07> Ok. How do I check the md5sum of the Iso file?
+<cor> in windows or Linux?
+<c_anthony07> Windows Vista
+<The-Jesus> u have a windows install? hashtab
+<cor> http://corz.org/windows/software/checksum/
+<cor> or hashtab, yeah
+<c_anthony07> downloading checksum now
+<c_anthony07> erm...installing rather (wow that was fast)
+<cor> quiet time at the server, and it's a small setup
+<mobi-sheep> How do you right-click /ie copy on Konsole?
+<cor> it comes with a drag&drop hashing app, too, if that's your bag
+<mobi-sheep> Or there are no right-click feature on Konsole?
+<cor> Ctrl+Shift+C
+<cor> right-click works in my Konsole
+<mobi-sheep> cor: Yes, I see it in Edit -> Copy.  I'm asking if it's just me.
+<mobi-sheep> cor: Try it with... 3 tabs.
+<cor> and thanks to synclient, the bottom-right corner of my touchpad does that, too
+<cor> IO have 5 tabs open right now, works fine
+<cor> not inside mc, but in the shell, no problem
+<mobi-sheep> cor: So does I.  It's weird.  Does not work on this particular Konsole for some reason.  I have it opened for few hours now -- as oppose to a fresh terminal.
+<cor> weird
+<cor> maybe some escape character wriggeld in there
+<cor> I sometimes find my caps lock is reversed, but that could be Krdc
+<c_anthony07> ok the simple checksum gave me a string...what do I do with it?
+<The-Jesus> compare it to - 537a22de1342d5671b7e0070f66a6076 (live cd, i386) or your version...
+<cor> compare it to the one published at kubuntu site
+<The-Jesus> https://help.ubuntu.com/community/UbuntuHashes
+<cor> or that
+<cor> if your downloaded iso is 100%, perhaps your CD is wonky. you can make an image of the CD, and re-check its hash. it *should* be identical (use ImgBurn)
+<cor> always smart to check "verify burn" when making install CDs, I find
+<c_anthony07> hash matched.
+<cor> matched the .iso file you downloaded?
+<c_anthony07> I'll run the cd through my disc info tool. Maybe it was just a bad disc.
+<c_anthony07> yep. the hash from the iso I downloaded matched up with kubuntu-9.04-desktop-i386.iso
+<cor> aye, always start with the perfect negative
+<cor> it's a pity you're short of CDs, there are lots of handy bootable tools and mini distros that would be useful right now, if you could burn them. Perhaps your puter can boot from a Pen Drive, and that might give you at least another option for installing a Linux.
+<cor> just thinking out loud...
+<The-Jesus> kubuntu-offtopic is dead... they need a trivia bot or something there.
+<cor> it's not like this is a high traffic channel
+<c_anthony07> I've got a USB Thumb drive. Not sure how much it can hold though
+<The-Jesus> cor> word. i always have a usb slab with Slax on my keyring - out of habit, was my first taste of linux - but it is very useful
+<cor> hell yeah!
+<cor> spooky!
+<c_anthony07> Wonder if I can use my MP3 player to install... lol
+<The-Jesus> thought> can you just unpack the iso to a usb stick and boot it?
+<c_anthony07> CD has no errors. Has anyone else been able to install from a 9.04 live CD?
+<c_anthony07> I'll be back...I'm gonna see if I get the same error on my laptop.
+<The-Jesus> cheers, good luck
+<cor> down to my last jar of Tahini. darn!
+<cor> cd ok. hmm. that's a weird install error.
+<utimothy> hi to all i am using a hp pavilion laptop ubuntu i can't see the files on my flash drive can i be help??
+<desu> utimothy: open dolphin
+<utimothy> ok
+<desu> utimothy: do you see anything that might resemble a USB drive on the left?
+<utimothy> very new to ubuntu dolphin??
+<cor> didn't it pop up a windoid when it was plugged-in? maybe you need to add that widget to your panel
+<The-Jesus> isn't it on by default? also, if its ubuntu use nautilus instead - the file manager
+<c_anthony07> back now
+<c_anthony07> so my cd will boot in my laptop...which means its the hardware of my desktop
+<wirechief> try noapic ?
+<cor> yup, mine was there when I installed, but plasma still isn't on my trusted list of apps
+<c_anthony07> tried all five options in that menu. Same error.
+<cor> strange
+<wirechief> no usb stuff plugged in it ?
+<c_anthony07> maybe something to do with two monitors? I read something about that somewhere
+<c_anthony07> there's a cam plugged in.
+<wirechief> unplug the cam
+<cor> I'd reset BIOS, remove all peripheral hardware, extra RAM, everything, and try again. If I was bored.
+<cor> you can add second monitors and USB devices later
+<c_anthony07> unplugged secondary monitor and the cam.
+<c_anthony07> trying again
+<The-Jesus> set the failsafe defaults on yor bios before booting
+<cor> see, it's stuff like that we take for granted. Perhaps OS installers should post this on their first screen.
+<cor> IF YOU HAVE DIFFICULTIES...
+<cor> etc.
+<c_anthony07> same error but different number. This time the process is 2761. :S
+<wirechief> c_anthony07:  are you using a pci graphics card ?
+<wirechief> or onboard graphics ?
+<wirechief> or both ?  or you dont know ?
+<c_anthony07> both
+<c_anthony07> my main is hooked to my pci card
+<wirechief> ok just a silly question: you have the card you want to use enabled in bios and the other disabled ?
+<c_anthony07> It's set to have my PCI card as the main graphics.
+<wirechief> is the mb graphics disabled ?
+<cor> if only that was a silly question
+<c_anthony07> I don't think so.
+<wirechief> well you are confusing the computer
+<wirechief> it doesnt know which to use.
+<wirechief> use only one and see what happens
+<wirechief> make sure you have the right options set in the bios to support what you are doing.
+<c_anthony07> hmm... I'm seeing a bunch of stuff in the CMOS I didn't see before. Like the option to enable or disable APIC and S3...
+<wirechief> stick with the monitor stuff, dont drift off changing other things.
+<felipe__> #kubuntu-br
+<c_anthony07> it only has the option to set the primary, not disable any.
+<cor> BIOS drift.. it's a real problem.
+<wirechief> well it should say what its doing with the onboard graphics, usually, mine says enable pcigraphics but disables onboard when the pci is plugged in but thats with a pci16 card slot
+<wirechief> whatever the option  does follow it through to what you connect , either onboard or the pci but not both.
+<c_anthony07> I've got it set to PCI, which is what my monitor is plugged into
+<c_anthony07> it's crazy. I dunno why it wouldn't run on the desktop but runs on my laptop.
+<c_anthony07> If it doesn't work this time I'll try switching to the onboard
+<The-Jesus> is it a gaming mobo? on board SLI and stuff?
+<wirechief> power down and remove the graphics card if your using onboard
+<cor> c_anthony07 have you googled for <your mobo> + Kubuntu ?
+<cor> mobo=motherboard, sorry
+<The-Jesus> ditto
+<cor> lol, I didn't spot that!
+<c_anthony07> good lord, another number in the rc-default status 127
+<cor> those are PIDs, they will always be different
+<cor> Process IDs, that is.
+<The-Jesus> that's the first one you mentioned (checked on my backlog)
+<cor> iirc
+<c_anthony07> ugh... I've gotta open the case again to get the mobo model #
+<c_anthony07> the past couple days have made me sick of looking in this thing's case lol
+<wirechief> power it down. remove the graphics card. use the onboard selection in the bios.
+<wirechief> use the vga connector on the motherboard
+<wirechief> then see.
+<cor> if you have windows installed query the mobo model from inside windows
+<wirechief> if that doesnt work you have an issue with your graphics onboard and its causing a crash i would think, somethings dmesg will give some indications too.
+<wirechief> or the /var/syslog
+<cor> or use Hirens boot CD - the latest version has a "mini XP" you can run windoze apps from. handy in emergencies
+<cor> though that boot cd's legal status is suspect, I should add
+<rudi> does anyone know how to get compiz working again in 9.04 if you have intel integrated graphics
+<wirechief> rudi get a nvidia card ;)
+<Captain_Haddock> jaunty + intel = fail (usually)
+<cor> in linux lshw is excellent.
+<cor> I had compiz running on inetgrated intel graphics in Jaunty
+<wirechief> rudi intel is badly broken in jaunty im afraid.
+<cor> it still is, in fact, but I have it switched off - I prefer kwin
+<cor> Oh, wait a minute, it might be ATI lol
+<rudi> last time i tried to fix it my install got messed up
+<wirechief> rudi they disabled  compiz for intel until the issue with graphics cards are resolved.
+<rudi> wirechief: yes, i read that
+<wirechief> yep blacklisted the sucker
+<c_anthony07> ...my pci card is an ATI Radeon...
+<c_anthony07> lol
+<rudi> figured there was a way around it
+<Captain_Haddock> and it ain't going to get fixed for this release :S
+<wirechief> rudi there is.
+<Captain_Haddock> rudi: you can try force-enabling it
+<Captain_Haddock> but, there are obviously drawbacks to it.
+<rudi> yea i tried it and i screwed up my system
+<rafaela> Hello!
+<Captain_Haddock> hola
+<rudi> i enabled the "bleeding edge" configuration and everything failed lol
+<rafaela> How are you?
+<The-Jesus> hey anthony is your motherboard a gaming one? i tried to dual boot my gaming rig (crossfire configuration) and no falvour of *buntu would even boot
+<Captain_Haddock> absolutely smashing; you?
+<c_anthony07> I don't believe it is
+<c_anthony07> I think it's the original that came in the PC. I'll check the specs for the pc
+<rafaela> I'm great
+<cor_> l*rz
+<Out_Cold> so... i've been doing some reading.. is there a touch pad option for KDE3
+<wirechief> on a laptop Out_Cold ?
+<Out_Cold> yes
+<rafaela> Where do you live?
+<wirechief> google synclient for some solutions if your having issues with jumping cursor or stuff like that
+<c_anthony07> Install is working!
+<c_anthony07> lol
+<Out_Cold> wirechief, i want to disable tap to click feature
+<c_anthony07> apparently the liveCD doesn't like ATI
+<wirechief> yep theres a fix for that, dont have it handy though , google does.
+<wirechief> what ATI card is that c_anthony07
+<wirechief> make model
+<c_anthony07> Not sure, gimme a bit lol I'ma get it installed first.
+<rafaela> 
+<rafaela> Someone talking to me?
+<The-Jesus> now you'll have to deal with fglrx... or the open driver if your card is unsupported.
+<rafaela> Where do you live? <Captain_Haddock>
+<Out_Cold> rafaela, what does someone's location have to do with channel support?
+<rafaela__> Alguém?????
+<The-Jesus> rafaela> #kubuntu-br
+<rafaela__> Where do you live? Out_cold
+<Out_Cold> stop asking you troll
+<The-Jesus> maybe she has issues with the localisation features?
+<Out_Cold> perhaps... but still..
+<leaf-sheep> What is screen-configuration.xml in $HOME for?  I'm guessing it's for panel?
+<JuJuBee> What port number is fish:// using ?
+<firecrotch> fish:// is a wrapper for SSH, so it uses port 22
+<drvoodoo> hi all, how can i check if the radeon driver (xserver-xorg-video-ati) is really used on by thinkpad?
+<firecrotch> drvoodoo: Check the Xorg.0.log file, there will be a line somewhere along the lines of "Loading Module "ati""
+<The-Jesus> you can try glxinfo |grep vendor - the output should say ATi
+<c_anthony07> Question... should I dual boot my desktop with XP/Kubuntu or just run straight kubuntu?
+<drvoodoo> it says SGI and Tungsten Graphics, Inc.
+<c_anthony07> I'm a gamer, but not really of the hardcore variety
+<firecrotch> c_anthony07: If you absolutely need access to something that is Windows-only
+<drvoodoo> but the xorg-log says (II) LoadModule: "radeon"
+<c_anthony07> Eh... I've got my laptop for windows stuff...guess I'll go straight kubuntu.
+<c_anthony07> Is it possible to network a kubuntu desktop with a Vista laptop?
+<c_anthony07> (for those who didn't know, I'm a first-time linux user)
+<firecrotch> c_anthony07: Yes
+<The-Jesus> ..... drvoodo what is the model of your ati card?
+<drvoodoo> its a mobility radeon 9000
+<c_anthony07> thanks firecrotch
+<drvoodoo> i thing the chipset is a r250
+<drvoodoo> year RV350 -> RV250 [Mobility FireGL 9000]
+<The-Jesus> lspci -nn | grep VGA
+<artur_> Hi all, I'm facing problems to burn Audio CDs using K3B from MP3 files. A message is showed saying to convert the files to wav.
+<artur_> what could i do
+<The-Jesus> huh... no longer supported by the ATi driver
+<The-Jesus> you might want to try the open ATi driver
+<drvoodoo> yes, i have the radeon driver installed, not fglrx ;)
+<robin0800> The-Jesus, How do you do that?
+<The-Jesus> wait it says SGI on the vendor output, so it is already on
+<The-Jesus> robin0800> https://help.ubuntu.com/community/RadeonDriver
+<The-Jesus> just went through that yesterday on may laptop =)
+<The-Jesus> my
+<drvoodoo> hehe, ok =)
+<The-Jesus> still have the post-its all over my desk
+<drvoodoo> i try the version from the X Updates ppa
+<The-Jesus> backports...?
+<The-Jesus> dont bench it with 3d... glxgears does show a little improvement on my laptop, but compositing is way faster
+<drvoodoo> the bad performance is without desktop effects enabled :(
+<The-Jesus> ...try checking the link, you may have to do some editing on your xorg.conf file.
+<The-Jesus> also, this > http://www.thinkwiki.org/wiki/Additional_options_for_the_radeon_driver the thinkpad wiki
+<c_anthony07> ah...feels good to have kubuntu finally installing
+<firecrotch> c_anthony07: welcome to the dark side ;)
+<cristian_> hi
+<artur_> Hi all, I'm facing problems to burn Audio CDs using K3B from MP3 files. A message is showed saying to convert the files to wav. What could I do to solve it?
+<ederico> hello, after one of the recent updates to my Kubuntu system I've encountered a strange problem, the applications I'm running don't appear any longer in the taskbar, even though I readd a process manager or whatever it is called
+<ryan2> hi there
+<ryan2> I got a serious problem - all my titles are gone I cannot maximize or minimize any windows
+<ryan2> I am not using compiz
+<ryan2> any help?
+<Akkarin> Hi

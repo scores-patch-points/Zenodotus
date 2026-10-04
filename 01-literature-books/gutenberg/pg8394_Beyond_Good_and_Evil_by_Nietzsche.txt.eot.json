@@ -1,0 +1,542 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+  "sha256": "05d6817efbf2976fecb7124934afb09eb425f74d975609bd910e959b12ac6d11",
+  "bytes": 210609,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 210609,
+  "bodyOffset": 0,
+  "bodyChars": 210609,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7813,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6046,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 105,
+  "surfaces": 29,
+  "referentEvents": 4,
+  "distinctReferents": 4,
+  "examined": true,
+  "edgesFound": 9,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 14,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 19
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 10,
+  "excerptOk": 10,
+  "rawChecked": 10,
+  "rawOk": 10,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 9,
+  "heard": 9,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "robert mcintyre|rose|from the sketch upon which he had been working",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Robert McIntyre rose from the sketch upon which he had been working",
+    "subject": "Robert McIntyre",
+    "verb": "rose",
+    "object": "from the sketch upon which he had been working",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#960-1099",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "Robert McIntyre rose from the sketch upon which he had been working, and taking one of the lamps in his hand peered out into the darkness."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and yet pronounced enough to turn what|would|have been a beautiful face into a merely pretty one",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and yet pronounced enough to turn what would have been a beautiful face into a merely pretty one",
+    "subject": "and yet pronounced enough to turn what",
+    "verb": "would",
+    "object": "have been a beautiful face into a merely pretty one",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#2773-3054",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "There was a vague sense of a flaw somewhere, in feature or in expression, which resolved itself, when analysed, into a slight out-turning and droop of the lower lip; small indeed, and yet pronounced enough to turn what would have been a beautiful face into a merely pretty one."
+     },
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7680-7713",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "what would your mother have said?"
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "only to die away again into a blank|look|of disappointment",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "only to die away again into a blank look of disappointment",
+    "subject": "only to die away again into a blank",
+    "verb": "look",
+    "object": "of disappointment",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#3451-3579",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "She raised her finger, and a smile of triumph played over her face, only to die away again into a blank look of disappointment."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the lanes and fields of tamfield|intolerably|dull after the life and bustle of edgbaston",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the lanes and fields of Tamfield intolerably dull after the life and bustle of Edgbaston",
+    "subject": "the lanes and fields of Tamfield",
+    "verb": "intolerably",
+    "object": "dull after the life and bustle of Edgbaston",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#4856-5252",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "The change, however, was a bitter one to all--to Robert, who had to forego the luxuries dear to his artistic temperament, and to think of turning what had been merely an overruling hobby into a means of earning a living; and even more to Laura, who winced before the pity of her old friends, and found the lanes and fields of Tamfield intolerably dull after the life and bustle of Edgbaston."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "tamfield|presented|one attraction",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Tamfield presented one attraction",
+    "subject": "Tamfield",
+    "verb": "presented",
+    "object": "one attraction",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#5490-5586",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "To Laura, however, Tamfield presented one attraction, which was now about to be taken from her."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "tamfield|would look|in",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Tamfield would look in",
+    "subject": "Tamfield",
+    "verb": "would look",
+    "object": "in",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#6327-6394",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "He would look in, were it but for half-an-hour, to bid them adieu."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "robert|went|on sketching stolidly in his folding book",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Robert went on sketching stolidly in his folding book",
+    "subject": "Robert",
+    "verb": "went",
+    "object": "on sketching stolidly in his folding book",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7194-7284",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "Robert went on sketching stolidly in his folding book, but Laura looked up from her work."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "but laura|looked|up from her work",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "but Laura looked up from her work",
+    "subject": "but Laura",
+    "verb": "looked",
+    "object": "up from her work",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7194-7284",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "Robert went on sketching stolidly in his folding book, but Laura looked up from her work."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "we|look|entirely towards you",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "We look entirely towards you",
+    "subject": "We",
+    "verb": "look",
+    "object": "entirely towards you",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7529-7558",
+      "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+      "text": "We look entirely towards you."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 9,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "and yet pronounced enough to turn what|would|have been a beautiful face into a merely pretty one",
+   "subject": "and yet pronounced enough to turn what",
+   "verb": "would",
+   "object": "have been a beautiful face into a merely pretty one",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#2773-3054",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "There was a vague sense of a flaw somewhere, in feature or in expression, which resolved itself, when analysed, into a slight out-turning and droop of the lower lip; small indeed, and yet pronounced enough to turn what would have been a beautiful face into a merely pretty one."
+    },
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7680-7713",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "what would your mother have said?"
+    }
+   ]
+  },
+  {
+   "id": "but laura|looked|up from her work",
+   "subject": "but Laura",
+   "verb": "looked",
+   "object": "up from her work",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7194-7284",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "Robert went on sketching stolidly in his folding book, but Laura looked up from her work."
+    }
+   ]
+  },
+  {
+   "id": "only to die away again into a blank|look|of disappointment",
+   "subject": "only to die away again into a blank",
+   "verb": "look",
+   "object": "of disappointment",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#3451-3579",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "She raised her finger, and a smile of triumph played over her face, only to die away again into a blank look of disappointment."
+    }
+   ]
+  },
+  {
+   "id": "robert mcintyre|rose|from the sketch upon which he had been working",
+   "subject": "Robert McIntyre",
+   "verb": "rose",
+   "object": "from the sketch upon which he had been working",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#960-1099",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "Robert McIntyre rose from the sketch upon which he had been working, and taking one of the lamps in his hand peered out into the darkness."
+    }
+   ]
+  },
+  {
+   "id": "robert|went|on sketching stolidly in his folding book",
+   "subject": "Robert",
+   "verb": "went",
+   "object": "on sketching stolidly in his folding book",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7194-7284",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "Robert went on sketching stolidly in his folding book, but Laura looked up from her work."
+    }
+   ]
+  },
+  {
+   "id": "tamfield|presented|one attraction",
+   "subject": "Tamfield",
+   "verb": "presented",
+   "object": "one attraction",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#5490-5586",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "To Laura, however, Tamfield presented one attraction, which was now about to be taken from her."
+    }
+   ]
+  },
+  {
+   "id": "tamfield|would look|in",
+   "subject": "Tamfield",
+   "verb": "would look",
+   "object": "in",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#6327-6394",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "He would look in, were it but for half-an-hour, to bid them adieu."
+    }
+   ]
+  },
+  {
+   "id": "the lanes and fields of tamfield|intolerably|dull after the life and bustle of edgbaston",
+   "subject": "the lanes and fields of Tamfield",
+   "verb": "intolerably",
+   "object": "dull after the life and bustle of Edgbaston",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#4856-5252",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "The change, however, was a bitter one to all--to Robert, who had to forego the luxuries dear to his artistic temperament, and to think of turning what had been merely an overruling hobby into a means of earning a living; and even more to Laura, who winced before the pity of her old friends, and found the lanes and fields of Tamfield intolerably dull after the life and bustle of Edgbaston."
+    }
+   ]
+  },
+  {
+   "id": "we|look|entirely towards you",
+   "subject": "We",
+   "verb": "look",
+   "object": "entirely towards you",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt#7529-7558",
+     "ref": "01-literature-books/gutenberg/pg8394_Beyond_Good_and_Evil_by_Nietzsche.txt",
+     "text": "We look entirely towards you."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:35.253Z"
+ }
+}

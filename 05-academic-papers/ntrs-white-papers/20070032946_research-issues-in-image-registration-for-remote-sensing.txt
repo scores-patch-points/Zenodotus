@@ -1,0 +1,445 @@
+---
+title: Research Issues in Image Registration for Remote Sensing
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20070032946
+source_url: https://ntrs.nasa.gov/citations/20070032946
+rights: Public-use permitted (NTRS copyright determination PUBLIC_USE_PERMITTED); no third-party material
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Goddard Space Flight Center
+publication_date: 2019-07-12
+retrieved: 2026-09-22
+sha256: 6688e05d3e3b0a3111641cc70b85a4c7001632c22bccc63901dab73218e3e5ae
+pages: 8
+words: 6077
+cv_look_pages: 0
+---
+
+                                                                                                             Source of Acquisition
+                                                                                                        NASA Goddard Space Flight Center
+
+
+
+
+                    Research issues in image registration far remote sensing
+
+       Roger D. Eastman                           Jacqueline Le Moigne                           Nathan S. Netanyahu
+   Loyola College in Maryland                NASA Goddard Space Flight Center                     Bar-Ilan University
+      Baltimore, Maryland                          Greenbelt, Maryland                           Ramat-Gan , Israel &
+       reastman@loyola.edu                      Jacqueline.LeMoigne@nasa.gov                    University of Maryland
+                                                                                                College Park, Maryland
+
+
+
+                         Abstract
+
+   Image registration is an important element in data pro-
+cessing for remote sensing with many applications and a
+wide range of solutions. Despite considerable investigation
+thejield has not settled on a dejinitive solution for most ap-
+plications and a number of questions remain open. This
+article looks at selected research issues by surveying the ex-
+perience of operational satellite teams, application-specijic
+requirementsfor Earth science, and our experiments in the
+evaluation of image registration algorithms with emphasis
+on the comparison of algorithms for subpixel accuracy. We
+conclude that remote sensing applications put particular
+demands on image registration algorithms to take into ac-
+count domain-specijic knowledge of geometric transforma-
+tions and image content.
+
+                                                                  Figure 1. Mulitsensor registration of ETM+ at 30m (surround) to
+1. Introduction                                                   IKONOS at Im (inset)
+
+    Image registration, the alignment of images and other
+data for comparison and fusion, is an important element in             Image registration for remote sensing, particularly in
+data processing for remote sensing. It finds many applica-          support of operational production of imagery products, can
+tions, including but not limited to the operational production      be quite automatic, efficient and effective. However, many
+of satellite image products, validation and precision correc-    ,
+                                                                    end users still depend on labor-intensive manual selection
+tion of satellite navigation data, radiometric validation of       of control points (CPs) or, to quote one researcher, "reg-
+new sensors, data fusion for classification and thematic map       istration by graduate student," with times cited from a few
+production, temporal image comparison for change detec-            hours to 4-5 days for registering a single image [8, 131. This
+tion, atmospheric velocity computations, and land use anal-        article explores this disparity in the use of advanced tech-
+ysis and planning.                                                 niques, discusses selected issues in evaluating automatic
+    This varied set of application needs, as well as similar       methods and fostering their greater adoption, and outlines
+needs in allied fields like medical imaging, have driven the       the research program in image registration conducted by the
+development of a large number of approaches for image reg-         image registration working group at NASA Goddard Space
+istration (see Brown [5], Fonseca and Manjunath [12] and           Flight Center (GSFC).
+Zitova and Flusser [35]). In an editorial on medical image            In this article we describe image registration as a process
+registration Pluirn and Fitzpatrick 1221 note that since 1988      that aligns one Image lo another of the same area taken at
+the number of related asticles per yeas has grown about 10-        the same time or later, and with the same sensor or a dif-
+fold, from approximately 15 to over 140.                           ferent one. An image registration method can be defined
+by three main steps: (1) extraction of features to be used to       systematic correction, or directly by relating a new image
+match the imagery; (2) feature matching strategy and met-           to a ground coordinate system.
+rics, commonly the optimization of a similarity measure be-             The teams have an end-to-end view of data processing
+tween images; and (3) resampling or indexing of the data to         requirements for image production. From an early point in
+a common coordinate system [5]. The transformations al-             sensor design they develop specifications that include im-
+lowed for alignment can vary, from translation only in x and        age registration reliability and accuracy requirements, and
+y, to rotation, scale and translation (RST), to fully-affine, to    they typically implement in-house software to those re-
+homographic, or to a more complex model [32, 261. Many              quirements. Their knowledge of the satellite and sensor
+current systems use two levels of transformation as they            enables them to model the radiometric and geometric trans-
+match CPs as small image regions (chips) using only trans-          formations between images so the image registration algo-
+lation or a low order transformation, and then use the CPs to      rithms can be tuned and integrate satellite navigation data.
+compute a more complex transformation. Some algorithms              Below we survey six representative operational systems to
+use Digital Elevation Models (DEMs) to correct for parallax         look for characteristics and commonalities.
+caused by terrain relief.                                               ASTER is a 14-band multispectral imager launched in
+                                                                    1999 on the Terra (EOS-AMl) satellite. It has three sepa-
+2. Application requirements for image regis-                       rate image subsystems with individual telescopes that sam-
+   tration                                                         ple at 15m, 30m and 90m. Iwasaki and Fujisada 2005
+                                                                    [14] describe the image registration system. Image reg-
+    In part, the wide variation in image registration tech-         istration was intended to improve geolocation of imagery
+niques in remote sensing is a result of the wide variation in       to within lOOm (nadir), adjust intratelescope band-to-band
+applications. Fonseca and Manjunath 1121 noted this, pro-           position to within 0.2 pixels and adjust intertelescope posi-
+posed a rule-based system that would automatically select           tion to within 0.3 pixels. Registration is done to a database
+an appropriate method for an application and reviewed the           of about 300-600 CPs which were mapped on topographic
+literature to characterize the available methods to that end.       maps to to about 2-4 meters in x, y and z. The similar-
+Our own work [16] supports this goal. In particular, we            ity measure is normalized correlation with transformation
+have implemented a number of methods to evaluate them in           limited to translation. Subpixel estimation is calculated by
+a consistent framework and to develop an online toolbox of          fitting a second-order polynomial to the correlation values.
+techniques for end users.                                          Matches are rejected for correlation less than 0.7 or when
+    This program also requires understanding application           clouds are detected. Validation of satellite performance was
+needs to get an end-to-end view of how image registration          done in a retrospective study and the authors cite accuracies
+fits into overall data processing. The literature on image         of 50m, 0.2 pixels and 0.1 pixels, respectively. Problems
+registration is dominated by articles advancing or propos-         were noted with parallax errors in high-elevation areas due
+ing a new technique, with far fewer articles that document         to time delays between bands, with cross-track performance
+user requirements or survey current practice. In this section      due to satellite jitter, failures by the cloud detection algo-
+we look at issues in user requirements, dividing users into        rithm, and cross-band matching in scenes with considerable
+two groups: operational groups that use image registration         vegetation.
+to produce image products, and Earth scientists (and others)
+                                                                        GOES I-M is a series of weather satellites launched
+who use the products.
+                                                                   from 1994 to 2001 with seven bands that sample at lkm,
+                                                                   4km and 8km. Madani, Carr and Shoser 2004 [20] describe
+2.1. Operationalsystem requirements and practices                  the AutoLandmark system for image registration. GOES
+   Operational satellite science teams that support remote         geolocation requirements vary from night to day, from 4km
+sensing sensors rely on image registration for a number of         to lOkm, to accommodate solar heating. Registration is
+purposes, including updating a geometric model that relates        done to a database of coastlines represented in vector for-
+a sensor to the navigation data (position and orientation)         mat which is used to avoid radiometric issues in correlation.
+for a satellite; updating the navigation data; image by im-        A landmark of 24x24 or 96x96 pixels is extracted from a
+age geolocation; sensor-to-sensor and intra-sensor calibra-        sensed image and edges detected using the Sobel operator.
+tion; and validation of model and data quality. Geolocat-          This is matched to a binary image rasterized from the coast-
+ing a satellite image relative to a ground coordinate system       line vector database, with a correlation measure of the sum
+can be done in two primary ways: systematic correction us-         of the edge strengths and transformations limited to transla-
+ing satellite navigation and calibration data, and precision       tion. Cloud areas are masked out. Bisection search is used
+correction through registration of image features to previ-        to find subpixel maximums. Matches are rejected when a
+ously located ground features. Precision cor~ectioncan be          fuzzy logic quality metric (QM) falls below a threshold of
+done indirectly, by updating the camera models used for            0.9. The QM takes into account the quality of the edge cor-
+    ETM+               Landsat-7      15-60m           Correlation to arid region CPs*               Fit to correlation surface*
+    VEGETATION         SPOT           lkm              Correlation to DEM corrected CPs              Not described
+
+           Table 1. Operational Image Registration Systems. * ETM+ information in table refers to band-to-bandregistration
+
+
+relation, the fraction of cloud contamination, and the con-             HRS, or High Resolution Stereoscopic with sampling at
+trast and possibly total illumination in the image. In the           2.5m, is an instrument on the SPOT 5 satellite launched in
+infrared bands the daily warming/cooling cycle means land            2002. Baillarin et al. 2005 [3] describe the ANDORRE
+and water can reverse in radiation, causing coastal edges to         system with the TARIFA core for image fusion and recti-
+invert, migrate and even disappear.                                  fication. HRS requirements are 90% of points within 16m
+    MISR is a second instrument on the Terra satellite. Jo-          circular accuracy and 10m elevation accuracy. ANDORRE
+vanovic et al. 2002 [15] describe the geometric correction           uses an extensive database of orthoimagery tiles integrated
+system. It has 9 pushbroom cameras with four bands each,             with DEM data to generate, using ray tracing, a simulated
+                                                                     image for matching. Matching is done using multresolution
+all sampling at 275m, intended to image atmospheric ele-
+ments from multiple angles for climate analysis. This repre-         search with the number of levels set to keep a 5x5 pixel size
+sents a particular challenge for geolocation of the multiple         search window. CPs are automatically found, matched by
+cameras with the objective of achieving better than 140m             correlation and used to calibrate a parametric model. Ge-
+uncertainty in absolute geolocation at nadir and between             ometric outliers and CPs with correlation coefficient below
+cameras. Registration has been done to a database of 120             0.80 are rejected. In the case of an inadequate number of tie
+ground CPs, each a collection of 9 co-located 64x64 image            points the correlation threshold is lowered to 0.70 and the
+chips from Landsat Thematic Mapper (TM) images of an                 number of points increased ("densification"); a subscene of
+                                                                     the image still without a sufficient number is rejected. The
+identifiable ground feature located to 30m. Each CP was
+selected for seasonally invariant features and then mapped           authors cite a final circular error of 2m for 88% of the points
+into terrain-corrected imagery. A ray-casting algorithm is           in 100 test images. Problems occur due to seasonal changes,
+used to warp each chip to the appropriate geometry for the           low intensity images and homogenous subscenes.
+appropriate MISR camera. Chip matching is done to sub-
+                                                                         ETM+ is an instrument on the Landsat-7 satellite
+pixel accuracy in translation, potentially to 118 pixel, by
+                                                                     launched in 1999. Lee et al. [I91 describe the extensive on-
+least squares optimization [l]. Cloud masking is used and
+                                                                     going set of assessment and calibration activities for ETM+
+outliers are rejected.
+                                                                     including image registration for geolocation. ETM+ re-
+    MODIS is a third instrument on the Terra satellite.              quirements are for 250m absolute geodetic accuracy, 0.28
+Wolfe et al. 2002 [I81 describe the geolocaton system (see          pixels band-to-band resolution and 0.4 pixels temporal reg-
+ also [31]). MODIS has 36 spectral bands that sample at              istration. The three requirements lead to multiple registra-
+ Ikm, 500m and 250m The MODIS Land Science Team                      tion approaches for calibration and assessment. Geodetic
+set a requirement of geolocation of 150m with an opera-              accuracy is updated by correlating systematically corrected
+tional goal of 50m Registration is done to a database of            panchromatic band regions against a database of CP image
+605 land CPs known to 15m in three dimensions. For each             chips extracted from USGS digital orthophoto quadrangles
+CP, 24km2 chips of 30m sampling were constructed from               with vertical information from USGS DEMs. About 75-
+Landsat TM bands 3 and 4 taken from cloud-free images                100 CP chips are used for.assessing accuracy. Band-to-band
+predominately along coastlines and waterways. The higher-           registration is used to update a parameter file with corrected
+resolution TM chips are resampled to MODIS resolution us-           off-sets, so selected images in arid regions with little vege-
+ing the MODIS point spread function and nominal MODIS               tation and significant high spatial frequency content can im-
+position information. Area-based correlation is used for            prove cross-band correlation. Subpixel registration is done
+rnatch~ng,with a 25m sampling interval to get subpixel ac-          by second-order fit to the correlation surface. Temporal res-
+curacy and a threshold of 0.6. Matches are used to update a         olution is assessed by conelating a reference image wit11
+camera geometric model that accounts for internal and ex-           a precision and terrain conected panchromatic band of the
+ternal calibration and gives per pixel geometric corrections.       test image. Success is reporied for absolute geodetic accu-
+racy as 99.9% of test CPs within 250x1 and a 54m RMS             changes in temperature or vegetation or homogenous terrain
+error, while for band-to-band it is approximately 114 to 112     features, and properly modeling of satellite position varia-
+of the operational requirement. Problems have been seen in       tions.
+decay of satellite attitude data due to aging gyros, and band-
+to-band calibration due to post-launch and seasonal operat-      2.2. End user application requirements
+ing temperatures. Band-to-band correlation of band 6 (in-
+                                                                      In contrast to the operational teams, end users do not al-
+frared) has been problematic due to radiometric differences
+                                                                  ways have the same resources such as intimate knowledge
+including seasonal temperature variation in arid regions.
+                                                                  of the sensor and data processing, the full set of sensor im-
+   VEGETATION is an instrument on the SPOT series                 agery, the ability or need to maintain a large database of
+of satellites, operational since SPOT4 in 1999. Sylander          CPs, access to navigation modeling and other correction
+et al. 2000 [24] describe the geolocation system. The re-         data, or statistical models of geolocation error. In addition,
+quirements are Ikm in absolute location, 500m in multi-           they may need to register heterogeneous data sources such
+temporal registration with an operational objective of 300        as maps and older aerial images for which the supporting
+m, and multispectral registration of 300m Initial work in-        information is not available or complete. But, they do bring
+dicated that existing coastline databases were not accurate       to image registration tasks knowledge of their application
+enough, and reliance on systematic correction was not ad-         needs, most specifically accuracy needs and application-
+equate so a database of approximately 3500 CPs was built          specific models.
+from VEGETATION images. Each CP has four image chips                  Accuracy needs of image registration for change detec-
+from different seasons and orientations. Matching using           tion has been one of the most studied application needs [27,
+correlation is done under the control of human operators          28, 61. Townshend et al. 1992 [27] found that for four re-
+who insure there are 10 matched points per orbit to com-          gions studied in Landsat TM imagery, to keep NDVI (Nor-
+pute satellite position corrections. Absolute location was        malized Difference Vegetation Index) pixel-based change
+measured to 300m RMS, multitemporal to 325m in RMS,               estimations down to an error of 10% required subpixel reg-
+and multispectral was reported as 0.11 pixels, which at that      istration of 0.2 pixels. However, for three more homoge-
+time was slightly outside the requirements. Problems occur        nous, arid regions they found that registrations of 0.5 to 1.0
+due to seasonal changes, images with inadequate distribu-         pixels were adequate for 10% error. Dai and Khorram 1998
+tion of CPs, rejection of images such as islands where CPs        [lo] report similar results with about 0.2 pixels registration
+cannot be uniformly distributed, and CPs that may have ter-       required for 10% error on average in four test sites, with a
+rain features poorly suited for correlation.                      slight but similar dependency on the spatial frequency con-
+    From this survey we can see several common features           tent of the imagery. Other confounding issues considered
+and needs. The systems all share the use of pre-constructed       for misregistration impact on change detection has been the
+databases, either of CPs or vector coastlines; the use of nor-    number of classes and region heterogeneity (Verbyla and
+malized intensity (or vector-edge) correlation as the similar-   Boles 2000 [28]), as well as change detection resolution and
+ity measure between features; DEM-correction of features         more through measures of region heterogeneity in high res-
+before correlation; matching in local regions rather than        olution imagery (Wang and Ellis 2005 [30]). Authors have
+globally; the use of translation since it dominates in small     also considered how to adapt to misregistration errors by
+regions; cloud masking or thresholds to eliminate cloudy re-     estimating them or lowering the resolution of change detec-
+gions. Most systems use subpixel estimation but vary in the      tion [28, 30, 61.
+method used to compute it. The systems also vary in how              Knowledge and use of appropriate transformation mod-
+local matches are used in precision correction - whether         els can assist in improving registration accuracy. Toutin
+they are combined to estimate a global image transforma-         2004 [26] extensively reviews transformation models used
+tion or an update to the geometric camera model for sys-         for satellite imagery ortho-rectification. Physical mod-
+tematic correction. High-resolution sensors, on the order        els that take into account satellite geometry and the sen-
+of 1 m, face specific challenges in accounting for terrain       sor imaging model, such as those used by the operational
+elevation effects and temporal changes caused by humans          groups, can be the most accurate but are not always avail-
+and other Earth processes. The problems reported by the          able. Empirical models, such low order affine or RST,
+groups show some differences but add up to the follow-           higher order polynomial, or piecewise transformations, do
+ing picture of current registration issues: effectiveness of     not require detailed sensor and satellite models but may
+nomalized correlation in cross-band registration; adaption       require more CPs. Three-dimensional rational functions
+to thermal changes in satellite geometry and minor prob-         (RFs), ratios of polynomials, can approach the accuracy
+lems in orbit data; uniform distribution of CPs adequate for     of physical models and are distributed by some imagery
+further numerical computations; CPs that are poorly suited       providers in meta-data but are not commonly used in au-
+for correlation for a number of reasons, including seasonal      tomatic registration algorithms.
+    There are good studies that give extensive analyses of         in selecting appropriate techniques for a remote sensing ap-
+end user image registration experience and accuracy. Wang          plication based on accuracy and suitability for that applica-
+ and Ellis 2005 [29] give such a detailed description and           tion. We carry this out by surveying, designing and devel-
+anaIysis for the registration by manual CPs of IKONOS and          oping different components of the registration process so
+historical aerial photographs in China, detailing the acqui-       we can evaluate their performance on well-chosen multiple
+sition by GPS of precise ground CPs for the imagery, study-         source data, provide quantitative inter-comparison and to
+ing the impact of various factors including terrain elevation       build an operational image registration toolbox. Following
+variation and number of CPs, and using independent check           these goals, we performed several sets of experiments, and
+points (ICPs) to measure accuracy. Arrnston et al. 2002 121         according to the observations described in the previous sec-
+gives a similar analysis of geometric correction of Landsat        tions, the challenges that were addressed in our experiments
+imagery over Australia, giving comparisons of physical and         were concerned with different aspects of the same features
+R F transformation models (the latter produced higher error)       in various temporal, various spatial resolutions and various
+and looking at the spatial distribution of errors for control       spectral data, and obtaining subpixel accuracy.
+and check points. They give the rules used for selection of            Assessing an image registration algorithm for subpixel
+CPs, which included syntactic properties (choose high con-          accuracy on remote sensing data presents some difficulty
+trast in two orthogonal directions, within 5x5 window) and          since ground truth is not available. Interleaving two im-
+semantic properties (avoid cleared land and bodies of water        ages for visual assessment can detect gross mismatches and
+and choose bare ground among vegetation.)                          global alignment but is difficult to extend to quantitative
+    The assessment of transformations produced by manual           subpixel evaluation. Manual registration can be used to cal-
+CP selection is often judged by precision rather than for-         culate the unknown transformation but it is uncertain if it
+mally by accuracy, as measures like RMS error are used that         accurate enough to test subpixel accuracy on small regions.
+evaluate tightness of variance of the residuals for CPs Brov-      A second approach is to generate synthetic image pairs by
+elli et al. 2006 [4]. This is often done with the residual under   matching one image against a transformed and resampled
+the computed transformation to a separate set of indepen-          version of itself with or without added noise. To avoid some
+dent check points using holdout validation, or with leave-         resampling issues this can be done by using high resolution
+one-out cross-validation (LOOCV) which recomputes the              imagery and downsampling to a lower resolution using an
+transformation with N - 1 subsets and computes the resid-          appropriate point spread function to generate both images in
+ual on the remaining point. Spatial and orientation distribu-      a pair. However, while useful this approach is limited in re-
+tions of residuals have also been considered (Armston et al.        alistically modeling noise, temporal scene changes or.cross-
+2002 [2], Buiten and van Putten 1997 171). In general, accu-       sensor issues. A third approach is to use circular registration
+racy increases with the number of CPs up to a diminishing          results on natural imagery when three or more overlapping
+return [26, 291.                                                   images are available. In this case the transformations should
+    From this brief survey of end user requirements for reg-       compose to yield the identity- for three images registered
+istration there can be seen connections with the experience        pairwise by T I ,T2 and T3,the composition TI o T2 o T3
+of the operational groups. Homogenous regions that cause           should be close to the identity transformation [34].
+problems for image registration correlation may have com-              In all our experiments, we assume that the data have al-
+pensating effects in reducing the accuracy requirements in         ready been corrected according to a navigation model and
+applications like change detection; it may be possible to de-      we can assume this systematic correction is accurate within
+velop models for end users that, given the application re-         a few or a few tens of pixels. Our precision-correction algo-
+quirements and the images to be processed, will specify up-        rithms utilize selected image features or CPs to refine this
+dated and realistic accuracy requirements.                         geolocation accuracy within one pixel or a subpixel at the
+                                                                   CPs. We first performed preliminary experiments summa-
+3. Studies for evaluation of image registration                    rized in 1161 looking at different components individually
+    Work of the NASA image registration group has empha-           [23, 331 and then developed a modular image registration
+sized the study and evaluation of automatic image regis-           framework [17] that enables systematic studies comparing
+tration algorithms for several purposes: precision correc-         these components and to test new components in a rigorous
+tion of satellite imagery, band-to-band calibration, dimen-        fashion.
+sion and data reduction for ease of transmission, temporal             The first series of experiments investigated the use of
+multi-sensor fusion and on-board processing. Despite the           different features with exhaustive correlation search: gray
+wide variety of algorithms available for image registration,       levels, edges, orthonormalfo~hogonal wavelets (such as
+no commercial software seems to respond to the needs of            Haar and Daubechies) and over-complete decompositions
+Earth and space data registration. Our objective is to carry       (such as the Simoncelli steerable pyramid). The results
+out systematic studies to support image registration users         showed that, as expected, edge or edge-like features (such
+  as wavelets) were more robust to noise and local intensity             or from a Spline decomposition, or Simoncelli Band-
+  variations than pure intensity values. In comparing edges              Pass features, similarity metrics can be either cross-
+  and wavelets, a full exhaustive search using edge features             correlation, the L2 Norm, Mutual Information or an
+  proved to be potentially more accurate but was also time-              Hausdorff distance,
+  prohibitive compared to an approach based on features ex-
+  tracted from an orthogonal wavelet.                                e   matching strategies are either based on a Fast Fourier
+      The next series of experiments studied the potential lim-          Correlation, three different types of optimization -
+  its of using wavelets, and particularly the effects of image           pure gradient Descent [Ill, a Marquard-Levenberg ap-
+  translation on wavelet-based image registration [23]. It is            proach [25] or a stocchastic gradient approach [9], and
+  well-known that wavelet representations are not translation-           a Robust Feature Matching approach [21].
+ invariant since when a separable orthogonal wavelet trans-         Studies using this framework are described in [17], and
+ form is used, information about the signal changes within        some of the first results are the following:
+ or across sub-bands. Within these restrictions we quantita-
+ tively assessed the usefulness of orthogonal wavelets. The          0   Fast Fourier correlation is very fast but limited to trans-
+ main result was that the normalized correlation coefficients            formations with scaIes close to I (in the range r0.95,
+ of low-pass orthogonal wavelet subbands are essentially in-             1.21) and images containing very small amounts of
+ sensitive to translations for features larger than twice the            noise.
+ wavelet filter size. The third-level low-pass subbands pro-
+                                                                     e   When using a Marquart-Levenberg approach, features
+ duce a correlation peak that varies with translation from 0.7           such as Simoncelli Band-Pass are more accurate and
+ to 1.0 with an average of 0.9. On the other hand, high-                 more robust to noise, with errors in the range of [0.032,
+ pass subbands are more sensitive to translation, although               0.251 pixel. At the same time, Simoncelli-Low Pass
+ this sensitivity is limited.                                            features are less sensitive to the initial guess than
+      A follow-on series of experiments focused on evaluating            Band-Pass features.
+ several wavelet-type pyramids that may be utilized both for
+ invariant feature extraction and for representing images at         e   An approach using a stochastic gradient approach and
+ multiple spatial resolutions to accelerate registration. Us-            a Mutual Information metrics is overall the most robust
+ ing an optimization-based scheme, Daubechies orthogonal                 to initial conditions and the most accurate with errors
+ wavelets, spline wavelets and the Simoncelli steerable Pyra-            in the range of [O. 12, 0.181 pixel.
+ mid were considered. We found that the band-pass wavelets
+ obtained from the Steerable Pyramid due to Simoncelli per-           Figure 2 illustrates the types of results we obtained in
+ form best in terms of accuracy and consistency, while the         one of these studies, investigating the sensitivity of com-
+ low-pass wavelets obtained from the same pyramid give the        ponents to initial conditions. In this experiment compo-
+ best results in terms of the radius of convergence. Although     nents of the framework were tested using synthetic data as
+ not as reliable, spline wavelets show the best accuracy when     well as Landsat multi-temporal data and IKONOS, Land-
+ convergence occurs.                                               sat, MODIS and SeaWIFS data over four well-chosen EOS
+     A more general set of experiments investigated combina-      Land Validation Core Sites. Synthetic images were created
+tions of the major image registration components: features,       using a controlled process [33] designed to emulate real
+similarity metrics and search strategy. We built a framework      data. Starting from a given source image, three types of
+to selectively combine the components in order to reach op-       modifications are applied in various combinations to pro-
+timum registration on a given type of data and under given        duce synthetic test data: (1) geometric warping, (2) radio-
+circumstances. Another use of the framework is to test each       metric variations and (3) addition of noise. Figure 2 shows
+element of registration independently (so we know the edge        the results of the Marquart-Levenberg optimization strat-
+detection implementation, for example, is the same in all         egy combined with a Mutual Information metrics and three
+experiments.) The purpose of this framework is triple-fold:       different feature choices, low-pass Spline-wavelet features,
+(1) assess various combinations of components as a func-          Simoncelli band-pass features and Simoncelli low-pass fea-
+tion of the application, (2) assess a new registration com-       tures, when applied to synthetic data. Shifts are varied from
+ponent compared to other known ones, and (3) serve as a           0 to 8 pixels, rotations are varied from 0 to 8 degrees and
+registration tool where a user can select components as a         scales are varied from -0.7 to 1.4. The white areas depict
+function of the application at hand, the available computa-       the regions of convergence of the algorithms with an error
+tiorla1 resources and the required accuracy.                      less than I p~xel.This particular expenment demonstrates
+     In our current framework:                                    how Simonceiii Band-Pass features are more sensitive to the
+                                                                  initial guess than Spl~nesor Simoncelli Low-Pass features,
+  e   features can be either gray levels, Low-Pass fea-           wh~lethese last features exhibit the largest area of conver-
+      tures from Simoncelli steerable filters decomposition       gence.
+                                 Sensitivity of TRU Algorithms to Initial Guess
+
+                                            Figure 2. Sensitivity to initial conditions
+
+
+4. Conclusion                                                        References
+                                                                      [I] F. Ackerman. Digital image correlation: Performance and
+                                                                          potential application in photogrammetry. Photogrammetric
+    In order to better understand requirements for the devel-
+                                                                          Record, 11(64):429-439, 1984.
+opment and evaluation of image registration algorithms, this
+article has examined selected research issues by surveying            [2] J. D. Amston, T. J. Danaher, B. M. Goulevitch, and M. I.
+                                                                          Byme. Geometric correction of landsat mss, tm, and etm+
+the experience of operational satellite teams, application-
+                                                                          imagery for mapping of woody vegetation cover and change
+specific requirements for Earth science, and our framework                detection in queensland. In Proceedings of the 11th Aus-
+and experiments in the evaluation of image registratioh al-               tralasian Remote Sensing and Photogrammetry Conference,
+gorithms. From the experience and current practice of oper-               pages 1-23, Brisbane, Australia, 2002.
+ational groups, as well as documented requirements for end            [3] S. Baillarin, A. Bouillon, M. Bemard, and M. Chikhi. Using
+user applications, we can see the importance of subpixel                  a three dimensional spatial database to orthorectify automat-
+registration for image subregions with increasing need to                 ically remote sensing images. In Proceedings of the ISPRS
+perform it robustly between sensors, particularly with the                Hangzhou 2005 Workshop, pages 89-94, Hangzhou, China,
+advent of very high resolution and hyperspectral imagery                  2005.
+and more demanding requirements for applications. We                  [4] M. A. Brovelli, M. Crespi, F. Fratarcangeli, F. Giannone,
+also see the need for image registration techniques that are              and E. Realin. Accuracy assessment of high resolution satel-
+tailored to the needs of remote sensing applications with                 lite imagery by leave-one-out method. In 7th International
+specific attention to sensor-related geometric transforma-                Symposium on Spatial Accuracy Assessment in Natural Re-
+tions and knowledge of accuracy requirements and image                    sources and Environmental Science, pages 533-542,2006.
+content.                                                              [5] L. G. Brown. A survey of image registration techniques.
+                                                                          ACM Computing Surveys, 24(24):325-376, 1992.
+                                                                      [6] L. Bruzzone and R. Cossu. An adaptive approach to reduc-
+                                                                          ing registration noise effects in unsupervised change detec-
+   Acknowledgments                                                        tion. IEEE Transactions on Geoscience and Remote Sensing,
+                                                                          41(11):2455-2465,2003.
+                                                                      [7] H. J. Buiten and B. v. Putten. Quality assessment of remote
+   We would like to acknowledge the invaluable contri-                    sensing image registration - analysis and testing of control
+butions of collaborators with the NASA image registra-                    point residuals. ISPRS Journal of Photograitlinetry and Re-
+tion group over the years: Arlene Cole-Rhodes and Kisha                   mote Sensing, 52(2):57-73, 1997.
+Johnson of Morgan State University, Tarek El-Ghazawi of               181 D. Canion, M. Gianinetto, and M. Scaioni. Georef: a soft-
+George Washington University, Peyush Jain, Amlee Joshua,                  ware for improving the use of remote sensing images in envi-
+Jeffrey Masek, Jeffery Morsisette, Nargess Memarsadeghl                   ronmental applications. In Proceedings of the First Biennial
+and Ezinne Uko-Ozoro of WASAIGSFC, and David Mount                        Meering of the International Environme~ztalModellirig and
+of the University of Maryland at College Park.                            Sojware Society, pages 360-365,2002.
+  [9] A, Cole-Rhodes, K. Johnson, and J. Le Moigne. Mul-                 1231 H. S. Stone, J. Le Moigne, and M. McGuire. Image regis-
+         tiresolution registration of remote sensing imagery by opti-         tration using wavelet techniques. 1EEE Transacfiorzson Pat-
+         mization of mutual information using a stocchastic gradient.         tern Analysis and Machine Intel/igence, 21(10):1074--1081,
+         IEEE Transactions on Image Processing, 12(12):1495-15 11,            1999.
+         2003.                                                           [24] S. Sylvander, P, Henry, C. Bastien-Thiry, F. Meunier, and
+[lo] X. Dai and S. Khorram. The effects of image misregis-                    D. Fuster. Vegetation geometrical image quality. In Pro-
+         tration on the accuracy of remotely sensed change detec-             ceedings of the VEGETATION 2000 Conference, Balgirate,
+         tion. IEEE Transactions on Geoscience and Remote Sensing,            Italy, 2000.
+         36(5): 1566-1577, 1998.                                         [25] P. ThBvenaz, U. Ruttiman, and M. Unser. A pyramid ap-
+[ l l ] R. D. Eastman and J. Le Moigne. Gradient-descent tech-                proach to sub-pixel registration based on intensity. IEEE
+         niques for multi-temporal and multi-sensor image registra-           Transactions on Image Processing, 7(1):2741, 1998.
+         tion of remotely sensed imagery. In Fourth International        [26] T. Toutin. Review article: Geometric processing of remote
+         Conference on Information Fusion, Montreal, Canada, 2001.            sensing images: models, algorithms and methods. Interna-
+[I21 L. M. G. Fonseca and B. S. Manjunath. Registration tech-                 tional Journal of Remote Sensing, 25(10): 1893-1924,2004.
+        niques for multisensor remotely sensed imagery. Photogram-       [27] J. R. G. Townshend, C. 0. Justice, C. Gurney, and J. Mc-
+        metric Engineering and Remote Sensing, 62(9):1049-1056,               Manus. The impact of misregistration on change detec-
+         1996.                                                                tion. IEEE Transactions on Geoscience and Remote Sensing,
+[I31 A. Ganas and E. Athanassiou. A comparative study on the                  30(5):1054-1060, 1992.
+        production of satellite orthoimagery for geological remote       [28] D. L. Verbyla and S. H. Boles. Bias in land cover change
+         sensing. Geocarto International, 1451-59,2000.                       estimates due to misregistration. International Journal of
+[14] A. Iwasaki and H. Fujisada. Aster geometric performance.                 Remote Sensing, 2 1(18):3553-3560,2000.
+        IEEE Transactions on Geoscience and Reinote Sensing,             [29] H. Wang and E. C. Ellis. Image misregistration error in
+        43(12):2700-2706,2005.                                                change measurements. Photogrammetric Engineering and
+[15] V. M. Jovanovic, M. A. Bull, M. M. Smyth, and J. Zong.                   Remote Sensing, 7 l(9): 1037-1044,2005.
+        MISR in-flight camera geometric model calibration and geo-       [30] H. Wang and E. C. Ellis. Spatial accuracy of orthorecti-
+        rectification performance. IEEE Transactions on Geoscience            fied ikonos imagery and historical aerial photographs across
+        and Remote Sensing, 40(7): 1512-1 5 19,2002.                          five sites in china. International Journal of Remote Sensing,
+[16] J. Le Moigne, A. Cole-Rhodes, R. Eastman, P. Jain,                       26(9):1893-1911,2005.
+        A. Joshua, N. Memarsadeghi, D. Mount, N. S. Netanyahu,           [31] X. Xiong, N. Che, and W. Barnes. Terra modis on-orbit spa-
+        J. Morsisette, and E. Uko-Ozoro. Image registration and               tial characterizationand performance. IEEE Transactions on
+        fusion studies for the integration of multiple remote sens-           Geoscience and Remote Sensing, 43(2):355-365,2005.
+        ing data. In International Conference on Acoustics, Speech       [32] L. Zagorchev and A. Goshtasby. A comparative study
+        and Signal Processing (ICASSP),pages 100-1 05, Toulouse,              of transformation functions for nonrigid image registration.
+        France, 2006.                                                         lEEE Transactions on Image Processing, 15(3):529-538,
+[17] J. Le Moigne, H. S. Stone, A. Cole-Rhodes, R. D. Eastman,                2006.
+        P. Jain, K. Johnson, J. T. Morisette, and N. S. Netanyahu.       [33] 1. Zavorin and J. Le Moigne. Use of multiresolution
+        Registration of multiple sensor earth science data. In NASA           wavelet feature pyramids for automatic registration of mul-
+        Earth Science Technology Conference (ESTC), pages 100-                tisensor imagery. IEEE Transactions on Image Processing,
+         105, Palo Alto, CA, 2004.                                            14(6):770-782,2005.
+[18] D. S. Lee, J. C. Storey, M. J. Choate, and R. W. Hayes.             [34] I. Zavorin, H. S. Stone, and J. Le Moigne. Evaluating perfor-
+        Achieving sub-pixel geolocation accuracy in support of                mance of automatic techniques for subpixel registration of
+        modis land science. Remote Sensing of Environment, 83(1-              remotely sensed imagery. In Proceedings of SPIE - Volume
+        2):31-49,2002.                                                        5014 I~nageProcessing: Algorithms and Systems 11, pages
+[I91 D. S. Lee, J. C. Storey, M. J. Choate, and R. W. Hayes. Four             306-316,2003.
+        years of landsat-7 on-orbit geometric calibration and perfor-    [35] B. Zitova and J. Flusser. Image registration methods: a sur-
+        mance. IEEE Transactions on Geoscience and Remote Sens-               vey. lmage and Vision Computing, 21(11):977-1000, 2003.
+        ing, 42(12):2786-2795,2004.
+[20] H. Madani, J. L. Can, and C. Schoeser. Image registration
+        using autolandmark. In Proceedings of Fusion of Earth Data,
+        pages 234-778, Sophia-Antipolis,France, 2004.
+[21] N.S. Netanyahu, J. Le Moigne, and J. G. Masek. Georeg-
+        istration of Landsat data via robust matching of rnultiresolu-
+        Lion features. IEEE Transnctions on Geoscience and Remote
+        Sensing, 42(7): 1586-1600, 2004.
+[22] J. P. W. Pluim and J. M. Fitzpatrick, Image registra-
+        tion (editorial). IEEE Transactions on Medical Dnaging,
+        22(11): 1341-1343,2005.
+

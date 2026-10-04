@@ -1,0 +1,383 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2012-3-15"
+lang: "en"
+messages: "374"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<hallyn> lynxman: hey, any chance i can still get to that machine?
+<hallyn> i figure i'll try rebuilding v13 to see if it's the build itself
+<hallyn> will try in another instance meanwhile
+<uvirtbot> New bug: #955681 in php5 (main) "php5-common's /etc/cron.d/php5 session expiration can go crazy" [Undecided,New] https://launchpad.net/bugs/955681
+<uvirtbot> New bug: #955720 in apache2 (main) "package apache2-utils 2.2.14-5ubuntu8.8 failed to install/upgrade: ErrorMessage: package apache2-utils is already installed and configured" [Undecided,New] https://launchpad.net/bugs/955720
+<linocisco> hi all
+<SpamapS> :q
+<SpamapS> ahh.. the dreaded :q
+<twb> It's a smilie that says "oops I accidentally the vim"
+<linocisco> supposed i have my company email with domain abc.org. but the port of the email is blocked by our ISP we are using. every one has username@abc.org accounts. So i want to set up email server to allow or configure that accounts
+<SpamapS> linocisco: so your ISP won't let you take incoming email on port 25?
+<SpamapS> linocisco: I bet they'll be happy to host your MX for you.
+<linocisco> SpamapS, our Novell server use port 1914. that is blocked by ISP
+<SpamapS> wtf?
+<taipres> incomming mail isn't 25 anyway
+<twb> Yes it is.
+<taipres> that's smtp port, outgoing
+<twb> Incoming mail from roaming users might be on 587, but mail from random other MTAs will come in on 25
+<taipres> use imap with ssl
+<taipres> twb ahh good point
+<twb> taipres: um, if I subscribe to a mailing list, say on sf.net, and it sends me mail, sf.net will connect to the 25 of my MX (or A)
+<taipres> yeah I got it
+<taipres> was thinking purely client, but the fact the client outgoing is 25 then that must mean the server is listening on 25
+<taipres> linocisco what are you using as a host? shared, cloud, vps, dedi?
+<twb> taipres: uh, no.  If my MTA talks to your MTA, my MTA doesn't need 25 open
+<twb> I connect your 25 to my <random high port>
+<linocisco> taipres, my email accounts are in my office Novell Server but internet traffic is going through HQ hub
+<twb> it's only if you want to give ME mail that MY 25 must be open
+<taipres> twb that's what I said
+<twb> At no point is my 25 connected to your 25 in a single TCP connection
+<twb> taipres: OK, I misread, nm
+<taipres> linocisco sounds like a big setup, they have no reason to block common ports like that
+<koolhead17> hi all
+<linocisco> taipres, they dont' block us . because HQ internet's is open to all offices in the world.  we are connected using VSAT link to HQ. but in some remote office, we cann't have bigger VSAT overseas satellite. so we are stil using local ISP which blocks our port we need
+<taipres> yeah your ISP has no reason to block port 25, that's ridiculous and extremely unprofessional
+<linocisco> taipres, i m thinking only easy email access for those offices with slow and limited port connection via local ISP
+<linocisco> taipres, yes. but local ISP here do the same way country wide
+<twb> taipres: it is (and should be!) done by default on residential DSL plans
+<twb> taipres: this reduces the amount of spam generated in general.  If you want to operate a mailserver, a good ISP will allow you to opt out of 25 blocking.
+<linocisco> taipres, that is why I am thinking how their email accounts created in HQ be accessible in those office rather than using webmail
+<twb> ISPs that don't have that policy tend to get added to DNS RBLs
+<taipres> twb glad I don't use DSL then, ISP should not block any port, for any reason
+<taipres> and anyway he said the ISP his company is using
+<taipres> am assuming that's not residental
+<twb> IIRC linocisco is in burma, so it's probably a junta-owned ISP
+<linocisco> taipres, here is our gov owned ISP does
+<linocisco> taipres, as a workaround, i m thinking about port mapping or something like that
+<taipres> i'm really sorry to hear that
+<taipres> linocisco port may may work but the clients would need to know of the new port
+<linocisco> taipres, I am not so smart in linux and ubuntu config. Just checking something possible
+<taipres> linocisco if your local ISP is able to block ports and stop your emails, that means you must control the domain(assuming you're not handing out isps)
+<taipres> so just rent a vps or dedicated server in another country and toss your email server on there
+<taipres> http://cheapvpsdeals.info/feature-search/ can find plenty using that $10 or less a month, usually $3 is
+<linocisco> taipres, to have a dedicated server in other country is not also possible
+<taipres> what about VPS?
+<taipres> I'm using a VPS right now 1Gbps
+<taipres> allows everything
+<taipres> < $5
+<greppy> taipres: lots of ISPs block port 25 as a way of mitigating abuse issues, especially on residential plans.
+<linocisco> taipres, how could I communicate from that remote office. In those offices, we are just to use that local ISP line only
+<taipres> http://cheapvpsdeals.info/vps6-net-4-76-openvz-vps-256mb-1gbps-in-chicagous-los-angelesus-germany-turkey/
+<taipres> linocisco you'll use the VPS's ISP, just setup a dns server or use a free one and point the dns(hostname yourcompany.com) to the ip ofyour VPS
+<taipres> where your mail server is sitting
+<linocisco> taipres, in HQ
+<linocisco> taipres, the thing is how the link will be established
+<taipres> where is the hostname pointing, to HQ servers?
+<taipres> either way I don't see why the local ISP is even in the picture, if they want to be zealots and try and control things you can cut them out, use a VPN to securely connect to the VPS where your stuff is forwarded from the HQ or is recieving directly
+<taipres> btw greppy ISP's that block port 25 are lame
+<taipres> the days of email bouncers are over
+<taipres> and most large email servers will reject residental anyway unless you login with credentials
+<taipres> like gmail, yahoo.com etc...they'll all reject
+<linocisco> taipres, our main office has bigger VSAT dish and using that, we are connected to HQ, so our main office is fine. but in remote offices, they are to rely on local ISP which is slow and required ports are blocked
+<SpamapS> linocisco: if this is a corporate/sattelite situation.. you probably should be using a VPN anyway
+<linocisco> taipres, previously , mail accounts from those diffcult remote offices are in our main office server, but later to reduce one segment in communication, we tell HQ to create those account on HQ, now they are using webmail only
+<taipres> linocisco yeah I think VPS can solve your problem
+<taipres> is cheap solution, and no more local ISP non-sense
+<linocisco> taipres, ok. If I go with VPS, how can I get that link using which kind ? ADSL or VSAT or Fiber or type of media?
+<taipres> linocisco I think a VPN connection to hq servers via TCP would work, I don't know anything about VSAT, but if it's the only way you can communicate with HQ
+<taipres> then VPS won't help
+<taipres> at least it doesn't appear so
+<taipres> linocisco if you don't get any solutions in here, from these fine folks #networking may bare fruit
+<linocisco> taipres, ths
+<greppy> taipres: sorry, I disagree, and if they were over, the counters on the rules wouldn't be incrementing :)
+<RoyK> hi all. anyoen here using kvm with oneiric or precise?
+<RoyK> s/oen/one/
+<henkjan> !ask
+<ubottu> Please don't ask to ask a question, simply ask the question (all on ONE line and in the channel, so that others can read and follow it easily). If anyone knows the answer they will most likely reply. :-) See also !patience
+<RoyK> henkjan: yeah
+<RoyK> I was curious if anyone had used sanlock
+<RoyK> or managed to get it to work with current packages at all
+<henkjan> i'm using kvm on oneiric. but not sanlock
+<RoyK> because running kvm on a shared storage (currently nfs) is nice, but it's not very nice if a VM is started on two hosts at the same time...
+<RoyK> because that makes filesystem integrity rather interesting
+<jibel> jamespage, lamp-reboot test failed
+<jibel> jamespage, File "/usr/bin/run-test", line 727, in <module>
+<jibel> post_reboot_results = test['post-reboot-results']
+<jibel> KeyError: 'post-reboot-results'
+<jamespage> jibel: wip
+<jamespage> I'll fix that up today
+<jamespage> jibel: hmm - on it now
+<SpamapS> jamespage: btw, I'm up for a few more minutes.. :)
+<jamespage> hey SpamapS!
+<jamespage> nearly have that sorted
+<jamespage> that test actually timed out - but the handling on timeout does not work so well
+<SpamapS> jamespage: ahh, a common thread amongst unit testing frameworks that are being bent into doing functional/integration tests
+<Daviey> SpamapS: you have no idea of that pain... :) .. Do you think it's proper that a unit testing framewrok is used to do integration testing, by git cloning the client of the tool the tests belong to? :)
+<SpamapS> Daviey: if your goal was to send me off muttering curses to bed.. its working. ;)
+<SpamapS> Got a bug in my bonnet to get the aws-status tray-icon-thingy ported to app indicators..
+<SpamapS> nearly done
+<jamespage> morning Daviey!
+<Daviey> SpamapS: nice
+<Daviey> morning jamespage.. i haven't forgotten!
+<jamespage> Daviey, lol
+<jamespage> SpamapS, zentyal is nearly ready to go - adding the transitional packages broken all of them due to the way zbuildtools users CDBS
+<jamespage> bencer is working on a fix ATM
+<SpamapS> jamespage: yeah, the CDBS insanity that they have embraced needs to go. :-/
+<SpamapS> jamespage: thanks for tracking that.. I've had almost no time to spend on it
+<jamespage> SpamapS, yeah - I've been caught out by that issue twice in the last week
+<jamespage> lynxmans changes to rabbitmq-server had the same problem
+<lynxman> jamespage: *gah*
+<lynxman> jamespage: going to the doc now to get blood out of me, will review afterwards if thats okay ;)
+<SpamapS> jamespage: ok, well good luck on fixing the lamp stuff.. ttyl!
+<jamespage> jibel: I've made the collection of test results a bit more rugged - https://code.launchpad.net/~james-page/ubuntu-server-iso-testing/reboot-testing-fixes/+merge/97598
+<tdn> I have encrypted rootfs with lvm/luks as chosen during install. How do I change the keys? I am aware that I can normally change luks keys with cryptsetup luksAddKey /dev/sdX, however, I am not sure whereto change the key, when using luks with LVM?
+<jibel> jamespage, qck, I'll review your merge request today
+<jibel> s/q/a
+<jamespage> jibel: ta
+<smb> lynxman, just as I am not completely confident in subscribing people would make then aware (well it may or may not for me): may I point you to bug 948323 which I believe you could have an opinion about. :)
+<uvirtbot> Launchpad bug 948323 in ipxe "Rom images for e1000 and ne2k missing vendor and device id" [Low,Confirmed] https://launchpad.net/bugs/948323
+<uvirtbot> New bug: #955883 in squid3 (main) "Squid3 Crash assertion failed: comm.cc:349" [Undecided,New] https://launchpad.net/bugs/955883
+<azertyu> hello
+<azertyu> there
+<azertyu> i try to install ipmitool
+<azertyu> i got this error :
+<azertyu> Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+<azertyu> what that it means ?
+<_ruben> azertyu: you need to load the various ipmi kernel modules
+<chmac> `netstat -lp` shows a process listening on localhost:domain but under pid / name it lists only "-". How do I find out what process it is that's listening on port 53?
+<chmac> Never mind, needed sudo netstat instead :-)
+<uvirtbot> New bug: #955938 in lxc (universe) "Unable to create lxc instances with ubuntu-cloud template for release other than precise" [Undecided,New] https://launchpad.net/bugs/955938
+<lynxman> jamespage: back!
+<lynxman> jamespage: so what do I need to fix from rabbitmq-server?
+<jamespage> lynxman, only what was in the merge proposal
+<uvirtbot> New bug: #955935 in lxc (universe) "Creating lxc instances using ubuntu-cloud template throws warning" [Undecided,New] https://launchpad.net/bugs/955935
+<lynxman> jamespage: hmm rabbitmq-server is only a debdiff afaict
+<lynxman> jamespage: puppet is the merge proposal, going to fix that now
+<jamespage> lynxman, you are quite correct
+<jamespage> still waiting on FFe approval for rabbit
+<jamespage> I was commenting on the CDBS behaviour you saw when you switched rabbitmq-server to be multi-binary
+<lynxman> jamespage: aaah okay, got confused then
+<jamespage> lynxman, how do you feel about upstartifying puppet?
+<jamespage> something for next release?
+<lynxman> jamespage: I can do that now if we might
+<lynxman> jamespage: I fear no upstart :)
+<jamespage> bug 954368
+<uvirtbot> Launchpad bug 954368 in puppet "Upstart script puppet agent" [Low,New] https://launchpad.net/bugs/954368
+<jamespage> lynxman, I think its not  bad idea
+<lynxman> jamespage: taking that one :)
+<jamespage> however I'm reticient todo it this late in the cycle
+<lynxman> jamespage: well, if we do it properly it should be fine
+<jamespage> lynxman, I also thing the entire package should be done - it has three init scripts.
+<lynxman> jamespage: yeah, the puppetmaster ones and the puppet client one
+<lynxman> jamespage: shouldn't be a problem
+<jamespage> lynxman, we really need to be restricting changes to bugfixes now
+<jamespage> I think this is a new feature
+<lynxman> jamespage: your call, you're wiser than me ;)
+<lynxman> jamespage: I think it would be a nice feat for an LTS
+<jamespage> lynxman, hmm
+<jamespage> lynxman, personally I don't think we should now; lets park it for early next cycle
+<jamespage> I'll comment on that bug
+<lynxman> jamespage: your call :)
+<Daviey> lynxman: Is there a bug with how it's currently handled ?
+<Daviey> lynxman: What will it do to improve things?
+<lynxman> Daviey: it will just make things the same, on an upstart fashion, that's why I'm neither for or against
+<Daviey> lynxman: nah, hold off.
+<lynxman> Daviey: will do :)
+<uvirtbot> New bug: #955999 in unixodbc (main) "package odbcinst1debian2 2.2.14p2-5ubuntu3 failed to install/upgrade: ErrorMessage: dependency problems - leaving unconfigured" [Undecided,New] https://launchpad.net/bugs/955999
+<uvirtbot> New bug: #956000 in juju (universe) "'juju' with no arguments gives confusing message" [Undecided,New] https://launchpad.net/bugs/956000
+<benji> I have an LXC question: after creating and starting (in daemon mode) a container I use lxc-console to log in.  I get a command prompt and when I issue my first command (no matter what that command is) I am then sent back to the login prompt.  Thoughts?
+<uvirtbot> New bug: #956019 in keystone (universe) "keystone doesn't install the copyright file" [High,New] https://launchpad.net/bugs/956019
+<uvirtbot> New bug: #950935 in glance (main) "Allow adm group to read log files" [Medium,Fix released] https://launchpad.net/bugs/950935
+<hallyn> benji: thought:  "that's whack"
+<benji> heh
+<hallyn> actually it sounds like a problem with libraries.  our OOM.
+<hallyn> anything in syslog about SEGVs or OOM?
+<benji> hallyn: ooh:
+<benji> [ 6448.889458] zsh[5057]: segfault at 10000 ip b758b914 sp bff1dd64 error 4 in libc-2.11.1.so[b755d000+153000]
+<benji> ok, that is insane: something in my .zshrc is causing zsh to segfault (but only in a container, not on the host)
+<benji> but, it mean's I'm at least working again; thanks hallyn!
+<maswan> wtf, postgresql-8.3 was removed from lucid, so you no longer have an upgrade path for a hardy postgresql server? it used to work a year or two ago
+<jamespage> lynxman, around? have a question about the swift upstart configs that I think you authored
+<cwillu_at_work> maswan, the upgrade path is likely http://www.postgresql.org/docs/current/static/pgupgrade.html
+<bencer_> jamespage: i've fixed zbuildtools so now we dont get empty packages, uploaded here, going to copy now the other packages from previous ppa to force the rebuild
+<bencer_> and everything should be ready: https://launchpad.net/~bencer/+archive/zentyal-2.3-precise
+<pabelanger> ogra_: thanks for the upload
+<ogra_> welcome
+<lynxman> jamespage: otp, 1 sec :)
+<jamespage> bencer: nice one
+<jamespage> lynxman, np
+<maxon> hello ubutu-server. can i boot ubuntu-server from usb-hdd?
+<bencer_> jamespage: do you need something else? should we wait until all packages are built?
+<jamespage> bencer_, that should be enough
+<jamespage> I'll take a look later today/early tomorrow.
+<bencer_> anyway, i'll copy the other packages to that ppa when zbuildtools is published
+<jamespage> yp
+<jamespage> yes please
+<bencer_> jamespage:  ok thanks!
+<jamespage> bencer_, no problem!
+<lynxman> jamespage: I'm back, shoot! :)
+<jamespage> lynxman, OK - so I just picked up a bug re the swift upstart configurations
+<lynxman> hallyn: sorry, went to bed yesterday, the machine is available again at the same location as before
+<jamespage> lynxman, http://paste.ubuntu.com/884885/
+<jamespage> I don't understand the "find" bit
+<qman__> I need some suggestions for bandwidth monitoring, $boss wants to know how much bandwidth certain people are using on the network, so I want to get totals per host over time, preferrably with nice graphs
+<lynxman> jamespage: it is to check that we have at least one configuration file available in the configuration directory, because it comes with none by default
+<pabelanger> maxon: sure, why not.  Assuming your BIOS supports it
+<qman__> ntop is the only thing I know of which does this, though it doesn't do it well, and it keeps crashing, and every time it does, restarting it loses all the data collected
+<jamespage> lynxman, bug 954477
+<nbozo> Hi. In Ubuntu server, cluster and ctdb support is not compiled at build time anymore since years. How do you - Ubuntu server users - use samba in an Ubuntu cluster?
+<uvirtbot> Launchpad bug 954477 in swift "swift config doesn't match upstart expectations, required upstart configurations not installed." [High,In progress] https://launchpad.net/bugs/954477
+<jamespage> I guess the config locates have moved around a bit
+<jamespage> locations....
+<lynxman> jamespage: could really be, I already patched one of them :)
+<lynxman> jamespage: Mind these scripts were created for diablo
+<jamespage> lynxman, OK _ I just wanted to check I was not missing anything - I'll fix up now
+<lynxman> jamespage: thank you very much ;)
+<maswan> cwillu_at_work: ok, will try that then
+<cwillu_at_work> maswan, I believe the problem is that 8.3 will be eol before lucid is eol, so it had to happen eventually
+<cwillu_at_work> and an automatic migration from 8.3 to 8.4 would be silly
+<cwillu_at_work> (where "silly" is defined to mean "would work fine for people who use postgres as a toy, and cause massive homicide-inducing disruption for those who don't")
+<maswan> cwillu_at_work: but upgrades from hardy needs to work until hardy is eos
+<cwillu_at_work> maswan, upgrades work fine
+<cwillu_at_work> nobody ever made a promise that upgrade will not require any manual intervention, just that you'll have support in doing so
+<cwillu_at_work> and migrating from 8.3 to 8.4 is supported by postgres
+<cwillu_at_work> (in the "it should work, and people won't say it's unsupported if it breaks")
+<cwillu_at_work> (...sense)
+<maswan> cwillu_at_work: sure, I know how it worked when I upgraded the previous batch of db servers
+<jamespage> lynxman, OK have enough to work with now
+<andygraybeal> hey guys, i got a 10.04 kvm/libvirt server, often when i go to build a new machine, it fails.  it seems that after an automatic update this happens, after i reboot all is well.  i don't have any debug information, i just wonder if anyone has an idea of what might be going on with this simple description.
+<koolhead17> lynxman: gosh!!
+<raubvogel> If I have two encrypted partitions with the same passphrase, is there a way to enter the passphrase only once during bootup?
+<uvirtbot> New bug: #956128 in multipath-tools (main) "find_multipaths feature missing from upstream" [Undecided,New] https://launchpad.net/bugs/956128
+<hallyn> jamespage: you're coredev?
+<jamespage> hallyn, yep
+<hallyn> jamespage: can you plz push lp:~serge-hallyn/ubuntu/lucid/procps/procps-e to lucid-proposed?
+<jamespage> hallyn, lemme take a look
+<hallyn> thx
+<hallyn> maybe i should send you a debdiff...
+<hallyn> i can't push to lp:~serge-hallyn/ubuntu/lucid-updates/procps/procps-e, so i'm not convinced lp did the right ting...
+<hallyn> eh it should
+<hallyn> jamespage: the debdiff is just http://people.canonical.com/~serge/procps-e.debdiff
+<jamespage> hallyn: on it now
+<jamespage> hallyn, uploaded
+<hallyn> jamespage: thanks
+<hallyn> i think that bug pre-dates my familiarity with SRU process
+<uvirtbot> New bug: #956177 in nova (main) "python-nova should include openssh-client as a dependency" [Undecided,New] https://launchpad.net/bugs/956177
+<rockets> How stable is the server version of 12.04 right now
+<rockets> relatively speaking
+<jamespage> bencer_, I still see upstart configurations in the transitional packages?
+<bencer_> jamespage: uhm i checked that but maybe only on packages without upstart scripts?
+<bencer_> damm it, let me check again
+<bencer_> jamespage: you are right
+<bencer_> let me see how i can fix that
+<jamespage> bencer_, this works - http://paste.ubuntu.com/885126/
+<bencer_> jamespage: yup
+<bencer_> that's what i was testing :)
+<jamespage> bencer_, longer term it would be nice to move these packages away from CDBS
+<jamespage> and use debhelper instead
+<bencer_> jamespage: now the unfriendly thing of launchpad comes, i've to increase the version only for fixing that small thing that was only a poc
+<jamespage> bencer_, I think you can delete the package from the PPA now and re-upload a fixed version
+<stgraber> hallyn: I "think" we should allo /lib/init/fstab.lxc to be bind mounted over /lib/init/fstab in the new apparmor profile ;)
+<stgraber> hallyn: just had my machine crash because I forgot that on
+<stgraber> *one
+<stgraber> (as in, my container starting messing with my host's ttys until X and everything else crashed)
+<stgraber> jjohansen: how's the apparmor bugfix release coming along?
+<jjohansen> stgraber: it should be going up soon
+<jdstrand> stgraber: patches are under review. we are hopeful it will be uploaded in a few hours
+<stgraber> jjohansen, jdstrand: that's good news, thanks
+<stgraber> jjohansen: will we need a matching kernel upload or is the kernel I'm running currently only adding a few debug statements?
+<jjohansen> stgraber: you will need the matching kernel for the full pivot_root /blah, but pivot_root, will work until the new kernel goes up
+<stgraber> jjohansen: ok, will that be in the next kernel upload? I think there's one planned tomorrow
+<jjohansen> stgraber: yeah I think so I am test building a kernel from scratch just to make sure on the patches, and the patch request is going out after that, so they should go in this afternoon
+<stgraber> cool
+<adam_g> smoser: dont suppose you know why euc2ools/euca-authorize uses the 'authorize_security_group_deprecated' method instead of 'authorize_security_group'
+<smoser> from ?
+<smoser> boto ?
+<adam_g> smoser: yeah, i think
+<adam_g> smoser: i cant seem to create self-referential security groups with the _deprecated method its calling, using the non-_deprecated call seems to work tho.
+<smoser> adam_g, i'm not sure.
+<koolhead17|away> hi all
+<koolhead17|away> adam_g, https://answers.launchpad.net/keystone/+question/190793 can you help me with it?
+<adam_g> koolhead17|away: not atm, sorry
+<koolhead17|away> adam_g, np
+<stgraber> hallyn: mind if I share the link to your lxc doc pdf? I had a few comments on blog posts/g+ lately about lack of LXC documentation, so even if not really ready, I think it'd be useful to point them to it
+<uvirtbot> New bug: #956366 in nova (main) "self-referential security groups can not be deleted" [Undecided,New] https://launchpad.net/bugs/956366
+<med_> There's a new(er) OpenStack quantum source package ~e4 available but only ~e2 packages are built. Anyone know why? ... I guess I should know why or be able to find out.
+<Daviey> roaksoax: what issues are you seeing with ubuntu-cobbler-import?
+<brendan0powers> jamespage: Hi, I see that the rds source package has made it into universe
+<brendan0powers> jamespage: How long does it usually take for binary packages to be built?
+<raubvogel> How do I set ntp.conf in ubuntu to listen to multicast?
+<Daviey> adam_g: quantum IIRC had a binary app that was moved from one package to the other or something.. without appropriate Breaks/Replaces.. do you know if it was fixored?
+<adam_g> Daviey: you might be thinking of keystone? im not sure, quantum is all chuck shork
+<adam_g> i even typo'd the typo
+<Daviey> adam_g: lol
+<Daviey> adam_g: Okay, well, the last upload the binary was rejected for that reason.
+<Daviey> adam_g: so it needs fixoring before the next upload, if not already
+<adam_g> Daviey: the trunk builds in jenkins are fine.
+<Daviey> adam_g: right, it's not a build issue.. it's an upgrade issue
+<Daviey> dpkg needs to know to remove the old binary before instlaling the new one to avoid trying to overite a file.
+<adam_g> Daviey: i cant make any promises that ill be getting to that today, sorry
+<Daviey> adam_g: no, i don't expect you to.. but i'm saying it needs to be resolved before the next glance upload. :)
+<Daviey> Doesn't seem glance is uploaded weekly.
+<adam_g> Daviey: which is tomorrow, no?
+<Daviey> So perhaps leave it
+<adam_g> glance *should* be uplaoded weekly with the rest
+<Daviey> adam_g: last uploaded on the 5th
+<Daviey> Oh bug.
+<adam_g> great
+<Daviey> Not galnce, quantum !
+<Daviey> sorry.
+<adac> On server i got a kernel panic, suppossingly because of the disk space on boot. any ideas how to solve this? can I just delete data from boot device?
+<Daviey> utlemming: Hey, are you around?
+<utlemming> Daviey: for you, yup
+<Daviey> adac: well, not something you care about, right... :)
+<Daviey> utlemming: Great!  Any news on the locale issue?
+<Daviey> with cloud images?
+<adac> Daviey, hehe. Well i'm not sure even what uses that much diskpsace on it. i guess has seomthin to do with new kernels
+<utlemming> Daviey: not really...cloud-init gets in the way by setting /etc/default/locale and then pam prevents you chaning it via ssh
+<Daviey> utlemming: right...
+<Daviey> utlemming: it's a really, poor experience atm
+<Daviey> utlemming: pam *prevents* ?
+<utlemming> Daviey: I whole-heartedly agree on that point.
+<Daviey> utlemming: if i $ LC_ALL=C ssh ubuntu@foo , the locale of C is passed through
+<Daviey> How is pam preventing that?
+<Daviey> or rather, pam isn't preventing that
+<Daviey> Isn't the issue more that the instance doesn't have non-US locales?
+<utlemming> no, its not. Run "locale"
+<Daviey> http://pb.daviey.com/cm
+<utlemming> Daviey: "Internal server error"
+<Daviey> utlemming: refresh?
+<utlemming> no dice
+<Daviey> utlemming: if i use my local, and don't overide. http://pb.daviey.com/gwLc/
+<utlemming> the problem is "pam_env.so envfile=/etc/default/locale"
+<Daviey> utlemming: hang on..
+<Daviey> LANG is hard coded to /etc/default/locale
+<utlemming> yes, but cloud-init
+<Daviey> the rest are passed through the ssh connection from the local machine, right
+<utlemming> yes
+<Daviey> Sooo... if LC_ALL is set to en.US.UTF-8 in /etc/default/locale.. we should be ok?
+<utlemming> yummm....yeah...I'll submit a patch to smoser on that
+<stgraber> hallyn: I posted the link to the .pdf and made it clear that it was a work in progress.
+<stgraber> hallyn: I also proposed a plenary for UDS on LXC to cover all the cool stuff we have in 12.04, some unusual use of containers and what are the next big steps. If it's accepted, you're welcome to contribute :)
+<Daviey> utlemming: So.. the locale issue seems to also cause problems with certain package installs.
+<utlemming> Daviey: that is _new_. Before I've seen errors, but never a package failure
+<Daviey> dbconfig'ing packages craps out.. so it's really not just a cosmetic issue, but a Critical one
+<utlemming> Daviey: agreed
+<jdstrand> stgraber, hallyn: fyi, new apparmor uploaded
+<stgraber> jdstrand: yeah! thanks
+<jdstrand> stgraber: sure thing-- be sure to thank jjohansen :)
+<jdstrand> jjohansen: thanks!
+<CheckIn> Hello. Does Ubuntu server come with a set of firewall rules on by default?
+<SpamapS> CheckIn: no but it does not open any ports by default
+<SpamapS> CheckIn: and ufw is available, which is the "Uncomplicated FireWall"
+<CheckIn> SpamapS: How does it close the ports?
+<CheckIn> Just not install any server software ?
+<SpamapS> CheckIn: right
+<CheckIn> Hmm
+<SpamapS> CheckIn: you can optionally install the firewall and server software during the installer of course.
+<CheckIn> I don't know where these firewall rules came from then
+<CheckIn> I've installed mysql apache freeradius and php5
+<CheckIn> and I have a list of firewall rules
+<CheckIn> SpamapS: http://imgur.com/UPvUG is what I get on boot
+<SpamapS> CheckIn: looks like ufw.. perhaps I was wrong and it is turned on by default
+<CheckIn> SpamapS: Ok thanks

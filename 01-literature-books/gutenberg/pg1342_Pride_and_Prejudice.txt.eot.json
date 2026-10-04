@@ -1,0 +1,532 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+  "sha256": "a76e72e3976df9638aff4a6d1a9a213ca599111a359d288e1265a6d6d4ab435d",
+  "bytes": 743241,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 743241,
+  "bodyOffset": 0,
+  "bodyChars": 743241,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7837,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 5467,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 51,
+  "surfaces": 52,
+  "referentEvents": 11,
+  "distinctReferents": 11,
+  "examined": true,
+  "edgesFound": 9,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 6,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 21
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 9,
+  "excerptOk": 9,
+  "rawChecked": 9,
+  "rawOk": 9,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 9,
+  "heard": 9,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "that its scale|is|small",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that its scale is small",
+    "subject": "that its scale",
+    "verb": "is",
+    "object": "small",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#2346-2789",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "To some the delightful freshness and humour of_ Northanger Abbey, _its completeness, finish, and_ entrain, _obscure the undoubted critical facts that its scale is small, and its scheme, after all, that of burlesque or parody, a kind in which the first rank is reached with difficulty._ Persuasion, _relatively faint in tone, and not enthralling in interest, has devotees who exalt above all the others its exquisite delicacy and keeping."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "and that fanny|might|very likely have taken crawford if he had been a little more assiduous",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "and that Fanny might very likely have taken Crawford if he had been a little more assiduous",
+    "subject": "and that Fanny",
+    "verb": "might",
+    "object": "very likely have taken Crawford if he had been a little more assiduous",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#2790-3189",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "The catastrophe of_ Mansfield Park _is admittedly theatrical, the hero and heroine are insipid, and the author has almost wickedly destroyed all romantic interest by expressly admitting that Edmund only took Fanny because Mary shocked him, and that Fanny might very likely have taken Crawford if he had been a little more assiduous; yet the matchless rehearsal-scenes and the characters of Mrs."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "_it|is|the larger",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "_It is the larger",
+    "subject": "_It",
+    "verb": "is",
+    "object": "the larger",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#3681-3991",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "_It is the larger, the more varied, the more popular; the author had by the time of its composition seen rather more of the world, and had improved her general, though not her most peculiar and characteristic dialogue; such figures as Miss Bates, as the Eltons, cannot but unite the suffrages of everybody."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this contention in such narrow space as|is|permitted to me",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "this contention in such narrow space as is permitted to me",
+    "subject": "this contention in such narrow space as",
+    "verb": "is",
+    "object": "permitted to me",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#4078-4295",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "It seems to me the most perfect, the most characteristic, the most eminently quintessential of its author’s works; and for this contention in such narrow space as is permitted to me, I propose here to show cause._"
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the book|was|in its first shape written very early",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the book was in its first shape written very early",
+    "subject": "the book",
+    "verb": "was",
+    "object": "in its first shape written very early",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#4299-4626",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "_In the first place, the book (it may be barely necessary to remind the reader) was in its first shape written very early, somewhere about 1796, when Miss Austen was barely twenty-one; though it was revised and finished at Chawton some fifteen years later, and was not published till 1813, only four years before her death."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "when miss austen|was|barely twenty-one",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "when Miss Austen was barely twenty-one",
+    "subject": "when Miss Austen",
+    "verb": "was",
+    "object": "barely twenty-one",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#4299-4626",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "_In the first place, the book (it may be barely necessary to remind the reader) was in its first shape written very early, somewhere about 1796, when Miss Austen was barely twenty-one; though it was revised and finished at Chawton some fifteen years later, and was not published till 1813, only four years before her death."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the elopement of lydia and wickham|is|not",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The elopement of Lydia and Wickham is not",
+    "subject": "The elopement of Lydia and Wickham",
+    "verb": "is",
+    "object": "not",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#5053-5127",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "The elopement of Lydia and Wickham is not, like that of Crawford and Mrs."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the all-grasping hand of the playwright|has|ever been laid upon_ pride and prejudice",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the all-grasping hand of the playwright has ever been laid upon_ Pride and Prejudice",
+    "subject": "the all-grasping hand of the playwright",
+    "verb": "has",
+    "object": "ever been laid upon_ Pride and Prejudice",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#6266-6555",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "I do not know whether the all-grasping hand of the playwright has ever been laid upon_ Pride and Prejudice; _and I dare say that, if it were, the situations would prove not startling or garish enough for the footlights, the character-scheme too subtle and delicate for pit and gallery."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the ability which miss austen|has shown|in working out the story",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the ability which Miss Austen has shown in working out the story",
+    "subject": "the ability which Miss Austen",
+    "verb": "has shown",
+    "object": "in working out the story",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#7475-7800",
+      "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+      "text": "And despite the ability which Miss Austen has shown in working out the story, I for one should put_ Pride and Prejudice _far lower if it did not contain what seem to me the very masterpieces of Miss Austen’s humour and of her faculty of character-creation--masterpieces who may indeed admit John Thorpe, the Eltons, Mrs."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 9,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "_it|is|the larger",
+   "subject": "_It",
+   "verb": "is",
+   "object": "the larger",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#3681-3991",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "_It is the larger, the more varied, the more popular; the author had by the time of its composition seen rather more of the world, and had improved her general, though not her most peculiar and characteristic dialogue; such figures as Miss Bates, as the Eltons, cannot but unite the suffrages of everybody."
+    }
+   ]
+  },
+  {
+   "id": "and that fanny|might|very likely have taken crawford if he had been a little more assiduous",
+   "subject": "and that Fanny",
+   "verb": "might",
+   "object": "very likely have taken Crawford if he had been a little more assiduous",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#2790-3189",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "The catastrophe of_ Mansfield Park _is admittedly theatrical, the hero and heroine are insipid, and the author has almost wickedly destroyed all romantic interest by expressly admitting that Edmund only took Fanny because Mary shocked him, and that Fanny might very likely have taken Crawford if he had been a little more assiduous; yet the matchless rehearsal-scenes and the characters of Mrs."
+    }
+   ]
+  },
+  {
+   "id": "that its scale|is|small",
+   "subject": "that its scale",
+   "verb": "is",
+   "object": "small",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#2346-2789",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "To some the delightful freshness and humour of_ Northanger Abbey, _its completeness, finish, and_ entrain, _obscure the undoubted critical facts that its scale is small, and its scheme, after all, that of burlesque or parody, a kind in which the first rank is reached with difficulty._ Persuasion, _relatively faint in tone, and not enthralling in interest, has devotees who exalt above all the others its exquisite delicacy and keeping."
+    }
+   ]
+  },
+  {
+   "id": "the ability which miss austen|has shown|in working out the story",
+   "subject": "the ability which Miss Austen",
+   "verb": "has shown",
+   "object": "in working out the story",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#7475-7800",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "And despite the ability which Miss Austen has shown in working out the story, I for one should put_ Pride and Prejudice _far lower if it did not contain what seem to me the very masterpieces of Miss Austen’s humour and of her faculty of character-creation--masterpieces who may indeed admit John Thorpe, the Eltons, Mrs."
+    }
+   ]
+  },
+  {
+   "id": "the all-grasping hand of the playwright|has|ever been laid upon_ pride and prejudice",
+   "subject": "the all-grasping hand of the playwright",
+   "verb": "has",
+   "object": "ever been laid upon_ Pride and Prejudice",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#6266-6555",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "I do not know whether the all-grasping hand of the playwright has ever been laid upon_ Pride and Prejudice; _and I dare say that, if it were, the situations would prove not startling or garish enough for the footlights, the character-scheme too subtle and delicate for pit and gallery."
+    }
+   ]
+  },
+  {
+   "id": "the book|was|in its first shape written very early",
+   "subject": "the book",
+   "verb": "was",
+   "object": "in its first shape written very early",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#4299-4626",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "_In the first place, the book (it may be barely necessary to remind the reader) was in its first shape written very early, somewhere about 1796, when Miss Austen was barely twenty-one; though it was revised and finished at Chawton some fifteen years later, and was not published till 1813, only four years before her death."
+    }
+   ]
+  },
+  {
+   "id": "the elopement of lydia and wickham|is|not",
+   "subject": "The elopement of Lydia and Wickham",
+   "verb": "is",
+   "object": "not",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#5053-5127",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "The elopement of Lydia and Wickham is not, like that of Crawford and Mrs."
+    }
+   ]
+  },
+  {
+   "id": "this contention in such narrow space as|is|permitted to me",
+   "subject": "this contention in such narrow space as",
+   "verb": "is",
+   "object": "permitted to me",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#4078-4295",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "It seems to me the most perfect, the most characteristic, the most eminently quintessential of its author’s works; and for this contention in such narrow space as is permitted to me, I propose here to show cause._"
+    }
+   ]
+  },
+  {
+   "id": "when miss austen|was|barely twenty-one",
+   "subject": "when Miss Austen",
+   "verb": "was",
+   "object": "barely twenty-one",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt#4299-4626",
+     "ref": "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+     "text": "_In the first place, the book (it may be barely necessary to remind the reader) was in its first shape written very early, somewhere about 1796, when Miss Austen was barely twenty-one; though it was revised and finished at Chawton some fifteen years later, and was not published till 1813, only four years before her death."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:33.220Z"
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "06-government-legal/un-udhr/udhr-cmn_hans_nanjing.txt",
+  "sha256": "570adf9806ee8fd0b43a8eedc49338b7851a86c91091ff886ee04bd42ca397fb",
+  "chars": 4091,
+  "declaredIdentity": {
+   "identityClaim": "Universal Declaration of Human Rights",
+   "language": "Chinese, Mandarin (Nanjing)",
+   "code": "zh",
+   "mechanism": "the file's own 4-line OHCHR header, read verbatim"
+  }
+ },
+ "recipe": {
+  "id": "f090e4355976dcb6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "language": "zh",
+   "posPriorGate": "omitted — no POSPrior@1 build for language \"zh\" (normalized \"zh\") in this environment",
+   "classifyConnector": null,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "sameStem": "omitted — no declension prior for language \"zh\" (normalized \"zh\") in this environment",
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "5dc67f65c76c94cde86dfaf7b262ec5a7fcdb877",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "04238cac474b8537d6b1873a7dec013d449d1134",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "7d92319d91635b0fec0bbd8220f163c1e39147d4",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 4091,
+  "bodyOffset": 242,
+  "bodyChars": 3849,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 3849,
+  "truncated": false
+ },
+ "script": {
+  "casedLetters": 0,
+  "caselessLetters": 2627,
+  "casedShare": 0,
+  "gap": {
+   "reason": "script_without_case",
+   "tier": "model",
+   "needsWitness": true,
+   "casedShare": 0,
+   "detail": "every candidate-surface filter in this organ reads capitalisation, and this material's letters are entirely caseless (Unicode General_Category: no Cased_Letter present), so the mechanism cannot fire on it at all. Any surface count reported alongside this gap is about cased debris in the file, never about this material's own language. Reading names in this script needs a per-script prior with its own giver and an invariance fixture — an algorithmic substitute for capitalisation was tried and reverted here (II.13)."
+  }
+ },
+ "reading": {
+  "sentences": 92,
+  "surfaces": 0,
+  "referentEvents": 0,
+  "distinctReferents": 0,
+  "examined": true,
+  "edgesFound": 0,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 0,
+   "minSurfaces": 1,
+   "grammarPrior": false,
+   "candidates": 0
+  },
+  "contentWithoutRelations": false,
+  "grammar": null
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 0,
+  "excerptOk": 0,
+  "rawChecked": 0,
+  "rawOk": 0,
+  "rawPassRate": null,
+  "bad": []
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: this reader has no lexicon for this language and says so"
+ },
+ "gaps": [
+  {
+   "type": "no_lexicon",
+   "language": "zh",
+   "expectedProps": 107,
+   "note": "the rosetta expects these propositions here; reading them awaits a lexicon ring or an adjudicator for this language — typed, never guessed (LP4)"
+  }
+ ],
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "rosetta-structural (derived)",
+   "recipeId": "2a3439a340e6c196"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append",
+  "note": "adversarial layers append when a lexicon ring or an adjudicator reaches this language"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "structural": {
+    "missingArticles": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30
+    ],
+    "note": "articles the rosetta skeleton expects and this file's own detectable numbering does not show — includes the known unnumbered-first-article pattern ('Article premier'); a gap in detection is disclosed as such, never silently repaired"
+   }
+  }
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "f090e4355976dcb6",
+  "at": "2026-08-31T00:12:05.916Z"
+ }
+}

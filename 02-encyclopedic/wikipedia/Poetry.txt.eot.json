@@ -1,0 +1,123 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Poetry.txt",
+  "sha256": "e87d0a508441530e978376a2bce0760db48eb51ff7f26b9d00c4d0bb46c057f3",
+  "chars": 48286,
+  "declaredIdentity": {
+   "title": "Poetry",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 2,
+  "debrisChars": 37,
+  "debrisFraction": 0.001,
+  "headingCount": 40,
+  "headings": [
+   "Metrical patterns",
+   "Rhyme, alliteration, assonance",
+   "Rhyming schemes",
+   "Form in poetry",
+   "Lines and stanzas",
+   "Visual presentation",
+   "Diction",
+   "Forms",
+   "Sonnet",
+   "Shi",
+   "Villanelle",
+   "Limerick",
+   "Tanka",
+   "Haiku",
+   "Khlong si suphap",
+   "Ode",
+   "Ghazal",
+   "Genres",
+   "Narrative poetry",
+   "Lyric poetry",
+   "Epic poetry",
+   "Satirical poetry",
+   "Elegy",
+   "Verse fable",
+   "Dramatic poetry",
+   "Speculative poetry",
+   "Prose poetry",
+   "Light poetry",
+   "Contemporary poetry",
+   "Slam poetry",
+   "Performance poetry",
+   "Language happenings",
+   "See also",
+   "Notes",
+   "References",
+   "Citations",
+   "Bibliography",
+   "Further reading",
+   "Other critics",
+   "English language anthologies"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 40,
+   "debrisFraction": 0.001
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 0.4403461911813806,
+   "debrisFractionZ": -0.3802141999820955,
+   "priorSeenSoFar": 36
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.095Z"
+ }
+}

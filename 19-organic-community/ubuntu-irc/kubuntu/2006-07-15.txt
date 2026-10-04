@@ -1,0 +1,2910 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2006-7-15"
+lang: "en"
+messages: "2901"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<slow-motion> n8
+<teknoprep> yes
+<Silver_Adept> None of the control panel things will let you switch cards?
+<teknoprep> nope
+<teknoprep> i know there is an app
+<teknoprep> i just cant remember what its called
+<Silver_Adept> Using ALSA?
+<teknoprep> yes i am using alsa
+<Silver_Adept> Hrm. You can probably manually edit the alsa configuration to use the right card.
+<teknoprep> yeah but i want to be able to doit on the fly
+<teknoprep> its a usb sound card
+<teknoprep> you can doit on the fly with gnome
+<teknoprep> i am sure you can in KDE
+<Silver_Adept> You can probably run the GNOME app in KDE.
+<teknoprep> you can
+<Kyral> You can
+<Silver_Adept> Actually, I'm sure you can, as I run Synaptic rather than Adept.
+<teknoprep> but it doesn't change it
+<teknoprep> it still stays the same for most crap
+<Kyral> only difference between a "GNOME App" (I HATE that term, same goes for "KDE App")
+<Kyral> is Qt vs. GTK
+<Silver_Adept> Got'cha.
+<Silver_Adept> Perhaps there's something that's taking control and refusing to give it up?
+<notamisfit> Kyral: not always, sometimes external stuff like printers is affected too
+<notamisfit> ie abiword
+<Kyral> Okay, one other difference
+<Kyral> (Which is gonna disappear with KDE 4)
+<Kyral> DCOP vs. DBus
+<Kyral> notamisfit: You know how long its been since I used a Word Processor?
+<notamisfit> Kyral: does emacs count?
+<Kyral> no
+<Kyral> Word Processors are things like OpenOffice, MS Word, Abiword, etc
+<Kyral> Emacs, Vim, Scribes, GEdit, KEdit, etc are text editors
+<Kyral> I wanna become good enough with LaTeX to not have to use Word Processors :D
+<notamisfit> that's what i was referring to
+<Silver_Adept> While we're thinking about problems, is there any way that I can get the scanner on my HP PSC recognized in Dapper?
+<teknoprep> hmm
+<teknoprep> wtf is up with dmix
+<teknoprep> not working
+<Silver_Adept> Not working in what way?
+<teknoprep> not mixing
+<teknoprep> just one audio source
+<teknoprep> also wtf is up with arts not showing up in the device list?
+<teknoprep> hmm
+<teknoprep> brb
+<Silver_Adept> (I'm at the end of my ability. Someone with more knowledge, or knowledge of a HOWTO, you're free to step in.)
+<marcus__> Need a little network help.
+<teknoprep> k
+<teknoprep> ask the f'n question?
+<ryanakca> whats the difference between 192.168.0.0/8, 192.160.0.0/16, etc,etc
+<marcus__> sorry. I'm trying to get my linux laptop and my windows laptop on the same network to see each other but have had no success at this oint.
+<ryanakca> marcus__: samba?
+<marcus__> ryanakca: I'm not even sure where to start. I am using kubuntu, and I think Samba is installed by default.
+<ryanakca> go to konqueror, type in smb:/
+<ryanakca> anything show up?
+<marcus__> just a sec
+<marcus__> Says unable to find any workgrups.
+<jasonlam> Is there a hotkey to lock the screen in KDE?
+<marcus__> ryanakca: says no workgroups in my network. Might be caused by a firewall.
+<ryanakca> firewall on the windows computer?
+<marcus__> ryanakca: sec im checking
+<ryanakca> jasonlam: look under keyboard shortcuts in kcontrol / System Settings
+<jasonlam> ryanakca: THANKS!
+<ryanakca> np
+<marcus__> ryanakca: I disabled the firewall and found the computer, but still no shared folders
+<ryanakca> marcus__: kk...
+<ryanakca> now.. what folders do you want to share
+<ryanakca> on the windows machine that it
+<ryanakca> s/it/is
+<marcus__> ryanakca: what port needs to be open on the windows machine for Samba?
+<ryanakca> dunno...
+<ryanakca> you can google it... or wait a second while I google it for you...
+<marcus__> ryanakca: I just want to share an image file called "pictures"
+<ryanakca> 137 through 139, inclusive.
+<ryanakca> marcus__: is it a folder?
+<marcus__> ryanakca: SO if i allow 137 through 139 the firewall can run with samba?
+<ryanakca> the windows one? I think so
+<marcus__> ryanakca: yes pictures is a folder
+<ryanakca> ok... right click the folder in My Computer/whatever/
+<ryanakca> select sharing... or properties... or something simmilar
+<teknoprep> ?
+<marcus__> ryanakca: okay
+<teknoprep> omfg
+<teknoprep> just kill yourself... lol
+<teknoprep> actually you can limit the ports based on tcp/udp need.. and then ip based as to access
+<ryanakca> found it?
+<marcus__> ryanakca: Yep. It's all shared
+<marcus__> ryanakca: Should I type smb:/ again?
+<DarkAudit> which firefox media plugin is the one that shows '(no picture)' when it's waiting to play a Quicktime movie?
+<ryanakca> :)
+<ryanakca> yes
+<_hozzzar> Howdi
+<Gun_Smoke> Hi again.. need some help with firefox.
+<marcus__> ryanakca: folder shows up, but now when I try to view a file it asks for authentication
+<ryanakca> put in windows username & pass
+<marcus__> ryanakca: No way to prevent that?
+<ryanakca> ummm... you could check "remember password" or something of the sort
+<teknoprep> put anonymous access on the shares
+<teknoprep> on the actual share permissions
+<teknoprep> and the file permissions
+<marcus__> ryanakca: One more question? Is there a way networking wise I can allow someone to run an xsession beside mine over the network?
+<ryanakca> hmmm... anonymous means anybody can see it... I think...
+<ryanakca> marcus__: vnc?
+<teknoprep> ffs
+<marcus__> ryanakca: Can you help me through that one too please?
+<teknoprep> ppl need to like learn " The Basics "
+<ryanakca> yes...
+<ryanakca> ok... KMenu<
+<Pupeno> !mp3
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<ryanakca> Kmenu -> Internet -> Krfb.
+<marcus__> ryanakca: Okay. It opened desktop sharing
+<Garbage> Hard to install Lipstik 2.2 on Kubuntu :(
+<ryanakca> ok... whats the other machines who will be connecting to this be running? KDE/Linux? Windows?
+<marcus__> ryanakca: Windows
+<ryanakca> marcus__: and will they be connecting at the same time you use it?
+<ryanakca> connecting at the same time you use the linux comp?
+<marcus__> ryanakca: Sometimes yes....
+<ryanakca> ok...
+<ryanakca> for when they aren't... krfb... Create Personal Invitation....
+<marcus__> ryanakca: Okay got it. Then give them the info? Will that allow them to use thier own account?
+<ryanakca> jot down the information on the paper... you have an hour window between creating the invitation and connecting...
+<ryanakca> marcus__: if connecting from a windows machine... you will need this software installed... http://www.realvnc.com/
+<marcus__> ryanakca: Okay.
+<ryanakca> marcus__: I don't know if using multiple accounts with multiple xsessions over the network is possible...
+<dive-o> it is with XDMCP
+<ryanakca> marcus__: have you created the accounts?
+<marcus__> ryanakca: Yes I have.
+<ryanakca> marcus__: xdmcp... never used it... but you could ask around... or look at this: http://www.tldp.org/HOWTO/XDMCP-HOWTO/   http://en.wikipedia.org/wiki/XDMCP
+<jasonlam> ;
+<ryanakca> marcus__: sorry... at least I got one of them fixed... and the other partially fixed...
+<marcus__> ryanakca: I appreciate all your help. Thank you very very much
+<samuli> terve
+<samuli> sairas
+<samuli> siis hei
+<intelikey> what program do you start to start kde  ?
+<intelikey> i have to connect to a running X server.   ??
+<abattoir> intelikey: startx works?
+<jacob__> If you are running Kubuntu, you should already be in KDE.
+<h3sp4wn_> startkde ?
+<intelikey> abattoir no startx wont work for users
+<abattoir> intelikey: then sudo startx? or sudo kdm?
+<intelikey> abattoir i don't want to run x as root and besides that sudo wont work either
+<abattoir> intelikey: try (sudo) kdm... i remember it working for me once
+<intelikey> h3sp4wn_ like    startkde --display :0   ???
+<h3sp4wn_> No
+<intelikey> abattoir what part of "sudo wont work"  did you miss?     and X is running.
+<h3sp4wn_> Are you trying to run kde remotely
+<intelikey> h3sp4wn_ no local
+<h3sp4wn_> But without kdm ?
+<intelikey> trying to connect to a running X server
+<abattoir> intelikey: jesus!! i'm just trying to help.
+<h3sp4wn_> intelikey: It is deliberately setup so you can't
+<intelikey> like with twm it would be    twm -display :0
+<intelikey> h3sp4wn_ kde is setup so you can't connect to a running server ???
+<h3sp4wn_> Can't see why you would ever want to
+<h3sp4wn_> notice how -nolisten is in the X line in ps -ef
+<intelikey> well seeing why is not the point.   did i read you correctly?   "kde is deliberately setup so you can't connect to a running X server"  ???
+<intelikey> <h3sp4wn_> notice how -nolisten is in the X line in ps -ef <--- no not here.
+<fiyawerx> anyone use kdevelop?
+<h3sp4wn_> intelikey: /usr/bin/X -br -nolisten tcp -dpi 100 -br :0 vt7 -auth /var/run/xauth/A:0-clmnEP - or some such
+<fiyawerx> all the tutorials seem to point towards a 'source formatter' setting, but i don't seem to have that when i go to settings-configure kdevelop-
+<jacob__> KDE has Krdc for remote desktop connections. Why not just use that?
+<intelikey> jacob__ checking...
+<intelikey> no man page on that
+<fiyawerx> its like my kdevelop is missing stuff
+<h3sp4wn_> <fiyawerx>: Installed kde-devel (metapackage)
+<timonator> i made a short .py script, set it to +x but if i click on it in konqueror it opens kate, but i want to execute it. how do i do that?
+<Tallia1Kubuntu> ahah, i just deleted most of my MP3 by mistake....
+<Tallia1Kubuntu> do you know a way of recover them? VFAT partition.
+<fiyawerx> h3sp4wn_: will do, thanks
+<intelikey> jacob__ i don't see how to use krdc locally   what am i missing ?
+<timonator> Tallia1Kubuntu: theres no way to do it. the music industry infiltrated your brains with evil nanobots emitting electronic rays of brain control that will not allow you to run a recovery program on that partition
+<Tallia1Kubuntu> timonator: do you know any recovery program?
+<timonator> uh, sorry, once had one to recover photos from a digital camera, but forgot its name :(
+<h3sp4wn_> Tallia1Kubuntu:  norton utilities for dos or is it fat32 ?
+<timonator> but anyways, that program could also recover other stuff, such as videos, im pretty sure it also could recover mp3s or other files for that mattere
+<Tallia1Kubuntu> fat32
+<Tallia1Kubuntu> timonator: photorec?
+<intelikey> Tallia1Kubuntu the M$ undelete.exe should work.
+<timonator> i think that was its name
+<timonator> but i guarantee for nothing!
+<fiyawerx> intelikey: whatcha tryin to do?
+<Tallia1Kubuntu> yeah, sure, NP
+<intelikey> fiyawerx start kde
+<timonator> heh, i wonder what a recovery program would do to a fat32 image on an ext3 partition which was deleted and contained files.
+<fiyawerx> with krdc?
+<Tallia1Kubuntu> intelikey: how am i supposed to run/get that?
+<Tallia1Kubuntu> i don't think it is a solution
+<timonator> how can i make konqueror correctly start wine on doubleclicking on an .exe file? right-clicking -> open with -> wine works, but ticking the 'always blah blah' checkbox doesnt seem to...
+<intelikey> Tallia1Kubuntu first move is umount the partition that the lost data is on.  so you don't write anything on it.   second you need to search the bootdisk archives for a disk with the utility to do that then dl it and boot with that.
+<timonator> intelikey: wow, thats pretty complicated...
+<intelikey> your data.  is it worth it ?
+<timonator> well, maybe he could try photorec first, its a native linux utility
+<Tallia1Kubuntu> amarok was organizing my mp3 collection and it decided to delete the symb link in my home that pointed to the vfat partition and start transferring files from vfat toward ext3
+<timonator> so theres no need for extra BS ;)
+<Tallia1Kubuntu> i taught it was doing a copy of the compilation, so i simply deleted the ext3 data..
+<timonator> oh, seems like photorec isnt in the kubuntu deb repositoryx thingie
+<Tallia1Kubuntu> really hope that amarok simply deleted the files after moving, so i can get them back
+<intelikey> timonator sure.  i wasn't implying that it was the only way or the best way.  just that it will work.
+<Tallia1Kubuntu> timonator: i do have it
+<timonator> ok :)
+<Tallia1Kubuntu> timonator: i am runningn it now :)
+<h3sp4wn_> intelikey: Do you want to run 2 instances of kde is that what you want ?
+<timonator> Tallia1Kubuntu: oh, ok, any success?
+<timonator> aah ok
+<Tallia1Kubuntu> dunno, 2 hours to go :P
+<h3sp4wn_> intelikey: Or one of gnome one of kde ?
+<timonator> gtgbbl brush teeth etc
+<h3sp4wn_> intelikey: I don't fully understand what you are trying to do
+<timonator> v3ctor: remember me? the printer guy?
+<intelikey> h3sp4wn_ that's the basic idea.  but all that is running is X  i want a user to startkde on that X session.
+<timonator> v3ctor: write me, ill brb in a few mins if you got problems with the lexmark printer :)
+<h3sp4wn_> intelikey: Are you using kdm ?
+<intelikey> no
+<intelikey> no *dm at all
+<h3sp4wn_> Booting to console by default ?
+<intelikey> booting to console     but that precludes any 'default' when dealing with *ubuntu
+<Lord_Athur> hi all
+<fiyawerx> intelikey: oh, was reading a bit about the security issues since you got me interested, and using a long root password isn't necessarily better for security than using sudo/user password
+<intelikey> fiyawerx link ?
+<fiyawerx> any people attempting to brute force their way into your system knows that there is a root account to try to crack, by default, that's disabled
+<intelikey> and remember we were talking "default" *ubuntu
+<fiyawerx> default *kubuntu is root disabled
+<h3sp4wn_> intelikey: see if that is sort of what you want (if it doesn't work Xorg may not be suid
+<fiyawerx> and nothings stopping you from setting up a long user password
+<fiyawerx> to have _both_ securitiy features
+<intelikey> so if i try brute force on ssh fiyawerx@starburst.dreamhost.com   you are safe cause i don't know your user name ?
+<h3sp4wn_> fiyawerx: My machines is now connected using an ipsec tunnel to the router (have a router which and do ipsec in hardware 75mps)
+<fiyawerx> you can get into dreamhost with my account, and it won't do you any good
+<fiyawerx> as far as their root system goes, since thats not my personal system :)
+<fazex> Can someone help me with a video driver question?
+<h3sp4wn_> fiyawerx: I got a bit concerned about security for a bit
+<fiyawerx> i still just think it's strange your doing all this just because /root is world-readable (and not all files in there are, by the way)
+<fiyawerx> !root
+<ubotu> sudo is a command to run programs with superuser privileges ("root"). Look at https://help.ubuntu.com/community/RootSudo for all information.
+<h3sp4wn_> !ipsec
+<ubotu> I know nothing about ipsec - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<h3sp4wn_> !vpn
+<ubotu> From more information on vpn please refer to https://wiki.ubuntu.com/Gaming_VPN_Using_PPTPD
+<fazex> I install the latest NVIDIA drivers and NVIDIA kernel module then type startx and my KDE loads fine, but after a reboot it wont load KDE and try to load the old NVIDIA kernel.How do i keep it from trying to load old NVIDIA module kernel after a reboot?
+<grayfox> hi
+<intelikey> the point is by default.  the *ubuntu user comes in here with their %adm user name as their nick or at least visable to the hacker that will then be trying to kick their door down.   so yes a long root passwd is safer than the "default" *ubuntu use of sudo.   and remember these are primarrilary M$ converts on their first linux system...
+<h3sp4wn_> intelikey : try http://pastebin.ca/88461 (if that doesn't work you may not have the xwrapper enabled to start x as a user)
+<intelikey> h3sp4wn_ k i'm looking.
+<fiyawerx> intelikey : what mode of access would you use to get into soemones 'default' *buntu install
+<fiyawerx> telnet? web server? ssh? since we're talking "default" here
+<h3sp4wn_> intelikey: Or substite 0 for 1 for the next instance
+<intelikey> fiy i wouldn't   i'm not a hacker.    but the 'hackers' that i have spoke with, like ubuntu.
+<fiyawerx> right
+<h3sp4wn_> It seems alot of hackers are starting to use ubuntu
+<fiyawerx> h3sp4wn_ : he means 'hacking' _into_ people with default ubuntu installs
+<intelikey> it's the flavour of the month
+<fiyawerx> i thnk, anyway
+<fiyawerx> thats why he's so worried about security
+<h3sp4wn_> Not has managed to get into mine
+<fiyawerx> because default ubuntu is wide open for people to hack into
+<h3sp4wn_> (but its behind 3 firewalls - mainly because I like messing with them
+<fiyawerx> thats why he's disabled kdm, removed his /home and /root filesystems
+<h3sp4wn_> Just force all traffic to go thro an ipsec vpn and you will be safe
+<intelikey> disabled kdm ?    no i uninstalled it.  :)     but not because of hacker/script kiddies/spies/or anything else you might dream up...
+<fiyawerx> you said you removed it because it used /root, which was unsecure because it's world readable
+<fiyawerx> or because it changed the permissions on /root
+<intelikey> yes
+<intelikey> fiyawerx and ?
+<fiyawerx> "but not because of hacker/script kiddies/spies/or anything else you might dream up..."
+<fiyawerx> i'd consider that being unsecure
+<intelikey> yeah.   your point is ?
+<fiyawerx> and your whole reasoning behind _that_ was that you can't store private data in /root
+<fiyawerx> you're buying a whole new car instead of fixing the flat (which may not be flat to begin with)
+<fiyawerx> and my kdevelop is still missing configurations i can't figure out why, heh
+<fiyawerx> To set up a specific format style, select Settings->Configure KDevelop... from the menubar. The Customize KDevelop dialog will pop up, where you have to select Source Formatter in the left hand tree.
+<intelikey> fiyawerx i can't tell you all the information that would quickly set your mind at ease about this, sufice it to say this system will be hacked, it's not a question.  and when we are "playing the game"  there needs to be some element of mistery, some place that can't be seen or the 'victom' quickly looses interest.     (there is a method to the madness)
+<fiyawerx> but you could have easily created that element without all the trouble, couldn't you?
+<intelikey> fiyawerx i'm not new at this.   :)
+<fiyawerx> i didn't ask if you were
+<fiyawerx> but you were sounding yesterday like this was your only option, talking about ubuntu in how unstable it is, and on top of that, not actually wanting to help at all
+<fiyawerx> because 'nobody would see it your way'
+<fiyawerx> i'd like to understand
+<timonator> can anyone recommend a cute KDE program (in the kubuntu repos. if possible) for managing and downloading photos from a digital camera? in a foolproof kind of way and so on? ;)
+<abattoir> timonator: digiKam
+<abattoir> !info digikam
+<ubotu> digikam: digital photo management application for KDE. In repository universe, is optional. Version 0.8.2~rc1-0ubuntu3 (dapper), package size 4077 kB, installed size 9724 kB
+<intelikey> i never used the phrase nor implied "about ubuntu in how unstable it"
+<timonator> thanks!
+<fiyawerx> my bad
+<fiyawerx> i meant unsecure
+<fiyawerx> and "default *buntu" for new users
+<fiyawerx> at any rate, didn't mean to interrupt your help session, i'll drop out of this convo now
+<timonator> good night all!
+<ewhiz> !info digikam
+<ubotu> digikam: digital photo management application for KDE. In repository universe, is optional. Version 0.8.2~rc1-0ubuntu3 (dapper), package size 4077 kB, installed size 9724 kB
+<intelikey> h3sp4wn_ indeed that link answered my question,  thank you.      ffr the short answer is "export DISPLAY=':0' ;startkde "   it seems that startkde doesn't accept -display options.
+<h3sp4wn_> h3sp4wn: I didn't think it did - Originally I thought that you were trying to accept connections over the network (not locally)
+<intelikey> hmmm i'll just edit my /usr/bin/startkde script to accept -display args
+<h3sp4wn_> intelikey: That would be fine
+<wilde> hello all am a newbie here and i am recieveing a arts message sound server fatal error i did a echo command that i got off of transgaming forums
+<intelikey> wilde what echo command ?
+<wilde> echo 'wine 0 0 direct' > /proc/asound/card0/pcm0p/oss
+<wilde> echo 'wine 0 0 disable' > /proc/asound/card0/pcm0c/oss
+<wilde> only put >> inplace of >
+<intelikey> cat  /proc/asound/card0/pcm0p/oss
+<gemidjy> say some good DVD creator for *nix, ManDVD is way too lame
+<hpotter> Hi, could I get some help to diagnose a problem playing video on Kubuntu 6.06,  please?
+<hpotter> My aim is to play video from the BBC News site using  Konqueror. But I'm getting an error  "player mplayer not running" at the bottom of a black screen with no moving video :-(
+<wilde> i get a no such file or directory with the cat command the asound directory is no longer there
+<intelikey> wilde call crimsun sounds like major 'kernel' side issue with your sound.
+<intelikey> if that nuked /proc/asound  it's more than i care to dive into
+<h3sp4wn_> I still don't how to restart alsa (forcibly removing the modules always seems to crash the kernel for me)
+<crimsun> eh?
+<h3sp4wn_> i.e when /dev/dsp is blocked
+<notamisfit> is there not an alsasound daemon?
+<crimsun> and when lsof lists nothing for /dev/dsp* /dev/snd/* ?
+<crimsun> yeah, that means a refcounting probelm
+<crimsun> -lem
+<crimsun> which driver do you use?
+<intelikey> crimsun see wilde  ^  up about one page.
+<h3sp4wn_> wilde: crimsun is trying to speak to you
+<intelikey> or if he wont answer,  sorry i raddeled your cage !!!
+<crimsun> (sorry, I miss everything due to nick incompletion, or my client's inability to do nick highlighting unless the nick is at the beginning of the line, gnarf)
+<intelikey> yeah that's kinda annoying isn't it...
+<crimsun> wilde: ping
+<angasule> when will pyqt4 be available on dapper, any idea?
+<intelikey> i /msg'd him just about the time h3sp4wn_ called him    nothing.   he's either lost on a google loop or hit the panic button, or fell asleep on the keyboard or something....
+<crimsun> angasule: unlikely to in the near future.
+<crimsun> intelikey: ah, ok.
+<angasule> crimsun: why is that?
+<crimsun> angasule: for starters, we can't upload to dapper-backports yet, and also I think you'd also want a backport of qt4-x11
+<angasule> hmm? qt4 is already available
+<h3sp4wn_> crimsun: While you are here - can you tell me the correct way to restart alsa when it has crashed -i.e /dev/dsp is blocked is there a safe way to remove all the modules and put them back ?
+<Barbelos> Wondering if it's safe to use the graphical installer with Dapper Drake? I remember it was sort of risky in the beta flights
+<crimsun> h3sp4wn_: does lsof disclose anything for /dev/dsp* /dev/snd/* ?
+<sloof3> Is kdialog a standalone package or is part of another kde package?
+<crimsun> angasule: you would want a /newer/ version of qt4
+<angasule> Barbelos: worked just fine for me
+<h3sp4wn_> crimsun: Its working fine at this moment in time (but I just want to know incase it happens again) - that dmix issue reared its head once and had to reboot
+<Barbelos> angasule: Did you do any repartitioning? That's what I'm worried about
+<h3sp4wn_> crimsun: I was getting the same error message but no sound was playing at all
+<crimsun> h3sp4wn_: presuming that lsof returns nothing, then modprobe -r, beginning with the top-most output from ``lsmod|grep ^snd'' and working downward
+<angasule> Barbelos: ah, no, I just reformatted a drive
+<intelikey> hmm odd.  my kde is to big to fit on the screen....    acts like when you hit [ctrl] +[alt] +[+]     but i cycled through all the ..+'s and that's not the problem
+<crimsun> h3sp4wn_: then all you would need to load is snd_foo where foo is the driver, I think snd_ice1724 for you?
+<h3sp4wn_> crimsun: snd_ice1712
+<crimsun> ah, ok.
+<h3sp4wn_> crimson: Thanks - I was using rmod
+<sotired> hello all
+<intelikey> say
+<sotired> is there anything like peerguardian that is easy to configure for linux?
+<sotired> something with a gui
+<h3sp4wn_> Why not just download a hosts file ?
+<sotired> wouldnt i ahve to keep updating it all the time?
+<h3sp4wn_> Maybe
+<sotired> id rather just have something that fetches updates all the time and leaves me alone
+<h3sp4wn_> Why does it need a gui then ?
+<sotired> i have enough things i have to mess with everyday on this machine
+<fiyawerx> http://forums.phoenixlabs.org/f15-peerguardian-linux.html
+<fiyawerx> ?
+<fiyawerx> i can't see the link from work, firewall blocks it, but that may help
+<sotired> thank you
+<fiyawerx> but yeah, if you just want it to be automatic, why need a gui?
+<fiyawerx> just set it up once and let it go hehe
+<fiyawerx> gui would just be clutter at that point
+<sotired> i need some way to see if its working
+<sotired> like a tray app or something
+<fiyawerx> ah
+<sotired> paranoia :)
+<fiyawerx> hehe
+<sotired> not that i download stuff form the internets
+<fiyawerx> what about firestarter?
+<h3sp4wn_> Paranoia its all the mind there is no problem
+<sotired> zwehat does it mean when i try to run a .deb and it tells me the utility is not installed in its PATH ?
+<fiyawerx> it's not paranoia if they're really out to get you
+<fiyawerx> for a .deb i think its sudo dpkg -i foo.deb
+<fiyawerx> to install it
+<sotired> thankie
+<intelikey> yeah or -u for update only... isn't it?
+<stodge> Any ideas how to fix this:         open /dev/snd/seq failed: No such file or directory
+<stodge> Is there a package I'm missing?
+<stodge> Or something isn't fully configured?
+<nrdb> Can kubuntu use a computer that has an Intel pentium D 930 Dual Core Preseler 3.0 Ghz CPU?
+<fiyawerx> stodge: you can try the live cd to find out easily enough :)
+<intelikey> stodge there is an alsa/modprobe command that makes that dir
+<fiyawerx> nrdb: that was for you rather
+<fiyawerx> stodge: what are you trying to use/install?
+<stodge> Rosegarden
+<nrdb> fiyawerx: my boss want me to setup a new computer.
+<intelikey> i don't recall the command atm.
+<fiyawerx> modprobe snd-seq-oss i think
+<crimsun> wildechild: ok
+<stodge> ok
+<fiyawerx> well
+<fiyawerx> stodge: http://ubuntuforums.org/archive/index.php/t-1654.html
+<fiyawerx> it's old but may help
+<crimsun> wildechild: in a Konsole, test -d /proc/asound && echo "yes"
+<stodge> Alternaively I get    cannot load driver module alsa
+<stodge> Depending on what parameters I use to start jackd
+<sotired> i installed that .deb...but i dont know where it installed to :(
+<fiyawerx> modprobe snd-seq might do it also
+<fiyawerx> sotired: did it add a menu?
+<fiyawerx> you can also try 'locate blah' in a konsole
+<stodge> I can get rosegarden to run now but I get a dialog when I play "JACK Audio subsystem is losing sample frames."
+<Gun_Smoke> what's up the the topic?  "www.google.fi"?
+<sotired> i dont see one
+<sotired> its a great topic
+<wildechild> got yes
+<fiyawerx> stodge: http://jackit.sourceforge.net/docs/faq.php
+<sotired> just like www.justfuckinggoogleit.com
+<fiyawerx> heh
+<fiyawerx> thats what i do to answer most peoples questions
+<Gun_Smoke> wow...
+<h3sp4wn_> STFW - is a nicer way of putting it
+<stodge> the playback device "hw:0" is already in use.
+<stodge> cannot load driver module alsa
+<stodge> The FAQ doesn't really tell me much
+<stodge> Reading more docs...
+<Gun_Smoke> Sisltsi kohdistettua mainontaa, jonka avulla maksimoit mainostulosi?
+<fiyawerx> or giyf
+<fiyawerx> stodge: google that error there's a bunch of responses, its not kubuntu specific
+<h3sp4wn_> stodge: Ah jackd ...
+<Gun_Smoke> Saat listuloja sivustostasi ja parannat samalla kyttjkokemuksia. Google AdSense -ohjelma nytt sivustoosi ja sen sisltn tarkasti kohdistettuja teksti- ja kuvamainoksia automaattisesti; mainokset ovat niin hyvin kohdistettuja, ett ne ovat sivuston kyttjille hydyksi. Ja kun list sivustoosi Google WebSearchin, AdSense nytt kohdistettuja mainoksia mys hakutulossivuillasi. AdSensen avulla pyst
+<stodge> Yeah I've been googling, but not had a hit yet that really helped
+<stodge> Some good info
+<Gun_Smoke> Let's talk about that.
+<h3sp4wn_> stodge: Have you followed the ubuntu studio guide ?
+<h3sp4wn_> stodge: To get jackd running properly ?
+<stodge> studio guide?
+<fiyawerx> !jackd
+<ubotu> I know nothing about jackd - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<fiyawerx> !studio
+<ubotu> I know nothing about studio - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<h3sp4wn_> stodge: http://ubuntustudio.com/wiki/index.php/Dapper:Studio_Preparation
+<h3sp4wn_> stodge: You need a preemptable kernel for jackd to work properly
+<stodge> Oh that sucks
+<stodge> I dont want to play with kernels
+<h3sp4wn_> stodge: Do you have alot of drivers that are only in the ubuntu kernel ?
+<stodge> I've no idea!
+<stodge> lol
+<SpAwN> !sound
+<ubotu> If sound is not working, first try system -> prefrences -> multimedia system selector change it to alsa. If you still have problems then look at http://alsa.opensrc.org/index.php?page=DmixPlugin See https://wiki.ubuntu.com/DebuggingSoundProblems
+<intelikey> hmmm in the xorg.conf  the line that says (   modes "1024x768@85" ... )  is there a structure to the order in which they are listed ?   and could one not just remove all the 'unwanted' modes in that line ?
+<DaSkreec1> What the heck happened to the topic?
+<CheeseBurgerMan> That's what I was wondering. I just had to search through my logs to find it. :)
+<DaSkreech> Better :-)
+<DaSkreech> Hooray for cheeseburgers
+<CheeseBurgerMan> If no one likes that in the topic, feel free to take it out.
+<DaSkreech> Koffice?
+<CheeseBurgerMan> !koffice
+<ubotu> Integrated office suite for KDE, including word processing, spreadsheet, flow charting, image manipulation. For more info see: http://koffice.kde.org. Upgraded Kubu packs at http://kubuntu.org/announcements/koffice-151.php
+<CheeseBurgerMan> Hmm, how does one update the factoid?
+<DaSkreech> !update
+<ubotu> Upgrading to Ubuntu 5.10 breezy -> http://wiki.ubuntu.com/BreezyUpgrade  Upgrading to Ubuntu 6.06 Dapper -> https://wiki.ubuntu.com/DapperUpgrades  Note: gksudo "update-manager -d" always updates to the latest development version.
+<abattoir> CheeseBurgerMan: i think !no factoid is factoid
+<DaSkreech> !add
+<ubotu> I am ubotu, all-knowing infobot. You can browse my brain at http://bots.ubuntulinux.nl Usage info: http://wiki.ubuntu.com/UbotuUsage
+<DaSkreech> Ubotuusage
+<intelikey> modprobe: FATAL: Error running install command for sound_slot_2
+<abattoir> !no koffice is ntegrated office suite for KDE, including word processing, spreadsheet, flow charting, image manipulation. For more info see: http://koffice.kde.org. Upgraded Kubu packs at http://kubuntu.org/announcements/koffice-152.php
+<CheeseBurgerMan> OK, that works. :)
+<abattoir> !no koffice is Integrated office suite for KDE, including word processing, spreadsheet, flow charting, image manipulation. For more info see: http://koffice.kde.org. Upgraded Kubu packs at http://kubuntu.org/announcements/koffice-152.php
+<abattoir> ugh Kubu packs?  :(
+<CheeseBurgerMan> !no koffice is Integrated office suite for KDE, including word processing, spreadsheet, flow charting, image manipulation. For more info see: http://koffice.kde.org. Upgraded Kubuntu packs at http://kubuntu.org/announcements/koffice-152.php
+<fiyawerx> _/topic
+<fiyawerx> oosp
+<DBO> abattoir, CheeseBurgerMan, you guys cant modify ubotu right now, he has been moderated due to missuse in the past
+<fiyawerx> !koffice
+<ubotu> Integrated office suite for KDE, including word processing, spreadsheet, flow charting, image manipulation. For more info see: http://koffice.kde.org. Upgraded Kubu packs at http://kubuntu.org/announcements/koffice-151.php
+<CheeseBurgerMan> DBO: Yeah, I saw. However, it says that the request has been forwarded to #ubuntu-ops, hopefully someone there can accept it.
+<abattoir> DBO: oh, ok, anyway our requests will be sent to you guys(@#ubuntu-ops) right?
+<DBO> yes, but please dont spam it, we saw it
+<abattoir> DBO: ok, sorry, we were just trying to correct some mistakes in the entry :)
+<DBO> thats perfectly ok =)
+<DaSkreech> hi DBO
+<DBO> I'll see to it that it gets passed on tot he right people
+<DBO> hi DaSkreech
+<intelikey> head cheese     :)
+<crimsun> cheese at least
+<CheeseBurgerMan> Talking about me?
+<crimsun> no
+<crimsun> CheeseBurgerMan: thanks.
+<DaSkreech> Where's the beef?
+<CheeseBurgerMan> Oh. :P
+<intelikey> nope
+<SpAwN> can anyone help me to get xmms not to hog the whole sound device it would be nice to play enemy territory and listen to my music
+<crimsun> SpAwN: ET doesn't play nicely.
+<SpAwN> no?
+<crimsun> SpAwN: is XMMS configured to use the "default" device (not "hw:0,0")?
+<SpAwN> under the outputr option its alsa....
+<intelikey> hmmm i don't like this.   kde is larger than X    ;/
+<SpAwN> where dyes its deaflu
+<SpAwN> * crimsun  its set to deaflut
+<crimsun> SpAwN: ok, good, then it's configured correctly.
+<SpAwN> so default is good?
+<crimsun> yes
+<SpAwN> i read a article sayin to install alsa-oss ...which i did
+<crimsun> you can try that route, yes
+<DaSkreech> intelikey: Well KDE is like umpteen programs whereas X is like 5
+<crimsun> you'll need to echo 2 values into /proc/asound/
+<SpAwN> but i start xmms....then i use aoss et and it doesnt realy work
+<SpAwN> crimsun, what would u recomend i do...u seem to know your stuff
+<intelikey> DaSkreech heh yeah not that way.   it doesn't fit in the window.  i can scroll all four directions....
+<crimsun> SpAwN: did you echo those two values into /proc/asound/ ?
+<CheeseBurgerMan> Are the Kubuntu repos working slowly for anyone else?
+<SpAwN> crimsun, i never saw any commands
+<SpAwN> http://www.ubuntuforums.org/showthread.php?t=205449&highlight=saving+sound  <--what i saw
+<fiyawerx> CheeseBurgerMan: seemd fine for me about 20 minutes ago
+<crimsun> SpAwN: echo 'wine 0 0 direct' |sudo tee /proc/asound/card0/pcm0p/oss && echo 'wine 0 0 disable' |sudo tee /proc/asound/card0/pcm0c/oss
+<CheeseBurgerMan> fiyawerx: OK, maybe it's just my connection.
+<SpAwN> crimsun, should i replace wine with the et excecutable
+<crimsun> SpAwN: yes, use et.x86
+<SpAwN> crimsun, thanks man im gonna give it a shot
+<crimsun> it may freeze your machine, caveat
+<intelikey> answer to the screen issue = adjust the 'virtual size' in xorg.conf     ;/
+<ubuntu> k
+<sotired> how would i format my slaved hard drive from ntfs to ext3?
+<sotired> second drive...
+<raf> hello all, someone could help me on installing ruby and rails (I have apache2)?
+<DaSkreech> raf: Not sure. Is it in the repos?
+<raf> I've installed ruby 1.8 via adept, it works via command line, bue I don't know how to configure apache2 to make work ruby over apache2
+<raf> DaSkreech: I've installed ruby 1.8 via adept, it works via command line, bue I don't know how to configure apache2 to make work ruby over apache2
+<raf> sorry
+<DaSkreech> erm.. I'm not sure either
+<DaSkreech> Have you searched for rails in apt?
+<raf> DaSkreech: now, I've uninstalled ruby 1.8 because rails says that it is a incorrect ruby version
+<raf> DaSkreech: yes, but I don't know if the Rails package I see in adept automatically configures apache2
+<CaptainMorgan> ooooh
+<CaptainMorgan> what's the new update for OOmath ?
+<CaptainMorgan> eq editor?
+<DaSkreech> Quick way to check would be to look at the details see if it mentions apache
+<DaSkreech> CaptainMorgan: Thats what was on the table
+<CaptainMorgan> niiiice
+<raf> DaSkreech: it doesn't mention any apache stuff :-(
+<DaSkreech> Hmm in that case we may need an apache ruby plugin
+<DaSkreech> This is when you start to google :)
+<raf> DaSkreech: haha, I'm googling 3 days ago
+<raf> someone know ho can I know what version of Kubuntu I have, I mean if it is breezy, hoary, etc?
+<DaSkreech> Well install rubyonrails and then join #rubyonrails and ask there
+<DaSkreech> I think you have a good chance that someone there can walk you through
+<DaSkreech> raf: cat /etc/issue
+<nrdb> I am looking for smoe advise on setting up a email server for a small business, which system should I use?
+<sdolnack> how can i view how much space is left on my drive?
+<nrdb> sdolnack: try 'df -h'
+<sdolnack> coz it's telling me i have no space left when i try to download a torrent fiel :-(  Any good tips on clearing up space in a linux environmetn?
+<sdolnack> and is there any way to list files like in Konqueror similary to Windows Explorer in "Details" view?
+<DaSkreech> sdolnack: Yeah Click oon view -> details :)
+<sdolnack> oh nevermind
+<sdolnack> haha yeah
+<DaSkreech> nrdb: Eh?
+<DaSkreech> As long as it's not hydrogen
+<sdolnack> how do i view my trash folder?
+<fiyawerx> anyone know if there's a repo for kvim?
+<DaSkreech> Click on the trash in the Lower right corner
+<fiyawerx> i get Package kvim is not available, but is referred to by another package.
+<DaSkreech> fiyawerx: Try and install it explicitly?
+<fiyawerx> DaSkreech: not sure whatcha mean, manually?
+<fiyawerx> that was trying to apt-get install kvim
+<DaSkreech> Oh
+<DaSkreech> Is it in the repos?
+<fiyawerx> don't think so
+<DaSkreech> !info kvim
+<ubotu> Package kvim does not exist in dapper
+<fiyawerx> oh, thats neat
+<fiyawerx> !info gvim
+<ubotu> Package gvim does not exist in dapper
+<fiyawerx> !info vim-gtk
+<ubotu> vim-gtk: Vi IMproved - enhanced vi editor - with GTK2 GUI. In repository universe, is extra. Version 1:6.4-006+2ubuntu6 (dapper), package size 694 kB, installed size 1440 kB
+<DaSkreech> what are you trying to install?
+<fiyawerx> was looking for some graphical vim :)
+<sdolnack> is there a way to sort installed packages by size?
+<fiyawerx> guess i'll have to use gvim
+<fiyawerx> !info vim-gnome
+<ubotu> vim-gnome: Vi IMproved - enhanced vi editor - with GNOME2 GUI. In repository main, is extra. Version 1:6.4-006+2ubuntu6 (dapper), package size 695 kB, installed size 1444 kB
+<nrdb> has anyone got an email server going? I would like to know which to use sendmail or courier etc.
+<DaSkreech> nrdb: postfix I would guess
+<sdolnack> nevermind again
+<DaSkreech> sdolnack: So we have your permission to ignore you?
+<sdolnack> hahaha
+<sdolnack> OK what movie should I watch: Naked, Harold and Maude, Blood Simple, Before Night Falls, or My Own Private Idaho?
+<DaSkreech> Hackers and Silicon Valley Pirates
+<sdolnack> hahaha
+<sdolnack> Hackers is so oddly amusing
+<raf> DaSkreech: thanks
+<DaSkreech> Cause of Angie or the cool graphical way they get across the networks
+<DaSkreech> raf: Worked out?
+<intelikey> wasn't the switch konsole tabs hotkey ctrl+pg-up/dn  ?
+<intelikey> 5~5~ <-- is all ctrl+pg-up gives me...   ?
+<CaptainMorgan> new updates gave me more selections in grub.. how do I delete them?
+<abattoir> CaptainMorgan: you can find those entries in /boot/grub/menu.lst
+<raf> DaSkreech: I have found a very good guide to install ruby on rails over apache2!
+<CaptainMorgan> thanks
+<raf> DaSkreech: http://fo64.com/articles/2005/10/20/rails-on-breezy, with cat /etc/issue I knew that my Kubuntu it is an Ubuntu breezy badger, so I choose the right guide
+<DaSkreech> :-)
+<intelikey> raf issue is the message that is issued at the login prompt   lsb-release -a  should tell you the release information.
+<drarem> lol
+<DaSkreech> Thats it I was thinking lsb -a but that didn't sound right
+<raf> intelikey: aah, ok, ok, thanks!
+<raf> intelikey: it is lsb_release <- with underscore :D, I wrote lsb then tab and lsb_release appeared
+<raf> intelikey: what means LSB?
+<DaSkreech> tab is your friend
+<DaSkreech> !lsb
+<ubotu> I know nothing about lsb - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<DaSkreech> Silly bot
+<intelikey> i only mention that because the /etc/issue file is made to be a costumizable message like /etc/modt    the former is displayed before login and the later after login.
+<DaSkreech> Linux Standards base
+<raf> intelikey: OOH LSB means Linux Standar Base!
+<DaSkreech> Yep
+<Vexmaster> i need help please
+<intelikey> lsb=linux standards base
+<raf> DaSkreech: yes, thanks
+<DaSkreech> HI Vexmaster
+<intelikey> yeah
+<Vexmaster> hi DaSkreech
+<DaSkreech> !help
+<ubotu> I am ubotu, all-knowing infobot. You can browse my brain at http://bots.ubuntulinux.nl Usage info: http://wiki.ubuntu.com/UbotuUsage
+<Vexmaster> maybe you can help me?
+<DaSkreech> I have no clue
+<Vexmaster> k
+<fiyawerx> !ask
+<ubotu> Don't ask to ask a question. Just ask your question :)
+<DaSkreech> However I do have a prepaid credit card if you need one :)
+<DaSkreech> Vexmaster: Whats up?
+<intelikey> ;5~;5~;3~;3~;5~;5F;5H;3F;3H;5~;5~;3~;3~
+<intelikey> oops sorry folks
+<DaSkreech> Ohhh 3F!!
+<DaSkreech> That's bad
+<Vexmaster> im using dapper on a IBM t21 laptop and for some reason it wont shutdown properly
+<DaSkreech> What does it do?
+<Vexmaster> it says "will now halt " but nothing happens and the screen is still on
+<intelikey> trying to switch tabs without the mouse
+<intelikey> ah found it...
+<Vexmaster> reminds me of windows 98
+<Vexmaster> lol
+<aegeanlinux> afk
+<intelikey> i recall a bug on that.  you have to edit a shutdown script iirc   check the forums
+<DaSkreech> Vexmaster: I assume that your laptop supports APM
+<raf> DaSkreech: what about the bots? do I need to download some tar ball file? I wrote / msg seveas but it only open a window
+<Vexmaster> i beleive so
+<Vexmaster> no sure really, almost positivew
+<Vexmaster> lol
+<DaSkreech> raf: Umm What?
+<DaSkreech> Vexmaster: Have you used another operating system and gotten it to shutdown/standby/hibernate?
+<DaSkreech> What bots?
+<intelikey> raf /msg ubotu help
+<raf> DaSkreech: hehe, I mean, how can I use the bots?
+<DaSkreech> Yeah that
+<tony_> hola alguien que sepa configurar el sonido
+<Vexmaster> DaSkreech yes with winxp
+<unix_infidel> !spanish
+<ubotu> Para Espaol por favor usen #ubuntu-es, #kubuntu-es o #edubuntu-es, alli obtendran mas ayuda.
+<DaSkreech> !es
+<Vexmaster> and suse 9.2
+<DaSkreech> Vexmaster: Then I guess the forums are your answer
+<raf> tony_: siento decir esto, pero no encontrars mucha ayuda en espaol, es mejor tratar de hacerlo en ingls
+<Vexmaster> lol ok
+<Vexmaster> thanks anyways
+<Vexmaster> :)
+<tony_> Thank you Raf, do you know how to configure the sound
+<intelikey> cat /proc/asound/cards
+<tony_> i have 2 soundcards, kubuntu takes the integrated by default
+<raf> tony_: you need to give more details, ie. Do you know how to configure th i810 sound card
+<tony_> i have 2 soundcards, kubuntu takes the integrated by default
+<tony_> with cat.... i have:
+<tony_> 0 [I82801BAICH2  and  0 [I82801BAICH2
+<intelikey> lol  ((unix_infidel: #kubuntu ("Lost terminal")))
+<aegeanlinux> back
+<intelikey> oh sorry, that just struck me funny
+<Razorwire> Anybody with an Athlon 64 ever had any problems with powernowd giving them repetitious vid/fid write errors?
+<tony_> raf, i dont know how to do that. I just have 2 sound cards  an integrated intel i8280 and a pci CMI8738mc6
+<intelikey> tony_ it doesn't look like the other card is found.   lshw  or lspci  and find the name of the other soundcard.   then   modprobe the apropreate driver.
+<intelikey> tony_ so do    . /etc/bash_completion ; modprobe snd-cmi[tab]
+<intelikey> errr snd-cm[tab]  maybe
+<intelikey> pressing the [tab]  key of course
+<tony_> intelikey, the 2nd card runs ok with xmms when i select it, so I think it was recognized
+<intelikey> rather than typing out [tab]      but you knew that.
+<tony_> my problem is hoy to put the integrated card as default
+<tony_> how
+<tony_> im sorry, i mean, how to put the pci card as default
+<sdolnack> what are your guys' preferred linux DVD players?
+<sdolnack> i'm debating between installing ogle and xine
+<intelikey> want to disable the other or just make alsa default to the one ?
+<intelikey> vlc
+<tony_> just make default
+<DaSkreech> tony_: You need both soundcards?
+<intelikey> you would say that...
+<tony_> no, but in the forums says : disabling from bios
+<tony_> i dont want so
+<intelikey> tony_ myself being a console kinda guy,  i don't know.     but you could black list the module that runs the on board sound and there by disable it in linux
+<tony_> mi pc haves  winxp for my family and kubuntu I am learning
+<tony_> great, My respects for a Console guy, I just want to set the pci card as default and not the integr.
+<DaSkreech> hi dr_willis
+<intelikey> ls /etc/modprobe.d/   have a look in the blacklist.* files for examples maybe.
+<dr_willis> Moo! to U! :)
+<tony_> here i go
+<sdolnack> anyone use mplayer?
+<intelikey> tony_ there is an easier (GUI) way to do that.   ask crimsun if he is still around.
+<unix_infidel> how does irssi map beyond window 10?
+<unix_infidel> eg i can switch b/w 1-10 with alt+0-9 but how does it map beyond that?
+<sdolnack> !coc
+<ubotu> The Ubuntu Code of Conduct to which we ask all Ubuntu users to adhere can be found at http://www.ubuntu.com/community/conduct/
+<tony_> thanks i ll try
+<DaSkreech> sdolnack:  :-P
+<sdolnack> oh my
+<intelikey> unix_infidel does it map beyond 0 ?
+<driz> !off-topic
+<ubotu> I know nothing about off-topic - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<DaSkreech> :-)
+<unix_infidel> intelikey: i mean with a second modifier maybe...
+<unix_infidel> maybe i can set it in .irssi/config?
+<DaSkreech> driz: what?
+<driz> i got it
+<driz> forget it
+<tony_> hi crimsum, are you there still
+<unix_infidel> intelikey: i dont like having to resort to alt+p/n when going beyond window 10
+<sdolnack> DaSkreetch whta are some common causes of choppy video playback?
+<intelikey> unix_infidel i use bx and it doesn't seem to have an option beyond window 0 ....    so i don't know about irssi   that may be a shared weekness for all i know.
+<DaSkreech> sdolnack: Using the xine backend
+<sdolnack> DaSkreech: i believe so
+<unix_infidel> intelikey: yea, the configs are basically the same...
+<unix_infidel> maybe what i'm looking for is a plugin...
+<unix_infidel> the way i see it....i shouldnt have more than 10 irc channels i'm active in, in the first place...
+<unix_infidel> shouldnt be spending so much time on irc anyway :P
+<intelikey> maybe,   or add the command to a .ircrc file and /11...20  that way  idk.
+<Tm_T> hi kids
+<intelikey> i add short cuts to all kinds of things  and put them in ~/.ircrc
+<unix_infidel> intelikey: hmm, maybe i should take it to #irssi and see if they can offer some config options :)
+<DaSkreech> Silly Tm_T irc isn't for kids
+<intelikey> hey you old fart.  how are you ?
+<Tm_T> DaSkreech: err, you're here.. ;p
+<Tm_T> btw I'm back! \o/
+<DaSkreech> intelikey: is it more of an honour to be a new fart or an old fart?
+<unix_infidel> intelikey: why are you running as root on IRC?
+<intelikey> prolly not
+<intelikey> unix_infidel i'm not.
+<intelikey> in fact i think i just locked out all root access.
+<intelikey> only way to do anything as root here should now be to [ctrl] +[alt] +[delete]     and boot single   or possably even only as init    i'll have to test it.
+<Whil> hello
+<wolfmanz> Anyone using superkaramba?
+<DaSkreech> Yo
+<abattoir> wolfmanz: yes, I am.
+<Whil> What's going on?
+<wolfmanz> when you use it does it take up about 30 to 40% of your cpu ?
+<abattoir> wolfmanz: i guess that'd depend on the themes that you use
+<wolfmanz> kubuntu_sysinfo is the name of this one its pretty simple
+<abattoir> wolfmanz: a kde-look link?
+<wolfmanz> uhm hold
+<wolfmanz> actually i'm trying another one now and that to is eatting about 40%
+<Ertain> How can I figure out how much data is on a floppy?
+<intelikey> yep root is totally locked out.
+<intelikey> Ertain mount it and df -h
+<DaSkreech> Ertain: Don't use floppys
+<intelikey> floppies are good.  just small.
+<Whil> can anybody tell me how to change the file browser background please?
+<DaSkreech> intelikey: Spoken like a man who doesn't use floppies
+<intelikey> right click the background
+<abattoir> Whil: View->Configure Background
+<intelikey> DaSkreech but i do.
+<Whil> abattoir: thanks]
+<sdolnack> i'm havin problems w/ dvd playback... if i do a fresh reboot, the dvd will play fine, but right now it's choppy
+<intelikey> i still use 5.25 floppies  :)
+<sdolnack> dvd playback seems to get choppy after i've been running kubuntu for a bit and using other progs
+<Tm_T> I have installed several operating systems from floppies, OS2 warp 3 was funniest experience
+<abattoir> Whil: you're welcome :)
+<wolfmanz> abattoir here is the one i'm using http://www.kde-look.org/content/show.php?content=33214
+<kyle_> Is it possible to spoof your operating system?
+<intelikey> Tm_T i installed mandrake 9.0 on a lappy via floppy disks
+<Tm_T> intelikey: heh
+<Tm_T> intelikey: pile of ~40 floppy disks... whoo
+<intelikey> really,  a 486    with 16m ram and 225m hdd    i installed win95 and mdk9.0  to compare them... :)
+<abattoir> wolfmanz: give me a sec, i'll try it out
+<wolfmanz> ok thanks
+<intelikey> Tm_T only three disks.   just reused them...
+<intelikey> :)
+<Tm_T> intelikey: mehhehe
+<Onmitsu> ah guys i need your help, in the registered area of www.mldesigners.com there's a working gmail exploit, i dont know what to do? should i email gmail with the link and my username and password? or what? is there an email address? ahh, what should i do?
+<intelikey> would you believe win95 out preforms a modern linux in that env     on almost every test.     file transfer was the exception.
+<abattoir> wolfmanz: it shoots up from 15~20 to 354~40 in mine... what CPU?
+<kyle_> Is it possible to spoof your operating system - http://overdrive.mtv.com won't allow my to view their site?
+<wolfmanz> abattoir amd xp 2500
+<OOD> kyle_: you can get the user agent switcher extension for firefox, and disguise your browser as IE6
+<abattoir> wolfmanz: superkaramba themes do take a fair chunk of cpu usage, especially if you use a lot of them(and if they are complicated)...
+<intelikey> kyle_ yes it's possable.
+<OOD> kyle_: if that doesn't work then you can try running firefox or IE in wine
+<kyle_> OOD: ahh, i didnt think of wine
+<wolfmanz> abattoir i just have that one activated
+<kyle_> OOD and intelikey  -- thanks, i will look into the agent switcher
+<abattoir> wolfmanz: you can confirm if superkaramba is the app using most of the cpu by running top in the CLI, or by running ksysguard
+<wolfmanz> abattoir it is the app i have checked that
+<beavis> doesn anyone have a copy of the x64 azureus , their new website doesnt have it for download
+<kyle_> OOD: Konq lets me switch it to IE6 on WinXP easily
+<wolfmanz> abattoir i just think its a bit high i had damn small linux running that has alomost the same thing on its desktop and my cpu didnt exceed 5%
+<abattoir> wolfmanz: does sk take up the same/similar amnt of cpu when no themes are running?
+<wolfmanz> let me check
+<intelikey> where is the setting that stops that stupid mouncing cursor thingy ???
+<intelikey> bouncing even
+<abattoir> wolfmanz: well, kde uses more cpu than fluxbox... and sk themes generally are cpu hungry :)
+<abattoir> intelikey: Kcontrol->Appearance...->Launch Feedback
+<wolfmanz> SK is below 10% without the theme going
+<abattoir> wolfmanz: so as i said, it is the theme
+<intelikey> lol
+<kyle_> where is konqueor installed?
+<wolfmanz> abattoir ya to bad it eats so much cpu it does look good
+<abattoir> wolfmanz: have to sacrifice something for eyecandy ;)
+<wolfmanz> abattoir ya but thats a bit to much
+<abattoir> wolfmanz: you could probably find another theme which strikes the right balance :)
+<intelikey> kyle_ the executable is in /usr/bin/   but as for the rest of it    dpkg -L packagename
+<DaSkreech> kyle_: try whereis konqueror
+<chavo> if you want a system monitor/mailchecker/weather thingy that doesn't eat up your cpu, try gkrellm
+<kyle_> i'm trying to install flash player into konq
+<kyle_> but it wont let me
+<chavo> kyle_, put it in ~/.mozilla/plugins
+<joel_> is there a good list of kubuntu hotkeys somewhere?
+<intelikey> nice; in kcontrol > internet... > network settings.    i get an error window that says "your platform is not supported. ....blah blah blah...please choose one."   in the list is ubuntu/dapper     hehhe  wonder what platform i have ???
+<OOD> joel_: run kcontrol, under Regional & Accesibility :)
+<joel_> ooo ok OOD thanks =)
+<kyle_> chavo: there is no such place as ~/.mozilla/plugins
+<intelikey> and what information is kcontrol reading anyway ?
+<chavo> kyle_, mkdir -p ~/.mozilla/plugins come on man
+<intelikey> it's de dot man
+<intelikey> de dot hid it from you
+<kyle_> intelikey: i do
+<DaSkreech> He doesn't have firefox installed
+<kyle_> Please enter the installation path of the Mozilla, Netscape,
+<kyle_> or Opera browser (i.e., /usr/lib/mozilla): /home/kyle/.mozilla/plugins
+<kyle_> WARNING: Please enter a valid installation path.
+<intelikey> that maybe
+<kyle_> DaSkreech: yes i do
+<kyle_> that is AFTER i mkdir
+<kyle_> Don't think I'm an idiot - it's Adobe's installer that's retarded
+<intelikey> no argument there
+<chavo> I've had the same ~/.mozilla/plugins for years man they really need to update that thing
+<actinic> omg, Opteron 144's for $99.99!
+<OOD> are those dual-core?
+<actinic> no, single
+<actinic> http://www.monarchcomputer.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=M&Product_Code=120344&Category_Code=hsb
+<actinic> they were $170 yesterday
+<OOD> they're great overclockers
+<actinic> yep, i've got 1 running at 2.9 presently
+<word> are there any good 'get ubuntu' images?
+<kyle_> fuck adobe flash!!
+<OOD> kyle_: just let it install in the default location and it should work
+<kyle_> OOD: no, thats not the prob anymore
+<DaSkreech> !language
+<ubotu> Please watch your language and keep this channel family friendly.
+<kyle_> Flash 8 is out for IE
+<OOD> actually it's 9 :P
+<kyle_> but not fore firefox, opera, or safari
+<kyle_> w/e
+<chavo> flash 9 is out already for ie and FF
+<OOD> only windows and mac versions though
+<chavo> just not linux
+<chavo> but it's coming RSN!
+<kyle_> guess i gotta go with wine
+<intelikey> flash... yuck
+<kyle_> intelikey: trust me, i agree. if it can't be done with CSS and XHTML i dont want anything to do with it
+<kyle_> but the g/f wants overdrive.mtv.com and i wanna get laid tonight
+<OOD> o.0
+<OOD> then install firefox in wine
+<kyle_> about to install wine
+<intelikey> so that's it.....            it all becomse clear now....
+<kyle_> is wine available with apt-get?
+<OOD> yes
+<intelikey> tes
+<intelikey> !info wine
+<ubotu> wine: Microsoft Windows Compatibility Layer (Binary Emulator and Library). In repository universe, is optional. Version 0.9.9-0ubuntu2 (dapper), package size 8578 kB, installed size 40460 kB
+<word> are there any good 'get ubuntu' images?
+<kyle_> word - you have The Gimp, make one :-)
+<intelikey> oh so now wine=wine is not an emulator is an emulator.... ;.
+<word> only if you want stick figures and black white and yellow colors :P
+<OOD> dammit, one thing that i don't like about linux is my space magically shrinks all the time
+<noiesmo> Hello all I have upgraded from hoary to dapper and have a lvm2 problem from what I can see on net I need to edit a preinst file within the debian package whats the easiest way to do this
+<OOD> it's weird
+<OOD> i had 1.5 gb today
+<OOD> but now i have 680,b
+<OOD> mb
+<chavo> OOD, check your logs and maybe apt archive
+<intelikey> cache dirs and tmp space    not to mention logs
+<OOD> where are the logs? can't remember
+<chavo> /var/cache/apt/archives
+<chavo> /var/log for most logs
+<intelikey> /var/log
+<intelikey> also ~/.kde/something/cache  and ~/.mozilla*/something/cache
+<intelikey> although those generally arent in the 100m range
+<OOD> well now im back to 930
+<intelikey> what did you install ?
+<intelikey> watch any flicks ?
+<noiesmo> it's all good i fixed it myself thanks for the help :)
+<word> OOD: see if there's anything in /home/user/.local/share/Trash/files/
+<OOD> word: yea i checked there, files used to get stuck there somehow, doesn't happen anymore
+<OOD> some kde bug
+<word> heh yah me too
+<OOD> i don't trust the trash can anymore, i just rm everything
+<OOD> ;)
+<intelikey> ~/.local   oh yes,   how do you turn off trash ?
+<word> intelikey: not sure :-/
+<intelikey> i could ln -s /dev/null ~/.local     heh but that would prolly break kde
+<OOD> intelikey: you can go to konqueror settings and check the "show delete context menu"
+<OOD> then just right click on everything and delete
+<intelikey> that won't get rid of the ~/.local dir tho
+<word> what has the ~/.local dir done to you?
+<intelikey> i deleted it several times, kde just makes a new one. on startup.
+<OOD> why do you want it gone?
+<OOD> if you don't use hte trashcan it won't fill up
+<intelikey> got in the way of my symlink
+<intelikey> but i generally access /usr/local via a symlink .local
+<OOD> intelikey: you can write a script that starts with kde that deletes the folder every time
+<OOD> and put it in ~/.kde/Autostart
+<intelikey> or find the script that makes it and edit that one.
+<intelikey> :)
+<OOD> thats like needle in a haystack material, take the easy way out :P
+<intelikey> no it seems to be in  ".kde/share/config/startupconfigfiles"
+<intelikey> grep is a nice magnet for finding "needle in a haystack"
+<OOD> nice
+<intelikey> actually i spoke too soon.  it's not there  i left the dot out of the search string.
+<intelikey> i guess it's hard coded in rather than a config file...
+<intelikey> that string doesn't show up any place on the whole system
+<intelikey> eeek i can't find my home...
+<eXCeSS> http://ubuntuforums.org/showthread.php?t=215161
+<intelikey> errr i wish that when it's https the link would reflect that...
+<tony_> hi everybody do you know how to configure the soundcard?
+<intelikey> no tony_.  how ?
+<tony_> hi, intelikey, crimsum was gone
+<tony_> i back right now
+<OOD> tony_: get alsamixer (with apt) and try unmuting certain channels to see if you get any sound
+<intelikey> tony_ hmmm sorry to hear that.
+<OOD> doing this while playing a sound would be helpfull
+<intelikey> OOD he's trying to change the default card
+<OOD> what do you mean? he's got 2 cards?
+<intelikey> OOD iirs he has built in and a (good) pci sound card   k defaults to use the built-in.
+<tony_> yes, OOD, an integrated one and a pci one
+<OOD> tony_: then the easiest thing to do is to turn of the integrated in the bios
+<OOD> it's sapping cpu power even when it's not playing
+<intelikey> or mayge it's arts that defaults to the built-in
+<intelikey> OOD that's a no can do.   already been there
+<tony_> i cant do that, it is used in win xp for other  users
+<dek_aik> tony: http://alsa.opensrc.org/index.php?action=find&find=MultipleCards would help
+<OOD> tony_: can't you use that card in xp too? not to mention speaker swapping
+<dek_aik> tony: sorry this one http://alsa.opensrc.org/MultipleCards
+<tony_> i'm reading now
+<_normal1> hello
+<tony_> in fact, this was solved by a friend, 5 months ago, but i dont remember how was it
+<intelikey> abi
+<Mrono> bwahahah
+<intelikey> abi_normal   :)
+<Mrono> ?? nvidia
+<Mrono> ??nvidia
+<Mrono> er, what was the command?
+<dek_aik> tony: look at the bottom of the http://alsa.opensrc.org/MultipleCards about setting it in dapper
+<intelikey> !nvidia
+<ubotu> To install the Ati/NVidia drivers for your monitor, see https://wiki.ubuntu.com/BinaryDriverHowto
+<Mrono> ah, thanks
+<_normal1> anyone know that repository site
+<Mrono> I know I can do transparency, i've got the geforce 7900gt
+<_normal1> that makes up a list of all the stuff you need when you fill out what you need
+<_normal1> ?
+<kuzmaster> !easysource
+<ubotu> source-o-matic is a webpage where you can (re)generate your sources.list - http://www.ubuntu-nl.org/source-o-matic
+<intelikey> !dstats
+<ubotu> I know nothing about dstats - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<kuzmaster> _normal1, is that what your after
+<intelikey> !repos
+<ubotu> The packages in Ubuntu are divided into several sections. See http://www.ubuntu.com/ubuntu/components https://help.ubuntu.com/community/Repositories and !easysource
+<kuzmaster> source-o-matic is better
+<_normal1> cool thanks
+<_normal1> =)
+<kuzmaster> !tell _normal1 about easysource
+<intelikey> better than ?
+<kuzmaster> the source-o-matic is better than making you own, or editing the defult sources.list
+<intelikey> i just add universe   to the end of the main restricted       and update
+<intelikey> <shrugs/>
+<OOD> same
+<intelikey> don't know why it would be better than that....
+<Mrono> Anyone else running an athlon 64 X@ 4200+?
+<Mrono> Sorry, X2, not X@
+<Mrono> I'm wondering what module I need to install under linux restricted modules.
+<Mrono> Anyone?
+<OOD> what do you mean exactly?
+<tony_> dek_aik
+<Mrono> I got it figured out I think.
+<tony_> dek_aik ? are you there still?
+<Mrono> I'm proceeding very carefully, my last linux install on my laptop was a experience from heck
+<tony_> <tony_> dek_aik ? are you there still?
+<dek_aik> tony: yes
+<CaptainMorgan> what's a nice ide available?
+<tony_> thank you very much, it works.
+<dek_aik> tony: ha..ha...u r welcome
+<tony_> this is my firts problem solved "myself"
+<stephan> hi
+<tony_> dek, i am a novice with linus. thank you again. and everybody. good bye
+<dek_aik> tony: and do you know that this is only the 2nd time i use irc?..bye also
+<CaptainMorgan> Im checking out Anjuta.. is there anything else?
+<stephan> some program is blocking my audio device? how is the eassieest way to find out which? and kill it?
+<tony_> ha haha i cant believe that. you are a genius
+<intelikey> howto scroll the console so that the output is printed on line # each time ??    # might be 12 for instantance.   i.e.  output scrolling text to the middle of the screen.?
+<intelikey> i guess that's not a kubuntu question...
+<kuzmaster> hello all, how can i have full sudo rights, so i dont have to enter my password when i have to run things as sudo (e.g. adept)?
+<kuzmaster> anyone?
+<kuzmaster> and one at all?
+<kuzmaster> ?me wants to know how to make myself as a sudo account
+<dek_aik> kuzmaster:  try direction in the http://kudos.berlios.de/kf/
+<kuzmaster> thanx
+<_normal1> i keep on getting errors with apt-get
+<_normal1> Failed to fetch http://kubuntu.org/packages/kde-latest/pool-breezy/kdelibs/kdelibs-data_3.5.1-0ubuntu0breezy1_all.deb  404 Not Found
+<_normal1> anyone know whats up
+<centyx> what's the score?!
+<centyx> oh
+<centyx> sorry
+<centyx> try apt-get update
+<_normal1> thats what i get when i do apt-get update
+<_normal1> =\
+<centyx> actually, what's that source you're using
+<_normal1> what do you mean
+<centyx> maybe you should update your sources.list
+<_normal1> i just did
+<_normal1> from www.ubuntulinux.nl/source-o-matic
+<centyx> er,
+<centyx> !universe
+<ubotu> The packages in Ubuntu are divided into several sections. See http://www.ubuntu.com/ubuntu/components https://help.ubuntu.com/community/Repositories and !easysource
+<centyx> _normal1: you meaning to use breezy?
+<_normal1> isn't that what i should be useing ?
+<_normal1> isn't that the best one to use
+<centyx> _normal1: it's a bit outdated... dapper is the current
+<_normal1> oh okay
+<_normal1> thanks
+<Lynoure> _normal1: but if you have hp lj 1022, by any chance, breezy is better with it...
+<_normal1> i don't but thanks for telling me
+<Lynoure> :)
+<Mrono> Anyone know what the program that drops down from the top of your screen and gives you a termal is called
+<Mrono> It's something starting with a 'p' or an 's'
+<chavo> Mrono, yakuake
+<chavo> that's the konsole versdion
+<Mrono> thanks
+<proudfoot> hey
+<proudfoot> newbie question, how do I access synaptic package manager in kubuntu?
+<dek_aik> proudfoot: if you have it installed it should be at kmenu--system
+<proudfoot> thanks
+<proudfoot> is adept installer kubuntus counterpart to synaptic?
+<martinjh99> Yup
+<proudfoot> ok                                                                      `+--+-+--+--                                                         OK                                                                                       ````````````````````````````````````````````````````````````````````````````````W
+<proudfoot> if something in adept is greyed out
+<proudfoot> what does that mean?
+<dek_aik> proudfoot: i dont know, maybe because the repos are not active (universe, multiverse) in ur /etc/apt/sources.list
+<Lynoure> yeah! The recent cups upgrade fixed my printing problems! :)
+<wolfmanz> Anyone have any idea how i could check and see if a web site is active or down and have it do this checking every so often?
+<Lynoure> wolfmanz: There are very many ways for that... ideally you'll prolly want to also check that is it still showing the content you want it to.
+<Lynoure> wolfmanz: there is a package called watchdog   for just this kind of things
+<Lynoure> oops
+<veronica> hola
+<veronica> xD
+<Lynoure> wolfmanz: oops, I misread
+<veronica> alguien habla espaol?
+<veronica> 
+<wolfmanz> I need a print out to that tells me what time the site went down at
+<wolfmanz> i want to be able to do this from this computer i'm on now
+<Lynoure> wolfmanz: Anyway, all it takes a tiny shell script in cron. But I might be too morningish to walk you through the stops now
+<Lynoure> wolfmanz: this should get you started, though http://www.tek-tips.com/viewthread.cfm?qid=1223606&page=6
+<Tm_T> KaiserSuse: err, suse?
+<wolfmanz> Thanks
+<KaiserSuse> Tm_T: yah, old nick from yesteryear
+<Tm_T> yeah yeah
+<Tm_T> no excuses! ;)
+<Mrono> Question, How do I set the desktops to change when the mouse hits the edge of the screen
+<KaiserSuse> Tm_T: c'mon... this has been my nick since 1998
+<Tm_T> bah
+<Tm_T> and I have been using windows since 1993
+<Tm_T> ...whops
+<Lynoure> wolfmanz: spong (e.g. spong-www) looks also good, but also like an overkill if it is just one web service you want to monitor
+<KaiserSuse> Mrono: System settings -> Deskop -> Window behvior -> Advanced -> Active Desktop Borders
+<wolfmanz> Ya i only want to monitor my site we seem to be getting random crashes and untill the guy who runs the VPS can get access to logs i want to know how often my site is down
+<Mrono> KaiserSuse, Thanks
+<KaiserSuse> Mrono: np
+<_JP> how do i make Konquerors setting "Tools->HTML Settings->Java" retain it's checkstate after restart?
+<Goliath23> hi
+<MilhousePunkRock> Hello everyone
+<Goliath23> Is it possible to install kubuntu with standard kde settings?
+<Goliath23> and the kcontrol as default instead of the kubuntu settings dialog?
+<centyx> hey. i'm using the nvidia driver. for some reason when i play media w/ kaffeine it just shows black, and the timer progresses rapidly
+<centyx> no sound either
+<centyx> doesn't matter what media type i try
+<centyx> any ideas?
+<MilhousePunkRock> Did anyone apply all the new updates already?
+<jbrouhard> what new updates ?
+<wolfmanz> Lynoure thate example you gave me on that site should that work under this version of kubuntu? i get erros when i try to run that
+<centyx> i'm trying to use opengl as the video driver for xine
+<centyx> shouldn't that work?
+<kakalto> centyx: I"ve had issues with it, myself
+<MilhousePunkRock> Adept prompted me that there are 36 updated packages available, jbrouhard
+<jbrouhard> Already ?
+<jbrouhard> *checks myself*
+<jbrouhard> I got no updates
+<jbrouhard> (I update daily)
+<MilhousePunkRock> That's weird
+<kyle_> Only update I had today was for Automatix
+<MilhousePunkRock> Did you have any updates lately?
+<kyle_> Few days ago I had a couple
+<kosh> no upgrades today for me either
+<kyle_> can't remember what for
+<kosh> and I just checked
+<MilhousePunkRock> I use the PC daily, maybe I didn't see that Adept prompted me before...
+<MilhousePunkRock> The point is, after the initial installation there were a bunch of updates, of course... Including one that wrecked the wireless LAN
+<MilhousePunkRock> That was a real P.I.T.A. to get it back to life
+<MilhousePunkRock> I'm gonna try it now anyway
+<kosh> http://kubuntu.org/announcements/koffice-152.php    new koffice packages
+<centyx> i think i have codec issues
+<centyx> anybody have problems w/ the w32codecs package from debian-multimedia?
+<unix_infidel> centyx: why not use the ubuntu package?
+<centyx> gar and why is unix_infidel: i didn't know there was one?
+<centyx> oops
+<centyx> i was mid sentence
+<centyx> heh
+<unix_infidel> yes...you were.
+<Lynoure> wolfmanz: there were multiple, I assume at least the shell script one would work, once you modify it to point at the right url
+<centyx> there is no w32codecs ubuntu package that i can see
+<unix_infidel> centyx: apt-cache search w32codecs.
+<unix_infidel> you probably need to add a repo.
+<centyx> centyx: i did
+<centyx> centyx: which one?
+<centyx> er
+<centyx> unix_infidel:
+<centyx> i'm tired
+<unix_infidel> 0230 hrs here.'
+<unix_infidel> umm, probably cipherfunk or plf.
+<centyx> ah
+<wolfmanz> Lynoure i think i got the first one working it need a library to run der perl so i got that and i think its working not reall shure i'm not getting errors now though
+<centyx> plf was down yesterday
+<centyx> not familiar w/ cipherfunk
+<unix_infidel> !cipherfunk
+<ubotu> I know nothing about cipherfunk - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<centyx> i'll just get the codecs from mplayer's site
+<unix_infidel> qdeb ftp://cipherfunk.org/pub/packages/ubuntu/ dapper main
+<_rince_> mrgn
+<unix_infidel> erm, crap.
+<unix_infidel> $ cat /etc/apt/sources.list | grep funk
+<unix_infidel> # Cipherfunk multimedia packages (packages, GPG key: 33BAC1B3)
+<unix_infidel> deb ftp://cipherfunk.org/pub/packages/ubuntu/ dapper main
+<centyx> k thanks
+<Lynoure> wolfmanz: test it by pointing it to a page that does not exist? Or a server that does not exist,
+<wolfmanz> ya i just did that and now i got new errors lol
+<unix_infidel> sure.
+<centyx> hrm.
+<centyx> i don't know what the deal is.
+<Buncho> anyone around?
+<Lynoure> wolfmanz: then there are the heavy duty monitoring systems. e.g. Nagios, plenty of howtos for those. I must admit I'm too lazy today to help with debugging scripts I didn't write...
+<unix_infidel> !ask
+<ubotu> Don't ask to ask a question. Just ask your question :)
+<unix_infidel> Buncho: ^^^^^
+<Buncho> =P
+<Buncho> here's the problem
+<Buncho> i installed kdesktop
+<Buncho> rebooted
+<Buncho> from ubuntu --> kubuntu
+<Buncho> login screen appears, login, black screen and it goes back to the login screen
+<wolfmanz> Lynoure there isnt much to debug i just think the guy is using librarys in that example that dont come as part of kubuntu
+<Buncho> i tried reconfiguring xserver, but to no avail
+<Lynoure> wolfmanz: They'll prolly exist in the repositories.
+<Buncho> any ideas?
+<Buncho> anywhere from getting it to work to how i can roll back the system to when it did work
+<Buncho> T.T
+<wolfmanz> Lynoure ya i'm sure they do but if i dont know the names of what he used it wont do me any good to go looking for them lol
+<Lynoure> wolfmanz:  apt-cache search <something you expect to be in the description>   is a charm, often
+<thyko> firefox wount automatically install plugins
+<thyko> how do i fix that?
+<Buncho> =/
+<Buncho> still no answer
+<munu> i have stranege problems with using CPAN - even install Bundle::CPAN is not going through. is it a known hiccap?
+<Lynoure> Buncho: for much of the world it is either early saturday ir very late friday, not the most pleasing times to be volunteering
+<wolfmanz> thyko I had a problem with firefox installing the flash player and i had to manually install that the auto thing didnt work at all
+<Lynoure> Buncho: Yesterday one other person was complaining something similar...
+<Buncho> lol
+<Buncho> it's 1am sat for me... =/
+<Lynoure> what packages did you install?
+<thyko> wolfmanz: its hapening with jre too :(
+<Lynoure> Buncho:if just kdesktop, it might not be enough on it's own to move smoothly to kubuntu
+<wolfmanz> thyko ya i dont get why something like plugins dont install the way they should through the browser
+<Buncho> what else do i need?
+<Lynoure> Buncho: I'm not sure how uptodate this is, but see: https://help.ubuntu.com/community/InstallingKDE
+<Buncho> awesome
+<Lynoure> Buncho: good luck and don't work on your system too tired, that way leads to dispair and sadness...
+<wolfmanz> thats what makes ya putr windows back on the drive lol
+<Buncho> yeah...
+<Buncho> but i also want to run a simulation before i sleep
+<Buncho> ^^;
+<wolfmanz> a simulation of what?
+<munu> !cpan
+<Buncho> just some physics models
+<ubotu> I know nothing about cpan - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<Lynoure> Buncho: That might be nice thing to do. Gives you something to think about in your dreams:)
+<Lynoure> Buncho: Oh, I though you meant a simulation of the apt-get operation =)
+<Buncho> nah... i think i've gotten used to apt-get, i just need to start parsing the repositories in my brain so i don't have to look programs up on google
+<unix_infidel> Buncho: why not just use the gui.
+<unix_infidel> adept or synaptic.
+<Gonzo> is there a way to make the task bar double so there's double space in height to store tasks
+<unix_infidel> Gonzo: right click and configure panel.
+<Gonzo> thx
+<VirusDotNET> hey ayone know how to cancel an installation item cause it can't connect to the server
+<VirusDotNET> Connecting to alien.ssl.berkeley.edu|128.32.18.176|:21... failed: Connection timed out.
+<VirusDotNET> Retrying.
+<unix_infidel> VirusDotNET: installation item?
+<VirusDotNET> Setting up setiathome (3.08-4) ...
+<unix_infidel> during installation?
+<Buncho> sigh
+<Buncho> unfortunately that didn't fix it
+<Lynoure> Buncho: For risky things I often do run the apt-get simulation, to make sure it does not replace/remove too many things.
+<VirusDotNET> it just keeps tryying to connect and the server is down
+<Buncho> Lynoure: is xserver running when the login screen is up?
+<VirusDotNET> is there a way to remove it cause i can't install nothing til this finishes
+<Buncho> because i can boot failsafe mode, which just has a single console window
+<Buncho> i was looking at the kdm log, and it mentions something about /usr/share/X11/fonts/misc and a refcount =2 when it's supposed to be 1?
+<felix_e> riddell: is there a reason for the koffice-latest thingy still pointing to koffice 1.5.1? (no complain, really. just asking.)
+<Lynoure> Buncho: take backup of the configuration and try changing it
+<Buncho> =/
+<Buncho> sigh... my vi's a bit rusty
+<VirusDotNET> anyone know about mine?
+<Buncho> i also have something about GLcore failing to load
+<VirusDotNET> >.<
+<mehdi> hi
+<VirusDotNET> hi
+<mehdi> i wouldlike help for amarok i can ask here ?
+<VirusDotNET> ##kde
+<VirusDotNET> or #kde
+<VirusDotNET> Does anyone know how to make a install that already started cancel?
+<Buncho> where can i find xorg.conf?
+<mehdi> i would like use amarok with xine extra-plugin but my apt-get don't find it
+<VirusDotNET> /etc/X11/xorg.conf
+<VirusDotNET> or /usr/X11/xorg.conf
+<mehdi> copy first ur xorg.conf
+<Buncho> yeah
+<Buncho> that was done
+<Buncho> is it wise to clear the kdm log?
+<xiO__> hi
+<raymond__> hi
+<Buncho> blegh
+<Buncho> sleepy
+<thyko> wolfmanz: doode, i found a way to install it
+<fek> moin
+<centyx> gar
+<centyx> does anyone know how to trick movies.yahoo.com into letting you watch trailers?
+<centyx> they check to see if you have windows media player and quicktime installed
+<centyx> and realplayer
+<raymond__> with what do you wnat to watch it?
+<centyx> but most of the trailers aren't in real format
+<raymond__> put the url in a differnt player?
+<centyx> they don't give you the url till they've verified your player
+<centyx> some java junk
+<centyx> or something
+<raymond__> ok?
+<raymond__> there must be a way
+<centyx> yea that's why i'm asking
+<Healot> !java
+<ubotu> java is an object oriented programming language. To install a java compiler/interpreter on Ubuntu, look at https://help.ubuntu.com/community/Java For the runtime Sun Java install sun-java5-jre from the Multiverse repository
+<centyx> ;)
+<centyx> my java's fine
+<centyx> man i didn't know multiverse had that
+<centyx> i made my own using java-package
+<Healot> 6.06 :0
+<centyx> yea, it was habit from the past
+<Healot> well if you made a package previously... better use the previous rather than download
+<centyx> it works fine so i'm not worried about it
+<centyx> though i probably should replace it eventually so i'll get updates
+<raymond__> euhm does it work with qiucktime?
+<centyx> raymond__: does what work?
+<raymond__> the trailers?
+<h3sp4wn> centyx: Are you using java 6 ?
+<centyx> go there yourself and try to watch a trailer, you'll see what i mean
+<centyx> centyx: no
+<centyx> h3sp4wn: no
+<centyx> raymond__: it tries to detect if i have the quicktime player... yes.
+<centyx> raymond__: it detects that i don't
+<centyx> sun-j2re1.4                                1.4.2+12
+<centyx> it detects my realplayer plugin fine
+<centyx> but most of the trailers aren't in that format
+<centyx> i guess it detects browser plugins?
+<centyx> not sure
+<Healot> raymond__: my suggestion, mac or windows :)
+<centyx> i use the media player connectivity in firefox
+<centyx> in konqueror, i'm using the default kmplayer_konq_plugins
+<centyx> Healot: just to watch some trailers?
+<Healot> yeah
+<Healot> it's apple-owned anyways
+<centyx> there's got to be a workaround
+<centyx> maybe if i knew something about writing mozilla plugins i could write some bogus plugin to make it think i had it
+<centyx> or something
+<centyx> i duno
+<Healot> well, for well-verse linux users, that maybe easy
+<Healot> for migrators or try-outs?
+<centyx> i consider myself to be a well-versed linux user :P
+<centyx> i've been using linux as my primary os since 1997
+<centyx> doesn't mean i'm a programmer
+<centyx> i'm a sysadmin by trade
+<centyx> all i ever program in is bash, perl, python or php
+<centyx> i admit it'd help me a lot to learn c and other languages, but i just haven't :P
+<centyx> as far as kde and the gui side of things go, i'm pretty new
+<centyx> for the longest time i stayed in the console and only used x when i had to
+<centyx> and my wm was fluxbox
+<centyx> then i finally switched to the beefier xfce
+<centyx> that was when i decided that woody was just too outdated to use as a workstation anymore
+<centyx> and i was tired of using sid
+<centyx> stuff breaking constantly
+<centyx> so i switched to gentoo
+<centyx> then i switched to ubuntu, and started using gnome
+<Buncho> whoo hoo!
+<centyx> that was a shock
+<Buncho> 3 hours later
+<Buncho> and i'm back on gnome
+<Lynoure> !enter
+<ubotu> Please don't use the "enter" key as punctuation! It spams the channel and can be annoying.
+<Buncho> "enter" key?
+<centyx> Lynoure: you talking to me?
+<Lynoure> centyx: No, I was triggering the bot
+<centyx> that's obvious...
+<Lynoure> centyx: But yes, most of the flood seemed to be by you.
+<centyx> Lynoure: i was talking as i was thinking. not using the enter key as punctuation
+<centyx> just coz no one else was talking doesn't mean i was flooding
+<centyx> anyway, since no one else is talking, i'll shut up and make you happy
+<Lynoure> centyx: I didn't mean that. But if you feel angry or offended take it to msg, please.
+<Buncho> Thx Lynoure for the help... couldn't get to the bottom of it though
+<Buncho> =/
+<thyko> how do i add multiverse to sources.lst?
+<Lynoure> thyko: just comment out couple of lines from /etc/apt/sources.list  they should be clearly marked
+<thyko> got it
+<thyko> thanks
+<Lynoure> Buncho: one thing worth trying is removing gdm and replacing it with kdm / reinstalling kdm
+<Buncho> hrmmm i'll give it a try
+<Buncho> just not tonight
+<Buncho> good night
+<Lynoure> night
+<fifamaster> hi
+<fifamaster> how can i set from kubuntu to load as first os windows from grub?
+<tictric> fifamaster: you need to edit /boot/grub/menu.lst
+<thyko> you know that 'kubuntu' that appears immediately grub loads
+<thyko> and one can see the drivers loading below it?
+<thyko> how do i customize that?
+<h3sp4wn> I only know to disable it
+<h3sp4wn> !usplash
+<ubotu> usplash is the start-up splash (before GNOME/KDE appears) in Ubuntu. To customize it, see https://wiki.ubuntu.com/USplashCustomizationHowto
+<thyko> ubotu: thanks
+<ubotu> I know nothing about thanks - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<thyko> hehe
+<thyko> ubotu: how do i customize the login screen
+<ubotu> I know nothing about how do i customize the login screen - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<thyko> ?
+<thyko> ubotu: login
+<ubotu> I know nothing about login - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<thyko> ubotu: kubuntu login screen
+<ubotu> I know nothing about kubuntu login screen - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<NiteCreep> Anyone around? I'd really appreciate some help on getting my wireless up and running. I find the network I want to connect to, but all I get is "connection failed" in Wireless Assistant.
+<NiteCreep> ubotu: wireless
+<ubotu> Wireless documentation can be found at https://help.ubuntu.com/community/WifiDocs with Broadcom Specifics at https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx/Dapper
+<thyko> ubotu: login manager
+<ubotu> I know nothing about login manager - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<Lynoure> thyko: there are themes for it at least, and it is called kdm
+<thyko> yeah, found them
+<thyko> thanks
+<thyko> nice, very nice
+<thyko> this is the best linux distro i've tried so far
+<thyko> in 3 years
+<Lynoure> thyko: That's always nice to hear, I'm undecided between debian and ubuntu, but I'm quite gui resistant
+<thyko> Lynoure: then you'll probably wind up with debi
+<crazy_penguin> good day everyone!
+<Lynoure> thyko: I have a vm with debian, and used to have a desktop computer runnign that too. But the jury is still out. And the rumour is Ubuntu is easier to get involved in.
+<arso> hello
+<arso> http://sourceforge.net/mailarchive/forum.php?thread_id=23836054&forum_id=2697
+<arso> ntfs driver
+<arso> wow
+<arso> wonder if its as good as ext3 driver for windows
+<Lynoure> the writing is still risky, but I'd personally trust it more than letting MS Windows to write on my linux partitions...
+<Lynoure> I'd prelly still go for a small frisbee partition in fat32
+<kuzmaster> how i i run perl files (.pl)
+<thyko> perl x.pl
+<kuzmaster> thanx
+<centyx> maybe i'm just delirious, but where do you go in kde to load themes ( .kth )?
+<centyx> seems like i remember there being a theme management section or something
+<imbrandon> centyx, run kcontrol, there should be a secton in there
+<centyx> imbrandon: ah yes, thank you
+<thyko> system settings
+<centyx> thyko: it doesn't show up in system settings
+<centyx> but kcontrol shows everything
+<thyko> mmm ... i better install that ..
+<centyx> thyko: it's already installed
+<imbrandon> thyko, its installed by default
+<imbrandon> its part of kde
+<thyko> true
+<centyx> should change in theme be effective immediately, or do you have to log out and back in?
+<centyx> hm
+<mayank> Hello, I am trying to mount my usb hard disk, and i am getting the following error in dmesg :
+<mayank> [4326013.824000]  usb 2-1: new full speed USB device using uhci_hcd and address 7
+<mayank> [4326014.895000]  usb 2-1: device descriptor read/64, error -71
+<mayank> i am using edgy, What shall i do, ?
+<mayank> also /proc/bus/usb/ folder is empty
+<h3sp4wn> mayank: ask in #ubuntu+1
+<mayank> ok, thanks
+<ubuntu> hi guys
+<ubuntu> O.o
+<ubuntu> a girl?
+<ubuntu> angelina: hi
+<ajayc> hi bimberi
+<bimberi> hey ajayc
+<ajayc> bimberi: sup
+<arso> hey
+<ajayc> hi arso
+<arso> where do i set screensaver please?
+<arso> cant believe i forgot
+<ajayc> left click on desktop
+<ajayc> and select configure desktop
+<bimberi> nommuch :)
+<arso> lol
+<arso> wow
+<arso> i am blind
+<arso> i went there and didnt see it earlier
+<ajayc> bimberi: arso interested in making a kubuntu based distro?
+<bimberi> nah, difficult to improve on perfection ;)
+<ajayc> bimberi: see the objectives at ajay.chahar.googlepages.com
+<david__> Hallo
+<jamardi> hi there!
+<ajayc> hullo!
+<ajayc> bimberi: saw the link?
+<david__> I need Latex. I'm familiar with it using Windows. Now I need it for Linux - Ubuntu. Is there a powerfull editor? (I read Emacs should help..)
+<timonator> heya. i have a problem with amarok (xine engine) playing mp3 files. i installed libmad0 but the website told me to install libxine-extracodecs or something similar. enabling the universe or multiverse package lists doesnt give me that package :(
+<ajayc> david__: any editor is powerful man including emacs
+<ajayc> timonator: u wanna play mp3?
+<timonator> yes
+<timonator> its not always possible to have ogg :(
+<bimberi> ajayc: yes i had a look, i like the name a lot - good luck with it :)
+<jamardi> timonator: take a look at your sources.list and uncomment the dapper backports
+<timonator> or vorbis for that matter
+<ajayc> timonator: install mp3blaster or xmms
+<abattoir> timonator: are you sure you have enabled the repos properly?
+<abattoir> !info libxine-extracodecs
+<ubotu> libxine-extracodecs: the xine video/media player library, binary files. In repository multiverse, is optional. Version 1.1.1+ubuntu1-2 (dapper), package size 1148 kB, installed size 2976 kB
+<ajayc> bimberi: thanks man
+<timonator> i think so
+<abattoir> timonator: then it should be in multiverse... can you make sure it is enabled?
+<kuzmaster> can somone please tell me how to completly remover vmware player from kubuntu 6.06?
+<ajayc> can we optimise kubuntu kernel?
+<timonator> de.archive.ubuntu.com /ubuntu dapper-backports main restricted universe multiverse
+<timonator> is enabled
+<tmdx120> Hello all.
+<tmdx120> h3sp4wn: howdy
+<david__> Well, I ment actually the compiler (or whatever it is called for Latex). Is there a package with a editor and a compiler?
+<h3sp4wn> tmdx120: How is it going ?
+<jamardi> timonator: i supose you also have an entry like this: de.archive.ubuntu.com /ubuntu dapper main restricted universe multiverse
+<timonator> hold on
+<jamardi> timonator: (whithout backports)
+<tmdx120> h3sp4wn: ok. Still havent gotten the WLAN working. Hey, can you give me those tutorials one more time?
+<ajayc> can we optimise kubuntu kernel?
+<kuzmaster> anyone?
+<timonator> i have two with security.ubuntu.com/ubuntu one with "main restricted" and the other with "universe"
+<timonator> none like the above, tho
+<h3sp4wn> tmdx120: Do you still have wifi0 and wlan0 ?
+<abattoir> timonator: can you try 'sudo apt-get update' in the command line?
+<timonator> i use adept and i refetched the packages list arleady
+<timonator> ah ok
+<timonator> there the package is
+<timonator> thanks!
+<jamardi> timonator: uook!
+<tmdx120> h3sp4wn: how do I check?
+<timonator> i cloned the two dapper-backports thingies and removed the backports bit
+<h3sp4wn> tmdx120: /sbin/ifconfig -a
+<andreab> hi there!
+<jamardi> timonator: i think that's the way (at least it worked for me!) but better try to use mp32ogg script! (ogg rules!)
+<timonator> well
+<timonator> ogg does rock
+<timonator> but oggs that came from mp3 are even worse than the original mp3s ;(
+<kuzmaster> anyone at all?
+<timonator> unfortunately
+<tmdx120> h3sp4wn:I have eth0, lo, sit0, wlan0, wmaster0-00
+<jamardi> timonator: yeap... its a hard life :p but that's the way to aboid doing all this extra codec installation...
+<timonator> do i need any packages for that kioslave (i think its audiocd:/) which shows an mp3 and an ogg and an flac directory on audiocds and you can encode the cd by just dragging the 'pseudo-files' to the hard drive?
+<h3sp4wn> tmdx120: Thats sounds about right - I will try and get the package into a bit better shape - and then get someone else to build it on amd64
+<jamardi> timontator: i don't think so... it's automatic... though am not sure...
+<timonator> ok
+<tmdx120> h3sp4wn: that would be great!
+<timonator> hmm, whats the correct 'syntax' for the audiocd:/ stuff?
+<jamardi> timonator: ouch! no idea... try grabbing an audio cd, konquie should pop with the correct location
+<thyko> how do i turn off that 'kubuntu' boot splash?
+<gemidjy> buz: what fixed kopete?
+<buz> with fixed icq
+<gemidjy> argh
+<buz> gaim is a seriously broken app
+<buz> cant stand it any longer
+<buz> i rather go and build kopete from svn than dealing with gaim much longer
+<buz> but of course i'd prefer a deb
+<thyko> any ideas?
+<Hobbsee> buz: heya
+<grizzly> which exactly is the 'run command''
+<Hobbsee> buz: here....
+<gemidjy> thyko: edit the line in /boot/grub/menu.lst
+<Hobbsee> buz: www.buntudot.org/people/~hobbsee - grab the kopete deb, not kopete-dev one
+<gemidjy> thyko: i.e. here it is splashimage=(hd0,4)/boot/grub/splashimages/ksi.xpm.gz
+<grizzly> I wa nt obring the run command from the konsole, so what exactly is needed for that?
+<Hobbsee> buz: that lot should get copied over to kubuntu.org soon (and uploaded to edgy repos, too)
+<Hobbsee> buz: whatever you do, dont get the debs off ubuntuforums or some place random.  stick to the debs that the developers give out.
+<buz> thx!
+<buz> how do i know that yours are ok? ;)
+<Hobbsee> buz: because i'm a developer.
+<Hobbsee> buz: launchpad.net/people/hobbsee/ - especially see launchpad.net/people/hobbsee/+packages :P
+<Hobbsee> :)
+<buz> mhh that seems sensible enough ;)
+<Hobbsee> buz: hehe.
+<Hobbsee> buz: the source that that's built from is on revu, search for kopete if you wanted to build it yourself
+<buz> na
+<Hobbsee> :P
+<buz> i just build it myself as last resort
+<buz> yeah i know
+<buz> which is why i dont want
+<Hobbsee> heh
+<Hobbsee> yeah
+<buz> how about linking to that deb on kopete.kde.org?
+<buz> i presume that would greatly help people
+<buz> (personally i only use icq with kopete for one ;)
+<bimberi> Gee Hobbsee, there's some packages there that don't start with K - Traitor! ;)
+<h3sp4wn> Hobbsee: Does that mean if there is a security problem with any one of those apps then you personally have to fix it ?
+<rosa> hello everyone
+<jamardi> hii
+<buz> yeah icq works again
+<buz> thanks Hobbsee
+<rosa> i am on kubuntu breezy (5.10) and have a problem with amarok (1.3): when i try to play mp3s with gstreamer engine. it sometimes lags
+<rosa> can anyone help me?
+<jamardi> rosa: have you tried to use xine engine?
+<rosa> when i try to enable xine, it does not work.
+<rosa> it says(wait):
+<thyko> can one use normal bootsplash themes from kde-look.org with usplash
+<thyko> ?
+<thyko> i see the default ones are .xpm and the normal ones are just plain jpg
+<rosa> "xine konnte keine Audio-Treiber starten." which roughly translates to "xine could not load audio drivers"
+<jamardi> rosa: humm.. and are you sure you've installed correctly libxine-extracodecs and so on?
+<thyko> any klues?
+<rosa> plz wait
+<iTek|Sleep> anyone here know if Kubuntu supports nvidia drivers for dual-monito config.?
+<rosa> http://paste.ubuntu-nl.org/18069
+<rosa> jamardi: http://paste.ubuntu-nl.org/18069
+<rosa> there are no extracodecs ?!
+<jamardi> rosa: how do i answer you at paste.ubuntu..?
+<thyko> how do i turn off usplash
+<Hobbsee> h3sp4wn: ah, seeing as it
+<Hobbsee> 's in main, then one of us has to fix it, yeah
+<jamardi> rosa: sorry... http://paste.ubuntu-nl.org/18070
+<Hobbsee> bimberi: i've done most of the k packages - i've been stealing other people's merges :P
+<bimberi> Hobbsee: :)
+<rosa> jamardi: what do you mean? it was just the output of the konsole what i pasted there. and it does not say anything 'bout
+<rosa> jamardi: ok
+<rosa> jamardi: is that a repository issue ?
+<Hobbsee> h3sp4wn: one of the devs has to fix it yeah - depends who finds it first, and if i'm around.  anyone can actually fix it, but it has to be reviewed/uploaded by a core dev, cos it's in main
+<jamardi> rosa: that's what i get when i query for libxine
+<rosa> jamardi: can you give me your repo list ?
+<Hobbsee> h3sp4wn: universe the same applies, but it's not said that "we will fix any security holes with this product, count on it"
+<jamardi> rosa: yeap, of course
+<rosa> jamardi: and can you "review" mine ?
+<Philip5> arso: so is everything working now?
+<jamardi> rosa: http://paste.ubuntu-nl.org/18071
+<rosa> jamardi_mysources.list
+<rosa> srz
+<rosa> jamardi: my sources.list: http://paste.ubuntu-nl.org/18072
+<thyko> how do i turn off that 'kubuntu' boot splash?
+<Hobbsee> rosa: should work well enough
+<Hobbsee> !usplash
+<ubotu> usplash is the start-up splash (before GNOME/KDE appears) in Ubuntu. To customize it, see https://wiki.ubuntu.com/USplashCustomizationHowto
+<Hobbsee> thyko: ^
+<rosa> jamardi: but why dont we see extracodecs
+<thyko> its becoming a pain in the ass
+<thyko> i have even #chmod 000 /et/init.d/usplash
+<thyko> but nada
+<thyko> nathiing
+<Hobbsee> rosa: done sudo apt-get update yet?
+<jamardi> rosa: sorry if i'm slow (am at work)
+<rosa> jamardi: no prob
+<jamardi> rosa: i think the stuff is that you have to add a line thats originally marked as dapper-backports as dapper only
+<rosa> hobbsee: should i take jamardis list and then apt-get upgrade or what ?
+<rosa> jamardi: but i am running breezy?
+<jamardi> rosa: ouch! sorry...  wait a sec i take a look at my old sources
+<Hobbsee> rosa: no, you're running dapper, dont use his.  your own are fine.
+<Hobbsee> rosa: sudo apt-get update && sudo apt-get upgrade
+<Hobbsee> then try to install the codecs again
+<rosa> hobbsee: with my old list ?
+<Hobbsee> rosa: with the one you pastebinned
+<rosa> hobbsee: that is the one i use
+<rosa> i will do that
+<thyko> what does the kernel option 'ro quiet splash' do?
+<rosa> splash == use teh splash
+<jamardi> rosa: if it helps i've uploaded my old sources at http://paste.ubuntu-nl.org/18073
+<thyko> what if i make it --> 'ro quiet'
+<thyko> rosa: will that turn off the splash?
+<rosa> hobbsee & jamardi: http://paste.ubuntu-nl.org/18074
+<rosa> WHAT NOW ?
+<Hobbsee> rosa: why are you using http://paste.ubuntu-nl.org/18071 ?
+<Hobbsee> wasnt that just what you pastebinned?
+<jamardi> hobbsee: she's not, is she?  that where mine (the dapper ones) but she uses breezy
+<Hobbsee> jamardi: argh, now i'm confused.
+<Hobbsee> who's running what here?
+<Hobbsee> !repos
+<ubotu> The packages in Ubuntu are divided into several sections. See http://www.ubuntu.com/ubuntu/components https://help.ubuntu.com/community/Repositories and !easysource
+<jamardi> hobbsee: hehe, she's running breezy but i misunderstood and i gave to her my dapper sources
+<Hobbsee> jamardi: oops?  :P
+<jamardi> hobbsee: yeap! and her xine engine for amarok doesn't work ok, probably some extra libraries are needed
+<Hobbsee> jamardi: yeah, for breezy?  i dont really remember.  i havent run breezy much in almost a year
+<abattoir> jamardi: sudo apt-get install libmad0 libxine1c2 ?
+<jamardi> abattoir: i think it should work..
+<abattoir> that's the extra packages needed for breezy btw...
+<abattoir> dont want to contribute to more confusion :P
+<jamardi> abattoir, hobbsee and rosa: this is mayhem, i've no played an mp3 since long time ago (ogg!!) but now am willing to download some mp3! ;-)
+<abattoir> jamardi: you want to enable mp3 support for amarok in dapper?
+<abattoir> jamardi: or are you asking for sites to d'load from :P ?
+<abattoir> !mp3
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<jamardi> abattoir: no!! hehehe, we (hobbsee and i) where trying to help rosa to use amarok-xine with mp3 in breezy
+<abattoir> if the former ^^^^^^
+<abattoir> then i guess you
+<abattoir> you'd need the packages i mentioned above
+<abattoir> those are in the universe repository for breezy
+<jamardi> abattoir: yeap, as much as i remember they where
+<grizzly> is it possible to disable copy on selecting?
+<grizzly> selecting text i.e
+<rosa> jamardi: ok but according to http://paste.ubuntu-nl.org/18069 i have teh packages ?
+<rosa> i also have libmad0 so i am confused
+<prxq> konqueror seems a lot slower when loading pages than firefox (easily a factor of 10). Is this just the way it is or do I have some misconfiguration?
+<jamardi> rosa: let me see.... have you got installed libmad0? w32codecs?
+<jamardi> rosa: i dont remember very well which codecs must be installed on breezy...
+<grizzly> prxq: Een though I don't use konq, I think it is probably a misconfig
+<prxq> grizzly: any ideas where to look?
+<rosa> jamardi: http://paste.ubuntu-nl.org/18075
+<ajay> !usplash
+<ubotu> usplash is the start-up splash (before GNOME/KDE appears) in Ubuntu. To customize it, see https://wiki.ubuntu.com/USplashCustomizationHowto
+<jamardi> rosa: i think you've all installed... arg, it might work.....
+<rosa> jamardi: hm... then...do you know where there is the lagging problem with gstreamer?
+<grizzly> prxq: nope, but you can try purgin konq, if you don't have settings stored
+<ajay> guys how can i make usplash resolution to 1024x768x32 ?
+<prxq> grizzly: what do you mean? clear all history?
+<abattoir> rosa: Which engine are you using? xine or GStreamer?
+<jamardi> sorry :-( no idea... all i installed on breezy is multiverse plugins and ffmpeg for gstreamer, libmad0, amarok-xine, kaffeine-xine, w32codecs... can u play mp3 correctly with kaffeine?
+<jamardi> have you tried to purge amarok-xine and reinstall it?
+<ajay> guys when i click add/remove program nothing happens
+<ajay> ???
+<jamardi> ajay: what do you mean?
+<abattoir> rosa: if xine, as i said before, please also install libxine1c2 (along w/ libmad0)
+<ajay> jamardi: its working now! thanks anyways
+<rosa> Abbatoir: as gstreamer lagged I tried xine but it didnt work since xine could not be loaded
+<jamardi> ajay: uok
+<ajay> jamardi: how can i make my usplash res to 1024x768?
+<abattoir> rosa: do you have libxine1c2 installed?
+<newbie_> hi
+<jamardi> ajay: no idea! :-(
+<ajay> !usplash
+<ubotu> usplash is the start-up splash (before GNOME/KDE appears) in Ubuntu. To customize it, see https://wiki.ubuntu.com/USplashCustomizationHowto
+<abattoir> rosa: if you want the GStreamer engine to play mp3s, please install gstreamer0.8-mad
+<rosa> abbatoir: yes
+<newbie_> i have still these problems with getting an ip address via dhcp - can anyone help me please?
+<grizzly> !clipboard
+<ubotu> I know nothing about clipboard - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<grizzly> anybody? disable copy on text selection
+<rosa> abbatoir: my only problem with amarok on mp3 is the lagging played with gstreamer so i tried xine but could not get it to work on xine
+<Philip5> rosa: there is a fix to that... i think
+<ajay> !firefox
+<ubotu> firefox is the default web-browser on Ubuntu. To install the latest version, see https://wiki.ubuntu.com/FirefoxNewVersion Installing plugins: https://wiki.ubuntu.com/FirefoxPlugins
+<rosa> Philip5: where do i get?
+<ajay> rosa: get what?
+<rosa> ajay: the fix
+<ajay> of?
+<abattoir> rosa: what is the exact error message produced by xine-engine? have you posted it somewhere?
+<Zoolie> hello all,hi uniq
+<newbie_> can anybody help me with getting an ip address via dhcp?
+<rosa> abbatoir: yep (wait)...
+<Philip5> rosa: it's a setting tweak
+<Philip5> !mp3
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<Zoolie> i downloaded kopete-0.12.1.tar.bz2 and then what i need to do? pls help...thx
+<rosa> abbatoir: "xine konnte keine Audio-Treiber starten." which roughly translates to "xine could not load audio drivers"
+<rosa> philip5: so how can i make it right
+<abattoir> rosa:  and you are sure you have libxine1c2?
+<Zoolie> i downloaded kopete-0.12.1.tar.bz2 and then what i need to do? pls help...thx pls.....brb in a min
+<rosa> abbatoir: yep, checked it twice that daxy
+<jamardi> newbie: have u tried to run dhcpclient?
+<abattoir> rosa: could you close amarok and try gst-register?
+<Philip5> rosa: i think ubotu have a link to tweaks that include the mp3 lag tweak
+<ajay> !tweaks
+<ubotu> I know nothing about tweaks - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<ajay> !kubuntu
+<ubotu> Kubuntu is Ubuntu with KDE, the K Desktop Environment. For more info see http://kubuntu.org ; to install from Ubuntu: sudo apt-get install kubuntu-desktop
+<abattoir> rosa: after closing do 'sudo gst-register0.8'
+<abattoir> sorry its 'sudo gst-register-0.8'
+<rosa> !lag
+<ubotu> I know nothing about lag - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<rosa> !gstreamer
+<ubotu> I know nothing about gstreamer - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<rosa> !xine
+<ubotu> I know nothing about xine - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<ajay> !ubotu
+<ubotu> I am ubotu, all-knowing infobot. You can browse my brain at http://bots.ubuntulinux.nl Usage info: http://wiki.ubuntu.com/UbotuUsage
+<jamardi> bye guys!
+<ajay> guys i cant hear my audio cd
+<rosa> abbatoir: http://paste.ubuntu-nl.org/18076
+<ajay> dunno what is wrong
+<ajay> kscd wont play
+<ajay> the bar moves
+<ajay> but no sound
+<rosa> abbatoir: is it all right thta way?
+<ajay> damn kaffiene plays damn fine
+<ajay> kscd sucks!!!
+<abattoir> rosa: now do 'gst-register-0.8'
+<abattoir> i.e. w/o the sudo
+<abattoir> you dont need to show me the o/p :)
+<abattoir> open up amarok and see if your problem is solved...
+<abattoir> sorry, i need to go out now :(
+<rosa> abbatoir
+<abattoir> i'm sure if this doesnt work, someone else here will help you
+<rosa> tnx bye
+<abattoir> you're welcome :)
+<ajay> hi lapinka
+<rosa> does not work
+<rosa> even setting amaroks priority to -15 does not work
+<pygi> anyone know how to recover freenode password? :)
+<rosa> anyone knows how to get an aolconnection on (k)ubuntu? i am noob so plz explain slow...ly.
+<benoit> salut tout le monde
+<gemidjy> rosa: update to dapper, u'll have more benefictions
+<zym0tic> can someone tell me if it is possible to tell xorg on which monitor an application should pop-up when I use twinview? Now app X opens at monitor 1 and app Y at monitor 2
+<gemidjy> zym0tic: ask on #linuxhelp, u'll get better support
+<gemidjy> or somewhere else
+<zym0tic> ok thanx :)
+<h3sp4wn> tmdx120: here ?
+<mustech> I have a request
+<Hobbsee> mustech: shoot
+<mustech> i want a good source list for kubuntu
+<Hobbsee> !reops
+<ubotu> I know nothing about reops - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<Hobbsee> !repos
+<ubotu> The packages in Ubuntu are divided into several sections. See http://www.ubuntu.com/ubuntu/components https://help.ubuntu.com/community/Repositories and !easysource
+<mustech> yes !
+<mustech> thanks
+<mustech> and i have another request
+<mustech> can i disable dosfsck
+<Hobbsee> hi Snake[Sleep]
+<mustech> because it takes too long time in booting
+<R1CHARD> good day
+<Lynoure> hi
+<nrdb> if I download a true type font .ttf how do I install in so its usable?  I found the directory /usr/share/fonts
+<Kwukki> K>System settings
+<Kwukki> there you can install fonts
+<h3sp4wn> tmdx120: ping
+<dr_willis> :) i wonder if anyone else has ever installed every font they could find.. and eneded up wth like 3000+ fonts
+<h3sp4wn> dr_willis: I would expect quite a few people have
+<dr_willis> Its amazing how Windows STILL has issues whenyou do that. :)
+<nrdb> Kwukki: thanks
+<Tommy2k4> how can i reencode an mp3 to a lower bitrate mp3
+<Kwukki> nrdb : np
+<dr_willis> Tommy2k4,  ive done that befor.
+<dr_willis> i forget what program i used.  AUdicity perhaps? Audiocity?
+<Tommy2k4> ty ill try audacity
+<Tommy2k4> error initializing audio i/o player o_O
+<Tommy2k4> ill try perl audio converter
+<h3sp4wn> Tommy2k4: lame
+<h3sp4wn> Tommy2k4: can do it
+<Tommy2k4> ty
+<timonator> is there a program in the apt-get repos that integrates into kde that makes it possible to safely delete files? (i mean by overwriting them a few times and such)
+<timonator> maybe an addition to the KDE trash?
+<dr_willis> Hmm..
+<pionir> all downloaded packages are in /var/cache/apt/archive/
+<dr_willis> check that kde-look.org site for extra add one and enhancements pashsps
+<crparr> I'd like to create one "pot" of Icons for all applications of all window managers. Join me in #icons to discuss.
+<crparr> the theme does not matter - its a discussion on how to prepare this...
+<charlie5> hi ... i've installed a HP (psc 1610) printer and tried to print a pdf with kpdf ... it seemed to work ok, but some of the pages were printed upside down ?
+<charlie5> ... any ideas why that might be ?
+<timonator> well
+<timonator> you turned them around
+<timonator> :p
+<timonator> maybe you set your printer to print on the backjside of the paper as well, but the printer isnt able to do that or so
+<iBrood> I'm having trouble with setting up mysql in kubuntu
+<iBrood> I've installed apache2 and php5
+<crparr> sorry, it's #icons
+<timonator> how do i make kde correctly start applications with wine on doubleclick?
+<charlie5> timonator: sorry, afk for a sec ... yep. its probably my printer setup is dodgy ... 1st time i've use one ... got sick of a paperless office :) ... thanks
+<timonator> heh, did you fix it?
+<trispace> are there any precompiled vmware-player-kernel-modules for kernel 2.6.15-26?
+<charlie5> timonator: nah, too lazy at the moment :) ... got the printer installed and printing (if not 100%) ... and the kooka works well with the scanner ... thats enough for 1st day :)
+<timonator> k :)
+<ryanakca> Why is it that amarok crashes right after it's splash screen? Like I click it... I see the splash screen saying Amarok 1.4 (blue rectangle in middle of screen with logo and all)... and then nothing happens...
+<JRH3K5> You're not trying to play any file?
+<Hobbsee> ryanakca: remove the config files for amarok?
+<Hobbsee> ryanakca: including ~/.kde/share/apps/amarok
+<charlie5> does the linux-restricted-module lag a few versions behind the latest kernel image version ? ... or maybe my adept settings not right ?
+<ryanakca> Hobbsee: works now :) ty
+<Hobbsee> ryanakca: i got that too, for some reason - no idea why
+<__osh__> ryanakca: a friendly advice. don't remove the config files if you don't know what you're doing. Just rename them or move it to a different location. Easier to restore if that should be nessecary.
+<ryanakca> :)
+<__osh__> ryanakca: speaking from experience...
+<ryanakca> how do you burn .m4a onto a cd from linux? k3b won't burn them
+<ryanakca> __osh__: I've been there as well :)
+<gilster> hey i have a question about kpf
+<gilster> anyone?
+<ryanakca> !ask
+<ubotu> Don't ask to ask a question. Just ask your question :)
+<gilster> yes yes.....relax geeesh
+<ryanakca> lol... sorry
+<ryanakca> :)
+<tmdx120> Does anyone know how I burn a Viewable DVD from K3B?
+<gilster> how do i set up the webserver with security options?
+<gilster> i am using the basic kpf...
+<jimmy__> trying to get my Dell truemobile 1300 wireless network card to work kubuntu
+<JRH3K5> jimmy__ - you've googled for drivers, yes?
+<ryanakca> gilster: hmmm... dunno... I would suggest apache2... if your looking for a secure webserver
+<gilster> ok
+<jimmy__> I have and seen more than one driver, so I wasnt sure which one I needed
+<jimmy__> I will have to search again to get one
+<omeow> !language
+<ubotu> Please watch your language and keep this channel family friendly.
+<jimmy__> I'm at Broadcom website now
+<madsP> ehm , unable to lock , are you root ? , where do i change that if im not root per startup
+<jimmy__> where do I download the driver on their support page?
+<jimmy__> I dont see it
+<jimmy__> http://www.broadcom.com/support/?driver=4401-Linux
+<tmdx120> If I have a VIDEO_TS file do I just use the burn DVD video veature in K3B?
+<fred> maouaoua i do have a bug in my computer :)
+<hastesaver> tmdx120, it won't make a DVD out of it, though
+<tmdx120> hastesaver: then what do I do to get a viewable DVD?
+<hastesaver> tmdx120, try qdvdauthor
+<fred> i mean there is a actual living bug inside my screen :)
+<hastesaver> tmdx120, Install the package qdvdauthor (using adept, or aptitude, or synaptic, or apt-get, or whatever you use)
+<fred> between the outside of it and the lcd belowe
+<fred> how sexy is this :)
+<fred> it is below the colow of the screen
+<fred> color
+<tmdx120> hastesaver: ok, done.
+<fred> like 2mn long and nothing wide
+<hastesaver> tmdx120, now use it! :p
+<jimmy__> yo
+<tmdx120> gilster: I can do private IMs het.
+<gilster> tmdx120: what are you trying to do? Do you have a VIDEO_TS folder with vob files in it/
+<gilster> ?
+<tmdx120> gilster: yes I do
+<jimmy__> anyone here have a dell inspiron 1100 or close to it?
+<gilster> if you want to make a  standard DVD with k3b, click above on new project and select DVD Video project
+<gilster> copy all the files from the VIDEO_TS folder you have and copy them into the VIDEO_TS folder that appears in the tree structure of the dvd video project
+<gilster> leave the AUDIO_TS folder blank
+<hastesaver> gilster, wow, does that work? I could have used that the last time instead of messing around with so many things... thanks :)
+<gilster> hastsaver: yes it works perfectly.....note: files must always be in the VIDEO_TS folder of the tree structure otherwise some (most) players wont read it
+<tmdx120> gilster: Thats what I did wrong the first time. I didnt copy the INDIVIDUAL files, I copied the entire FOLDER.
+<jimmy__> cant get the network card to work
+<gilster> tmdx120: yes...you cant do that....it will only create a Data dvd disk like that....
+<gilster> the standard dvd file system structure that dvd players look for is VIDEO_TS and AUDIO_TS folder at the root of the dvd
+<tmdx120> gilster: Ok, Ill give it a shot.
+<jeff_> does anybody know how to set alt+space as the acess key in compiz?
+<gilster> you can have other folders in the VIDEO_TS folder, BUT the main IFO and VOB files must be in the original root VIDEO_TS folder
+<jeff_> i mean deskbar
+<gilster> ok what is everyones opinion on a good e-mail program for kubuntu....i havent used one in a long time and i want to do it now
+<tmdx120> I tried to use Evolution for my email. It sucked. Im using Thunderbird now and I like it.
+<trispace> gilster: kmail?
+<gilster> thunderbird...right...thats the mozilla program?
+<tmdx120> yeah, Im a newbie and it was just easy to set up and it worked right off the bat. I was able to archive all my email from work and it kept a live connection (no timing out)
+<gilster> trispace: thats what i used before, yes, i was hoping for something more dynamic...
+<trispace> gilster: what do you mean by dynamic?
+<tmdx120> Evolution was SLOOOOOOOOOOOW.
+<fred> tmdx120: tried thunderbird ?
+<tmdx120> fred: yup, I LOVE it.
+<gilster> no dont get me wrong \kmail is good, but very simple
+<fred> tmdx120: cool :)
+<tmdx120> fred: also, I can use it as a portable app so that my workflow is more seemless...  ;)
+<trispace> gilster: i don't know, but for me it has all the features thunderbird has
+<tmdx120> fred: I like the idea of desktop continuity. Im new to Linux, and I want to use my apps as sort of a Demo for other people in my working community.
+<madsP> today i love it =]
+<fred> nice :)
+<h3sp4wn> tmdx120: http://www.milkspank.com/h3sp4wn/hostapd-svn.tar.gz - download that and put it in a temporary directory and I will tell you how to compile it
+<tmdx120> h3sp4wn: Done
+<h3sp4wn> tmdx120: I think I have got it so it can be compiled properly
+<h3sp4wn> tmdx120: sudo apt-get build-dep hostapd
+<h3sp4wn> tmdx120: tar xvzf hostapd-svn.tar.gz (from wherever it is)
+<h3sp4wn> tmdx120: cd hostapd-0.5-2006-06-27
+<h3sp4wn> tmdx120: debuild -uc -us
+<tmdx120> h3sp4wn: um I cant find it now. LOL!
+<h3sp4wn> tmdx120: (if debuild lists any missing dependancies just apt-get install libssl-dev (for example)
+<_christel> hi all need help
+<JRH3K5> Wassup, ChristmasCpp?
+<_christel> somebody please help adept stopped working and apt-get as well
+<JRH3K5> You've restarted the system, yes?
+<tmdx120> h3sp4wn: I have cd hostapad-svn NOT hostapd-0.5-2006-06-27
+<tmdx120> h3sp4wn: sorry found it!
+<tmdx120> h3sp4wn: my apologies, Im still SLOWLY getting used to the command line.
+<h3sp4wn> tmdx120: Do you have the stuff installed for compiling ?
+<h3sp4wn> tmdx120: you need sudo apt-get install build-essential debhelper dpatch libssl-dev
+<h3sp4wn> tmdx120: and sudo apt-get install devscripts
+<tmdx120> h3sp4wn: debuild command not found
+<h3sp4wn> tmdx120: sudo apt-get install build-essential debhelper dpatch libssl-dev devscripts (debuild is in devscripts)
+<teknoprep> !wtf
+<ubotu> I know nothing about wtf - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<n2ob> hi, where do you put themes for dekorator so that it can be found and used?
+<tmdx120> h3sp4wn: problem using fakeroot!
+<JRH3K5> !cybar?
+<ubotu> I know nothing about cybar? - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<h3sp4wn> tmdx120: run it from sudo -i
+<_christel> please somebody tell me where to go to solve my apt-get that stopphed working
+<h3sp4wn> tmdx120: sudo apt-get install fakeroot (if you don't have it)
+<h3sp4wn> tmdx120: (if you just run sudo -i) it should be able to run without having to worry about fakeroot
+<tmdx120> h3sp4wn: Ok, it is giving me a loooooon list of stuff now. I believe it is compiling.
+<h3sp4wn> tmdx120: prey (if this doesn't work then the libc is too old and there is nothing I can do about it)
+<sspmetal> hello there
+<sspmetal> i have a problem
+<tmdx120> h3sp4wn: It reached the end
+<tmdx120> h3sp4wn: what now?
+<sspmetal> i have a 4 way audio, but i can listen only from the front audio
+<sspmetal> anyone can help^
+<sspmetal> ?
+<tmdx120> h3sp4wn: 'finished running lintian'
+<_christel> sspmetal: have a problem too but don't know where to go to get help
+<timonator> who can help me with digikam? the camera isnt in the list (its some cheap garbage thingie and getting the photos from it works via the mass storage driver) i want digikam to automagically mount it or want kde to do it
+<sspmetal> anyone know how to use 4 channel audio?
+<timonator> im using the 'embedded camera` or something model wich just looks in a folder, but it requires the camera to already be mounted
+<dr_willis> sspmetal  ya got a real 4 channel source?
+<dr_willis> sspmetal,  i normally just mirror the front to the rear speakers
+<sspmetal> dr willis
+<_christel> could anyone direct me to a channel where i could find help for mu broken apt-get? pllllease
+<h3sp4wn> tmdx120: cd .. (is there a deb in that directory ?)
+<sspmetal> i have 4 audio sound card
+<sspmetal> in windows it work
+<sspmetal> now under the mixer in linux i have set 4 channel, but i can only enable the front
+<sspmetal> know a way to resolve this?
+<tmdx120> h3sp4wn: you mean a deb package?
+<tmdx120> h3sp4wn: yes
+<h3sp4wn> tmdx120: yes
+<h3sp4wn> tmdx120: sudo apt-get remove hostapd
+<h3sp4wn> tmdx120: sudo dpkg -i *.deb
+<tmdx120> h3sp4wn: hostapd-0.5-2006-06_27-1_amd64.deb
+<bmckee> christel - more info please - what's 'broken' ?
+<ubuntu> Hi. Can anyone point me in right direction. I just put the Monitor settings out of range. need to change it back. I'm using boot DVD now.
+<h3sp4wn> tmdx120: (That should install it)
+<sspmetal> dr willis can you help me?
+<tmdx120> h3sp4wn: last line = Starting advanced IEEE 802.11 management: disabled via /etc/default/hostapd
+<_christel> bmckee: i get za.archive.ubuntu.com/ubuntu is not known on line 2 in source list
+<h3sp4wn> h3sp4wn: kdesu kate /etc/hostapd.conf
+<h3sp4wn> h3sp4wn: kdesu kate /etc/hostapd/hostapd.conf
+<h3sp4wn> tmdx120: sorry
+<tmdx120> h3sp4wn: s'ok, I have kate open
+<_christel> bmckee: and kate is not working neither so I can't access the source list 'cos I can't remember any other editor
+<h3sp4wn> tmdx120: go to the line which says # driver=hostap and change it to driver=devicescape (remove the # and the space)
+<Hawkwind> _christel: Have you tried commenting out that line in your /etc/apt/sources.list file as root user ?
+<_christel> hawkind: will try right away if i can get kate to work
+<h3sp4wn> tmdx120: then save that file
+<bmckee> _christel - For an editor try kwrite - or open a terminal and type pico
+<Hawkwind> _christel: You can use any editor, not just kate
+<bmckee> _christel - in a terminal type head -n 3 /etc/apt/sources.list
+<h3sp4wn> tmdx120: then run sudo hostapd -d (from the konsole)
+<sspmetal> someone can help me?
+<h3sp4wn> tmdx120: Hopefully it will startup properly from your other machine look and see if you can see a wireless network called test
+<kazukisan> Okay my amarok wont play .mp3 files nor will it play .asx radio stations ??? it plays ogg good tho lol
+<tmdx120> h3sp4wn: what would that look like?
+<h3sp4wn> tmdx120: Has it started and is giving you alot of debug information ?
+<treefrog2> kazukisan: you might need to use teh w32codec do you have that ?
+<kazukisan> yes
+<tmdx120> h3sp4wn: nope just says it activated the daemon for 802.11 management
+<treefrog2> can you get mp3 to work in anythign else?
+<kazukisan> sec let me try
+<tmdx120> h3sp4wn: then a bunch of options
+<h3sp4wn> tmdx120: run sudo hostapd -d /etc/hostapd/hostapd.conf
+<_christel> bmckee: with your line, i get deb cdrom:[Kubuntu 5.10 bla bla]  /breezy main restricted then the famous za.archive.ubuntu.com/buntu/
+<Hawkwind> _christel: Paste the entire line
+<Hawkwind> _christel: We need to see it to make sure it's correct or not
+<kazukisan> treefrog2, totem wont play them either
+<treefrog2> can anyone tell me how to reset my display settings file.. I'm booted on the install CD now.
+<treefrog2> kazukisan: then I sugest you look at reinstalling the w32codec... did it ever work?
+<h3sp4wn> tmdx120: Can you not scan for networks from your other pc ?
+<tmdx120> h3sp4wn: see post
+<kazukisan> what else does it do treefrog2 besides mp3's ?? .wav files work
+<h3sp4wn> tmdx120: Which post ?
+<_christel> hawkind: deb cdrom:[Kubuntu 5.10 _Breezy Badger_ - Release i386 (20051012)] / breezy main restricted
+<_christel> hawkind: then http://za.archive.ubuntu.com/ubuntu/
+<treefrog2> kazukisan: it sorts out mpeg too. and wma files..
+<Hawkwind> _christel: Try commenting it out.  Add a # at the very beginning of the line and then save the file
+<tmdx120> h3sp4wn: http://paste.ubuntu-nl.org/18091
+<kazukisan> yea i cant play avi files either treefrog2
+<treefrog2> kazukisan: there is the matter of the collection of sound engins too.. have you tried using the diferent ones?
+<rysiek|pl> incoming one stupid question: does *anybody* here have Dapper? (nobody on #ubuntu-pl does O_o')
+<kazukisan> treefrog2, i wanted to use gstreamer but its not showing up in my amarok list
+<bmckee> _christel: that's only half a valid line so to speak, so if that's all of it, it's toast.
+<h3sp4wn> tmdx120: And driver is definately changed to devicescape ?
+<kazukisan> treefrog2, right now its using xine
+<bmckee> comment it out, or check and see if it got split on to the next line maybe?
+<kazukisan> treefrog2, do you know what files i need for the gstreaer engine ?
+<tmdx120> h3sp4wn: yes
+<rysiek|pl> anybody?..
+<treefrog2> kazukisan:  that shoudl be ok but try switching it round all the same.. for the different engins the installer will pull the necessary files in with it..
+<treefrog2> NAyone know how to set my display settings back.. please..
+<ThunderStruck> rysiek|pl: what about dapper?
+<treefrog2> oops connection droped.. !!
+<treefrog2> Anyone know how to set my display settings back.. please..
+<h3sp4wn> tmdx120: press control C to quit it
+<bmckee> treefrog2 - can't you boot regularly, switch to console (cntrl-alt-f1) when it launches the GUI, log in and do an sudo dpkg-reconfigure xserver-org - (untested)
+<rysiek|pl> ThunderStruck: made a typo while updating my usplash and /usr/lib/usplash/usplash-artwork.so went bye-bye.
+<tmdx120> h3sp4wn: Done
+<h3sp4wn> tmdx120: iwconfig wlan0 mode master
+<rysiek|pl> ThunderStruck: cannot locate the package that contains it - could you take a glimpse if it's a symlink on your system for egzample?
+<ThunderStruck> rysiek|pl: sudo update-alternatives --config usplash-artwork.so
+<h3sp4wn> tmdx120: iwconfig wlan0 essid "test"
+<h3sp4wn> tmdx120: iwconfig wlan0 channel 1
+<_christel> hawkind & bmckee: I commented out that first line. tried apt-get update, still same error message
+<h3sp4wn> tmdx120: (all those commands should be with sudo sorry(
+<_christel> hawkind & bmckee: I commented out that first line. tried apt-get update, still same error messag
+<treefrog2> bmckee: Ok.ll try that.. suppose I better search the forums for it too.. thanks
+<h3sp4wn> tmdx120: ifconfig wlan0 down
+<h3sp4wn> tmdx120: ifconfig wlan0 up
+<h3sp4wn> tmdx120: sudo hostapd -dd /etc/hostapd/hostapd.conf (pastebin the output of that again)
+<_christel> hawkind & bmckee: so if i'm toasted what now? adept not working and how do i install synaptic without apt-get?
+<gilster> h
+<kazukisan> What gstreamer PAckage do i need so that amaroK Will use that one instaid of xine cause its not showing up in the egine list ???
+<gilster> thanks
+<bmckee> _christel - nope - you've just got some bad stuff in your sources list
+<bmckee> Did you comment out the SECOND line?  that's the incomplete one...
+<bmckee> If so, then where is it saying the problem is now?
+<tmdx120> h3sp4wn:  http://paste.ubuntu-nl.org/18092
+<bmckee> If it's a stock ubuntu you should be able to get a sources.list file from lots of places to replace it if necessary
+<Melchiorr1> kazukisan: I'm not sure if you can use gstreamer on the latest version of amarok. I lost it when I upgraded, and haven't been able to put it back...
+<kazukisan> What engine do you use
+<Melchiorr1> xine
+<kazukisan> Melchiorr1, what package you install to get mp3 working
+<h3sp4wn> tmdx120: iwconfig wlan0
+<Melchiorr1> !mp3
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<kazukisan> Melchiorr1, i did that
+<_christel> hawkind & bmckee: commenting out the second one. sorry nubie here
+<Melchiorr1> kazukisan: hmmm...
+<Melchiorr1> kazukisan: tried installing win32codecs?
+<_christel> hawkind & bmckee: Qapla!!!
+<kazukisan> yea
+<Melchiorr1> and it's it
+<Melchiorr1> still doesn't work?
+<kazukisan> doesnt work
+<_christel> hawkind & bmckee: apt-get seems to be working, willnow try to open adept
+<Melchiorr1> kazukisan: What error does it give?
+<kazukisan> Melchiorr1, amarok just skips over the files that are .mp3
+<_christel> hawkind & bmckee: btw how can this line beome truncated?
+<tmdx120> h3sp4wn: the light went on!!! and the output says ESSID"test"
+<tmdx120> h3sp4wn: Mode:Master
+<kazukisan> Melchiorr1, totem plays mp3's
+<bmckee> _christel - other than you doing it you mean :-) ?   Dunno to be honest
+<tmdx120> h3sp4wn: frequency 2.412 Ghz
+<h3sp4wn> tmdx120: Try to connect to it with the other client (It will fail on dhcp but just see whether you can see it from suse)
+<Melchiorr1> kazukisan: does amarok play other files?
+<thompa> my dvd will play fine for maybe 15 minutes then it slows down, frame rate goes down
+<kazukisan> Melchiorr1, ogg
+<bmckee> The only question now is do you have a full set of sources?  or did you comment out one you need
+<_christel> hawkind & bmckee: adept working. forever grateful. will you marry me?
+<kazukisan> Melchiorr1, and i think .wav files
+<tmdx120> h3sp4wn: no wireless networks
+<h3sp4wn> tmdx120: It is because hostapd is not started
+<Melchiorr1> kazukisan, that's weird, I've never had a problem... :S
+<kazukisan> :-/
+<tmdx120> h3sp4wn: how do I start it?
+<Melchiorr1> kazukisan: I take it you're using xine?
+<h3sp4wn> tmdx120: It seems like it is not working on amd64
+<tmdx120> h3sp4wn: hostapad -d??
+<kazukisan> Melchiorr1, not the play but its set as the engine in armorak
+<kazukisan> armarok *
+<kazukisan> what ever
+<h3sp4wn> tmdx120: The normal way to start it is hostapd -B /etc/hostapd/hostapd.conf
+<Melchiorr1> yeah ;)
+<tmdx120> h3sp4wn: but the light on my card is on for the first time
+<bmckee> _christel:  Will you ask my wife if it's ok first? :-)
+<Melchiorr1> kazukisan: you shouldn't need to, but have you restarted just in case?
+<kazukisan> Melchiorr1, that restricted formats said something about xine extra codecs package <-- i cant find that
+<h3sp4wn> tmdx120: (with sudo)
+<h3sp4wn> tmdx120: then sudo hostapd_cli
+<tmdx120> h3sp4wn: hmmmm. Ok that doesnt work
+<bmckee> You might want to visit http://www.ubuntulinux.nl/source-o-matic or something similar and see if you have everything
+<h3sp4wn> tmdx120: What doesn't ?
+<drbreen> kazukisan: you enabled universe/multiverse repos ?
+<kazukisan> drbreen, yes
+<drbreen> kazukisan: u r using breezy or dapper ?
+<Melchiorr1> kazukisan: there's a package called libexine-extracodecs, did you wan the name, or isn't it showing?
+<bmckee> I think there was info at the https://help.ubuntu.com/community/RestrictedFormats page too about which sources should be on your list
+<kazukisan> drbreen, dapper
+<drbreen> kazukisan: in dapper there is such a package
+<_christel> bmckee: fair enough. this all started when i tried to find a player for wmv files. any idea? /cos kaffeine-xine doesn't want to play even if i untick gstreamer thingie
+<drbreen> kazukisan: just search for it with synaptic or kynaptic or adept or aptitude or INSERT STUFF HERE (tm)
+<kazukisan> drbreen, i did that
+<abattoir> !info libxine-extracodecs
+<ubotu> libxine-extracodecs: the xine video/media player library, binary files. In repository multiverse, is optional. Version 1.1.1+ubuntu1-2 (dapper), package size 1148 kB, installed size 2976 kB
+<abattoir> drbreen, kazukisan ^^^^^
+<drbreen> nice that ubotu can do that
+<tmdx120> h3sp4wn: http://paste.ubuntu-nl.org/18093
+<h3sp4wn> tmdx120: kdesu kate /etc/default/hostapd and unhash #RUN_DAEMON=yes (make it RUN_DAEMON=yes)
+<drbreen> abattoir: my friend rosa had this problem with gstreamer and your fix did not work - i seem to not have this problem
+<drbreen> abattoir: do you know something that works for sure (tm)
+<h3sp4wn> tmdx120: then sudo /etc/init.d/hostapd-0.5-2006-06 start
+<drbreen> _christel: w32codecs anyone ?
+<kazukisan> http://us.archive.ubuntu.com/ubuntu/ -> main restricted universe multiverse   <-- is what i have in repos
+<abattoir> drbreen: to be honest, no, she(?) is using breezy, i told her the packages necessary for xine-engine to work, i dont know why it doesnt work for her
+<h3sp4wn> drbreen: www.debian-multimedia.org/pool (is one place you can get them from under w)
+<kazukisan> drbreen, i got it working now
+<drbreen> abattoir: (s)he is a she. yeah.
+<drbreen> kazukisan: how come ?
+<abattoir> drbreen: as for the gst-engine, i dont know what she meant by a 'lag'... i googled, but couldnt find any info on that, hence i suggested trying gst-register
+<kazukisan> drbreen, it was the backports that had multi universe enabled not just plane dapper
+<h3sp4wn> Why would anyone use gstreamer over xine ?
+<_christel> all: ok, so if i understand well i must get the extra codecs for xine from the multiverse?
+<abattoir> h3sp4wn: it was default in breezy wasnt it?
+<tmdx120> h3sp4wn: http://paste.ubuntu-nl.org/18094
+<h3sp4wn> abattoir: Yes and it didn't work very well
+<abattoir> h3sp4wn: yes, i know, that's why i suggested she use xine instead, but i guess she couldnt explain it properly :(
+<drbreen> abattoir: the lag is something like - when the music is playing, sometimes it stops for under a second
+<abattoir> drbreen: as h3sp4wn said, xine was favoured over the gstreamer engine, because of errors like that...
+<abattoir> drbreen: hence i'd ask her to try xine, and explain what problems she has with that.
+<h3sp4wn> tmdx120: pastebin /etc/hostapd/hostapd.conf
+<drbreen> abattoir: the problem is simply gxine and teh like work but amaroK simply refuses to go xine ("xine-engine cannot do stuff. fallback to gstreamer murks")
+<jeff_> Does anyone know if there's a way to broadcast my music using RSS similar to a podcast for reading on my psp? (In Linux)
+<scabootssca> after i installed the ati drivers whenever i run fglrxinfo in the counsle it shows a bunch of errors that is "could not register entrypoint"
+<dek_aik> anyone know the fix for xine-ui menu fonts being too big (dapper)
+<scabootssca> api errors
+<abattoir> drbreen: could you give the exact error message? if you can?
+<abattoir> drbreen: oh yeah, she was german wasnt she?
+<abattoir> hmmm
+<tmdx120> h3sp4wn: http://paste.ubuntu-nl.org/18096
+<h3sp4wn> tmdx120: can you run sudo hostapd_cli
+<tmdx120> h3sp4wn: "Could not connect to hostapd - re-trying"
+<dek_aik> anyone know the fix for xine-ui menu fonts being too big (dapper) ..if u right click settings--menu the fonts are taking too much space it doesnot fit to the place
+<Philip5> anyone know if there is a history logfile for apt and what installed and removed? and if so which one is it
+<jeff_> Does anyone know if there's a way to broadcast my music using RSS similar to a podcast for reading on my psp? (In Linux)
+<cox377> Hello there
+<NickPresta> @Philip5: you can check /var/log/dpkg.log
+<cox377> i'm trying to install or boot live cd onto a mid rang laptop, biut it's not loading graphis.. the mouse cursor shows but the rest is scrabled. does anyone know how to manbe boot into safe mode or something./ I'm taking to u from another kubuntu machine
+<NickPresta> @Philip5: and for some reason, I have a /var/log/dpkg.log.1 which contains information too
+<Philip5> NickPresta: tanks... log.1 is just an older one
+<NickPresta> yeah
+<NickPresta> @Philip5: or, if you're using aptitude, /var/log/aptitude
+<h3sp4wn> tmdx120: I don't know what to suggest - it works for me on x86
+<tmdx120> h3sp4wn: Its tough. I thank you for your commendable efforst though.
+<h3sp4wn> tmdx120: If you use the non 64bit version you may be able to use the drivers that come with kubuntu
+<h3sp4wn> tmdx120: Other than that atheros definately works
+<tmdx120> h3sp4wn:  is there a way to use the non 64 bit version without going to kubuntu x86?
+<h3sp4wn> tmdx120: No its the kernel that has to be 32bit
+<tmdx120> h3sp4wn: bummer. I know sometimes you can run 32 bit apps in 64 bit os.
+<h3sp4wn> tmdx120: Its the kernel modules though that don't work with 64 bit
+<tmdx120> h3sp4wn: Im learning. LOL!
+<h3sp4wn> tmdx120: ralink has new opensource drivers but I don't think they work with 64 bit either though
+<tmdx120> h3sp4wn: this is the one weakness I have experienced with Linux. Actually the second. Linux has a hard time with wireless and voice recognition.
+<tmdx120> h3sp4wn: although voice recognition is not terribly important now, wireless support is.
+<h3sp4wn> tmdx120: Even madwifi is not perfect
+<tmdx120> h3sp4wn: If I cant get this to work, what do you suggest?
+<ninHer> hola a tod@s
+<h3sp4wn> tmdx120: I would buy an atheros based card (I got one for 20) or use 32bit
+<JRH3K5> I've had problems changing the root password
+<JRH3K5> sudo passwd root doesn't actually effect the changes
+<ninHer> JRH3K5: why don't you use passwd once root ?
+<JRH3K5> Shouldn't sudo log me in as root?
+<cox377> h3sp4wn: you about mate?
+<tmdx120> h3sp4wn: I will look around. So, the atheros cards are easier right?
+<cox377> i'm trying to install kubuntu
+<cox377> and it's stopped half way through the "creating ext3 file system etc"
+<cox377> what will happen if i turn off the laptop?
+<tmdx120> h3sp4wn: Can I UNDO all this stuff that we have done?
+<gatekeeper> cox377: is this dual boot?
+<cox377> nah
+<cox377> it's the main install on a laptop
+<cox377> it's got to 97% and just stopped
+<cox377> i think it's crashed even though the cursor is still moving about
+<tmdx120> h3sp4wn: recommend any card in particular?
+<marvinalone> hi ... i'm having a weird problem on my thinkpad t60. on battery, when i log into kde, the keyboard locks up. nothing i type makes a difference. mouse still works. even when i log out the keyboard stays dead. this doesn't happen when i loh into gnome. any hints?
+<cox377> any idea gatekeeper?
+<gatekeeper> cox377: I would give it a chance to see if goes to completeion, if it looks like it's going no where boot up see what you get may need to reinstall, may also need to check your HDD is ok using badblocks
+<cox377> yeh, i'm just worried about killing the hdd gatekeeper as it's in a laptop which isn't mine
+<cox377> will it kill the hdd?
+<cox377> if it does through writting the partition?
+<tmdx120> h3sp4wn: just looked at newegg. no atheros pci cards. Anything else for a ASUS MOBO?
+<gatekeeper> cox377: well if the install has stalled you haven't got any options left, should be ok, probable stalling because all is not right with the HDD already
+<gatekeeper> cox377: at some stage you need to run badblocks to see if you have any HDD issues
+<cox377> is badblocks an application
+<gatekeeper> cox377: badblocks is a linux cli command
+<cox377> Ummm
+<jimmy__> looking for a good motherboard for a AMD 64 bit 3400+ CPU
+<cox377> sorry nebee
+<cox377> is there a command for it?
+<jimmy__> Asus has let me down 2ice in a row
+<gatekeeper> cox377: it is a command
+<cox377> cool
+<cox377> cheers
+<gatekeeper> cox377: good luck :-)
+<cox377> this laptop has got a netgear wireless usb dongle
+<jimmy__> MSI, DFI, or Gigabyte
+<cox377> whats the support on that sorta thing
+<cox377> i dont have it hear with me so i dont know the model, but are netgear alright for wireless?
+<centyx> hey. i'm having trouble w/ the sun-java5-* packages and konqueror. the java plugin isn't being found. i've run update-java-alternatives. any ideas?
+<gatekeeper> cox377: I use a netgear wireless router but my linux box is wired into it. netgear stuff is usually ok, not sure how linux friendly they are
+<centyx> firefox picks it up fine
+<cox377> I shall have to give it a go and see what hyappens
+<cox377> gatekeeper: by the way, i'm installing under graphics safe mode
+<cox377> would that make any difference?
+<tmdx120> h3sp4wn: Do you have any idea which manufacturers make cards with atheros chipsets?
+<Hawkwind> centyx: There is something you have to do for it to work in konqueror.  It's on the java page on the wiki
+<centyx> Hawkwind: ah ok, thanks
+<centyx> !java
+<ubotu> java is an object oriented programming language. To install a java compiler/interpreter on Ubuntu, look at https://help.ubuntu.com/community/Java For the runtime Sun Java install sun-java5-jre from the Multiverse repository
+<centyx> n/m
+<centyx> the wiki in the topic, i see
+<gatekeeper> cox377: don't know never done it that way, just used the standard methods, had a bad maxtor HDD gave me a problem, installed no trouble when replace by a good seagate one, there is always the alt CD, you need to do the 'self CD check' to make sure that it burnt ok
+<gatekeeper> centyx: any use: http://tuxedup.wordpress.com/2006/05/04/using-java-plugin-on-konqueror/
+<teknoprep> yo
+<teknoprep> what is the name of the default gnome wireless tool that is installed with ubuntu?
+<jeff_> does anyone here use Apache HTTP Server? I have a few newbie questions
+<gatekeeper> cox377: by 'self CD Check' I mean that one of the options on the CD allows you to check that it is ok
+<gatekeeper> jeff_: set on up for myself a while ago, what is the problem?
+<maudy> anyone from Brazil?
+<h3sp4wn> tmdx120: Actually maybe just get a cheap wireless router (didn't think of that)
+<h3sp4wn> tmdx120: http://madwifi.org/wiki/Compatibility (those are the cards supported by madwifi)
+<cox377> gatekeeper, round 2
+<centyx> gatekeeper: somehow the alternative for java had been set back to gcj. oh well. i set it back to sun and now it works. thanks.
+<^THE_HAMMER^> hey guys whats the commands for getting eggdrops is it sudo apt-get install eggdrop?
+<kazukisan> i have libdvdcss2 installd and libdvd read install but totem doesnt play my dvd
+<centyx> ^THE_HAMMER^: hey, where'd you get your nick?
+<^THE_HAMMER^> had this nick for many yrs
+<h3sp4wn> tmdx120: If you just get a cheap router you will be able to connect both computers to it (probably easiest way(
+<gatekeeper> centyx: gremlins, nasty little critters :-)
+<centyx> ^THE_HAMMER^: apt-get install eggdrop will work
+<teknoprep> am i still here?
+<centyx> ^THE_HAMMER^: did you ever see that episode of 21 Jump Street called "The Hammer" ?
+<^THE_HAMMER^> nope
+<centyx> ah
+<centyx> that was my favorite episode
+<centyx> :P
+<centyx> re teknoprep
+<teknoprep> re re
+<centyx> gar konqueror still crashes
+<^THE_HAMMER^> it doesnt seem to work there was something else i was told to addonto that command and it worked but i forget what it was...i had it on my pc this am but my pc is dead and ussing wifes now
+<centyx> i hate it when something works perfectly on one machine, but doesn't on another
+<centyx> and all the variables seem to be the same
+<gatekeeper> centyx: what's the difference?
+<gatekeeper> centyx: both clean installs?
+<centyx> gatekeeper: on my wife's box, i can go to movies.yahoo.com and view quicktime trailers in konqueror. the kmplayer plugin launches and uses xine to play them
+<centyx> gatekeeper: well, mine's not exactly a clean install, but i totally wiped my konqueror settings and started over w/ them
+<centyx> gatekeeper: and i just upgraded to the java5 packages on both of them
+<slow-motion> hallo
+<gatekeeper> centyx: both same type of hardware?
+<tmdx120> h3sp4wn: I have an old Westell 327 router/modem for a DSL. Could I use that?
+<centyx> gatekeeper: no
+<centyx> gatekeeper: but i think that's irrelevent
+<centyx> gatekeeper: both x86
+<h3sp4wn> tmdx120: It needs to be able to act as a wireless accesspoint
+<centyx> gatekeeper: so yes
+<teknoprep> re me
+<teknoprep> re re
+<gatekeeper> centyx: probable like you say, rename your knoqueror settings and copy from your wifes may be?
+<teknoprep> hmmm
+<centyx> gatekeeper: my wife's was a clean install
+<centyx> gatekeeper: mine had been mucked around w/ for a couple weeks
+<gatekeeper> centyx: could check that you both have the same codecs installed
+<kazukisan> xine: cannot find input plugin for MRL [dvd:/]
+<kazukisan> xine: input plugin cannot open MRL [dvd:/]
+<kazukisan> xine: found input plugin  : DVD Navigator  <-- anyone know why i have libdvdread and css2 installed
+<kazukisan> woops
+<centyx> gatekeeper: i think we do, but i'll double check
+<gatekeeper> centyx: don't suppose you have a backup before you updated?
+<centyx> centyx: updated to what?
+<centyx> gatekeeper: what do you mean?
+<centyx> i keep doing that
+<gatekeeper> centyx: you have a backup before this install/update of java?
+<centyx> gatekeeper: ah
+<gatekeeper> and was it working before?
+<centyx> gatekeeper: no, but i could easily put it back the way it was
+<jeff_> gatekeeper: do you know how I can use Alias?
+<centyx> gatekeeper: it wasn't working like hers is, but it was getting further than it is now ;)
+<jeff_> gatekeeper: http://httpd.apache.org/docs/2.2/mod/mod_alias.html#alias
+<centyx> gatekeeper: but hers is working w/ this version of java
+<centyx> gatekeeper: i really don't know what the deal is
+<centyx> gatekeeper: i'm grasping at straws
+<gatekeeper> Xen: look at the apache manual and Virtual Host
+<centyx> gatekeeper: it's true, my java was broken on this box. but no, i don't think that was the problem.
+<gemidjy> After unpacking 885kB disk space will be freed.
+<centyx> gatekeeper: it was just an unrelated user error.
+<centyx> i should probably take a shower and get some sleep
+<gatekeeper> centyx: I would be tempted to remove/purge java then try a reinstall
+<gatekeeper> centyx: if you are very tired I would come back to it after a sleep
+<matyi> hi room!
+<centyx> gatekeeper: yea, that's probably the wise thing to do. i woke up around 2(am) this morning and started working on my wife's box.
+<gatekeeper> centyx: I find that I am able to fix problem far more quickly, also gives you a chance to have a think about it
+<gatekeeper> centyx: all you are likely to do untill you rest is make things worse
+<gatekeeper> Xen: make sence what I said?
+<Xen> gatekeepers: just worked it out, from ubuntu guide
+<Xen> gatekeeper: thx though
+<gatekeeper> Xen: cool :-)
+<gatekeeper> Xen: have a read up on Virtual Hosts they are very usefull
+<matyi_> hi room!
+<matyi_> _
+<matyi_> :)
+<gatekeeper> matyi_: just ask your question
+<matyi_> ok, sorry
+<matyi_> How can I start wine?
+<teknoprep> WTF
+<teknoprep> why is easyununtu not installing sht?
+<abhi> can anyone tell me what are the nonfree repository of kubuntu?
+<cox377> is there anyway to save all the settings from one kubuntu machine and transfer them to another kubuntu machine?
+<cox377> i mean like everything
+<gatekeeper> cox377: use tar to backup /home then restore
+<abhi> pls anyone............
+<gatekeeper> abhi: they have certain codecs etc stuff that can not be distributed for legal reasons
+<timonator> and also /etc
+<gatekeeper> timonator: what is it you want to install?
+<timonator> not me :o
+<abhi> no no. what is the address of that non free repository?
+<teknoprep> nvm i fixed that shit
+<teknoprep> stupid easyubuntu script
+<gatekeeper> abhi: this will give you all the repos you want http://ubuntuguide.org/wiki/Dapper#How_to_add_extra_repositories
+<gatekeeper> timonator: sorry
+<abhi> gatekeeper; thanks .
+<timonator> ;)
+<gatekeeper> abhi: yw :-) if you don't have gedit I think you can use other editors or apt-get install gedit
+<gatekeeper> teknoprep: what pacakage(s) do you want to install?
+<teknoprep> Package w32codecs is not available, but is referred to by another package.
+<teknoprep> This may mean that the package is missing, has been obsoleted, or
+<teknoprep> is only available from another source
+<teknoprep> EasyUbuntu is finished. You may copy this log for debugging purposes.
+<abhi> gatekeeper: should I replace all the previous repository with this one or to add at the end.
+<gatekeeper> abhi: as the instructions say, first create a backup, then *replace*
+<gatekeeper> don't add to the end
+<gatekeeper> teknoprep: your problem is probable caused by not have all the repos enabled so have a look at this: http://ubuntuguide.org/wiki/Dapper#How_to_add_extra_repositories
+<abhi> if i want to download updates from kubuntu, then what i should do.
+<gatekeeper> Xen: you winning?
+<Xen> gatekeeper: winning?
+<gatekeeper> Xen: got things the way you want them
+<gatekeeper> abhi: not sure I understand exactly what you are asking?
+<abhi> gatekeeper: suppose i want to update from official site.
+<teknoprep> gatekeeper: that didn't fix ti
+<gatekeeper> abhi: just do an update you using GUI or CLI pacakage management?
+<Xen> gatekeeper: just trying to figure out how to create an RSS audio stream
+<Xen> gatekeeper: trying to setup my music into a feed for my psp
+<BKaj> DVD::RIP needs rar-2.80 ...googled but can't find it ...anyone know where I can find it ?
+<teknoprep> is deb http://packages.freecontrib.org/ubuntu/plf dapper free non-free ---> down ?
+<h3sp4wn> BKaj: Buy it from rarlab
+<gatekeeper> Xen: when you have figured that out you will know more than me, I only used for a bit of Php programming
+<BKaj> k
+<gatekeeper> teknoprep: you just missing one package?
+<teknoprep> win32codec
+<abhi> gatekeeper: suppose I am using repository from :http://ubuntuguide.org/wiki/Dapper#How_to_add_extra_repositories. I thing it doesn't contain any official sites.If i use cli or gui how can that search for official updates?
+<h3sp4wn> teknoprep: get it from debian-multimedia
+<teknoprep> wtf is debian-multimedia
+<gatekeeper> abhi: I use synaptic, if there are any updates then the option appears in the list on the left and you can see what needs updating, you could also install the update-manager which will give you the updates when they are ready for download
+<gatekeeper> teknoprep: apt-get install win32codec
+<teknoprep> omfg
+<teknoprep> i am sure that'll work
+<gatekeeper> teknoprep: if you have updated your repos from that link then that is all you need
+<teknoprep> that one repo is not working
+<abhi> gatekeeper: synaptic is great but I am in kubuntu with adept.
+<h3sp4wn> teknoprep: So get it from debian-multimedia
+<teknoprep> http://packages.freecontrib.org/ubuntu/plf dapper free non-free
+<teknoprep> deb-src http://packages.freecontrib.org/ubuntu/plf dapper free non-free
+<gatekeeper> teknoprep: which one?
+<teknoprep> down
+<gatekeeper> teknoprep: think it has been like that for a while
+<h3sp4wn> Or get the codecs from windows
+<teknoprep> OMFG
+<teknoprep> h3sp4wn: WTF is debian-multimedia
+<teknoprep> i already asked
+<gatekeeper> abhi: I am also using kubuntu apt-get install synaptic :-)
+<h3sp4wn> 246.kielnet.net).
+<h3sp4wn> teknoprep: The repo which plf gets w32codecs form man are you incapable of using google ?
+<abhi> thanks.
+<teknoprep> nope already googled debian-multimedia
+<abhi> thanks to gatekeeper.
+<teknoprep> comes up with a shit ton of crap
+<teknoprep> http://www.debian-multimedia.org/faq.html
+<h3sp4wn> Thats the site you need
+<gatekeeper> abhi: yw :-) don't like Adept much and don't really use so I can't tell you much about it
+<teknoprep> yeah too bad i don't know which deb to use.. becase they are all for debian
+<teknoprep> wtf
+<h3sp4wn> w32codecs is just aload of windows dll's
+<h3sp4wn> They are not even linux programs
+<teknoprep> yup
+<abhi> gatekeeper: i do so. Adept is far behind synaptic.
+<vlosdev> teknoprep: yo!
+<h3sp4wn> So why would it matter whether it was for debian or not ?
+<teknoprep> vlosdev: yoyo
+<teknoprep> so the idiots in here... are tellling me to follow this faq
+<teknoprep> i follow the faq
+<teknoprep> and teh faq is f'n wrong
+<teknoprep> why
+<teknoprep> beucase shit is down
+<h3sp4wn> !language
+<teknoprep> then they tell me to hey.. use some debian idiot way of doing things
+<teknoprep> oh ok
+<ubotu> Please watch your language and keep this channel family friendly.
+<teknoprep> gfys
+<teknoprep> then... i am told maby i should just get them from a windows machine
+<teknoprep> even tho the only f'n problem is a down repo
+<teknoprep> hmmm
+<teknoprep> WTF
+<teknoprep> you idiots
+<h3sp4wn> teknoprep: try thinking ....
+<teknoprep> if i wanted to think i would go back into work
+<gatekeeper> abhi: first job I do after a fresh install of kubuntu is install synaptic, then use that and the cli
+<abhi> nice.
+<abhi> why ubuntu is so popular than kubuntu while kde more popular than gnome?
+<slow-motion> re
+<FlatusFluens> hi
+<Kwukki> abhi : because the kubuntu cd's were not avaible at shipit :-)
+<deep_> Hello
+<h3sp4wn> Kwukki: You could get either
+<FlatusFluens> could anyone here tell me page to download a driver for my network-card?
+<Kwukki> yes, but this is the first time
+<abhi> no. today I have recieved my kubuntu cd.
+<Kwukki> there weren't breezy kubuntu cd's
+<teknoprep> OMFG
+<abhi> ooooooooooh.
+<teknoprep> my ass hurts becuase kubuntu is ****ing me in it with a big fat ****
+<gatekeeper> h3sp4wn: what is that url again if folkss want w32codecs?
+<teknoprep> wget -c http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20060611-0.0_i386.deb
+<teknoprep> sudo dpkg -i w32codecs_20060611-0.0_i386.deb
+<teknoprep> do that
+<teknoprep> !win32codecs
+<ubotu> I know nothing about win32codecs - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<teknoprep> !win32codec
+<ubotu> I know nothing about win32codec - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<teknoprep> hmm
+<teknoprep> stupid bot
+<JRH3K5> teknoprep - go to ubuntuguide.org/wiki
+<JRH3K5> They've got a list of repositories there
+<ThunderStruck> !w32codecs
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<teknoprep> yeah i alrady fixed it
+<JRH3K5> Add them to your list; one of them has the win32 codecs
+<JRH3K5> Oh.  Okay.
+<gatekeeper> thanx :-) teknoprep
+<teknoprep> np
+<gambix> hi to all :)
+<jontec> I'm having a problem finding the 'libxine-extracodecs' that I need to play mp3s in AmaroK
+<gambix> i need to mount an udf mini dvd disc (sony dvd style), i've installed the udf-tools and my fstab have the udf entry... anysuggestion ? because it don't work for me :(
+<JRH3K5> K-Pax is such a brilliant movie
+<JRH3K5> And yet, so sad.
+<abattoir> jontec: make sure you have enabled the universe and multiverse repositories
+<abattoir> !universe
+<ubotu> The packages in Ubuntu are divided into several sections. See http://www.ubuntu.com/ubuntu/components https://help.ubuntu.com/community/Repositories and !easysource
+<teknoprep> ok easy question
+<jontec> I have, enabled all of the repositories I can
+<teknoprep> why does amarok open up a 2nd time? when i click another mp3 ?
+<abattoir> jontec: including universe and multiverse?
+<jontec> I found the libmad0, but the libxine-extracodecs is not there
+<jontec> yes
+<abattoir> jontec: breezy or dapper?
+<jontec> dapper
+<abattoir> jontec: if you are using dapper, then it should be there.
+<jontec> when I search libxine....
+<abattoir> jontec: did you refresh the packages list after enabling the repos?
+<abattoir> 'Fetch Updates'
+<jontec> I see libxine-dev, libxine-main1, libxinerama1, and libxinerama1-dbg
+<jontec> yes
+<jontec> same result, I just fetched them all again, but it's still not in the list
+<abattoir> jontec: which are all 'main' packages, i still am not sure if you have enabled them properly
+<abattoir> jontec: could you paste your /etc/apt/sources.list file ?
+<abattoir> !paste
+<ubotu> pastebin is a service to post large texts so you don't flood the channel. The Ubuntu pastebin is at http://paste.ubuntu-nl.org (you can always find it in the channel topic, among other useful things)
+<jontec> yes, I think
+<jontec> where do I upload it?
+<abattoir> !paste
+<ubotu> pastebin is a service to post large texts so you don't flood the channel. The Ubuntu pastebin is at http://paste.ubuntu-nl.org (you can always find it in the channel topic, among other useful things)
+<abattoir> jontec: after you click submit, it'd give you a url... pls. give that here
+<jontec> okay, one sec
+<alex_ndc> hi guys, I have a problem I cannot solve ... my DNS servers configured through DHCP work like shit ... how can configure (K)ubuntu so I can use other DNS servers ?
+<jontec> http://paste.ubuntu-nl.org/18104
+<_hybrid> hello
+<_hybrid> <<<linux noob
+<_hybrid> how do u upgrade distros
+<abattoir> jontec: ok, could you try 'sudo apt-get update' in the command line?
+<jontec> yes
+<abattoir> jontec: after running that command, do you see any mention of universe/multiverse?
+<jontec> yes, it's at the end of almost all of them, if that's what you mean
+<jontec> is this normal? : Some index files failed to download, they have been ignored, or old ones used instead.
+<abattoir> jontec: could you now try 'sudo apt-get install libxine-extracodecs'
+<abattoir> jontec: nope... the latest package lists are not being downloaded, hence you dont see multiverse/universe packages
+<jontec> Package libxine-extracodecs is not available, but is referred to by another package.
+<jontec> This may mean that the package is missing, has been obsoleted, or
+<jontec> is only available from another source
+<jontec> E: Package libxine-extracodecs has no installation candidate
+<abattoir> jontec: could you please paste the output of 'sudo apt-get update' @ pastebin ?
+<jontec> http://paste.ubuntu-nl.org/18105
+<abattoir> jontec: my mistake, you dont seem to have mutliverse enabled, only universe
+<jontec> I have no idea what that means, but okay, how do I fix that?
+<abattoir> jontec: open up adept/ open /etc/apt/sources.list
+<abattoir> jontec: i guess adept is the easier way
+<jontec> Do you mean open the file from inside adept or navigate to the file?
+<abattoir> jontec: Adept->Manage Repositories
+<jontec> gotcha, okay
+<abattoir> jontec: now double click the first line
+<jontec> okay
+<abattoir> jontec: in the components section, add multiverse, next to main and restricted
+<abattoir> jontec: so it should read 'main restricted multiverse'
+<abattoir> w/o the quotes ofcourse
+<abattoir> jontec: done?
+<jontec> okay, but whenever I open Konversation or deselect Adept, it disappears, including when I press enter
+<jontec> yes
+<abattoir> jontec: what disappears? adept?
+<jontec> what I typed, sorry
+<abattoir> oh, ok, so now it is there?
+<abhi> can anyone tell me how assign the window botton of my keyboard to the kde menu?
+<jontec> yeah, I think I just saw what you mean, was it supposed to add multiverse to the end of the us.archive.ubuntu.com/ubuntu?
+<h3sp4wn> How do you enable composite in kde ? is it worth it ?
+<abattoir> jontec: no, next to 'main restricted'
+<LjL> h3sp4wn: it make it crashier for me. what you can, that i could see, was shadows and transparency
+<abattoir> jontec: in the 'Components' section
+<LjL> s/can/gain/
+<abhi> pls anyone?
+<LjL> h3sp4wn: to enable it you need to add the relevant option (don't remember it offhand) to xorg.conf, and then go somewhere in the KDE settings. i can try to be a little more specific if you really want to try it
+<jontec> okay, NOW I see what you mean, not on the very first line but the first line with an address in it
+<abattoir> abhi: Kcontrol->Regional &.....->Keyboard Shortcuts->Global Shortcuts->Panel->Popup launch menu
+<jontec> yes, it's there
+<h3sp4wn> LjL: I have just enabled it in xorg.conf
+<h3sp4wn> LjL: But can't find where it is in kcontrol
+<abattoir> jontec: the first line is not the one w/ the url?
+<abattoir> jontec: ok, anyways, make sure the 'Distribution' is dapper
+<LjL> h3sp4wn: hold on
+<jontec> okay, it is
+<abattoir> jontec: it should be similar to the entry below for dapper/backports, expect w/o universe..
+<abattoir> jontec: now click apply
+<abattoir> and then close
+<abattoir> jontec: and then Fetch Updates
+<h3sp4wn> LjL: I can never find stuff in gui's
+<abattoir> jontec: you should see libxine-extracodecs
+<LjL> h3sp4wn: kcontrol / desktop window behavior / transparency
+<abattoir> abhi: got it?
+<LjL> h3sp4wn: you're not alone among KDE users
+<h3sp4wn> LjL: I didn't think I was
+<abhi> abattorir: thanks can't find the global shortcut.
+<LjL> h3sp4wn: kcontrol is basically designed to make it near impossible to find stuff :)
+<abattoir> abhi: it would be marked as Alt+F1, just change it to the windows key
+<jontec> yes, it's there
+<abattoir> jontec: cool :)
+<abhi> abattorir: ok. thanks
+<jontec> thanks!
+<jontec> so from here I just install it as normal?
+<abattoir> jontec: yes
+<abattoir> abhi: Global Shortcuts is a tab
+<abattoir> should be selected by default
+<teknoprep> kick me from here also thunder
+<teknoprep> please
+<signum_> hi
+<teknoprep> is there a good pptp dialer for kde?
+<wolfmanz> is there any reason the the console stops taking input after a certain amount of time idle?
+<LjL> teknoprep: well "apt-cache search pptp" does show up a KDE app that seems to be related to PPTP
+<LjL> though i'm not really familiar with that protocol at all
+<LjL> teknoprep: oh nevermind
+<teknoprep> yeah thats pppd
+<teknoprep> i already installed it
+<LjL> teknoprep: the description says that "PPTP [and others]  are planned for a later release"
+<teknoprep> its not what i want
+<LjL> teknoprep: no, i meant KNet
+<teknoprep> knet
+<teknoprep> yeah
+<teknoprep> knet - The Knet is a frontend to pppd.
+<teknoprep> only pppd
+<teknoprep> pptp is a vpn tunnel
+<teknoprep> over ppp
+<LjL> teknoprep: yeah, but it showed up from a "serach pptp" command
+<teknoprep> using ip not a dialer
+<teknoprep> yeah becuase ppp and pptp are similar protocols
+<abhi> is there any app. to auto shutdown the kubuntu?
+<LjL> teknoprep: so i assumed it could handle PPTP too. but that's just planned, and not yet implemented
+<abhi> can't find any in google.
+<LjL> abhi: "apt-cache show kshutdown"; i think it can do that
+<abhi> LjL :going for it.
+<abhi> thanks LjL. it is.
+<teknoprep> how is it all you guys can be worried about is language?
+<teknoprep> i mean honestly?
+<LjL> teknoprep: it's part of the ubuntu policy of welcoming people of all ages and cultures. you may find it a bit extreme, and perhaps it is, but at least it conveys a point
+<teknoprep> ?
+<teknoprep> what point
+<signum_> hi
+<LjL> teknoprep: and since it's not really that hard of a rule to respect, we just respect it
+<teknoprep> that you are moving backwards in the idea of development
+<teknoprep> by taking an emotion towards a word
+<teknoprep> ?
+<LjL> teknoprep: the point that ubuntu welcomes people of all ages and cultures
+<teknoprep> ok
+<teknoprep> understood
+<teknoprep> but still backwards
+<signum_> How can I connect with other Linux maschine by nullmodem cable?
+<LjL> teknoprep: we're still offtopic here anyway. can we discuss this in, well i suppose #kubuntu-offtopic
+<teknoprep> naw i am banned w0ot
+<teknoprep> trying to get banned here also
+<LjL> teknoprep: not from the #k
+<teknoprep> BAN ME
+<teknoprep> i need to get off irc
+<teknoprep> and i need a reason
+<teknoprep> lol
+<teknoprep> i have work to do
+<LjL> teknoprep: you need someone else's goodwill, i'm not an op :)
+<serge> teknoprep, I recommend the "/quit" command
+<teknoprep> yeah but then i just come back
+<teknoprep> serge not allowed back.. won't come back
+<LjL> teknoprep: can i DoS you? :-P
+<teknoprep> serge: no you can't
+<LjL> ok then i'll just DoS my own server
+<teknoprep> i need to reinstall snort on my server with snort-inline
+<teknoprep> brb
+<serge> LjL, wow, have fun with that :P
+<signum_> is there ICQ for Linux?
+<teknoprep> yeah it won't happen
+<teknoprep> i have my server on lockdown
+<teknoprep> my firewall that is
+<dr_willis> there are IM clients out for linux that can do ICQ
+<dr_willis> not sure if ICQ has an official port for linux.
+<teknoprep> you could ddos me if you are on freenode and use its server to ddos me.. but i doubt you are
+<teknoprep> since i have an open connection with them
+<wolfmanz> if its a big enough DoS attack your firewall wont do anything at all
+<teknoprep> but not just some random ping
+<serge> ^^
+<teknoprep> wolfmanz ? yeah ok.. try it
+<teknoprep> wolfmanz: you do realize how a ddos works right?
+<wolfmanz> if i had a bot not of about 10,000 machine i would show you
+<wolfmanz> not = net
+<teknoprep> wolfmanz: yeah but if you throw a baseball at a brick wall it doesn nothing
+<Lynoure> hmmm
+<teknoprep> wolfmanz: throw 1000000 baseballs at a brickwall it does nothing
+<BKaj> how do I get this to work , trying to install extracted file (tar.gz)
+<BKaj> cannot execute binary file
+<DBO> teknoprep, yeah, but you cant get any baseballs out either
+<LjL> BKaj: depends. is it source or binary?
+<lezombi> i need help setting up a belkin F5D7000 wireless card
+<BKaj> yup
+<teknoprep> wolfmanz: the brickwall needs a whole to get throough or it won't work
+<LjL> BKaj: what is it?
+<dr_willis> BKaj,  what file?
+<lezombi> does anyone have a link or guide they can give me
+<wolfmanz> tell that to all these massive sites that get taken down by DoS attacks all the time
+<LjL> wolfmanz: but those accept inbound connections, being servers
+<teknoprep> wolfmanz: they are taken down over other ddos' becuase there port 80 is open
+<teknoprep> wolfmanz: and other ports
+<BKaj> RAR file
+<teknoprep> wolfmanz: you ddos the service with overflow of traffic.. you can't just throw a shit ton of bandwidth at an unopen port
+<LjL> BKaj: a RAR file? a RAR file is another archive. you need unrar to extract it before you can do anything else with it
+<teknoprep> [GuS] : you can use IDS to block DDOS now.
+<teknoprep> [GuS] : i mean IPS
+<teknoprep> [GuS] : which is just an ids on crack
+<serge> sorry, but what is IPS?
+<Philip5> BKaj: so just: sudo apt-get install unrar
+<BKaj> it is RAR , it's in the form of a tar.gz  file (RAR version 3.60)
+<LjL> BKaj: ooh
+<Philip5> heya arso
+<BKaj> hehe
+<LjL> brandon__: sorry i misunderstood you completely :D
+<LjL> i mean BKaj, not brandon__
+<arso> Philip5:  hey
+<LjL> brandon__: but are you aware there *is* a RAR ready in the repos?
+<LjL> !info unrar
+<ubotu> unrar: Unarchiver for .rar files (non-free version). In repository multiverse, is optional. Version 1:3.5.4-0.1 (dapper), package size 84 kB, installed size 216 kB
+<teknoprep> serge: ips = intrusion prevention system
+<Philip5> arso: does everything work as it should?
+<LjL> BKaj: err, i mean you again. sorry brandon__...
+<BKaj> oh ok  thx
+<lezombi> can someone help me setup my belkin f5d7000 network card
+<wolfmanz> By the way you would do a DoS attack on a machine that did allow incomming requests thats the whole idea of that
+<teknoprep> serge: it takes an IDS alert per say.. and turns it into a firewall rule... so if an attacker attempts to break in on ports 80 from sed ip... the ids tells the firewall to block port 80 inc when the ip = blah
+<teknoprep> wolfmanz: yeah but we said my machine
+<teknoprep> wolfmanz: i don't have any holes
+<LjL> BKaj: if you can't find it with "apt-cache show unrar", then you need to enabled the Multiverse repository. otherwise, you can just install it with synaptic or "sudo aptitude install unrar" (and "sudo aptitude install rar" if you want the archiver too and not just the extractor)
+<teknoprep> wolfmanz: anything else you wanna add to you flawless idea of DDOS ?
+<BKaj> ok LjL, gotcha
+<teknoprep> wolfmanz: i do this for banks all day long.. you can argue with me all you want.. but you are never going to tell me something about security i don't already know
+<teknoprep> wolfmanz: i have been consulting for banks and law-firms for like 10 years now
+<teknoprep> wolfmanz: comcast ATT verzion
+<teknoprep> [GuS] : w0ot
+<wolfmanz> so your telling me a web server that is setup to take incomming requests if set up properly can not be DoS?
+<BKaj> found it LjL, installed
+<teknoprep> wolfmanz: i never said that
+<LjL> BKaj, remember that....
+<LjL> !packages
+<ubotu> You can browse and search for Ubuntu packages using !Synaptic, !Adept, apt-cache, the "apt:/" URL in KDE, or online at http://packages.ubuntu.com  -  Ubuntu has about 18000 packages available, so please *search* for an official package before installing things in awkward ways!
+<teknoprep> wolfmanz: you need other security implementations to stop a DDOS but it can be done
+<teknoprep> wolfmanz: there are many forms of DDOS something also.. remember the old SYN attacks
+<wolfmanz> well its funny you say that i have heard security experts say the exact oppisite of what your saying and that is if its a big enough attack it does not matter how your setup your screwed
+<teknoprep> wolfmanz: becuase of kernel os' now stoping syn floods which you could do from a dial up account.. they used to be just called DOS attacks
+<teknoprep> wolfmanz: once that was fixed they came up with the idea of DDOS
+<BKaj> LjL: I've got synaptic setup with the so called unsupported repos
+<teknoprep> wolfmanz: big enough attack?
+<teknoprep> wolfmanz: yeah sounds like a good security expert talking there
+<wolfmanz> ya in the order of a few thousand bot machines
+<LjL> teknoprep: well, i'm not into the topic of security, but i can say that technically you can't guarantee that something as big as a firewall (or just any TCP/IP stack configured to accept nothing inbound) is not free from bugs, which could be triggered by specific packets
+<teknoprep> wolfmanz: now your just picking up numbers our of your head
+<wolfmanz> hold let me get you link i believe you know steve gibson from GRC?
+<LjL> teknoprep: you can go pretty near to guaranteing that, but i don't you actually can guarantee it
+<teknoprep> ljl: that is a differnt story.. that is not ddos.. that is bugs... we are talking about DDOS
+<LjL> BKaj: you mean universe and multiverse?
+<LjL> teknoprep: ok
+<teknoprep> LjL: now you are just trying to back up your DDOS flaw with another known fact that nothing is really secure
+<teknoprep> LjL: missions impossible 1 taught us that
+<LjL> teknoprep: hey, wait, i just chipped in, i'm not backing up any DDOS flaw of mine :o)
+<teknoprep> dr_willis what about the guy that comes into your home.. turns it back on and steals your info?
+<teknoprep> dr_willis: that is why BANK data sites are secured like fort knox
+<LjL> a secure computer is no computer
+<LjL> :P
+<dr_willis> teknoprep,  thats why i leave a FAKE computer out for him! :)
+<teknoprep> LjL: is correct
+<abhi> i have added all the nonfree repository. still can't able to install win32codec.
+<teknoprep> dr_willis: lol
+<dr_willis> the real one is embeded in the Rottweiler.
+<dr_willis> :)
+<wolfmanz> http://www.twit.tv/SN
+<teknoprep> !w32codecs
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<teknoprep> wget -c http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20060611-0.0_i386.deb
+<teknoprep> sudo dpkg -i w32codecs_20060611-0.0_i386.deb
+<lezombi> i need help with my network card!
+<wolfmanz> ok go there and listen to that pod cast he talks about DoS atttacks there
+<teknoprep> LjL: even with all my swearing i help ppl
+<teknoprep> LjL: so go F yourselves... all of you
+<abhi> teknprep: w32codecs not working
+<teknoprep> abhi: wget -c http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20060611-0.0_i386.deb
+<dr_willis> !w32codec
+<ubotu> I know nothing about w32codec - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<dr_willis> !w32codecs
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<teknoprep> abhi: sudo dpkg -i w32codecs_20060611-0.0_i386.
+<abhi> ok.
+<dr_willis> dpkg -i w32*
+<dr_willis> :)
+<teknoprep> abhi: that work?
+<slow-motion> bye
+<abhi> going for it.
+<teknoprep> i was retina scanned to work for bank of new york
+<teknoprep> helped setup there security for there new replication data center for mainframe and all there other servers in Nashville
+<LjL> teknoprep: still trying to get banned? can't you just make a conscious effort and leave to go back to what you should be doing? :-P
+<abhi> teknoprep: now downloading the file
+<teknoprep> had to be retina scanned just to go from room to room
+<teknoprep> LjL: negative
+<LjL> teknoprep: and again you should not try to irritate *me*, as i said i'm not an op, so no free lunch :-P
+<teknoprep> LjL: gd it
+<teknoprep> LjL: op yourself
+<LjL> uh, the w32codecs info seems to have disappeared from ubotu
+<Seveas> !w32codecs
+<ubotu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats  -  See also http://help.ubuntu.com/ubuntu/desktopguide/C/common-tasks-chap.html  -  But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<Seveas> that links to w32codecs afaik
+<LjL> Seveas: i know but i remembered there was a more direct factoid. perhaps i just remember wrong tho
+<timonator> free formats \o/
+<iJeff> !non-free
+<ubotu> I know nothing about non-free - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<h3sp4wn> or wget -c http://www.debian-multimedia.org/pool/main/w/w32codecs/w32codecs_20060611-0.0_i386.deb
+<gnomefreak> !ops
+<ubotu> Help! Riddell, uniq, Mez, jpatrick, seth_k, apokryphos, nalioth, Hobbsee, robotgeek, or imbrandon
+<teknoprep> omfg
+<teknoprep> do not install ubuntu-desktop if you use kubuntu
+<teknoprep> w0ot
+<DBO> you can install ubuntu-desktop if you wish to use gnome
+<teknoprep> no
+<Riddell> gnomefreak: hmm?
+<teknoprep> it really skrews up your mixing
+<teknoprep> like i can play 3000 sounds at once
+<teknoprep> once i installed ubuntu-desktop that went out the window
+<gnomefreak> teknoprep: being very disruptive and not following coc or guidelines
+<ubuntu> hello, can anybody help me around at HDD install process. Ubuntu amd6.06 only is available.
+<teknoprep> or not
+<gnomefreak> he already made +b in 2 channels
+<teknoprep> gnomefreak: no just one
+<LjL> and he actually wants to be banned
+<AV1611> now I'm AV1611
+<teknoprep> gnomefreak: you set the other just based on what i did in a different chanel
+<gnomefreak> teknoprep: #ubuntu adn #ubuntu+1
+<teknoprep> LjL: well i just finished what i needed to do.. so i don't wanna be banned anymore
+<teknoprep> gnomefreak: i just joined that second one.. not banned
+<gnomefreak> nmot +1 sorry it was offtoic and i unbanned you there
+<teknoprep> cheers
+<gnomefreak> ty riddell
+<_JP> is there any way to make Konqueror's setting "Tools->HTML Settings->Java" retain it's checkstate after restart?
+<Riddell> gnomefreak: I cede judgement :)
+<LjL> teknoprep, in that case, if you don't like the "no swearing" policy, you could probably make an effort to follow it anyway and not be banned, after all it's not such a big sacrifice.
+<teknoprep> LjL: have i swore here?
+<gnomefreak> :)
+<wolfmanz> not yet so start now lol
+<teknoprep> LjL: only a few wtf's and f'n's here
+<LjL> teknoprep: no
+<teknoprep> LjL: no full swears tho
+<teknoprep> LjL:  gotta keep it on the DL
+<teknoprep> wtf
+<Lynoure> I think the intent was quite clear in some cases...
+<teknoprep> so i join offtopic and they ban me
+<teknoprep> bleh
+<teknoprep> so retarded
+<gnomefreak> teknoprep: now enough please stay on topic
+<teknoprep> see i am loved in the ##linux channel
+<teknoprep> i am off
+<BKaj> LjL: ..yeah, I was away for a few mins ...have the universe and multiuniverse all enabled
+<BKaj> automatix and easyubuntu as well, i think that covers all the bases :)
+<LjL> BKaj: which is fine, for the record, as long as you know what they are (i.e. why they're not the same thing as "main"). i just wanted to point out that ubuntu has quite a few packages, and often you don't need to hunt and download stuff from sites --- many people don't realize that
+<LjL> argh, automatix
+<teknoprep> yeah gfreak
+<teknoprep> you can remove my ban now
+<teknoprep> ok
+<teknoprep> ty
+<BKaj> well my search was wrong ...looked for RAR instead of unrar
+<abhi> what is the package name for mysql?
+<LjL> BKaj: well that will work too (i just tried "apt-cache search rar"), it's just that it shows a *little* too many results to be easily parsable ;-)
+<LjL> !info mysql-server
+<ubotu> mysql-server: mysql database server (current version). In repository main, is optional. Version 5.0.22-0ubuntu6.06 (dapper), package size 35 kB, installed size 64 kB
+<BKaj> yeah LjL, IC what you mean :)
+<abhi> mysql-server not working
+<crazy_penguin> i'm off. i wish to everyone a good night. sleep well! :)
+<BKaj> i find dvd:rip somewhat confusing ...looks like it was written by monks in the 1200;s or something :)
+<SpAwN> dvd:rip works great
+<SpAwN> and is easy to use
+<BKaj> for you maybe ...that doesn't help me
+<Skroten> dvd:rip?
+<BKaj> yeah
+<SpAwN> BKaj, u put in dvd hit read.....pick tatle u want........then select what codec then it does the rest
+<^THE_HAMMER^> anyone here help  me with over writing a folder in usr/share?
+<larson9999> linux rocks!
+<SpAwN> *tatle=title
+<BKaj> well SpAwN, what about making dvds from video files ?
+<^THE_HAMMER^> i wanna replace folder in usr/share how to do this pls?
+<SpAwN> BKaj, afaik it doesnt do that
+<BKaj> burning dvd is easy using k3b
+<SpAwN> BKaj, its used to RIP dvds
+<Skroten> KDE should have a videodvd:/-slave making it as easy as audiocd:/ to rip video ;)
+<BKaj> ok thx ...I can copy dvds np
+<^THE_HAMMER^> this is pissin me off i try to drag desktop folder to usr/share and says i dont have permission why not i own the dam thing
+<SpAwN> what a good other browser for linux....firefox is acting weird.......i somtimes wont goto google.com and a few other sites.......
+<SpAwN> i  tried to install opera...but didnt find it in a repo
+<BKaj> wish there was a proggie like nero express ...decodes and burns all manner of video to play on stand alone dvdplayers
+<Skroten> I like konqueror
+<Skroten> Native KDE web browser
+<SpAwN> BKaj, tovid
+<SpAwN> BKaj, its the best
+<SpAwN> !tovid
+<ubotu> I know nothing about tovid - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<BKaj> is it in the repos SpAwN?
+<SpAwN> BKaj, not sure
+<SpAwN> BKaj, just dl from their site
+<BKaj> checking
+<gnomefreak> ^THE_HAMMER^: cd Desktop   than sudo cp file /usr/share/wherever you want it just finish the last part of the file palce
+<SpAwN> BKaj, that will take virtualy any video and tunr  it in to what ever u want...vcd/svcd,dvd,kvcd
+<proudfoot> hi
+<SonicChao> proudfoot: Hi
+<proudfoot> I'm trying to install a program, but when i run configure, it says that gcc cannot create executables
+<proudfoot> checking for gcc... gcc
+<proudfoot> checking for C compiler default output file name... configure: error: C compiler cannot create executables
+<knapper> What is a decent working panel (ie osx panel, etc) for superkaramba
+<^THE_HAMMER^> not letting me cd desktop says command not found
+<^THE_HAMMER^> bash: cd: desktop: No such file or directory
+<fred> !build-essential
+<^THE_HAMMER^> wtf heh
+<ubotu> Compiling software from source? Read the tips at https://wiki.ubuntu.com/CompilingSoftware (But remember to search for a pre-built package first: not all !repositories are enabled by default!)
+<fred> proudfoot: follow the previous link
+<proudfoot> thanks
+<fred> the_hammer, Desktop not desktop
+<fred> do "cd ~/Desktop"
+<^THE_HAMMER^> ahh ok
+<^THE_HAMMER^> sorry
+<fred> cut/paste are better not to do typo
+<^THE_HAMMER^> ok i typed sudo cp file /usr/share/eggdrop and says cp: cannot stat `file': No such file or directory
+<^THE_HAMMER^> but its on desktop eggdrop
+<fred> the_hammer, ok first, it would be nice not to have ^ at the begining of your nick, it mess with my tab completion :)
+<larson9999> what do you guys this of this: http://captorials.com
+<fred> the_hammer, then it is "cp /the/path/to/YOUR/file /usr/share/eggdrop" not file in itself
+<THE_HAMMER> this better :)
+<fred> thanks for the nick
+<fred> THE_HAMMER: i think it would be easier for you to learn how to copy file thru konqueror, no typo or command line to type there:)
+<fred> larson9999: they did a kde apps very recently
+<fred> larson9999: have you tryed ?
+<fred> THE_HAMMER: http://www.eleli.de/knoppix/docs/tutorial/english/konqueror.html <- to learn how to copy file with konqueror
+<THE_HAMMER> im lost its just eggdrop to usr
+<fred> http://sourceforge.net/projects/screenkast <- this apps larson9999
+<THE_HAMMER> why does it just not allow me to copy/paste the folder from desktop to location
+<THE_HAMMER> be a heck of alot easyer
+<fred> right maangemetn
+<fred> you need to be root to write in /usr
+<THE_HAMMER> this is stupid says this cp: cannot stat `/desktop/eggdrop': No such file or directory
+<fred> you should focus more :)
+<THE_HAMMER> is there a work around
+<fred> your goal will be reached faster :)
+<fred> even a fix :)
+<fred> do read what people tell you :)
+<BKaj> Ok SpAwN, I've got tovid downloaded and extracted to my /home folder..now how do I installit , these tar.gz files are so confusing cuz being used to windows i automaticlly think there's an installer file
+<fred> !build-essential
+<ubotu> Compiling software from source? Read the tips at https://wiki.ubuntu.com/CompilingSoftware (But remember to search for a pre-built package first: not all !repositories are enabled by default!)
+<fred> BKaj: the previous link is for you
+<THE_HAMMER> whats the url to the copy/paste link thing
+<THE_HAMMER> !paste
+<ubotu> pastebin is a service to post large texts so you don't flood the channel. The Ubuntu pastebin is at http://paste.ubuntu-nl.org (you can always find it in the channel topic, among other useful things)
+<THE_HAMMER> what  am i doing wrong http://paste.ubuntu-nl.org/18110
+<JRH3K5> What should I use to set up a streaming audio server?
+<JRH3K5> !streaming audio
+<ubotu> I know nothing about streaming audio - try searching http://bots.ubuntulinux.nl/factoids.cgi?db=ubuntu
+<knapper> Whats a good panel replacement for Superkaramba?
+<LjL> JRH3K5: try perhaps "apt-cache search streaming server", seems to give some interesting results
+<LjL> JRH3K5: like say icecast and peercast
+<JRH3K5> Thanks
+<JRH3K5> Another question:  if I am the only one streaming music from my machine, do you think my service provider will notice?
+<JRH3K5> To the point of going "wtf high bandwith"?
+<fred> JRH3K5: do google icecast. it is soft for that
+<JRH3K5> "soft"?
+<Skroten> Why would your ISP care what you use your bandwidth for?
+<JRH3K5> Because if I use too much of it, they may feel that I need to be charged more.
+<Skroten> Well, streaming music is often done in 128kbps, and that's not much :)
+<fred> q. what is the name of the package system in a single click
+<JRH3K5> I haven't yet hit a bandwith cap, but...well, the account isn't under my name.  :)
+<JRH3K5> All right, I'll give Icecast a try
+<JRH3K5> Thanks.
+<knapper> How do I configure lipstik?
+<JRH3K5> Hmm
+<JRH3K5> I'm trying to set up Icecast
+<JRH3K5> When I try to load up the stats.xml page as the documentation suggests, I get a forbidden error
+<JRH3K5> Is it possible that Apache is preventing access?
+<Desh> Hi can someone explain to me what the "extended" and "swap" partitions are for?
+<Desh> Oh wait, swap is part of extended..
+<InteliWasp> is it posible to recover data on a FUBARed hdd?
+<JRH3K5> What happened to it?
+<InteliWasp> it wont boot due to an error on my part,
+<InteliWasp> knoppix wont mount it
+<InteliWasp> the boot screen says that it cant find inittab
+<Riddell> Desh: extended is a type of partition at a lower level, all partitions on a hard disk are either extended or not
+<Desh> Riddell, thanks.
+<Riddell> Desh: swap is a partition for hard disk based memory
+<Riddell> for when the computer runs out of real memory
+<Desh> Anyone got a nice howto on installing Windows on a Ubuntu partition?
+<h3sp4wn> try ##windows
+<InteliWasp> JRH3K5: i take it i'm beyond hope?

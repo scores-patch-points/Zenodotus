@@ -1,0 +1,495 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2009-7-15"
+lang: "en"
+messages: "486"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<twb> !partner
+<ubottu> The Ubuntu partnership program is designed to encourage, recognise and endorse Ubuntu expertise and commercial initiatives. It is structured to foster a healthy ecosystem surrounding Ubuntu, to highlight those companies with certified expertise in Ubuntu and a deeper relationship to Canonical. See http://www.ubuntu.com/partners for more information.
+<twb> I have a Dapper system in front of me which may have been compromised.
+<twb> How can I compare the checksums of all files of all installed packages against what is expected (i.e. listed in /var/lib/dpkg/info/*.md5sums)?
+<twb> #debian told me: debsums.
+<uvirtbot> New bug: #399571 in dhcp3 (main) "package dhcp3-client 3.1.1-5ubuntu8.1 failed to install/upgrade: subprocess post-installation script returned error exit status 255" [Undecided,New] https://launchpad.net/bugs/399571
+<uvirtbot> New bug: #399588 in dhcp3 (main) "package dhcp3-client 3.1.1-5ubuntu8.1 failed to install/upgrade: subprocess post-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/399588
+<quizme> hi, i tried to set up a subdomain
+<quizme> but it ain't workin'
+<quizme> http://dev.thirdreplicator.com/
+<quizme> and no errors in my apache log either
+<twb> That sounds more like a question for #apache
+<twb> Or #httpd or whatever those jackasses use
+<Bilge> How can I write a script that has to pass a password to a program such as a script that connects to a MySQL database
+<alexm> Bilge: expect
+<Bilge> I don't like using non-standard commands in my scripts :P
+<alexm> you can try to make your own expect, but i doubt it's worthwhile
+<alexm> expect it's been well known and quite useful for a long time, and it's available for Perl and Python too
+<alexm> OTOH, in the case of MySQL database there are quite a few options to pass the password
+<sandstrom> test
+<sandstrom> /etc/init.d/ufw start says "problem running /etc/ufw/before.rules". How can I get something more verbose, like what rules fail?
+<Bilge> How exactly is expect going to allow me to pass my password without storing it in a text file
+<_ruben> -p, --password[=name]
+<_ruben> Password to use when connecting to server. If password is
+<_ruben> not given it's asked from the tty. WARNING: This is
+<_ruben> insecure as the password is visible for anyone through
+<_ruben> /proc for a short time.
+<dayo> how to i let my 32-bit server see all 10GB of RAM? it's an Alternate CD installation.
+<Jeeves_> dayo: 32-bit and 10GB ram is not really compatible, afaik
+<_ruben> wouldnt the -server kernel do the job, or does have pae have its limits as well?
+<_ruben> damn .. i really type like shit lately
+<henkjan_> alternate installation maybe doesnt install the -server kernel
+<henkjan_> -server kernel is pae and should work with 32bit and lots of ram
+<dayo> Jeeves_: henkjan_: so all i need to do is install a 32-bit server kernel?
+<Jeeves_> dayo: That might do the trick than, yes
+<dayo> Jeeves_: ok, i'll try that. thanks
+<to_> hi
+<to_> I'm configuring my dns server reading this documentation https://help.ubuntu.com/9.04/serverguide/C/dns-configuration.html but how can I find my own ip address like 192.168.1.10 ? how can I know it?
+<alexm> Bilge: when you said you want to pass the password to a command, where does the password come from?
+<acalvo> Hi!
+<acalvo> I've a PDC with PAM authentification, and I've deleted a user to recreate it. However, the UID seems to be in used already, is there any way to see/manage all UIDs used?
+<sandstrom> /etc/init.d/ufw start says "problem running /etc/ufw/before.rules". Anyone know if I get something more verbose, like what rules fail? Any help is appreciated!
+<MT-> I'm getting a WHOLE lot of these lines in /var/log/syslog - Jul 14 07:51:14 insto -- MARK --
+<Daviey> MT-: That is by design, you can disable it if you wish
+<Daviey> MT-: Currently getting it every 20 mins?
+<MT-> Daviey: y
+<MT-> a
+<MT-> Daviey: I'll let it keep ruinning, just read what it's for
+<MT-> I'll just white list it in logcheck
+<MT-> Daviey: you know regex?
+<Daviey> STAND BACK, I KNOW REGULAR EXPRESSIONS!
+<MT-> Daviey: I was just wondering if this looks right -    ^\w{3} [ :0-9]{11} [._[:alnum:]-]+ CRON\[[0-9]+\]: pam_unix\(cron:session\): session (opened|closed) for user (logcheck|root|smmsp)(| by \(uid=0\))
+<Daviey> to match what string?
+<MT-> I want it to catch lines such as "Jul 14 00:02:10 insto CRON[28104]: pam_unix(cron:session): session closed for user logcheck" but for opened or closed, for user logcheck, root, or smmp, and whether or not the last piece is there. The last part whould be optional.
+<MT-> Daviey: sorry, 22hr no sleep on a short nap prior - I already type so and this is making it worse :P
+<Daviey> hmm.. your test string does not match your sample string :(
+<MT-> which part doesn't?
+<MT-> Daviey: http://pastebin.ubuntu.com/218820/
+<MT-> Daviey: was I at least close?
+<Daviey> MT-: yeah.. sorry you don't have my full attention :(
+<MT-> :(
+<MT-> Daviey: will you help me anyway?
+<Daviey> MT-: "?" is a good way of making  a part optional
+<Daviey> ie [by \(uid=0\)]?
+<MT-> did you see anything else wrong with it?
+<MT-> ^\w{3} [ :0-9]{11} [._[:alnum:]-]+ CRON\[[0-9]+\]: pam_unix\(cron:session\): session (opened|closed) for user (logcheck|root|smmsp)[ by \(uid=0\)]?
+<uvirtbot> MT-: Error: ":0-9" is not a valid command.
+<MT-> uvirtbot: I think you're a little confused
+<uvirtbot> MT-: Error: "I" is not a valid command.
+<MT-> Daviey: I'll try that out. When it runs again it'll be palinly obvious how well it worked
+<MT-> thansk :)
+<MT-> thanks*
+<Daviey> i think it's ok
+<MT-> :)
+<jdstrand> sandstrom: ufw is just running iptables-restore. eg 'sudo iptables-restore -n < /etc/ufw/before.rules'
+<sandstrom> jdstrand: thanks! Btw. your previous help on the missing state modul was helpful. After some discussion back and forth they admitted that it was wrong, and had some parallels guy go in and fix it. So thanks again!
+<jdstrand> sure
+<sandstrom> jdstrand: running the command gives me iptables-restore: line 71 failed. Line 71 is the sole command COMMIT
+<ivoks> why o why is my /dev/random idle?
+<jdstrand> sandstrom: then I would recommend simply running each rules line in before.rules with 'iptables' prepended to it
+<jdstrand> eg
+<jdstrand> -A ufw-before-input -i lo -j ACCEPT
+<jdstrand> becomes:
+<sandstrom> thanks! I'll try that
+<jdstrand> sudo iptables -A ufw-before-input -i lo -j ACCEPT
+<uvirtbot> New bug: #399638 in nspluginwrapper (multiverse) "package dhcp3-common 3.1.1-5ubuntu8.1 failed to install/upgrade: package dhcp3-common is already installed and configured" [Undecided,New] https://launchpad.net/bugs/399638
+<jdstrand> sandstrom: you may want to read 'man iptables' about flusing tables, etc
+<jdstrand> bug #399638
+<uvirtbot> Launchpad bug 399638 in nspluginwrapper "package dhcp3-common 3.1.1-5ubuntu8.1 failed to install/upgrade: package dhcp3-common is already installed and configured" [Undecided,New] https://launchpad.net/bugs/399638
+<sandstrom> jdstrand: thanks!
+<sandstrom> jdstrand: the filter syntax in the beginning, filter* :ufw-before-input - [0:0] etc. doesn't map directly onto iptables so that iptables :ufw-before-input - [0:0] => error. Can I safely ignore them?
+<jdstrand> yes
+<jdstrand> that is a short-hand for creating/flushing the tables
+<uvirtbot> New bug: #399468 in samba (main) "samba 3.4.0 depends on ufw" [Undecided,Triaged] https://launchpad.net/bugs/399468
+<Bilge> Is there somewhere that documents what all the entries under /dev are?
+<ForeverSmurf> hello
+<ForeverSmurf> I am attempting to install ubuntu on a remote server for the first time
+<ForeverSmurf> I have followed the following guide: https://help.ubuntu.com/community/Installation/OverSSH
+<ForeverSmurf> it is an athlon 3800 server with 1GB of ram
+<ForeverSmurf> I choose to use the debootstrap_1.0.13~jaunty1_all.deb bootstrap package
+<ForeverSmurf> imo everything is installed correctly
+<ForeverSmurf> I have installed grub too which was error free
+<ForeverSmurf> however, the server refuses to boot
+<ForeverSmurf> I am attempting to get serial consol output from grub but again... no luck
+<ForeverSmurf> I'm at a loss as to what to do next
+<ForeverSmurf> I do have a question: what is the difference between debootstrap-udeb_1.0.13~jaunty1_all.udeb and debootstrap_1.0.13~jaunty1_all.deb
+<ForeverSmurf> serial console output is enabled on the kernel command line too
+<Sam-I-Am> you sure grub is pointing to the right place?
+<Sam-I-Am> does grub even come up?
+<ForeverSmurf> no.... I can't see it from the serial console
+<ForeverSmurf> I added those 2 lines    'serial --unit=0.....' and 'terminal --timeout=....' from the http://tldp.org/HOWTO/Remote-Serial-Console-HOWTO/configure-kernel-grub.html guide to the top of grub.conf
+<ForeverSmurf> I installed grub using
+<ForeverSmurf> root (hd0,0)
+<ForeverSmurf> setup (hd0)
+<ForeverSmurf> the /dev/sda hard drive IS bootable
+<ForeverSmurf> I also installed grub on the other (unused hard drive)
+<ForeverSmurf> root (hd1,0)
+<ForeverSmurf> setup (hd1)
+<ForeverSmurf> the fact that I get nothing on the remote serial console for both grub and the kernel makes it more likely to be a grub/boot issue
+<ForeverSmurf> this is my second attempt btw
+<ForeverSmurf> the first one went smoothly too
+<ForeverSmurf> just didn't fucking boot ;-)
+<Sam-I-Am> well, if grub is configured for serial... and you're not seeing any output... i wonder if its even loading grub at all
+<Sam-I-Am> might be confused with more than one disk
+<ForeverSmurf> yes, that's my opinion
+<ForeverSmurf> is it worth trying lilo?
+<ForeverSmurf> is it supported?
+<Sam-I-Am> lilo might work... although its extremely difficult to debug anything when you can't see it
+<ForeverSmurf> or is there some kind of futher testing I could do with grub
+<ForeverSmurf> my partition layout is simple
+<Sam-I-Am> well, if you had serial output that'd be good
+<Sam-I-Am> so grub is on the mbr, right?
+<ForeverSmurf> /dev/sda1 is '/'
+<ForeverSmurf> /dev/sda2 is swap
+<ForeverSmurf> yes
+<ForeverSmurf> setup (hd0) installs grub on the mbr right?
+<Sam-I-Am> as long as hd0 is mapped to sda :)
+<ForeverSmurf> yes  I also type device (hd0) /dev/sda
+<ForeverSmurf> and device (hd1) /dev/sdb
+<ForeverSmurf> is there some way of displaying the mbr
+<ForeverSmurf> to check it
+<Sam-I-Am> are you in the system?
+<ForeverSmurf> sec
+<Sam-I-Am> you can dd if=/dev/sda bs=512 count=1 ... that'll get your MBR
+<Sam-I-Am> it wont particularly be interesting, but it might say 'grub' somewhere
+<ForeverSmurf> it's rebooting into the recovery system
+<Sam-I-Am> so this thing has serial but no vga?
+<ForeverSmurf> correct
+<ForeverSmurf> it's a remove rack server I assume
+<Sam-I-Am> ah
+<ForeverSmurf> with www.1and1.com
+<ForeverSmurf> remote
+<Sam-I-Am> so how are you getting serial output?
+<Sam-I-Am> terminal server?
+<ForeverSmurf> ok... I am in
+<ForeverSmurf> apache
+<ForeverSmurf> ssh
+<ForeverSmurf> postfix
+<ForeverSmurf> etc....
+<Sam-I-Am> i mean, how are they getting serial output to you?
+<Sam-I-Am> it worked enough to install, right?
+<ForeverSmurf> console=tty0 console=ttyS0,57600 load_ramdisk=1 prompt_ramdisk=0 ramdisk_size=235280 initrd=linux/rescue32-2.6-sarge.gz pw=$1$6HXoFCFz$njvZtuCPeayMCyNClcorl/ tz=Europe/London root=/dev/ram0 rw BOOT_IMAGE=linux/kernel32-2.6
+<ForeverSmurf> that is the /proc/cmdline of rescue system
+<ForeverSmurf> so the important lines here are console=tty0 console=ttyS0,57600
+<ForeverSmurf> which is what I added to my grub.conf file
+<ForeverSmurf> I also enabled the serial output directly from grub itself
+<Sam-I-Am> grub does serial at 57600?
+<ForeverSmurf> I think it can do
+<ForeverSmurf> not sure
+<ForeverSmurf> there is an option called serial to grub
+<Sam-I-Am> well, if whatever contraption your provider is using to forward is using 57600, then grub needs to use 57600, otherwise you wont see anything... or it'll be junk
+<ForeverSmurf> I am not seeing anything at all
+<Sam-I-Am> do you have a --speed after the serial directive in grub?
+<ForeverSmurf> yes.... I specified serial --unit=0 --speed=57600 --word=o --parity=no --stop=1
+<ForeverSmurf> does that look good?
+<Sam-I-Am> whats --word=o ?
+<Sam-I-Am> should be 8
+<ForeverSmurf> ah, I'll change it
+<Sam-I-Am> or just leave it out
+<Sam-I-Am> just having --speed=57600 should work
+<ForeverSmurf> ok
+<Sam-I-Am> should default to 8N1
+<ForeverSmurf> is it safe to omit --unit=0
+<ForeverSmurf> is that also default?
+<Sam-I-Am> you need that, if you're using whatever the system thinks is com1
+<ForeverSmurf> --parity=no --stop=1
+<ForeverSmurf> should I remove them too?
+<Sam-I-Am> you can leave those out
+<ForeverSmurf> ok
+<ForeverSmurf> I'll try another boot
+<ForeverSmurf> see if I get anything
+<Sam-I-Am> make sure you write grub's config out :)
+<ForeverSmurf> the line 'terminal serial'   is correct too right?
+<Sam-I-Am> terminal serial?
+<Sam-I-Am> hmm
+<ForeverSmurf> http://pastebin.com/m36591f87
+<ForeverSmurf> that is my entire grub config
+<ForeverSmurf> oh wait
+<ForeverSmurf> cut some off
+<ForeverSmurf> http://pastebin.com/m124cb933
+<Sam-I-Am> the serial stuff looks ok
+<ForeverSmurf> oh, I forgot I tried with raid this second time around
+<ForeverSmurf> that's why I have two entries
+<Sam-I-Am> well, the serial stuff should be fixed... hopefully you'll at least get output now
+<Sam-I-Am> then you can troubleshoot the next problem
+<ForeverSmurf> when you say make sure I write grubs config out
+<ForeverSmurf> your mean running grub
+<Sam-I-Am> yes
+<ForeverSmurf> device (hd0) /dev/sda
+<ForeverSmurf> root (hd0,0)
+<ForeverSmurf> setup (hd0)
+<ForeverSmurf> device (hd1) /dev/sdb
+<ForeverSmurf> root (hd0,0)
+<ForeverSmurf> setup (hd1)
+<ForeverSmurf> replace the second root (hd0,0) with root (hd1,0)
+<acalvo> Hello again!
+<ForeverSmurf> hello
+<acalvo> I'd like to know if there is any alternative to make a software portal, like the CITRIX software does
+<acalvo> to let user deploy themselfs some applications
+<Sam-I-Am> ForeverSmurf: you might be confusing grub with all the extra crap for the second disk... just have it look at the first one for now.
+<ForeverSmurf> the disks are identical
+<ForeverSmurf> raid
+<ForeverSmurf> sorry, I forgot I was running raid
+<ForeverSmurf> first attempt at installing ubuntu on the server I left out the raid
+<ForeverSmurf> so I tried again with raid
+<Sam-I-Am> well, right now the only thing that matters is getting grub to see the serial port
+<ForeverSmurf> nothing yet
+<Sam-I-Am> because if that doesnt work you can't do anything else
+<ForeverSmurf> yes, I agree
+<ForeverSmurf> no joy ;-(
+<Sam-I-Am> you could try changing the --unit to 1 or 2
+<ForeverSmurf> ok
+<ForeverSmurf> I just found this http://www.wehave.net/linux/custom1and1.html
+<ForeverSmurf> there is an entry in there for serial consol
+<ForeverSmurf> looks same as mine
+<ForeverSmurf> but I only have serial --unit=0 --speed=57600
+<ForeverSmurf> without the --word=8 --parity=no --stop=1
+<ForeverSmurf> is it safe to remove everything from grub appart from the serial consol
+<ForeverSmurf> and terinal
+<ForeverSmurf> for testing
+<Sam-I-Am> probably
+<Sam-I-Am> try that config you posted...
+<ForeverSmurf> if there is nothing in there will it output anything at all?
+<Sam-I-Am> should see a prompt
+<Sam-I-Am> or it just telling you its confused
+<ForeverSmurf> fingers crossed
+<ForeverSmurf> I found this too http://forum.r1soft.com/archive/index.php/t-771.html
+<ForeverSmurf> there entires in grub seem to work
+<ForeverSmurf> nope
+<ForeverSmurf> not looking good at all
+<ForeverSmurf> suggests there is something very wrong with my grub
+<ForeverSmurf> all the output looks perfect though
+<Sam-I-Am> no serial output tho?
+<ForeverSmurf> http://pastebin.com/m7f575a53
+<ForeverSmurf> no serial ouput
+<ForeverSmurf> nothing
+<ForeverSmurf> can't login
+<ForeverSmurf> imo grub is not even being loaded
+<DormantOden> hey ubuntu-server people, every few days my server dies with a "Kernel panic - not syncing error", or just a massive trace =S Anyone know what might cause this?
+<ForeverSmurf> maybe I'll try again without raid
+<ForeverSmurf> DormantOden, looks like a disk IO error
+<DormantOden> I uploaded a picture of it in case it helps: http://dormantmind.com/personal/uploaded/DormantOden/error.JPG
+<ForeverSmurf> not syncing is todo with HD right?
+<DormantOden> hmmm, isee
+<ForeverSmurf> wow, nice screen
+<DormantOden> lol
+<DormantOden> its usually headless :P
+<ForeverSmurf> do you wear glasses?
+<DormantOden> no
+<ForeverSmurf> you will need some if you look at that screen much longer
+<DormantOden> it says "low radition" on it xD
+<ForeverSmurf> low radiation for 1980
+<ForeverSmurf> high radiation for 2009
+<ForeverSmurf> those old screen are dangerous
+<DormantOden> could it be due to the kde?
+<DormantOden> Ive just seen the line at the top that says ? crash_kexec+....
+<ForeverSmurf> well, it mentions smp and irq in there
+<DormantOden> whats that
+<ForeverSmurf> could be some kind of smp interupt race condition
+<ForeverSmurf> I have no idea what that is
+<ForeverSmurf> but I think I heard someone say it before
+<DormantOden> heh, ok, Ill google
+<ForeverSmurf> anyhow
+<_ruben> if it runs kde, it aint a server ;)
+<ForeverSmurf> it looks more like a kernel linux problem
+<ForeverSmurf> rather than something ubuntu specific
+<DormantOden> _ruben, some people needed a GUI... You can teach them bash if you want xD
+<_ruben> yes, but support-wise that tends to turn a "server" into a "desktop"
+<DormantOden> pfff, splitting hairs
+<ForeverSmurf> welll
+<ForeverSmurf> at least your server runs
+<ForeverSmurf> I can't get my working
+<DormantOden> this is true
+<DormantOden> although the memtest wont load into memory for some reason... stupid grub
+<DormantOden> whats up with yours ForeverSmurf?
+<ForeverSmurf> can even get grub to load
+<ForeverSmurf> what is the difference between debootstrap-udeb_1.0.13~jaunty1_all.udeb and debootstrap_1.0.13~jaunty1_all.deb
+<ForeverSmurf> I used the later
+<ForeverSmurf> is that an issue?
+<Sam-I-Am> i'd use the .deb
+<_ruben> the first is only used by the installer, the latter is to be used within an already installed system
+<ForeverSmurf> ok. I selected the correct one then
+<ForeverSmurf> /usr/sbin/debootstrap --arch i386 jaunty /mnt/ubuntu http://archive.ubuntu.com/ubuntu
+<ForeverSmurf> wat that command correct?
+<acalvo> does anyone know a good way to deplay images (like with a partimage server) but changing the machine name of a windows xp?
+<Steve[mbp]> Morning
+<Steve[mbp]> Morning everyone!
+<acalvo> Steve[mbp]: morning? wow, it's 5 pm here!
+<_ruben> acalvo: how is windows xp related to ubuntu-server?
+<acalvo> _ruben: using partimage?
+<acalvo> it's not so related to ubuntu-server, but I guess most of the people that join this channel are working with domains and stuff, so maybe someone had the same problem/question as I had and I can take an advise from him
+<neXus> acalvo: no only the domains, also can be something else :)
+<acalvo> neXus: well, I guess you get my point
+<neXus> acalvo: sure :)
+<alexm> acalvo: i guess that dhcp does not the trick, does it?
+<acalvo> alexm: well, no, since I need to, at least, run some script into the machine (AFAIK)
+<acalvo> I don't know if using, say DHCP/BOOTP, can get the machine name and domain name
+<DormantOden> oh globbits.... now my server only lasts 2 minutes xD Hows your server life going ForeverSmurf?
+<alexm> you can set dns hostname and domain name through dhcp, but i'm not so sure about windows computer name
+<acalvo> alexm: yes, that what I guess
+<acalvo> bye!
+<Bilge> Is there somewhere that documents what all the entries under /dev are?
+<jpds> Bilge: http://www.atnf.csiro.au/people/rgooch/linux/docs/devfs.html
+<Ng> where would libvirt/kvm be putting their logs? I'm trying out kirkland's kvm backport with virt-install and it's kinda not really doing anything and I can't see any evidence as to why
+<Ng> there's nothing particularly helpful in /var/log/libvirt/qemu/$guestname.log
+<Daviey> Ng: if it's dieing, there should be logs there that show the segfault
+<Daviey> Ng: on another note, logrotate seems over-keen on them :/
+<Daviey> root@katana:/var/log/libvirt/qemu# ls -al | wc -l
+<Daviey> 227
+<Daviey> root@katana:/var/log/libvirt/qemu# du -h
+<Daviey> 680K	.
+<Daviey> thanks for gz'ing empty logs :)
+<Daviey> Ng: The top line of the log shows the kvm line libvirt is spawning.. have you tried running that manually
+<ball> If I add a user with useradd, will that user be able to sudo?
+<ball> (does it depend on group membership?)
+<RoAkSoAx> ball, after you add the user you need to add it sudo rights like: adduser <user> admin
+<RoAkSoAx> and it will be able to sudo
+<ball> RoAkSoAx: I don't want him to have sudo rights, so it sounds as though what I want is the default.
+<infinity> ball: And you want adduser, not useradd.
+<RoAkSoAx> ball, yes. :)
+<ball> Thanks
+<ball> Oh, I used useradd
+<ball> Is that wrong?
+<infinity> adduser is a frontend to useradd that enforced extra system policy, makes sure homedirs are set up how you want, blah blah.
+<infinity> Either one will add a user though, if all you really cared about was an entry in /etc/passwd.
+<ball> I used -m and -b /home
+<infinity> Yeah, adduser avoids the needs for -m and -b...
+<infinity> Among other things.
+<infinity> *shrug*
+<infinity> (default usergroups, for instance too)
+<Ng> Daviey: I'll give that a go
+<ball> hello dinger1986
+<Ng> wrt bug 269881, comment #4 suggests that --accelerate doesn't do what the manpage says it does. Is that right? Which option does make virt-install tell kvm to use hardware virtualisation?
+<uvirtbot> Launchpad bug 269881 in virtinst "Receive "Unsupported virtualization type" unless the -v option is used" [Low,Confirmed] https://launchpad.net/bugs/269881
+<ivoks> doesn't kvm do that by default?
+<ivoks> it uses /dev/kvm if it exists
+<ivoks> oh, hi Ng :)
+<Ng> I have /dev/kvm, it's supported hardware and the only option I can pass to virt-install that makes it not say "Unsupported virtualization type" is --hvm which seems to make it call the underlying tool (qemu-system-x86_64 weirdly, not kvm) with -no-kqemu and it then consumes a *bunch* of CPU
+<Ng> hi :)
+<ivoks> let me boot my virt server
+<Daviey> Ng: does that produce "<domain type='kvm'>
+<Daviey> <os>
+<Daviey> <type arch='x86_64' machine='pc'>hvm</type>
+<Daviey> ... If so, that is correct
+<Ng> <domain type='qemu'>
+<Ng> <type arch='x86_64' machine='pc'>hvm</type>
+<ivoks> that's wrong
+<ivoks> domain type should be kvm
+<Daviey> Ng: You *could* just change it, and re-define it..
+<ivoks> hvm means - virtualized
+<Daviey> but would be nice to find out the underlying bug
+<Daviey> ivoks: but to be "helpful" os type should be hvm :)
+<ivoks> 'virt-install --accelerate' should be enough
+<Ng> --accelerate gives me the "Unsupported virtualization type"
+<ivoks> running as a user or root? :)
+<Ng> root all the way down
+<ivoks> hm
+<ivoks> msg = _("Unsupported virtualization type '%s' " % (os_type and os_type
+<ivoks> or _("default")))
+<Ng> http://paste2.org/p/327165 - that's the command I used
+<alexm> ivoks: i have <domain type='kvm' id='1'> but also <type arch='x86_64' machine='pc'>hvm</type>
+<Daviey> alexm: /me has already mentioned this
+<ivoks> alexm: right, that's ok
+<ivoks> what's wrong is domain type qemu, which Ng has
+<alexm> Daviey: just confirming that i got it that way too
+<alexm> okay, now i realize that Ng had domain type qemu, sorry for intruding
+<ivoks> Ng: that command works for me :)
+<ivoks> Ng: could you paste the output of it?
+<Daviey> ivoks / Ng, Are you both using the same release?
+<Daviey> it has changed quite a lot since hardy
+<ivoks> i'm using jaunty
+<Ng> I'm using hardy with the kvm-84 backport
+<Ng> ivoks: http://paste2.org/p/327169
+<Daviey> interesting..
+<ivoks> how come there's no debug?
+<_alkekshi_> Could some one help me?
+<Ng> ivoks: I'd love to know that :)
+<Daviey> Hardy + Self backport of kvm-79 == "Unsupported virtualization type"
+<ivoks> dpkg -l | grep python-virtinst
+<_alkekshi_> i'm a newbie and i would like to now what is the easiest way to get samba working
+<Ng> 0.300.3-5ubuntu3
+<ivoks> maybe that's the problem
+<ivoks> i have 0.400
+<Ng> fwiw I'm using the kvm-84 backport by way of http://ppa.launchpad.net/ubuntu-virt/ppa/ubuntu
+<ivoks> maybe python-virtinst should be backported
+<ball> hello Daviey
+<Daviey> hey ball
+<ball> Is there a command to watch someone's terminal to see what they type?
+<ivoks> Ng: i'd try backporting python-virtinst
+<ivoks> it relies on python-libvirt
+<ivoks> which is backported
+<ivoks> take care guys
+<Daviey> o/
+<uvirtbot> New bug: #399850 in dovecot (main) "dovecot.conf references /dev/dovecot/dovecot-postfix.conf instead of /etc/dovecot/dovecot-postfix.conf. " [Undecided,New] https://launchpad.net/bugs/399850
+<Bilge> How can I check what packages another package depends on?
+<dayo> !kernel > dayo
+<ubottu> dayo, please see my private message
+<dayo> Bilge: apt-cache showpkg <packageName>
+<Bilge> Thanks
+<Bilge> I guess apt-cache depends would be more appropriate? :)
+<Pirate_Hunter> how do i create my domain name on my server, I dont fully understand but is the domain the same as the hostname?
+<ball> Not quite
+<ball> (in fact, not at all).
+<ball> Have you bought a domain
+<ball> ?
+<Enkz> allmost, hostname is usually the name of your computer inside a network
+<Pirate_Hunter> ball nope i havent based on the tuts ive been following it would use the hostname as a domain, is that even possible
+<Enkz> you can register it
+<ball> ...but you probably don't want to.
+<Pirate_Hunter> Enkz, so @example could become @example.lan or com depending on the webserver?
+<ball> traditionally a domain name is hostname.domain
+<ball> ...or rather an FQDN is (fully-qualified domain name)
+<ball> e.g. potch.endoftheinternet.org
+<ball> "potch" is the hostname
+<ball> endoftheinternet.org is the domain
+<ball> you buy a domain name and point it to the IP address of your server (or LAN)
+<ball> I have my router forward certain ports on its WAN interface to the server, which is on the LAN side
+<ball> ...people using it don't notice.  That's transparent.
+<Pirate_Hunter> oh hmmm so for soemthing like @example how would i make it a valid domain, the thing is at the moment buying aint an option until i get into grips with this whole server stuff and i am trying for the third time ISPConfig (yeah i know madness) so wish to understand this whole hostname / domain thing
+<Enkz> ISPconfig requires a nameserver, right?
+<ball> Pirate_Hunter: mine was free
+<Pirate_Hunter> Enkz, not sure just following the tut from the homepage instead of howtoforge site
+<ball> Pirate_Hunter: even when I bought a domain, it was inexpensive
+<ball> Pirate_Hunter: is your Linux box at home?
+<Pirate_Hunter> ball, yes
+<ball> What do you want to do with it?
+<ball> (why do you want it to have a domain?)
+<Pirate_Hunter> ball, i wish to host my own sites like i said money aint an option at the moment otherwise would be forking £30 a month for it
+<ball> Web site?
+<ball> More like UKP 30/year
+<ball> (for a domain)
+<ball> hello bin1010
+<Pirate_Hunter> ball, oh didnt know quite new to this so is there a way for me to do this been looking for noob tuts on setting up servers but havent got anything
+<Enkz0rz> Power went of when I turned on my server; well that's a good sign :S
+<ball> Pirate_Hunter: what kind of Internet connection do you have at home?
+<ball> wtf.  Ubuntu Server doesn't ship with "banner"?
+<Pirate_Hunter> ball, supposedly 16mb, why do you ask?
+<ball> Pirate_Hunter: I didn't ask how fast it was, just what /kind/ it was.  Cable?  DSL?  Fibre?
+<ball> 16 Mbits/sec is fast btw.
+<ball> I'm surprised that's not massively expensive
+<ball> Pirate_Hunter: do you have a static IP address, or dynamic?
+<Pirate_Hunter> ball, sorry was away
+<Pirate_Hunter> ball, I have a dynamic ip, hmmm my irx client didnt warn me weird
+<stgraber> a/win 44
+<stgraber> oops
+<owh> For many and varied reasons I am setting up a "virtual data centre" within my MacBook. There will be two main machines, a Ubuntu Desktop and a Ubuntu Server. I want to store the user data from the Desktop machine on the server. I also want to run an imap server and a mysql server on the (virtual) Ubuntu Server. From a performance and manageability perspective, how should I store the user data on the server? I can use NFS, CIFS or isc
+<owh> How do I prevent a kernel upgrade on a production server where I'm happy to upgrade the rest of the updates?
+<alexm> this is usually achieved by apt preferences, see man apt_preferences
+<owh> Are you telling me that I need to hard-code that I don't want to upgrade the kernel on this server? There's no way I can do something like apt-get upgrade -kernel*
+<alexm> you can apt-get install all the packages that you do want to upgrade, i'm not sure if there's an option in apt-get to skip one
+<owh> Hmm.
+<alexm> apt-get dist-upgrade should tell you which ones is going to upgrade but will ask for permission first
+<alexm> just say no and then apt-get install ... (fill the dots cutting and pasting from the previous output)
+<owh> It's not that I don't know what it's going to do, it's that I don't want to fsk around with a kernel on a remote server where the detection of the network card is chancy at best. If I apt-get install all the shown packages, there's nothing stopping it to upgrade the kernel if a package I specify depends on the new kernel, so I would need to manually go through the list one-at-a-time.
+<owh> Don't you just hate double clicks :(
+<alexm> if any of the packages explicitly listed in apt-get install depends on the kernel, you'll be prompted for permission again
+<alexm> apt-get install will only proceed without asking if you listed all the packages involved
+<owh> Hmm.
+<alexm> try it with some other package, apache for instance
+<alexm> or choose any other harmless package
+<owh> That is exactly what I did before I got here, but then it started whinging about pre-fork and suggested I remove php. So I thought there must be a better way :)
+<owh> Is the process to hold a package still echo "pkg_name hold" | dpkg --set-selection
+<owh> Or have we "advanced" since 2004?
+<alexm> it seems it's still the same way
+<ausimage> Anyone understand why a python script used as a daemon would cause dpkg to not find its modules ?
+<dayo> in my /var/log/auth.log i have periodic appearances of this:  sudo:     root : TTY=unknown ; PWD=/ ; USER=username ; COMMAND=/usr/bin/gconftool --get /system/http_proxy/port   what does it mean?

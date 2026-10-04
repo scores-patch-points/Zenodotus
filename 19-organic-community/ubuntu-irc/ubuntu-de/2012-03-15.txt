@@ -1,0 +1,531 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2012-3-15"
+lang: "de"
+messages: "522"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<benste> hi - wie kann ich in der alternate CD - Rescue System shell rsync nutzen - apt dpkg und co gibts nicht zum nachinstallieren
+<ben1u> rsync ist schon vorhanden
+<bullgard4> benste: Was willst Du machen? "Rescue System shell rsync nutzen" Bitte erläutern.
+<benste> bullgard4: genau das was ich sagen - ich will rsync in einer rescue shell nutzen umdaten  einer ganze partition auf eine andere neue zu kopieren
+<benste> ben1u: wenn ich "rsync" tipp gibts
+<benste> /bin/sh: rsync: not found
+<benste> ben1u: was meinst du mit - es ist schon da ?
+<ben1u> dachte rsync ist überall vorhanden
+<LetoThe2nd> nö.
+<ben1u> nimm doch ne live-cd
+<LetoThe2nd> ben1u: man muss schon dazusagen, die alternate ist einfach nicht als rescuecd gedacht, genauso wenig wie z.b. ne debian netinst cd
+<LetoThe2nd> benste ^^^^^^^^
+<benste> LetoThe2nd: sorry - aber die Live CD hat kein LVM support
+<benste> na gut auch wenn ichs nicht mag - dann werde ich wohl oder übel CP nehmen müssen
+<LetoThe2nd> benste: apt-get install lvm, dann hat sie ihn.
+<LetoThe2nd> ...
+<LetoThe2nd> benste: apt-get install lvm (oder lvm2, nicht ganz sicher), dann hat sie ihn.
+<benste> LetoThe2nd: - der Rest ist super - :)
+<benste> ja mal sehen evtl. machen wir uns noch ne custom CD oder USB sollte ja reichen
+<benste> ach ja LVM ist nen dummy für lvm2 seit 10.10 oder so
+<benste> danke für eure hilfe
+<LetoThe2nd> klar, wenn man sowas öfter braucht, einfach remastern.
+<benste> ja denke das werden wir machen
+<f31n> hey, ich wollte gerade via hdparm alle festplatten von meinem nas raid auf 10 minuten spindown zeit einstellen ... und diverse tutorials im web empfehlen dass man über die uuid das dann in die hdparm datei einträgt was ja durchaus einen sinn macht :)
+<LetoThe2nd> f31n: und dein nas läuft unter ubuntu? falls ja, gleich mal lsb_release -a in ein pastebin, bitte.
+<f31n> nur wenn ich blkid ausführe dann sagt er mir für alle hdds die im raid verbund drinnen sind die gleiche uuid (er zeigt nur die partitionen nicht aber die hdds an (sda1 und nicht sda))
+<f31n> ja klar ubuntu sonst würd ich hier ja nicht fragen
+<nibbler_> sind die UUIDs nicht fs-abhängig, und damit zur hardware identifikation nur bedingt tauglich?
+<f31n> http://pastebin.com/qav7n0B1
+<kubine> Title: lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Descripti - Pastebin.com (at pastebin.com)
+<LetoThe2nd> völlig richtig, UUIDs beziehn sich auf das dateisystem.
+<LetoThe2nd> und da dein raid von einem einzigen grossen fs überspannt wird, ist da die uuid auch überall gleich.
+<f31n> ich versteh
+<f31n> dh ich kann den dreizeiler a festplatte in der hdparm datei auch mit /dev/sda formulieren und brauch nicht /dev/disk/by-uuid/[UID] reinschreiben
+<LetoThe2nd> imho ja.
+<nibbler_> f31n, for i in /dev/ds?; do hdparm $foo; done
+<nibbler_> f31n, for i in /dev/sd?; do hdparm $foo; done
+<LetoThe2nd> wenns ausformuliert sein soll, kann man vielleicht über /dev/disk/by-id/xyz nachdenken.
+<f31n> nibbler_: das problem is wenn ichs rekursiv mach dass ich das system auf einer weiteren platte laufen hab, die dann aber nicht unbedigt downspinnen sollte
+<f31n> LetoThe2nd: nur dann schreib ich überall die selbe uuid rein oder wie oO?
+<LetoThe2nd> f31n: das hat dann mit uuids nichts zu tun. schau dir den ordner lieber erst einfach mal an.
+<f31n> aaah danke für den wink mitm zaunpfahl hab uuid gelesen ja klar
+<LetoThe2nd> :P
+<f31n> jetzt müsst ich nur noch rausfinden welche platte jetzt wo gemountet ist
+<f31n> gibts dafür auch einen befehl?
+<LetoThe2nd> f31n: es gibt mount, es gibt fdisk -l und es gibt ls -alh /dev/disk/by-id/*
+<LetoThe2nd> f31n: die zusammen reichen auf jeden fall.
+<f31n> oh ja definitiv ich bin glücklich danke dir :)
+<f31n> LetoThe2nd: hm nur irgendwie gibt der mir jede hdd 3x aus ... einmal als ata einmal as scsi und einmal als wwn oO?
+<LetoThe2nd> f31n: das liegt am internen device mapping. ich persönlich würd wohl die scsi-variante nehmen.
+<f31n> okay
+<f31n> danke viel mals an die nette unterstütztung scheint alles zu laufen :)
+<niklasfi> hey, ich habe hier eine vermutlich kaputte usb-festplatte vor mir. die daten darauf sind mir ziemlich egal, was mich aber interessiert ist, ob ich sie jetzt wirklich einschicken kann. gibt es irgendwelche tools, mit denen ich die festplatte auf fehlerhafte cylinder testen kann? leider unterstützt sie kein smart
+<deem> niklasfi: badblocks zb
+<LetoThe2nd> niklasfi: ausbauen und per sata anhängen
+<niklasfi> LetoThe2nd: leider ist es eine 1" platte, und eigentlich wollte ich sie ja noch zurück schicken.
+<LetoThe2nd> niklasfi: dann fällt mir auch nur badblocks ein.
+<workknight> Moin. Ich hab hier einen Apache, der seine Seiten (auch nach localhost) erst nach 1:20 minuten versendet. error.log gibt nichts aus. Wo fang ich mit der Fehlersuche an?
+<dadrc> workknight, ich würd erstmal testen, ob das nicht vielleicht am Netzwerk liegt: wireshark oder so
+<workknight> dadrc: Ich teste `time wget -O - 127.0.0.1` lokal :D nebenbei shceint es php zu sein, da die robots in 0,890 sek flutscht
+<LetoThe2nd> *hust* lsb_release -a und uname -a des servers in pastebin *hust*
+<workknight> LetoThe2nd: http://paste.pocoo.org/show/MLnnQNijptoNuBQeC0Mo/ - und ich bin weiter, es dauert nur so lange, wenn php aufs sql zugreift. phpinfo(); geht so schnell wie es soll
+<kubine> Title: Paste #MLnnQNijptoNuBQeC0Mo | LodgeIt! (at paste.pocoo.org)
+<deem> workknight: liegt beides auf dem selben server? die hardware ist auch schnell genug?
+<workknight> deem: Liegt alles auf der selben kiste. Die Zugriffszeiten stimmen auch, wenn ich SQL in der Konsole laufen lasse und für php ohne SQL-Abfragen. Das ist sehr positiv, weil die eigentlich Software auf dem Server nciht mein Problem ist :D
+<Obererpel> Moin Moin!
+<xi_> kann mir jemand sagen warum befehl groups andere gruppen listet als groups <user> ???
+<Obererpel> Ich hätte mal eine Frage: Mir war so, als hätte ich vor Jahren mal gelesen, dass es möglich ist, Geräte direkt über das Netzwerk verfügbar zu machen. Ist dem so? Ein Kumpel baut sich zurzeit einen reprap zusammen, mir kam die idee, dass man das Teil doch an einem kleinen rechner anschließst und die schnittstelle /dev/ttyusb0 dann über das Netzwerk zur verfügung stellt.
+<dadrc> xi_, tut es bei mir nicht. groups <user> schreibt nur einmal den Nutzer davor
+<LetoThe2nd> Obererpel: könnte man bestimmt irgendwie was schnitzen, aber fertig zusammenklickbar IMHO nichts.
+<Obererpel> LetoThe2nd: Zusammenklickbar hätte ich auch nie erwartet, mir geht es nur darum, ob es grundsätzlich möglich ist. Schließlich werden die Geräte ja als Datei abgebildet und Dateien lassen sich via NFS im Netzwerk teilen.
+<xi_> dadrc: wo kann ich den fehler suchen?
+<LetoThe2nd> Obererpel: das buzzword ist schon eher serial over tcp/ip oder ähnlich. das devicenode direkt irgendwie freigeben schreit nach ärger.
+<dadrc> xi_, pack mal die Ausgabe in einen Pastebin, bitte.
+<Obererpel> LetoThe2nd: Inwiefern ärger?
+<LetoThe2nd> Obererpel: insofern ärger als dass es einfach nicht funktioniert. ein device node sieht zwar aus wie eine datei, aber es ist hlat trotzdem keine.
+<xi_> dadrc: [paste:406592:groups]
+<Obererpel> okay
+<dadrc> xi_, bitte mit Link, es gibt ca. 1000000 Pastebins im Internet
+<xi_> dadrc: ja ok http://paste.ubuntuusers.de/406592/
+<kubine> Title: groups › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<Obererpel> LetoThe2nd: Dann würde es mit der Partition eines USB-Sticks /dev/sdb1 auch nicht gehen, sondern nur, wenn ich diesen lokal mounte und das verzeichnis dann freigebe?
+<LetoThe2nd> Obererpel: geeeeeeeenau
+<dadrc> xi_, seltsam. Guck mal in /etc/group
+<dadrc> Das ist, soweit ich weiß, ausschlaggebend
+<xi_> hab ich schon geguckt da steht richtig
+<Obererpel> LetoThe2nd: okay, danke, dann ist es wahrscheinlich klüger, den reprap über einen kleinen webserver steuerbar zu machen
+<dadrc> seit der Änderung mal aus- und eingeloggt?
+<xi_> nur beim zugriff auf die musik gruppe kann ich nix machen
+<LetoThe2nd> Obererpel: mit absoluter sicherheit. (damit möchte ich das thema dann auch gern abschliessen, weils nicht wirklich was mit ubuntu zu tun hat soweit ich sehen kann.)
+<xi_> ein sehr schöner Ubuntu 11.10 bug :(
+<deem> xi_: nicht wirklich. bei mir listen beide befehle die exakt gleichen gruppen
+<deem> xi_: wie hast du denn deinen nutzer diesen anderen gruppen hinzugefügt?
+<xi_> sudo usermod -aG <gr> <us>
+<Obererpel> LetoThe2nd: Na klar hat das mit Ubuntu zu tun, schließlich verweisen die in den reprap-Anleitungen immer auf Ubuntu ;D
+<Obererpel> Aber trotzdem danke soweit
+<xi_> na mal sehen wie ich das gefix bekomme
+<deem> xi_: ich finde ja adduser <user> <gruppe> schöner, aber kA ob das so der ubuntu-way ist, den du da eingeschlagen hast
+<yogg> Hi
+<yogg> Ich versuche gerade "texlive-base" unter ubuntu 10.04 zu installieren, bekomme aber eine Fehlermeldung "fmtutil-sys failed. Output has been stored in /tmp/fmtutil.W2FtPeCy"
+<yogg> Im unteren teil der Datei steht folgendes drinnen: "http://paste.pocoo.org/show/566026/"
+<kubine> Title: Page Not Found | LodgeIt! (at paste.pocoo.org)
+<yogg> In den dort angebenen logfiles konte ich aber keine Fehler finden.   Hat eventuell wer ne Idee wie ich das beheben kann
+<nibbler_> yogg, wie installierst du das denn?
+<yogg> apt-get install texlive-base
+<yogg> eigentlich wollte ich ja "apt-get install tex-common" installieren, aber "texlive-base" ist eine abhängigkeit und die will eben nicht
+<yogg> ist übrigends ein ubnutu 10.04.4 mit allen updates
+<nibbler_> yogg, keine ahnung, sorry :/
+<yogg> np   werds schon noch finden ^^
+<yogg> PANIC: unprotected error in call to Lua API (zlib library version does not match - header: 1.2.3.3, library: 1.2.5)
+<yogg> jetzt weiß ich zumindest mal was schief geht
+<nibbler_> yogg, hast die header von hand installiert?
+<nibbler_> yogg, oder nicht erstmal nen update/upgrade gmacht
+<yogg> nein alles aus der paketverwaltung     update/upgrade ist schon gelaufen ja
+<nibbler_> yogg, irgendwelche ppas, weil im repo is zlib1g und zlib1g-dev beide  1.2.3.4
+<yogg> interesant   dpkg -l zeigt mir auch an "1:1.2.3.3.dfsg-15ubuntu1"    ich versuch mal eine neu isntallation
+<yogg> ich hab jetzt 3 10.04.4 Installationen durchgesehen welche alle auf dem aktuellesten stand sind und auch extra nochmal update/upgrade gemacht. Da ist aber überall  ii  zlib1g 1:1.2.3.3.dfsg-15ubuntu1" drauf
+<yogg> stimmen meine sourcen für 10.04 nicht? http://paste.pocoo.org/show/566065/
+<kubine> Title: Paste #566065 | LodgeIt! (at paste.pocoo.org)
+<nibbler_> yogg, vllt is der bug im paket
+<bullgard4> 'man apt-cache': "blaue Linien sind Pre-depends, grüne Linien sind Konflikte." Was versteht man unter »Pre-depends«?
+<yogg> hab mir die sources list aus dem wiki geholt. damit bekomm ich auch nur "1:1.2.3.3.dfsg-15ubuntu1"
+<yogg> mal sehen ob ich nen workarround dafür finde
+<deem> bullgard4: vorherige abhängigkeiten? also abhängigkeiten von früheren versionen oder abhängigkeiten von benötigten paketen.
+<bullgard4> deem: "Abhängigkeiten von benötigten Paketen" heißen »Depends«.
+<deem> bullgard4: nicht die benötigten pakete als abhängigkeit. ich meine die eigenen abhängigkeiten der abhängigkeiten
+<bullgard4> aha
+<dadrc> yogg, apt-cache policy zlib1g?
+<yogg> http://paste.pocoo.org/show/566070/
+<kubine> Title: Paste #566070 | LodgeIt! (at paste.pocoo.org)
+<yogg> hab grade nachgesehen muss eigentlich ein bug sein. "texlive-base" hengt ab von "luatex" das wiederum hengt ab von "zlib1g (>= 1:1.1.4)"
+<yogg> http://packages.ubuntu.com/lucid/texlive-base    (abhängigkeiten)
+<kubine> Title: Ubuntu -- Details of package texlive-base in lucid (at packages.ubuntu.com)
+<yogg> es gibt aber nur 1.2.3.3 für 10.0.4
+<yogg> da ist scheinbar was schief gelaufen
+<subz3r0> hi
+<subz3r0> wenn ich was installiert habe mit nem .deb paket, wie aktuallisiere ich das programm dann? Einfach das neue .deb downloaden und per doppelklick das softwarecenter starten damit?
+<subz3r0> wollte von virtualbox die neuste version installieren. allerdings rödel das softwarecenter schon minuten vor sich hin...
+<subz3r0> "rödelt"
+<ppq> ja
+<ppq> aber ich würde es im terminal mit 'sudo dpkg -i paket.deb' installieren
+<ppq> dann siehst du was sache ist
+<ppq> du kannst auch das virtualbox repository einbinden
+<subz3r0> ahh, super. das wäre die nächste frage gewesen wie ich es mit der shell mache :)
+<ppq> wie das geht. steht auf virtualbox.org unter download
+<subz3r0> hab ich wohl überlesen. werd es dann so machen. danke ppq
+<ppq> keine ursache
+<subz3r0> ppq, das mit den trunk versions? dachte immer das sind daily builds und keine stable?
+<subz3r0> steht nur: svn switch --relocate \ .... etc...
+<subz3r0> oder seh ich den wald mal wieder vor lauter bäumen nicht?
+<ppq> öhm?
+<ppq> https://www.virtualbox.org/wiki/Linux_Downloads
+<kubine> Title: Linux_Downloads – Oracle VM VirtualBox (at www.virtualbox.org)
+<ppq> deb http://download.virtualbox.org/virtualbox/debian oneiric contrib # für 11.10
+<kubine> Title: Index of /virtualbox/debian/ (at download.virtualbox.org)
+<ppq> befolg einfach die anleitung dort
+<subz3r0> https://www.virtualbox.org/wiki/Downloads
+<kubine> Title: Downloads – Oracle VM VirtualBox (at www.virtualbox.org)
+<subz3r0> da find ich nix von erklärungen :)
+<subz3r0> hatte ich wohl die falsche dl-page ;)
+<subz3r0> vielen dank nomma
+<yogg> kann mir bitte wer sagen wie ich einen bugreport für ubuntu erstelle ohne grafische oberfläche? "report a bug" schickt mich immer aufs wiki und da steht beschrieben wie ich mit dem gui tool "ubuntu-bug" einen report erstelle.
+<yogg> Auf nem server ist das aber schlecht
+<dadrc> yogg, apport-clie
+<dadrc> sorry, apport-cli
+<yogg> danke
+<ubuntu> hallo, ich hoffe ihr köönnt mir helfen... ich habe einesd karte die mit meiner sony kamera formatiert wurde... die kann nun werder unter windows noch unter ubuntu gelesen werden. gparted zeigt "file system: Unknown". ich habe mit dd eine sicherung erstellt dann habe ich mit testdisk eine analyse durchgeführt dort steht: bad relative sector, no partition is bootable und structure: ok
+<ubuntu> was kann ich tun um die partition wieder herzustellen?
+<LetoThe2nd> ubuntu: du kannst mit photorec z.b. drauf losgehenund schauen ob aus dem image was zu holen ist. aber verlassen kann man sich da natürlich auch nicht drauf.
+<ubuntu> ich kann photrec nicht installieren
+<LetoThe2nd> "weil"?
+<ubuntu> es im software center nicht gefunden wird
+<LetoThe2nd> ubuntu: lesen, lesen, lesen.... http://wiki.ubuntuusers.de/Datenrettung?highlight=photorec#Dateien-aus-Image-extrahieren
+<kubine> Title: Datenrettung › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<ubuntu> gibt es nicht irgendeine möglichkeit die partition zu reparieren? das wiederhestellen hat zwar geklappt aber die daten sind alle umbennant worden das ist ne menge arbeit alles zurück zu bennenen
+<k1l_> ich würde erstmal retten was da an daten übrig ist.
+<LetoThe2nd> nö. wenn testdisk nichts zusammenbringt, dann leb damit. (kurz und bündig.)
+<ubuntu> was passiert wenn ich mit gparted format fat32 wähle? gehen hierbei die daten auch verloren?
+<LetoThe2nd> natürlich.
+<k1l_> wenn du die formatierst? klar ist dann alles weg
+<magerquark> ubuntu, psate mal die ausgabe von testdisk
+<LetoThe2nd> !paste > ubuntu
+<kubine> ubuntu: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.ubuntuusers.de/
+<ubuntu> das werde ich sofort tun
+<ubuntu> die wiederherstellung läuft im moment noch
+<ubuntu> hab das terminal bereits geschlossen deshalb werde ich testdisk gleich nocheinmal ausführen
+<ubuntu> [paste:406597:test disk]
+<LetoThe2nd> ubuntu: den ganzen link, bitte.
+<ubuntu> http://paste.ubuntuusers.de/406597/
+<kubine> Title: test disk › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<ubuntu> war das so wichtig?
+<ubuntu> richtig
+<ubuntu> meinte ich
+<LetoThe2nd> ubuntu: rein vom pasten her: ja :)
+<ubuntu> ^^
+<ubuntu> http://paste.ubuntuusers.de/406602/
+<kubine> Title: Testdisk 2 › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<ubuntu> kann man mit dd eine sicherung der daten ohne partitionstabelle erstellen dann die sdkarte formatieren und mit dd wieder bespielen?
+<LetoThe2nd> jein.
+<LetoThe2nd> ich sags mal so - mit nem hexeditor ist viel möglich. mit deinem kenntnisstand: nein.
+<nibbler_> ubuntu: ja lar
+<nibbler_> ubuntu: aber cat und cp gehen grad so gut ;-)
+<LetoThe2nd> steh halt einfach dazu dass du das ding demoliert hast, und das umbenennen und sichten der geretteten daten ist halt dein lernen-durch-schmerz-reiz das nächste mal a) aufzupassen b) rechtzeitig backups zu machen.
+<LetoThe2nd> nibbler_: es bringt halt einfach nichts wenn ich dann n vermutlich annähernd intakte partitionstabelle hab, die fats da drin aber trotzdem demoliert sind.
+<p01nt3r> war das die photorec-geschichte, mit der sd-karte, von gestern abend?
+<k1l_> bingo
+<p01nt3r> schon testdisk drüber laufen lassen?
+<ubuntu> ja
+<tic66> Hallo, bei mir kommt bei jedem Start bevor ich das luks Passwort eingeben muss für ca 10 Sekunden die Meldung "error no video mode activated", danach bootet er normal. Was heist das für mich?
+<exoplanet> Gibt es unterschiede zwischen Gnome und KDE Mülleimer?
+<bullgard6> exoplanet: Ja, die sind unterschiedlich implementiert.
+<Der_Held> nabend
+<exoplanet> bullgard6, gibts ne schicke Gegenüberstellung die das Erklärt?
+<bullgard6> exoplanet: Weiß ich nicht.
+<Der_Held> Hallo, ich nutzte ubuntu 10.04 64 bit mit 4 GB Speicher.Unter Ressourcen des Systemmonitors verbrate ich angeblich 1,3 GB Speicher, aber free -m sagt mir ich verbrauche gerade 3GB Speicher..  wieso diese Differenz?
+<LetoThe2nd> Der_Held: http://www.linuxatemyram.com/
+<kubine> Title: Help! Linux ate my RAM! (at www.linuxatemyram.com)
+<LupusE> hi
+<Der_Held> ah... geil.... danke!!
+<exoplanet> uuih, ist ja geul, gleich mal bookmarken
+<socket> hey guys, someone translated the interface of some web application i'm working on into german. the problem is that translator does not use computers so much so i'm afraid the tech language (words like login/logut) is off. does anyone have a few minutes to go through the website and have a look ?
+<LetoThe2nd> socket: same answer as last time. -> #ubuntu-de-offtopic
+<socket> LetoThe2nd: got no answer there, is that a big issue if the question will be asked here ?
+<socket> we're all dot.org after all
+<LetoThe2nd> socket: it is plainly not acceptable. if you got answer there - sorry, but its not an ubuntu topic and therefore not wanted here.
+<LetoThe2nd> socket: try it there again, people also change there are busy/not busy etc.
+<socket> i will, thanks
+<kevin_> Hallo, wie kann ich die Systemzeit anpassen, zur Zeit ist es bei mir auf einem Server 19:23 habe die Region bereits auf Europa und Germany gesetzt.
+<dAnjou> ein frage, ohne dass ich helfen kann/will: kannst du root?
+<k1l_> kevin_: http://wiki.ubuntuusers.de/Systemzeit  3. befehl dort mit tzdata
+<kubine> Title: Systemzeit › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<kevin_> Local time is now:      Thu Mar 15 20:29:10 CET 2012.
+<kevin_> Universal Time is now:  Thu Mar 15 19:29:10 UTC 2012.
+<kevin_> die untere stimmt nicht danach immer noch so
+<kevin_> tzdata command not found
+<kevin_> sudo dpkg-reconfigure tzdata  geh
+<kevin_> t aber die zeit nicht :D
+<sdx23> aber sicher stimmt die. Wikipedia: UTC.
+<kevin_> hmm, aber wie setze ich diese auf cet?
+<k1l_> kevin_: in deutschland ist es 20:30 also passte es doch
+<k1l_> kevin_: gar nicht
+<k1l_> kevin_: das ist die utc, ab der rechnet jeder in seine zeitzone um
+<kevin_> ja aber die serverausgabe liefert 19:29
+<sdx23> kevin_: Nicht. Lies den Wiki-Artikel.
+<k1l_> kevin_: dann denk nochmal nach und benutze meinen vorgschlagenen befehl um deine  zeitzone einzustellen
+<kevin_> habe den sudo dpkg-reconfigure tzdata  auf europa berlin gestellt?
+<k1l_> kevin_: was sagt: date
+<kevin_> 20:34 passt auch, aber meine website liefert die stunde vorher zeit
+<k1l_> dann sag deiner website, dass sie nicht die utc sondern die cet nehmen soll
+<kevin_> gut, danke.
+<dAnjou> was bedeutet "[d]eine website liefert"?
+<dAnjou> wie holst du die uhrzeit?
+<dAnjou> man kann in jedem fall serverseitig die uhrzeit umrechnen und dann ausliefern
+<kevin_> problem gelöst, habe apache2 mal neu gestartet
+<Obererpel> Moin Moin
+<m0ng> nabend
+<Obererpel> Wenn die md5-Summe einer Iso richtig ist, ist doch davon auszugehen, dass sämtliche dateien, die darauf enthalten sind, ebenfalls heil sind oder?
+<Obererpel> es sei denn, beim packen ist etwas schiefgelaufen
+<LetoThe2nd> Obererpel: ja
+<m0ng> ja so heil, wie sie zu dem zeitpunkt waren, als die md5 erstellt wurde
+<LetoThe2nd> Obererpel: eine identische md5 sagt in diesem zusammenhang aus, dass die datei die du hast mit der identisch ist, die der ersteller der summe hatte. nicht mehr und nicht weniger.
+<Obererpel> okay, kann dann jemand bestätigen, dass auf der lubuntu-11.10-desktop-i386.iso eine fehlerhafte datei .\casper\filesystem.squashfs liegt?
+<LetoThe2nd> Obererpel: mehr als unwahrscheinlich. wenn, dann such mal auf launchpad.net nach nem passenden bug, aber in 19 von 20 fällen ist eher dein system schuld, bzw. die gebrannte cd.
+<Obererpel> okay
+<Obererpel> ich prüf das nochmal
+<m0ng> was kommt denn für ein fehler
+<m0ng> https://www.google.com/search?client=ubuntu&channel=fs&q=filesystem.squashfs&ie=utf-8&oe=utf-8#hl=de&client=ubuntu&hs=dzH&channel=fs&sclient=psy-ab&q=filesystem.squashfs+failed&oq=filesystem.squashfs+failed&aq=f&aqi=g-L2g-vL1&aql=&gs_sm=3&gs_upl=27108l29150l1l29301l7l3l0l4l4l0l108l240l2.1l7l0&gs_l=serp.3..0i19l2j0i15i19.27108l29150l1l29301l7l3l0l4l4l0l108l240l2j1l7l0.&pbx=1&bav=on.2,or.r_gc.r_pw.r_qf.,cf.osb&fp=f829b9a35d28ba&biw=1115&bih=752
+<kubine> Title: filesystem.squashfs - Google Search (at www.google.com)
+<Obererpel> Okay, ich habe eine iso mit korrekter prüfsumme mit 7-zip entpackt und die md5.txt mit Checksum Control überprüfen lassen, dabei spuckt er mir einen fehler bei oben genannter datei aus.
+<silvermir> hallo ich war hier vorhin wegen der defekten sd karte unter dem namen ubuntu. nachdem ich mit tesdisk kein erfolg hatte und auch ein paar anderen versuchen hatte ich die nase voll und habe einfach chkdsk (windows) über die karte laufen lassen... nach exakt 3 sek war die karte wieder vollständig dar... wollte mich trottzdem nochmal bei euch bedanken und ganz herzlich bei p01nt3r
+<Obererpel> der anlass des überprüfens war, dass ich mir lubuntu mit dem linux live usb creator erstellt habe und jedes mal die installation vom stick auf meinen laptop stehen bleibt
+<m0ng> such mal nach filesystem.squashfs failed. da scheint es öfter fehler zu geben
+<Obererpel> hmm, okay
+<m0ng> ich nehm für sowas immer das hier http://unetbootin.sourceforge.net/
+<kubine> Title: UNetbootin - Homepage and Downloads (at unetbootin.sourceforge.net)
+<m0ng> kannst es ja mal damit versuchen
+<Obererpel> kann das der grund dafür sein, dass apt-get update hängen bleibt?
+<k1l_> Obererpel: benenn doch mal deine eigentliches problem samt fehlermeldung
+<LetoThe2nd> was hat das nun miteinander zu tun?
+<Obererpel> k1l_: Problem: jedes mal, wenn ich lubuntu installiere, hängt er bei "hole datei 54". Wenn ich diesen schritt überspringe und ins fertige system boote, funktioniert apt-get update nicht, er endet bei 99% [Suche nach Kopfdaten]
+<Obererpel> deswegen wollte ich mal den stick und das image überprüfen und das kam dabei raus
+<k1l_> Obererpel: endet?
+<k1l_> das kann einfach schonmal etwas dauern
+<Obererpel> 10 Minuten?
+<Obererpel> ohne was zu machen?
+<k1l_> kommt auf den server an
+<LetoThe2nd> klingt schon eher nach flaky/slow network
+<bekks> Obererpel: Ja, kann vorkommen.
+<Obererpel> hab von den deutschen servern auf die haptserver geschaltet
+<Obererpel> und zu verschiedenen tageszeiten probiert
+<Obererpel> und netzwerk läuft subjektiv schnell
+<bekks> Du kannst die Verbindungen im Internet aber nicht beurteilen. ;)
+<k1l_> habe hier nur die unstable und da hab ich in letzter zeit auch schon mal 3min gewartet
+<LetoThe2nd> ich würds jetzt im moment mal "uneinheitliches fehlerbild nennen"
+<Obererpel> jo
+<m0ng> wäre ja mal interessant zu wissen, was "datei 54" ist
+<Obererpel> ich mach einfach nochmal ein apt-get update und schau, ob sich was tut
+<Obererpel> hab ich mir auch gedacht^^ m0ng
+<k1l_> man kann ja auch mal installieren ohne die updates zu ziehen
+<m0ng> muss man ja irgendwie rauskriegen ^^
+<Obererpel> hab den haken eigentlich auch deaktiviert
+<bekks> Einfach das NEtzwerkkabel ziehen vor der Installation.
+<LetoThe2nd> wenn lokalisierung aktiviert ist, zieh er immer zumindest die sprachdateien.
+<Obererpel> joa, ich probier nochmal einfach
+<Der_Held> problem hatte ich auch schonmal beim vaio netbook... loesung von bekks hat es dann gebracht
+<Obererpel> so 98% [Warten auf Kopfzeilen]
+<Obererpel> es hat sich was getan, lustigerweise ist er jetzt nur noch bei 95%
+<bekks> Dann warte :)
+<jokrebel> Obererpel: Das kennt man doch von Fortschrittsbalken (und deren Prozentangaben) zu genüge. Von 0-99 dauert machmal genausolange wie von 99-100 :-)
+<Obererpel> jokrebel: jop, oder bei 100% nochmal 2 Minuten verweilen
+<Obererpel> Aber ich glaube, es geht voran, da sind schon mehr zeilen als vorhin
+<Obererpel> ich hasse es, von besserwissern umgeben zu sein ;D
+<jokrebel> Obererpel: Apropos Besserwisser; solche Sachen/Randbemerkungen/ect. die nichts mit dem eigentliche Support zu tun haben wären eher was für #ubuntu-de-offtopic  ;-þ
+<spidertux> hallo zusammen o/
+<spidertux> sorry, für meine ungenaue fehlerbeschreibung
+<spidertux> nach dem booten von ubuntu, kommt nur eine shell, ohne eingabezeile im tty7...dort werden die ausgeführten operationen angezeigt. und da steht eben *starting Light DM Display Manager [fail] aber besser sollt3e da in den eckigen klammern ein [ok] stehn
+<p01nt3r> spidertux, was sagt /var/log/Xorg.0.log?
+<p01nt3r> falls du noch nicht neu gestartet hast....
+<spidertux> schon dreimal neugestartet, aber nicht seit es das anzeigt
+<p01nt3r> na dann zeig mal her den inhalt der datei (bitte nopasten)
+<spidertux> geht ja kaum, es zu kopieren
+<p01nt3r> spidertux, sudo apt-get install pastebinit
+<p01nt3r> spidertux, pastebinit /var/log/Xorg.0.log
+<p01nt3r> dann den link hier her
+<spidertux> mal wieder ungenau beschrieben: ich bin auf einem anderen pc on
+<spidertux> mit windows 2000
+<exoplanet> 1. auf anderem pc in konsole
+<exoplanet> 2. dort elinks o.ä
+<exoplanet> 3. in nopaste pasten
+<exoplanet> 4. im irc linken
+<p01nt3r> spidertux, den link kannste doch abschreiben ^^
+<spidertux> da steht ein link , den man besuchen sollte :D
+<p01nt3r> spidertux, was war eig. dass der lightdm nicht mehr startet? was geändert? anderer treiber etc.?
+<p01nt3r> spidertux, evtl. prop. treiber installiert und dann ein kernel-update erfahren?
+<spidertux> aber mein problem is eher, dass da steht: no devices detected und dann fatal server error: no sreens found
+<p01nt3r> ja das hängt doch alles damit zusammen xD
+<p01nt3r> kannst mal ein "lspci | grep -i vga" machen
+<spidertux> geändert eigentlich nichts weiter an den treibern auch nichts...nur hatta ich des problem ähnlich schonmal, nachem ich einen treiber installiert hatte...danach musste ich mein ubuntu neu aufsetzen
+<p01nt3r> kommt auf den treiber an...
+<p01nt3r> aber das sollte eig. nicht notwendig sein
+<p01nt3r> spidertux, die meldung kommt daher, dass keine display-device gefunden wurde, und infolge dessen auch kein bildschirm gefunden werden konnte.
+<spidertux> mein problem ist außerdem, dass ich einen dell l501x habe, mit intel hd graphics und zusätzlich noch ne nvidia geforce 420m
+<p01nt3r> basiert beides auf fehlerhafter konfiguration des grafikkarten-treibers
+<p01nt3r> ich fürchte, wenn du uns keine infos zu deinem mom. system gibst, kommen wir da nicht weiter-
+<k1l_> spidertux: dann willst du die bumblebee angucken, dass das nvidia optimus nachmacht
+<k1l_> !nvidia > spidertux
+<spidertux> wie genau meinstu das jetz? p01nt3r
+<k1l_> ey, bot. wasn los
+<k1l_> !grafikkarten_nvidia > spidertux
+<kubine> spidertux: Informationen zu Grafikkarten/Nvidia finden sich im Wiki unter http://wiki.ubuntuusers.de/Grafikkarten/Nvidia
+<p01nt3r> spidertux, z.b. meine ich damit uns sowas mitzuteilen wie die ausgabe von "cat /var/log/Xorg.0.log | grep EE" o.ä.
+<bekks> Useless use of cat.
+<p01nt3r> spidertux, und pastebinit gibt das so herrlich kurz aus, dass man es auf nem zettel abschreiben und hier eintippen kann(link)-
+<bekks> grep EE /var/log/Xorg.0.log
+<p01nt3r> oder besser: grep EE /var/log/Xorg.0.log | pastebinit
+<p01nt3r> bekks, (er sitzt an nem anderen rechner)
+<spidertux> sorry, ich bin neu bei ubuntu/ überhaupt linux und kenn mich noch nich zu 1005 aus
+<p01nt3r> deshalb schreiben wir es dir ja auch :-)
+<Obererpel> ist das normal, wenn beim apt-get update einige (standard)quellen ein 404 liefern?
+<p01nt3r> Obererpel, zeitweise kann da schonmal ein server down sein.
+<Obererpel> p01nt3r: heißt 404 nicht, der server ist da, allerdings findet er die datei nciht, die angefordert wurde?^^
+<spidertux> paste.ubuntu.com/885505/
+<p01nt3r> Obererpel, jo, dann werden evtl. dateien erneuert
+<p01nt3r> oder verschoben oder oder oder xD
+<Obererpel> p01nt3r: okay... wird schon^^
+<p01nt3r> spidertux, da fehlt was
+<spidertux> ja, nur weiß ich nich, wie ich des machen soll D:
+<spidertux> * :D
+<p01nt3r> spidertux, geht schon
+<p01nt3r> aber
+<p01nt3r> das half nicht wirklich.
+<spidertux> kann das vllt am befehl liegen?
+<Obererpel> btw: ich hab das updaten vor fast ner stunde gestartet, die internetverbindung ist (eigentlich) stabil bei >20Mbit, ich hab apt-get update als befehl in erinnerung, der nach ner sekunde abgearbeitet ist. Habt ihr ähnliche erfahrungen?
+<p01nt3r> spidertux, wenn du ihn wie hier gezeigt eingetippt hast, nicht.
+<p01nt3r> spidertux, lies mal im wiki -> ubuntuusers,de
+<p01nt3r> ,=.
+<spidertux> ich tippe nochmal
+<p01nt3r> spidertux, auch /var/log/messages könnte interessant sein.
+<spidertux> paste.ubuntu.com/885513/
+<p01nt3r> spidertux, oder /var/log/syslog
+<spidertux> syslog: paste.ubuntu.com/885514/
+<p01nt3r> spidertux, dann aber eher in der form: grep fail /var/log/messages oder grep error /var/log/messages
+<justux> hallo, gibts nen shell-befehl um die arbeitsfläche zu wechseln?
+<p01nt3r> bzw. grep fail /var/log/messages | pastebinit
+<dadrc> justux, `xdotool set_desktop` kann sowas
+<dadrc> Bin mir aber nicht sicher, ob das mit Compiz funktioniert, das ist da gerne etwas etwas eigen
+<dadrc> Aber mit xdotool kannst du ansonsten auch Tastenkombinationen senden, damit sollte es auf jeden Fall gehen
+<spidertux> p01nt3r: es existiert kein verzeichnis namens messages
+<spidertux> 58888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+<p01nt3r> spidertux, messages ist eine datei, kein verz. - lass mal hinten den "/" weg
+<spidertux> sorry :/
+<spidertux> p01nt3r: da is kein /
+<justux> dadrc, sieht gut aus. danke!
+<p01nt3r> spidertux, gibts wohl da nicht mehr, dann nimm die syslog
+<spidertux> syslog: paste.ubuntu.com/885514/
+<p01nt3r> glaube nicht, dass die meldung damit was zu tun hat.
+<k1l_> das ist der wlan treiber imho
+<p01nt3r> jo
+<spidertux> ehm, wasa?
+<spidertux> *      -a
+<p01nt3r> spidertux, paste nochmal deine /etc/X11/xorg.conf (falls eine da ist)
+<p01nt3r> komisch, dass so gut wie keine meldung da ist.
+<spidertux> kannstu mir den ganauen befehl hinschreiben?
+<bekks> Die Datei heisst /var/log/Xorg.0.log
+<p01nt3r> bekks, die hatten wir schon, lies mit.
+<p01nt3r> spidertux, als allheilmittel wird immer angepriesen, den XServer neu zu konfigurieren mittels "sudo dpkg-reconfigure xserver-xorg"
+<spidertux> hälst du das für sinnvoll p01nt3r?
+<k1l_> nutzt er denn überhaupt welchen treiber?
+<k1l_> weil er hat ja 2 grakas und da gibts immer probleme
+<p01nt3r> spidertux, mir persönlich hat das noch nicht geholfen^^
+<k1l_> deswegen ja auch mein hinweis erstmal das optimus vernünftig einzurichten, bevor man an den symptomen doktort
+<p01nt3r> macht auch sinn, k1l
+<spidertux> k1l_: ja, nur hab ich keinen blassen schimmer, wie man da was eintirichten soll
+<k1l_> weil je nach hardware nutzt er da die intel oder die nvidia.
+<spidertux> *einrichten
+<k1l_> !grafikkarten_nvidia > spidertux
+<kubine> spidertux: Informationen zu Grafikkarten/Nvidia finden sich im Wiki unter http://wiki.ubuntuusers.de/Grafikkarten/Nvidia
+<k1l_> die technologie heisst nvidia optimus und der linux treiber bumblebee
+<p01nt3r> spidertux, bzw.: http://wiki.ubuntuusers.de/Grafikkarten/Nvidia/Nvidia_Optimus
+<kubine> Title: Nvidia Optimus › Nvidia › Grafikkarten › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<p01nt3r> so leute, haut rein, mir reichts für heute.
+<spidertux> ok...mir brummt grad der schädel und es ist sicher nicht hilfreich jetzt zu schlafen, wenn mir andere leute helfen wollen, aber ich muss morgen wieder früh raus...will sich morgen jmnd nochmal erbarmen?
+<spidertux> n8  zusammen o/
+<Fuchs> nachti
+<petri> Ich nutze seit langem natty (11.04) auf meinem eeepc. Seit ein paar Tagen erscheint bei jedem systemstart die Laufwerksprüfung. Wo kann ich das abschalten?
+<lordi> auch wenn du's durchlaufen lässt?
+<petri> lordi, ja natürlich lasse ich das durchlaufen - bin ja ne Frau ;-)
+<lordi> ^^ argument...
+<petri> lordi, ich bekome ne
+<k1l_> petri: eigentlich sollte das nur alle X starts passieren, oder bei fehlern
+<petri> Anzeige das ich mit Taste C alles beenden kann, ich drücke aber nicht !
+<petri> k1l_,  von Fehlern wird aber nichts angezeigt. Wo stände denn das?
+<k1l_> petri: im dmesg oder syslog
+<petri> ich habe mal die Systemprüfung durchlaufen lassen. da steht dann passed in grün
+<k1l_> unter /var/log/
+<petri> k1l_,  var log sagt mir nichts. ich kann den Systemprotokollbetrachter aufrufen.
+<petri> es gibt dmesg und demesg.0 was suche ich denn da?
+<lordi> petri, wie alt ist das notebook?
+<k1l_> /var/log ist ein verzeichnis, dort liegen alle logdateien des systems. du kannst auch mal die datei dmesg hochladen/nopasten, dann können die leute hier mal draufgucken
+<k1l_> !nopaste
+<kubine> k1l_: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.ubuntuusers.de/
+<petri> ?? ein eeepc 1000h
+<lordi> petri, wann hast du ihn gekauft.. :-)
+<petri> lordi,  wofür ist das denn wichtig? ich denke mal so 2-3 Jahre ist er alt.
+<lordi> vllt ist die motherboard-batterie leer
+<k1l_> eher nicht.
+<petri> lordi und dann? DAS ist dann der Grund warum immer wieder die Laufwerke getestet werden???
+<k1l_> so ohne logs oder fehlermeldungen ist das halt nur raten
+<petri> Eigentlich möchte ich das nur abschalten (oder meinetwegen alle paar wochen ausführen)
+<lordi> ansonsten kannst du das autom. prüfung auch mal probeweise komplett abschalten
+<k1l_> petri: das sollte nur alle paar wochen stattfinden, es sei denn es erkennt fehler und will die behben
+<petri> k1l_,  ja, nach was muss ich denn nun schauen in den logs und wie schalte ich es denn probeweise ab?
+<bekks> Oder einfach mal in den Logs schauen, was los ist.
+<k1l_> petri: deswegen frage ich die ganze zeit nach den logs. wenn du es nur abschalten willst aber einen ausfall riskieren willst dann ist das deine entscheidung
+<k1l_> petri: so ohne fehlermeldung oder logs kann das zig gründe haben. deswegen kommt man so nicht weiter
+<petri> k1l_, ja, aber du sagst mir leider nicht wie oder was ich dort suchen muss. Mein Mann ist leider krank, den kann ich nicht fragen
+<k1l_> petri: das steht nicht drin: hier hingucken, hier ist was kaputt. das sind technische fehlermeldungen. deswegen bitte den inhalt nopasten oder selber gucken
+<petri> k1l_, Du hast das verzeichnis var/log erwähnt. Das hat google auch schon getan. Da sind aber 50 Dateien drin. Die kann ich unmöglich alle durchschauen
+<k1l_> petri: da ist die von mir mehrfach genannte datei "dmesg". deren inhalt bitte nopasten
+<k1l_> !nopaste > petri
+<kubine> petri: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten (No)Paste-Service abgelegt werden. Nutze http://paste.ubuntuusers.de/
+<petri> k1l_,  so etwa? [paste:406617:dmesg logdatei]
+<k1l_> am besten den kompletten link
+<petri> http://paste.ubuntuusers.de/406617/
+<kubine> Title: dmesg logdatei › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<k1l_> petri: ok, kannst du mal nen die ausgabe von einem "mount" im terminal nopasten?
+<petri> k1l_, ich versuche das mal....
+<petri> k1l_, http://paste.ubuntuusers.de/406622/ bitte schön.
+<kubine> Title: mount › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<petri> k1l_, btw. danke, das hier so spät und trotzdem schnell geholfen wird!
+<k1l_> petri: also so sieht das für mich erstmal nicht nach einem fehler aus. ist das bei jedem boot? wie oft schon?
+<k1l_> also sowas wie: seit den letzten 20 boots jedes mal?
+<petri> k1l_, mindestens seit 1 Monat. Und ich starte den Rechner min. 2 mal am Tag. Und ja, es kommt jedes mal.
+<petri> und es kommt nie eine fehlermeldung, sondern der rechner startet ganz normal
+<k1l_> da ist doch noch nen win drauf, oder? vlt das mal starten, falls die partition einen knacks hat und ubuntu deswegen immer meckert
+<petri> k1l_,  dieses media/trekstor teil ist normalerweise nicht angeschlossen.
+<k1l_> dachte jetzt wegen den mehreren partitionen auf dem asus
+<petri> k1l_, ja es ist ein Windows auf dem Rechner. das meldet ebenfalls keine Fehler. Dort wird allerdings auch kein Test gestartet
+<petri> k1l_,  das Windows brauche ich allerdings so gut wie nie. ( vielleicht 1 mal im Monat.) ich habe für den Notfall virtual windows
+<petri> gibt es denn keinen Abschaltbefehl für diesen Test? Ich weiss ja gar nicht wo das überhaupt gestartet wird.
+<k1l_> sudo dumpe2fs -h /dev/sda5 | grep -i "mount count"       << in ein terminal eingeben und ausgabe wieder nopasten bitte
+<petri> k1l_,  http://paste.ubuntuusers.de/406627/
+<kubine> Title: mountcount › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<k1l_> ok, also die einstellung besagt, dass er alle 34 diese partition checken soll, und es gerade gemacht hat
+<k1l_> petri: wenn du es abstellen willst dann gemäß hier: http://wiki.ubuntuusers.de/Dateisystemcheck#berpruefung-abstellen
+<kubine> Title: Dateisystemcheck › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<petri> k1l_, und ich habe gerade nach der dump2fs gegoogled und habe die zeile sudo tune2fs -l /dev/sdaX | grep -i "check"  eingegeben
+<petri> danach wird der nächste Test im September gemacht??
+<k1l_> nein
+<Sysopa> Ihr lieben, eine kurze Frage: Poulsbo unter 12.04 soll gehen (geht auch) mit dem psb_gfx Treiber, der aber blockiert wird von dem poulsbo Treiber, laut anleitung soll man den blacklisten:
+<Sysopa> edit file /etc/modprobe.d/blacklist.conf and add line
+<Sysopa> blacklist poulsbo
+<k1l_> sdaX gibt es gar nicht
+<bekks> Und Support für 12.04 hier auch nicht :)
+<Sysopa> das hilft aber nicht, der poulsbo Treiber wird TROTZ Blacklist geladen
+<petri> ja natürlich mit der 5 drin ;-)
+<Sysopa> bekks: *grummel*
+<k1l_> petri: und einfach was eingeben ist nicht so gut, wenn man nicht weiss was es macht. das listet nur das gleiche auf was ich eben abgefragt habe
+<k1l_> petri: schau in dem von mir verlinkten wiki artikel, dort steht, wie du das abstellst, oder umstellst
+<lordi> petri, kannst ja versuchsweise mal ganz abschalten. aber ich vermute, dass er trotzdem weiterhin immer überprüft
+<petri> gut, werde ich mal lesen. allerdings ist 34 mal booten ja ganz in ordnung. Leider passiert es aber jedes mal.
+<Sysopa> ok, ich korrigiere meine Frage: wo zum Teufel ist der poulsbo Treiber in Grub2 eingetragen, damit er in der initrd geladen wird?
+<bekks> Sysopa: Es gibt trotzdem keinen Support für 12.04 hier ;)
+<bekks> Sysopa: Dafür gibt es #ubuntu+1 und #ubuntu-de+1
+<Sysopa> die kannte ich nichtmal, aber ok
+<Azrooth> hallo sash_
+<k1l_> Azrooth: wenn du dein problem öffentlicht schilderst könnten vlt auch andere helfen
+<Azrooth> k1l_: ja, aber ich hab schon mit ihm darüber geschrieben
+<Azrooth> suche eine möglichkeit, mit ubuntu flash videos wie sie bei lecturio usw. angeboten werden, downloaden und abspeichern zu können
+<k1l_> Azrooth: und wenn er 4 wochen im urlaub ist? willst du dann jeden tag vergeblich hier auflaufen? :)
+<k1l_> Azrooth: da nimmst du am besten eines der vielen download tools oder download addons deines browsers
+<Azrooth> k1l_: geht leider nicht so einfach. kannst es ja selbst mal versuchen. gibt ja z.b. auf lecturio auch freie videos, bei denen du das testen könntest. aber vielleicht hab ich ja was falsch gemacht und bei dir gehts.
+<Azrooth> hmm
+<Azrooth> k1l_: noch da?
+<k1l_> ja
+<Azrooth> k1l_: also auch keine idee?
+<k1l_> naja, das ist ja nicht wirklich ein ubuntu problem. und persönlich sage ich da: kontaktiere die betreiber ob sie die filme anders anbieten
+<Azrooth> ok
+<Azrooth> schade
+<Azrooth> cu
+<Zigi> Hiho, habe leider immernoch kein lirc zm funktionieren bekommen. Evtest liefert mittlerweile signale, aber bei irw kommt nichts an. Komm mit meinem Wissen leider nicht mehr weiter :(
+<levu> Hi, wie tausche ich per xmodmap Alt und AltGr?

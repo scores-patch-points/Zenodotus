@@ -1,0 +1,1722 @@
+---
+title: The present status and the future of missile aerodynamics
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19880020389
+source_url: https://ntrs.nasa.gov/citations/19880020389
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-24
+retrieved: 2026-09-22
+sha256: bb57c030d9d7ea4e11678156cd2285cc6000217eca7fecf98301362e072e5c0f
+pages: 37
+words: 10863
+cv_look_pages: 6
+---
+
+                     ~~
+
+
+
+
+                                                                                              b
+
+
+      NASA TcBlTTRS Memorandum 100063
+
+
+
+
+                                                                            ,5767
+
+
+
+
+     The Present Status and the
+     Future of Missile Aerodynamics
+     Jack N. Nielsen
+
+(blASA-TH-loOo63)         T E E P R E S E B l S T i A l U S A N D THE           N83-29773
+E L T U R E OF B I S S I L E AEPCCYNAEICS          (AASA) 37 p
+                                                           CSCL 01A
+                                                                                Unclas
+                                                                        G3/02   0 157 1 5 7
+
+
+
+
+     January 1988
+
+
+
+
+     NASA
+     National Aeronautics and
+     Space Administration
+                     ~   ~~~     ~-   ~
+
+
+
+
+NASA Technical Memorandum 100063
+
+
+
+
+The Present Status and the
+Future of Missile Aerodynamics
+Jack N. Nielsen, Ames Research Center, Moffett Field, California
+
+
+
+
+January 1988
+
+
+
+
+NASA
+National Aeronautics and
+Space Administration
+Ames Research Center
+Moffett Field California 94035
+                                        SUMMARY
+
+
+     This paper reviews some recent developments in the state of the art in missile
+aerodynamics. Among the subjects covered are ( 1 ) Tri-service/NASA data base,
+(2) wing-body interference, ( 3 ) nonlinear controls, (4) hypersonic transition,
+(5) vortex interference, (6) airbreathers, supersonic inlets, ( 7 ) store separation
+problems, ( 8 ) correlation of missile data, ( 9 ) CFD codes for complete configura-
+tions, (10) engineering prediction methods, and ( 1 1 ) future configurations.
+Throughout the paper, suggestions are made for future research and development to
+advance the state of the art of missile aerodynamics.
+
+
+                                        SYMBOLS
+
+
+a             body radius at wing position
+
+AR            aspect ratio
+
+b             span, wing tip to wing tip
+
+cA            axial force coefficient
+
+              rolling moment coefficient
+
+C             effective dihedral, negative for stability
+
+‘m            pitching moment
+
+C~~          normal force coefficient of fin
+
+%F            value of CNF at       and fi a   for wing alone
+
+Cn           yawing moment coefficient
+
+L            directional stability, positive for stability
+    “6
+D            drag of missile configuration
+
+Kg           NB(W)/NW, body lift interference parameter for 6f = 0
+
+KW           NW(B)/NW,   wing lift interference parameter for 6f = 0
+
+
+
+                                           1
+               constant used to express change in fin angle of attack caused by    a0
+               coup1ing
+
+kl             b/(% tan a)
+
+               M, sin a, cross-flow Mach number
+
+k3             (tan a)/AR
+
+kw             lift interference parameter for control; NM(B)/Nw    with aB = 0,
+               aw = 6 f
+
+L/D            configuration lift-drag ratio
+
+a.             length of missile configuration
+
+m
+'
+               freestream Mach number
+
+c'    9   Mn   Mach number normal to body axis
+
+Ma.            local Mach number at a point in a flow
+
+k,             average Mach number across exposed span of fin
+
+N              configuration normal force
+
+               normal force on body caused by presence of wing
+
+               normal force on wing alone (wing alone = two fins joined at root
+               chord )
+
+               normal force of wing in the presence of body
+
+               freestream dynamic pressure
+
+               local dynamic pressure
+
+qa.
+               average value of q,   across exposed span of fin
+
+r              radial distance of point from body longitudinal angle
+
+               polar coordinates in crossflow plane
+
+               distance from body longitudinal axis to tip of fin
+
+               lateral distance from body longitudinal axis in plane of fins
+
+
+
+
+                                            2
+              distance of fin center of pressure from leading edge of root chord
+              nondimensionalized by fin root chord
+
+             angle of attack of undeflected fin, uC cos @
+
+             angle of attack of missile body
+
+             eauivalent angle of attack, Eq. (5)
+
+             local angle of attack at a point in flow
+
+             average angle of attack across exposed span of fin
+
+             angular deflection of fin from zero position
+
+             deflection of fin 1, etc.
+
+             r o l l angle of right fin from its horizontal position, positive
+             clockwise
+
+x            taper ratio of fin, ratio of tip chord to root chord at wing-body
+             juncture
+
+8            sideslip angle, 0 = a sin 4     or   sin 0 = sin a sin I$ for large ac
+                                   C                          C
+
+%            semi-apex angle of cone
+
+             an interference factor slightly less than unity associated with
+             deflection of fin j
+
+
+                                  1.   INTRODUCTION
+
+
+     In the six years since the last AGARD meeting on missile aerodynamics in
+Trondheim, Norway in 1982, much has happened. The purposes of the present paper are
+to describe the recent developments in missile aerodynamics, and to suggest areas
+where future research could be fruitful.
+     The emphasis in the paper is on the U.S. experience in stability and control of
+tactical missiles. The aerodynamic problems are discussed in generic terms so that
+reference to particular missiles is not necessary.
+     The paper covers theory, experiment, and engineering prediction, but not radar
+cross-section. The papers of the 1982 AGARD meeting are to be found in reference 1.
+
+
+
+
+                                         3
+                                         2. OVERVIEW
+
+
+         Among the aerodynamic requirements for tactical missiles are range, maneuver-
+    ability, and speed. These requirements can be contradictory depending on the spe-
+    cific application. The search for range has led to much work on airbreathing mis-
+    3iles. As a consequence, there is an interest in noncircular, nonrolling mis-
+    siles. The desire for maneuverability has led to operation at high angles of
+    attack, which, in turn, has created serious stability and control problems. At the
+    same time, the use of airbreathers puts definite angle-of-attack limits under which
+    the engines will operate, and in this regard, range and maneuverability are in
+    conflict.
+         The trend toward higher speeds has brought with it new problems in hypersonic
+    aerodynamics such as wing-body interference effects and unusual vortex behavior. In
+    addition, there are the questions of transition and turbulence at hypersonic speeds
+    which are important in many applications.
+         Methods of calculating the aerodynamics of missiles have been improved and
+    recent developments have increased the accuracy of the Euler equations f o r calculat-
+    ing missile flow fields. An engineering method for the design of missiles has been
+    produced in MISSILE DATACOM (ref. 31).
+         Also an engineering design code which works to high angles of attack,
+    Missile 111, has been developed based on an extensive Tri-service/NASA data base
+    (ref. 2).
+
+
+                               3. TRI-SERVICE/NASA DATA BASE
+
+         The Tri-service/NASA data base is being considered at this point because many
+    nonlinear aerodynamic phenomena are illustrated by data from this source. The basic
+    body for the systematic tests consisted of a cylindrical body with an ogive nose
+    3.0 calibers long for a total body length of 12.5 calibers. A series of fins
+    (fig. 1) ranging in aspect ratio from 0.25 to 4.0 was tested in a tail cruciform
+    arrangement with the body over the angle of attack and Mach number range (shown in
+    fig. 2 ) . The radius to semispan ratio was maintained constant at 0.5. The configu-
+    rations were all tested over the roll-angle range and, in some of the tests, the
+    fins were deflected as much as +40° about their hinge lines.
+         Six component force-and-moment data were taken for the configurations and
+I   normal force, root-bending moment, and hinge moment were measured for each fin.
+         These data form the basis of a prediction method for cruciform missile aerody-
+    namic characteristics, and are incorporated into a code called Missile I11
+    (ref. 2). In addition, references 3-5 make use of the Tri-service/NASA data base.
+
+
+
+
+                                             4
+                                              4. WING-BODY INTERFERENCE
+
+          Wing-body i n t e r f e r e n c e h a s been a n i m p o r t a n t s u b j e c t f o r decades. A t h i g h
+a n g l e s of a t t a c k i t h a s a n effect on t h e t o t a l normal force developed by a missile
+and its m a n e u v e r a b i l i t y . For moderate a n g l e s of a t t a c k , and s u b s o n i c t o moderate
+s u p e r s o n i c Mach numbers methods for p r e d i c t i n g i n t e r f e r e n c e between midwing and
+c i r c u l a r bodies are well known. T h i s i n t e r f e r e n c e for t h e wing is measured by a
+parameter d e f i n e d by
+
+
+
+
+Here NW(B) is t h e normal force on t h e u n d e f l e c t e d wing d i v i d e d by t h e normal force
+o f t h e wing a l o n e a t t h e same a n g l e o f attack. For t h e normal f o r c e carried o v e r
+o n t o t h e body from t h e wing, a n a n a l o g o u s r a t i o KB is d e f i n e d as follows:
+
+
+
+
+        The d a t a of t h e Tri-service/NASA d a t a b a s e are s u f f i c i e n t t o see t h e e f f e c t of
+c o m p r e s s i b i l i t y on t h e v a l u e s of KW and KB. I n t h e r a n g e of a n g l e of attack and
+Mach number c i t e d above, b o t h p a r a m e t e r s are f u n c t i o n s of a / s o n l y . What happens
+t o t h e v a l u e of t h e s e p a r a m e t e r s a t h i g h e r v a l u e s o f a n g l e o f a t t a c k and Mach number
+has been r e p o r t e d i n r e f e r e n c e 3 5ased on t h e Tri-service/NASA data base.
+
+          The v a l u e of KW and KB/KW have been e x t r a c t e d from t h e data base for
+M,    = 2.5, 3.5, and 4.5, and f o r a n g l e s of a t t a c k up t o 40°. These are t a b u l a t e d i n
+r e f e r e n c e 3 f o r seven f i n planforms v a r y i n g i n a s p e c t r a t i o and t a p e r r a t i o . S u f f i -
+c i e n t i n f o r m a t i o n is c o n t a i n e d i n t h e r e f e r e n c e t o d e t e r m i n e t h e normal-force c o e f -
+f i c i e n t s for the e n t i r e configurations.
+
+          P l o t s of KW v e r s u s a are shown i n f i g u r e 3 for a s p e c t r a t i o 2 wings as
+f u n c t i o n s of Mach number and t a p e r r a t i o . The effects o f t a p e r r a t i o are small, b u t
+t h e e f f e c t s of a n g l e o f attack are l a r g e . For small a n g l e s of a t t a c k , KW t e n d s
+toward t h e s l e n d e r - b o d y v a l u e , b u t a t h i g h a n g l e s of a t t a c k i t moves toward one o r
+t h e r e a b o u t s . Thus the f a v o r a b l e body i n t e r f e r e n c e on t h e f i n s t e n d s t o d i s a p p e a r a t
+h i g h a n g l e s of a t t a c k f o r a l l Mach numbers. T h i s r e s u l t is c o m p a t i b l e w i t h t h e
+s i m p l e method o f f i n d i n g l o a d i n g on b o d i e s a t h i g h a n g l e s o f a t t a c k by u s i n g
+Newtonian impact p r e s s u r e on a l l s u r f a c e s f a c i n g t h e airstream and assuming vacuum
+p r e s s u r e ( 0 ) on t h e leeward s u r f a c e s . On page 509 of r e f e r e n c e 12 i t is s e e n t h a t
+t h e cross-flow Mach number correlates KW f o r d i f f e r e n t Mach numbers.
+
+          A s e r i e s o f c u r v e s for KB/KW is shown i n f i g u r e 4 i n t h e same format as
+f i g u r e 3 . The v a l u e s of KB a t low a t e n d g e n e r a l l y toward t h e s l e n d e r body
+v a l u e of 0.55 or lower.            There is a f a i r amount of scatter i n t h e data.                       A t high
+
+
+                                                                5
+angles of attack (a z 20°), the value of KB tends to small values, indicating a
+loss of lift carryover from the fins to the body for Mach numbers from 2.5 to 4.5.
+     In connection with the value of KB/KW, these values pertain to the short
+afterbody lengths of the present configuration. These lengths are not uniform. The
+length of the afterbody probably can have a significant effect on KB. This problem
+is a good one for further work, possibly using an Euler code.
+     Another problem which needs future attention: where is the center-of-pressure
+location for the lift carryover onto the body from the fin?
+
+
+                            5. NONLINEAR CONTROL EFFECT
+
+
+     The control type that will be of interest here is the all-movable control which
+rotates about a hinge line perpendicular to the body. This information about all-
+movable controls is also true to a considerable extent about other controls, such as
+wraparound fins and retractable fins. Extensive measurements were made as a func-
+tion of Ma, a, 6 , A, and AR of all-movable fin normal force, root bending moment,
+and fin hinge moment. Some interesting effects were found in the Tri-service data
+base as described in reference 4.
+     Because of the variation in local flow conditions about a body of revolution at
+high angle of attack as a function of roll angle, the effectiveness of the fin in
+producing normal force will vary greatly between the leeward and windward fins. The
+local quantities affecting the fin normal force are the upwash angle, dynamic pres-
+sure, and Mach number. As examples of how the effectiveness of a fin in producing
+normal force varies with M, and Q, consider figure 5 (taken from ref. 4). For
+$ = 90°, the fin is on the windward meridian and for Q = -goo, the fin is on the
+leeward meridian. Examining the M, z 4.5 case first, we note that for constant
+4, increases in fin deflection from -40° to +40° are always accompanied with
+increase in fin normal force. At M, = 2 there is a peak normal force below
+6 = 40"  for Q, > -20". Thus there is a fin stall.
+     A second interesting feature is that at I$ go", a given fin deflection pro-
+duces more change in normal force than it does at 41 = -90". This effect is partic-
+ularly noticeable at M = 4.5 where the fin on the leeward meridian is operating
+almost in a vacuum.
+     It is possible to correlate the data of figure 5 by accounting for the local
+Mach number, dynamic pressure, and upwash angle.* These local quantities are deter-
+mined by using an Euler code to calculate the body alone flow field. The average
+value of these quantities over the span of the fin is determined in accordance with
+the following formula
+
+
+
+       *The flow angle in a streamwise plane normal to the fin planform.
+
+                                        6
+with analogous formulas for                Using the values of R and ik to define a
+uniform flow, we find the                  in this parallel flow !ran analysis or
+wing-alone data. The                        CNF is then given as follows:
+                                                -
+                                         =C*k - qa
+                                   'NF     NF w q,                                (4)
+
+
+     Conversely, the measured value of CNF can be used to calculate kw. The
+value of kw should correlate the fin normal-force data for all roll angles and fin
+deflections for a given Mach number. Such a correlation is shown in figure 6 by
+using the data of figure 5. For the M, = 2.0 results, good correlation is
+obtained for all the data except the 62 = +40° data near I$ = 0 " . These data
+represent a stall condition on the fin as observed in figure 5. For M, z 4.5, the
+data correlate well. For I$ between -90" and -60" the flow is separated, and Euler
+equation solutions to evaluate n q , i,,and a do not give accurate results.
+                                             a
+Thus kw is not approximately unity as expected.
+     The question of hinge moments of all-movable controls at large a and/or
+large M, is also of interest. Sufficient data exist in the Tri-service/NASA data
+base to form the basis of a hinge-moment prediction method. All of the data are f o r
+fins having double-wedge sections of varying thickness ratios. A preliminary method
+for estimating hinge moments at transonic speed is advanced in reference 7.
+
+     With regard to pitching moment, knowledge of fin normal force and hinge moment
+is sufficient to determine the fin contribution to missile pitching moment.
+
+
+                         6. TRANSITION AT HYPERSONIC SPEED
+
+      Transition from laminar to turbulent flow in missile boundary layers will have
+large effects on the vortical separated flow field about the missile at high angle
+of attack, as well as on the heat transfer to the missile itself. It is important
+t o keep in mind that present methods for predicting the location of hypersonic
+transition can be very inaccurate and this can lead to serious errors in
+predictions.
+     Because of the reduced emphasis on hypersonics over the last 15 years, transi-
+tion research for hypersonic flow has lagged that for lower Mach number flow
+(ref. 8). There is a significant lack of information on the effects on transition
+of three-dimensional flow, real gases, shock waves, and pressure gradients. This
+void must be filled for the design of future hypersonic missiles and aircraft. In
+the meantime an interim empirical approach to boundary-layer transition at high Mach
+numbers is suggested in reference 8.
+
+
+                                          7
+     A somewhat fuller discussion on hypersonic boundary-layer transition prediction
+is given in reference 9. It contains some thoughts on how to predict transition on
+bodies characterized by a blunt nose, an early frustum, and a frustum.
+     It is clear that much research must be done before prediction of hypersonic
+transition can be put on a sound basis. Until reasonable correlation between wind
+tunnel and flight data at hypersonic speed is achieved, one must be cautious in
+using wind tunnel data.
+
+
+                               7. VORTEX INTERFERENCE
+
+
+     Control problems on missiles caused by vortices can occur in several ways. We
+first consider the classical case of asymmetric vortex separation on bodies of
+revolution at high angles of attack, which can occur if the cross-flow Mach number
+is subsonic. (This is a necessary condition for asymmetric separation, but alone it
+is not a sufficient one.) A correlation is presented in figure 7 as taken from
+reference 10 of the maximum side force coefficient caused by asymmetric body vortex
+separation for bodies of revolution. It can be seen that the asymmetric side force
+is negligible if t h e cross-flow Mach number is h i g h l y subsonic or supersonic of
+about M, > 0.8. Asymmetric separation vortices are not to be confused with a
+Karman vortex strut which can occur with symmetric separation.
+     A necessary condition for the existence of side force at zero sideslip is that
+the angle of attack be less than a critical value which depends on Mach number. In
+figure 8 the region of possible asymmetric side force is indicated. It is noted in
+figure 7 that bluntness reduces the cross-flow Mach number above which asymmetric
+side force does not exist.
+     It is clear that if a nonrolling missile is to operate in a region of vortex
+asymmetry, the controls must have enough power to handle the side force developed by
+asymmetric vortices.
+     Another effect with which the missile controls must cope is vortex switching in
+which the side force quickly changes sign. It is hoped, however, that this severe
+requirement can be avoided by making the missile antisymmetric in some way so that
+vortex switching does not occur. However, means of avoiding vortex switching still
+need investigation in a wind tunnel which does not have a strong asymmetry itself
+both for the rolling and nonrolling cases.
+     The interference associated with symmetric-body vortices still exists at hyper-
+sonic speeds. Little is known about the strength and position of vortices at such
+speeds. For the present, the prediction methods for lower speeds must be used. A
+combined experimental-theoretical investigation should be made of vortex behavior at
+hypersonic speeds and large angles of attack. One question of interest is: since
+density is very low on the leeward surfaces at high a and high Mach number, are
+the vortex-induced forces significant for body vortex effects o r for wing vortex
+effects on the tail?
+
+
+                                         a
+     It is possible with existing tools to conduct an inquiry into hypersonic vor-
+tices, and by using an Euler code, to calculate the entire flow field if the body
+separation lines are known. This was demonstrated in reference 11 for the symmetric
+vortices on a body of revolution at M = 3 and a = 15". The calculation uses the
+separation-line position as input and imposes the boundary condition that the veloc-
+ity vector is tangent to the separation line. To carry out the suggested work
+requires first determining the body separation lines experimentally for symmetric
+body vortices at a hypersonic Mach number. One can then carry out the Euler calcu-
+lations to determine the entire flow field. It can then be seen if the cross-flow
+field can be well represented by two concentrated vortices using the Biot-Savart law
+in the cross-flow plane.
+     One of the variables that might influence the position of the onset of separa-
+tion is the location of transition, especially at high altitude. The flow condition
+for the onset of symmetric vortex separation at hypersonic speeds needs to be meas-
+ured for bodies of revolution. It is not clear that the axial position of separa-
+tion is necessarily behind the position f o r the onset of transition so that laminar
+separation could occur.
+     Transition at hypersonic speed is thus of possible importance for vortex forma-
+tion, besides being important f o r heat transfer.
+
+
+                        8. AIRBREATHERS; SUPERSONIC INLETS
+
+     Rocket-powered missiles have specific impulses which are a small fraction of
+those for turbojets, ramjets, o r scramjets. Turbojets are limited to a Mach number
+of about 2 because of the pressure and temperature effects on the rotating structure
+of gas-turbine engines, whereas the static structures of ramjets and scramjets can
+stand much higher Mach numbers.
+     The specific impulse of the power package influences the size and weight of a
+missile f o r a given payload and range. The chart of specific impulse versus free-
+stream Mach number shown in figure 9 (from ref. 12) demonstrates the superiority of
+ramjets and scramjets for hypersonic missiles. It also depicts the range of opera-
+tion of the next generation of missiles.
+     Other than the TALOS and BOMARC, long since out of service, there are no air-
+breathing tactical missiles in the U.S. military inventory. However, a large amount
+of research has been done since World War I1 on airbreathing propulsion for super-
+sonic missile airframes. Because of the reduction in weight and size for a given
+payload or range, it is strange that more airbreathing missiles have not seen
+service.
+     Airbreathing missiles are for the most part of the bank-to-turn kind rather
+than the rolling kind. If the angle required for the flow to turn into a supersonic
+inlet at high angle of attack exceeds a certain value (dependent on Mach number),
+the flow will not turn into the inlet and the inlet will "unstart." For bank-to-
+
+
+                                        9
+turn missiles putting the inlet on the bottom of the body yields higher inlet pres-
+sures as the angle of attack increases. A ramjet is less sensitive to initial flow
+nonuniformities than is a turbojet engine. Accordingly, a ramjet with the inlet on
+the bottom surface appears to be a likely candidate for a hypersonic maneuvering
+missile. The skid-to-turn missile is seen to deteriorate in performance as the
+angle of attack increases. An example of a ramjet in normal service is the Sea Dart
+of the Royal British Navy.
+     In accordance with the purpose of this paper, future problems need to be iden-
+tified where possible. Inlet technology presents a ripe area for innovation and
+invention for hypersonic propulsion. One area where future efforts should yield a
+good payoff is the application of computational fluid dynamics to inlet design.
+Some preliminary efforts in this direction using an Euler code have been promis-
+ing. The code also determines the inlet contribution to the stability of the
+missile.
+      A few years ago McMillan et al. made a detailed survey of the available infor-
+mation on airbreathing inlets (refs. 13 and 1 4 ) . The papers contain descriptions of
+the inlets tested, the testing parameters ranges, and the kinds of measurements
+made.
+
+
+                            9.   STORE-SEPARATION PROBLEMS
+
+
+     Many tactical missiles are carried and released by aircraft. During their
+release they can encounter destabilizing forces and moments caused by the aircraft
+flow field which can be the most severe in their operating range. A possibility
+exists of missiles even striking the aircraft.
+     Most missiles are mounted on external racks and pods and operate well up into
+the transonic speed range. However, at high transonic speeds they frequently become
+unstable when released. At supersonic speeds they have so much drag that new
+methods of carrying and releasing the stores are necessary.
+     For supersonic aircraft a number of new carriage techniques have been sug-
+gested. The methods include mounting the store flush with the bottom of the fuse-
+lage (tangential carriage) and semi-submerging the missile in a cutout of the air-
+plane. These methods will significantly reduce the supersonic drag. Another method
+which has a number of benefits is storing the missile internally to reduce its
+drag. As an approximation, the missile drag coefficient is the airplane drag coef-
+ficient times the internal volume used by the missile divided by the total internal
+volume of the aircraft, a figure which is a small fraction of the airplane drag.
+There are no radar cross-section effects created by the missile, except at launching
+the missile.
+     The design of cavities for containing missiles at supersonic speeds has been
+extensively investigated by R. L. Stallings of NASA-Langley (ref. 15). It is impor-
+tant that the cavity not become a Helmholtz resonator when its cover is removed to
+
+
+                                          10
+separate the missile. This phenomenon is a function of cavity depth-to-length
+ratio, Mach number, and Reynolds number. Also the pitching moment on the missile
+should be nose down to have a clear separation of the store from the aircraft. The
+missile may be given a downward linear velocity and initial angular velocity to aid
+separation. It is important that a supersonic aircraft be able to separate its
+missiles at subsonic and supersonic speeds.
+     Computational fluid dynamics finds use in the study of missile launching from
+aircraft at both transonic and supersonic speeds. Panel methods can now model
+complete airplanes. Missiles can also be included in the calculation. In refer-
+ence 16 Deslandes has applied an Euler code at transonic and supersonic speeds to
+predict carriage loads on external stores using zonal decomposition. In refer-
+ence 17, Dougherty, Benek, and Steger apply overlapping grids to solve by iteration
+for the interference field between several bodies at transonic speed. These authors
+have just scratched the surface of possibilities for the application of CFD to
+missile-airplane interference. Much remains to be done. Eventually CFD should
+largely replace experiment in this application.
+     While Euler codes give good solutions for many aircraft interference problems,
+some problems are Reynolds-number dependent so that the Navier-Stokes equations may
+be called for. Such problems may include missiles at transonic speeds where flow
+separation occurs because of the close proximity of the stores. Also, open cavities
+might require the Navier-Stokes equations in certain instances. The field is open
+for further research.
+
+
+                          10.   CORRELATION OF MISSILE DATA
+
+
+     While methods exist for calculating the complete flow field about many missile
+configurations, such calculations are costly and often of unknown accuracy. Engi-
+neering prediction methods based on data correlation plus analysis offer a cheaper
+and faster way of prediction in many cases. Methods for cruciform missiles and
+planar missiles exist but would benefit from further development.
+     We now discuss two correlation methods that are useful in engineering predic-
+tion methods before describing the methods themselves.
+     The equivalent angle-of-attack concept (ref. 18) has been very useful in help-
+ing to predict the normal force and center-of-pressure location of a fin in the
+presence of a body. It has also been useful in predicting the amount of normal
+force carried over onto the body. We will describe the concept here with minimal
+mathematics and refer the reader to reference 19 for the details.
+     A fin mounted on a circular body is subject to flow normal to its planform from
+at least four sources: (a) body angle of attack, (b) fin deflection, (c) sideslip,
+and (d) vortices. The equation connecting these quantities (without control deflec-
+tion) is
+
+
+
+                                         11
+         ,.                        4
+    tan a     = KW tan ac cos 4i + -
+                                   A R K 4 sin aC cos aC sin d i cos 4 i + tan(Aav)   (5)
+         eq i
+Adding in control deflection, we have
+
+                                         A         j=4
+
+
+
+where            is approximately unity for j = i and a small fraction for j f i.
+           'ij
+Here (Aa, is the average angle of attack induced normal to the fins by the body o r
+other vortices. The basic assumption here in determining the resulting angle of
+attack of the fin is that the velocities normal to the fin are linearly additive
+(fig. 10). We do not add component normal forces but use the tangent addition
+theorem on the component normal velocities. If the normal-force curve of the fin
+alone is linear, then we could add normal-force components. However, by the present
+method, nonlinear wing alone normal-force curves can be used. The normal force of
+the fin in the presence of the body corresponds to that for the wing alone at
+a hl = aeq. Data in reference 20 show excellent correlation of both CN(F) and
+(x/c)         versus a     for data from several sources. Further refinement of Equa-
+                       eq
+tion 75) considers the induced normal velocity at a given fin caused by the deflec-
+t i o n s of the other fins through the Aij coefficients. It is also possible to
+linearize Equation ( 5 ) and get good results in the moderate angle-of-attack range.
+An example of the correlation of fin normal force achieved by aeq is shown in
+figure 1 1 .
+     The other method of correlation which is useful for missile aerodynamic methods
+is due to Sychev (ref. 21) as adapted by Hemsch (ref. 6). Hemsch has shown how the
+modified similarity of Sychev can be used to correlate the normal force and center-
+of-pressure position for wings and bodies up to high angles of attack, assuming a
+supersonic cross-flow Mach number.t The normal force and pitching moment for a
+slender configuration are given by the following set of equations.
+
+                                    cN
+                                             = fl(kl,k2)
+                                  sin2 a
+
+
+
+
+where
+                                  b/a
+                            kl   =G-i k2 = Mm sin a
+Introducing a third parameter
+                                    - -tan
+                                        - a constant
+                                 k3 - A R  -   kl
+        tThis assumption turns out to be unnecessary for some reason.
+
+                                              12
+the normal-force coefficient and center-of-pressure location turn out to be
+
+                                       IU
+
+                               AR sin a cos a = f2(k2,k3)                        (10)
+
+
+
+
+     Hemsch applied the results to a systematic series of sharp delta wings tested
+by Miller and Wood* (ref. 22). He first plotted the position for the various data
+points in the k2,k3 plane as shown in figure 12. Four regions were found which
+corresponded to four types of delta-wing flow. It is then shown that two fins with
+the same values of k2 and k3 yield the same pressure coefficients in the form
+Cp/sin2 a versus y/s. This assumes similar airfoil shapes.
+     A simplification was found for the wings of the Stallings-Lamb data (ref. 23)
+consisting of wings varying in aspect ratio from 0.25 to 4.0 and with taper ratios
+of 0, 0.5, and 1.0. An accur-ate data correlation was found in the form
+
+                                                            B
+                                       cN        = A   -
+                                                       tan a
+                                AR sin a cos a          AR
+where
+
+                           A = A(M,   sin a) ;    B = B(M m sin a)              (13)
+
+     Hemsch found that three families of sharp-edged wings and two families of
+smooth bodies had normal force curves as represented by equations (12) and (13). It
+was also possible to correlate the center-of-pressure position of wings alone as
+curves of i / s versus a/AR with Mm sin a as a parameter.
+
+
+                     11.     CFD CODES FOR COMPLETE CONFIGURATIONS
+
+
+     It is often of interest to calculate the pressure or flow field for a complete
+missile or for a missile in the presence of an airframe. Various codes exist in the
+United States for this purpose. The codes vary in their speed, range of applicabil-
+ity, and the partial differential equation being solved among other ways. Four
+codes are compared in figure 13. These four codes are: (1) PANAIR (ref. 241,
+(2) TRANAIR (ref. 25), (3) DEMON (ref. 26), and (4) SWINT (ref. 27).
+
+     PANAIR (ref. 24) is a code intended to solve the linear aerodynamic theory (the
+Glauert-Prandtl equation) f o r complete configurations of some complexity. Although
+developed f o r airplane use, it can easily be adapted to a missile in flight. It can
+also handle a separating missile still within the influence of the airplane.
+     PANAIR can be used through the subsonic and supersonic speed range except in
+the nonlinear transonic range. For this purpose, TRANAIR was created for applica-
+tion to aircraft in the nonlinear transonic region (ref. 2 5 ) . It is applicable to
+missiles. The code solves the full potential equation for the entire flow field.
+It can be adapted to apply to an airplane-store combination.
+     DEMON (ref. 26) is a supersonic panel program based on the Glauert-Prandtl
+rule. However, nonlinear compressibilities effects are accounted for in an engi-
+neering approximation. It handles both body and fin vortices, and it is applicable
+when calculating interference between missiles and airplanes.
+     Finally, SWINT (ref. 27) is a supersonic marching code based on the Euler
+equations. It employs a grid with radial lines from a center somewhere in the
+body. The radial lines in the cross-flow plane are allowed to intersect the surface
+of the missile only once. This limits its application to a class of missile config-
+urations. The important aspect of SWINT is that it is based on the Euler equations
+which handle nonlinear compressibility effects precisely.
+     There are gaps in the application of the foregoing codes. The difficulty in
+some cases, which is due to the mesh of the Euler code just discussed, can be over-
+come, and this problem is a good one for future work. At the same time, it might
+also be modified to handle multiconnected regions. If the Mach number in the march-
+ing direction becomes subsonic, the Euler code "blows up" (this usually occurs at
+some limiting angle of attack). A method for handling small regions of embedded
+subsonic flow with the Euler equation would be of interest.
+     A l l the codes have been or can be adjusted to account for vortices in an engi-
+neering fashion. The rigorous treatment of the vortices awaits a Navier-Stokes code
+to handle the vortices from first principles. There are a number of Euler solvers
+besides SWINT for solving flow problems of supersonic missiles.
+In fact, four different Euler solvers have been compared by Priolo, Wardlaw, and
+Solomon in reference 28. SWINT has a number of shortcomings including geometric
+limitations, occasional instability in calculation, use of special means at leading
+edges, trailing edges and tips, inability to reproduce sharp shock discontinuities,
+and use of artificial viscosity. MUSE is an extension of SWINT to handle fin thick-
+ness and more general geometrics. ZEUS E is a first-order code using the Gudonov
+method while ZEUS H is a second-order code using the Gudonov method. The Gudonov
+method can remove most of the instabilities occurring in SWINT. It does not need
+artificial viscosity nor special procedures; it gives sharp discontinuities associ-
+ated with shocks. While these advances improve Euler codes, further advances are
+needed to handle viscous effects in a rotational inviscid way.
+     A supersonic panel code has been coupled with a NASTRAN code to determine
+static aeroelastic forces and moments as well as deformed shapes. This work has
+been accomplished by Dillenius et al. and is reported in reference 29. The combined
+program has been provided with an optimizing capability. One application under
+consideration is how to design a fin to minimize hinge moments. McIntosh and
+
+       *Miller and Woods obtained similar results using different parameters.
+
+                                         14
+Dillenius have written an aeroelastic tailoring procedure for reduction of fin hinge
+moments. The code (ref. 30) makes use of McIntosh and Dillenius' DEMON code.
+
+
+                                 12.    ENGINEERING PREDICTION METHODS
+
+
+     It is not economical and, in certain cases, not currently possible to calculate
+the aerodynamic characteristics of complete tactical missiles using CFD. Therefore,
+much preliminary design is done by engineering prediction methods. Many companies
+have their own engineering-prediction methods which are not in the public domain.
+However, there are several engineering methods that are in the public domain and
+which we will discuss: (a) MISSILE DATCOM (ref. 3 l ) , (b) MISSILE I11 (ref. 32), and
+(c) Schindel's Code (ref. 33).
+     We are discussing MISSILE DATCOM for purposes of completeness and comparison.
+MISSILE DATCOM is a collection of empirical, semiempirical, and theoretical methods
+mostly applicable to ordinary missiles. An "ordinary" missile is defined as either
+a planar or cruciform missile with an axisymmetric body. Two pairs of fins are
+included which are in line or are interdigitalized by 45". We will not discuss the
+methodology which is described in reference 31.
+      MISSILE DATCOM was used to predict the coefficients CN, CM, and CA for a
+large number of missile configurations. The tolerances allowable in the predictions
+were:
+
+
+
+                                       CM: 220% or 25% L
+
+                                       CA:   210% or 22 CD/CA COS a
+
+At   a 5 20°, t h e method f e l l w i t h i n t h e   t o l e r a n c e s 60% of t h e t i m e ; for   a 5 40°,
+40% of the time, Clearly the method is not a high-a method. For closely coupled
+wings and tails, it does not handle wing-body interference well; however, this
+matter can be rectified. It is not well adapted to handling a-6 coupling of all-
+movable fins or to handling asymmetric I$ settings well, o r the effects of a and
+M on KB and KW. Reference 3 gives systematic data sufficient for updating the
+effects of a and M on KW and KB.
+     The next computer code, MISSILE 111, supplements DATCOM in some instances. It
+utilizes a newly available systematic Tri-service/NASA data base previously
+described. It covers the Mach range 0.6 to 4.5, fin aspect ratio from 0.25 to 4.0,
+angles of attack up to 45", and arbitrary roll angles. It contains also a set of
+data for systematic variations of I$ and 6 , for a number of fins over an a and M
+range. These data are sufficient to handle a-6 coupling as well as 6i-6j coupl-
+ing, assuming this latter quantity is small. The program's disadvantage is that it
+does not handle drag.
+
+
+                                                       15
+     The data were taken at a/s = 0.5. For a/s = 0 there is no wing-body inter-
+ference so that KW = 1 and KB = 0 . For other a/s ratios, a linear interpola-
+tion is made between a/s = 0 and 0.5 for KW and KB as is approximately true from
+slender-body theory. This assumption has never been clearly investigated and would
+be a worthwhile subject of future research. The generalization of a/s = 0.5 data
+to any a/s gives the data base,an additional parameter of freedom. Also the
+effects of putting a wing and tail on a missile are handled by providing a wing-tail
+interference method in the program. In these ways, the applicability of the data
+base is vastly expanded.
+     It is clear that anything that can be accomplished with MISSILE I11 could also
+be added to MISSILE DATCOM.
+     A number ( 6 ) of suggestions for the extension of MISSILE I11 are included in
+reference 32.
+     In reference 33 Schindel has produced a computer code for preliminary design
+and screening of missile airframes. Its virtues are that it is fast and applicable
+to waveriders. It also includes a plotting routine for the results.
+
+
+                           13.   SOME FUTURE CONFIGURATIONS
+
+
+     As a result of future trends in tactical missiles, a number of new concepts are
+being advanced to fill the needs. These configurations include waveriders, noncir-
+cular bodies, airbreathing engines, etc. We will examine a number of these future
+configurations.
+     Consider first the waverider which is now receiving much attention. Figure 14
+illustrates a waverider at its design point. It is the type of waverider known as a
+caret wing. Its upper surface consists of two triangular planes joined at a hinge
+line. At the design condition, the hinge line is parallel to the freestream direc-
+tion, and no pressure exists on the upper surfaces. In the chordwise direction, the
+airfoil sections are all wedge sections of a uniform wedge angle. The flow under
+the wing is all parallel flow at oblique shock pressure. The reyion between the
+bottom of the waverider and a plane containing the apex and wing tips is at uniform
+pressure. We thus know its lift/drag ratio from oblique shock theory. Waveriders
+have higher L/D ratios at hypersonic speeds than the usual cruciform missiles by
+about a factor of 2 . Waveriders were seriously considered for designs of hypersonic
+aircraft by Kucheman (ref. 34) and his associates in England about 25 years ago. It
+is only recently that waveriders have been given serious attention for hypersonic
+tactical missiles.
+     A large variety of waverider configurations is possible (Schindel, ref. 35).
+The use of waveriders as missiles presents a series of aerodynamic problems such as
+adding a propulsion system, controls, and a radome to the basic waverider, hopefully
+without seriously degrading (L/D)max, It is clear that considering the large number
+
+
+
+                                         16
+of waverider configurations and the above aerodynamic problems, a large and fruitful
+opportunity exists for research and development in this field.
+     An interesting study in the optimization of hypersonic waveriders is given in
+reference 36. In this study, a class of waveriders was optimized for maximum L/D
+ratio considering skin friction and blunt leading-edge drag. At M = 6 an L/D
+over 8 was calculated and at M = 25 an L/D of about 4.5 was calculated.
+     One virtue of the conical waverider is that its center of pressure remains
+constant at supersonic speed as long as the flow is attached. Of interest is how
+much the L/D is degraded by adding the necessary components to make it into an
+airplane.
+     With the introduction of airbreathing missiles to achieve range, it becomes
+possible to use noncircular bodies which do not roll continuously. This possibility
+opens up the design space and allows increased performance and increased stability
+and control. While rocket powered cruciform missiles usually use skid-to-turn
+maneuverability, airbreathers utilize bank-to-turn maneuvering. Possible advantages
+claimed in the use of noncircular bodies include higher lift, better storage,
+improved carriage, better separation, and improved stability and control.
+     A nonplanar missile on a noncircular body represents an interesting new design
+possibility which can have different stability and control than the usual cruciform
+missile. A few examples with noncircular bodies are now presented.
+     A circular body can develop rolling moments by skin friction but they are of
+small magnitude. It thus has zero effective dihedral, CQ . A noncircular body
+under sideslip can have rolling moment and side force as 8 result of pressure
+forces, yielding finite values of       and Cn . Figure 15 shows the effective
+                                   cQB an ellifltical body as compared to a circular
+dihedral and directional stability of
+one of the same area distribution. Note that the elliptical body has good effective
+dihedral while the circular body has neutral stability. Both bodies have poor
+directional stability, but the elliptical body is less unstable than the circular
+body and will thus require a smaller vertical fin.
+      Many investigations have advanced configurational ideas for improved hypersonic
+missiles (refs. 37-39). A number of these configurations discussed in reference 37
+have flat tops and are presented in figure 16. The maximum L / D ratios are pres-
+ented there f o r both flat top and flat bottom orientations. The difference in
+maximum L/D between the two orientations is not very large. It is thus possible
+t o provide volume below the wing to house the engine. Also, the positive pressure
+gives the engine more thrust. The maximum L / D ratios shown in figure 16 are below
+the empirical limit given by Kucheman in reference 34.
+
+
+
+The stability and control characteristics of monoplanes with elliptical bodies
+generally provides a good balance between longitudinal and lateral-directional
+stabilities. Too low a profile, looking normal to the body in the horizontal plane,
+
+
+                                        17
+reduces the directional stability. It also causes unporting of controls at high
+deflections with an attendant loss of control.
+       Hunt and his coworkers (ref. 38) have studied hypersonic missile airframes
+capable of housing a scramjet engine. The studies showed engine/airframe integra-
+tion to be a significant problem for this class of missiles. Also the engine can
+have a significant effect on the missile's stability and control. In reference 39
+Spearman analyzes the aerodynamics of some unconventional missiles and considers
+their applicability to certain missions. The classes of missiles considered are:
+( 1 ) delta-wing bodies (fig. 17), (2) ring-parasol wing bodies (fig. 18), and
+( 3 ) monoplanar missile with circular/elliptical body (fig. 19). Spearman's objec-
+tive was to indicate the types of mission suitable for various configurations. The
+requirements for various missions include full load carrying capability, low drag,
+low detectability, ease of carriage and stowage, low cost, etc.
+     Spearman's candidate for a tactical penetrator capable of high speed, low-
+altitude overflight with downward spray of warhead fragments is the thick delta wing
+and a semi-conical body with delta wings. This configuration, being small and
+slender, is hard to detect. High-speed, high-altitude concepts with good aerody-
+namic efficiency for volume and range are a possible approach to strategic penetra-
+tion. The parasol wing concept appears to be applicable to this mission. It pro-
+vides high-lift capability at low angle of attack by utilizing favorable interfer-
+ence flow fields.
+     A monoplanar wing in connection with an elliptical body is a good candidate for
+a maneuvering missile such as required in air defense or air combat missions. Its
+high L/D makes it a good candidate for longer range air-to-surface missions.
+     In this section we have considered four general categories of missile types:
+(a) waveriders, (b) flat-top monoplanar missiles, (c) missiles designed for scramjet
+propulsion, and (d) missiles suitable for particular missions. Although a number of
+stability and control problems have been mentioned in connection with these missile
+types, a great amount of research and development will be required in the future.
+     A detailed discussion of waveriders is to be found in reference 35 and of bank-
+to-turn missiles with noncircular bodies in reference 40.
+
+
+                              14. CONCLUDING REMARKS
+
+
+     In this paper a wide range of subjects in missile aerodynamics has been covered
+from a general point of view. Certain subjects such as aerodynamic heating, drag,
+radar cross-section, and real gas effects have been neglected because of space
+limitations or classification restrictions. The first two subjects are well covered
+by chapters IX and X in the book "Tactical Missile Aerodynamics,'' Vol. 104, AIAA
+Series Progress in Astronautics and Aeronautics.
+
+
+
+
+                                        18
+                                  15. ACKNOWLEDGMENT
+
+
+     I am grateful to Dr. Michael Hemsch, who reviewed the document and made a
+number of helpful suggestions.
+
+
+                                      REFERENCES
+
+
+ 1.   "Missile Aerodynamics," AGARD-CP-336, Restricted NATO, presented at the Fluid
+      Dynamics Panel Symposium, Sept. 20-22, 1982, Trondheim, Norway.
+
+ 2.   Lesieutre, D. J., Mendenhall, M. R., Nazario, S. M., and Hemsch, M. J.,
+      " Aerodynam c Characteristics of Cruciform Missiles at High Angles of Attack,"
+
+      AIAA Paper 87-0212, 1987.
+
+ 3. Nielsen, J N., "Supersonic Wing-Body Interference at High Angles of Attack
+      with Emphasis on Low Aspect Ratios," AIAA Paper 86-0568, 1986.
+
+ 4. Hemsch, M. J. and Nielsen, J. N., "Extension of Equivalent Angle-of-Attack
+      Method for Nonlinear Flow Fields," J. Spacecraft and Rockets, Vol. 22, No. 3,
+      pp. 304-308, May-June 1985.
+
+ 5.   Lesieutre, D. J., Mendenhall, M. R., Nazario, S. M., and Hemsch, M. J.,
+      "Prediction of the Aerodynamic Characteristics of Cruciform Missiles Including
+      Effects of Roll Angle and Control Deflection," NEAR TR-360, 1987.
+
+ 6. Hemsch, M. J., I'Engineering Analysis of Slender-Body Aerodynamics Using Sychev
+    Similarity Parameters," AIAA Paper 87-0267, 1987. (To be presented in J.
+    Aircraft, 1988.)
+
+ 7. Nielsen, J. N., Goodwin, F . K., and Dillenius, M. F . E., "Prediction of
+      Cruciform All-Movable Control Characteristics at Transonic Speeds,"
+      NEAR TR-321, 1984.
+
+8. Reshotko, E., Bushnell, D. M., and Cassidy, M. D., "Report of the Task Force on
+   Boundary Layer Transition," NASP TM-1007, 1 987.
+
+ 9. Stetson, K. F., "On Predicting Hypersonic Boundary Layer Transition,"
+    AFWAL-TM-87- 160-FIMG, March 1987.
+
+10. Wardlaw, A. B., Jr. and Morrison, A. M., "Induced Side Forces at High Angles of
+    Attack,'' NSWC/WOL/TR 75-17, 1975.
+
+11.   Klopfer, G. H. and Nielsen, J. N., "Euler Solutions of the Body Vortices of
+      Tangent Ogive Cylinders at High Angles of Attack and Supersonic Speeds,'' AIAA
+      Paper 81-0361, 1981. Also NEAR TR-130.
+12.   Tactical Missile Aerodynamics, Progress in Astronautics and Aeronautics,
+      Vol. 104, Martin Summerfell, Series Editor in Cheif, Chapter 4 , Inlets, by
+      A. N. Thomas, Jr., the Marquandt Co., Van Nuys, Calif., pp. 129-167.
+
+13. McMillan, 0. J., Perkins, S. C., J r . , Perkins, E. W., and Kuhn, G. D., "Data
+      Base for the Prediction of Airbreathing Missile Airframe/Propulsion System
+      Interference Effects (U), I 1 NWC TP-6136, 1980, Limited Distribution. (Prepared
+      under Contract N60530-78-C-0098 (Confidential Report).)
+
+14. Perkins, Stanley C., Jr. and McMillan, 0. J., "A Handbook of Experimental Data
+    for the Effects of Inlet Systems on Airbreathing Missile External Aerodynamics
+    (U)," NWC TP-6147, 1982, Limited Distribution. (Prepared under Contract
+    N60530-78-C-0201. ) Vol . 1 , Overview and Summary ( U ) (Confidential ) ; Vol . 2,
+    Configuration Data: Inlet Type Effects (U) (Unclassified, but Limited
+    Distribution); Vol. 3, Data Classified by Inlet Type, Part 1 (U)
+    (Confidential); Vol. 3, Data Classified by Inlet Type, Part 2 (U)
+    (Confidential).
+
+15. Stallings, R. L., "Store Separation from Cavities at Supersonic Flight Speeds,"
+    Journal of Spacecraft and Rockets, Vol. 20, pp. 129-132, March-April 1983.
+
+16. Deslandes, Ronald, "Zonal Decomposition: An Advanced Concept for Euler Codes
+      in Order to Predict Carriage Loads of Non-Trivial External Store
+      Configurations, Paper No. 2, AGARD CP-389, 1986.
+
+17. Dougherty, F. C., Benek, J. A., and Steger, J. L., "On the Application of
+    Chimera Grid Schemes to Store Separation, I t AGARD CP-389, 1986.
+
+18. Smith, C. A., Nielsen, J. N., and Hemsch, M., "Prediction of Aerodynamic
+      Characteristics of Banked Cruciform Missiles at High Angles of Attack," AIAA
+      Paper 79-0024, 1979.
+
+19. Hemsch, M. and Nielsen, J., "The Equivalent Angle-of-Attack Concept f o r
+    Engineering Analysis," Chpt. XI, "Tactical Missile Aerodynamics," Vol. 104,
+    Progress in Astronautics and Aeronautics, AIAA, 1986.
+
+20. Hemsch, M. J. and Nielsen, J. N., "Equivalent Angle of Attack Method for
+    Estimating Nonlinear Aerodynamics of Missile Fins," J. Spacecraft and Rockets,
+    Vol. 20, pp. 356-362, July-August 1983.
+
+21. Sychev, V. V., "Three-Dimensional Hypersonic Gas Flow Past Slender Bodies at
+    High Angles of Attack," J. Appl. Math. and Mech., Vol. 24, pp. 286-306, 1960.
+
+22. Miller, R. S. and Wood, R. M., "Leeside Flow Over Delta Wings at Supersonic
+    Speeds, NASA TP-2430, 1985.
+
+23. Stallings, R. L., Jr. and Lamb, M., "Wing-alone Aerodynamics Characteristics
+    for High Angles of Attack at Supersonic Speeds," NASA TP-1889, 1981.
+
+
+                                          20
+24. Derbyshire, T. and Sidwell, K. W., "PANAIR Summary Document," NASA CR-3250,
+     1982.
+
+25. Samant, S. S., Bussoletti, J. E., Johnson, F. T., Burkhart, R. H., Everson, B.
+    L., Melvin, R. G . , Young, D. P., Erickson, L. L., Madson, M. D., and Woo, A.
+    C., "TRANAIR: A Computer Code for Transonic Analysis of Arbitrary
+    Configuration,'I AIAA Paper 87-0034, 1987.
+
+26. Dillenius, Marnix F. E., "Aerodynamic Predictions Using Supersonic Paneling
+    Methods Accounting for Vorticity and Nonlinear Effects," AIAA Paper 86-0569,
+     1986.
+
+27. Wardlaw, A. B., Priolo, F. J., and Solomon, J. M., "A Multiple-Zone Method for
+    Supersonic Tactical Missiles," NSWC TR 85-484, 1986.
+
+28. Priolo, F. J. and Wardlaw, A. B. Jr., "A Comparison of Inviscid Computational
+    Methods for Supersonic Tactical Missiles,I* AIAA Paper 87-0113, 1987.
+
+29. Dillenius, M. F. E., Perkins, S. C., Jr., and Lesieutre, D. J., "Modified
+    NWCDM-NSTRN and Supersonic Store Programs for Calculating NASTRAN Forces Acting
+    on Missiles Attached to Supersonic Aircraft,'' NEAR TR 369, 1987.
+
+30. McIntosh, S. C., Jr. and Dillenius, M. F. E., "Aeroelastic Tailoring Procedure
+    for Reduction of Fin Hinge Moments," NEAR 374, 1987.
+
+31. Vukelich, S. R. and Jenkins, J. E., "MISSILE DATACOM: Aerodynamic Predictions
+     of Conventional Missiles Usi-ig Component Build-up Techniques," AIAA
+     Paper 84-0388, 1984.
+
+32. Lesieutre, D. J., Mendenhall, M. R., Nazario, S. M., and Hemsch, M. J.,
+    "Prediction of the Aerodynamic Characteristics of Cruciform Missiles Including
+    Effects of Roll Angle and Control Deflection," NEAR TR-360, 1986.
+
+33. Schindel, L. H., "A Preliminary Design and Screening Process for Missile
+    Airframe Configurations," AIAA Preprint 87-0211, 1987.
+
+34. Kucheman, D., The Aerodynamic Design of Aircraft, Pergamon Press, Oxford,
+    pp. 448-510, 1978.
+
+35. Schindel, L., Waveriders, Chpt. 6 in "Tactical Missile Aerodynamics,'' AIAA
+    Progress in Astronautics and Aeronautics, Vol. 104, 1986.
+
+36. Bowcutt, K. G . , Anderson, J. D., and Capriotti, D., "Viscous Optimized
+    Hypersonic Waveriders," AIAA Paper 87-0272, 1987.
+
+37. Krieger, R. J., Gregoire, J. E., Hood, R. F., Eiswirth, E. A,, and Taylor,
+    M. L., "Aerodynamic Configured Missile Development--Final Report," Vols. 1-5,
+    AFWAL-TR-80-3071 , 1980.
+
+                                        21
+      Hunt, J. L., Johnston, P. J., Cubbage, J. M., Dillon, J. L., Richie, C. G., and
+      Marcum, D. C., Jr., '!Hypersonic Airbreathing Missile Concepts Under Study at
+      Langley, AIAA Paper 82-03 16, 1982.
+
+39.   Spearman, M. L., "Unconventional Missile Concepts from Consideration of Varied
+      Mission Requirements," AIAA Preprint 84-0076, 1984.
+
+40.   Jackson, C. M., Jr. and Sawyer, W. C., "Bodies with Noncircular Cross Sections
+      and Bank-to-Turn Missiles," Chpt. V, pp. 168-187, in "Tactical Missile
+      Aerodynamics,'' Vol. 104 in AIAA Series "Progress in Astronautics ana
+      Aeronautics. I'
+
+
+
+
+                                         22
+                                                                                                 FIN 12
+                                                                                                 AR=%,X=%
+
+
+
+
+  AR = %,   x = 'h    i                                                                          FIN 31
+                                                                                                 AR = %. x = 0
+
+
+
+
+ 2                                                                 2
+                                                                   FIN 42
+                                                                                               FIN 33
+                                                                                              ,AR=%,X= 1
+
+
+
+
+                                                                   AR=I,A=%
+
+
+
+
+                                   F"5m
+           FIN 51
+
+
+
+
+                                        D
+      AR = 2, X = 0
+
+
+
+      A                      AR = 2, X = 'h
+
+                                     t
+                                  FIN 62
+                                                                                        FIN 53
+                                                                                        AR = 2, X = 1
+
+
+
+
+                             AR = 4, X = 'h                                       ah,    = 0.5
+                                                                                  FOR ALL TEST
+                                                                                  RESULTS
+
+
+
+
+                               Figure 1.-          Test fin geometrics.
+
+
+
+
+                                          _ _ _ _ _ _ ~
+
+                         0            1              2         3       4      5
+                                               MACH NUMBER, M
+                                                            ,
+
+Figure 2.- Mach number and aspect ratio ranges and maximum angle of attack f o r T r i -
+service data base.
+
+                                                          23
+                                                                              X       FIN
+                                                                          0 0 F51
+                                                                          0 0.5 F52
+                                                                          0 1.0 F53
+                                                                          X   SLENDER-BODY
+                                                                              THEORY
+
+
+
+
+                     Y
+                     a-
+                          1.3
+                     0
+                     a
+                     U.
+                     W    1.2
+                     0
+                     z
+                     W
+                     LT
+                     W    1.1
+                     U.
+                     a
+                     W
+                     5- 1.0
+                           .9
+
+
+
+                      L
+                     a- 1.2 -
+                     Y
+
+
+                     e
+                     a 1.1 -
+                     0
+                     U
+                     W
+
+                     5a 1.0 -
+                     0
+
+
+                     W
+                     U
+                     Le    .9   -
+                     W
+                     I-
+                     z     .8
+                                    (c) M,=I   4.5
+                                                     1   1        I   1           I     I   I
+                                0         5      10   15    20   25      30            35   40
+                                                  ANGLE OF ATTACK, a, dag
+
+
+Figure 3.- Effect of taper r a t i o on interference f a c t o r                                KW   f o r aspect r a t i o 2
+fins.
+
+
+
+
+                                                             24
+                                                               X      FIN
+                                                             0 0      F51
+                                                             0    0.5 F52
+                                                             0    1.0 F53
+
+
+
+
+                         I    I     I        1    I      I        1        1
+
+
+                  .5 r
+
+
+
+
+                   0     5   10   15    20   25     30           35   40
+                               ANGLE OF ATTACK, a,deg
+
+
+Figure 4.- Effect of taper r a t i o on          KB/KW       for aspect r a t i o 2 f i n s .
+
+
+
+
+                                        25
+                         2
+                             [         cyc = 20"
+                                       M, = 0.68
+                                                                                    62 = 20"
+
+
+
+
+                        -2 -
+                                 (a) M,=       2.0
+                        -3         I       I          I     I         I    I    1            I        I
+
+
+
+
+                                   1       I         I      1     I        I    I        I            1
+                         -90     -70    -50      -30     -10  10     30        50     70          90
+                                                     ROLL ANGLE, @, deg
+
+Figure 5.- Effect of roll angle and fin deflection on the normal force generated by
+fin F2.
+                                  M, = 0.68                                           62, deg
+                                                                                     0 -40
+                                                                                     0 -20
+                       1.6                                                           0           20
+                                                                                     A           40
+
+
+
+
+                        .4   c
+                             I (a) M,= 2.0
+                                                          h
+
+
+
+
+                             I (b) M,= 4.5
+                         -90 -70        -50      -30      -10    10       30   50     70          90
+                                                                deg
+
+   Figure 6.- Effect of roll angle and control deflection on                                              k,   for all-movable
+   controls.
+                                                           26
+                                                                 A       SHARP TANGENT OGIVES
+                                                                 0       SHARPCONES
+                                                                 0       PARABOLOIDS
+                                                                 A       BLUNT TANGENT OGIVE
+                                                                         BLUNTCONES
+
+
+
+
+                                  0       .1       .2       .3       .4     .5       .6        .7   .8
+                                                            Mn = M, sin (Y
+
+
+    F i g u r e 7.- Effect on c r o s s f l o w Mach number on t h e s i d e f o r c e of c o n e s , t a n g e n t
+    o g i v e s , and p a r a b o l o i d s .
+
+
+
+
+                                 40   -
+
+                                 30                              M, 2 (0.8)
+                                                                 NO ASYMMETRIC VORTICES
+
+                             0
+
+
+                                                            \
+                            0 20 '
+                             d
+                                                                                              M, = 0.S
+                                 10 '-             ASYMMETRICAL
+                                                   POSSIBLE
+
+                                                   VORTICES
+                                      L        I        I            L           1        I              I
+                                 0             1        2            3        4           5          6
+                                                                 M,
+
+F i g u r e 8.- Boundary between symmetric s e p a r a t i o n and asymmetric s e p a r a t i o n f o r body
+of revolution.
+
+
+
+
+                                                                     27
+                    .
+                    P
+                    -
+                    n
+
+                         3000
+                                     TURBOJET
+                    9
+                    -4
+                    LL
+                    J
+                    w                        LIMIT
+                    3
+
+                                t
+                    Y
+                    c 2000
+                                             RAMJET
+                                                                    HYDROCARBON
+                    a
+                    w                                                 SCRAMJET
+                    n
+                    L
+
+                    5a 1000 -
+                    I                                         NEXT GENERATION
+                    I-
+                                                                REQUIREMENT
+                                    ROCKET
+
+
+                           0             2           4          6          8      10
+                                        FREESTREAM MACH NUMBER, Mo
+
+
+            Figure 9.- Specific thrusts of various propulsion means.
+
+
+
+
+                                                                      li
+
+
+
+
+Figure 10.- Addition of velocity components normal to fin defining equivalent angle
+of attack.
+
+
+
+
+                                                         28
+                         1.6'                                                 0       5
+                                    AR = 3.50
+                                                                              0 10
+                    I-          -    x =0.06                                  0 15
+                    2                                     a/s,   = 0.40       0 WING ALONE DATA
+                    W
+                    4 1.2 -                               I                               n o
+                    U
+                    Y
+                    W
+
+                    8
+                          .E   '
+
+
+
+                    a
+                    2
+                    L
+                    2 . 4 .- &
+                    K
+                    0               b
+                    z
+                                         (a) M, = 0.6
+                                                     1     1      I       I       I             I
+
+
+
+
+                    t    -     -
+                    z
+                    w
+                    E 1.2 -
+                    Y
+                    U
+                    w          -
+                    8
+                         .E-
+                    K
+                    P -
+                    i
+                    CT
+                         .4-
+                                     &
+                    0
+                    2          - P
+                                     (b) M,       = 1.3
+                                     I        ,      I    I       1       I       I             I
+
+
+                                                  EQUIVALENT ANGLE OF ATTACK, deg
+
+
+Figure 11.- Correlation of normal force coefficients with the equivalent angle of
+attack for moderate aspect ratio fin.
+
+
+
+
+                                                                 29
+                        .35 -
+                                                                       0     0'       0
+
+                                                                      CLASSIC VORTEX
+                        .30 -
+                                                                        PLUS SHOCK
+
+
+
+
+                        .25 -
+                                  CLASS1C
+                                  VORTEX
+
+                    9i .20 -
+                    .                                 0 0
+                                                                           SEPARATION
+                                                                              BUBBLE
+                                                                           EIPLUS SHOCK
+                    m
+                    C
+                    c
+
+                        .15 -
+                                                        P"                  El
+                                                                                      0
+
+
+
+
+                                                            SHOCK ONLY OR
+
+
+
+                        0           .2          .4               .6         .8            1.o
+                                                     M, sin CY
+
+
+Figure 12.- Classification of Miller-Wood delta wing flow field data using the
+Sychev similarity parameters.
+
+
+                        PANAI R             I        TRANAIR                      I   DEMONIII    I   SWINT
+
+     PANEL OR
+                        PANEL                         FIELD                           PANEL           FIELD
+     FIELD
+
+     BAS1C               GLAUERT                                                      GLAUERT
+                                                                                                      EULER
+     EQUATION            - PRANDTL                   POTENTIAL                        - PRANDTL
+     MACH NUMBER        -0.9
+                                                     0.6-0.95                         M 2 1.1         M>1
+     RANGE              1.2-2.5
+
+     BODY
+     VO RTI CES
+                        NO
+                                            I        No
+                                                                                  1   YES
+                                                                                                  I   No
+     WING-TAIL           MUST                        MUST
+     INTERFERENCE       INPUT                        INPUT                            YES             ?
+                        VORTEX                       VORTEX
+                        POSlTI ON                    POSlTI ON
+
+
+  Figure 13.- Characteristics of computer codes for calculating the loading on
+  missiles or aircraft.
+                       vca
+
+
+
+
+                                                            PLANAR SHOCK
+
+
+            Figure 14.- Sketch of a simple waverider, a caret wing.
+
+
+
+
+                                   CROSS SECTIONS
+                                  _____    ELLIPTIC
+                                                            a
+
+
+                      -.08   t                                    M, = 2.0
+
+
+
+
+                             I    /---
+                                          .-------
+                      -.08
+
+                             I       I        I             t      I          I
+                             -8      0        8             16     24        32
+                                                   a. deg
+
+
+Figure 15.- Comparisons of effective dihedral and directional stabilities between
+Sear-Haack bodies of circular and elliptical cross section.
+
+
+
+
+                                                  31
+                       ,         4
+                                     r
+                                                 M, = 4.0
+
+                                         KUCHE.... .NN UPPER BOUNDARY
+                                                                               -
+                                                                          CONFIGURATION
+                                                                      SYMBOL
+                                                                        L1.
+
+
+                                                                        a
+                                                                               -33
+
+
+
+
+                                  .1                .2           .3     a      4
+                                                   ~213
+                                                   -
+                                                     S
+
+
+F i g u r e 16.- Shape effects on maximum l i f t - d r a g r a t i o s b o t h r i g h t s i d e up and u p s i d e
+down.
+
+
+
+
+                                          (a) SEMICONICAL BODY WITH DELTA WINGS
+
+
+
+
+                                                                                     0
+                                                                                     A-A
+
+
+
+
+                                 -
+                                                                                BASE
+
+                                           (b) THICK DELTA WING CONCEPT
+
+
+                     F i g u r e 17.- Some d e l t a wing-body c o n c e p t s of Spearman.
+
+
+
+
+                                                            32
+                   (a)   RING-WING-BODY CONCEPTS
+
+
+
+
+                           I
+
+
+
+                  (b) FLAT BODY WITH SWEPT PARASOL WING
+
+
+Figure 18.- Ring wing-body and parasol wing-body concepts of Spearman.
+
+
+
+
+                                       33
+                 (a) MONOPLANAR MISSILE WITH CIRCULAR BODY
+
+
+
+
+                 (b) MONOPLANAR MISSILE WITH ELLIPTICAL BODY
+
+
+Figure 19.- Monoplanar missiles with circular o r elliptical bodies.
+
+
+
+
+                                       34
+                                              Report Documentation Page
+  1. Report No.                                 2. Government Accession No.              3. Recipient's Catalog No.
+ VASA TM-100063
+  4. Title and Subtitle                                                                  5. Report Date
+                                                                                        January 1988
+
+
+                                                                                    P---
+ The Present Status and the Future of Missile
+ 4erodynamics                                                                            6. Performing Organization Code
+
+
+                                                                                    I
+  7. Author(s1                                                                      I 8. Performing Organization Report No.
+ Jack N. Nielsen
+                                                                                    18-87289
+                                                                                        10. Work Unit No.
+
+
+  9. Performing Organization Name and Address
+                                                                                        11. Contract or Grant No.
+ lmes Research Center
+ loffett Field, CA 94035                                                            I
+                                                                                        13. T ..
+                                                                                              v w of ReDort and Period Covered
+
+
+
+
+                                                                                    >
+ 12. Sponsoring Agency Name and Address
+                                                                                        Technical Memorandum
+ Jational Aeronautics and Space Administration
+                                                                                        14. Sponsoring Agency Code
+ Jashington, DC 20546-0001
+                                                                                    I
+ 15. Supplementary Notes
+
+ 'oint of Contact: Jack N. Nielsen, Ames Research Center, MS 200-1A
+                   Moffett Field, CA 94035 (415) 694-5500 or FTS 464-5500
+
+
+ 16. Abstract
+        This paper reviews some recent developments in the state of the art in missile
+ ierodynamics. Among the subjects covered are (1) Tri-service/NASA data base,
+ 12) wing-body interference, (3) nonlinear controls, (4) hypersonic transition,
+ : 5 ) vortex interference, (6) airbreathers, supersonic inlets, (7) store separation
+ iroblems, (8) correlation of missile data, (9) CFD codes for complete configura-
+ ;ions, (10) engineering prediction methods, and (11) future configurations.
+ ihroughout the paper, suggestions are made for future research and development t o
+ idvance the state of the art of missile aerodynamics.
+
+
+
+
+ 'actical missiles
+ jtability and control
+ teview of present and future missiles                                          Subject Category - 02
+
+ 19. Security Classif. (of this repor5                                s page)           21. No. of pages      22. Price
+ Jnclassified                                   Unclassified                                 35                       A03
+                                          1
+NASA FORM 1626 OCT 86
+

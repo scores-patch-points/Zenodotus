@@ -1,0 +1,924 @@
+---
+title: Development of the UT San Antonio FLame and Advanced Rocket Experimentation (FLARE) Test Facility
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20250011686
+source_url: https://ntrs.nasa.gov/citations/20250011686
+rights: NTRS copyright determination GOV_PERMITTED; no third-party material
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Marshall Space Flight Center
+publication_date: 2026-01-12
+retrieved: 2026-09-22
+sha256: 1af270a5686eb79a1b606ccb1228295b851b4468e3b0453fbb46aea66c5ea0f7
+pages: 23
+words: 4759
+cv_look_pages: 6
+---
+
+      Development of the UT San Antonio FLame and Advanced
+            Rocket Experimentation (FLARE) test facility
+
+Joseph Hernandez-McCloskey∗† , Kevin M. Eisenbarger∗ , Krystal Corral Martinez∗ , Seth A. Reutlinger∗ , Justin Torbey∗ ,
+                            Eshwar Saikumar‡ , Victor Nagy‡ , and Daniel I. Pineda§
+              The University of Texas at San Antonio (UT San Antonio), San Antonio, Texas, 78249
+
+               The FLame and Advanced Rocket Experimentation (FLARE) facility at The University of
+           Texas at San Antonio was built to close the design–build–test–iterate (DBTI) cycle for metal
+           additively manufactured (AM) propulsion hardware on a campus without existing test capability.
+           Hardware validation—a required step in DBTI-driven AM development—demands a controlled
+           hot fire test environment. FLARE was student-designed, student-sourced, and student-built to
+           establish a robust testbed for research-grade rocket and air-breathing combustor development
+           under tight resource constraints. The facility delivers up to 2 lb/s of stoichiometric gaseous
+           methane–oxygen to support ∼500-lbf thrust-class combustors, including rotating detonation
+           rocket engines (RDREs). The thrust stand structure sustains loads up to 1500 lbf with a factor
+           of safety (FOS) of 4. Subsystems for propellant handling/metering, cooling, thrust measurement,
+           data acquisition and control, and custom electronics were developed from first principles
+           to meet accuracy, robustness, and safety requirements across extreme operating regimes in
+           next-generation propulsion systems. The facility architecture reflects necessity-driven decisions:
+           commercial turnkey systems were financially and operationally out of reach. FLARE instead
+           employs repurposed industrial hardware, purchased components, and in-house-fabricated parts
+           to support rapid DBTI cycle closure. This work documents the design logic, supporting analyses,
+           fabrication approach, and current build status of the v0 FLARE facility as a framework for
+           establishing propulsion test capability where commercial infrastructure is inaccessible and no
+           heritage facilities exist. Beyond its immediate research goals, FLARE demonstrates end-to-end,
+           student-led execution across mechanical design, manufacturing, and integration of safety-critical
+           systems: capabilities required for new entrants to develop advanced propulsion hardware in the
+           New Space era.
+
+
+                                                         I. Nomenclature
+
+𝑚¤   = mass flow rate
+𝜙    = equivalence ratio
+𝑃    = pressure
+𝑇    = temperature
+
+
+
+                                                          II. Introduction
+      etal additive manufacturing has transformed the development of next-generation propulsion hardware. It enables
+M     physics-driven geometry tailoring, reduces process scrap/waste [1], and unlocks compact, high-heat-flux systems
+like rotating detonation rocket engines (RDREs) [2]. To realize these systems at New Space pace, teams must rapidly
+close the design-built-test-iterate (DBTI) cycle; hardware maturation, life evaluation [3], and physics-based model
+development/validation [4] demand full component lifecycle visibility. While AM allows rapid production of actively
+cooled components—hardware historically inaccessible to universities—the DBTI cycle often stalls immediately after
+manufacture; without in-house test infrastructure, these systems cannot be proven through fire.
+     ∗ Graduate Research Assistant, Department of Mechanical, Aerospace, and Industrial Engineering, AIAA Student Member
+     † NASA Space Technology Graduate Research Opportunities (NSTGRO) Fellow, Engine Components and Technology Branch
+     ‡ Undergraduate Research Assistant, Department of Mechanical, Aerospace, and Industrial Engineering, AIAA Student Member
+     § Associate Professor, Department of Mechanical, Aerospace, and Industrial Engineering, AIAA Member
+
+
+
+
+                                                          1
+          Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+    Since 2021, the University of Texas at San Antonio (UT San Antonio) has expanded its role in propulsion research
+through collaborations with NASA Marshall Space Flight Center (MSFC) [4], the Air Force Research Laboratory
+(AFRL) [5–7], and internal programs [8–10]: a growing internal propulsion portfolio. Through recent investment by UT
+San Antonio as well as research projects sponsored by federal agencies targeting domestic graduate student workforce
+development, students now design and fabricate AM combustors, rocket torch igniters, and propulsion systems across
+multiple thrust classes spanning 1-lbf to 500-lbf. Each component is built for sustained, steady-state operation.
+
+
+
+
+            Fig. 1   UT San Antonio AM propulsion hardware development capabilities, 2023–2025
+
+    While in-house AM capability and over 6000 seconds of laboratory torch operation have been proven, UT San Antonio
+lacked a dedicated test environment to evaluate these components under flight-realistic conditions. Furthermore, external
+facilities could not meet realistic research timelines, safety/instrumentation requirements, or flexible configuration
+needs; external reliance for UT San Antonio propulsion advancement was considered unjustifiable and antithetical to
+the university’s core missions, which include being an innovative place to work, learn, and discover. An internal testbed
+for student-developed propulsion hardware became essential; hands-on student ownership of the hardware lifecycle was
+deemed paramount for program longevity, research output, and future New Space workforce development.
+    The FLame and Advanced Rocket Experimentation (FLARE) facility was conceived, developed, and is being built
+by students to establish in-house test infrastructure and enable full DBTI cycle closure on the UT San Antonio campus.
+FLARE’s architecture, subsystem design, and operations methodology were shaped by necessity; students required
+research-grade test capability without access to turnkey commercial systems or heritage infrastructure. This work
+outlines the design logic, integration strategy, and current build status of the v0 FLARE facility: a replicable framework
+to establish research-grade propulsion test capability in resource-constrained environments.
+
+
+
+
+                              Fig. 2   CAD render of UT San Antonio FLARE facility
+
+
+
+
+                                                        2
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+                                                    III. Methods
+    The v0 FLARE facility design was driven by system-level performance requirements; target operating conditions,
+research hardware scale, safety constraints, on-site manufacturing capabilities, and a rapid design-build-test-iterate
+(DBTI) cadence directly shaped the facility architecture. The resulting system integrates propellant handling, thrust
+measurement, cooling, ignition, and data acquisition/control through the requirements-driven workflow defined in
+Table 1. Acronyms used in the facility requirements table include: gCH4 /gO2 (gaseous methane–oxygen), CFV (critical
+flow venturi), TA (test article), DAQ (data acquisition), EMI (electromagnetic interference), cRIO (compact RIO
+controller), PCB (printed circuit board), and COTS (commercial-off-the-shelf).
+
+                       Table 1   v0 FLARE Facility Requirements and Design Implications
+
+              ID         Requirement                         Design Implication
+              R-1        Deliver up to 2 lb/s of stoichio-   Sets the ∼500-lbf TA envelope; dictates
+                         metric gCH4 /gO2                    regulator Cv, CFV sizing, and line diameter.
+              R-2        Support TA pressures up to 1000     Constrains allowable line losses, valve Cv,
+                         psig without CFV unchoking          and CFV backpressure margin.
+              R-3        Withstand 1500 lbf thrust with      Informs flexure geometry, weld process, and
+                         FOS ≥ 4                             load cell interface.
+              R-4        Provide ≥ 4 lb/s coolant flow at    Drives pump selection, routing strategy, and
+                         TA-compatible pressures             pressure drop allowance.
+              R-5        Enable safe sequencing and rapid    Governs relay logic, interlocks, and test
+                         abort capability                    redline enforcement.
+              R-6        Synchronously acquire thrust,       Sets cRIO module specifications, buffer ar-
+                         pressure, and temp at >2 kHz        chitecture, and control method.
+              R-7        Maintain signal integrity against   Enforces grounding layout, cable shielding,
+                         EMI and ignition events             and PCB design.
+              R-8        Support hardware reconfigura-       Dictates top plate layout, interface geometry,
+                         tion in <1 hour                     and mounting scheme.
+              R-9        Be fully manufacturable and         Frames fabrication approach, tooling needs,
+                         maintainable in-house               and design-for-maintenance.
+              R-10       Remain within project-allocated     Limits COTS reliance, outsourcing scope,
+                         budget constraints                  and v0 hardware ambition.
+
+
+
+
+A. System Architecture Overview
+    The v0 build of the UT San Antonio FLARE facility is sized to support up to 2 lb/s of stoichiometric gCH4 /gO2
+propellants with corresponding test article (TA) pressures up to 1000 psig. This flow capability enables hot fire test of
+∼500-lbf research combustors and directly aligns with subscale test articles used at NASA MSFC (i.e., TC-105 [11]),
+and AFRL-EAFB (i.e., EC-1 [12]). These high-level system definitions drive requirements for pressure drops, flow
+metering, valve selection, coolant flow capability, thrust structure design, and low-speed instrumentation bandwidth.
+Visualization of subscale RDRE hardware created in collaboration with NASA at the 500-lbf thrust class is shown in
+Fig. 3 at NASA MSFC TC-105.
+    A secondary "B-configuration" of FLARE, which incorporates a large-bore pressure regulator for air, supports
+hot fire testing at up to ∼2.5 lb/s for stoichiometric ethylene-air and hydrogen-air mixtures. The configuration is
+critical for validating in-house-developed air-breathing RDEs, where air serves as the oxidizer [7]. The dual-mode
+FLARE architecture enables both rocket and air-breathing detonation engine research alongside AM deflagration engine
+development at UT San Antonio; it supports full DBTI cycle closure across propulsion subdomains.
+    Initial hot fire testing will be conducted with in-house additively manufactured actively cooled deflagration-based
+rocket hardware to de-risk facility operations prior to RDRE campaigns. Subsequent test efforts—with hardware like
+that shown in Fig. 3 and UT San Antonio-developed air-breathing RDE configurations—will investigate detonative heat
+transfer, thermochemistry, combustor operating physics, and material survivability under extreme conditions. Methane
+
+
+                                                        3
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+Fig. 3 Scale of hardware to be tested at UT San Antonio: subscale RDRE testing at NASA MSFC left from [11],
+hot fire right from [4]
+
+
+was selected as the initial fuel for rocket-based studies to align with NASA’s Moon-to-Mars Architecture goals [13, 14]
+as well as narrow range of flammability limits (relative to hydrogen) for reduced-risk system checkouts and initial testing.
+Additionally, gaseous propellant states are used to enable direct comparison with publicly available literature [15]. Full
+integration and initial hot fire test are planned for early 2026. The next subsections detail each of the FLARE subsystems.
+
+
+B. Fluid Systems
+    Both high-flow and high-pressure capabilities were desired for research-relevant combustor operation within FLARE.
+High-flow is desired for increased thrust levels, and high pressure is desired to evaluate the effects of heightened
+thermal/structural loads on actively cooled hardware. The CAD model of the propellant fluid system is shown in Fig. 4.
+
+
+
+
+                                Fig. 4   FLARE propellant fluid system CAD render
+
+    The flow system uses critical flow venturis (CFV) [16], also referred to as sonic nozzles (SN) [17] to regulate the
+propellant mass flow rates. Sonic nozzles are used instead of choked orifices to enable a larger window of downstream
+pressures before unchoking; the diffuser section in CFVs enables pressure recovery which allows for higher maximum
+back pressure ratios (MBPR) and thus higher test article pressures for a given upstream pressure budget. Pressure and
+temperature are measured upstream of the sonic nozzles in accordance with the ASME MFC-7 standard to determine
+the upstream density and set the thermodynamic state for mass flow calculation. Fig. 5 illustrates the v0 plumbing and
+instrumentation (P&ID) diagram for the test stand.
+
+
+                                                        4
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+                                                                             UT SAN ANTONIO: FLARE FACILITY V0 P&ID
+                                                                                                                                                     RD-1
+       GOx            OX MANIF.   FH1
+                                                    FILT-1     REG-1              ISO-1          RUN-1                       CFV-1
+                                                                        P                                                                        P
+                                               P                                                                       P
+                                                      μ                                                                T                                                PROPANE                     S
+                                               T
+                                                    40μm
+                                                                                                    CK-1                                                                  TANK                     NC               PROPANE FLARE
+                                                   FILT-3      REG-3              PUR-1
+                                        FH5
+
+                                                      μ
+                                                    40μm
+                                                                                                             OR-TO1                  S     RUN-TO1
+                                    FH7
+                                                                                                         P
+                                                                                                                                                                                     TEST ARTICLE (TA)   P
+                                                                                                                              S      NC
+                                                                                                                                                                    P
+                                                                                                                                                                             P
+       GN2    PURGE MANIF.                                     REG-T1                   ISO-T1
+                                                                                                         T
+                                                                                                                                                            P                               P
+                                                                             S                               OR-TO2           NC                                    T
+                                                                                                                           RUN-TO2
+                                                                             NC                                            RUN-TF1
+                                                    REG-T3                  PUR-T
+                                                                                                                                                            TORCH
+                        FH3                                    REG-T2                                        OR-TF1           S                                     P
+                                   FH6                                                  ISO-T2
+                                                                                                         P                    NC
+                                                                                                                                                                    T                                              CV-COOL    RUN-COOL
+                                                                                                                                      S
+
+
+
+
+                                                                                                                                                                         P
+                                                                                                         T
+
+
+
+
+                                                                                                                                                                                 T
+                                                                                                                                                                                                             P            P
+                                              TORCH IGNITION                                                 OR-TF2        RUN-TF2    NC
+                                                                                                                                                                                                             T            T
+                                                   FILT-4      REG-4              PUR-2
+                                        FH4
+                                                                                                                                                                                     OR-BP-COOL
+
+                                                     μ                                                                                                                                                           PUMP1-COOL
+                                                                                                     CK-2
+                                                    40μm                                                                                                                 H2O                  H2O                                   P
+       GCH4                       FH2
+                                                   FILT-2      REG-2                ISO-2        RUN-2                       CFV-2                                      DUMP                SUPPLY
+                                                                        P
+                                               P                                                                       P                                                TANK                 TANK
+                                                      μ                                                                T                                                                                         PUMP2-COOL
+                                               T                                                                                                P                         COOLANT SYSTEM
+                                                    40μm
+                      FU MANIF.                                                                                                                      RD-2
+
+
+
+
+          Fig. 5             UT San Antonio V0 FLARE facility plumbing and instrumentation diagram (P&ID)
+
+
+    Pneumatically-actuated ball valves are used instead of solenoid valves for main propellant valves (isolation and run).
+Large flow coefficients (Cv) were desired to minimize total pressure loss in the system, enabling more headroom for
+available chamber pressures, and also featured slower open/closure times to minimize pressure transients. Through
+this configuration, the flow system can support 1000 psig chamber pressures without unchoking the sonic nozzles.
+The NASA Generalized Fluid System Simulation Program (GFSSP) software [18] was used to validate flow velocities
+throughout the system were below 100 ft/s at maximum v0 flow conditions [19].
+    Test articles are cooled through two gasoline-powered pressure washer pumps, connected in parallel, to achieve a
+total of ∼ 4 lb/s water coolant flow. A small supply of this water is diverted for pad flush.
+    Propellant ignition is achieved through an in-house developed AM torch igniter, pictured in Fig 1. A torch-style
+design is employed to successfully ignite propellants; flameholding is difficult within the chamber in the presence of
+high-velocity injected propellants: the common "match in hurricane" analogy. Furthermore, the torch design is favored
+for harder-to-ignite propellants (like methane) which would otherwise be difficult to ignite via Nichrome wire resistance
+heating (or even back-lighting with exit-plane propane flare). Valves were procured through eBay and inspected, tested,
+rebuilt, and/or oxygen-cleaned before being qualified for service. The current status of fluid system infrastructure is
+shown and dsecribed in Fig. 6
+
+
+
+
+                                                                                                                      TORCH
+
+
+
+
+                                              OX                                                               CUSTOM SONIC                                                                     FUEL
+                                                                                                              NOZZLE HOUSING
+
+
+
+
+Fig. 6 FLARE propellant fluid systems for Ox (left), Fuel (right), Torch Ignition (center), and a custom design
+for a Sonic Nozzle housing traceable to ASME MFC-7 (bottom)
+
+
+                                                        5
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+C. Test Stand Structure
+
+1. Design Rationale
+    The test stand was designed to provide accurate, repeatable thrust measurements for research-scale propulsion devices
+while maintaining structural integrity, modularity, and mobility. The primary design objective was to support thrust
+levels up to 1500 lbf, at a factor of safety (FOS) of 4. A modular design was implemented to allow rapid reconfiguration
+for different experimental setups including deflagration and detonation engines, thrust classes, load cell styles, and
+accommodation for different diagnostics like laser absorption spectroscopy (LAS). The fixture table is mechanically
+isolated from the base structure using a flexure system, ensuring that applied thrust loads are transmitted directly into
+the measurement load cell while minimizing parasitic loads from stand compliance, friction, or misalignment.
+    Material selection was driven by manufacturability, structural performance, durability, and cost. The base structure
+and anchoring system were fabricated from low-carbon structural steels (A513 and A36), providing sufficient strength at
+reasonable cost and ease of fabrication. Surface finishes were selected to prevent corrosion and improve longevity, with
+industrial enamel coating applied to most of the carbon steel, with the exception of components that were bolted together
+which were instead coated with a water-based corrosion inhibitor. All stainless-steel components were left as-machined.
+    This design approach aligns with thrust stand architecture successfully implemented at multiple academic and
+government laboratories, emphasizing accuracy, reproducibility, and maintainability without introducing unnecessary
+complexity.
+
+
+
+
+                Fig. 7   UT San Antonio FLARE test stand structure CAD rendering, assembled.
+
+
+
+2. Weld Parameter Design
+    High-quality welds and tight dimensional control were essential to ensure that the test stand could withstand high
+loads and repeated thermal-mechanical cycling generated by different propulsion devices. Gas Tungsten Arc Welding
+(GTAW), also known as TIG, was selected due to its superior control of heat input, arc stability, and highly tunable
+parameters. This welding method enabled precise, localized control of melt pools while minimizing the effects of
+warpage.
+    Welding parameters, summarized in Table 2, were developed to ensure repeatability and consistency across the
+numerous welded joints. When combined with joint preparation; including specifications for V-grooves and defined
+weld pass locations, seen in Fig. 8, a highly refined process contributed to exceptionally uniform, high-strength welds
+throughout the test stand.
+    Overall, the combined control of joint preparation and carefully developed welding parameters implemented with
+GTAW, resulted in structurally robust and consistent welding across the test stand. The effectiveness of this approach is
+illustrated by clearly defined root, filler, and cap passes shown in Fig. 9, which demonstrate proper fusion, penetration,
+and bead geometry achieved throughout fabrication. These results confirm that the process put forth met the structural
+requirements necessary for repeated high-load propulsion testing.
+
+
+
+                                                        6
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+ Weld Location                 Pass Type        Filler    Filler Ø Tungsten           Tungsten Ø     Cup Size     Current (A)
+ Single-V Butt Joint (1G)      Root, Fill, Cap ER70S-2 3/32 in     EWTh-2             1/8 in         #8           210
+ Right-angle fillet (1F)       Root, Fill, Cap ER70S-2 3/32 in     EWTh-2             1/8 in         #8           210
+ Inclined-angle fillet (1F)    Root, Fill, Cap ER70S-2 3/32 in     EWTh-2             1/8 in         #8XL         210
+                                             Table 2 Welding parameters
+
+
+
+
+                                 Fig. 8   Weld preparation (left), Pass location (right)
+
+
+
+
+                              Fig. 9   Root pass (left), Fill pass (middle), Cap pass (right)
+
+
+3. Flexure System
+    A plate-style flexure system, as shown in Fig. 10, was implemented to guide thrust-induced motion along a single
+axis while constraining undesired degrees of freedom. Flexures are compliant structural elements that rely on elastic
+deformation rather than rolling or sliding motion, thereby eliminating stiction, friction, and backlash that can affect
+accuracy and repeatability. By isolating the load cell from off-axis forces, the flexure system improves measurement
+fidelity and reduces calibration drift. Flexure thickness was selected based on thrust class, with thicknesses ranging from
+24 to 10 gauge stainless-steel sheet metal. Hand calculations and FEA, as shown in Fig. 10 were used to confirm that
+flexure deflections were sufficient to translate a thrust to the load cells, ensuring durability and consistent performance.
+
+
+
+
+                                          Fig. 10   Flexure defelction analysis
+
+
+
+
+                                                        7
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+4. Calibration Load Cell
+    An independent calibration load cell system, as shown is Fig. 11, was developed to provide traceable verification of
+thrust measurement accuracy. The calibration approach applies a known force to the fixture table using a pneumatically
+actuated cylinder, where the applied force is determined from the product of regulated supply pressure and piston area.
+This method has been widely adopted at other institutions and research facilities, due to its simplicity, repeatability, and
+direct force traceability. The calibration load cell serves as reference measurement, enabling characterization of the
+thrust measurement load cell response under controlled loading conditions. Calibration tests account for structural
+compliance, off-axis effects, and flexure stiffness. By comparing applied calibration forces to measure thrust signals,
+correction factors can be established and uncertainty quantified. This system allows routine pre-test and post-test
+calibration checks, ensuring measurement accuracy and reliability throughout test campaigns.
+
+
+
+
+                                     Fig. 11    FLARE test stand upper assembly.
+
+
+
+5. Structural Analysis & Safety Margins
+    As mentioned, the student-designed, student-manufactured test stand structure is capable of withstanding loads up to
+1500 lbf with a factor of safety of 4. The design employs vertically-oriented flexures to enable the top of the stand to
+float relative to the base, which enables translation in the thrust plane and thus force transmission into the load cell
+for thrust measurement. This flexure-based approach [20] eliminates issues faced in roller-based systems—e.g., static
+friction, bearing lubrication, track misalignment—and improves the load cell response/measurement fidelity under test
+conditions. The test stand structure is shown in Fig. 24.
+
+
+
+
+                                      Fig. 12    Base structure simulation study
+
+   A calibration load cell is included with a pneumatic cylinder to provide reference values for the thrust measurements.
+Special attention was paid to enhancing the rigidity of all load-bearing members around critical load measurement
+
+
+                                                        8
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+interfaces; deflection of load-bearing elements were calculated to assess impact on thrust measurement readings and
+part thicknesses were sized accordingly.
+    The base of the stand is constructed from square and rectangular steel tubing and components were full-penetration
+tungsten inert gas (TIG) welded in-house. The top plate and brackets/attachment components were machined at the
+UT San Antonio Makerspace machine shop and then fastened together. Analysis of the base structure was carried
+out to verify load-carrying capability and confirm that the factor of safety met established design constraints. Finite
+element simulation results in Fig. 12 indicate a maximum stress of approximately 12,000 psi, under the applied loading
+conditions of 6,000 lbf. Based on material yield strength of 62,000 psi, as specified by the material vendor, the resulting
+factor of safety is approximately 5.2. When referenced to the nominal operating load of 1,500 lbf, this corresponds to an
+effective overall safety margin of 20.7. This margin significantly exceeds the minimum design requirement of 4 and
+reflects conservative assumptions as well as appropriate design and material selection for the test stand.
+    An anchor analysis was performed to verify the structural adequacy of the substrate under expected thrust loading
+conditions. The test stand was mounted to an existing reinforced concrete slab with a thickness of 6 in, conservatively
+modeled as cracked concrete to account for potential service-level cracking. Loads are transferred into the concrete
+through anchor feet fabricated from ASTM A36 steel plate and post-installed adhesive anchors.
+    Anchoring is achieved using Hilti HIT-RE 500 V3 epoxy with 7/8 in diameter anchors embedded to a depth of 4 in.,
+consistent with the recommendation from manufacturer analysis for structural anchorage in concrete.
+
+ Case    Thrust (lbf) Concrete Strength (psi) Concrete Condition Concrete Breakout Pryout                    Combination
+ 1       1500         2500                    cracked              51%               5%                      33%
+ 2       6000         2500                    cracked              151%              16%                     139%
+ 3       1500         5000                    uncracked            27%               4%                      12%
+ 4       6000         5000                    uncracked            94%               15%                     91%
+              Table 3 Substrate analysis under different material and performance conditions.
+
+
+    While the cracked concrete assumption provides a conservative worst-case scenario estimate, realistically the
+concrete slab is expected to exhibit more favorable material properties. The slab was poured within the past five years as
+part of a new building installation and therefore representative of higher-strength concrete with no visible cracking in
+the anchoring region. Treating the slab as uncracked concrete is therefore more justified for a more realistic assessment
+of in-service performance.
+    Results from the refined analysis, summarized in Table 3, indicated that the resulting FOS exceeds 4 under
+the expected loading conditions. This margin provides confidence that the anchoring system meets performance
+requirements and ensures safe operation of the test stand.
+
+
+D. Data Acquisition and Control
+   The FLARE data acquisition (DAQ) and control system enables deterministic control and robust sensor logging at
+sample rates >2 kHz, critical for capturing transient combustion events.
+
+
+
+
+                                     Fig. 13   cRIO-9056 used for DAQ/Control
+
+
+
+                                                        9
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+     A National Instruments (NI) compact real-time I/O controller (cRIO 9056) is used as the primary DAQ. NI 9205
+and NI 9403 modules, for 32 analog voltage inputs and 32 digital in/outs respectively, are used to for recording load
+cell/voltage-based sensor data and for relay/valve control. A total of 4 NI 9203 modules are used to interface up to 32
+current-based pressure transducers; current-based pressure transducers (4–20mA) are used for built-in fault detection
+(i.e., 0 mA readings) alongside reduced errors from line losses or electromagnetic interference (EMI). 2 NI 9015 modules
+are used to interface up to 32 thermocouples (various types) for both propellant flow monitoring and calorimetry
+analysis. The cRIO 904x/905x systems enable the usage of the NI-DAQmx module, which allows user-developed code
+to interface with the controller.
+     Since the device is an NI cRIO rather than an NI cDAQ, the real-time operating system on the controller is used for
+launching the data acquisition program instead of via a host computer. For initial (version 0) FLARE setup, a LABVIEW
+program was developed to quickly interface with the real-time controller and enable valve control and sequencing for
+research goals. For future operations, the NI Linux Real-Time operating system on the controller is used to launch a
+local python-based program which calls a circular buffer (python or C). A remote procedure call (gRPC) framework
+is used to interface a user’s computer with the cRIO buffer, enabling control and data visualization through a python
+graphical user interface (GUI). Further work will be conducted to interface the cRIO with external or network attached
+storage (NAS) devices, and to test the speed of the circular buffer/interface with the gRPC connection.
+
+
+
+
+ Fig. 14   Snippet of student-developed python program for running a circular buffer on the cRIO controller
+
+
+
+E. Electronics
+
+1. Architecture and Design Intent
+
+                                                             Wall outlet
+                 Electronics Box
+
+                                                       Power distribution board
+
+
+
+
+                 Transducer board:   Thermocouple          Relay board:       Ignition board:    Load Cell board:
+                      Pressure          board:             Valve control       Igniter control        Thrust
+                    transducers       Temperature           (software)           (software)       measurement
+
+
+
+                     4X NI 9203
+                                       2X NI 9213
+                                                               1X NI 9403 Relay board:               1X NI 9205:       cRIO
+                                     Thermocouple
+                   Current module                                  Digital I/O module             Voltage module
+                                         module
+                   32 inputs total                          32x digital I/O for relay control    4X load cell inputs
+                                     32 inputs total
+
+
+                                      Fig. 15     Electronics architecture flow chart.
+
+   In-house electronics were built to handle FLARE operational demands in terms of both safety and modularity. Sensor
+counts, vibration demands, tolerance of components, and required degree of EMI/inductive voltage spike isolation—at a
+
+
+                                                       10
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+student-accessible price range—demanded a custom, in-house solution. The following sections describe the custom
+printed circuit boards (PCBs)—power distribution board (PDB), transducer board (TB), thermocouple board (TCB),
+relay board (RB), ignition board (IB), and load cell board (LCB)—that were designed to interface with the NI cRIO
+modules and provide access to voltage-based sensors, current-based sensors, relays for valve control, and thermocouples.
+The electronics system architecture overview is shown in Fig. 15.
+    Modularity and failsafes were key design drivers to simplify debugging and maintenance during test campaigns.
+Critical sensors/control interfaces incorporate star grounding to avoid measurement errors and false triggering of relays
+through adjacent electronics. The printed circuit boards were designed in EasyEDA, SPICE simulations run in KiCAD,
+and components specified through JLCPCB.
+
+
+2. Power Distribution Board
+    The power distribution board (PDB) provides conditioned power to each of the components within the electronics
+system. 24V and 12V AC/DC power supplies feed 8 and 6 independent outputs, respectively, and a 12V to 5V voltage
+regulator provides 5V power for 6 outputs. Switches are included for main power and independent output control.
+Embedded LED status lights are included for ease of use and diagnostics. The PDB design is shown in Fig. 16.
+
+
+
+
+                                     Fig. 16   Power Distribution Board design.
+
+
+
+3. Transducer Board
+    The transducer board (TB) distributes 24V power to 16 current-based (4-20mA) pressure transducers and sends
+the transducer output signals to two D-subminiature (D-sub) DB9 connectors for delivery to 2 of the NI current input
+modules.
+
+
+
+
+           Fig. 17   Transducer board design and SPICE simulation of electrolytic capacitor section.
+
+     Bulk filtering of the inlet power is achieved by a resistor-capacitor (RC) circuit with electrolytic capacitors. This
+filtering minimizes noise in the excitation voltage supplied to the pressure transducers and reduces output signal error
+
+
+                                                       11
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+(from noise), minimizing errors in pressure and thus flow rate measurements. A resistor and decoupling capacitor
+(ceramic) is used before the voltage excitation terminal on each transducer send to further suppress voltage fluctuations
+(high-frequency) for a clean power signal. The NI COM port connects via DB9 to the input power ground terminal.
+LEDs are included for confirmation of power. The TB design and SPICE simulation of the electrolytic capacitor section
+is shown in Fig. 17. A total of 2 transducer boards are used in the v0 facility setup.
+
+
+4. Thermocouple Board
+    The thermocouple board (TCB) enables connection of 16 multi-type thermocouples for interface with the NI cRIO.
+T- and K-type thermocouples are used as the primary temperature measurement sensors for the v0 facility (different
+uncertainty ranges), and modularity included to enable E-type thermocouples in future system iterations. Fig. 18 shows
+the thermocouple board design. 2 TCBs are used in the v0 system.
+
+
+
+
+                                       Fig. 18    Thermocouple board design.
+
+
+
+5. Relay Board
+     The relay board controls valve logic for all facility flow operations. 5V logic-level signals are generated by the NI
+9403 module and are received through the DB37 connector on the PCB. As the NI module cannot send enough current
+to reliably trip the relay, the 5V signal controls a MOSFET which enables a separate power source to control relay
+operation. After relay open, 24V, 12V, and 5V power are each sent through the relays to solenoid valves which supply
+pneumatics to each of the large pneumatic ball valves (propellant isolation and run). Flyback diodes are included in each
+relay circuit to mitigate inductive spikes (which could lead to consequences for other relays on the ground return path)
+and local filtering is incorporated to minimize noise issues near the MOSFET. A resistor is used as a “bleed orifice”
+(fluid analogy) to ensure the MOSFET can drain any accumulated charge (while it is closed) and mitigate misfires. Two
+AA batteries are included on an isolated circuit to power the barbecue igniter used for the propane flare system. A
+jumper is used to the ignition board for the ignition circuit on the ignition board. The relay board is shown in Fig. 19.
+
+
+6. Ignition Board
+    The ignition board powers an automotive coil-on-plug (COP) ignition coil and uses a pulse width modulation (PWM)
+controller to supply a trigger signal to the COP transistor. This circuit is used to create repeatable sparks—with an
+automotive spark plug—suitable for torch igniter operation. This board uses a jumped signal from the relay board (from
+the NI 9403 5V logic). The ignition board is shown in Fig. 20.
+
+
+7. Load Cell Board
+    The load cell board, also Fig. 20, uses a Texas Instruments amplifier and gain resistor to set maximum load cell
+output to 8V, chosen to measure load cell overages without clipping. Star grounding is used to isolate drain paths and
+provide more robust isolation for each attached load cell.
+
+
+                                          IV. Infrastructure Progress
+   This section briefly details the progress of the manufacturing and assembly of the facility as of December 2025,
+organized into different subsections by subsystem.
+
+
+                                                       12
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+                                             Fig. 19   Relay board design.
+
+
+
+
+                      Fig. 20   Ignition board design (left) and load cell board design (right)
+
+
+1. Coolant System
+    The water flow system comprises a water supply tank, water dump tank, and two 22 hp gasoline-powered pressure
+washer pumps from Canpump. These pumps (Model DBF-2821) provide a maximum pressure of 150 bar, a maximum
+flow rate of 52 LPM and require a power input of 18.5 kW. The pumps are powered by slightly different models of
+gasoline engines, one with a 678 cc displacement and the other with a 764 cc displacement, but both without built-in
+fuel containers. Appropriate fuel lines were identified and installed for each engine to operate on a gravity-fed system
+to provide fuel to the engine from above. Fuel stabilizers are used to mitigate the degradation of the gasoline during
+storage—the FLARE facility will potentially have much more downtime than a typical use-case for the gasoline engines.
+    Initial efforts involved identifying and sourcing the required inlet plumbing components, including fittings, adapters,
+and hoses necessary to support system operation. Several critical components were not readily available and were
+obtained through local donations or targeted procurement, including specialized fittings and hoses.
+    The cooling system uses 275 gallon IBC tanks (intermediate bulk container) and sourced from a local sponsor.
+Previously, these IBCs served as soap-carrying tanks. As a result, students thoroughly washed and cleaned them in
+preparation for water storage and handling. The sizes and configurations of the tanks are important to the run time.
+Notably, a reservoir connected to a single pump would empty in approximately 18 minutes (non-conservative estimation),
+and—in the case of two pumps connected to a single reservoir—less than 9 minutes. The pressure washer pumps were
+mounted onto carts and flow tested at the university to confirm operation. With respect to the water supply, water
+hardness is a major concern for the central Texas community, since it the buildup of scale tends to clog plumbing
+systems over time. As a result, water used for the system was evaluated using hardness test strips to detect calcium
+
+
+                                                       13
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+and magnesium concentrations within a range of 0–425 ppm prior to circulation through the system. While additional
+filtration systems are intended to be used for preventative measures, the range of 0–25 ppm is considered appropriate for
+initial testing.
+     Progress of the construction, as of early December 2025, is shown in the photographs in Fig. 21.
+
+
+
+
+Fig. 21 Coolant flow infrastructure, including water storage (left) and gasoline-powered pumps mounted on
+mobile carts (right).
+
+
+
+2. Test Stand Fabrication
+     The test stand is composed of three primary sections: substrate and anchoring system, the base structure, and the
+load assembly. The substrate and anchoring system encompass the interface between the reinforced concrete slab and
+the anchor feet attached to the base structure. The base structure forms the primary load-bearing truss of the test stand
+and provides the stiffness and rigidity required to withstand the extreme loading conditions expected during operation.
+The load assembly is the most complex section and consists of the hardware and instrumentation interfaces that enable
+test article integration and force measurement.
+     Base structure fabrication, as shown in Fig. 22, was conducted first and relied on innovative use of equipment
+available in the UT San Antonio machine shop. Rectangular and square tubing were initially cut slightly oversized and
+to the required angles using a horizontal bandsaw. The tubing was then faced on vertical milling machines to achieve
+dimensional accuracy, uniformity, and high-quality surface finishes. Following machining, the tubing was mounted on
+a table and V-grooves, consistent with the specified weld parameters, were ground into place. All components were
+then precisely fixtured on a welding table and tack welded. After verifying dimensional accuracy and alignment, all
+remaining welds were completed.
+     Fabrication of the load assembly, shown in Fig. 23, similarly utilized both the horizonal bandsaw and vertical
+milling machine to achieve precision and uniformity among the flexure system and load cell mounting components. In
+addition, a CNC mill was used to more accurately machine the base plate that interfaces the load assembly with the base
+structure, ensuring accurate bolt hole placement and component alignment. At the time of writing, the load assembly
+remains incomplete, with the test article fixture plate yet to be machined on the CNC mill.
+
+
+                                                       14
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+                         Fig. 22   Photographs of the base structure fabrication process.
+
+
+
+
+                         Fig. 23   Photographs of the load assembly fabrication process.
+
+
+     The substrate and anchoring system has yet to be installed: however, all required components are on hand and ready
+for integration. The remaining procedures include mounting hole preparation, anchor installation, and final mounting of
+the test stand. An SDS hammer drill will be used to bore mounting holes to the specified diameter and depth, followed
+by thorough cleaning to remove debris. Threaded rod will then be cut to length and mounted using a high-performance
+injectable epoxy mortar designed for structural steel anchorage. Finally, the test stand will be mounted using washers
+and nuts torqued to specification, with Belleville washers incorporated to reduce the likelihood of fastener loosening
+under dynamic loading.
+
+
+                                                       15
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+    Current fabrication state of the test stand structure, including weldment and custom machining of brackets and
+flexures with pneumatic cylinder installed, is shown in the photograph in Figs. 24.
+
+
+
+
+      Fig. 24   Painted and assembled UT San Antonio FLARE test stand structure (left), as-built (right).
+
+
+
+3. Propellant Fluid System
+    The propellant fluid delivery system, including regulators, pneumatically-actuated ball valves, pneumatic air supply
+control system, and overall plumbing is designed to be mounted on a mobile cart assembled from C-strut. To date, the
+mobile cart has been assembled, and several valves and fittings have been procured, as shown in Fig. 25.
+
+
+
+
+         Fig. 25   Fluid system CAD render (left), stand structure (middle), and valve hardware (right).
+
+    Stainless steel tubing was used to fabricate multiple lengths of propellant lines, the the intended lengths shown in
+the left of Fig. 25. Both purge and fuel lines were cut, bent, and flared through an industry sponsor after providing raw
+materials. Flared tubing allows for AN fittings to be used throughout the system, which are advantageous for high fluid
+flow rates. The current tubing hardware, that has been cut, bent, and flared, is shown in Fig. 26.
+    The problem of gas cylinder storage for propellants was tackled through the conversion of locally-sourced bread carts
+into K-bottle 6 packs to enable cost-effective handling of 18 propellant bottles (six each for oxidizer, fuel, inert). The
+option to include up to six cylinders for each propellant type enables longer-duration hot-fire testing opportunities, which
+are a critical requirement for testing additively-manufactured thermal management strategies in propulsion systems.
+Additionally, the mobile configuration allows for modular and adaptable testing configurations, as well as security of the
+propellants (they can be stored inside when not in use). Photographs of the conversion process for the gas cylinder
+storage are shown in Fig. 28.
+
+
+                                                       16
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+          Fig. 26   Cut, bent, and flared tubing to be integrated into the fluid system.
+
+
+
+
+              Fig. 27 Conversion of bread carts to propellant K-bottle 6-packs
+
+
+
+
+                                               17
+Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+                        Fig. 28   Machined K-bottle 6-pack manifolds
+
+
+
+
+                                               18
+Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+4. Electronics
+    The completed in-house designed PCBs are shown in Fig. 29, and they are integrated into an enclosure box shown
+in Figs. 30, 31. At the time of writing, wiring is in progress to connect the different components and the relays will be
+tested in January 2026.
+
+
+
+
+              Fig. 29   Student-designed printed circuit boards (PCBs) for DAQ/control interface
+
+
+
+
+                    Fig. 30   CAD render of PCBs within electronics box (left), as-built (right)
+
+
+
+
+                                                       19
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+Fig. 31 Photograph of PCBs within electronics box as-built under high ambient lighting (left) and in low ambient
+lighting with indicator lights engaged (right)
+
+
+
+
+                                                      20
+       Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+5. Site Transformation
+    Lastly, the planned initial test site—behind dumpsters near the university machine shop—needed to be converted
+from a landfill to an operational propulsion test facility. As a combined effort, students cleared debris and swept the
+area. To confirm dimensions needed for hoses and properly depict the layout, the area was chalked and mapped. Bricks
+were acquired to protect existing walls from the generated fire plumes . These bricks were acquired through coordinated
+efforts involving students, alumni, and community members, including multiple trips to avoid vehicle overloading and
+damage. Cost savings were achieved by sourcing materials through local marketplaces and discounted listings. Future
+work includes painting.
+    Refurbishment efforts are shown in Fig. 32. Fig. 33 shows the cleaned up site as of October 2025 and its projected
+refurbishment in January 2026.
+
+
+
+
+                     Fig. 32    Progress of site transformation on the UT San Antonio campus.
+
+
+
+
+                   Fig. 33     Test site November 2025 (left), projected view January 2026 (right).
+
+
+
+                                                   V. Future Work
+     December 2025 will be spent finalizing procurement of fittings and remaining plumbing hardware. System assembly,
+component/system-level checkouts, and full-system dry runs (i.e., sequence checkouts) will be conducted prior to test
+article integration. A deflagration-based propulsive test article will be additively manufactured at UT San Antonio as
+the first test article to qualify/de-risk the facility. Cold-flow testing, ox/fuel-blowdowns will be conducted to gather both
+propellant time of arrival (for sequence timers) and to determine dynamic pressure setpoints (i.e., regulator droop). Hot
+fire testing will be conducted in January 2026 and immediate follow-on testing will ensue for extreme environment
+materials research, optomechanical device development, and detonation heat transfer characterization.
+
+
+
+
+                                                       21
+        Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+                                                       Acknowledgments
+    This work is supported by a NASA Space Technology Graduate Research Opportunity (NSTGRO) award, Grant No.
+80NSSC22K1215 and the AFRL-ML-RCP program, Award No. SPC-1000013908 GR 137103. J.H-M. is supported by
+a NASA Space Technology Graduate Research Opportunity (NSTGRO) award, Grant No. 80NSSC22K1215.
+    The authors thank Ari Goldman of Auburn University for critical insight into various components, manufacturers,
+cleaning procedures, and controls resources.
+    The authors wish to thank Isaac Esparza, Chris Ochoa, Scott Bourquin, Arturo Romero, Argyle Amberson, Kai
+Dennick, Amanda Lugo, Joshua Allen, Palak Patel, Aubrey Fuchs, Melaney Nickell, Ayden Lopez, Abrahim Galal,
+Enrique Alvarez, Makayla Watts, Nathan Hatch, and Alexander Schuleman for their assistance in manufacturing,
+welding, fabrication, assembly, and installation of various components.
+    The authors thank Thomas Teasley of NASA MSFC and Blaine Bigler of AFRL-EAFB for their support.
+    The authors thank Dr. Don Petersen and Dave Kuenstler for continued support of student-led fabrication efforts.
+
+
+                                                            References
+ [1] Gradl, P. R., Mireles, O. R., Protz, C. S., and Garcia, C. P., Metal Additive Manufacturing for Propulsion Applications, Vol. 263,
+     2022. https://doi.org/10.2514/4.106279.
+
+ [2] Teasley, T., Petty, D., Skinner, S., and Hernandez-Mccloskey, J., “NASA’S COMPACT HIGH-EFFICIENCY ROTATING
+     DETONATION ROCKET ENGINE FOR MARS INTERPLANETARY MISSIONS,” 6th Annual AAS Guidance, Navigation
+     and Control Conference, 2024. URL https://ntrs.nasa.gov/citations/20240000933.
+
+ [3] Smallwood, J., “THERMAL AND STRUCTURAL CHARACTERIZATION OF A ROTATING DETONATION ROCKET
+     ENGINE,” Ph.D. thesis, Purdue University, 2024.
+
+ [4] Hernandez-Mccloskey, J., Reutlinger, S. A., Pineda, D. I., Teasley, T. W., and Petty, D. M., “Calorimeter Heat Flux Trends in
+     NASA’s Subscale Rotating Detonation Rocket Engine,” AIAA SciTech Forum, 2025. https://doi.org/10.2514/6.2025-1979, URL
+     http://arc.aiaa.org.
+
+ [5] Hernandez-McCloskey, J., Pineda, D. I., Bennewitz, J. W., Bigler, B. R., Burr, J. R., Danczyk, S. A., Paulson, E. J., and Hargus,
+     W. A. J., “Design and analysis of an additively manufactured rotating detonation rocket engine chamber for calorimetry and
+     thermal management assessment,” AIAA SciTech 2023 Forum, 2023.
+
+ [6] Fetter, K. L., Steavenson, B., Donald, B., Andrade, A., Combs, C. S., Pineda, D. I., Burr, J. R., Bennewitz, J. W., and Bigler, B. R.,
+     “High-speed laser absorption measurements of temperature and carbon oxides in linear detonation channels,” AIAA AVIATION
+     2023 Forum, American Institute of Aeronautics and Astronautics, Reston, Virginia, 2023. https://doi.org/10.2514/6.2023-4384,
+     URL https://arc.aiaa.org/doi/10.2514/6.2023-4384.
+
+ [7] Hernandez-McCloskey, J., Nickell, M., Reutlinger, S., Eisenbarger, K., and Pineda, D. I., “Design of an Additively Manufactured
+     Chamber for Combustion Health Monitoring in Air-Breathing Rotating Detonation Flows,” American Institute of Aeronautics
+     and Astronautics (AIAA), 2025. https://doi.org/10.2514/6.2025-3190.
+
+ [8] Fetter, K. L., Marquez, C. B., Ramirez, M. A., Marquez, B. N., Toby, J., Hernandez-McCloskey, J., and Pineda, D. I., “Design
+     and construction of a modular thrust stand for propulsion research and education at UTSA,” AIAA Propulsion and Energy
+     Forum, Denver, CO, 2021.
+
+ [9] Toby, J. L., “Design and Performance Analysis of an Additively-Manufactured 316L Small-Scale Rocket Engine and Cooling
+     Hardware,” Ph.D. thesis, The University of Texas at San Antonio, 2023.
+
+[10] Hernandez-McCloskey, J., and Pineda, D. I., “Laser absorption tomography of methane-oxygen flames in a metal additively
+     manufactured torch ignition system,” 40th International Symposium on Combustion, Vol. Poster, Milan, IT, 2024.
+
+[11] Petty, D., Teasley, T., Hernandez-Mccloskey, J., and Goldman, A., “Parameterized Study of Heat Load Trends in a Subscale
+     Rotating Detonation Rocket Engine,” AIAA SciTech Forum, 2025. https://doi.org/10.2514/6.2025-2150, URL http://arc.aiaa.org.
+
+[12] Lightfoot, A., and Danczyk, S. A., “ACCURACY AND BEST PRACTICES FOR SMALL-SCALE ROCKET ENGINE
+     TESTING,” Tech. rep., 2011. URL https://apps.dtic.mil/sti/tr/pdf/ADA554591.pdf.
+
+[13] NASA, “NASA ESDMD-001 - Moon to Mars Architecture Definition Document,” Tech. rep., 2025. URL http://www.sti.nasa.gov.
+
+[14] NASA, “NASA Moon-to-Mars Architecture - Mars Ascent Propellant Considerations,” 2024.
+
+
+
+                                                        22
+         Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+[15] Bennewitz, J. W., Burr, J. R., Bigler, B. R., Burke, R. F., Lemcherfi, A., Mundt, T., Rezzag, T., Plaehn, E. W., Sosa, J., Walters,
+     I. V., Schumaker, S. A., Ahmed, K. A., Slabaugh, C. D., Knowlen, C., and Jr, W. A. H., “Experimental validation of rotating
+     detonation for rocket propulsion,” Scientific Reports, 2023, pp. 1–13. https://doi.org/10.1038/s41598-023-40156-y, URL
+     https://doi.org/10.1038/s41598-023-40156-y.
+
+[16] The American Society of Mechanical Engineers, “ASME MFC-7-2016 - Measurement of Gas Flow by Means of Critical Flow
+     Venturis and Critical Flow Nozzles,” , 2021.
+
+[17] Rathsack, T. C., Bigler, B. R., Bennewitz, J. W., Danczyk, S. A., and Hargus, W. A., “Laboratory flow measurement in rotating
+     detonation rocket engines,” AIAA Scitech 2020 Forum, Vol. 1 PartF, No. January, 2020, pp. 1–14. https://doi.org/10.2514/6.2020-
+     0194.
+
+[18] Majumdar, A. K., LeClair, A. C., Moore, R., and Schallhorn, P. A., “Generalized fluid system simulation program (GFSSP),
+     version 6,” 51st AIAA/SAE/ASEE Joint Propulsion Conference, 2015, pp. 1–25. https://doi.org/10.2514/6.2015-3850.
+
+[19] EIGA, “OXYGEN PIPELINE AND PIPING SYSTEMS - Doc 13/20,” Tech. rep., 2020. URL www.eiga.eu.
+
+[20] Runyan, R. B., Rynd, J. P., and Seely, J. F., “Thrust stand design principles,” AIAA 17th Aerospace Ground Testing Conference,
+     1992, American Institute of Aeronautics and Astronautics Inc, AIAA, 1992. https://doi.org/10.2514/6.1992-3976.
+
+
+
+
+                                                        23
+         Distribution Statement A: Approved for Public Release; Distribution is Unlimited. AFRL-2025-5511
+

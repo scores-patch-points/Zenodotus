@@ -1,0 +1,121 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2009-3-15"
+lang: "en"
+messages: "112"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<tonyyarusso> I'd like to set up a caching server (DNS, web, other?) just for personal home use.  Would I need it to have two NICs, or could it be done with just one?  (I'm considering an Eee Box for the task currently.)
+<giovani2> I don't see why you'd need more than one nic, nope
+<tonyyarusso> Excellent.  Wasn't sure if such a thing would need to also be acting as the gateway or some such thing.
+<giovani2> well, you don't have to make it your gateway
+<giovani2> you could, but, running a web cache, and a dns cache don't require that, they just require that your user computer's dns be pointed at it, and it have your box as its http proxy
+<tonyyarusso> Any other tricks like that that you can think of to make my internet connection appear faster?
+<giovani2> uh
+<giovani2> how fast is your internet connection?
+<tonyyarusso> 12Mbit DSL, iirc.
+<tonyyarusso> Obviously I can't make big downloads faster, but for my everyday stuff every little bit helps.
+<giovani2> unless you have extremely high latency, it's unlikely you're going to see much gain
+<tonyyarusso> (I'm also partly doing this just to learn how, so I could potentially do similar things on a broader scale later in life.)
+<ball> Anyone tried boinc on Ubuntu Server?
+<uvirtbot> New bug: #341816 in samba (main) "samba PANIC: failed to set uid" [Undecided,Incomplete] https://launchpad.net/bugs/341816
+<kriel> Okay; so. The linux installer asked me if I wanted to raid my system; I set it up / to be raid1. For some reason it didn't do a dpkg-reconfigure mdadm during setup (or at least didn't ask those questions.) I did sudo dpkg-reconfigure mdadm after the fact. Halfway through it gave a bunch of "rm: cannot remove md0-: Read-only file system". Should I be worried?
+<J_P> hi all
+<J_P> how I change of "Sun Mar 15 01:38:53 EDT 2009" to ﻿"Sun Mar 15 01:38:53 BRT 2009" ? I try set in tzselect and set ok to brazil location, but still are EDT.
+<Shoopuf> Hello.. Does anyone know how to add the PHP path directory so that any scripts I run can use PHP? I don't know where to add the PATH to
+<ball> If you install php, doesn't it go into your path by default?
+<Shoopuf> Hmm... Well when I type "php" I get an error "-bash: php: command not found"
+<sommer> Shoopuf: you'll want to install the php5-cli package
+<Shoopuf> sommer: ok, apt-getting now :)
+<Shoopuf> sommer, ball: thanks guys, workin like a charm now... had to install php5-cli
+<sommer> welcome
+<Shoopuf> i figured i had to edit some text file and add a path somewhere :/
+<rags> how to add a second NIC to ubuntu...it gets listed in lspci
+<llragsll> any one...
+<uvirtbot> New bug: #342655 in sysstat (universe) "Confusing debconf message when upgrading" [Undecided,Invalid] https://launchpad.net/bugs/342655
+<Sooke1> Hi
+<Sooke1> I have mounted a Linux server with POSTFIX, it doesn't have a domain name, just a static public IP. All the emails I send trought it are put into spam folders, I have read something about MX records, etc.. Can anyone please help me?, thanks
+<llragsll> s: how to add a second NIC to ubuntu...it gets listed in lspci
+<ziroday> Hi, would anyone know why ssh would be laggy? (I mean just typing in text is slow)
+<acicula> heu busy link?
+<Nafallo> 3G connections do that.
+<ziroday> but its just text, surely even the most basic internet can not lag on that?
+<acicula> well your letter has to go to and from your server first
+<acicula> i think
+<ziroday> any idea on how to speed it up, if it were the connection?
+<Deeps> latency is latency
+<Deeps> ping the server
+<Deeps> 200ms+ ping can make ssh appear 'laggy'
+<Nafallo> no it isn't. it's screen re-draws.
+<ziroday> Deeps: ah right
+<Nafallo> :-P
+<ziroday> eek 2000ms, time to get a better connection methinks
+<Deeps> there you go then
+<Deeps> it's taking 2 second for a simple message to reach the server and get back to you
+<ziroday> Deeps: thanks!
+<Deeps> ssh is an ecrypted bytestream, not just plain text ;)
+<rags> I am trying to add a second nic to my ubuntu server..it get's listed on lspci..but how to give it an interface name like eth1??
+<Deeps> (so that'll add an additional 5ms or so?)
+<Deeps> rags: ifconfig -a, do you see a new interface there?
+<rags> oh ya...it is eth2 though not eth1
+<rags> i did only ifconfig previosly tht's y i missed it
+<Deeps> ifconfig only shows interfaces that are marked as 'up'
+<Deeps> ifconfig -a shows all interfaces
+<Deeps> you can change your network interface labels with /etc/udev/rules.d/70-persistent-net.rules
+<Deeps> or rather, not with, but in that file
+<rags> all right...thx..now all I have to do is add it to /etc/network/interfaces file right??
+<Deeps> yep
+<rags> in the 70-persistent-net.rules( wht a weird name ) there is another device (USB device 0x0bb4:0x0b0c ) which is taking the eth1 name.. any idea wht it is?
+<rags> it says in brackets rndis_host
+<joaopinto> hi
+<Noble> Hi, is it possible to install firestarter on ubuntu server edition without GUI?
+<acicula> Noble: yeah, you can forward x11 connecions wit ssh, it'll still install a lot of gui libraries and such though
+<pmatulis> Noble: have you tried ufw?
+<uvirtbot> New bug: #343244 in mysql-dfsg-5.0 (main) "package mysql-server-5.0 5.0.67-0ubuntu6 [modified: /var/lib/dpkg/info/mysql-server-5.0.list] failed to install/upgrade: subprocess pre-installation script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/343244
+<Noble> No, is that similar to firestarter?
+<acicula> is there a log parser of sorts that can parse the firewall messages from the syslog?
+<jpds> !ufw | Noble
+<ubottu> Sorry, I don't know anything about ufw
+<jpds> Arg..
+<acicula> heh
+<acicula> Noble: it's a commandline front end of sorts for the firewall, just like firestarter does
+<pmatulis> ufw comes installed by default on recent releases
+<acicula> but without the gui and the crapload of gui dependencies
+<pmatulis> it's pretty basic.  depends what you want to achieve
+<Noble> Ok, sounds nice. Im looking for something to share my connetcion with other computers
+<Noble> I have 2 NICs
+<pmatulis> hmm, not sure it can set up NAT
+<pmatulis> read up though
+<Noble> Ok, I was looking at IPcop, but it seems it cant run all the other servers I want.
+<Noble> So its kinda somthing similar im looking for.
+<Noble> just on top of ubuntu
+<Noble> If I understand this correctly, many firewalls uses iptables to set up everything?
+<Noble> So basicly I can use iptables as well with a bit of reading?
+<acicula> everything uses iptables
+<acicula> well, linux 2.6/2.4 anyway
+<Noble> Would it be very optimistic of me to thinker with it?
+<Noble> Thanks guys, I found what I needed for now: http://www.howtoforge.com/nat-gateway-iptables-port-forwarding-dns-and-dhcp-setup-ubuntu-8.10-server
+<bosco_> never heard of this { Suhosin-Patch Server } does that have something to do with php securing it what exaclty does it do???
+<sommer> bosco_: http://www.hardened-php.net/suhosin/
+<bosco_> sommer, thanks so it is a good thing i have it installed
+<sommer> I think so
+<bosco_> lol thanks
+<bosco_> i would think so as well
+<bosco_> just never heard of it dont know much about it
+<genii> Does anyone know what sort of format the pine -passfile expects?
+<genii> eg: I'm trying to start pine so it auto uses a supplied password
+<genii> nvm, I just discovered it uses same as .netrc
+<roy_hobbs> Does anyone have any experience with openldap->sasl->gssapi->kerberos
+<roy_hobbs> I can't quite get things working.
+<zaapiel-mobile> hello
+<zaapiel-mobile> how do i get ufw back to default?
+<zaapiel-mobile> ive been messing with it all day and probally borked it
+<zaapiel-mobile> id like to get it back to the default settings
+<sgla1> bind9 question ok here?
+<sgla1> question: Bind9 will not perform all required zone transfers between ubuntu 8.04 master and 8.04 slave dns servers.
+<sgla1> I see the notify for the reverse zone occur on the master, but it's not received on the slave server.
+<sgla1> Manual zone transfers from the master to the slave server (i.e. dig -t axfr my_reverse_zone) work fine.
+<bosco_> how do i take a directory and make it so no one can view it in a web browser never done it before ???
+<freaky_t> is there any nice new webapp like a newly started cms or smth. else? :D

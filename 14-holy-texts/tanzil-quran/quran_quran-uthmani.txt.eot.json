@@ -1,0 +1,788 @@
+{
+ "schema": "EOTReading@2",
+ "supersedes": "EOTReading@1 — erased 2026-08-31 (LP7)",
+ "source": {
+  "path": "14-holy-texts/tanzil-quran/quran_quran-uthmani.txt",
+  "sha256": "1b2e1619e8ed1ae22aebc6851c1bdca3e0d47914a34595947fad24c2ed9e6486",
+  "chars": 726184
+ },
+ "reader": {
+  "kind": "hand-adjudication",
+  "recipeId": "cdc1ebe31991a3d4",
+  "descriptor": {
+   "generator": "scripts/eot-sidecar2.mjs@1",
+   "law": "POLICIES.md LP7 + 2026-08-31 amendment (surprise is hypergraph delta)",
+   "rule": "goldens/reading/RULE.md R1-R12 + fourth amendment (triadic minimum)",
+   "priors": {
+    "path": "derived-priors/reading-priors/reading-priors-v1.json",
+    "sha256": "df77decb3988597560e24d42bc6845a14359b845ec9eedf5436955c3b92d055a"
+   },
+   "actPrior": {
+    "path": "derived-priors/act-priors/act-prior-en.json",
+    "sha256": "67b97d1e10ba75a1c5ce34c05350181ae07033f74b7fd02f810b2d180115240c"
+   },
+   "livePriors": {
+    "commit": "483a0de7bfd51cc72493c8bd36b20f11322b366d"
+   }
+  },
+  "specimens": [
+   "quran-2-255@cdc1ebe31991a3d4",
+   "quran-2-37@cdc1ebe31991a3d4",
+   "quran-5-3@cdc1ebe31991a3d4",
+   "quran-54-1@cdc1ebe31991a3d4"
+  ]
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint (a projection of the live goldens at the recipe's named commit — LP7 second amendment: checkpoints, never weights)",
+  "consumed": [
+   "act expectations (non-self + VerbNet)",
+   "the proposition bar"
+  ]
+ },
+ "windows": [
+  {
+   "specimen": "quran-2-255",
+   "start": 48515,
+   "startText": "ٱللَّهُ لَآ إِلَٰهَ",
+   "end": 48942,
+   "endText": "وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "quran-2-37",
+   "start": 5518,
+   "startText": "فَتَلَقَّىٰٓ ءَادَمُ",
+   "end": 5619,
+   "endText": "ٱلتَّوَّابُ ٱلرَّحِيمُ",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "quran-5-3",
+   "start": 126158,
+   "startText": "ٱلْيَوْمَ أَكْمَلْتُ",
+   "end": 126269,
+   "endText": "دِينًۭا ۚ",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  },
+  {
+   "specimen": "quran-54-1",
+   "start": 634531,
+   "startText": "ٱقْتَرَبَتِ ٱلسَّاعَةُ",
+   "end": 634573,
+   "endText": "وَٱنشَقَّ ٱلْقَمَرُ",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  }
+ ],
+ "admission": {
+  "gate": "hand-adjudication under RULE.md",
+  "offered": 19,
+  "heard": 19,
+  "turnedAway": 0
+ },
+ "spanSelfVerification": {
+  "checked": 19,
+  "ok": 19,
+  "bad": [],
+  "method": "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "note": "this source founds its own specimens' propositions; it joins no rosetta graph yet — its evidence seeds the act lexicon for the spiral"
+  },
+  "frame": {
+   "standing": "own-census",
+   "census": {
+    "quran-2-255": {
+     "NUL·Ground": 1,
+     "SIG·Figure": 2,
+     "CON·Figure": 2,
+     "CON·Ground": 2,
+     "EVA·Ground": 1,
+     "CON·Pattern": 1,
+     "DEF·Figure": 1,
+     "EVA·Figure": 1
+    },
+    "quran-2-37": {
+     "EVA·Figure": 1,
+     "REC·Figure": 1,
+     "SIG·Figure": 1
+    },
+    "quran-5-3": {
+     "SYN·Pattern": 1,
+     "SYN·Figure": 1,
+     "EVA·Pattern": 1
+    },
+    "quran-54-1": {
+     "SIG·Ground": 1,
+     "SEG·Figure": 1
+    }
+   }
+  },
+  "actExpectations": {
+   "act-agreement": 0,
+   "act-departure": 0,
+   "no-expectation": 3,
+   "no-verb-head": 16,
+   "departures": [],
+   "note": "checked against non-self witnesses + the received VerbNet tier only"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "hand-adjudication (the favored reading)",
+   "recipeId": "cdc1ebe31991a3d4"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading",
+  "note": "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists"
+ },
+ "propositions": [
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "إِلَٰهَ",
+   "relation": "لَآ",
+   "object": "إِلَّا هُوَ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:no-god-but-he",
+   "ground": "quran-2.255.1",
+   "role": "declared",
+   "because": "la of categorical negation (la an-nafiya lil-jins) — the ABSENCE of the kind deity-as-such across the whole field of being, asserted as the act itself (A4 at GROUND grain), with the one exception held out (illa huwa — the la...illa restrictor, the ar-UDHR negative-existential precedent); polarity + because the absence IS what is asserted",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "SIG",
+    "grain": "Figure",
+    "because": "readable as identification through the exception: none-but-He = He alone stands as God"
+   },
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ",
+   "cell": {
+    "op": "NUL",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "ٱللَّهُ",
+   "relation": "هُوَ",
+   "object": "ٱلْحَىُّ ٱلْقَيُّومُ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:living-sustainer",
+   "ground": "quran-2.255.2",
+   "role": "declared",
+   "because": "copula rule 3 — the pronoun copula huwa + definite unique epithets (THE Living, THE Self-Subsisting): identificational, the quran-2-37 at-tawwab ar-rahim shape exactly",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the fasl pronoun (w4) resumes the topic (w0)",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "هُوَ ٱلْحَىُّ ٱلْقَيُّومُ",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "سِنَةٌۭ",
+   "relation": "تَأْخُذُهُۥ",
+   "object": null,
+   "polarity": "-",
+   "clause": "main",
+   "prop": "quran:slumber-not-seize",
+   "ground": "quran-2.255.3",
+   "role": "declared",
+   "because": "akhadha (seize/grip) — a hold arranged on one figure: Relate·Structure at figure grain, negated (R6: the la is polarity, never a different act)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the object clitic -hu on the verb -> the One named at w0",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "لَا تَأْخُذُهُۥ سِنَةٌۭ",
+   "cell": {
+    "op": "CON",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "نَوْمٌۭ",
+   "relation": "تَأْخُذُهُۥ",
+   "object": null,
+   "polarity": "-",
+   "clause": "coordinate",
+   "prop": "quran:sleep-not-seize",
+   "ground": "quran-2.255.4",
+   "role": "declared",
+   "because": "the coordinated second negation (wa-la nawm) shares the gapped verb — the same seizure-hold denied of sleep: Relate·Structure at figure grain, negated",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the verb is gapped from the preceding clause (w9); its object clitic -> the One named at w0",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "وَلَا نَوْمٌۭ",
+   "cell": {
+    "op": "CON",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ",
+   "relation": "لَّهُۥ",
+   "object": null,
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:his-heavens-earth",
+   "ground": "quran-2.255.5",
+   "role": "declared",
+   "because": "the possessive predicate lahu (to-Him-belongs) fronting a verbless nominal clause — ASSERTED possession is a CON row (the suite's possessive ruling; the gen-1 verbless-nominal precedent): Relate·Structure at GROUND grain, the possessed being the whole of what the heavens and the earth hold",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the possessive clitic -hu in the predicate (w14) -> the One named at w0",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "لَّهُۥ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ",
+   "cell": {
+    "op": "CON",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "ٱللَّهُ",
+   "relation": "يَعْلَمُ",
+   "object": "مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:knows-before-behind",
+   "ground": "quran-2.255.6",
+   "role": "declared",
+   "because": "ya'lamu (He knows) — knowledge held over the SURROUNDING WHOLE (what is between their hands and what is behind them — the ambient totality): Relate·Interpretation at GROUND grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the implicit 3ms subject -> the One named at w0; the -him of aydihim -> the creatures of the preceding discourse",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ",
+   "cell": {
+    "op": "EVA",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "the creatures",
+   "relation": "يُحِيطُونَ",
+   "object": "بِشَىْءٍۢ مِّنْ عِلْمِهِۦٓ",
+   "polarity": "-",
+   "clause": "main",
+   "prop": "quran:encompass-not-knowledge",
+   "ground": "quran-2.255.7",
+   "role": "declared",
+   "because": "ihata (encompass/surround) — an encirclement arranged: Relate·Structure, negated; PATTERN grain because the object is kind-quantified under negation (bi-shay'in min 'ilmihi, any-thing of His knowledge); the illa bi-ma sha'a restrictor is the la...illa family, folded-disclosed, its indicative relative rowed below",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the 3pl subject is the generic creatures of the preceding discourse (the mark-1-15 the-hearers shape)",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "وَلَا يُحِيطُونَ بِشَىْءٍۢ مِّنْ عِلْمِهِۦٓ إِلَّا بِمَا شَآءَ",
+   "cell": {
+    "op": "CON",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "ٱللَّهُ",
+   "relation": "شَآءَ",
+   "object": null,
+   "polarity": "+",
+   "clause": "restrictive-relative",
+   "prop": "quran:what-he-willed",
+   "ground": "quran-2.255.7.1",
+   "role": "declared",
+   "because": "sha'a (He willed) — the determining choice that BOUNDS which portion of His knowledge is granted: Differentiate·Interpretation at figure grain; an INDICATIVE relative inside the restrictor rows (R8, the es que-sera-completada precedent)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the 3ms subject -> the One named at w0; the relative head ma (what He willed, the granted portion) is the gapped object",
+   "alternate": {
+    "op": "EVA",
+    "grain": "Figure",
+    "because": "willing readable as a preference held rather than a bound drawn"
+   },
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "بِمَا شَآءَ",
+   "cell": {
+    "op": "DEF",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "كُرْسِيُّهُ",
+   "relation": "وَسِعَ",
+   "object": "ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:kursi-encompasses",
+   "ground": "quran-2.255.8",
+   "role": "declared",
+   "because": "wasi'a (encompasses/extends over) — an arrangement HELD OVER THE WHOLE FIELD: the kursi in relation to the heavens-and-the-earth totality (the gen-1 merism one document over): Relate·Structure at GROUND grain — the containment-of-the-ground cell, in Arabic",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "SIG",
+    "grain": "Ground",
+    "because": "readable as presence held over the field rather than the arrangement holding it"
+   },
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "وَسِعَ كُرْسِيُّهُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ",
+   "cell": {
+    "op": "CON",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "حِفْظُهُمَا",
+   "relation": "يَـُٔودُهُۥ",
+   "object": null,
+   "polarity": "-",
+   "clause": "coordinate",
+   "prop": "quran:preserving-not-weary",
+   "ground": "quran-2.255.9",
+   "role": "declared",
+   "because": "ya'uduhu (weighs upon/wearies) — a felt burden held against its bearer: Relate·Interpretation at figure grain, negated (R6)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "hifzuhuma — the preserving of the two (the heavens and the earth, w48-49); the object clitic -hu -> the One named at w0",
+   "alternate": {
+    "op": "CON",
+    "grain": "Figure",
+    "because": "the burden readable as a structural load arranged rather than felt"
+   },
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "وَلَا يَـُٔودُهُۥ حِفْظُهُمَا",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-255",
+   "language": "en",
+   "subject": "وَهُوَ",
+   "relation": "ٱلْعَلِىُّ ٱلْعَظِيمُ",
+   "object": null,
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "quran:most-high-tremendous",
+   "ground": "quran-2.255.10",
+   "role": "declared",
+   "because": "a verbless nominal clause whose predicate is the definite unique epithets (THE Most High, THE Tremendous) — copula rule 3 identificational, the quran-2-37 shape; the relation slot holds the predicate nominal per the verbless-clause convention",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "wa-huwa (w55) -> the One named at w0",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 49142
+   },
+   "anchor": "وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-37",
+   "language": "ar",
+   "subject": "ءَادَمُ",
+   "relation": "فَتَلَقَّىٰٓ",
+   "object": "مِن رَّبِّهِۦ كَلِمَٰتٍۢ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:adam-received-words",
+   "ground": "quran-2.37.1",
+   "role": "declared",
+   "because": "تَلَقَّىٰ (received) — words taken into a holder's keeping: content held, Relate·Interpretation at figure grain (the keep-in-mind family's entry act)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "CON",
+    "grain": "Figure",
+    "because": "receiving readable as the transfer-arrangement itself"
+   },
+   "span": {
+    "start": 336,
+    "end": 5819
+   },
+   "anchor": "فَتَلَقَّىٰٓ ءَادَمُ مِن رَّبِّهِۦ كَلِمَٰتٍۢ",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "quran-2-37",
+   "language": "ar",
+   "subject": "رَّبِّهِۦ",
+   "relation": "فَتَابَ",
+   "object": "عَلَيْهِ",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "quran:god-relented",
+   "ground": "quran-2.37.2",
+   "role": "declared",
+   "because": "تَابَ عَلَيْهِ — the tawba, the TURNING itself: one identified relational standing re-grounded (wrath conceded, mercy begun) — the re-zero on a single bond, Generate·Interpretation at figure grain",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the verb's subject → رَبِّهِ (his Lord); 'عَلَيْهِ' → ءَادَمُ",
+   "alternate": {
+    "op": "EVA",
+    "grain": "Figure",
+    "because": "readable as mercy held toward him rather than the turning act"
+   },
+   "span": {
+    "start": 336,
+    "end": 5819
+   },
+   "anchor": "فَتَابَ عَلَيْهِ",
+   "cell": {
+    "op": "REC",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "quran-2-37",
+   "language": "ar",
+   "subject": "إِنَّهُۥ",
+   "relation": "هُوَ",
+   "object": "ٱلتَّوَّابُ ٱلرَّحِيمُ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:he-is-relenting",
+   "ground": "quran-2.37.3",
+   "role": "declared",
+   "because": "copula rule 3 — the pronoun copula هُوَ + definite unique epithets (THE Oft-Relenting, THE Merciful): the identificational shape, the Arabic هي precedent",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "'إِنَّهُ' → the Lord of the previous clause",
+   "alternate": null,
+   "span": {
+    "start": 336,
+    "end": 5819
+   },
+   "anchor": "إِنَّهُۥ هُوَ ٱلتَّوَّابُ ٱلرَّحِيمُ",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "quran-5-3",
+   "language": "en",
+   "subject": "ٱللَّهُ",
+   "relation": "أَكْمَلْتُ",
+   "object": "دِينَكُمْ",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:din-perfected",
+   "ground": "quran-5.3.1",
+   "role": "declared",
+   "because": "أَكْمَلْتُ (I have perfected/completed) — a whole WAY brought to completed wholeness: Generate·Structure at PATTERN grain (the دِين is a paradigm binding a community, not one artifact — the kind-level whole); ٱلْيَوْمَ (this day) temporal, لَكُمْ recipient, both folded (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the 1sg subject is the sura's divine speaker → ٱللَّهُ",
+   "alternate": {
+    "op": "SYN",
+    "grain": "Ground",
+    "because": "readable as the whole field of the religion completed rather than the paradigm"
+   },
+   "span": {
+    "start": 124969,
+    "end": 126469
+   },
+   "anchor": "ٱلْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ",
+   "cell": {
+    "op": "SYN",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-5-3",
+   "language": "en",
+   "subject": "ٱللَّهُ",
+   "relation": "وَأَتْمَمْتُ",
+   "object": "نِعْمَتِى",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "quran:favor-completed",
+   "ground": "quran-5.3.2",
+   "role": "declared",
+   "because": "أَتْمَمْتُ (I have brought to fullness) — ONE bestowal (نِعْمَتِى, My favor) completed: Generate·Structure at figure grain, the mark-1-15 Πεπλήρωται family at figure scale; عَلَيْكُمْ recipient folded (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the 1sg subject → ٱللَّهُ (the same speaker)",
+   "alternate": null,
+   "span": {
+    "start": 124969,
+    "end": 126469
+   },
+   "anchor": "وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِى",
+   "cell": {
+    "op": "SYN",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-5-3",
+   "language": "en",
+   "subject": "ٱللَّهُ",
+   "relation": "وَرَضِيتُ",
+   "object": "دِينًۭا ۚ",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "quran:islam-approved-din",
+   "ground": "quran-5.3.3",
+   "role": "declared",
+   "because": "رَضِيتُ (I have approved / am pleased with) — approval HELD toward Islam AS the way (دِينًا, the as-classification borne by the تمييز): Relate·Interpretation at PATTERN grain (approved as the kind-of-way for the community); لَكُمُ recipient folded (A2)",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "the 1sg subject → ٱللَّهُ (the same speaker)",
+   "alternate": {
+    "op": "DEF",
+    "grain": "Pattern",
+    "because": "the as-assignment readable as bounding a standing (the proclaims-as family) rather than approval held"
+   },
+   "span": {
+    "start": 124969,
+    "end": 126469
+   },
+   "anchor": "وَرَضِيتُ لَكُمُ ٱلْإِسْلَٰمَ دِينًۭا ۚ",
+   "cell": {
+    "op": "EVA",
+    "grain": "Pattern"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-54-1",
+   "language": "en",
+   "subject": "ٱلسَّاعَةُ",
+   "relation": "ٱقْتَرَبَتِ",
+   "object": null,
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:hour-near",
+   "ground": "quran-54.1.1",
+   "role": "declared",
+   "because": "ٱقْتَرَبَتِ (has drawn near) — translocation (A5) of a whole era-condition toward the present: Relate·Existence at GROUND grain, the mark-1-15 ἤγγικεν family",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 634454,
+    "end": 634773
+   },
+   "anchor": "ٱقْتَرَبَتِ ٱلسَّاعَةُ",
+   "cell": {
+    "op": "SIG",
+    "grain": "Ground"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-54-1",
+   "language": "en",
+   "subject": "ٱلْقَمَرُ",
+   "relation": "وَٱنشَقَّ",
+   "object": null,
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "quran:moon-split",
+   "ground": "quran-54.1.2",
+   "role": "declared",
+   "because": "ٱنشَقَّ (split apart, middle voice) — ONE identified body divided into parts: Differentiate·Structure at figure grain — the mark-15-38 ἐσχίσθη cell, one document over",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": null,
+   "span": {
+    "start": 634454,
+    "end": 634773
+   },
+   "anchor": "وَٱنشَقَّ ٱلْقَمَرُ",
+   "cell": {
+    "op": "SEG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  }
+ ],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "cdc1ebe31991a3d4",
+  "at": "2026-08-31T19:09:25.659Z"
+ }
+}

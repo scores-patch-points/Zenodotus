@@ -1,0 +1,126 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Sikhism.txt",
+  "sha256": "1f84dae32a392fd5becc40a8e13b318ed25900c76d1c9da2c4b102f95f29c173",
+  "chars": 85326,
+  "declaredIdentity": {
+   "title": "Sikhism",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 12,
+  "debrisChars": 435,
+  "debrisFraction": 0.005,
+  "headingCount": 43,
+  "headings": [
+   "Terminology",
+   "Philosophy and teachings",
+   "God",
+   "Worldly illusion",
+   "Timeless truth",
+   "Liberation",
+   "Power and devotion (Miri and Piri)",
+   "Singing and music",
+   "Remembrance of the Divine Name",
+   "Service and action",
+   "Justice and equality",
+   "Ten Gurus and authority",
+   "Scripture",
+   "Guru Granth Sahib",
+   "Compilation",
+   "Language and script",
+   "Teachings",
+   "As guru",
+   "Distinction from other monotheistic religions",
+   "Relation to Hinduism and Islam",
+   "Dasam Granth",
+   "Sarbloh Granth",
+   "Janamsakhis",
+   "Observances",
+   "Ceremonies and customs",
+   "Initiation and the Khalsa",
+   "History",
+   "Historical influences",
+   "Growth of Sikhism",
+   "Political advancement",
+   "Singh Sabha movement",
+   "Partition of India",
+   "Khalistan",
+   "Sikh people",
+   "Sikh sects",
+   "Sikh castes",
+   "Sikh diaspora",
+   "Prohibitions in Sikhism",
+   "See also",
+   "Notes",
+   "References",
+   "Further reading",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 43,
+   "debrisFraction": 0.005
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": 0.6110603713596644,
+   "debrisFractionZ": 0.03182102906266489,
+   "priorSeenSoFar": 40
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.099Z"
+ }
+}

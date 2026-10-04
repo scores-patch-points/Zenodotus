@@ -1,0 +1,2288 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2005-11-15"
+lang: "en"
+messages: "2279"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<federico_lu> Hi all! Is it a must to do an "emerge -e system" after upgrading the GCC version? What are the benefits, and the negative points?
+<federico_lu> oops sorry wrong channel ;) sorry all! *shame-on-me*
+<nxv_> what can i do to get suspend or hybernate work?
+<Hobbsee> hehe
+<bimberi> ha, i wondered if it gave away the caller :)
+<Hobbsee> yeah, it does, most unfortunately
+<fatejudger> ?
+<Hobbsee> !lart #kubuntu bimberi
+<Hobbsee> ah....oops
+<bimberi> hehe
+<Hobbsee> i didnt do that in this channel, i'm sure....
+<Hobbsee> i did that in a private message....
+<fatejudger> damn samba
+<Hobbsee> still not working fatejudger?
+<fatejudger> nope
+<fatejudger> all I want now is just to erase samba data
+<fatejudger> so when I reinstall it'll be fresh
+<Hobbsee> fatejudger: you wouldnt happen to be using firestarter would you?
+<fatejudger> I don't see how making a user would be affecting it
+<fatejudger> no, I'm not
+<fatejudger> it's something to do with permissions or the samba conf
+<Hobbsee> good - i've had it interfere with samba and connecting before
+<fatejudger> I have no idea
+<Hobbsee> hmmm...completely remove samba, then search for the configuratoin files, and remove them
+<Hobbsee> would be my usual guess
+<fatejudger> is there a way to tell Kubuntu not to load Konq on automount?
+<fatejudger> since KDE 3.5 does it for you
+<Riddell> fatejudger: killall ivman
+<Riddell> also remove ivman from /usr/bin/startkde
+<fatejudger> Riddell: thanks
+<fatejudger> Riddell: would wouldn't happen to know a thing or two about samba would you?
+<Riddell> nope
+<fatejudger> Riddell: damn, oh well
+<fatejudger> I swear, if I don't figure this Samba problem out soon, I'm going to kill someone
+<fatejudger> I don't see how something could just stop working because a new user was created
+<fatejudger> it doesn't make any sense
+<troth> has anyone tried the new kernel yet?
+<Hobbsee> no, but i'm kind of tempted to...
+<troth> ya, i wonder if its worth it
+<Hobbsee> i'm wondering if my machine will properly reboot with it
+<Hobbsee> could be fun
+<stupendo44> what command can I use to launch a file from the terminal the same way it would be if it was double-clicked on the desktop?
+<stupendo44> it's not an executable
+<bennettg> hi
+<bennettg> how do i make the multimedia work in kubuntu?
+<stupendo44> bennettg: what multimedia?
+<bennettg> i am noob.  wish to watch .wmv, etc.
+<stupendo44> ok, you should install vlc and w32codecs
+<bennettg> got those
+<bennettg> no luck
+<stupendo44> are you trying to view it with vlc?
+<bennettg> work 50% in ubuntu, not kubuntu
+<bennettg> yes from wthin firefox
+<stupendo44> 50%?
+<stupendo44> oh, I've had a lot of trouble with that
+<bennettg> 1/2 the time
+<stupendo44> I just save everything, and view it external
+<bennettg> konqueror wont work either
+<stupendo44> I wish I could help you. I will invest more time to solve this issue myself, but I haven't had a ton of luck. I haven't even gotten java working in firefox yet. I have falsh working, though.
+<stupendo44> *flash
+<bennettg> ok
+<bennettg> humbolt state?
+<stupendo44> it can be done, I know that
+<humbolt> nop, humbolt stream
+<humbolt> humboldt to be exact
+<bimberi> bennettg: mplayer (and mozilla-mplayer) might be worth a try
+<stupendo44> I have gottens something with mplayer to work with mozilla before, but I didn't like it for some reason. Either it had no interface, or something else. can't remember
+<stupendo44> bimberi: btw, he left
+<zero0> yo!
+<zero0> anyone here uses KOffice?
+<stupendo44> I do
+<bimberi> stupendo44: ha, missed that somehow :)
+<stupendo44> I like it generally, but some of the applications leave features to be desires
+<stupendo44> *desired
+<zero0> how good is KOffice for Kubuntu?
+<zero0> is Kubuntu doing anything to support KOffice development?
+<stupendo44> it's pretty fast. I was suprised after using OOo 2.0rc1
+<stupendo44> what do you mean?
+<zero0> i mean of all the applications people use, KOffice should be number 1 or number 2 on the list
+<zero0> i was expecting more resources/funding be given to KOffice
+<stupendo44> from kubuntu? They're all developers working on a similar project. I doubt they're shifting money around much. They contribute code mostly
+<Riddell> zero0: I support koffice the same way I support KDE, making packages fast and making a great distribution for it
+<beast> Riddell: and you are doing a great job of it :)
+<LjL> koffice must be the most promising office suite i've seen yet, even though i've seen it crash too many times for my likings
+<RaRe> Can anybody help me: While runnning installation files i get a "Gdk-WARNING **: locale not supported by C library" on the shell.
+<RaRe> And if I ignored it and continued to install I get a "kbuildsycoca running...        Reusing existing ksycoca" Followed by a whole bunch of "kbuildsycoca: WARNING: .........."
+<RaRe> Then the program won't run
+<RaRe> 4 programs (games) so far have the same problem
+<KaoticEvil> hey everyone :)
+<KaoticEvil> for some reason, compiling a compiler just doesnt seem right
+<LjL> why, it's one of the coolest things in the world
+<fatejudger> lol
+<KaoticEvil> still.. it doesnt feel right :P
+<fatejudger> I think I need to bring ubotu over with me to the samba channel and decapitate some developers
+<KaoticEvil> im still not used to compiling programs.. at least not programs from other people :P
+<fatejudger> !go to #samba
+<ubotu> parse error: dunno what the heck you're talking about, fatejudger
+<fatejudger> damn you
+<LjL> !quit
+<ubotu> NO SPEAKE ENLISH!, LjL
+<fatejudger> !kill samba
+<ubotu> fatejudger: I'm not sure, is it larger than a breadbox?
+<fatejudger> !lart samba
+<fatejudger> w00t!
+<KaoticEvil> LOL
+<LjL> you joking? it's probably larger than half the windows source
+<KaoticEvil> fatejudger:  having fun? :P
+<fatejudger> yes, yes I am
+<KaoticEvil> heh
+<fatejudger> !lart samba.conf
+<fatejudger> wtf?
+<fatejudger> you can't do the same thing twice
+<fatejudger> !lart samba
+<KaoticEvil> lol
+<LjL> can you try an aptitude install boson? i mean, by now i've already filed a bug report for broken deps, but if you can confirm it's broken i'll live happier...
+<fatejudger> boson?
+<LjL> it's a game
+<fatejudger> a game
+<fatejudger> I think I'm going to make a game
+<fatejudger> it's going to have a Samba voodoo doll
+<fatejudger> and I'm going to torture it
+<LjL> hehe
+<fatejudger> !lart samba_voodoo_doll
+<fatejudger> OMG YES!!!
+<fatejudger> torture is great...
+<KaoticEvil> O.o
+<KaoticEvil> o.O
+<troy> poor snr in here (/me doesn't help)
+<KaoticEvil> methinks fatejudger == S&M fan :P
+<LjL> ubotu fatejudger is an S&M fan
+<ubotu> LjL: okay
+<KaoticEvil> lol
+<fatejudger> I don't mind the S&M actually
+<KaoticEvil> how bout the B&D? :P
+<fatejudger> my last gf was a fan...
+<KaoticEvil> never got into that...
+<LjL> :P
+<fatejudger> not the crazy stuff
+<fatejudger> but the more mild-medium end of it
+<fatejudger> anyway...
+<fatejudger> I don't know exactly how we started talking about S&M
+<KaoticEvil> . o O ( wierdo! )
+<KaoticEvil> :P
+<KaoticEvil> "fatejudger torture is great..."
+<fatejudger> lol
+<fatejudger> yes, yes it is
+<LjL> ubotu knows
+<ubotu> LjL: NO SPEAKE ENLISH!
+<LjL> or maybe not
+<fatejudger> lol
+<fatejudger> ubutu, fix my computer
+<fatejudger> ubotu, fix my computer
+<ubotu> Bugger all, i dunno, fatejudger
+<fatejudger> ubotu: kill samba
+<ubotu> fatejudger: Wish i knew
+<LjL> ubotu kaoticevil
+<ubotu> hmm... kaoticevil is someone who dislikes ubotu
+<KaoticEvil> :O
+<KaoticEvil> ubotu:  KaoticEvil like ubotu
+<ubotu> KaoticEvil: Syntax error in line 1
+<KaoticEvil> doh
+<LjL> heh
+<KaoticEvil> :P
+<KaoticEvil> ubotu:  LjL
+<ubotu> KaoticEvil: Do they come in packets of five?
+<LjL> fortunately not
+<KaoticEvil> LOL
+<LjL> fortunately for the rest of the world, i mean
+<KaoticEvil> yeah, heh
+<LjL> who was talking to you? i was explaining ubotu
+<jaypee_> on my kmix, i can only adjust volume with pcm
+<jaypee_> how can i make pcm default in systray everytime i start kde
+<jaypee_> is there kmix config file somewhere?
+<LjL> doesn't right click and "select channel" do it?
+<LjL> or does it forget the setting?
+<jaypee_> LjL: it does, however when i restart it resets back to master
+<LjL> i see
+<jaypee_> so i don't know how i can make the settings stick
+<LjL> well, the config file is at ./.kde/share/config/kmixrc
+<LjL> and also at ./.kde/share/config/kmixctrlrc
+<LjL> tho i can't find that setting
+<jaypee_> ooo thanks a lot LjL
+<propagandhi> !LjL
+<ubotu> ljl is, like, totally, Maybe he doesnt come in packets of five, but what does these days?
+<LjL> heh
+<bettse> any ideas why sftp in konqueror isn't working under this practically brand new kubuntu
+<fatejudger> !samba
+<ubotu> hmm... samba is http://www.ubuntulinux.org/wiki/SettingUpSamba or https://wiki.ubuntu.com/MountWindowsSharesPermanently
+<KaoticEvil> why does my samba server need to be reset all the time?
+<KaoticEvil> s/reset/restarted/
+<fatejudger> I have no idea
+<fatejudger> but this samba thing is pissing the hell out of me
+<KaoticEvil> lol
+<KaoticEvil> fatejudger:  cant get it working?
+<fatejudger> no
+<egats> lol
+<fatejudger> but my other computer is broken too now
+<fatejudger> ok
+<fatejudger> who here has KDE 3.5?
+<egats> anyone want to help me get my samba server working?
+<fatejudger> KDE 3.5 Beta 2
+<fatejudger> no one has KDE 3.5 Beta 2?
+<KaoticEvil> how did my workgroup get changed? o.O
+<fatejudger> cmon, I'm in the damn Kubuntu channel
+<LjL> ..
+<egats> breezy comes with 3.4.2
+<LjL> haven't dared to install it yet
+<fatejudger> egats: it comes with 3.4,3
+<egats> ok, maybe recently. but definitely not 3.5.
+<egats> point is, not everyone puts in the effort to get KDE and compile it on their own
+<egats> KaoticEvil: do you have your samba server working then?
+<fatejudger> egats: there are binaries
+<KaoticEvil> egats:  yes, samba is working for me.. but somehow my workgroup got changed
+<KaoticEvil> which doesnt matter on *my* box... but on my XP box, well... yeah, it matters there lol
+<egats> KaoticEvil: do you think maybe you could help me figure out why mine isn't working?
+<KaoticEvil> egats:  i can try... altho i should tell you upfront that im not all that good with linux
+<egats> i posted my smb.conf here: http://pastebin.com/423887
+<KaoticEvil> ok.. ill take a look at it
+<KaoticEvil> ill cmpare it to mine...
+<egats> when i try smbclient --list=localhost, it times out
+<KaoticEvil> egats: you did install the samba server, right? (dont take offense, i forgot :P )
+<egats> yes, i installed the samba package through adept
+<egats> smbd and nmbd are showing up on my process list
+<KaoticEvil> ok
+<fatejudger> lol
+<fatejudger> I'm just trolling in the samba channel right now
+<KaoticEvil> egats:  i really have no idea...
+<KaoticEvil> mine is only *half* working...
+<KaoticEvil> i can browse it when i go to remote places.. but not form my XP box :(
+<egats> it sounds like you have your conf set up wrong then
+<egats> do you have your subnet in host allow?
+<KaoticEvil> i just fixed it too :D
+<KaoticEvil> egats:  would you like me to post my smb.conf ?
+<egats> KaoticEvil: yes, please
+<fatejudger> !samba
+<ubotu> samba is probably http://www.ubuntulinux.org/wiki/SettingUpSamba or https://wiki.ubuntu.com/MountWindowsSharesPermanently
+<egats> already been there, guys
+<egats> i'm trying to set it up through the .conf file
+<KaoticEvil> egats:  would you like me to paste my smb.conf ? it works now :)
+<egats> KaoticEvil: yes, please! :)
+<KaoticEvil> ok.. doing it now :)
+<KaoticEvil> if i can get pastebin to load...
+<KaoticEvil> egats:  here ya go -> http://rafb.net/paste/results/8bQ3zg43.html
+<KaoticEvil> it works for me...
+<KaoticEvil> oh, and one other thing...
+<KaoticEvil> dont know if it matters, but i use a different command to restart samba...
+<KaoticEvil> i use:  sudo invoke-rc.d samba restart
+<KaoticEvil> nalioth:  hey :)
+<nalioth> KaoticEvil: howdy
+<KaoticEvil> i got samba working fully :)
+<nalioth> KaoticEvil: great!
+<KaoticEvil> and i got my IP issues sorted as well :)
+<KaoticEvil> and i did it all on a shell :)
+<egats> KaoticEvil: i was also looking for that script! thanks :)
+<KaoticEvil> scuse me.. by using the Force :P
+<KaoticEvil> egats:  no worries
+<KaoticEvil> just glad i could help :)
+<nalioth> KaoticEvil: great
+<KaoticEvil> . o O ( feels cool to be able to help people thru some of the same problems ive had :) )
+<KaoticEvil> egats:  lemme know it that works, eh? (the smb.conf)
+<nalioth> KaoticEvil: karma is a circle
+<KaoticEvil> heh nalioth
+<egats> KaoticEvil: yeah, i'm comparing it with mine
+<egats> KaoticEvil: so you're using passwd to auth instead of smbpasswd? i didn't know you could do that.
+<egats> KaoticEvil: also, why do you have workgroup defined twice?
+<KaoticEvil> egats:  i do?
+<KaoticEvil> *checks&
+<egats> KaoticEvil: yes, at the top of global, and also under your ###MISC### section
+<KaoticEvil> heh.. i do...
+<KaoticEvil> i dont know...
+<KaoticEvil> lol i never even noticed it tbh
+<egats> KaoticEvil: so about the passwd vs. smbpasswd?
+<KaoticEvil> *shrugs* it just works... i simply modified the existing one to include my workgroup and shares.. i didnt change anything else
+<KaoticEvil> except to enable guest ok = yes
+<egats> hmmm
+<egats> did you set it up through kcontrol first?
+<KaoticEvil> the share, yes...
+<KaoticEvil> and it would work.. then after so long, just stop working
+<egats> oh, ok. i'm trying to do it without the kcontrol.
+<KaoticEvil> well, the modifications i did with pico
+<egats> kcontrol gives me all kinds of problems when i have to enter "administrator mode"
+<egats> so i was trying to do it all from shell
+<KaoticEvil> yeah, same here... the workaround to that.. Run -> kdesu kcontrol
+<KaoticEvil> that starts it in root mode
+<egats> hmmm
+<egats> how is kdesu different than sudo?
+<KaoticEvil> kdesu is, i believe, a K frontend for sudo
+<KaoticEvil> it does the same thing, from what i can tell
+<KaoticEvil> hmmmmmmmmm... i may attempt to mount these shares into ~
+<nalioth> !kdesu
+<ubotu> Use kdesu to run applications with root priveleges, when you have to. Do *not* do sudo {GUIAPP}; you can muck up your permissions and the config files.
+<KaoticEvil> heh.. ty nalioth
+<nalioth> egats: if you open a kde gui app using sudo, it will mangle your userspace permissions
+<KaoticEvil> nalioth:  why?
+<nalioth> egats: then forevermore will be the error msgs and "cannot write to directory"
+<egats> yeah, i had all kinds of crazy problems trying to do sudo kate
+<KaoticEvil> heh
+<nalioth> egats: ewww, i hope you've not mangled your perms already
+<egats> well, kate proceeded to crash, and i had to sudo kill it.
+<egats> how could i tell if my perms are mangled?
+<sophie_> hello all I<m wondering how do you use katapult
+<egats> sophie_: ALT-SPACE
+<sophie_> egats: does not work for me
+<Hobbsee> !katapult
+<ubotu> katapult is, like, an application for KDE designed to provide faster access to applications, bookmarks and other items. Once you've installed it, alt+f2 ->katapult, then hit Alt+Space. When splash screen appears, type the command you want.
+<KaoticEvil> so its like prefetch?
+<nalioth> KaoticEvil: more like alt-tab on steroids
+<KaoticEvil> lol
+<KaoticEvil> thats even better :>
+<KaoticEvil> << RELIGIOUS user of Alt+Tab
+<egats> nalioth: how can i tell if my perms are botched?
+<Hobbsee> hehe...love katapult here too
+<Hobbsee> and alt+tab, and shortcut to switch desktops
+<nalioth> egats: you'll start having permissions problems as described above
+<sophie_> nalioth: i<ve installed the package but alt-space does not work
+<egats> nalioth: you mean like admin mode not working in kcontrol?
+<KaoticEvil> it doesnt work here either..
+<nalioth> sophie_: i dont use katapult
+<Hobbsee> sophie_: tried using alt+f2 and typing katapult?
+<nalioth> egats: no, that is another bug, you should upgrade
+<Hobbsee> then hit enter, and try?
+<sophie_> Hobbsee: from the command line I get:
+<sophie_> sophie@ubuntuphil:~/Desktop/kbfx-0.4.8rc1$ katapult
+<sophie_> kio (KMimeType): WARNING: KServiceType::offers : servicetype Katapult/Catalog not found
+<sophie_> kio (KMimeType): WARNING: KServiceType::offers : servicetype Katapult/Display not found
+<Hobbsee> hmmm...
+<sophie_> Hobbsee: what do u get from command line
+<Hobbsee> ignored duplicate item then showing a lot of my bookmarks that are in firefox and konq
+<KaoticEvil> does apt-get keep packages around after installing them?
+<sophie_> can katapult be configured in kcontrol should an entry exist
+<nalioth> KaoticEvil: it does. /var/cache/apt/archives/
+<Hobbsee> sophie_: hit alt+f2, type katapult - does it give you an icon in the box?
+<Hobbsee> as in, not a blue one, a kinda grey one?
+<sophie_> Hobbsee: yep grey gear
+<Hobbsee> nah, katapult's not in kcontrol - you cant really configure it
+<Hobbsee> cool
+<Hobbsee> ok, go into kcontrol
+<sophie_> ok
+<Hobbsee> search for keyboard, pick the one for keyboard shortcuts
+<Hobbsee> that says that katapult is indeed installed :P
+<sophie_> Hobbsee: should there be a keyboeard shortcut for katapult in the appliation shortcut tab
+<Hobbsee> no, but check if anything else has a shortcut of alt+space
+<Hobbsee> usually windows, windows operations menu
+<sophie_> Hobbsee: no kde shortcut to alt-space
+<Hobbsee> hmm ok
+<Hobbsee> have you restarted kde since installing katapult?
+<squidbullets> lots of jacking around my friend nalioth
+<nalioth> squidbullets: type /j #kubuntu-offtopic
+<squidbullets> new problem nalioth
+<nalioth> squidbullets: oh?
+<sophie_> Hobbsee: I think so for the restart
+<Hobbsee> hmmm....odd
+<Hobbsee> for some reason, it doesnt always start after installing it, i recall
+<squidbullets> nalioth=8D missing user list in X-chat terminal window, reset and restarted X-chat, same basic terminal window. did those bucket-heads in the other chat room do this to me or is this a setting I unwittingly tampered into non-existance all by myself
+<nalioth> squidbullets: all by yourself
+<squidbullets> =8D  IDUDITZ!
+<nalioth> squidbullets: this is linux, no one can "do anything" to you
+<sophie_> Hobbsee: I'll try to restart kde
+<stbain> squidbullets: are you set on using X-chat
+<stbain> ?
+<squidbullets> nalioth=8D how to unDO myself then?
+<sophie_> brb
+<Hobbsee> sophie_: or just reboot the machine
+<Hobbsee> k
+<nalioth> squidbullets: stbain may have some enlightenment for you
+<squidbullets> YAY!
+<stbain> squidbullets: well... there's Konversation
+<stbain> which is tabbed IRC client
+<stbain> personally
+<stbain> I like MDI
+<stbain> so I can monitor multiple channels at once
+<stbain> so I installed kvirc
+<KaoticEvil> well hell..
+<sophie_> Hobbsee: Reboot and no katapult man I really wanted to try it out
+<Hobbsee> darn it!
+<sophie_> Hobbsee: got it to work!
+<squidbullets> stbain=8D EVERYthing is up in the air at this point-not set on anything really, actually I do not really have time for endless chatting and tinkering, my primary hobby is music.  I was asking nalioth where my user list on the right went so i could put it up and visit a bit with some lunatics on another server before i recorded a ska song.  I need there lunatic perspective and had planned on doing it all tonight so I could give it to s
+<squidbullets> omebody and let her know there is a man in me singing "I care I care". so that is why tonight would not be a good time for changing things up.  thank you for pointing me to MDI. I hope I will remember it so I can check it out later.  Is it wrong for me to type these huge inputs?
+<Hobbsee> sophie_: yay!
+<sophie_> did sudo kbuildsycoca
+<nalioth> squidbullets: check your view menu
+<sophie_> had to do same thing for amarok when I installed
+<Hobbsee> ah ok, yep
+<KaoticEvil> sophie_:  what does that do?
+<squidbullets> nalioth=8D  PSYCHOTIC COMPUTER MODE = TRUE/ invalid drop down menu name...{valid option=1 0f 6[X-Chat IRC Server Window Help]   if not 1 of 6 search menu::keyword^view^}
+<nalioth> squidbullets: i have 0 clue
+<sophie_> Hobbsee: katapult is great but how to I change the delay before it resets your typing
+<Hobbsee> no idea if that's possible, but i'd check somewhere in ~./kde/ for a configuration file
+<KaoticEvil> ok.. ive got to test my IP config...
+<KaoticEvil> brb
+<sophie_> Kaoti: kbuildsycoca  Rebuilds the system configuration cache
+<RaRe> help someone tell me what to do with this please...  "*** glibc detected *** corrupted double-linked list: 0xb7c2f938 ***"
+<crimsun> RaRe: what are you using to get that error?
+<pc22> how do i watch avi file in ubuntu?
+<pc22> how do i watch avi file in kubuntu?
+<bimberi> pc22: hopefully this will help you - https://wiki.ubuntu.com/RestrictedFormats
+<nalioth> ubotu: tell pc22 about multimedia
+<fatejudger> !multimedia
+<ubotu> [multimedia]  for codecs,  http://help.ubuntu.com/starterguide/C/ch03.html#sect-music-and-movies ; and for applications, https://wiki.ubuntu.com/NewUserGuideMultimedia
+<fatejudger> I'm having the hardest time getting anything to play using gstreamer
+<KaoticEvil> cool :) it works
+<fatejudger> nalioth: are you any good with samba?
+<fatejudger> nalioth: I've tried asking everyone about my samba problem
+<fatejudger> I think I'm going to have to reformat...
+<nalioth> fatejudger: i dont own windows boxen, sorry
+<KaoticEvil> fatejudger:  whats the problem youre having again?
+<fatejudger> damn
+<nalioth> fatejudger: perhaps KaoticEvil can help you
+<fatejudger> KaoticEvil: dude, you couldn't figure it out 3 hours ago
+<fatejudger> KaoticEvil: nor could you figure it out the day before
+<fatejudger> I can see computer
+<fatejudger> I can see the folders inside the computer
+<fatejudger> but I can't go into the shared folders
+<fatejudger> it says they don't exist or I don't have access to them
+<KaoticEvil> permission denied error?
+<KaoticEvil> freom windows?
+<KaoticEvil> from*
+<fatejudger> both from Windows and from Kubuntu
+<fatejudger> maybe a working smb.conf might help
+<KaoticEvil> are the sahres passworded?
+<fatejudger> I don't see how
+<KaoticEvil> wanna see mine?
+<fatejudger> KaoticEvil: they shouldn't be
+<KaoticEvil> shares*
+<fatejudger> KaoticEvil: I wouldn't know what to look for
+<KaoticEvil> fatejudger:  compare it to yours?
+<fatejudger> sure, why not
+<fatejudger> pastebin it
+<KaoticEvil> thats how uhhh... some other guy got his working lol
+<KaoticEvil> fatejudger:  here ya go -> http://pastebin.com/424002
+<KaoticEvil> please dont ask me why my workgroup is defined twice, because i dont know... i *do* know that it works tho :P
+<dreamwave> okay.  here's a strange questions.  what browser do you use when purchasing stuff on ebay?  if konqueror, does it work alright?
+<regeya> I've used konq for ebay purchases
+<regeya> works fine
+<regeya> on those rare occasions when konq won't do, keep firefox handy.  when that's not enough, find a friend with windows.
+<nalioth> bah. any browser will do, i've used galeon, konq and ff for online purchases
+<dreamwave> regeya: ah.  thanks.  i've got windows on the other partition.  i just don't want to reboot if i don't truely need to.
+<dreamwave> nalioth: cool!
+<KaoticEvil> how do i disable that damned auto-spell check globally?
+<KaoticEvil> its pissing me off, really
+<KaoticEvil> i searched thru ever option in kcontrol, and i /cannot/ find it
+<egats> KaoticEvil: try spelling things correctly. then it won't bother you :p
+<KaoticEvil> egats:  it has nothing to do with that...
+<KaoticEvil> its slowing me down :P
+<KaoticEvil> ive only got a 400MHz celeron :(
+<regeya> nalioth: I said *rare* :-)
+<fatejudger> KaoticEvil: your smb.conf is strange
+<fatejudger> KaoticEvil: it's global
+<egats> are there supposed to be two instances of smbd running?
+<fatejudger> egats??
+<fatejudger> !lart egats
+<KaoticEvil> fatejudger:  it works tho :P
+<fatejudger> can someone else send me their working smb.conf?
+<fatejudger> I need something less global
+<fatejudger> and more configurable
+<KaoticEvil> ok
+<fatejudger> lol, egats can't hear me
+<fatejudger> !lart egats
+<egats> *lmao* :D
+<fatejudger> !lart egats
+<egats> ouch!
+<fatejudger> lol
+<fatejudger> I wonder if he knows its a bot
+<nalioth> fatejudger: let's keep the !larting to -offtopic please
+<squareff> any reason timidity would work and kmid not?
+<KaoticEvil> oh, and i think i fixed my xmms sound server problem too :)
+<KaoticEvil> i changed it from arts to alsa, and havent had a problem with it since *yay*
+<squareff> KaoticEvil: isn't xmms obsolete and replaced with bmpx?
+<KaoticEvil> squareff:  dont know.. only thing ive ever used is xmms :P
+<fatejudger> KaoticEvil: many programs don't use alsa standard
+<fatejudger> KaoticEvil: like web browsers
+<fatejudger> KaoticEvil: and a few KDE apps
+<squareff> fatejudger: they use what then?
+<KaoticEvil> the only thing i care about for sound is my music player
+<fatejudger> squareff: arts
+<fatejudger> KaoticEvil: well there you go
+<fatejudger> KaoticEvil: not like it matters though
+<squareff> fatejudger: but isn't alsa better?
+<fatejudger> KaoticEvil: better to have support for all apps
+<fatejudger> squareff: how do YOU think alsa is better?
+<KaoticEvil> i want my OS to be *silent* except for my music
+<fatejudger> KaoticEvil: no flash videos?
+<KaoticEvil> fatejudger:  occasionally... not often tho
+<fatejudger> KaoticEvil: well they won't work now
+<squareff> fatejudger: i don't have my own opinion, i just heard so
+<KaoticEvil> no, just changed xmms to use alsa...
+<fatejudger> squareff: alsa - dmix has less lag than alsa
+<squareff> fatejudger: do you have reasons to believe the oposite?
+<fatejudger> I mean
+<fatejudger> less lag than arts
+<fatejudger> but arts is compatible with almost every app
+<fatejudger> and is the KDE standard
+<fatejudger> gstreamer will soon be the KDE standard though
+<squareff> fatejudger: btw, do you think this is why kmid doesn't work and timidity does on my machine?
+<fatejudger> squareff: do you only use alsa?
+<KaoticEvil> fatejudger:  in my sound server settings, i have it set to autodetect... i simply changed the settings in xmms
+<squareff> fatejudger: yes, i guess so
+<fatejudger> squareff: then yes
+<squareff> fatejudger: i don't see arts installed on my machine
+<fatejudger> squareff: how have you been living without it?
+<squareff> fatejudger: (maybe i don't know how to... see it)
+<fatejudger> squareff: do you have the Beta 2 or something?
+<squareff> fatejudger: this is my first day to try to use sound on this machine
+<fatejudger> squareff: I'm sure you have it
+<squareff> fatejudger: how do i check this?
+<fatejudger> squareff: just poke around the KDE settings for sound
+<fatejudger> squareff: system settings if you use Breezy
+<KaoticEvil> hmmmm...
+<squareff> fatejudger: i see. thank you.
+<KaoticEvil> oh, terrific...
+<fatejudger> I'm beginning to think this whole Samba problem is a KDE bug
+<fatejudger> lol
+<KaoticEvil> anyone use icecast?
+<fatejudger> nope
+<KaoticEvil> damn
+<egats> lol. sorry
+<KaoticEvil> i cant get the icecast-server to start
+<fatejudger> what does it do?
+<KaoticEvil> its a shoutcast clone
+<KaoticEvil> straming audio
+<KaoticEvil> streaming*
+<fatejudger> what is the name of the server part of Samba
+<fatejudger> not the client package
+<fatejudger> but the server package
+<Noah0504> Is it possible to always have windows open maximized in KDE?
+<KaoticEvil> fatejudger:  its samba, isnt it?
+<fatejudger> KaoticEvil: that's the general package
+<fatejudger> KaoticEvil: it isn't a real package
+<KaoticEvil> ah
+<KaoticEvil> smbd, i think
+<fatejudger> KaoticEvil: it just collects up a bunch of packages
+<KaoticEvil> ive got a list of all the packages.. lemme check
+<KaoticEvil> fatejudger:  samba (3.0.14a-6ubuntu1) a LanManager-like file and printer server for Unix
+<KaoticEvil> its not a metapackage
+<fatejudger> yeah, I see that
+<fatejudger> ok
+<fatejudger> I've figured out what the problem is
+<fatejudger> it's an access issue
+<fatejudger> I've fixed everything so I can browse the windows computers
+<fatejudger> the Kubuntu computer I need NFS to browse
+<fatejudger> I can dual share
+<fatejudger> but for some reason, other computers don't have access to the folders
+<KaoticEvil> do you have guest ok = yes set?
+<Delvien> Has anyone got their Microsoft Bluetooth mouse's scroll wheel working?
+<fatejudger> KaoticEvil: yes
+<fatejudger> KaoticEvil: globally and for every share
+<KaoticEvil> hmmmmm
+<KaoticEvil> thats really odd...
+<KaoticEvil> do you also have public = yes and browseable = yes set?
+<fatejudger> I think so
+<fatejudger> let me check
+<fatejudger> KaoticEvil: yes, I have all of those
+<fatejudger> KaoticEvil: I'm thinking maybe I should transfer my smb.conf from my working computer to replace the non-working one
+<KaoticEvil> there ya go :)
+<KaoticEvil> just replace the share entry names.. and you *should* be set
+<fatejudger> yeah
+<KaoticEvil> but then again... these *are* computers
+<pc22> how do i install w32 codec
+<KaoticEvil> things dont always work like they should :P!w32codec
+<KaoticEvil> things dont always work like they should :P
+<KaoticEvil> !w32codec
+<ubotu> from memory, w32codecs is for w32codecs in Breezy visit http://seveas.ubuntulinux.nl/dists/breezy-seveas/breezy-extras/
+<pc22> thanks
+<KaoticEvil> you should be able to just apt-get it...
+<fatejudger> w32 codecs are great
+<KaoticEvil> yeah they are
+<fatejudger> I always encode my music as .wma
+<fatejudger> since it works on my computer and mp3 player
+<KaoticEvil> ewwwwwww @ wma
+<fatejudger> well I'd use ogg
+<fatejudger> but my mp3 player just isn't THAT cool
+<KaoticEvil> i never liked wma even when i ran windows :P
+<KaoticEvil> just use MP3 :P
+<fatejudger> wma is the next best thing to ogg
+<fatejudger> wma vbr is just super
+<fatejudger> great compression and quality
+<fatejudger> mp3 doesn't even compare
+<fatejudger> KaoticEvil: yeah well, look at audio tests
+<KaoticEvil> then again, i detest MS...
+<fatejudger> KaoticEvil: you have to reject all that hatred of Microsoft
+<KaoticEvil> so i may be slightly biased :P
+<fatejudger> KaoticEvil: Linux is great, but so is MS
+<fatejudger> which is why I have a mixed box setup
+<KaoticEvil> fatejudger:  they make great things
+<KaoticEvil> windows is great... i like it.. alot
+<fatejudger> I like the configurability of Linux though
+<KaoticEvil> MS Office is the best office suite ive ever used
+<fatejudger> it's like a manual transmission vs automatic
+<fatejudger> eh, I'm not a powerpoint fan
+<fatejudger> I'm going to get flamed in here because of this but
+<KaoticEvil> no, powerpoint sucks lol
+<fatejudger> I like Keynote
+<fatejudger> I don't own anything Apple though
+<fatejudger> so I can't use it
+<KaoticEvil> i was talking about outlook and word, mainly :P
+<regeya> keynote...wait, is that the apple presentation app?
+<fatejudger> yeah
+<fatejudger> Keynote is just awesome
+<KaoticEvil> Outlook 2003 and Word 2003 are great...
+<fatejudger> OpenOffice.org should have copied THAT interface
+<fatejudger> instead of PowerPoint
+<fatejudger> that was a stupid stupid decision
+<regeya> fatejudger, you'd be surprised how many apple fanboys hang in 'loonix' crowds
+<KaoticEvil> OpenOffice.org shouldnt ahve written it in java either :P
+<fatejudger> loonix?
+<fatejudger> lol
+<regeya> OOo isn't a java app
+<fatejudger> Java is horrible
+<KaoticEvil> oh?
+<fatejudger> memory hog
+<KaoticEvil> no, java is great
+<fatejudger> especially in Linux
+<KaoticEvil> for what its DESIGNED for..
+<KaoticEvil> web-based apps
+<fatejudger> web-based apps?
+<KaoticEvil> *not* stand-alone apps
+<fatejudger> LOL
+<KaoticEvil> applets* scuse me
+<fatejudger> that WAS NOT what Java was designed for
+<KaoticEvil> ?
+<fatejudger> it was designed as a replacement to C++
+<fatejudger> which it will never be
+<KaoticEvil> it failed miserably in that respec
+<KaoticEvil> respect*
+<fatejudger> cause it has inherant flaws
+<fatejudger> slowness
+<fatejudger> memory hoggyness
+<KaoticEvil> meh... i sling my code in FreePascal+Lazarus/Delphi :P
+<fatejudger> lol
+<KaoticEvil> Delphi is just great
+<fatejudger> C++ QT
+<fatejudger> Ruby QT
+<fatejudger> those are my languages
+<KaoticEvil> i dont know C++ :(
+<fatejudger> :(
+<KaoticEvil> i wanna learn tho...
+<fatejudger> go to school
+<KaoticEvil> too old :P
+<fatejudger> how old?
+<KaoticEvil> 26 :P
+<fatejudger> lol
+<fatejudger> I'm 17
+<KaoticEvil> besides... everything else i know ive learned the hard way
+<KaoticEvil> school of hard knocks
+<KaoticEvil> dude... ive been fixinf computers almost as long as youve been alive...
+<nybble> so, anyone having any fritzy cd-roms?
+<Delvien> i have a fritzy mouse :P
+<nybble> hmmm
+<KaoticEvil> i have fritzy hair...
+<nybble> well, join the fritzy club
+<regeya> sure.  I have some that are scratched up, nybble, so they don't work well in my drives.
+<Delvien> later taters
+<nybble> heh. I'm thinking that i might re'install de ol' kernel
+<regeya> I must point out that Java wasn't just intended to be a heavier, slower version of what Flash turned out to be
+<KaoticEvil> jsava turned out to be nearly worthless, imo
+<Talia1KubBrzy> is there a way to shot a movie of what happens on the screen?
+<KaoticEvil> java*
+<Talia1KubBrzy> like kscreenshot...... kmoovieshot
+<regeya> KaoticEvil: that would explain the number of enterprise web apps and embedded devices using Java
+<firephoto> Talia1KubBrzy: yeah, it uses vnc... can't think of the name.
+<Talia1KubBrzy> ?
+<KaoticEvil> regeya:  meh... i still think its pretty worthless...
+<KaoticEvil> my cell phone uses java for the IM clients... its sucks
+<firephoto> Talia1KubBrzy: vnc2swf
+<Talia1KubBrzy> ok, i'll try
+<Talia1KubBrzy> tnx
+<icewt> pyvnc2swf
+<Talia1KubBrzy> pyv?
+<nybble> meow
+<regeya> vnc2swf rocks, btw
+<regeya> pyvnc2swf, rather...thanks icewt...uses pygame, is python-based.
+<regeya> have been using it at work to do short tutorials
+<KaoticEvil> oh, wow... KHotKeys is sweet :D
+<IamMe> hello...
+<IamMe> can someone tell me how to switch from the ubuntu desktop to the kubuntu desktop?
+<IamMe> oops
+<KaoticEvil> heh
+<nalioth> IamMe: when you log in, click on 'sessions'
+<IamMe> ok
+<IamMe> and then it will give me a drop down for kubuntu?
+<nalioth> IamMe: it will give you choices for whatever DE are on your box
+<IamMe> thank you nalioth
+<IamMe> i will try that
+<KaoticEvil> hmmmm... i may not be ale to create buttons in gyach... but i can damn sure make hotkeys for em :>
+<WibblyWobbly> so quiet in here now.
+<srobbins> I've got a PCIE card, and ATI's driver installer mentions not having proper kernel modules in /usr/src...
+<srobbins> I've looked, and there are AGP modules, but I see no mention of PCIE buses.  Where can I get these?
+<bauhaus> hola
+<bauhaus> necesito ayuda con ati.2
+<bauhaus> hello
+<nalioth> bauhaus: hi. we dont speak much spanish in here
+<srobbins> bauhaus: Yo tambien.
+<bauhaus> need somy help with driver ati.2
+<bauhaus> *some
+<nalioth> bauhaus: por espaol, vaya de el #ubuntu-es
+<srobbins> Yeah, I need help too.  More like some pointers, that's all.
+<bauhaus> need to configure that driver
+<bauhaus> someone with "AVView"
+<stdoubt> bauhaus: do you have all this installed?
+<stdoubt> fglrx-kernel-source xorg-driver-fglrx xserver-xorg
+<bauhaus> mmm not, thank you
+<stdoubt> i think you need them for ati
+<bauhaus> i need something like that answer
+<bauhaus> ok let me search
+<srobbins> stdoubt: I've got Xorg, it's just unaccelerated.
+<stdoubt> and which ati driver you using?
+<srobbins> Oh... 8.something.  From their website.
+<stdoubt> what's the problem you're having?
+<srobbins> Lemme pull it up again.
+<srobbins> stdoubt: [Message]  Kernel Module : Trying to install a precompiled kernel module.
+<srobbins> stdoubt: Something to the extent of that.
+<stdoubt> i boot u all! LOL
+<stdoubt> sorry
+<gigcs> hello
+<stdoubt> I'm having a really. weird. problem.
+<stdoubt> I can 'sudo chown user: /media/hdb1/'
+<srobbins> What...
+<stdoubt> but then if I remount, it changes back and my user can't write to it
+<gigcs> I have question
+<stdoubt> what in kubuntu does that - i'm used to debian
+<aftertaf> stdoubt: check your fstab permissions
+<stdoubt> "/dev/hdb1       /media/hdb1     vfat    defaults        0       0"
+<stdoubt> I have a /dev/hda3 with the same flags and my user can write to it no prob.....
+<stdoubt> drwxr-xr-x  20 root root 32768 1969-12-31 17:00 hdb1
+<gigcs> make distro ubuntu
+<gigcs> develp ubuntu
+<stdoubt> this changes back to owner root after a remount.....even after i chown it
+<stdoubt> (to user)
+<stdoubt> how can i make the user able to write to hdb1?
+<stdoubt> (/media/hdb1)
+<stdoubt> I can't expect my users to go "sudo umount" etc... I thought this ubuntu stuff was automatic :-(
+<stdoubt> is this channel here?
+<nalioth> stdoubt: no we're all gone
+<aftertaf> noone left
+<nalioth> stdoubt: what channel did you misplace?
+<aftertaf> lol
+<stdoubt> :- 0 is this channel having problems?
+<nalioth> stdoubt: nope. whats up?
+<stdoubt> i keep seeing everyone on channel disconnect
+<nalioth> stdoubt: netsplits affect the whole network
+<stdoubt> must be client-side :-\
+<aftertaf> really? i disabled that stuff
+<stdoubt> hmm netslips -new one on me
+<stdoubt> anyhoo- there's a new Spanish language forum at http://www.kubuntuforums.net/ for anyone who might want
+<stdoubt> so this "Admin mode fix in Breezy"......I went to that URL but can't stat "admin fix" wtf eh?
+<KaoticEvil> stdoubt:  just modify /etc/fstab
+<stdoubt> KaoticEvil: I did - it works now -just didn't work out of the box ..
+<KaoticEvil> oh, ok
+<KaoticEvil> mine didnt either ;)
+<stdoubt> there was someone here last night talking about how he couldn't get admin mode in System Settings......I have same problem is this "Admin fix" the same thing?
+<nalioth> stdoubt: there is a fix for it, iirc
+<stdoubt> whereabouts por favor
+<stdoubt> http://kubuntu.org/announcements/breezy-release.php has no info about it
+<nalioth> stdoubt: what version of kde are you running?
+<stdoubt> 3.4.3
+<stdoubt> the default 5.10
+<stdoubt> kubuntusaurus
+<nalioth> stdoubt: have you updated recently?
+<stdoubt> just apt-get update yes but
+<stdoubt> but that just updates the available packages list no?
+<KaoticEvil> yup
+<stdoubt> do i go 'apt-get upgrade' if i want  recent fixes etc?
+<stdoubt> or is there a more targeted way?
+<KaoticEvil> apt-get upgrade upgrades all available and upgradeable packages
+<nalioth> stdoubt: just your usual update should find any updates, yes
+<stdoubt> nalioth: if i apt-get update, it won't upgrade any packages right?
+<stdoubt> have to 'upgrade'?
+<nalioth> stdoubt: update and upgrade
+<stdoubt> well, being on dial-up i hesitate to upgrade stuff ile OO.o and KDE....kinda won't work- so how can i still get security updates? 0_o
+<stdoubt> s/ile/like
+<stdoubt> security updates and admin mode fixes ;]
+<stdoubt> am i pooched?
+<nalioth> stdoubt: you'll need to figure something out, and i think it will involve large data packets
+<stdoubt> ok hmm
+<stdoubt> i guess i can always use the -s "simulate" switch to see what will happen 1st to prevent disaster heh
+<nalioth> yup
+<KaoticEvil> alright! my code hacks worked :)
+<stdoubt> (0|)3|-|4XXx0R!
+<KaoticEvil> stdoubt:  nope, hardly...
+<stdoubt> oh suuuuuuuurr ;]
+<KaoticEvil> just modified some source for a chat client :)
+<stdoubt> nice - whats it do now?
+<stdoubt> order pizza with a cron job? :P
+<stdoubt> hey thats funny dammit!
+<stdoubt> ....i still can't get "Detailed List View" to STAY that way. freakin KDE
+<stdoubt> Settings -> Save View Profile taunts me
+<nalioth> stdoubt: in view or tools or settings, there is an option to 'save current profile'
+<stdoubt> yes....and it reverts itself -for example I hit Home folder in Konq, set the view, then open Storage Media, then close Konq. Well when I open it again Home is the same but hda or hdb will be back to default view
+<stdoubt> big giant irritating icons
+<KaoticEvil> lol stdoubt
+<KaoticEvil> no, i just changed some of the colors :P
+<KaoticEvil> its written in C, and i dont know C
+<stdoubt> ahh - sounds fun anyway
+<stdoubt> we are all tweakers at heart if we like linux ;]
+<KaoticEvil> it was, actually :)
+<KaoticEvil> now... i thnk ive found a way to get me more space on / :)
+<KaoticEvil> yup, another 3GB would be nice
+<stdoubt> KaoticEvil: apt-get remove Open office?
+<KaoticEvil> huh?
+<stdoubt> to get the space back?
+<KaoticEvil> lol no :P
+<KaoticEvil> move ~ to my other partition :)
+<KaoticEvil> and resize it while im at it
+<KaoticEvil> i alrady removed OOo :P
+<KaoticEvil> already*
+<stdoubt> yeah - it's huge
+<KaoticEvil> i know
+<KaoticEvil> KOffice is almost as bad
+<KaoticEvil> i may remove that as well
+<stdoubt> there was a prog called (i think) debpigs that showed disk usage of each of the 10 or so biggest programs - it's not in ubuntu archives tho
+<KaoticEvil> see, ive got hda1 (/), hda2 (swap), and hda3 (/windows/data.. vfat partition, backup of my data from windows...)
+<KaoticEvil> i may move /home to hda3, and that would allow me ro recover 3+GB on hda1
+<stdoubt> a good lightweight wordprocessor is  abiword
+<stdoubt> but but but.......that would kill windows
+<KaoticEvil> i dont need a word processor... Kate does all i need... and nedit or kedit for quick text entry
+<stdoubt> oh a backup
+<stdoubt> well, kill it anyway ;]
+<KaoticEvil> stdoubt:  windows is already dead.... its just data backup :)
+<stdoubt> LOL
+<KaoticEvil> thats a lot of work tho..
+<stdoubt> ding song the witch is dead!!!!!
+<stdoubt> s/song/dong lol
+<KaoticEvil> is gparted destructive when it resizes partitions?
+<stdoubt> <don't know
+<stdoubt> but i thought the idea behind it was to not be destructive......i've only used 'parted'
+<KaoticEvil> yeah... it *looks* like a PartMag clone
+<stdoubt> and parted resized safely for me a fat32 windows install
+<stdoubt> after a defrag mind you
+<KaoticEvil> yeah
+<KaoticEvil> but....
+<KaoticEvil> im going to convert hda3 to ext3 anyway :P
+<KaoticEvil> does ext3 need defragging, like FAT/FAT32/NTFS?
+<stdoubt> that's fun.. i went from ext3 to 2 once so i could actually delete stuff ;]
+<hussam> I have been thinking about that. How do you defrag a ext3 hard disk
+<stdoubt> you can't go from fat32 to ext3 without destroying th data on the partition....
+<KaoticEvil> i know that
+<stdoubt> no ext2 nor 3 need defragging
+<KaoticEvil> cool
+<KaoticEvil> whats the deal with reiserfs?
+<stdoubt> err.....they don';t need to be defragged
+<hussam> what if it is over 5% fragmented
+<stdoubt> reiser afaict, is like a ferarri..... fast fun but flakey
+<KaoticEvil> ok
+<stdoubt> it can screw up on ya easier than ext
+<KaoticEvil> right
+<stdoubt> in fact last i read Linus won't let reiser4 into mainstream
+<KaoticEvil> wow
+<stdoubt> it'll make it eventually if enough ppl want it i'm sure
+<stdoubt> i've heard good things about xfs, but ext2's good enough for lil old me
+<nalioth> KaoticEvil: linux native filesystems usually run >%5 fragmentation as they defragment as they write
+<stdoubt> <5%
+<nalioth> KaoticEvil: in general, no "defragmenting" is necessary
+<stdoubt> right
+<aftertaf> nice
+<fatejudger> how do I get the KMenu to refresh?
+<KaoticEvil> nalioth:  thats awesome
+<KaoticEvil> how would one check file fragmentation?
+<nalioth> KaoticEvil: why? there's usually not enough to bother with
+<stdoubt> fatejudger: did you go file ->save in KDE Menu Editor?
+<fatejudger> nalioth: does that apply to ext3 as well?
+<fatejudger> stdoubt: that's not what I meant
+<fatejudger> stdoubt: I just installed a new program in adept
+<fatejudger> stdoubt: and it isn't show up in the KMenu
+<KaoticEvil> fatejudger:  adept should add the menu entry for you...
+<nalioth> fatejudger: ext2 and 3 are virtually identical. the -3 is journaled
+<fatejudger> KaoticEvil: it will, eventually
+<fatejudger> KaoticEvil: but it takes a few minutes
+<nalioth> fatejudger: is it a gui program?
+<KaoticEvil> nalioth:  out of curiosity :)
+<fatejudger> nalioth: yes
+<fatejudger> nalioth: what does "journaled" mean exactly?
+<KaoticEvil> ive wonderer that myself
+<KaoticEvil> wondered*
+<stdoubt> a database of 'metadata' describing the structure/state of the filesystem is maintained by the journal
+<nalioth> fatejudger: means that if your power goes out suddenly and linux didnt get a chance to shut down cleanly, you've got a 'journal' of what was currently going on, so your box can 'pick up where it left off' more easily
+<stdoubt> exactly ;]
+<KaoticEvil> less chance of file corruption, in other words?
+<nalioth> KaoticEvil: during a harsh reboot, yes
+<KaoticEvil> cool
+<KaoticEvil> but at a sacrifice of speed, no doubt? (even if only minimal)
+<stdoubt> KaoticEvil: pretty sure yes
+<stdoubt> fatejudger: i've had progs fail to add themselves to the Kmenu....not all of them are supposed to though....some need to go into the "Debian" menu section of the Kmenu
+<nalioth> there are pros and cons to every filesystem
+<KaoticEvil> nalioth:  im aware of that :)
+<stdoubt> you'll see the Debian listing appear in Kmenu when you install 'menu' i believe
+<fatejudger> nalioth: what are the cons to ext3 vs ext2?
+<fatejudger> stdoubt: all programs do that for me
+<nalioth> fatejudger: speed
+<fatejudger> stdoubt: they just take awhile
+<KaoticEvil> nalioth:  how do i change the location of ~ from a shell?
+<fatejudger> nalioth: ext2 is faster?
+<fatejudger> nalioth: if so, by how much?
+<nalioth> KaoticEvil: the location of what?
+<KaoticEvil> my home directory
+<nalioth> fatejudger: not enough for a human to notice
+<fatejudger> nalioth: so ext3 is superior to ext2?
+<KaoticEvil> i figured a solution to my hard drive space problem :)
+<stdoubt> KaoticEvil: if you're moving home you want to take some time and read a tutorial -trust me-
+<nalioth> fatejudger: why else would it exist?
+<fatejudger> nalioth: as a different option
+<nalioth> KaoticEvil: yes read plenty of tutorials
+<KaoticEvil> hmmm... ok
+<nalioth> fatejudger: not much use of ext2 nowadays
+<aftertaf> KaoticEvil: move home to a new partition and mount it?   or chage where ~ points to?
+<KaoticEvil> shit... i should have known it wouldnt be easy :P
+<aftertaf> KaoticEvil: its doable to move it. i did it :)
+<KaoticEvil> aftertaf:  more /home to another partition
+<nalioth> KaoticEvil: it is easy as pie. just dont drop the pie
+<KaoticEvil> lol nalioth
+<KaoticEvil> move*
+<KaoticEvil> nalioth:  one thing im finding is that not many things are "easy" ;)
+<nalioth> KaoticEvil: sure they are, it's the learning that's "hard"
+<KaoticEvil> lol
+<stdoubt> in linux execution, administration, maintenance are all easy.......learning how to do it all is the hard part ;]
+<KaoticEvil> ok, well, i know i can format that drive...
+<fatejudger> nalioth: what's your favorite FS?
+<aftertaf> lol true
+<aftertaf> KaoticEvil: its good to do it.... jst concentrate while doing so ;)
+<fatejudger> nalioth: ok, cool
+<aftertaf> KaoticEvil: http://www.gentoo.org/doc/en/articles/partitioning-p1.xml
+<aftertaf> i used that and borked not one thing ;)
+<KaoticEvil> cool :)
+<KaoticEvil> thanks
+<adnan> im new on this... from where i can read and learn it ?
+<adnan> the kubunt
+<aftertaf> adnan: google, internet, here, man pages........
+<adnan> the kubuntu
+<KaoticEvil> ok
+<adnan> im finding it hard..
+<adnan> ;/
+<adnan> but i want to learn it
+<adnan> i like it
+<KaoticEvil> im not going to be able to do this in K
+<aftertaf> adnan: have you ever used linux before? do you come from a windows environment?
+<aftertaf> KaoticEvil: you need to go console ;)
+<KaoticEvil> i know
+<KaoticEvil> how do i change from tty1 ?
+<adnan> aftertaf:  thats my first time i use linux
+<aftertaf> alt Fx
+<nalioth> adnan: help.ubuntu.com
+<KaoticEvil> ty
+<nalioth> adnan: welcome :)
+<aftertaf> adnan: welcome to our world, then ;)
+<adnan> thank you guys
+<adnan> :)
+<KaoticEvil> . o O ( just in case...
+<KaoticEvil> ok
+<fatejudger> KaoticEvil: you could always apt-get in the CLI
+<KaoticEvil> fatejudger:  already got irc :)
+<stdoubt> adnan: here are the official forums: http://www.kubuntuforums.net/
+<fatejudger> KaoticEvil: in case you forgot
+<KaoticEvil> ill be back in a bit...
+<KaoticEvil> dropping to CLI
+<fatejudger> adnan: are you using Kubuntu or Ubuntu?
+<aftertaf> adnan: most things you do in linux are nothing like windows ways of doing things. its a whole new world. accept that part and open yourself up for new ways of doing things. you'll be hooked before long ;)
+<fatejudger> gstreamer is just pooping out of me any time I play some sort of media in konq
+<fatejudger> *on me
+<aftertaf> lol
+<stdoubt> lol
+<fatejudger> lol
+<fatejudger> that was a bad typo
+<stdoubt> hehe i liked it
+<paines> hi
+<adnan> fatejudger:  kubuntu
+<fatejudger> adnan: nice, you'll love it
+<stdoubt> isn't gstreamer a GNOMEy thing? no suprise it messes up in KDE -i can't stand the gnome stuff -too interated
+<adnan> fatejudger:  how i can listen to songs if i downloaded it ?
+<paines> i cannot execute a programm as root under kde, when starting it with the quickstart programm (alt+f2). i always get password is wrong, which isn't
+<fatejudger> stdoubt: gstreamer is a audio plugin thing
+<fatejudger> stdoubt: which KDE is planning on replacing arts with
+<stdoubt> fatejudger: i thought it was a media player
+<fatejudger> stdoubt: no
+<fatejudger> stdoubt: it's like xine
+<fatejudger> stdoubt: but more full featured
+<aftertaf> paines: root is disabled, the pasword you put, is it your user pw?
+<fatejudger> !multimedia
+<ubotu> it has been said that multimedia is for codecs,  http://help.ubuntu.com/starterguide/C/ch03.html#sect-music-and-movies ; and for applications, https://wiki.ubuntu.com/NewUserGuideMultimedia
+<paines> aftertaf, no, root's
+<aftertaf> paines: you enabled root pw?
+<kao> i just thought of something...
+<paines> aftertaf, no, i installed in expert mode, and the root pw is enabled by default
+<aftertaf> paines: alt+F2 will run a command, is it asking you for password? try the same command in a shell
+<KaoticEvil> how do i get to straight command shell?
+<KaoticEvil> if i exit K, it restarts.
+<paines> aftertaf, in shell it works, but not from alt+f2
+<stdoubt> KaoticEvil: Ctlr+Alt+Fx
+<KaoticEvil> ah, ok
+<stdoubt> Fx = F1-F6
+<aftertaf> paines: you typing what exactly?
+<KaoticEvil> ok... off to try this then...
+<KaoticEvil> exit
+<paines> aftertaf, alt+f2 -> setting/properties -> run as a diffrent user, theris I put in root and his pw, and the command, and it doensn't work
+<stdoubt> then to get back to X just Alt+L or R arrows
+<stdoubt> dph
+<aftertaf> ok....   try doing kdesu yourcommand in alt-F2.... same pb?
+<paines> aftertaf, same
+<aftertaf> paines: erf ok....    does a different app/command work?
+<paines> aftertaf, nope
+<aftertaf> ;)
+<aftertaf> paines: ok bugreport time ten i imagine .....
+<aftertaf> *then
+<paines> aftertaf, does it work for you ?
+<aftertaf> paines: i cant test now, im in e17, not kde..... :/
+<stdoubt> paines: can you login as root at the command shell?
+<paines> stdoubt, yes
+<stdoubt> like from tty1?
+<stdoubt> hmm
+<paines> from shell everything is fine
+<thomas> is there a way to import applications from kde to e16 or e17?
+<stdoubt> aftertaf: help thomas ;]
+<thomas> thanks :)
+<aftertaf> hehe :)
+<aftertaf> thomas: you mean, the menu entries?  yes there is a tool.
+<aftertaf> for e17 DR17 anyway
+<stdoubt> paines: have you tried your user passwd under KDE for what you want to do?
+<aftertaf> but there are so many of them that you have a bag load of apps afterward. you can edit the .order files and the eaps though :)
+<nalioth> e17 ?
+<KaoticEvil> aftertaf:  how did you get to init 1?
+<aftertaf> KaoticEvil: sudo init 1 ;)
+<KaoticEvil> i tried it, and it wont accept my password
+<aftertaf> try sudo anything to see if you've got it right ;)
+<stdoubt> actually sudo is not true root.....just fwiw
+<KaoticEvil> i know stdoubt...
+<aftertaf> stdoubt: youre right...... KaoticEvil enable root afaik
+<aftertaf> and login as root
+<KaoticEvil> ok
+<stdoubt> aftertaf: that's too scary! ;]
+<stdoubt> b careful KaoticEvil heh
+<aftertaf> thomas: e17genmenu
+<KaoticEvil> that dont work :(
+<aftertaf> w00000000000000t
+<aftertaf> KaoticEvil: capslock?
+<nalioth> aftertaf: what are we doing?
+<aftertaf> numlock?
+<KaoticEvil> enable root doesnt work
+<paines> is e17 in repos ?
+<stdoubt> KaoticEvil: "sudo su -" ?
+<stdoubt> that's gotta work
+<KaoticEvil> nalioth:  i cant get init 1 because it wont accept my password
+<aftertaf> paines: long story, not exactly.... but there are packages for it elsewhere for breezy.
+<thomas> afterdaf: thanks a million, i will have a look at it :-)
+<paines> aftertaf, i see. does keyboad shortcuts work now ?
+<aftertaf> paines: but better to get it from cvs... and build yourself == more fun
+<nalioth> https://wiki.ubuntu.com/LostPassword
+<aftertaf> paines: in e17, nope. they bind to WM, ie K
+<KaoticEvil> stdoubt:  yup, that works
+<aftertaf> KaoticEvil: can you login as root at all ?
+<paines> aftertaf, :-(. bad. without keybord shortcuts I am half the man I used to be
+<KaoticEvil> aftertaf:  yeah, i did sudo su -
+<aftertaf> paines: you set em up as you want though ;)
+<KaoticEvil> and it works...
+<paines> aftertaf, hmm. maybe I will try it. e17 is fun. would like to have rasterman coding skills
+<aftertaf> totally :)
+<KaoticEvil> ok.. back in a bit
+<aftertaf> but cvs sourceforge sux badly
+<KaoticEvil> ok, it *still* doesnt accept my pass...
+<aftertaf> KaoticEvil: weirdage abounds
+<KaoticEvil> aftertaf:  i know
+<aftertaf> you sure about your pass?
+<KaoticEvil> 1000%
+<paines> KaoticEvil, caps lock ?
+<aftertaf> ah thats the pb. there is only 100 % . . .
+<aftertaf> :p
+<paines> hrhr
+<KaoticEvil> paines:  its off
+<KaoticEvil> :P aftertaf
+<nalioth> KaoticEvil: is is supposed to be "on" ?
+<KaoticEvil> nalioth:  no ;)
+<fatejudger> KaoticEvil: are you using E17?
+<KaoticEvil> fatejudger:  using what?
+<fatejudger> KaoticEvil: Enlightenment
+<fatejudger> KaoticEvil: someone said E17
+<KaoticEvil> no
+<stdoubt> KaoticEvil : as root did you run passwd
+<KaoticEvil> nalioth:  on that lost password link... it tell how to get full root shell access... could i use that?
+<nalioth> KaoticEvil: do you have a choice?
+<aftertaf> lol nalioth seems not ;)
+<KaoticEvil> lol :P
+<KaoticEvil> *gets an idea*
+<KaoticEvil> brb
+<stdoubt> that's funny 'multiplayer notepad' thank god it's not multiplayer vi
+<stdoubt> or maybe that would be funner.......hmmm
+<manveru> how was it called?
+<manveru> i remember seeing something like that in the repos...
+<fatejudger> is amarok written using QT?
+<manveru> fatejudger: yeap
+<aftertaf> fatejudger: twas I :)
+<fatejudger> aftertaf: ?
+<aftertaf> fatejudger: enlightenment DR17
+<manveru> how is e17 performing without render-accel?
+<manveru> just thought about trying it on my notebook
+<aftertaf> manveru: sweeeeeeeeet
+<manveru> well, k
+<manveru> so i just get it, restart x and it's in kdm?
+<manveru> oh, it's e16 btw :)
+<aftertaf> yep.   but its E16.999     e17
+<aftertaf> not the same thing as e16
+<manveru> hehe
+<manveru> that's only when you've got floating-errors
+<aftertaf> lol
+<aftertaf> e16.999 is E DR17, not yet quite alpha, but sexy as hell
+<thomas> there actuelly is a really nice liveCD with e16 and e17 in action to find here: http://www.elivecd.org/
+<KaoticEvil> YES!
+<KaoticEvil> it WORKED! :D
+<KaoticEvil> tyvm aftertaf  :)
+<KaoticEvil> now what do i put in /etc/fstab for uptions, dump, and pass? :P
+<KaoticEvil> the example on the gentoo page is for ext2, and im using ext3
+<stdoubt> they must all be reading elivecd.org heh
+<KaoticEvil> heh
+<aftertaf> KaoticEvil: same thing.... no worries ;)
+<stdoubt> it's funny the soft that's worth buying is free
+<stdoubt> these days
+<aftertaf> KaoticEvil: my home: /dev/hda2       /home           ext3    defaults        0       2
+<stdoubt> the stuff you get charged for is crap
+<KaoticEvil> aftertaf:  yup, thats what i got :)
+<stdoubt> holy crap -> elive-3.jpg are those minimized windows in the upper left? sweeeeeeeetnessss
+<KaoticEvil> stdoubt:  where are you looking?
+<aftertaf> yeah where?
+<stdoubt> http://www.elivecd.org/gb/Main/Screenshots/_previews/elive-3.jpg.html
+<stdoubt> thats a really nice way to minimize i dare say thats almost an innovation
+<KaoticEvil> dammit
+<KaoticEvil> thats just... wow...
+<aftertaf> ive no idea what they are.
+<aftertaf> but aint it sweeeeeeeet
+<stdoubt> <glad i have school tomorrow -bringing a cdr heh
+<KaoticEvil> LOL
+<aftertaf> e17 is revolutionary in its style and sweetness. and the swine is fast
+<KaoticEvil> i love the minimalistic approach to the desktop
+<KaoticEvil> thats beautiful
+<aftertaf> KaoticEvil: #e
+<stdoubt> yes -love the lightweight stuff
+<stdoubt> what's a good file/disk manager that's 100% keyboardable?
+<KaoticEvil> i dont have the horsepower to run anything new... even breezy is REALLY laggy here
+<KaoticEvil> stdoubt:  bash? :P
+<aftertaf> KaoticEvil: i have 256 meg & pIII 5 mhz
+<stdoubt> i actually miss the windows explorer from win95 -
+<stdoubt> lol@KaoticEvil
+<aftertaf> evidence
+<KaoticEvil> aftertaf:  i have 128MB and a celeron 400
+<aftertaf> KaoticEvil: try it dude ;)
+<KaoticEvil> and a 1MB onboard Intel i810 video :P
+<aftertaf> e uses 20 meg ;)
+<KaoticEvil> evidence?
+<KaoticEvil> wazzat?
+<aftertaf> file manager
+<KaoticEvil> ah
+<stdoubt> apt-cache evidence
+<KaoticEvil> i gont konqi :)
+<KaoticEvil> got*
+<stdoubt> apt-cache show evidence
+<aftertaf> !e17breezy
+<ubotu> methinks e17breezy is E17 on breezy: : http://www.soulmachine.net/wiki/index.php?title=Enlightenment_on_Ubuntu_5.10_%28Breezy_Badger%29
+<KaoticEvil> i can deal with lag.... i think its mostly from my video card
+<KaoticEvil> and that will soon be rectified :)
+<aftertaf> hehe
+<KaoticEvil> not great, but HELLA better
+<KaoticEvil> only thing thats gonna suck... im gonna have to totally reconfigure X to take advantage of it :(
+<KaoticEvil> including the radeon drivers...
+<KaoticEvil> yeah, thats gonna suck
+<KaoticEvil> learning experience tho :)
+<KaoticEvil> it feels good to be learning more about my computer again... i had pretty much leveled off with learning more on windows...
+<manveru> hmm
+<manveru> well, e17 is impressive :)
+<manveru> but my menus are a mess now...
+<manveru> 200+ apps in the GNOME-menu, because i had none before
+<KaoticEvil> LOL
+<hussam> openoffice2 1.9.129 keeps hanging on me when I insert more than 2 images into a text document
+<hussam> this happens almost everytime.
+<stdoubt> hussam: have you tried saving the file before adding the 2nd image? That's all i'd know to try
+<hussam> yeah I always save every 15 minutes or so I don't lose much work if it crashes.
+<hussam> but it shouldn't crash in the first place
+<stdoubt> true -then again maybe Sun is trying to sabotage the platform.....
+<stdoubt> if you don't need a full-blown office suite, try abiword
+<hussam> I never did like sun
+<stdoubt> abiword is a wysiwyg word processor
+<stdoubt> but it's light
+<hussam> ok, I did killall soffice.bin and restarted openoffice, it recovered most of my work up till the last 20 minutes before it froze.
+<stdoubt> ouch
+<aftertaf> back. ip borkage
+<manveru> hmm, the more i see from these advanced DEs the more i feel the need to use one of those _some day we might even support mouse_ WMs...
+<stdoubt> manveru: i feel ya -but have you run gkrellm in ion? heh
+<manveru> i've got no gkrellm anyway
+<manveru> using irssi for chatting... (but would have to find a replacement for kopete)
+<stdoubt> what i'd like to see is a good old damn ncurses desktop
+<manveru> the problem with DEs is that they just don't make everything easier
+<manveru> and fiddling with a mouse all the time on a laptop is just uncomfortable
+<stdoubt> ncurses desktop with advanced features 100% available by keyboard....and framebuffer the puppy
+<manveru> stdoubt: and how would you use firefox then?
+<stdoubt> strange it's not out there.....
+<stdoubt> i'd use w3m or so
+<manveru> w3m with cacalib for displaying images?
+<stdoubt> but see your point
+<stdoubt> cacalib? lol is that what does it?
+<manveru> it's an gfx2ascii converter :)
+<manveru> there is even gstreamer-caca and caca-xine out there
+<stdoubt> ahh -well, there is an extension for w3m that displays images -jpegs etc
+<manveru> really?
+<stdoubt> read about it a day or 2 ago
+<manveru> i guess i would just miss the ease of JS and CSS
+<stdoubt> on the intro page of the distro 'grml' IIRC
+<stdoubt> grms nice if you like lightwt
+<stdoubt> and it's debian based
+<manveru> hmm
+<stdoubt> s/grms/grml
+<manveru> never heard about it
+<aftertaf> KaoticEvil: you getting e17 then?
+<stdoubt> a distro for "system admins and ppl who use text editors"
+<manveru> hehe
+<stdoubt> seriously that's their tag
+<manveru> problem being that i have to do web-dev, and without FF this might be a bit hard
+<stdoubt> grml has fluxbox by default but boots to CLI
+<stdoubt> iso is like 180mb
+<stdoubt> it's live but can install too
+<stdoubt> omg im a grml pimp
+<manveru> lol
+<manveru> btw, what was xubuntu using?
+<hussam> is there any way to integrate kpdf with firefox so I can remove acrobat reader?
+<manveru> WMII?
+<stdoubt> ubuntu = GNOME kbunutu = KDE
+<hussam> manveru: xubuntu uses xfce I think
+<manveru> hussam: i don't think so
+<stdoubt> oh my ..there's an actual Xubuntu
+<manveru> uhm, regarding your question :)
+<nalioth> !xubuntu
+<ubotu> methinks xubuntu is Ubuntu using XFCE instead of Gnome for the desktop. Details here: https://wiki.ubuntu.com/Xubuntu
+<manveru> isn't that nice
+<manveru> but i'm no fan of XFCE
+<aftertaf> me neither
+<manveru> and looking at e17, it's nothing i would use too long
+<hussam> I used xfce for a while. It's better than gnome. But KDE 3.4 is way better and much faster than xfce
+<manveru> is that so?
+<nalioth> hussam: not on a pentium 233/128mb ram, it's not
+<_jaypee> lol
+<manveru> i find it funny that i use 3ddesk&shortcuts for switching desktops now... and it's more comfortable than doing it via mouse
+<_jaypee> do any of you guys use krita over gimp?
+<eric> tst
+<manveru> failed
+<hussam> nalioth: i ran xfce for a while but removed it later. I have a 1.3ghz Celeron with 384MB ram and kde is faster even on a celeron
+<stdoubt> tried krita.....krita aint no gimp -"Long live the GIMP!"
+<nalioth> hussam: xubuntu is aimed at very old machines
+<stdoubt> _jaypee: is krita alot faster?
+<manveru> krita compared to gimp is like comparing paint with photoshop...
+<stdoubt> man i'm getting tired of typing sudo and passwd to get stuff done.......
+<manveru> not exactly of course...
+<hussam> nalioth: xfce 4.2.3.1 was released the other day
+<manveru> stdoubt: nobody says you cannot have a 'sudo su' shell open...
+<nalioth> manveru: please dont do that
+<stdoubt> manveru: but even though krita is not as pumped as gimp it may be a better option for slow machines
+<nalioth> manveru: sudo -s or sudo -i
+<KaoticEvil> oh, this sucks! :(
+<thoreauputic> sudo -i is easier and gives you the right root environment
+<manveru> nalioth: i don't do that... i don't need root-access all the time
+<stdoubt> i though "sudo su - " gave true root path
+<_jaypee> stdoubt: it's a little faster to me, but i prefer gimp, just wanted to get concensus from kubuntu users
+<stdoubt> ahh
+<KaoticEvil> my preferred IDE for FreePascal only comes as RPM or src-RPM :(
+<manveru> nalioth: but ty, didn't know about sudo -s
+<KaoticEvil> and its 30MB.
+<manveru> KaoticEvil: and you cannot build a deb from the source?
+<KaoticEvil> manveru:  if i knew how, im sure i could
+<manveru> KaoticEvil: well, with checkinstall it should be easy
+<manveru> KaoticEvil: and there is alien as well, to create debs from rpm
+<stdoubt> the util alien will build a deb from an rpm *binary* i think
+<KaoticEvil> manveru:  checkinstall ?
+<thoreauputic> !info checkinstall
+<nalioth> ubotu: tell KaoticEvil about checkinstall
+<ubotu> checkinstall: (installation tracker), section universe/admin, is optional. Version: 1.5.3-3 (breezy), Packaged size: 34 kB, Installed size: 132 kB
+<manveru> KaoticEvil: try alien before trying checkinstall
+<nalioth> KaoticEvil: read waht ubotu sent you
+<KaoticEvil> nalioth:  i always do :)
+<_jaypee> is there anyway for flash to use alsa when viewing content from konqueror
+<nalioth> manveru: please dude
+<thoreauputic> KaoticEvil: checkinstall makes a deb for you when you compile code
+<manveru> the problem is only that you have to collect 500+ different dev-packages
+<stdoubt> just don't use alien on source packages
+<KaoticEvil> O.O
+<nalioth> manveru: apt-get does it all for you
+<KaoticEvil> 500 dev packages?! O.O
+<KaoticEvil> shit...
+<nalioth> manveru: alien is not advised due to pkg conflicts
+<manveru> nalioth: is there some apt-get build-dep?
+<nalioth> manveru: for what?
+<manveru> nalioth: for checkinstall
+<manveru> nalioth: like emerge does
+<KaoticEvil> manveru:  apt-get does all that
+<KaoticEvil> selects and installs deps
+<thoreauputic> manveru: apt-get build-dep gets dependencies for you
+<nalioth> manveru: it's in the repos
+<manveru> yeah, but not for source i guess
+<thoreauputic> manveru: yes
+<nalioth> manveru: checkinstall is for when you hand compile code
+<KaoticEvil> nalioth:  what conflicts with alien?
+<manveru> let's say i want to build a pkg out of source with checkinstall - but i still have to get x-libs and qt-libs and whateverlibs
+<thoreauputic> KaoticEvil: rpm s are not necessarily compliant with Ubuntu/Debian
+<KaoticEvil> ah
+<stdoubt> apt-build lets you download, compile and install source packages
+<nalioth> KaoticEvil: alien uses packages desinged for redhat or slackware. do you want a redhat or slackware pkg on your system?
+<KaoticEvil> heh
+<thoreauputic> KaoticEvil: simple stuff can work but it's a lottery
+<nalioth> stdoubt: apt-get does too, and easier
+<KaoticEvil> true that
+<manveru> stdoubt: yeah, but these source-packages have to be in the repos somewhere
+<nalioth> manveru: what pkg are we talking about aliening?
+<thoreauputic> manveru: of course
+<manveru> nalioth: about KaoticEvils FreePascal
+<KaoticEvil> Lazarus, actually
+<KaoticEvil> its an IDE for FreePascal
+<KaoticEvil> ive got DEB's for all the FP stuff
+<nalioth> if it's "free" there'll be source code
+<manveru> thoreauputic: well, and if i want to build the newest amarok, i cannot because it's not in the repos
+<manveru> thoreauputic: that is the reason in first place for me to build a pkg
+<KaoticEvil> nalioth:  there is a src-RPM
+<thoreauputic> manveru: well, that's true of some packages of course - but apt-get build dep still helps then
+<thoreauputic> manveru: most deps will still be found
+<manveru> thoreauputic: and how would i do that when i have some source? just cd in there and say apt-get build dep?
+<thoreauputic> manveru: I sometimes do exactly that - do apt-get build-dep <something> then the standard compile, with checkinstall instead of make install
+<nalioth> KaoticEvil: grab the src-rpm and decant it
+<manveru> thoreauputic: let me try that :)
+<thoreauputic> that way most deps are there before you start
+<KaoticEvil> nalioth:  decant <some-RPM> ?
+<thoreauputic> manveru: the package has to exist of course ;)
+<nalioth> KaoticEvil: you can use alien or rpm (yes rpm is available for ubuntu) to unpack the source rpm where you can build it
+<manveru> thoreauputic: i have no package that exists - that is the reason why i want to build one
+<thoreauputic> manveru: i.e. you don't just blindly type apt-get build-dep foo
+<KaoticEvil> ok, cool
+<stdoubt> dont use alien on source packages plz
+<thoreauputic> manveru: 1) apt-cache search <package or key words>  (see if there's something similar) 2) then do apt-get build dep
+<stdoubt> binary packages is what u want
+<thoreauputic> manveru: not always possible but sometimes can help a lot
+<manveru> thoreauputic: yeah, i get it now
+<manveru> thoreauputic: there is almost always something similar around
+<thoreauputic> manveru: yes
+<thoreauputic> manveru: and if you just want a recent source ( CVS or SVN or similar) of a debian or ubuntu package, then the build-dep thing is a good start
+<stdoubt> anyone using strong crypto that you can recommend? (for block devices?) besides dm_crypt and cryptoloop
+<thoreauputic> I mean one that hasn't hit the repos yet of course
+<manveru> thoreauputic: yeah, of course
+<manveru> but most apps have some precedessor that had the same dependencies
+<thoreauputic> yup
+<thoreauputic> or similar at least
+<nalioth> stdoubt: he wants to build it from source, and can only find a source rpm
+<KaoticEvil> no, actually, i *dont* want to build it from source :P
+<KaoticEvil> but theres no DEB... its only src-RPM and RPM...
+<stdoubt> no tar.gz?!
+<thoreauputic> KaoticEvil: do you have a choice?
+<KaoticEvil> nope
+<aftertaf> KaoticEvil: whats it called you package?
+<aftertaf> lazarus?
+<KaoticEvil> heres my choices: http://sourceforge.net/project/showfiles.php?group_id=89339&package_id=93718
+<KaoticEvil> aftertaf:  yup
+<KaoticEvil> theres a tgz.. but its an old version. o.o
+<KaoticEvil> oh, wait.. heh... *im blind*
+<thoreauputic> peter@prospero:~ $ apt-cache search lazarus
+<thoreauputic> tct - Forensics related utilities.
+<thoreauputic> ;)
+<stdoubt> Download lazarus-0.9.10-0.tar.gz
+<KaoticEvil> stdoubt:  yeah, i just saw that.. lol
+<KaoticEvil> ben a long day, and i been up since 7am...
+<aftertaf> http://wiki.lazarus.freepascal.org/index.php/Installing_Lazarus#Installing_Lazarus_under_Debian_GNU.2FLinux
+<stdoubt> mmmm raw source
+<KaoticEvil> its a lil after 5am now
+<KaoticEvil> 22 hours, not bad. o_o
+<thoreauputic> KaoticEvil: looks like that one contains what you need...
+<KaoticEvil> @_@ <- thats what i feel like
+<thoreauputic> heh
+<aftertaf> lol
+<KaoticEvil> either that or *_* somethin..
+<thoreauputic> aftertaf: apt-cache show tct says, inter alia,  Tools contained within this package: grave-robber, lazarus,
+<thoreauputic> inode-cat (ex icat), ils, unrm and pcat.
+<thoreauputic> X=X
+<KaoticEvil> oh, hell.. thats hella easier...
+<KaoticEvil> wow...
+<thoreauputic> KaoticEvil:  sudo apt-get install tct
+<stdoubt> hey KaoticEvil: do you program in Pascal?
+<thoreauputic> looks like a simpler way than aliening all over the place
+<KaoticEvil> stdoubt:  a lil bit, yeah
+<KaoticEvil> Delphi is what i started on...
+<KaoticEvil> which is really nothing more than Object Pascal with Borland's VCL added
+<nalioth> aliens should be avoided. they cause memory loss
+<stdoubt> could you (you) port a Delphi program to *nix?
+<KaoticEvil> heh nalioth... dont forget about ana..... m/n :P
+<KaoticEvil> stdoubt:  perhaps...
+<KaoticEvil> all the apps that *i* have written in delphi were win32 specific
+<KaoticEvil> actually, NT specific
+<stdoubt> I always wanted Xnews (written in Delphi) on Linux.....
+<KaoticEvil> stdoubt:  ouch
+<KaoticEvil> dont want mcuh, do ya? :P
+<KaoticEvil> much eithe
+<stdoubt> major job?
+<KaoticEvil> id have to look @ the src
+<KaoticEvil> NNTP client?
+<stdoubt> i do believe it's open -could be wrong
+<stdoubt> yes
+<KaoticEvil> hmmmmmmm... i may do that for myself ;)
+<stdoubt> but i've since become used to Pan, so do go to much trouble k? :P
+<KaoticEvil> check and see if it open-src... ill see what i can do
+<KaoticEvil> heh
+<KaoticEvil> pan's alright
+<KaoticEvil> Agent is the shit tho...
+<stdoubt> Xnews was an all time favorite
+<stdoubt> Pan's pretty good in full frame mode
+<KaoticEvil> yeah, its not bad
+<KaoticEvil> i use it myself ;)
+<stdoubt> I need to give them a donation
+<KaoticEvil> i need to GET some donations :P
+<stdoubt> want to try and donate to all the top program teams
+<KaoticEvil> yeah, if i could afford to, i would...
+<stdoubt> by top meaning top progs I use
+<KaoticEvil> hell, i can barely afford smokes :(
+<stdoubt> i feel ya
+<stdoubt> i do wonder though about the developers - i know good soft when i see it and i'm constantly impressed by OSS
+<KaoticEvil> . o O ( is THAT what that was.... )
+<KaoticEvil> i need to get my SHOUTcast server back online.. people are jonesing for KAOS Radio o.o
+<stdoubt> i need to fire up my orbiting brain lasers and take care of a few 'problems' heh
+<stdoubt> 0420!
+<KaoticEvil> w00t
+<KaoticEvil> damn these packages are so freakin HUGE! :(
+<KaoticEvil> 21 MB, 12MB, and 30MB o_o
+<stdoubt> good thing you're a cable kidde ;]
+<KaoticEvil> no joke
+<aftertaf> 04:20 :)
+<aftertaf> hehe
+<KaoticEvil> . o O ( wait... "kiddie"?! :-\ )
+<stdoubt> lol
+<stdoubt> ok ok heh
+<stdoubt> we're all young at heart
+<KaoticEvil> meh... only to a certain extent
+<stdoubt> you prove my point by saying "meh" heh
+<KaoticEvil> lol
+<stdoubt> holy crap scramdisk for linux.... been looking at crypto programs for 2 days and now I see this
+<stdoubt> LeeJunFan: Coke can strip grease out of concrete y'know
+<stdoubt> what's the difference between Freshmeat and Sourceforge??
+<viviersf> erm
+<viviersf> they are different sites
+<viviersf> :/
+<stdoubt> but they are both OSTG....why 2 sites
+<stdoubt> was just wondering
+<flexerItalia> salve
+<stdoubt> vive Italia!
+<flexerItalia> thank you
+<flexerItalia> what's new here?
+<stdoubt> <- American -say a prayer for me ;]
+<flexerItalia> why?
+<stdoubt> um... cause we're in deep
+<flexerItalia> I don't think so! You have a LOT OF FRIENDS
+<flexerItalia> me to
+<stdoubt> haven't you heard? our government is fsck'ing up the world
+<stdoubt> thank you
+<stdoubt> we'll see how it all comes out.
+<flexerItalia> don't care about government! I love american people
+<stdoubt> that's very nice to hear
+<stdoubt> ....unless you're also a big fan of Mousellini ;]
+<stdoubt> spelling check
+<flexerItalia> I'm from Italy! do you really think that mine government is better than yours?
+<stdoubt> all governments I know of are run by assholes it's true
+<flexerItalia> sorry, my english is poor
+<stdoubt> It's better than my Italian ;]
+<flexerItalia> ok
+<stdoubt> anyway - how you liking kubuntu?
+<flexerItalia> we have here a new mussolini name berlusconi
+<stdoubt> :-(
+<stdoubt> maybe he and Bush can get together and walk into the ocean heh
+<hussam> is RC1 for kde 3.5 out?
+<stdoubt> I think so
+<flexerItalia> me the same
+<flexerItalia> but i not try yet
+<stdoubt> i went from 3.2 to 3.4 and speed is much better
+<flexerItalia> yes I think the same but something in wrong yet
+<stdoubt> what's wrong?
+<flexerItalia> epson epl6200l driver
+<flexerItalia> I can't set up
+<stdoubt> oh that would be a Linux problem not KDE eh?
+<flexerItalia> sure
+<flexerItalia> but in MDK 10.2 work fine
+<stdoubt> you using a binary driver from epson or something in the kernel?
+<flexerItalia> I read that is very difficult set up that printer and I downloaded a beta driver from linuxprinting.com
+<flexerItalia> but didn't work
+<flexerItalia> it's a debian bug
+<sugoruyo> hi can someone help with some apt probs?
+<stdoubt> was the driver binary or was it a kernel module to be patched into the kernel
+<flexerItalia> driver binary
+<flexerItalia> sugoruyo explain your problem
+<sugoruyo> i installed kubuntu from my breezy cd
+<sugoruyo> but i also need gnome
+<sugoruyo> so i put in my ubuntu dvd
+<sugoruyo> but
+<sugoruyo> after i saw adept requires the apt line be entered bu hand
+<sugoruyo> i fetched synaptic
+<sugoruyo> so i go to add cdrom
+<sugoruyo> and it only sees my cdrom drive
+<sugoruyo> so go to terminal
+<sugoruyo> and do apt-cdrom add
+<sugoruyo> it finds the dvd and then says
+<sugoruyo> it can't open the release and release.gpg files
+<flexerItalia> have you a large band internet connection?
+<sugoruyo> you mean broadband?
+<flexerItalia> yes
+<sugoruyo> well if u think 384 down and 128 up is broad
+<sugoruyo> i guess...
+<flexerItalia> if you go in adept and manage repositories and add some source ...
+<flexerItalia> you can install gnome simply
+<sugoruyo> it's not about gnome only
+<sugoruyo> i have the entire dvd downloaded
+<sugoruyo> i shouldn't have to re-download all these programs by hand
+<sugoruyo> one-by-one
+<sugoruyo> i was wondering if this could be fixee
+<sugoruyo> fixed*
+<flexerItalia> you can't manage it from adept manager?
+<stdoubt> sugoruyo: that error is strange but did you try apt-cdrom add *as root*??
+<sugoruyo> no
+<stdoubt> try sudo apt-get cdrom add
+<sugoruyo> it won't be added to apt's sources
+<flexerItalia> strange
+<sugoruyo> the error returned when it doesn't find the files
+<n3k0de_> ds
+<n3k0de_> s
+<n3k0de_> clear
+<sugoruyo> is permission denied
+<stdoubt> if that command does not work as root then the disk is corrupted -that's my best guess
+<stdoubt> permission denied = do it as root
+<stdoubt> sugoruyo: sudo apt-cdrom add
+<sugoruyo> duh
+<sugoruyo> the file it can't access is on my hdd
+<stdoubt> so run the command as root and it will 'find' it
+<sugoruyo> it's now reading the signatures
+<sugoruyo> i need to get some sleep
+<stdoubt> heh
+<sugoruyo> i'm slippin'
+<sugoruyo> 38h on top of pc
+<stdoubt> that's unhealthy
+<stdoubt> unless it's pure fun -but i'm guessing it's not ;
+<sugoruyo> nope
+<sugoruyo> it isn't
+<flexerItalia> try "kdesu konqueror", browse the file and right click and select adept
+<stdoubt> must.... make.......computer .....PERFECT!!!!!
+<sugoruyo> hah
+<sugoruyo> my computer IS perfect
+<sugoruyo> it's a mac with tiger :D
+<stdoubt> lol
+<sugoruyo> but i GOTTA have linux
+<sugoruyo> on it as well
+<stdoubt> that's the spirit
+<sugoruyo> so i gotta finish with the pc first
+<sugoruyo> and then go for the mac
+<flexerItalia> sugoruyo ...
+<sugoruyo> and of course windoze is givin me trouble
+<sugoruyo> flexerItalia: yep?
+<stdoubt> windoze will always give you trouble
+<flexerItalia> it's a .deb package?
+<KaoticEvil> stdoubt:  windows never gave me trouble :)
+<KaoticEvil> you just gotta know how to use it
+<raphink> and be very patient
+<sugoruyo> yeah
+<sugoruyo> you gotta keep clicking start to shut down
+<sugoruyo> kinda neat
+<flexerItalia> have you try with kdesu konqueror?
+<raphink> flexerItalia: I wouldn't do that if I were you
+<KaoticEvil> sugoruyo:  thats odd.... i always click "Doze" to shut down ;)
+<raphink> this is the best way to get a newbie to screw up his system
+<raphink> telling him to use konqueror as root
+<sugoruyo> i'm ok now thx
+<sugoruyo> i just forgot to go into root to do it
+<raphink> KaoticEvil: computers are like air-conditioners. They don't like when Windows are open
+<raphink> *work
+<flexerItalia> !!!!!
+<ubotu> I don't know, flexerItalia
+<raphink> s/like/work/
+<sugoruyo> i hate typing sudo in front of everything
+<sugoruyo> so i give root a pwd
+<raphink> hmm
+<sugoruyo> and this time i forgot to su
+<flexerItalia> hmmm
+<sugoruyo> hmmmmmmmmmm
+<flexerItalia> now work?
+<sugoruyo> yep
+<flexerItalia> ok
+<flexerItalia> ok guys! here it's launch time! see you asap
+<sugoruyo> but i still can't add the dvd
+<sugoruyo> arghhhhh
+<sugoruyo> damn it
+<stdoubt> wth? i thought you said it worked...
+<sugoruyo> yeah
+<sugoruyo> for cds
+<sugoruyo> it only tries to mount my cdrw
+<sugoruyo> but dvd has to be in dvdrw
+<sugoruyo> so?
+<sugoruyo> it won't mount dvdrw so dvd don't exist for it
+<sugoruyo> this sucks
+<stdoubt> so if crd drive is empty and dvd drive has disk apt-cdrom add sees nothing?
+<stdoubt> s/crd/cdr
+<sugoruyo> precisely
+<stdoubt> (i have only 1 optical drive)
+<stdoubt> that's a bugger
+<KaoticEvil> sugoruyo:  whats the mount line in /etc/fstab?
+<sugoruyo> seems to work
+<sugoruyo> i added -d /media/cdrom1 as it has the dvd in fstab
+<sugoruyo> after the apt-cdrom add command
+<KaoticEvil> the installer didnt do that for you?
+<sugoruyo> and it sems to be indexing
+<sugoruyo> no
+<KaoticEvil> ugh
+<sugoruyo> i want to add ubuntu dvd
+<sugoruyo> on kubuntu
+<sugoruyo> installed from cd
+<KaoticEvil> why?
+<KaoticEvil> lol
+<stdoubt> so it worked?
+<sugoruyo> save me some time from dling overnet
+<sugoruyo> over net
+<KaoticEvil> what are you installing?
+<sugoruyo> seems so
+<sugoruyo> anything in synaptic's list
+<stdoubt> check sources.list and show me what it put in there plz?
+<KaoticEvil> damn dude
+<sugoruyo> y?
+<stdoubt> so:   apt-cdrom add -d /media/cdrom1    :worked?
+<sugoruyo> yeah
+<stdoubt> cool
+<sugoruyo> i just had to tell it explicitly where the disc was mounter
+<sugoruyo> mounted*
+<stdoubt> apt freakin owns
+<sugoruyo> apt is good
+<sugoruyo> prefer it to rpm
+<rebroad> Hi. I have two users logged onto kubuntu, and when I connect a USB camera, the filesystem is mounted so that it's readable by only one of the users (the mount point becomes owned by that one user). Anyone got any idea how to make it so that the user using the console is able to access the mounted device please?
+<sugoruyo> reason why i prefer debian-based distro
+<stdoubt> rebroad: what's the fstab entry for the device look like ?
+<stdoubt> could you print it
+<rebroad> stdoubt: there is no fstab entry for it!
+<stdoubt> what does it show up as in konq?
+<stdoubt> (Storage Devices)
+<Cheapie> "The utility lha is not in your PATH."  :(
+<freeflying> hi ,all how to enable gpg in kmail
+<rebroad> stdoubt: In Konq it shows up as "media:/sdb1", and in df output it mounts as "/media/usbdisk".
+<sugoruyo> AAAAARGHHH
+<sugoruyo> still not working properly
+<sugoruyo> now it asks me to put dvd in cd drive to read from
+<sugoruyo> omfg
+<stdoubt> rebroad: you *could* add a line to fstab to define the device's options
+<sugoruyo> i'll link /media/cdrom against /media/cdrom1 and see if it works
+<stdoubt> /dev/sdd1       /media/usbdisk  vfat    noauto,users,exec       0       2
+<rebroad> stdoubt: but /media/usbdisk is owned by a user who's logged in via vncserver, perms 700
+<Cheapie> just got lha and compiled it
+<rebroad> stdoubt: but i also often mount other usb storage devices.. how do i ensure they all grant access to the console user also?
+<stdoubt> actually /media/usbdisk can be owned by root and still have users able to read and write to the device
+<rebroad> stdoubt: ideally, I want to make it default to 755 for FAT based filesystems when it mounts them
+<rebroad> stdoubt: that would be perfect. how do i do that please?
+<rebroad> stdoubt: on second thoughts, perms giving plugdev read/write access would probably be more ideal..
+<stdoubt> rebroad: add a line for the device in fstab and have the parameters set like: noauto,users,exec,umask=000 0 0
+<stdoubt> or thereabouts
+<rebroad> and then add users to plugdev who i want to be able to read/write to usb devices used FAT FS
+<stdoubt> that should work too -the group thing
+<stdoubt> group access
+<rebroad> stdoubt: surely kubuntu should do what it's currently doing out of the box...?
+<rebroad> stdoubt: i mean "shouldn't".
+<stdoubt> it's definately not perfect ;]
+<stdoubt> I've had device access issues too
+<stdoubt> it's almost like its too automatic
+<stdoubt> and it defaults to very safe defaults
+<rebroad> stdoubt: why isn't "/etc/hotplug/usb/libgphoto2" running? That's supposed to chown the mount point to do what I'm expecting to happen.
+<stdoubt> rebroad: i have no experience with libgphoto2 sorry
+<stdoubt> Cheapie: what's lha?
+<Cheapie> stdoubt - a compression format
+<stdoubt> oh yeah... i remember it fro DOS days
+<stdoubt> you can't use it as regular user?
+<Cheapie> i can now
+<stdoubt> ok
+<Cheapie> can't extract old dos lzh sfx'ers tho
+<Cheapie> :(
+<rebroad> stdoubt: do you know much about udev please?
+<stdoubt> only that it dynamically creates devices in /dev.... so that they appear to come and go. I dislike it so i don't use it
+<stdoubt> i think it's the default on FedoraCore4
+<rebroad> stdoubt: ah... the problem is with "ivman", the man page explains why...
+<dragonkh> kaftan: its all just apples and pairs
+<rebroad> stdoubt: Hi. I tried adding the fstab entry, but it complained that it didn't like filesystem type "auto"..
+<stdoubt> you'd want "noauto" for any removable media devices
+<stdoubt> print me the fstab entry?
+<stdoubt> noauto would mean it won't be automounted on bootup
+<stdoubt> but it should still "automount" on USB insertion
+<enric> HOLA
+<enric> ALGUIEN ME LEE?
+<stdoubt> d'oh!
+<stdoubt> rebreaod: what's the filesystem on the device
+<stdoubt> rebroad: you might try vfat in place of auto if it's FAT-based
+<stdoubt> KaoticEvil: clone windows explorer for me k? ;]  & make sure it's all KB-driven... TY
+<stdoubt> and i mean WE from win95c
+<stdoubt> man -i set "open folders in separate windows" in konq and it doesn't do it........
+<stdoubt> good luck all --gotta go into sleep mode
+<XsPiDeR> hello .. i use kubuntu 5.10 how i can change my type of monitor ?? becouse with default monitor working at 60HZ ... ( My monitor is Gateway Vivitron 17)
+<freeflying> how to use gpg with kmail
+<jjesse> wondering if i could get some help
+<jjesse> restarted laptop and am no longer getting any sounds
+<jjesse> no system sounds, no sound from mp3s etc
+<hussam> I got firefox 1.5 from ftp.mozilla.org but firefox won't use the gtk2 fonts like other gtk2 apps like synaptic. any ideas?
+<aftertaf> sudo  modprobe soundcore
+<nalioth> hussam: firefox is a self supporting program. it doesnt use system settings at all
+<nalioth> hussam: if you want more configurabilityin a gecko based browser, use galeon or epiphany
+<nalioth> hussam: or use konqueror
+<ke> Is the only difference between kubuntu and ubuntu the gui?
+<nalioth> ke: pretty much, yes
+<ke> Could you just name fast a few pros and cons for chosing?
+<ke> choosing
+<Riddell> kubuntu has dragons
+<nalioth> ke: why choose? you can have x/k/ubuntu installed all at the same tim
+<ke> Hmm, you're right
+<nalioth> Riddell: good day.
+<Riddell> certainly is
+<nalioth> Riddell: did you see my question of the other day?
+<ke> A bit new to linux, but that's logical anyways
+<ke> Hehe
+<Riddell> nalioth: not sure, what was the question?
+<nalioth> Riddell: something about building the kde 3.4.3 tree for powerpc
+<Riddell> I don't remember any such question
+<nalioth> Riddell: iirc, it was do you need binaries for hoary and breezy?
+<nalioth> you were being asked other things, it was overlooked
+<Riddell> breezy has 3.4.3
+<nalioth> ok then
+<Riddell> https://wiki.ubuntu.com/KubuntuPackagingGuide
+<nalioth> Riddell: ty
+<hussam> nalioth: thanks. I mainly use konqueror but some sites that have ads, I view with firefox because of the adblock extension
+<nalioth> hussam: do you not run an adblocking hosts file?
+<hussam> nalioth: interesting how?
+<nalioth> http://accs-net.com/hosts/    <<<< read this hussam
+<nalioth> hussam: this is the same principle as the adblock in ff, but it protects your whole system
+<nalioth> hussam: it might be interesting for you learn more about what the hosts file does
+<nalioth> hussam: keep in mind, if you muck up YOUR hosts file, your box wont work anymore
+<hussam> ok
+<hussam> os I just append stuff to /etc/hosts ?
+<hussam> do I need to reboot after that?
+<nalioth> hussam: yes, append to your existing hosts file, and rebooting isnt necessary, the change is instant
+<hussam> ok it backed up the original fine as hosts~
+<aftertaf> nalioth: with qemu, what do you do to create a virtual HDD to install to?
+<nalioth> aftertaf: i have never used qemu
+<aftertaf> argh ok ...
+<aftertaf> using it now to test the elive cd. NICE :]
+<nalioth> aftertaf: you cant get e17?
+<aftertaf> yes i can, but im being doubly curious (qemu && elive)
+<nalioth> ah
+<aftertaf> looks very nice too :)
+<adnan> hey guys, i installed the xchat and i cant find it.. can anyone guide me ?
+<nalioth> adnan: click the 'k' and then 'run program' > xchat
+<adnan> oh... ty nalioth
+<adnan> :)
+<_judith> How can I read news in kontact? Some lib cannot be found and I am stuck!
+<flixor> guys question concerning openoffice how can i add the euro sign
+<StR> hi all?
+<StR> anyone having problems with their kopete?
+<StR> mine does not connect. doesn't even try to connect... no blinking accounts icons
+<StR> hi??
+<manveru> StR: lots of problems :)
+<manveru> StR: mine is crashing all 3 hours
+<StR> manveru: lol
+<manveru> but i won't complain, since i do nothing to fix it
+<spiral> hi
+<dipnlik> spiral: hi
+<StR> I see the problem
+<StR> I don't find anything in the kwallet
+<StR> no, wait...
+<StR> weird
+<ganymed> hallo. does anybody know where i can acquire reliable benchmarks about windows/linux performance?
+<ganymed> by the way, when i start kde apps it sometimes runs out without having an effect. when i start the app again, it works flawlessly. Any ideas?
+<ganymed> no ideas???
+<ganymed> ciao
+<angela> Hi, installed 5.10 .. but I can't find games and a few other packages I normally use.. where can I find other repositories?
+<inuki> hi
+<angela> as a side note the switch from kcalc to speedchrunch was a *really* bad choice.....
+<_inuki_> ...
+<Riddell> angela: why?
+<Riddell> angela: kdegames is in universe
+<angela> Riddell: not easy to use?
+<angela> or do you mean needing another repository?
+<angela> Riddell: well.. I got a default install... and I don't see a kdegames package.
+<Riddell> angela: you need to add the universe repository
+<Riddell> angela: what's not easy to use about speedcrunch?  type in sum and go
+<angela> Riddell: why isn't that added by default?  .. I added it and am waiting for it to fetch
+<angela> Riddell: some of us prefer buttons.
+<Riddell> angela: because universe is (technically) unsupported
+<angela> also .. you can just type in kcalc and the sum will show up too ;)
+<Riddell> I've asked the speedcrunch author to add a keypad, but I don't see the need for lots of buttons, I find them unusable
+<angela> Ok... I'm getting an error downloading the security ones... and the universe one never downloads.
+<angela> Riddell: I'm glad you find the terminal more useful than a bunch of windows for non-computer people
+<Riddell> !repositories
+<ubotu> I guess repositories is How to add repositories:  http://wiki.ubuntu.com/AddingRepositoriesHowto See !sources for example sources.list
+<Riddell> gosh, it worked
+<Riddell> !sources
+<ubotu> A list of official repositories can be found at http://paste.ubuntulinux.nl/969 (Hoary) or http://paste.ubuntulinux.nl/2325 (Breezy) - Create your own sources.list at http://ubuntulinux.nl/source-o-matic
+<angela> I've already added them.. it's not a problem with it not being added.. it's failing while downloading.
+<slicslak> i'll be in south afrika for the next couple months and would like to change the clock.  my understanding is the system clock is set to UTC and there is a timezone interpeter somewhere.  how do i change the timezone?   before you answer "just change the kde clock", i need other applications (thunderbird) to know the new time.
+<amu> slicslak: sudo tzconfig
+<havoc> morning people
+<havoc> is there a way to install something from source but have it done so it can be easily removed later via the package manager?
+<havoc> I thought I had heard something about that
+<bhna> havoc: checkinstall
+<havoc> yeah, that's it, thanx
+<bhna> havoc: np
+<havoc> this is actually for use on a debian server, but I had heard about it here ;)
+<havoc> http://www.falkotimme.com/howtos/checkinstall/index.php looks like useful info
+<Nomad> hi everyone..  Would there be a data recovery expert around?  Or a suggestion for a channel?  I am trying to browse files on a drive that has been reformatted to FAT32, hoping to find a folder. :(
+<Nomad> I can,t get a list of channels yet, server too busy
+<_melkor> good morning
+<_melkor> anybody feel like telling me what I could do with a .deb file?
+<Niomi> something like.. sudo dpkg foo.deb
+<Niomi> i'm not too familiar about it, but it's something to do with dpkg. i think.
+<Nomad> to install?   duso dpkg -i file.ded
+<Nomad> I think
+<Nomad> But I'm stuck on windows at the moment
+<Nomad> can't conform
+<Nomad> confirm I meant.. lol
+<_melkor> you are conforming
+<_melkor> whew I keep encountering problems and going on the net and finding other people have the same problems
+<_melkor> ...and thats about it.
+<_melkor> but thanks for the dpkg -i command that helps
+<Nomad> what problems
+<Nomad> so no one has suggestions for data recovery of a reformatted drive?
+<_melkor> what file system
+<_thumper_> Nomad, you mean data that was on the drive before the reformatting?
+<C0r3Dump> hello all
+<C0r3Dump> echo "scale=3; $1*166.386" | bc -l
+<C0r3Dump> is there a way to format the output ???
+<C0r3Dump> I mean, instead of 2345,098 --> 2.345,098
+<_thumper_> C0r3Dump: pipe it through something that understands locale formatting, perhaps perl?
+<C0r3Dump> :|
+<C0r3Dump> uhmm perl, ok I'm going to think about it...
+<_thumper_> Hmm, I notice that there has been no announcement regards KDE 3.5 RC
+<Nomad> thumper: yes
+<compagnons> ca va
+<_thumper_> Nomad, I think you are up a creek without any propulsion
+<Nomad> thumper: I know
+<Nomad> and half of the drive has already been re-written over, :(
+<Nomad> oh well,
+<chuck> does someone knows how to install vmware, i have problems with vm-config
+<chuck> ?
+<slow-motion> hallo
+<chuck> does someone knows how to install vmware, i have problems with vm-config
+<chuck> ?
+<_melkor> back at it
+<_melkor> I'm having a package version conflict...or something
+<_melkor> To install libboot-python... I need libc6 ver ... but I have an ubuntu version
+<_melkor> I've updated with kynaptic but it is still not good enough
+<mariuspurcaru> how can I know the root password ... I'm a new linux so user and I don't know ... I just wanted to install the yahoo messenger on kubuntu so and ... it is asking me about the root right ...
+<mariuspurcaru> :-(
+<mariuspurcaru> can anybody help me, pls?
+<sorush20> guys my kubuntu environment is taking ages to load..?
+<mariuspurcaru> how can I know the root password ... I'm a new linux so user and I don't know ... I just wanted to install the yahoo messenger on kubuntu so and ... it is asking me about the root right ...
+<mariuspurcaru> can anybody help me, pls?
+<mariuspurcaru> :-(
+<_melkor> ahh yeah force the bitch
+<Blissex> mariuspurcaru: no 'root' password. 'sudo' instead.
+<Blissex> mariuspurcaru: it is a FAQ on the Wiki
+<Blissex> !sudo
+<ubotu> from memory, sudo is http://www.ubuntulinux.org/wiki/RootSudo
+<mariuspurcaru> thank you ubotu
+<mariuspurcaru> how can I install yahoo messenger now ...? ;)
+<mariuspurcaru> where shall I go?
+<vicente> hola
+<vicente> que tal kubunteros
+<mariuspurcaru> hola vicente, ...
+<mariuspurcaru> can you tell me .... how can I install yahoo messenger now ...? ;)
+<mariuspurcaru> I am a new user ... and I'm out of linux
+<_melkor> mari .. what type of file do you have?
+<mariuspurcaru> trying to learn some basically comands
+<vicente> i am a new user too
+<mariuspurcaru> *.deb
+<_melkor> cool type dpkg -i sdasljk.deb
+<_melkor> you might have to use that sudo stuff
+<firephoto_> did you search with adept to see if it's there? (you might have to add or enable some repositories)
+<mariuspurcaru> that's right about sudo ...
+<mariuspurcaru> adept?
+<firephoto_> it's in the system menu..
+<firephoto_> run  it, give your psswd.. then type yahoo in the box.
+<mariuspurcaru> melkor .. this is the file: ymessenger_1.0.4_1_i386.deb
+<mariuspurcaru> but it doesn't accept my pass
+<mariuspurcaru> :-(
+<mariuspurcaru> I'm not user
+<_melkor> you can set your root passwd
+<mariuspurcaru> root ...
+<_melkor> type sudo passwd root
+<mariuspurcaru> how can I set my root passowrd?
+<_melkor> then you can set your root passwd
+<_melkor> then type 'su' that will log you in as root
+<_melkor> then go to your directory where your file is and type that dpkg -i ymessenger_1.0.4_1_i386.deb
+<mariuspurcaru> great ...
+<mariuspurcaru> it worked ...
+<mariuspurcaru> thank you melkor
+<_melkor> it will either install or it will tell you what you need
+<mariuspurcaru> God bless you
+<_melkor> thanks
+<mariuspurcaru> how can I change a directory?
+<_melkor> do you use dos?
+<mariuspurcaru> by examply, i'm in the root directory and I want to move myself into the desktop where the file is
+<mariuspurcaru> yeap
+<mariuspurcaru> I do
+<_melkor> cd is cd ls is dir
+<mariuspurcaru> cd ...
+<mariuspurcaru> it is working in linux as well?
+<_melkor> your desktop might be in /home/(user name) but I don't really know
+<mariuspurcaru> where can I find the desktop?
+<mariuspurcaru> hehehe
+<mariuspurcaru> thank you melkor ... you've already knew my question I've been ready to ...
+<mariuspurcaru> ;))
+<_melkor> I would suggest going to your desktop and saving it in your home directory
+<mariuspurcaru> I think linux is the best
+<mariuspurcaru> i mean ... kubuntu
+<_melkor> just wait...
+<mariuspurcaru> I'm so fade up with windows
+<_melkor> I love it so much I'm going to go install kubuntu again
+<mariuspurcaru> why again?
+<mariuspurcaru> do you have any pbs? bugs?
+<mariuspurcaru> or ...?
+<_melkor> I've used windows alot, so I dont kno linux
+<_melkor> I keep loading it up with shit and realizing I don't need it
+<_melkor> what I found is if you try to install a file and it doesn't work.  use the package manager and install libraries that could help
+<_melkor> so now I know how to install what I need I'm going to reboot the system install what I need and not mess with it
+<mariuspurcaru> will you be back ... melkor? cause I'll need you again. (if I don't disturb you too much)
+<dipnlik> mariuspurcaru: if youhave problems, just ask, someone will help :)
+<_melkor> I don't know much here
+<mariuspurcaru> great
+<mariuspurcaru> I'm trying to install yahoo messenger for linux, and I can't
+<mariuspurcaru> why?
+<mariuspurcaru> I have downloaded the file ... and I can't do it
+<mariuspurcaru> :-(
+<firephoto> why don't you use kopete?
+<mariuspurcaru> actually, I don't knwo how to install any file on linux cause I'm a beginner
+<mariuspurcaru> I use kopete
+<firephoto> yim for linux isn't too feature rich last i looked.
+<mariuspurcaru> but ... one of the reason I want to install yahoo, is that kopete doesn't allow me to save any conversation
+<firephoto> mariuspurcaru: kopete logs your convos if you want it too.
+<mariuspurcaru> I'm chatting with my fiancee and I need to save all our conversations
+<mariuspurcaru> really?
+<mariuspurcaru> great
+<firephoto> yes..
+<mariuspurcaru> than ... I don't need that yahoo ...
+<mariuspurcaru> :-)
+<firephoto> i think it's the history plugin...
+<mariuspurcaru> but ... how can I start to learn some basically commends on linux?
+<dipnlik> mariuspurcaru: well, you can use kynaptic or adept for package installation
+<dipnlik> mariuspurcaru: adept is better, from what I read
+<firephoto> you could get a book if you like to read books. or browse the man pages. (man: in the konqueror address bar)
+<mariuspurcaru> I
+<mariuspurcaru> I've tried to install the yahoo messenger, but ... I can't handle. Its seems that there's an error which's showing me that I can't install it
+<mariuspurcaru> and I don't know why.
+<mariuspurcaru> ;)
+<dipnlik> mariuspurcaru: use kopete or gaim
+<mariuspurcaru> dipnlik, I want to learn how to unpack docs ...
+<mariuspurcaru> and I can't
+<mariuspurcaru> why?
+<mariuspurcaru> cause I've used adept
+<mariuspurcaru> and nothing
+<dipnlik> mariuspurcaru: no need to unpack docs, if you install software, most of the time docs are installed too
+<mariuspurcaru> but how to install them
+<mariuspurcaru> by examply, I've downloaded the ymessenger_1.0.4_i386.deb ... and what I have ot do with it?
+<mariuspurcaru> how can I install it?
+<dipnlik> mariuspurcaru: apedt should be intuitive. if not, wait for answers, I gotta go
+<mariuspurcaru> ok
+<mariuspurcaru> thanks
+<dipnlik> mariuspurcaru: i really suggest you to use kopete or gaim, install them using adept
+<dipnlik> mariuspurcaru: good luck, see ya
+<bimberi> mariuspurcaru: to install a deb file:  sudo dpkg -i <debfile>
+<mariuspurcaru> libgdk is not installed
+<mariuspurcaru> what is libgdk?
+<mariuspurcaru> ;(
+<mariuspurcaru> a kind of winrar on windows? (grrrr ... did I pronounce windows? :-(((( ...)
+<worzel> mariuspurcaru: try this link for a really good free book= www.icon.co.za/~psheer/rute-home.html
+<mariuspurcaru> thank you worzel for the book. ;)
+<mariuspurcaru> why does appear this error: " Su returned wirh an error. "???
+<parax> hi
+<parax> anybody knows how to activate multimedia keys for a portable in kubuntu?
+<parax> with ubuntu, it worked out of the box
+<rdfm> parax: I used hotkeys
+<rdfm> parax: then snarfed the conf file from a linux-laptops linked site
+<Spum> Ello
+<hussam> how do I tell what package installed or can install a certain file?
+<troy> hey is gmail borked for everyone else?
+<Spum> I dont even have gmail :'-(
+<_scott> 'sup
+<Spum> ello
+<Blissex> hussam: 'dpkg -S/dlocate' for the first part.
+<_scott> vrgin in here...kubuntu newbie :)
+<Spum> nice
+<Spum> fresh mea
+<Spum> :-P
+<_scott> LoL...be gentle
+<Spum> Hehe :-)
+<_scott> I tell you being a M$ pawn for so long...
+<Spum> troy.. any chance you could "hook me up with some fresh gmail trims"
+<Spum> Oh aye? fresh to Linux then?
+<_scott> those monkeys have a LOOOonnng way to go to catch up
+<Spum> indeed they do
+<_scott> fresh...? just landed mate ?!
+<Spum> even Vista isnt scratching
+<_scott> still sudo-ing and m,ucking about and getting me head round
+<Spum> Eheh
+<_scott> ya...too true
+<Spum> ah well, good to have you with us pal
+<Spum> :-)
+<_scott> cheers...will b. off and lurk for a bit :)
+<_scott> ttfn
+<Spum> naw
+<Spum> Ah you should stay mate
+<_scott> k
+<_scott> still in
+<Spum> Ehehe :-)
+<_scott> whats the crack this evening then ?
+<Spum> So, how long have ya been using linux matey
+<Spum> Oh, i'm watching max'n paddy ;-)
+<_scott> eh...3weeks :)
+<_scott> RoFFLMAO
+<Spum> Wow, you must be amazed :-)
+<_scott> complete know-nothing numptie
+<_scott> sh#t yeah !
+<Spum> ehehe
+<Spum> Linux is great mate
+<_scott> I saw a post on a K/unbuntu forum about someone bemoaning how it wasnt this and that etc etc
+<troy> Spum: I could hook you up, however you need to send me your existing email addy to send the request to...
+<_scott> but...a few days of getting the iso burnt right, then a coupla installs...and Robert's your mothers brother ?!
+<_scott> and all this continually evolving...I love it
+<Spum> troy
+<Spum> either spum@ispconfig.org or randomspum@linuxmail.org
+<_scott> more power to their elbow
+<Spum> the latter works
+<Spum> aye
+<Spum> _scott.. serious
+<Spum> K3B pisses on Nero
+<Spum> i used linux about 2 1/2 years ago, came back
+<_scott> used Nero...crap burn after crap burn
+<Spum> so i had to catch up ;-)
+<_scott> gave up and used burnatonce...boom straight off the bat
+<Spum> The first cut is the deepest eh mate ;-)
+<Spum> My daughter uses Mandrake Linux
+<_scott> yah yah...once bitten though :P
+<Spum> so does me wife ;-)
+<worzel> \part
+<_scott> schweet...!
+<Spum> :-P
+<Spum> so, have you mastered the shell yet?
+<_scott> we a M$ house mainly but this machine's getting the Missus attention :)
+<Spum> I love using the shell
+<_scott> oh lordy not yet
+<_scott> gonna get me a *nux for Dummies v. v. soon
+<_scott> LoL
+<_scott> this weekend methinks
+<Spum> Ehehe
+<Spum> The people here can teach you
+<Spum> I know a few tricks ;-)
+<_scott> only trub is if I spend much longer at a kybrd might end up single again
+<Spum> ehehe
+<_scott> sweet...always good to know - and always happy to learn
+<Spum> I'm catching up while working, just passively come on get me info and off i go
+<Spum> although i have enough money to retire now :-P
+<_scott> geddin !
+<troy> Spum: sent the invite
+<troy> Spum: to the first addy
+<_scott> me = still working for the man
+<_scott> 's cool though
+<Spum> troy, the first goes to the second
+<Spum> hehe
+<Spum> oh aye mate
+<Spum> sold 2 businesses and the other 1 is growing
+<_scott> ok...better book...have a Bub to check in on
+<Spum> bub
+<Spum> ?
+<_scott> wow...good job Spum
+<_scott> bub = scots for baby
+<_scott> oops Scots ! :P
+<Spum> oh right mate ;-) ehehe
+<_scott> good talking...catch up soon
+<Spum> Mine are already grown up ish
+<Spum> 14 and 14 :-D
+<_scott> mine = 9mths
+<Spum> ah
+<_scott> tooooooooo much fun
+<Spum> you must be buzzing
+<Spum> :-D
+<_scott> hell yeah
+<Spum> ow old are you mate?
+<_scott> crawled fwd for the 1st time today - got the call at work
+<_scott> 36
+<Spum> :-)
+<Spum> Eeey :-D
+<Spum> Snap!
+<_scott> late starter :D :D
+<_scott> shpooky
+<Spum> E hehe
+<Spum> I had 2 years break from mine
+<Spum> :-D
+<_scott> how come ?
+<Spum> went around the world on a nice journey to see friends
+<Spum> went to shitloads of countries :-D
+<_scott> see earlier comment..."Geddin!"
+<_scott> :D
+<Spum> Ehehe
+<Spum> Yeah mate
+<Spum> Kids love linux, wife loves linux
+<Spum> I'm still a bit dazed cause i havent used it for a while
+<_scott> penguin heaven man
+<Spum> but me son has the right idea ;-)
+<_scott> :p
+<Spum> He got a bollocking at school for taking down an MSN advert
+<Spum> ah har har
+<_scott> RoFL...Good Man ?!?!
+<Spum> aye
+<Spum> he replaced it with a google ad ehehe
+<Spum> they had 2, so he just moved google in
+<_scott> I just sourced VS.Net team edition for my dev team at work and that B'STURT gates better
+<_scott> be giving a shitload of his $ back philanthropically cos his licensing costs are astronomical
+<Spum> Oh aye?
+<Spum> whatcha do at work mate
+<_scott> web monkey :P
+<Spum> awesome
+<_scott> for a big bank
+<Knowerrors> Hey all, I get something weird, when I reboot or start up computer with monitor off, and then turn it on, the video settings are detected as 320x240, but If I boot up with monitor on, it comes up as 1024x768, help please?
+<Spum> have you tried quanta
+<Spum> that is fucking ace
+<_scott> LOOoove it
+<Spum> wow, snap mate
+<_scott> who dyou work for?
+<Spum> Myself ;-)
+<Spum> I used to own a few companies doing that sort of thing, coding and whatever
+<_scott> ah...me = Deutsche
+<Spum> they made some stuff for this sattelite box recently
+<Spum> And for the army i think, but yeah
+<Spum> I sold that out, because the guy who owned it with me was a good mate to me, and did a good job with it
+<Spum> so i let him buy it off me
+<Spum> and sold the other meself, to him
+<_scott> sweet !
+<Spum> aye
+<Spum> I got enough cash from it anyway
+<_scott> only way to do it...work for oyourself if you can
+<Spum> aye mate
+<Spum> Me wife and i have a few fitness centers, keeps us in wafers ;-)
+<_scott> I had a nice networking site planned...done a bunch of tinkering
+<Spum> ey, if you want any help just give me a shout mate
+<_scott> not released it on the unsuspecting interwebbies yet
+<_scott> still in @lpha LoL
+<Spum> he he, aright :-)
+<_scott> kind offer Spum
+<_scott> ok...going to shoot through...
+<_scott> Bgood
+<Spum> Aright
+<Spum> Take care pal
+<_scott> cant private you...summat about not being registered :(
+<Spum> heh mate
+<_scott> reading the faq
+<Spum> if you want me email it's randomspum@linuxmail.org
+<Spum> :-)
+<am> hi guys
+<am> running breezy on ppc ibook
+<am> when i was running breezy a few months prior to release
+<am> i had sleep (hibernation) working properly
+<am> but now i don't
+<Spum> am; it may be a bug
+<am> i was just wondering if there has been a setting changed which i can change back?
+<am> Spum: yeh but it was working, and it was one of the things added to 2.6.12
+<am> was proper sleep
+<Spum> Oh right
+<am> i don't see how a bug which was fixed (and so often talked about) would get fixed, then un fixed for release
+<Spum> stranger things have happened
+<lahbib> salut
+<KaoticEvil> there.. *finally* apache does what its supposed to do
+<n3k0de__> hey
+<n3k0de__> anyone know how to change the gAIM buddy list font?
+<n3k0de__> it does it auto in other distros ive used, but not Kubuntu
+<Spum> Hmm
+<Spum> GAIM is GTK, not Qt
+<n3k0de__> okay
+<n3k0de__> I dont have a very new version of GTK
+<n3k0de__> so mabey thats it
+<n3k0de__> ?
+<Spum> aye, i can guess that
+<n3k0de__> i'll look into it more
+<n3k0de__> danke
+<KaoticEvil> anyone use the xmail mail server?
+<neoncode> Hey does anyone know of a program that can cut out the exact same area from multiple images and save them as seprate files?
+<Blissex> neoncode: yes.
+<neoncode> Blissex: Automaticly?
+<Blissex> neoncode: you write a tiny shell script...
+<neoncode> Blissex: with which program?
+<neoncode> I don't mean to write the shell script I mean to cut the images
+<Blissex> neoncode: yes, does that.
+<ZzComputerKiller> this is fucking gay im going to dalnet
+<Blissex> neoncode: look at ImageMagick or NetPBM.
+<neoncode> Blissex: Thanks
+<Blissex> neoncode: if you have them already installed, look at 'man convert' for example.
+<neoncode> Blissex: Can I get imageMagic via Synaptic?
+<Blissex> neoncode: sure.
+<Blissex> neoncode: get also NetPBM.
+<Mars> Hi
+<Mars> I have little question
+<Mars> Tomorow i am going to install kubuntu on my friends computer
+<Mars> but
+<Mars> he has USB modem
+<KaoticEvil> ouch
+<Mars> i am from poland and i dont know is it also called USB modem in english
+<Mars> So
+<Mars> I dont know how to install it
+<Blissex> Mars: thats often not very good news. Just hope that it is not a winmodem.
+<neoncode> Blissex: Apparetnly i already have ImageMagic.. I take it it's in the defult Kubunt breezy release...
+<KaoticEvil> how can i search available packegs with apt-get ?
+<KaoticEvil> i know theres a switch for it, but i dont remember it
+<Mars> I found some ways of installing it i polish portal
+<Mars> but main thing is hat
+<Mars> i dont know will i be able to install kubuntu without net connection from normal CD
+<icewt> KaoticEvil: apt-cache search ?
+<Mars> sudo apt-cache search
+<Mars> or
+<Mars> run Adept
+<KaoticEvil> icewt:  that would be it :) thanks
+<icewt> Mars: you don't need sudo for search
+<KaoticEvil> ive got adept.. im trying to get more used to working in a CLI :)
+<Mars> i am logged as a root so i dont need even to type sudo but i got used to it :]
+<Mars> i got used to console but now because of my lazynes i use adept "]
+<KaoticEvil> heh
+<icewt> that's the bad side of sudo. people using it for commands that don't require it :/
+<jo_> oy
+<Flying_Eagle> hi
+<Flying_Eagle> how can get behind the interface of the "system settings" to see what the gui is doing behind the visible things?
+<Blissex> Flying_Eagle: with an electron scanning microscope :-).
+<Flying_Eagle> this would be one of infinite possibilities... but id like to use one of the easiest ones ;)
+<firephoto> isn't it just using the system:/ kioslave ?
+<Flying_Eagle> firephoto, yeah.
+<firephoto> it just has the initial display arranged different though I think.
+<Flying_Eagle> but how do i get deeper into it? do i have to read source-files? or do some config-files satisfy me?
+<firephoto> that'd be my guess.
+<firephoto> it's settings:/  btw.. ;)
+<Flying_Eagle> settings/system - whatever - i doesnt keep my mouse-settings X(
+<bartek> hello
+<bartek> i have a problem with ubuntu can anybody help me
+<The_Vox> bartek: ask your question, if somebody has an answer you'll get it
+<Riddell> Flying_Eagle: it loads up kcontrol modules layed out according to  /etc/xdg/menus/system-settings.menu
+<Flying_Eagle> thanks, Riddell. i hope that info will get me further
+<humboldt> OpenOffice2-beta in Ubuntu sucks bigtimes! Is there a relief in sight?
+<luisp> ayudenme a configurar el vsftpd
+<Riddell> luisp: #kubuntu-es ?
+<luisp> si
+<luisp> ayudenme a configurar el vsftpd
+<Merlin`> hombre, aqui nadie podra ayudarte
+<Riddell> luisp: /join #kubuntu-es
+<Merlin`> no saben hablar espaol
+<The_Vox> luisp: solo ingles aqui...#kubuntu-es para espanol
+<Flying_Eagle> Riddell, now i know that "Exec=kcmshell mouse" is executed... but what now?
+<Riddell> Flying_Eagle: what's the question?
+<Flying_Eagle> i want to know what the gui for mouse-settings is doing behind the scenes to write a script doing what i have to do after every restart
+<Flying_Eagle> mouse doesnt stay at 800 dpi, but goes back to 400
+<firephoto> Flying_Eagle: you probably need to use xset
+<firephoto> the dpi is probably from one of the llogitech applets though..  logitech mouse?
+<Flying_Eagle> firephoto, i rather thing that it has sth to do with /etc/hotplug... but im not sure, so i wanna look, what system settings are doing
+<Flying_Eagle> yeah. logitech mouse man dual optical
+<firephoto> lcms or something like that I think...
+<Curalton> given someone totally not knowlegable about commandline wants to edit a file via sudu but have an editor gui, does something like "sudo kate file" work?
+<firephoto> kdesu would probably be better.
+<Curalton> invocation just like sudo?
+<Flying_Eagle> firephoto, you mean sth like "kcm*" ?
+<firephoto> yeah, 'kdesu kate file.foo
+<firephoto> Flying_Eagle: http://www.bedroomlan.org/~alexios/coding_lmctl.html
+<slow-motion_> n8
+<Flying_Eagle> firephoto, i shouldnt need this
+<Flying_Eagle> i have everything on board to change the resolution of the mouse, but i dont know what this "everything" is :(
+<firephoto> Flying_Eagle: kcmshell mouse  is the mouse module...
+<Flying_Eagle> yeah
+<Flying_Eagle> i know
+<KaoticEvil> anyone run a mailserver?
+<Flying_Eagle> how do i get it to keep the right resolution, firephoto ?
+<firephoto> it should be saving it but maybe you need to run it as admin to get the settings to stay?
+<firephoto> Flying_Eagle: i don't have the dpi option with my mx700 so i can't test it.
+<firephoto> does it actually change when you change it?
+<Flying_Eagle> so you are using lmctl, firephoto ?
+<firephoto> (so you can tell) ?
+<firephoto> no, i have used it in the past though.
+<Flying_Eagle> firephoto, yes. its changing. its just enerving to set it up after every reboot
+<firephoto> might look at  share/config/kaccessrc
+<firephoto> in your home dir or ? (i'm looking at this on my gentoo box at the moment)
+<firephoto> I see share/config/system.kdeglobals in the strace too but it says no such file wherver it looks..
+<Flying_Eagle> theres no system.kdeglobals...
+<Flying_Eagle> and kaccessrc isnt the right file, too :(
+<firephoto> my user kaccessrc file has a mouse section....  only a mouse section actually.
+<Flying_Eagle> yeah. but theres no MouseResolution or sth like that
+<firephoto> i'm thinking it's a bug. i tried it as root and it still didn't leave any settings for the logitech part.
+<Flying_Eagle> im one step before reading ugly cpp-code
+<jburnes> hi all
+<jburnes> any developers out here?
+<jburnes> I'm about to install kde-devel and I need to make sure I have the right version targeted.

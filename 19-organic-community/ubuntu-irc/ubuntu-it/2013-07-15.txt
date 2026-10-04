@@ -1,0 +1,1741 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2013-7-15"
+lang: "it"
+messages: "1732"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<gio> ciao a tutti
+<Guest65703> qualcuno per favore puo' dirmi come fare riconoscere ubuntu 13.04 a quella dell' hard disck della ps3?
+<dario_____> boh
+<dario_____> chiedi nel canale di supporto
+<Guest65703> quale sarebbe il canale di supporto, non e' che purtroppo ne sappia molto di queste cose. Al massimo prima di venire qui ho cercato nel web, ma non ho trovato niente
+<dario_____> scrivi
+<dario_____> join #ubuntu-it
+<dario_____> prima di join metti /
+<Guest65703> ok
+<Guest65703> ok
+<dario_____> devi scriverlo nella scheda di freenode
+<dario_____> oddio
+<dario_____> scusa
+<dario_____> errore
+<dario_____> mio ti chiedo scusa... errore mio. sono stanco credevo che è tardi e credo di essere nlla chat.. invece no.. sei nel canal giusto ho sbagoliato io.. scusami.. allora rifai la domanda qualcuno ti risponderà
+<Guest65703> ok...
+<cri> giorno
+<sin_> hola!la mia memoria mi segnala 0 byte liberi .in realta nn è così.mi fa cancellare ma nn mi fa memorizzare.posso fare qualcosa?
+<akis24> giorno
+<sin_> hola!la mia memoria mi segnala 0 byte liberi .in realta nn è così.mi fa cancellare ma nn mi fa memorizzare.posso fare qualcosa?
+<cristian_c> ciao
+<cristian_c> ho fatto varie prove, ma non riesco a capire come ripristinare l'interfaccia wlan
+<cristian_c> anche seguendo più volte il wiki
+<cristian_c> mi serve un metodo corretto e funzioniante
+<cristian_c> Qualche idea?
+<akis24> cristian_c:  intendi  l'icona network manager ?
+<cristian_c> akis24: non c'entra, non si accende neanche il led
+<cristian_c> è proprio un problema di interfaccia
+<akis24> cristian_c: uhm cerco di capire
+<cristian_c> akis24: quali info ti servono?
+<akis24> cristian_c:  leggo e poi ti chiedo casomai
+<cristian_c> ok
+<sin_> hola!c'è qualche strumento in ubuntu che mi faccia entrare nella memoria a 0byte liberi ma in realtà nn è così?
+<cristian_c> sin_: ?
+<sin_> ho una memoria che miindica 0 byte liberi.in realtà non è così.volevo sapere se si può fare qualcosa con ubuntu per farla leggere correttamente
+<mibofra> su win la legge sin_ ?
+<sin_> non ho win
+<mibofra> sin_, su altro so comunque?
+<mibofra> potrebbe essere la pennetta
+<sin_> mi fa entrare ,cancellare ma non immettere dati.è da 1.5T e liberi dovrebbero essere300g
+<sin_> se utilizzo un winzzoz che succede?
+<mibofra> sin_, è tanto per vedere se è intera
+<mibofra> sin_, se win se la prende allora non è il device, se no è andato al creatore..
+<mibofra> .
+<sin_> ci provo.gr
+<akis24> cristian_c:  per caso hai usato ppoeconf ?
+<cristian_c> akis24: sì
+<cristian_c> akis24: ma a7x mi ha detto che non c'entra nulla
+<akis24> cristian_c:  centra eccome a quel che leggo poi... comunque
+<a7x> akis24 no, il PC di cristian_c era già impostato con ppp
+<akis24> io posto il link  date un occhiata voi http://forum.ubuntu-it.org/viewtopic.php?f=49&t=543289
+<a7x> e comunque sudo poff -a; chiude tutte le connessioni ppp se non funziona neanche dopo averle chiuse, non riguarda pppoeconf
+<a7x> e ammesso che riguardi pppoeconf è un bug, anche piùttosto recente visto che l'ho testato di persona per anni
+<cristian_c> 'Adesso all'avvio non mi dice più niente ma le reti wifi non me le vede lo stesso'
+<cristian_c> akis24: eh, ma il caso è diverso
+<a7x> cristian_c /etc/network/interfaces
+<a7x> /etc/NetworkManager/NetworkManager.conf
+<cristian_c> a7x, novità
+<cristian_c> a7x, c'è rpoba di dsl-provider
+<cristian_c> *
+<cristian_c> roba
+<cristian_c> tre righe
+<a7x> ovvio
+<cristian_c> le commento tutte?
+<a7x> no, voglio leggere
+<cristian_c> poi in fondo c'è
+<glpiana> ola
+<cristian_c> auto wlan0
+<cristian_c> iface wlan0 inet manual
+<cristian_c> a7x: ok, pasto
+<cristian_c> a7x: http://pastebin.com/zBu6ugRd
+<cristian_c> a7x: controllo anche l'altro file
+<akis24> cristian_c: http://forum.ubuntu-it.org/viewtopic.php?t=491031 a riconferma di prima ... leggete bene
+<a7x> l'hai scritto tu a mano vero?
+<cristian_c> no
+<a7x> sul paste
+<cristian_c> l'ultima cosa che farei è pacioccare con il file interfaces
+<akis24> lo modifica ppoeconf ..
+<a7x> akis24, il tizio suggerisce di eliminare la riga "auto dsl-provider"
+<a7x> che cristian_c non ha.
+<cristian_c> akis24: il mio output è identico a quello postato da shellx
+<a7x> cristian_c, dicevo che tu l'hai ricopiato a mano sul paste
+<akis24> a7x:  dicono di eliminare tutto dopo  auto lo
+<akis24> iface lo inet loopback
+<cristian_c> sì, manca l'autpo nel secondo blocco
+<cristian_c> non è proprio identico ma quasi
+<cristian_c> *auto
+<a7x> cristian_c quel file è tutto corretto
+<a7x> akis24, sì ma è un bug, perché quel file è corretto
+<akis24> o comunque di aggiungere sudo pon dsl-provider  mi sembra di aver letto  da qualche parte
+<a7x> cristian_c, digita sudo ifconfig wlan0 down
+<a7x> e poi rialzala con sudo ifconfig wlan0 up
+<akis24> a7x:  le mie conoscenze sono quasi = 0
+<a7x> no dai akis24, non sai dove stai andando a finire
+<a7x> quello è un comando
+<akis24> si per avviarlo
+<cristian_c> a7x, mi da errore
+<a7x> ok, che errore, e con qualche comando, down o up?
+<cristian_c> down
+<a7x> scrivi solo il secondo comando
+<cristian_c> ancora errore
+<cristian_c> wlan0: ERRORE leggendo i flag dell'interfaccia: Nessun device corrisponde
+<a7x> cristian_c, :)
+<ric_> Salve a tutti
+<a7x> cristian_c, non è colpa di ppp, i driver stanno facendo casino, oppure ti si è rotta la wireless, o altro
+<a7x> magari si è sganciata.
+<cristian_c> a7x, la seconda la escludo
+<a7x> puoi controllare con dmesg
+<a7x> ci devi lavorare un po' su comunque, magari prova se da live funziona
+<cristian_c> a7x: ho controllato tantissimo dmesg
+<cristian_c> anche con jester
+<cristian_c> e successivamente
+<cristian_c> a7x: ho provato, ma la live non si carica
+<a7x> what?
+<cristian_c> eh, sì
+<cristian_c> ho fatto tantissime prove, ma non riesco a capire come funziona
+<a7x> cosa vuol dire "non si carica"? Non si avvia, non carica la wireless?
+<a7x> non riesci a fare il boot da usb?
+<cristian_c> a7x, non si avvia proprio la live
+<a7x> risolvi un problema alla volta allora
+<a7x> cambia penna usb o cambia il modo in cui scrivi l'iso sulla penna
+<a7x> fammi sapere poi
+<cristian_c> a7x: questa volta si è caricata
+<cristian_c> a7x, cosa devo controllare?
+<a7x> se funziona
+<a7x> la wireless
+<cristian_c> a7x: il wireless non funziona di per se sulla live
+<cristian_c> solo sulle partizioni installate funziona
+<a7x> ma come no
+<cristian_c> è così
+<cristian_c> c'è anche un wiki apposito
+<cristian_c> *pagina
+<cristian_c> !broadcom
+<ubot-it> Dispositivo senza filo Broadcom http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom
+<a7x> bene
+<cristian_c> io seguo sempre quella quando installo ubutnu
+<cristian_c> *ubuntu
+<a7x> sono partiti i drivers allora cristian_c
+<a7x> lascia stare la live, concentrati sul sistemare quelli
+<cristian_c> a7x: comunque, ifdconfig vede l'interfaccia in live
+<cristian_c> *ifconfig
+<cristian_c> a7x, ho provato, ma non ne vengo a capo
+<cristian_c> anche con jockey
+<cristian_c> a7x, e seguendo più wolte il wiki
+<a7x> mh, il fine settimana è passato, in questi giorni non posso esserti troppo di aiuto
+<cristian_c> ok
+<a7x> cerca di eliminare i drivers, reinstallarli
+<cristian_c> a7x, io provo a commentare le righe incriminate in interfaces
+<cristian_c> a7x: ho già provato inultimente
+<a7x> prova ma guarda... è veramente un caso limite
+<cristian_c> *inutilmente
+<supermoira> Ciao a tutti, avrei bisogno di aiuto in quanto ho problemi con la wireless del mio netbook asus 1215n con la versione di ubuntu 12.04. Ho guardato sui vari forum ma le soluzioni trovate si riferiscono quasi tutte alla 10.04/10.10 e non so se valgono anche per la mia versione a.
+<cristian_c> supermoira: che scheda è?
+<supermoira> broadcom, può darsi? scusa sono un po' imbranata
+<cristian_c> supermoira: controlla con: lshw -C network
+<cristian_c> supermoira: e poi posta su pastebin
+<supermoira> ok, il problema è che sto scrivendo da un pc diverso. Comunque  si è una broadcom modello BCM4313
+<supermoira> tutti hanno praticamente avuto problemi con la scheda wireless di questo netbook, l'unica cosa è che tutte le guide si riferiscono a versioni precedenti di ubuntu e dicono di aggiornare il kernel.
+<ExPBoy> !broadcom
+<ubot-it> Dispositivo senza filo Broadcom http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom
+<ExPBoy> letta questa?
+<supermoira> No, lo faccio subito, grazie
+<cristian_c> a7x, appena provo il modprobe -r, mi va in crash il sistema
+<cristian_c> *akis24
+<cristian_c> nel senso che appare la shell con un bel trace
+<cristian_c> akis24: c'è un modo corretto per sbloccarlo
+<cristian_c> ?
+<ric_> Come dicevo ieri, ho un pc con single core AMD 64 Atlhon 3500+ a 2.2 GHz e 2 GB di Ram. Volevo sapere se secondo voi era meglio la versione a 32 bit o a 64 bit di Ubuntu.
+<ric_> Oppure qualcuno mi consigliava lubuntu o le altre versioni spin off, ma c'è davvero così tanta differenza in prestazioni?
+<remix_tj> ric_: semplicemente hai ambienti più leggeri. Io ti consiglio una versione a 64bit, una qualsiasi.
+<underc0mmand> ric_ : visto che hai 2 GB di ram non hai bisogno di una 64 bit
+<underc0mmand> la 64 bit è adatta per sistemi con ram maggiore a 4 GB
+<cristian_c> remix_tj: eh, ma ha 2 GB di ram
+<ric_> Ok, quindi tu comunque mi consigli la 32 bit. E c'è una differenza visiva o di altro tipo, tra una a 32 bit o 64 bit? Oppure funziona in tutto e per tutto ugualmente?
+<ExPBoy> underc0mmand, si ma se non hai il processore a 64 non puoi installarla
+<remix_tj> cristian_c: e dunque?
+<remix_tj> underc0mmand: niente di più sbagliato.
+<ExPBoy> ric_, visto che hai il processore a 64 metti una 64
+<cristian_c> remix_tj: ho sempre saputo che i 64 bit sono utili con 4 GB di ram o superiori
+<underc0mmand> ExPBoy: un processore a 64 bit è anche a 32 bit
+<underc0mmand> non cambia nulla
+<ric_> Oh, non ci capisco più nulla. XD
+<ExPBoy> si certo allora prendi una ferrari e vai a 30 all'ora
+<underc0mmand> quei 32 o 64 stanno per i bit di indirizzamento
+<underc0mmand> del bus degli indirizzi
+<remix_tj> cristian_c: cazzata immane. Il 64bit va bene su processori che supportano il 64bit. E' tutto guadagnato
+<ExPBoy> quoto remix_tj
+<ric_> Quindi con il mio AMD 64 Athlon 3500+ single core a 2.2 ghz, va bene Ubuntu a 64 bit (anche con 2 GB di Ram)?
+<underc0mmand> certo
+<ExPBoy> si
+<remix_tj> ric_: se la tua macchina è a 64bit allora si, puoi installare la versione 64bit
+<cristian_c> remix_tj: ovvio che non si può installare un sistema a 64 bit su un pc con processore a 32 bit
+<underc0mmand> ma a quel punto ric_ non ci guadagni nulla
+<underc0mmand> da 32 o 64
+<remix_tj> che tra l'altro consiglio, visto che non ci sono più limitazioni di alcun tipo
+<remix_tj> underc0mmand: insomma, è discutibile.
+<underc0mmand> parliamone...
+<underc0mmand> cosa cambia?
+<ric_> mmm
+<Riccardone> ric_: metti la 64 bit,e se hai possibilità, metti anche la RAM, dai retta ...
+<ric_> quindi posso installare sia 32 bit che 64?
+<ric_> ok
+<underc0mmand> si ric_
+<Riccardone> con 2 GB vai alla grande, ma se vuoi le performance e la grafica, vai con 4 GB RAM ...
+<remix_tj> io ho applicazioni sviluppate che su 64bit ci mettono 5-8 secondi per task, mentre su 32 siamo su 35-50 secondi.
+<ric_> Ah, ora ho letto le specifiche tecniche del mio procio, è in effetti a 64 bit
+<ric_> Che poi già dalla sigla... :D
+<cristian_c> athlon
+<Riccardone> remix_tj: grossa cavolata! non dipende dall'architettura, ma dalla velocità della RAM o HD ...
+<cristian_c> lol
+<ric_> oh, ma a chi devo dare retta? XD
+<Riccardone> quello che cambia tra 32 e 63 bit sostanzialmente è la profondità della Pipeline dell'istruzione, niente altro..
+<underc0mmand> ric_ fai di testa tua
+<cristian_c> ric_: puoi benissimo installare la 64 bit
+<underc0mmand> è la cosa migliore ahah
+<ric_> lol
+<underc0mmand> puoi mettere tutte e 2
+<cristian_c> ric_: dato che hai un processore a 64 bit
+<underc0mmand> decidi tu quale
+<ric_> k
+<remix_tj> Riccardone: mi dispiace, ma la tua affermazione è *errata*
+<underc0mmand> quello che cambia da 32 a 64 bit, sono i bit di indirizzamento
+<underc0mmand> che invece di essere 32 sono 64
+<remix_tj> eh se fosse solo quell
+<remix_tj> eh se fosse solo quello
+<underc0mmand> questo vuol dire che nel 32 bit lo spazio di indirizzamento sono 4 GB
+<Riccardone> underc0mmand: 3,67 per l'esatteza :)
+<underc0mmand> ok ne prendo atto poi controllo
+<remix_tj> Riccardone underc0mmand, non è detto che solo cambiare ram hd o processore facciano crescere di velocità il software. Anzi. Spesso in alcune applicazioni di calcolo scientifico, lo stesso calcolo sulla stessa macchina su ambienti 32bit si svolge in tempi inaccettabili, su 64bit è invece molto veloce.
+<supermoira> Come suggerito, ho provato a seguire la guida http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom, ma non ho risolto
+<underc0mmand> è possibile remix_tj
+<remix_tj> cambiano un sacco di cose, *solo* per i bit di indirizzamento. Se avessero inventato i 64bit solo per avere più ram non capisco tutto lo sforzo, visto che avevano già inventato anche PAE
+<supermoira> quando vado ad abilitare i driver STA mi compare questo errore: http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom
+<underc0mmand> perchè il 64 bit ha "8" bus dati
+<Riccardone> remix_tj: certo che anche il codice ci mette la sua, ma non secondo me non è una questione di velocità, ma di rapidità ...
+<underc0mmand> mentre il 32 ne ha 4
+<underc0mmand> e cmq i software ottimizzati per 64 bit sono davvero pochi...
+<remix_tj> bah
+<cristian_c> remix_tj: già forse mi confondo con pae
+<remix_tj> io non installerò mai più macchine a 32bit su processori 64
+<remix_tj> tanto c'è multiarch
+<remix_tj> quindi se non c'è un programma a 64bit (skype, ad esempio) gira comunque
+<remix_tj> perchè c'è l'ambiente che permette di eseguire applicazioni 32bit anche su processori a 64
+<remix_tj> *su sistemi a 64
+<underc0mmand> e certo
+<underc0mmand> se un processore è a 64 bit
+<cristian_c> remix_tj: vale anche per driver di stampanti , ad esempio?
+<Riccardone> remix_tj: nemmeno io è ovvio :) 64 bit tutta la vita ... PArtito con Kubuntu 8.04 a oggi con Lubuntu 13.04 sempre a 64 bit, due soli crasch in questo lasso di tempo ...
+<cristian_c> tipo le brother non le installa
+<underc0mmand> lo è anche a 32
+<underc0mmand> ma non viceversa
+<remix_tj> cristian_c: in teoria si, dovrebbe andare bene. Poi dipende da quanto male è fatto il driver proprietario
+<Riccardone> http://www.ilsoftware.it/articoli.asp?tag=32-bit-vs-64-bit-le-differenze-tra-le-due-architetture_6524 è windoziano, ma spiega bene queste differenze ...
+<underc0mmand> e cmq remix_tj le applicazioni per calcoli scientifici non utilizzano prevalentemente la gpu invece che la cpu?
+<cristian_c> supermoira: non ci sono messaggi di errori
+<cristian_c> supermoira: hai linkato la guida
+<remix_tj> underc0mmand: non è vero. Io no ho gpu e quindi faccio tutti i calcoli in cpu
+<underc0mmand> male
+<remix_tj> e poi non tutti i problemi sono portabili sulla GPU
+<underc0mmand> è molto meno efficiente
+<supermoira> Scusate, è rimasto l'incolla precedente. Ecco il messaggio:  L' installazione di questo driver non è riuscita.  Consultare i file di registro per maggiori informazioni: /var/log/jockey.log
+<remix_tj> se non sono parallelizzabili spaccando i dati in gruppi omogenei su cui devi fare la stessa cosa, non va bene la GPU (è una struttura SIMD)
+<cristian_c> supermoira: anche a me lo dava oggi questo errore
+<cristian_c> supermoira: che cos'hai fatto esattamente?
+<supermoira> cristian_c: ho seguito la guida che mi è stata postata, dove diceva di installare   bcmwl-kernel-source e di tornare nel gestore driver e riattivare i driver sta
+<supermoira> comunque lo stesso errore me lo ha dato anche prima dell'installazione
+<cristian_c> supermoira: oggi ci ho smanettato con i broadcom. Hai fatto altro oltre a quello?
+<supermoira> ho anche provato a installare  firmware-b43-installer ma al termine mi ha stampato:
+<cristian_c> oltre a installare quel pacchetto
+<supermoira> No chroot environment found. Starting normal installation Unsupported device(s) found: PCI id 14e4:4727  Aborting.
+<cristian_c> supermoira: allora è quello
+<supermoira> questa è stata l'ultima cosa che ho fatto, 2 minuti fa
+<cristian_c> supermoira: il problema è che hai mischiato le due cose
+<cristian_c> supermoira: cos'hai fatto esattamente per i b43
+<cristian_c> ?
+<supermoira> semplicemente questo: sudo apt-get install firmware-b43-installer
+<cristian_c> e basta?
+<supermoira> trovato qui: http://forum.ubuntu-it.org/viewtopic.php?t=457583
+<supermoira> si
+<cristian_c> ok
+<cristian_c> supermoira: sudo apt-get purge firmware-b43-installer
+<cristian_c> supermoira: che poi, se uno doveva seguire quella parte della guida, avrebbe dovuto installare anche b43-fwcutter XD
+<cristian_c> ma a te non interessano i b43
+<supermoira> Ho seguito il primo post dove diceva di aver risolto
+<cristian_c> BCM4313, giusto?
+<supermoira> Fatto quello che mi hai detto.
+<supermoira> La mia si.
+<cristian_c> supermoira: poi, sudo apt-get purge bcmwl-kernel-source
+<cristian_c> supermoira: per ripristinare
+<supermoira> ok
+<cristian_c> supermoira: dimmi quando hai fatto, che si riprova
+<supermoira> si un attimo, sta ancora elaborando
+<supermoira> Ti posto le ultime cose:
+<supermoira> Rimozione di bcmwl-kernel-source... Removing all DKMS Modules Done. update-initramfs: deferring update (trigger activated) Eliminazione dei file di configurazione di bcmwl-kernel-source... update-initramfs: deferring update (trigger activated) Elaborazione dei trigger per initramfs-tools... update-initramfs: Generating /boot/initrd.img-3.5.0-23-generic Warning: No support for locale: it_IT.utf8
+<cristian_c> supermoira: hai purgato anche questo: firmware-b43-installer ?
+<supermoira> si, lo avevo fatto prima
+<cristian_c> supermoira: dopo ciò riavvia
+<cristian_c> supermoira: e una volta riavviato il sistema, dovrai reinstallare un pacchetto
+<akis24> e torna se funziona e anche se non funziona :)
+<akis24> almeno sappiamo
+<Riccardone> supermoira: vai! riavvia e facci sapere, ho scommesso su cristian_c che avrebbe risolto ...
+<supermoira> ovvio che vi faccio sapere :)
+<supermoira> che pacchetto dovrò reinstallare?
+<Riccardone> supermoira: ogni cosa a suo tempo ...
+<supermoira> perfect, a tra poco!
+<akis24> supermoira:  segui le istruzioni di cristian_c
+<Riccardone> supermoira: allora ?
+<supermoira> ancora nulla, ma forse perchè devo reinstallare un pacchetto
+<supermoira> continua a scansionare e tra un po mi dirà "rete senza fili  disconnessi"
+<cristian_c> supermoira: hai fatto altro dopo il riavvio?
+<supermoira> no no ho aperto la chat
+<infrid> ciao a tutti
+<cristian_c> supermoira: ok, ora digita
+<cristian_c> supermoira: sudo apt-get install  bcmwl-kernel-source
+<supermoira> cristian_c: tra le varie cose mi ha appena scritto che il pacchetto  b43-fwcutter è stato installato automaticamente e non è più richiesto,  e di rimuoverlo con autoremove. Lo facio?
+<Infrid64> ho una kubuntu 12.04 in cui ho aggiornato il kernel alla versione 3.5
+<supermoira> Faccio*
+<cristian_c> supermoira: accidenti, io pensavo lo avessi purgato prima
+<cristian_c> :(
+<cristian_c> siupermoira, allora fai prima: sudo apt-get autoremove
+<cristian_c> *supermoira
+<Infrid64> funziona tutto, a parte l'audio, visivamente sembra tutto ok, i software di ascolto audio non si lamentano e mostrano le barre che si muovono. I volumi del mixer sono ok, le uscite impostate da pavucontrol sono corrette, i moduli caricati mi sembrano quelli. cosa può essere andato storto?
+<supermoira> ho messo su pastebin il risultato
+<cristian_c> Infrid64: come lo hai installato?
+<cristian_c> supermoira: posta il link
+<Infrid64> dai repository di ubuntu, tramite synaptic
+<supermoira> http://pastebin.ubuntu.com/5876903/
+<Paul974> salve a tutti!
+<Paul974> ciao cristian c!
+<supermoira> Scusate, è la prima volta che uso questa chat e pastebin, non sono molto pratica!
+<Infrid64> linux-image-3.5.0-36-generic 3.5.0-36.57~precise1  linux-headers-3.5.0-36-generic 3.5.0-36.57~precise1
+<supermoira> ok autoremove fatto, rieseguo quello di prima?
+<Paul974> ciao, cristian_c     ti ricordi di me?  sabato poi ho perso la connessione per i temporali...... devo installare firefox!  come procedo?
+<Infrid64> comunque se ritorno alla 3.2 tutto torna a funzionare
+<cristian_c> supermoira: guardo il link
+<cristian_c> supermoira: ci sono degli errori, perché hai pasticciato di nuova
+<cristian_c> supermoira: avresti dovuto prima purgare anche l'altro pacchetto di b43
+<cristian_c> avevo  fatto bene a farti purgare tutto
+<cristian_c> forse perché l'ho provato sulla mia pelle :D
+<supermoira> io apparte le cose che ti ho scritto non ho fatto altro
+<supermoira> avevo già purgato i b43
+<cristian_c> supermoira: tranne quello lì
+<cristian_c> che hai tolto ora
+<cristian_c> troppo tardi
+<Paul974> moira si scrive   A staccato parte!
+<cristian_c> Paul974: sei quello con il processore vecchio?
+<cristian_c> senza sse2
+<Paul974> si athlon xp 2600
+<Paul974> si vorrei intallare firefox, ho reistallato tutto poco fa ho il sistema vergine
+<cristian_c> supermoira: quindi ti suggerisco di purgare di nuovo
+<cristian_c> supermoira: ma tutto
+<cristian_c> supermoira: poi riavviare e reinstallare un pacchetto
+<cristian_c> io pensavo li avessi rimossi tutti
+<cristian_c> Paul974: da software center
+<supermoira> per favore mi diresti il comando esatto allora, così evito di farti perder tempo
+<akis24> supermoira: abbi pazienza lo torturiamo cristian_c  ... è richiestissimo
+<akis24> Paul974:  firefox installalo da usc dal software center insomma
+<supermoira> si si certo, non ho furia, son qui che aspetto :)
+<Paul974> akis24 puoi indicarmi la procedura esatta?
+<akis24> Paul974: se vuoi tenere il sistema pulito installa tutto quello che     serve da li
+<akis24> Paul974:  certo ti basta aprirlo e poi scrivere firefox su cerca
+<akis24> quando lo trova avrai le opzioni per installarlo :)
+<Paul974> allora : apro software e istallazioni   giusto?
+<akis24> Paul974:  se usi la sezione " internet " lo trovi subito
+<akis24> Paul974:  si esatto
+<cristian_c> supermoira: sudo apt-get purge bcmwl-kernel-source b43-fwcutter firmware-b43-installer
+<Paul974> aperto:  si ma poi?
+<Paul974> dove mi muovo?
+<Paul974> sono 3 ore che uso lubuntu! cerca di capire!
+<akis24> Paul974:  tranquillo ecco guarda qui http://wiki.ubuntu-it.org/AmministrazioneSistema/InstallareProgrammi/UbuntuSoftwareCenter
+<cristian_c> http://wiki.ubuntu-it.org/AmministrazioneSistema/InstallareProgrammi/UbuntuSoftwareCenter
+<supermoira> ti posto cosa mi ha scritto, a quanto pare erano disinstallati: http://pastebin.ubuntu.com/5876938/
+<cristian_c> akis24: lol, mi hai preceduto
+<akis24> :)
+<Paul974> akis24 grazie ma ciò che dici tu, su lubuntu 13.04 non c'è!
+<cristian_c> supermoira: ha fatto?
+<cristian_c> Paul974: c'è anche lì il software center
+<cristian_c> Paul974: in Strumenti di sistema
+<supermoira> si, ti ho postato un link
+<supermoira> dove dice che erano già stati rimossi
+<Paul974> grande ragazzi!......
+<Paul974> per google heart? faccio lo stesso?  solo che non lo trova...
+<supermoira> cristian_c: rieccomi, riavviato dopo aver eseguito quello che mi hai detto
+<cristian_c> supermoira: cos'hai fatto di altro oltre a purgare
+<cristian_c> ?
+<cristian_c> Paul974: vedi se appare abilitando i repo partner
+<supermoira> nulla, mi hai detto di purgare e di riavviare ed è quello che ho fatto.
+<Paul974> ok ma prima andiamo per gradi cristian c,   devo risolvere il problema che non riesco a vedere i video ora
+<cristian_c> supermoira: ok
+<cristian_c> supermoira: ora: sudo apt-get install bcmwl-kernel-source
+<cristian_c> Paul974: lol, hai parlato tu di google-earth
+<cristian_c> XD
+<Paul974> si infatti. scusami cristian....
+<cristian_c> Paul974: avevi tu il procio vecchio?
+<cristian_c> cat /proc/cpuinfo | grep sse
+<Paul974> eseguo da lx terminal giusto?
+<cristian_c> sì
+<ric_> Ah, scusate. Volevo sapere se esisteva (e mi pare di si) una applicazione tipo Time Machine di OS X per Ubuntu. Come si chiama? Funge bene?
+<cristian_c> deja-dup
+<cristian_c> ric_: controlla nel software center
+<Paul974> ecco     anna@anna-A7N8X2-0:~$ cat /proc/cpuinfo | grep sse flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 mmx fxsr sse syscall mmxext 3dnowext 3dnow anna@anna-A7N8X2-0:~$
+<cristian_c> Paul974: ti serve il vecchio flash
+<cristian_c> Paul974: per caso hai installato altri codec?
+<supermoira> cristian_c: ti giuro che non ho fatto altro oltre a quello che mi hai detto. Ecco cosa è uscito: http://pastebin.ubuntu.com/5876970/
+<cristian_c> Paul974: dpkg -l | egrep 'flash|gnash|swf|spark'
+<Paul974> ok! no  ho installato 3 ore fa, dopo il primo riavvio mi ha scaricato 130 mb di aggiornamenti però
+<cristian_c> Consult /var/lib/dkms/bcmwl/5.100.82.38+bdcom/build/make.log for more information.
+<cristian_c> supermoira: posta: /var/lib/dkms/bcmwl/5.100.82.38+bdcom/build/make.log
+<cristian_c> supermoira: posta il file su pastebin
+<cristian_c> Paul974: posta il risultato su pastebin
+<Paul974> cristian ok.  ma a quale comando ti riferisci?  quello delle 12.13?
+<Paul974> o quello delle 12.12?
+<cristian_c> lol
+<cristian_c> * il treno delle 12:12... *
+<cristian_c> XD
+<Paul974> ok
+<supermoira> cristian_c: perdona l'ignoranza, mi dice  permesso negato. Devo scrivere prima chmod 777?
+<Paul974> ecco cristian http://pastebin.ubuntu.com/5876984/
+<cristian_c> supermoira: no
+<cristian_c> supermoira: non prenderlo dal terminale
+<supermoira> ok
+<cristian_c> supermoira: apri il gestore di file
+<cristian_c> Paul974: quindi l'avevi installato il plugin
+<cristian_c> Paul974: digita anche: uname -m
+<Paul974> ti ho detto, dopo il primo riavvio mi ha scaricato 130 mb di aggiornamenti, ha fatto tutto da solo...
+<Paul974> dice questo ora: anna@anna-A7N8X2-0:~$ uname -m i686
+<supermoira> cristian_c: http://pastebin.ubuntu.com/5876991/
+<cristian_c> Paul974: ok
+<cristian_c> https://bugs.launchpad.net/ubuntu/+source/bcmwl/+bug/994255
+<cristian_c> Paul974: disinstalla il plugin dal software center
+<cristian_c> supermoira: lsb_release -a && uname -a
+<supermoira> cristian_c: http://pastebin.ubuntu.com/5876991/
+<ric_> Scusate, una domanda: Alcuni dicono che bisogni aggiornare totalmente Ubuntu ogni 6 mesi, a meno che non si scelga la versione LTS di 5 anni. Ma esattamente qual'è la differenza? E si è davvero obbligati ad aggiornare Ubuntu?
+<supermoira> cristian_c: no scusa,  http://pastebin.ubuntu.com/5877004/
+<akis24> ric_:  la lts ha un supporto di 5 anni come hai letto
+<ric_> ma di base cosa cambia?
+<akis24> ric_:  le altre ora 9 mesi se non sbaglio
+<akis24> ric_:  la lts è la versione stabile
+<ric_> ah, ok
+<Paul974> cristian_c ci sono. pacchetto flashplayer rimosso da software center
+<cristian_c> Paul974: molto bene
+<ric_> tu akis24, cosa consigli?
+<cristian_c> Paul974: adesso devi installare il plugin di flash più vecchio
+<Paul974> eh eh!  una passeggiata!   aiuto!
+<akis24> ric_:  se vuoi tenerti al passo le versioni che escono se vuoi un sistema stabile ma meno aggiornato la lts
+<cristian_c> Note: My laptop is Lenovo G780, and the broadcom wireless card is BCM4313.
+<cristian_c> Paul974: ma se ti ho linkato il topic per ben due volte...
+<ric_> Ma l'aggiornamento ogni 9 mesi consiste in un aggiornamento totale del software di qualche ora oppure è più incasinato, magari qualcosa da esperti dell'ambiente?
+<Paul974> ah ok!  ora provo allora!  poi ti ricontatto per google heart...!  grazie cristian_c sei un grande!
+<akis24> ric_:  ogni nove mesi ne esce una nuova di versione
+<cristian_c> supermoira: sto guardando
+<cristian_c> Paul974: ce l'hai il topic?
+<ric_> @akis24 Quindi devo fargli fare un aggiornamento, oppure devo proprio formattare tutto e reinstallare tutto da zero?
+<bobotm> i tempi per l' aggiornamento dipendono dalla velocità di connessione internet. io nn ho mai avuto problemi di crash ma è sempre buona cosa fare un backup dei propri dati
+<supermoira> si si fai pure, vedo che sei un po' indaffarato...
+<akis24> ric_: dovrai reinstallare il sistema in tot oppure eseguire avanzamento di versione ma si consiglia l'installazione totale ..
+<ric_> Quindi ci sarebbe solo la scocciatura di un back up obbligatorio dei file personali?
+<akis24> ric_:  si
+<ric_> Ah, avevo intuito
+<Free_Diver> salve nei repository c'è moonlight?
+<ric_> Ma per curiosità, funziona così con tutte le distribuzioni? Oppure solo quelli di Ubuntu hanno scelto questa modalità della reinstallazione totale ogni 9 mesi?
+<Free_Diver> perché dal sito non riesco a scaricarlo per firefox
+<akis24> Free_Diver:  lo trovi sui componenti aggiuntivi di firefox
+<akis24> ric_:  in generale è per tutti cosi salvo qualche eccezione particolare
+<cristian_c> supermoira: http://ubuntuforums.org/showthread.php?t=2148867
+<ric_> Ah, capito
+<ric_> E tu cosa scegli, per concludere l'argomento?
+<akis24> ric_:  io uso entrambe ;) dipende per cosa la uso ..
+<cristian_c> supermoira: mi sono sbagliato, tu hai la 12.04
+<ric_> Ah, capito
+<akis24> ric_:  ma preferisco la lts
+<ric_> k
+<supermoira> si
+<cristian_c> supermoira: pare questo: https://bugs.launchpad.net/ubuntu/+source/jockey/+bug/989610
+<Paul974> cristian_c ho scaricato il flash vecchio...ma ora non so come si installa
+<ric_> Sono ancora indeciso se andare di Ubuntu, scegliere una versione più leggera di Ubuntu (tipo Lubuntu) oppure andare con un altra distribuzione più leggera ancora
+<Paul974> l'ho estratto in una cartella ma sono fermo li
+<Free_Diver> akis24, grande
+<ric_> Il problema è che amo anche la parte grafica di un OS, è devo dire che Ubuntu è un bel vedere.
+<ric_> Perciò dovrei scegliere tra: Bellezza estetica, stabilità e leggerezza del sistema operativo. :D
+<akis24> ric_:  scegli la via di mezzo xubuntu
+<ric_> Cioè, trovare la ditribuzione che mi da il rapporto migliore... :D
+<bobotm> quoto per xubuntu
+<supermoira> cristian_c: posso seguire le istruzioni del post 3?  pare che abbia risolto...
+<cristian_c> supermoira: penso di aver trovato la soluzione
+<cristian_c> supermoira: l'ultimo link non aiuta perché lui parla della bcm4312
+<cristian_c> mentre tu hai la bcm4313
+<cristian_c> supermoira: ti do il link giusto
+<cristian_c> supermoira: http://ubuntuforums.org/showthread.php?t=2113226
+<cristian_c> supermoira: si tratta di un bug ma c'è il modo di risolvere lo stesso
+<ric_> Eh, anche altri mi hanno consigliato Xubuntu. E tu come mai akis24 preferisci comunque Ubuntu? C'è qualche motivo in particolare?
+<supermoira> cristian_c: ti ringrazio, lo leggo subito
+<akis24> ric_:  io uso xubuntu ...
+<cristian_c> supermoira: salva il link e scrivi sul forum
+<ric_> ah, avevo capito che usavi Ubuntu XD
+<cristian_c> supermoira: perché non è facile da seguire
+<Paul974> cristian_c ho scaricato il flash vecchio...ma ora non so come si installa, l'ho estratto in una cartella ma sono fermo li
+<cristian_c> akis24: come vedi, è più complicato di quanto pensassi
+<akis24> cristian_c:  vedo :)
+<cristian_c> supermoira: comunque, quel topic è un punto da cui partire
+<cristian_c> supermoira: per applicarlo devi farti seguire da utenti più esperti
+<akis24> cristian_c:  buon pranzo
+<cristian_c> akis24: grazie
+<akis24> supermoira:  torna qui se vuoi che funzioni... e chiedi a cristian_c
+<akis24> ciao a tutti
+<cristian_c> Paul974: nel topic linkato l'altro giorno è scritto come fare
+<Paul974> vorrei solo sapere come faccio a installare,
+<cristian_c> supermoira: secondo me, è una cosa che si segue meglio sul forum
+<supermoira> akis24: il povero cristian_c mi ha seguito finora, è un santo...
+<cristian_c> perché non è semplicissimo
+<cristian_c> supermoira: almeno, abbiamo scoperto la causa
+<cristian_c> è un bug del gestore driver
+<cristian_c> supermoira: sei iscritto/a al forum?
+<supermoira> cristian_c: no, ma mi iscrivo se necessario
+<cristian_c> Paul974: linkami il topic che lo vedo
+<cristian_c> supermoira: ah, allora èp diverso
+<Paul974> ho eseguito il comando: locate libflashplayer.so  ma non succede niente!
+<cristian_c> Paul974: è nel pacchetto
+<Paul974> http://forum.ubuntu-it.org/viewtopic.php?f=73&t=522058#p4071617
+<cristian_c> supermoira: sudo modprobe -r b43 ssb wl brcmfmac brcmsmac bcma
+<Paul974> ma posso installare con un doppio click sopra qualche icona o devo usare il terminal?
+<cristian_c> supermoira: è la prima volta che leggo quel topic, quindi sono in difficoltà anch'io
+<cristian_c> Paul974: Aprite l'archivio ed estraete il file libflashplayer.so. Se non sapete dov'è installato il plugin sul vostro sistema, date da terminale
+<cybercujo> salve a tutti :)
+<cristian_c> Paul974: l'hai estratto?
+<Paul974> si l'ho estratto in una cartella che ho creato io
+<cristian_c> supermoira: hai digitato?
+<cristian_c> Paul974: sudo updatedb
+<supermoira> cristian_c: non preoccuparti, comunque ho eseguito e mi dice FATAL:  modul wl not found
+<Paul974> ok ci ha messo un pochino poi è tornato
+<Paul974> ora che faccio?
+<Free_Diver> Scusate ritorno per un altro problema
+<Free_Diver> non riesco più a montare un DVD di un backup dati
+<Free_Diver> funzionante con windzoz ma non con ubuntu
+<cristian_c> Paul974: locate libflashplayer.so
+<Free_Diver> il mount auto manco a pagarlo e nel gestore dischi mi dice solo di rimuovere in sicurezza
+<Free_Diver> Come posso risolvere? Grazie
+<cristian_c> supermoira: sudo apt-get remove --purge bcmwl-kernel-source
+<Paul974> comando non trovato cristian c
+<cristian_c> supermoira: sto seguendo le istruzioni del topic
+<cristian_c> Paul974: hai digitato male
+<cristian_c> Paul974: copia e incolla
+<supermoira> cristian_c: guarda, ho trovato questo: http://pastebin.ubuntu.com/5877057/
+<Paul974> ho già fatto copia ed incolla!
+<cristian_c> Free_Diver: digita: dmesg | tail
+<cristian_c> in un terminale
+<cristian_c> !paste | Free_Diver
+<ubot-it> Free_Diver: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<cristian_c> Paul974: su pastebin
+<cristian_c> supermoira: sembra buono
+<cristian_c> supermoira: sempre da qualche link postato prima
+<cristian_c> ?
+<Free_Diver> cristian_c,
+<Free_Diver> http://paste.ubuntu.com/5877060/
+<supermoira> cristian_c: ok, se lo dici te mi fido e ci provo :) no lo ho trovato qui: http://askubuntu.com/questions/127633/how-do-i-get-a-broadcom-bcm4313-wireless-card-working cercando su google
+<cristian_c> Free_Diver: sì, ma dopo aver inserito il dvd dati
+<Paul974> ok ti mettu tutti i passaggi che ho fatto... ecco qua: http://pastebin.ubuntu.com/5877061/
+<Free_Diver> cristian_c, è gia inserito il dvd
+<cristian_c> I upgraded Ubuntu from 11.10 to 12.04, until which wireless was working just fine. After the upgrade and reboot, wireless is not even being detected (When I click the network manager icon in the top panel, it does not show the wireless networks. Neither the Enable wireless option is there). But my laptop's LED indicator shows wireless is on.
+<cristian_c> anna@anna-A7N8X2-0:~$ Paul974: locate libflashplayer.so
+<cristian_c> Paul974: appunto, hai digitato male :P
+<cristian_c> Paul974: hai digitato anche il tuo nome
+<cristian_c> :P
+<Paul974> cristian c  che tonto che sono  ora ho fatto
+<cristian_c> supermoira: ho letto la pagina
+<cristian_c> supermoira: puoi procedere ;)
+<Paul974> ora che faccio?
+<cristian_c> supermoira: con ciò che mi hai postato
+<cristian_c> Paul974: che ti dice?
+<Free_Diver> cristian_c, http://paste.ubuntu.com/5877071/
+<Free_Diver> ho inserito il cd e dato il comando
+<supermoira> cristian_c: ha finito da poco l'update, ora sta installando broadcom-sta-common... ti tengo aggiornato :)
+<Paul974> http://pastebin.ubuntu.com/5877072/
+<cristian_c> supermoira: la tua soluzione è: sudo apt-get update sudo apt-get -y install broadcom-sta-common sudo reboot
+<cristian_c> mi sembra buona
+<cristian_c> Paul974: /home/anna/Scaricati/flashplayer1/libflashplayer.so
+<cristian_c> Paul974: procedi con il topic
+<Paul974> esatto
+<Paul974> ok
+<Free_Diver> cristian_c, che dici è grave? ho paura che la colpa provenga dal dvd e non da ubuntu o lettore.
+<cristian_c> Paul974: il file si trova lì
+<Free_Diver> però su windows funziona ora che ci penso
+<cristian_c> Free_Diver: ma hai inserito adesso il dvd?
+<Free_Diver> cristian_c, la prima volta che ho eseguito il comando, il dvd era gia presente nel lettore. La seconda volta o riaperto il vano e richiuso e subito dopo ho eseguito il comando
+<Paul974> cristian c non ce la faccop
+<Paul974> *faccio
+<Paul974> http://pastebin.ubuntu.com/5877092/
+<cristian_c> Free_Diver: non esce molto
+<luca___> ciao  ho un problema con il mio pc con ubuntu 10.04 lts non mi riconosce la chiavetta di internet qualcuno sa darmi consigli?
+<pat> sto scaricando il formato iso per avviare il cd in odalità provvisoria...per masterizzare il file,devo copiarlo e incollarlo su un disco dati?
+<cristian_c> Paul974: ok
+<cristian_c> Paul974: hai copiato il file
+<cristian_c> :)
+<cristian_c> sudo cp /home/anna/Scaricati/flashplayer1/libflashplayer.so /usr/lib/flashplugin-installer
+<Free_Diver> cristian_c, ho creato la cartella cdrom in /media/
+<Free_Diver> perché non era presente e anche sr0 in /dev/
+<cristian_c> Paul974: ls -l /usr/lib/flashplugin-installer
+<Free_Diver> cristian_c, provando a fare un semplice mount /media/cdrom mi viene fuori
+<Free_Diver> mount: /dev/sr0 non è un dispositivo a blocchi
+<Paul974> ecco: http://pastebin.ubuntu.com/5877098/
+<cristian_c> Free_Diver: mount va fatto in /mnt, ma è strano perché dovrebbe montarlo da solo senza digitare comandi
+<Free_Diver> cristian_c, il comando da terminale per montarlo in automatico corretto qual'è?
+<Free_Diver> intanto riavvio
+<cristian_c> Paul974: prova: ls -l /usr/lib/flashplugin-installer/
+<cristian_c> è leggermente diverso
+<Paul974> dice impossibile accedere non è una directory
+<supermoira> cristian_c: rieccomi... purtroppo non è andata... adesso vado a pranzo e mi ricollego fra un po'... ti ringrazio comunque per la tua pazienza e disponibilità. Buon pranzo!
+<Paul974> http://pastebin.ubuntu.com/5877108/
+<Free_Diver> cristian_c, ho riavviato
+<Free_Diver> come posso risolvere sul dvd ci sono dei file che devo recuperare
+<Free_Diver> cristian_c, è venuto fuori qualcosa che forse ti può far accendere qualche lampadina
+<Free_Diver> cristian_c, che ne pensi http://pastebin.ubuntu.com/5877114/
+<Paul974> credo che cristian c è andato a magnà!   se lo merita!
+<Free_Diver> vero
+<Paul974> cristian_c ecco qua http://pastebin.ubuntu.com/5877108/
+<CappyT> salve a tutti ragazzi, ho un piccolo problema con l'installazione di 13.04... qualcuno può aiutarmi?
+<CappyT> si tratta di questo errore: http://www.youtube.com/watch?v=BX22y7aC4f8
+<akis24> ciao
+<Paul974> ciao akis24
+<Paul974> puoi darmi una mano ad installare flashplayer che ho già scaricato?
+<akis24> ciao Paul974
+<akis24> Paul974:  da dove hai scaricato ?
+<Paul974> ciao akis
+<Paul974> scusa la lentezza: da qui sto seguendo una guida ma non ci capisco niente : http://forum.ubuntu-it.org/viewtopic.php?f=73&t=522058#p4071617
+<Paul974> diceva cristian_c che dovevo mettere una versione vecchia per via della mia cpu che nonsupporta sse2
+<mibofra> Paul974, ciao
+<Paul974> ciao mibofra
+<akis24> Paul974: si qualcosa ho letto
+<mibofra> scusa hai installato flash con sudo apt-get install flashplugin-installer ?
+<akis24> ecco ti aiuta mibofra
+<Paul974> non ho installato niente
+<akis24> mibofra: http://forum.ubuntu-it.org/viewtopic.php?f=73&t=522058#p4071617
+<Paul974> ho ilpc vergine! ho installato lubuntu 13.04 stamattina!
+<akis24> è il caso di Paul974 ..
+<Riccardone> Paul974: anche io ho Lubuntu 13.04 e vedo benissimo tutti i video youtube :)
+<Paul974> si ma li dice di sostituire, mentre io non ho nessu flasplayer installato capito?
+<Paul974> si ma io ho un pc vecchi riccardone
+<Paul974> *vecchio
+<akis24> Paul974:  si conosco la discussione  aspetta che legga mibofra
+<Paul974> ok! attendo!
+<akis24> comunque se segui la guida è facile in fondo  ..
+<akis24> Paul974:  hai estratto i file ?
+<Paul974> ma io ho estratto in una cartella creata da me!
+<mibofra> uhm sto leggendo, nel mentre ragazzi un consiglio: opera o midori?
+<akis24> opera
+<Riccardone> Paul974: guarda io ho seguito questa guida http://marcosbox.blogspot.it/2013/04/lubuntu-1304-guida-post-installazione.html ... so che non dovrei postarla, ma a me non ha fatto nessun danno. Non installare i ppa però
+<Riccardone> mibofra: midori
+<Riccardone> mibofra: epiphany
+<mibofra> akis24, Riccardone molto utili :P
+<akis24> Riccardone:  ha un altro problema lui...
+<Paul974> riccardo grazie ma l'avevo già seguita ed il risultato è statto riformattare!
+<mibofra> Paul974, allora il tuo problema è che hai un processore vecchio
+<mibofra> quindi devi far retrocedere la versione della libreria manualmente
+<Paul974> si un athlon xp 2600
+<Paul974> si esatto
+<mibofra> Paul974, su ti do una mano in 3-4 comandi finiamo
+<Paul974> grande!
+<Paul974> ho già scaricato la versione flash vecchia
+<mibofra> intanto dai sudo apt-get install flash-plugin installer
+<mibofra> no spe xD
+<Paul974> non so come istallarla!
+<mibofra> intanto dai sudo apt-get install flashplugin-installer
+<mibofra> ok è lui :D
+<mibofra> procedi :)
+<mibofra> Paul974, prima devi installare con l'ultimo comando la nuova
+<mibofra> poi retrocediamo manualmente
+<Paul974> ok
+<Paul974> sta facendo qualcosa....
+<mibofra> Paul974, preoccupato quando non fa nulla lol
+<mibofra> *preoccupati
+<Paul974> ha fatto mi dai il link per farti vedere che è successo? :)
+<akis24> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<mibofra> Paul974, no lo so già :P
+<mibofra> Paul974, continua con wget https://github.com/downloads/webgapps/flashaid/flashplayer11_1r102_63_linux.i386.tar.gz
+<Paul974> grazie! ecco qua http://paste.ubuntu.com/5877523/
+<mibofra> Paul974, come mi immaginavo non c'era bisogno del paste :)
+<Paul974> allora che faccio ora?
+<Riccardone> sudo apt-get autoremove :)
+<Paul974> devo scaricare dal link che mi hai dato?
+<mibofra> continua con il wget
+<mibofra> Paul974, ti è arrivato?
+<mibofra> Riccardone, ma no :P
+<mibofra> Paul974, si da i wget link nel terminale
+<Paul974> faccio copia ed incollo nel terminale?
+<mibofra> Paul974, si fai compia incolla di questo:
+<mibofra> wget https://github.com/downloads/webgapps/flashaid/flashplayer11_1r102_63_linux.i386.tar.gz
+<Paul974> fatto
+<Paul974> http://paste.ubuntu.com/5877545/
+<mibofra> Paul974, questo comando completa l'opera e ti fa la pulizia dei file scaricati non più necessari
+<mibofra> tar xvzf flashplayer11_1r102_63_linux.i386.tar.gz && sudo cp libflashplayer.so /usr/lib/flashplugin-installer && rm -r flashplayer11_1r102_63_linux.i386.tar.gz libflashplayer.so usr
+<mibofra> copialo tutto per come lo vedi
+<mibofra> su un unica riga
+<mibofra> selezionandolo con mouse e copiaincollandolo non dovresti aver problemi
+<Paul974> ok fatto, vuoi il paste?
+<mibofra> beh in realtà potevo fare un unico comando per tutta la procedura ma magari poi veniva confusionaria
+<mibofra> Paul974, avvia firefox e vai su youtube :)
+<Paul974> beh è già avviato firefox!
+<Paul974> lo sto usando!
+<mibofra> riavvialo
+<Paul974> chiudo un attimo qui quindi!
+<mibofra> ok
+<mibofra> ti aspettiamo
+<Paul974> eccoci
+<Riccardone> Paul974: allora ?
+<Riccardone> vittoria o sconfitta ?
+<Paul974> mi dice che adobe flash player è vecchio e vulnerabile
+<Paul974> poi di dice aggiorna o attiva
+<akis24> Paul974: attiva
+<Paul974> attivo
+<Riccardone> Paul974: attiva
+<Riccardone> Paul974: se aggiorni siamo da capo ...
+<mibofra> come va?
+<mibofra> attiva
+<mibofra> Paul974, vai su youtube
+<Paul974> fico!
+<Paul974> ora va!
+<Riccardone> quindi Vittoria!
+<mibofra> Paul974, spetta prima di andare xD
+<akis24> Paul974: nel caso .. impropabile non funzioni mibofra  verra' fucilato!!
+<Riccardone> un bicchiere di Chardonnay per mibofra !
+<mibofra> Paul974, per la prossima volta
+<mibofra> questo è l'intero comando che ti risolve tutto :
+<mibofra> wget https://github.com/downloads/webgapps/flashaid/flashplayer11_1r102_63_linux.i386.tar.gz &&  tar xvzf flashplayer11_1r102_63_linux.i386.tar.gz && sudo cp libflashplayer.so /usr/lib/flashplugin-installer && rm -r flashplayer11_1r102_63_linux.i386.tar.gz libflashplayer.so usr
+<Paul974> ed ora? come blocco gli aggiornamenti?
+<akis24> peccato avevo il fucile carico sigh ..
+<mibofra> copiatelo e conservatelo
+<mibofra> Paul974, basta che non glieli consenti :D
+<mibofra> nel caso dai quel comando :P
+<Riccardone> raga io vado mi scoppiano gli occhi ...
+<Paul974> sei un grande mibofra!
+<Paul974> grazie mille!
+<Paul974> ho copiato in un notepad e salvato
+<akis24> a posto Paul974  siamo contenti per te
+<Paul974> grazie anche a te akis
+<akis24> naaa figurati mibofra  è lartefice :)
+<Paul974> ora devo bloccare gli aggiornamenti flash....:)
+<akis24> l'artefice *
+<mibofra> Paul974, prego figurati :)
+<Paul974> che non so come si fa!
+<akis24> Paul974: non aggiornare flash togli la spunta se ti viene proposto nel caso hai il super comando di mibofra
+<mibofra> Paul974, quelli dipendono dal pacchetto che ai installato flashplugin-installer
+<mibofra> quindi se non reinstalli non si muove :P
+<Paul974> perfetto!
+<mibofra> Paul974, vai tranquillo
+<Paul974> ma quando accendo il pc stamattina mi ha scaricato 130 mb di aggiornamenti!
+<mibofra> Paul974, ma flash non sarà con loro :)
+<Paul974> poi ho tutte le spunte su aggiornamento software
+<Paul974> ok! allora
+<mibofra> non si muoverà
+<Paul974> posso chiederti un ultima cosa?
+<mibofra> Paul974, dimmi :)
+<akis24> Paul974: cosa ?
+<esulu> dal terminale quale il comando da usare per collegarmi usando ubuntu ad una macchina windows collegato in un dominio?
+<Paul974> google heart  sul software center non c'è, come lo metto?
+<mibofra> Paul974, 1)*earth 2)vai sul sito di google lo scarichi e lo installi
+<mibofra> esulu, ssh ? telnet? vnc?
+<Paul974> il mio prob è che una volta scaricato non so che devo fare, basta un doppio click? non credo!
+<esulu> mibofra: smb
+<mibofra> esulu, condivisione di rete? apri il gestore dei file sezione rete
+<mibofra> *icona in basso a sinistra del gestore dei file
+<esulu> no lo vorrei fare via comando in terminale
+<mibofra> esulu, puoi montare il device remoto con il gestore dei file e continuare da terminale, perché complicarti la vita :D ?
+<esulu> mibofra: mi servirebbe il comando perche dovrei in tegrare uno script bush
+<esulu> :-D
+<mibofra> esulu, allora smb server per la condivisone file, per il controllo di una shell c'è ssh o telnet, per una grafica vnc o rdp (nativo di win, supportato)
+<dr_> salve ragazzi ho un problema nn mi va l'audio in hdmi ho provato mille guide ma neanche una che va come faccio? ho linux 64bit l'ultima versione
+<dr_> salve ragazzi ho un problema nn mi va l'audio in hdmi ho provato mille guide ma neanche una che va come faccio? ho linux 64bit l'ultima versione
+<akis24> dr_:  leggi bene   http://forum.ubuntu-it.org/viewtopic.php?p=4376391
+<dr_> ho una scheda ati radeon
+<dr_> speriamo vadi
+<dr__> ho installato le cose ma nn va ancora l'audio in hdmi
+<dr__> ho riavvito il pc
+<dr__> che devo fa
+<dr__> ho impostato anche i driver proprietari della scheda video
+<dr__> alura
+<dr__> alura
+<tuocugggino> ciao, come faccio a sapere se ho i driver del lettore sd-card del portatile installati?
+<tuocugggino> non funziona
+<tuocugggino> però su windows si
+<jester-> tuocugggino: di solito nln
+<jester-> non servono,
+<tuocugggino> ok immaginavo, però perchè non funziona su ubuntu? :)
+<jester-> se non va hai beccato uno dei pochi  linux non digeribile
+<tuocugggino> come faccio a leggere il modello?
+<jester-> infila la card e cotrolla con sudo fdisk -l  se  la rileva
+<Claudiese> Salve,
+<tuocugggino> la rileva, http://pastebin.com/1qspLvmN
+<Claudiese> c'è qualcuno che mi può aiutare
+<Claudiese> qualcuno che mi aiuta?
+<jester-> !quaòcun
+<ubot-it> Voce non trovata: 'qua\xf2cun'
+<jester-> !qualcuno | Claudiese \
+<ubot-it> Claudiese \: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<Claudiese> scusate vorrei installare point blank italia su ubuntu come posso fare? perche quando lo installo con win e starto mi dice sempre fare check e io lo faccio ma me lo chiede ogni volta come posso fare?
+<dr__> ho installato le cose ma nn va ancora l'audio in hdmi [16:50] <dr__> ho riavvito il pc [16:50] <dr__> che devo fa [16:50] <dr__> ho impostato anche i driver proprietari della scheda video
+<dr__> ho installato le cose ma nn va ancora l'audio in hdmi [16:50] <dr__> ho riavvito il pc [16:50] <dr__> che devo fa [16:50] <dr__> ho impostato anche i driver proprietari della scheda video
+<Claudiese> scusate vorrei installare point blank italia su ubuntu come posso fare? perche quando lo installo con win e starto mi dice sempre fare check e io lo faccio ma me lo chiede ogni volta come posso fare?
+<jester-> Claudiese: point blank sarebbe?
+<Claudiese> Un game mmorpg
+<jester-> dove lo hai preso per linux
+<Claudiese> non c'è è solo per windows
+<Claudiese> ma sto uasndo wine
+<jester-> Claudiese: quindi serve wine sempre che lo supporti
+<jester-> !wine | Claudiese
+<ubot-it> Claudiese: http://wiki.ubuntu-it.org/Virtualizzazione/Wine
+<Claudiese> gia
+<Claudiese> provato non funziona
+<Claudiese> mi spunta sempre di fare check lo faccio e me lo chiede sempre
+<jester-> Claudiese: guarda sul sito wine se è supportato se no giocaci da winz che è comunque meglio
+<Claudiese> winz cosa è?
+<dr__> ragazzi ho impostato tutto l'impostabile per far andare l audio hdmi nel pennal di audiopulse mi da che l hdmi va ma nn  si sente un cazzo
+<tuocugggino> Claudiese, è windows
+<underc0mmand> dr ___ : cerchiamo di parlare come si deve per favore
+<Claudiese> lo so che è per windows ma ci vorrei giocare su ubuntu
+<dr__> scusatemi ma mi sto innervosendo potete aiutare per favore
+<dr__> scusate se nn parlo bene sono ghanese
+<underc0mmand> dr__  : se c'è qualcuno che sa ti aiuterà
+<tuocugggino> Claudiese, devi guardare sul sito di wine se è compatibile, altrimenti non si può
+<dr__> perfavore
+<jester-> dr__: se il driver e il pacchetto aggiuntivo non risolvono installa pavucontrol e usalo per eventualmente settare
+<jester-> dr__: se non va mettti il cuore in pace
+<Claudiese> non ho capito
+<Claudiese> ne che hai teamviewer
+<Claudiese> ??
+<Claudiese> e puoi aiutarmi
+<Claudiese> ?
+<jester-> Claudiese: in soldoni sde il gioco non è wine compatibile non c'è altro da fare che usarlo in winz
+<Claudiese> Ok cosa è winz e come si usa?
+<dr__> raazzisti
+<tuocugggino> Claudiese, se vuoi un consiglio gioca da windows. Su ubuntu se un gioco non è nativo per linux anche se riesci a farlo andare con wine funzionerà sempre male
+<jester-> Claudiese> winz cosa è?
+<jester-> tuocugggino> Claudiese, è windows
+<Claudiese> aaaa
+<jester-> pare che non leggi
+<Claudiese> basta che dicevi windows
+<Claudiese> hahah
+<Claudiese> scs
+<tuocugggino> ...
+<underc0mmand> ahahah
+<jester-> Claudiese: pure le guide wiki andrebber lette per intero http://appdb.winehq.org
+<underc0mmand> jester- : devi sempre complicare il tutto :D
+<Claudiese> mi potete consigliare un gioco mmorpg tipo combat arms per ubuntu
+<Claudiese> ?
+<Claudiese> multiplayer
+<underc0mmand> !chat | Claudiese
+<ubot-it> Claudiese: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<tuocugggino> le brioche le vuoi alla crema o alla marmellata?
+<jester-> Claudiese: urbanterror
+<jester-> che vba su tutte le piattaforme
+<Claudiese> asp
+<Claudiese> come vado
+<Claudiese> nella chat
+<Claudiese> under
+<Claudiese> ?
+<jester-> è l'ora dei troll, pare
+<tuocugggino> Claudiese,  alt-f4
+<Claudiese> nel occhio
+<Claudiese> mica sono nabbo
+<tuocugggino> ah ok scusa.
+<Claudiese> ahahah
+<Claudiese> under ci sei?
+<underc0mmand> Claudiese : ricarica la pagina e scegli il canale Chat Libero dal menù laterale a destra
+<underc0mmand> Chat Libera*
+<jester-> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<tuocugggino> jester-, tornando alla mia scheda sd è normale che sia presente sull'output di fdisk ma non riesca ad aprirla?
+<jester-> tuocugggino: se in fdisk dovresti vederla anche nella finestra di sinistra di nuatilus, basta cliccare per montarla
+<tuocugggino> è quello che penso anche io, ma non compare
+<jester-> tuocugggino: in fdisk compare come /dev/sd??
+<tuocugggino> http://pastebin.com/1qspLvmN
+<tuocugggino> sdb
+<jester-> tuocugggino: sdb1 sdb2 sdb3, ha tre partizioni 2 e 3 vuote
+<jester-> tuocugggino: sudo monut /dev/sdb1 /mnt
+<jester-> tuocugggino: sudo mountt /dev/sdb1 /mnt
+<underc0mmand> mount*
+<tuocugggino> si in realtà non so il motivo, forse perchè lo formattata dalla calcolatrice
+<jester-> e vai in /mnt a controllarfe
+<akis24> sera
+<jester-> tuocugggino: dioende da che partizione hai formattato
+<jester-> dipende+
+<tuocugggino> marco@marco-bubbuntu:~$ sudo mount /dev/sdb1 /mnt
+<tuocugggino> mount: il device speciale /dev/sdb1 non esiste
+<jester-> tuocugggino: ti converrebbe rifare la tabella in gparted e poi creare una solo partizione fat
+<tuocugggino> jester-, è che non so come la calcolatrice ragioni
+<jester-> che centra la calcolatrice
+<underc0mmand> ahahah
+<tuocugggino> jester-, è la sd della calcolatrice programmabile
+<jester-> tuocugggino: apri gparted rifai nuova trabella e poi crea una sola partizione
+<tuocugggino> che ha anche la funzione formatta
+<jester-> tuocugggino: quindi non è una sd normale
+<jester-> e sulla calcolatrice funza'
+<jester-> ?
+<tuocugggino> si normalissima, come quella di una fotocamera
+<tuocugggino> no ovvio è fatta apposta per metterci i programmi da installare
+<tuocugggino> no scusa,
+<jester-> tuocugggino: diende poi cosa gli serve alla calcolatrice per funzare
+<tuocugggino> sulla calcolatrice funziona
+<jester-> se una o piu partizioni
+<jester-> allora non far4ei manovre azzardate
+<jester-> farei*
+<tuocugggino> si devo vedere,  in ogni caso la riformatto da gparted
+<jester-> tuocugggino:  se fdisk la vede il lettore funza
+<tuocugggino> jester-,  ok, è quello che mi interessava sapere
+<tuocugggino> grazie
+<mikele> qualcuno sa aiutarmi con una config di 2 eth
+<jester-> mibofra: cioè?
+<mibofra> jester-, tabbasti male :P
+<jester-> mikele uscì e il tab a te beccò
+<Claudiese> salve
+<Claudiese> quando parlo su skype sento le altre persone malissimo a scattare come aggiusto?
+<dr__> razzisti
+<Claudiese> quando parlo su skype sento le altre persone malissimo a scattare come aggiusto?
+<akis24> Claudiese:  forse è un problema di banda in upload da parte degli interlocutori
+<jester-> dr__: ??
+<Claudiese> ma quando ero su windows li sentivo bene
+<akis24> che versione di ubuntu usi ?
+<Claudiese> l'ultima
+<Claudiese> dal terminale ho fatto anche l'aggiornamento
+<jester-> come hai installato skype
+<underc0mmand> happy troll hour
+<jester-> oggià
+<jester-> sono apprendisti a giudicare dal lag
+<CappyT> salve a tutti... ho un dubbio... siccome ubuntu non vuole saperne di installarsi, che altra distro consigliate?
+<jester-> CappyT: non si installa?
+<CappyT> no, da un errore sull' init alla riga 7
+<jester-> e pecché
+<CappyT> durante il live booting
+<CappyT> ho fatto pure un video...
+<jester-> CappyT: hai controllato md5sum della iso scaricata?
+<CappyT> http://www.youtube.com/watch?v=BX22y7aC4f8
+<jester-> che se ha errori hai voja
+<CappyT> si, controllato, controllato anche le partizioni
+<CappyT> gliele ho fatte a mano con minitool perché non funzionava, ma neanche così funziona
+<CappyT> non è la prima volta che installo ubuntu... l'ho sempre usato, ma su questo pc non vuole saperne
+<marvin__> ciao a tutti,,,sentite...m3u?? si puo convertire a qualche modo in mp3, mo non me la vede manco clementine, mentre amarok si..... oppure datemi una dritta dove posso chiedere, grazie
+<jester-> CappyT: e l'ultima scheramta con 27 finestre che è
+<jester-> CappyT: provato da installa ubuntu ?
+<CappyT> si, provato, nulla da fare
+<jester-> CappyT: che pc
+<akis24> marvin__:  i file .m3u sono delle liste di file musicali delle song presenti nella cartella insomma di solito sono  usati da vlc player
+<CappyT> @marvin__ gli m3u sono playlist, non file multimediali
+<CappyT> cmq beh, ho googolato quell'errore, non c'è stato nessun modo per risolvere
+<jester-> CappyT: che pc
+<CappyT> che pc in che senso?
+<jester-> CappyT: il pc ha un cdrom?
+<CappyT> si, ha un cdrom, ma dalla 12.10 devi installarle da chiavetta
+<CappyT> e la chiavetta non ha problemi
+<CappyT> mint parte bene
+<jester-> CappyT: si è rotto il cdrom?
+<CappyT> no, funziona
+<marvin__> grazie.
+<jester-> allora fai un cd e rova da li
+<CappyT> non puoi fare un CD
+<jester-> prova*
+<jester-> CappyT: dvd
+<jester-> su cd non ci sta
+<CappyT> ne ho una 12.04 da cd
+<CappyT> provato anche quella (funziona ovunque) tranne qui
+<jester-> CappyT: cosa hai usato per fare la usb da winz
+<CappyT> 2 programmi
+<CappyT> la prima volta
+<CappyT> unetbootin
+<jester-> !usbwin
+<ubot-it> Scarica PenDriveLinux (http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/) | Installalo su Windows e lancialo: lui si occuperà di trasferire l'immagine ISO su USB | Opzionalmente questo programma può anche scaricare lui stesso l'immagine ISO | Attenzione: il programma è in inglese
+<CappyT> la seconda universal usb installer
+<jester-> è il migliore
+<CappyT> appunto
+<CappyT> ho usato quello
+<CappyT> la seconda volta
+<jester-> CappyT: sa di usb con errori
+<jester-> o hai un pc non linux digeribile
+<CappyT> a me sa di HDD con errori...
+<CappyT> =/
+<CappyT> perché prova su sda, sdb, sdc
+<jester-> fai uno scandisk di tutto
+<CappyT> già fatto
+<CappyT> anche un check dei bad blocks
+<jester-> o stacca gli hd uno per volta
+<CappyT> ma il pc è nuovo, quindi ha trovato 0 errori
+<CappyT> ne ho 1 solo di HDD
+<jester-> sda, sdb, sdc  sono 3
+<CappyT> lo so
+<CappyT> lui li cerca
+<CappyT> ma ovviamente
+<CappyT> non esistono
+<jester-> CappyT: tipo di pc?
+<CappyT> fisso
+<jester-> e cpu
+<CappyT> i3 540
+<jester-> prova una 32 bit
+<CappyT> ok
+<CappyT> provo
+<jester-> CappyT: o lubuntu alternate
+<CappyT> lubuntu non è per i lightweight/old pc?
+<jester-> se va su poi installi ubuntu-desktop o kubuntu
+<jester-> si ma è l'unica che passa ancora cd alternate
+<CappyT> prima provo saucy, perché ho usatto natty e raring prima
+<jester-> o dovresti usare la server e poi aggiungere la grafica
+<CappyT> beh, so come fare, il problema è che penso non riuscirà a bootare
+<CappyT> cmq provo una x32
+<CappyT> 13.10
+<jester-> dal video il boot lo faceva
+<jester-> poisi incrocchiava
+<CappyT> si, ma si inchioda alla scrittura della cache
+<jester-> a meno che hai un  banco di ram cucco
+<CappyT> testata
+<CappyT> 100% working
+<CappyT> è stata la prima cosa che ho pensato
+<francescof480> ciao a tutti
+<jester-> per testare bisognerebbe togliere un banco e poi l'altro
+<CappyT> ciao =)
+<CappyT> ho fatto un check dal bios, quello lungo
+<jester-> conta na sega
+<CappyT> provo, vediamo
+<CappyT> prima provo una x32
+<jester-> stacca tutte le periferiche eccetto scheda grafica
+<jester-> se persiste togli un bancodi ram
+<jester-> alternativamente che sa di hw ciucco
+<jester-> cena
+<francescof480_> scusate mi è caduta la linea...mi son fermato a "conta na sega" di jaster
+<francescof480_> xD
+<underc0mmand> francescof480_ : http://irclogs.ubuntu.com
+<underc0mmand> c'è il log
+<underc0mmand> :D
+<underc0mmand> ah no è fermo alle 16:02...te lo riporto io
+<francescof480_> grazie :)
+<francescof480_> stavo cercando xD
+<underc0mmand> <jester-> stacca tutte le periferiche eccetto scheda grafica
+<underc0mmand> <jester-> se persiste togli un bancodi ram
+<underc0mmand> <jester-> alternativamente che sa di hw ciucco
+<underc0mmand> <jester-> cena
+<francescof480_> in ogni caso non c'è la risposta alla mia domanda :(
+<underc0mmand> francescof480_ : la domanda non l'hai fatta lol
+<francescof480_> o.O
+<underc0mmand> probabilmente ti è caduta la linea prima di postare
+<francescof480_> eppure mi appariva come inviata
+<francescof480_> comunque
+<francescof480_> chiedevo se qualcuno mi potesse spiegare come ottenere i permessi di root per modificare una cartella su lubuntu
+<underc0mmand> da terminale?
+<underc0mmand> vuoi cambiare i permessi della cartella o cosa?
+<francescof480_> se si può fare perchè no...devo inserire dei file dentro la cartella
+<francescof480_> ma ho bisogno dei permessi di root
+<underc0mmand> sudo mv <i tuoi file> <path_cartella>
+<francescof480_> al posto di i tuoi file metto la posizione?
+<underc0mmand> ti chiederà la tua password
+<francescof480_> o devo passarli ad uno ad uno?
+<underc0mmand> puoi fare semplicemente una lista
+<CappyT> se vuoi farlo selettivamente, uno ad uno
+<underc0mmand> separata da spazi
+<CappyT> oppure esatto
+<underc0mmand> ma devi lanciare il comando
+<CappyT> una lista
+<underc0mmand> dalla cartella di lavoro
+<francescof480_> na robetta leggermente più semplice non c'è?
+<francescof480_> speravo in qualcosa tipo
+<underc0mmand> di quella directory
+<CappyT> fai così
+<francescof480_> click destro sulla cartella
+<francescof480_> "apri come root"
+<CappyT> terminale
+<francescof480_> xD
+<CappyT> sudo nautilus
+<CappyT> (se usi nautilus)
+<CappyT> e da quella finestra prendi i file
+<CappyT> li tagli
+<CappyT> e li incolli dove ti serve
+<CappyT> sempre dalla stessa finestra però
+<CappyT> ricordatelo
+<francescof480_> allora
+<francescof480_> uso questo
+<francescof480_> PCManFM 0.9.10
+<CappyT> che sarebbe?
+<francescof480_> il file manager
+<francescof480_> scusa l'ignoranza
+<CappyT> non ho idea se si può avviare da terminale
+<CappyT> ma prova
+<CappyT> sudo nomeeseguibile
+<underc0mmand> usi archlinux?
+<francescof480_> no son su lubuntu
+<francescof480_> no non funge :(
+<underc0mmand> ah ok
+<underc0mmand> francescof480_ : seguimi un attimo
+<francescof480_> ok
+<underc0mmand> e ti faccio fare tutto
+<underc0mmand> apri il terminale
+<francescof480_> grazie :)
+<francescof480_> fatto
+<underc0mmand> con il comando cd ti sposti nella cartella desiderata dove hai i tuoi file
+<underc0mmand> francescof480_ : sai fare?
+<underc0mmand> o ti spiego
+<francescof480_> fatto
+<underc0mmand> ok
+<underc0mmand> allora
+<underc0mmand> adesso digita sudo mv <lista dei file che vuoi trasferire> <path_assoluto_della_cartella_in_cui_vuoi_trasferirli>
+<underc0mmand> i file devono essere separati da uno spazio
+<francescof480_> i file in realtà son altre cartelle
+<francescof480_> quindi dscrivo il nome della cartella?
+<underc0mmand> allora basta aggiungere al comando mv l'opzione -r
+<underc0mmand> in questo modo
+<underc0mmand> sudo mv -r <tutto il resto come prima>
+<underc0mmand> sisi scrivi il nome della cartella
+<underc0mmand> puoi usare anche il tasto Tab per autocompletare il nome
+<underc0mmand> basta scrivere le prime lettere premi Tab e il nome si autocompleta
+<francescof480_> non ho capito bene cosa intendi per path assoluto
+<underc0mmand> per path assoluto intendo tutto il percorso a partire dalla radice
+<underc0mmand> per esempio: /home/francesco/ecc
+<francescof480_> ok
+<aiuto> raga aiuto
+<underc0mmand> fino a dove si trova la cartella
+<aiuto> per sbaglioho premuto il bottone per scollegare la scheda wirelles come la riattivo??????????
+<underc0mmand> prova a ripremere tale pulsante
+<aiuto> nnt
+<aiuto> nonfunge
+<aiuto> e mezzora che ci provo
+<francescof480_> click destro e poi abilita
+<aiuto> dove?
+<francescof480_> sull'icona del wifi
+<aiuto> gia
+<aiuto> c'è la spunta
+<aiuto> ma nnt
+<underc0mmand> francescof480_ : ci sei riuscito?
+<francescof480_> no, però dammi 5 minuti...voglio provare
+<underc0mmand> ok
+<aiuto> io mando
+<aiuto> dai
+<aiuto> pls
+<aiuto> manco*
+<underc0mmand> aiuto : com'è la lucina del pulsante del wifi?
+<aiuto> rossa
+<aiuto> deve diventare blu
+<francescof480_> mm c0mmand ma quando do cd devo dare l'indirizzo dei file che devo spostare o di quello della cartella in cui devono andare a finire?
+<underc0mmand> franscescof480_ : il comando cd serve semplicemente per spostarti in un'altra directory
+<underc0mmand> se apri il tuo file manager PCManFM
+<underc0mmand> in alto ci sarà pure una casella dove compare tutto il percorso
+<aiuto> per il mio problema?
+<underc0mmand> aiuto : il mio netbook a volte per far partire il wifi devo premere varie volte di seguito il pulsante altrimenti non si attiva
+<underc0mmand> prova così
+<underc0mmand> altrimenti aspetta qualcuno che sappia risolvere il tuo problema
+<francescof480_> si il problema non  è il eprcorso
+<francescof480_> sto provando am mi da sempre "bash: errore di sintassi vicino al token non atteso "<""
+<underc0mmand> no ma il <
+<underc0mmand> non ci va eh
+<francescof480_> -.-"
+<francescof480_> l'ignoranza è il male del mondo xD
+<underc0mmand> lol non ti preoccupare...nessuno nasce imparato
+<underc0mmand> anche questo > non ci va eh
+<aiuto_> ?
+<francescof480_> mv: opzione non valida -- "r"
+<aiuto_> per ilmio problema?
+<francescof480_> @aiuto hai provato a riavviare?
+<aiuto_> 4volte
+<aiuto_> facendo
+<aiuto_> anche rebbot
+<underc0mmand> allora scusa francescof480_ prova senza -r
+<aiuto_> ??
+<jester-> aiuto_: cu fu
+<aiuto_> a fare?
+<francescof480_> cafù xD
+<aiuto_> jester di dove sei?
+<francescof480_> mah...l'accento sembra nord africano xD
+<aiuto_> secondo me siciliano
+<jester-> aiuto_: lombaddo
+<francescof480_> xD
+<francescof480_> ahahhahahah
+<aiuto_> xD
+<aiuto_> jester
+<aiuto_> come posso risovere
+<filippo> Salve a tutti, ho un laptop che è molto lento pur non essendo vecchissimo. Non so come controllare quale sia il problema per capire se devo tenermelo così ho si può fare qualcosa. Potete aiutarmi a fare qualche controllo?
+<jester-> aiuto_: uorra uorra arrivai e non vidi il problema
+<aiuto_> alluora
+<aiuto_> sto cazz di scheda internet è u problem
+<jester-> filippo: che distro hai installato
+<jester-> aiuto_: scheda wifi intendesti?
+<aiuto_> l'ho staccata per sbaglio clicando u buttune e ora non si accende
+<aiuto_> si
+<jester-> aiuto_: apri un terminale
+<aiuto_> fatto
+<aiuto_> poi
+<aiuto_> ?
+<jester-> aiuto_: rfkill list
+<aiuto_> fatto
+<aiuto_> poi
+<aiuto_> ?
+<jester-> che dice
+<aiuto_> nnt
+<aiuto_> mi spunta
+<jester-> c'è qualche si?
+<filippo> jester-, la 12.10 a 32 bit
+<aiuto_> di scrivere qualcosa
+<aiuto_> si???
+<jester-> aiuto_: sudo rfkill unblock all
+<aiuto_> ok
+<aiuto_> adesso
+<aiuto_> ?
+<jester-> filippo: ubuntu normale?
+<filippo> si
+<jester-> aiuto_: adesso guarda se è ricomparsa
+<aiuto_> mi spunta
+<aiuto_> hp_wmi:....
+<jester-> filippo: se pc vecio dovresti provarfe xubuntu o lubuntu
+<filippo> jester-, dici che è unity vero?
+<Guest96878> vorrei sapere come installare su ubuntu 13 la chiavetta wind x220s
+<jester-> filippo: sudo apt-get install xubuntu-desktop
+<filippo> fino a prima della venuta di unity 3d non mi andava malaccio
+<aiuto_> ????
+<jester-> filippo: poi alla finestra di login clicchi illogo accanto a dove scrivi la pass e scegli xfce
+<Guest96878> si ma io sono un mouse dipendente, per disintossicarmi.... come posso fare?
+<aiuto_> non fare il nerd
+<aiuto_> e sceghi il pc
+<jester-> Guest96878: piu o meno sono tutte riconosciute, se la connetti cosa succede
+<jester-> aiuto_: iwconfig
+<aiuto_> fatto
+<jester-> c'è una wlan0?
+<aiuto_> no
+<aiuto_> io
+<aiuto_> eth0
+<jester-> aiuto_: prima andava?
+<aiuto_> certo
+<filippo> jester-, fatto in questo modo poi sarò in grado di rimuovere il DE standard per poter usare solo xfce o lde ma senza perdere la cartella home?
+<Guest96878> la stampante la riconosce, la mobile temo che non la riconosca, ho provato con il comando lsub, ma non lo riconosce
+<jester-> aiuto_: lspci | grep -i network
+<jester-> Guest96878: se non c'è in lsusb sa di penna morta
+<aiuto_> comandonon trovato
+<jester-> Guest96878: provato a riavviare con la key attaccata?
+<jester-> aiuto_: lspci | grep -i network
+<aiuto_> asp
+<aiuto_> 1 se
+<aiuto_> OK
+<jester-> incolla qui
+<aiuto_> fatto
+<aiuto_> poi
+<aiuto_> ?
+<Guest96878> non è morta perchè la sto utilizzando su windows
+<jester-> incolla qui la risposta
+<aiuto_> seno in un altro pc
+<jester-> aiuto_: trascrivi
+<aiuto_> 06:00.0 network controller: broadcom corporation BCM4312 802.11b/g LP-PHY (rev 10)
+<jester-> aiuto_: hai messo il firmware?
+<jester-> se non c'è non va e non andava
+<aiuto_> che fireware
+<aiuto_> ??
+<jester-> ecco
+<aiuto_> che devo fare?
+<jester-> aiuto_: devi essere connesso a internet col cavo o cellofono
+<aiuto_> e poi
+<aiuto_> ma scs
+<aiuto_> priam
+<aiuto_> andava
+<aiuto_> poi
+<aiuto_> persbaglio
+<aiuto_> ho scollegato
+<aiuto_> ora non và più
+<aiuto_> che faccio?
+<jester-> se  andava andava alla cass
+<aiuto_> ma dai
+<aiuto_> non fare il pirla
+<jester-> !paste > jester-
+<ubot-it> jester-, please see my private message
+<aiuto_> comeaggiusto
+<Guest96878> è sempre stata collegata la chiavetta, ho anche provato con il comando edit network, ma niente
+<jester-> aiuto_: http://paste.ubuntu.com/5878115/
+<jester-> !broadcom | aiuto_ c'è anche la procedura per winz
+<ubot-it> aiuto_ c'è anche la procedura per winz: Dispositivo senza filo Broadcom http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom
+<aiuto_> e cosacambia
+<jester-> Guest96878: se la colleghi la monta come usb dati?
+<jester-> aiuto_: se da collegato a internet fa in un attimo
+<Guest96878> no fa proprio niente non la vede neanche
+<jester-> altrimenti devi fare la procedura da winz
+<aiuto_> ma non posso
+<jester-> Guest96878: il che è strano
+<aiuto_> ilmodem
+<aiuto_> micaè mio
+<aiuto_> haha
+<aiuto_> crack
+<aiuto_> hahaha
+<jester-> aiuto_: ai da winz
+<aiuto_> Ok
+<Guest96878> non conosco winz, posso entrare nel terminale ma non so che comandi dare...guest
+<jester-> Guest96878: winx=windows
+<jester-> Guest96878: se in winz funza
+<Guest96878> ma allora lsub cosa fa
+<jester-> quantomeno ubuntu la dovrebbe montare come dati
+<jester-> Guest96878: vede le prifiriche connesse alle usb
+<Guest96878> no non la vede ho anche provato ad inserirla al posto della stampante, ma non la vede
+<jester-> che funzino o no. Guest96878 prova con la live della 13.04 che sa di os scombinato
+<Ab3L> Guest96878: comunque è lsusb, non lsub
+<Guest96878> si lsub, ma mi dice che è contenuto in qualche altro pacchetto
+<jester-> Guest96878: che ubuntu usi
+<jester-> Guest96878: lsusb
+<Guest96878> ubuntu 12.10
+<jester-> zompi una s
+<aiuto_> tutto risolto
+<aiuto_> senza
+<aiuto_> eseguire
+<aiuto_> la guida
+<Ab3L> aiuto_: mo ci dici come hai fatto!
+<jester-> Guest96878: prova la live 23.04 che è un paio di kernel piu avanti
+<Guest96878> si lsub
+<aiuto_> mhmmm
+<aiuto_> nhs
+<jester-> 13,04
+<aiuto_> nha
+<aiuto_> xD
+<aiuto_> scherzo
+<aiuto_> dopo
+<aiuto_> che quel pirla di jekester mi ha fatto mettere i comandi ho fatto un reboot
+<aiuto_> :D
+<aiuto_> jake
+<aiuto_> ci sei?
+<aiuto_> jesteR*
+<aiuto_> ci sei
+<aiuto_> ^
+<aiuto_> ?
+<jester-> gli happytroll ancora operanoa quantopare
+<aiuto_> ???
+<aiuto_> aaahaha
+<francescof480_> xD
+<aiuto_> fanculizzati
+<aiuto_> hai skype?
+<aiuto_> jake
+<aiuto_> ?
+<francescof480_> ahahahhaahah
+<Ab3L> lol
+<francescof480_> troppa gente strana in giro
+<jester-> oggi è giornata
+<aiuto> jake
+<aiuto> ci sei
+<jester-> invece diandare a faiga girano a tgrollare
+<aiuto> ?
+<Ab3L> e per di più loggato ad eternum
+<aiuto> jake hai skype?
+<Guest96878> adesso provo a installare la versione 13.4 e poi provo la chiavetta ma temo che non funzioni
+<jester-> Guest96878: da live vedi subito
+<Guest96878> cosa è live?
+<jester-> sela vedee compare la connessione nell'icona di rete
+<Guest96878> non compare nessuna connessione
+<jester-> Guest96878: prova ubuntu senza installare
+<Guest96878> ho gia provato a metterla in diverse entrate ma niente
+<aiuto> jester ci sei?
+<underc0mmand> lol
+<underc0mmand> ero a cena...mi sono perso qualcosa? :D
+<lo0p> ciao sto raccogliendo donazioni per fabbricare una testata nucleare e lanciarla su casa di Bill Gates, se qualcuno vuole donare è ben venuto
+<codicealpha> si ma le priorità sono Roma, parlamento
+<lo0p> per ora son a 5 dollari che mi ha donato mia nonna dopo che ha cliccato su un exe e un maniaco ha iniziato a minacciarla sessualmente
+<codicealpha> prima il lavoro, poi il divertimento
+<codicealpha> sicuro che non è il contrario?
+<a7x> !chat | lo0p, codicealpha
+<ubot-it> lo0p, codicealpha: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<lo0p> uff
+<a7x> jester-, +bb
+<sad58> non ne vengo fuori
+<sad58> dove sbaglio?
+<sad58> salve a tutti
+<lo0p> ciao
+<a7x> !chiedi | sad58
+<ubot-it> sad58: per cortesia non chiedere il permesso di chiedere, semplicemente formula la domanda (tutta su  una riga, in modo tale che gli altri possano leggerla e seguirla con facilità). Se qualcuno conosce la risposta ti risponderà :-)
+<a7x> ubot-it, ci sei andato vicino.
+<ubot-it> Error: I am only a bot, please don't think I'm intelligent :)
+<lo0p> ma cosa succede sad
+<sad58> sono 4 giorni che tento di istallare ubuntu 12.04.2 lts su un desktop vecchiotto, la volta che mi è andata meglio si è bloccato tutto a circa 80% di copia file
+<lo0p> magari si è sgarrato il file mentre lo scaricavi o si è sgarrato l'hard disk
+<jester-> sad58: sa di live con erori
+<sad58> ho controllato il file iso, l'ho masterizzato a 10x
+<jester-> sad58: controllato md5sum delle iso?
+<jester-> usato dvd rw?
+<jester-> sad58: capacità partizione?
+<sad58> 25 giga
+<sad58> non rw
+<jester-> sum corretto?
+<sad58> sum?
+<jester-> !md5sun | sad58
+<ubot-it> Voce non trovata: 'md5sun'
+<jester-> !md5sum | sad58
+<ubot-it> sad58: http://wiki.ubuntu-it.org/Md5Sum
+<sad58> ah si md5sun corretto
+<sad58> ho fatto il test
+<jester-> erimasfterizza a bassa velocita
+<jester-> x 4
+<sad58> non ce la fò, il masterizzatore non scende di 10x
+<jester-> e fai un fdisk -c alla partizione
+<sad58> ho formattato 5 volte
+<jester-> puo darsi che il disco abbia settori danneggiati
+<lo0p> rimasterizza l'iso
+<sad58> può darsi, il  pc è vecchiotto, cecavo proprio di ridargli smalto con ubuntu
+<jester-> sad58: lubuntu
+<sad58> ho masterizzato 3 volte l'iso
+<sad58> lubuntu?
+<ric_> Ragazzi, qual'è la differenza fra Ubuntu LTS e Ubuntu LTS (versione della comunità)? Così scarico
+<sad58> ah l'ultima versione che ho provato è lts (versione della comunità)
+<jester-> sad58: lubuntu è pc vecchi sul decrepito
+<sad58> lo trovo nel portale?
+<jester-> os è sempre lo stesso cambia grafica
+<jester-> si nelle derivate
+<jester-> !lubuntu
+<ubot-it> https://wiki.ubuntu.com/Lubuntu
+<lo0p> unity usa compiz che è osceno per i pc vecchi o.o
+<sad58> ok grassie proverò con lubuntu, poi vi faccio sapere. ciao
+<jester-> bye
+<Claudiese> Sera
+<Claudiese> Scs dovrei entrare
+<Claudiese> nel mio dedicato da remoto come faccio su ubuntu?
+<jester-> Claudiese: ???
+<Claudiese> devo entrare in un pc da remoto come faccio?
+<vlt> Claudiese: ssh
+<Claudiese> no
+<filo1234> pc di che
+<vlt> Claudiese: No? LOL
+<Claudiese> in pratica virtual prive server
+<Claudiese> allora
+<filo1234> si ma che OS ha
+<vlt> Claudiese: ssh
+<Claudiese> su winz c'è connessione desktop remote
+<Claudiese> none
+<Claudiese> ssh posso solo mettere
+<Claudiese> codici
+<Claudiese> dovrei entrare
+<Claudiese> in telnet
+<Claudiese> con putty non posso
+<Claudiese> mi dà errore
+<filo1234> Claudiese: rdesktop ip_del_server -uutente -ppassword
+<filo1234> sempre che sia abilitato il desktop remoto..altrimenti spiegati perchè si capisce nulla
+<Claudiese> allora
+<Claudiese> io dal mio datacenter
+<Claudiese> ho abbilitato
+<Claudiese> sia connessione desktop
+<Claudiese> remote
+<Claudiese> e sia trasfermentro file
+<filo1234> si ma il sistema remoto è un windows o che?
+<jester-> Claudiese: os sul data center?
+<Claudiese> windows
+<Claudiese> 2008 server
+<filo1234> allora dai il comando che ti ho detto io sopra
+<Claudiese> Ok
+<Claudiese> asp
+<Claudiese> provo
+<filo1234> da ubuntu
+<jester-> se da winz non sacciamo
+<Claudiese> non funge
+<filo1234> ?
+<Claudiese> non funziona
+<Claudiese> il tuo comando
+<vlt> Claudiese: Che signifia “non funziona”? Quale errore?
+<Claudiese> mi dà errore il comando di filo
+<lo0p> ma rdesktop supporta pure il server x11?
+<Claudiese> credo di si
+<Claudiese> non posso far funzionare connessione desktop remote per ubuntu
+<Claudiese> ?
+<jester-> su winz hai il protocollo
+<jester-> vnc
+<jester-> mi pare
+<jester-> e pure su ubuntu lo devi avere
+<jester-> o vai di ssh
+<filo1234> Claudiese: che errore ti da
+<Claudiese> asp
+<Claudiese> come
+<Claudiese> faccio
+<Claudiese> a copiare
+<Claudiese> il codice
+<Claudiese> ?
+<filo1234> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<filo1234> lo0p: cosa vuoi dire?
+<Claudiese> asp
+<filo1234> lo0p: vuoi sapere se funge anche tra linux to linux?
+<Claudiese> e come si usa?
+<filo1234> -.-
+<Claudiese> quek
+<Claudiese> link
+<Claudiese> di ubot
+<filo1234> c'è sxcritto
+<filo1234> scritto*
+<Claudiese> il programma rdesktop non è installato...
+<filo1234> hem
+<Claudiese> ho provato a fare telnet eip
+<filo1234> instalalo
+<Claudiese> nnt
+<Claudiese> gia fatto
+<filo1234> installalo
+<Claudiese> sempre mi dice di installare
+<filo1234> -.-
+<filo1234> a parte che se on sbaglio rdesktop è installato di default
+<Claudiese> e mi dice di installarlo
+<vlt> o_O
+<jester-> è installato di serie
+<jester-> se ubuntu è
+<Claudiese> si è ubunto
+<Claudiese> si è ubuntu
+<Claudiese> ma mi dice di installare
+<Claudiese> lo installo
+<Claudiese> e mi dice di installare
+<Claudiese> sempre
+<vlt> Claudiese: sudo apt-get install rdesktop
+<Claudiese> -_-
+<Claudiese> sta facendo
+<Claudiese> mentre aspettiamo mi date una guida
+<jester-> c'è anche la gui gnome grdesktop
+<Claudiese> dove posso inparare
+<Claudiese> comandi
+<Claudiese> ?
+<jester-> !comandi
+<ubot-it> trovi i comandi base su http://wiki.ubuntu-it.org/AmministrazioneSistema/ComandiBase - Gestione di File e Directory: http://wiki.ubuntu-it.org/AmministrazioneSistema/ComandiBase#gestionefiledirectory - Terminale e File Manager: http://wiki.ubuntu-it.org/AmministrazioneSistema/RigaDiComando
+<Claudiese> Ok
+<Claudiese> mi dice errore aprire display
+<jester-> Claudiese: mi da che ti manca qualche protocollo sul remoto
+<jester-> tipo vnc
+<filo1234> Claudiese: ma non lo stari facendo da un'altra sessione ssh o roba simile?
+<filo1234> starai
+<Claudiese> ho provato
+<Claudiese> a fare
+<Claudiese> con putty
+<Claudiese> ma nnt
+<Claudiese> vnc
+<Claudiese> ma poi
+<Claudiese> lo dovrei installare
+<Claudiese> pure li
+<Claudiese> :(
+<filo1234> Claudiese: mi fdai l'ip del server? in pvt se vuoi
+<filo1234> dai
+<Claudiese> hai skype
+<Claudiese> ?
+<filo1234> no
+<Claudiese> -_-
+<filo1234> dammelo in pvt se vuoi che faccio una prova
+<Claudiese> il pvt come si fà
+<Claudiese> ?
+<jester-> Claudiese: clicca destro filo1234
+<jester-> nella listga utonti
+<jester-> o /query filo1234
+<Claudiese> Grz
+<filo1234> Claudiese: io lo apro
+<filo1234> o meglio mi si apre il login
+<Claudiese> cosa?
+<Claudiese> aaa
+<Claudiese> il comando
+<Claudiese> ?
+<filo1234> cosa...la maschera di logon di windows
+<filo1234> -.-
+<filo1234> rdesktop ip....
+<Claudiese> e lo faccio
+<Claudiese> e mi da errore
+<filo1234> e che errore
+<filo1234> e 15
+<Claudiese> asp
+<filo1234> Claudiese: mi dici da dove stai lanciando il comando che ti ho dato?
+<Claudiese> da terminale
+<Claudiese> giusto
+<Claudiese> oppure ho sbagliato
+<Claudiese> ?
+<filo1234> ok dimmi l'errore allora
+<filo1234> no è giusto
+<Claudiese> Ok
+<filo1234> Claudiese: da terminale io intendo una shell non una sessione tty...
+<filo1234> Claudiese: gnome-terminal o quello che è
+<Claudiese> come lo apro
+<filo1234> tu come stai aprendo il terminale?
+<Claudiese> autoselected map it..   ERROR: failed to open display;
+<Claudiese> con
+<filo1234> allora non sei in grafica
+<Claudiese> ctrl + alt + f1
+<filo1234> ecco
+<filo1234> appunto come volevasi dimostrare
+<filo1234> 21:19 < filo1234> Claudiese: da terminale io intendo una shell non una sessione tty...
+<Claudiese> scs ma oggi l'ho installato ubuntu
+<Claudiese> per insegnarmi
+<filo1234> Claudiese: dalla grafica apri un terminale
+<filo1234> si pe rimpararti
+<filo1234> premi ctrl+alt+t
+<Claudiese> risolto
+<Claudiese> Grazie
+<filo1234> ok
+<Claudiese> :D
+<Claudiese> peccato che non c'è il bottone Grazie
+<Claudiese> xD
+<filo1234> c'è visualizzatore scrivanie remote
+<filo1234> volendo
+<filo1234> cerca
+<Claudiese> dove'
+<Claudiese> ?
+<filo1234> tra le applicazioni
+<filo1234> detto anche vinagre
+<Claudiese> a sinistra
+<Claudiese> ?
+<filo1234> devo andare
+<filo1234> ciao
+<Claudiese> Ok
+<Claudiese> Ciao
+<Claudiese> Grz
+<Claudiese> :D
+<jester-> clicca il logo in cima alla barra di ciofeca unity
+<Claudiese> Ok
+<Claudiese> poii?
+<Claudiese> He4d ci sei?
+<jester-> scrivi vinagre nelle ricerca
+<Claudiese> Ok
+<ric_> Ragazzi, qual'è la differenza fra Ubuntu LTS e Ubuntu LTS (versione della comunità)? Così scarico...
+<Claudiese> scaricatene 1
+<jester-> !rilasci
+<ubot-it> Scalette di rilascio: http://wiki.ubuntu-it.org/Rilasci | Cicli di vita delle versioni: http://www.ubuntu-it.org/index.php?page=Rilascio_nuove_versioni
+<jester-> e sono le ufficiali
+<Claudiese> xD
+<Claudiese> ! rilasci
+<Claudiese> !rilasci
+<ubot-it> Scalette di rilascio: http://wiki.ubuntu-it.org/Rilasci | Cicli di vita delle versioni: http://www.ubuntu-it.org/index.php?page=Rilascio_nuove_versioni
+<Claudiese> ahaha
+<Claudiese> figo
+<Claudiese> !guide
+<ubot-it> Voce non trovata: 'guide'
+<Claudiese> fanculizzati
+<Claudiese> !root
+<ubot-it> root è disabilitato di default su ubuntu,  usa sudo per eseguire i comandi testuali con i permessi di root http://wiki.ubuntu-it.org/AmministrazioneSistema/Sudo - per i programmi con interfaccia grafica usa gksudo o kdesudo
+<Claudiese> jester
+<a7x> !invio | Claudiese
+<ubot-it> Claudiese: non spezzettare una frase su piu' righe. Non utilizzare il ritorno a capo come punteggiatura.
+<a7x> !tizio | Claudiese
+<ubot-it> Claudiese: non porre le tue domande a qualcuno in particolare, rivolgiti al canale. Non usare forme del tipo "Tizio, mi sai dire.."/"Tizio, posso?"
+<ric_> Ragazzi, quando vado a scaricare la versione della comunità di Ubuntu, mi dice: 404 Not found
+<ric_> Avete cambiato posizione al file sul server?
+<jester-> ric_: http://releases.ubuntu.com/precise/
+<jester-> altri link non sono ufficiaaali
+<ric_> @jester: Questa "alternate" è la versione stabile "della comunità"? ubuntu-12.04.2-alternate-amd64.iso.torrent
+<ric_> Mi sa che ho trovato questa pagina qui: http://wiki.ubuntu-it.org/CdItaliano/CondividereUbuntu
+<jester-> ric_: torrent o diretto quello è link ufficiale
+<ric_> No, perchè quello che tu mi avevi passato era il precise e basta, che poi ho trovato anche come torrent. Quello che invece avevo postato io era segnato come "alternate"
+<ric_> Niente il torrent non và, non ci sono "seeds o peers", sembra un file morto
+<mibofra> ric_, la alternate era un modo alternativo d'installazione di ubuntu, ma orma siccome tutte le funzioni stanno sul dvd principale è stata dismessa
+<ric_> ah
+<ric_> Non riesco a trovare un file torrent per scaricare la versione LTS in italiano
+<jester-> ric_: scarica diretto
+<jester-> che ti frega del torrent
+<ric_> ok, è che facevo prima
+<jester-> ma va
+<ric_> :P
+<mibofra> ric_, beh tutti però dovrebbero impegnarsi a mantenere in send il torrent xD
+<ric_> E' che ho scaricato col torrent Xubuntu in pochissimi minuti
+<ric_> quindi mi ero abituato :D
+<jester-> anche il torrent non ti v apiu che quello la banda passa
+<ric_> Come faccio ad aprire un altro canale della chat, senza avere due finestre aperte?
+<jester-> ric_: /join #sticass
+<ric_> ahhhhhhh, grazie! :D
+<lusy> ciao
+<lusy> qualcuno sa come aggiungere la data sulla barra superiore vicino all'ora in gnome ??
+<ugone> lusy, in gnome cosa? se è fallback ti basta far alt+click destro sulla barra in alto e poi aggiungerlo
+<lusy> ugone,  ciao, io ho sulla barra sopra l'ora, ma vorrei aggiungere anche la data usi ubuntu 12.04 con ambiente desktop gnome
+<ugone> ma ora sei con unity, gnome shell o cosa?
+<ugone> http://help.ubuntu-it.org/12.04/desktop/clock-more-info.html
+<lusy> gnome-shell
+<Perfinstals> sera... qualcuno si ricorda come si divideva la visuale tra due cartelle in nautilus ?o è stata tolta la possibilita
+<Perfinstals> Premetto che non intendo schede ma che si divide la visuale di una finestra in due cartelle con quindi due barre percorsi
+<ugone> Perfinstals, dovrebbe esser con f3
+<Perfinstals> Ugo mi sa che hanno cambiato il nome in File e anche le opzioni ( mi sa che è un folk ) e non c'è più quella funzione ,almeno con f3
+<Perfinstals> ora si spostano ai lati le diverse finestre probabilmente
+<Perfinstals> che prendono metà shermo ed è sembrato inutile
+<Perfinstals> grazie
+<Alex_Zion> Perfinstals: non conosco nautilus ma in KDE dolphin fa esattamente quello che dici e con il tasto F3 , non è che magari le confondi !?!
+<Perfinstals> no una volta aveva qualche funzione in più è si chiamava Nautilus nelle informazione file mentre mo si chiama File ... comunque se per questo con koqueror ne dividevi nell'inverosimile
+<Perfinstals> prima di Dolphin c'era koqueror se non erro
+<gegheo> ciao a tutti
+<Perfinstals> ciao
+<gegheo> ragazzi avrei bisogno di una guida abbastanza dettagliata su come creare una rete domestica con il seguente schema vari pc ----> server con vpn ----> router ----> internet
+<gegheo> qualcuno saprebbe aiutarmi?
+<gegheo> ciao Perfinstals
+<Perfinstals> io non so aiutarti... forse nel wiki se qua nessuno lo sà
+<gegheo> ok grazie comunque :D
+<Perfinstals> http://wiki.ubuntu-it.org/Server/Samba forse questo gegheo
+<gegheo> no quello è per la condivisione di file
+<gegheo> grazie :)
+<LepreCornuta> ho un problema
+<LepreCornuta> http://forum.ubuntu-it.org/viewtopic.php?f=30&t=561922
+<a7x> LepreCornuta, bella la germania?
+<a7x> LepreCornuta, comunque premi ctrl+alt+f1 e vedi se ti entra nella tty
+<a7x> /dns 79.235.96.91
+<a7x> sei effettivamente in germania.
+<LepreCornuta> mah, non ü un granche.....comunque non riesco ad entrare in tty
+<LepreCornuta> se premo ctrl alt f1 mi esce kvm disabled bz bios
+<LepreCornuta> ora kvm disabled ü sparito ed ü tutto nero
+<LepreCornuta> ok.....ora sono riuscito ad entrare in tty
+<LepreCornuta> e sono loggato in tty
+<cri> ciao
+<LepreCornuta> va bhe...io esco....domani torno a casa quindi quando torno vedo di sistemare....stanotte resterö senya pc.....qui se paga per internet....
+<a7x> LepreCornuta notte, prova domani
+<sad58> buonasera, sto istallando lubuntu 13.04, mi si è fermato alla fase: Esecuzione di <<update-grub>> , posso venirne fuori o mi tocca ripartire da zero?
+<sad58> ero contento perchè finalmente era andato tutto bene nella fase di copia dei files, e invece.....
+<sad58> c'è nessuno??
+<cri> sad58, ciao
+<sad58> qualche consiglio?
+<cri> sad58, con quale supporto stavi installando
+<sad58> da cd
+<cri> da cd?
+<sad58> si, ho capito male?
+<cri> se non erro le ultime versione sono quasi 900mb
+<cri> come hai fatto a masterizzare il cd che e da 700mb o-O
+<sad58> c'è stato
+<sad58> è LUBUBTU
+<sad58> non ubuntu
+<cri> rapido controllo
+<cri> Lubuntu 13.04
+<sad58> allora, ho cliccato sulla barra e si è aperta una finestrella
+<sad58> dice: Buffer I/O error on device sda, logical block 1
+<sad58> e sulla seconda riga: ata1: EH complete
+<cri> il cd lo hai masterizzato da windows?
+<sad58> e sulla seconda riga sembra si possa scrivere
+<sad58> si da windows
+<cri> quale windows
+<sad58> seven
+<cri> confermo quello da te scritto so 693 mb
+<cri> velocita masterizzazione
+<sad58> non mi ha lasciato scegliere, 24x
+<sad58> ma le fasi da cd sono andate tutte bene
+<sad58> si è bloccato nella fase di configurazione
+<cri> mmm...
+<cri> io userei penna usb
+<cri> comunque su che macchina lo vuoi installare
+<sad58> è una macchina vecchiotta
+<cri> provato prima a vedere se girabene in live
+<sad58> perciò avevo scelto lubuntu
+<sad58> no
+<cri> prima prova
+<cri> cosi vedi anche se c'e qualche errore disco
+<sad58> ma come faccio a venirne fuori, rebootto da hardware?
+<cri> si
+<cri> poi cambi il boot di avvio e selezioni avvia da cd rom
+<sad58> si ma volevo evitare di rifare tutto se possibile
+<sad58> ok grazie
+<sad58> proverò domani
+<sad58> buonanotte
+<cri> notte
+<Lo0p> ess missa che mi metto a fare ubuntu from scratch cioe linux from scratch nn so cosa fare
+<a7x> !chat | Lo0p
+<ubot-it> Lo0p: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<Lo0p> a7x ciao
+<Lo0p> manco saluta...

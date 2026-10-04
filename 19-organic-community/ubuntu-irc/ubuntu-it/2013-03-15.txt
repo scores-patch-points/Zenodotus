@@ -1,0 +1,1064 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2013-3-15"
+lang: "it"
+messages: "1055"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<krabador> enzotib ?
+<krabador> OverMe ?
+<ciupercio> ciao
+<laura___> aiutatemi  per  favore
+<laura___> aiutatemi  per  favore
+<laura___> sincronismo errato 35,5 khz 43hz PP  non  posso  istallare  ubuntu
+<laura___> potete  dirmi  s e posso  fare  qualkosa????
+<akis24> giorno
+<laura___> aitatemi  please
+<laura___> ho  problemi  x  istalla ubu 12.04  su  pc
+<laura___> ki  mi aiuta  per  il  partizionamento?
+<cristian_c> !nokappa | laura___
+<ubot-it> laura___: www.nokappa.it
+<laura___> puoi  aiytarmi a   istallare  12.o4?
+<cristian_c> laura___, hai letto il wiki?
+<cristian_c> laura___, hai provato prima ubuntu in live?
+<laura___> non  so  cosa  sia
+<cristian_c> lol
+<cristian_c> laura___, http://it.wikipedia.org/wiki/Live_CD
+<laura___> troppocomplicato  pe r me
+<cristian_c> laura___, in che senso?
+<laura___> mi  pianto  sulla  partizione
+<cristian_c> laura___, hai provato prima ubuntu in live?
+<laura___> non  riesco  ad a andare  avanti  perche  lo  spazio  e  di  solo  8m
+<cristian_c> laura___, hai provato prima ubuntu in live?
+<laura___> ho  provato  allaciandolo a lla  rete  ma  non  me  la  riconosce    fors e troppo  lenta
+<laura___> ke  afccio?
+<cristian_c> -,-
+<cristian_c> laura___, magari provare prima ubuntu in live?
+<cristian_c> :D
+<laura___> non  ho  mai  usato  ubuntu
+<cristian_c> laura___, fallo
+<cristian_c> laura___, fai partire il cd con la live
+<cristian_c> lol
+<billionaire> hi all , how i can tell in Itallian "what other people think about you?"
+<cristian_c> !english | billionaire
+<ubot-it> billionaire: Please join the international channel #ubuntu if you want to speak english. Here only italian language is permitted. Thank you
+<billionaire> cristian_c i know but i need some translation help
+<billionaire> that's why i am here
+<cristian_c> billionaire, it's the wrong channel
+<billionaire> cristian_c i just need little help
+<billionaire> that's all  , but
+<cristian_c> billionaire, 'cosa pensa la gente di te'
+<cristian_c> *cosa pensano le altre persne di te
+<cristian_c> *persone
+<billionaire> it's a site slogan
+<cristian_c> billionaire, see above
+<billionaire> cosa pensano le altre persone di te
+<cristian_c> ok
+<billionaire> how about that?
+<cristian_c> "what other people think about you?"
+<krabador> in ubuntu 12.10 ho questa  http://paste.ubuntu.com/5616282/ che non ne vuole sapere di farsi sentire
+<krabador> è completamente muta, nonostante sembra essere tutto a posto con la configurazione
+<enneaemme> buongiorno
+<Guest38853> Ciao! Sono da poco passato a Ubuntu 12.04 da Win XP e il segnale WiFi è nettamente inferiore da quando ero a Windows, ma la postazione di lavoro è sempre quella! Cosa posso fare?
+<matti-007> Apri un terminale digita jockey-gtk
+<Guest38853> "nessun driver proprietario è in uso su questo sistema"
+<matti-007> vedi se ci sono driver che puoi installare nel riquadro in alto
+<Guest38853> no, non ce ne sono
+<Blacklist> Guest38853:  ma la antenna wifi la vede ?
+<matti-007> hai installato connesso a internet?
+<matti-007> se funziona dovrà pu vederla?
+<Guest38853> cioè?
+<matti-007> hai installato connesso a internet?
+<Guest38853> ah si, ma sempre con un segnale scarsissimo
+<krabador> Guest38853, al di là del segnalino del coefficiente di segnale, noti una lentezza maggiore che su win?
+<Blacklist> Guest38853:  allora apri il terminale e digita sudo gedit /etc/sysctl.conf
+<Guest38853> sì si nota, non eccessiva, ma c'è
+<Guest38853> ok fatto
+<Blacklist> poi  nel file di configurazzione aggiungi  questo
+<Blacklist> net.ipv4.tcp_syncookies = 1
+<Blacklist> net.ipv4.tcp_window_scaling = 0
+<Blacklist> net.ipv4.tcp_ecn = 0
+<Blacklist> e salva il tutto
+<Guest38853> si aggiunge in fondo?
+<matti-007> Posta lspci -k
+<Blacklist> si Guest38853 in fondo
+<Blacklist> ora sempre da terminale digitiamo:
+<Blacklist> sudo /etc/init.d/networking restart
+<Blacklist> e anche sudo iwconfig wlan0 rate 54M
+<Guest38853> fatto
+<Blacklist> e alla fine riavvia il segnale dovrebbe essere migliore adesso
+<Guest38853> ok provo
+<matti-007> ao
+<matti-007> https://www.google.it/search?client=ubuntu&channel=fs&q=ubuntu+wifi+debole&ie=utf-8&oe=utf-8&redir_esc=&ei=wCBDUaPpFIjBO77xgegF
+<matti-007> ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+<matti-007> ,,,,
+<gleek> ciao
+<matti-007> ciao
+<gleek> volevo sapere se posso installare ubuntu su il mio pc... ho 512 mb della memoria ram
+<matti-007> ci andrebbe lento
+<gleek> in che senso lento?
+<matti-007> scegline una di queste: http://www.ubuntu-it.org/derivate
+<gleek> e come posso scaricare xubuntu?
+<nicko> problema con installazione ubuntu da usb... durante il defoult scrive invalid kernel image aiuti?
+<gleek> come posso scaricare xubuntu?
+<matti-007> fammi cercare
+<gleek> ok
+<matti-007> cdimage.ubuntu.com/xubuntu/releases/12.04.2/release/xubuntu-12.04.2-desktop-i386.iso
+<matti-007> http://cdimage.ubuntu.com/xubuntu/releases/12.04.2/release/xubuntu-12.04.2-desktop-i386.iso
+<gleek> grazie sei un tesoro :)
+<matti-007> -:)
+<nicko> aiuti per correggere il kernel di ubuntu da file scaricato?grazie
+<matti-007> ha tentato di aggioranre il kernle da un file e adesso hai un pacchetto danneggiato?
+<matti-007> ?
+<nicko> no ho scaricato dal sito ubuntu, passato su chiavetta usb come da indicazioni
+<nicko> e al riavvio da chiavetta mi dice che il kernel non funziona
+<nicko> volevo capire se nel file che ho scaricato si puo correggere il kernel
+<matti-007> come hai messo ubuntu su chiavetta?
+<nicko> con unetbootin
+<matti-007> http://wiki.ubuntu-it.org/Installazione/MD5Sum fai questo test ma ti conviene riscaricare l'immagine
+<nicko> ok ci provo... grazie comunque
+<davyde84> hola gentaglia
+<matti-007> ciao
+<davyde84> sono un xubuntu 12.04 e la mia chiavetta dvb non viene riconosciuta mi pare di aver capito che funzionerebbe con il kernel 3.7 e adesso ho il 3.2 come si aggiorna? si puo? non mi conviene farlo?
+<matti-007> Potresti aggiornare magari usarlo solo quando la devi usare la chiavetta
+<davyde84> matti-007: intendi che non e' proprio consigliabile?
+<matti-007> no credo sia più o meno stabile e ripeto: puoi usarlo solo quando devi usre la chiavetta
+<davyde84> e per aggiornarlo?
+<matti-007> ti faccio installare il 3.8
+<davyde84> okiz
+<davyde84> si fa tramite ppa?
+<matti-007> Prova questa guida: http://www.antonioallegretti.it/?q=it/node/1400
+<matti-007> aspetta!
+<matti-007> prima ti dico come fare n modo di scegliere i kernelall'avvio csi`in caso di problemi ne scegli unol più recente
+<matti-007> Dai: sudo gedit /etc/default/grub
+<davyde84> sisi grub lo so usare
+<matti-007> ok quindi imposta tutto
+<matti-007> e POI segui la guida
+<davyde84> prima imposto grub e poi scarico il deb?
+<davyde84> mi pare sia piu semplice da fare no?
+<matti-007> non è un deb è un tar.gz da compilare
+<davyde84> possiamo optare per un installazione  tramite file di tipo .deb indirizzandosi a questo link,
+<matti-007> a ok forse è meglio quello non lo so...
+<davyde84> che differenza c'e' tra image e image-extra?
+<davyde84> ha tutti i moduli e i driver?
+<matti-007> non lo so però se dice extra...
+<matti-007> è meglio questa
+<matti-007> kernel.ubuntu.com/~kernel-ppa/mainline/v3.8.3-raring/linux-headers-3.8.3-030803-generic_3.8.3-030803.201303141650_i386.deb
+<davyde84> ho la 64bit su
+<matti-007> a
+<davyde84> intanto li scarico poi vedo stasera
+<matti-007> allora questo kernel.ubuntu.com/~kernel-ppa/mainline/v3.8.3-raring/linux-headers-3.8.3-030803-generic_3.8.3-030803.201303141650_amd64.deb
+<matti-007> non ci vuole tanto a dare un sudo dpkg -i e installarlo
+<matti-007> http://www.chimerarevo.com/kernel-linux-3-8-3/
+<matti-007> vedi li ciao a tutti
+<DIEGO16231> CIAO
+<DIEGO16231> come faccio a vedere se ubuntu e' perfettamente aggiornato ????
+<DIEGO16231> devo digitare il comando da  terminale sudo apt upgrade ???
+<akis24> se non lo fosse il gestore aggiornamenti ti segnalerebbe
+<DIEGO16231> akis24:  quindi non devo fare nulla ??  e da un po che non uso ubu
+<akis24> si esatto
+<DIEGO16231> ok grazie akis24
+<akis24> quando ci saranno aggiornamenti si aprira' in auto la segnalazione
+<akis24> prg
+<jester-> sera
+<kyPop> glpiana
+<kyPop> esguire file install.sh in terminale root
+<enzotib> questi so' problemi che si autorisolvono
+<TheMortazz> salve
+<TheMortazz> salve
+<tima_> ho creato un file .ods LibreOffice e non riesco ad aprirlo in excel 2000 come faccio?
+<tima_> c'è nessuno?
+<enzotib> tima_, salvalo come xls
+<jsester-> la guerra dei formati
+<tima_> dove LibreOffice?
+<tima_> scusa in LibreOffice?
+<enzotib> tima_, sì, da LibreOffice puoi salvarlo con nome, e scegli il tipo di file
+<jsester-> poi è compatibile per modo di dire ma office lo apre
+<tima_> provo subito...
+<tima_> enzotib_ semplice efficace grazie mi hai salvato dal primo esperimento...
+<enzotib> tima_, ordinaria amministrazione
+<laura___> aiuto  sono  nuova  di  ubuntu
+<laura___> ki  mi  da una  mano?
+<jsester-> !qualcono | laura___
+<ubot-it> Voce non trovata: 'qualcono'
+<laura___> sto  istallando  xubuntu  12,04
+<jsester-> !qualcuno | laura___
+<ubot-it> laura___: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<enzotib> !kappa | laura___
+<ubot-it> laura___: www.nokappa.it
+<laura___> mika  to  mangiato  scusa
+<jsester-> !return | laura___
+<ubot-it> laura___: non spezzettare una frase su piu' righe. Non utilizzare il ritorno a capo come punteggiatura.
+<enzotib> laura___, qui abbiamo un bot per dire cose che si ripetono di frequente agli utenti, non prendertela
+<jsester-> l'italico è una bella lingua, cerchiamo di conservarla
+<laura___> ok  mi  dice   attenzione che  un file  è corroto  vado  avanto  lostesso  con  l'istallazione?
+<enzotib> laura___, forse devi controllare l'MD5
+<enzotib> !md5 | laura___
+<ubot-it> laura___: http://wiki.ubuntu-it.org/Md5Sum
+<laura___> parla  tricolore
+<jsester-> laura___: de rifare l'installaer controllando md5sum della iso che da msg ubot-it
+<laura___> se  ero  pratica  non  chiedevo  mi  dici   md5  so un  cavolo  cosa  sia
+<jsester-> laura___: leggi la guida wiki che lo sai
+<jsester-> laura___: è un cosdice che se non corrisponde significa che la iso scaricata ha errori
+<jsester-> se corrisponde devi rimasterizzare
+<laura___> dove  posso  rimediare   un  cd   valido?
+<jsester-> laura___: se non corrisponde deviriscaricarla
+<laura___> ue'  ragazzi   io  non  riesco  a tradurvi
+<laura___> dove  rimedio  un  sistema  oerativo  senza  tutte  ste   problematiche?
+<jsester-> laura___: l'errore che rivevi significa che l'installer è farlocco perchè contiene errori
+<laura___> questo  locapito  anke  io  ke  son  tonta
+<laura___> pero'  dove  rimedio  un  cd  distallazione?
+<jsester-> laura___:  vai in edocola magari c'è qualche rivista con una vecchia ubuntu allegata
+<jsester-> laura___: oppure vai in #ubuntu-it-doc e chidi come ordinare il d
+<jsester-> cd
+<laura___> devo  per  forza  metterlo  in  rete  durant e l'istallazione?
+<jester-> laura___: non necessariamente
+<jester-> ma sarebbe utile
+<laura___> dice  che  non  legge  la  ret  che  piza
+<jester-> ???
+<laura___> se  istallo  un  sistem a window   mi  conetto  posso  istallare  ubuntu  dalla  rete?
+<jester-> che centra winz
+<jester-> !installazione | laura___
+<ubot-it> laura___: http://wiki.ubuntu-it.org/Installazione | Per installazione grafica http://wiki.ubuntu-it.org/Installazione/Grafica | Si consiglia la visione della guida ufficiale in inglese http://www.ubuntu.com/desktop/get-ubuntu/download
+<matti-007> se vuoi windows devi fare un dual boot
+<laura___> non  lo voglio era  solo  per   istalalre  senza  cd
+<matti-007> puoi usare una usb
+<jester-> !installazione | laura___
+<ubot-it> laura___: http://wiki.ubuntu-it.org/Installazione | Per installazione grafica http://wiki.ubuntu-it.org/Installazione/Grafica | Si consiglia la visione della guida ufficiale in inglese http://www.ubuntu.com/desktop/get-ubuntu/download
+<matti-007> ok!
+<matti-007> però quando non si è ascoltati ci si arrabbia unpo' in effetti
+<jester-> matti-007: arrivi e tiintrometti senza conoscere il contesto
+<laura___> ok  tolgo  il  disturbo  grazie   atutti
+<matti-007> :-)
+<luca73> ciao
+<matti-007> ciao
+<luca73> qlcn potrebbe darmi una mano..plsss?
+<enzotib> !qualcuno | luca73
+<ubot-it> luca73: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<enzotib> !italiano | luca73
+<ubot-it> luca73: scrivere in maniera corretta facilita la lettura dei messaggi: frasi contenenti abbreviazioni, spesso chiare soltanto a chi le scrive, sono di difficile interpretazione. Ti invitiamo pertanto a non usarle. Vedi http://tinyurl.com/35d9kcn
+<matti-007> il tuo link non funziona
+<luca73> ho formattato e installato la iso su usb ma all' avvio rimane tutto nero...
+<matti-007> ma hai fatto l'installazione?
+<matti-007> sul tuo hd?
+<luca73> ho formattato la chiave con rufus ...e con unetbooin ho messo la iso sulla stessa....poi avvio da usb ...ma non va...-.-....ho provato su 3 pc differenti ma niente da fare...
+<luca73> devo installare da usb...
+<matti-007> http://www.istitutomajorana.it/index.php?option=com_content&task=view&id=1535&Itemid=191
+<jester-> luca73: fatto da winz?
+<luca73> si sto provando da xp
+<luca73> poi dovro metterlo su un winz 8...-.-
+<luca73> adesso provo grz matti-007  :)
+<cabaldus> ho una multifunzione epson xp-205 wifi, non riesco a collegarla in wifi potete aiutarmi? Grazie
+<jester-> luca73: usa questo e falla scaricare dal tool stesso, è ol piu valido http://www.ubuntu.com/download/help/create-a-usb-stick-on-windows
+<jester-> matti-007: non url foreti in assistenza
+<jester-> foresti
+<luca73> grz jester provo anche cosi :)
+<x-fi> saluto a tutti
+<matti-007> ciao
+<x-fi> ciao matti
+<x-fi> raga mi sapete dare qualche lucidazione sulla creative sound blaster x-fi, sto cercando un mixer di controllo tipo l equilizzatore ecc?
+<matti-007> a cosa ti serve?
+<x-fi> per regolarmi a piacere la musica
+<cabaldus> salve sapete dirmi se la epson xp-205 wi-fi può funzionare in WI-Fi con ubunt 12?
+<jester-> cabaldus: da usb la riconosce?
+<cabaldus> si come stampante ma non come scanner
+<x-fi> su winzozo ho un intero software di creative piu banchi  sound ecc
+<matti-007> per scanner hai installato xsane
+<matti-007> ?
+<x-fi> ho letto che hanno rilasciato driver ma solo per dare la possibilita agli sviluppatori linuz
+<jester-> cabaldus: una volta configurata la stampante vi a winz si collega come una qualsiasi wfi e se supportata stampa
+<cabaldus> ok provo poi vi faccio sapere grazie mille
+<jester-> cabaldus: vedi se c'è la tua per il driver scan http://wiki.ubuntu-it.org/Hardware/StampantiScanner/EpsonMulti
+<jester-> matti-007: c'è gia simplescan di serie
+<jester-> ma se non ha il driver si fa le pippe
+<krabador> in ubuntu 12.10 ho questa  http://paste.ubuntu.com/5616282/ che non ne vuole sapere di farsi sentire
+<krabador> è completamente muta, nonostante sembra essere tutto a posto con la configurazione
+<matti-007> a me la mia lexmark funzionava solo con xsane simple scan a peare una cacchiata
+<jester-> !amefunge | matti-007
+<ubot-it> matti-007: un po' di buonsenso... solo perché ne sei capace non vuol dire che dovresti farlo (o consigliarlo ad altri). Pensa prima di agire. "A me funziona" non significa che può andare bene per tutti. L'ultima versione di qualsiasi cosa non sempre è raccomandabile se vuoi un sistema stabile.
+<matti-007> in che senso l'ultima versione
+<matti-007> ?
+<jester-> è una ipotesi
+<matti-007> ?
+<x-fi> allora raga che mi dite?
+<matti-007> se ti serve una semplice meixer va bene anche alsamixer
+<jester-> x-fi: se nessuno dice significa nessuno ha avuto a che fare con il tuo problema
+<x-fi> non  e´un problema
+<jester-> x-fi: installa il driver e vedi che fa
+<matti-007> se ti serve una semplice meixer va bene anche alsamixer
+<jester-> se non ti garba le rimuovi
+<x-fi> quindi posso usare anche un mixer alternativo?
+<x-fi> audacity va bene?
+<x-fi> e gia installato xd
+<jester-> x-fi: di serie c'è alsamixer o il mixer grafico oppure se lo intalli pavucontrol
+<ubo> ciao raga chi mi aiuta
+<matti-007> domanda?
+<jester-> !qualcuno | ubo
+<ubot-it> ubo: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<ubo> ok grazie
+<matti-007> pavucontrol non è un mexier vero è proprio
+<akis24> sera
+<matti-007> per provare asamixer digita alsamixer in un terminale
+<matti-007> ciao
+<ubo> versione OS xubuntu cerco di installare dopo aver scaricatio google crome e mi dice che mancano le seguenti librerie LIBCURL3  XDG-UTLS  non riesco a scaricarle
+<jester-> ubo: cioè?
+<matti-007> Dai sudo apt-get install gdebi
+<x-fi> non c e
+<x-fi> lo installo subito
+<matti-007> apri il deb di chrome con gdebi è lui installa le dipendenze
+<jester-> ubo: sudo apt-get -f  install
+<matti-007> x-fi non dico a te
+<matti-007> ma se non lo ha installato mica gliele installa le dipendenze
+<x-fi> impossibile trovare il pacchetto asamixer
+<jester-> ubo: e cimunque chromium-browser sta nei repo
+<jester-> x-fi: c'è gia lasamixer
+<jester-> digiata alsamixer nel terminale
+<x-fi> sto usando una versione plus 12 10
+<x-fi> clear
+<matti-007> credo sia uguale
+<jester-> se non c'è hai un os fallato
+<x-fi> forse lo hanno tolto
+<jester-> non lo hanno tolto
+<matti-007> Posta il risulultato di:     alsamixer
+<jester-> o hai fatto danni tu o usi u ubuntu tarocco
+<matti-007> ?
+<x-fi> metatroncube@metatroncube-System-Product-Name:~$ asamixer Comando "asamixer" non trovato. Forse si intendeva:  Comando "alsamixer" dal pacchetto "alsa-utils" (main)  Comando "asmixer" dal pacchetto "asmixer" (universe) asamixer: comando non trovato metatroncube@metatroncube-System-Product-Name:~$
+<matti-007> non asamixer alsamixer
+<jester-> x-fi: alsamixer scrivi bene
+<ubo> nulla impossibile scaricare tutti i fail richiesti
+<matti-007> hai provato con gdebi?
+<x-fi> :)
+<jester-> ubo: sudo apt-get install chromium-browser
+<ubo> calma raga io non riesco a seguirvi scusatemi
+<jester-> matti-007: eddai
+<matti-007> ?
+<jester-> ubo: nel terminale sudo apt-get install chromium-browser
+<x-fi> si e´aperto , ma nel terminale
+<matti-007> c'è in grafica ma devi installarlo
+<jester-> x-fi: si è da terminale
+<x-fi> ok allora la imposto da qui
+<x-fi> mio sa che vuole i driver proprietari, che dici?
+<x-fi> ┌──────── Scheda audio ────────┐    │▒▒│     │▒▒│      > │     │▒▒│     │▒▒│     │-  (predefinita)              │    │▒▒│     │▒▒│      > │     │▒▒│     │▒▒│     │0  Creative X-Fi              │    │▒▒│     │▒▒│      > │     │▒▒│     │▒▒│     │   Inserire il nome del device│    │▒�
+<jester-> !paste | ubo
+<ubot-it> ubo: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<matti-007> non si capisce niente posta su http://pastebin.ubuntu.com/
+<x-fi> a ok grazie jester
+<ubo> jaster fatto ma mi restituisce impossibile scaricare alcuni pacchetti
+<matti-007> Posta sudo apt-get update
+<jester-> ubo: sudo apt-get update  e metti la risposta sul pastebin
+<jester-> !paste | ubo
+<ubot-it> ubo: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<x-fi> ok sembra che non ci sono i driver proprietari per il corretto funzionamento della scheda audio, infatti mi da :creative x-fi 20k1 unknown
+<x-fi> questo e il processore
+<matti-007> Da teminale jockey-gtk e vedi se ci sono driver proprietari
+<jester-> x-fi: quindi non è supporta mativamente e serve agginungere il driver, sempre che esista per linux
+<matti-007> Da teminale jockey-gtk e vedi se ci sono driver proprietari
+<x-fi> si c e, lho scaricato dall sito creative era l unico:; XFiDrv_Linux_Public_US_1.00.tar.gz
+<matti-007> Posta il link da dove l'haiu scaricato
+<x-fi> ma non so se e un vero e proprio driver
+<jester-> x-fi: scopatta e leggi file readme e install
+<matti-007> Posta il link da dove l'haiu scaricato
+<x-fi> mi sembra di aver capito che sono dei sorgenti
+<matti-007> vedi se c'è uno script shell e:
+<matti-007> Posta il link da dove l'haiu scaricato
+<x-fi> matti sul sito ufficiale creative
+<ubo> impossibile recuperare http://it.archive.ubuntu.com/ubuntu/dist/maverick  mi sa che centra il repositor
+<jester-> andrà compilato e dovrebbero esserci  le indicazioni
+<x-fi> e l unico per sound blastert x-fi per linux
+<x-fi> aspe lo scompatto
+<jester-> il server it e ciucco da qualche giorno cambia server
+<enzotib> ubo, è dists, non dist
+<matti-007> ubo posta cat /etc/sources.list; ls /etc/apt/sources.list.d
+<enzotib> e comunque maverick non c'è più
+<jester-> ubo: software center-->menu modifica-->sorgenti
+<x-fi> http://paste.ubuntu.com/5617195/
+<jester-> azz è vero è uscita dal supporto
+<x-fi> si si deve compilare
+<matti-007> scompattalo dai cd percorso directory scompattata
+<jester-> x-fi: scompatti nella home entri col terminale nella cartella che si crea e dai make poi sudo make install e poi non cancellare la cartella che per eventualmente rimuovere fai sudo make uninstall
+<ubo> ok poi
+<matti-007> ubo posta cat /etc/sources.list; ls /etc/apt/sources.list.d
+<x-fi> ok jester
+<x-fi> lo faccio
+<matti-007> si
+<jester-> x-fi: lo dovrai fare ad ogni kernel nuovo installato o aggiornato
+<matti-007> perchè?
+<x-fi> ok bene allora, ho appena aggiornato
+<jester-> perchè patcia il kernel e se cambia va rifatto
+<matti-007> a
+<enzotib> b
+<ubo> jester gentilmenti mi puoi dare il nuovo indirizzo del reposytor
+<matti-007> che repository?
+<matti-007> ?
+<jester-> spe
+<goamon> ciao
+<matti-007> ciao goamon
+<goamon> ;)
+<matti-007> hai ancora kde?
+<goamon> si tutto ok
+<goamon> perche?
+<jester-> ubo: http://wiki.ubuntu-it.org/Repository/SourcesList/EOL  ma ti converrebbe installer 12.04 o 12.10
+<matti-007> l'italiano?
+<goamon> dovevo riavviare il pc :)
+<goamon> ora va bene
+<matti-007> ok
+<ubo> scusatemi grazie risolto problema grazie
+<goamon> quando esce la 11.04?
+<matti-007> vorresti dire 13.04
+<goamon> si ;p
+<matti-007> ad aprile
+<goamon> mi basta fare un aggiornamento?
+<matti-007> puoi fare un avanzamento di versione ma è meglio formattare
+<matti-007> http://forum.ubuntu-it.org/viewtopic.php?f=67&t=541737
+<jester-> matti-007: eddai
+<goamon> se formatto poi devo rifare tutto da capo
+<matti-007> non ti capisco?
+<matti-007> be si
+<goamon> sudo apt-get dist-update  non va bene cosi?
+<goamon> upgrate
+<goamon> uprade
+<matti-007> no non funziona più così
+<goamon> buonanotte
+<goamon> ok
+<matti-007> dal gestore aggiornamenti devi sceglierra avanzamento
+<matti-007> Dai software-properties-gtk
+<matti-007> e in un menù scegli segnali nuove versioni per tutte le versioni
+<goamon> ok
+<jester-> goamon: quando esc ti avvisa il gestore
+<goamon> è impostato su qualsiasi versione
+<matti-007> ok
+<jester-> solo lts è bloccata su altra lts
+<goamon> perche mi consigli di non fare l'avanzamento ma formattare?
+<jester-> goamon: perchè no sa quello che dice
+<goamon> non litigate
+<matti-007> perchè si possono incasinare i repository (non è grave) empoi creare molti problemi ecc...
+<matti-007> questo no succede sempre naturalmente ma puo succedere
+<goamon> vabbe provero con l'avanzamento. se va male formattero cmq...
+<goamon> ok
+<goamon> pensavo ci fosse un aggiornamento da cd
+<jester-> goamon: possibile farlo anche da cd. come metti la live ti chiede se aggiornare
+<goamon> ok
+<x-fi> jester guarda un po per favore http://pastebin.ubuntu.com/5617263/
+<krabador> ho bisogno di aiuto con questa http://paste.ubuntu.com/5616313/ , rimane completamente muta.
+<jester-> x-fi: sudo make install
+<goamon> matti con l'avanzamento restero sempre con kde?
+<jester-> goamon: of course
+<goamon> kk
+<matti-007> Prova a dare sudo make e poi sudo make install
+<matti-007> si ti ci reserà ma quella è meglio reinstallarla mi sa
+<x-fi> http://pastebin.ubuntu.com/5617272/
+<goamon> la kde?
+<x-fi> non va
+<goamon> vabbe quando sara mi date una mano voi
+<jester-> x-fi: hai dato make prima?
+<x-fi> si
+<x-fi> mo rifaccio tutto
+<x-fi> aspe
+<matti-007> che problema hai goamon?
+<jester-> x-fi: sudo apt-get insall --reinstall linux-headers-`uname -r`  e poi rifai sudo make install
+<goamon> niente solo sapere come funzionava. mmi hai gia spiegato
+<DarioRomanista> salve, devo porre una domanda riguardo l'installazione di ubuntu, a chi posso chiedere?
+<jester-> !chiedi | DarioRomanista
+<ubot-it> DarioRomanista: per cortesia non chiedere il permesso di chiedere, semplicemente formula la domanda (tutta su  una riga, in modo tale che gli altri possano leggerla e seguirla con facilità). Se qualcuno conosce la risposta ti risponderà :-)
+<matti-007> tu chiedi poi vedremo
+<goamon> ok
+<matti-007> goamon:
+<matti-007> https://docs.google.com/viewer?a=v&q=cache:gh1_FxeVW-kJ:www.vecchiomago.net/index.php%3Fmod%3Dnone_Fdplus%26fdaction%3Ddownload%26url%3Dsections/12_Corso_Docenti/Parte_03/guida_KDE_1.0.pdf+&hl=it&gl=it&pid=bl&srcid=ADGEESjhDtCMvrDEEnEPVb247ZZlkHO_nZuZHetMPIhpp5CN-0Pcvw8x_QOTF3_9QFM4K7l9OWYDPhtIffHwZBEtKHdf-DMwOsecYusGm6-N0DfMb4NgQbrH6BILX7X_EAoUcg-wubgk&sig=AHIEtbRQ4MHwnwNcyM3M0BCWa7BQlOmTgw
+<DarioRomanista> nel momento in cui vado ad installare ubuntu con partizione manuale (premetto di aver letto la wiki, ma non ne parla), faccio le mie partizioni per / e home e swap e a ognuna assegno la destinazione.. ma il grub dove devo metterlo?
+<DarioRomanista> preciso che si tratta di un installazione in dual boot con win7
+<matti-007> in /dev/sda
+<jester-> DarioRomanista: di defualt è sda e non cambiare
+<DarioRomanista> ma è una regola generale?? o cambia da pc a pc?
+<x-fi> niente jester non va
+<jester-> DarioRomanista: no se il pc ha piu ci un hd scegli su quale intallarlo ma poi tale disco deve partire al boot
+<jester-> x-fi: sudo apt-get insall --reinstall linux-headers-`uname -r`  fatto?
+<matti-007> x-fi hai dato i coamndi che ti ho detto?
+<x-fi> si ma non succede niente
+<jester-> DarioRomanista: siccome 90% parte sempre il primo lascia sda
+<matti-007> Posta il risultato
+<DarioRomanista> nono ha un unico hd, e c'è già w7.. io da w7 riduco un spazio non allocato che uso per / home e swap.. quindi dev7sda va bene?
+<jester-> x-fi: dovrebbe scaricare e reinstallare gli headers del kernel
+<jester-> DarioRomanista: alloda /dev/sda e non sda1 3 o 3
+<matti-007> s
+<matti-007> /dev/sda va bene
+<DarioRomanista> ok grazie.. lo devo mettere io o fa da solo?
+<DarioRomanista> un'altra cosa.. su 4gb di ram quanto dò come swap?
+<matti-007> 4\4,5
+<jester-> DarioRomanista: in modifica c'è dove sta e ce hai  un disco solo è per forza sda
+<DarioRomanista> ok grazie
+<DarioRomanista> puoi rispondere anche alla domanda ssullo swap?
+<matti-007> 4\4,5
+<DarioRomanista> ok grazie
+<jester-> DarioRomanista: poi in modifica partizioni usre come ext4  formattare e montare come / la partizione per il sistema, montare xcome /home la partizioone home
+<DarioRomanista> che in mib quanti sono?
+<jester-> DarioRomanista: google mb to gb
+<jester-> ti rova 7 converter
+<DarioRomanista> jester ma tanto quello è scritto sul wiki no?
+<jester-> trova
+<matti-007> 4608
+<matti-007> MB
+<enzotib> DarioRomanista, se non fai ibernazione, con 4GB di ram, la swap non la usi proprio
+<jester-> DarioRomanista: non so se è sul wiki ma se prendi nota male non fa
+<DarioRomanista> ok grazie.. l'ibernazione probabilmente la userò.. vanno bene 4608 allora?
+<enzotib> e poi non è che ci vuole sta precisione
+<jester-> enzotib: 4 di ram compilando coi 4 core al 100%  manco la caga la swap
+<enzotib> ma anche 4069
+<DarioRomanista> è una battuta?=
+<x-fi> ok jester sta facendo
+<enzotib> DarioRomanista, ma quanto hai di disco?
+<jester-> x-fi: poi riscompatta la tar e rifai
+<DarioRomanista> 500gb
+<jester-> x-fi: uname -r
+<enzotib> DarioRomanista, e daglieli sti 5GB con buona salute
+<jester-> incolla qui
+<x-fi> e gia scompattata
+<x-fi> la devo cancellare e la riscompatto?
+<DarioRomanista> ok, avevo letto però che dare troppo swap rallenta, perciò chiedevo qual'era la dimensione giusta in base ai miei 4gbdi ram
+<jester-> DarioRomanista: non rallenta una cippa
+<DarioRomanista> ok grazie
+<jester-> se non gli serve no la userà
+<DarioRomanista> allora dò 5gb?
+<DarioRomanista> confermate?
+<enzotib> DarioRomanista, non starci a pensare troppo, che invecchia il pc
+<x-fi> 3.5.0-25-generic
+<DarioRomanista> ahahaha e ma vorrei fare una buona installazione
+<enzotib> la scelta delle dimensioni non è una scienza esatta
+<jester-> x-fi: ok rifai se non lo mette è incompatibile col kernel
+<x-fi> ok
+<jester-> x-fi: comunque anche se da errore riavvia e cintrolla in impostazioni audio se c'è
+<jester-> controlla
+<x-fi> oki
+<jester-> non trova un file ma non si capisce se ha messo o no il nuovo
+<DarioRomanista> poi sarei indeciso tra ubuntu e kubuntu.. vi spiego i miei dubbi: se installo kubuntu anzichè ubuntu , visto che kubuntu utilizza alcuni software diversi come dolphin al posto di nautilus potrei avere problemi con programmi creati per ubuntu dal punto di vista dell'integrazioen?? es. dropbox potrebbe non integrarsi bene come con nautilus su ubuntu se lo installo su kubuntu che ha dolphin?
+<jester-> DarioRomanista: kubuntu è convenzionalefatta molto bene e veloce
+<jester-> DarioRomanista: qualsiasi programma funza su tutti gli ambienti grafici
+<DarioRomanista> ma poi quando installo .deb fatti per ubuntu potrebbe darmi problemi che non sfrutto a pieno le potenzialità su kubuntu?^
+<jester-> DarioRomanista: kubuntu è anche troppo configurabile
+<DarioRomanista> ok
+<DarioRomanista> un'altra cosa
+<jester-> DarioRomanista: ma va se gtk si prende le dipendenze
+<x-fi> niente non ne vuole sapere, ok va bene cosi, grazie jester
+<jester-> cosi i qt in gnome
+<jester-> x-fi: sig
+<jester-> DarioRomanista: la tipa è sempre la stessa si cambia solo di vestito
+<DarioRomanista> sto scrivendo adesso da ubuntu, tempo fa provai kubuntu sulla stessa macchina ma rimasi deluso per il fatto che i caratteri erano diversi da ubuntu e tutti sfocati e "granulosi" e non si leggeva molto bene.. era solo un caso su questa mia macchina o è proprio così kubuntu?
+<jester-> DarioRomanista: va benissimo ma va configurata tipo abilitare il rendering
+<jester-> abilta e moderato e rgb
+<DarioRomanista> ah ok grazie.. non ci avevo pensato perchè ubuntu non mi aveva dato sto tipo di problemi sui caratteri ma era tutto ok da subito..
+<jester-> DarioRomanista: 13.04 kubuntu il mio eeepc 1000he è rinato
+<goamon> grazie matti
+<DarioRomanista> è meglio installare kubuntu o installare ubuntu e poi installare kde?
+<matti-007> meglio installare kubuntu
+<matti-007> ma tu cosa vuoi?
+<DarioRomanista> non lo so neanche io.. chiedo consiglio: userei o ubuntu con cinnamon o kubuntu con kde.. voi cosa consigliate ??
+<jester-> DarioRomanista: gnome p onity + kde fa casino nei menu
+<DarioRomanista> non ho capito
+<DarioRomanista> mi consigliate ubuntu con cinnamon o kubuntu??
+<DarioRomanista> u
+<jester-> DarioRomanista: cinammon è roba non ubuntu, proverie kubuntu
+<DarioRomanista> ma kubuntu è gestito sempre da canonical?
+<jester-> DarioRomanista: certo visto che è ufficiaaale
+<jester-> da chi vui che sia gestita
+<jester-> vuoi*
+<DarioRomanista> quindi è affidabile e stabile quanto ubuntu?? nel senso: se per esempio su ubuntu fanno una correzione importante di sistema me la ritrovo sicuramente e in tempi immediati anche su kubuntu??
+<jester-> DarioRomanista: trolli? il sistema è lo stesso, cambia solo la grafica
+<DarioRomanista> credevo fosse gestita da una community differente che prendeva ubuntu e cambiava qualcosina qua e là e chiamandola kubuntu
+<DarioRomanista> un pò come fa linuxmint con ubuntu
+<jester-> DarioRomanista: qualle è roba mint majorana & co
+<DarioRomanista> ok
+<jester-> ubuntu lubuntu xubuntu e kubuntu sono oc
+<jester-> doc
+<DarioRomanista> potrebbe dare problemi poi usare kubuntu e installare anche gnome shell in alternativa??
+<DarioRomanista> jester quindi mi confermi che il problema dei font che avevo riscontrato tempo fa poteva essere risolto aggiustando il rendering?? perchè se così fosse provo a reinstallarlo anche su questa macchina
+<jester-> DarioRomanista: a me non da problemi
+<DarioRomanista> volendo il rendering posso anche aggiustarlo dalla live no?? semmai proverei così prima
+<mibofra> jester-, senti qua: http://95.236.34.247:5795/stream/live.ogg
+<mibofra> jester-, tra poco arriva :D
+<mibofra> ciao Holden :))
+<mibofra> dimmi che ne pensi :)
+<mibofra> http://95.236.34.247:5795/stream/live.ogg
+<Holden> ciao mibofra
+<enzotib> !chat | mibofra
+<ubot-it> mibofra: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<mibofra> enzotib, sorry, ho sbagliato chan XD
+<DarioRomanista> dove trovo per aggiustare il rendering dei font su kubuntu così vado a botta sicura?
+<mibofra> enzotib, riposto li XD, sai capita con vari canali aperti XD, grazie della segnalazione...
+<DarioRomanista> mibofra sai aiutarmi a riguardo di kubuntu?
+<mibofra> DarioRomanista, dipende dal problema :))
+<enzotib> mibofra, avevo capito ;)
+<DarioRomanista> mibofra in pratica a me piacerebbe usare kubuntu o comunque kde ma quando lo installo o lo provo in live su questa macchina mi cambia tutti i font.. ti allego due link così ti rendi conto (non guardare il fatto che c'è cinnamon) http://s24.postimage.org/klx5axvw5/Sche ... _37_07.png  http://s22.postimage.org/6rcmxp5lt/Sche ... _37_35.png
+<DarioRomanista> scusa mibofra, rimetto i link che non vanno così
+<DarioRomanista> http://s24.postimage.org/klx5axvw5/Schermata_del_2013_03_10_00_37_07.png
+<DarioRomanista> http://s22.postimage.org/6rcmxp5lt/Schermata_del_2013_03_10_00_37_35.png
+<mibofra> DarioRomanista, semplicemente perché non setti un font di sistema?
+<DarioRomanista> intendi che lo scelgo io??
+<jester-> DarioRomanista: antiasing attivo, moderato e rgb
+<DarioRomanista> ma il fatto è che gli stessi caratteri su ubuntu mi si vedono in un modo(gradevoli) su kubuntu in un altro(pessimi).. ma sono gli stessi font
+<DarioRomanista> grazie jester più tardi avvio una live e provo allora.. tu usi kubuntu comunque?
+<jester-> yesss
+<DarioRomanista> ma il software preistallato è molto diverso rispetto a quello di ubuntu?? perchè mi pareva anche di capire che non c'è mozilla thinderbird ma kmail
+<DarioRomanista> giusto?
+<jester-> li installi
+<jester-> c'è licona installa firefox
+<DarioRomanista> ok.. in pratica mi toccherà stravolgere tutto..
+<DarioRomanista> vabè grazie aa tutti comunque.. adesso valuto
+<DarioRomanista> ciao e grazie
+<vinci98> scusate, come faccio a dire "apri sempre con gedit" sui file .xml ? nel senso che tutti i file xml vanno aperti con gedit ... ho ubuntu 12.10 64bit
+<vinci98> mi sono spiegato?
+<jester-> vinci98: destro dul file, poprietà, apri con
+<vinci98> grazie fatto
+<vinci98> non me lo ricordavo più...
+<nicole89> ciao
+<vinci98> jester-,  era da tanto che non modificafo le configurazioni di un programma ... l'ultima volta su win
+<nicole89> vorrei installare su un aspire one ubuntu 64 bit da usb ma non ho idea come fare ho letto le guide ma se m potete dare una mano grazie.
+<jester-> nicole89: sei da winz?
+<nicole89> win 8
+<nicole89> ho provato da sola ma non va
+<jester-> spe
+<nicole89> ha installato ma poi non va
+<nicole89> :(
+<jester-> nicole89: ti serva la amd64 o se il pc ha uefi non installa il bootlader http://www.ubuntu.com/download/help/create-a-usb-stick-on-windows
+<jester-> !uefi | nicole89  leggi anche
+<ubot-it> nicole89  leggi anche: UEFI è una specifica che definisce una interfaccia software tra un sistema operativo e le piattaforme firmware, è intesa come un sostituto del BIOS. Per informazioni su come impostare e installare Ubuntu su macchine UEFI vedi http://wiki.ubuntu-it.org/Installazione/UEFI
+<nicole89> grz mille ora provo  :)
+<nicole89> uff
+<nicole89> :(
+<nicole89> speravo fosse semplice
+<jester-> nicole89: non piu difficile di installare winz
+<nicole89> :D
+<jester-> nicole89: poi secelgireai installa accanto, sceglierai di quanto ridurre la winz
+<jester-> sceglierari*
+<nicole89> scusate sono gia in crisi...sopra c'e' scritto amd64....ma c'e' solo un tipo da scaricare 64 bit...è giustoo no?
+<nicole89> fatto :)
+<jester-> nicole89: amd64 è la 64bit
+<nicole89> si grazie...ho visto dopo...ora metto iso su usb e lancio....grazie della pazienza
+<pasquale> anyone from italy?
+<jester-> no
+<pasquale> ?
+<pasquale> i need some information,
+<jester-> !english | pasquale
+<ubot-it> pasquale: Please join the international channel #ubuntu if you want to speak english. Here only italian language is permitted. Thank you
+<pasquale> i'm downloading ubunto and lubuntu for my "netbook" an asus eeepc
+<pasquale> but i wont to try first on a usb drive
+<jester-> !english | pasquale
+<ubot-it> pasquale: Please join the international channel #ubuntu if you want to speak english. Here only italian language is permitted. Thank you
+<pasquale> igive me the link to international channel please
+<jester-> /join #ubuntu
+<chicco[ita]> join #oce@n
+<filippo> salve a tutti, come attivo il bluetooth? non mi parte
+<matti-007> Nel terminale dai: blueman-applet
+<mibofra> filippo, se il device bluetooth è attivo e non spento da bottone hardware (quello fisico sul pc) dovrebbe risultare attivo
+<filippo> mibofra, io ho un fisso e credo che potrei averlo disattivato tramite una guida per snellire ubuntu visto che non me ne facevo niente... finora
+<matti-007> Nel terminale dai: blueman-applet
+<mibofra> filippo, allora, avrai disattivato il demone del bluetooth
+<filippo> mibofra, dimenticavo che l'hardware è esterno, ho comprato un dongle, ora provo
+<mibofra> filippo, ok
+<filippo> mibofra, dice che non ce l'ho installato. Ultimo appunto, ho la 12.04
+<filippo> mibofra, lo installo?
+<matti-007> M hai dato blueman-applet
+<mibofra> filippo, si
+<mibofra> torno tra poco
+<filippo> mibofra, ok
+<filippo> matti-007, si ma non lo trova
+<matti-007> Dai sudo apt-get install blueman
+<matti-007> ?
+<filippo> matti-007, aprendo il bluetooth non cambia niente
+<matti-007> SE installi blueman e poi lo apri che cosa ti dice?
+<filippo> matti-007, niente, ora provo da terminale a lanciarlo
+<matti-007> fiiiiliiiiiiiiiiiipp[poooooooooooooooooo???????
+<filippo> matti-007, l'ho aperto ma la finestra non mi permette niente, vede il penino ma non mi da nessuna opzione
+<matti-007> ma nella barra ti comapre il simbolo no?
+<matti-007> cliccaci e vedi che ti dice
+<filippo> si, l'ho disattivato per poterlo attivare di nuovo ma da terminale e ora non si attiva più
+<matti-007> se dai blueman-applet ora si apre?
+<filippo> no, mi dice che c'è già un istanza aperta
+<matti-007> Allora dai pkill blueman-applet
+<matti-007> e poi:
+<matti-007> blueman-applet
+<matti-007> fiiiillliiiiiiiiiiiipppoooooooooooooooooo???????
+<filippo> ok, ora mi dice che non trova adattatori
+<matti-007> fiiiillliiiiiiiiiiiipppoooooooooooooooooo???????
+<filippo> matti-007, ti ho risposto, mi dice che non trova adattatori
+<jester-> filippo: reboot
+<matti-007> in effetti...
+<filippo> ci vediamo tra poco
+<matti-007> ffffsh
+<filippo> matti-007, jester-  niente da fare
+<filippo> non è cambiato niente
+<jester-> filippo: sudo rfkill unblock all
+<jester-> se non parte ti sei segato qualcosa
+<filippo> ora faccio
+<filippo> jester-, ora che ho dato devo di nuovo far ripartire blueman-applet?
+<jester-> filippo: non hai l'icona blututto sulla barra?
+<filippo> si, ce l'ho
+<jester-> fai fa li
+<jester-> da
+<jester-> non rileva la usb?
+<jester-> filippo: attaccato diretto alla usb?
+<filippo> l'ho appena disattivato da li ma ora non riparte più
+<jester-> filippo: sudo rfkill unblock all
+<filippo> ma non me lo hai fatto appena dare?
+<jester-> dovrebbe riattivare
+<jester-> se non lo fa sono danni da guida farlocca
+<filippo> jester-, e la seconda che hai detto!
+<matti-007> pkill blueman-applet; blueman-applet
+<filippo> :-(
+<matti-007> pkill blueman-applet; blueman-applet
+<filippo> matti-007, ho fatto ora vedo che da
+<URUS> .
+<URUS> ce qualcuno ?
+<matti-007> speriamo bene
+<matti-007> ciao urus
+<filippo> matti-007, jester- niente da fare
+<filippo> URUS, ciao
+<matti-007> prova a toglierle e a rimetterle dalla porta
+<URUS> mah
+<URUS> ah eco
+<URUS> allora
+<URUS> come se fa ad avere qualche risposta su ubuntu ?
+<matti-007> ciao URUS qualche problema?
+<URUS> si
+<URUS> tanti
+<mibofra> scusate ero via, chi mi cercava?
+<URUS> ciao filipo e matti
+<matti-007> chiedi no URUS?
+<jester-> filippo: sudo apt-get install bluetooth
+<matti-007> URUS?
+<URUS> allora ho gia aperto una discuzione ma non la trovo piu
+<URUS> si trata del bootsplash
+<matti-007> si
+<URUS> mi esce con scritte in mezzo e tutto brutto e alla avvio e un altro bootsplash completamente diverso
+<URUS> soluzione ?+
+<URUS> http://forum.ubuntu-it.org/viewtopic.php?f=8&t=553009&p=4345894#p4345894
+<filippo> jester-, è alla versione più recente, lui è apposto
+<jester-> URUS: succede in seguito a?
+<URUS> questa è la discuzione ,scusate se disturbo http://forum.ubuntu-it.org/viewtopic.php?f=8&t=553009&p=4345894#p4345894
+<jester-> URUS: siamo allergici alle discussioni da forum spiega con parole tue
+<matti-007> che immagine dovresti vedere?
+<URUS> ok ho capito ahahha
+<jester-> URUS: mi sa che hai settato con qualche accrocchio un'immagine farlocca
+<matti-007> io sono iscritto al forum...
+<URUS> allora avete presente il bootsplash ? credo si chiama cosi , l'immagine che compare durante il caricamente del os(ubuntu10.04-backtrack)
+<URUS> ?
+<matti-007> non so qual'è
+<jester-> matti-007: ancora con 10.o4 cha a breve non avrà mpiu supporto?
+<matti-007> appunto
+<jester-> URUS:  ancora con 10.o4 cha a breve non avrà mpiu supporto?
+<filippo> io che faccio? non c'è soluzione se non reinstallare?
+<jester-> URUS: ho presente ma se non dici cosa hai fatto di maldestro è difficile aiutarti
+<matti-007> hai provato a toglierla e a rimetterla?
+<jester-> filippo: o trovi la guida che hai seguito o so cazzi
+<URUS> ma sarebbe (backtrack5 r3) e mi serve per fare dei teste, lo uso ogni gg
+<matti-007> e il bootsplash è di importanza vitale?
+<jester-> URUS: con bt centriamo come i cavoli a merenda
+<URUS> e cmq questo problemma mi capita anche con ubuntu12.10
+<jester-> URUS: si a chi paciocca seguendo presunte guide
+<URUS> ma è la stesa cosa piu o meno, è uguale
+<jester-> URUS: non è la stessa cosa affatto
+<jester-> è tarocco e non si sa come lo abbiano fatto
+<filippo> jester-, capisco, beh chi non sbaglia non impara matti-007 mibofra grazie a tutti e tre
+<jester-> filippo: sigh
+<URUS> ho facendo un casino con la chat :)   allora jester è spiegato tutto nella discozione, trovi tutto quello che potrebbe servire
+<jester-> URUS: di sicuro non vado a leggere la discussione
+<matti-007> se il pc è vecchiotto non c'è la fa a far partire il bootsplash durante l'avvio.
+<URUS> uffa
+<jester-> URUS: e bt è ot qui dentro vai in chat
+<jester-> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<URUS> allora ho installato il brug per avere il dual boot grafico con windows 7 e backtrack
+<matti-007> brug?
+<URUS> poi quando lo spengo mi compare l'immagine ubuntu10.04 con scritte sopra
+<URUS> sisi
+<URUS> il burg
+<vinci98> grub
+<URUS> no il grub ma il burg
+<jester-> URUS: altro accrocchio a noi sconosciuto
+<URUS> tramite super-boot manager
+<matti-007> non ci capisco niente
+<jester-> !chat | URUS
+<ubot-it> URUS: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<matti-007> http://www.holland.com/it/Turismo/article/Ponte-Magere-Brug.htm
+<URUS> ;(
+<URUS> jester non ho capito (e bt è ot qui dentro vai in chat)
+<jester-> URUS: ot=off topic
+<URUS> cioe ?
+<jester-> cioè è fuori argomento e non si da assistenza
+<URUS> ah ok
+<matti-007> jester- mi hai kickato per quel link?
+<URUS> e per quanto riguarda a installare i programmi di backtrack su ubuntu 12.10 ?
+<jester-> URUS: quali
+<jester-> URUS: aircrack?
+<matti-007> ?
+<URUS> quelli per fare il dns spoofing
+<URUS> tutti insomma
+<URUS> se si puo
+<jester-> se sono nei repo ubuntu fai da li, se non ci sono trovi il deb o compili
+<jester-> URUS: roba bt, visto a cosa serve, è sata bandita dai repo, ma ce l'avrà un'assistenza sta distro e magari anche canale irc
+<URUS> ok pero io con ubuntu12.10 avrei lo stesso problemma del boot splash , quando lo spengo mi compaiono le scritte sopa l'immagine
+<matti-007> se il pc è vecchiotto non c'è la fa a far partire il bootsplash durante l'avvio.
+<vinci98> URUS, le scritte sull'immagine le ho anche io ... è un bug
+<vinci98> non è il pc vecchiotto ... io del 2009
+<URUS> vinci io so che dipende dalla resoluzione e dei driver ma non capisco come risolvere
+<matti-007> anche il mio e all'avvio non mi compare l'immagine ma le scritte
+<matti-007> ad un certoi punto se premo la freccetta su mi lampeggia il playmouth
+<URUS> jester cmq non capisco per dei programmi per testare debono essere banditi
+<vinci98> matti-007,  a me ogni tanto fa scegliere con il tasto 0 di cambiare
+<matti-007> cambiare/
+<matti-007> ?
+<Weynz> hi
+<Weynz> is anyone here
+<Weynz> ?
+<matti-007> hello
+<Weynz> ce nessuno ?
+<matti-007> noi
+<filippo> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<jester-> !qualcuno | Weynz
+<ubot-it> Weynz: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<Weynz> ok
+<Weynz> sentite io ho un imac
+<Weynz> mi si è rotto l hdd
+<Weynz> interno e ora uso uno esterno
+<Weynz> e vorrei installare ubuntu ma un ce verso
+<Weynz> perche alla fine della installazione mi dice
+<matti-007> si?
+<Weynz> missing operating system
+<Weynz> .-.
+<jester-> Weynz: il disco è in efi?
+<Weynz> e due giorni che ci provo e riprovo
+<jester-> Weynz: e come hai installato
+<vinci98> jester-,  non è il disco in efi ma è la scheda :P
+<Weynz> quale scheda ?
+<jester-> vinci98: la scheda de che
+<vinci98> madre
+<jester-> vinci98: sei parente di matti-007 ?
+<Weynz> no
+<vinci98> jester-,  non parente io
+<jester-> Weynz: sul disco hai anche os x?
+<URUS> ultiman damanda giuro :)    cosa vuol dire essatamente irc ?
+<enzotib> internet relay chat
+<matti-007> a seconda di come si guarda potresti essere tu quello che si sovrappone ma perchè non posssiamo scrivere in due?
+<Weynz> si
+<Weynz> per forza perche quello interno non va
+<URUS> ok grazie ragazzi vi lascio alle vostre,
+<Weynz> finche non lo cambio
+<jester-> URUS: http://it.wikipedia.org/wiki/Internet_Relay_Chat
+<Weynz> grazie buona serata ;)
+<Weynz> torniamo al discorso di ubuntu per favore
+<jester-> Weynz: quindi è in gid e efi o osx non partirebbe
+<jester-> Weynz: hai una partizione libera sul disco?
+<Weynz> in guid penso
+<Weynz> e quello ceh fa partire mac
+<jester-> per forza
+<vinci98> jester-,  con efi intendi UEFI?
+<Weynz> si
+<jester-> non fa partire mac è un sistma diverso che stanno adottando anche sui pc
+<jester-> Weynz: serve una partizione libera
+<Weynz> libera nel senso spazio non partizionato ? cioè spazio libero ?
+<jester-> mac non ha bios
+<Weynz> infatti
+<jester-> Weynz: per installare un qualcosa extra osx serve dove metterlo
+<Weynz> si ma io ho fatto tutto quando vado a
+<jester-> ma adesso anche i pc si stanno orientando allo stesso mod
+<Weynz> installare pigio su altro ( su ubunto installer )
+<vinci98> jester-,  coma mac senza bios??? e come si fa???
+<Weynz> creo lo spazio o formatto in ex4 o quello che è
+<jester-> Weynz: hai usato la 64 bit?
+<Weynz> fo 4 gb di spzio swap
+<Weynz> e installo alla fine vo
+<Weynz> con refit a
+<matti-007> dipende dalla ram
+<Weynz> bootare e
+<Weynz> dice missing operating system
+<Weynz> v.v
+<matti-007> forse con l'iso per mac andrebbe meglio
+<jester-> Weynz: la partizionamento sei andato in altro, selezionato la partizione linux, modifica
+<jester-> usare ext4  formattare montare come / ?
+<Weynz> io ho usato la verione di linux 12.10 32 bit perche ho letto che è piu stabile
+<Weynz> si lo ho fatto /
+<jester-> Weynz: la 32 non supporta uefi
+<jester-> !uefi
+<ubot-it> UEFI è una specifica che definisce una interfaccia software tra un sistema operativo e le piattaforme firmware, è intesa come un sostituto del BIOS. Per informazioni su come impostare e installare Ubuntu su macchine UEFI vedi http://wiki.ubuntu-it.org/Installazione/UEFI
+<matti-007> più stabile è la 12.04
+<jester-> matti-007: la pianti?
+<Weynz> si infatti un ce verso di parla
+<Weynz> io ci sto ammattendo
+<Weynz> da 2 giorni
+<Weynz> v.v
+<jester-> Weynz: rifai con la  64
+<jester-> poi se no parte leggi
+<jester-> !uefi
+<ubot-it> UEFI è una specifica che definisce una interfaccia software tra un sistema operativo e le piattaforme firmware, è intesa come un sostituto del BIOS. Per informazioni su come impostare e installare Ubuntu su macchine UEFI vedi http://wiki.ubuntu-it.org/Installazione/UEFI
+<jester-> e pure https://help.ubuntu.com/community/MacBook  potrebbe aiutarti
+<Weynz> quindi per installarlo su mac devo usare la versione 64 bit e la 12.04 ?
+<jester-> Weynz: 32 non supporta uefi, leggi la guida
+<matti-007> la 12.04 è LTS quindi più stabile ed è supportata per 5 anni
+<jester-> Weynz: e osx male che vada ha bootcamp
+<Weynz> uefi sarebbe il boot loader mac ?
+<Weynz> si ma
+<Weynz> non posso
+<Weynz> non posso usare boot camp perche
+<Weynz> si puo usare
+<Weynz> solo su dischi interni
+<jester-> Weynz:  e prendi la mac iso
+<Weynz> ma il mio è rotto quindi mi serve per forza installarlo su quello esterno
+<Weynz> in che senso la mac iso ?
+<jester-> Weynz: se poi non va se leggi la guida uefi c'è anche il tool per sistemare
+<jester-> !quantal
+<ubot-it> Quantal Quetzal: : http://releases.ubuntu.com/quantal/ | Kubuntu 12.10 http://cdimage.ubuntu.com/kubuntu/releases/12.10/release/ |  È preferibile usare i torrent | Problemi noti: https://wiki.ubuntu.com/QuantalQuetzal/ReleaseNotes
+<matti-007> esiste una ioso modificta per funzioanre meglio su mac
+<Weynz> si ma qui dice
+<Weynz> che è 64 bit
+<jester-> Weynz:  ubuntu-12.10-desktop-amd64+mac.iso
+<Weynz> AMD
+<Weynz> mac
+<jester-> Weynz: amd una sigla convenzionale per indicare 64 bit
+<vinci98> amd64 non vuol dire processore amd ma 64bit
+<jester-> non centra nulla con le cpu
+<Weynz> aaa
+<Weynz> scs
+<Weynz> cmq
+<Weynz> devo scaricare
+<Weynz> UBUNTU o KUBUNTU?
+<matti-007> jester- domanda: esiste qualche motivo in particolare per devve usare quantal e non precise?
+<jester-> amd è sta la prima a uscire coi 64 bit ed era diventato rifermento
+<Weynz> scs ma sono nuovo di ubuntu
+<matti-007> jester- domanda: esiste qualche motivo in particolare per devve usare quantal e non precise?
+<jester-> matti-007: esiste qualche motivo perché ti devi sempre intromettere?
+<Weynz> ahah
+<matti-007> perchè non mi rispondi?
+<jester-> Weynz: linux a confronto di osx fa venire la tristezza installagli almeno kubuntu
+<vinci98> matti-007, fa così anche con me ... in questi casi o lo ascolti o lo ignori non ci sono vie di mezzo
+<Weynz> è meglio kubuntu di ubuntu ?
+<Weynz> è piu semplice da usare ?
+<jester-> matti-007: perchè l'ultima release è piu avanzata tanto piu che sono passati 6 mesi dal rilascio
+<matti-007> avanzata?
+<jester-> Weynz: kubuntu è convenzinale fatta molto bebe e sul video imac viene una cicca
+<jester-> matti-007: kernle piu avanzato, tolti difetti della precedente etc etc
+<matti-007> 12.04.2
+<rek> ciao come va? Il mio Pc si connette con una scheda di rete, ad un altra scheda di rete ho collegato con un cat 5 un d-link dir-301 alla porta INTERNET... volevo passargli lo stack tcp/ip    avete consigli ,qualche buon link da leggere?   Avevo fatto una cosa del genere un giorno ma non ricordo bene cos'avevo fatto al dilà del ip forwarding...e poi l'altro era un pc e non un wifi-switch
+<jester-> rek: a capire cosa intendi
+<rek> si ho scritto un po' male in poche parole condividere la connessione internet...
+<jester-> Weynz: http://cdimage.ubuntu.com/kubuntu/releases/12.10/release/ provalo
+<jester-> rek: non avendo un router con hub dietro?
+<Weynz> ma è sempre un ambiente linux ? cioè ha sempre terminale linux e possibilita di invidia flash ?
+<jester-> o uno seitch di rete?
+<jester-> Weynz: il sistema è lo stesso cambia il vestito
+<Weynz> buono
+<rek> il mio pc si connette ad internet con eth0, ho connesso il dlink a eth1. voglio che il dlink abbia la connessione ovvero se mi collego alla parte switch del dlink con un pc o via wifi io possa connettermi ad internet.
+<Weynz> per l installazione mi puoi dare una mano ?
+<jester-> rek: hai un router wifi ?
+<jester-> Weynz: se sono ancora qui
+<Weynz> hai qualcosa tipo che ne so skype
+<jester-> rek: il pc è connesso al rutter vi acavo eth
+<jester-> Weynz: no
+<rek> jester: il mio dlink ha la parte switch dietro e con un cat 5 l'ho collegato a 1 scheda di rete del mio pc.   il mio pc si collega ad internet con un router wifi ma quello è un altro ovviamente
+<Weynz> e come faccio x rintracciarti qui
+<Weynz> ?
+<jester-> rek: che è cat5
+<rek> un cavo ethernet
+<jester-> rek: se attacchi altri pc all'hub del dlink condivide lui
+<jester-> a questo servono i router
+<rek> mmmh no va messo nella rete giusta ecc...
+<matti-007> ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti cia
+<matti-007> ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti ciao a tutti cia
+<jester-> rek: le capriole eth to eth e iptables si facevano quando no c'erano i ruttr
+<rek> vorrei fare le capriole in poche parole..tuttavia non capisco come possa funzionare senza
+<jester-> rek: il rutter ha sto hub dietro o no
+<jester-> rek: di solito ha 4 porte eth
+<rek> dietro ha 4 porte eth si
+<jester-> rek: quindo con semplice eth colleghi altri pc all'hub
+<jester-> e il rutter farà il suo lavoro
+<jester-> pc che devono essere in dhcp
+<jester-> e il rutter deve avere NAt abilitato
+<ooze> ubuntuforum
+<jester-> rek: 4 porte 4 pc attacchi
+<jester-> !forum | ooze
+<ubot-it> ooze: forum is http://forum.ubuntu-it.org
+<rek> faccio schema di ciò che dico...      ALICEWIFIrouter-------------wifimiopc----  {MIOPC}---  ethmiopc----------dlinkwificonHUB--------- altri devices wifi o eth che siano.
+<jester-> rek: madu
+<jester-> come è connesso il pc che usi connetti altri 3
+<jester-> la wifi la prendi alla stesso modo
+<rek> sono reti differenti.
+<jester-> è visibile e collegabile sia da linux che da winz o altro
+<jester-> rek: cioè?
+<rek> bisogna passare la connessione da una scheda di reta all'altra eth e configurare il router.
+<rek> alice---wifi 192.168.1.x         e l'altra per esempio sulla 192.168.2.x   io farei così
+<rek> ho notato che su network manager c'è una sezione instradamenti centra qualcosa?
+<jester-> rek: se in dhcp ci pensa il rutter ad assegnare l'ip
+<rek> proviamo
+<Weynz> jester
+<Weynz> una domanda
+<Weynz> come faccio con mac a creare
+<Weynz> un usb install di kubuntu ? perche unebooting si impalla
+<Weynz> e mac non riconosce la iso di
+<Weynz> ubuntu
+<Weynz> quindi non posso unire
+<Weynz> i file con l hd
+<jester-> Weynz: scrivi la iso da utility disco o usi dd
+<jester-> !usb
+<ubot-it> http://wiki.ubuntu-it.org/Installazione/DaSupportoUsb
+<jester-> Weynz:  la riconosce è una normale iso
+<Weynz> grazie mille se ci sei ti fo sapere se
+<Weynz> ho fatto progressi
+<jester-> Weynz: non ricordo come ma utility disk lo fa
+<Weynz> si ma il link dice da ubunto io uso Mac
+<jester-> Weynz: si tratta di scrivere la iso e non copiarla sulla usb
+<jester-> Weynz: fatti il cd che è piu semplice
+<jester-> con usb serve dd
+<Weynz> io so come fare a unire il file iso al hd mica lo copio
+<Weynz> ma
+<Weynz> pero non montando la iso su mac
+<Weynz> mac
+<Weynz> non fa questa funzione nemmeno da terminale
+<Weynz> per questo
+<Weynz> e ho bisogno di
+<enzotib> !enter | Weynz
+<ubot-it> Weynz: non spezzettare una frase su piu' righe. Non utilizzare il ritorno a capo come punteggiatura.
+<Weynz> farlo su usb xk non ho piu dvd liberi
+<jester-> Weynz: devi scrivere la iso su un cd accendi con alt pigiato a fai partire il cd
+<enzotib> Weynz, dd if=file.iso of=/dev/sdb
+<enzotib> mac è Unix quindi ah sicuramente dd
+<Weynz> si ce lo ho
+<jester-> Weynz:invece di dev/sdx devi mettere le pariferica mac
+<Weynz> ma oggi ho provato quello che mi stai idcendo te ora e dice processo fallito
+<enzotib> devi solo capire il nome del device della pendrive, al posto di /dev/sdb
+<jester-> sdx non funza sul mac ha altro nome
+<enzotib> Weynz, da root, devi farlo, su ubuntu c'è sudo, su mac non so
+<jester-> e c'è pure simil fdisk -l per vedere
+<Weynz> su mac si usa sudo uguale
+<jester-> enzotib: suo pere mac
+<jester-> sudo pure
+<enzotib> ah ok
+<enzotib> prima o poi me lo devo far prendere un mca
+<enzotib> mac*
+<Weynz> ora cerco di farlo con utility disco e poi ti dico
+<jester-> Weynz: http://www.ubuntu.com/download/help/create-a-usb-stick-on-mac-osx
+<jester-> è vero va converita, io usi toast e fa lui
+<jester-> Weynz: curiosità: a cosa ti serve linux su un mac
+<Weynz> te lo dico subito ero andato a new york per natale ho comprato un tablet e volevo installare chyanogen mod
+<Weynz> ho impallato tutto non parte piu ora mi serve usare nvflash ed è solo linux a avere la possibilita di usarlo tutto qui
+<jester-> Weynz: male che vada puoi fare dalla live che coltellino svizzero è
+<Weynz> si ma come faccio per la iso ? cioè devo riscaricare la iso e fare tutto dalla live che alla fine mi sa che andra a finire cosi perche
+<Weynz> un ci capisco nulla di command line ect
+<Weynz> cmq un altro dubbio la partizione del mio HD esterno è GUID va bene per installarci sopra kubuntu ?
+<jester-> Weynz: apri il terminale se dai i comandi come da guida
+<jester-> Weynz: si basta che sia 64 bit
+<Weynz> cioè se ho dello spazio non partizionato li ci installo ubuntu e via un ho bisogno di cancellare il sistema MAC cioè voglio fa un dual boot alla fine
+<Weynz> si ho mountain lion è per forza in 64  bit
+<jester-> Weynz: se hai spazio non partizonato vedrai opzione: usa spaziolibero contiguo
+<jester-> Weynz: osx parte sia in 32 che in 64
+<jester-> di default parte in 32 ma se tieni premuti 6 e 4 al boot va in 64, non ricordo cme renderlo definitivo
+<Weynz> si ma da quando hanno messo Lion parte tutto in 64 bit
+<Weynz> si ce un comando terminale che quello lo trovo senza problemi
+<Weynz> cmq ho appena finito di scaricare kubunto pero mac non lo monta
+<jester-> Weynz: non è important4e se osx è in 64 o 32 ma la ubuntu deve essere a 6
+<jester-> Weynz: devi convertire la iso e le guide vanno lette e seguite
+<Weynz> ok
+<Weynz> ora ci provo
+<jester-> oppure compri toast
+<leosacc> sera a tutti
+<jester-> o lo trovi ahumm uhumm
+<DD3my> Buonanotte :)

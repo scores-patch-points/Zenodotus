@@ -1,0 +1,115 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "02-encyclopedic/wikipedia/Chemistry.txt",
+  "sha256": "5f802e5934b60ad544a9531c4ef98c1361a3a6218592eea0a59f9fe8e9f5bb16",
+  "chars": 54007,
+  "declaredIdentity": {
+   "title": "Chemistry",
+   "mechanism": "filename stem, underscores as spaces (this family carries no in-file title line — the corpus's own manifest is the identity, LP1's rule applied to a family without a header convention)"
+  }
+ },
+ "reader": {
+  "kind": "structural",
+  "derived": true,
+  "recipeId": "d5a2d06dd3668245",
+  "descriptor": {
+   "generator": "scripts/spiral-ring2-wikipedia.mjs@1",
+   "family": "02-encyclopedic/wikipedia",
+   "calibratedAgainst": "kant.golden.json (see console output above)"
+  },
+  "firewall": "Goal 5 — derived, never adjudication, never convergence"
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint; this family's own running structural posterior (online, incremental — see surprise below)"
+ },
+ "structure": {
+  "proseStartLine": 4,
+  "debrisChars": 33,
+  "debrisFraction": 0.001,
+  "headingCount": 32,
+  "headings": [
+   "Etymology",
+   "Modern principles",
+   "Matter",
+   "Atom",
+   "Element",
+   "Compound",
+   "Molecule",
+   "Substance and mixture",
+   "Mole and amount of substance",
+   "Phase",
+   "Bonding",
+   "Energy",
+   "Reaction",
+   "Ions and salts",
+   "Acidity and basicity",
+   "Redox",
+   "Equilibrium",
+   "Chemical laws",
+   "History",
+   "Definition",
+   "Background",
+   "Practice",
+   "Subdisciplines",
+   "Interdisciplinary",
+   "Industry",
+   "Professional societies",
+   "See also",
+   "Notes",
+   "References",
+   "Bibliography",
+   "Further reading",
+   "External links"
+  ]
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: DR4 (whole-NP subjects) is unfixed in the raw extractor — running it here would reproduce the readings LP7 erased (evidence: DERIVED-RULES.md, kant 1/10 clean match, re-checked not re-run)"
+ },
+ "gaps": [
+  {
+   "type": "no_extractor",
+   "note": "distinct from ring-1's no_lexicon: this is an ENGLISH file (the lexicon exists) but the extractor itself is not yet trustworthy — DR4/DR5 are the named prerequisite"
+  },
+  {
+   "type": "no_adjudication",
+   "note": "no hand golden exists for this file — its structure is offered, its content is not"
+  }
+ ],
+ "surprise": {
+  "definition": "hypergraph delta, per LP7 — here, the family's own STRUCTURAL expectation, updated online as each file is read (never n-gram frequency)",
+  "observed": {
+   "headingCount": 32,
+   "debrisFraction": 0.001
+  },
+  "againstRunningPosterior": {
+   "measurable": true,
+   "headingCountZ": -0.048756323495769124,
+   "debrisFractionZ": -0.7911144474508838,
+   "priorSeenSoFar": 4
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "structural (derived)",
+   "recipeId": "d5a2d06dd3668245"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed",
+  "note": "adversarial layers append when a lexicon/extractor tier or an adjudicator reaches this file"
+ },
+ "propositions": [],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "d5a2d06dd3668245",
+  "at": "2026-08-31T19:09:26.072Z"
+ }
+}

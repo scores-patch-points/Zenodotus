@@ -1,0 +1,253 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2015-7-15"
+lang: "de"
+messages: "244"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<rentier_> Wieos funktionieren die Videos auf sueddeutsche.de unter Ubuntu bei mir nur mit Flash, aber unter Windows ohne und per html5?
+<rentier_> Das wollte ich schon lange mal wissen!
+<rentier_> http://www.sueddeutsche.de/panorama/hai-strandet-spaziergaenger-helfen-1.2567117
+<kubine> rentier_: Title: Amateurvideo - Weißer Hai in Not - Panorama - Süddeutsche.de (at www.sueddeutsche.de)
+<Fuchs> rentier_: Vermutung: weil das Media Extensions braucht, die derzeit noch nur unter Windows laufen
+<Fuchs> oder diese dynamische Bandbreitenregulierung. Da wird aber daran gearbeitet
+<Fuchs> (z.B. in Firefox, chrome sollte es koennen)
+<rentier_> aber auf anderen sites wie Youtube klappt es doch auch, mit html5 unter ubuntu
+<Fuchs> kommt halt darauf an, was die Seite verwendet
+<deem> Hi,
+<deem> wie kann ich denn am besten einen Router realisieren, der den Traffic abhängig von der dst_ip aus verschiedenen vlans routet?
+<deem> kann das iptables oder muss ich das mit statischen routen machen?
+<miraculix> ist ein upgrade von 14.04 nach 15.04 machbar?
+<deem> miraculix: ja, wenn du über die zwischen-releases gehst
+<jokrebel> 
+<k1l_> miraculix: du musst erst zu 14.10 aktualisieren. dann zu 15.04
+<k1l_> überspringen kann man nur von LTS zu LTS, also von 14.04 dann zu 16.04
+<ppq> wenn man mehr als einen sprung auf einmal macht, kann man imho auch gleich die zielversion frisch installieren.
+<ppq> vom zeitaufwand her etwas das gleiche, aber auch sonst vorteilhaft
+<miraculix> ich brauche doch nur die sources.list zu ändern, oder?
+<miraculix> die frage ist, ob ich was kaputt machen kann
+<k1l_> miraculix: nein. so macht man das bei ubuntu nicht
+<miraculix> das habe ich immer so gemacht
+<k1l_> do-release-upgrade oder halt die gui benutzen. erst zu 14.10 dann nochmal zu 15.04
+<miraculix> ist das nicht dasselbe?
+<k1l_> dann hast du das bei ubuntu schon immer falsch gemacht und kannst froh sein, dass du es noch nicht zerschossen hast.
+<miraculix> warum sollte das falsch sein? bei debian macht man es auch so
+<k1l_> nein. der upgrade prozess behandelt sachen wie PPAs und andere schritte anders
+<miraculix> hmmm
+<k1l_> miraculix: diese argumentation führt uns nicht weiter. beim porsche ist das zündschloss auch links, das hilft dir beim vw aber nicht mit "aber beim porsche ist das so"
+<miraculix> ubuntu basiert doch auf debian
+<k1l_> ja, aber es ist nicht debian
+<k1l_> porsche gehört auch zu vw (oder andersrum um genau zu sein)
+<k1l_> miraculix: was spricht denn dagegen den ubuntu weg zu nutzen? deine debian ehre?
+<sdx23> die ist sowieso dahin, wenn er ubuntu nutzt ;p
+<miraculix> ich habe ubuntu mate, das hat auch einige ppa-quellen, warum eigentlich?
+<k1l_> weil sich der mate kram mit dem gnome kram in den offiziellen quellen beisst.
+<miraculix> trotz umbenennung der programme?
+<k1l_> ja weil da noch mehr als genug kram nicht umbenannt ist. oder andere versionen benötigt.
+<miraculix> ich habe keine debian-ehre. ich fand es einfach, die sources.list zu ändern, dann update und dann dist-upgrade
+<k1l_> ist ja bekannt, dass das bei mate und cinnamon ein riesen problem ist.
+<miraculix> ich dachte, seit ubuntu mate offiziell geworden ist, wären die probleme verschwunden
+<k1l_> nein. es gibt nur so viele die scheinbar ein mate und cinnamon wollen, dass man eben ein PPA macht.
+<miraculix> cinnamon brauche ich nicht. ich kam mit gnome2 gut zurecht, außerdem ist mein laptop nicht schnell genug für gnome3
+<Erzi> Hi
+<Erzi> Kann mir jemand mit DLNA helfen? Moechte gern Musik von meinem Server abspielen aber kriegs irgendwie nicht hin
+<Erzi> Per FTP komme ich drauf und kann dort auch mit Rechtsklick eine Datei auswaehlen und sie dann einfach mit Amarok abspielen lassen
+<Erzi> Dazu wird die Datei aber wohl automatisch auf den Rechner in ein temporaeres Verzeichnis gezogen und von dort abgespielt
+<Erzi> Mit Rhytmbox hatte ich leider auch noch keinen Erfolg
+<k1l> !minidlna
+<kubine> k1l: Informationen zu MiniDLNA finden sich im Wiki unter http://wiki.ubuntuusers.de/MiniDLNA
+<Erzi> Titel werden alle angezeigt aber Abspielen will nicht gehen
+<k1l> Erzi: das da angucken^
+<k1l> dlna ist ein eigenes protokoll, das ist nicht ftp
+<Erzi> Mir ist das hinten raus wurscht.
+<Erzi> Also wie das auf dem Rechner ankommt
+<Erzi> ob als direktzugriff ueber ftp oder halt vom Server als Stream
+<Erzi> Auf dem Server laeuft Plex
+<k1l> du sagest, dass du dlna nutzen willst. dann nutzt du aber ftp. also musst du auf dem server auch einen dlna service laufen lassen. deswegen schau dir minidlna an, das macht was du willst
+<Erzi> Funktioniert auch vom AV Reveiver aus funktioniert es
+<k1l> plex ist prop.
+<Erzi> k1l: wie gesagt als DLNA Service laeuft auf dem Server Plex und vom TV aus oder AV-Receiver aus kann ich die Musik problemlos abspielen
+<Erzi> Nur hier mit meinem Ubuntu weiss ich noch nicht so recht was ich da als Client verwenden kann
+<k1l> vlc z.b.
+<Erzi> Wollte eigentlich gern Amarik verwenden, aber es leider ned hingekriegt
+<k1l> rhythmbox kann das wohl mit grillo
+<Erzi> finde das Plugin leider nicht
+<Erzi> Also zumindest ned in den "normalen" Quellen.
+<k1l> bei dem kde kram bin ich raus.
+<Erzi> Hab das schon gelesen mit Rhytmbox und Grillo
+<k1l> http://askubuntu.com/a/552930/31260
+<kubine> k1l: Title: rhythmbox - DLNA client for music - Ask Ubuntu (at askubuntu.com)
+<Erzi> jo da war ich schon ;)
+<Erzi> da steht das von grillo
+<Erzi> ahhhh
+<Erzi> mit 1 L gehts dann auch ;)
+<Erzi> Sorry
+<Erzi> muss ich jetzt erstmal installieren und schauen was passiert.
+<k1l> tu das
+<Erzi> Mist, wird leider nichts angezeigt in rhytmbox
+<Erzi> also kann da kein Plugin aktivieren welches grilo heist
+<Erzi> hmm
+<Erzi> irgendwas mach ich noch falsch
+<Erzi> DAAP ist drin und dazu steht....verteilen sie Musik oder greifen sie selbst auf Musik aus ihrem LAN zu
+<Erzi> Ich krieg gleich ne Krise
+<Erzi> Warum funktioniert dieses bloede Plex nicht mehr?
+<Isotop7> Servus! Ich brauch Hilfe bei der Config von Apache! Ich habe zwei Vhosts (wordpress/owncloud) auf einem strato vserver. owncloud soll nur über https erreichbar sein, wordpress nur über http. Hierbei soll jeweils nur der direkte aufruf gelingen. wenn ich aber <blödsinn wie erfiberb>.<domänennamen>.de eingebe, gelange ich trotzdem auf wordpress (per http)...wie kann ich das unterbinden?
+<ppq> Isotop7, http://stackoverflow.com/a/21798882
+<kubine> ppq: Title: security - How to redirect all HTTP requests to HTTPS - Stack Overflow (at stackoverflow.com)
+<ppq> in der frage gehts um *alle* aufrufe, das solltest du aber in dein setup ähnlich einfügen können
+<Isotop7> ppq: okay...ich versuche es mal! danke :)
+<ppq> Isotop7, siehe auch https://wiki.apache.org/httpd/RedirectSSL
+<kubine> ppq: Title: RedirectSSL - Httpd Wiki (at wiki.apache.org)
+<Isotop7> ich glaube ich konnte mich nicht richtig ausdrücken...ich habe das problem dass ich irgend eine zeichenfolge vor ".domänenname.de" hängen kann und trotzdem die wordpress seite angezeigt wird...das würde ich gerne unterbinden! kann das an einem dns eintrag liegen?
+<ppq> das liegt einfach daran, dass, wenn du auf http://domain.de bist und das änderst zu http://bla.domain.de, du halt auf http bleibst. wenn du jedoch auf https://domain.de bist und das änderst zu https://blub.domain.de, bleibst du auf https
+<kubine> ppq: Title: Domain.de – Domains günstig registrieren – Ihre Domain Suche und Verwaltung (at domain.de)
+<ppq> ups, unfreiwillig werbung gemacht
+<Isotop7> oh :D ja aber wenn ich zum beispiel bla.google.de eingebe bekomme ich einen fehler, wenn du bla.hashtagsystem.de ansurfst landest du trotzdem auf der wordpress page die ich eigentlich nur unter www.hashtagsystem.de aufrufbar machen möchte :/
+<ppq> jo, ist halt konfigurationssache
+<Isotop7> und genau das würde ich gerne wissen :D sorry :)
+<LupusE> hi
+<ppq> dann zeig doch mal deine config
+<ppq> in einem pastebin, vorzugsweise
+<ppq> !paste > Isotop7
+<kubine> Isotop7: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten Nopaste-Service wie z.B. http://paste.ubuntu.com/ abgelegt werden. Nach dem Speichern kannst du dann die URL der Seite kopieren und sie statt des Textes hier im Channel posten.
+<Isotop7> ppq: http://pastebin.com/3KJ4JLuM
+<kubine> Isotop7: Title: [Apache Log] ---owncloud--- ServerName www.hashtagsystem.de - Pastebin.com (at pastebin.com)
+<Isotop7> sind zwei getrennte config files
+<sdx23> Das ist kein Problem der Apache-Config sondern der DNS Einstellungen. Man vergleiche host bla.google.de # mit: host bla.hashtagsystem.de
+<Isotop7> das habe ich auch befürchtet...unter strato is standardmäßig folgender dns eintrag angelegt welchen ich nicht änder kann:
+<Isotop7> http://imgur.com/SXQ7PSG
+<kubine> Isotop7: Title: Imgur (at imgur.com)
+<sdx23> tjaja. Dann kannst du das mit Apache maximal abfangen um eine leere Seite o.ä. anzuzeigen. Das erwartete Verhalten kannst du nicht bewirken.
+<Isotop7> kann ich dann wie mit ner wildcard (zb. *.hashtagsystem.de) alles abfangen und einfach ne leere seite zeigen oder so? wie müsste die config dann aussehen?
+<sdx23> Isotop7: lies das hier http://httpd.apache.org/docs/2.2/vhosts/name-based.html
+<kubine> sdx23: Title: Name-based Virtual Host Support - Apache HTTP Server Version 2.2 (at httpd.apache.org)
+<Isotop7> das heißt ich mach einen vhost mit dem servernamen *.hashtagsystem.de und leite die auf die page?
+<sdx23> da steht nicht, dass ServerName wildcards erlaubt. Und NameVirtualHost ist wichtig, ohne funktioniert das ganze nicht.
+<Isotop7> also NameVirtualHost zeigt mir apache2 als deprecated an :/ Auch werden trotzdem alle Anfragen an meinen wordpress vhost weitergeleitet...
+<Isotop77> sorry...disconnect..
+<ubuntu15> hallo
+<ubuntu15> jemand da==
+<ubuntu15> `??
+<k1l> ein paar
+<ubuntu15> bräuchte mal hilfe bezüglich ubuntu
+<k1l> dann frag und die leute können sehen ob sie dir helfen können
+<Isotop77> sdx23: noch ne idee?
+<ubuntu15> habe windwos7 in einer virtualbox laufen um mein iphone wiederherzustellen...bzw versuche ich es...leider werden dort keine usb geräte unterstützt obwohl ich auch das extension pack etc hinzugefügt habe
+<k1l> eigentlich funktionieren die usb ports mit vbox. die frage ist eher ob da windows in der vbox und das apple programm mit umgehen wollen/können
+<ubuntu15> was kann ich tun??
+<Isotop77> ubuntu15: den filter in virtualbox hast du eingerichtet für die usb devices?
+<Isotop77> ubuntu15: welche virtualbox version?
+<ubuntu15> das ist das schlimme...wenn ich die filter config möchte steht nur "keine usb geräte angeschlossen" obwohl die maus auch unter usb läuft bzw diese auch funktioniert...das iphone und usb sticks werden nicht angezeigt
+<ubuntu15> virtualbox 5.0
+<Isotop77> ubuntu15: schon einmal neu installiert? guest-vm-unabhängig?
+<Isotop77> ubuntu15: wird das extension pack in den einstellungen richtig angezeigt?
+<ubuntu15> ja neu installiert hab ich es auch..hab auch gasterweitung runtergekladen wie es oracle auf ihrer support seite erwähnte
+<ubuntu15> und extension pack auch.
+<ubuntu15> hatte gehofft das ich den umstieg auf ubuntu problemlos überstehe...und die fanatiker von apple bieten kein itunes für linux distros an
+<Isotop77> ubuntu15: in anderen vms kannst du usb geräte einbinden?
+<ubuntu15> nein!!!
+<ubuntu15> hatte auch linuxmint etc mal laufen...nirgends funzt es
+<Isotop77> ubuntu15: atmen :D eventuell das chipset unten drunter...lokal auf dem host mal lsusb in der konsole abgesetzt?
+<ubuntu15> Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+<ubuntu15> Bus 008 Device 002: ID 1532:000c Razer USA, Ltd
+<ubuntu15> Bus 008 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+<ubuntu15> Bus 007 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+<ubuntu15> Bus 006 Device 002: ID 3838:0001 WEM 5-in-1 Card Reader
+<ubuntu15> Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+<ubuntu15> Bus 001 Device 003: ID 057c:8403 AVM GmbH Fritz!WLAN N v2 [Atheros AR9271]
+<ubuntu15> Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+<ubuntu15> Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+<ubuntu15> Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+<ubuntu15> Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+<jokrebel> !Bast > ubu
+<jokrebel> !pasten > ubuntu15
+<kubine> ubuntu15: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten Nopaste-Service wie z.B. http://paste.ubuntu.com/ abgelegt werden. Nach dem Speichern kannst du dann die URL der Seite kopieren und sie statt des Textes hier im Channel posten.
+<ubuntu15> http://paste.ubuntu.com/11884052/
+<kubine> ubuntu15: Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<ubuntu15> hatte mir die neue ios9 beta angesehen und möchte wieder zurück auf 8.4 ...und das möglichst ohne wieder windows zu reinstallieren nur weil es diesen itunes zwang gibt...dachte über vb würde gehen
+<Isotop77> ubuntu15: also ich sehe nur eine maus...auf dem host wird das iphone erkannt?
+<ubuntu15> unter ubuntu15 läuft das iphone tadellos nur in der vm nicht
+<ubuntu15> wahrscheinlich zu alte möhre ^^
+<ubuntu15> keine idee
+<Isotop77> ubuntu15: mal die vierer virtualbox benutzt?
+<sdx23> Isotop77: http://httpd.apache.org/docs/2.4/upgrading.html "The NameVirtualHost directive no longer has any effect, other than to emit a warning. Any address/port combination appearing in multiple virtual hosts is implicitly treated as a name-based virtual host."
+<kubine> sdx23: Title: Upgrading to 2.4 from 2.2 - Apache HTTP Server Version 2.4 (at httpd.apache.org)
+<Isotop77> sdx23: hab jetzt erstmal den kundenservice kontaktiert...komme nicht weiter :/
+<sdx23> hu? Also mit der passenden Apache Config geht das jedenfalls. Für vernünftige DNS Einstellungen musst du dich dagegen tatsächlich bei denen melden.
+<Isotop77> sdx23: ja aber ich habs einfach nich zum laufen bekommen...hat immer wordpress aufgerufen...
+<dreamon> Hallo. Fritz Router steht 2Meter neben mir im gleichen Zimmer. Ich verbinde. Verbindung steht kann surfen. 2Minuten später frägt er mich nach dem Passwort von der gleichen Verbindung. Klicke Verbinden. Dann gehts wieder eine Weil und es fängt wieder von vorne an.
+<Isotop77> dreamon: tail -f /var/log/syslog und dann mal nachstellen
+<dreamon> ok, ich teste es mal .. hab im moment lan drin. melde mich in ca. 10Minuten
+<dreamon> Isotop77, http://paste.ubuntu.com/11884247/ 21:05:44 wurde ich wieder gekickt. die Log ist ellenlagen.. hier mal ein auschnitt
+<kubine> dreamon: Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<Isotop77> dreamon: ab wann hast du keine verbindung mehr? nur mit diesem netzwerk?
+<dreamon> Isotop77, Nein mit jedem Fritzbox router (habe nur Fritzboxen) 3Stück getestet. Immer das gleiche..
+<dreamon> Das ganze erst seit ein paar wochen.
+<dreamon> Bei 21:05:44 gibt es einen zeitsprung .. da war ich ohne
+<dreamon> 21:06:02 gings dann wieder
+<Isotop77> dreamon: ungewöhnlich...ich sehe einmal ein fehlerhaftes pw um 21:05:44.....benutzt die fritzbox ein wpa2 pw mit tkip/aes? was ist unter ubuntu im profil eingetragen?
+<dreamon> wpa2 & wpa
+<Isotop77> im gemischten modus oder wie oder ist das so ein automatischer modus?
+<dreamon> in der Fritzbox hab ich ccmp oder so ähnlich eingestellt
+<dreamon> Das steht in dem Profile von Ubuntu drin
+<jokrebel> dreamon: Versuch mal auf Mixed-Mode (wpa + wpa2) und auf Kanäle über 12 zu verzichten. Des weiteren ggf. dann auch noch auf bestimmte Sonderzeichen im Passwort.
+<dreamon> Sonderzeichen hab ich nicht drin.. den Rest versuch ich mal.
+<Isotop77> zur not mal nur tkip oder aes...mixed mode macht oft probleme...
+<jokrebel> dreamon: Und nein, das sind keinesfalls neue Erkenntnisse dass Mixed-Mode und/oder hohe Kanäle merkwürdige Probleme verursachen kann...
+<dreamon> habe 802.11g+b und 802.11g++ aktiviert..
+<jokrebel> auch da ist es besser nur das zu aktiviern was man wirklich nuten will
+<jokrebel> nutzen
+<dreamon> Das ist Standardmäßig aktiviert gewesen.
+<jokrebel> auch da ist es besser nur das zu aktivieren was man wirklich nutzen will
+<jokrebel> dreamon: Was jetzt nicht zwangsläufig bedeutet in allen Anwendungsfällen die beste Wahl zu sein.
+<dreamon> Mir ist stabilität am Wichtigsten..
+<dreamon> Isotop77, jokrebel Ich hab nun was geändert.. und gehe mal in die Testphase
+<musca> 802.11g++  scheint eine proprietäre, nicht standardkonforme Protokollvariante zu sein
+<musca> das funktioniert nach meinen Erfahrungen nur, wenn Router und Client vom gleichen Hersteller sind, und wenn nur genau ein einziger Client am Router hängt.
+<kahja> abend
+<musca> hallo kahja
+<kahja> bin neu also seit nett :-)
+<kahja> klärt mich mal auf wo bin ich hier gelandet user oder entwickler
+<k1l> das hier ist der deutsche support kanal von ubuntu
+<musca> kahja:  Der channel hat dich beim Betreten mit einem Topic begrüsst, da stand das drin :)
+<kahja> moment
+<kahja> haha, muss mich erstmal einfuchsen
+<musca> kahja: tu das ruhig, ich finde es lohnt sich.
+<kahja> wie lange seit ihr schon bei ubuntu
+<kahja> bin grad dabei umzusteigen
+<kahja> nicht einfach
+<kahja> asl windows nutzer
+<kahja> lol
+<k1l> da kann man pauschal mal das wiki.ubuntuusers.de empfehlen
+<kahja> lesen lesen lesen
+<k1l> einfach mal ein ubuntu installieren und anfangen zu benutzen und wenn man was wissen will/muss dann einfach nachlesen.
+<kahja> schon dabei, hab jetzt erstmal diesen chat zum laufen bekommen
+<stevieh> ich mag ubuntu ja gar nicht. das mach ich nur wegen sm
+<kahja> sm ?
+<musca> sado-maso
+<kahja> hä?
+<stevieh> ok, aber jetzt nicht off-topic gehen :-)
+<musca> sorry
+<kahja> genau, ich werd nacher erstmal lesen als noob
+<jokrebel> stevieh: Du hattest mit OT angefangen ;-)
+<stevieh> psst :-)
+<kahja> das ist typisch wenn man neu einseigt , man wird erstmal schön verarscht
+<kahja> ;-)
+<jokrebel> !niemals > kahja
+<kubine> kahja: NIEMALS !
+<kahja> kein ding gönne euch den luz
+<musca> stevieh:  sm = Shuttleworth, Mark?
+<kahja> erzählt mal hängt ihr jeden abend hier ab, tv out..? keine freundin?
+<stevieh> kahja: /join #ubuntu-de-offtopic
+<kahja> neuer raum
+<kahja> erklärbär mal
+<kahja> :-)
+<Isotop77> off-topic is nicht gut..dafür gibts eigene channels :)
+<thomasfuston> Hmm woran könnte das liegen das wlan nicht verbindet? bzw. wie könnte ich sehen woran es hängt?
+<thomasfuston> wlan wird erkannt es wird versucht zu verbinden aber verbindet nicht 15.04 ubuntu
+<sdx23> thomasfuston: syslog lesen, da steht wenn er sich nicht associieren kann und warum.
+<Isotop77> tail -f /var/log/syslog und connecten
+<thomasfuston> ok hm irgendwas mit ssid, er verbindet wohl bricht dann aber wieder ab und sagt am ende ssid-not-found
+<thomasfuston> hmm immer das selbe "disconnected -> scanning -> authenticating -> disconnecting"

@@ -1,0 +1,510 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2013-3-15"
+lang: "de"
+messages: "501"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<_d4vid> ich versuche grade ne dota2 zu starten aber n black screen :(
+<_d4vid> bleibt haengen..
+<daswort> _d4vid~ Terminal-Ausgabe?
+<_d4vid> daswort, habe hingekriegt..
+<_d4vid> daswort, trotzdem thanks
+<daswort> _d4vid~ Wie hieß der Entwickler von Dota eigentlicht?
+<_d4vid> daswort, blizzard?
+<daswort> Gut zu wissen.
+<_d4vid> Dota 2 ist ein von Valve Software entwickeltes Action-Echtzeit-Strategiespiel und der Nachfolger zu der sehr beliebten Modifikation Defense of the Ancients für Warcraft III.
+<_d4vid> also valve
+<_d4vid> so pennen..
+<abraxus> Thema: apt in Firefox || hab den String in Firefox erstellt und Firefox neu gestartet ( http://wiki.ubuntuusers.de/apturl ) trotzdem funktioniert das apt protokoll nicht bzw. sagt Firefox, er weiß nicht womit er es öffnen soll - hab apturl auch installiert und funktioniert - benutze Kubuntu 12.04
+<kubine> Title: apturl › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<abraxus> kann mir jemand helfen ?
+<swed1> Hallo, ich bekomme regelmäßig die Meldung auf dem Desktop: "Es wurde ein Problem mit einer Systemanwendung festgestellt, möchte sie das Problem Melden". An was liegt das? Wie bekomm ich Details heraus?
+<sash_> Kann ich nach dem Verbinden zu einem bestimmten AP ein post-connect-script ausführen? Genau: Wenn ich mich zu meinem Android-AP connecte, will ich Dropbox und owncloud deaktivieren. Ist das über den NetworkManager möglich?
+<LetoThe2nd> denke schon...
+<stevieh> ich glaub da gabs auch was... ich hab sowas früher mit whereami gemacht...
+<maze-m> kann mir jemand sagen, wie ich den Timestamp herausfinden kann?
+<LetoThe2nd> "den timestamp"
+<maze-m> ...also von einer bzw. mehreren Dateien?
+<koegs> swed1: einfach auf "Bericht senden" oder so klicken und dann auf Details
+<LetoThe2nd> maze-m: man stat
+<maze-m> LetoThe2nd: okay :)....
+<maze-m> Will gerne folgendes machen:"dmesg | grep -i usb | grep cp210 | stat %z"
+<maze-m> Aber er sucht da natürlich nach ner Datei bzw. einem Verzeichnis! Wie kann ich das denn auf die dmesg anwenden?
+<LetoThe2nd> stat auf dmesg ist nonsenst.
+<LetoThe2nd> nonsense.
+<LetoThe2nd> wenn dann musst du halt, aus was auch immer du da aus dmesg rausgegreppt hast, dir den gewünschten dateinamen bauen.
+<maze-m> Ja okay, aber ich würde gerne halt das Änderungsdatum der letzten Änderung von cp210 aus den dmesg rausgegreppt haben
+<LetoThe2nd> und das geht nicht.
+<LetoThe2nd> bzw, das hat mit stat nichts zu tun.
+<LetoThe2nd> wenn dann hol dir vorne den timestamp raus und addier ihn zum zeitpunkt des hochfahrens.
+<maze-m> LetoThe2nd: meinst du am Anfang von dmesg?
+<LetoThe2nd> maze-m: ich rieche hier ohnehin ein gewaltiges XY-problem. sag lieber, was du *EIGENTLICH* vorhast.
+<maze-m> XY-Problem?
+<maze-m> Also.... Ich hab folgende Problematik! --> http://forum.runnersworld.de/forum/garmin-forerunner/77733-forerunner-310xt-mit-virtualisiertem-windows-vm-einrichten.html#post1517844
+<LetoThe2nd> maze-m: ja. du willst X machen, und glaubst, Y wäre ein weg dazu. weil du aber nicht weisst wie Y geht, fragst du uns danach. also frag lieber gleich nach X.
+<maze-m> LetoThe2nd: Okay, da hast du Recht!
+<maze-m> Hab in einer VM Windows 7 installiert und irgendwie wird mein USB-Stick für die Datenübertragung von den Laufdaten meiner Pulsuhr nicht richtig angebunden bzw. es gibt Probleme mit dem cp210x vom Linux-Kernel..... Hab den schon mit rmmod entfernt, aber das hat komischerweise auch nichts gebracht!
+<LetoThe2nd> ich glaube ehrlich gesagt, dass da der proprietäre treiber in der vm drin pfuscht.
+<maze-m> und der, der mir in dem Beitrag schon am meisten geholfen hat (gero) meinte ja, ich solle mal in den dmesg-Ausgaben gucken, wann sich da sozusagen was ändert
+<LetoThe2nd> ich benutze den cp21xx treiber täglich sowohl als auch aus ner windows-vm raus über stunden hinweg. ohne das geringste problem.
+<LetoThe2nd> maze-m: wie gesagt - timestamp in diesem zusammenhang: die zahl ganz vorne.
+<LetoThe2nd> maze-m: und mal so am rande - das beweist dass alle deine aussagen vorher völliger quatsch waren und du meine zeit vergeudet hast.
+<maze-m> LetoThe2nd: Wieso soll ich deine Zeit nun vergeudet haben?
+<LetoThe2nd> maze-m: "ich will den timestamp von einer datei" - ich befasse mich mit dem thema, teste es hier gegen, gebe dir eine antwort.
+<LetoThe2nd> maze-m: es stellt sich heraus, dass das mit dateitimestamps nicht im geringsten zu tun hat.
+<LetoThe2nd> maze-m: ergo: du hast meine zeit verschwendet.
+<LetoThe2nd> und auf so etwas reagiere ich allergisch.
+<maze-m> LetoThe2nd: ja okay, dann tut's mir leid! Das war nicht meine Absicht!
+<maze-m> Ich find's ja generell super, wenn einem hier geholfen wird!
+<koegs> und es zeigt mal wieder, dass man sein eigentliches Problem beschreiben sollte und nicht wie man gedenkt da hin zu kommen :(
+<maze-m> koegs: ja gut, aber ich dachte halt, dass mein Problem mit der der Pulsuhr ja doch schon ziemlich speziell ist
+<A2tec> maze-m: keine ahnung was dmesg ist?
+<maze-m> A2tec: doch, dmesg zeigt die Ausgabe des Boots an
+<azrael_> gute morgen ich kann über den normalen user den xserver scheinbar nicht ansprechen als root kann ich mich einloggen meine fehlersuche endete als ich xrandr --query eingab und einfach nur die Meldung Cant opne display kam, hat jemand einen Tipp für mich um dem Fehler auf die schliche zu kommen?
+<wilde_wurst> hi, gehört ratpoison.pyc
+<wilde_wurst> zu ubuntu?
+<LetoThe2nd> wilde_wurst: wo gefunden?
+<wilde_wurst> /usr/lib/pymodules/python2.7
+<LetoThe2nd> wilde_wurst: dann würde ich einfach mal packages.ubuntu.com befragen
+<elmargol> was habt ihr  nur mit nautilus in 13.04 angestellt :(
+<bekks> elmargol: Wieso "ihr"?
+<wilde_wurst> hatte mal chkrootkit laufen lassen und der meldete: The following suspicious files and directories were found:
+<bekks> Hat einer von den hier Anwesenden irgendwas daran getan?
+<wilde_wurst> /usr/lib/pymodules/python2.7/.path /usr/lib/jvm/.java-gcj-4.6.jinfo /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/.noinit
+<elmargol> meine webdav samba shares sind verschwunden :(
+<LetoThe2nd> wilde_wurst: solchen tools traue ich nicht weiter als ich sie werfen kann. wenn man mit den ausgaben nichts spezifisch anfagen kann verbreiten sie nur panik.
+<LetoThe2nd> wilde_wurst: und die datei scheint zu nem programm namens dratmenu zu gehören.
+<azrael_> gute morgen ich kann über den normalen user den xserver scheinbar nicht ansprechen als root kann ich mich einloggen meine fehlersuche endete als ich xrandr --query eingab und einfach nur die Meldung Cant opne display kam, hat jemand einen Tipp für mich um dem Fehler auf die schliche zu kommen?
+<bekks> Was heisst denn "nicht ansprechen"?
+<LetoThe2nd> azrael_: bitte uname -a und lsb_release -a in ein pastebin packen. danke.
+<bekks> Kannst Du dich einloggen als normaler User?
+<azrael_> nein da kommt ein schwarzer bildschirm und ich werde zum anmeldebildschirm zurückgeworfen
+<bekks> Aha.
+<bekks> Und warum hat dein root ein gesetztes Passwort?
+<azrael_> weil ich mich bisher damit nicht auseinandergesetzt habe und das pw dasselbe wie das normale ist
+<bekks> BEi Ubuntu hat root kein Passwort.
+<bekks> azrael_: Kannst du mal die Ausgaben von folgenden Befehlen in einen Pastebin werfen? lsb_release -a; uname -a
+<azrael_> also ich bin auf dem anmeldebildschirm komme mit strg alt f1 in die konsole geb login und pw ein mache ein sudo startx dann geht es anders nicht
+<bekks> Also loggst du dich nicht als root ein.
+<joogi> azrael_: das koennte aber auch was mit dem startup zutun haben hast du schon probiert wenn du einen anderen user anlegst ob es dann geht?
+<bekks> Du loggst dich als User ein, und benutzt sudo.
+<azrael_> ok nein habe noch keinen anderen user angelegt ich amch jetzt erstmal das paste fertig
+<azrael2> http://paste.ubuntu.com/5616124/
+<kubine> Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<bekks> azrael_: Hast du ausreichend Festplattenplatz?
+<azrael2> http://paste.ubuntu.com/5616135/
+<kubine> Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<azrael2> sieht nicht so aus richtig?
+<bekks> Dein /home ist voll. Deswegen kannst du dich nicht mehr anmelden.
+<azrael_> wieviel freien speicherplatz brauche ich und kann ich den speicherplatz den der xserver benötigt reservieren?
+<bekks> Du brauchst mehr als 0 Byte verfügbar. ...
+<bekks> Und nein, der X Server braucht keinen Festplattenplatz. Aber die X Session des Users.
+<bekks> Und nein, man kann da nichts reservieren, deswegen lässt man die Festplatte einfach nicht zulaufen.
+<azrael_> vielen dank für die infos
+<wilde_wurst> LetoThe2nd: ne hier stimmt einiges nich die md5summe von dpkg, etho is im sniffer modus usw. ich benutz mal shred^
+<azrael_> also ich habe der /home partiton + 100G zugewiesen und habe nun 39% zur verfügung stehen eine anmeldung ist dennoch nicht möglich
+<LetoThe2nd> azrael_: nur weil ich was zuweise ist nicht automatisch das filesystem korrekt resized... ergo, was möchtest du uns gerade noch an spezialitäten über dein system mitteilen? ;)
+<LetoThe2nd> wilde_wurst: tja dann.
+<azrael_> -.- wie mach ich das denn dann korrekt ?
+<bekks> azrael_: Dein Home hat 62GB maximale Gesamtgröße.
+<bekks> azrael_: Du müsstest uns erstmal sagen, was du da wo wie zugewiesen hast.
+<azrael_> über ein live system mit gparted 100G an /home
+<bekks> Dann paste wieder ein df -h
+<azrael2> http://paste.ubuntu.com/5616165/
+<kubine> Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<bekks> Wenn der Login jetzt immer noch nicht funktioniert, dann musst du in die Logs schauen, was da los ist.
+<azrael_> welchen log?
+<bekks> /var/log/Xorg.0.log und ~/.xsession-errors
+<azrael_> bekks wonach genau suche ich denn ?
+<azrael2> xfce4-session: Unable to access file /home/tharma/.ICEauthority: Permission denied ?
+<bekks> Du suchst nach Fehlern...
+<bekks> Und du hast dir scheinbar BErechtigungen zerschossen, was Du erstmal beheben solltest.
+<azrael_> die berechtigungen für xorg-xserver mit chmod +rwx?
+<bekks> Nein.
+<bekks> Lies das hier (das hast du geschrieben, vorhin) nochmal:
+<bekks> 0315 115751 < azrael2> xfce4-session: Unable to access file /home/tharma/.ICEauthority: Permission denied ?
+<azrael_> xface4-session
+<bekks> Nein.
+<bekks> Wem gehört die Datei /home/tharma/.ICEauthority ?
+<azrael_> dann kann es nur die hier sien .ICEauthority
+<bekks> Liest Du eigentlich, was ich Dir schreibe, oder glaubst du ich führe Selbstgespräche?
+<azrael_> ja ich versuche dir zu folgen..
+<azrael_> wie finde ich raus wem die datei gehört?
+<bekks> Du machst da komische Dinge... beantworte doch einfach mal meine vorletzte Frage.
+<bekks> ls -lha
+<azrael_> root
+<bekks> Was ist die Ausgabe von ls -lha /home/tharma/.ICEauthority ?
+<azrael2> -rw-------  1 root root    0 Mär 12 11:54 .ICEauthority
+<bekks> Schieb bitte mal "find /home/tharma ! -user tharma -exec ls -lha {} \;" in einen PAstebin.
+<azrael2> http://paste.ubuntu.com/5616208/
+<kubine> Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<bekks> Schön, da hat jemand völlig sinnfrei root benutzt und dann auch noch Firefox als root gestartet.
+<bekks> sudo chown -R tharma:tharma /home/tharma/
+<bekks> Und benutz nie wieder, unter keinen Umständen, egal was passiert, einen Browser als root.
+<azrael_> darf ich fragen warum ?
+<bekks> Weil das völliger Schwachsinn ist, um es ganz offen zu sagen. Es zerschiesst Rechte, wie man in deinem Paste sehr schön sieht, es öffnet Sicherheitslücken, und ist komplett unnötig.
+<azrael_> werde ich meinem kollegen ausrichten
+<bekks> also ist das gar nicht dein Rechner?
+<azrael_> nein
+<bekks> Kannst Du Dich denn jetzt wieder einloggen?
+<azrael_> mache gerade ein reboot
+<bekks> Wozu das denn?
+<bekks> Das ist doch kein windows.
+<azrael_> ok..
+<azrael_> wie sieht der nächste schritt aus?
+<bekks> Zitat:
+<bekks> <+bekks> Kannst Du Dich denn jetzt wieder einloggen?
+<azrael_> hab beim überfloegen ausloggen gelesen Oo nein ein login ist nciht möglich soll ich jetzt nochmal das find /home/tharma ! -user tharma -exec ls -lha {} \; posten?
+<bekks> Ja.
+<azrael_> da ich mich ja nur als root anmelden kann muss ich firefox doch als root starten oder nicht?
+<bekks> Nein.
+<bekks> Du sagtest vorhin:
+<bekks> 0315 113212 < azrael_> also ich bin auf dem anmeldebildschirm komme mit strg alt f1 in die konsole geb login und pw ein mache ein sudo startx dann geht es anders nicht
+<bekks> Das bedeutet: "Ich logge mich als User ein und mache sudo irgendwas" und nicht "ich logge mich als root ein".
+<bekks> Dieser grundlegende Unterschied sollte Dir klar sein.
+<bekks> !pastebinit > azrael_
+<kubine> azrael_: Pastebinit ist ein Programm, mit dem man Dateien (`pastebinit /zur/datei.txt`) und Ausgaben (z.B. `ls /etc | pastebinit`) direkt nopasten kann, wenn der Rechner ans Internet angebunden ist. Installieren kannst du es mit `sudo apt-get install pastebinit`.
+<apricot1> mich treibt  Adobe Fash zum Wahnsinn. Eurosport z.B. meldet ich solle den Adobe Flasplayer downloaden, bitet .exe Datei an. in firefox habe ich trotz apt-get install flasplayer-installer nur ein shockwave-plugin. Adobe wird fürLinux nicht mehr weiterentwickelt und hat hässliche bugs... was ist zu tun?
+<mgolisch> apricot1: kein flash verwenden?
+<apricot1> und statt dessen??
+<bekks> apricot1: Sich bei Eurosport beschweren.
+<mgolisch> viele seiten unterstuetzen html5 video weil flash ausstirbt
+<mgolisch> beschwer dich beim betreiber
+<apricot1> ok.. statt dessen Gnash?
+<mgolisch> nee am besten alles mit flash meiden
+<apricot1> das heißt dann ca. 60% aller websites meiden???
+<mgolisch> aber kannst es ja mal versuchen, vermutlich will das ding ne neuere version haben, die gibts aber ja nicht weil adobe die entwicklung eingestellt hat
+<apricot1> eben
+<bekks> Dann musst Du dich bei Eurosport beschweren.
+<apricot1> wollt ihr mir erzählen, dass ihr keine websites meht
+<apricot1> wollt ihr mir erzählen, dass ihr keine websites mehr aufruft, die Flash verwenden??
+<_moep_> geht doch oft auch ohne *troll*
+<LetoThe2nd> wenn's mit chromiums eigebautem flash geht - gut. wenns damit nicht geht, ist es die benutzung definitiv nicht wert. fertig.
+<apricot1> chromium odr chrome?
+<apricot1> und von der Form auf den Inhalt einer website zu schließen (..ist es nicht wert..9 ist schon ziemlich abenteuerlich
+<sysdef> apricot1: chromium-browser ist google chrome ohne google-spyware
+<azrael_> bekks ich habe keine leiste mehr kann auch nciht auf den desktop zugreifen
+<azrael_> es öffnet sich von der letzten sitzung der browser und das terminal mehr geht nicht
+<mgolisch> apricot1: ja dann mach das halt mit chromium wenn das geht
+<apricot1> hab ich probiert ... also Eurosport live stream geht auch nicht
+<apricot1> das liegt wohl an Eurosport - nur windows
+<mgolisch> und im tv kommt das was die da senden nicht?
+<sash_> apricot1: Läuft hier mit chrome
+<apricot1> nein, eurosport-2 krieg ich nicht über kabel-tv (ohne Sonervertrag)
+<sash_> http://de.eurosport.yahoo.com/l/fussball/champions-league/auslosung-live-stream/ <- Tut
+<kubine> Title: Champions League Auslosung Live-Stream (at de.eurosport.yahoo.com)
+<bekks> Läuft hier auch mit Chrome. Adobe Flash Plugin in Chrome deaktivieren und dann passts.
+<apricot1> sash_, http://www.stream2watch.me/live-tv/eurosport-2-live-stream bringt bei mir 'Fehlendes Plugin' im Chromium
+<kubine> Title: EUROSPORT 2 Live Stream | SPORT (at www.stream2watch.me)
+<bekks> Chrome ist nicht Chromium.
+<bekks> IIRC hat Chromium kein Pepper Flash.
+<apricot1> ich hab Chromium aus den Ubuntu-Repos
+<bekks> ...
+<azrael_> also der xserver scheint jetzt vollkommen hinüberzusein
+<bekks> azrael_: Der X Server funktioniert einwandfrei. Deine Session ist kaputt. Leg einen neuen User an und probier Dich mit dem einzuloggen.
+<apricot1> Chromium mit: /usr/lib/flashplugin-installer/libflashplayer.so
+<azrael_> xauth: timeout in locking authority file /homer/tharma/_Xauthority
+<bekks> azrael_: Dann prüf die BErechtigungen.
+<azrael_> ich komm per sudo auch nicht mehr rein!
+<nifu> Btw.: Wo ihr gerade bei Chrome/Flash seit. Habt ihr auch das Problem von 100% CPU load bei Flash?
+<bekks> azrael_: Du sollst kein sudo benutzen um X zu starten. Habe ich Dir schon mehrfach gesagt.
+<apricot1> aber. Shockwave Flash 11.2 r202
+<bekks> nifu: Nein.
+<mgolisch> wieso auch sudo? das braucht man doch fuer startx gartnnicht
+<sash_> apricot1: Mit Chrome startet da was, aber funktionieren tut da nicht viel.
+<bekks> azrael_: Erstmal behebst du jetzt zum dritten Mal deine BErechtigungsfehler, und dann lässt Du bitte die Finger von sudo und startx. Damit zerballerst Du Dir wieder die Rechte.
+<sash_> apricot1: Was aber nicht an Chrome liegt,
+<nifu> bekks: Glückspilz. Habe mal 2-3 Abende danach gegoogelt. Aber keine wirkliche Lösung gefunden. Ist nur gerade bei einem Notebook ärgerlich zwecks Lüfter und Akkuverbrauch
+<sash_> apricot1: Und, nochmal, und mit Nachdruck: chrome != chromium
+<apricot1> ja ok
+<sash_> nifu: Die Zeiten sind hier aber auch vorbei.
+<nifu> sash: Die zeiten von Flash? =P
+<sash_> Die Zeiten von 100% CPU bei Flash.
+<nifu> Bei mir noch nicht. Bin dann irgendwo hängen geblieben. :/
+<bekks> apricot1: So. Chrome verwendet: /opt/google/chrome/PepperFlash/libpepflashplayer.so
+<bekks> apricot1: Und das hat hier die Version 11.6.602.180
+<sysdef> apricot1: du bist nicht in #ubuntu-de-offtopic
+<bekks> Das, was dein Chrome da oben verwendet ist Adobe Flash. Dazu sagte ich oben was.
+<apricot1> dann mus ich also noch den Original Google-Chrome installieren
+<azrael_> bekks: ich bekomme drei input/outpu fehler zweimal für .cache/sessions und einmal für .macramedia/Flashplayer
+<bekks> apricot1: GEnau. Weil Chrome ist nicht Chromium.
+<bekks> azrael_: Dann zeig uns bitte mal die Ausgabe von dmesg in einem Pastebin.
+<azrael_> und wie paste ich über die konsole?
+<bekks> azrael_: Das sagte Dir Ubottu vorhin.
+<bekks> !pastebinit > azrael_
+<azrael_> pastebinit
+<kubine> azrael_: Pastebinit ist ein Programm, mit dem man Dateien (`pastebinit /zur/datei.txt`) und Ausgaben (z.B. `ls /etc | pastebinit`) direkt nopasten kann, wenn der Rechner ans Internet angebunden ist. Installieren kannst du es mit `sudo apt-get install pastebinit`.
+<azrael_> ich will nopasten also geb ich demsg | pastebinit ein und dann erscheint das hier?
+<bekks> azrael_: NEin.
+<mgolisch> azrael_: nee dann gibt dir das den link den du dann hier postest
+<azrael_> http://paste.ubuntu.com/5616288/
+<kubine> Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<bekks> azrael_: Und dann bitte auch die kompletten Input/output Fehler von denen Du redetest inklusive dessen was Du getan hast, als die Fehler auftraten.
+<azrael_> Your are trying to send an empty document, exiting.
+<bekks> Then you did something wrong.
+<mgolisch> uargs verschlüsselung :)
+<azrael_> chown: chanhing ownership of `/home/tharma/.cache/sessions/Thunar-2c39bd5c1-d085-4592-8aae-6b6635a60834 ' : Input/output error
+<azrael_> brauchst du die anderen beiden auch noch?
+<bekks> Ich brauch vor allem den Befehl...
+<mgolisch> am ende vom dmesg sind fehler von ecryptfs
+<bekks> Autsch.
+<mgolisch> evtl sind das deine io errors
+<azrael_> chown -R  tharma:tharma /home/tharma
+<bekks> Ohne sudo kann das nicht funktionieren, wenn die Datei nicht deinem USer gehört.
+<azrael_> sudo davcor..
+<bekks> Hast du gerade X gestartet, mal wieder? :)
+<azrael_> nein
+<azrael_> wie geht es denn nun weiter?
+<mgolisch> geht es denn mit nem neuen user?
+<apricot1> danke erstmal...bye
+<azrael_> mgolisch: ja
+<bekks> Also ist das Profil deines Users kaputt.
+<azrael_> kann das repariert werden?
+<bekks> Nur mit dem Backup.
+<azrael_> aslo verschiebe ich die sachen zu dem neuen user und lösche das alte profil
+<mgolisch> leider hab ich null plan von diesem ecryptfs das war mir immer suspekt darum hab ich das nie verwendet
+<bekks> mgolisch++
+<exoon> hi. Ich würde gerne eine original Notebook-Festplatte sichern bevor ich Ubuntu drauf Spiele. Den original Zusatnd will ich wieder herstellen können. Aber 250GB für ein komplettes Image will ich nicht verschwenden, da ja kaum was drauf ist. Gibt es dafür ein Tools?
+<bekks> Clonezilla sollte das können.
+<exoon> bekks, schaus mir mal an. thx
+<bekks> Ansonsten kann man dd auch durch gzip/bzip2/wasauchimmer pipen.
+<exoon> das kleine Problem ist, dass die Platte nicht ganz frisch ist. Das Notebook ging zum Service. Vorher habe ich alles mit Nullen überschrieben und dann Ubuntu installiert. Dem Service habe ich gesagt, er kann die Platte ruhig in den original Zustand versetzen, was die auch gemacht haben. Ich vermute aber, dass die leeren Bereiche nicht nur Nullen enthalten, sondern auch das alte Ubuntu noch da ist.
+<bekks> Und?
+<azrael_> wie füge ich den neuen butzer denn sudo hinzu?
+<sash_> !sudo > azrael_
+<kubine> azrael_: Informationen zu sudo finden sich im Wiki unter http://wiki.ubuntuusers.de/sudo
+<exoon> bekks, wenn ich den output von dd komprimieren, dann kann ich mich nicht darauf verlassen, dass die leeren Bereiche alle NUllen enthalten.
+<bekks> Das sagte ja auch keiner.
+<bekks> Das kannst du bei Clonezilla aber auch nicht.
+<TheInfinity> exoon: mach n komprimiertes backup und mach dann die platte platt mit überall nullen. wo ist das prob? :)
+<Quacero> schon mal jmd ein toschib a 203sd unter unbuntu zum laufen gebracht?
+<azrael_> die seite hilft mir nicht weiter denn ich bekomme immer die fehlermeldung ich sei nicht in der gruppe sudoers obwohl ich mich da ja hinzufügen will und zugreifen auf das andere konto ist auch nicht möglich dort bekomme ich die meldung permission denied
+<exoon> TheInfinity, dass das komprimierte Backup zu groß ist. Aber damit muss ich leben.
+<mgolisch> azrael_: der user muss mitglied der admin gruppe sein
+<TheInfinity> exoon: backups sind nun mal groß.
+<mgolisch> azrael_: dann sollte sudo gehen
+<exoon> dabei bräuchte ich eigentlich nur die Recovery-Images und das Wissen, wie ich die später benutzen kann, um den original Zustand wieder herzustellen.
+<mgolisch> clonezilla nimmt normal glaub ich parclone
+<mgolisch> ausser du sagst du willst explizit raw images mit dd haben
+<azrael_> benutzer not in sudoers file...
+<mgolisch> du hast dich neu eingelogt?
+<bekks> azrael_: Du musst das natürlich mit einem user tun, der bereits sudo verwenden darf - das ist Dir schon klar, oder?
+<mgolisch> sonst gelten noch die alten gruppen
+<bekks> Ohne Schlüssel kommst du nicht in die Wohnung um den Schlüssel zu holen.
+<bekks> exoon: Die Recovery Images hat man sich nach dem Kauf erstellen müssen, mit der mitgelieferten und vorinstallierten Software. Wenn Du das getan hast, hast du eine/mehrere DVD die man dann einfach booted.
+<exoon> bekks, meine Platte ist ja wieder im original Zustand. Ich kann das also machen .... allerdings habe ich kein DVD-Laufwerk.
+<bekks> Dann mach das - die Software wird Dir da schon sagen, was du tun sollst.
+<exoon> d.h. bis jetzt gehen ich nur davon aus, dass die auch die Recovery-Partition drauf gespielt haben.,
+<bekks> Dann schau halt mal nach.
+<azrael_> bekks & monglisch: vielen dank für eure hilfe
+<exoon> Mache mir grade den Clonezilla-Stick. Dann werde ich es sehen.
+<ppq> könnte es unangenehme nebeneffekte haben, wenn ich mir einen alias "su" auf sudo -i anlege?
+<bekks> Ja.
+<ppq> welche, bekks?
+<bekks> Dass su nicht mehr gehen wird.
+<stevieh> :-)
+<ppq> bekks, ich dachte, ein alias in der .bashrc überdeckt einfach das su ausm path
+<ppq> mache es ja nur für einen user
+<ppq> und da "su" ohne weitere parameter in ubuntu standardmäßig sowieso nicht geht, dachte ich, sei das gefahrlos
+<ppq> naja, funktioniert, mal gucken ob gleich die welt untergeht :)
+<sash_> ppq: su -c "apt-get upgrade"
+<bekks> Hier flackert schon das Licht.
+<rcerny> bekommst es ja mit dem Silbertablet serviert ob :)
+<ppq> sash_, joa, sowas nutze ich eh selten bis gar nicht.
+<sash_> ppq: su <andererUserName>
+<dadrc> Bleibt die Frage, wer eigentlich `su` benutzt.
+<joogi> ich :P
+<ppq> sash_, ok, das ist n argument. aber wenn ich das tue, dann für gewöhnlich wenn ich root bin und jemand anders werden will. und der alias ist ja nur für den user gesetzt
+<sash_> Ich auch. Nur nicht unter Ubuntu :)
+<bekks> dadrc: Nach sudo -i ist su - user völlig legitim.
+<sash_> ppq: Jaja, mach du dir nur alles kaputt.
+<ppq> hihi
+<dadrc> bekks, joa. Ich mag sudo -u user -s /bin/bash trotzdem lieber
+<ppq> aha, schön: nach sudo -i sind natürlich auch die aliases des users nicht mehr gesetzt. bei sudo -s ist das weiterhin der fall
+<ppq> dann geht das ja genau wie ich will
+<joogi> stelt das eigentlich ein risiko dar? imo hab ich unter ubuntu root nen pw gegeben und meinem user die sudo rechte entzogen
+<bekks> joogi: Ja, das ist ein Risiko.
+<joogi> ok und weil?
+<bekks> Weil ein offen zugänglicher root Account ein Risiko ist.
+<ppq> hängt vom nutzungsverhalten ab, würde ich sagen. wenn du keine root shells offen und das notebook ungelockt lässt, ists natürlich n risiko :)
+<bekks> Und weil es nichts gibt, was man an der stelle nicht auch mit sudo machen könne.
+<bekks> +t
+<ppq> s/keine/eine/
+<joogi> also das ueberzeugt mich jetzt noch nicht, ok das offene root shell argument ok aber sonst?
+<bekks> Die Realität muss niemanden überzeugen, solange sie einen nicht überrascht.
+<joogi> mhm... ok also sind wir da beim nutzerverhalten, technisch gesehen machts keinen unterschied seh ich das richtig?
+<bekks> Das siehst du völlig falsch.
+<bekks> Technisch ist es ein riesiger Unterschied, den ich Dir gerade erklärt habe - offener root-Account, et al.
+<joogi> ok
+<Marius80> hi :)
+<Marius80> bisher verwendete ich kubuntu (mit kde) wobei ich seit der Umstellung auf KDE 4 einfach sehr entnervt bin weil viiiieles buggy ist
+<Marius80> nun wollte ich nochmals Gnome ausprobieren, und stellte fest, dass da mittlerweile alles *ganz* anders wurde
+<Marius80> kann man bei gnome einstellen, dass es ein bisschen mehr "wie früher" wirkt?
+<Marius80> z.B.  ein Panel unten mit den Tasks drin so wie bei kde
+<Marius80> und nicht die icons auf der linken seite mit einem Pfeil wenn ne app läuft
+<bekks> Nein. Nein.
+<dadrc> Wenn du ein Oldschool-Gnome-Feeling willst, nimm Xfce
+<Marius80> bekks, echt nicht?  Kann ja nicht sein, oder?
+<Marius80> dadrc, Xfce hat andere Probleme
+<Marius80> eigentlich will ich kde3
+<Marius80> aber trinity desktop kommt mit der Entwicklung nicht voran
+<bekks> Marius80: Wieso sollte es nicht sein können? Gnome2 ist tot, Gnome3 ist weiterentwickelt worden, dann gibt es noch andere DE.
+<bekks> Und KDE3 ist auch schon lange dead and burried.
+<Marius80> aber warum machen die alles Gute weg?!
+<dadrc> Xfce 4.10 (oder sogar 4.12) ist eigentlich mittlerweile das bessere Gnome2, meiner Meinung nach.
+<Marius80> ja?
+<ppq> ja
+<Marius80> xubuntu-desktop wäre das, oder?
+<dadrc> ja
+<Marius80> ich müsste dafür aber den Chat verlassen und dann XFCE zu testen
+<Marius80> weil ich den Chat in X offen hab
+<dadrc> Joa, kannst ja dann wiederkommen
+<Marius80> Sehr gerne,  danke!
+<dadrc> Chatprogramme laufen auch unter Xfce ;)
+<Marius80> Und auch an alle anderen nochmals vielen Dank!
+<Marius80> Bis bald!
+<Marius80> Danke!
+<verwirrt> Bye.
+<itu> hi,   who is this user "999" who owns the mountpoint of my new ext4-partition?
+<itu> ach
+<bekks> Wissen wir nicht. :) Was hast du denn getan?
+<itu> das hätte ich ja auch deutsch sagen können, seufz
+<itu> nix
+<dadrc> Naja, irgendwas schon, irgendwann mal. 999 gibt es normalerweise nicht.
+<ppq> itu, 999 ist die uid des live-cd users.
+<itu> ah so
+<ppq> itu, wenn du die partition im live-system chowned hast, kannst du das einfach im installierten system nochmal tun und alles wird gut
+<dadrc> Ah, das kann sein. Bin jetzt von installierten Versionen ausgegangen
+<itu> ok
+<itu> es ist absicht dass ich von LiveCD aus installiere.... ich plane meine Rechner so zu erneuern dass ~ein unterstellter Trojaner nicht überleben kann
+<itu> (bzw. auch partitioniere)
+<Marius80> re
+<Marius80> also xfce ist auch keine Lösung *g*
+<itu> wo stelle ich eigentlich ein dass dieses unity mit meinen Desktop wiederherstellt beim booten?
+<itu> *mir
+<SpiritOfTux> LetoThe2nd: danke für den tipp mit dem gmpc, läuft prima nach dem ich verzeichniseinträge von xbmc "/0/mp3/ .... extrafanart " gelöscht habe
+<SpiritOfTux> http://www.lastfm.de/user/SpiritOfTux
+<LetoThe2nd> SpiritOfTux: ah schön
+<LetoThe2nd> kann wer einen sip-client mit google contacts integration empfehlen?
+<dadrc> Nein
+<LetoThe2nd> schade :(
+<dadrc> Ja
+<LetoThe2nd> alternativ, kann man google talk nen sip-account unterschieben?
+<dadrc> Google Talk ist XMPP
+<dadrc> Deren Sprachfeature ist Jingle, also auch XMPP
+<ThreeM> LetoThe2nd, Blink fällt mir da nur ein
+<dadrc> Kein SIP weit und breit.
+<LetoThe2nd> dadrc: too bad.
+<LetoThe2nd> ThreeM: ja das hab ich auch gelesen.
+<ThreeM> ohh da gibts nun sogar ein windows build
+<LetoThe2nd> naja vielleicht mal bei gelegenheit.
+<LetoThe2nd> dann muss bis dahin ekiga reichen.
+<leszek> hi
+<lothar_> hallo hab mal ne frage  warum kann ich keine videos und keine spiele bei facebook machen danke
+<lothar_> danke
+<TheInfinity> .oO((flash. wenn er denn lange genug hier geblieben wäre))
+<BillBuchanan> Hi, ich versuche gerade unter Ubuntu 12.04 64bit versucht Teamviewer zu installieren - nur ich habe ein Problem mit Paketabhängigkeiten und weiß leider nicht, wie man sowas angeht: http://paste.ubuntuusers.de/413977/
+<kubine> Title: Fehlerhafte Abhängigkeiten › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<jokrebel> : BillBuchanan: . Paste bitte die _kompletten_ Ausgabe von folgenden  4 Terminalbefehlen: "lsb_release -a"; "uname -a"; "sudo apt-get update" und "sudo apt-get upgrade". (Über einen NoPaste-Service wie zB.: http://paste.ubuntuusers.de/ )  Danke. Und wo hast Du die Anleitung und das .deb-Paket her?
+<kubine> Title: Neuer Eintrag › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<jokrebel> BillBuchanan: Und wieso versuchst Du das Paket mit "dpkg -i" zu installieren? Der erste Weg wäre wohl eher per "apt-get install"…
+<SpiritOfTux> BillBuchanan: steht doch alles in Zeile 1-17, führe ein sudo apt-get -f install  aus ;)
+<BillBuchanan> jokrebel: http://paste.ubuntuusers.de/413982/ habe Teamviewer von der Homepage teamviewer.de geladen und versuche es zu installieren, einfach deb installieren und jetzt eben mit ein paar befehlen versucht die abhängigkeiten zu lösen
+<kubine> Title: Fehlerhafte Abhängigkeiten #2 › Ablage › ubuntuusers.de (at paste.ubuntuusers.de)
+<BillBuchanan> SpiritOfTux: siehe paste, apt-get -f install entfernt nur teamviewer....
+<jokrebel> BillBuchanan: Schon mal als Erstes: wieso hast Du den 3.5er Kernel? Der ist nicht standard in 12.04…
+<BillBuchanan> jokrebel: habe dieses paket https://wiki.ubuntu.com/Kernel/LTSEnablementStack installiert um den Kernel zu bekommen
+<kubine> Title: Kernel/LTSEnablementStack - Ubuntu Wiki (at wiki.ubuntu.com)
+<jokrebel> BillBuchanan: Außerdem scheinst Du jede Menge PPAs zu haben. Da kann dann früher oder später schon mal was Quer hängen. Gib mir mal den Link wo Du das Teamviewer-Paket her hast, dann versuch ich das mal hier zu installieren.
+<BillBuchanan> jokrebel: naja, eins für GIMP und eins für LibreOffice. Habe Teamviewer von hier installier: http://www.teamviewer.com/de/download/linux.aspx als ich installiert hatte, habe ich glaube ich mal die prosponed-quellen aktiviert gehabt und als ich gelesen habe, dass man die nicht nutzen soll, wieder deaktiviert, kann das daher kommen?
+<kubine> Title: Kostenloser TeamViewer Download für Linux (at www.teamviewer.com)
+<jokrebel> BillBuchanan: Hast Du denn anstelle von "sudo dpkg -i /tmp/teamviewer_linux_x64.deb" versucht, das .deb-Paket einfach mal per "Klick" auf das "downgeloadede" zu installieren?
+<jokrebel> BillBuchanan: Klappte hier (allerdings mit nur wenigen PPAs und Orginalkernel und nem 32bit(er) problemlos in wenigen Sekunden.
+<BillBuchanan> jokrebel: ja, ich habe es als erstes mit einem doppelklick versucht und als das softwarecenter einen fehler meldete mit der konsole, um genaueres zu erfahren
+<jokrebel> BillBuchanan: Und mit apt-get install?
+<BillBuchanan> jokrebel: wie mit apt-get install?
+<jokrebel> BillBuchanan: Nun ja. Der Konsolenweg etwas zu installieren ist eigentlich "sudo apt-get install mein-tolles-programm-das-ich-will"
+<BillBuchanan> jokrebel: achso, naja teamviewer ist nicht in den repositories. sonst hätte ich das natürlich so installiert. Aber PPA gibt es nicht und ich musste es immer mit deb installieren ("Paket »teamviewer« hat keinen Installationskandidaten")
+<jokrebel> BillBuchanan: http://www.teamviewer.com/de/help/363-Wie-installiere-ich-TeamViewer-auf-meiner-Linux-Distribution.aspx#multiarch gelesen? <hehe>
+<kubine> Title: Wie installiere ich TeamViewer auf meiner Linux-Distribution? (at www.teamviewer.com)
+<jokrebel> BillBuchanan: "Für 64-bit DEB-Systeme ohne Multiarch benötigen Sie das Paket teamviewer_linux_x64.deb." Soweit ich weis hat Ubuntu mit 64-bit System aber Multiarch; man möge mich korrigieren. (Bin noch nicht im besitz eines 64bit(ers)
+<leszek> re
+<azrael_> guten abend mir ist scheinbar ein fehler unterlaufen ein verschlüsseltes homeverzeichnis einem neuen benutzer zuzuweisen und es zu entschlüsseln ich habe das verzeichnis verschoben aber der inhalt ist immer noch verschlüsselt wo muss ich jetzt ansetzen um die daten wieder lesbar zu machen?
+<jokrebel> …Backup auspacken? *duck*
+<Noktar_Laptop> hallo, ich hab auf einem alten laptop ubuntu 10.4 laufen, das teil hat nur eine 40GB festplatte, kann ich die linux partitionen verkleinen und zusätzlich windows xp installieren?
+<leszek> Noktar_Laptop: das kannst du per Live USB oder CD Medium und dem Programm definitiv machen. Beachte aber bitte, dass Windows den GRUB Bootloader überschreiben wird, wenn der im MBR sitzt. So dass du eine Anleitung bereithälst um diesen wieder in den MBR zuschreiben nach der Windows Installation
+<Noktar_Laptop> hm ok, das steht ja sicher im ubuntu wiki wie das mit dem Bootloader geht
+<jokrebel> Noktar_Laptop: 40GB sind schon sehr wenig. Hier braucht ein XP ohne groß irgendwas zusätzliches bereits fast 20GB und Ubuntu inclusive ein paar Programmen und Daten auf dem Rest unterzubringen wird auch knapp werden. Da könnte höchstens ein zusätzliches (ggf. externes) Speichermedium helfen.
+<Noktar_Laptop> hm ich dachte an eine 15 GB partition für windows, da kommt nur das system und ein programm drauf, sonst nichts
+<Noktar_Laptop> bisher hab ich 28 GB von 35 GB frei unter ubuntu
+<Noktar_Laptop> wobei da eine 1.7 GB swap partition besteht, brauch ich die überhaupt?
+<leszek> Noktar_Laptop: Das kommt auf den RAM an und die Programme die du nutzen willst
+<leszek> Chrome/Chromium als Browser z.B. braucht bei einigen Tabs schon erheblich viel Arbeitsspeicher. Videobearbeitung und Audiobearbeitung ebenfalls. Da ist es nicht verkehrt eine ausreichend große Swap Partition zu haben
+<Noktar_Laptop> ok gut
+<Noktar_Laptop> ich hab nen 512 Mb riegel und nen 256 MB riegel drin
+<leszek> dann würde ich die SWAP Partition behalten. Du nutzt ja sicherlich einen Webbrowser und mehr als 5 Tabs oder ?
+<Noktar_Laptop> ja
+<leszek> gut dann behalte die swap partition
+<leszek> bei der Partitionierung solltest du noch beachten, dass im herkömmlichen Partitionsmodus nicht mehr als 4 primäre Partitionen angelegt werden können. Ich nehme mal an du hast jetzt eine Linux Partition & eine SWAP Partition. Sprich eine dritte Windows Partition schadet nichts
+<Noktar_Laptop> ja hab eine primäre da drauf ist ubuntu und eine erweiterte und darin ist die swap
+<leszek> Noktar_Laptop: ok dann macht das wohl keine probleme wenn windows eine primäre dann bekommt
+<BillBuchanan> jokrebel: bin wieder da - wegen teamviewer, was genau macht multiarch für einen unterschied? habe gerade die 64bit-version auf einem anderen laptop unter 12.10 problemlos installiert - und ich glaube da habe ich noch ein paar mehr PPAs ;)
+<jokrebel> BillBuchanan: Ohne jemals ein 64Bit-System gehabt zu haben bin ich da auch nur auf Googlewissen und "Hören-sagen" angewiesen. Sorry.
+<BillBuchanan> jokrebel: achso, danke bisher für deine bemühungen. Habe jetzt - da ich das system noch am einrichten bin und somit neuinstallieren kein desaster wäre - wieder proposed-quellen aktiviert, weil ich mir vorstellen kann, dass ich daraus schon pakete installiert habe, als ich proposed aktiviert hatte und ein upgrade gemacht habe. also wieder aktiviert, dpkg -i und danach apt-get install -f und jetzt installiert er etliche neue
+<BillBuchanan> mal eine grundsätzliche frage: was kann denn mit den proposed-quellen kaputt gehen bzw wie richtet man das? Hatte sie aus versehen aktiviert, update gemacht und jetzt konnte ich teamviewer z.B. nicht installieren, erst als ich proposed wieder aktiviert hatte, ging es. nur eigentlich sollte ich die quellen ja nicht nutzen, wie "richte" ich das wieder?
+<HamSTer> nabend
+<jokrebel> HamSTer: Hi. (einfach los fragen)
+<HamSTer> über den softwarecenter in meinem lubuntu konnte ich aranym 0.9.13 laden. leider ist das nicht die letzte version. die letzte version ist schon seit einiger zei die 0.9.14. bin ich hier richtig um das anzumerken?
+<HamSTer> sry, bin kein schnellschreiber ;)
+<jokrebel> ham welche Version nutzt Du?
+<HamSTer> da muss ich doof nachfragen, wie ich das nachschaue?
+<HamSTer> also vor rund 14 tagen hab ich den lappy hier installiert mit der damaligen letzten
+<jokrebel> HamSTer: "uname -a" und "lsb_release -a" im Terminal gibt auskunft. Das ganze bitte in einen Pastbin…
+<jokrebel> !pasten > HamSTer
+<kubine> HamSTer: Nicht selbst geschriebener Text wird im IRC sehr unleserlich und unhandlich. Deshalb sollten mehr als 3 Zeilen immer in einen sogenannten Nopaste-Service wie z.B. http://paste.ubuntuusers.de/ abgelegt werden. Nach dem Speichern kannst du dann die URL der Seite kopieren und sie statt des Textes hier im Channel posten.
+<HamSTer> bugfixing ist doch überall wünschenswert oder?
+<jokrebel> heilbar
+<HamSTer> paste.ubuntuusers.de/413987/
+<jokrebel> HamSTer: auch (bzw. gerade dann) wird in aktuelle Versionen Bugfixes auch eingerbeitet. Erzähl doch mal Dein _konkretes_eigentliches_ Problem welches Dich veranlasst nach "neuerem" ausschau zu halten damit man das hier genauer analysieren kann.
+<HamSTer> Versteh ich nun nicht wirklich.. Ich wollte lediglich anmerken, das die neuste seit längerer zeit verfügbare verision, nicht direkt ladbar ist
+<HamSTer> also den wirklichen unterschied zwischen version 0.9.13 und .14 kenne ich nicht.
+<jokrebel> HamSTer: Ich ging jetzt erst mal davon aus, dass Du konkrete Probleme hast weil Du hier im Support nachfragst. Hab jetzt ein bisschen nachgeschlagen und vermute schon fast, dass das schon längern nicht mehr aktuell ist?
+<HamSTer> also es gibt keine offentsichtlichen probleme mit aranym 0.9.13
+<HamSTer> ich wollte lediglich anmerken, das es nicht die allerletze version ist.
+<HamSTer> mehr eigentlich nicht.
+<HamSTer> also ich chatte nun gerade eben mit aranym zu euch
+<HamSTer> das ich mal rausfliege liegt an der applikation die hier darauf läuft
+<jokrebel> HamSTer: Und was hat das mit Support zu tun? Allgemeine Bemerkungen und Diskussionen wären in #ubuntu-de-offtopic oder in Deinem Speziellen Fall direkt an die Entwickler von diesem aranym wesentlich besser aufgehoben.
+<HamSTer> ist mein erster vortrieb in diese richtung. ich wusste nicht genau, wer für den verbleib einer app im lubuntu software center zuständig ist.
+<jokrebel> HamSTer: Aber nichts desto trotz scheint es mir so, als würde dies nicht mehr (oder zumindest nur sehr verspätet) unterstützt.
+<HamSTer> das die entwicklung der aranym app entwas hinkt? ja
+<HamSTer> ups.. etwas
+<jokrebel> HamSTer: Wie gesagt; Diskussionen über warum/wann/wer/wieso gerne in #ubuntu-de-offtopic. Hier nur Support über aktuelle Probleme.
+<HamSTer> eine email-addi wo ich mein anliegen darbieten darf gibt es vielleicht auch? schient mir mittlerweile etwas schwergängig hier.
+<wilde_wurst> HamSTer: http://packages.ubuntu.com/quantal/aranym
+<kubine> Title: Ubuntu – Details of package aranym in quantal (at packages.ubuntu.com)
+<wilde_wurst> oder eine Frage über Launchpad vor der Kontaktaufnahme mit dem Betreuer direkt. Da bei "Betreuer"
+<wilde_wurst> haste ein Link zum Launchpad
+<abraxus> Thema: apt in Firefox || hab den String in Firefox erstellt und Firefox neu gestartet ( http://wiki.ubuntuusers.de/apturl ) trotzdem funktioniert das apt protokoll nicht bzw. sagt Firefox, er weiß nicht womit er es öffnen soll - hab apturl auch installiert und funktioniert - benutze Kubuntu 12.04
+<kubine> Title: apturl › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<HamSTer> hab an `Betreuer` ne mail geschickt.
+<HamSTer> Danke für Eure Geduld
+<HamSTer> Tschiau
+<rar> hi ich habe neben ubuntu windows xp installiert und jetzt kann ich natürlich nur noch windows booten
+<rar> habe gerade die gparted live cd gebootet, kann ich von dort aus grub wieder herrichten?
+<abraxus> super grub disc
+<abraxus> probier die mal ...... grub ist der bootloader - gparted nur ein Partitionswerkzeug
+<rar> dachte nur weil es hier so eine anleitung gibt
+<rar> http://gparted.sourceforge.net/display-doc.php?name=help-manual&lang=de#gparted-fix-grub-boot-problem
+<kubine> Title: GParted -- GParted-Handbuch (at gparted.sourceforge.net)
+<rar> hat ubuntu 10.04 grub oder grub2?
+<abraxus> hmmm schau mal im wiki nach - da bin ich überfragt ....
+<abraxus> http://forum.ubuntuusers.de/topic/firefox-apturl/
+<kubine> Title: Firefox & apturl › System einrichten und verwalten › Forum › ubuntuusers.de (at forum.ubuntuusers.de)
+<Rochvellon> lol, mitm moped die tischdecke unter dem geschirr wegziehen xED
+<rar> so habe jetzt grub it super grub disk wieder hergestellt
+<rar> aber jetzt bootet nur noch ubuntu
+<rar> wiekann ich windows xp auswählen?

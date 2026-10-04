@@ -1,0 +1,1852 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-es"
+date: "2010-11-15"
+lang: "es"
+messages: "1843"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<ikatza_> cousteau
+<ikatza_> lo de bajar el swap no ha funcionado
+<cousteau> ikatza_: échale un vistazo a dmesg
+<CuriousX> ikatza_:
+<ikatza_> ok
+<cousteau> ejecuta:   dmesg | less
+<CuriousX> segi lo que te voy a escribir por fabor
+<ikatza_> cousteau
+<ikatza_> lo de dmesg | less
+<ikatza_> me dice
+<CuriousX> ikatza_: iwconfig wlan0 | grep Bit ---> y decime que valor tiene "Rate"
+<ikatza_> mira el siguiente direccion
+<CuriousX> no, decime que valor tiene "Rate" con el comando que te pase
+<ikatza_> ok
+<ikatza_> curiousX
+<ikatza_> no me dice nada
+<CuriousX> entonces escribi solo ---> iwconfig
+<CuriousX> y busca el valor de "Rate"
+<ikatza_> ok
+<ikatza_> pone 54Mb/s
+<CuriousX> pone lo siguiente
+<CuriousX> sudo iwconfig wlan0 rate 11M
+<CuriousX> con eso se solucionara
+<CuriousX> estoy seguro
+<ikatza_> pero eso no reducira mi velocidad?
+<CuriousX> no para nada
+<CuriousX> hace lo que te dije por fabor
+<CuriousX> y vas a ver que se soluciona
+<ikatza_> lo acabo de hacer
+<ikatza_> y no sale nada
+<ikatza_> ikatza@ikatza-desktop:~$ sudo iwconfig wlan0 rate 11M
+<ikatza_> ikatza@ikatza-desktop:~$
+<CuriousX> ahora ---> iwconfig wlan0
+<CuriousX> y fijate si cambio el valor que tenia en 54 a 11
+<ikatza_> si ha cambiado
+<CuriousX> ok solucionado
+<ikatza_> y que es lo que he hecho exactamente?
+<CuriousX> ahora el tema es que cuando reinicies se te va a voler a 54 y tenes que volver a dejarlo en 11M
+<carloscrespo> es posible instalar dos distros de linux en un mismo equipo?
+<ikatza_> y como lo hago?
+<CuriousX> pero podes modificar el archivo /etc/rc.local para que se automatize pero tendria que buscar como hacerlo =P
+<CuriousX> que cosa ikatza_ ?
+<ikatza_> curiousX
+<CuriousX> dejarlo nuevamente en 11M ?
+<ikatza_> como hacer para que se automatize este proceso?
+<ikatza_> y que es lo que he hecho al cambiar el rate?
+<CuriousX> tenfri que buscarlo y estoy algo perezoso hoy no quiero navegar. Y podes consultarlo con San google
+<ikatza_> y creo recordar que el pc se me a colgado varias veces sin tener conexion a internet
+<CuriousX> mira abri el firefox para probar si se cuelga
+<ikatza_> la verdad es que aun no se me ha colgado
+<ikatza_> pero una sola cosa
+<CuriousX> es por que se soluciono haceme caso
+<ikatza_> explicame que es lo que he hecho
+<CuriousX> cambiamos la velosidad de transferencia de la targeta inalambrica
+<Jakeukalane> hola, hay alguien que me pueda decir para que sirve REALMENTE el demonio apt-spi???  en todos sitios dicen accesibilidad, pero obviamente tiene que tener alguna función específica. otra pregunta: ¿viene por defecto?
+<CuriousX> la dejamos en 11
+<ikatza_> y eso dices q no afecta a la velocidad no?
+<CuriousX> estaba en 54 mega bites / segundos
+<CuriousX> no man
+<CuriousX> creeme
+<ikatza_> pues la verdad es que no lo entiendo
+<ikatza_> xD
+<ikatza_> si antes era de 54 y ahora de 11
+<CuriousX> bueno lo importante es que no se te cuelga
+<ikatza_> si si esta claro
+<Jakeukalane> alguien sabe lo que es el atp-spi?
+<CuriousX> ikatza_:
+<ikatza_> dime curiousX
+<CuriousX> logeate como root
+<ikatza_> como?
+<CuriousX> sudo su
+<ikatza_> ok ya esta
+<CuriousX> ahora ---> nano /etc/rc.local
+<ikatza_> ok
+<CuriousX> ya esta ?
+<ikatza_> si
+<CuriousX> ves donde dice "exit 0" ?
+<ikatza_> si
+<CuriousX> antes de esa linea escribi lo siguiente
+<CuriousX> es decir arriba de ella
+<ikatza_> a ver
+<CuriousX> iwconfig wlan0 rate 11M
+<ikatza_> asi?
+<CuriousX> si
+<CuriousX> ya lo escribiste ?
+<carlos__> alguien ha probado libreoffice en ubuntu?
+<ikatza_> #!/bin/sh -e
+<ikatza_> #
+<ikatza_> # rc.local
+<ikatza_> #
+<ikatza_> # This script is executed at the end of each multiuser runlevel.
+<CuriousX> jum
+<ikatza_> http://pastebin.com/qE1J3NJK
+<ikatza_> asi curiousx?
+<neuquen> #6-chan @ irc.helldive.org
+<cousteau> CuriousX: bueno, mejor que vim
+<CuriousX> mmm... no me gusto =P escribilo en la linea 14
+<ikatza_> ok
+<ikatza_> donde pues?
+<CuriousX> uff vim es muy bueno pero encontre otro todabia mas geek para mi gusto "emacs" pero la version CLI buscala con aptitude search ;)
+<ikatza_> curiousx me lo dices a mi?
+<CuriousX> fijate el link que me pasaste y escribilo en la linea 14 seria gusto arriba de "exit 0"
+<CuriousX> no esto ultimo es para vos
+<ikatza_> By default this script does nothing.
+<ikatza_> justo debajo de esto?
+<CuriousX> cousteau: este es instalalo si es que lo queres probar ---> sudo apt-get install emacs22-nox
+<cousteau> ni de blas
+<CuriousX> si justo debajo de By default...
+<ikatza_> ok
+<cousteau> no, si vim está bien, pero desde luego no es para principiantes... yo ni lo sé usar aún
+<ikatza_> ya esta curiousx
+<ikatza_> http://pastebin.com/202HbPte
+<ikatza_> asi?
+<CuriousX> si es algo complijo vim pero proba emacs-nox es imposible XD
+<CuriousX> si asi ikatza_ ahora --> apreta Crtl+o ---> luego apreta <enter> ---> luego Ctrl+x
+<ikatza_> ok
+<ikatza_> se me ha ido la pantalla de nano
+<ikatza_> esto se supone que cambiara el rate a 11 cada vez q se inice ubuntu?
+<CuriousX> mostra la salida de --> tail /etc/rc.local
+<CuriousX> para ver si se guerdo bien
+<ikatza_> si se ha guardado
+<CuriousX> ok con eso ya quedo bien tu pc
+<ikatza_> voy a reiniciar y a hacer la prueba ok?
+<ikatza_> te comento a ver que tal!
+<CuriousX> cousteau: captura de emacs22-nox ---> (no se ni por donde empezar XD) ---> http://img811.imageshack.us/img811/5958/cousteau.png
+<cousteau> yo, de verdad, existiendo el Geany...
+<CuriousX> me suena ese pero no lo use
+<djnihil> curiousx
+<djnihil> funciona todo bien
+<CuriousX> ;)
+<djnihil> e mirado el rate nada mas iniciar
+<djnihil> y esta a 11
+<djnihil> y no se me cuelga nada!!
+<djnihil> y ahora
+<djnihil> me podrias explicar mas o menos el porque de todo esto?
+<CuriousX> mmm... nop
+<CuriousX> XD
+<djnihil> eee!!
+<xuzas> bonjour!
+<djnihil> pues almenos dime que busco en google!
+<CuriousX> mmm podes buscarlo como "congela linux inalambrica"
+<CuriousX> puede que encientres algo
+<djnihil> ok ;)
+<simon_> tego un problema,cuando se bloquea la pantalla la tengo que desbloquear 2 veces
+<simon_> despues de la 1 vez como al segundo se rebloquea(uso maverick)
+<simon_> si bloqueo yo mismo no pasa ese problema,solo cuando se bloquea por inactividad
+<CuriousX> la configuracion puede estar en "preferencias/salvapantalla" tenes que destildar la opcion "bloquear pantalla"
+<simon_> no es que me moleste la opcion,el problema es que lo tenga que desbloquear 2 veces :/
+<CuriousX> no se como sera exactamente pero perdon es que no tengo maverick no se donde hay que modificar =(
+<simon_> ok,no hay problema
+<cousteau> a mí no me pasa, a lo mejor hay 2 programas bloqueando la pantalla a la vez
+<cousteau> en plan, gnome-screensaver y xscreensaver
+<simon_> ahora que lo dices,el gnome-screensaver esta 2 veces
+<cousteau> ?
+<simon_> (aunque uno pesa 1mb y el otro 70mb)
+<simon_> osea que ese proceso esta 2 veces
+<cousteau> dónde está 2 veces? en top?
+<simon_> en el monitor de sistema
+<cousteau> raro, yo sólo lo tengo 1
+<cousteau> bueno, si tienes 2 sesiones abiertas lo entendería
+<simon_> no
+<simon_> tengo una sola abierta :S
+<cousteau> pues ni idea...
+<simon_> por cierto,alguien se esta plagiando el logo de ubuntu,lo vie n una propaganda XD(solo le cambiaron el color a verde)
+<ourizo> Amigos, Buenas noches.  A ver quien me puede hechar una mano en un asunto bestial pero interesante   ----- Me acabo de encotrar el disco externo borrado  :(: Me gustaría que me guiáseis primero sobre mirar en /Var/log a ver si podemos saber que ha pasado: Luego también sobre si hay posibilidad de recuperar los datos
+<yemino> hay forma de que chromium abra los pdf directamente sin  por ejemplo con evince?
+<xangua> google chrome tiene su propio lector de pdf creo
+<xangua> eso si te vale que sea o no libre pues; también puedes probar con uno de tantos scripts o complementos que hay para que abra los pdf con google docs
+<yemino> xangua: chromium?
+<xangua> si
+<xangua> ¿¿
+<yemino> es que como mencionaste chrome :|
+<xangua> chromium es libre, google chrome agarran el código de chromium y le meten sus cosas como el lector de pdf y el plugin flash
+<dreamslord> hola
+<yemino> xangua: no me refiero a que se abra el pdf en una pestagna de chomium. solo quiero que se abra el pdf con evince
+<yemino> xangua: se puede hacer?
+<xangua> (19:24:00) yemino: hay forma de que chromium abra los pdf directamente SIN  por ejemplo con evince? < muy confuso si preguntas una cosa pero en realidad es otroa
+<yemino> xangua: no. Mi pregunta es esa
+<xangua> ni idea, hace rato que dejé de usar chromium
+<yemino> xangua: disculpa, ahora leo lo que puse, y efectivamente estaba difusa
+<yemino> dreamslord: holi
+<dreamslord> al fin alguien contesta jejejej
+<pipo65> buenas
+<pipo65> alguien sabe como buscar en consola
+<pipo65> locate no me esta encontrando un archivo
+<pipo65> a pesar q yo lo veo
+<dreamslord> pipo65 prueba con find
+<pipo65> buenas
+<yemino> pipo65 que quieres buscar?
+<pipo65> ya lo encontre yemino gracias
+<yemino> ok
+<omar> Hola a todos
+<Jakeukalane> hola, no sé si puedo preguntar aquí la duda, pero ahí va: tengo un archivo de texto y quiero eliminar todas las líneas en las que aparezca una palabra como podría hacerlo?
+<Jakeukalane> alguien?
+<omar> Estimados: existe alguna aplicación que ayude a sincronizar un teléfono samsung con ubuntu?
+<omar> el teléfono que tengo trae una aplicación llamada PCstudio
+<omar> pero no corre con wine
+<Guest58658> hola en que caperta esta alojado mozilla ?? en mi disco duro?
+<xangua> a qué te refieres'¿ tus archivos de configuración Guest58658¿
+<omar> Guest58658,  en tu carpeta personal, pero oculto
+<omar> tienes que hacer Cntrol + h
+<Guest58658> ctrl + h?? y lo vere?
+<Guest58658> ok
+<omar> y buscas .mozilla
+<Guest58658> que comando pongo al creaar un lazador?
+<Guest58658> para mozilla
+<omar> Guest58658, en el escritorio yo lo hago con botón derecho
+<Guest58658> bueno gracias buenas noches almenos por aca en chilito
+<Guest58658> saludos
+<omar> Chile es bkn
+<omar> the chilian way
+<omar> jajajaja
+<Joelito> Hola, estoy haciendo un programa para ubuntu (GTK+) y necesito poner, desde mi programa, que se ejecute al inicio de ubuntu. Sé que lo puedo hacer manualmente en  "Sistema>Preferencias>Sesiones" (algo así)
+<Joelito> pero la idea es hacerlo desde mi aplicación....cómo lo haría? Gracias.
+<pptrueno_> chat.tgnulinux.com.ar
+<pptrueno> irc://chat.tgnulinux.com.ar
+<Anonimous> cuando instalo ubuntu en un USB y lo booteo y le cambio el wallpaper, configuraciones etc... cuando salgo tiene la opcion de guardarlos en un SAVE file ya que se esta usando como un Live-CD
+<Anonimous> ?
+<arp-> si te da la opcion, guardalo
+<samycot> http://www.facebook.com/pages/Estoy-feliz-de-usar-mi-Ubuntu/128329547225309
+<zfe> it must be an empty group
+<usuario1> que comiencen bien la semana, son mis deseos para todos
+<samycot> http://www.facebook.com/pages/Estoy-feliz-de-usar-mi-Ubuntu/128329547225309
+<samycot> http://www.facebook.com/pages/Estoy-feliz-de-usar-mi-Ubuntu/128329547225309
+<m4v> samycot: no hagas spam.
+<tkw-one> tengo una duda ... yo he usado el programa xming y putty para correr terminales remotos de linux (xterm, term) desde windows... se pueden correr mucho terminales remotos a un mismo equipo al mismo tiempo para usarlo como servidor de aplicaiones???
+<tkw-one> osea linux como servidor de aplicaiones y los windows o linux como clientes.
+<dzup2> putty solo es un cliente ssh y no es un servidor
+<tkw-one> dzup2: se puede o no hacer que linux sirva muchos terminales remotos al tiempo ??
+<dzup2> si
+<tkw-one> entonces lo que yo quiero hacer es viable.
+<dzup2> yo he tenido una maquina con mas de 500 remotos logueados via ssh, la unica limitacion es tu ancho de banda
+<dzup2> aparte de las caracteristicas de hardware de la maquina claro
+<tkw-one> dzup2: y pueden estar corriendo varios la misma aplicacion sin problemas o no se puede.?
+<dzup2> si se puede
+<dzup2> de hecho mejor que en windows
+<tkw-one> entonces solo bastaria dotar el servidor linux de las palicaciones necesarias y configurar un hardware lo mas potente y barato posible y listo... ya tenemos un servidor de aplicaciones sin necesidad de licencias.
+<tkw-one> dzup2: cual es el ancho de banda que me brindan los routers convecionales de de cuatro puestos en una red lan???
+<dzup2> local o wan
+<tkw-one> local
+<dzup2> pues la verdad no se que quieres lograr hacer
+<tkw-one> yo imagino y solo digo imagino que si cada usuario puede tener para si unos 100k ya puede ejecutar apliciones remotoas en modo grafico sin problemas.
+<dzup2> pero las aplicaciones remotas se corren en el servidor remoto, tu nomas las vez ya sea mediante ssh o con vnc para modo grafico, o con ssh tambien modo grafico
+<tkw-one> si eso lo se pero, para poder gozar de la vista se requiere cierto ancho de banda... cual puede ser el ancho  optimo?
+<dzup2> lo maximo posible :p
+<dzup2> 10/100/1000  si puedes comprarte ulgo mas rapido pues adelante
+<tkw-one> entoncs cual seria segun su experiencia el ancho de banda minimo que cad usuario puede tener para poder trabajar sin problemas ... porque asi sabria cuantos usrarios puedo permitir al mismo tiempo.
+<dzup2> es dificil decirte, si vaz a hacer streaming ocupas mucho, si son programas vnc menos, si es ssh menos y si es simple texto mucho menos
+<tkw-one> es para usar ssh.
+<tkw-one> lo que dije con clientes putty y xming..
+<dzup2> instalate un vnc server y conecta desde windows con tinyvnc o vinagre desde linux, etc y prueba tu mismo
+<dzup2> o crea ssh tuneles exporta el video a la otra linux y corre simultaneos desktops remotos
+<tkw-one> no puedo probar porque solo cuento con 2 equipos y es  claro que uno hace de servidor y el otro de cliente .. asi funciona muy bien pero que pasara cuando haya mas clientes??
+<Jakeukalane> hay una utilidad que se llama nxviewer
+<Jakeukalane> que está muy bien
+<Jakeukalane> nxclient
+<Jakeukalane> es más rápido que ssh
+<Jakeukalane> aunque funciona sobre ssh
+<Jakeukalane> es más rápido que vnc quiero decir
+<dzup2> oh
+<Jakeukalane> pero infórmate más
+<Jakeukalane> yo lo probé muy poco
+<tkw-one> Jakeukalane: pero el problema de los vnc es que te mandan siempre todo el escritorio y trabajar asi es muy lento...
+<Jakeukalane> nono, nxclient no es por vnc
+<tkw-one> ya veo.
+<Jakeukalane> no soy experto en el tema de todas formas
+<Jakeukalane> sólo sugiero la posiblidad
+<dzup2> pues te las sugieres a ti, heh yo no ocupo de eso :p
+<Jakeukalane> ¿???¿
+<tkw-one> de todas formas gracias por la atencion prestada.
+<Jakeukalane> nada
+<Jakeukalane> http://www.wikivs.com/wiki/NX_vs_VNC
+<Jakeukalane> no te permite varios clientes
+<Jakeukalane> osea que nada
+<dzup2> pues no veo la complicacion, si deseas correr varios programas remotos usa ssh -X
+<dzup2> ssh -XC remoto@servidor.local firefox
+<dzup2> por ejemplo
+<plastigale1> beunas noches una pregunta como puedo actualizar todas las librerias de postgres8.4, porque no tiene DROP DATABASE  y otras mas
+<plastigale1> quien me puede colaborar como actualizo a postgres8.4
+<chilicuil> plastigale1: la version que viene con Ubuntu es la 8.4
+<plastigale1> no yo se la instale
+<plastigale1> pero ahora no me deja iloiminar la base y tampoco arranca /etc/init.d/postgres restart
+<neo_> Hola..alguien sabe como instalar correctamente fst vst en ubuntu 10.10?
+<plastigale1> tengo ubuntu 10.10
+<chilicuil> que error te muestra plastigale1 ? y si la version, de ubuntu 10.10 es la 8.4, especificamente la 8.4.5-1
+<plastigale1> que el comando no funciona
+<chilicuil> plastigale1: y con $ sudo service postgres start ?
+<plastigale1> uan pregunta lo volvi a instalar y me dice starting postgreSql 8.4 database server
+<plastigale1> ok
+<roinux> hola
+<roinux> alguien sabe acerca de PROGRAMAR PUERTOS USB?
+<Jeferx> buenas madrugadas... Tengo una duda, no se si podrán ayudarme! Estoy instalando un SMF 2.0 RC4 y cuando aplico el lenguaje SPANISH ES me aparecen las palabras que contienen tildes con un "?" que debo hacer?
+<jhrllo> hola etenido que entrar en modo seguro pues no me salia los menu ni paneles como ago pa revisarlo
+<djnihil> hola alguien me podria ayudar con un problema de congelacion del pc?
+<fosco_> buenas
+<CuriousX> !logs
+<kubot> Los registros de #ubuntu-es están en http://logs.ubuntu-eu.org/free
+<pancho> #cherokee IRC channel
+<napier> hola el archivo google ea
+<miguel> olaaa
+<miguel> como vaa
+<napier> hola el archivo googleearthlinux.bin al ejecutarlo en kubuntu me pregunta con que aplicacion abrirlo
+<Tiffon> nas
+<napier> ya he probado con chmod+x pero no funciona
+<napier> cual es la aplicacion que hay que asociar en kubuntu para abrir googleearth linux.bin?
+<fosco_> napier: ninguno, simplemente ejecutalo
+<napier> no se ejecuta ya le dado permisos y usado el comando de siempre y no se instala
+<fosco_> lanzalo desde consola a ver si da algun error
+<fosco_> sudo sh fichero.bin
+<napier> ni siquiera la terminal da informe de error
+<alexneb> holas gente
+<fosco_> napier: si no se ejecuta dará error
+<napier> pues no lo da lo da ejecuta o procesa el comando pero no informa
+<napier> necesito saber la aplicacion que va asociada para abrir el programa , creo que es eso lo que falla
+<napier> esta sin definir en kubuntu para el archivo googleearth
+<fosco_> no va asociado nada
+<fosco_> es una aplicacion en si mismo
+<napier> pues fuera de kubuntu al ejecutarlo no me habia realizado esa pregunta el sistema
+<napier> hay algun instalador que instale lo mas dificil en kubuntu eveinstaller no funciona en kubuntu
+<fosco_> no entiendo la pregunta
+<napier> instalar programas que suelen dar complicaciones de un modo facil como xbmc marktv etc
+<fosco_> los programas no suelen dar complicaciones
+<napier> o google en kubuntu
+<fosco_> pero a veces es necesario leer las instrucciones
+<fosco_> si instalas los programas desde el centro de software no tendrás problemas
+<fosco_> para programas externos, tipo google earth, lo mejor es leer alguna de las muchas guias que hay por internet
+<pancho> hola, alguien instaló cherokeer server?
+<napier> si pero eso es mucho embrollo y yo ya me habia hecho fan de eveinstaller
+<napier> te lo instala todo en serie
+<napier> con un clip
+<fosco_> personalmente no me gustan los instaladores esos
+<fosco_> nunca sabes exactamente lo que ha hecho
+<fosco_> con lo cual deshacerlo es muy dificil
+<fosco_> pero si lo quieres usar adelante, es tu sistema
+<napier> si por eso ando con cuidado cuando lo uso
+<napier> pero da mas beneficios que problemas
+<napier> si en kubuntu no lo puedo nistalar a eve
+<fosco_> como veas
+<napier> el hecho es que me resulta imposible en kubuntu instalar googleearth y he realizado los mismos paso que con las otras distros
+<fosco_> sea lo que sea, la asociación de aplicacion al archivo .bin no tiene nada que ver
+<napier> pues la terminal con el comando valido procesa de forma normal sin informar de ningun error
+<napier> pero chmdo+x no lo ejecuta
+<fosco_> chmod no ejecuta programas, solo cambia permisos
+<napier> ni sudo chmdo+x
+<fosco_> tampoco
+<fosco_> ya te dije como ejecutar el .bin
+<fosco_> sudo sh fichero.bin
+<napier> ubuntu-tweak tampoco se ejecuta en kubuntu
+<napier> bueno si pero con errores
+<napier> y no funciona
+<fosco_> la mayoria de funciones de ubuntu-tweak son para gnome
+<fosco_> es normal que se queje si lo usas en kde
+<napier> en lxde si que funcionaba
+<fosco_> porque lxde usa las mismas librerias que gnome
+<napier> y con googleearth puede pasar algo parecido con kubuntu
+<fosco_> no lo creo
+<fosco_> si le faltase algo daría error
+<napier> si el navegador de archivos de kde me pide que seleccione una aplicacion para ejecutar googleearth , será por algo?
+<napier> algo falla
+<fosco_> es por que no tiene aplicacion asociadal .bin
+<fosco_> pero eso no es ningun error
+<fosco_> no hay q asociar nada al .bin
+<napier> en gnome no me preguntaban eso se abria el ejecutor pero no procesaba el archibo
+<napier> archivo
+<fosco_> el "ejecutor" es el propio bin
+<fosco_> solo es necesario ejecutar el .bin tal como te dije antes
+<fosco_> me estoy cansando de reptir lo mismo una y otra vez
+<napier> que sucede aquí con googleearthpara kubuntu? : http://pastebin.com/Hcj7Pasg
+<newby93> hola
+<newby93> me pasan el canal irc offtopic
+<erUSUL> !ot
+<kubot> #ubuntu-es es un canal de soporte, para hablar de temas no relacionados por favor visita #ubuntu-es-offtopic. ¡Gracias!
+<freestyle> buenas
+<napier> hola
+<freestyle> alguien sabe como aumentar la resolucion utilizando driver nouveau?
+<napier> que sucede aquí con googleearthpara kubuntu? : http://pastebin.com/Hcj7Pasg
+<fosco_> freestyle: sistema - preferencias - monitores
+<freestyle> fosco_ hay solo me salen dos a elegir y son demasiado bajas
+<fosco_> pues esas son las que tienes
+<fosco_> puedes intentar usar el driver propietario
+<freestyle> no funciona
+<fosco_> o el generico vesa, que deberia dejarte usar todas las resoluciones estandar, aunque sin aceleracion
+<freestyle> como puedo confirmar que estoy utilizando el nouveau
+<freestyle> ?
+<fosco_> glxinfo | grep -i render
+<freestyle> glxinfo: error while loading shared libraries: libGL.so.1: cannot open shared object file: No such file or directory
+<freestyle> me tira esto
+<napier> en kubuntu si ejecuto un link de un programa por ejemplo este el sistema se desestabiliza y se bloquea todo hasta el punto que debo de apagar la pc
+<fosco_> freestyle: mal asunto
+<fosco_> freestyle: ejecuta esto: sudo X -configure :1
+<freestyle> esta raro
+<fosco_> la pantalla parpadeará un instante
+<fosco_> y te habrá creado un archivo xorg.conf.new en el directorio actual con la configuracion que estas usando
+<fosco_> ahi podrás ver si usas nouveau
+<freestyle> ok
+<freestyle> Driver      "nv"
+<freestyle> es nouveau?
+<freestyle> me suena que no
+<freestyle> por cierto las ventanas han perdido la barra de titulo
+<napier> en kubuntu si ejecuto un link de un programa por ejemplo este el sistema se desestabiliza y se bloquea todo hasta el punto que debo de apagar la pc, no se si instalandole el navegador konkeror para kde se solucionaria
+<fosco_> no
+<fosco_> nv es el driver libre antiguo
+<freestyle> fosco_  como instalo el nouveau
+<fosco_> q ubuntu tienes?
+<freestyle> 10.10
+<fosco_> pues deberia ir instalado de serie
+<freestyle> ya instale el paquete xserver .... nouveau
+<fosco_> edita ese mismo archivo, cambia "nv" por "nouveau"
+<freestyle> si pero me he puesto a jugar un poco con ellos
+<fosco_> pon el archivo en /etc/X11
+<freestyle> ok
+<freestyle> pruebo
+<fosco_> (sudo mv xorg.conf.new /etc/X11/xorg.conf)
+<fosco_> y reinicia el sistema
+<freestyle> ok
+<freestyle> reinicio
+<napier> con otro comando y otra instruccion de instalacion da el mismo error googleearth para kubuntu:http://pastebin.com/2vJsSYyj
+<napier> me parece queigual  hay que construir un paquete debian para su instalacion correcta
+<erUSUL> napier: instalalo de medibuntu
+<napier> si eso creo que funcionara aunque antes debo de encontrar las instrucciones para su correcta instacion
+<freestyle> fosco_ sigo con los problemas
+<freestyle> no consigo hacer q funcione
+<freestyle> y me quedo sin entorno a cada prueba
+<fosco_> que grafica tienes?
+<freestyle> nv 330m
+<freestyle> te suena algo de fallos en con el drm
+<freestyle> ?
+<fosco_> muy nueva, no tengo la suerte de haberla probado
+<freestyle> ademas es un vaio y da problemas con los driver propietarios
+<freestyle> mira esta linea a ver si te dice algo
+<freestyle> (EE) [drm] No DRICreatePCIBusID symbol
+<napier> en kubuntu al ejectar un link el sistema se bloquea no se a que se debe es como si el sistema buscara continuamente un navegador reconocible para ejecutarlo, esa es mi impresion por eso instalare konkeror el navegador propio de kde por si fuera eso
+<pancho> hola, alguien instaló cherokeer server?
+<fosco_> freestyle: debe ser que aun no está soportada por nouveau
+<fosco_> por eso intentaba usar nv
+<fosco_> freestyle: y seguro que el propietario no soporta ese modelo?
+<freestyle> lo soporta
+<freestyle> pero da problemas
+<freestyle> en los vaio
+<freestyle> lo raro de todo es que el sistema funcionaba
+<freestyle> el primer dia
+<freestyle> pero despues de una actualizacion
+<freestyle> bajo la resolucion
+<freestyle> y luego yo empece a trastear con los driver
+<alexneb> ahi.. tu tratea..
+<cacique> hola
+<erUSUL> !hola
+<kubot> Hola! Bienvenid@ a #ubuntu-es :D
+<cacique> intentando istalar el cubo   me e quedado sin menus despues de reiniciar solo tengo el puntero y la imagen de fondo
+<cacique> no me deja de acer nada
+<cacique> actualmente estoy conectado en red con otro pc
+<cacique> me deja abrir consola  con  cot-alt-f1
+<cacique> y esta conectado a red
+<napier> cuando ejecuto en kubuntu algun link de una aplicacion de bloquea el sistema y me da este error: No se pudo iniciar el proceso Imposible crear esclavo de E/S:
+<napier> Klauncher devolvió: Protocolo desconocido «z»
+<javila> Buenos dias.
+<fosco_> cacique: no tienes manera de ejecutar nada en el entorno grafico?
+<cacique> no
+<cacique> na de na
+<cacique> solo tengo el puntero que se puede mover
+<cacique> e abierto la consola F1
+<cacique> pero no se que acer
+<cacique> lo ultimo que estbu aciendo intalar paquetes de compiz
+<alexneb> cacique,  que grafica tienes?
+<cacique> espera aber si me acuerdo del comando pa que me la enceñe
+<zurdito> buenas!
+<zurdito> como andan chicas ?
+<alexneb> zurdito, ¬¬
+<alexneb> zurdito,  siento decepcionarte... pero tengo pito
+<zurdito> hola mujer
+<alexneb> zurdito,  siento decepcionarte... pero tengo pito
+<zurdito> jajajaj
+<alexneb> ¬¬
+<zurdito> metido en la cola tenes el pito
+<zurdito> xDD
+<zurdito> broma broma ... ahi que empezar bien el dia
+<zurdito> xD
+<pancho> hola, alguien instaló cherokeer server?
+<alexneb> zurdito, .. jojojo.. ya veo en que tienes ocupada la derecha.. XD
+<cacique> ati rv610 radeonn 2400 pro agp
+<zurdito> ajaja si te gusta q te meta el dedito
+<zurdito> sorry!
+<cacique> la grafica estubo funsionado muy bien y la 3d tambien
+<erUSUL> ya ya; como si no supierais a estas alturas.
+<alexneb> erUSUL,  empezo el
+<alexneb> y me baneais a mi
+<erUSUL> y?
+<alexneb> T_T
+<zurdito> te zarpas alex
+<zurdito> basta
+<erUSUL> alexneb: os heche a los dos. y no banee a nadie
+<fosco_> cacique: dices q en modo texto si puedes entrar?
+<alexneb> mmm
+<erUSUL> alexneb: pero todavia estoy a tiempo
+<cacique> si
+<cacique> aora estoy en consola
+<fosco_> cacique: ejecuta esto tal cual
+<fosco_> gconftool --type "string" --set /desktop/gnome/session/required_components/windowmanager "metacity"
+<alexneb> erUSUL,  yo me porto bien... es el animal ese que no se sabe las reglas de canal
+<fosco_> no equivoques ni un caracter
+<zurdito> eee
+<fosco_> y reinicia sesion grafica
+<zurdito> mas respeto ...
+<cacique> con sudo o solo
+<fosco_> tal cual lo puse yo
+<fosco_> sin sudo
+<fosco_> el comando no debe dar ningun mensaje
+<cacique> ejecutado
+<cacique> no dijo nada
+<fosco_> ok, pues reinicia
+<cacique> ok  se me cortara la conexion
+<alexneb> cacique,  te peramos
+<cacique_> fosco ok
+<fosco_> funcionó?
+<cacique_> si
+<alexneb> XD
+<fosco_> me alegro, nunca lo había probado :)
+<alexneb> fosco_,  eres un pnto de referencia
+<cacique_> XD
+<cacique_> a ora rebisare aber como ba
+<arp-off> Revisare, Haber, Va
+<cacique_> el puntero sali con una X
+<alexneb> arp-off,  buenas
+<arp-off> Hola
+<cacique_> pero mira que soy bueno con la ortografia
+<cacique_> jejej
+<arp-off> veo...
+<fosco_> cacique_: si quieres probar si compiz funciona abre un terminal y ejecuta compiz --replace
+<fosco_> si da error verás el error y volverá a cargarse metacity
+<cacique_> ok
+<cacique_> estoy oserbando que me faltan lo de minimizar cerar en las bentanas
+<cacique_> ya binieron
+<fosco_> ventanas
+<fosco_> vinieros
+<fosco_> vinieron*
+<fosco_> cuida un poco tu ortografía
+<cacique_> es de nasimiento
+<cacique_> no ay na que acer
+<fosco_> yo no estoy bromeando, es necesario escribir correctamente para poder entendernos
+<cacique_> y yo tampoco me es imposible acerlo megor
+<cacique_> ago lo que puedo
+<fosco_> pues tienes un serio problema
+<cacique_> fosco me paso al otro pc aora entro
+<cacique_> y te doy resultados
+<Kacique> ya estoy  aqui
+<Kacique> fosco $ compiz --replace
+<Kacique> Starting gtk-window-decorator
+<Kacique> /usr/bin/gtk-window-decorator: Screen 0 on display ":0.0" already has a decoration manager; try using the --replace option to replace the current decoration manager.
+<Kacique> eso me dio compiz
+<ultralord5g> hola. Alguno me puede decir como mostrar un listado de directorios y subdirectorios ordenados por fecha?
+<nycko> ultralord5g: ls -tlR (man ls)
+<Kacique> a pero en consola esta esperando a que le meta algo
+<ultralord5g> Gracias @nycko
+<nycko> ooh, tengo op :P
+<alexneb> nycko, XXD
+<napier> Hola por que al ejecutar cualquier link en kubuntu y en este caso con el link del correo de amsn falla el sistema: No se puede ejecutar la orden indicada. El archivo o carpeta file:///home/napier/.wine/dosdevices/z:/home/napier/.amsn/gsa60_hotmail_es/hotlog.htm no existe. :
+<nycko> napier: como instalaste amsn?
+<napier> va hombre que me sucede con todas las aplicaciones
+<napier> no solo con amsn
+<napier> con wine no lo instale
+<nycko> napier: que navegador tenes por default?
+<napier> pero el fallo es con todas las aplicaciones tanto de wine como sin wine
+<nycko> napier: instalaste alguna aplicacion con wine?
+<napier> si tan solo 2
+<nycko> (ultimamente)
+<nycko> napier: cuales?
+<napier> hace 2 dias
+<napier> dreamule y ares
+<napier> solo esas 2
+<nycko> napier: que navegador tienes por default?
+<fosco_> Kacique: y se activaron los efectos?
+<napier> nycki firefox
+<napier> nycko
+<Kacique> que va va de pena
+<nycko> napier: con que otro programa te hace lo mismo, y que es lo mismo?
+<Kacique> abro apariencia efectos y le pincho lo activa pero luego se pone igual
+<napier> siempre con cualquier link que señale cualquier aplicacion de las que bhay en kubuntu sean nativas o no nativas
+<napier> o sea con todas
+<nycko> napier: tienes otro navegador?
+<napier> muchos
+<napier> opera firefox el navegador propion de kubuntu y ya esta
+<Kacique> este controlador esta activado y se esta usando actualmente
+<nycko> napier: alguna de esas aplicaciones windozas no te habra instalado el motor o el navegador de ie?
+<nycko> napier: haciendolo navegador predeterminado?
+<napier> no que yo sepa solo el navrgador propio de wine
+<napier> qwine
+<nycko> napier: probra poner a opera como predeterminado
+<Kacique> abre instalado algo de compiz que no le valla bien
+<napier> he puestob firefox como predeterminado y sucede lo mismo con opera pruebo ahora
+<Kacique> pues eso estuve asiendo ayer
+<napier> he probado con opera y me da este error: No se pudo iniciar el proceso Imposible crear esclavo de E/S:
+<napier> Klauncher devolvió: Protocolo desconocido «z»
+<napier> nycko igual deberia instalar el wine hq que esta en desarrollo el inestable
+<cacique_> reinisiando
+<zoko> #uned
+<syd_> alguien usa irssi?
+<xoan> syd_: yo
+<newby93> ayuda me desaparecieron iconos en el ubuntu
+<newby93> osea no se ven
+<xoan> newby93: qué iconos?
+<newby93> a veces al iniciar no veo el menu de inicio
+<newby93> ni los botonces de apagar ni nada
+<xoan> el panel?
+<newby93> que tengo problemas
+<nycko> syd_: I
+<newby93> con el entorno
+<syd_> muy buena app
+<newby93> hay zonas que no responder al reiniciar a veces no me sale la barra de la hora aplicaciones etc+
+<xoan> newby93: o explicas un pelín mejor tu problema, o yo al menos, no puedo ayudarte
+<syd_> si conoces los comandos claro
+<xoan> syd_: hace mucho que uso irssi, y también hace mucho que no uso casi comandos en irssi
+<newby93> haber al iniciar no se me ven los botones ni los menus de gnome como
+<newby93> la barras de arriba y abajo
+<xoan> newby93: te refieres al panel? superior e inferior?
+<xoan> vale
+<newby93> si
+<newby93> como loarreglo
+<xoan> te aparece un menú al pulsar el botón derecho del ratón sobre el escritorio?
+<newby93> a veces no
+<newby93> aghora si
+<xoan> newby93: tendrás algún problema de falta de espacio en disco?
+<newby93> no
+<xoan> el error es aleatorio?
+<newby93> no me va el botomn derecho ahora
+<xoan> si es así, es complicado saber porqué ocurre, lo entiendes?
+<newby93> si
+<newby93> voy a poner otro controlador grafico haber si vale
+<newby93> ahora vengo
+<newby93> dice
+<newby93> que no se me esta ejecutando un gestor de ventanas
+<xoan> entonces es que algo tocaste referente al gestor de ventanas
+<newby93> no toque nadaa
+<xoan> newby93: ni referente a los efectos de escritorio?
+<xoan> (el gestor de ventanas es eso)
+<newby93> los efectos si
+<xoan> y te funcionan correctamente?
+<newby93> ahora no
+<newby93> dejalo
+<xoan> encantado
+<SherokiX> hola
+<SherokiX> necesito  llebar la cuenta deltrafico tanto descarga como subida, para una interface (concretamente para un modem 3g). ¿Quéprograma puedo usar para esto?
+<pipo65> SherokiX: usas gnome
+<SherokiX> CSÍ
+<SherokiX> ains perdón, este teclao...
+<roinux> hola
+<pipo65> fijate entre los applets de el panel
+<roinux> alguien sabe acerca de este mensaje?
+<roinux> "No se pudo obtener el bloqueo de escritura en la caché, se recurrirá al modo de sólo lectura. No podrá instalar, eliminar o actualizar los paquetes. Sin embargo, podrá buscar en la base de datos de paquetes y navegar por ellos."
+<pipo65> hay uno q te deja ver
+<pipo65> asi como hay un medidor de recursos de systema
+<SherokiX> sí
+<pipo65> hay uno q mide la transferencia en las conecciones
+<SherokiX> pero no me lleva la cuenta más hayá de la conexión actual
+<SherokiX> y ese dato ya me lo da ifconfig
+<pipo65> te cobran por kb tu coneccion
+<SherokiX> yo necesito un contador continuo...
+<SherokiX> sí, me cobran por tráfico
+<SherokiX> adquiero paquetes prepagos de cierto volumen
+<pipo65> SherokiX: creo que se puede hacer q genere un log
+<SherokiX> lo investigo a ver, gracias
+<pipo65> de todo lo q ocurre con tu coneccion desde q te conecta hasta q te desconectas
+<pipo65> yo no uso gnome
+<pipo65> creo q eso solo biene con gnome
+<pipo65> igual hay un applet de gkrell
+<pipo65> yo lo usaba con fluxbox y ese te deja grabar un log continuo
+<napier> hola tengo problemas al ejecutar links en kubuntu he mirado la carpeta de wine y tengo el archivo iexplorer.exe, puede ser esa la causa?
+<pipo65> no
+<pipo65> napier: que error te da links
+<pipo65> napier abres una konsola y ejecutas links
+<napier> pipo65 , cuando ejecuto en kubuntu algun link de una aplicacion de bloquea el sistema y me da este error: No se pudo iniciar el proceso Imposible crear esclavo de E/S:
+<napier> Klauncher devolvió: Protocolo desconocido «z»
+<SherokiX> que tiene que ver links con wine, y con iexplorer.exe
+<SherokiX> ?
+<pipo65> a espera napier dijistes links no link
+<pipo65> links es un navegador por konsola
+<osinet> buenas, tengo problemas al instalar vmware server en ubuntu el error es localizacion de C header
+<napier> era link en plural
+<napier> los links
+<SherokiX> :-)
+<napier> los enlaces
+<pipo65> si ahora si
+<pipo65> y en todas las aplicaciones te lo hace
+<napier> sherokix, Hola por que al ejecutar cualquier link en kubuntu y en este caso con el link del correo de amsn falla el sistema: No se puede ejecutar la orden indicada. El archivo o carpeta file:///home/napier/.wine/dosdevices/z:/home/napier/.amsn/gsa60_hotmail_es/hotlog.htm no existe. :
+<pipo65> y con que descargastes ese archivo
+<SherokiX> y por que usas amsn bajo wine cuando amsn se puede ejecutar nativamente en linux?
+<pipo65> SherokiX: no es amsn sobre wine
+<napier> no uso amsn bajo wine uso el nativo
+<osinet> alguien instalo el vmware server?
+<pipo65> esta usando el internet explorer
+<SherokiX> el problema está enq ue tu escribes una ruta /home/blah,blah,blah, een wine, y wine agrega la unidad, z:
+<napier> no lo he instalado
+<napier> ie
+<pipo65> si pero biene una muestra gratis con wine
+<SherokiX> por otra parte, haz ls -l /home/napier/.wine/dosdevices/z:
+<SherokiX> eso debería ser un enlace simbólico a /
+<SherokiX> y en tu caqso creo que por alguna razón es un directorio
+<napier> a nada porque en esa carpeta no hay nada relacionado a wine o amsn
+<pipo65> napier: para q usas wine
+<pipo65> ??
+<napier> ares y dreamule
+<pipo65> napier: el ares q tienes en el wine abre
+<napier> si y funciona muy bien salvo el chat que aparece con errores
+<SherokiX> comprueba que es /home/napier/.wine/dosdevices/z:
+<SherokiX> debería ser un enlace
+<napier> por el momento no reconozco lo que es pero hay un monton de carpetas del sistema
+<pipo65> es un enlace a /
+<napier> z
+<pipo65> por lo menos yo lo tengo asi
+<napier> a z
+<pipo65> no z: /
+<SherokiX> ....
+<SherokiX> perdón
+<SherokiX> es cierto, metí la pata yo
+<SherokiX> el comando sería
+<SherokiX> ls -lD /home/napier/.wine/dosdevices/z:
+<SherokiX> o la d minuscula no recuerdo xD
+<SherokiX> pero bueno, ya diciendome eso, supongo que está bien
+<SherokiX> ahora...
+<pipo65> pipo65 1 2010-11-15 00:03 /home/pipo65/.wine/dosdevices/z: -> /
+<pipo65> sigue siendo lo mismo SherokiX
+<SherokiX> /home/napier/.amsn/gsa60_hotmail_es/hotlog.htm existe?
+<pipo65> la d es minuscula
+<pipo65> napier: fijate si te aparece lo mismo q a mi
+<pipo65> napier:  estas tratando de ejecutar cosas a traves de wine
+<napier> exite logs pero no hotlog
+<pipo65> he
+<SherokiX> e temo que el html que estás viendo con el ie, simplemente tiene enlaces rotos
+<SherokiX> pues eso
+<SherokiX> el enlace está roto
+<pipo65> y por q usaria alguien el internet explorer
+<pipo65> si ya se sabe q no funciona
+<napier> yo nunca he querido instalar ni usar ie
+<SherokiX> hay una versión de internet exploter para linux xD
+<SherokiX> ie4linux, creo que se llamaba
+<pipo65> ie4linux
+<napier> pero wine creo que se ha inbstalado mal
+<SherokiX> por que en wine no funciona adecuadamente
+<napier> por defecto
+<pipo65> SherokiX: pero el problema es por q el error le da cuando ejecuta algo por modo normal
+<pipo65> como amsn
+<SherokiX> vale
+<napier> si cuando compruebo los puertos con el link de dreamule va bien
+<pipo65> seria el problema de wine si no carga las aplicaciones q corren sobre el
+<SherokiX> en sistema > preferencias > aplicaciones preferidas
+<SherokiX> not endrás ese ie como navegador predeterminado?
+<pipo65> SherokiX: eso seria tonto
+<SherokiX> pero posible
+<SherokiX> xD
+<napier> no lo he cambiado al opera
+<napier> y antes lo tenia en firefox
+<pipo65> napier:
+<pipo65> puedes poner en consola
+<pipo65> sudo dpkg-reconfigure wine
+<napier> ok
+<SherokiX> yo creo que es normal que en wine al hacer click sobre un enlace se ejecute el navegador predeterminado en el wine, osea el que conste en el registro de ese windows
+<SherokiX> pues en wine el que maneja los url handlers es el start
+<SherokiX> en windows
+<napier> napier@napier:~$ sudo dpkg-reconfigure wine
+<napier> [sudo] password for napier:
+<napier> napier@napier:~$
+<pipo65> ya esta
+<pipo65> trata de abrir algo
+<napier> si el amsn
+<SherokiX> pero por que abres amsn desde wine?
+<pipo65> por q amsn esta directamente instalado de los repo
+<pipo65> es la version para linux
+<pipo65> supongo
+<pipo65> quien instalaria la version de windows
+<napier_> al ejecutar amsn se me ha cerrado el irc este irc
+<pipo65> y que programa usas para irc
+<napier> quassel
+<napier> el de kubuntu
+<napier> sigue fallando
+<pipo65> y el de kubuntu q cosa sigue fallando
+<napier> solo los links antes no podia instalar googleearth y ya se soluciono
+<pipo65> googleheart para linux
+<pipo65> supongo
+<napier> no google earth
+<pipo65> tienes instalado google heart
+<pipo65> para windows o linux
+<pipo65> es decir lo corres sobre wine
+<napier> google hogar no google tierra si
+<pipo65> por eso corres la version para linux o wine
+<napier> swiempre linux con linux y para linux para todo lo demas wine por resignacion
+<pipo65> que es para todo lo demas
+<pipo65> solo estas corriendo el ares y emule sobre wine
+<napier> dreamule y ares
+<napier> y con el autocad no me atrevo todavia
+<pipo65> y las descargas de ambos se guardan en sus lugares por defecto
+<napier> he de mirarlo otra vez
+<pipo65> o le as cambiado los directorios
+<napier> yo todo por defecto todo automatico
+<pipo65> puedes salvar lo q tengas de las descargas mueve esos directorios a otra parte de tu /home
+<pipo65> y elimina wine con un --purge
+<pipo65> luego eliminas el directorio q te queda .wine
+<pipo65> y pruebas a ver si se te soluciona tu problema
+<pipo65> y despues vuelves a instalar wine
+<napier> ares y la mula estan en la carpeta archivos de wine
+<pipo65> si
+<pipo65> seguro si tu no los has cambiado
+<pipo65> solo el incoming y el my shared folder debes de vuscar
+<napier> no por nada no me gusta complicarme pero nada de nada
+<pipo65> que es seguro el lugar de las descargas
+<ratasxy> hola amigos tengo un problema al cambiar la mac con el macchanger hace el cambio de mac pero al volver a levantar la tarjeta la mac vuelve a ser la original
+<pipo65> napier: tienes muchas descargas echas
+<napier> no la carpeta de descargas del ares la tengo en el escritorio como siempre la del emule donde siempre configurado por defecto
+<pipo65> ratasxy: esa herramienta es solo para hacer pruebas de seguridad en el router
+<adriel> ayuda despues que tengo linux la bateria de mi labtop no quiere cargar alguna idea
+<pipo65> adriel: tu cargador tiene la luz encendida
+<SherokiX> no creo que el s.o decida que el cargador no funcione
+<adriel> si
+<SherokiX> :P
+<napier> no tengo ninguna descarga hecha la instalacion es muy reciente
+<SherokiX> la batería cargará aunque sea sin s.o!
+<pipo65> adriel: prueba a retirar la bateria y colocarla nuevamente
+<pipo65> adriel: luego prueba a desconectar el cargador y conectarlo nuevamente
+<pipo65> esto sin apagar el equipo
+<SherokiX> otra cosa es que el acpi no informe adecuadamente ded la carga
+<napier> probare a instala el wine en desarrollo hq
+<ratasxy> pipo65 ya use muchas veces el macchanger o ifconfig para cambiar la mac address, n versiones anteriores de ubuntu pero ahora en el 10,10 tengo el problema
+<pipo65> napier: de cualquier modo tendras q eliminar el q tienes
+<adriel> pipo65; me dice que esta cargando pero el porciento de carga no aumenta
+<napier> cuento con ello
+<pipo65> ratasxy: que chipset tiene tu placa
+<pipo65> napier: apenas desintales el wine
+<ratasxy> es atheros no recuerdo el modelo
+<napier> si
+<pipo65> prueba a ver si se reparan los links
+<napier> por eso lo voy hacer
+<pipo65> napier: y tienes instalado el firnware de atheros
+<ratasxy> adriel la bios de tu laptop es phoenix
+<napier> no el ufw
+<adriel> ratasxy: no entiendo la pregunta en espanol please
+<napier> uso tres sistemas operativos y no quiero liarme con los firewalls complejos
+<ratasxy> pipo65 tengo los driver libres
+<pipo65> y antes
+<pipo65> ratasxy:
+<ratasxy> pipo65: tambien
+<napier_> ah he leido mal  era el firmware no el firewall
+<pipo65> y sigue siendo el mismo
+<napier_> que es atheros por cierto?
+<adriel> pipo65; me dice que esta cargando pero el porciento de carga no aumenta
+<pipo65> el chipset de la placa de wifi que ratasxy no puede cambiar el mac adress
+<pipo65> adriel: cuantos años tiene tu bateria
+<adriel> como 2
+<pipo65> si le quitas la bateria sin quitar el cargador
+<napier_> ah si los atheros creo que eran los que mejor rendimiento daban a la wiffi
+<pipo65> sique encendido el equipo o se apaga
+<SherokiX> ratasxy: acpi -V
+<ratasxy> SherokiX: eso es para adriel
+<SherokiX> perdon
+<SherokiX> adriel: acpi -V
+<pene-01> hola gente
+<pipo65> pene-01: es una abreviatura de penelope?
+<pene-01> claro!
+<pene-01> me encanta mi sobrenombre
+<adriel> sherkix; k hago con eso
+<pipo65> escribelo en una consola
+<SherokiX> pues escribe eso en consola y miras el resultado o nos lo pegas en pastebin
+<pipo65> !paste
+<kubot> Pastebin es un servicio para pegar mucho texto sin inundar el canal, se encuentra en http://paste.ubuntu.com (asegurate de darnos la dirección de tu paste) - Ver también en el topic.
+<pene-01> por casualidad aca alguien sabe algo de assembler?
+<SherokiX> alguien
+<last_warrior> si
+<SherokiX> por casualidad no creo, por que haya estudiado, sí
+<pene-01> jaja
+<osinet> buenas
+<osinet> alguien instalo vmware server en ubuntu 10.10
+<osinet> ?
+<SherokiX> seguro q1ue sí, alguien
+<pene-01> last_warrior si en ax tengo ffff y quiero hacer un shr ax,2 , no me deja
+<pene-01> tenes idea por que ?
+<SherokiX> seguro que sí, alguien
+<SherokiX> pene-01: define "no me deja"
+<napier> pipo65 , no tengo claro si el problema sera de klauncher mas que de wine
+<adriel> sherkix; http://pastebin.com/RiTra6gF
+<pipo65> napier: probastes a reiniciar
+<napier> pipo61 desinstale qwine y ejecute amsn y me dio error en klauncher
+<napier> no
+<pipo65> napier: solo el amsn te da error
+<pipo65> probastes a abrir firefox
+<pipo65> o otra palicacion
+<SherokiX> adriel: dije acpi -V no acpi -v
+<napier> es con todos los enlaces de los programs nativos
+<SherokiX> lo que dije que era posible aunque no probable xD
+<napier> firefox se ejecuta bien
+<SherokiX> tiene configurado el ie como navegador predeterminado
+<napier> y esa informacion del ie dondee se muestra ?
+<pene-01> SherokiX me da error
+<adriel> sherkix; http://pastebin.com/ZPaAdUJq
+<pene-01> el debug
+<napier> como primer navegador instalado y en activo
+<SherokiX> en gnome está en: istema > preferencias > aplicaciones preferidas
+<napier> yo voy a aplicaciones predeterminadas en kubuntu y no aparece entre los navegadores
+<SherokiX> ahí dice que tu batery is full (100%)
+<pipo65> napier: y otra aplicacion tiene problemas
+<SherokiX> naturalmente que estando llena no sigue cargando
+<SherokiX> Battery 0: Full, 100%
+<SherokiX> Battery 0: Discharging, 100%, discharging at zero rate - will never fully discharge.
+<napier> no toddo lo demas funciona bien salvo los enlaces al ser ejecutados en programs nativos
+<SherokiX> Battery 0: Discharging, 99%, 33:28:35 remaining
+<pipo65> napier: dime que otra cosa no anda
+<SherokiX> que guay xD esto dice que es posible que nunca se descargue.... una batería eterna? xD
+<pipo65> SherokiX: kitale el cargador
+<napier> que a kubuntub le pido que me de dinero y no me lo da
+<SherokiX> napier: si le das click al enlace q puso antes adriel, aquí en el irc también tienes problemas?
+<napier> no antes fallaba ahora si que funciona se abre con opera
+<napier> y se abre muy rapido en kubuntu mucho mas que con gnome
+<napier> voy a probar de nuevo con amsn
+<SherokiX> revisaq la configuración de amsn, y para la próxima no generalices tanto........
+<napier> no con amsn falla No se pudo iniciar el proceso Imposible crear esclavo de E/S:
+<napier> Klauncher devolvió: Protocolo desconocido «z».
+<SherokiX> Bus 001 Device 019: ID 1b80:d393 Afatech
+<SherokiX> alguien me ayuda a buscar controlador para esta tdt?
+<pipo65> napier: y si desinstalar amsn y lo instalas de nuevo
+<adriel> sherkix; k me dices
+<adriel> sherkix; aun espero
+<SherokiX> ya te dije
+<SherokiX> si tu intentas hechar agua en un baso ya yeno.....
+<SherokiX> el agua se sale
+<SherokiX> ...
+<SherokiX> si la batería está llena, o va a seguir cargando
+<adriel> sherkix; pero por que me dice que tiene un 35 %
+<SherokiX> ahí pone literarlmente "full (100%)"
+<adriel> sherkix; ok gracias
+<SherokiX> donde has leido 35%?
+<adriel> esta en el mismo link k te mande
+<SherokiX> a vaya
+<SherokiX> adriel: tu batería está estropeada
+<adriel> sherkix; hay dos bateria especificas en el link
+<SherokiX> Battery 0: design capacity 4400 mAh, last full capacity 1564 mAh = 35%
+<SherokiX> tiene un 35% de capacidad, de la capacidad de fabricación
+<SherokiX> si es nueva puede ser normal hasta que la descargues un par de veces
+<SherokiX> si ya tiene rodaje, es que ya está vieja
+<adriel> sherkix; eso fue por k la use anoche un tiempo sin el cargador
+<SherokiX> la primera linea indica la carga actual, la ssegunda la capacidad de la batería
+<SherokiX> adriel: es nueva?
+<adriel> sherkix; no pero tampoco es muy bieja
+<SherokiX> igualmente aunque sea nueva, sería normal que la capacidad sea menor a la que adquiere en su dciclo de vida, pero tampoco tan bajo
+<SherokiX> pues
+<SherokiX> la sometes a descargas profundas?
+<pupii> Hola gente! alguien sabe como agregar la columna "comentarios" en nautilus? es para ver (perdon x la redundancia) los comentarios de los archivos como tiene el explorer del windows
+<adriel> sherkix; cuando usaba window   no tenia ese problema, despues que uso linux cada ves que la uso sin el cargador ese porciento baja
+<SherokiX> en el nautilus, edicion > editar > preferencias > columnas de la lista
+<SherokiX> ahí están las columans que puedes mostrar
+<pupii> SherokiX, sisi estuve mirando eso pero no aparece la columna que necesito
+<SherokiX> donde pones lugares
+<SherokiX> donde pone lugares *
+<SherokiX> pinchas y eliges
+<SherokiX> notas
+<SherokiX> así ves las notas
+<SherokiX> ver > barra adicionalen el "panel lateral"
+<SherokiX> uis
+<SherokiX> perdon
+<SherokiX> me lié
+<SherokiX> decía solo: en el panel lateral
+<SherokiX> se muestra y oculta con f9
+<Vero2> buen día a todos
+<Vero2> a ver si alguien me puede ayudar
+<Vero2> resulta que en Evolution me pide la contraseña del correo que sale y no me acuerdo
+<Vero2> estuve poniendo todo lo que se me ocurre pero no hay caso
+<Vero2> el correo de entrada no tiene problemas
+<Vero2> me metí en contraseñas y claves pero allí no figura
+<Vero2> quien me dá una idea por favor?
+<Vero2> ok gracias igual
+<Vero2> lo que no entiendo es por qué de buenas a primeras me sale este problema
+<uscratch> Vero2: tengo thunderbird, a veces me ha pasado, pero solo introduzco la clave otravez y la configuro para que ya no me la pide y la guarde
+<Vero2> uscratch: lo que pasa es que no me acuerdo de la clave
+<Vero2> ese es el problema
+<d-b> hola a todos alguien me puede decir a que se debe este aviso de emesene http://pastebin.ubuntu.com/532395/
+<uscratch> Vero2: yo que tu intentaria recuperar contraseña desde la web
+<uscratch> Vero2: hay opciones que dan para recuperar contraseña por indicio o palabra clave
+<t4k3sh1> Vero2: tu cuenta es @?
+<uscratch> d-b: puede ser que ms ha arreglado su protocolo, prueba actualizar
+<Vero2> t4k3sh1: te lo digo en priv
+<Vero2> uscratch: desde qué web dices?
+<uscratch> Vero2: desde la interface web
+<uscratch> Vero2: desde un navegador
+<Vero2> nunca usé la web para el correo
+<uscratch> alguna vez habra que usarlo no
+<Vero2> si pero cómo? :-)
+<uscratch> depende de tu correo
+<uscratch> com si tuviera yo uno de  annonyng@gmail.com
+<uscratch> entonces accedo a www.gmail.com
+<Vero2> ah entiendo, gracias y pruebo
+<julio> hola
+<julio> un favor como puedo hacer mi portatil calienta mucho en ubuntu
+<pipo65> buenas
+<pipo65> alguien sabe alguna aplicacion para crear iso
+<Vero2> uscratch: no dá opcion para ver las contraseñas
+<uscratch> pipo65: kiso
+<pupii> pipo65, k3b?
+<pipo65> esa aplicacion es de kde
+<uscratch> si
+<pupii> pipo65,  probaste con brasero?
+<pipo65> si pero busco alguna alternativa para no instalar paquetes de kde
+<uscratch> ok
+<uscratch> pipo65: isomaster, es un editor de iso
+<uscratch> pipo65: pero para crear basta con el brasero
+<pipo65> si estoy instalado ese
+<pipo65> gracias
+<pipo65> es q tenia por defecto el xburn
+<uscratch> si tambien crea iso
+<pipo65> pero ese no te deja grabar iso
+<uscratch> o
+<pipo65> no pero no quiero grabarla en un cd
+<pipo65> quiero q me cree la iso en el ide
+<uscratch> Vero2: no podes ver las contraseñas simplemente recuperarlas o cambiarlas
+<pipo65> k3b se q puede hacerlo pero te ocupa mucho espacio te instala medio kde
+<pipo65> y estoy tratando de evitar cargar elementos de kde
+<pupii> uso gnome
+<pupii> y me resulta mejor k3b :D
+<pupii> nunca tuve ningun problema... con brasero no logro hacer que el equipo de musica me lea los cd =/
+<uscratch> eso puede deberse a el tipo de sistema de archivos
+<d-b> alguien a usado no-ip?
+<d-b> como agrego repositorios para cualquier programa?
+<fosco_> d-b, tienes que saber cual es el repositorio primero
+<napier> hola,amsn para linux, kubuntu 10.10,  se carga con winebrowser como puedo cambiar esa configuracion anomala?
+<d-b> bueno soy nuevo no tengo ni idea
+<fosco_> napier, en el panel de control de kde busca las aplicaciones predefinidas, estará puesto que el navegador por defecto es ese
+<fosco_> cambialo al que prefieras
+<fosco_> d-b, que programa quieres?
+<d-b> no-ip
+<fosco_> no me suena que haya repositorios para eso
+<file_not_found1> hola
+<fosco_> pero puedes buscar en google
+<napier> ya lo heo he quitado  hecho he quitado hasta kopete para que lo reconociera y nada
+<fosco_> pon algo como "instalar no-ip ubuntu"
+<napier> ya lo he hecho
+<fosco_> napier, no he dicho que quites nada
+<file_not_found1> tengo una micro sd kingston de 2gb
+<fosco_> simplemente en el panel de control define el navegador por defecto que quieras usar
+<napier> eso lo hice antes
+<d-b> se instalo desde el terminal pero lo quiero grafico
+<file_not_found1> y me dice q es de solo lectura
+<fosco_> d-b, y estas seguro de que ese programa tiene interfaz grafica?
+<d-b> desde el synaptic se llama noip2
+<d-b> si ya lo busque en google
+<file_not_found1> como lo puedo hacer de lectura y escritura
+<file_not_found1> ¿?
+<napier> fosco en aplicaciones predeterminadas nunca aparecio el nombre de amsn solo kopete
+<fosco_> file_not_found1, como metes la microsd? algun adaptador o card reader o algo?
+<fosco_> napier, amsn no, tienes q cambiar el navegador por defecto
+<file_not_found1> si un adaptador kignston
+<fosco_> file_not_found1, asegurate que el adaptador no está en modo lectura, algunos tienen proteccion
+<d-b> cuando lo voy a instalar desde el synaptic me sale el siguiente error http://pastebin.ubuntu.com/532433/
+<napier> fosco, ya lo hice de mozilla a opera y no funciono el winebrowser no aparece por ninguna parte
+<file_not_found1> como hago eso
+<fosco_> d-b, eso es porque tienes algun otro gestor de paquetes abierto, solo puedes tener uno
+<file_not_found1> ¿?
+<fosco_> file_not_found1, tendrá alguna palanquita externa
+<d-b> ok gracias fosco_
+<file_not_found1> esta destrabada
+<fosco_> napier, pues está claro que está lanzando winebrowser como navegador por defecto
+<napier> y por que no se muestra en el gestor de kde
+<fosco_> ni idea no uso kde
+<file_not_found1> la formatie con
+<file_not_found1> sudo dd if=/dev/zero of=/dev/sdd
+<fosco_> eso no la formatea
+<Vero2> fosco hay alguna forma de ver qué contraseña le puse al correo saliente de Evolution?
+<file_not_found1> ah no
+<file_not_found1> ?
+<file_not_found1> :-|
+<fosco_> solo llena la unidad de ceros
+<fosco_> y además se carga la tabla de particiones
+<napier> hay alguna forma de fijar el navegador por defecto mediante consola ?
+<napier> fosco
+<fosco_> file_not_found1, abre el gparted y mira si puedes darle formato vfat desde ahi
+<fosco_> napier, supongo, no conozco muy a fondo kde, puedes preguntar en #kubuntu-es o pasarte a gnome
+<file_not_found1> la otra vez lo hice
+<file_not_found1> probare
+<alexneb> buenas
+<ikr11> hola
+<ikr11> alguien sabe como montar cifs como usuario normal?
+<file_not_found1> end_request: I/O error, dev sdd, sector 254
+<d-b> fosco_: no me avanza la instalacion desde el centro de software
+<ikr11> nadie?
+<fosco_> d-b, cierralo e instalalo desde apt-get
+<fosco_> si da error lo verás
+<d-b> ok
+<fosco_> sudo apt-get install "paquete"
+<file_not_found1> fosco_
+<d-b> ok
+<file_not_found1> da error
+<fosco_> haciendo que
+<file_not_found1> formateandola
+<file_not_found1> sale con una llavwe
+<file_not_found1> en gparted
+<fosco_> puede que tenga sectores defectuosos
+<d-b> fosco_: me  da el mismo error que te mostré antes
+<fosco_> que error
+<file_not_found1> te cuento q tenia una un pendrive de 2gb
+<d-b> este http://pastebin.ubuntu.com/532438/
+<file_not_found1> lo formatie en win con una utilidad de su chip
+<file_not_found1> y tengo un pendrive ahora de 2,9gb reales
+<fosco_> d-b, algun gestor de paquetes sigue abierto, cierralo
+<fosco_> si ves que no puedes encontrarlo una solucion es reiniciar el sistema
+<d-b> ok reiniciare
+<file_not_found1> q hago
+<file_not_found1> q comando puedo usar
+<fosco_> file_not_found1, si usa drivers no estandar en win es posible que no puedas usarlo en linux
+<fosco_> son dispositivos "raros" que no informan correctamente de sus capacidades
+<file_not_found1> si
+<file_not_found1> pero la micro sd no la pude formatearla
+<file_not_found1> no se como averiguar mas datos de la memoria
+<file_not_found1> por otra parte, copie archivos de 2,7 gb a l pendrive
+<d-b> fosco_: ya lo hice gracias,
+<file_not_found1> sos usuario de windows tambien?
+<file_not_found1> fosco_
+<fosco_> d-b, de nada
+<d-b> sip jiji
+<file_not_found1> en ddmesg
+<file_not_found1> http://pastebin.ubuntu.com/532445/
+<file_not_found1> sale esto
+<file_not_found1> fosco_
+<fosco_> parece que la unidad tiene errores
+<fosco_> intenta formatearla desde win
+<alexneb> un problema... intento arrabncar ubuntu desde un pen.. pero me sale.. /boot/vesamenu.c32 not a com32 image...
+<alexneb> eso es que ta mal descargada la imagen?
+<file_not_found1> es de 32 o 64 bits
+<alexneb> de 32 supongo
+<alexneb> ahhno pera
+<alexneb> amd
+<alexneb> 64 turion
+<alexneb> ok ya imagino el problema
+<dzup2> hay un editor/creador de swf para ubuntu ?
+<dzup2> hay un editor/creador de swf para ubuntu ?
+<fosco_> dzup nada q funcione medianamente bien
+<dzup2> oh, necesito hacer un swf de scratch, pero me da flojera irme a windows
+<d-b> fosco_: porque me da este error el emesene  http://pastebin.ubuntu.com/532460/
+<d-b> me da este error cuando inicio mas de 2 o 3 emesene a la misma ves
+<fosco_> ni idea
+<d-b> ok
+<file_not_found1> lo estoy formateando co hard disk low level format
+<file_not_found1> en virtualbox
+<dzup2> jajaja
+<dzup2> file_not_found1: deveras? o es broma?
+<file_not_found1> q broma?
+<dzup2> lo estoy formateando co hard disk low level format
+<dzup2> (11:24:10) file_not_found1: en virtualbox   <-- eso :p
+<file_not_found1> probe con todas las utilidades de linux
+<file_not_found1> creo
+<dzup2> pero pero estas formateando low level una vmware imagen?
+<dzup2> o vm imagen
+<file_not_found1> no se como solucionar el problema de solo lectura
+<file_not_found1> estoy formateando una memory stick
+<file_not_found1> ja ja ja
+<dzup2> no seas mamon :p
+<file_not_found1> q te pasa?
+<Reisilver> holas
+<joaco> hola alguin sabe de algun menu para docky y area de notificacion
+<joaco> !l
+<kubot> El facto !l no existe.
+<fosco_> joaco, no me suena que exista nada así
+<fosco_> usa avant si quieres tener tantas funciones en el dock
+<joaco> el avant?
+<joaco> no me gusto
+<d-b> quien se sabe la pagina oficial del kin boxin?
+<Reisilver> kin boxin?¿
+<file_not_found1> el codec 3gp donde viene?
+<albes> Buenas tardes, monte Ubuntu 10.04 LTS Server Edition, mmm, dificil me lleve un susto cuando termine porque no sabia que estaba pasando y resulta que entra en modo consola ya que no trae un entorno grafico disque para mejorar rendimiento, bueno buscando y buscando logre instalar despues de mucho dar brincos el entorno grafico y lo corro con Startx, pero el otro problemita ya que no tengo experiencia en esto, existen herramientas para administrar mas faci
+<albes> l la red, como por ejemplo compartir carpetas y archivos o restricciones, Gracias
+<nycko> albes: ubuntu server (hasta donde yo se) siempre fue consola
+<nycko> albes: es la version _server_
+<albes> Nunca lo habia utilizado, me estoy apenas adentrando en este sistema
+<nycko> albes: si quieres algo con entorno grafico, mas user friendly, usa ubuntu desktop edition
+<TrueNhero> uenas, kisiera saber si el grub de fedora es el mismo que maneja ubuntu
+<erUSUL> albes: si tienes gnome puedes probar gadmin-samba ( y los otros programas de gadmin ) para configurar samba tb puedes usar swat ( interfaz web )
+<m4v> albes: no. Tendrías que aprender a administrar con la consola, no hay cosas mágicas.
+<tkw-one> y que tal si le montas un nautilus al ubuntu server... talvez asi se pueda adminstrar algo.
+<albes> Si tienen razón, vi que era solo asi despues de instalarlo, lo que pasa es que necesitamos una maquina para compartir archivos y carpetas en una red, y queremos utilizar linux, y tenemos maquinas en ubuntu y otras en windows,
+<albes> y con ubuntu ya tengo 6 meses utilizandolo, y deje de un lado el windows...
+<note> hola nesecito una ayudita quiero isntalar este Software desde escritorio pero no puedo en ubuntu 10.10 en un AMD http://pencil.evolus.vn/
+<albes> quiero hacer lo mismo con el equipo que tenemos para compartir archivos y carpetas
+<xangua> note: es un complemento para firefox, solo lo arrastras a este
+<hashashin> albes, podrias probar webmin, administras el server desde una web, samba, apache, dns... todo desde ahí
+<TrueNhero> puedo tener fedora y ubuntu a la vez?? con cual grub es mejor???
+<note> xangua uno puede descargar lo como aplicacion
+<note> http://pencil.evolus.vn/en-US/Downloads/Application.aspx
+<albes> a ver si entiendo, por lo que dices, puedo mantener la instalación de Ubuntu Server Edition, y manejar con este Webmin a traves de una web, o sea que hago una administración remota, pregunto los derechos de los usuarios y los accesos los podria hacer todo por alli.
+<erUSUL> note: instalalo como una extension de firefox
+<erUSUL> TrueNhero: si; el grub que uses da mas o menos igual.
+<erUSUL> !webmin
+<kubot> webmin ya no está soportado en Debian/Ubuntu. No es compatible con el modo en que los paquetes de estas distribuciones manejan los ficheros de configuración, y seguramente creará problemas inesperados en el sistema.
+<albes> entonces de ser asi, pregunto, cual puede ser una opcion buena que ofrezca seguridad para tenerlo lomo equipo dedicado solamente a compartir archivos y carpetas en un grupo de usuarios con windows y Ubuntu, la idea es no utilizar mas windows y salir de ese paquete ya.
+<erUSUL> albes: swat sirve para administrar samba a traves de una interfz web y ya te he hablado de gadmin-samba si quieres algo con gui
+<albes> ok, voy a irme entonces por esa opcion
+<albes> estoy tomando nota de esto para ponerme a trabajar a ver que me resulta... Gracias!!!!
+<erUSUL> albes: https://help.ubuntu.com/community/Swat
+<last_warrior> alguien me puede decir si en algun ligar de almacena la cache de la interfas de red??
+<albes> ok ya estoy viendo la pagina, voy a instalar. Gracias
+<yemino> hola, estoy instalando maple13 (ya lo he instalado varias veces antes), pero esta vez me dice "/opt/maple/13/jre.X86_64_LINUX/bin/java: not found"  ..   que me estara faltando?
+<yemino> el directorio /opt/maple/13 existe, pero /opt/maple/13/jre.X86_64_LINUX no existe
+<TrueNhero> el terminal de ubuntu y de fedora en que se diferencian__
+<yemino> TrueNhero: son linux, anda igual
+<yemino> TrueNhero: fedora obviamente no usa los apt-get, ya que esos son propios de ubuntu, pero fedora tiene su propio comando para sus repositorios
+<yemino> ademas de eso (que sirve para instalar+actualizar+buscar..  paquetes) el resto debiera ser identico
+<yemino> TrueNhero: por que la pregunta?
+<dzup2> no son iguales
+<dzup2> rh fedora usa un userland diferente, mas unix que ubuntu
+<dzup2> aparte de mas diferencias
+<yemino> dzup2: disculpa; que es userland?
+<dzup2> !google linux userland
+<kubot> Sistema de ficheros virtual: <http://www.worldlingo.com/ma/enwiki/es/Virtual_file_system>; ¿GNU ó Linux?. Translate into Spanish. Translation result ...: <http://translated.by/you/gnu-or-linux/into-es/>; Comex vuelve a lograrlo, otro userland jailbreak para todos los ...: <http://maczana.es/2010/06/27/comex-vuelve-a-lograrlo-otro-userland-jailbreak-para-todos-los-dispositivos/>; Sistema de (2 more messages)
+<dzup2> !google unix userland
+<kubot> ¿GNU ó Linux?. Translate into Spanish. Translation result ...: <http://translated.by/you/gnu-or-linux/into-es/>; Rafael David Tinoco - Brasil | LinkedIn: <http://br.linkedin.com/in/rafaeltinoco>; Gentoo Forums :: View topic - Aviso de CONFIG_SYSFS_DEPRECATED en ...: <http://forums.gentoo.org/viewtopic-t-794583-start-0.html>; FreeBSDes GNU? - psicofxp.com: <http://www.psicofxp.com/forums/gnu- (2 more messages)
+<yemino> yo he usado gentoo, actualmente uso ubuntu, y uso opensuse. Nunca he encontrado una diferencia practica entre las terminales (y la uso harto)
+<TrueNhero> yemino: por el sudo
+<yemino> TrueNhero: que tiene el sudo?  fedora no lo trae?
+<Vero2> hola de nuevo
+<Vero2> a lo mejor hay alguien que sepa como averiguar una contraseña que puse en SMPT de Evolution y que ahora no me acepta ninguna que le pongo
+<Ubux> Vero" abre contraseña y claves de cifrado
+<file_not_found1> hay algun programa para incrustar subtitulos srt en linux
+<CuriousX> avidemux
+<CuriousX> file_not_found1: te recomiendo lo siguiente
+<Xago> hola muchachos...quién es fanático de la música a nivel avanzado?
+<CuriousX> no los peges a los subtitulos. ponelos junto a la pelicula al momento de grabarla
+<CuriousX> no se si me explique ?
+<Xago> necesito una herramienta que reciba en formato AC3, pueda optimizar la música, nivelar, ecualizar, mixer y como salida en AAC +
+<Xago> para meterla en un transport stream.
+<CuriousX> Xago: probaste con Audacity. Es un muy buen editor de audio en Linux
+<Xago> CuriousX, AUDACIOUS?
+<file_not_found1> voy a editar un video en openshot
+<CuriousX> Xago: audacity
+<file_not_found1> y es un pedazo de video en ingles
+<file_not_found1> y los subs estan en srt
+<Xago> CuriousX, OK...pero hace más menos lo que comentaba? Qué me dices de tu experiencia?
+<Vero2> Ubux gracias ya lo hice pero correo saliente no figura
+<file_not_found1> veronica2
+<CuriousX> file_not_found1: tambien podes probar cinelerra para editar videos aunque no biene en los repos en la paguina explican como instalarlo
+<CuriousX> Xago: nunca lo use
+<CuriousX> pero es muy bueno muy completo seguro se puede hacer lo que pedis
+<CuriousX> Xago anda a la pagina de Audacity para que veas como es aproximadamente tambien podes ver un video en youtube
+<Xago> CuriousX, Ok.....gracias, ya estoy viendo info....:D
+<CuriousX> =)
+<Xago> CuriousX, "Nota: Audacity no trabaja con los formatos WMA, AAC, o el resto de los formatos de archivo propietarios o restringidos. " bad!!!
+<CuriousX> ups
+<file_not_found1> yo lo use pero siempre tuve problemas con los codecs mp4
+<file_not_found1> y flv
+<file_not_found1> no se escuchba el audio
+<CuriousX> /win close
+<CuriousX> ups
+<newby93> necesito ayuda
+<newby93> el gestor de ventanas me va mal
+<newby93> no se por que
+<newby93> no me sale el panel que hay en las carpetas paracerrarlas
+<newby93> y los iconos no me aparecen
+<newby93> me ayudan ?
+<mimecar> haz una captura de pantalla
+<newby93> no puedo hacerla
+<newby93> clico en el boton pra mostrar el escritorio y dice
+<mimecar> no te funciona el teclado ?
+<newby93> su gestor de ventanas no soporta el boton para mostrar el escritorio o no esta ejecutando uun gesstor de ventanas
+<newby93> si pero
+<hkmeny> wenas gente
+<hkmeny> alguien sabe si hay soporte para http://www.mercado.com.bo/product_info.php?products_id=133761
+<newby93> dnde pego la camputa
+<mimecar> newby93: en imagehack
+<mimecar> hkmeny: depende como se identifique
+<newby93> no me abre la pag
+<mimecar> newby93: ?
+<newby93> que no carga
+<mimecar> el que
+<mimecar> imagehack es el nombre de la página, no un enlace
+<arp-> que difrencia tiene el driver nvidia-glx del comun?
+<newby93> teng que registrarme ?
+<arp-> no newby93
+<voyager1> buenas
+<newby93> tengo que pegar la imagen dime donde
+<arp-> nah
+<arp-> subi la imagen y listo
+<newby93> pero como si
+<newby93> ice un print
+<newby93> si no lo guardo en un documento no puedo
+<arp-> vivo usando ese servicio gratis
+<arp-> suis la imagen diectamente
+<newby93> pero si no tengo la imagen
+<newby93> una captura de pantalla
+<newby93> si no la pego en un documento
+<newby93> como lo subo
+<hkmeny> mimecar-away, la cosa es k necesito comprar uno, pero no se si tenga soporte
+<erUSUL> !screenshot
+<kubot> Si necesitas mostrarnos una captura de pantalla de tu problema subí la imagen a http://tinyurl.com/imagebin y pegá el link en el canal.
+<hkmeny> dale a examinar y selecionas la imagen k encesitas
+<hkmeny> despues cargara una serie de links, le das a full zize y copias y pegas el link
+<hkmeny> si es apra mostrarla aqui
+<newby93> haber
+<newby93> si hago un print
+<newby93> tengo que pegar la imagen
+<newby93> en un documento
+<newby93> para que salga
+<newby93> donde la pego
+<newby93> yo vengo de windows
+<newby93> y en windows es en el paint
+<newby93> aa vale
+<newby93> ya que deja guardarla directamente
+<newby93> no me sale el menu para guardarla
+<erUSUL> newby93: si le das al boton impr Pantalla te sale un dialog para guardar la captura de pantalla donde tu quieres. no hay que pegar nada
+<newby93> no sale el menu
+<newby93> que no me responde cas nada
+<newby93> de las ventanas
+<newby93> la del prin no sale
+<hkmeny> tmb
+<hkmeny> erUSUL, que opinas tu? tienes idea si ubiquiti tiene soporte para ubuntu?
+<newby93> que hago
+<erUSUL> newby93: Aplicaciones>accesorios>Captura de pantalla
+<arp-> erUSUL:
+<newby93> ahora
+<newby93> si pude gracias
+<hkmeny> osea si ubuntu tiene soporte pare el*
+<arp-> ubicas la carpeta del os modulos del kernel (/lib/modules/kernel-vsesion/) ?
+<newby93> http://imagebin.org/123383
+<newby93> es eso
+<erUSUL> hkmeny: http://www.ubnt.com/forum/showthread.php?t=22105
+<newby93> que opinan
+<newby93> hay alguien ?
+<erUSUL> newby93: que opninames de que? no tienes borde de ventanas?
+<newby93> si
+<newby93> y no se me ven los iconos
+<newby93> ni se me ven las ventansas que tengo abiertas
+<arp-> erUSUL:
+<erUSUL> newby93: alt + f2 funciona?
+<newby93> en la barra de abajo
+<newby93> no
+<hkmeny> en nada
+<hkmeny> haces print y automaticamente te sale un aviso de si deseas guardar el "print"
+<hkmeny> y opcionalmente en que directorio, solo dale guardar y te aparecera en el escritorio automaticamente
+<hkmeny> se llamara pantallazo.png
+<newby93> no no
+<newby93> ya lo hice
+<newby93> http://imagebin.org/123383
+<erUSUL> newby93: por alguna razon no arranco el gestor de ventanas. tienes los efectos de escritorio activados?
+<newby93> nop
+<erUSUL> arp-: que pasa? no me dices nada cuando me hablas :)
+<arp-> ubicas la carpeta de los modulos del kernel
+<arp-> lib/modules/blabla
+<arp-> ?
+<newby93> ersul
+<newby93> formateo ?
+<erUSUL> arp-: /lib/modules/2.6.32-25-generic/ <<< esta? que le ocurre?
+<arp-> sisi
+<erUSUL> newby93: prueba a ver si te pasa con un usuario nuevo
+<wassaman> hola buenas noches
+<Vero2> erUSUL: como estás? aprovecho que te veo para preguntarte si sabes cómo puedo ver qué contraseña le puse al correo saliente de Evolution porque me está rechazando todas las que le pongo
+<arp-> bueno, compile unos drivers de compat-wireles, los cuales se instalan en /lib/modules/version/update
+<newby93> lo unico que hice fue
+<arp-> entonces, sigue usando los modulos origianles
+<newby93> activar efectos del compiz
+<arp-> y nos los de /update
+<newby93> en el ubuntu
+<wassaman> alguien me dice como puedo cambir de red de irc??
+<arp-> tenes idea?
+<erUSUL> arp-: como instalaste los modules nuevos?
+<arp-> baje los drivers de compat-wireless y los compile
+<erUSUL> wassaman: /server irc.nuevoserver.loquesea
+<erUSUL> arp-: deberia funcionar ... hiciste « sudo depmod -a » ?
+<arp-> te los instala en /lib/modules/kernelversion/updates
+<erUSUL> Vero2: que servicio de correo usas?
+<arp-> en teoria lo hace el mismo makefile
+<arp-> a ver pruebo
+<Vero2> erUSUL: Speedy.com.ar
+<arp-> con el * ?
+<hkmeny> tengo mucho delay del irc, sorry si duplico respuestas :S
+<hkmeny> que pasa con la screen?
+<erUSUL> arp-: ya; como sabes que no usa los drivers nuevos?
+<arp-> porque si tiro un modinfo del modulo
+<arp-> sigue dandome la ruya vieja
+<arp-> con el modulo original
+<arp-> ruta vieja*
+<Vero2> arp :-)
+<erUSUL> Vero2: deberia ser la misma para obtener el correo y para mandarlo ...
+<arp-> hola Vero2
+<Vero2> erUSUL: si y se lo pongo pero lo rechaza
+<Vero2> arp hola
+<n-iCe> cuál es la diferencia entre un canal # y un ##
+<Vero2> erUSUL: ya me estoy volviendo mona con este asunto
+<erUSUL> Vero2: en aplicacione>Accesorios>claves de cifrado y contraseñas aparece la contraseña en cuestion ?
+<Vero2> erUSUL: la de SMPT no
+<arp-> oO
+<arp-> magicamente cambio erUSUL
+<arp-> gracias xD
+<m4v> n-iCe: es offtopic tu pregunta, pero canales con ## no sería oficiales.
+<arp-> ahora tira la ruta bien
+<hkmeny> problemas de conpiz
+<erUSUL> arp-: está claro que el depmod si hacia falta ;P
+<m4v> n-iCe: preguntá en #freenode para una mejor explicación
+<arp-> :P
+<erUSUL> Vero2: pues no se; tendrás que llamar al soporte tecnico para que te vuelvan a dar la contraseña o la reseteen ...
+<Vero2> erUSUL: lo que pasa es que ellos no dan soporte a Linux...
+<Vero2> y en Windows no tengo problemas
+<erUSUL> Vero2: eso da igual. diles que te has olvidado de la contraseña del servidor smtp y que la necesitas. no necesitas decirles que cliente de correo usas
+<hkmeny> newby93, para solucionarlo temporarlemte desactiva los efectos de escritorio
+<hkmeny> newby93, sistema-preferencias- apariencia, pestaña efectos visuales y selecciona la primera "ninguno"
+<erUSUL> Vero2: a ver ... seguro que el smtp necesita contraseña?
+<Vero2> erUSUL:  si
+<Vero2> dice: el servidor requiere autenticación
+<Vero2> erUSUL: bueno pero intentaré hacer lo que me dices
+<erUSUL> Vero2: mira la contraseña en el ciente de correo de windows
+<Vero2> no puedo
+<CuriousX> Vero2: es la misma que usas para el MSN
+<erUSUL> Vero2: por?
+<Vero2> erUSUL: no tengo donde verlo
+<Vero2> CuriousX: no uso MSN
+<CuriousX> =P disculpas
+<Vero2> jaja, no es nada
+<Vero2> bueno, intento hablarles por teléfono
+<Vero2> despues les comento
+<erUSUL> Vero2: ademas prueba con la misma contraseña que usas para recivir el correo ( para pop o imap )
+<erUSUL> recibir*
+<Vero2> erUSUL:  ya probé con la contraseña de POP y pasa lo mismo Imap no uso
+<Vero2> bueno, ahí voy, hasta luego
+<KeyBoardx86> Hola a todos
+<KeyBoardx86> alguien puede decirme como recuperar el GRUB en ubuntu 10.10 acabo de instalar otro OS y ahora no recuerdo como recuperar el GRUB
+<WaSeidel> hola alguien sabe como me pongo en contacto con alguno de los administradores de wiki.ubuntu.com ?
+<mimecar> el wiki tiene que tener una sección de contacto
+<WaSeidel> veamos
+<CuriousX> @_@ recien me entero que ubuntu tiene wiki =O
+<newby93> señores
+<newby93> puse est comando en la consola y se soluciono
+<newby93> kill -9 $(pgrep nautilus) && nautilus
+<newby93> pero activo compiz y pasa otra vez
+<newby93> hay alguiennn
+<mimecar> configura compiz para que actue como gestor de ventanas
+<mimecar> o no uses compiz
+<newby93> como lo configuro
+<newby93> ?
+<mimecar> no lo se
+<fosco_> <newby93> kill -9 $(pgrep nautilus) && nautilus <- esto es muy dificil de recordar, nautilus -q hace lo mismo
+<newby93> foco
+<newby93> tienes idea
+<newby93> para ayudarme
+<newby93> pliss
+<fosco_> cual es el problema
+<newby93> que
+<newby93> con el compiz no se me muestran
+<newby93> ls panele s de las ventanas
+<fosco_> abre un terminal
+<newby93> ok
+<fosco_> ejecuta compiz --replace &
+<fosco_> y si sale algun mensaje pegalo en pastebin.com
+<newby93> se me puso el compiz
+<newby93> y no salen
+<newby93> los paneles de las ventanas
+<fosco_> y algun mensaje?
+<newby93> http://pastebin.com/mkAs0NbJ
+<Ubux> newby93 instala un decorador de ventanas ...emerald
+<fosco_> instala el paquete fusion-icon
+<fosco_> lanza compiz desde fusion icon
+<fosco_> y tambien elige el decorador de ventanas
+<newby93> y por que me paso eso
+<fosco_> ni idea
+<newby93> nada
+<newby93> sigue sin ir
+<newby93> si elijo metacity si
+<newby93> pero compiz no
+<newby93> desintalo compiz ?
+<newby93> y lo instalo ?
+<fosco_> no
+<fosco_> en decorador elige gtk
+<newby93> esta puesto y nada
+<fosco_> cambialo por otra cosa y luego gtk
+<newby93> solo sale gtk
+<wlan0> newby93: mas arriba te escribieron que instales emerald... ¿lo hiciste?
+<fosco_> pues instala el paquete merald y cambia a emerald decorator
+<newby93> desintalo el fusion ese
+<newby93> o lo dejo tambien
+<fosco_> dejalo
+<newby93> no instale
+<newby93> donde lo encuentro el decorador ese
+<Ubux> sudo aptitude install emerald
+<fosco_> en el fusion-icon
+<newby93> no aparece
+<newby93> emerald
+<fosco_> pues no lo habrás instalado
+<newby93> si esta iinstalado
+<newby93> synaptic lo dice
+<Ubux> newby93 abre la terminal y abre el configurador  gconf-editor
+<fosco_> cierra y reabre fusion-icon
+<newby93> ya esta
+<newby93> lo active y no pasa nada
+<Ubux> vete a esta ruta :/apps/gdm/simple-greeter/wm_use_compiz
+<Ubux> y seleccionalo si no esta el valor de la clave
+<fosco_> newby93: tiene q ponerse el borde de las ventanas rojo
+<newby93> no se pone
+<newby93> que hago T-T
+<newby93> desintalo
+<newby93> y instalo otra vez compiz ?
+<newby93> que hago
+<d-b> hola alguien algún otro programa similar a virualbox
+<d-b> ya que virtualbox no me va bien
+<erUSUL> d-b: kvm ;
+<d-b> es bueno?
+<d-b> erusul:
+<erUSUL> algo mas dificil de manejar que Vbox. pero si se supone que es bueno.
+<d-b> ok gracias erusul
+<newby93> entonces no teneis idea de que puedo hacer
+<d-b> lo probare y te cuento
+<nosXw> d-b: busca el paquete aqemu
+<d-b> ok
+<d-b> nosxw
+<erUSUL> d-b: para tener gui instala virt-manager
+<d-b> soy nuevo no se mucho lo instalare desde el synaptic
+<newby93> señores
+<newby93> que hago T-T
+<erUSUL> newby93: has comprobado si te pasa lo mismo en un usuario nuevo?
+<newby93> no
+<newby93> pera
+<newby93> voy a verlo
+<d-b> nada
+<d-b> perdon
+<d-b> erusul: gestor de maquinas virtuales?
+<erUSUL> si
+<d-b> ok ya esta instalado
+<d-b> gracias
+<david2> sigue pasando
+<david2> con otro usuario que hago
+<Sorion_Buddha> Yuuka Sugisawa & Red Bull F-1 papel Promo-Gimp-Linux"[1920x1200]"-0001  >>> http://twitpic.com/376xdl
+<david2> señores
+<david2> que hagoo
+<Ubux> david2 has abierto el editor de configuracion
+<david2> no
+<david2> como lo abro
+<Ubux> gconf-editor
+<Ubux> vete a esta ruta :/apps/gdm/simple-greeter/wm_use_compiz
+<Ubux> y seleccionalo si no esta el valor de la clave
+<d-b> erusul: mira esto http://pastebin.ubuntu.com/532624/
+<david2> no exiast
+<david2> el directorio
+<Ubux> tiene que estar
+<Ubux> aps/gdm
+<erUSUL> d-b: sudo adduser $USER libvirtd && sudo adduser $USER kvm
+<d-b> oook
+<d-b> a ya voy
+<Ubux> que te sale dentro de la carpeta gdm
+<erUSUL> d-b: para que haga efecto tienes que salir de la sesion y volver a entrar
+<d-b> ok del programa?
+<david2> la carpeta aps
+<david2> no la veo
+<david2> en el
+<Ubux> apps
+<david2> disco duro
+<david2> no sera
+<david2> /etc/compizcongif
+<Ubux> no es dentro de el panel que se abre del editor de configuraciones
+<david2> no te entiendo
+<Ubux> cuando tecleas en terminal gconf-editor se abre un ventana llamada editor de configuracion
+<d-b> erusul: a un me sale error: no existe ninguna conexion activa en donde instalar.
+<d-b> cuando voy a crear la maquina virtual
+<erUSUL> d-b: saliste y volviste a entrar?
+<d-b> si
+<david2> vale me salio
+<erUSUL> d-b: pgrep -l libvirt
+<david2> estoy en app
+<david2> que mas
+<Ubux> apps7gdm
+<Ubux> apps/gdm
+<david2> estoy hay
+<Ubux> que carpetas tienes hay
+<d-b> no se mucho de esto erusul
+<Ubux> ahi
+<d-b> donde pongo eso en el terminal?
+<david2> accesiblity
+<erUSUL> d-b: si haces « pgrep -l libvirt » sale algo ?
+<erUSUL> d-b: si
+<david2> setiing manager
+<erUSUL> en un terminal
+<david2> y ya
+<d-b> me salio
+<d-b> db@db:~$ pgrep -l libvirt
+<d-b> 3564 libvirtd
+<d-b> db@db:~$
+<d-b> eso
+<Ubux> vale vamos a apps/applications/window_manager
+<erUSUL> d-b: pues deberia funcionar ... Aplicaciones>Herramientas de sistema>Gestor de maquinas virtuales
+<david2> no esta
+<david2> aplications
+<Ubux> espera desktop/gnome/applications/window_manager
+<d-b> el programa me habré y todo pero cuando voy a crear  la maquina virtual me sale, error: no existe ninguna conexion activa en donde instalar.
+<david2> ya
+<david2> current y default tienen valor
+<david2> hay 2 que no
+<Ubux> cual es el valor de la clave current
+<david2> nunber of workspace no
+<erUSUL> d-b: solo queda reiniciar
+<Vero2> erUSUL:  nada que hacer
+<d-b> ook
+<d-b> ya vengo
+<david2> /usr/bin/compiz
+<david2> y default la misma
+<Ubux> ok. esta bien puedes buscar esta clave si la tienes wm_use_compiz
+<david2> no la tengo
+<d-b> erusul: a un lo  mismo
+<erUSUL> d-b: comprueba que qemu-kvm está instalado
+<d-b> ok
+<david2> ubux que hago
+<erUSUL> Vero2: que pasó ? no pudiste conseguir la contraeña?
+<Ubux> desinstala compiz y empezamos de nuevo.... sudo apt-get remove --purge compiz*
+<Ubux> luego sudo apt-get install compiz
+<Ubux> despues restaurar las X
+<david2> pera que no soy root
+<david2> cambio usuario ok
+<Ubux> ok
+<d-b> si lo esta erusul
+<erUSUL> d-b: ejecuta « kvm » en un terminal
+<newby93> volvi
+<newby93> ya lo desintale y ahora
+<d-b_> erusul: se me congelo la maquina entera al ejecutar kvm desde el terminal
+<Ubux> sudo apt-get install compiz librsvg2-common
+<erUSUL> d-b_: o.0!
+<d-b_> me pasa lo mismo con virtualbox
+<Ubux> newby93 has echo esto primero sudo apt-get remove --purge compiz*
+<newby93> si si
+<newby93> por cierto el remove para que
+<rhe> HOLA
+<newby93> cn purge vale no ?
+<Ubux> remove elmina y purge limpia
+<newby93> aa
+<d-b_> pero en un punto distinto, osea cuando arranco la maquina vrtual para que empiece a instalar el equipo y se me congela igual que ahora
+<newby93> pues sera ahora
+<erUSUL> d-b_: entonces algo está mal con tu cpu ... que dice este comando ? « grep -E --color '(vmx|svm)' /proc/cpuinfo »
+<d-b_> ok espera
+<rhe> HOLA
+<newby93> ami un amigo me dijo purge
+<newby93> y usa ubuntu 9.10
+<rhe> ACABO DE INSTALAR UBUNTU
+<Ubux> vaya yo siempre use remove
+<newby93> rhe bienvenido al paraiso
+<erUSUL> rhe: bien; me alegtro. pero no grites. quita las mayusculas
+<d-b> erusul: http://pastebin.ubuntu.com/532643/
+<erUSUL> d-b: tienes que mirar en la bios. opciones a cerca de virtualizacion. lo tendras desactivado ?
+<d-b> no se nada de eso soy nuevo erusul jeje
+<d-b> a
+<d-b> en mi bios?
+<rhe> YA LO TENGO INSTALADO
+<m4v> !caps rhe
+<kubot> rhe: No grites, por favor. Somos perfectamente capaces de leerte en minusculas. Lee el punto 8 (y los otros también) de http://www.uned.es/iued/guia_actividad/netiqueta.htm
+<rhe> PERO COMO CONFIGURO MI IMPRESORA
+<d-b> y como se llamaria esa opccion?
+<rhe> mil disculpas
+<d-b> pero en windows 7 me funcionan bien mi maquinas virtuales
+<erUSUL> Sistema>Adminstracion>Impresoras
+<erUSUL> d-b: pues no se; puede ser un bug del kernel....
+<rhe> intentare configurar la impresora
+<Vero2> erUSUL no, dijeron que no me lo podían dar
+<newby93> ubu
+<newby93> se instalo ya
+<d-b> algun otra maquina virtual?
+<Vero2> vengo despues
+<erUSUL> Vero2: :/ seguro que en le cleinte de correo de windows no la puedes mirar ?
+<newby93> ubu
+<newby93> ya lo instale
+<Ubux> newby93 y has probado a activar apariencia los efectos
+<newby93> me dice no se puede activar los efectos de escritorio
+<erUSUL> d-b: qemu; y de pago/cerrado vmware
+<frangor> yo recomiendo virtualbox
+<frangor> mejor que qemu o vmware
+<Ubux> pero ves los bordes de las ventanas
+<Ubux> te funciona todo pero sin efectos?
+<newby93> no me deja activarlo
+<Ubux> que driver grafico tienes y que tarjeta
+<newby93> lo active y se me colgo como se llama el proceso
+<newby93> tarjeta nvidia gforce 8600 gt
+<newby93> y driver 173
+<rhe> amigos mi impresora no se puede configurar
+<rhe> es una hp laserjet 1000
+<Ubux> instalaste el driver actual
+<newby93> nop
+<newby93> ese no
+<rhe> no amigo
+<newby93> lo instalo
+<erUSUL> rhe: has ido a Sistema>AdministracionzImpresoras?
+<rhe> no lo tengo mas que en windows
+<Ubux> si
+<rhe> ya fui a Sistema Administracion Impresoras
+<rhe> la detecta pero no imprime nada
+<Ubux> instala tambien esto sudo apt-get install compiz-fusion-plugins-main compizconfig-settings-manager compiz-fusion-plugins-extra compiz-fusion-plugins-main
+<erUSUL> rhe: y si das Servidor>Nueva>Impresora
+<rhe> lo voy a hacer amigo
+<erUSUL> rhe: entonces. di que ya está detectada pero que no imprime ;P
+<rhe> eso es
+<rhe> no imprime
+<newby93> paquetes roto me dice
+<rhe> dice que esta desconectada
+<newby93> ubux
+<Ubux> newby93 que version de ubuntu tienes y es instalacion nueva o actualización
+<erUSUL> rhe: y lo esta? es usb? puerto paralelo ?
+<newby93> ey
+<newby93> ubunx no deja
+<Ubux> tampoco te deja eliminar el driver verdad?
+<newby93> si
+<newby93> ya instale el otro
+<Ubux> bien, instala los paquetes sudo apt-get install compiz-fusion-plugins-main compizconfig-settings-manager compiz-fusion-plugins-extra compiz-fusion-plugins-main
+<Ubux> despues reinicia de instalar el nuevo driver grafico
+<newby93> Los siguientes paquetes tienen dependencias incumplidas:
+<newby93> compiz-fusion-plugins-extra : Depende: compiz-core-abiversion-20091102
+<newby93> E: Paquetes rotos
+<Ubux> has instalado repositorios de compiz
+<newby93> nop creo
+<newby93> pasa el link
+<Ubux> que version tienes
+<newby93> no lo se
+<rhe> amigos mi impresora no la puedo configurar
+<Ubux> sistema preferencias-monitor del sistema pestaña sistema
+<erUSUL> rhe: has mirado en /var/log/cups/error_log ?
+<newby93> ubuntu 10.10
+<rhe> ya fui al servidor y tiene el controlador pero no se por que no funciona
+<Ubux> deb http://ppa.launchpad.net/compiz/ppa/ubuntu maverick main
+<rhe> no se como se instala
+<newby93> nucleo linux 2.6.35-22 generic
+<newby93> gnome 2.32.0
+<rhe> alguien que me ayude con lo de mi impresora
+<Ubux> newby93 abre synaptic y vete a repositorios
+<Ubux> configuración repositorios dentro de synaptic
+<rhe> gracias lo voy intentar amigo
+<newby93> teng puesto
+<newby93> el main restricted
+<newby93> y universe
+<Ubux> newboy93: dentro de origenes del software eliges la pestaña de otro software
+<Ubux> añadir...
+<Ubux> y pegas esto deb http://ppa.launchpad.net/compiz/ppa/ubuntu maverick main
+<newby93> no me deja añadirlo
+<Ubux> deb http://ppa.launchpad.net/compiz/ppa/ubuntu maverick main
+<Ubux> tienes que pegar tal como te lo doy
+<newby93> ya esta
+<newby93> ahora que
+<Ubux> recargar y actualizar
+<Ubux> actualizara compiz
+<newby93> ya recarge
+<Ubux> abre el gestor de actualizaciones y actualiza
+<newby93> no hay actualizaciones
+<newby93> ahora que
+<newby93> tasss
+<newby93> ?
+<wlan0> una vez estube como 6 horas con un user tratando de instalar Compiz al final el resultado fue "Compiz 1 novatos 0"... Otro dia lo volvimos a intentar esta vez estubimos chateando como 3 horas adivinen cual fue el resultado... "Compiz 2 Novatos 0" XD
+<Ubux> voa a buscar un repositosio que tenga el nuevo compiz
+<Ubux> http://compiz-fusion.uptodown.com/ubuntu
+<Ubux> descarga el paquete .deb
+<newby93> no me abre
+<newby93> ya esta instalada una version posterior
+<Ubux> pues instala la nueva si te deja
+<newby93> como
+<newby93> mira desintalo este compiz y lo instalo
+<Ubux> si
+<newby93> por el administrador de software ok
+<Ubux> claro
+<newby93> hno se han podido activar los efectos de escritorio
+<xoan> newby93: y no será problema de controlador gráfico en vez de compiz?
+<newby93> no
+<newby93> probe 2
+<newby93> y no+
+<xoan> newby93: puedes probar, una vez restaurado compiz, a ejecutarlo sin comprobar el controlador: $ SKIP_CHECKS=yes compiz-manager
+<newby93> orden no encontrada
+<xoan> aunque dependiendo de la versión, puede que esa variable de entorno ya no se use
+<xoan> cambia compiz-manager por compiz
+<xoan> o compiz-decorator
+<newby93> Couldn't find a perfect decorator match; trying all decorators
+<newby93> Found no decorator to start
+<xoan> ejecutando compix?
+<xoan> ejecutando compix?+compiz
+<newby93> como se ejecutaba
+<newby93> qu no ma acuerdo
+<xoan> $ SKIP_CHECKS=yes compiz
+<newby93> ya probe me tira eso
+<newby93> compix?+compiz
+<newby93> Couldn't find a perfect decorator match; trying all decorators
+<newby93> Found no decorator to start
+<xoan> no, eso no, me confundí
+<rhe> hola amigos
+<rhe> como entro a los repositorios ?
+<erUSUL> rhe: entrar ?
+<zoko> holas
+<rhe> si deseo encontrar un driver para mi impresora
+<erUSUL> rhe: Aplicaciones>Centro de software,.
+<erUSUL> rhe: busca hplip
+<rhe> gracias amigo lo voy a buscar
+<newby93> no puedooo
+<Ubux> newby93 elimina esto sudo aptitude remove compiz-core desktop-effects
+<newby93> no se pud localizar paquete desktop-effecs
+<Ubux> y si instalar
+<sansen> newby93, escribilo bien
+<newby93> lo pongo bien
+<newby93> lo copio y pego
+<newby93> y el aptitude no funciona ya
+<newby93> que loo sepas
+<newby93> ahora es apt-get
+<Ubux> sudo apt-get install aptitude pense que ya lo habias puesto
+<Ubux> aptitude es posterior a apt-get
+<newby93> me dice eliminar uno de los siguientes paquetes
+<newby93> compiz-plugins
+<newby93> el manager
+<Ubux> hazlo
+<newby93> ya
+<newby93> y ahoraque
+<Ubux> killall gtk-window-decorator
+<Ubux> prueba a ver si te reinica el decorador
+<newby93> proceso no encontrado
+<aguitel> es metacity --replace
+<newby93> como hago eso
+<aguitel> alt+F2 y pones :metacity --replace
+<newby93> ya esta
+<aguitel> reinicio ?
+<newby93> metacity mola ?
+<newby93> si reinicio creo
+<newby93> pego parpadeo
+<newby93> instalo compiz
+<newby93> ?
+<aguitel> para que compiz
+<newby93> pues para tenerlo
+<aguitel> si es para jugar un rato entonces si
+<aguitel> pero metacity es suficiente en gnome
+<newby93> queda mas bontio el ubuntu
+<newby93> noo se pueden activar los efectos del escritorio
+<newby93> en compiz
+<newby93> emerald es bonito ?
+<aguitel> emerald es decorador
+<newby93> lo instalo ?
+<aguitel> es cuestion de gustos
+<wlan0> dijo una señora y se estaba comiendo los mocos XD
+<aguitel> compiz te funciona?
+<newby93> no
+<aguitel> exacto
+<aguitel> busca la solucion para compiz primero
+<newby93> no hay ninguna
+<aguitel> fijate que tengas los drivers de la placa de video instalados
+<newby93> no se pueden activar los efectos del escritorio
+<aguitel> que placa es?
+<newby93> nvidia gforce 8600 gt
+<newby93> y si los tengo
+<newby93> los privativos
+<aguitel> hay mucha info en google para esa placa
+<aguitel> y tmb para arreglar compiz
+<aguitel> compiz se lanza con:compiz --replace
+<aguitel> y muchos usan fusion-icon
+<aguitel> que sirve para intercambiar entre metacity y compiz
+<newby93> jaja se me activo
+<newby93> y no me slaen las ventanas
+<aguitel> debes meterte en la configuracion de compiz y tenes ls decoracion activada
+<newby93> no puedo
+<aguitel> debes tener instalado ccsm
+<newby93> activar lo efectos de escritorio porke
+<newby93> tuede ser que no tenga gtk instalado
+<aguitel> no creo
+<aguitel> mas no te puedo ayudar porque yo no tengo instalado nada de compiz

@@ -1,0 +1,409 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2007-11-15"
+lang: "en"
+messages: "400"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<nealmcb> has anyone tried the virt-manager packages at https://edge.launchpad.net/~marceloshima/+archive ?
+<ajmitch> can't say I have, haven't looked at virt-manager since I last bothered trying to package it :)
+<ajmitch> when it was horribly RH-centric
+<soren> I'm uploading some stuff to my ppa as we speak, actually.
+<nealmcb> soren: when is your bedtime, anyway :-)
+<soren> HAHA!
+<ajmitch> heh
+<soren> nealmcb: Erm... Yes, I suppose it is slightly over my bedtime.
+<ajmitch> looks like everything in the server team is being taken care of, I can sit back :)
+<soren> My wife's out of town, so there's noone around to tell me that I should stop working and go to bed. I don't deal with that very well :)
+<zul> ajmitch: you been sitting back anyways
+<soren> ajmitch: You're more than welcome to handle eBox for me.
+<ajmitch> zul: sure
+<nealmcb> let's schedule a server team meeting at a time when ajmitch can't complain - then we can assign him stuff :-)
+<ajmitch> soren: but it's perl!
+<ajmitch> nealmcb: what, server team meetings at a different time? impossible!
+<soren> ajmitch: No shit?
+<soren> :p
+<soren> Aw, crap. python-gtk-vnc needs to be newed before I can get anywhere from here. Now I actually need to go to bed.
+<ajmitch> alright, good night soren :)
+<ajmitch> nealmcb: I gave up on trying to have a sane meeting time - 4AM isn't particularly suitable
+<soren> ajmitch: What? You sleep?
+<ajmitch> no point getting others to change if I'm not actively helping
+<soren> slacker
+<ajmitch> aren't you off to bed now?
+<soren> Well, I just remembered I have a kvm package I wanted to upload. After that.
+<ajmitch> hehe
+<ajmitch> so, in about 2 hours
+<zul> soren: better check to see if the kvm package actually works with the kernel we will be shipping ;)
+<soren> Right. At which point it'll be 4 AM here. Perfect time for a meeting, IMO. You know, right after your working day is over?
+<soren> zul: Bah. I'll worry about that when the kernel team gets off their arses and uploads a new kernel. :D
+<zul> soren: good point :)
+<ajmitch> so who's doing the web app stuff for hardy?
+<soren> ajmitch: I am.
+<soren> ajmitch: Well, eBox upstream mostly. And me.
+<ajmitch> so, that covers the various web app stacks like RoR, django/turbogears/pylons, php, whatever perl crack there is?
+<soren> Ah, I thought you meant eBox.
+<ajmitch> sorry, I changed topic :)
+<soren> Um.. Not sure.
+<soren> You?
+<ajmitch> I work mainly with web app stuff here
+<soren> Yay, go ajmitch!
+<ajmitch> uh oh
+<soren> Oh no.
+<ajmitch> oh no?
+<soren> More stuff I've never heard of that I'll probably need to worry about at some point.
+<ajmitch> you've heard of storm
+<ajmitch> I know you have
+<soren> AAh, right.
+<ajmitch> grok is zope3 with a sprinkle of sanity
+<soren> I packaged it, didn't I?
+<ajmitch> yes
+<soren> That was nice of me.
+<ajmitch> grok covers up most of the ZCML ugliness
+<ajmitch> configuration via xml snippets, I don't know who thought that was sane
+<soren> "It has been said that XML is like violence; if a little doesn't solve the problem, use more."
+<ajmitch> so very true
+<ajmitch> zope3 is being split into *lots* of python eggs
+<ajmitch> which will be fun to package up & keep in sync
+<ajmitch> but there's at least a lot more effort to have reusable buits & mix & match using WSGI
+<soren> I'll also need to figure out what an egg is. (apart from an ingredient in pan cakes)
+<soren> Ubuntu has almost all the python stuff I need, so I've never had to worry about that sort of thing.
+<ajmitch> you can get eggs from the cheese shop
+<ajmitch> it's a python packaging format :)
+<soren> So it's a blob full of python?
+<ajmitch> I can install grok by doing 'easy_install grokproject'
+<ajmitch> essentually, and it specifies dependencies & the like
+<soren> I see.
+<ajmitch> doko can explain far more about them if you catch him at a sane hour :)
+<ajmitch> there's a whole pile of python web app stuff floating around now
+<soren> w00t!
+<soren> Accepted: kvm 1:52+dfsg-0ubuntu1 (source)
+<soren> I'm off to bed.
+<soren> Thank you! I'm here all week!
+<ajmitch> good night (again)
+<kgoetz> hi all. someone sugested i work on https://help.ubuntu.com/7.10/server/C/postfix.html, so i've started working through it. the bit where it says "openssl genrsa -des3 -rand /etc/hosts -out smtpd.key 1024" doesnt meantion that you need to put a passhrase on the key, but the key wont generate without one.
+<kgoetz> is this key something that doesnt neeed unlocking by postfix?
+<fujin> kgoetz: drop -dse3
+<fujin> -des3 will not require a password
+<fujin> Anyone familiar with iptables? I'm seeing dropped packets like this: Nov 15 16:30:05 puppet kernel: [627596.871424] Dropping Packet: IN=eth0 OUT= MAC=00:50:56:b1:16:8d:00:50:56:b1:30:86:08:00 SRC=172.16.10.10 DST=172.16.10.5 LEN=52 TOS=0x00 PREC=0x00 TTL=64 ID=44914 DF PROTO=TCP SPT=60350 DPT=8140 SEQ=2189760867 ACK=1425929938 WINDOW=781 RES=0x00 ACK RST URGP=0 OPT (0101080A043AE2FF007B7CE8)
+<fujin> there is a rule the matches the traffic
+<fujin> (allow all established, related, allow new to 8140)
+<kgoetz> well i'mi getting prompted for one.
+<fujin> kgoetz: regenerate it without -des3
+<kgoetz> that didnt ask for a password
+<kgoetz> s/word/phrrase
+<fujin> huh?
+<fujin> regenerate it without the key, drop -des3
+<malloc64> i just installed a fresh gutsy server and would like to throw on fluxbox. i have been through several tutorials, none of which have gotten me running. what is the list of packages i need to install in order to run fluxbox?
+<kgoetz> apt-get install fluxbox ?
+<fujin> *why* would you install fluxbox on a server
+<malloc64> why do i always have to justify wanting to have a lightweight gui on my personal lan server? if you know the answer to y question please do not waste time berating my decisions, if you do not, please refrain from berating my decisions.
+<malloc64> thanks kgoetz, but that doesn't even begin to get me there.
+<kgoetz> malloc64: because runninga  gui on a server is a waste of resources. flux is in universe, incase thats disabled
+<malloc64> kgoetz: the issue is that as a server, it comes with none of the underlying xorg. i have tried installing a great deal of the pieces, but i want to avoid going the full desktop package as that is overkill. i just want the base.
+<ajmitch> 'waste of resources' isn't a big problem on a personal server
+<ajmitch> malloc64: also grab x-window-system
+<kgoetz> my server has 128mb of ram :)
+<malloc64> again, i choose not to dialogue on the philosophy of having a small gui on MY server. if you cannot help me, thanks anyway
+<kgoetz> we both helped you. we also have our own opinion. deal with it
+<sommer> kgoetz: did you figure out the cert issue?
+<malloc64> kgoetz, no one has answered my question
+<malloc64> and you don't have to be a dick
+<ajmitch> noone?
+<malloc64> unless i missed the minimal list of packages i need to install on a fresh 7.10 server install to get fluxbox working, no.
+<ajmitch> see what I told you above
+<malloc64> sorry ajmitch. i did that as well and it also failed. i don't remember if that was with the unable to connect to xserver or could not load databse errors.
+<ajmitch> and how were you startign X?
+<kgoetz> sommer: still looking at it atm
+<malloc64> i have tried in vain with all the following packages: xinit, x-window-system, fluxbox, xorg. in all concievable iterations
+<sommer> kgoetz: just wanted to mention that the following commands produce an unencrypted key that doesn't requre a password.
+<malloc64> i have tried startx, startfluxbox and one or two others i found in a forum
+<sommer> malloc64: you might read through this thread: http://ubuntuforums.org/archive/index.php/t-186298.html
+<malloc64> the previous list was just packages installed
+<sommer> it's what I've used to install X on a server install.
+<sommer> x-window-system-core, xserver-xorg, fluxbox is probably what you're looking for.
+<malloc64> sommer: thanks. i will give that a shot. i am hoping to avoid the desktop environment mentioned in the link as i have been told it is more than needed. i shall try your suggestions.
+<malloc64> thanks again to ajmitch for your input.
+<sommer> malloc64: np
+<kgoetz> sommer: are you the one i can ask about https://help.ubuntu.com/7.10/server/C/postfix.html, or is it docteam? i have a bunch of 'why's about teh postfix guide
+<sommer> kgoetz: sure you can ask me... I just did an update a couple of days ago.
+<sommer> I hate to say it, but the website is already out of date.
+<kgoetz> sommer: the guide tells you to set "PWDIR="/var/spool/postfix/var/run/saslauthd"", why not whats listed at teh bottom of the file "# Example for postfix users: "-c -m /var/spool/postfix/var/run/saslauthd"
+<kgoetz> will it have a different end result?
+<sommer> kgoetz: nope you should be good either way.
+<sommer> the current though is to actually use Dovecot SASL with Postfix instead of Cyrus SASL
+<sommer> because of Postfix's chroot, which can cause issues with other services needing to authenticate using Cyrus SASL
+<sommer> here's a link to the wiki: https://help.ubuntu.com/community/PostfixDovecotSASL
+<sommer> also if you've downloaded the docs from the repo those instructions are in the new docs
+<kgoetz> are you hinting i should rip out cyrus and try dovcot ?:S
+<sommer> kgoetz: you can go either way, but IMHO Dovecot SASL is easier to integrate with Postfix
+<sommer> mostly due to the Postfix chroot
+<sommer> there's always 100 ways to skin the cat... I'd go with what you're comfortable with, and what meets your needs
+<kgoetz> i'm missing /var/run/saslauthd/mux . is that something i need?
+<kgoetz> hm. -m should be it.
+<sommer> kgoetz: did you install sasl2-bin?
+<kgoetz> sommer: yes. and i put OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd" in my default/saslauthd. when i sudo ln -s /var/spool/postfix/var/run/saslauthd/ /var/run/saslauthd the test succeeds
+<sommer> kgoetz: sweet, then you should be good to go.
+<kgoetz> sommer: but i'll hae to relink it each time the server reboots (tempfs i thought?) is there a way to see *why* its looking there?
+<sommer> kgoetz: yep... just going to remind you of that.
+<sommer> another reason we recommend using Dovecot SASL... at this time there aren't a lot of applications that use it
+<sommer> works great with Postfix though :)
+<sommer> kgoetz: I'm not sure what you mean when you say "whay it's looking there"?
+<kgoetz> *grherhubarb*
+<sommer> do you mean Postfix looking to /var/run/saslauthd ?
+<kgoetz> sasl is looking there.
+<kgoetz> testsaslauthd -u kgoetz -p pass |less
+<kgoetz> connect() : No such file or directory
+<kgoetz> put in the symlink and it works
+<kgoetz> perhaps that means its working, because its outputting to /var/spool/postfix/var/run/saslauthd, but the test tool doesnt know that? hm...
+<sommer> kgoetz: yep most applications will look in /var/run/saslauthd but if you want to use that directory you'll have to break Postfix out of chroot
+<kgoetz> sudo testsaslauthd -u kgoetz -p pass -f /var/spool/postfix/var/run/saslauthd/mux
+<kgoetz> 0: OK "Success."
+<kgoetz> stupid tool. i lost 3-4 days over that
+<lamont> sommer: at least the daemons that need sasld :-)
+<sommer> lamont: Yes, definitely... heh
+<kgoetz> hm. so i have 250-STARTTLS, but dont seem to have AUTH-LOGIN PLAIN. still. good start perhaps
+<malloc64> sommer: you're a lifesaver. it's running right now. 4 hours to screw it up, 20 minutes to fix it. thanks!
+<sommer> malloc64: no problem
+<sommer> kgoetz: did you edit /etc/postfix/sasl/smtpd.conf and add the lines in step 1 of the STMP Authentication section?
+<sommer> lamont: I was wondering if I could send you the updated mail section of the "official" docs for review?
+<lamont> sommer: sure... note that if you've dug into SASL, you're ahead of me....
+<sommer> I sent it to ScottK last week, but I believe he's busy with RL stuff and hasn't had time to get to it
+<kgoetz> sommer: i have cram-md5 and digest-md5 as well as the two suggested (i already had them)
+<sommer> lamont: cool, the new version has some big changes and the SASL section is a small part.
+<sommer> added a Troubleshooting section and I just wanted to make sure that part was kosher.
+<sommer> kgoetz: you should be ready to rock some SMTP-AUTH then.
+<sommer> lamont: do you use Gnome or KDE?  to view the DocBook you need yelp installed unfortunetley.
+<sommer> (unfortunetely depending on which desktop env you use)
+<lamont> sommer: gnome is the desktop I use.  although seb128 would disagree
+<kgoetz> as long as it means stuff works, i'm fine with it, but teh guide says i should get output i didnt ;) thought i'd ask
+<sommer> lamont: heh... should I send it to the address you have listed in LP?
+<sommer> kgoetz: np, the guide output will vary depending on how closely you follow it I think
+<sommer> and also depending on your setup (which additional packages you have installed etc)
+<kgoetz> sommer: since i sort of half hacked it in on top of my existing setup, i suppose it'll look different :)
+<lamont> sommer: lamont@u.c is probably best for that, yes
+<sommer> lamont: cool I'll get that to you.  No huge hurry, whenever you have time is fine.
+<lamont> ok.  it'll probably be thanksgiving weekend that I get to it
+<sommer> lamont: sounds good thanks again.
+<TillUnn> Hello guys. I'm trying to run "show ip bgp" but system says that there's no such command& also I can't find a package with 'show' inside. What should I do?
+<kgoetz> ip <foo>
+<lamont> hrm.. given a fax modem card... have we documented how to tie that into sending/receiving faxes?
+<lamont> or do I get to do more work?
+<sommer> lamont: I don't think we have that documented, at least not in the Server Docs, you might try the wiki.
+<lamont> yeah
+<lamont> I'll go looking
+<sommer> I remember looking into Hylafax a while back at another job.
+<sommer> Seems like it had some cool features
+<lamont> both are in universe
+<kgoetz> debian policy becomes a pain when you want to install (say) plugins in squirrelmail :\
+<lamont> kgoetz: not really... it just means that squirrelmail needs to support an interface for doing so
+<lamont> TillUnn: that's the right command if you're on a Cisco box...  ip --help is a good start, what you're after would be "netstat -rn" or "ip route show"
+<lamont> depending on which one best fits your expectations
+<TillUnn> thank you :)
+<kgoetz> does that postfix+TLS setup from the website also support SSL?
+<lamont> TLS == SSL
+<lamont> well, close enough
+<lamont> that is, TLS uses SSL to provide the secure layer
+<kgoetz> so it works with outlook express/other random client?
+<kgoetz> i got the impression it was different enough to be incompatible with ssl
+<kgoetz> sasl is complainging about password verification failure http://pastebin.ca/774351. do i take that to mean my sasld+ldap is broken?
+<sommer> kgoetz: there was/is an issue with outlook express, but this option takes care of it AFAIK: sudo postconf -e 'broken_sasl_auth_clients = yes'
+<lamont> before I get keyprints on my face
+<kgoetz> sommer: i have that set, so i guess i'll have to check when we get to testing
+<kgoetz> lamont: night.
+<sommer> later lamont, have a good one
+<sommer> kgoetz: sasld+ldap may be broken... are there any logs verifing that from slapd?
+<kgoetz> sommer: just turned on sasld debugging, half a tic i'll do slapd
+<kgoetz> hm. i'm getting flat connection refused wtih debuggin on
+<kgoetz> Nov 15 16:24:51 newmoon postfix/smtpd[8080]: warning: connect #4 to subsystem public/pre-cleanup: No such file or directory
+<nealmcb> aj - what about django? - zope just seemed so overly complicated and obscure, though I guess zope3 is lots better
+<sommer> kgoetz: not sure, have you tried using SMTP-AUTH with a non-ldap user?
+<kgoetz> sommer: there are no non-ldap users - only ldap andmy local account (and my ldap ID is the same as my local, only passowrd is different)
+<nealmcb> ajmitch: [oops] ^
+<nealmcb> (not trying to start a flame war, just curious....)
+<sommer> kgoetz: are you testing with your local account?
+<sommer> also, have you configured Postfix to lookup users in LDAP?
+<sommer> I assume you have, but thought I'd check :)
+<kgoetz> i've tried both my passwords
+<kgoetz> and i've got postfix setup for ldap correctly *i think * :)
+<sommer> kgoetz: have you tried the ldap connection without SMTP-AUTH (also assuming your box isn't live on the net yet)
+<kgoetz> its not live no.
+<sommer> sendmail -bv user@your.domain I believe should work if you have ldap setup correctly... never used ldap with Postfix myself though.
+<kgoetz> localmail works (or worked when i tries a few days ago). it was stuff coming in externally that was the issue
+<sommer> kgoetz: I forget did you have the system docs check out of bzr?
+<kgoetz> sommer: checked them out last night (at home)
+<sommer> if so the Postfix section now includes a Troubleshooting section... you might try the log level options to see if you can get more info
+<kgoetz> the one on the web has no section - will the bzr have different stuff? i notice its 4 weeks old
+<sommer> kgoetz: right, the latest update to the email section was on the 13th.
+<kgoetz> wonder why the checkout location isnt being updated :(
+<sommer> the docs are frozen for each release, so the updates won't make it to the web until Hardy.
+<kgoetz> i checked out the hardy docs
+<sommer> https://code.edge.launchpad.net/~ubuntu-core-doc/ubuntu-doc/ubuntu-hardy
+<sommer> is updated... is that what you mean?
+<kgoetz> looks like its just edubuntu that is old. i do have the update from the 13th for ubuntu-hardy
+<sommer> kgoetz: the server guide should be the same for all branches.
+<sommer> np, just another idea to try... it just feels like you should be getting an error that will point to the culprit :)
+<kgoetz> i've turned postfix debugging up to '2'
+<kgoetz> :)
+<kgoetz> have to be tomorrows job now - gotta head home. thanks for the help :)
+<sommer> kgoetz: np, have a good one.
+<Kamping_Kaiser> aaaah. home is where the work isnt.
+<kraut> moin
+<Kamping_Kaiser> hey
+<ajmitch> nealmcb: fwiw, I do use django :)
+<ajmitch> nealmcb: they cover different areas, I'd say
+<Gargoyle> anyone used watchdog with heartbeat?
+<zul_> morning
+<juliux> hi
+<mojojoe> anyone here who can answer some server questions for me?
+<mojojoe> would be greatly appreciated.
+<mojojoe> might even blow a kiss or two ;)
+<zul> mojojoe: just ask your questions and someone will hopefully ask
+<zul> er answer...
+<zul> need more coffee
+<mojojoe> I've got like 10-15 questions.
+<mojojoe> Lol... where do I begin?
+<zul> at the beginning of course
+<avatar__> !ask
+<ubotu> Don't ask to ask a question. Just ask your question :)
+<mojojoe> I hate that bot.
+<mojojoe> Ok, I'm having a server network issue. When I configure everything according to this tutorial: http://www.howtoforge.com/perfect_server_ubuntu7.10_p3 it screws up the hostname and it basically disappears.
+<mojojoe> What am I doing wrong?
+<mojojoe> Ok, I think I'm going to take a break from ubuntu. Go back to Windows 2003 server, works better, and I'm just too noobish to not have payed support. Thanks all.
+<dthacker> no patience
+<avatar__> indeed
+<zul> yep
+<juliux> does somebody know if /etc/iftab is on dapper still in use?
+<zul> hi dendrobates
+<avatar__> /etc/iftab is in use on dapper/feisty/gutsy
+<dendrobates> zul: Hi
+<phaidros> hi, is there such a thing like rpm --verify in the deb world?
+<phaidros> the rpm one is nice because it checks size, MD5 sum, permissions, type, owner and group of  each file of the package.
+<phaidros> therefor it checks complete package integrity ..
+<phaidros> I couldn't find anything as complete in the debworld. I know there is debsums, but thats just part of the game :)
+<phaidros> or what kind of tool would be preferred to do that task on a deb based machine? tripwire?
+<soren> ls -l
+<soren> Yeah, that'll work.
+<Gargoyle> any drbd users online?
+<soren> ! justask
+<ubotu> Don't ask to ask a question. Just ask your question :)
+<lamont> /nick grumbly-soren
+<Gargoyle> soren: I did just ask...
+<soren> meh :)
+<Gargoyle> ;)
+<soren> In that case: Yes.
+<soren> Now, if that was all, I'll be on my way..
+<Gargoyle> he he
+<Gargoyle> since your still here, what's a good way to configure auto recovery. currently my net section has "after-sb-0/1/2pri disconnect" can drbd automatically resync?
+<Gargoyle> heartbeat seems to be working ok. with node 2 being Primary/Unknown and Node 1 being Secondary/Unknown after the link is restored.
+<Gargoyle> Are there any recommondations for specific apps (in my case a mysql database) or is discard-younger-primary a good option?
+<Gargoyle> Or am I looking in completely the wrong section for a "clean" recovery?
+<Gargoyle> ahh, I get it now...
+<Gargoyle> I was reading the docs wrong. D'oh! I thought the three different rules were evaluated in order to come out with an answer!
+<Gargoyle> I have gone for discard-zero-changes, discard-secondary and disconnect.
+<Gargoyle> I am testing my cluster and I have just done a network fail and restore on the backup node, drbd has come back and on the backup is correctly showing Sec/Pri. But the active node is showing Pri / Unknown. Anyone got any ideas?
+<treb0r> hello chaps.
+<treb0r> can anybody give me a good reason to use ubuntu server over debain on a dedicated box to be used mainly as a lamp server?
+<dantalizing> ubuntu cds are shinier
+<treb0r> I need to decide, and right now it looks like I'm going with debian...
+<Gargoyle> the ubuntu installer has a 1 "click" option. Does the debian?
+<mathiaz> treb0r: why would you go with debian ?
+<treb0r> mathiaz: because that is the traditional choice, and I know it well...
+<treb0r> Gargoyle: I won't be installing it myself. The company I'm leasing the box from will do it..
+<Gargoyle> in that case, I'm with dantalizing
+<Gargoyle> Ubuntu is shinier!
+<treb0r> hmmm
+<mathiaz> treb0r: ubuntu is based on debian - things are done the same way
+<treb0r> mathiaz: Yes, I realise that. just need to know what the advantages (if any) would be to using ubuntu server
+<mathiaz> treb0r: ubuntu comes with AppArmor which is an easy way to implement security policies.
+<spiekey> howdy!
+<Petaris_Aki> is there a way to get auth-client-config to reconfigure?
+<Petaris_Aki> it died the last time around, before the configuration was done
+<Petaris_Aki> now it won't come up again
+<Petaris_Aki> I tried dpkg-reconfigure auth-client-config but it doesn't do anything
+<Babatos> dumb question. i have box i want to do server on. it has a promise fasttrak sata card. the boot cd rom drvs do not seem to use the promise drvs, but the oss ones, which i understand, however the issue is that the oss drvs do not see a cfg raid, just each drv. anyway to add a drive to the boot cd?
+<ivoks> ah... fasttrack and supertrack...
+<ivoks> promise drivers are for 2.4 kernel, and thus unusable
+<ivoks> oss drivers were working untill promise changed firmware
+<ivoks> since then they also stoped developing linux drivers
+<ivoks> other than that, promise cards provide very low performance
+<ivoks> you will get better performance with $100 card and linux software raid
+<Babatos> ivoks i know that however it is for a box that i need support of the raid rebuild with the promise bios as there will not always be a linux dude around to fix linux raid.
+<Babatos> btw that was about the preforance, i did not know the other stuff. thanks. i will get get a 3ware
+<Goosemoose> hi
+<Goosemoose> i just installed ubuntu onto a machine im going to use as a server, after the first boot i get Grub Loading Stage 1.5
+<ivoks> Babatos: 3ware is the best choice
+<Goosemoose> Grub Loading, please wait, error 2
+<Babatos> i just hoped not to have to as i had the promise card :)
+<Goosemoose> Any ideas what's up? I tried reinstalling, same problem
+<ivoks> Goosemoose: you have more than one disk on that computer?
+<Goosemoose> yes
+<Goosemoose> i had 2 set up in a raid configuration
+<Goosemoose> hardware raid
+<ivoks> then that's one
+<Goosemoose> i noticed when installing though it showed both drives so i just chose one
+<Goosemoose> so, i cant use raid?
+<ivoks> Goosemoose: then you don't have hardware raid
+<Goosemoose> of course i do
+<Goosemoose> its built into the motherboard
+<Goosemoose> hi end asus board
+<ivoks> it's not hardware rai
+<ivoks> d
+<ivoks> you can't get hardware raid on MB
+<Goosemoose> when i boot up it shows me the raid configuration
+<ivoks> no mather what writes on plastic box
+<ivoks> Goosemoose: hardware raid controller value is like 5 MBs
+<ivoks> what you have is fake raid
+<ivoks> something that salles people like to call RAID, but it's actually software raid
+<Goosemoose> hmm
+<ivoks> fake raids are like softmodems
+<ivoks> http://thebs413.blogspot.com/2005/09/fake-raid-fraid-sucks-even-more-at.html
+<Goosemoose> mb says Intel Raid for SATA using ICH5R chipset
+<ivoks> Goosemoose: raid controler costs over $400
+<ivoks> how much did you pay for MB?
+<Goosemoose> yes, i realize, i have several hardware raid controllers on my other servers
+<Goosemoose> this was a small one a built a year ago
+<Goosemoose> about $250
+<ivoks> that's a fakeraid
+<Goosemoose> ok
+<Goosemoose> so then how do i setup ubuntu without the error?
+<ivoks> disable raid in bios
+<ivoks> and if you really need raid, use linux raid
+<Goosemoose> ok, will do
+<mralphabet> Goosemoose: 'hardware' raid refers to a raid controller that has a XOR processor on board
+<fujin> I'm sure it has a little more than that. Generally, anyway.
+<fujin> the megaraid cards we get with our dell boxes even have a RAM stick on em.
+<mralphabet> fujin: I have a promise raid controller that does not have onboard xor, it offloads to the cpu
+<mralphabet> it has a stick of ram on it
+<fujin> yes, the promise are notorious for being pretend hardware raid, like that ;|
+<mralphabet> yes, ;| indeed
+<fujin> I try to avoid them where possible, but have had great success with these megaraid cards (dell)
+<mralphabet> aye
+<mralphabet> fujin: oh, you meant "hardware raid will have more then just the XOR processor", right?
+<fujin> indeed
+<mralphabet> yes
+<Goosemoose> yeah this says its a promise card
+<Goosemoose> i have a few 3ware cards on my other servers
+<Goosemoose> oh well setting up without
+<mralphabet> my point was that a raid card without a XOR processor really does not qualify as "hardware raid"
+<ivoks> 3ware rulez :)
+<Goosemoose> any of you guys implement integration with an AD domain?
+<Goosemoose> I've setup an ubuntu machine now that authenticates logins against the domain and it's working nicely
+<ivoks> wait for the next ubuntu release for that :)
+<Goosemoose> trying to get the next steps going
+<Goosemoose> already got it, whats coming up next?
+<ivoks> sure you can make it work even now...
+<ivoks> but, there'll be more goods in new version
+<Goosemoose> cool
+<Goosemoose> im setting up 280 machines
+<Goosemoose> So, I'm going to need to map the home directory to that on the domain so when the students log into an ubuntu box they see the same stuff as their windows box
+<Goosemoose> do i just use pam-mount?
+<ivoks> i guess
+<Goosemoose> any of you worked on deploying machines over the network?
+<Goosemoose> ive found a method using a TFTP server
+<Goosemoose> but it doesnt really allow a lot of customization
+<Goosemoose> i was hoping to just image one machine and deploy it that way, then have a script change the computer name , maybe a few other things
+<ivoks> well...
+<ivoks> you need dhcp server serving a hostname
+<ivoks> kickstart, maybe preseed and that's it

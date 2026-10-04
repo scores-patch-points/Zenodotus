@@ -1,0 +1,790 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2010-3-15"
+lang: "en"
+messages: "781"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<iconmefisto> Spaceghost: there is USB startup disk creator on the livecd, I think
+<Spaceghost> I am not using the PC that I would like install Kubuntu, I am using a my brother's laptop for search the solution
+<iconmefisto> Spaceghost: http://unetbootin.sourceforge.net/ can also easily make bootable USB
+<Spaceghost> so, better will be that I download this, and make the booteable here
+<Spaceghost> *bootable
+<iconmefisto> Spaceghost: if you already have kubuntu livecd, use the USB startup disk creator program
+<Spaceghost> ah, and go with the package in the USB to the another computer
+<iconmefisto> Spaceghost: I don't understand. you want to install kubuntu on a pc with no internet. right?
+<iconmefisto> Spaceghost: or you want to install kubuntu on USB?
+<Spaceghost> yes, well, is difficult in this moment that this computer have internet
+<Spaceghost> because it is so far away and my UTP cable does not reach there
+<iconmefisto> Spaceghost: so why do you need gparted or partitionmanager?
+<Spaceghost> because I would like make the partitions to install, the swap partition, and another for first install another SO
+<iconmefisto> Spaceghost: the kubuntu installer will let you set up partitions when you install
+<Spaceghost> iconmefisto, but I read that is better in this case that first install the another SO and then Kubuntu, for doesn't lost the grub file
+<iconmefisto> Spaceghost: which other OS? windows?
+<Spaceghost> yes
+<mio-ra> guys, anyone knows how to sync lg kp 500 and kubuntu 9.10?
+<iconmefisto> Spaceghost: yes, it's better to install windows first. but the windows installer will let you choose partition size. just leave enough room on the disk to make the linux partitions later when you install kubuntu
+<Spaceghost> ahhh
+<Spaceghost> ok
+<Spaceghost> and now I just do and I format the Windows partition, right? and leave the rest space unpartitioned?
+<iconmefisto> Spaceghost: yes
+<Spaceghost> and unformatted
+<Spaceghost> ok
+<Spaceghost> thanks
+<mio-ra> Spaceghost:first make disk defragmentation
+<iconmefisto> mio-ra: Spaceghost is creating new filesystem. no need for defrag
+<mio-ra> X_X
+<mio-ra> цук, дайти сцылку на нормальный логсервер =_=
+<iconmefisto> !ru
+<ubottu> Пожалуйста посетите #ubuntu-ru для получения помощи на русском языке  / Pozhalujsta posetite #ubuntu-ru dlya polucheniya pomoshi na russkom yazyke
+<mio-ra> yse)
+<mio-ra> ><
+<mio-ra> yes
+<ryman> .
+<ryman> hello?
+<fabio333> hi
+<rastasean> hello linux users and lovers. i am looking for a linux to install on my system. currently it is kubuntu but I don't really like it
+<rastasean> ubunut is all right too but i'm looking for something more
+<rastasean> x86 architecture support is necessary.
+<haakon__> What exactly are you looking for?
+<haakon__> Lightness?
+<orb01> fabio333: just wanted to let you know I fixed it. removing the program wammu deleted timidity and esound and that worked after a reboot
+<Zhenya> hi guys,
+<Zhenya> can any lend a hand on how to clean out old kernels? I read a howto but it said to use adpet which is not installed on my nbuild
+<Zhenya> (9.10)
+<draik> !wireless
+<ubottu> Wireless documentation, including how-to guides and troubleshooting information, can be found at https://help.ubuntu.com/community/WifiDocs
+<draik> !botsnack
+<ubottu> Yum! Err, I mean, APT!
+<Zhenya> @draik this ins't a wifi question.... :D
+<draik> Zhenya: It also wasn't for you ;)
+<Zhenya> draik: sorry :D
+<draik> !driver
+<orb01> Zhenya, boot the new kernel, make sure everything is working and then use aptitude to delete the old one
+<Zhenya> orb01: I've been using the new kernel for a bit now, aptitude=apt?
+<orb01> Zhenya, the new one being 20 and the old one being 14?
+<Zhenya> i think so, i have 5 or 6 kernels now on my grub menu....
+<orb01> Zhenya, can you give me output of uname -r in konsole?
+<Zhenya> orb01: 2.6.31-20-generic
+<Zhenya> :D
+<orb01> great :)
+<orb01> type sudo apt-get remove linux-image-2.6.31-14-generic in konsole
+<orb01> you'll have to enter your password
+<Zhenya> orb01: I have a bunch of other kernels too
+<Zhenya> can i generate a list of all kernels?
+<orb01> uhm, yes I believe so, let me check, I just came from an rpm-based system
+<Zhenya> :D thank you!!
+<diego> hola?
+<Guest60877> tengo problemas con la cam
+<Guest60877> alguien m puede ayudar?
+<Guest60877> eo?
+<Guest60877> hay alguien ahi?
+<orb01> Zhenya, can you give me the output of this: dpkg -l | grep linux-image
+<Guest60877> hi?
+<Guest60877> i have problems with my cam
+<Zhenya> orb01: it worked
+<Zhenya> rc  linux-image-2.6.31-14-generic        2.6.31-14.48                               Linux kernel image for version 2.6.31 on x86
+<Zhenya> ii  linux-image-2.6.31-17-generic        2.6.31-17.54                               Linux kernel image for version 2.6.31 on x86
+<Zhenya> ii  linux-image-2.6.31-19-generic        2.6.31-19.56                               Linux kernel image for version 2.6.31 on x86
+<Zhenya> ii  linux-image-2.6.31-20-generic        2.6.31-20.57                               Linux kernel image for version 2.6.31 on x86
+<Zhenya> ii  linux-image-generic                  2.6.31.20.33                               Generic Linux kernel image
+<FloodBotK1> Zhenya: Please don't flood, use http://paste.ubuntu.com to paste, don't use Enter as punctuation.
+<Guest60877> anyone help me?
+<orb01> Guest60877, #ubuntu-es
+<orb01> Zhenya, should've told you about pastebin ;) sorry
+<Zhenya> haha sorry
+<Guest60877> im an kubuntu user
+<Zhenya> did it paste anyways?
+<orb01> yes
+<Zhenya> ok cool, so now just go through the list and enter the command you did with the correct kernel, avioiding .20
+<Zhenya> correct?
+<orb01> sudo apt-get remove linux-image-2.6.31-14 linux-image-2.6.31-17 linux-image-2.6.31-19
+<orb01> try that
+<orb01> Guest60877, what's the problem?
+<Zhenya> ah cool, i didn't know you could string commands together like that :D
+<Zhenya> hmm didn't work
+<kubian> -14 is already removed
+<kubian> by looking at 'rc'
+<orb01> sudo apt-get remove linux-image-2.6.31-14-generic linux-image-2.6.31-17-generic linux-image-2.6.31-19-generic
+<orb01> try this
+<Zhenya> ah thats working!
+<orb01> yeah, so what I wanted to tell you after this :P, try sudo aptitude
+<orb01> it's a nice konsole frontend
+<Zhenya> oh ok sweeet
+<Zhenya> after this is done thats next :D
+<Zhenya> brb
+<orb01> btw, does anyone know why installing wammu (dependencies timidity and esound) completely breaks sound on Kubuntu 9.10?
+<Guest13491> Hi.
+<rastasean> hey
+<Lord_Drachenblut> yo
+<rastasean> whats up
+<Zhenya> orb01: awesome thank you for showing me aptitude
+<rastasean> anyone ever try out ubuntu studio?
+<orb01> Zhenya, no problem good luck :)
+<Zhenya> :D
+<letalis> anyone know of a good site that helps you setup aliases in konversation?
+<Draconis_> Pardon, but I cannot seem to figure out how to install flash player so i can view youtube videos and whatnot...
+<OxDeadC0de> sudo apt-get install flashplugin-installer
+<OxDeadC0de> Draconis_: ^
+<juacom99> hi can anyone plese help me change my screer resolution permanently to 1024x768 on kubuntu 9.10
+<juacom99> i try this
+<juacom99> http://ubuntuforums.org/showthread.php?p=8595940
+<juacom99> but it didn't work for  me :S
+<Xepera> Does anyone know what command KDE issues when the user clicks the "Logout" button and the "Reset" button?
+<Daughain> Xepera: Is it not shutting down properly?
+<Brhad56> juacom99: seems that there is a GUI somewhere, but i can't remember how to get to it
+<Brhad56> juacom99: in system settings, goto the Display option in "Computer Administration"
+<Xepera> Daughain: No, I'm just trying to bind those actions to Cairo Dock's applet
+<corigo2> I just want to play a DVD in my drive, and every application I launch says it doesn't have permission to access it! What a pain!
+<Xepera> corigo2: probably have to edit your fstab
+<corigo2> crazy... and a succinct process for that?
+<jatie_> hi
+<jeff__> how do i view my network usage in 9.10?
+<alexxx> привет всем
+<dmdevotee> hi, i'm trying to mount a iso typing in terminal sudo mount -t iso9660 -o loop "/media/WD10EADS/Software/sistemas operativos/kubuntu-9.10-desktop-amd64.iso" /media/prueba
+<dmdevotee> but it does't mount
+<dmdevotee> when i go to /media/prueba is epty
+<dmdevotee> empty*
+<dmdevotee> any help please?
+<dmdevotee> i type in terminal sudo mount -t iso9660 -o loop "/media/WD10EADS/Software/sistemas operativos/kubuntu-9.10-desktop-amd64.iso" /media/prueba but it doesn't work. any help?
+<Vroomfondle> !doesntwork | dmdevotee
+<ubottu> dmdevotee: Doesn't work is a strong statement. Does it sit on the couch all day? Does it want more money? Is it on IRC all the time? Please be specific! Examples of what doesn't work tend to help too.
+<Vroomfondle> :)
+<dmdevotee> lol, what does the command mount?
+<dmdevotee> it brings you a beer?
+<dmdevotee> it doesn't work because when i go to /media/prueba folder, it's empty
+<dmdevotee> how do you mount a .iso file in kubuntu?
+<dmdevotee> lol now the folder is not empty
+<dmdevotee> i do not know how i solved it lol
+<dmdevotee> it was empty before
+<egor> Народ
+<jesse_> Hello,
+<egor> Кто поможет нубику
+<egor> ?
+<egor> Can you help me?
+<jesse_> No I need help as well LOL!
+<egor> what exactly?
+<jesse_> i cant get my wifi adapter working
+<egor> do you have build-in tool?
+<jesse_> what?
+<egor> )) do you have laptop?
+<egor> or pc?
+<jesse_> Laptop
+<jesse_> chipset is a AR5007
+<Guest12925> hello     some body know programm  to record all actions on  desktop?
+<ulysses> Guest12925: qt-recordmydesktop?
+<Guest12925> ulysses      not found by apt-get install
+<egor> sorryy jesse, i have no idea
+<ulysses> Guest12925: It's not in the Ubuntu repositories, gtk-recordmydesktop is in there, but qt-recordmydesktop have to be compiled from source code
+<Guest12925> ulysses  ok  gtk  is available
+<jesse_> anyone have any ideas about my wireless?
+<ulysses> jesse_: Have you read this documentation? https://help.ubuntu.com/community/WifiDocs/Device/AR5007
+<contrast> Greets, everyone... When installing via the minimal CD, the right Alt key gets mapped to ISO_Level3_Shift. Does anyone know how to change this on a system-wide level (i.e., _not_ through KDE's keyboard layout settings)?
+<jesse_> ulysses: thanks i will look at that now
+<jesse_> I have been looking for a while and found the patch but everytime i tried to download it i got 404
+<n8w> hey
+<n8w> guys do u also experience that the hibernation(suspend to disk) takes incredibly long time?
+<bupsss> hi all
+<bupsss> a quick question, i installed kde, but i can't understand how to make themes (windows borders and icons) to work
+<bupsss> i gnome i just copy them in a .theme and .icons folders but here.... i have no idea
+<bupsss> any help?
+<sirius_> Hello all. I just installed "activeperl". But at the command prompt i still get the default perl (opensource- larry wall).. Can any one tell how to configure activeperl....Thanks....
+<lalalol> since nobody answers in offtopic, ill ask here, how do i remove something from /root/opt/ ?
+<Pici> lalalol: Use sudo.
+<lalalol> but i first need to cd, and it says access denied
+<lalalol> permision *
+<Pici> lalalol: then sudo -i, to get an root shell and then cd and whatever.  just remember to 'exit' when you're done.
+<lalalol> i dont understand pici
+<Pici> lalalol: open a terminal.  Type sudo -i
+<lalalol> ok im at root now
+<Pici> Now you can cd into that folder.
+<lalalol> ok, im in the folder, how do i remove something?
+<Pici> rm
+<Pici> rm thefilename
+<lalalol> ok
+<lalalol> i get an error :/
+<Pici> Theres no un-delete though, so be careful.
+<Pici> What error?
+<lalalol> rm: cannot remove `iron-linux': Is a directory
+<Pici> use rm -rf for directories.
+<egor> hi all
+<egor> i need help!!
+<Pici> !ask
+<ubottu> Please don't ask to ask a question, simply ask the question (all on ONE line and in the channel, so that others can read and follow it easily). If anyone knows the answer they will most likely reply. :-)
+<egor> ok, i can't fix grub! there is not file grub.conf
+<lalalol> thx Pici, ur the best :)
+<Pici> !grub2
+<ubottu> GRUB2 is the default Ubuntu boot manager in Karmic. For more information and troubleshooting on GRUB2 please refer to https://wiki.ubuntu.com/Grub2
+<egor> =) ths
+<lalalol> Pici, i have another problem though, when i search for something in dolphin, it never finds it
+<Pici> lalalol: I'm sorry, I don't actually use KDE, so I don't think I'll be much help with that :)
+<lalalol> ok, np
+<egor> oh, what go you use?
+<Pici> Gnome <.<
+<egor> лалалол
+<egor> ты русский да?)
+<Pici> !ru
+<ubottu> Пожалуйста посетите #ubuntu-ru для получения помощи на русском языке  / Pozhalujsta posetite #ubuntu-ru dlya polucheniya pomoshi na russkom yazyke
+<egor> do you think Gnome better than KDE?
+<Pici> Its different.
+<lalalol> Pici, maybe you can help with this, i once installed a language on my system and uninstalled it shortly after, however, some apps still use that removed language :S
+<lalalol> Pici, ?
+<Pici> lalalol: Sorry, I'm not sure :/
+<lalalol> k >.<
+<lalalol> Pici, 1 more thing, do you use chrome/chromium/iron?
+<Pici> lalalol: chromium
+<lalalol> ok Pici, where does it store all its data and stuff? ive found a folder in .config, and somewhere else too, do you know any more places?
+<lalalol> the other place was .cache
+<Pici> lalalol: I haven't gone looking for the data yet, but perhaps somewhere in /tmp as well.
+<lalalol> k
+<bupsss> question.... how do i install a theme?
+<bupsss> noone?
+<lalalol> nothing there Pici
+<lalalol> woah i found another file!
+<lalalol> now im gonna install chromium with ppa:chromium-daily/ppa
+<lalalol> oh dear, software sources is stuck
+<lalalol> strange, it didnt install, how come Pici?
+<mfoo> why, when using ubuntu and logging in with a KDE session, might my wired networking not work at all?
+<mfoo> I'm currently connecting over usb with my phone which is connected to wifi, which works fine
+<lalalol> huh? even sudo apt-get update and sudo apt-get upgrade didnt work
+<goodtime> try updatedb
+<lalalol> k
+<gothicmoon> Hi
+<goodtime> lo all
+<lalalol> goodtime, whats the exact command?
+<lalalol> sudo apt-get updatedb?
+<goodtime> updatedb
+<goodtime> no tyr that as root
+<lalalol> k
+<goodtime> try*
+<goodtime> it updates your data base
+<lalalol> didnt work >.<
+<goodtime> hmm
+<lalalol> i dont get it, its just a ppa
+<st4aluck> lalalol: what about the key???
+<lalalol> key?
+<st4aluck> lalalol: yeah, ppa respositories  and a signing key
+<lalalol> st4aluck, the previous time i added that same ppa it worked (without a signing key)
+<st4aluck> la sorry I did't check
+<lalalol> ?
+<st4aluck> lalalol: sorry
+<lalalol> its np lol :)
+<lalalol> st4aluck, do you have chromium?
+<lalalol> who has chromium in here?
+<lalalol> goodtime, wb :)
+<goodtime> ty
+<lalalol> goodtime, do you use chromium?
+<goodtime> naw i runubuntu 10.0
+<lalalol> :(
+<goodtime> i know i have this little hp mini too\
+<lalalol> oh dear
+<goodtime> im getting a cool lappy someday soon
+<lalalol> a lenovo thinkpad? ^^
+<goodtime> this little thing is ok for now
+<OlderGuy> Using kubuntu 9.04  I'm not able to connect a new computer to a WLAN. The USB dongle works fine as it scans using "iwlist wlan0 scanning" and it can see my network. I suspect Knetworkmanager misbehaving... Can anyone help?
+<goodtime> yeah i was thinking to get one of the thinkpads lol
+<lalalol> awesome
+<Guest33419> Hi all, question - using Kubuntu 9.10 and cannot get a new vodafone stick to work - it lights up and then goes to blue light -(a previous time it went to green) but no connection.
+<lalalol> who has chromium on their system?
+<OlderGuy> Guest33419,  which stick model?
+<Guest33419> vodafone
+<eagles05138785> hey guys im just wondering is it possible to strip kubuntu from some of its default programs without screwing up everything?
+<eagles05138785> removing commandline commands x and what not
+<OlderGuy> The model name, not the distributor Guest33419
+<OlderGuy> look on the back side
+<Guest33419> sorry - not sure how to check that
+<OlderGuy> it's usually hard to read...  but it is there
+<Guest33419> vodafone mobile broadband - I'll check - there is more
+<Guest33419> hspa usb stick
+<Guest33419> model K3765-Z
+<OlderGuy> ok, it's the same as mine
+<Guest33419> any ideas?
+<OlderGuy> you need a program from vodofone labs for using it with linux
+<Guest33419> o boy
+<OlderGuy> can't remember the details... i configured it months ago
+<OlderGuy> and it worked easily, if this may turn your mood to a better state
+<Guest33419> if u finf it can u send it by e-mail to me?
+<OlderGuy> no, i have it on a different computer, not this one i'm on and i can't check it now
+<Guest33419> how do i chat only to u and not whole group?
+<OlderGuy> do some google search for vodafone labs
+<Guest33419> ok - will do
+<netdaemon> can anyone tell me the package that gets me the kcontrol plug for configuring the touchpad?
+<OlderGuy> cause no one else is answering....
+<OlderGuy> anyone here is expert on knetworkmanager ?  I need some help....
+<spirov92> hi, I'm new to kubuntu, I'm trying to upgrade amarok. can I see a list of available versions in adept?
+<putt1ck> @OlderGuy - expert no, experienced yes
+<putt1ck> what's the question?
+<OlderGuy> putt1ck,   ;-)
+<OlderGuy> well, i suspect some misbehaving of knetworkmanager in a kubuntu 9.04 new install:
+<OlderGuy> a usb dongle works, and can see the network using "iwlist wlan0 scanning"
+<sido> yes
+<OlderGuy> only, i can't manage to have it connected
+<sido> just gui app dont work
+<OlderGuy> and believe me, I connected several different dongles before....
+<sido> are you with static IP
+<putt1ck> using "Manage Connections"?
+<sido> or dynamic
+<sido> ?
+<OlderGuy> well, I want to avoid saying it... but knetworkmanager is really crappy!
+<putt1ck> well, it has only one issue I know of
+<OlderGuy> no, i left DHCP as auto
+<putt1ck> with bluetooth tethered devices
+<putt1ck> so using Manage Connections does the scan see the network you want to connect to?
+<OlderGuy> yes, it does
+<OlderGuy> and i have other kubuntu computers connected without problems
+<spirov92> hmmf...does anyone know of a repo that has amarok 2.2.2+
+<putt1ck> so you select that network, which is open? PSK?
+<spirov92> I'm using 9.10
+<OlderGuy> the network requires a wep key, which i added and triple checked
+<OlderGuy> i compared the settings with those of another unit that connects nicely, and everything is absolutely identical
+<putt1ck> everything as well as the hardware?
+<OlderGuy> yeah, both the router and the dongle seem to work fine, only they seem non to talk together
+<putt1ck> well, got to go back into meeting
+<putt1ck> but
+<putt1ck> try "sudo killall knetworkmanager"
+<putt1ck> and then knetworkmanager
+<OlderGuy> ok, i will give it a try, thanks
+<putt1ck> and have a look at the output dumped to console when you try and connect
+<OlderGuy> k
+<putt1ck> sounds like a problem I've had here with a new variant Realtek chipset
+<putt1ck> but won't work in anything current, not only problem on one computer
+<spirov92> a quick question. how do I include ~/bin/ in search paths for commands, like it is on default on some distros?
+<JontheEchidna> spirov92: place "export PATH=$PATH:~/bin" anywhere in ~/.bashrc, then run "source ~/.bashrc" or restart the computer
+<spirov92> JontheEchidna: thanks
+<SatManUK> what is the default username for kubuntu and ubuntu based distributions?
+<SatManUK> if running from a live cd
+<arch0njw> SatManUK: there isn't.  you just use it.
+<arch0njw> SatManUK: Are you being prompted for a login?
+<SatManUK> i am testing something called uberstudent with is based on ubuntu and its prompting for a login..
+<SatManUK> there support channel is well empty..
+<arch0njw> Is it your Ubuntu login, or does this software require a login?
+<SatManUK> software requires a login to get into gnome or console
+<SatManUK> i tried root blank.. linux linux and all such
+<arch0njw> root/root?
+<arch0njw> root/ubuntu?
+<JontheEchidna> SatManUK: ubuntu/ no password
+<SatManUK> i am trying to reboot it intov "install" I shouldn't have to login to install!! it should allow me to give me the eoption to create users
+<SatManUK> removing gdm-guest session
+<SatManUK> strange
+<SatManUK> if the team behind this fork takes away the guest sessions they aren't getting many users lol
+<SatManUK> Authentication Failure
+<SatManUK> this is a weird fork for sure
+<orb01> hey, can anyone test the package subdownloader for me?
+<orb01> it won't let me connect to their server, and so I can't download subtitles; however their server isnt down
+<orb01> I'm not sure if the problem lies here or in the package itself
+<n8w> does any of u run dropbox on a machine with dual boot?
+<orb01> yes, I do
+<SatManUK> tried root/root
+<SatManUK> ubuntu/ubuntu
+<SatManUK> linux linux
+<SatManUK> nothing works lol
+<orb01> I run it on kubuntu/xp n8w
+<n8w> orb01:  cool,listen man, ive got a big problem linkin a folder being placed on partition(win) to a dropbox appz in linux
+<orb01> n8w: try running dropbox as root, you might not have permissions
+<orb01> SatManUK, were you talking to n8w or me?
+<n8w> orb01:  when i install dropbox on windows it forces me to use /My dropbox folder, when i install it on linux it forces me to use /Dropbox folder
+<n8w> orb01:  so its impossible to use the same folder
+<arch0njw> n8w: you can try linking to your WinXP mount.  I would do the following...
+<SatManUK> I was talking to arch0njw
+<orb01> n8w: when you install dropbox on kubuntu 9.10 you get a wizard at first run, did that pop up? it lets you configure the location for the dropbox folder
+<orb01> SatManUK: ok, sorry
+<arch0njw> n8w: (1) turn off dropbox, (2) mv ~/Dropbox ~/Dropbox.bak; (3) cd ~; ln -s /path/to/My\ Dropbox Dropbox
+<n8w> orb01:  ye fcourse
+<arch0njw> That should make your ~/Dropbox folder piont to your WinXP c:\blah\blah\blah\My Dropbox folder.
+<n8w> arch0njw:  ye i think thats the trick
+<orb01> yeah, sounds like a good idea, make sure you have right permissions though
+<arch0njw> SatManUK: sounds like they have put in their own authenticaltion.  You should email uberstudent to see if they have special credentials to use.
+<arch0njw> orb01: right
+<n8w> arch0njw:  well one more thing to mention...ive installed dropbox with that manual way...in order not to install all those gnome dependencies
+<arch0njw> SatManUK: "OOTB" Ubuntu and Kubuntu Live CDs just run -- no authentication.  sudo'ing commands works without a password.
+<n8w> arch0njw:  is it gonna influence your solution?
+<arch0njw> n8w: sure.  it should still work as long as ~/Dropbox is the folder it uses.
+<orb01> n8w: also check out the dropbox addons wiki.. I believe there is an addon to do this graphically
+<arch0njw> (folder ... directory ... I hate mixing those up... DIRECTORY is what I mean :) ...)
+<SatManUK> so why has this fork taken that out that really doesn't make any sense..
+<arch0njw> SatManUK: beats me silly with a wet noodle.
+<n8w> arch0njw:  i run dropbox from dropbox-dist
+<arch0njw> SatManUK: it doesn't make any sense.
+<arch0njw> n8w: again, as long as it is using ~/Dropbox as the directory under Kubuntu, what I said should work.  Mind what orb01 said, you might need to run the "ln" command as root (sudo it) for the link to work.
+<n8w> arch0njw:  yep will do that
+<arch0njw> n8w: You should also confirm that you as your normal user have r/w permit to the WinXP drive in general.  Otherwise, you won't be able to write files there :)
+<n8w> orb01:  cool i will check it out..thx
+<n8w> arch0njw:  ye thats all good...no prob with that
+<SatManUK> i have e-mailed the author "Stephen Ewan" for details.
+<n8w> arch0njw:  where did u get that tutorial from?
+<arch0njw> n8w: what tutorial?
+<n8w> arch0njw:  n8w: (1) turn off dropbox, (2) mv ~/Dropbox ~/Dropbox.bak; (3) cd ~; ln -s /path/to/My\ Dropbox Dropbox
+<arch0njw> n8w: that was an educated guess
+<n8w> arch0njw:  coz i think ive seen it somewhere:)
+<arch0njw> n8w: it's what I'd do if I was trying to make that work.
+<n8w> arch0njw:  ok...the reason im askin is that i though i could read on that a bit more...coz im kinda cofused now:)
+<n8w> arch0njw:  i dont wanna mess it up....
+<n8w> arch0njw:  my dropbox ppl r already kinda angry while im leavin n join shared folders all the time:)))))
+<arch0njw> n8w: that's why you should backup the original ~/Dropbox under Ubuntu.  Presumably, it has all of your files in it up-to-date.  That becomes your recovery mechanism.
+<n8w> arch0njw:  nope, not yet....i havent created any folder on kununtu yet....i wanna link it to the existin folder rite away
+<n8w> arch0njw:  so instead of creatin a new folder on kubuntu, i wanna link it to the existin folder bein on my windows partition
+<arch0njw> n8w: if you don't have DB running yet, then you can create that link instead.  HOWEVER, I would first backup the WinXP directory in some fashion (like a simple copy).
+<n8w> arch0njw:  ive already done that:)))
+<arch0njw> n8w: I am going to guess, and this is a guess, that if ~/Dropbox already exists, even as a link, when you install DB it will use it.
+<twoten> hello!
+<n8w> arch0njw:  hmm it might...but the thing is that now i need to go through that installation procedure again...so im gonna have to choose a folder
+<twoten> I have a network problem with Kubuntu 9.10
+<n8w> arch0njw:  ohh i got it now....
+<arch0njw> n8w: the worst case:  install under Kubuntu and let the installer create ~/Dropbox.  Then follow my steps as outlined (turn off, backup, link, etc.)
+<twoten> I bought a router and now I no longer need to start up in a PPPoE environment but with dhcp - how can I get rid of the ifupdown and use my wired connection instead?
+<twoten> I used to connect directly to my high speed modem but now I want to go through the router, how do I change that?
+<MiniMe> hi all, hope someone can help me: i'm trying to mount an encrypted home directory on an old harddrive (/media/disk/home/$USERNAME) to ~/OLDHOME on a ubuntu system (which also has encrypted home)
+<MiniMe> "sudo mount -t ecryptfs /media/disk/home/$USER/.Private ~/OLDHOME/" mounts, but then ls on ~/OLDHOME first lists "ls: cannot access OLDHOME/Pictures: No such file or directory" for every file, then "d????????? ? ? ? ?                ? Pictures/"
+<regeya> twoten: maybe we could start with connecting the modem to the router, connecting the computer to the modem, and consulting the router manual :-)
+<twoten> maybe I know all that, I have a tray icon, a Network Manager, and it will not give up it's ifupdown connection even though I delete it
+<kubian> twoten: this could be diff but for me connect the modem then connect the router to modem then connect your pc to router then configure router to maneg the connection
+<kubian> twoten: once router is configured, any pc connected to router is connected automatically.
+<twoten> it's not the router, all the other boxes on my home network are fine, what are the config files in /etc that control the network startup config? something in rc.d?
+<kubian> twoten: you confuses me???
+<Vroomfondle> twoten: by default networking is handled entirely by NetworkManager
+<twoten> one computer has been setup to connect with pppoe and I can't get it to forget that and use dhcp instead
+<Vroomfondle> you can stick something in /etc/network/interfaces if you want, though
+<twoten> I'll try that, thanks very much
+<regeya> twoten: if your other networked hardware is just magically working, and you haven't mucked around with config files, your kubuntu box should as well
+<regeya> oho.,
+<twoten> okay
+<regeya> https://help.ubuntu.com/community/ADSLPPPoE twoten
+<n8w> arch0njw:  hmm i think ive found even easier way:)))
+<arch0njw> n8w: mkay... :) and it is?
+<n8w> arch0njw:  ive created a folder called "dropbox" in my "my dropbox" folder(created by win installation), when i run the setup from linux n point to the folder "dropbox" insode of the My dropbox folder, it asks if it should merge it
+<n8w> arch0njw:  i say yes n thats it...
+<arch0njw> n8w: this
+<n8w> arch0njw:  the only reason why i had to do that, was that the instalation for linux and windows is not the same,one forces u to use "my dropbox" and the other one "dropbox"
+<arch0njw> n8w: I mean "nice"... I have no idea why I typed "this" :)
+<arch0njw> n8w: that's why I suggested linking ~/dropbox to your windows "My Dropbox".  But if that works too, cool :)
+<n8w> arch0njw: ye i mean your way definately the rite way...n i guess a bit more elegant...but i did it in a HC way:)
+<n8w> arch0njw:  the only thing is that uve got a structure like /My dropbox/dropbox/ yourfiles ...but cmon, i can easily live with it:D
+<rosco_y> is anyone familiar with configuring the festival text to speech system?
+<rosco_y> I want to specify a certain voice
+<pok_> hi
+<daskreech> !hi
+<ubottu> Hi! Welcome to #kubuntu! Feel free to ask questions and help people out. The channel guidelines are at https://wiki.ubuntu.com/IRC/Guidelines . Enjoy your stay!
+<pok_> i work frist kubuntu!
+<daskreech> pok_: grats!
+<daskreech> !th
+<ubottu> Please see #ubuntu-th for Ubuntu in Thailand.
+<pok_> i can't install Dricet admin null scrip
+<daskreech> pok_: where are you installing it from?
+<pok_> i dowloand scrip from web.
+<pok_> i have scrip null but can't install
+<daskreech> pok_: what have you done to install it?
+<pok_> daskreech you can help me?
+<daskreech> pok_: If you would like.
+<daskreech> pok_: You can join #ubuntu-th as well if you would like
+<pok_> i  don't key  install
+<pok_> i have carcking
+<pok_> scrip driect admin null carck scrip
+<daskreech> Ok
+<pok_> you can install from scrip
+<daskreech> ใช่
+<pok_> thai
+<pok_> i live thai
+<daskreech> ใช่ :-)
+<daskreech> เขียน /join #ubuntu-th
+<daskreech> pok_: ^^
+<daskreech> pok_: In this window เขียน /join #ubuntu-th
+<kostia> подскажите как поднять почтовый сервак на ubunte
+<DarkwingDuck> kostia: #ubuntu-ru
+<DarkwingDuck> kostia: Ubuntu русский канал #Ubuntu-RU
+<andrew__> hello
+<andrew__> somebody can help me with kde 4.4.1 and his effects
+<andrew__> i cant use the effect in kde 4.4.1, my screen dont look good
+<ramesh> need help related to Kopete - Google Talk Voice Chat
+<ramesh> tried port 443 and 5223.
+<ramesh> checked all three options
+<ramesh> still I can't voice chat is not enabled.
+<ramesh> #kubuntu
+<chiofalo> supporto italiano?
+<tiorody> Hello, everyone. Anybody from Brazil here?
+<chiofalo> supporto italiano per kubuntu??
+<arch0njw> chiofalo: type: /join ubuntu-it
+<chiofalo> ok thank
+<arch0njw> ciao! :D
+<tiorody> jee... no italian, no brazilian! :O
+<arch0njw> kubuntu is the lonely child.  English only here.  Ubuntu gets all the multi-lingual love.  ;^)
+<chiofalo> arch0njw: te parli italiano?? :)
+<arch0njw> Uno poco.  (Only enough to get me in trouble.)
+<arch0njw> oops... Un poco ;)
+<venik> I have installed Thunderbird 3.04 (pre, AKA Shredder), but now I find in the repositories TB 3.1.  I installed that one, but when I run TB, I get the 3.04 version.  I do not want to UNINSTALL 3.04, since I do not want another profile created, etc.  How do I go from 3.04 to 3.1?
+<MacMan_it> hello room. I'm trying to upgrade from karmic to lucid alpha 3 using the alternate install CD, but it doesn't work.
+<MacMan_it> I've added the CD to the apt sources, and commented all the other repositories. run a sudo aptitude update, then sudo aptitude dist-upgrade, but it picks just 1 package to upgrade
+<MacMan_it> any idea what I'm doing wrong? tnx
+<arch0njw> venik:  uninstalling 3.04 should not remove the profile directory -as long as- that profile directory is in your home directory under something like .mozilla-thunderbird (guessing at the exact name).
+<venik> I let TB install it, so it should be there
+<venik> OK-- here we go down the rabbit hole...
+<st4aluck> can somebody try this if the address works
+<st4aluck> stc@Thundercrumb:~$ hg clone http://linuxtv.org/hg/~jfrancois/gspca
+<st4aluck> destination directory: gspca
+<st4aluck> abort: HTTP Error 404: Not Found
+<FloodBotK1> st4aluck: Please don't flood, use http://paste.ubuntu.com to paste, don't use Enter as punctuation.
+<arch0njw> venik: you should also check /usr/bin to see what exactly executable is being run.  It might be linked to run 3.04 instead of 3.1
+<arch0njw> !paste | st4aluck
+<ubottu> st4aluck: For posting multi-line texts into the channel, please use http://paste.ubuntu.com | To post !screenshots use http://tinyurl.com/imagebin | !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+<st4aluck> ok
+<andrew__> somebody using kde 4.4.1??
+<venik> the main reason I want to upgrade is that I have not been able to get Lightning (the calendar) to work with 3.04
+<arch0njw> andrew__: aye.
+<arch0njw> venik: I tried that -once-.  it was very bloated at the time I tried it.  I have grown fond of Kontact.
+<venik> in /usr/bin/ I have two thunderbird related perl scripts-- one labeled thunderbird and one labeled  thunderbird 3.1
+<arch0njw> venik: in konsole, try running the script for 3.1
+<venik> I did, and, as I feared, it asks me to set up a thunderbird account...
+<venik> I hate the "upgrading" procedures for TB..
+<arch0njw> venik: uh... that's dern strange.  It shouldn't.
+<MacMan_it> hello room. I'm trying to upgrade from karmic to lucid alpha 3 using the alternate install CD. I've added the CD to the apt sources, and commented all the other repositories. run a sudo aptitude update, then sudo aptitude dist-upgrade, but it picks just 1 package to upgrade.
+<venik> I agree that it shouldn't... but it did
+<st4aluck> guys I am trying to comp drivers but something went wrong with: $ hg clone http://linuxtv.otg/hg/~jfroancois/gspca
+<venik> it seems oblivious to the existing profile
+<andrew__> somebody using kde 4.4.1??
+<arch0njw> MacMan_it: did you try this:  http://www.ubuntu.com/getubuntu/upgrading#Upgrading%20Using%20the%20Alternate%20CD/DVD
+<arch0njw> andrew__: I am using kde 4.4.1
+<andrew__> and can use the effects on desktop?
+<arch0njw> MacMan_it: I think to do what you want to do, you need to use the alt CD.  But that conclusion is based on a cursory read of that page.  I could be wrong.
+<st4aluck> can somebody help me?
+<arch0njw> andrew__: I use minimal effects, but those I use work.
+<andrew__> outh, i can't activate the compositing
+<andrew__> u some any idea of why?
+<arch0njw> nvidia or ati card?
+<arch0njw> I can only really help if you have nvidia.  It's what I know best.
+<andrew__> outch i have an notebook compaq c700 and i don't know whit is my video card
+<andrew__> but is integred
+<andrew__> so i think that is intel
+<venik> running that script has created a Thunderbird 3.1 folder in my home directory
+<venik> with a new account, but with all the settings unset yet
+<venik> Now if TB was properly written, I should have been able to move everything from the old profile to the new one
+<arch0njw> andrew__: Oh... Intel.  Hmm...  err...  I don't really know that one that well.  Do you have the right drivers installed?  I poked around and found this:  http://forum.kde.org/viewtopic.php?f=66&t=31363
+<venik> but I do not think that works
+<arch0njw> my search was "intel graphics kde desktop effects" (no quotes)
+<arch0njw> venik: I wonder if the profile config changed and that is deliberate.  You should be able to import an old TB account.  I did that once and it worked well.
+<andrew__> arch0njw: but i don't have the xorg.conf
+<arch0njw> andrew__: scroll down.  they talk about the packages that need to be installed.
+<venik> when I tried it now, and chose Import Everything, It said: Import from.... but gave me no place to choose.  I wonder if the creators ever watched how this is done
+<arch0njw> I have a bad feeling the mozilla devs are Windows biased.  :(
+<andrew__> arch0njw : i'm sorry but i can't see how :(
+<venik> The import is meant to import from OTHER mail programs, not from another TB account
+<arch0njw> venik: what about exiting TB and copying the old profiles dir into the new profiles dir?
+<sxm> hello i need help: my hd light is costantly on and i can hear a disk working. and even if i have 2 sata sda and sdb.... in dmesg theres a sdc..... (this permanent spinning seems to slow down the pc.... )
+<arch0njw> andrew__: I have a machine that has intel graphics and I -think- it does compositing.  Would you mind posting an Ubuntu forums post about this and send me the link?  I will follow-up that way.  Sorry to redirect you, but I don't have access to that machine right now.  My guess is that you don't have the necessary packages installed and therefore don't have the right drivers.
+<andrew__> arch0njw: ok, i will try to post on englis because i'm chilean tanks anyway
+<Draconis> Question- why is it sometimes my wireless modem doesnt wanna connect to anything, even though I have never moved it from the place it gets teh best connection...its strange, my windows PC doesnt do that lol just this one, is there somethihng I need to fix?
+<arch0njw> Draconis: that is a long standing question of mine & an open issue on Launchpad and bugs.kde.  I still have no answer.
+<Draconis> lol so its not just me fking something up. its actually a bug within kde?
+<arch0njw> Draconis: sometimes when I boot my netbook, I get no signal.  A reboot fixes it.  Sometimes it will brain-f@rt and drop the wireless and never get it back.  Again, a reboot fixes it.
+<arch0njw> Draconis: I think this has been acknowledged as an issue with the new networking widget/plasmoid/thinger.  The solution has been to fall back to kdenetwork-manager.  But I am stubbor, persist with the 'thinger' and reboot when I need to.  Not like I'm playing MMMMMMORPGs on my netbook. :D
+<Draconis> lol yeah last time, erm this time lol, I had to reboot about 4 times...it would select another wireless network (i dont have the wep so I couldnt connect) but wouldnt even try MY connection lol
+<Draconis> Well, this is my laptop, but I generally TRY to play games on it...lol
+<Draconis> Unfortunately, I cannot figure out WinE enough to make Requiem: Memento Mori or City of Heroes/Villains work
+<arch0njw> Draconis: I usually hardline with games.  Nothing rains on a game more than a lost connection.
+<noaXess_netubu> hello
+<noaXess_netubu> where is the config file for kickoff?
+<Draconis> Indeed...I use my workplace's wireless modem because I live RIGHT NEXT DOOR to the main office, and maintain a great connection- i have a key to go reest the modem inside th eoffice as well, my issue is figuring out a connection program that is more consistant
+<Draconis> How can I go about installing the kdenetwork-manager...canb I use apt-get?
+<Draconis> In terminal that is
+<arch0njw> Draconis: my mistake, it is "knetwork-manager" (I think).  And, yes, you should be able to "sudo apt-get install ...".
+<noaXess_netubu> Dragnslcr: its plasma-widget-networkmanagement
+<arch0njw> noaXess_netubu: that's the very widget that has the problem Drac' and I are experiencing.
+<noaXess_netubu> oh Draconis it's for you
+<noaXess_netubu> aha..so try wicd?
+<arch0njw> FWIW, that widget works better in 4.4.1, but it still zones out from time to time.  I think part of the official answer to me is that it's my hardware, not the software.
+<noaXess_netubu> i'm remotly on a machine and need a specific kikkoff entry to get the config of that entry.. how can i get it?
+<abby87> hi,I've just installed Kubuntu karmic and upgraded it to kde 4.4.After installation I would like to configure Kubuntu such that an user on my system won't be able to access any of my ntfs removable drives.I tried in vain changing the permissions via systemsettings>Advanced>UserMgmt
+<Draconis> knetwork-manager doesnt work in terminal i guess its something else
+<arch0njw> Draconis:  Hmm... either I'm getting the name wrong, or they removed it.  I just looked in kpackagekit and I don't see it listed.
+<Draconis> Is there a 'gaming' chatroom?
+<ambit> when i sudo apt-get update i hang up at 98% "waiting for headers", anybody got any ideas?
+<Vroomfondle> yeah, good luck with that ;)
+<Draconis> rofl
+<Vroomfondle> happypenguin,org is the place to look
+<Draconis> ..sucks or?
+<Vroomfondle> ambit: probably a server problem. Has it been happening for long?
+<Vroomfondle> Draconis: happypenguin has a listing of most Linux games
+<ambit> Vroomfondle: today is the only day i have had the problem, it was just wierd to me that its hanging up at 98%
+<FabienD> hi all
+<Vroomfondle> hullo
+<FabienD> someone has tried this PPA : https://launchpad.net/~dnjl/+archive/virtualization?field.series_filter=karmic
+<FabienD> with kubuntu 9.10 ?
+<FabienD> I have error about duplicate entries while fetching sources
+<teatime> does anyone know if there is a "live cd" version of the ubuntu/kubuntu server?
+<teatime> would be nice to know if it picks up my sw raid before I flush the old install... :P
+<smokealot> teatime arent the cd/dvd of both also live cds them selfs?
+<teatime> smokealot: could be.. but the download pages seems to indicate otherwise
+<smokealot> https://help.ubuntu.com/community/LiveCD
+<teatime> smokealot: guess I'll give it a try. thanks! :)
+<naftilos76> hi, has anyone upgraded to 4.4.1 from the backports repo?
+<naftilos76> my distro is 4.3.2 - kubuntu 9.10
+<arch0njw> naftilos76: I am running 4.4.1 on 9.10
+<naftilos76> did you upgrade from 4.3.2 ?
+<arch0njw> naftilos76: that I don't recall.
+<naftilos76> was kde the default ver of kubuntu 9.10 CD ?
+<arch0njw> kde4 was the default on 9.10
+<ulysses> kde4 is the default since 8.10
+<naftilos76> i know but was it 4.3.2?
+<ulysses> yes
+<arch0njw> ulysses: thanks :)
+<ulysses> I think it was KDE 4.3.2, however I've upgraded my Jaunty to Karmic
+<arch0njw> 4.3.0 was the default in 9.10
+<teatime> smokealot: nope.. neither of the two x64 server versions can apparently boot from the CD
+<teatime> pity
+<ToraToraTora> Website flash sounds missing! Other sounds work (Output from integrated intel chip to TV tru HDMI). Nothing muted in alsamixer. Kubuntu 9.10 Flash 10.0.45.2 Any help?
+<cranvil> ToraToraTora: what's KMix saying about the volume of pcm
+<cranvil> ToraToraTora: when i do fresh installs, pcm volume is at the downmost position. after pushing pcm volume up i can hear flash audio
+<ToraToraTora> cranvil: it's all the way up
+<cranvil> ToraToraTora: ok, than i'm out :(
+<ToraToraTora> :(
+<arch0njw> ToraToraTora: what browser are you using?
+<Draconis> Guys i have a small issue...the other day I repartitioned my hd to remocve linux and use my factorry restore cds...it worked...until i rebooted and all i can see is grub error and grub rescue or soemthing like that in what looks like dos
+<ToraToraTora> opera but tried konqueror also
+<arch0njw> ToraToraTora: read the last entry in this thread.  http://ubuntuforums.org/showthread.php?t=996440
+<arch0njw> ToraToraTora: I also found this where ppl had to go into alsamixer to kick PulseAudio in the bum:  http://newyork.ubuntuforums.org/showthread.php?t=1091914
+<arch0njw> ToraToraTora: I know have I had this problem repeately because I have a digital out on my sound card.  It is almost always the stupid PCM channel.  Once it was the .asound file in my home dir (years ago).  Crazy stuff I get for not having a normal sound output.
+<ToraToraTora> okeydokey
+<eki_> Aguante el CAECE
+<pablin> amargossss
+<HERNANNN> pablo se comeee
+<HERNANNN> jajaaj
+<eki_> CAECEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!
+<kubian> hi..kubuntu.org says amarok 2.3 is at kubuntu-ppa/backports? but don't see it there..???
+<HERNANNN> FASTA !!!
+<ubuntu___> eeeee
+<HERNANNN> aaaaarrrrgghhhhhh
+<eki_> jajajajaj xD
+<pablin> aunta fata amigo
+<telma> fff
+<HERNANNN> viva chile!
+<p> hehe
+<HERNANNN> chi chi chi le le le viva chile!!
+<HERNANNN> heee
+<HERNANNN> jajaja
+<dmdevotee> anybody knows how to remove the task manager that appears when mouse cursor is placed on top-left of screen?
+<Draconis_> Hola peoples....question, is there a means to browse the apt-get source to learn the command?   Like...is Urban Terror on it?
+<daskreech> Draconis_: You mean a search?
+<dmdevotee> anybody knows how to remove the task manager that appears when mouse cursor is placed on top-left of screen?
+<Draconis_> yussir
+<daskreech> Draconis_: And you don't want to use Kpackagekit ?
+<daskreech> dmdevotee: Hmm ? what do you mean? You can't close it?
+<dmdevotee> daskreech, there is no selectable widget or something
+<daskreech> dmdevotee: ok walk me through what is happening and I'll try help you out
+<dmdevotee> by default installation, in kubuntu, if you move the cursor to to-left, t5ask manager appears
+<Draconis_> im lost on how to use it lol
+<daskreech> Draconis_: lol Ok What would you prefer a short help session on searching packages from the command line or a short help session on kpackagekit ?
+<daskreech> dmdevotee: no pretty sure someone changed that for you. By default it shows all windows in Expose
+<Draconis_> Either or...I just wanna play a game...and also figure out what to do with this urban terror .zip file....i cant find instructions :/
+<daskreech> dmdevotee: Would you like to change that?
+<daskreech> Draconis_: ok open Kpackagekit
+<Draconis_> kk
+<dmdevotee> yes
+<daskreech> Draconis_: ha there is no Urban terror in the repos
+<daskreech> One moment
+<daskreech> dmdevotee: open system settings
+<daskreech> dmdevotee: Look & feel -> Desktop -> Screen edges
+<ubuntu> ffff
+<daskreech> dmdevotee: Click on the top left and set what you would like it to do
+<daskreech> Draconis_: Ok What did you get to run Urban Terror?
+<Draconis_> I ddidnt get anything
+<Draconis_> i downloaded from the site and its a .zip i have no isdea what to do with it from here
+<dmdevotee> daskreech, thanks, it worked
+<daskreech> Draconis_: You opened the zip?
+<daskreech> dmdevotee: Sure
+<Draconis_> Indeed...viewing files
+<dmdevotee> hey, by the way, i have other problem. i have both kubuntu & windows partitions installed...
+<daskreech> Ok There should be a ioUrbanTerror.something filr
+<daskreech> dmdevotee: Congrats
+<Draconis_> Couldn't load default cfg
+<dmdevotee> ...and i am searching for a way to auto-mount the windows partiotions in /media/
+<dmdevotee> they simply auto-mount when i click on it into an explorer, for example dolphion
+<dmdevotee> *dolphin
+<daskreech> Draconis_: You extracted it all to a directory?
+<daskreech> !fstab | dmdevotee
+<ubottu> dmdevotee: The /etc/fstab file indicates how drive partitions are to be used or otherwise integrated into the file system. See https://help.ubuntu.com/community/Fstab and http://www.tuxfiles.org/linuxhelp/fstab.html and !Partitions
+<Draconis_> No :/  What directory should I send it to?
+<daskreech> Draconis_: Anyone you like
+<daskreech> Somewhere in your home directory will work
+<dmdevotee> but there would be any way to auto-click into ntfs partitions at kubuntu start
+<dmdevotee> ???
+<dmdevotee> i have the amule folder in a windows partition, and i need to click at that partition everytime i boot
+<v1ttu> are you using kde4?
+<v1ttu> 4.4**
+<tamran> could't one use the fstab file to automount such things?
+<tamran> errr, couldn't
+<dmdevotee> sorry, dunno what !fstab is
+<v1ttu> dmdevotte, if youre using 4.4, there is a thing in advanced options in system settings that automounts drives
+<Draconis_> I got ir ruynning now but really laggy :/
+<Draconis_> Like system lag
+<Draconis_> brb
+<dmdevotee> thanks ubottu and vlttu, i will see what i can do
+<v1ttu> ;]
+<Typos_King> dmdevotee:    /etc/fstab  is the configuration file for what mounts and where and how
+<Typos_King> dmdevotee:    http://maketecheasier.com/auto-mount-your-ntfs-partition-in-ubuntu/2009/04/14    <--- maybe if you edit your entry  with 'pysdm'
+<v1ttu> why isnt kdenetwork-filesharing installed by default?
+<daskreech> What is it used for?
+<daskreech> v1ttu: I'll probably go on record as saying space now
+<v1ttu> the clues in the name
+<v1ttu> kk
+<daskreech> Well local filesharing is kinda silly
+<v1ttu> not really
+<daskreech> v1ttu: Anyway it's likely space on the CD. You can install as needed
+<v1ttu> its already installed and running :P
+<daskreech> v1ttu: Yep Just answering your question
+<efra> Hola
+<daskreech> efra: hola
+<reagleBRKLN> this url says there's amarok 2.3, but it ain't there...? http://www.kubuntu.org/news/amarok-2.3.0
+<reagleBRKLN> the diff, dsc, and tar ball are, but no deb http://ppa.launchpad.net/kubuntu-ppa/backports/ubuntu/pool/main/a/amarok/
+<v1ttu> give them time :P
+<dmdevotee> hey, i'm trying to run pysdm, but it won't execute
+<dmdevotee> anybody knows if i have to install something?
+<v1ttu> hold onnnnn
+<v1ttu> are you using kde 4.3?
+<Typos_King> reagleBRKLN:     from what I got on my RSS feed for kubuntu, it says you have to ADD a source to your source.list for apt-get to fetch it
+<v1ttu> the backports ppa
+<v1ttu> cept it isnt working yet
+<Typos_King> reagleBRKLN:   deb http://ppa.launchpad.net/kubuntu-ppa/backports/ubuntu karmic main   <---
+<Typos_King> not sure, I .... use audacious :)
+<eristik|huginn> is there a better app than wicd for managing wifi?
+<eristik|huginn> networkmanager had problems with a couple networks. not working with security cert and stuff
+<eristik|huginn> i found a forum post saying to use wicd but i tried it and it won't even get on the network here now
+<v1ttu> wpa2 encryp?
+<eristik|huginn> yeah, but the one here is wep
+<v1ttu> oic
+<eristik|huginn> the school one is wpa2
+<v1ttu> what chip is it?
+<daskreech> dmdevotee: YOu can just edit the file by hand :)
+<mika__> hi, i've added the backports ppa... but a lot of packages are blocked (kmail, kdepim, etc), what should i do ?
+<v1ttu> use terminal
+<v1ttu> sudo aptitude update && sudo aptitude dist-upgrade
+<mika__> v1ttu: mm..ok, thank you..
+<mika__> why kpackagekit doesn't manage it?
+<v1ttu> because its a piece of crap
+<mika__> v1ttu: mmm....nice to know... :) so should i always use the shell instead?
+<v1ttu> ya i would
+<mika__> ok ;)
+<v1ttu> hold on
+<v1ttu> have you removed dragonplayer or anything like that?
+<mika__> v1ttu: one more question, i've upgraded some time ago after the kubuntu installation (9.10), but the internal mic now has a lot of noise when i speak.... with a usb mic it works fine (the internal too, before the upgrade)
+<mika__> nope
+<v1ttu> just too be safe
+<v1ttu> run
+<v1ttu> sudo aptitude install kubuntu-desktop
+<v1ttu> to be**
+<v1ttu> is your mic boost too high maybe?
+<mika__> v1ttu: no, it's the same as before
+<v1ttu> hmmmm
+<v1ttu> maybe pulseaudio got installed?
+<v1ttu> ive never had any real sound problems
+<mika__> pulseaudio it's not installed
+<v1ttu> internal mic?
+<v1ttu> a netbook?
+<mika__> notebook, digital mic
+<v1ttu> okkkk
+<v1ttu> my built in mic doesnt work either
+<mika__> but it did perfectly before the upgrade... :(
+<v1ttu> soz
+<v1ttu> cant help ya :(
+<mika__> ok, no problem :)
+<mika__> thank you anyway :)
+<v1ttu> np ^^

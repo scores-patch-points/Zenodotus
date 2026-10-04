@@ -1,0 +1,309 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2008-3-15"
+lang: "en"
+messages: "300"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<philphoto> anyone have an issue where their splash screen is off center?
+<msingh> hi. xubuntu has detected my wireless card ok and i am using it
+<msingh> is there a place to copy the settings etc so i can recreate them later?
+<beastmaster> hey people I got this really weird issue with a laptop using xubuntu. When I press caps lock key few times the touchpad stops working. But if I press it a few times after that then touchpad works again...
+<beastmaster> thought it was kind of freaky ya know
+<beastmaster> guess I could disable caps lock, kinda useless key, anyone know how to disable scroll features for touchpads?
+<deformation> hello all
+<ollie_> Hey, is there a GUI SSH connect to server thing for ubuntu
+<ere4si> !ssh | ollie_
+<ubotu> ollie_: SSH is the Secure SHell protocol. See https://help.ubuntu.com/community/SSHHowto for usage. Putty is a nice SSH client for Windows; it can be found at http://www.chiark.greenend.org.uk/~sgtatham/putty/
+<ollie_> Ok but on Ubuntu theres a app labled "Connect to server"
+<ollie_> and i enter the ssh detials and connects so i can browers
+<ollie_> browse files
+<ere4si> I thought that was just forsamba shares - but then I never use it :)
+<ere4si> *for samba
+<TheSheep> !sshfs | ollie_
+<ubotu> Sorry, I don't know anything about sshfs - try searching on http://ubotu.ubuntu-nl.org/factoids.cgi
+<TheSheep> :/
+<holyguyve1> I accidently xkilled the xfce panel (start bar) & now I have restarted my computer 3 times & it refuses to start the panel & whenever I click to open the panel manager, it will not open.
+<holyguyve1> Anyone know how I can fix that?
+<predaeus> holyguyve1, you mean the Xfce Menu  panel plugin?
+<predaeus> or the panel itself?
+<holyguyve1> the whole panel
+<holyguyve1> the whole bar the\at normally goes across the bottum/ & or top of the screen.
+<predaeus> maybe the missing panels got saved automatically by session setting
+<predaeus> can you run a terminal?
+<holyguyve1> Yes I can run a terminal
+<holyguyve1> by right clicking on the desktop I can still access the apps menu
+<holyguyve1> well I have a terminal open
+<predaeus> maybe you just need to run the panel and the logout and login again so that the running panel is saved in the session (if you have storing session enabled when logging out)
+<predaeus> try if you can run xfce4-panel
+<holyguyve1> Okay so how do I run the panel?
+<predaeus> does it run?
+<predaeus> if you type "xfce4-panel  <enter>" into the terminal
+<holyguyve1> As Is aid what cammand do I type in to make it run?
+<predaeus> xfce4-panel
+<holyguyve1> bash: xfce-4-panel: command not found
+<holyguyve1> bash: xfce-4-panel: command not found
+<predaeus> you have a typo in there
+<predaeus> xfce4-panel
+<holyguyve1> yes I do sorry
+<predaeus> if that launches the panels then it's just the session settings that got messed up.
+<predaeus> try to have the panel run and then log out and back in and see if it runs if not, the easiest alternative would be to add xfce4-panel to the autostarted applications.
+<holyguyve1> Alright the xfce4-panel cammand worked. thank you. >The reason it has taken me so long to reply is because I am talking to you from a buttom of the line cheap computer that was manufactured in 1998
+<holyguyve1> It gave a warning though. it says "(xfce4-panel:7811): libxfcegui4-WARNING **: ICE I/O Error (xfce4-panel:7811): libxfcegui4-WARNING **: Disconnected from session manager.
+<predaeus> yea, like I've said above you will still have to make sure that it gets launched next time again, some way or the other. I have to jump to, you can also ask in #xfce if you remain to have problems and noone is around here.
+<holyguyve1> Anyone willing to help please?
+<ere4si> try    killall xfce4-panel   and   xfce4-panel &    to see if the response is diff
+<holyguyve1> But I just got it back, why would I want to kill it again?
+<ere4si> starting it with the   &   on the end may be better - and you have to stop it to start it :)
+<holyguyve1> typing in that cammand now does nothing aas after I started it, it never returned me to jack@jack-desktop: -s after those error cammands.
+<ere4si> the panel should have disappeared with the first command and reappeared after the second
+<holyguyve1> As said cammands do nothing now as I was not returned to the base promt after those errors
+<ere4si> but what happened to the panel?
+<holyguyve1> nothign because those cammands you asked me to put in will not work now
+<ere4si> close the terminal and reopen it to get the prompt back - and be careful typing
+<holyguyve1> Alright well I have a very good answer that really tells us a lot
+<holyguyve1> the second I closed the terminal xfce panel also quite
+<holyguyve1> So the panels life was connected to the terminal window
+<ere4si> that is why I gave the command   xfce4-panel &   the & makes it continue
+<ere4si> and links it to the session
+<holyguyve1> Okay I typed in what you said & it said back "[1] 10086" & then started up the panel
+<ere4si> k - then logout and back in and see if it continues - that was the issue yes?
+<holyguyve1> But I hjust now closed the terminal & the panel quite again
+<holyguyve1> the & made no differance
+<ere4si> k - open the terminal - hit the up button for the last command - start the panel again and to close the terminal type   exit
+<holyguyve1> Alright that did it well keeping up the panel.
+<ere4si> is it solved?
+<holyguyve1> So I will log out now & hopefully will see you on the other side with good news
+<ere4si> k :)
+<holyguyve1> Yes, when I logged back in it came back up :)
+<ere4si> all happy ?
+<holyguyve1> Yes, Now I know nnever to accidently xkill the xfce panel :p
+<ere4si> hehe
+<holyguyve1> What it was, was I was trying to kill something else, but accidently clicked on the panel
+<ere4si> well, you got to learn some linux stuff then :)
+<holyguyve1> But I have been running linux for 4 years now
+<ere4si> if you kill the panel accidentally then you know how to get it back now :)
+<holyguyve1> Or round about, I started with Lindows, then that turned into Linspire, then I tried Debian, Kubuntu, Fadora, Damn SMall, Mandrake, Mandriva, Susue, SLax, Yellow Dog, Ubuntu, Fluxbuntu, Xubuntu
+<holyguyve1> None of them seem to work well on this computer
+<ere4si> what sort of comp is it?
+<holyguyve1> this computer is a fullsize computer that was manufactured back in the late 1990's it has a processer that is not desktop standered so it's processer was more qualifide for early pdas
+<ere4si> I use xubuntu on an old pent2 as a nfs server for home
+<holyguyve1> But this things processer is not even Pent1 power
+<ere4si> 1998 model :)
+<ere4si> ahhh
+<holyguyve1> Yes but this was a 200$ computer back in 1998
+<holyguyve1> its processing speed is something like 400MHz I think
+<ere4si> puppylinux might be an option on that - how much memory does it have? - 400mhz is 200 more than mine:)
+<holyguyve1> it has 128Mbs of RAM
+<holyguyve1> & that is not upgradable
+<ere4si> try - http://www.puppylinux.org
+<holyguyve1> But as saaid I have tried Damn SMall in ther past. will puppy really be that big of an inprovement overr Damn SSmall Linux?
+<ere4si> puppy works differently to all other linux - designed for speed on old comps
+<ere4si> I would be using it except there isn't the nfs server option for it
+<holyguyve1> Well Okay. What I would like to bbe able to do is be able to have somethintg that can actually run  on this computer yet has all tthe features of ubuntu :P (now you can see why I am on xubuntu right now)
+<ere4si> as a desktop puppy is popular - to go further it has limitations
+<ere4si> www.distrowatch.com shows how puppy is growing in popularity
+<holyguyve1> But if I recall puppy does not use the .deb package :(
+<holyguyve1> I like .deb
+<holyguyve1> yeah I know when I used fadora I was using RPM :p
+<holyguyve1> What desktop/windows manager does Puppy use?
+<holyguyve1> ( I can not visit websites right now as it will kill this computer)
+<ere4si> puppy uses either pups or pets for app install - it is diff - and has lots of window managers - the default is jwm
+<holyguyve1> The mouse even hates to move on this computer
+<holyguyve1> But what is the panel start bar system on puppy?
+<holyguyve1> flux?
+<ere4si> the prob might be that you're old comp uses the pci for video not agp or pci-e
+<holyguyve1> probably
+<holyguyve1> All I know is that even fluxbox is slow & combersom on this computer
+<ere4si> hehe - you must be a patient person :)
+<holyguyve1> I am :p
+<holyguyve1> Takes 2 hours to egven load googles frontpage
+<holyguyve1> No it says I have agp, it says this SiS AGP Port (virtual PCI-to-PCI bridge)
+<holyguyve1> 661/741/760 PCI/AGP or 662/761Gx PCIE VGA Display Adapter
+<chewit> i have a question. on Ubuntu, there is the GNOME apps which include dictionary, search, screenshot, system log, format floppy and disk usage analyser
+<chewit> but when i have used it on Xubuntu search doesn't work properly cause its designed for the Ubuntu file manager and not Thundar. What does Xubunty have to replace these small apps
+<holyguyve1> Sorry about that my computer froze & I had to hit the physical restart button. Right now I am running from the failsafe ternimal where I intered in the xfce4-panel & script & then started pidgin
+<ere4si> holyguyve1, you're system should be working much better than you say...
+<holyguyve1> Well it is not
+<holyguyve1> I mean right now I am talking to you in a failsafe terminal envirenment
+<holyguyve1> I can't even resize this window bewcause I am not using a window manager right now
+<holyguyve1> I must say my mouse is not acting conjested right now though :p
+<ere4si> I have read that sis has poor support in linux so that might be the issue - m/board chips not well supported
+<holyguyve1> Yes all of my things seem to be sis
+<holyguyve1> Is there any way I can get a list of all of my hardware to come up so that I can pastbin it?
+<ere4si> lshw   wil do it
+<holyguyve1> lshwL
+<holyguyve1> woops
+<holyguyve1> sorry I am having trouble
+<holyguyve1> my terminals do not wish to work right now
+<holyguyve1> :( I can't inter anything into the terminals right now :(
+<holyguyve1> it won't let me as long as this window is open
+<ere4si> try hiting   ctrl+alt+F3
+<ere4si> ctrl+alt+F1 to get back
+<holyguyve1> Sorry about that, my computer crashed again. here is the list of my hardware http://paste.ubuntu-nl.org/59677/
+<holyguyve1> ere4si I am eager to know what you think/make of it.
+<ere4si> well
+<ere4si> it is 1400mhz with 95mb mem
+<holyguyve1> Is that good or bad?
+<ere4si> and all sis on the m/board
+<holyguyve1> So your conclusion is?
+<ere4si> 1400mhz is ok :) - 95mb mem is poor :(
+<ere4si> and sis support is lacking in linux from what I've read
+<holyguyve1> Does that plus the sis explain my problems over the years?
+<ere4si> that is what I'm thinking -yes
+<holyguyve1> Yes this computer came pre-installe dswith Linux
+<holyguyve1> I mean yet
+<holyguyve1> I bought it with linux already on it
+<ere4si> 95mb mem - I would only use cli with that
+<holyguyve1> But the sticker says 128Mbs
+<ere4si> seems like some of it isn't working anymore
+<holyguyve1> & the linux that came pre-installed on here used KDE
+<holyguyve1> Yerah I have replaced the CDROM drive too as that stopped woring last year.
+<ere4si> it might be time to bite the bullet and find something newer - I'm on a 2002 comp atm
+<holyguyve1> I would get something new, but I only make 600$ a month, & after all; of my bills I have less then 50$ to myself each month
+<holyguyve1> So do you know any place that will sell me a high quality PC for less then 50$?
+<ere4si> that would make it hard... - a pent3 goes for <$100
+<holyguyve1> Would that stupid crappy wallmart Everex GPC be an improvement over this one?
+<ere4si> you could try to upgrade memory - but that might be more expensive
+<holyguyve1> plus I have been told that this processer is horrible
+<ere4si> I'd be looking in the local paper at second hand comps - can get bargains sometimes
+<holyguyve1> Geode NX I have been told should not belong in a desktop[
+<ere4si> hehe
+<holyguyve1> I live in a small farming comunity town
+<holyguyve1> Our nearist Major computer retailer is a 4 hour drive away
+<holyguyve1> & I don't own a car
+<holyguyve1> WallMart is a 45 minute drive
+<ere4si> good thing that you're patient then :)
+<holyguyve1> Yes :p
+<holyguyve1> A few months ago I loaned a friend 100$ I think it is time for me to smack him upside the head & get my money back so that if nothing else I can aford that walmart PC
+<ere4si> you'd get better value for you're money buying second hand then walmart crap - put and ad in the local shop window
+<holyguyve1> what kind of local shop?
+<holyguyve1> groscery store?
+<ere4si> what shops are near you? - I'm sure people put ads for stuff to sell/buy or events in the shop windows there
+<holyguyve1> Our nearest store is Safeway they sell grosceries, then after that it is WalMart a 45 minute drive away.
+<ere4si> my local shops have a community noticeboard for people to post stuff on - sounds like your town is small
+<holyguyve1> I said it was a small farming community
+<ere4si> just trying to give some options :)
+<holyguyve1> I know :p
+<holyguyve1> With our local freecycling group computers go so quickly I have never had the chance to get one :p
+<holyguyve1> So anyway back on subject do you think Puppy would run well on this computer?
+<ere4si> not really enough mem left on it
+<holyguyve1> So, do you know of any operating system that I can run on this computer?
+<ere4si> if google takes two hours you are kinda limited
+<holyguyve1> & you don't even want to know how hard running a liveCD to install some of these distros was :p
+<ere4si> I'm using ubuntu server with fluxbox on this comp - lightest I could find with good support
+<holyguyve1> LiveCDs run best on a minimal of like 250MBs ram, so with 95MBs you can imagine what that has been like
+<ere4si> ssslllooowww
+<ere4si> :)
+<ere4si> I use the net install cd - is text based
+<holyguyve1> I have used those too, still takes about 6 hours
+<ere4si> that's old comps for you hehe
+<holyguyve1> Maybe I should look into installing a 1801 Unix variant :p
+<holyguyve1> 1981\
+<holyguyve1> Not 1800's :p
+<holyguyve1> Amish UNIX :p
+<holyguyve1> perhaps some OS from the 1980's would suit this computer well
+<ere4si> even the ubuntu command line only os would work better
+<ere4si> can still web browse etc
+<holyguyve1> Well I was just talking to you in that a half hour ago, even that crashed my computer :p
+<ere4si> that to me is memory faults
+<holyguyve1> & Processer & who knows what else :p
+<ere4si> it's 20 after 1 am here - I'm off to bed :) lots of luck
+<ere4si> bye
+<DrIP> hi all
+<DrIP> how can i setup ndiswrapper and make it work in a server enviroment?
+<DrIP> mic check, 1,2
+<The-Kernel> it works
+<DrIP> hi all, is wireless support working in a typical install?
+<sudobash> depends on what chipset
+<TheSheep> DrIP: but where possible it works out of the box
+<student1> interesting problem.  first time i use synaptic, it asks me for a password.  fine.  second time i use it, it doesn't bother asking me, just launches the program.  do i need to re-install xauth?
+<student1> followup : if i re-boot, then launch synaptic again, it asks me for the password first time only.
+<sudobash> student1 it will remember your pass just like sudo
+<sudobash> like the net sometimes caches passwords
+<sudobash> it is perfectly normal
+<sudobash> if you wait long enough it will forget your password and ask you again
+<sudobash> good programming
+<student1> that's odd ... i could have sworn that it asked me for my password each time i used it.  sudobash : sorry started typing my response before you got back to me about it "forgetting"
+<sudobash> sudo is same way
+<sudobash> but if you go to terminal and execute sudo bash and then type your commands you skip all that password shit and just have to type it once
+<student1> can i manually flush the cache so that it is forced to forget.  i don't want someone else to have root privilege if i walk away
+<DrIP> woa back
+<DrIP> sudobash: it's a linksys WMP11v4... i have just setup ndiswrapper and i have just done an ifconfig list
+<DrIP> TheSheep: there are no linksys drivers for it :(
+<DrIP> right now i see an eth1
+<DrIP> so, how can i do my wireless from command line?
+<DrIP> i screwed up my x-org
+<TheSheep> DrIP: I have little experience with wifi, but I can try to help you fix your xorg...
+<DrIP> sure
+<DrIP> heres what happened:
+<DrIP> i have a recently burned out PCI graphics adapter...  i'm using my internal graphics now...
+<DrIP> idk what to do, and if you can help out with that, that would be great :)
+<TheSheep> DrIP: to reconfigure your xorg to use a different graphics card?
+<DrIP> yes
+<TheSheep> DrIP: 'sudo dpkg-reconfigure xserver-xorg'
+<TheSheep> DrIP: most defaults in this dialog should be fine
+<DrIP> ok
+<DrIP> humm
+<DrIP> Ammount of memory for the graphics card?
+<TheSheep> just leave it blank
+<DrIP> ok
+<sudobash> use iwconfig DrIP
+<DrIP> use kernel framebuffer?
+<DrIP> sudobash: ok
+<TheSheep> DrIP: the defaults should be ok (just hit 'enter')
+<DrIP> ok
+<DrIP> wooo hooo!
+<DrIP> thanks!
+<sudobash> whats does ifconfig tell you DrIP
+<sudobash> ?
+<sudobash> iwconfig i mean
+<DrIP> ifconfig had lo and eth1
+<DrIP> iwconfig says it can't find an interface
+<sudobash> then you havent set up ndiswrapper correctly
+<DrIP> humm
+<DrIP> let me try that again
+<DrIP> sudobash: ok
+<DrIP> this is weird
+<DrIP> ndiswrapper -l
+<DrIP> lsipnds : driver installed, device (17FE:2120) Present
+<DrIP> iwconfig
+<DrIP> lo    no wireless extentions, eth1  no wireless extentions
+<DrIP> did i miss something?
+<sudobash> man iwconfig
+<sudobash> you might need to restart
+<sudobash> looks like driver is working with ndis
+<sudobash> so restart and see if you can man iwconfig to figure out how to control the card
+<DrIP> ok
+<DrIP> eth0 is not a device though... my wired went to eth1
+<DrIP> what is the chipset for the linksys WMP11v4?
+<DrIP> ahhh
+<DrIP> InProComm
+<sudobash> try ra0
+<DrIP> ra0?
+<sudobash> ummm.... not sure broadcom something or other
+<DrIP> InProComm is appearently unsupported?
+<sudobash> lo eth0 eth1 ra0.... ra0 is a common wireless dev
+<sudobash> DrIP research into what Back|Track uses for your wifi card
+<sudobash> BackTrack 3
+<DrIP> sure
+<DrIP> what /is/ BackTrack 3?
+<DrIP> ahh
+<sudobash> a distro
+<sudobash> based on slackware
+<DrIP> they don't support :( i've tried it
+<sudobash> have you tried Mad WIFI
+<sudobash> ?
+<DrIP> no
+<dezrik> Hey guys is there a way to remove nm-applet and use another net manager?
+<DrIP> bbl
+<DrIP> katate
+<DrIP> *karate
+<ericmoritz\0> howdy
+<ericmoritz\0> If I wanted to mount a device from the command line as a normal user is there some kind of magic command to do that in xfce?
+<ancientpaint> hey all, i have a problem.  I created a ISO image cd of Xubuntu.  When I boot from cd, It displays a menu. I select install. The Xubuntu logo and load bar apprears. It load for sometime then my screen turns all kinds of colors...anyone know how to fix this?
+<ericmoritz\0> anyone know?
+<DrIP> bbl
+<slow-motion> n8

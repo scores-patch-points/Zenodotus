@@ -1,0 +1,259 @@
+---
+title: Impacts of Hybrid Parallelism and Vectorization on the Performance of Newton-Krylov Methods in Computational Aerodynamics
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 20205002914
+source_url: https://ntrs.nasa.gov/citations/20205002914
+rights: Public-use permitted (NTRS copyright determination PUBLIC_USE_PERMITTED); no third-party material
+distribution: PUBLIC
+sti_type: CONFERENCE_PAPER
+center: Langley Research Center
+publication_date: 2020-12-07
+retrieved: 2026-09-22
+sha256: 6eccafd99984d0220c88c41a8966f960d86c5e87aa7f58cefadacb66acad27f5
+pages: 5
+words: 2152
+cv_look_pages: 0
+---
+
+     Impacts of Hybrid Parallelism and Vectorization on the
+    Performance of Newton-Krylov Methods in Computational
+                        Aerodynamics
+
+                  Stephen L. Wood,∗ , W. Kyle Anderson† , Kevin E. Jacobson‡ , and William T. Jones§
+                              NASA Langley Research Center, Hampton, VA 23681, USA
+
+             Finding the numerical solution of moderate and high-fidelity aerodynamics problems on
+         modern computer architectures involves, 1) decomposing the domain into smaller regions of
+         nearly equal size, and 2) allocating computational resources for calculations on each domain and
+         communication between domains. Modern computer clusters are composed from hierarchies
+         of processing, memory, and communication resources with varying capabilities and latencies.
+         This paper focuses on the combination of domain decomposition provided by ParMETIS [1]
+         and Newton-Krylov Methods [2–5] for the solution of Computational Aerodynamics problems
+         of interest to NASA. Herein, trade-offs encountered when mapping aerodynamics problems to
+         modern computer architectures are explored through examples and discussions of trade-offs in
+         parallelism from MPI [6], OpenMP [7], and vectorization as partition sizes and computational
+         resources are varied. An example of the impact that domain decomposition and MPI+OpenMP
+         resource allocation can have on an adjoint calculation is presented in this abstract. The full
+         paper will include more detailed examples, discussions of difficulties and potential methods to
+         overcome them, and topics identified for future study.
+
+
+                                                        I. Introduction
+    Domain decomposition (DD) was proposed to solve partial differential equations (PDEs) by Schwarz [8] more than
+one hundred years ago. Essentially, the DD approach splits a large complicated problem into smaller, simpler sub-
+problems, solves and recombines their solutions to provide a global solution [9]. As modern computer architectures have
+developed capabilities for concurrent calculations, DD methods have steadily flourished as an important computational
+approach to simulate fluid flows [10, 11]. This paper will focus on the combination of domain decomposition provided
+by ParMETIS [1] and Newton-Krylov Methods [2–5] for the solution of Computational Aerodynamics problems of
+interest to NASA.
+    Forming and solving linear subproblems within Newton-Krylov methods can account for more than 50% of wall-time
+to solution when utilizing traditional domain decomposition and only MPI for parallelization [5]. Existing linear algebra
+packages and vendor libraries strive to be general purpose and are not focused on the antisymmetric sparse linear
+systems that arise in Computational Fluid Dynamics, Aeroelasticity, or Aeroacoustics. SPARSKIT [12], MAGMA
+[13, 14], PETSc [15], MKL 2019 [16], and CUDA10.2.89 [17], are well regarded numerical packages and their sparse
+linear algebra capabilities are widely used in scientific applications. However, these packages each target one or two
+computer architectures, do not have compatible software interfaces, and do not provide algorithms capable of hybrid
+parallelism. The Sparse Linear Algebra Toolkit [5] (SLAT) has been developed with hybrid-parallel algorithms to meet
+the needs of Computational Aerodynamics software developers their end users. In this study, the algorithms within
+SLAT are used to explore the trade-offs of hybrid parallelism and vectorization on modern computational architectures.
+
+
+                                                  II. Numerical Methods
+
+A. FUN3D+SFE
+     FUN3D+SFE is a continuous finite-element discretization within FUN3D [3, 18]. The discretization is a stabilized
+finite-element approach based on the Streamlined Upwind Petrov-Galerkin (SUPG) scheme [19, 20]. For turbulent flows,
+   ∗ Research Scientist, Computational AeroSciences Branch, MS 128, AIAA Member, stephen.l.wood@nasa.gov.
+   † Senior Research Scientist, Computational AeroSciences Branch, MS 128, AIAA Associate Fellow.
+   ‡ Research Aerospace Engineer, Aeroelasticity Branch, MS 340, AIAA Member.
+   § Computer Engineer, Computational AeroSciences Branch, MS 128, AIAA Associate Fellow.
+
+
+
+
+                                                                   1
+the SA-neg-QCR2000 [21, 22] is tightly coupled with the mean flow equations, yielding a nonlinear algebraic system
+of equations with six variables at each grid point. A linear nodal basis is used in this study, which is designed to be
+second-order accurate in space. The current implementation includes capabilities for computing on tetrahedra, hexahedra,
+pyramids, and prisms. FUN3D+SFE is used to perform forward CFD analysis as well as adjoint analysis [23, 24], which
+is required for goal-oriented adaptation. Forward CFD analysis and adjoint analysis use real-values in double (64 bit)
+precision, to represent the domain, initial conditions, and solution [3].
+     To advance the solution toward a steady state, the density, velocities, temperature, and the turbulence working
+variable are updated in a tightly-coupled Newton-Krylov-type solver described in Ref. [3]. Here, an initial update to
+the flow variables is computed using a locally varying pseudotime-step parameter that is multiplied by the current
+Courant–Friedrichs–Lewy (CFL) number, which is adjusted during the iterative process. During each iteration of the
+nonlinear solver, SLAT is used to solve the linear system using a Generalized Minimal Residual (GMRES) method
+right-preconditioned with an Incomplete Lower-Upper approximate solve [25]. The steady-state RANS solutions in this
+study have been obtained by reducing the mean flow and turbulence-model residuals at least nine orders of magnitude,
+thereby ensuring that the magnitude of all residual is below 5 × 10−10 .
+     The adjoint solution, λ, for a particular output functional I, is obtained by solving the linear system of equations
+                                                             T                   T
+                                                       ∂Rh                  ∂I
+                                                                       
+                                                                  λ=−                                                      (1)
+                                                       ∂qh                  ∂qh
+
+where qh is the set of solution state variables, and Rh is the discrete residual of the partial differential equations under
+consideration. The linear solver and preconditioner operations are stress-tested by the numerical stiffness of adjoint
+systems. These adjoint systems are exceptionally stiff due to an effectively infinite CFL number, which negates the boost
+to diagonal dominance provided by the pseudotime term.
+
+
+                                                         III. Results
+     For goal-oriented adaptation of the NASA Juncture Flow (JF) model [26–28], the approach reported by Loseille et
+al. [29] is utilized [30]. This goal-oriented metric only targets the inviscid contributions of estimated error, but has
+been used successfully on viscous cases [31]. The inviscid goal-oriented approach involves the optimization of an a
+priori error estimate of output functionals for the Euler equations in the continuous grid framework using calculus of
+variations, resulting in an analytical formulation for the metric field. The resulting metric field essentially consists of the
+sum of Hessians of the Euler fluxes, weighted by the gradient components of the adjoint fields [24]. The adjoint fields
+used in the present work were calculated for the drag coefficient output functional as described in Ref. [5]. The resulting
+adjoint linear systems were converged at least 13 orders of magnitude to produce costate variable fields used in forming
+an Euler adaptation metric.
+     Figure 1a shows the relative residual convergence of the drag adjoint linear system for the JF shown in Fig. 1b. Two
+decompositions of the 1,720,689 grid point domain over 400 Intel Skylake [32] CPU cores (arranged in 10 compute
+nodes) are shown, 1) 400 MPI partitions, and 2) 20 MPI partitions each using 20 OpenMP threads. The traditional
+approach of assigning one MPI partition per CPU core does not facilitate significant reduction in the residual of the
+adjoint system. The benefit of decomposing the domain into fewer, larger partitions, using the same total number of
+CPU cores is clear. Additional details of the Incomplete LU preconditioners and matrix orderings used to study this
+case will be presented in the full paper.
+
+
+                                                        IV. Summary
+    The decisions made early in a numerical solution process, to decompose domains and allocate computational
+resources, have significant impact on the cost and accuracy of resulting solutions. The Stabilized Finite Element library
+within FUN3D and the Sparse Linear Algebra Toolkit are used to examine trade-offs between domain decomposition
+and resource allocation approaches. The full paper will include examples and discussion of trade-offs in parallelism
+from MPI, OpenMP, and vectorization as partition sizes and computational resources are varied.
+
+
+
+
+                                                                   2
+              (a) Relative residual convergence                    (b) Continuity costate isosurface over CP colored surface and
+                                                                   symmetry plane
+
+  Fig. 1    Convergence and visualization of adjoint linear system for the drag cost function of the JF model.
+
+
+                                                   Acknowledgments
+   This research was sponsored by the NASA Revolutionary Computational Aerosciences (RCA) Transformational Tools
+and Technologies (TTT) Project of the Transformative Aeronautics Concepts Program under the Aeronautics Research
+Mission Directorate. This work was partially supported by the NASA High Performance Computing Incubator (HPCI).
+
+
+                                                         References
+ [1] Karypis, G., and Kumar, V., “MeTis: Unstructured Graph Partitioning and Sparse Matrix Ordering System, Version 4.0,”
+     http://www.cs.umn.edu/~metis, 2009.
+
+ [2] Saad, Y., “Preconditioned Krylov subspace methods for CFD applications,” Solution Techniques for Large-Scale CFD Problems,
+     1995, pp. 139–158.
+
+ [3] Anderson, W. K., Newman, J. C., and Karman, S. L., “Stabilized Finite Elements in FUN3D,” Journal of Aircraft, Vol. 55,
+     No. 2, 2018, pp. 696–714. doi:10.2514/1.C034482.
+
+ [4] Zhang, J., “Preconditioned Krylov Subspace Methods for Solving Nonsymmetric Matrices from CFD Applications,” Computer
+     methods in applied mechanics and engineering, Vol. 189, No. 3, 2000, pp. 825–840.
+
+ [5] Wood, S. L., Jacobson, K., Jones, W. T., and Anderson, W. K., “Sparse Linear Algebra Toolkit for Computational Aerodynamics,”
+     AIAA Scitech Forum, 2020. doi:10.2514/6.2020-0317, URL https://arc.aiaa.org/doi/abs/10.2514/6.2020-0317.
+
+ [6] “MPI Documents,” , Jun 2015. URL https://www.mpi-forum.org/docs/.
+
+ [7] “OpenMP Application Programming Interface,” , 2020. URL https://www.openmp.org/wp-content/uploads/openmp-
+     4.5.pdf.
+
+ [8] Schwarz, H., “Ueber einige Abbildungsaufgaben.” Journal für die reine und angewandte Mathematik, Vol. 70, 1869, pp.
+     105–120. URL http://eudml.org/doc/148076.
+
+ [9] Tang, H. S., Haynes, R. D., and Houzeaux, G., “A Review of Domain Decomposition Methods for Simulation of Fluid Flows:
+     Concepts, Algorithms, and Applications,” Archives of Computational Methods in Engineering, 2020.
+
+[10] Shang, Z., “Impact of Mesh Partitioning Methods in CFD for Large Scale Parallel Computing,” Computers & Fluids, Vol. 103,
+     2014, pp. 1 – 5. doi:https://doi.org/10.1016/j.compfluid.2014.07.016, URL http://www.sciencedirect.com/science/
+     article/pii/S0045793014003016.
+
+
+                                                               3
+[11] Kogge, P., and Shalf, J., “Exascale Computing Trends: Adjusting to the "New Normal" for Computer Architecture,” Computing
+     in Science & Engineering, Vol. 15, No. 6, 2013, pp. 16–26.
+
+[12] “SPARKSIT,” , Nov 2019. URL https://www-users.cs.umn.edu/~saad/software/SPARSKIT/.
+
+[13] Anzt, H., Sawyer, W., Tomov, S., Luszczek, P., Yamazaki, I., and Dongarra, J., “Optimizing Krylov Subspace Solvers on
+     Graphics Processing Units,” Fourth International Workshop on Accelerators and Hybrid Exascale Systems (AsHES), IPDPS
+     2014, IEEE, IEEE, Phoenix, AZ, 2014.
+
+[14] Yamazaki, I., Anzt, H., Tomov, S., Hoemmen, M., and Dongarra, J., “Improving the performance of CA-GMRES on multicores
+     with multiple GPUs,” IPDPS 2014, IEEE, Phoenix, AZ, 2014.
+
+[15] Balay, S., Abhyankar, S., Adams, M. F., Brown, J., Brune, P., Buschelman, K., Dalcin, L., Dener, A., Eijkhout, V., Gropp,
+     W. D., Karpeyev, D., Kaushik, D., Knepley, M. G., May, D. A., McInnes, L. C., Mills, R. T., Munson, T., Rupp, K., Sanan, P.,
+     Smith, B. F., Zampini, S., Zhang, H., and Zhang, H., “PETSc Web page,” https://www.mcs.anl.gov/petsc, 2019. URL
+     https://www.mcs.anl.gov/petsc.
+
+[16] Intel®, “Developer Reference for Intel® Math Kernel Library 2019 - C,” , Nov 2019. URL https://software.intel.com/
+     en-us/mkl-developer-reference-c.
+
+[17] “CUDA Toolkit Documentation v10.2.89,” , Nov 2019. URL https://docs.nvidia.com/cuda/index.html#.
+
+[18] “FUN3D Fully Unstructured Navier-Stokes,” , Nov 2019. URL https://fun3d.larc.nasa.gov/.
+
+[19] Brooks, A. N., and Hughes, T. J. R., “Streamline Upwind/Petrov-Galerkin Formulation for Convection Dominated Flows with
+     Particular Emphasis on Incompressible Navier-Stokes Equations,” Computer Methods in Applied Mechanics and Engineering,
+     Vol. 32, No. 1–3, 1982, pp. 199–259. doi:10.1016/0045-7825(82)90071-8.
+
+[20] Shakib, F., Hughes, T. J. R., and Johan, Z., “A New Finite-Element Formulation for Computational Fluid Dynamics: X. The
+     Compressible Euler and Navier-Stokes Equations,” Computer Methods in Applied Mechanics and Engineering, Vol. 89, No.
+     1–3, 1991, pp. 141–219. doi:10.1016/0045-7825(91)90041-4.
+
+[21] Allmaras, S. R., Johnson, F. T., and Spalart, P. R., “Modifications and Clarifications for the Implementation of the Spalart-
+     Allmaras Turbulence Model,” Seventh International Conference on Computational Fluid Dynamics (ICCFD7), 2012.
+
+[22] Spalart, P., “Strategies for Turbulence Modeling and Simulations,” International Journal of Heat and Fluid Flow, Vol. 21,
+     No. 3, 2000, pp. 252 – 263. doi:https://doi.org/10.1016/S0142-727X(00)00007-2, URL http://www.sciencedirect.com/
+     science/article/pii/S0142727X00000072.
+
+[23] Balan, A., Park, M. A., and Anderson, W. K., “Adjoint-based Anisotropic Mesh Adaptation for a Stabilized Finite-Element
+     Flow Solver,” AIAA Paper 2019–2949, 2019.
+
+[24] Balan, A., Park, M. A., Wood, S., and Anderson, W. K., “Verification of Anisotropic Mesh Adaptation for Complex Aerospace
+     Applications,” AIAA Scitech Forum, 2020. doi:10.2514/6.2020-0675, URL https://arc.aiaa.org/doi/abs/10.2514/6.
+     2020-0675.
+
+[25] Saad, Y., Iterative Methods for Sparse Linear Systems, 2nd Ed., Society for Industrial and Applied Mathematics, Philadelphia,
+     PA, USA, 2003.
+
+[26] Rumsey, C. L., “The NASA Juncture Flow Test as a Model for Effective CFD/Experimental Collaboration,” Applied Aerodynamics
+     Conference, 2018. doi:10.2514/6.2018-3319, URL https://arc.aiaa.org/doi/abs/10.2514/6.2018-3319.
+
+[27] Kegerise, M. A., Neuhart, D., Hannon, J., and Rumsey, C. L., “An Experimental Investigation of a Wing-Fuselage Junction
+     Model in the NASA Langley 14- by 22-Foot Subsonic Wind Tunnel,” AIAA Scitech Forum, 2019. doi:10.2514/6.2019-0077,
+     URL https://arc.aiaa.org/doi/abs/10.2514/6.2019-0077.
+
+[28] Kegerise, M. A., and Neuhart, D. H., “An Experimental Investigation of a Wing-Fuselage Junction Model in the NASA Langley
+     14- by 22-Foot Subsonic Tunnel,” Technical Memorandum 2019-27403, 2019-6 2019.
+
+[29] Loseille, A., Dervieux, A., and Alauzet, F., “Fully Anisotropic Goal-Oriented Mesh Adaptation for 3D Steady Euler Equations,”
+     Journal of Computational Physics, Vol. 229, No. 8, 2010, pp. 2866 – 2897. doi:https://doi.org/10.1016/j.jcp.2009.12.021, URL
+     http://www.sciencedirect.com/science/article/pii/S0021999109007001.
+
+
+
+
+                                                                4
+[30] Wood, S. L., Anderson, W. K., Park, M. A., Balan, A., Karman, S., and Jacobson, K. E., “Reynolds-Averaged Navier-Stokes
+     Computations of the NASA Juncture Flow Model Using Expert-Crafted and Adapted Grids,” AIAA Scitech Forum, 2020-2751
+     in Press. doi:10.2514/6.2020-2751, URL https://arc.aiaa.org/doi/abs/10.2514/6.2020-2751.
+
+[31] Belme, A., Alauzet, F., and Dervieux, A., “An a priori Anisotropic Goal-Oriented Error Estimate for Viscous Com-
+     pressible Flow and Application to Mesh Adaptation,” Journal of Computational Physics, Vol. 376, 2019, pp. 1051–1088.
+     doi:10.1016/j.jcp.2018.08.048, URL https://doi.org/10.1016/j.jcp.2018.08.048.
+
+[32] “Intel® Xeon® Processor E3-1240 v6,” , 2017. URL https://www.intel.com/content/www/us/en/products/
+     processors/xeon/e3-processors/e3-1240-v6.html.
+
+
+
+
+                                                             5
+

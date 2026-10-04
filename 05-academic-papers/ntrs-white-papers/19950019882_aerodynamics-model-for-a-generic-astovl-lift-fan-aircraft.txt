@@ -1,0 +1,3428 @@
+---
+title: Aerodynamics model for a generic ASTOVL lift-fan aircraft
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19950019882
+source_url: https://ntrs.nasa.gov/citations/19950019882
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-26
+retrieved: 2026-09-22
+sha256: a96b598af803a18d81fceab40da0c0ef6fc792fa0ae30294621451fc1c41f9ee
+pages: 64
+words: 7074
+cv_look_pages: 6
+---
+
+NASA Technical       Memorandum    110347
+
+
+
+
+Aerodynamics Model for a
+Generic ASTOVL Lift-Fan
+Aircraft
+Lourdes G. Birckelbaw, Walter E. McNeill,   and Douglas A. Wardwell,   Ames Research Center,
+Moffett   Field, California
+
+
+
+
+April 1995
+
+
+
+
+National Aeronautics and
+Space Administration
+Ames Research Center
+Moffett Field, California 94035-1000
+Nomenclature                                                                   side force due to roll rate derivative,
+                                                                  Cyp
+                                                                                    I/rad
+               individual    jet exit area, ft 2
+                                                                               side force due to rudder deflection
+                                                                  Cy&ud
+Aj,total       total jet exit area, ft 2                                             derivative,       1/rad
+b              wing span, ft                                                   total equivalent        circular      jet diameter,     ft:
+                                                                  de
+               mean aerodynamic          chord, ft                                   d e = 2._Aj,tota          I/n
+
+CD             drag coefficient                                   D            drag, lb
+CGFS           fuselage     station center of gravity,      in.
+                                                                  FY           side force, Ib
+CGWL           waterline     center of gravity,      in.
+                                                                  GE           ground effect
+CI             rolling moment        (RM) coefficient
+                                                                  h            aircraft height from the bottom                of the
+               rolling moment        due to sideslip                                 fuselage, ft
+CI[_
+                     derivative,     l/rad
+                                                                  h/d e        nondimensional            aircraft height
+
+CIp            rolling moment due to roll rate                    IGE          in-ground      effect
+                     derivative, 1/rad
+                                                                               ground effect washout               factor
+C1r            rolling moment        due to yaw rate
+                     derivative,     1/rad                        L            lift, Ib
+
+               rolling moment due to rudder deflection             LF          lift fan
+Cl&ud
+                     derivative, 1/rad
+                                                                   LN          lift nozzle
+CL             lift coefficient
+                                                                   MRC         moment        reference     center
+               lift coefficient due to pitch rate
+Crq                                                                PM          pitching      moment,       ft-lb
+                     derivative, l/rad
+                                                                   q           pitch rate, rad/sec
+CL a           lift coefficient due to angle-of-attack
+                     rate derivative, l/rad                                    dynamic       pressure,     lb/ft 2
+
+Cm             pitching     moment     (PM) coefficient            RM          rolling moment,           ft-lb
+
+               pitching moment due to pitch rate                   RN          rear nozzle,      same as lift nozzle
+Cmq
+                     derivative, I/rad
+                                                                   S           wing area, ft 2
+ Cm&           pitching moment due to angle-of-attack              T           total thrust, Ib: T = TLF + TIN
+                     rate derivative, I/rad
+                                                                   TLF         thrust of the lift fan, lb
+Cn             yawing       moment    (YM) coefficient
+                                                                   TIN         thrust of the lift nozzles,            Ib
+               yawing moment due to sideslip
+Cn[_
+                    derivative, l/rad                              Ve          equivalent      jet velocity         ratio:
+
+               yawing moment due to roll rate                                         Ve.j=      q_/qj             =_/2Ajq_/Tj
+Cnp
+                    derivative, I/rad
+                                                                   XMRC        X-axis moment             arm for varying         CGFS,
+Cn r           yawing moment due to yaw rate                                        in.
+                    derivative, l/rad
+                                                                   YM          yawing moment,             ft-lb
+Cnsnd           yawing moment due to rudder
+                     deflection derivative, I/rad                  ZMRC        Z-axis moment arm for varying
+                                                                                    CGWL, in.
+ Cy             side force (FY) coefficient
+                                                                   ot          angle of attack, deg
+                side force due to sideslip        derivative,
+ Cy[_
+                     1/rad                                                      sideslip angle, rad
+
+
+
+
+                                                                                                                                             iii
+
+                                                                  PRECEDING   PAGE        BLANK          NOT         FILMED
+5all      aileron deflection      angle, deg              _C DIGE    unpowered in-ground        effect drag
+                                                                          increment
+_canard   canard deflection       angle, deg
+                                                          ACL_--,E   unpowered in-ground        effect lift
+8flap     flap deflection       angle, deg                               increment
+_rud      rudder   deflection     angle, rad
+                                                          ACmlG E    unpowered in-ground effect pitching
+          equivalent   jet angle, deg:                                   moment increment
+6_
+                _EQ = _'(_LF) + (I - _')_LN               AL/T       nondimensionalized     jet-induced       lift
+                                                                          increment
+          lift-fan nozzle deflection         angle, deg
+                                                                     thrust split: X,= TLFfl"
+          lift nozzle deflection      angle, deg
+
+
+
+
+ iv
+               Aerodynamics           Model      for     a Generic          ASTOVL           Lift-Fan        Aircraft
+
+
+
+                  LOURDES G. B IRCKELBAW,         WALTER E. MCNEILL,                 AND DOUGLAS A. WARDWELL
+
+                                                       Ames Research      Center
+
+
+
+
+Summary                                                              Description         of the ASTOVL           Lift-Fan
+                                                                     Aircraft
+This report describes the aerodynamics model used in a
+simulation model of an advanced short takeoff and                    The representative    ASTOVL lift-fan aircraft is a single-
+vertical landing lift-fan fighter aircraft. The simulation           place, single-engine   fighter/attack    aircraft, featuring a
+model was developed for use in piloted evaluations of                wing-canard    arrangement    with twin vertical tails, as
+transition and hover flight regimes, so that only low speed          shown in figure I. Geometric characteristics         of the
+(M - 0.2) aerodynamics are included in the mathematical              configuration   are summarized      in table 1; mass properties
+model. The aerodynamics model includes both the power-               are specified in table 2.
+off aerodynamic forces and moments and the propulsion
+                                                                     The propulsion system concept is presented in figure 2.
+system induced aerodynamic effects.
+                                                                     It consists of a remote lift fan coupled to a lift cruise
+                                                                     turbofan engine to permit continuous transfer of energy
+Introduction                                                         from the lift cruise engine to the lift fan. The lift cruise
+                                                                     engine exhaust is either ducted aft to a thrust deflecting
+NASA Ames Research Center is participating in
+                                                                     cruise nozzle in conventional     flight, or diverted to two
+technology development for advanced short takeoff and
+                                                                     deflecting lift nozzles in vertical flight. Throughout
+vertical landing (ASTOVL) fighter aircraft as a member
+                                                                     transition flow can be continuously       transferred between
+of the Joint Advanced Strike Technology (JAST) and                   the cruise and lift nozzles. Lift-fan and lift-nozzle thrust
+formerly the Advanced Research Projects Agency
+                                                                       can be deflected from 45 to 100 deg below the aircraft
+(ARPA) ASTOVL program. Integration of flight and                       waterline. The cruise nozzle can be deflected +20 deg
+propulsion controls is one of the critical technologies
+                                                                       vertically.
+being pursued in that program. NASA's role in this
+technical area is to participate in developing design                  The basic flight control system consists of the canard,
+guidelines for integrated flight/propulsion controls,                  ailerons, and twin rudders for aerodynamic   effectors
+support technology development for ASTOVL demon-                       during forward flight. For powered-lift       operation, control
+strator aircraft, and provide consultation on integrated               is provided by differential    thrust transfer between the lift
+control design to the program contractors. Specifically,               fan and lift nozzles, deflection of lift-fan and lift-nozzle
+NASA will carry out design guideline analyses for the                  thrust, and deflection of cruise-nozzle      thrust. Pitch control
+control system and conduct piloted simulations on the                  is achieved by a combination    of canard deflection, thrust
+Ames Research Center Vertical Motion Simulator (VMS)                   transfer between the lift fan and lift nozzles, and deflec-
+to evaluate design guidelines and to assess the merits of              tion of the cruise nozzle. Roll control is produced by the
+contending   design approaches.                                        ailerons and differential thrust transfer between the lift
+                                                                       nozzles. Yaw control is derived from the combination       of
+The initial effort in this program was to develop a
+                                                                       rudder deflection, differential lift-nozzle deflection, and
+mathematical model for simulation of a representative
+                                                                       lateral lift-fan thrust deflection. As an option, reaction
+ASTOVL aircraft concept. This simulation model was
+                                                                       control, powered by the engine compressor bleed air, can
+used in an experiment     on the VMS to gain initial
+                                                                       provide additional control moments through nozzles
+experience with control system behavior and flying                     located in the wing extremities and in the tail. Longi-
+qualities for this aircraft concept. A description of the              tudinal acceleration    is achieved through thrust transfer
+representative ASTOVL aircraft's integrated flight/                    between the lift fan, lift nozzles, and cruise nozzles and
+propulsion control system, head-up display and the                     by deflection of the lift-fan and lift-nozzle thrust.
+propulsion system performance and dynamic response is
+provided in reference I. This report describes the repre-
+sentative aircraft's subsonic, power-off aerodynamics      and
+jet-induced  aerodynamics     in hover and forward flight,
+including ground effects.
+Aerodynamics         Model                                        The unpowered in-ground effects, ACLtGE, ACDIGE, and
+                                                                  ACmlGE, were calculated by Digital DATCOM as
+The aerodynamics     model includes both the power-off
+                                                                  functions of angle of attack for a height of 6 ft at the wing
+aerodynamic    forces and moments and the propulsion
+                                                                  25 percent mean aerodynamic chord. For this purpose, the
+system induced aerodynamic        effects. The simulation
+                                                                  configuration consisted of only the wing and regular
+experiment   focused .on transition and hover flight              (unslimmed) body.
+regimes, so that only low-speed (M - 0.2) aerodynamics
+are included in the mathematical      model.                      The longitudinal   aerodynamics    terms are discussed       next
+                                                                  and are followed   by the lateral directional terms.
+The power-off aerodynamics     data were generated using
+the U.S. Air Force Stability and Control Digital
+DATCOM program (ref. 2) and a NASA Ames in-house                  Longitudinal    Aerodynamics
+graphics program called VORVIEW          (no reference            Lift- The lift equation for the lift-fan model    is shown     in
+available) which allows the user to easily analyze
+                                                                  equation !. The first term in this equation represents the
+arbitrary conceptual aircraft configurations    using the         power-off lift, and the second term represents the lift
+VORLAX program (which is based on the vortex lattice              increment due to jet-induced   effects.
+method of ref. 3). All the power-off coefficients and
+derivatives were calculated in the stability axes. The jet-
+                                                                                      L = CL_S       +   aLT                          (i)
+induced data were generated using the prediction methods                                                 T
+of references 4-8. For the data shown in this report, the
+                                                                  The equation for CL is shown in equation 2. Lift curves
+moment reference for Digital DATCOM          was 30.889 ft
+                                                                  for CL(0t, 8flap) and C L(Ct, 8canard) are shown in
+aft of the nose, the moment reference for VORVIEW/
+                                                                  figures 3 and 4, respectively. The curves shown in
+VORLAX was 31.204 ft aft of the nose (-10 percent of
+                                                                  figures 3 and 4 were generated using the vortex-lattice
+the mean aerodynamic      chord), and the moment reference
+                                                                  program previously mentioned. Digital DATCOM was
+for the jet-induced  effects was 31. I I ft aft of the nose. In
+the final simulation model, these data were all transferred       used to predict the pitch rate derivative, CLq= 0.746/rad,
+to a moment reference center of 31.11 ft.                         and the CL¢i (0t) curve, shown in figure 5. Digital
+                                                                  DATCOM was also used to predict the lift coefficient
+Due to certain Digital DATCOM       limitations, some             increment due to the influence of the ground plane,
+derivatives required special treatment because of the             ACLIGE(O0, shown in figure 6, as well as the ground
+canard configuration.     For the 6t derivatives,  CL_ t and      effect washout factor, KGE, shown in figure 7.
+ Cmc t , DATCOM methods do not exist for a ratio of
+forward-surface     span to aft-surface span less than 1.5. To            CL = CL(IX'Sflap)   + ACLScanard    + CLq     21_n
+satisfy this requirement,    the aft surface was truncated to a
+                                                                                                                                      (2)
+span just less than two-thirds that of the canard. This was
+considered    a better choice than assuming the derivatives                      +C L. (Or) O_C +                     (Or)
+                                                                                      ct   2U B   KGEACLIGE
+were zero.
+                                                                  where
+Also, the digital DATCOM program had no provision for
+directly calculating the effects of deflected rudders. The
+                                                                              ACLficanard = CL(t_,Scanard)
+rudder effectiveness   derivatives, Cyril,   C Is_, and                                                                          (2a)
+Cn8 _ , were calculated by replacing the wing and canard                                      - C L (ft., 5canard = 0 °)
+with an aft horizontal surface with exposed geometry
+identical to that of the vertical tails and attached to a         The expression for the jet-induced   lift increment, Alfr,
+radically slimmed body. At zero angle of attack, the              is presented in equation 3. Note that the lift fan and lift
+trailing-edge  surfaces were deflected differentially, as         nozzle terms use their respective nozzle angles, 8, and
+ailerons would be, and the change in rolling moment               velocity ratios, V e. However, the fountain term uses the
+coefficient was calculated. The same surfaces were                aircraft's equivalent nozzle angle and velocity ratio.
+deflected symmetrically     to generate changes in the lift
+coefficient and the pitching moment coefficient, which
+were converted to side force and yawing moment
+coefficients, respectively.   All coefficients were calculated
+using the normal   wing (aft lifting   surface)   reference
+geometry.
+
+
+
+
+2
+                                                                                                                       The      equation       for C m is shown              in equation             7. Pitching
+                    --          =                      ,_LF, Ve,LF                                                     moment        curves       for Cm (or, 8flap)              and Cm (or, 8canard)                           are
+                         T                                                    :ALF                                     shown       in figures        23 and 24, respectively.                      The    curves            of
+                                                                                                                       figure      23 were       generated          using     the vortex-lattice                  program.
+                                                                                                                       The      curves      shown       in figure      24 were          generated           using
+                                                                                                                       Digital      DATCOM.              DATCOM               was     also     used      to predict
+
+                                                                                                                       the pitch         rate derivative,         Cmq       = -l.589/rad,             the curve             for
+                                                                                                                       Cm6 c (_),          shown in figure 25, and the pitching    moment
+                                                                                                                       coefficient          increment due to the influence   of the ground
+
+                                                                                                                       plane,      ACmlGE(ff.),          shown        in figure       26.
+
+Figures       8-11           show         the jet-induced             lift increment            due to                                                                                                            qE
+the lift fan for nozzle                      angles      of 90, 75, 60, and 45 deg,                                              C m = Cm(Ot, Sflap)+                 ACm_canar             d +Cmq               2"_--B
+respectively.                Figures         12-15       show      the jet-induced               lift                                                                                                                             (7)
+increment           due to the lift nozzles                      for angles          of 90, 75, 60,                                                             6t_
+and 45 deg,              respectively.             Figures        16--19       show        the jet-                                         + C ma (°Q 2-'_B              + KGEACmlGE                    (Oc)
+induced        lift increment                 due to the fountain                   for equivalent
+                                                                                                                       where
+(lift fan     and lift nozzle,                   8EQ)      angles        of 90, 75, 60, and
+45 deg,       respectively.
+                                                                                                                                          ACm&zanard            = C m (_, 8canard)
+Drag-         The        drag       equation          for the lift-fan          model          is shown                                                                                                                          (7a)
+
+in equation          4. This             equation        accounts            only    for the power-                                                                 - Cm(O_, 8canard                  = 0 °)
+off drag.
+                                                                                                                       The      expression        for the jet-induced                pitching         moment
+                                              D =        CD     _ S                                              (4)   increment,           AF'M/Tde,         is presented           in equation           8.
+
+The      equation            for CD         is shown           in equation          5. Drag       curves
+for C D (_,
+figures
+                    8flap)
+              20 and 21,
+                                        and C D (_,
+                                         respectively.
+                                                          8canard)
+                                                                The
+                                                                             are shown
+                                                                         curves       shown
+                                                                                                 in
+                                                                                                      in
+                                                                                                                                           •
+                                                                                                                                          APM           VAPM(         h
+                                                                                                                                                                                      VeI . F   1]
+
+
+figures       20 and 21 were                     generated         using       the vortex-lattice
+program.         Digital            DATCOM               was      used       to predict        the drag
+coefficient          increment               due to the influence                   of the ground                                                         LTde        _-de                            :JLN
+plane,      ACDIGE(OQ,                   shown        in figure       22.
+
+                         C D = CD(a,                  Sflap)    + ACD_canar            d                                                                +/_/--,_EQ,
+                                                                                                                                                           FAPM(     h                   VEQ )]
+                                                                                                                 (5)                                       L TOe k, de                                   Fount
+
+                                         + KGEACDIGE                  (or)
+                                                                                                                       Figures       27-30        show      the jet-induced             pitching          moment
+
+where                                                                                                                  increment           due to the lift fan for nozzle                    angles        of 90, 75,
+                                                                                                                       60, and 45 deg,              respectively.           Figures         31-34        show        the
+                    ACD&zanard                   = CD(Ot,8canard)                                                      jet-induced           pitching       moment           increment         due to the lift
+                                                                                                             (5a)      nozzles       for angles         of 90, 75, 60, and 45 deg,                       respectively.
+                                                      - CD(Ot,        8canard        = 0 °)                            Figures       35-38        show      the jet-induced             pitching          moment
+                                                                                                                       increment           due to the fountain               for equivalent              (lift    fan
+ Pitching        moment-                   The    pitching        moment            equation            for the
+                                                                                                                       and lift nozzle,           5130)     angles        of 90, 75,         60, and 45 deg,
+ lift-fan     model            is shown          in equation           6. The        first term            in the
+                                                                                                                       respectively.
+ equation       represents                 the power-off            pitching         moment,               the
+ second       term           represents          the jet-induced              pitching         moment
+ increment,          and the remaining                     terms         account       for center-of-                  Lateral           Directional        Aerodynamics
+
+ gravity      (e.g.)          travel.
+                                                                                                                       The Digital           DATCOM             program           was       used     to predict             most
+                                                                                                                       of the lateral           directional       stability         derivatives.           The       static
+                     PM             =     Cm_SE            +APMTde
+                                                              Td e                                                      derivatives,           Cyfl, Cii _, CnB, were obtained                       for the complete
+                                                                                                                        aircraft     configu'ratioh           by a'dding the individual                      airframe
+                                           + (Lcosot+            Dsino0XMR                 C                     (6)    components:             body,     wing,       canard,        and vertical           tails,      a
+                                                                                                                        procedure           which       assumed        the absence            of interference.
+                                           + (Lsin       c_-    D coso0ZMR               C
+Side force-- The side force equation is shown in
+equation 9, and the expansion of the power-off side force
+                                                                                Td e =      _           _-'_,    LF,   e,LF [3
+coefficient is presented in equation 10.                                                   L     e_ \     e                ] JLF
+
+              FY = Cy _ S                                       (9)
+                                                                                           +
+                                                                                                                                          (13)
+              Cy = Cyl3 (_)_ + Cyp (0 0 2-_B
+                                                              (10)
+
+                     + CySrud 8rud + Cy (a, 8all)
+                                                                                               L Tde     k de               J JFo-nt
+
+Digital DATCOM       was used to predict the side force
+                                                                      Figures 4"/-50 show the jet-induced    rolling moment
+coefficients  for C y13(c0 and C y p (or); these curves are           increment due to the lift fan for nozzle angles of 90, 75,
+shown in figures 39 and 40, respectively.       Digital               60, and 45 deg, respectively. Figures 51-54 show the jet-
+DATCOM       was used to predict the rudder derivative:               induced rolling moment increment due to the lift nozzles
+Cy_t_l = 0.2063/rad.   The side force coefficient due to              for angles of 90, 75, 60, and 45 deg, respectively.   Since
+aileron deflection,  Cy (_ Sail), is shown in figure 41               only out-of-ground   effects were accounted for, and since
+and was generated using the vortex-lattice    program.                the fountain is only felt in-ground effect, the fountain
+                                                                      contribution was zero.
+Rolling moment-      The rolling moment equation is shown
+in equation 1 t. The first term accounts for the power-off            Yawing moment- The yawing moment equation is
+rolling moment, the second term represents the jet-                   shown in equation 14. The first term accounts for the
+induced rolling moment increment, and the third term                  power-off yawing moment and the second term accounts
+accounts for c.g. travel.                                             for e.g. travel. The jet-induced yawing moment increment
+                                                                      could not be predicted very well, but it was assumed to be
+        RM    = CI_Sb       +ARMTde+FYZMRC                    (11)    small, and therefore neglected.
+                              Td e
+                                                                                      YM       = C n_Sb          +FYXMR      C           (14)
+The equation for CI is presented in equation 12. Digital
+DATCOM was used to predict the rolling moment                         The equation for Cn is presented in equation 15. Digital
+coefficients for CI[_(_ ), C 1 (o0, C Ir (_), and Clsmd (00;          DATCOM was used to predict the yawing moment
+these curves are shown in _gures 42-45, respectively.                 coefficients for C nl_(°0' C n p (_), C n r (°0' and C n 6axt(o0;
+The rolling moment coefficient due to aileron deflection,             these curves are shown in figures 55-58, respectively.
+CI (_ Sail), is shown in figure 46 and was generated                  The yawing moment coefficient due to aileron deflection,
+using the vortex-lattice program.                                     Cn (or, Sail), is shown in figure 59 and was generated
+                                                                      using the vortex-lattice  program.
+
+      CI = Ci_ (°0_ + CIp (°0 2_B        + Clr (°0 2"_B       (12)
+                                                                            Cn = Cnl3(o0_+Cnp(Ot                ) 2uBPb +Cnr(002._     B (15)
+             + C 18rud (ct)Srud + C I(¢X,8ail)
+                                                                                    + Cn&ud (c08rud + C n (a, Sail)
+The jet-induced  rolling moment increment, ARM/Tde,
+was predicted using the methods of reference 5, and is
+presented in equation 13. The prediction for rolling                  Conclusions
+moment assumes that the effects of i_ are linear and
+should therefore be limited to 13< 10 deg. Predictions for            This report describes the aerodynamics model used in a
+jet-induced  rolling moment per degrees of sideslip in-               simulation model of an advanced short takeoff and
+ground effect could not be predicted; however, out-of-                vertical landing lift-fan fighter aircraft. The simulation
+ground effect numbers were better defined. Therefore,                 model was developed for use in piloted evaluations       of
+only out-of-ground   effect rolling moments due to sideslip           transition and hover flight regimes, so that only low speed
+were calculated and were assumed height independent.                  (M - 0.2) aerodynamics are included in the mathematical
+                                                                      model. The aerodynamics model includes the power-off
+                                                                      aerodynamic forces and moments and the propulsion
+                                                                      system induced aerodynamic effects, including ground
+                                                                      effects.
+The power-off aerodynamics       data were generated           5.   Kuhn, R. E.: An Engineering Method for Estimating
+using the U.S. Air Force Stability and Control Digital                  the Lateral/Directional Characteristics of
+DATCOM program and a NASA Ames in-house graphics                         V/STOL Configurations   in Transition.   NADC
+program called VORVIEW          which allows the user to                 81031-60, Naval Air Development      Center,
+easily analyze arbitrary conceptual aircraft configurations              Warminster, Pa., Feb. 1981.
+using the VORLAX program. The jet-induced          data were   6.   Stewart,   V. R.; and Kuhn, R. E.: A Method     for
+generated using the prediction methods of R. E. Kuhn
+                                                                         Prediction of the Aerodynamic     Stability and
+et al., as referenced in this report.                                    Control Parameters   of STOL Aircraft Config-
+                                                                         urations; Volume II: STOL Aerodynamic
+References                                                               Stability and Control Estimation Methods.
+                                                                         AFWAL-TR-87-3019,       vol. II, secs. 4 and 14,
+1.   Chung, W. W. Y.; Borchers, P. F.; and Franklin,                     Flight Dynamics Laboratory,  Wright      Patterson
+         J. A.: Simulation Model of the Integrated                       Air Force Base, Ohio, June 1987.
+         Flight/Propulsion Control System, Displays, and
+                                                               7.   Stewart, V. R.; and Kuhn, R. E.: A Method for
+         Propulsion System for an ASTOVL Lift Fan
+                                                                         Prediction of the Aerodynamic Stability and
+         Aircraft. NASA TM-108866,     Apr. 1995.
+                                                                         Control Parameters of STOL Aircraft Con-
+2.   Williams,   J. E.; and Vukelich,   S. R.: The USAF                  figurations; Volume III: General Backup
+          Stability   and Control Digital DATCOM;                        Information,  Derivation, and Verification.
+          Volumes      I, II, and III. AFFDL-TR-79-3032,                 AFWAL-TR-87-3019,        vol. III, secs. E, H,
+          Apr. 1979.                                                     and K, Flight Dynamics Laboratory,   Wright
+3.   Miranda, L. R.; Elliot, R. D.; and Baker, W. M.:                    Patterson Air Force Base, Ohio, June 1987.
+          A Generalized   Vortex Lattice Method for            8.   Henderson,    C.; Clark, J.; and Walters,   M.: V/STOL
+          Subsonic and Supersonic Flow Applications.                     Aerodynamics,    Stability & Control Manual
+          NASA CR-2865, Dec. 1977.                                       (Supplement   1). NADC 80017-60, NAVAL Air
+4.   Kuhn, R. E.; Stewart, V. R.; and Wardwell, D. A.:                   Systems Command, Department        of the Navy,
+         Estimation of Lift and Pitching Moment Induced                  Washington,   D.C., Jan. 1983.
+         on Jet STOVL Aircraft Hovering In Ground
+         Effect. WL-TR-93-3046,     Flight Dynamics
+         Directorate, Wright Patterson Air Force Base,
+         Ohio, Aug. 1993.
+                                TableI. Aircraftgeometry
+
+                          Overalllength                                 55.4 ft
+
+                          Overallheight                                 14.16 ft
+
+
+Wing                      Area                                          523.3 ft 2
+
+                          Span                                          36.17 ft
+
+                          Mean aerodynamic            chord             18.42 ft
+
+                          Aspect ratio                                  2.50
+
+                          Leading-edge        sweep                     40.0 deg
+
+                          Trailing-edge       sweep                     30.0 deg
+                          Airfoil                                       NACA       64A005
+
+
+Canard                    Area                                          243.1 ft2
+
+                          Span                                          24.65 ft
+
+                          Mean aerodynamic            chord             12.55 ft
+
+                          Aspect ratio                                  2.50
+
+                          Leading-edge        sweep                     40.0 deg
+                          Trailing-edge       sweep                     30.0 deg
+                          Airfoil                                       NACA 64A004.5
+
+
+Verticaltail(each)        Area                                          39.0 f12
+
+                          Span                                          6.98 ft
+
+                          Mean aerodynamic            chord             7.11 ft
+
+                          Aspect ratio                                  1.25
+
+                          Leading-edge        sweep                     40.0 deg
+
+                          Trailing-edge       sweep                     30.0 deg
+                          Airfoil                                       NACA 64A004.5
+
+
+
+
+                                 Table 2. Mass properties
+
+
+              Weight                                   30,000     lb
+
+              x c.g. location                           373.3 in.
+
+              y c.g. location                          0.0 in.
+
+              z c.g. location                          96.0 in.
+
+              Pitch moment       of inertia            91,200     slug-ft 2
+
+              Roll moment        of inertia             14,300 slug-ft 2
+              Yaw moment         of inertia             101,000 slug-ft 2
+              Product of inertia                       0 slug-ft 2
+Figure   1. ASTOVL   lift-fan   aircraft
+           Lift Fan                                 Lift-Cruise    Engine
+                                                                                               2D-CD   Nozzle
+           I          I
+
+
+
+
+           I
+           I          I
+                          I
+Lift Fan                                        •   a                I _"-   i     i   •   r
+
+
+Nozzle
+                                                    Lift Nozzles    _
+
+
+
+
+                              Figure   2. Propulsion    system     configuration
+O
+                 1
+0
+0
+
+
+%_
+M
+
+
+
+
+                                                                                           Flap = 45 °
+
+     -0.8.                                                                         1'            T
+       -10            -5           0             5            10       15         20            25       30
+
+                                                     Alpha,    deg
+
+
+             Figure        3. Lift coefficient       for   various   flap   deflections,      M = 0.2
+
+
+
+
+                                                                                                              9
+                  1.!
+
+
+
+
+       ,I,,,#
+
+
+        It)
+     ° ,,,,,I
+        ¢9
+
+        ID
+
+
+
+
+      ,.d
+
+
+
+
+                                                                                        canard    = 10 °
+
+                                                                               A        canard = 0°
+                                             it
+                                                                                        canard = -10 °
+                -0.3,     j                                             •               canard = -20 ° -
+
+                          ¢"                                                            canard = -30 °
+
+                -0.6                                                     7"
+                        -10       -5         0        5        10       15         20            25        30
+
+                                                      Alpha,      deg
+
+
+
+                Figure        4. Lift coefficient   for various     canard    deflections,       M = 0.2
+
+
+
+
+10
+                    O.&
+
+
+
+
+CL °   ,    1
+           rad
+
+
+
+
+                    -0.4'
+                        -10        -5       0   5       10          15       20    25      30
+
+                                                    Alpha,        deg
+
+
+                    Figure     5. Lift coefficient       due to angle-of-attack              rate
+
+
+
+
+                    0.10.
+
+
+
+
+                    0.05'
+
+
+  A C L IGE
+
+
+
+                    0.00                /
+
+
+
+                    -0.05      /        r
+
+                    -0.10
+                         -10        -5      0       5        10         15    20    25      30
+
+                                                     Alpha,        deg
+
+
+           Figure     6. Lift coefficient       increment          due to ground         plane   influence
+
+
+
+
+                                                                                                             11
+              1.0t
+
+
+             0._'t
+
+
+
+             0.6'        _
+
+     K GE
+
+             0.4_ _. _          _           •
+
+                     , \
+              0.2 _
+
+
+
+              0.0
+                     o              10      15     20     25        30   35     40       45
+
+
+                                            Gear height,       ft
+
+
+            Figure           7. Power-off        ground   effect      washout   factor
+
+
+
+
+12
+                          "_        II
+
+
+
+
+                               °_
+
+                               o_
+
+
+
+
+                          "Z',%
+                          h,
+
+
+
+
+I   I   I         a   i
+
+
+
+
+            MIV
+
+
+
+
+                                         13
+              o
+                                 • 0             0        0       0        0        0             li   II   II   II   il        II
+              r-.
+               H
+
+
+                                     ............                                                 __NN
+
+
+
+
+              "_            II         II            II    II     II       II           II        II   II   II   II   II        II
+                ___ 1::>1:>1:>l::>::> 1::>;> 1:>1> 1::> 1:>1>
+                                                     :        :        ,       _        '         '                   i         .
+
+                             /,::./,1//,,.
+                                    '. : ,                                              ,                             i         .
+                                                                                                                                                              _
+     il_::
+        ........
+            r_;_-_-T_-_T_._-_T_.._-_-_._-_-_ ...........
+                                                   ,_
+                                                    ................
+                                                                 _
+     _I"' , _       _ 'I    ,              i       i
+     il,i:'    i • :i ' i ,I i       i                      -
+     _,_,_               _l _        _     _       :                                                                                                          _
+     !1::::::,i'.                           :i'i :' i.,                                      !i             ii
+     il:ii, li,i I
+     i ':! '
+                                            li :li] i                                                                      i         i
+                                                                                                                                                              _'_
+     !:.', .......... i..... I...........',:............... - ............... _.................".................i.................i..............           _     =
+     ii_:i"l_.                              Ii !T ir,                                        i              i              i         i            T -_
+     il(i', i ,                             ,i ;I i                            ,, i                         i              i         !            -I          _
+
+
+     iF.:'. ,i              '               .i            :1       i           '1            i              i              i         i                        _'=
+     ,ti.              _'                   :_.                    i           :             )              i              _         _                        :z'_
+
+     ,_..i_.._.
+      ......
+       ._;
+        ...........
+         :..-
+          ..............
+            ;:;   , ................
+                    ..............
+                     _  -__ _        .
+     _I'_          ,_ '                     ,_            _I _ii,,,                          i                                                                -,_
+                       i                    li                     i-,, i                                   i              i         i
+     i_'_i        _ ''I _' i1':q i!                                                                         i_             i_        i:
+     _!,,l/.,i
+           ,::" ! I        !  ;
+
+
+
+
+     ,'.... ,'.... ,'.... ,'.... 1.... 1.... I.... i""                                                                                                    °
+     e               = i                e    i                    =" e                       t              =
+                                                                                                            l             =" e           i            e
+                                                                                                                                                      i
+
+
+
+
+14
+          o             _C_. __              __         _
+                                                        E:_ _                   ""
+                                                                                _        "-q          __=_11c:::;
+                                                                                                             li _ il E:;
+                                                                                                                      li _:_il     il
+                        _                                                            t                LT.,, LT. _L,, L.T..,L.T.._(.T.,,
+              tL         It       L,T.. [..T. (..l. [.._ L.T,_LT-I ,_.) ,.q                                       ,,j       t.j   ,.J           ,.J
+
+          (,<E          _ _ _ _ _ _ _;>.;;;,,.;:>.;:>.;:>.;::>
+                        ,._ ::> :>. ::>.::>.;:>. :> ............
+
+
+
+                         II        II             II         II         II       II       II           II    II     II       II    II            II
+                        > :> ;:> :> ;> :> ;> :> ::> :> :> ::> ;>
+          Z                        i              ,          a          l            I    !             I           I         I    I             i
+                                   i              :          :          •            I    '             '                          '             '
+
+                                   a              :          :              ,                 '                                    I             ,
+
+
+
+
+iIii...........
+       ii i .
+            i ......
+                .
+               iiii .......................................
+1:::::
+    ' i, ! i_ ,i                                                                                  i                i                    '_            i            _°
+ili.: i, i il
+    '         _     '         ,          _.
+                                                                  ,_i   !
+                                                                                                  i
+                                                                                                  i
+                                                                                                                   i
+                                                                                                                   i
+                                                                                                                                        i
+                                                                                                                                        !
+                                                                                                                                                      i
+                                                                                                                                                      i
+                                                                                                                                                                   _
+_:i-'-----,
+      ......
+         i.........
+               _-.-----i+
+                    .........
+                         ,---!................
+                                      _.................
+                                                _        ..........
+                                                           i.................
+                                                                     _        ........
+                                                                                    _
+i_ii',             i'         '         il                        ,ll                                                                                              ,:.
+
+
+
+
+                   il                                             ,i                                                                                               "= "_"
+              I    !'                                             I
+
+L         .        i0
+                   :'         ,          "                        i,I                                                                                              .-..
+
+        ':_....
+             =_" _.....
+                     ,_ .....................................................................................
+                               i                                           _
+il_:'              !,         u         ;I                        ,1 i                            i                 ]                   i             ]             ,L_
+
+
+
+i ,',',',          i'   :                •                        , !                             "                 :                   i                 !        "
+i ,',','           '.:1 ,                i                        .J!                             :                 :                   _                 _
+
+
+
+
+_---------------i
+   ..........
+      _ :'_._ ...........
+                       i.................
+                               _      _.................
+                                          .......
+                                              _.................
+                                                      _................
+                                                                 _                                                                                                 _.-_
+
+I,,,,I,,,,I                                           ....                  I ....                I ....                I ....          I ....            I ....
+I                   I                        i                              I                     I                     I                   I             I
+
+
+
+
+                                                                                         ,L/IV
+
+
+
+
+                                                                                                                                                                            15
+              v_              --:.oooooo                                                             i    ,     0I t_ II It
+                              _          II        It     il         tl     It    it             _        _    [4.., IT.     [.,,T.
+
+
+
+
+                              H          II        II     II    li          II         II            II   II    II      II    II          II
+                              ;> ;> ;>, ;> ;:> ;:> ;:> ;:> ;> ;> ;> ;>- ;:>
+              z                /,::',                                                                ./                        , '
+
+                               /,        i
+                                                   ::
+                                                   :       :         ,
+                                                                           /,1//I,     '                                       i          ,
+                                                                                                                                                                                          _.
+     • ;"'T'":"']".         ''....-'T ......
+                                       .:'"'"""'"'"'"__
+                                                ;1...............                           ..................
+                                                                                             .'..'._           _................. i            .......... +.............            _
+
+
+
+
+     I: ! ! :1 :,                                                                           ',                                     i                     i                 _              "_,,
+     |]: ' '. I :1 I:_                                                                                                                                                     -i             __
+     ':qj_, , i                    ,          i,l                    i                      ::                  i                  ::                     i                               _ _:
+     t'--.t----i-.-i--'.------._-.----!-:
+                         ..............
+                                -................
+                                          _       .............................................................
+                                                                                -r- -_               _
+     -|'.:[
+      " t ",i:                     .I i,i                                                                                                                                  /              _
+      t.'i: ' '_1                     li'l                                                                                                                                                _ ""
+     &a_ii                                    ._                                                                                                                                          _._
+     l_i'r        , i:                        _                                                                                                                                           ._,,,,,._
+                                              'i,,                                                                                                                                        _'_
+          -'_..m_.........................................................................................
+                                                                _ _ ._
+                                              •                                                                                                                                           _,,_
+
+
+          ? i:                                i,I
+
+                      ..............
+                       i', ._                                        . ................ . ................ ._................. _................. _................                 V'_   [,,T,.
+
+
+
+
+     , .... , .... ,i.... , .... 1.... ',.... 1....
+     I                 I                                             I
+                                                                                                                                                                                    0
+
+
+
+
+                        I                      I                      I                      I                      I                 I                       I                 I
+
+
+
+
+                                                                                 JJ'-l_
+
+
+
+
+]6
+                                                                          N
+
+
+
+
+                                                                         ""        II
+
+
+
+
+                                                                              °_
+
+
+
+
+                                                                         °_
+
+
+
+
+....   I ....   I ....   I ....   I ........       I ....   I ....
+       I        I        I        I                I        1
+
+
+
+       I        I        I        I            I   I        I        I
+
+
+
+
+                                                                                        17
+                           0000000                                                                  ......
+
+
+               _1           II   0                 II   II        II      11      II           _        Z    Z       _       Z        7'
+
+
+
+
+               __ .>_..> > > > > ._._._._._._
+
+               "_           II    II               II   II   II           II      II               II   II   II      II      II        II
+
+
+                           /         ', i               i         '. :             : '. t                        '       '       ', '.
+
+                           /,:                          :./,1//I,.
+
+     iI I                        ',,:                         i                                              i                    i         i                    "_
+
+
+
+     i..._..._..,..
+        .._.._..--i--i
+            ................
+               i.................
+                   i ................
+                       i.................
+                           i ..............
+                              i    _     _  .
+     if..:                 I _ ',i:                           i                        i                     i                    i         i                    _
+     _'_, I'?:_._ _                                                                    _                     _                    _                              __
+
+
+     [_1: t it ,_,i_
+     i          '      i             _!'
+                                                              ,i ,i ,_ i
+                                                              i                        ::                    i                              i
+                                                                                                                                            i               ._   _,..
+                                     i!            ,          !                        i                     i
+
+
+
+
+     -.......
+     i .,.._,..,-....,.._e
+              .............
+                 _   -   i.................
+                            .......
+                              !.................
+                                   i...............
+                                      ...
+                                     ,i,                      i                        i                     _                    !         i                    :_
+
+
+
+
+     I,,,,I,*,,I_,,I                                                   ,,,,l,,,,l,_,,l,,,,l,,i_                                                         0
+     I                 I                   I                      I                   1                      I                    I         I
+
+
+
+                       l                       I                  l                        I                     I                I             I   I
+
+
+
+
+                                                                               ..L./'IV
+
+
+
+
+18
+                 0
+                             ooooooododdd
+0                o.
+                                  II         II           II          II           II          II        Z           Z            Z        Z        Z    Z
+    II
+                              ZZZZZZ__
+                              __                                                                           gdg                             ddd
+                              ggg      ggg))))))
+                                ............                                                                _N_NN
+
+    e,,
+.<                            0            _00                                  O00_                                              _        _0
+
+    N                             II          II           II                      II           II           II         II          II         II   II   II
+    N             > _>>>>>>>>>>
+    0
+ Z
+
+                                  ......
+                                *_*t _'' l                                                                                                 _:_
+                                                                                                                                                              0
+           ,..| ........................................................................................................................
+
+
+                I
+                I
+                I
+                                                                                                                                                                  "_     II
+                I
+
+          :.'._...,..._.._
+                   ...............................................................................................
+           !
+                                                                                                                                                                   _-_
+                1                                                                                                                                                  _'_
+
+
+
+
+                            []
+                             []
+
+
+
+
+                                                                                          &/"IV
+
+
+
+
+                                                                                                                                                                              19
+     &/"IV
+
+
+
+
+20
+       ._
+       ._
+
+
+
+
+       °_
+         _'o
+
+
+
+
+//qv
+
+
+
+
+               21
+     ........................
+                        !........................
+                                           i ..................
+                                                          i........................
+                                                                             i............................................   ° ,.,,,,
+                        I                    I                  I
+
+
+
+
+             II
+
+
+
+
+     "'°°"
+
+
+             <                                                                                                                 _o
+                   II       II    II   II   II   I1   II   II       II   II   II   II   II
+
+
+
+
+                            i::                       I                       ]         '
+
+
+
+
+                                                                                                                   !
+
+
+
+
+                                                           I/qV
+
+
+
+
+22
+      II                  ___                                                          _        _         _       _    _
+
+
+
+
+                                                                                                                                                                          °_
+i...._            ___ooo_oo                                                                                                         ............................. -
+
+                   II      II           II       II       II       II    II       II   II       II        II      II       II
+                  >>>>>>>>>>>>>
+      N
+                           IQ'                                     Itl                          I|1
+                           I::.1'                                                 :                               I,
+
+                                                                                                                                                                                N
+
+              l:ii:/il|/,::
+              '                                            i                                                                               I                 _        _
+
+
+
+
+                                                                                                                                                                          o_   ._
+
+
+
+ ....................... i ........................ ; ....................... _....................................
+
+
+
+
+                                                                                                                                                                          o_
+
+
+
+
+      I      i     I                I        '        '        I    ,    ,    i             ,         i       i        i        i    i         i    i   i
+                                                               i
+
+
+
+
+                                                                                                                                                                                    23
+       II
+
+
+
+
+            II   II         II   II   II   II    II   II   It         II   II    II   II
+
+
+
+
+                 ,:                              I                         Ii'
+
+
+
+                                                                                             °'
+
+
+                                                                                           _'_
+
+
+
+
+     |1|              Ill                  II!                  el|Jill                           J|l
+                                                                                 I
+
+
+
+                                                                                                        I
+
+
+
+
+                                                      JJ_V
+
+
+
+
+24
+         0.45.            lml
+                                   Flap = -30 °
+                          -_       Flap = -15 ° ..................i                                        -/
+                          _t       Flap = 0                     _:
+
+
+
+
+         0.05"                                      _'                 •   .......
+
+
+                -10       -5           0           5             10          15          20        25           30
+
+                                                    Alpha,       deg
+
+
+
+Figure    20.     Drag   coefficient       for various    flap    deflections        (includes   CDmin),        M = 0.2
+
+
+
+
+                                                                                                                          25
+             0.3
+                                                             I
+                                  D         canard= I0°
+                                                        I
+                                  ":-       canard= 0°
+                                  -         canard= -lO°
+
+             0.2                            canard = -20 °
+                                  -         cana_l = -30 °
+       o
+     °1-1
+
+     °,-i
+
+
+       o
+       0
+
+             0.1
+       m
+
+
+
+
+             0.0
+
+
+                                        w
+
+
+
+
+            -0.05,
+                     -10         -5          0         5            10       15       20           2S        30
+
+                                                       Alpha,        dog
+
+
+
+            Figure         21.   Drag   coefficient    for       various   canard   deflections,        M = 0.2
+
+
+
+
+26
+             0.01,
+
+             0.00-
+
+             -0.01'                       _
+
+A C DIGE     -0.02...............................
+                                          ,.........................................
+
+             -0.03 .....
+
+
+
+
+             -0.05
+                  -10     -5      0       5     10      15     20      25      30
+
+                                          Alpha,     deg
+
+
+   Figure   22.   Drag   coefficient    increment      due to ground        plane   influence
+
+
+
+
+                                                                                                27
+              0.15
+
+
+
+              0.11
+
+       ID
+       ¢dl
+              0.05
+
+
+
+
+       E
+       0
+       E
+
+     °_,,i
+
+
+
+
+     ¢k,
+
+
+                                                                                                      Flap = -30 °
+              "0.   I
+                                                                                                      Flap = -15 °
+                                                                                                      Nap=if'
+                                                                                                      Flap = 15 °
+                                                                                                      Flap = 30 °
+                                                                                                      Flap = 45 °
+              -0.2
+                        -10          -5        0         5            10        15         20           25           30
+
+                                                         Alpha,       deg
+
+
+
+             Figure           23.   Pitching   moment   coefficient     for   various   flap    deflections,    M = 0.2
+
+
+
+
+28
+                                          !                                         canard        = -30 °
+             0.20                                                                   canard        = -20 °
+                                                                      +             canard        =-10        °
+             0.15-                                                                  canard        = 0°
+
+  e-                                                                                canard        = 10 °
+° _...q
+             0.10-                                                    ----o---      canard        = 20 °
+.o
+                                                                      +             canard        = 30 °
+  o
+  O
+  o
+
+
+
+
+             0o00    o
+  O
+  E
+  lat)
+° F,..0
+  e-
+
+
+
+            -0.10
+
+
+
+
+             -0.30
+                     -10        -5        0         5         10          15              20           25          30
+
+
+                                                    Alpha,    deg
+
+
+
+          Figure      24.   Pitching   moment   coefficient   for   various      canard        deflections,       M = 0.2
+
+
+
+
+                                                                                                                            29
+                                 0.10"
+
+
+
+                                 0.05 •
+                                                                                                          /
+                           1
+      Cm.         ,    m
+            o_         rad       O.O(Y.                                             _/
+
+                                -0.05--                                  L_ d
+
+
+
+                                -0.10'-
+                                          •                     J
+                                                                    _i
+                                -0.15"
+                                     -10        -5      0       5       10          15     20       25               30
+
+                                                                Alpha,        deg
+
+
+                 Figure        25.   Pitching        moment     coefficient          due   to angle-of-attack                 rate
+
+
+
+
+                                 0.02-
+
+
+
+                                 0.01'                                                            .....   y   ....
+
+
+
+
+                                                                                                              /'
+                                 0.00
+
+
+
+                                -0.01
+                                                             \ ...................
+                                                                    i!
+                                -0.02-
+
+
+
+                                -0.03-
+                                         -10    -5       0      5        10         15     20         25             30
+
+                                                               Alpha,         deg
+
+
+     Figure      26.   Pitching           moment      coefficient    increment           due to ground                plane   influence
+
+
+
+
+30
+           0
+
+
+
+
+               It           _        II          II    II    II   II   II    _          _             _            _               _             _
+                                 __                                          g              gg                        g             d             d
+                            _g                   gdd              dd))))))
+
+
+
+
+                                 _               II     II   II   II    II       II         II            II           II II                         II
+               N
+               N
+               o
+           Z
+
+                                                                                                                                       0
+                                                                       ...................
+                                                                                       T'1..................................................
+                        I                I
+                                                                                        li,                                                                               _o
+                        I                                                                        i
+                                         I
+   :
+0! °
+                        I                I
+                                                                                                 I
+
+:t :                    i                                                                         I
+
+
+:, i '                  4_        I_              I          i IZ
+                                 .J ............. ..L......_. ......
+                                                                                                  I
+
+                                         I
+       i                I                                                                         i
+                                                                                                  il
+
+                                         1
+  t:       '            I
+
+ '1:       '                             t                                                     ,il
+
+
+                                     I
+
+
+
+
+                                  I
+                                                                                       ,I
+
+                                                                                 J
+
+                            I                                                    !.6    ...........................................................                       K
+
+                                                      II21
+
+
+
+
+       I            !       I                I                                                                                 I             I                I   I
+
+
+
+
+                                 i                                                                    I                                                   !           i
+
+
+
+
+                                                                                                                                                                               3]
+                                0
+                                0
+               0                         0        0        0     0      0        0          II   II    II   II   II       II
+
+
+               It                        _jj_                                               _          _    _         _
+
+
+
+
+               "_               "_       0        0        0     0      0        0         0     t'_1_I- _{:)O0       0
+
+               "_               II           II       II       II II        II       II     II   II    II   II   II       II
+                                >>>>>>>>>>>>>
+               z                /:   i i : : : :/'                                                          ' : :
+                                _×+_i_6                                                                       , _
+                                /, i :: ::./,1//I,.
+                                             ,     ,                                                             i        ,
+
+
+
+     _!:"..................
+                 --'T-:-:--IT--i '-r_''_-                                                             '_'-:'-:                ........................
+                                                                                                                                            -I-             _o
+     i'.                                !i            i           ,'i                  ',1 i                                  i
+
+                                                                                                                                                            =:   N
+     ':'                                ui            '           ' i                  ,           i                          i
+      :,                                ,i            /          .1_ I,,                           _                          i            J
+     ;:':;...................
+                         i_ ................... _........ , .............................................
+     ,!                                 _             I          :1_ t :_                          _                          _            !
+     li:                ,               !i            :          li  _,1                           i                          i                             _g
+     _:'. i                          ;i               /          ,'i                   i,          i                          i
+                    I               !i                j                '_1:_                       i                          i                             a_
+                    .....                             ....              .......... ......................................................................
+                                                                                                                                                 _          "_._
+                                                                                                                                                            2_
+                        ,           t             .                    i,        ,'/
+
+
+
+
+           I        I       I
+
+
+
+
+32
+                o                       _        _        _         _         _          _                 _                       II     II                             II     II     It      II
+                                        _                  II        It        II             II                 li              (.,,T,,,,
+                                                                                                                                        _                              [,.T,,,.,
+                                                                                                                                                                              (,.l,., 1,.1., I,.T,.,
+                                        ti _ _ I,.T,,,,
+                                                   l.Z.,I,.T,.,
+                                                            [,.T.,
+                                                                ,,..,),._ _ ,._ ,,.,) _
+
+                                        _>>>>'>'>                                                                                 ............
+
+                                                                                                                                                                                                                                   c_
+
+
+                                        It           It    II            It    II             II                 It                II                 It                 It       It It         It
+                                        >>>>>>>>>>>>>
+                                                            "            "      '              t                  "                  '                                                  =       '
+
+                                                     _      :            :      .                                 .                                                                     _       .
+
+
+ .                              ,/,::./,1//I,.
+ili:i.I , _1 . l i_                                                                                                                                           i                                     .                             _o
+
+_'.: '                          '            i                  .                                                                                                                                   i
+
+
+
+i1,::' ,                        t            i ,            ,I                      il                                                                         i                                    ]                   /
+
+                        ..........
+                            i      ...........................
+                                          '...........................................
+                                                                                                                                                                                                                                  "7_.
+
+
+_ii.
+   ,I                                                                               i'
+i_:'                            t                    ,                              il                                                                                                                                            o_
+
+
+_...._......_.....i._.....:
+
+
+   _.                                                     _
+       I_           I       '                ;
+
+
+
+
+       _..._
+         ...:..._                                               -o_-o!                   ..................................................................................
+                                                                                                                                                                                                                                  o(
+                                                                                                                                                                                                                                  eq
+
+
+
+
+                                                                                                                             I                I                               1     I       I               I   I   I
+
+
+            I           I           I
+
+
+
+
+                                                 !                                   I                                                                             I                                    I                   "-r
+
+
+
+
+                                                                                                                                                                                                                                         33
+         0        o o       o o oo                              o               I_ it     11 11 11 It
+
+             11
+
+
+
+             _0
+                                                                                                                                                              0_
+         .<
+                  _   _000000                                                                       _        _
+             N
+
+             O
+             Z          i
+                                                                                                                 l
+                                                                     ,                                           I,
+
+
+
+
+                                                                                                                                                               _o
+
+                            :1
+                            I ...............................................           _............................   ".........................   _                  II
+
+
+                            11
+
+                                                                                                                                                               •_ ._,_
+
+                                                                                                                                                                        o_
+                                                                                                                                                                        °_
+
+
+
+
+                                                                                                                                                                   "Z
+
+
+
+
+     o                  o,"                                o                                _                               o,                           -,
+
+
+
+
+34
+            o                   0         0        0        _         0          0      0            II    II    II    II       II    il
+
+
+                It
+
+
+
+
+                                                                                                                                                      °_
+
+                q,,>
+                N                   U         II       II       II        II         11 II           II    II    II    II       It    II
+                k',,1
+                o
+             Z
+
+                                 +,., i ++ii  ,                           .                 ;                                   ','
+                                                                                                                                                       t,l
+
+
+
+
+...............................................                 ":................    "1".............
+                                                                                                          ...........
+                                                                                                                   1" ..................
+                                                                                                                                     ::i
+                                                                                                                  '                  I:ii             _o
+                                                                                                                  1                  '
+                                                                                                                  '                  I
+                                                                                                                  I                  '
+                                                                                                          .........
+                                                                                                             • i_                           I
+
+
+                                                                                                                            l
+                                                                 ii
+
+
+                                                                                                                 •      / /
+                                                                 i,                     I
+
+
+                                                                                                                                                      o_
+
+
+
+
+                                                                                                                                                1¢3
+                                                                                                                                                      e_
+
+
+
+
+                                                                                                                                                             35
+                   II
+                                       zzzzz__
+               m
+
+
+
+
+                   N         II   It   II    II     II    II   II       II   II   II       II         I1       II
+                   N
+                   0
+                         _>>>>>>>>>>_>
+               Z
+
+                                                               I                                                                                                 t,l
+
+
+         ......................................................
+                         i..........
+                            IT....
+                               ...............[I"!! .............
+                                                                                                                             i,        ..q
+                                                                             l
+                                                                             ,Ii                                             •
+                                                                                                                                       .1_
+
+                                                                                                                                       .:_
+                                                                                                                                                                 _°
+
+
+                                                                                                                                 I ,:_
+                                                                                                                                       'i!               .
+                                                                                                    , m 12!l.,ll(, i
+                                                                                                    ......
+                                                                                                        -t--
+                                                                                                           .......
+                                                                                                                i --,'_
+                                                                                                                      ............
+                                                                                                                             -_
+                                                                                                           :            'i             ':;
+
+
+
+
+                                                    i                                               ..... .............
+         .......................
+                       ).......................
+                                      TI        ...........
+                                                      T ....i".............
+                                                                      T
+
+
+
+
+         .......................
+                   _.......................
+                              _       _.._._........._.....,:...
+                                            ....
+                                                                                                    _......._...
+                                                                                                         "i.....................
+
+
+                                                                                                !     I    !        I              I         I   I   I       0
+                         I                      I                   I
+     0                  0                   0                  0                       0
+
+
+
+
+                                                         _(IJ,/l_dV
+
+
+
+
+36
+         o                  _    _            _        _        _       _            _         II       II       II           II       II       II
+
+
+             II
+
+
+
+             ¢;
+         ,,u,,
+             e.,.
+         .<                                                                                                                                                                       °_
+          o
+         N                           II           It       II               II           II    II       II       II           II       II       U
+          N
+          N
+          0
+         Z
+
+                                                                                         '      I                                                '
+
+
+.............................................................................................
+                                     ii.......
+                                          I.........
+                                                T_fT_........
+                                                                                                                                                                                  .._o
+
+                                                                                                                          i,                             Ifi, :i_ -
+                                                                                                                          iL                             !iil:il -
+..............................................................................................
+                                     i_
+                                      ................
+                                             "-_ .....
+                                                                                                                                                         :i ' ,11!_           •
+
+                                                                                              i:                          il                             ¶, :i                           °_
+
+
+
+
+                                                                                                                          _, i
+                                                                                                                                                     5.._.._
+                                                                                                                          l
+
+
+
+
+................................................
+          _......................                                                                                                                                                 e_
+
+
+
+
+     |       I      I   i        i        i       i    i            i   i        i       i          i   i    i        i            i        i   i    i        i   i   i   i
+
+
+
+c_                          c_                              c_                                c_                          c_                             c_
+
+                                                                            °_lj.tl_dV
+
+
+
+
+                                                                                                                                                                                              37
+              0            _            _        _            _        _            _        _        II          il       II          II            II             li
+
+
+                  II       _            ZZZZZZ__
+                                         II II II II                                    II       II   Z       Z            Z       Z                _           Z
+
+
+
+                                        o_       o_           o_        o_           o_       o_
+
+
+
+
+                  ¢1
+              .===¢
+                  N            II           II       II           II       II           II       II   II          II       II          II            II             II
+                  N
+                  0
+              Z
+
+                                                                                             °' ;°:                                                                                                                                ,%
+                                                                                                                                                                                                                                    I,l
+                                                                                                                                                                                                                                    1,4
+
+                                                                                                                                                                                                                         _   0
+                                                                                                                                                                                                                             ("4
+      .................................................................................................
+                                                           :......
+                                                               T..i..I iI,
+                                                                                                                                                                     I       I
+                                                                                                                                                                                                                                   _°
+                                                                                                                                                                                     '       I       I
+
+
+                                                                                                                                                                                                                                           II
+
+                                                                                                                                        '                   I
+         ............................................................................
+                                   _.! _:                                                                                                                                                                                w
+
+
+
+
+                                        '1
+                                                                                                                                                                             1                                                      _',_
+
+
+
+
+                                                                                                                                            .....
+                                                                                                                           []                                                    ,II2F                       I       -
+
+                                                                                                                                                                                                     I                             "_._,
+                                                                                                                           121                          6                                                    i
+                                                                                                                                                                                                             !
+
+
+
+
+                                                                                                                                                                                 ,IIIN
+                                                                                                                                            !
+
+
+         .........................................................................................
+                                                               _...'..'....._...:
+                                                                                                                            121i i                                   _                                                             ,4
+                                                                                                                                                                                                                                   e_
+
+                                                                                                                                                ,g_,'
+                                                                                                                                                ' 0 II'_'II2_
+
+
+
+                       I            i        i   i        i            1        i        l   1            |   |        I       I                I       I       I        I       I       I       I       I       I
+                                                                                                                                                                                                                             0
+                                                                                                                                                                                 I
+     0                     0                                  0                                   0                                0                                         0                                       0
+                                                                                                                                                                                                                     0
+
+
+
+
+                                                                                    _(I.IJlNdV
+
+
+
+
+38
+    O
+
+
+
+
+        U
+
+
+
+
+                     II   II       II   II       II       II       II   II       II       II       II   II       II
+        t_
+        0
+    Z
+
+                                                                                                   ;o,:
+                                                                                                     .
+                                                                                                                                              ,%
+
+
+
+
+                                                                                                                                              °_
+
+
+
+
+I       I    I   I             I    I   I    I                 ,    i   ,    ,                 I    1   I    l            I   I   I   I
+
+
+
+
+                                                      I                               i                               i                   I
+
+
+
+                                                      _(UJI_cIV
+
+
+
+
+                                                                                                                                                   39
+         0
+
+
+         t',-
+          II
+
+
+             _S
+         i===i
+
+             r,
+
+
+                  II II II II II II II II II II II II II
+             N
+             N                                                                   ,%
+             o
+         Z
+
+
+
+
+                                                                                 °,,,.
+
+
+
+
+                                                                                         N
+
+
+
+
+                                                                                 °,,._
+
+
+
+                                                                                 °_
+
+
+
+
+                                                                                 °_
+
+
+
+
+                      ........             I ....      i , ,   i   i         o
+                                           I           I
+                                                                       0
+     0                                                                 c'4
+                                 !            •
+                                              !       =,.              o
+                                                                        i
+
+
+
+
+                                 _(3.lJ_d_7
+
+
+
+
+4O
+    II        _   _   _    _    _    _    _    _    _    _    _             o_
+
+
+
+
+         II   II II   II   II   II   II   II   II   II   II   II   II
+
+    0
+
+
+
+
+                                                                        0
+
+
+
+
+                                                                            o_
+
+
+
+
+                                                                                  o_
+
+
+
+
+                                                                             o_
+
+
+
+
+I    I
+
+
+
+
+                                                                                       4]
+                   o
+
+                                   _d_dd_HHHHNH
+                        II
+
+                                                                                                                                                                                            o_
+                                                                                                                                                                                            °_
+                                                                                                                                                                                            _a
+
+
+
+
+                    N
+                      N            II        II           II             II        II          II           II           II           II          II         II   II       II
+                      N
+                      O
+                    Z
+
+
+
+
+     ...........................        i.................................................................................................................
+
+
+
+
+                                                                                                                                                                                            o_
+
+
+
+
+                                                                                                                                                                                            °_
+
+
+
+                                                                                                                                                                                            o_
+
+
+
+
+                                                                                                                                                                                            o_
+
+
+
+
+                                                  i        i         i         x                    t         i         I         i                    _      |   I    i            i
+
+
+
+
+                                                                                           I                                                 I                                  I       i
+
+
+
+
+                                                                                            _CLgI_dV
+
+
+
+
+42
+                     -0.345
+
+
+
+
+                     -0.350
+                                     \
+Cy             1                                                 _L         .....
+
+
+     [3       rad    -0.355
+
+
+
+
+                     -0.360
+                                                                                                         xa
+
+
+                     -0.365'
+                               -10         -5        0       5         10           15       20     25        30
+
+                                                              Alpha,        deg
+
+
+                      Figure         39.        Side force    coefficient                due to sideslip
+
+
+
+
+                      0.20-
+
+                               •                                                                     7
+                         •
+                       o15-                                                                 :/I
+                       0.10"                                                                        •
+
+Cyp       ,
+                1
+               rad
+                                                                                     /
+                       0.05 c
+                                                                        J
+
+
+
+
+                      -0.05"
+                           -10             -5       0        5        10            15      20     25       30
+
+                                                             Alpha,        deg
+
+
+                      Figure         40.        Side force       coefficient             due to roll rate
+
+
+
+
+                                                                                                                   43
+                                                             D            Aii = 300R, -30°L
+                                                                          Ail =20°R, -20°1.,
+                                                                          Ail = 10°R, -10°L
+                                                            h.            Ail = 0°
+                                                                          All = -10°R, 10°L
+                                                                          All = -20°R, 20°I.
+                                                            &             Ail = -30°R, 30°I.
+
+     0.0010
+
+
+
+
+                                              )-
+
+     0.00O5                                                                                                                         l
+
+
+
+
+                                              )-==-___
+
+
+
+Cy
+     o.oooo                       h
+                                                                                  ,--_._.q         _-------_ v---.---_
+
+
+
+               i-             C   L
+                                             4 -                                                                                  't_--
+                                                                                                                                          J
+
+                                                                     C          C)             (
+
+
+     -0.01705"
+
+                                                                                                   .__......__ .....-..-._
+                                               "-                    4
+
+
+
+
+                                                                 _t           --_'_ ....
+     4}.0010         ....                           •   o   ,    o                                                •   °   •   .
+
+
+               -10            -5              0                       5         10             15            20                   25          30
+
+                                                                          Alpha, deg
+
+
+               Figure       41.       Side force        coefficient         for various      aileron      deflections,             M = 0.2
+
+
+
+
+44
+                        0.05
+
+
+
+                                       _Ita
+                        0.00
+
+               1
+C113           md
+                        -0.05'
+
+
+
+                                                                            \
+                        -0.10
+
+
+
+
+                        -0.15
+                                 -10          _             0      5       10       15     20          25       30
+
+                                                                  Alpha,    deg
+
+
+                      Figure          42.     Rolling           moment     coefficient         due     to sideslip
+
+
+
+
+                         0.05"
+                                  ,
+
+
+
+
+                         0.00"                                                                           /
+
+                        _0.05 _                ..............                                        _ .............
+
+                        _o.,o:
+                            ....................../' ......
+ C1
+       p
+           ,     1
+                rad
+                        -0.15 _
+                                                                                         ./.
+                        -0.20-                 ..........
+                                                                                /
+                        -0.2.9          __""_                               :
+
+
+                        -0.30
+                                 -10          -5            0       5      10       15     20          25        30
+
+                                                                  Alpha,    deg
+
+
+                      Figure          43. Rolling               moment     coefficient     due to roll rate
+
+
+
+
+                                                                                                                       45
+                            0.04"
+
+
+
+
+                            0.03
+                                                                                  /
+
+      C1       ,    1
+                                                                        /
+                            0.02 _                              J
+           r       rad
+                                                           /
+                            0.01 _                   /
+
+
+
+                            ooo"//
+                                    -10         -5       0          5        I0         15     20     25      30
+
+                                                                Alpha,            deg
+
+
+                          Figure          44.    Rolling       moment         coefficient        due to yaw    rate
+
+
+
+
+                             0.03"
+
+
+
+                             0.02 _-_
+
+                                     •-x_,,
+                     1       0.01 _
+     C 1_irud '     rad
+                                     •                                  \
+                             0.00_               _                                _
+
+
+
+                            -0.01 ...............
+
+
+
+                            -0.02-
+                                 -10            -5       0          5        I0         15      20    25      30
+
+                                                                    Alpha,        deg
+
+
+                   Figure     45.     Rolling        moment             coefficient          due to rudder    deflection
+
+
+
+
+46
+                                                  +                   All = 30°R, -30°L
+                                                                      All =20°R,       -20°L
+                                                  ---O--              All = 10°R, -10°L
+                                                  +                   All = 0 °
+
+                                                       -              All -- -10°R,     10°L
+                                                  +                   All =-20°R,      20°L
+                                                                      All = -30°R,      30°I..
+
+
+
+
+        0.020
+
+
+
+
+        0.010
+
+
+
+
+C1      o.ooo
+
+
+
+
+                -10             -5            0                 5             10                 15        20        25        30
+
+
+                                                                    Alpha,    deg
+
+
+
+     Figure     46.   Rolling        moment       coefficient          for   various      aileron     deflections,   M = 0.2
+
+
+
+
+                                                                                                                                    47
+               0
+
+
+
+
+                   II
+              ,,d
+                                                 °_           o_   °_         o_           o_       o_
+
+
+
+               ,<
+                t,,,]                            ii           li   II          ii              II   il        ii        II     il       il       il       ii
+                t_
+                o
+               Z
+
+                                                 ,                                                  I
+                                                                                                    i                                   I:
+     .............................................                  T...................... 'T...........................................                      T'{'""r"T ..........
+
+                                                                    j                                    Ii                                                    li
+                                                                    i
+                                                                    a
+                                                                                                         :',                                                     i I                            _°
+
+                                                                                                         ,]                                                                                          It
+                                                                    "                                    ,i
+                                                                                                         ,:                                                               I
+
+     .t...,. ..............       , .......................         ,_......................         _ .....................
+                    '                    I                           •                                ,:                        ,
+                                                                    I                                    'i                             .......................
+                                                                                                                                                          _....,i....
+                                                                                                                                                                  i...........
+
+
+
+                                                                    I                                     .                                                               I
+                                                                                                                                                                          ?
+                                         I                          i                                    I                                                                I                      _:s
+                                         I                          :                                    ..                     ,
+                        ,                                           I                                    .i                     ,
+
+     "k":'"".
+          ...............................
+                         F....................
+                                   "_..................
+                                             :'"'
+     :: ,                _          ,i                                                                                                                           :    I
+
+
+
+
+       :',
+         '                                                          i                                    li                                                           I
+                                                                                                                                                                      ,I
+
+       ::,                                                          !
+                                                                                                                                                                      I
+
+
+
+       '
+       ' '
+         '              '                I                          i,                                   i)                                                      !    i
+
+
+                                                                                                                                        ....................
+                                                                                                                                                          :.o...(..o6.........
+     _--.+.
+         ........
+     ,_ "I- _..._
+            '_    ...........
+                  _            a_
+                  _ ...................
+                         _.................
+                               _ '     ii<_                                                                                                                                           -   _'_   t_
+
+
+
+     _< +
+     _x +                                                                                                                                                             I
+
+     _X            +                   '_
+                                                                                                                                                                      i
+                                                                    •                                                          121_                                   i
+                                                                                                                                                                      i
+                   m          _              I
+                                                      ''i'"i,                                                             ,, :               I        I    I     i
+                                                                                                                                                                 I
+                                                                                                                                                                      I    I    I
+
+
+
+
+                                   I                                    !                                                           I                             !                   i
+
+
+
+
+48
+             0
+                                  0        _        0            _       _        0            II       II    II   II      II       II
+
+                 II               '_'_'_'___
+             _G
+              G       #
+
+                 N                    II       It       II                   II       tl       II       II    II   II      II       li
+                 N
+                 o
+             Z
+                                      ',_,__
+                                                                         i i+ii
+                                                                            '         I
+                                                                                                                           :_
+
+                                                                                                                                                                         o
+
+    ....
+     i!...........
+          i.....................................................................
+                                iI......
+                                    !i................................
+         : ,          i                                                                                                    t
+         ,       ,    '                                                                                                    I    I
+
+
+         i'           i                                                                                                    ,I                                                        II
+
+
+
+
+                      I                        ,                         I                      '                               I
+     ,_,*,            _                        _                         ,                     ._                  i
+                                                                                                                   _            9
+                                                                                                                                                                              _'_.
+
+
+
+     ii: _i                                    i                         !                     ,_,_ i.:a                                                                     o_
+
+
+
+    ,::.                  i                    '                         :                          .              i
+
+    '_+T [] ",° iI
+    ,::.
+     0   ,      '_                                                       t
+                                                                         m
+                                                                                                                                                                             °_
+
+
+
+
+                          !                                                                                        !        I
+    _..+.
+        ........
+            ., ..........
+                   _.....                                    ........
+                                                               i..........
+    _+                                         _
+                                                                         i]
+i_+                   ._
+                                                                                                                   •           i8
+                                                                     i       L    I                 i        l ' I                       i           i   i   i           o
+ I                     i                                                                                          I
+O                     o                                 o                                  0                     0                           0
+                      cq                                ",::1"                                                                               o
+o                     o                                 o                                  o
+o                     o                                 o                                  o                       0                         o                   0
+6                     c5                                                                                                                         !                   !
+                              I                              I                                                         I
+
+
+
+
+                                                                                                                                                                                          49
+                                                                                                      °.°.°°
+
+                     0
+                     0
+
+                         II
+
+
+
+
+                                                                                                                                                     r_
+                                                                                                 _00000
+                     .,,<                      _000000
+                                               __        IIIII1_                         _IIII   II            II       II       II   II   II
+
+                         0
+                     Z
+
+
+
+                                                                                                                                                0
+           ......   • ......................
+
+
+                    ' I
+                                                     ! ..............
+
+
+                                                     ,
+                                                                        ;T ...........
+
+
+                                                                        I
+                                                                                          T"
+
+                                                                                                 .....
+                                                                                                   1'i.....................................................
+                                     !                                  ,:
+                                                                                                                    I
+                    ' i                              ,                  li                                          i
+                                                                        ,i                                                                           s....   N
+                                     I
+
+
+
+
+           ":"'"-.........
+                        F'"_......................
+                                             .'I.. .........
+                                                         •........":..........
+                                                                            '...........
+                                                                                      "..'...........................................
+     I:"            '                          i     I                  "i                '           I        I I           i
+                                                                                                                                                    °_
+
+
+
+
+     ili-i• 11,                                                         Ii                                      ,I           i
+     iEi!.                                     i     ,                  :i               :l       .,I                        i
+     _.:
+     :"+
+     i ,,
+         .......
+     il_+ _
+           ., _......
+                ,.............
+                     _
+                     ,
+                     m _
+                         _..........
+                               ..
+                               ._....,.,
+                               4 ,6   i
+                                               " []
+                                                     o 0j
+                                     ..................................................
+                                                     '                  '_
+                                                                          '
+                                                                                          ,
+                                                                                                                ,
+                                                                                                                i
+                                                                                                                             i
+
+
+     i'.:.                                           '                    i               .                     ,
+
+     ._+                           I_               _a                  m                _        '_,9                                              °,.,_
+                                                                                                                                                     d.
+
+
+     i::                                                                                 ,_                     ,
+                                                                                                                I                                   o_
+                                                           ...........
+                                                              ¢        ..
+     '"4-                                      i    []                    "
+
+
+     _t                             '_)_                                ml
+
+
+
+
+50
+      0
+                  _       _        _        _            _        _    _         II        II        II      II       II        II
+
+
+          H       _           II       II       II           II   II       II   _         _         _       _     _            _
+
+
+
+      ,.....,
+
+          $::::
+
+
+
+          N                   111111111111111111111111
+          N
+          0
+      Z
+                              '._                                                                           <b:6,
+
+                                                                                                                                                     --   t'l
+
+
+                                                                                                                                                                     _o
+
+
+
+
+    _..._....._
+            .......
+              _.
+               ........                                                                                                                               m
+
+
+
+
+    iii'I ', 'I                                              I
+                                                             ,I
+                                                                                                                                                                     to
+
+
+
+
+                                                             I
+                                                             ,I
+                                                             I
+
+
+                                                                                                                                                                LI
+
+    _..-.L_.i.-.--_-.-.--_
+                  ....
+    _._                   m_                                 I
+
+
+
+
+                                                                                                                                                                     o_
+
+
+
+
+    _---_-.--_-i-:-----_
+            ....
+
+i.il                                                         i    ,    i              ,         |       t         *        a         _       i   l
+I                     I
+
+
+
+
+                      I                              I                                                       i                           !            !
+
+
+
+
+                                                                                                                                                                          51
+                                                   _        _          _        _        _            _               It   il      tl    li      II   11
+
+
+                     II                            ZZZZZZ__
+                                       _               II       II         II   II          II           II       Z        _       Z    Z        _    _
+
+
+
+
+               ,<
+                 &)
+                                                       II       II         II               II            II          II   II      II       II   II
+                     t'4
+                 N
+                 0
+               Z
+
+                                                                                                          ,                                          ,,"                                        N
+             ;'.':    ..............        ............................
+                                           I;,                                                                                                                                                  N
+                                                                                                                                                                                          C'4
+
+             ii:!                          ii                                           ...........................
+                                                                                                           t                    :.'lil....................
+                                                                                                                                                      1................................
+
+             ::,                           ,i
+
+
+                i l _i
+                                           il
+
+         ......
+             ,,.,,.;
+                 ...............
+                         !.........
+                               -: ................................
+                                       ...............................
+                                                        _;         ............                                                                                        ...........
+              ::,        li     ,                       _'I
+
+             ii:liiI                                                                                                               i_
+             iiI iiI                                                                                                               i_                                                                °_
+
+             :: •              ;           'i                   '.
+
+
+
+         ......
+            _..._....._
+             ;:,
+                 .......
+                    ._ ...................................................
+                               _           ,-
+                                                  ,. _          :
+
+
+
+
+             ii_i.-_                       _                m                                                                                                         _         "
+                                                                                                                                                                                                .!
+         ......
+           _...._....._
+                .......
+                  ,..........
+                        ,.,...i.....
+                            ._ ........
+                                  _.........................................
+                                               _.......                                                                                                                                         °_
+
+
+
+
+     0                                     0                                        _                                          0                          0                    0
+
+
+     0                                     0                                        0                                          0                          0
+
+                                               i                                                                                                              !                     !
+
+
+
+
+52
+       o                  _        _            _        _        _            _        _        II       II     il        II         II   il
+
+
+           II
+
+
+
+
+           N                  il       it           II       II       II       If           II   It       II      II       II         II   II
+           N
+         o
+       Z
+
+                                       , : i '                                              1I                              I i '                                                       N
+                                                                                                                                                                                        N
+
+     I.,', ............   r ....                                                                                                                                                ¢",.I
+
+     C:.                  I             I
+                                        ,
+                                                                           il
+                                                                           !
+                                                                                                 ,
+     i::.                                                                                                                                                                               _O
+     i::.                 I                                                                      I
+     IH.                  '             I                                  •                     I                                                                                             it
+     _::,                               ,
+     _'.:,                I
+
+
+     IH":'"'i
+         ..........
+               *'"T
+                  ........
+     C:.     I
+     C:                   '             I                                  't                    II
+                                                                                                                                                                                        o_
+        +<:_l                                            ,y                _                     ?                                                                                            o_
+                                                                                                                                                                                              o_
+
+
+
+
+                                                                                                               .... 1...................   ,.............................
+
+
+
+
+           :I;                          I                                  il
+                                                                                                                                                                                         s_
+                                                                                                                                                                                        °_
+
+
+
+
+.....                                                                                                                                                                           u")
+
+
+ _ 31_-<3 121
+
+
+
+
+ I          I      I      I
+                                       i    I        l       I    I                 I        !   I    I
+
+
+
+
+                                   i                                                                                                                                        i
+
+
+
+
+                                                                                                                                                                                                    53
+            o
+            c_
+
+             II            _'_'_'_'___
+             l;
+
+
+
+                                    II       II   II        II   II       II   II         II    II   II   II
+             N
+             0
+            Z
+
+
+
+                                                                                                                                     N
+                                                                                                                                     N
+
+
+                           ,i
+
+
+
+
+                  i
+                       I   ,
+
+
+
+                                                                                                                                     =:   N
+
+                  I;I                             I        _
+
+
+            :'
+              i/I,     ,   :i            !        .    il                           il
+
+           _,_1 .......
+     ..... It-
+                   _ ....
+                     _...........
+                      []
+                         ,  '
+                             _    ...... .....................................
+                                                       i              ,             il71
+
+
+
+            :1,            Ii /                   /    i;                           i:                                               z_
+
+
+                                                                                    i ,
+
+
+
+
+                                                                                                                                     ,q
+
+
+
+
+         , , , , i                       , , , , , , , , , i                                   , , , ,             , , , ,
+                            I                          I                            I
+                                                                                                                             o
+
+
+
+                                i                                                                              i                 i
+
+
+
+
+54
+        0
+
+
+
+
+            II          Z__                                                                                        gdd                                       gdg
+
+
+
+            t:::
+        <
+                            II            II            II              II       II         il         il            II            II           II             II              II   II
+            I",,1
+            o
+        Z
+                        +                                                                              0 ,:                                                                                                      o
+                                                                                                                                                                                                                      1,.,.
+
+
+
+
+                                      ....
+                                       l........
+                                           ; ....
+                                              i....................................................................                                                                                          -
+
+                                                                                                                                                                                                                      =:
+                                                                                  I
+                                                                 I                ,
+                                                                                  I
+
+
+
+                                                                                  I
+
+
+                                                                                                                                                                                                                               II
+                                                               9                                  _
+                                     ............................                     + .......    i .......................................................................
+
+                                                                    I                                                                                                                                                •,_       N
+
+
+
+
+                                                                                                  []
+                                                                                                                                                                                                                       b'--
+                                                                                                                                                                                                                     °_        _,_
+
+
+
+
+                                                                                                                                                                                                                     ._.=
+                                                                                                                                                                                                                     ...,..6
+
+
+
+
+                                                                                                                                                                                                                       =:
+                                                                                                                                                                                                                     ° ,....
+
+
+
+
+                                                                                                                                                                                                                       :=
+
+
+
+
+    i         I     I   I                        i         i            i    i                                                                                                                   J   t
+
+
+0                                o                                                                                                                                                                       o
+o                                o                                                                                                                                                                       0
+o                                o                                                    o                                                 o                                                o               o
+o                                d                                                                                                                                                           I               !
+                                      I
+
+
+
+
+                                                                                                                                                                                                                                     55
+                                       0.030'
+
+
+
+
+                                       0.025'
+                                                                                               \
+
+     C                        1
+                         m
+
+                             rad       0.020'
+
+
+
+
+                                       0.015'
+
+
+                                                                                                                         \
+                                       0.010'
+                                                -10         -5        0         5       10           15     20          25    30
+
+
+                                                                                 Alpha,        deg
+
+
+                                         Figure         55.        Yawing      moment         coefficient         due    to sideslip
+
+
+
+
+                                          0.01-
+
+
+
+
+                                   1
+         C
+             n       _       m
+
+                 p               rad
+
+
+
+
+                                          -0.04.
+                                                  -10         -5          0         5     10          15     20          25     30
+
+                                                                              Alpha,    deg
+
+
+                                       Figure         56.        Yawing       moment      coefficient            due to roll rate
+
+
+
+
+56
+    -0.070-
+
+
+
+
+    -0.075-
+
+
+
+
+    -0.080"
+                                             \
+    -0.085"
+                                                \
+    -0.090.
+          -10          -5         0         5          10         15         20      25        30
+
+
+                                          Alpha,       deg
+
+
+     Figure      57.        Yawing        moment          coefficient             due to yaw rate
+
+
+
+
+     -0.079.
+
+     -0.080.
+
+
+     -0.081 r
+
+
+     -0.082 _
+
+
+     -0.083
+                              \                                        .                  .,e
+                                                                                          ¢,
+
+     -0.084.                                             ....
+
+     -0.085 ......                              _           _          _t_
+
+     -0.086
+               -10      -5            0         5        10           15      20      25        30
+
+                                                Alpha,          deg
+
+
+Figure   58.     Yawing        moment               coefficient        due to rudder           deflection
+
+
+
+
+                                                                                                            57
+                                                 n          All = 30°R, -30°L
+                                                            All =20°R, -20°L
+                                                            Ail= 10°R,-10°L
+                                                            All = 0°
+                                                 --         All= dO°R, 10°L
+                                                            All =-20°R, 20°L
+                                                t           All = -30°R, 30%
+
+       0.006'
+
+
+
+
+       0.004
+
+
+
+
+ Cn    0.000
+
+
+
+
+      -0.002
+
+
+
+
+      "0.00_    '
+
+
+
+
+      _.006
+                -10          -5         0             5          10          15         20             25         30
+
+
+                                                      Alpha,    deg
+
+
+
+        Figure        59.   Yawing   moment   coefficient      for various    aileron   deflections,        M = 0.2
+
+
+
+
+58
+                                                                                                                                                     Form      Approved
+                            REPORT                 DOCUMENTATION                                PAGE                                                 OMBNO.0704-0188
+Public reporting burden for this collection of information  is estimated to average 1 hour per response, including the time for reviewing instructions, searching existing data sources.
+gathering  and maintaining   the data needed, and completing and reviewing the collection of information.    Send comments      regarding this burden estimate or any other aspect of this
+collection of information, including suggestions tor reducing this burden, to Washington   Headquarters   Services, Directorate    for information Operations   and Reports, 1215 Jefferson
+Davis Highway, Suite 1204. Arlington, VA 22202-4302,       and to the Office of Management   and Budget, Paperwork Reduction Pr(; ect (0704-0188),         Washington, DC 20503.
+
+1.     AGENCY     USE ONLY            (Leave    blank)         2.    REPORT       DATE                 3.    REPORT     TYPE    AND DATES         COVERED
+
+                                                                     April 1995                              Technical       Memorandum
+4.     TITLE   AND    SUBTITLE                                                                                                        5. FUNDING         NUMBERS
+
+
+       Aerodynamics             Model for a Generic ASTOVL                               Lift-Fan Aircraft
+
+                                                                                                                                              505-68-32
+6. AUTHOR(S)
+
+       Lourdes       G. Birckelbaw,               Walter E. McNeill,               and Douglas A. Wardwell
+
+
+                                                                                                                                      8.     PERFORMING  ORGANIZATION
+7.     PERFORMING           ORGANIZATION            NAME(S)         AND    ADDRESS(ES)
+                                                                                                                                             REPORT NUMBER
+
+       Ames      Research         Center
+       Moffett       Field, CA 94035-1000                                                                                                     A-950051
+
+
+
+9.     SPONSORING/MONITORING                     AGENCY        NAME(S)      AND    ADDRESS(ES)                                         10.    SPONSORING/MONITORING
+                                                                                                                                              AGENCY   REPORT   NUMBER
+
+
+       National Aeronautics and Space Administration
+                                                                                                                                               NASA TM-110347
+       Washington, DC 20546-0001
+
+
+11.     SUPPLEMENTARY                 NOTES
+        Point of Contact:                Lourdes         G. Birckelbaw,            Ames Research       Center, MS 237-2,                Moffett Field, CA 94035-1000
+                                         (415) 604-5592
+
+12a.     DISTRIBUTION/AVAILABILITY                       STATEMENT                                                                     12b.    DISTRIBUTION           CODE
+
+
+
+
+          Unclassified           --     Unlimited
+          Subject Category                 02
+
+
+ 13.    ABSTRACT            (Maximum      200 words)
+
+               This report describes                 the aerodynamics               model used in a simulation               model of an advanced                  short takeoff
+         and vertical landing lift-fan fighter aircraft. The simulation model was developed for use in piloted evalua-
+         tions of transition and hover flight regimes, so that only low speed (M - 0.2) aerodynamics    are included in
+         the mathematical    model. The aerodynamic      model includes the power-off aerodynamic forces and moments
+         and the propulsion system induced aerodynamic effects, including ground effects.
+              The power-off aerodynamics     data were generated using the U.S. Air Force Stability and Control Digital
+         DATCOM program and a NASA Ames in-house graphics program called VORVIEW which allows the user
+         to easily analyze arbitrary conceptual aircraft configurations using the VORLAX program. The jet-induced
+         data were generated using the prediction methods of R. E. Kuhn et al., as referenced in this report.
+
+
+
+
+                                                                                                                                                      15.     NUMBER       OF PAGES
+ 14.     SUBJECT       TERMS
+                                                                                                                                                                           63
+          ASTOVL,             Lift fan, Aerodynamics                      model
+                                                                                                                                                      16.     PRICE    CODE
+                                                                                                                                                                          A04
+ 17.     SECURITY  CLASSIFICATION                        18.   SECURITY       CLASSIFICATION         19.    SECURITY CLASSIFICATION                   20.     LIMITATION        OF ABSTRAC1
+         OF REPORT                                             OF THIS      PAGE                            OF ABSTRACT
+
+          Unclassified                                         Unclassified
+NSN      7540-O1-280-5500                                                                                                                        Standard       Form      298   (Rev.   2-89)
+                                                                                                                                                 Prescribed   by ANSI Std. Z39-1e
+

@@ -1,0 +1,204 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2010-7-15"
+lang: "en"
+messages: "195"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<TheSkeward> Hi.  I'm on Ubuntu 10.04 under the XFCE desktop environment, attempting to use Altec BX1220 speakers, and when I plug them in, they light up and give feedback, but no sound comes from them.  Can anyone help me?
+<TheSkeward> The speaker icon says "100% | 0.00 dB | Internal Audio Digital Stereo (IEC958)" when I mouse over it
+<wowhead> hello i just upgraded my video card and now i can not log into xubuntu from grub
+<wowhead> can anyone help me
+<wowhead> i would like to get back into xubuntu my screen flashes and than nothing how can i fix thid
+<wowhead> is anyone awake
+<ridin> mmmm, you might wanna ask in #ubuntu
+<wowhead> ill give a cookie if anyone can help me
+<s_andy> hi, im getting an error when i try to log into  any non root sesion on my xubuntu box, it says i have some problem with the power manager and that i should contact my system admin. What should  I do?
+<s_andy> btw, the problem, besides the error message, is that i just cant start a X session
+<putaas> please somne help me
+<psycho_oreos> we're not mind readers
+<putaas> at gdm, only root is able to login, normal users can't, they get back to gdm...
+<putaas> sorry
+<putaas> im trying to see what the problem is but not eve xsession files are being created
+<psycho_oreos> sounds like you didn't install xubuntu straight off, that is you installed xubuntu-desktop
+<psycho_oreos> it could also be group rights issues
+<putaas> i was getting an error a few minutes ago about the poweranager swettngs not being loaded
+<putaas> a few times i have been able to login  but the seesssion looks weird, well,just, unconfigured
+<putaas> shouldnt userA be in group userA
+<putaas> ?
+<arpad2> hello, good morning
+<putaas> mornin
+<arpad2> i restarted my pc
+<arpad2> and since than it can boot only win7
+<arpad2> last time it was running transmission on xubuntu
+<putaas> xubuntu is starting too behave weird with me too
+<arpad2> grub2 also disappeared
+<putaas> everytime i reboot is a different thing missing or working different
+<psycho_oreos> no I think the normal user should also be a member of other groups rather than being a group of its own
+<psycho_oreos> are these from upgrades?
+<putaas> yep
+<putaas> i think i had installed originaly xubuntu 9
+<arpad2> what i know is that during my installation i didnt install grub 2 the best way
+<psycho_oreos> upgrades are never done cleanly imo, probably best to backup all personal data and do clean install
+<putaas> nooooooooooooooooooo
+<psycho_oreos> arpad2, was windows installed after xubuntu?
+<arpad2> yes, indeed
+<psycho_oreos> arpad2, that's the problem, windows tends to overwrite the MBR of the hard disk/SSD with its own boot loader
+<arpad2> yes, but last night i didnt do any OS installation
+<arpad2> only doing with regular programs
+<arpad2> so i shall try booting with live cd?
+<psycho_oreos> so you had xubuntu and windows working on dualboot with grub2 and all of the sudden, the last thing you did on computer was using transmission on xubuntu which somehow caused grub2 to disappear completely?
+<arpad2> yes
+<arpad2> i didnt switch pc overnight
+<arpad2> switch off
+<psycho_oreos> have you updated/upgraded any programs in the process?
+<arpad2> not as far i can remember:)
+<psycho_oreos> are the update/upgrades done automatically?
+<arpad2> not
+<arpad2> automatic is only the notification
+<psycho_oreos> well I guess the only way is to recover grub2 as per usual
+<arpad2> as shown at help.ubuntu.com?
+<psycho_oreos> or however you did it in the first place :)
+<slow-motion> hi
+<nicofs> During boot i get the message "Unable to detect available WMID devices" - which slows down my boot. How can i remove that. [Running Acer Aspire One 532h, N270 1,66GHz, latest Xubuntu]
+<nicofs> How can I speed up my boot process? I recently upgraded my netbook with an SSD - but i am still far away from these 10-second-boot promises i heard. [Running Xubuntu on Acer Aspire One 532h, N270@1,66GHz]
+<TheSheep> nicofs: whoever made that promise, he lied
+<Sysi> you don't need to repeat
+<Sysi> are you counting login to that time?
+<nicofs> TheSheep: even 20 second would be an improvement...
+<nicofs> Sysi: i am not repeating... and i disabled login.
+<Sysi> install bootchart
+<nicofs> sysi: ok, will try...
+<nicofs> sysi: i installed is... how do i use it? or is installing enough already?
+<nicofs> sysi: *it
+<Sysi> reboot and see /var/log/bootchart/
+<nicofs> sysi: /var/log/bootchart is empty...
+<Sysi> hrm
+<Sysi> i have files there and i didn't remember it's installed
+<gaussfrank> Hi,everbody
+<D347H-C0D3> Hi gys... I just used debootrap for ubuntu 8.04 on my ubuntu 9.04(hosted on virtual box). When i tried installing xfce desktop on ubuntu 8.04 the folowing error came: http://paste.ubuntu.com/464024/
+<gaussfrank> Can anyone tell me how to set the window color in xubuntu
+<Sysi> gaussfrank: install/change theme, for many default themes it changes with gtk-theme
+<gaussfrank> I want to change on my opinion
+<Sysi> make own theme :P
+<gaussfrank> Only want to change a white-color-window into a green-color-window
+<gaussfrank> Oh,how can I do it easily?
+<TheSheep> gaussfrank: you can use an existing theme as a base
+<Sysi> oh wait, what do you mean by "window color"?
+<TheSheep> gaussfrank: http://live.gnome.org/GnomeArt/Tutorials/GtkThemes
+<gaussfrank> For example
+<gaussfrank> You can see white in Mousepad
+<gaussfrank> Sorry for my ugly English.
+<Sysi> D347H-C0D3: you could try to reinstall cups
+<gaussfrank> I meant that the color background in a window or a dialog
+<D347H-C0D3> Sysi: When i run apt-get install xubuntu-desktop that cups package is downloaded
+<D347H-C0D3> Sysi: The error comes during installation
+<Sysi> debootstrap can give odd problems..
+<Sysi> gaussfrank: are you looking for something like gnome-color-chooser?
+<gaussfrank> Maybe yes. I edited it in gnome easily. Or instead, edit some configure files.
+<gaussfrank> For another example,we can change "web background" color in firefox.
+<gaussfrank> I want to edit all window like firefox.
+<gaussfrank> Is there any tool like this?
+<gaussfrank> Oh,Sysi,not gnome-color-chooser
+<gaussfrank> http://forum.ubuntu.org.cn/download/file.php?id=35548&mode=view/1.png
+<gaussfrank> In gnome, we can edit color in there
+<Sysi> afaik there isn't anything like that in xubuntu
+<Sysi> but if you can save theme "created" like that, you can maybe use it
+<gaussfrank> oh,but can i edit it by editing some configure file.
+<Sysi> i think they are in gtk theme
+<gaussfrank> I've found theme files in system. maybe /usr/share/**
+<gaussfrank> Then there's a file named gtkrc
+<Sysi> yeah, that's the gtk-theme
+<gaussfrank> I don't know which one is what I want to edit
+<gaussfrank> I don't know the one which I want to edit
+<gaussfrank> There are many color settings in this file. I'd edited a one, but .............
+<gaussfrank> Is there any official manual
+<gaussfrank> If i get it, i can search for translations.
+<gaussfrank> Sysi
+<Sysi> search for "creating gtk-theme" or something
+<gaussfrank> what does 'style "default"' mean
+<gaussfrank> Is it?
+<gaussfrank> If I search "creating gtk-theme' in Chinese, I found how to MFC and how to VC++ ......
+<bazhang> http://ubuntuforums.org/showthread.php?t=944189 no easy way gaussfrank
+<gaussfrank> It's the most difficult way for me is to read English......So I translate it in Google Translation
+<gaussfrank> I failed
+<gaussfrank> I edited style "default"
+<gaussfrank> but
+<solotim> hello. my prime partition is shortage of space, so I moved my /home to another partition and created a symbolic links pointed to that. I wonder if I can do the same thing to other root directories. Any suggestions?
+<TheSheep> solotim: try 'sudo apt-get clean'
+<TheSheep> solotim: this will clean apt-get cache
+<solotim> TheSheep: that's far from enough, I've tried.
+<solotim> whatsoever, there are only 200M left in my prime partition
+<TheSheep> you can move any directory in / to another partition and mount it in that place
+<TheSheep> but that usually requires booting from a cd, so that the files are not in use while you move them
+<TheSheep> it's common to have /var and /usr on separate partitions
+<solotim> Yes, I thought the same way.  I've managed to mv /var to another partition.  But for /usr it is a little bit unsafe I feel
+<solotim> since the binary file 'sudo' sits in /usr/bin, it seems we can't cp those kinds of special file.
+<solotim> I get no cd driver. My solution is firstly cp the whole directory tree to another partition, and then mv, say /var, to /var_bk, and "sudo ln -s /media/sda5/var /var"
+<solotim> hello, TheSheep, are you there?
+<Sysi> you can boot from usb
+<solotim> Sysi: I can't. LOL, this is a pretty old computer  Dell C600
+<solotim> Thanks for the advice
+<Sysi> i forgot 'maybe' :p
+<bourke> hi, in xfce compiz seems to be putting shadows over my menu bars until I mouse over them. would anyone know how to disabl this?
+<charlie-tca> Day 4 of https://wiki.ubuntu.com/UbuntuDeveloper Week starts in 20 minutes in #ubuntu-classroom
+<knome> charlie-tca, one space too many? :)
+<nicofs> Can anyone help me fix my 3g modem? it's there and recognized as such, i can create a connection. when i try to connect the first time - it shows the connecting-icon for a few seconds and then goes to "Disconnected". If i retry after that it goes to "Disconnected" right away. If i try to connect via wvdial i get "invalid dial command". The SIM has no PIN, i have reception and the problem persists with various providers. I was able to co
+<charlie-tca> knome: Oh! yeah, I guess so
+<arpad2> hello everybody!
+<arpad2> what does it mean if with fdisk -l command on live cd only one out of two HDD s is seen?
+<nicofs> Can anyone help me fix my 3g modem? it's there and recognized as such, i can create a connection. when i try to connect the first time - it shows the connecting-icon for a few seconds and then goes to "Disconnected". If i retry after that it goes to "Disconnected" right away. If i try to connect via wvdial i get "invalid dial command". The SIM has no PIN, i have reception and the problem persists with various providers. I was able to co
+<charlie-tca> nicofs: your paragraph is too long. The last visible part reads "I was able to c "
+<ridin> c food
+<ridin> see? aaaa
+<nicofs> Can anyone help me fix my 3g modem? it's there and recognized as such, i can create a connection. when i try to connect the first time - it shows the connecting-icon for a few seconds and then goes to "Disconnected". If i retry after that it goes to "Disconnected" right away. If i try to connect via wvdial i get "invalid dial command". The SIM has no PIN, i have reception and i was able to connect before.
+<slow-motion> re
+<Facu> hola?
+<Facu> alguien que hable español?
+<charlie-tca> !es
+<ubottu> En la mayoría de canales de Ubuntu se habla sólo en inglés. Si busca ayuda en español o charlar entra en el canal #ubuntu-es. Escribe "/join #ubuntu-es" (sin comillas) y dale a enter.
+<arpad2> what does it mean if the BIOS cant detect the hard drive?
+<Sysi> sounds like broken hard drive
+<arpad2> end of the lifetime for that item?
+<Sysi> can be
+<arpad2> or can it be revitalised somehow?
+<charlie-tca> could be the cable, too
+<arpad2> so , to go with it to a service coold help..
+<arpad2> unfortunately xubuntu was on that drive?(
+<charlie-tca> Xubuntu presentation in Ubuntu Developer Week at 19:00 UTC today in #ubuntu-classroom
+<nicofs> Can someone help me troubleshoot my 3g modem? it stopped working (i can't connect anymore)
+<nicofs> Can someone help me troubleshoot my 3g modem? it stopped working (i can't connect anymore)
+<simar> Hi everyone.
+<wowhead> i just upgraded my video card and i can not log into xubuntu the screen just flashes than goes blank could someone help me with this
+<wowhead> can anyone help me with this
+<charlie-tca> !patience
+<ubottu> Don't feel ignored and repeat your question quickly; if nobody knows your answer, nobody will answer you. You can search https://help.ubuntu.com or http://ubuntuforums.org while you wait.
+<nicofs> can anyone help me with my 3g modem? i can't connect anymore. i'm trying sakis 3g atm, but it doesn't work... neither does wvdial ("invalid dial command"). I need help. i need that connection to work 2morrow...
+<slow-motion> n8
+<nicofs> there is a program in my Software Menu in the category "Network" which i need to start from console - how can i find out how it is called? The name displayed in the menu is not the name of the package...
+<Sysi> is there something like "about" in menubar (if any)?
+<nicofs> "About Xfce"
+<Sysi> in that window i mean
+<nicofs> you mean the program i'm looking for? it won't start from the menu... i suppose it needs sudo - hence the console...
+<ridin> what's the program called?
+<ridin> ndiswrapper?
+<nicofs> ridin: Mobile Partner
+<ridin> .
+<ridin> where did you get it
+<ridin> ubuntu software center
+<ridin> ?
+<nicofs> ridin: http://www.acer.com/aspireone/support/files/connect.html - came with a shell script...
+<nicofs> ridin: apparently, ubuntu doesn't provide anything that get's me connected to 3G
+<totoro> nicofs: ftp://ftp.acer-euro.com/netbook/aspire_one_110/linux/application/huawei081126.sh.zip ?
+<nicofs> totoro: yes, that...
+<totoro> .zip, extract that
+<totoro> and then double click the .sh file
+<nicofs> totoro: i am not asking how to install it... i need to know, how to start the programm i installed from a terminal...
+<totoro> type in macles
+<totoro> just a guess
+<nicofs> totoro: guess what my guess was...
+<totoro> that i guessed wrong
+<totoro> ??!?!?!?
+<nicofs> totoro: yep. macles didn't work...

@@ -1,0 +1,674 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2010-3-15"
+lang: "en"
+messages: "665"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<uvirtbot> New bug: #538876 in samba (main) "Upgrade to version 3.5.1 in Lucid" [Undecided,New] https://launchpad.net/bugs/538876
+<uvirtbot> New bug: #538902 in munin (main) "munin-node is no longer being started during boot" [Undecided,New] https://launchpad.net/bugs/538902
+<Sorell> hey guy I have a question about cloud controllers
+<Sorell> I have a controller with 2 NICs
+<Sorell> one goes to the net and the other goes to the nodes
+<Sorell> I can't seem to get the one going to the nodes to issue IP addresses
+<Sorell> and it does not show up in my if config
+<Sorell> http://paste.ubuntu.com/395431/
+<Sorell> that's my setup
+<lifeless> are you forwarding DHCP?
+<Sorell> I don't think so
+<Sorell> http://paste.ubuntu.com/395432/
+<Sorell> that's the whole file
+<Sorell> Do I need to forward DHCP
+<Sorell> ?
+<Sorell> I want the nodes on the inside to not touch the outside would.
+<pschulz01> Greetings.. down anyone know if there is as ppa for an updated version of 'resolveconf'. I am experienceing issues relating to bug #448095
+<uvirtbot> Launchpad bug 448095 in resolvconf "resolvconf starts after ifupdown, does not pick the dns-nameserver and dns-search lines up from /etc/network/interfaces" [Undecided,Confirmed] https://launchpad.net/bugs/448095
+<pschulz01> sorry.. that should 'resolvconf'
+<twb> Is that because resolvconf isn't upstartized yet?
+<axisys> how do I enable syslogd to receive logs from remote host? i want my linsys router to send logs to my ubuntu server
+<axisys> syslogd -r -u syslog should do it .. so modify the init ?
+<axisys> got it
+<axisys> /etc/default/syslogd with a -r
+<GheRivero> morning everyone
+<Jeeves_> Hi all
+<Jeeves_> Does anyone know if there is a nice way to automatically delete iscsi disks in Ubuntu?
+<Jeeves_> I can echo 1 > /sys/block/sdx/device/delete and than iscsiadm -m node --rescan, but that's not very nice when you have multiple machines
+<Noble> Is the apache2.conf secure by default? If not, what changes should I do? I use only PHP(mysql) and HTML.
+<twb> Noble: define "secure".
+<twb> IMO if you're running *any* PHP or MySQL, you're probably already horribly insecure.
+<twb> Which is to say that while, with diligence, you can write secure PHP code, most people don't.
+<Noble> About the apache2.conf now..
+<Noble> Is there anything I should add or remove from the default file?
+<Noble> I have removed serverSignature and servertokens
+<twb> Security through obscurity isn't a particularly clever move.
+<andol> Noble: One thing I like to do is add an explicit <Directory "/">...</Directory>, including Options None, AllowOverride None, Deny all, etc. That way I will explicity add Directory permissions later.
+<andol> Noble: Of course, the included httpd.conf is probably a better place to add your own global configuration.
+<Noble> andol: Thanks for the tips.
+<zul> morning
+<_ruben> g'day
+<eagles05138785> hey guys im having some issues trying to start x ovr ssh
+<_ruben> define "start x over ssh"
+<eagles05138785> im using xming to get an x environment running on windows yet i keep getting an error about the user not being in the X group
+<eagles05138785> thing is when i look at the groups file in /etc there is no X group hence it wont start
+<_ruben> well, ubuntu *server* doesnt have a *desktop*
+<persia> There wouldn't be an "X" group even if it did.
+<persia> But it certainly doesn't export xdmcp
+<eagles05138785> _ruben: i have installed the basic kde packages instead of using the metapackage im slowly building a desktop environment from the ground up
+<persia> eagles05138785: Assuming you have xterm available on your server, are you able to run that with X11 forwarding?
+<eagles05138785> persia: im sshed into the server
+<eagles05138785> as i dont have a 2nd monitor
+<persia> OK.  What happens if you run xterm?
+<eagles05138785> xterm Xt error: Can't open display: localhost:10.0
+<persia> OK.  There's almost certainly something wrong with your xserver (xming).  Go make sure that works, and then try again.
+<persia> It may be that your ssh client isn't passing the right credentials to your X server, or similar.
+<eagles05138785> could it be a firewall issue
+<eagles05138785> windows firewall im talking about here
+<persia> Potentially, yes.  Check those logs.
+<eagles05138785> will get back to ya time to check the logs
+<eagles05138785> persia: nothign is showing up in the logs
+<eagles05138785> on windows at least checking logs on server
+<persia> I put a file in /etc/cron.d/ and expected entries there to be treated like those in /etc/crontab , but nothing seems to run.  Should this work?  If so, any suggestions on troubleshooting?
+<_ruben> persia: iirc, the syntax is the same between those versions
+<_ruben> troubleshooting cron is a bitch in my experience though
+<persia> Ineed.  As far as I can tell, the jobs just don't get triggered at all.
+<_ruben> it sounds familiar, but dont recall any fixes or anything :(
+<persia> :/
+<eagles05138785> sry to but in but would it help trying to run cron through gdb
+<persia> eagles05138785: Not really, because 1) it's not crashing, and 2) it's a system service.
+<eagles05138785> ok
+<persia> I suppose I could strace over a trigger boundary, but that's also painful in terms of volume.
+<smoser> good morning all
+<smoser> good morning us/eastern
+<zul> what about canada/eastern? ;)
+<Ninjix> smoser: good morning
+<soren> Wow. Painful morning. I haven't been able to get onto IRC until just now.
+<persia> soren: Just pretend you're in Texas, and then you can claim it's early yet :)
+<soren> persia: ..but then I'll have to stay up late, too :(
+<hggdh> well, it *is* early here in Texas!
+<hggdh> <yawn/>
+<smoser> kirkland, ping
+<huntsville> persia, execute permission by chance?  ;)
+<twb> It's always weird to think of TX as having anything technological (like TI or U. Austin).  In my head the entire state is just a bunch of cowboys riding horses around their ranches
+<twb> And those fucking huge American utes
+<soren> utes?
+<twb> Things that tradesmen drive
+<twb> The front half is a sedan and the back half is a flatbed, usually with sides and occasionally with a top
+<persia> huntsville: Indeed, that was likely it.  I'll know for sure in a couple hours.
+<uvirtbot> New bug: #536628 in samba4 (universe) "evolution-data-server-2.28 crashed with SIGSEGV in convert_string_talloc_convenience()" [Medium,New] https://launchpad.net/bugs/536628
+<twb> http://en.wikipedia.org/wiki/Coup%C3%A9_utility
+<persia> twb: Two thngs about TX: lots of space to do stuff, and a fair amount of local silicon available in handy forms.
+<twb> I run into math guys from U. Austin all the time
+<huntsville> persia, let's hope so.
+<Sorell> Is there something special that I have to do to a a region to elasticfox?
+<Sorell> I click on the add tab and nothing happens
+<zul> persia: i though you were talking about boobs for a minute
+<persia> zul: I defer any interpretation of my descriptions of the virtues of TX to the corners of your mind, without needing explicit feedback :)
+<kirkland> smoser: pong
+<smoser> was hoping to get some time on your cloud today
+<twb> "Gytha, is there anything you can't make sound dirty?"
+<twb> Ng: depends what it does
+<Ng> twb: well I can imagine that that's ideal for people running ocfs on local storage, but if your storage is remote then it's way too early
+<Ng> (at least, that's what I found when I was playing with a SAN accessed via FC)
+<twb> Does ubuntu use insserv yet?
+<Ng> I would assume not, since we're moving away from stupid init.d scripts to smart upstart configurations :)
+<twb> From the lack of pere and the NIH'd upstart, I'm guessing not.
+<persia> twb: the inserv package is available, for stuff still in init.d scripts : you may want to check to see how well it works.
+<twb> I was asking because if it was the default (as is the case for Debian 6), it ought to automagically be ordered after $remote-fs
+<twb> For my own gear, I only run Ubuntu on servers and other people's desktops, so I don't care if it takes an extra five minutes to boot
+<jaco> Hey Guys, I want to to the following on my Debian 5 box: set it up with a gsm modem so it'll send me an sms whenever the internet connection drops. Any ideas?
+<smoser> kirkland, ^^%
+<persia> twb: For the desktop case, I know that it's being agressively manually profiled (see http://people.canonical.com/~scott/daily-bootcharts/ ), for the server case, insserv might be interesting, but likely only for less-common services.
+<twb> I thought bootchart was totally fucked by the upstart transition
+<twb> Probably that was fixed two years ago and I didn't notice
+<jaco> Hey Guys, I want to to the following on my Debian 5 box: set it up with a gsm modem so it'll send me an sms whenever the internet connection drops. Any ideas?
+<persia> I think it was more like 21 months ago, but yeah.
+<twb> Or maybe it was just fixed on Ubuntu but not Debian
+<twb> That rings a bell
+<twb> jaco: that's really a question for #debian (on OFTC).
+<persia> #debian works here also
+<persia> (different folks, but same purpose)
+<twb> Ew, scott isn't providing svgz's for those clever bastards with browsers that support them.
+<persia> I suspect rather that bootchart isn't producing them.
+<persia> But complain to scott
+<twb> bootchart produces a tarball
+<twb> There's then java crapware that emits png/svgz
+<kirkland> smoser: would you like it freshly installed?
+<kirkland> smoser: it's a mess right now
+<smoser> fresh is fine, yeah.
+<smoser> kirkland, i should probably reinstall my 2 system one too, would you suggest from daily iso ?
+<smoser> or do you think i have a chance at upgrade from alpha3
+<kirkland> smoser: probably daily, buti i haven't tried today's
+<smoser> ok. thats fine.
+<kirkland> smoser: installing ...
+<wack479> For some reason the sites that run php on my web server stopped working, and i am receiving this error in my syslog http://paste.pocoo.org/show/189879/
+<twb> In Lucid, I need casper to be in rcS, but *not* be in rc0.  "update-rc.d casper disable 0" doesn't DTRT.  Is there anything else I can try, short of a simple rm -f?
+<twb> dpkg-divert obviously won't work.
+<wack479> anybody home
+<twb> wack479: sorry, mysql is boring
+<jiboumans> morning
+<soren> jiboumans: Moving half way around the world has made you delusional. It's not morning anymore. That was many hours ago.
+<eagles05138785> morning hey guys im having some issues getting x working on ubuntu server. when i try to start x i keep getting this error http://pastebin.com/YeRT8v2h anyone have any idea what im doing wrong. i have to forwarded using xming to allow x to be loaded but it gives me the error that i linked before and no desktop loads
+<yann2> Hello
+<yann2> I am trying to find what software Ubuntu recommends to do unions of directories
+<yann2> unionfs? aufs? Other?
+<soren> eagles05138785: Try in #ubuntu. X problems are unrelated to ubuntu server.
+<yann2> from what I read ubuntu doesn't seem to like any of those :)
+<soren> yann2: Depends on the version of ubuntu.
+<yann2> lucid
+<jiboumans> soren: http://xkcd.com/448/ is applicable here
+<eagles05138785> soren: ok
+<yann2> I read about a VFS implementation that was supposed to be ready for karmic, but wasnt, not sure if it is now, couldnt find anything about that
+<soren> yann2: I forget what the verdict was. There was talk of moving to union mounts, but I think we ended up sticking with aufs. "Think" being the operative word.
+<soren> "union mounts" "a VFS implementation"
+<soren> Err..
+<soren> "union mounts" == "a VFS implementation"
+<MTecknology> how can you use a 'find -exec' in a bash loop?
+<yann2> do you know where I could find out about this, if it is ready or not?
+<twb> http://bugs.debian.org/573189 covers aufs and union mounts.
+<soren> MTecknology: What do you want to do, exactly?
+<MTecknology> soren: just got it, I needed to use ;; at the end - because the find -exec needs ; at the end
+<yann2> so right now, virtualfs not ready and only solution is aufs which is a dirty hack? is aufs sure enough to be used on critical data?
+<wack479> anyone home?
+<yann2> I guess I'll wait for lucid+1 :)
+<persia> yann2: aufs is the basis of the Ubuntu live environment.
+<yann2> persia, I know, but a live environment doesnt really need something ultra stable, plus there have been talks of removing aufs support from ubuntu as well I think
+<persia> yann2: I've never encountered issues using it, but I've only ever used it for short-lived stuff (days, at most).
+<wack479> for some reason my server has "stopped running php" when i go to my site it just downloads a file that inside says this: http://paste.pocoo.org/show/189881/ <--anyone seen it b4?
+<persia> yann2: For what purpose do you want a persitent overlay filesystem?
+<yann2> http://ubuntuforums.org/showthread.php?t=1430303
+<twb> persia: here, one application is change management -- an easy way to rollback a broken upgrade (as long as normal users are kicked off before you start).
+<persia> yann2: You don't need a real overlay for that.  Just use a fuse hack to trap file-not-found and look in the NFS mount.
+<persia> twb: That's short-lived, typically.
+<twb> Yes.
+<twb> Another idea I had for my netbook was to roll a squashfs root filesystem once a month or so, and store changes in the cow.
+<yann2> persia, I did thought about autofs, if that s what you're referring to. But I need the index to display all folders
+<yann2> unions seemed more sensible
+<twb> Since it's compressed with LZMA1, it ought to reduce my root filesystem from about 1GiB to about 400MiB.
+<twb> But live-helper's still way to flaky for me to trust it with something that complicated -- and in any case I now have btrfs -o compress.
+<persia> twb: Something like that was done for the hardy Ubuntu MID release.  It ended up being not as good idea as it first seemed.
+<twb> persia: the key difference being that I'm smart enough to be able to reroll bmonthly
+<twb> I guess if you were tracking a stable release, it'd be less of an issue
+<persia> yann2: Actually, I wasn't talking about autofs, but rather some 15-line Fuse.pm script you could probably write.
+<yann2> persia, would the "project" folders actually display the list of all projects? ie appear as an union?
+<persia> twb: OK.  Give it a shot.  Take care for version skew in libraries.  Always re-roll when you update the initramfs.  Mount a separate /boot.
+<twb> persia: like I said, it doesn't matter now I migrated from ext2 on 4GiB to btrfs on 64GiB.
+<yann2> auto_fs with BROWSE_MODE could do I think, but I would end up with several hundreds NFS mounts, a bit scared by thart
+<twb> The OS is no longer consuming a third of my space
+<persia> yann2: Sure.  Basically, you'd check if a file was in the fast tree, and if it was, serve it.  If not, you'd pattern-match the path to specify an alternate location, and if it's there, serve it.  Try 3-5 locations befoe returning file-not-found
+<yann2> persia, but that would work if the user knew what folders he needs "projects/THAM38" for example. But if he wants to go to "projects/"  and just see what's in there, I dont understand how it would work
+<yann2> else what you re saying seems very close to autofs :)
+<persia> yann2: You'd get listings from all the directories, and cat them together.
+<yann2> you got any documentation for that?
+<yann2> its too bad, unionfs seems to be exactly what I'm after, just it doesnt sound stable
+<persia> yann2: e.g. http://podgorny.cz/moin/UnionFsFuse
+<persia> yann2: You don't want overlay filesystems: those don't typically store entire files anywhere in particular, which is inherently messy.  You just want concatenation.
+<yann2> persia, yes I did try that one out... does it work well?
+<yann2> ... maybe :P
+<persia> no idea.  the description seemed to macth mine above, and it seems to do a merged hierarchy, rather than a lower-level overlay.
+<yann2> what would happen if a user created a new folder in that virtual folder?
+<persia> http://olfs.sourceforge.net/ appears to be another one.
+<persia> If it's not configurable, it ought be.  make it so, or grab Fuse.pm and write some match script.
+<MTecknology> Can I use usermod to remove a a user from a group?
+<MTecknology> or do I need to edit /etc/group manually for that?
+<hggdh> the server install does not install PHP when we task-select LAMP. Is this a space issue (on the CD)?
+<wack479> for some reason my server has "stopped running php" when i go to my site it just downloads a file that inside says this :http://paste.pocoo.org/show/189881/ <---anyone seen it b4?
+<wack479> anyone?
+<sherr> wack479: something changed - did you change it? The problem will be in the server setup somewhere. Eiher you changed something, or a recent update? No idea myself. That link is just some PHP that should run.
+<asmarin> on ubuntu server karmic amd-64 in certains conditions says mysql-server-5.1 and mysql-core-5.1 are old and unecesary and i can delete with apt-get autoremove....is it a bug?
+<echa> hi, i'm trying to install ubuntu-server 9.10 on a network which requires me to change my MAC first
+<echa> i thought i could do this from busybox in the installer console, but ifconfig isn't available
+<echa> any suggestions on how i can achieve this?
+<uvirtbot> New bug: #539051 in eucalyptus "eucalyptus ignores VNET_INTERFACE setting when creating volumes" [Undecided,New] https://launchpad.net/bugs/539051
+<LinuxAdmin> Hi guys
+<LinuxAdmin> I'm trying to install ubuntu-vm-builder but I'm getting problems with apt-get command
+<LinuxAdmin> I  get this error:
+<LinuxAdmin> It was not possible to get some archives, try to run apt-get update or try with --fix-missing
+<LinuxAdmin> I've run apt-get update already
+<LinuxAdmin> any ideia?
+<LinuxAdmin> My ubuntu server is 9.10
+<uvirtbot> New bug: #263398 in spamassassin (main) "spamassassin sends some mails to junk" [Undecided,Incomplete] https://launchpad.net/bugs/263398
+<LinuxAdmin> can someone help  me?
+<NoReflex> hey guys! I'm having some problems with upstart ik karmic server 64bit. It won't start postgresql. I tried http://superuser.com/questions/98702/how-to-make-postgresql-start-at-boot-time-in-ubuntu but it didn't work. can I remove upstart? I'm afraid to test it because the machine is at a remote location and if I mess it up I won't be able to connect to it anymore.
+<brontosaurusrex> is webdav tied to actual system users, or are those some apache virtual users?
+<brontosaurusrex> or do i have a choice?
+<philthno2> Hi, I installed the dektop-Ubuntu but don't want GDM to start. What's the best way to achive this? I find the /etc/gdm.conf but is it ok just to uncomment the "start on" and "stop on" - lines?
+<LinuxAdmin> I don't remember to see #ubuntu-server channel so stopped
+<LinuxAdmin> no one helping?
+<NoReflex> philthno2: try startx and then sudo gdmsetup - that should allow you to configure how ubuntu starts
+<philthno2> NoReflex: Thank you for the hint! I tried to get rid of gdm but no alsa seems to have some problems. I'll try my luck
+<NoReflex> philthno2: yw
+<philthno2> can someone tell me if the server version also contains alsa and that stuff? I mean -- can I install it and play a sound out-of-the-box?
+<NoReflex> philthno2: I don't think the server version comes with alsa ....but ubuntu-desktop installs it as a dependency
+<vegar_> I'm having a lot of problems installing ubuntu server from usb. The installer runs, but it's having problems with the packages on the usb  stick. Is is possible to force it to only use a network mirror?
+<warmexxus> hey everyone its been a long time since I've been on IRC... I thought it would be easier than endlessly searching the net for an answer... very simple... i have a lack of understanding of the overall picture.. what's happening is I am running a basic Ubuntu Server 9.10 (karmic?) and I intended to use PuTTY to remote control the operations. From my windows box I can login in but after about 3 minutes the connection drops
+<jMCg> warmexxus: idle time, I suppose...
+<jMCg> I've not seen that kind of behaviour in Linux yet, but who knows..
+<pmatulis> warmexxus: going through a firewall/router?
+<jMCg> warmexxus: in PuTTY you can set a Keep-alive package...
+<warmexxus> it's gotta be something very simple...
+<warmexxus> a linksys router...
+<pmatulis> warmexxus: any filtering on it?
+<warmexxus> the two are on the local network..
+<warmexxus> i looked but I didn't filter any ports explicitly... in fact I forwarded outside requests to the server... on port 22
+<warmexxus> so if anything the ports are open
+<pmatulis> warmexxus: try connecting the 2 machines directly and testing.  is that possible?
+<warmexxus> im intending to make it headless and keeping it hidden in a closet... keep the baddies away.. haha
+<jMCg> warmexxus: In the Connection Category, there's Seconds between keepalives
+<pmatulis> warmexxus: you can also run the ssh daemon in the foreground and watch for any suspicious error messages.  or run it as a daemon with higher log level
+<warmexxus> not really... I'm not totally new to *nix but it's been a while and I just set it up last week
+<warmexxus> right the keep alives
+<warmexxus> the service is set to use keep alives and when i change PuTTY to use the keep alives the connection never happens.
+<warmexxus> let me try again... I'll keep messing with it...
+<NoReflex> hello! I'm having some problems with upstart ik karmic server 64bit. It won't start postgresql. I tried http://superuser.com/questions/98702/how-to-make-postgresql-start-at-boot-time-in-ubuntu but it didn't work. can I remove upstart? I'm afraid to test it because the machine is at a remote location and if I mess it up I won't be able to connect to it anymore.
+<jMCg> warmexxus: if you want (or have) to keep administrating the system, you better familiarize yourself with it... </2cents>
+<warmexxus> one thing that I need clarification on is the RSA keeyws
+<warmexxus> yeah are correct... it's more like OJT/hobby
+<warmexxus> i've been reading and reading... and reading... just it's getting cumbersome when I can't discover something simple like a timed out connection using PuTTY...
+<warmexxus> there are tons of results on google... I've read 50% of them...
+<jMCg> Bummer.
+<pmatulis> NoReflex: get an strace of your starting method
+<warmexxus> I wonder if it's the authentication type / config
+<pmatulis> warmexxus: if you're authenticated you're authenticated.  it's something else
+<NoReflex> pmatulis: I can start it manually from init.d but it won't start by itself at boot ... there are links in /etc/rc*.d......
+<jMCg> warmexxus: Timeouts generally happen for the same reasons... I think pmatulis and moa already named them -- and no, it's NOT about the config.. Unless there is a new pam_fuckupconnection.so I don't know anything about.
+<dharrison> hello room
+<warmexxus> alright I'll take that and run with it... believe it or not you have helped. :) Thank you kindly
+<jMCg> warmexxus: you're very welcome.
+<jMCg> Also: 19:15 <+DrBacchus> Where did people pick up the notion that running an internet daemon was something that should be trivial?
+<warmexxus> true
+<dharrison> hi I have some networking issues with ubuntu. it will not ping certain ip addresses
+<NoReflex> dharrison: what do you mean by certain IP addresses?
+<dharrison> external ones
+<dharrison> we have a monitoring system in place that pings certain ips
+<NoReflex> dharrison: well maybe your router / gateway blocks ICMP
+<dharrison> but it wont ping a certain ip address
+<dharrison> other servers on the network are ok
+<jMCg> dharrison: maybe the system doesn't want to be pinged.
+<dharrison> lol i know the feeling
+<NoReflex> dharrison: try mtr YOUR_IP_ADDRESS
+<dharrison> mtr?
+<NoReflex> mtr TARGET_IP_ADDRESS
+<NoReflex> my traceroute
+<dharrison> has come up blank??
+<dharrison> works on others
+<NoReflex> dharrison: so you have more machines inside your LAN? the other machines can ping certain IP address but your ubuntu server can't?
+<dharrison> correct
+<NoReflex> dharrison: do you have ufw, iptables set up on ubuntu_server?
+<dharrison> ufw is off
+<NoReflex> what does sudo iptables-save return?
+<dharrison> # Generated by iptables-save v1.4.1.1 on Mon Mar 15 18:25:54 2010
+<dharrison> *filter
+<dharrison> :INPUT ACCEPT [16058:1400749]
+<dharrison> :FORWARD ACCEPT [0:0]
+<dharrison> :OUTPUT ACCEPT [16256:1169307]
+<dharrison> COMMIT
+<NoReflex> dharrison: try yo use pastebin next time... so it seems that iptables is set to allow all
+<NoReflex> does ubuntu_server have the same gateway as the other machines?
+<dharrison> yup
+<NoReflex> can you ping the other computers on your LAN from your ubuntu_server machine?
+<dharrison> yes no worries at all
+<NoReflex> pmatulis: I also tried to enable bootlogd but it didn't help ... I can seem to be able to figure out why postgresql won't start at boot. I was thinking about removing upstart - that should install other packages to take upstart's place
+<pmatulis> NoReflex: i wouldn't do that
+<pmatulis> NoReflex: not sure what bootlogd is
+<NoReflex> dharrison: do you manage your router / gateway? perhaps it only allows some IP addresses or MAC to reach the internet. Can you "reach the Internet" at all from ubuntu_server: for example curl http://google.de
+<dharrison> i can yes no problems
+<NoReflex> pmatulis: bootlogd should log boot messages to /var/log/boot - but it does not seem to work with upstart
+<pmatulis> NoReflex: well i gave you 2 things to try
+<pmatulis> NoReflex: sorry, that was the ssh problem
+<NoReflex> pmatulis: np
+<NoReflex> I don't think the strace method would help because I can start it manually with /etc/init.d/postgresql-8.4 after I login
+<pmatulis> NoReflex: ok
+<NoReflex> dharrison: what does traceroute google.de
+<NoReflex> give
+<pmatulis> NoReflex: a few days ago someone was having the same trouble with mysql
+<pmatulis> NoReflex: what LOCALE are you using?  sometimes that gummies things up
+<NoReflex> pmatulis: i think my location is setup to Germany ... how can I check?
+<pmatulis> NoReflex: hmm, interesting
+<NoReflex> pmatulis: locale gives LANG=en_US.UTF-8 - and the rest of the vars are set to en_US.UTF-8 as well, except LC_ALL which is empty
+<MTecknology> can I make an entry in my hosts file that's something like    127.0.0.1  *dev* *kalliki* *profarius*
+<MTecknology> so any request that has any of those will go back to localhost
+<NoReflex> MTecknology: I don't think you can use wildcards in /etc/hosts
+<MTecknology> NoReflex: that sucks
+<NoReflex> MTecknology: well I don't think it's that hard to create separate lines for each host you need
+<pmatulis> NoReflex: i'm sorry, i can't find the resource i was looking for, there was a mysql bug on starting and locales
+<pmatulis> NoReflex: might help you with postgresql
+<NoReflex> pmatulis: np; thx for trying :)
+<vegar_> Tasksel includes the entry "Basic ubuntu server", what does this task install?
+<MTecknology> NoReflex: problem is there's a whole lot of them and there's new ones added every day
+<NoReflex> MTecknology: can you tell us why do you need to map so many names to your own machine? do you need it for apache virtualhosts?
+<vegar_> is there a general way to see which packages a tasksel entry installs?
+<MTecknology> NoReflex: nginx
+<MTecknology> NoReflex: the sites complain if they can't refer back to themselves
+<NoReflex> MTecknology: haven't used nginx ... but I guess you could make a cron job which checks which sites have been set up in nginx and updates the /etc/hosts file accordingly
+<nico__> hello
+<nico__> I've just installed 2 PCs with ubuntu enterprise cloud, but I'm unable to make instances running
+<nico__> running euca-describe-instances, I can see the instances pending and after they terminate
+<uvirtbot> New bug: #522060 in euca2ools "[patch] broken file path processing" [Low,Fix committed] https://launchpad.net/bugs/522060
+<nico__> the image is emi-E22310BC (the standard ubuntu 9.10 karmic image)
+<nico__> is anyone here running uec properly?
+<MTecknology> NoReflex: wouldn't work - nginx only knows where to send traffic - i handle all of that other junk through php
+<MTecknology> NoReflex: i'll figure it out though - thanks
+<NoReflex> MTecknology: yw and good luck
+<hggdh> would bug 442498 be looked at for Lucid?
+<uvirtbot> Launchpad bug 442498 in openldap "openldap install bare bones need default DIT separate package" [Wishlist,Triaged] https://launchpad.net/bugs/442498
+<aouldr78> hello everyone
+<aouldr78> i need help about pinging my computer
+<aouldr78> i am not able of reaching my computer through my IP address
+<aouldr78> what could be the problem
+<nico__> aouldr78: IP changed?
+<aouldr78> no it id the same
+<aouldr78> it is the same
+<aouldr78> i do not have firewalls just a modem that is it
+<GhostFreeman> I'm running Ubuntu Server in a VM. I'd like to be able to make the terminal window larger than it is right now, is that possible?
+<aouldr78> if you are running Ubunto in Vbox, all you need is adding the Vbox extras and the terminal will be larger
+<GhostFreeman> doesn't that require X?
+<GhostFreeman> I'd like to avoid using X unless I really have to
+<veebull> I don't know if its the only way, but the only way that I've found thus far to get a bigger console window into a server running in Vbox is to ssh in via PuTTY... and then re-size your PuTTY window.
+<GhostFreeman> that certainly would be the fastest way
+<nico__> anyone here uses ubuntu uec??
+<nico__> my images instances die just after being created...
+<veebull> I've managed (finally) to be able to run my VMs completely headless (in Windows) so once they are installed, I just ssh in...
+<GhostFreeman> How do you set VBox to run a VM as headless?
+<veebull> you have to run it from the command line, and have to download a dos app to allow it to detach from the console once running
+<veebull> http://forums.virtualbox.org/viewtopic.php?f=1&t=28901
+<jaypur> hi can someone help me how to install phpsys???
+<GhostFreeman> thanks veebull
+<jaypur> lol got it!
+<zul> RoAkSoAx: your apport hook for vsftpd was upload....nevermind
+<axisys> i am having weird issue with my ubuntu server.. unless i have a monitor plugged in i dont get a login prompt in serial console
+<axisys> http://pastebin.com/R6C0K6SV this is how my grub setup
+<axisys> i followed this https://help.ubuntu.com/community/SerialConsoleHowto
+<axisys> it is karmic and i am using grub, not grub2
+<axisys> i did `sudo start ttyS0 ` .. so serial console has the boot message as well as vga console
+<axisys> any idea why i need to have a monitor plug in to see the login prompt in serial console ?
+<axisys> another wierd think is also related to display .. if the laptop lid is closed all the way i am not getting any gnome menu bar on the top ..
+<axisys> let me post this last question to #ubuntu
+<aouldr78> how can i ping my computer that is on LAN?
+<aouldr78> i ping 192.168.1.101 but i can not reach it .why?
+<aouldr78> i have a DSL connection
+<axisys> aouldr78: is it your computer's ip ?
+<jasonmchristos> hi
+<aouldr78> yes it is but the default gateway is 192.168.1.254
+<axisys> ifconfig eth0 shows that ip ?
+<axisys> aouldr78: ^
+<aouldr78> it does not make sense to me
+<aouldr78> yes
+<axisys> can you post the ifconfig eth0 output in pastebin ?
+<aouldr78> how can i do that
+<aouldr78> hi
+<aouldr78> are you still there
+<axisys> !pastebin
+<aouldr78> yes what is that?
+<axisys> http://pastebin.com
+<axisys> aouldr78: ^
+<ubottu> For posting multi-line texts into the channel, please use http://paste.ubuntu.com | To post !screenshots use http://tinyurl.com/imagebin | !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+<axisys> aouldr78: ^
+<aouldr78> do i do ping 192.168.1.101?
+<axisys> aouldr78: ifconfig eth0 shows it `UP' ?
+<aouldr78> yes i am using the internet right now
+<aouldr78> i have two connection through LAN but i can not get to ping anyone
+<aouldr78> they are working fine but i can not connect between them
+<blue-frog> aouldr78, netstat -rn
+<aouldr78> the one i an using right now has 192.168.2.2 as IP the other one has 192.168.1.01 as IP
+<aouldr78> 192.168.1.101
+<aouldr78> both are working fine but i can not connect them
+<larsemil> aouldr78: looks like your routes are messed up.
+<aouldr78> i am back
+<aouldr78> can anyone please ping 192.168.2.2?
+<uvirtbot> New bug: #539250 in samba (main) "Windows XP gets access denied when trying to rename folder over smb" [Undecided,New] https://launchpad.net/bugs/539250
+<Japje> aouldr78:
+<Japje> --- 192.168.2.2 ping statistics ---
+<Japje> 5 packets transmitted, 0 received, 100% packet loss, time 3999ms
+<Japje> i think its broken
+<aouldr78> this is my IP and i am using it right now?
+<Japje> that... or i just tried to ping a host on your internal network.
+<aouldr78> what could be the problem?
+<Japje> which ofcourse is unpingable for everybody not on your network
+<lifeless> 192.168.2.2 is a RFC1918 address range, it cannot be pinged from the internet
+<aouldr78> so how can you reach this host?
+<Japje> only with the IP that you have from your isp.
+<Japje> and only if your router is set-up correctly
+<aouldr78> how can i know the ip from my ISP
+<aouldr78> i thought i just need to do ifconfig to find my ip for my computer
+<Japje> http://www.whatismyip.com/
+<Japje> well if you have a router, that gets the IP
+<aouldr78> i am still not able to ping my computer
+<aouldr78> my computer is connected to a modem that connect to ISP telephone
+<aouldr78> that is it
+<aouldr78> i am trying to remote connect to my computer
+<sherr> aouldr78: It is quite hard to do support over IRC sometimes, even with "pastebin" support
+<sherr> aouldr78: Your questions are very basic unix networking
+<sherr> very basic
+<sherr> You 2 IP's are 192.168.2.2 and 192.168.1.1 ?
+<sherr> Then without a router you cannot ping between them - they are on different networks
+<sherr> Make your 2 computers on the same network (subnet) e.g.
+<sherr> 192.168.2.2 and 192.168.2.3
+<sherr> or 192.168.1.2 and 192.168.1.3
+<sherr> i.e.
+<sherr> 192.168.1.X --> X = different for both systems
+<sherr> Do some linux/unix network research/reading, set the PC's on the same network and try a ping.
+<sherr> Try the Ubuntu Forums if you get stuck.
+<kirkland> hggdh: i just merged/pushed your testdrive config changes, thanks!
+<kirkland> hggdh: i had to make one minor change, initializing hasOptions = false
+<kirkland> hggdh: other than that, looks good
+<kirkland> hggdh: to your other question, about IMG and ISO cache, i'm not opposed to adding a configuration change for that;  write up the patch, put it in a branch, link against a bug
+<kirkland> hggdh: i won't use it, but i'm not opposed to it ;-)
+<hggdh> kirkland: thank you. I also just found I had forgotten to init hasOptions
+<kirkland> hggdh: i also found that -d and --desktop have different behavior, somehow
+<kirkland> hggdh: do you see the bug immediately, before i dig deeper?
+<hggdh> kirkland: will check it
+<hggdh> kirkland: I am also considering factoring KVM and vBox to allow for more control over VM parameters
+<kirkland> hggdh: yeah;  keep in mind that testdrive was originally written for KVM, and vbox/parallels/vmware are bolt-on's after the fact
+<NoReflex> hello! I'm having some problems with upstart ik karmic server 64bit. It won't start postgresql. I tried http://superuser.com/questions/98702/how-to-make-postgresql-start-at-boot-time-in-ubuntu but it didn't work. can I remove upstart? I'm afraid to test it because the machine is at a remote location and if I mess it up I won't be able to connect to it anymore.
+<hggdh> kirkland: heh. I do not why, but I also had this feeling ;-)
+<sherr> NoReflex: upstart is so fundamental a part of Ubuntu now that I would *not* remove it.
+<kirkland> hggdh: it greatly increases the complexity of testdrive, but opens doors as to *who* can testdrive Ubuntu
+<kirkland> hggdh: so i bolted it own :-)
+<sherr> NoReflex: You might have big problems - and you are a distance away from the server ..
+<NoReflex> sherr: I don't know what else to try...I can't reinstall since the machine is over 500 Miles away
+<hggdh> kirkland: on the -d and --desktop -- what is the difference (so that I will not have to run both to find out)
+<sherr> NoReflex: No idea on the problem - but if all else fails, there's always /etc/rc.local
+<sherr> Put a "start postgresql" in the /etc/rc.local script
+<sherr> Search web for rc.local usage - it's just a script that gets run every boot
+<NoReflex> sherr: I searched for a way to log what's happening during boot ... the older init package had a bootlogd program that would log to /var/log/boot those messages .... but bootlogd doesn't work with upstart
+<kirkland> hggdh: --desktop prompts the "do you want to run usb-creator", -d does not for some reason
+<sherr> NoReflex: postgres stuff should be visible in syslog I'd expect
+<NoReflex> sherr: rc.local would be a solution but that would not shutdown the postgresql server gracefully when the machine is rebooted I think
+<NoReflex> sherr: I can't find it in syslog, also there's nothing about why it isn;t started in the pg_log dir
+<hggdh> kirkland: weird. Will look at it
+<hggdh> kirkland: both -d and --desktop should set opt.desktop to True
+<sherr> NoReflex: On reboot/shutdown, postgres will be sent a "kill" and should shut itself down gradefully. I wouldn't worry too much about that.
+<kirkland> hggdh: agreed, i don't see the bug yet
+<NoReflex> sherr: will try, thxx
+<wack479> sherr!!!!!!
+<sherr> NoReflex: can you start/stop/restart manually?
+<sherr> hey wack479
+<hggdh> kirkland: BTW, on why I am doing this: I like the idea of an ad-hoc tester for ISOs using VMs, and I would like to make it simple for
+<NoReflex> sherr: yes...start/stop/status/restart all work when I do /etc/init.d/postgresql-8.4 "action"
+<hggdh> kirkland: ad-hoc testers to run it (so different configurations for different tests, like no network, no USB, etc)
+<wack479> lol hey
+<wack479> does mysql question anyone?
+<wack479> lol i cant type
+<wack479> could someone answer a mysql question?
+<NoReflex> sherr: I tried the solution posted here: http://superuser.com/questions/98702/how-to-make-postgresql-start-at-boot-time-in-ubuntu - but it did NOT work
+<NoReflex> so I guess the problem comes from upstart...
+<sherr> You downgraded upstart?
+<NoReflex> sherr:
+<NoReflex> yes
+<NoReflex> however it didn't work so I installed the latest version
+<wack479> does anyone know how i can block the logging of "robot.txt"?
+<wack479> in the apache log
+<NoReflex> Would it be possible to somehow specify which daemons should use the upstart feature and which should use the "init" system?
+<sherr> Maybe check the forums again then. I am not 100% familiar with upstart - but it's a "service" interface - maybe also check "update-rc.d" ...
+<sherr> NoReflex: should be a bug logged - check launchpad
+<blizzkid> Hi all, anyone would like to do a talk about Landscape at LOAD (a linux event in Belgium)?
+<wack479> does anyone know how i can block the logging of "robot.txt" in the apache log?
+<blizzkid> jkakar: you here?
+<kirkland> hggdh: sounds great
+<kirkland> hggdh: you'll have my support ;-)
+<mathiaz> hggdh: hy
+<mathiaz> hggdh: seems that you've updated the samba test case: http://testcases.qa.ubuntu.com/Install/ServerWhole
+<mathiaz> hggdh: the last point in the testing procedure is: net usersidlist
+<mathiaz> hggdh: however that doesn't return any user on a default installation
+<yeason> I've got a postfix smtp server that I think I've enabled TLS on but every time I try using STARTTLS through I get an error from thunderbird stating it doesn't advertise starttls. I've used telnet to connect and checked it and STARTTLS appears in the list of supported services. Can anyone help me out?
+<yeason> I'm a little unclear on if I have it supporting SSL/TLS or if it actually supports STARTTLS. If someone can answer a couple questions I may be able to figure it out
+<sherr> yeason: how are you doing a basic check for support?
+<hggdh> mathiaz: hum
+<mathiaz> hggdh: IIRC samba doesn't import the local users by default
+<mathiaz> hggdh: and point 11. doesn't list an UBUNTU domain by default
+<mathiaz> hggdh: http://paste.ubuntu.com/395830/
+<mathiaz> hggdh: ^^ this is what I get
+<hggdh> mathiaz: I will do it again, but I remember running it from a fresh install. I most probably messed up somewhere
+<hggdh> mathiaz: let me repeat it and find out what I missed to add to the tests
+<yeason> sherr: I've connected to the server on port 25 and issued the ehlo command. I see STARTTLS in the list. The error I'm getting suggests that the server isn't even advertising it, hence my confusion
+<mathiaz> hggdh: ok - I'm going to remove 11 and 12 from the test cases for now then
+<yeason> sherr: I'm currently trying to look up how to test the actual starttls command =)
+<sherr> yeason: If it advertises TLS, then it is there. Thunderbird's misconfigured.
+<sherr> This page has some thoughts on testing :
+<sherr> http://adomas.org/2006/08/postfix-dovecot/
+<sherr> Using perl and MIME::Base64
+<yeason> sherr: I think something else is going on, openssl s_client connect address:25 -showcerts -starttls should test starttls right? cause it is also telling me the server doesn't advertise it
+<sherr> yeason: But you said the server *does* advertise it? ehlo?
+<sherr> Maybe it is advertised but not configured properly
+<yeason> sherr: yea... although I think I might be closer to figuring out the issue... I think it's something with my laptop. I'm running 7 and had to try telnet from another computer. I just tried putty and the starttls line shows up as 250 - BXXXXXXXX
+<lunaphyte> yeason: you can use s_client to test smtp/starttls
+<lunaphyte> as a side note, you really should not be using port 25 for submission.
+<yeason> lunaphyte: what should I be using...?
+<lunaphyte> the submission protocol - port 587.
+<yeason> lunaphyte: I tried s_client and it was also stating that the server was not advertising it
+<yeason> lunaphyte: interesting... I'll have to look into it, I basically followed one of the many guides out there on how to setup postfix
+<yeason> and it didn't mention that at all
+<lunaphyte> if what you paste above is literally what is appearing, then you can thank the p.o.s cisco equipment somewhere along the way for molesting the smtp conversation.
+<lunaphyte> i hate tutorials.
+<lunaphyte> they're usually written by people who shouldn't be writing them, it seems.
+<lunaphyte> they're ok if you're not a beginner, which is the unfortunate irony.
+<lunaphyte> anyway, masked strings like that traditionally mean that there is a cisco firewall in between the client and server with it's "fixup" protocol turned on.
+<yeason> lunaphyte: I've heard that before... and it was what I suspected this time but doubted it for complicated reasons... gogo weird network
+<yeason> lunaphyte: so how hard is it to modify an existing postfix setup to use port 587
+<yeason> lunaphyte: I'm a bit confused on how it's supposed to work
+<lunaphyte> well, a big part of it is uncommenting the submission entry in master.cf.  there are other steps too though.
+<yeason> ok... I've got to go soon, do you know of a guide/article that talks about how to set it up?
+<lunaphyte> well, we like to see people using the docs provided by the software's author.
+<yeason> lol... obviously, but those don't always explain how it works, well thanks for the info I'll look into that
+<lunaphyte> other stuff is, well, not really endorsed by me.
+<jkakar> blizzkid: Hello.
+<blizzkid> jkakar: can I pm you for a sec?
+<blizzkid> regarding an event
+<jkakar> blizzkid: Sure...?
+<eTiger13> how can i do multiple OR arguments in an if statement? ie if [ $member:f =='this' || $member:f == 'that' ]
+<hggdh> mathiaz: I just installed a brand new server (i386) with SAMBA. When I ran 'sudo net usersidlist' I *do* get output
+<jaypur> can you advice me some good apps for ubuntu server???
+<jaypur> like monitoring apps..
+<ruben23> can i setup my email server and web server to host bot email and web site hosting service for a company...would it be ok- xeon dual core 2.4Ghz, 4Gb ram ddr2, 250 GB
+<ruben23> nagios
+<ruben23> munin
+<ruben23> and cacti
+<jaypur> hmmm thanks
+<jaypur> i'm using phpsys
+<ruben23> can i setup my email server and web server to host bot email and web site hosting service for a company...would it be ok- xeon dual core 2.4Ghz, 4Gb ram ddr2, 250 GB
+<jaypur> ruben23, i dont know much, but... why wouldn't??
+<ruben23> jaypur: just worried having 2 apps, for a single server..
+<jaypur> ruben23, what applications my friend?
+<ruben23> email apps and web server..
+<ruben23> handles my company email and host my company website
+<jaypur> ruben23, you can do that...
+<jaypur> i just set the apache here... and i'm looking foward to have a ftp, and web mail
+<jaypur> :)
+<ruben23> ok, im worried when traffic increase..would my server can withstand it..
+<jaypur> for that i think you should look about your connection
+<jaypur> is it gonna be home made?
+<ruben23> jaypur:nup i got dedicated line for it..
+<ruben23> is you apache hosting a website now..?
+<jaypur> ruben23, yes!
+<jaypur> ruben23, and a counter-strike server
+<jaypur> ruben23, http://tuxserver.no-ip.org/
+<ruben23> jaypur: how did you setup it..? the webserver is using public IP right..?
+<jaypur> ruben23, it's using an ip and i set the no ip to redirect it
+<jaypur> ruben23, set the apache
+<ruben23> ok that IP si public right..?
+<ruben23> do you have ugide how did you do it..?
+<ruben23> ill plan to setup it..can you guide ma and help me on it..
+<jaypur> man
+<jaypur> i think it's the public ip
+<jaypur> almost sure
+<jaypur> because... if it wouldn't ppl wouldn't connect to it...
+<jaypur> pay attention to the port of apache that is 80...
+<ruben23> ok
+<jaypur> ruben23, aand it's easy man... if i could, why wouldn't you :D
+<ruben23> did you have guides on doing it..?
+<jaypur> ruben23, you can find some good tutorials about it...
+<ruben23> it would be my first time to setup it.
+<jaypur> ruben23, tell me what to you wanna do... apache,... and host wat else
+<jaypur> ruben23, i have a website that is on brazilian portuguese
+<jaypur> it will install
+<jaypur> apache2, php5, mysql
+<jaypur> and i can help you to set phpsys, that i just have installed this afternoon :)
+<jaypur> and install ssh too :)
+<jaypur> for remote control :D
+<ruben23> jaypur:do you have any IM account, can i add you up please.
+<jaypur> no i havent but i can create one
+<jaypur> do you have any gmail or msn acc.?
+<ruben23> i have gtalk-
+<jaypur> ruben23, jaypur.linux@gmail.com
+<jaypur> :)
+<ruben23> its- 3trglobal.it@gmail.com
+<ruben23> ill add you now
+<jaypur> i'll connect here
+<jaypur> i'm not always at gtalk... but when i'm on line i'm always here on irc
+<mathiaz> hggdh: what kind of output do you get?
+<GhostFreeman> In using byobu, is there any way I can rename what each window is?
+<hggdh> mathiaz: a list of users, like http://pastebin.com/fPmhbha4
+<mathiaz> hggdh: is this after a package install?
+<mathiaz> hggdh: or an install from iso when the samba server task selected?
+<mathiaz> hggdh: is the XANGO domain already existing in the network?
+<hggdh> mathiaz: no, it was not existing
+<hggdh> mathiaz: this is an install from ISO with SAMBA selected in the tasksel
+<mathiaz> hggdh: so where did the XANGO name come from?
+<hggdh> mathiaz: this is what I gave as a hostname
+<hggdh> mathiaz: I am reinstalling, now with amd64
+<mathiaz> kirkland: does the option of encrypting directories show up in the desktop install now?
+<jayvee> mathiaz: in Ubiquity, there's an option for that
+<jayvee> it's the 3rd option after "Log in automatically", and "Require password to log in"
+<jayvee> worded something like "Require password to log in and decrypt my home directory"
+<mathiaz> jayvee: great - thanks
+<jayvee> it's in 9.10
+<mathiaz> kirkland: so how about removing the encrypted directory question from the -server installer?
+<hggdh> mathiaz: net usersidlist & etc still work fine after an install
+<v0lksman> anyone know of a good how to to compile openssh5 on hardy?  I have no choice at this point...scared to miss a lib or something though
+<hggdh> mathiaz: are we talking about the same thing (i.e. install from ISO; select SAMBA, check it works)
+<mathiaz> hggdh: right - are you logging into the system via the console?
+<hggdh> mathiaz: yes, I am
+<mathiaz> hggdh: right - I've installed a new system from ISO and saw the same behaviour as yours when I logged through the console
+<mathiaz> hggdh: however my first tests were done by logging via ssh into the system
+<hggdh> mathiaz: ah. This is interesting
+<mathiaz> hggdh: just after typing the password you can see a message (from the pam stack?) that says:Added user XXXX.
+<hggdh> mathiaz: yep. There we got added to the directory
+<mathiaz> hggdh: I'm going to redo another install and only login via ssh
+<hggdh> mathiaz: this is not really kosher, if it does not happen via SSH
+<mathiaz> hggdh: right - we may have ran into a bug
+<mathiaz> hggdh: well - actually no
+<mathiaz> hggdh: it makes sense
+<mathiaz> hggdh: I login via ssh using public key
+<hggdh> mathiaz: why?
+<mathiaz> hggdh: to import the user into the samba database you need to enter the password
+<mathiaz> hggdh: which doesn't happen on a public key login
+<hggdh> mathiaz: heh. Makes sense. Now, this should be documented somewhere
+<hggdh> mathiaz: sheer curiosity: how can you ssh via public key on a brand-new server?
+<mathiaz> hggdh: :) - I'm using preseeds to automate my installations
+<hggdh> heh
+<mathiaz> hggdh: the late_command in my preseeds stick my public key on the installed system
+<hggdh> mathiaz: then this is not a problem form the casual tester from the wiki
+<mathiaz> hggdh: yeah - I'm going to update the test case then
+<hggdh> I can do it, if you are busy
+<hggdh> kirkland: I cannot repeat the -d / --desktop issue on testdrive
+<mathiaz> hggdh: wiki page updated
+<rZr> xmpp please !
+<RoAkSoAx> zul, the information of the syslog for the apport hooks should be attached only if the user accepts it, or it should always be attached?
+<hggdh> mathiaz: thank you
+<Anthony_Whitford> I'm trying to research Ubuntu's market penetration in Financial Services firms.  Can anybody tell me a financial company running Ubuntu server, or point me to any survey/research that demonstrates that it is popular in this vertical?  I have the Ubuntu Server Survey results for 2009 already, and am aware of Equitec.  Anybody else?
+<jayvee> v0lksman: why do you want to compile it?
+<v0lksman> cause hardy comes with a way old version and package managers claim they won't even backport it
+<jayvee> so? it's not like it has any security issues.
+<v0lksman> can't chroot

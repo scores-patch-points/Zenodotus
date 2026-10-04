@@ -1,0 +1,434 @@
+{
+ "schema": "EOTReading@2",
+ "source": {
+  "path": "06-government-legal/un-udhr/udhr-jpn_osaka.txt",
+  "sha256": "aced07a6c18c4e6bac6f2135b22e1fd9d07c3f20dca002f762c720ffde76f8a1",
+  "chars": 5328,
+  "declaredIdentity": {
+   "identityClaim": "Universal Declaration of Human Rights",
+   "language": "Japanese (Osaka)",
+   "code": "ja",
+   "mechanism": "the file's own 4-line OHCHR header, read verbatim"
+  }
+ },
+ "recipe": {
+  "id": "8f4cba051530e91b",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "language": "ja",
+   "posPriorGate": "omitted — no POSPrior@1 build for language \"ja\" (normalized \"ja\") in this environment",
+   "classifyConnector": null,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "sameStem": "omitted — no declension prior for language \"ja\" (normalized \"ja\") in this environment",
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "5dc67f65c76c94cde86dfaf7b262ec5a7fcdb877",
+     "dirty": false
+    },
+    "theFold": {
+     "commit": "04238cac474b8537d6b1873a7dec013d449d1134",
+     "dirty": false
+    },
+    "livePriors": {
+     "commit": "7d92319d91635b0fec0bbd8220f163c1e39147d4",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 5328,
+  "bodyOffset": 231,
+  "bodyChars": 5097,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 5097,
+  "truncated": false
+ },
+ "script": {
+  "casedLetters": 0,
+  "caselessLetters": 3741,
+  "casedShare": 0,
+  "gap": {
+   "reason": "script_without_case",
+   "tier": "model",
+   "needsWitness": true,
+   "casedShare": 0,
+   "detail": "every candidate-surface filter in this organ reads capitalisation, and this material's letters are entirely caseless (Unicode General_Category: no Cased_Letter present), so the mechanism cannot fire on it at all. Any surface count reported alongside this gap is about cased debris in the file, never about this material's own language. Reading names in this script needs a per-script prior with its own giver and an invariance fixture — an algorithmic substitute for capitalisation was tried and reverted here (II.13)."
+  }
+ },
+ "reading": {
+  "sentences": 91,
+  "surfaces": 0,
+  "referentEvents": 0,
+  "distinctReferents": 0,
+  "examined": true,
+  "edgesFound": 0,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 0,
+   "minSurfaces": 1,
+   "grammarPrior": false,
+   "candidates": 0
+  },
+  "contentWithoutRelations": false,
+  "grammar": null
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 0,
+  "excerptOk": 0,
+  "rawChecked": 0,
+  "rawOk": 0,
+  "rawPassRate": null,
+  "bad": []
+ },
+ "admission": {
+  "gate": "structural only",
+  "offered": 0,
+  "heard": 0,
+  "turnedAway": 0,
+  "note": "no proposition is offered: this reader has no lexicon for this language and says so"
+ },
+ "gaps": [
+  {
+   "type": "no_lexicon",
+   "language": "ja",
+   "expectedProps": 107,
+   "note": "the rosetta expects these propositions here; reading them awaits a lexicon ring or an adjudicator for this language — typed, never guessed (LP4)"
+  }
+ ],
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "rosetta-structural (derived)",
+   "recipeId": "2a3439a340e6c196"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append",
+  "note": "adversarial layers append when a lexicon ring or an adjudicator reaches this language"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "structural": {
+    "missingArticles": [],
+    "note": "every expected article region present — the skeleton is corroborated, near-zero surprise"
+   }
+  }
+ },
+ "propositions": [],
+ "acts": [
+  {
+   "kind": "ground-opening",
+   "ground": "article-1",
+   "name": "第１条",
+   "span": {
+    "start": 957,
+    "end": 960
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-2",
+   "name": "第２条",
+   "span": {
+    "start": 1054,
+    "end": 1057
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-3",
+   "name": "第３条",
+   "span": {
+    "start": 1302,
+    "end": 1305
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-4",
+   "name": "第４条",
+   "span": {
+    "start": 1354,
+    "end": 1357
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-5",
+   "name": "第５条",
+   "span": {
+    "start": 1423,
+    "end": 1426
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-6",
+   "name": "第６条",
+   "span": {
+    "start": 1484,
+    "end": 1487
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-7",
+   "name": "第７条",
+   "span": {
+    "start": 1549,
+    "end": 1552
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-8",
+   "name": "第８条",
+   "span": {
+    "start": 1693,
+    "end": 1696
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-9",
+   "name": "第９条",
+   "span": {
+    "start": 1784,
+    "end": 1787
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-10",
+   "name": "第10条",
+   "span": {
+    "start": 1831,
+    "end": 1835
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-11",
+   "name": "第11条",
+   "span": {
+    "start": 1938,
+    "end": 1942
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-12",
+   "name": "第12条",
+   "span": {
+    "start": 2145,
+    "end": 2149
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-13",
+   "name": "第13条",
+   "span": {
+    "start": 2261,
+    "end": 2265
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-14",
+   "name": "第14条",
+   "span": {
+    "start": 2448,
+    "end": 2452
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-15",
+   "name": "第15条",
+   "span": {
+    "start": 2593,
+    "end": 2597
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-16",
+   "name": "第16条",
+   "span": {
+    "start": 2696,
+    "end": 2700
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-17",
+   "name": "第17条",
+   "span": {
+    "start": 2935,
+    "end": 2939
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-18",
+   "name": "第18条",
+   "span": {
+    "start": 3036,
+    "end": 3040
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-19",
+   "name": "第19条",
+   "span": {
+    "start": 3167,
+    "end": 3171
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-20",
+   "name": "第20条",
+   "span": {
+    "start": 3298,
+    "end": 3302
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-21",
+   "name": "第21条",
+   "span": {
+    "start": 3394,
+    "end": 3398
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-22",
+   "name": "第22条",
+   "span": {
+    "start": 3627,
+    "end": 3631
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-23",
+   "name": "第23条",
+   "span": {
+    "start": 3766,
+    "end": 3770
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-24",
+   "name": "第24条",
+   "span": {
+    "start": 4127,
+    "end": 4131
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-25",
+   "name": "第25条",
+   "span": {
+    "start": 4196,
+    "end": 4200
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-26",
+   "name": "第26条",
+   "span": {
+    "start": 4414,
+    "end": 4418
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-27",
+   "name": "第27条",
+   "span": {
+    "start": 4719,
+    "end": 4723
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-28",
+   "name": "第28条",
+   "span": {
+    "start": 4872,
+    "end": 4876
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-29",
+   "name": "第29条",
+   "span": {
+    "start": 4945,
+    "end": 4949
+   },
+   "alignedTo": "rosetta acts skeleton"
+  },
+  {
+   "kind": "ground-opening",
+   "ground": "article-30",
+   "name": "第30条",
+   "span": {
+    "start": 5218,
+    "end": 5222
+   },
+   "alignedTo": "rosetta acts skeleton"
+  }
+ ],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "8f4cba051530e91b",
+  "at": "2026-08-31T00:12:10.848Z"
+ }
+}

@@ -1,0 +1,852 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-server"
+date: "2010-7-15"
+lang: "en"
+messages: "843"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<webPragmatist> and thats a big nope
+<erichammond> webPragmatist: This doesn't answer your question, but I prefer to use rsync over ssh.  That way I only have to worry about controlling a single point of access on the server (sshd).
+<webPragmatist> i am using rsync
+<webPragmatist> it's called rsync with xinetd so it will run as root and not bitch… but the problem is, well… it's bitching
+<webPragmatist> because it's not really running as root, it's running as like "nobody:
+<erichammond> webPragmatist: clarification: I prefer to do it over ssh rather than use rsyncd.
+<webPragmatist> oh
+<webPragmatist> lol
+<webPragmatist> i dunno about that jazz
+<webPragmatist> lsyncd doesn't use scp, etc.
+<webPragmatist> http://www.server-world.info/en/CentOS_5/lsync/1.html
+<webPragmatist> or rather it does but i don't care to try it
+<webPragmatist> rsyncd should work
+<erichammond> webPragmatist: rsync works over ssh without using "scp, etc."
+<webPragmatist> and you just use keys i suppose
+<webPragmatist> are you going to be around tomorrow?
+<webPragmatist> in general is the only difference the authentication? or what
+<webPragmatist> i put my clone in here if you have anything to say :)
+<ruben23> hi what is the latest upgraded kernel version of ubuntu-server..?
+<ruben23> like for ubuntu-8.04 LTS
+<Callum__> oh man, I've got a dead battery in one of my UPSs
+<Callum__> its so bad that its bulging in places
+<Callum__> since that 1500VA UPS is ancient, I am going to assemble a RBC7 battery for a newer APC SmartUPS 1500VA unit I have, but its going to set me back at least NZ$267 >_>
+<Callum__> and considering we're a non-profit, money isn't easy to set aside
+<billybigrigger> anyone here deal with alot of NFS shares?
+<multi_linux_dist> hi guys, i need a little help with my domainkey setup in the zonefile
+<multi_linux_dist> i have setted it up:  http://pastebin.com/aGSs4pby
+<multi_linux_dist> but dig
+<multi_linux_dist> sorry, dig _domainkey.mara-tour.ro TXT returns no answer
+<multi_linux_dist> do you have any idea why?
+<billybigrigger> ?
+<billybigrigger> looks ok to me here
+<billybigrigger> domainkey.mara-tour.ro.	0	IN	A	67.215.65.132
+<patdk-wk> billybigrigger,  that is a total foobar test :)
+<patdk-wk> he said txt, not a
+<patdk-wk> and it starts with a _
+<patdk-wk> dig -t txt _domainkey.mara-tour.ro
+<billybigrigger> thought he was looking for a mail record
+<patdk-wk> nope
+<billybigrigger> not familiar with txt sorry
+<patdk-wk> check: dig -t txt _domainkey.patrickdk.com
+<patdk-wk> he is looking to get dkim working
+<multi_linux_dist> yes
+<multi_linux_dist> patdk-wk: you are right, that is what i`m trying to do
+<billybigrigger> not familiar with dkim...looks like you've volunteered pat :P
+<patdk-wk> heh, you forgot to put a . on the end of your domains :)
+<patdk-wk> so it's not _domainkey.mara-tour.ro
+<patdk-wk> but _domainkey.mara-tour.ro.mara-tour.ro.
+<multi_linux_dist> patdk-wk: i will try it now, but tryied before and still nothing
+<patdk-wk> well, either it must just be, _domainkey
+<patdk-wk> or, _domainkey.mara-tour.ro.
+<patdk-wk> atleast based on the other examples i nthe file
+<patdk-wk> though _domainkey.mara-tour.ro. would be the safe garrentied way
+<patdk-wk> works
+<multi_linux_dist> works?
+<patdk-wk> ;; ANSWER SECTION:
+<patdk-wk> _domainkey.mara-tour.ro. 3600	IN	TXT	"'t=y"
+<patdk-wk> extra ' though
+<multi_linux_dist> it doesn`t to me
+<patdk-wk> you foobar'ed your test also? :)
+<multi_linux_dist> dig -t txt _domainkey.mara-tour.ro
+<patdk-wk> well, that won't work
+<multi_linux_dist> QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+<patdk-wk> your local dns server is caching the bad result
+<patdk-wk> for up to an hour
+<multi_linux_dist> :D
+<patdk-wk> so you have to contact your server directly
+<patdk-wk> dig -t txt _domainkey.mara-tour.ro @92.114.86.188
+<multi_linux_dist> hehe
+<multi_linux_dist> :D
+<multi_linux_dist> patdk-wk: thank you very much!
+<patdk-wk> nohup dd if=/dev/urandom of=/dev/sdg bs=8192 > /dev/null 2>&1 &
+<patdk-wk> nothing better than running that on 3 drives
+<patdk-wk> just wish urandom was faster than 2MB/s
+<multi_linux_dist> patdk-wk: Authentication-Results: mx.google.com; spf=pass (google.com: domain of testmail@mara-tour.ro designates 92.114.86.188 as permitted sender) smtp.mail=testmail@mara-tour.ro; dkim=pass header.i=@mara-tour.ro
+<multi_linux_dist> google says that dkim pass
+<multi_linux_dist> yahoo dont
+<multi_linux_dist> cache?
+<multi_linux_dist> why all my mails go into spam folder if the ip is not reported as spam?
+<gnoob> guys,  whats the easiest way to send e-mail from console?  want to make my server notify me when somthing happen trough bash script
+<zul> mail command?
+<Guest28494> Hey is there a way to configure ubuntu server to connect to a wireless accesspoint to install?
+<multi_linux_dist> telnet?
+<multi_linux_dist> php mail?
+<multi_linux_dist> you can run a php command via sh
+<multi_linux_dist> or telnet i thin
+<multi_linux_dist> think*
+<multi_linux_dist> but php is sure
+<Guest28494> Hey is there a way to configure ubuntu server to connect to a wireless accesspoint to install?
+<Guest28494> Or where are the packages that the server needs to install?
+<pnunn> Has anyone worked out how to move a windows image into ubuntu's eucalyptus cloud yet?
+<cs1> hi guys
+<cs1> i need some advice about setting up the server
+<cs1> firstly
+<cs1> about the networking
+<cs1> how do i go about setting up the network on the server?
+<cs1> hello?is anybody available there?
+<cs1> your guidance is truly appreciated
+<p1l0t> Does anyone know why ifconfig would not want to read from /etc/network/interfaces
+<p1l0t> I swear I have this one server that changing the interfaces file does NOTHING I can set the address manually but changing the interfaces file has no effect. Everytime it reconnects it goes back to some other settings!
+<p1l0t> It can't be the syntax because this syntax works in every other ubuntu machine I have
+<dhastha> Need help:  I am trying to install Ubuntu server 9.10 in virtual machine manager. But Virtual machine manager returns :  Unable to complete install: 'internal error unable to start guest: char device redirected to /dev/pts/0
+<dhastha> qemu: could not open disk image /var/lib/libvirt/images/UbuntuServer.img: No such file or directory
+<dhastha> How to install ubuntu server 9.10 in virtual machine manager?
+<qman__> p1l0t, ifconfig doesn't use those settings, it's strictly a manual override tool
+<p1l0t> oh
+<qman__> you should run `sudo service networking restart` to apply changes made there
+<p1l0t> wilco
+<cs1> how do i get about setting up the network for the server??
+<qman__> cs1, it is explained clearly in the Ubuntu Server Guide, linked in the topic
+<cs1> ok.
+<cs1> sorry
+<cs1> maybe i phrased my question wrong.
+<qman__> if you are having a more specific problem, please explain
+<cs1> i want to know is it REALLY necessary to setup the TCP/IP and stuff
+<cs1> because we are only running the server within the company enviroment
+<qman__> you can't communicate with the internet if you don't have TCP/IP
+<cs1> icic
+<cs1> sorry if i ask stupid questions as im new to this
+<qman__> you could potentially use a different protocol, but these days, TCP/IP is the only one in widespread use
+<cs1> icic.
+<qman__> novell IPX/SPX is long gone, and IPv6 hasn't taken off yet
+<cs1> so its better to setup TCP/IP??
+<cs1> how about DHCP??
+<cs1> is it neccesary??
+<qman__> DHCP operates over IP
+<qman__> DHCP is entirely optional
+<cs1> ok
+<cs1> regarding remote administration
+<cs1> say i dont want to set it up now
+<cs1> will i have trouble setting it up later in the future??
+<qman__> it being remote administration, that's easy
+<qman__> simply install the openSSH server
+<qman__> it can be done at any point in time
+<cs1> icic
+<cs1> so it wont cause the server to crash later on??
+<qman__> of course not
+<qman__> it wouldn't be very useful if it did
+<cs1> ok.
+<cs1> about DNS
+<qman__> DNS is also optional
+<cs1> not necessary to setup right??
+<cs1> ok
+<qman__> provided you don't mind using IPs to refer to your computers
+<cs1> i cant use host name to refer to the pc in the company??
+<qman__> not without some sort of name resolution
+<cs1> sorry
+<p1l0t> you can with dns
+<cs1> computer name
+<qman__> DNS is one way, there are many
+<qman__> you can set up the hosts files, or use netbios, though that one's a bit trickier with linux
+<qman__> DNS scales the best
+<cs1> i see
+<cs1> so in a way its better to setup DNS to avoid any unwanted problems later on?
+<qman__> as opposed to using hosts files, yes
+<qman__> since each computer's hosts file must be configured in order to work
+<qman__> while a DNS server can provide names to all computers on the network
+<cs1> icic
+<cs1> so without DNS,i will have to use the ip address to communicate with them??
+<qman__> yes
+<cs1> ok.
+<cs1> network authentication
+<cs1> which one is more flexible
+<cs1> OpenLDAP
+<cs1> Samba and LDAP
+<cs1> Kerberos
+<cs1> Kerberos and LDAP
+<cs1> im not sure what are the difference among this four
+<p1l0t> Depends on what you want to do
+<qman__> they are all more or less equally flexible
+<cs1> icic
+<qman__> setting up a working system with any of the above is quite a complex process
+<cs1> because we want to setup ERP on the server
+<cs1> so we want to setup the server to be stable
+<qman__> be aware that if you are trying to integrate with a microsoft active directory network, not all features are implemented in samba and you will have limited functionality
+<electrofreak> why isn't there a config in /proc/?
+<cs1> so its better to use Kerberos??
+<qman__> no, samba is the only real way to integrate with active directory
+<cs1> aahh
+<cs1> ok
+<qman__> you can get basic authentication if you make some undocumented tweaks to your windows servers
+<qman__> but other than that, there isn't much
+<p1l0t> If you have any Windows computers on your network you will want samba more then likely
+<cs1> yes.
+<qman__> yes, samba provides the best way to communicate with windows
+<qman__> as limited as it is
+<cs1> limited as in??
+<qman__> samba's authentication is on the same level as windows NT 4
+<qman__> getting it to work with active directory is an exercise in frustration, to say the least
+<qman__> and you won't get anything more than simple authentication
+<cs1> ok.
+<qman__> none of the extra features like group policy are available
+<cs1> sounds extremely hard to setup then
+<qman__> it's definitely an advanced-level task
+<cs1> i see.
+<p1l0t> I wouldn't say extreme but it does take a little reading
+<cs1> ok.
+<cs1> for the remote administration, its better to use OpenSSH or eBox??
+<cs1> i read in forums, ebox seems to be the more favorable option
+<qman__> if you like hold-your-hand interfaces, then yes
+<qman__> but be prepared for little bugs and things to pop up
+<p1l0t> I use SSH but I have not tried eBox
+<qman__> and definitely make sure you lock down your internet access to it
+<qman__> I use SSH exclusively
+<electrofreak> what is eBox?
+<qman__> !ebox
+<ubottu> ebox is a web-based GUI interface for administering a server. It is designed to work with Ubuntu/Debian style configuration management. See https://help.ubuntu.com/community/eBox
+<electrofreak> oh, ewww. lol
+<cs1> in other words SSH is more stable than ebox??
+<p1l0t> More secure for sure
+<electrofreak> eBox is likely more user friendly... I wouldn't even classify eBox and SSH together
+<qman__> because of the way ebox and similar interfaces work, if you try to do things manually as well as use ebox, you will be in a situation where the 'automagic' code is fighting with you over your manual settings
+<qman__> confusing things can happen
+<qman__> so unless you plan to use ebox exclusively, I suggest not using it
+<cs1> icic.
+<electrofreak> yeah, I would likely not like ebox because it wont be flexible enough
+<cs1> icic.
+<cs1> we want flexibility
+<cs1> thats why we are looking for options
+<p1l0t> automagic code has fighting me my whole life - hence why I switched to linux... of course now even linux is starting with auto-magic but at least my servers are still fairly pure
+<cs1> before we start setting up the server.
+<qman__> ebox fills the niche of cookie-cutter setups
+<qman__> custom setups are better served manually
+<cs1> ok.
+<electrofreak> cs1: ah... doing some research for work or something? definitely play with this stuff in VMs to get a feel for things
+<cs1> yes.
+<cs1> im doing research for work
+<qman__> yes, definitely set up a test system and play with it
+<qman__> make sure it will work for you before you commit to it
+<cs1> its better to run things in VM before doing it on the server right??
+<p1l0t> Or just stick it on some old computer and learn with it
+<p1l0t> I started a few years ago just because the Windows crashed on this old computer we had. No I run the company on that server. lol
+<cs1> LOL
+<cs1> about setting up the security for the server
+<cs1> im not entirely clear about this
+<p1l0t> Ubuntu is pretty good with being configured by default for security. Just read carefully about the changes you make
+<cs1> icic.
+<cs1> so i can setup up the server without have to fiddle with the security options>?
+<qman__> there aren't any "security options" per se
+<cs1> icic.
+<cs1> about the monitoring part
+<p1l0t> Well it depends what you do. Security options is kind of a vague statement
+<qman__> security is not something that you just "turn on", it is a philosophy you follow throughout your system design
+<cs1> hrmm
+<cs1> ok
+<qman__> ubuntu is secure by default, so you only need to worry about the things that you add or configure
+<cs1> ok
+<qman__> set up a proper firewall preventing internet access to things that should not have it, etc
+<electrofreak> what is the server going to be used for?
+<cs1> to host ERP system
+<cs1> Enterprise Resourcing system
+<p1l0t> I wish I knew what that was
+<cs1> ermmm
+<cs1> http://en.wikipedia.org/wiki/Enterprise_resource_planning
+<cs1> here is the lin
+<cs1> *link
+<cs1> hope it helps
+<cs1> how about monitoring part??
+<cs1> from the documentation
+<cs1> i can see there are 2 ways to go
+<cs1> 1 is using Nagios
+<cs1> another is Munin
+<qman__> Nagios is a good platform
+<qman__> I have not used Munin
+<qman__> but if you're only monitoring one system, either is overkill
+<p1l0t> I am actually working on my own system, but I have much more to learn about MySql
+<qman__> they're designed to be full network reporting infrastructures
+<cs1> ok
+<cs1> File servers
+<qman__> for windows clients, samba is king
+<qman__> for linux clients, there are lots of options
+<cs1> ok.
+<electrofreak> nfs is probably the best option for linux clients
+<cs1> thats for the DNS right??
+<cs1> ic
+<qman__> NFS has specific weaknesses
+<SpamapS> cs1: Munin is for instrumentation (graphing mostly). Nagios is for alerting.
+<cs1> such as??
+<qman__> it is wholly insecure without a tightly knit directory service
+<SpamapS> cs1: Munin can feed alerts to Nagios
+<qman__> if high throughput and performance is not critical, sftp is a great option
+<qman__> secure authentication and easy to use linux-to-linux
+<cs1> i see
+<qman__> there are many more options though, especially if you're looking into distributed file systems
+<cs1> i have no idea about file server
+<SpamapS> nfsv4 is not insecure
+<cs1> ok
+<SpamapS> most of the weaknesses in nfs were eliminated w/ v4
+<cs1> what other options do i have??
+<SpamapS> but its still more complex than samba
+<qman__> SpamapS, you still need a directory service to set up per-user access
+<qman__> NFS works great in specific situations
+<cs1> i see
+<qman__> but there are plenty where it is a poor choice too
+<SpamapS> qman__: yeah, I really wish people would just standardize on a single LDAP schema and one kerberos implementation so we can stop saying "it depends"
+<uvirtbot> New bug: #605719 in mysql-dfsg-5.1 (main) "package mysql-server-5.1 5.1.31-1ubuntu2 failed to install/upgrade: subprocess pre-removal script returned error exit status 1" [Undecided,New] https://launchpad.net/bugs/605719
+<qman__> Windows can interact with samba directly
+<qman__> anything else you choose will require you to install software on windows clients
+<cs1> all the computer in the company uses linux
+<cs1> but we wanna prepare ourselves just in case we have 1 or 2 windows platform
+<qman__> then, your options go way up
+<cs1> LOL
+<cs1> this is head cracking
+<qman__> tons of options with neat features, like AFS
+<cs1> what does AFS stands for?
+<qman__> there are about as many options are there are keys on your keyboard
+<qman__> Andrew File System
+<cs1> geez
+<SpamapS> Areallyhardtogetrunning File System
+<giovani> haha
+<SpamapS> at least, it was 6 years ago
+<giovani> I suppose if you expect solutions that are out of the box to work well
+<SpamapS> My theory is it was a ploy by CMU to encourage people to get advanced degrees trying to understand it.
+<giovani> you will be disappointed
+<giovani> well, AFS wasn't written by CMU
+<qman__> http://en.wikipedia.org/wiki/Category:Network_file_systems
+<qman__> just to give you an idea
+<cs1> @.@
+<cs1> thats alot
+<giovani> AFS was an IBM project originally
+<cs1> the chat application
+<giovani> then became CMU
+<cs1> can i add this feature in later on?
+<cs1> or its better to perform it while i setup my server
+<qman__> I don't know what you mean by "the chat application"
+<SpamapS> http://www.itp.uzh.ch/~dpotter/howto/kerberos  <-- NFSv4 + LDAP + Kerberos = pages and pages of fun repetitive steps that could be packaged just like MS packages ActiveDirectory
+<electrofreak> cs1 you can setup any thing at any time
+<qman__> you can install anything at any time, but be aware that sometimes changing things breaks them, so any changes you make later you will want to perform on a test system first
+<cs1> aaahhh
+<cs1> ok
+<cs1> because im looking at the documentation for ubuntu server
+<cs1> there is a part called chat applications
+<qman__> SpamapS, that's my biggest feature request for ubuntu server, a tasksel-style ready to go directory setup
+<SpamapS> qman__: I believe it was discussed at UDS Maverick
+<cs1> guys...what is version control system??
+<SpamapS> cs1: wow
+<cs1> SpamapS : yes?
+<qman__> it is a system to keep track of versions and changes to files
+<qman__> mostly used for source code or important documents
+<cs1> i see
+<SpamapS> cs1: version control is just so vital, I'm surprised that you would ask. I'm sorry, I don't mean to imply anything by that.
+<qman__> yes, it's a critical part of the development process of any software
+<SpamapS> qman__: Should be used for config info too
+<cs1> i see i see.
+<SpamapS> FreeBSD figured that out a long time ago.. we're just not figuring it out w/ etckeeper.
+<cs1> so its a MUST to have??
+<qman__> only if you have something you need to keep track of
+<SpamapS> s/development of any software/infrastructure of any company/
+<cs1> ok.
+<qman__> such as a software project, some important documents, or anything that changes that you need to keep track of
+<cs1> i see i see.
+<SpamapS> like, say, /etc/apache2/* ;)
+<cs1> SpamapS : i ask about it because i have no idea what is it about. =)
+<qman__> version control is especially important if you have multiple people working on something
+<cs1> aaahhh
+<SpamapS> qman__: Its pretty vital to keep track of changes to system configurations IMO.
+<KurtKraut> How do I change my server locale?
+<cs1> about windows networking
+<qman__> if someone deletes something important from a file, you can get it back
+<twb> SpamapS: the other really annoying thing about nfsv3/krb/ldap is I don't have a turn-key way to get SSO
+<cs1> seems like windows networking is the hardest of all right??
+<qman__> integration with windows is handled mostly with samba
+<SpamapS> qman__: what if you hae one person.. but that person quits. Its going to be vital to your organization to be able to understand why that person did things.. version control can definitely help untangle messes and timebombs.
+<cs1> ok
+<SpamapS> cs1: actually setting up samba to talk to windows clients is pretty simple
+<cs1> so just install Samba an configure it??
+<qman__> file sharing with samba is easy
+<qman__> authentication is not
+<cs1> ok
+<cs1> authentication as in accessing each other file?
+<qman__> that is, active directory authentication
+<SpamapS> qman__: agreed. it can be.. maddening. ;)
+<qman__> user-based file permissions is also fairly simple
+<cs1> i see
+<cs1> perghhh...information overload on my head now
+<SpamapS> cs1: just figure out the next thing you need to do.. leave the rest for after thats done.
+<qman__> SpamapS, I can definitely see the value there, I don't really use it myself because I'm pretty much a one-man IT department, even with the jobs I do for other people
+<cs1> how about backups??
+<qman__> but bringing others into the equation, that would be critical
+<qman__> backups have even more options than file sharing
+<cs1> Bacula is a software to handle backup?
+<SpamapS> qman__: one man IT depts. are actually *more* important to wrap in version control. :)
+<SpamapS> cs1: I am a huge fan of Bacula
+<cs1> easy to use??
+<SpamapS> cs1: depends on your setup.. if you just backup "everything everywhere" .. then its easy because the config file is very simple.
+<electrofreak> I'd suggest rsnapshot, too. I've never used bacula, tho
+<SpamapS> cs1: if you start trying to get tricky w/ different file sets and agents and policies.. its still not all that "hard" .. but its not point and click. ;)
+<cs1> about the networking part
+<cs1> we have router and switch on our server
+<qman__> most of my backups consist of tar commands in a cron script
+<SpamapS> rsnapshot is good for very simple setups. Its kind of like Apple's Time Machine without the pretty graphics. ;)
+<cs1> do we still need to configure TCP/IP??
+<electrofreak> SpamapS: and it works.
+<qman__> cs1, you cannot access network resources if you don't configure TCP/IP
+<SpamapS> cs1: I think you may need to think about getting some training.
+<electrofreak> SpamapS: please don't compare it to TimeMachine... I hate TM with a passion
+<cs1> yeah
+<SpamapS> cs1: we can answer questions, but the reason you're feeling overwhelmed is you need a stronger foundation.
+<cs1> i seriously need training now
+<electrofreak> ubuntu is absolutely a very good "first linux server" tho...
+<SpamapS> electrofreak: TM has saved me at least 3 times now.. so I <heart> TimeMachine.
+<qman__> if you really want to understand how it works, I suggest starting with a routers & routing course
+<qman__> it will give you a strong understanding of what networking really is
+<qman__> then move on to the server administration stuff
+<SpamapS> cs1: though being forced to learn it all "on the job" can be great training. :)
+<cs1> yeah
+<electrofreak> but if it's your first encounter with linux... or running a server in general... it will definitely be overwhelming
+<cs1> thats what im going through now
+<SpamapS> actually I know a kid who started out in IT at 16 racking servers for a hosting company..
+<SpamapS> one of the best sysadmins/webdevs I work with now, 5 years later.
+<SpamapS> never saw Windows other than on his laptop.
+<electrofreak> some people just really have a nac for it
+<SpamapS> Yeah, the key is that you like trial and error. :)
+<cs1> wow
+<cs1> that kid is smart
+<qman__> I find the people that know the most and do the best work are the ones who take the time to learn and understand how it works on a basic level
+<qman__> don't just memorize commands or "this is how it's done"
+<SpamapS> memorization is what you do to get a paycheck
+<cs1> LOL
+<cs1> agree
+<SpamapS> deep understanding comes from a desire to master your domain. :)
+<cs1> i see
+<cs1> you guys have been great help
+<cs1> thank you so much
+<electrofreak> this channel is open 24x7!
+<twb> You're confusing memorization with deliberately inserting dead-man heisenbugs.
+<twb> electrofreak: except bank holidays and the Queen's birthday
+<cs1> LOL
+<electrofreak> lol
+<cs1> ok
+<cs1> 1 more question
+<cs1> what steps do i have to take in order to setup the server...
+<electrofreak> install it you mean?
+<cs1> the company will be using the server to host the ERP system
+<cs1> yaya
+<cs1> install it
+<qman__> download the iso, burn to CD
+<cs1> ok
+<qman__> boot it in the server and follow the on-screen instructions
+<electrofreak> well, download and burn the ISO... insert it into the drive, boot up, and follow the step-by-step. installing ubuntu is as easy as it gets.
+<cs1> ok
+<electrofreak> I do it for fun sometimes.
+<cs1> but i mean when configuring the whole server to perform what we want the server to do for us
+<qman__> the Ubuntu Server Guide covers most common tasks very well, once it's installed
+<electrofreak> https://help.ubuntu.com/10.04/serverguide/C/index.html
+<cs1> thanks
+<cs1> so before doing it on a server
+<cs1> its better to install it on a VM right??
+<cs1> to test out everything
+<qman__> whether you use a real server or a VM doesn't matter
+<cs1> before we migrate to server
+<cs1> aahh
+<cs1> ic
+<qman__> what does matter is that you don't take your business down to do it
+<cs1> haha
+<qman__> do it in a sandbox, a test system
+<cs1> thats crazy
+<electrofreak> VM is just easy to play around with things...
+<cs1> i see
+<qman__> if you have extra hardware to play with, feel free
+<cs1> haha
+<qman__> if not, a VM is a good way to do it
+<cs1> now my brain is hanged
+<cs1> LOL!!
+<electrofreak> good luck sir!
+<cs1> haha
+<cs1> thanks
+<cs1> im not sir btw..=P
+<electrofreak> ooo, opps. my bad
+<cs1> haha
+<cs1> its ok
+<cs1> =)
+<cs1> anything else i missed out?
+<cs1> in making more out from the server??
+<electrofreak> make sure the hardware you put it on is a stable machine...
+<electrofreak> not something thats going to catch fire every other day or whatever
+<cs1> haha
+<cs1> yeah
+<cs1> i mean software
+<qman__> yeah, don't buy brand new overclocker hardware, or grandma's old computer, get something you can trust
+<cs1> what is etckeeper btw??
+<qman__> etckeeper is version control for your /etc directory, in other words, your system configuration files
+<cs1> so its a must have??
+<qman__> highly recommended
+<cs1> ok
+<cs1> great
+<cs1> im still not very clear about the networking thingy
+<cs1> maybe like you guys have said
+<cs1> i need training
+<qman__> networking is the basis on which everything we talked about runs
+<qman__> it is essential
+<cs1> but by setting up the TCP/IP,it wont affect the switch and router right?
+<electrofreak> oh, if the server is just going to be a client behind an existing router/switch setup... then you shouldn't have any problems.
+<cs1> what about using the server as a host?
+<cs1> will it have problems?
+<qman__> no, the networking only gets complicated once you start using the server as a router or firewall
+<cs1> haha
+<cs1> OK
+<qman__> pretty much, you will configure an address for it to use, and leave it alone
+<cs1> ok
+<cs1> i think thats all for now
+<qman__> but an understanding of how it works is very useful when you run into trouble elsewhere
+<cs1> now i have to discuss about it to my boss
+<qman__> definitely look into a good book or a course on it
+<cs1> haha
+<cs1> ok
+<cs1> will invest in a good book
+<qman__> "is my network working" is to system administration as "is it plugged in" is to desktop support
+<cs1> haha
+<electrofreak> it should be said I guess that out of the box, ubuntu server will get an IP from the DHCP server (your router) and "just work"
+<qman__> but if you don't set it static, that will change from time to time causing many headaches
+<twb> IMO if you ask for static networking, you probably ACTUALLY want fixed DHCP
+<electrofreak> just set the IP to something OUTSIDE of the DHCP range
+<twb> That's where downstream is just a dump DHCP client, but upstream (the router) is configured to always and only allocate <IP> to a particular MAC
+<qman__> yes, but then your DHCP server becomes a single point of failure
+<qman__> fine for less important things, but this server sounds pretty important
+<twb> qman__: in static networking, you have TWO points of failure
+<twb> qman__: because if the network configuration of either end changes, your network won't
+<twb> ...work
+<electrofreak> yea, I don't use static assignments on my DHCP server... I just give it a range and then systems that need a static IP, I set a static IP on that system
+<twb> For a mission-critical core host like the LDAP/Kerberos server, I might use static networking.
+<twb> I certainly wouldn't use static networking for something less important like apache servers.
+<qman__> anything that needs to still work when the internet goes down, I use a static IP
+<electrofreak> that's a good rule of thumb
+<twb> Your DHCP leases are served by the internet?
+<qman__> basically, the file server, and the DHCP server
+<qman__> a reserved lease is good for just about everything else
+<electrofreak> twb, no I think he just means deciding one what needs a static IP...
+<twb> It's also worth mentioning that DHCP poisoning can occur on untrusted networks
+<electrofreak> all sorts of stuff can happen on untrusted networks ;-)
+<twb> Which for something like the auth server, would leave you exposed to MITM
+<twb> electrofreak: by "untrusted" I mean things like LANs where you have idiot end users with zombified windows laptops, rather than the conventional stuff like "the internet"
+<qman__> I've run into those
+<qman__> nasty buggers
+<qman__> try to hijack your network with bad DHCP and DNS information
+<electrofreak> ha, it's always fun to take all the available DHCP addresses with one machine :-P
+<qman__> one windows machine gets infected, starts its own DHCP and DNS, serves other nodes on the network
+<qman__> and starts hijacking google searches with malware
+<electrofreak> I guess we bored 'em
+<yosi> hi all, I'm running 10.04...  but i just did an upgrade.. and now my SSHd dones't work...   when i log on locally, if i turn ListenAddress (to restrict the SSH host addresses) everything works fine,  if it turn it back on, can't connect from any of the listed IPs, but everything worked fine before i did the upgrade...   did they do something to the SSHd in the latest upgrade?
+<yosi> anyone, any ideas?
+<yosi> error: Bind to port 22 on *.*.*.* failed: Cannot assign requested address.
+<yosi> is what i get in my auth log
+<jmarsden> yosi: One of the addresses in your ListenAddress line is incorrect, or does not exist on your system, most likely.
+<yosi> hmmmm..  well ist s list of 3 external ips... my home and work ip's...    it was working for the last 6 months until i did a apt-get upgrade today
+<yosi> could that have changed something?
+<yosi> its a list*
+<yosi> the next line after that error in my auth log is:
+<yosi> fatal: Cannot bind any address.
+<jmarsden> Um... ListenAddress is for addresses to *listen* on not for a list of remote addresses!  man sshd_config and read it.
+<jmarsden> It says:    ListenAddress             Specifies the local addresses sshd(8) should listen on.
+<jmarsden> To restrict where people can ssh in to the server from, use ufw or any other iptables-based packet filter.
+<yosi> oh u are right!
+<yosi> i mis read it
+<yosi> so those are the local address, i guess if u have multiple ips
+<yosi> yikes...
+<EvilTrek> where are sshd config files stored?
+<yosi> so all these months, i guess that feature hasn't been working as inteneded
+<jmarsden> EvilTrek: /etc/ssh/
+<yosi> is there any way to restict the IPs entering SSH without setting up a firewall...
+<EvilTrek> thanks
+<yosi> i find ip tables so complicated...
+<jmarsden> yosi: ufw is simpler
+<yosi> what does ufw stand for?
+<yosi> is it as good as iptables?
+<EvilTrek> and which line do i edit to deny password auth and allow publickey auth only?
+<jmarsden> It uses iptables underneath.  It is just a simple command line interface to it.
+<EvilTrek> last time I edited sshd_config was about a year ago xD
+<jmarsden> EvilTrek: man sshd_config to read all about it.
+<yosi> is it part of ubuntu or do i need to load it?
+<EvilTrek> jmarsden:  ty
+<jmarsden> yosi: It is part of Ubuntu but you may need to apt-get install ufw , I am not sure if it gets installed by default on Ubuntu Server.
+<yosi> thanks...
+<yosi> i will try..
+<jmarsden> EvilTrek: You probably want PasswordAuthentication No
+<yosi> since i need to only restict ssh, is there any facility in SSHd to oly allow connections from a certain host?
+<jmarsden> yosi: You're welcome
+<EvilTrek> jmarsden:  yeah i found it, already edited, and since its on a VPS, i'm rebooting it now xP
+<jmarsden> yosi: I don't think so, but man sshd_config would talk about it if it exists :)
+<yosi> thanks
+<yosi> will read it nwo
+<jmarsden> EvilTrek: There is no need to reboot for that, just restart sshd :)
+<EvilTrek> jmarsden:  i also edited a few other things that required a restart for (system updates since i'm lazy at updating)
+<cs1> guys
+<cs1> i would like to ask whether windows platform users can login into Linux server
+<yosi> i figured out i could restrict SSH to certain clinetas using TCP wrappers
+<jmarsden> cs1: See /topic and read the Server Guide, especially https://help.ubuntu.com/10.04/serverguide/C/windows-networking.html
+<cs1> is LVM necessary during RAID installation??
+<twb> LVM and RAID are orthogonal
+<cs1> aaahh
+<cs1> ok
+<cs1> thanks
+<SpamapS> cs1: these days, not using lvm is sort of like choosing a car with manual windows/locks/etc. It has a place, but you need a good reason. ;)
+<cs1> icic
+<twb> Does lucid's upstart still run rcS.d and rc2.d jobs by default?
+<SpamapS> twb: it still runs all of rc.
+<twb> I *think* so...
+<SpamapS> twb: /etc/init/rc.conf
+<cs1> about the RAID + LVM...if follow the steps shouldnt be a problem right??
+<cs1> because i will start installing the server soon
+<cs1> =S
+<twb> cs1: md, fake or hardware RAID?
+<cs1> whats the difference btwn those 3???=S
+<twb> Whether the raid is done by linux, badly by the CPU, or by an expensive dedicated coprocessor
+<cs1> i think is done by linux
+<SpamapS> cs1: basically, do you have a RAID card, or just some SCSI/SATA/SAS drives?
+<cs1> Sata drives
+<cs1> not RAID card
+<SpamapS> cs1: md then
+<cs1> ok
+<SpamapS> cs1: md == multi device
+<cs1> so i just follow the steps in the RAID guide???
+<SpamapS> cs1: its Linux's built in software RAID
+<cs1> https://help.ubuntu.com/community/Installation/RAID1%2BLVM
+<twb> cs1: if you're using md RAID and LVM, you can set up both at install time using the Ubuntu Server install media.
+<cs1> icic
+<huats> morning
+<AlexC_> morning
+<AlexC_> I've got an issue with one of our servers here regarding SSH. We can login just fine, however it is slightly delayed. Looking in /var/log/auth.log we see:    reverse mapping checking getaddrinfo for alex.office.local [192.168.0.4] failed - POSSIBLE BREAK-IN ATTEMPT!
+<twb> .local is reserved for MDNS
+<AlexC_> doing a 'host 192.168.0.4' comes back with 'alex.office.local' and a 'dig a alex.office.local' comes back with 192.168.0.4
+<AlexC_> MDNS?
+<twb> zeroconf/bonjour/rendezvous
+<twb> You cannot use .local on a 192.168 network.
+<AlexC_> hum, I thought that was one of the purposes of it?
+<twb> You thought wrong.
+<AlexC_> however, if this was the issue - our other server does not result in this error and works just fine
+<twb> Well, I didn't say it was the ONLY issue
+<twb> Ultimately the problem is that libc (nsswitch.conf) isn't reverse resolving your IP back to the expected hostname.
+<AlexC_> what could cause this?
+<twb> Er, getting it wrong
+<cwillu_at_work> AlexC_, was that host run from the server with the issue?
+<twb> You should be using "getent hosts".
+<twb> host(1) is not a valid test, because it always and only uses DNS.
+<AlexC_> cwillu_at_work: yes
+<cwillu_at_work> what twb said
+<AlexC_> $ getent hosts 192.168.0.4    192.168.0.4     alex.office.local
+<cwillu_at_work> the other server probably isn't configured to resolve mdns hostnames, or it's later in the resolve order (which I think it incorrect, as it ends up putting out a dns request that's guaranteed to fail)
+<twb> Yeah; I still think the problem is using .local on the wrong network
+<AlexC_> what is advised to use instead of .local?
+<twb> IME it gives these kinds of bizarro failures
+<twb> AlexC_: I use .lan, because it's the OpenWRT default.
+<AlexC_> twb: if it makes any difference, there is a Windows Active Directory server on the network, which was setup before I got here to use '.local'
+<twb> Just because it was someone else who fucked up doesn't make it right.
+<AlexC_> ok, I'll see about changing to .lan
+<ramseyd_> Hi guys
+<ramseyd_> quick question:
+<ramseyd_> I am trying to get latest version of cherokee web server on my ubuntu 10.04 using apt-get
+<ramseyd_> But it keeps giving me this error:
+<ramseyd_> W: Failed to fetch http://ppa.launchpad.net/cherokee-webserver/ppa/ubuntu/dists/lucid/main/binary-amd64/Packages.gz  404  Not Found
+<ramseyd_> Even though, that link is correct
+<ramseyd_> Anyone knows what could be wrong?
+<ramseyd_> here is what a wget of that link gives me : http://dpaste.org/sIdK/
+<ramseyd_> Someone can answer my question please?
+<AlexC_> if I'm not putting users in a chroot, and clients would like SSH access - what sort of things should I do to protect certain files? Is it bad practice to remove read access on some files/directories?
+<hallyn> jdstrand: gmorning - i was wondering, were you planning on merging libvirt 0.8.2 soon-ish?
+<pmatulis> AlexC_: if these clients are not your own people then i wouldn't allow non-chroot access.  otherwise set up a separate system just for ssh access
+<AlexC_> pmatulis: have you got a guide or reference for chroot SSH? Everything I see is very old and contradicts what other guides say
+<AlexC_> I can't find any solid or trustworthy resource
+<redshirtlinux> Hello everyone, does anyone know a reason why running updates on an Ubuntu 9.04 server might break the servers ability to talk to LDAP?  The server is a hosts a front end via apache and tomcat.  The site is made up of java, php, and html.
+<pmatulis> AlexC_: i made some notes about it.  i don't remember it being terribly hard.
+<pmatulis> AlexC_: what's stopping you?
+<codeshepherd> I find 50 instances of console-kit-daemon running in my server.. . what does it do? Do I really need it? how do I stop it?
+<codeshepherd> no one here uses console kit daemon ?
+<jmitchell> are there any bind9 ninjas in the house?
+<jmitchell> how can i get bind9 to use/allow login's and passwords for dyndns updates to it? I want to copy changeip.com or dyndns.org's type of setup
+<jmitchell> i am currently generating keys instead
+<smoser> anyone want to help with https://bugs.launchpad.net/ubuntu/+source/xinetd/+bug/43574
+<uvirtbot> Launchpad bug 43574 in xinetd "Needs Ubuntu-style init script" [Wishlist,Triaged]
+<smoser> it just needs sponsoring.
+<smoser> branch attached.
+<jdstrand> hallyn: I'm working on updates for libvirt and will do it as part of that
+<AlexC_> pmatulis: I guess it's knowing what programs I want them to have access to, the directory structure and generally how to set it up
+<D347H-C0D3> Hi gys... I just used debootrap for ubuntu 8.04 on my ubuntu 9.04(hosted on virtual box). When i tried installing xfce desktop on ubuntu 8.04 the folowing error came: http://paste.ubuntu.com/464024/
+<pmatulis> AlexC_: well if they need access surely they know what for, no?
+<soren> smoser: Does anything take care not to install the init script anymore?
+<smoser> soren, yes. dh handles that.
+<smoser> theres magic that, and on upgrade, there is magic that replaces /etc/init.d/xinetd with a link to /lib/init/upstart-job
+<smoser> s/^theres magic that,//
+<soren> smoser: Neat. :)
+<hallyn> jdstrand: awesome, thanks
+<AlexC_> pmatulis: yes, though I mean the more core gnu utils
+<pmatulis> AlexC_: you have to at least provide a shell for them.  i remember having to copy over manually files for even that to work - it's not great
+<AlexC_> pmatulis: this is what I don't like, it just seems like one big dirty hack. What happens regarding system updates for files I've copied?
+<pmatulis> AlexC_: heh, you ask too many questions
+<AlexC_> questions lead to knowledge :P
+<pmatulis> AlexC_: and pain
+<pmatulis> AlexC_: i can send you my notes if you would like
+<AlexC_> that would be great
+<AlexC_> thankfully most of our clients will use SFTP, of which chroot is incredibly simple
+<pmatulis> AlexC_: dumped notes in a private window
+<AlexC_> thanks, I'll read over :)
+<sommer> morning all
+<freakynl> hi, i'm having quite a bit of issues with ufw (the so called (not so)-uncomplicated firewall). Running ubuntu server 10.04 amd64 with ufw (because apparently that's the only iptables thing actually supported by ubuntu). It's main problem is the default config... who/what decided it would be nice to have a 3 connections per minute by default on *EVERY* connection on a *server*? Point me there, I'll bring the bat :). Anyways, anyone know how to
+<pmatulis> freakynl: cool down
+<AlexC_> freakynl: shorewall. end of :)
+<freakynl> pmatulis: actually I am pretty calm, I just find it extremely hard to believe nobody else runs into it / this is default ufw rules on a *server*. 3 connections / min with a 10 burst is absolutely nothing for a webserver especially if clients don't pipeline
+<jdstrand> freakynl: a) shorewall and iptables are both supported. b) only the 'limit' command has a 3 connections per minute default. allow does not
+<freakynl> jdstrand: before hitting any allow rules i created with ufw (mainly for 80/443) it hits the ufw-logging-deny chain which blocks it (it goes input -> ufw-before-input -> ufw-logging-deny)
+<freakynl> jdstrand: but there's something like iptables-save/restore from init.d then?
+<jdstrand> freakynl: actually, I mispoke, the limit command is 6. the '3' you are seeing is for the logging chain, yes
+<jdstrand> freakynl: that limit can be adjusted by adjusting your log level in ufw
+<jdstrand> freakynl: see the LOGGING section in 'man ufw' for details
+<jdstrand> freakynl: but, based on your comment, it sounds like the packets aren't matching your allow rule, which is why it is going to logging-deny (and therefore your default policy) in the first place
+<jdstrand> freakynl: as for iptables-restore, see 'man ufw-framework' for details on how things are put together. basically, there is no iptables-save (you use the 'ufw' command or edit files directly) and an iptables-restore action happens on boot (or start/reload)
+<Daviey> Is anyone ACK'ing SRU's today?
+<Daviey> bah, wrong channel
+<freakynl> jdstrand: thanks for the explanation. Actually they do hit allow, otherwise the backup clients wouldn't be able to backup at all and the website wouldn't be accessible. Currently almost all backup clients, depending on what they're doing (ie it occurs when uploading many small files) log 'network connection issues' every 5-10 mins. It then stops backing up for like 5 mins and then tries again. It hits the log/block due to not being allowed by
+<Daviey> zul, Are you able to look at bug 313275, soonish?
+<uvirtbot> Launchpad bug 313275 in logwatch "logwatch stunnel script doesn't match any stunnel4 log entries" [Low,Triaged] https://launchpad.net/bugs/313275
+<zul> Daviey: i could be persuaded yes
+<Daviey> zul, R-O-C-K-I-N-G
+<Trek> i'm getting a weird issue with things related to something with perl failing.  Pastebin: http://starfleet.pastebin.com/E1uXrcyw
+<Trek> any idea how to fix it?
+<pmatulis> Trek: did you google for 'perl: warning: Setting locale failed.' ?
+<Trek> pmatulis: yah, had issues finding it (slow slow slow internet)
+<Daviey> Trek, Let us know if your search engine doesn't help you find a solution, and we'll crack on.
+<Trek> standby, since GOOGLE IS TAKING 15 MINUTES TO LOAD
+<Trek> grr stupid caps
+<Trek> o.o
+<Trek> well google found a result...
+<Trek> but...
+<Trek> i get new issues too o.o
+<Trek> standby
+<Trek> http://starfleet.pastebin.com/2YMhWT6D
+<sherr> Trek: Google gets lots of hits for : "Cannot set LC_CTYPE to default locale" +ubuntu
+<zul> smoser: ping
+<smoser> here
+<zul> smoser: im thinking this might help you guys http://people.canonical.com/~chucks/xen-mask-out-xsave-for-hvm-guests.patch
+<smoser> jjohansen-afk, ^
+<RyanP> I have Ubuntu Server 10.04 setup with LDAP authentication, and am using the LDAP server to authenticate client computers to the server. On the clients, everything works. On the server, I can login fine, but attempting to change the password I get the error: 'passwd: Authentication token manipulation error'
+<n0n0x> Has anyone ever used sysbench on ubuntu?
+<sherr> RyanP: that LDAP error seems to happen a lot and you will get a lot of hits on Google for it. Might be worth checking there first.
+<RyanP> sherr: I spent a bunch of time on Google, and most of the links seemed to just say something like 'This is sometimes something to do with LDAP.' but nothing more helpful than that.
+<[diablo]> hi, anyone know a big table database shipping with LTS please?
+<binBASH> big table database?
+<binBASH> I thought until now only google got BigTable :D
+<oru_work> is there any suspicious activity here ? http://www.pastebin.org/397564
+<oru_work> whats that ghostscript ?
+<sherr> oru_work: why don't you look it up on the web - easy to track down. Why are you asking about "suspicious" activity?
+<jjohansen> smoser: yeah that is essentially what I did
+<ScottK> kirkland: Is it reasonably safe/possible to convert from unencrypted to encrypted home directory on 10.04?
+<hallyn> ScottK: looks like ecryptfs-migrate-home might do it for you.  I'm going to test it right now actually.  You're on maverick?
+<ScottK> I have systems on maverick, but the one in question is lucid.
+<hallyn> ScottK: ok - i'm testing in a lucid vm then.  I'm curious about it myself, to be able to answer other ppl.  (for myself i prefer hand-mounting ecrytpfs'd subdirs - don't know why - old dogs and all that)
+<webPragmatist> anyon here use rsyncd?
+<hallyn> ScottK: <shrug> it worked perfectly for me.  I created a new temporary user with sudo privs, logged in as him, then did ecryptefs-migrate-home -u hallyn;  did a 'switch user' to hallyn to verify files were ok, 'switch users' back and rm -rf /home/hallyn.<random>
+<maek> is there a way to copy the contents of the install dvd and use it for a network based install source?
+<hallyn> ScottK: if/when the per-user keyring is honored to deny file reads, i might do all-home encrypted, but as it is, once you log in, any user able to descend your /home/$USER can read all your decrypted files...  so i try to keep encrypted dirs unmounted when possible,
+<webPragmatist> ScottK: hey
+<n0n0x> is it possible that mutexes got 4~5 times slower on x86_64 compared to x86? At least that's what sybench is telling me.
+<webPragmatist> under /etc/default/rsync what's yalls default RSYNC_ENABLE
+<webPragmatist> true?
+<robbiew> ttx: wanted to get together in Prague to make sure things are in line for 10.04.1...is there anyone in Server focused on this?
+<maek> in preseed how do you tell the server to use a different repo to install from other then archive.ubuntu.com or the mirror of said repo?
+<robbiew> ttx: just want to be sure I don't leave anyone out
+<SuperLag> Any of you guys use Tomcat on Ubuntu Server?
+<SuperLag> I've added all the tomcat6-* packages, and edited the tomcat-users.xml file to add the default users who were commented out... but when I try to bring up the Tomcat Manager, I'm still getting an "access denied" message
+<SuperLag> *sigh*
+<SuperLag> I figured it out. :/
+<ttx> robbiew: that would be zul (and possibly me)
+<robbiew> ttx: ack..thnx
+<Ast001> Hello after installation of Ubuntu 10.04 server I have got fonts so small that I need microscope to read anything. How can I enlarge that ?
+<matt_keys> I'm trying to connect to a remote kvm host via ssh. using just the hostname, I can't log in as root by default so I used username@kvmhost. It prompts for the password and authenticates, but then it closes connection with "File "/usr/share/virt-manager/virtManager/connection.py", line 896, in _try_open None], flags) File "/usr/lib/python2.6/dist-packages/libvirt.py", line 111, in openAuth if ret is None:raise libvirtError('virCon
+<Jeeves_> Ast001: Uh, on your monitor?
+<Jeeves_> Or via ssh? :)
+<Ast001> yes I am unable to configure anything
+<Ast001> on monitor
+<Jeeves_> Hmm, goed question.
+<matt_keys> Ast001: try text mode install?
+<Jeeves_> matt_keys: He allready installed
+<Jeeves_> and the serverinstaller is textmode :)
+<Ast001> I installed ubuntu
+<matt_keys> oh... try holding ctrl down and using the scroll wheel
+<zul> ttx: are we planning on updating openldap its getting kind of stale in maverick
+<Ast001> ok
+<Ast001> ctr + mouse wheel changes nothing
+<ttx> zul: we should, maybe sync with mathiaz on that
+<matt_keys> Ast001: http://ubuntuforums.org/showpost.php?p=4322584&postcount=3
+<Ast001> ok thanks
+<Ast001> I will try that
+<uvirtbot> New bug: #605977 in puppet (main) "emacs puppet-mode not auto loaded in lucid" [Undecided,New] https://launchpad.net/bugs/605977
+<RyanP> I have Ubuntu Server 10.04 setup with LDAP authentication, and am using the LDAP server to authenticate client computers to the server. On the clients, everything works. On the server, I can login fine, but attempting to change the password I get the error: 'passwd: Authentication token manipulation error'
+<pmatulis> is there a mailing list manager that integrates well with ldap (to hold membership data)?
+<ForestBear> hey guys I have a server set up with nginx, I can see it on my own computer by LAN computers (connected to the same router) cannot see it?
+<b14ck> Hey all. I'm trying to compile some software that requires the linux source code. I've installed linux-headers-2.6.32-23 linux-image-2.6.32-23-server and linux-source-2.6.32  but they aren't showing up in /usr/src. My question is: How can I force the package manager to 're-install' those packages fresh without removing them and breaking my install?
+<sherr> "linux-source" should give you a .tar.bz2 file to extract in /usr/src - are you sure you need it though? Module compilation just needs headers I think.
+<pmatulis> he's gone
+<sherr> OK, thanks.
+<Kream> can anyone recommend a lightweight http webserver with support for http digest authentication?
+<pmatulis> Kream: lighttpd
+<norbiAnevem> hy guys
+<ubuntu_love> can you please help me with some info
+<ubuntu_love> i have a domain key
+<ubuntu_love> public and private and spf
+<ubuntu_love> but yahoo says that domainkey is neutral=it doesn`t exists
+<ubuntu_love> it is that possible that dkim-milter doesn`t sign the mail with the domainkey?
+<ubuntu_love> or yahoo server is checking that with dig TXT _domainkey?
+<ccheney> kirkland, found you don't really need a mirror, approx is good enough :)
+<ScottK> ubuntu_love: domainkey and dkim aren't the same thing.
+<ubuntu_love> ScottK: could you please check this report: http://pastebin.com/KFXF07hg
+<ubuntu_love> it says that the domain key is invalid
+<ScottK> ubuntu_love: It says domainkeys neutral (which is due to no signature).  Your mail has a DKIM signature, not a domainkeys signature.
+<ScottK> ubuntu_love: Which Ubuntu release are you using?
+<ubuntu_love> ScottK: i downloaded the ubuntu server today
+<ubuntu_love> the server from i send the mails is a fake centos
+<ScottK> Then support for it's off topic here.
+<ubuntu_love> ScottK: ok, thank you!
+<ScottK> hallyn: Worked great.  Thanks.
+<hallyn> ScottK: cool, glad to hear it
+<n0n0x> Isn't there any way to check how ECC memories are performing? I mean, how many times ECC saved my server
+<effowe> Hi: I'm running Ubuntu Server 10.04 and am trying to learn more about /etc/rc*.d, runtimes, and startup processes. running sysv-rc-conf still shows packages that are no longer installed, can someone point me to a comprehensive guide / tutorial to removing unused startup processes from their runtime directories so that they no longer show up in sysv-rc-conf?
+<piov> hi...any iptables helpers here...need help with port based routing
+<Kream> anyone here use munin?
+<ruben23> hi guya anyone can recommend cheapest hosted server..?
+<MTecknology> !info php5-gd2
+<ubottu> Package php5-gd2 does not exist in lucid
+<MTecknology> !info php-gd2
+<ubottu> Package php-gd2 does not exist in lucid
+<guntbert> !info php5-gd | MTecknology
+<ubottu> MTecknology: php5-gd (source: php5): GD module for php5. In component main, is optional. Version 5.3.2-1ubuntu4.2 (lucid), package size 33 kB, installed size 152 kB
+<MTecknology> guntbert: thanks :)
+<guntbert> MTecknology: you're welcome :-)
+<Kream> anyone here use munin?
+<guntbert> Kream: why don't you ask your real question? (I myself know nothing about munin though)
+<MTecknology> Kream: I use nginx, it has some of the same letters. :)
+<piov> when i do port based routing (mark..ip route...ip rule...etc), traffic routes fine outbound, but inbound syn/ack packets are not forwarded to the client from the linux firewall?
+<piov> i can see the packets hit the prerouting chain, but they never get to the forward chain
+<piov> any ideas?
+<piov> problem similar to http://linux.derkeiler.com/Newsgroups/comp.os.linux.networking/2007-09/msg00095.html
+<webPragmatist> how hard would it be to retrofit this to ubutun
+<webPragmatist> ubuntu*
+<webPragmatist> http://www.server-world.info/en/CentOS_5/lsync/1.html
+<theacolyte> Am I missing something, or why is escape not letting me enter grub settings (looks like likewise open broke AGAIN - and I can't log in using any username/password combnations)
+<theacolyte> No amount of mashing escape is working
+<theacolyte> Eh, nevermind, I'm just going to roll back to 8.04
+<theacolyte> 10.04 has been extremely painful
+<webPragmatist> how can i make a init.d script start at boot
+<qman__> webPragmatist, update-rc.d
+<webPragmatist> aww eff LOL
+<webPragmatist> well i don't feel as bad… it just uses the start-stop-daemon too … i just created an init.d that was already somewhere on the interweb http://code.google.com/p/lsyncd/source/browse/package/debian/init.d?r=73
+<webPragmatist> well
+<webPragmatist> that doesn't even seem to specify runtimes?

@@ -1,0 +1,158 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-de"
+date: "2013-11-15"
+lang: "de"
+messages: "149"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<clifferaa> hat jemand ubuntu 13.10 mit psi-plus und otr laufen?
+<LupusE> g'morgen
+<foofoobar> Hi. Nutze ubuntu 12.04 und möchte golang-tip installiere (wie hier angegeben: https://wiki.ubuntu.com/Go). Ich habe nun das PPA hinzugefügt, golang-stable funktioniert auch. golang-tip aber leider nicht:
+<kubine> Title: Go - Ubuntu Wiki (at wiki.ubuntu.com)
+<foofoobar> Paket golang-tip ist nicht verfügbar, wird aber von einem anderen Paket
+<foofoobar> referenziert. Das kann heißen, dass das Paket fehlt, dass es abgelöst
+<foofoobar> wurde oder nur aus einer anderen Quelle verfügbar ist.
+<stevieh> und wo war da jetzt die Frage?
+<geser> so wie es aussieht, gibt es nur noch golang-stable in dem PPA, vielleicht ist die Wiki-Seite nicht mehr aktuell
+<geser> vielleicht mal die Person fragen, die die letzten golang-Pakete in das PPA geladen hat
+<stevieh> oder das wiki ändern ;-)
+<smooph> Hallo ... ich würde gerne meinen Wohnzimmer-Server mit ein paar Retro Games aufmotzen ... zu diesem Zweck hätte ich gerne ein paar Gamepads ... leider konnte ich auf den einschlägigen Seiten nicht zur kompatibilität finden ... jemand hier der erfahrung hat oder besser suchen kann als ich?
+<stevieh> gehts um MAME oder welche games?
+<smooph> stevieh: es geht um welches gamepad funktioniert mit ubuntu
+<stevieh> http://linuxhacksandfixes.blogspot.de/2013/02/the-logitech-f710-gamepad.html
+<kubine> Title: Linux Hacks and Fixes: The Logitech F710 Gamepad (at linuxhacksandfixes.blogspot.de)
+<smooph> seems like a good article but i am more interested in the cheap models on amazon and ebay ... playing a retro snes games i am pretty sure i want one of those crapy old gamepads at amazon they are around 7
+<smooph> ach mist english
+<stevieh> na, wenn du über amazon kaufst, dann bestell und guck.
+<leszek> hi
+<leszek> ich hab mal ein interessantes Problem, undzwar hab ich mir vor kurzem einen DLNA fähigen Fernseher von Sony gekauft und wollte nun versuchen irgendwie per VLC und einem DLNA Server den screen:// input zu streamen. VLC und screen:// auf den localhost streamen als http stream geht bereits und ich kann auch in serviio den stream einbinden nur auf dem fernseher werden dann nur dateifreigaben angezeigt. Jemand eine Idee ob es am DLNA Server liegt oder an
+<leszek> dem Fernseher ?
+<smooph> das würde ich eher mal im vlc channel fragen aber ich glaub nicht dass das so einfach geht
+<leszek> smooph: ich frag mal im vlc channel, aber ich glaube die werden mich hierher verweisen , weil VLC macht ja im Grunde was es soll :P
+<stevieh> leszek: http://realmike.org/blog/2011/02/09/live-desktop-streaming-via-dlna-on-gnulinux/
+<kubine> Title: Live Desktop Streaming via DLNA on GNU/Linux « realmike.org (at realmike.org)
+<leszek> stevieh: danke, diesen link bzw. artikel hab ich schon durchgearbeitet
+<leszek> leider ohne erfolg
+<stevieh> die sony glotze kann aber mkv, oder?
+<leszek> ja kann sie. Das Problem ist glaube ich der mldna server, der die datei einfach nicht anzeigt, weil wohl gerade dort reingestreamt wird
+<leszek> *dlna
+<stevieh> und hast du den mediatomb probiert?
+<leszek> ja
+<stevieh> da steht ja, dass du den nochmal starten musst, damit er die Datei sieht...
+<leszek> ah möglich, dass ich das gestern beim testen nicht gemacht habe. Ich probiere es gleich nochmal
+<predator> Hi, ich glaube, ich stehe kurz vor der Lösung eines meiner Probleme in Xubuntu 12.04, allerdings fehlt mir die nötige Kompetenz für die richtige Bearbeitung meiner xorg.conf (Alternativvorschläge ohne Konfiguration von xorg.conf werden ebenfalls gern gesehen). Kennt sich jemand damit aus, wie ich einen Monitor (über usb2vga Displaylink angeschlossen) in die xorg.conf einbinden kann? Erkannt wird der Monitor (und auch vom System
+<predator> genutzt, wenn ich lightdm stoppe), allerdings wird der Desktop darauf nicht erweitert und bei Start von lightdm totgestellt. Hat jemand irgendeine Idee? :)
+<predator> Eine xorg.conf war im übrigen nicht vorhanden, die habe ich nun über "X -configure" erstellt.
+<geser> leszek: ich habe mal in einem c't-Test von Smart-TVs eine Tabelle gesehen, wonach bestimmte Formate als Datei gehen, das gleiche Format gestreamed aber nicht geht. Schaue mal nach, ob das Format von deinem TV als Stream unterstützt wird.
+<leszek> geser: ah ok danke für den hinweis, sehe gerade h264 (avchd) kann der fernseher anscheinend nicht streamen xD
+<nubcake> Hallo, ist es möglich meine momentan (320gb) im Notebook verbaute Festplatte direkt mit einer 500GB Platte zu ersetzen? (also kann ich irgendwie per dd o.ä. alles von der alten auf die neue platte spiegeln?
+<stevieh> nubcake: schau dir mal clonezilla an.
+<nubcake> stevieh, das hab ich schon mal probiert, hat aber irgendwie nicht geklappt :(
+<stevieh> nubcake: tja, was soll ich sagen, für Linux klappt das schon, klar, musst die uuids anpassen, aber das wars auch schon.
+<stevieh> mit dem Win Rotz kenn ich mich nicht aus, die zieh ich immer 1:1 um.
+<nubcake> stevieh, achsoo.. ohje.. daran hab ich überhaupt nicht gedacht... :D
+<stevieh> na, das soll helfen :-)
+<nubcake> naja nochmal von vorn :-) aus fehlern lernt man ja bekanntlich (hoffentlich)
+<stevieh> wieso von vorn, ist doch noch da ;-)
+<nubcake> ne, ich hab die ziel platte gerade nochmal platt gemacht :D
+<nubcake> dummerweise
+<rodriguez> Guten Tag. Hab mal wider eine Frage ^^ Mache gerade mein abschlussprojekt für meine Ausbildung und habe ein par linux clients die per pxe booten und als autentisirung ldap verwenden jetzt wollte ich noch /home über eine nfs freigabe einbinden leider geht das in /etc/fstab nicht wird dann immer lokal angelegt. Meine frage kann ich im ldap verzeichnis einfach stat /home eine nfs freigabe angeben ?
+<stevieh> probiers halt.
+<stevieh> istdas nicht so, dass man "einfach" auf jeden Client das gesamt home mounted?
+<rodriguez> doch so möchte ich es haben nur im moment legt jeder client ein eigenes /home verzeichnis auf seiner "hdd" (allso im pxe verzeichnis) an
+<stevieh> ah, verstehe. hmm.. aber wenn du das per nfs übermountest müsste doch alles stimmen?
+<rodriguez> nein das macht er dan gar nicht allso er legt berücksichtigt den eintrag in /etc/fstab dann gar nicht ausser ich mache es danach per hand
+<NTQ> Weiß jemand wie man die TreeView von baobab (Festplattenbelegung) aktivieren kann? In der alten Version ging das noch. Oder wurde das jetzt auch raus geschmissen?
+<NTQ> sorry, hab's schon. aber den vertikalen trenner kann man nicht verschieben. weiß da jemand rat?
+<jokrebel> NTQ: Also hier (12.04.3) geht das schon per klick&ziehen auf die Trennlinie
+<NTQ> jokrebel: Hm... bei mir irgendwie nicht. :( Ich hab Baobab Version 3.6.4
+<NTQ> Ist aber auch Ubuntu 13.04
+<XDC> Guten Tag gibt es eine Grafische Weboberfläche wo man alle log's auflisten lassen kann die auf einem Ubuntu System anfallen??
+<jokrebel> NTQ: Moment, da muss ich erst eines Starten.
+<stevieh> XDC: nein.
+<jokrebel> XDC: Es gibt eine GUI dafür, aber nichts im Browser soweit ich weis
+<stevieh> XDC: du kannst mit dem nautilus durch /var/log durch, aber da müssen nicht zwangsläufig alle sein. Die meisten aber.
+<XDC> wie heißt das programm
+<XDC> ansonsten muss man einfach *.log's per grep suchen ne
+<stevieh> nein, per find maximal. in den logs sucht man dann per grep
+<jokrebel> NTQ: Hab grad kein 13.04 zur Hand, aber bei 13.10 ist Version 3.8.2 dabei, welches sich auch stark von 3.6.4 unterscheidet und anscheinend auf den ersten Blick 2 gleichgroße, fixe Fensterteile hat. Da kann ich auch die "Abgrenzung" nicht verschieben.
+<NTQ> okay. dann liegt's nicht an mir :D
+<NTQ> aber schade, dass solche ja eh schon optionalen dinge plötzlich fest werden.
+<jokrebel> XDC: Das ist der Systemprotokollbetrachter - über Logs gibts auch was im Wiki http://wiki.ubuntuusers.de/Logdateien
+<kubine> Title: Logdateien › Wiki › ubuntuusers.de (at wiki.ubuntuusers.de)
+<XDC> dankeschön
+<jokrebel> NTQ: Naja - wenn sich die Grundstruktur eines Programms ändert kann schon mal was gewohntes wegfallen weils im neuen halt (noch) nicht reinprogrammiert wurde. Ist ja nicht so dass da immer nur was neues außenrum gestrickt werden würde und deshalb alte Funktionen automatisch wieder da sind.
+<XDC> funktioniert das immer nur auf dem PC den man analisieren will oder kann man das auch übers Netzwerk an einen anderen PC einsehen per Programm
+<geser> du kannst dich natürlich per ssh auf dem anderen Rechner anmelden (sofern du den SSH-Server dort installiert hast), du kannst aber auch den syslog zentral auf einen Server loggen lassen und hast dann dort die Logs aller Rechner (soweit es über syslog geloggt wird)
+<jokrebel> XDC: Wenn ich mich per "ssh -Y andererRechner" drauf verbinde, kann ich per "baobab" hier diese GUI anzeigen lassen
+<XDC> dann muss der Rechn er aber ein X haben oder nicht
+<XDC> X11 meine ich
+<tuxiano> Hallo, ich habe eine CSV Datei mit sehr vielen Werten (515 Mio.). Diese möchte ich reduzieren, indem ich nur jeden X-Wert herauslese und in eine neue Datei schreibe. Geht das irgendwie mit "cat"?
+<tuxiano> Die Werte stehen einfach untereinander
+<jokrebel> XDC: Das kann ich hier auf die schnelle leider nicht testen. Hat denn der Rechner auf den Du die Plattenbelegung analysieren willst nur ne Serverinstallation?
+<XDC> ja genau
+<jokrebel> XDC: Dann ist vermutlich aber auch baobab gar nicht installiert. Ich glaub aber, dass Du per "ssh -Y" eh den X-Server vom Ausgangsrechner verwendest; sprich sollte schon auch ohne X auf dem Server gehen (wenn Du das Paket für baobab nachinstallierst)
+<jokrebel> XDC: Ansonsten halt per "df" analysieren
+<ppq> tuxiano: fast richtig :)
+<ppq> tuxiano: cut statt cat
+<ppq> tuxiano: als delimiter dann einfach das komma nehmen und die entsprechende "spalte" angeben
+<tuxiano> ppq: Ok, nur dass ich es richtig verstehe, damit kann ich jede X-Zeile auslesen, richtig?
+<ppq> tuxiano: tipp zum testen: mit head oder tail ein paar zeilen deiner csv-datei nehmen
+<ppq> tuxiano: cut ist ein tool, das in jeder zeile bestimmte teile wegschneidet
+<tuxiano> ppq: Ich muss ganze Zeilen auslassen/überspringen
+<tuxiano> z.B. Ich habe 100 Zeilen, und ich möchte nur jede 10 Zeile auslesen
+<ppq> tuxiano: ich versteh die struktur deiner daten gerade nicht ganz, kannst du mal ein beispiel zeigen?     head -n100 datei.csv | pastebinit
+<tuxiano> ppq: Die Werte stehen einfach untereinander
+<tuxiano> ich lade das Bsp. gleich hoch
+<tuxiano> http://paste.ubuntu.com/6421764/
+<kubine> Title: Ubuntu Pastebin (at paste.ubuntu.com)
+<geser> awk '0 == NR % 10' datei.csv (aus http://linuxcommando.blogspot.de/2008/04/using-awk-to-extract-lines-in-text-file.html)
+<kubine> Title: Linux Commando: Using awk to extract lines in a text file (at linuxcommando.blogspot.de)
+<tuxiano> geser: Genau das brauche ich
+<tuxiano> super
+<ppq> ah
+<tuxiano> linux kommadozeile ist einfach super, alle anderen Programme sind bei solche Datenmengen in die Knie gegangen
+<jokrebel> Sind das irgendwelche Werte die irgendwo abgefragt/ausgelesen werden? Dann könnte man auch einfach das Abfrageintervall um den Faktor 10 veringern ;-)
+<XDC> hat mariadb eigendlich einen vorteil im gegensatz zu mysql
+<XDC> im grunde könnte man doch auch couchdb nehmen wenn man möchte
+<geser> Mariadb ist nicht von Oracle und ist "offener"
+<apollo13> aber es ist halt noch immer mysql, wenn du schon richtig vorteil haben willst dann postgres :þ
+<jokrebel> XDC: über 38k an Ergebnissen bei "mariadb vs mysql vs couchdb". Und vermutlich ist das eher eine Glaubensfrage und wär in #ubuntu-de-offtopic besser aufgehoben.
+<leszek> re
+<imox1234> wie erstelle ich denn mein ssl key wenn ich den key als text habe? habe die Datei erstellt aber die kann der nicht lesen
+<imox1234> ich habe das crt wo bestellt und hatte noch keine private key also haben die mir einen generiert aber wenn ich den in ne Datei kopieren kann die nicht gelesen werden
+<wheeler> mahlzeit, ich habe mal ne frage. ich habe mir wegen nem webprojekt n apache2 installiert. die kiste startet auch einwandfrei und über "localhost" kriege ich auch "It works!" .  ich habe auch Ordner gefunden. ../etc/apache2  aber ich habe keine möglichkeit dort ein ordner für mein webprojekt einzusetzten. mag mir jemand helfen?
+<dadrc> webroot ist normalerweise /var/www/, wenn ich mich recht erinnere
+<apollo13> pst
+<apollo13> wheeler: denk mal drüber nach was für dateien in /etc/ rumliegen im normalfall
+<wheeler> ich habe noch nicht so lange, so viel mit ubuntu zu tun und bin da noch n ziemlicher newbie
+<apollo13> dann solltest du dir vlt die wikiartikeln zu apache durchlesen :)
+<wheeler> vielen dank Apollo13, ich werde das sicherlich noch mal machen. und dadrc auch die ein dank, du lagst richtig!
+<Yoshimo> Wenn ein Paket selbst in den Trusty Tahr Quellen und Auch in Saucy schwer veraltet ist und in den Debian Quellen es nicht ganz so schlimm aussieht aber immer noch nicht perfekt, was kann man tun damit sich das bessert?
+<jokrebel> Yoshimo: Woher weist Du, dass es in 14.04 "schwer veraltet" sein wird? Ich halt es eher für unwahrscheinlich, dass es in Dabian (stable?) aktueller sei. Aber werd einfach konkreter und erzähl um welches Paket es geht.
+<Yoshimo> usb_modeswitch_data
+<Yoshimo> ich sag nicht dass es sein wird, ich sag nur dass es dort momentan nicht neuer ist
+<bekks> Yoshimo: Und welche VErsion erwartest du, und welche ist in 13.10 enthalten?
+<Yoshimo> ubuntu: 20120815-2 debian 20130807 und offiziell gäbe es auch 20131113
+<bekks> Da es noch keinen freeze in 14.04 gibt, kann sich das alles noch ändern.
+<jokrebel> Yoshimo: [Offtopic] wo bekommt man schon Trusty Tahr?
+<bekks> jokrebel: auf den ubuntu doenload servern.
+<bekks> *download sogar
+<xzise> Hi ich habe eine Frage zu den SSH Tunneln, ob ich das richtig im Wiki verstanden hab: Ich möchte über das Internet den VDR meines Freundes steuern, aber die ist ja komplett ohne Schutz, also mach ich "ssh -L 6419:localhost:6419 freundserver -N" und stelle z.B. bei Lazybones localhost und 6419 ein. Das dürfte das dann verschlüsseln oder?
+<bekks> xzise: Womit steuerst du lokal denn den VDR?
+<xzise> Welches lokal meinst du?
+<xzise> Also bei mir oder lokal auf dem Server wo der VDR läuft?
+<mathias_> zapf
+<bekks> xzise: Lokal ist immer da wo du bist :)
+<xzise> Mit dem Lazybones Plugin von TV-Browser, der baut irgendwie eine Netzwerkverbindung zum Server auf, falls es das ist was du meinst.
+<bekks> xzise: Ja, das meinte ich.
+<xzise> Ich war nur etwas verwirrt was genau der Unterschied zwischen -L und -R ist. Ich dachte das sich nur um Verbindungen in ein Richtung handelt (und die Rückrichtung unverschlüsselt ist), aber das scheint was anderes zu bedeuten
+<ppq> nein, das ist immer in beiden richtungen verschlüsselt
+<ppq> L und R bedeutet, von welcher seite aus der tunnel innitiiert wird, von local oder remote aus
+<ppq> meistens will man sowieso L
+<xzise> Okay, d.h. wenn ich z.B. -R benutzen würde, kann ich von hier aus keine Verbindung zum Server über den Tunnel aufbauen, aber vom Server aus hierhin
+<ppq> doch, die verbindung ist in beide richtungen nutzbar
+<ppq> mit R müsstest du beispielsweise zuhause den port weiterleiten, wenn du NAT nutzt
+<xzise> Achso

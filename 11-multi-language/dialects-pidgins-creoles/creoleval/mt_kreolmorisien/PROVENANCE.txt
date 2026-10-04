@@ -1,0 +1,18 @@
+Source: KreolMorisienMT / MorisienMT (Mauritian Creole, "mfe", English-Creole parallel MT data)
+Fetched directly from: https://huggingface.co/datasets/prajdabre/KreolMorisienMT
+(data/en-cr.zip -> en-cr_{train,dev,test}.jsonl)
+This is the exact dataset CreoleVal's own nlg/download_kreolmorisien_mt.sh script fetches (it pulls
+cr.zip, fr-cr.zip, and en-cr.zip from this same HuggingFace dataset repo) -- CreoleVal does not
+vendor the raw text in-repo, only the download script, so this pocket fetched the real upstream
+en-cr (English-Creole) portion directly, the same way CreoleVal's own script would. The fr-cr
+(French-Creole) and cr (Creole monolingual) portions were not additionally fetched, to keep this
+one dataset's footprint bounded -- en-cr alone already gives a genuine parallel-MT sample.
+License: MIT, confirmed by fetching and reading the dataset's own card at
+https://huggingface.co/datasets/prajdabre/KreolMorisienMT/raw/main/README.md directly (YAML
+frontmatter: "license: mit"). CreoleVal's own top-level README benchmark table independently lists
+"KreolMorisienMT" as "MIT License" too -- both sources agree.
+Coverage staged: en-cr_dev.jsonl (500 lines, full official dev split) and en-cr_test.jsonl (1000
+lines, full official test split) staged in full; en-cr_train_sample.jsonl is the first 500 of
+21,810 total training lines (a bounded sample, not the complete training set).
+Domain: general/mixed (per the dataset card, "a variety of sources").
+Format: JSON Lines, one {"input": <English>, "target": <Mauritian Creole>} object per line.

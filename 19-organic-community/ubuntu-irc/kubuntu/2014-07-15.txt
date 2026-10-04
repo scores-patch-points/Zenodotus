@@ -1,0 +1,406 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2014-7-15"
+lang: "en"
+messages: "397"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<schultza> is the newer version of kde out yet? and can i configure it to only have icons showing for active programs?
+<valorie> schultza: you can test the latest crack from project neon: #project-neon /topic for more information and that chan for support
+<em> valorie: im trying to compile something that depends on libicu48 but that package is no longer in ubuntu repo though it says its supposed to be. But libicu52 is in there. Do you think it makes a difference?
+<valorie> that could be a packaging error -- you might file a bug for that em
+<valorie> sorry, gotta go
+<em> !info libicu48
+<ubottu> Package libicu48 does not exist in trusty
+<em> !info libicu52
+<ubottu> libicu52 (source: icu): International Components for Unicode. In component main, is optional. Version 52.1-3 (trusty), package size 6635 kB, installed size 27253 kB
+<valorie> right, and so nothing should depend on that, which is a packaging decision I assume
+<valorie> bye....
+<Pibble> em: my bet is whatever you are trying to do is out of date and hasnt been updated in some time.
+<Pibble> AKA, no longer supported, AKA legacy.
+<Pibble> Try and find a more up to date alternative.
+<kingbeowolf> how can i use private internet access and KDE at the same time
+<kingbeowolf> i dont have any network options to connecto my vpn like I do in Unity
+<em> Im trying to copile something from source and it says I ran out of virtual memory. Is there any way to increase that to try again?  Or is there a way to compile it in pieces or something so it doesn't choke?
+<em> or does doing --jobs 10 make a differnce?
+<em> maybe is there a way to increase swap? would that make a difference
+<kingbeowolf> how can i manage my VPN service with KDE?
+<em> kingbeowolf: are you in 14.04?
+<kingbeowolf> yeah
+<em> kingbeowolf: Try clicking on the network manager icon in the pannel in the lower left hand corner.  Then clicking on the settings.
+<em> the thing that looks like a wrench
+<em> then go to connection and add connection
+<em> you get a drop down menu of choices. Some of those are VPN
+<em> That's as much as I can say I don't know after that since I don't have a VPN
+<em> but maybe that helps get started?
+<kingbeowolf> i don't have that in my system tray
+<em> I think you probably do
+<em> You are connected to the internet right now.
+<em> are you connected by wifi or wired connect?
+<kingbeowolf> yeah I installed ubuntu from the commad line installer
+<kingbeowolf> and then installed kubuntu-desktop
+<em> Okay maybe you need to install knetworkmanager
+<kingbeowolf> because that was the only way to get raid support
+<em> do you see anything like a network icon next to where the time is in the lower pannel?
+<em> for me it is next to my clock
+<kingbeowolf> apt-cache search doesn't show knetworkmanager
+<em> okay try right cliccking on the lower pannel and add widget
+<em> then search for network
+<em> to add the network manager
+<em> right click on lower pannel around where the clock is. pannel options, add widget. Search for network and add a network manager.
+<kingbeowolf> em: i have wcipd or something
+<kingbeowolf> so far the only issue coming from Unity to Plasma is this
+<kingbeowolf> Private Internet Access the VPN service doesn't seem to work as well as in Unity
+<em> kingbeowolf: That's a bit over my head im afraid, but that's just me. Someone here will be able to help  you but you might need to hang out for a while.
+<em> kingbeowolf: you couldn't find any widget for network management though?
+<kingbeowolf> i found one and i install it but it doesn't have nearly the same about of features as in Unity which is odd because I am in Plasma
+<kingbeowolf> em: ^
+<em> kingbeowolf: that is surprising indeed. Back in an earlier version of Kubuntu I did once connect to a VPN in order to watch the Olympics on the BBC when it was in England. So I do believe it is possible. I just urge you to wait until tomorrow when more people are awake who know more than I do. Sorry I couldn't help.
+<em> kingbeowolf: I'm not sure if this is any use: https://www.privateinternetaccess.com/forum/index.php?p=/discussion/comment/15546#Comment_15546
+<em> lordievader: Hey I just wanted to point out that I was unable to help kingbeowolf with his VPN problem. I am pinging you right now before I go to sleep so that his problem does not get lost in the traffic.
+<lordievader> em: Could you, or kingbeowolf, give a run down of what happened?
+<lordievader> And what the problem is?
+<SouL> Hey friends, I'm wondering... What app can I use to install software from the web? Muon?
+<SouL> For example: https://apps.ubuntu.com/cat/applications/trusty/bastion/
+<SouL> "available on the Software Centre"
+<lordievader> !info bastion
+<ubottu> Package bastion does not exist in trusty
+<lordievader> Ah, it's proprietary...
+<lordievader> SouL: You could install the Ubuntu Software Center.
+<Stern> My best guess is to install the Ubuntu Software Center (software-center)
+<Stern> too late
+<lordievader> Stern: ;)
+<SouL> lordievader: bastion is an example, it was a random app for explaining you guys what I want
+<SouL> xD
+<SouL> But there isn't a KDE app for this?
+<Stern> Hope not :)
+<lordievader> SouL: Muon is the counter part of the Software Center, however I don't think it has any proprietary repo's in there.
+<SouL> GUYS
+<SouL> Is an example
+<SouL> I'm not saying I want that game
+<SouL> https://apps.ubuntu.com/cat/applications/audacious/
+<SouL> I want to clic to the button
+<SouL> and install the app
+<SouL> Is there any KDE application for this?
+<SouL> Hope you understand me now xD
+<Stern> Basically you use Muon Discover for this.
+<Stern> Otherwise you use the Muon Package Manager
+<SouL> Yes
+<Unit193> !info apturl-kde
+<ubottu> apturl-kde (source: apturl): install packages using the apt protocol - KDE frontend. In component universe, is optional. Version 0.5.2ubuntu4 (trusty), package size 5 kB, installed size 78 kB
+<lordievader> SouL: The apt utilities are nice :)
+<shadeslayer> apturl should work
+<shadeslayer> but it's broken on firefox for me
+<lordievader> Unit193: Didn't know of that one, nice. Does it open things in Muon or does it open a terminal with apt?
+<shadeslayer> you could just type it into krunner, should work
+<lordievader> shadeslayer: Hehe, that's less.
+<Unit193> lordievader: I'd presume muon, but haven't ever used it.
+<SouL> I always download everything with aptitude but a friend of mine asked how to do that and... Well
+<SouL> Unit193: That is what I was searching, thank you very much
+<Unit193> SouL: Sure thing.
+<SouL> and you guys too!
+<yang_> hello
+<yang_> how to use this ,someone tell me
+<lordievader> yang_: How to use what?
+<yang_> use this app,Quassel IRC,i just installed
+<yang_> why can't I type Chinese
+<lordievader> yang_: Well you can use it to chat using the IRC protocol.
+<jadi> just showing my friend what an IRC is
+<fayaz> i'm trying to enable python autocompletion in kate with the python plugins...
+<fayaz> but the plugin says, "jedi: Unexpected module's version format"
+<fayaz> any idea?
+<lordievader> fayaz: Perhaps you want to switch to Kdevelop, it uses the kate engine for the text editor. And the python plugin is lovely.
+<fayaz> oh?
+<fayaz> let me try that out.
+<BluesKaj> 'Morning folks
+<Avihay_work> I have an audio problem after upgradeing from 12.04 to 14.04.  I'm 90% positive it worked fine on 12.04, and now it plays very choppy (from the audio and settings test button for example). I could use some sound advice...
+<Avihay_work> 00:1f.5 Multimedia audio controller: Intel Corporation 82801EB/ER (ICH5/ICH5R) AC'97 Audio Controller (rev 02)
+<cdi3> good morning everyone.
+<Avihay_work> morning cdi
+<jarkko> i dont see hard disk from dolphin, what to do?
+<Avihay_work> also, I removed pulse audio, now I have a few audio devices listed, non of them will play, and I have default, which plays choppy
+<Avihay_work> jarkko: removeable disk? or a hard drive?
+<jarkko> Avihay_work: both
+<jarkko> i broke my install when upgraded 14.10, i am now doing reinstall and recovering files
+<Avihay_work> well, your main HDD is usually mounted as /
+<Avihay_work> I think I lost you
+<jarkko> i think the problem might be that i have 2 hard disks that both might have /
+<Avihay_work> how bout you pastebin the output of the command mount?
+<jarkko> http://pastebin.com/VSQKfhbF
+<jarkko> so there are there basically
+<BluesKaj> Avihay_work,  what hw is listed in device prefs in system settings>multimedia?
+<Avihay_work> jarkko: also the output of  ls /dev/sd*  might help
+<jarkko> /dev/sda  /dev/sda2  /dev/sda5  /dev/sda6  /dev/sdb  /dev/sdb1  /dev/sdb2  /dev/sdb3
+<Avihay_work> BluesKaj: it doesn't say who's the deafult, it's a priority list. none of them work except for deafult who is in the bottom, and that means the last fallback
+<BluesKaj> looks like intel chip, does it show in alsamixer, Avihay_work?
+<Avihay_work> jarkko: well, you do have two HDDs, with 3 partitions each
+<Avihay_work> BluesKaj: I guess so
+<jarkko> but how do i mount them easily?
+<BluesKaj> jarkko,  which drive is first in the boot sequence, maybe that shoulkd be checked as well
+<Avihay_work> jarkko has       /dev/sdb3 on / type ext4 (rw,errors=remount-ro) and /dev/sdb1 on /boot/efi type vfat (rw)
+<BluesKaj> Avihay_work,  type alsamixer in the terminal, the audio chip will show in the upper left
+<jarkko> i think grub is at /dev/sda (default when you install kubuntu)
+<BluesKaj> jarkko,  yes
+<Avihay_work> it does show. if I run aplay -l I get the localized version of the output from the first post here: http://ubuntuforums.org/showthread.php?t=1613653
+<BluesKaj> Avihay_work,  I just need to know which driver should load, most likely the snd_hda_intel, so try sudo modprobe snd_hda_intel ...then you might need to reboot
+<Avihay_work> do I need to rmmod ther current one? and blacklist it?
+<Avihay_work> http://paste.kde.org/pxeesd7ql
+<Avihay_work> jarkko: I suggest you have a look in /boot/efi, see if your missing hdd is listed there by any chance, I'd also use some tool to see what size each partition has, like a graphical partition editer
+<BluesKaj> Avihay_work,  nope it's not intel-hda driver, you need to find the controller, that will tell you what's lodaed
+<Avihay_work> and how do I manage that feat?
+<BluesKaj> Avihay_work,  as i suggested earlier , alsamixer will that info in the upper left
+<Avihay_work> oh, ok then: Card: Intel ICH5 \n Chip: Realtek ALC655 rev 0
+<BluesKaj> Avihay_work, seems the driver for your analog out should be,  snd_intel8x0 , try sudo modprobe snd_intel8x0, if there's no output from that command then the correct driver is loaded and should work after a reboot.. that's all I can help with.
+<cdi3> I'm trying to fix my brightness and can't take ownership of grub. Can someone let me know how to take ownership over that file, or the directory, or anything? :/
+<lordievader> cdi3: Why do you want/need ownership of /boot/grub? ( I think that is the folder you are talking about?)
+<cdi3> I figured it out. There was a way to adjust brightness options for my laptop by editing one of the grub files.
+<cdi3> grub lines, rather. there's only one grub file. >_>
+<lordievader> cdi3: No, there are multiple. Grub is configured through /etc/default/grub and /etc/grub.d/*
+<cdi3> Ohh. =\ I was just following some guide on a forum to fix it, but it didn't work.
+<cdi3> bleh. frustrating. i changed it back to the default grub file, but my brightness is still messed up. :/
+<BluesKaj> cdi3,  battery monitor in panel wdgets
+<cdi3> Nothing changes. My fn + f3/f4 show the brightness bar on screen changing, but the brightness doesn't actually decrease or increase. It stays at full.
+<BluesKaj> there's a brightness slider in the battery widget that should work
+<lordievader> cdi3: You tried the acpi driver kernel option?
+<cdi3> BluesKaj - it doesn't. I tried both the taskbar battery monitor and the widget monitor on the desktop, neither worked.
+<cdi3> lordievader - what is that? I don't think I have
+<lordievader> cdi3: https://wiki.ubuntu.com/Kernel/Debugging/Backlight#Disabling_the_ACPI_backlight_driver
+<cdi3> oh dear lord, i have no idea what i am looking at.
+<MrS1lentcz_> hello, I am usin quassel IRC, but it signs me as MrS1lentcz_ but not MrS1lentcz, why please?
+<MrS1lentcz_> I cannot rename, I can do nothing
+<MrS1lentcz_> command /nick myFuckingName not works
+<Pici> MrS1lentcz_: Sounds like a #freenode issue, not a Kubuntu issue.  And please mind your language.
+<BluesKaj> MrS1lentcz_,  /nick newnick
+<MrS1lentcz_> BluesKaj: "command /nick myFuckingName not works"
+<MrS1lentcz_> Pici: this is problem QuasselIRC, native kubuntu IRC client. I cannot join to others channels which require verified nickname
+<BluesKaj> that kind of name is auto rejected
+<Pici> MrS1lentcz_: You are probably muted in a channel which requires registration, which would prevent you from changing nicks.
+<MrS1lentcz_> Pici: I have registered nick "MrS1lentcz"
+<Pici> MrS1lentcz_: then identify to it.
+<MrS1lentcz_> but now I have MrS1lentcz_ and I cannot to other channels
+<MrS1lentcz_> *join
+<Pici> MrS1lentcz_: you don't need to be nicked to it to identify to it: /msg nickserv identify MrS1lentcz yourpassword
+<MrS1lentcz_> "You are now identified for MrS1lentcz." great. and now how can I rename, if /nick newname does not work? :/
+<Pici> what error message do you get?
+<MrS1lentcz_> nothing
+<Pici> I find that hard to believe.  Check a status window or something.
+<MrS1lentcz_> I am using IRC many years, I have wrote many IRC bots, but this is the worst client, what I have seen
+<Pici> I'm sorry, I don't use Kubuntu or Quassel myself.
+<mokush> anybody using the kubuntu-next ppa? everything working ok?
+<BluesKaj> MrS1lentcz_,  try konversation, it's a great client
+<MrS1lentcz_> BluesKaj: ok, thanks
+<BluesKaj> mokush,  I switched back to plasma4 ...5 wan't to my taste but the "next ppa" works ok
+<mokush> BluesKaj: not your taste? :) what do you mean?
+<BluesKaj> mokush,  http://kde.org/announcements/plasma5.0/ ..you may like it , a lot of stuff doesn't work yet, some apps don't launch etc
+<mokush> BluesKaj: so, to revert, I can just remove the ppa, and reinstall plasma?
+<rberg_> look into ppa-purge for that
+<BluesKaj> mokush, yes, what rberg_just suggested
+<S1lent> BluesKaj: now I have message "[17:27] [Nick] Nickname already in use, try a different one."
+<S1lent> and also "[17:26] [Notice] -NickServ- You are now identified for MrS1lentcz."
+<iamwhoiam> hello people. My question: i removed a number of applications but they are still visible in kmenu, in favorites. How can i remove them/update the kmenu? Secondly, how can i remove kde im contacts and log viewer etc? i thought i uninstalled everything concerning these, but it is still there.. hmmm
+<S1lent> :(
+<S1lent> oh, quassel still running anywhere, fuckin client! :/
+<Riddell> S1lent: nuff swearing please
+<S1lent> Riddell: Can you kick my second nick, please? I dont know, why is still connected :(
+<S1lent> I dont see rights in this client
+<S1lent> Riddell: MrS1lentcz
+<lordievader> Good afternoon.
+<Riddell> S1lent: already gone
+<S1lent> "[17:33] [Nick] Nickname already in use, try a different one."
+<Pici> S1lent: Please ask in #freenode.  they control this network, not #kubuntu
+<S1lent> Pici: ok, sorry :)
+<em> kingbeowolf: did you resolve your problem with the VPN?
+<em> lordievader: kingbeowolf wants to know how to manage his VPN with the plasma shell. He didn't install Kubuntu directly. He was previously using Unity and then installed it from there. In Unity he felt he had what he needed to set it up, now he can't find it.
+<lordievader> Erm, that should be configured through the network manager.
+<em> He says he doesn't have any network manager in his lower pannel.
+<BluesKaj> em tell him to install network management widget then it will be handy in the panel
+<lordievader> How did he install Kubuntu? Did he install the kubuntu-desktop package?
+<em> I told him how to add one and he said kingbeowolf> em: i have wcipd or something
+<em> I think he did it that way.
+<em> I think he was running Ubuntu Unity and then switched it to Kubuntu desktop.
+<lordievader> That should pull in the network manager.
+<kingbeowolf> lordievader: what should?
+<BluesKaj> installing kubunt-desktop kingbeowolf
+<BluesKaj> err kubuntu-desktop
+<kingbeowolf> ok well it didn't for me for some reason
+<kingbeowolf> i have it now
+<kingbeowolf> but no mention of my openvpn connections
+<lordievader> kingbeowolf: Did it pull in anything extra?
+<kingbeowolf> lordievader: dont know what that means
+<lordievader> kingbeowolf: Ah for openvpn you need the network-manager-openvpn package.
+<BluesKaj> lordievader,  he should have that installed already
+<lordievader> !info network-manager-openvpn
+<ubottu> network-manager-openvpn (source: network-manager-openvpn): network management framework (OpenVPN plugin core). In component universe, is optional. Version 0.9.8.2-1ubuntu4 (trusty), package size 20 kB, installed size 109 kB (Only available for linux-any)
+<lordievader> BluesKaj: Nope that is an optional package.
+<kingbeowolf> yeah says I have it already
+<BluesKaj> if he already has openvpn installed in unity
+<kingbeowolf> i don't have unity installed any more
+<kingbeowolf> if that matters
+<BluesKaj> no matter openvpn should still be installed
+<lordievader> BluesKaj: Openvpn doesn't depend on the nm plugin. I usually use it without nm.
+<lordievader> kingbeowolf: Anyhow, I've just installed the nm-openvpn here. Openvpn is then available under add a network connection.
+<BluesKaj> no lordievader , but it's easier to access in the panel if one installs the widget, that's been my experience up to 14.04, noe it's hit or miss
+<BluesKaj> now
+<BluesKaj> lordievader,  I use PIA vpn and it configs nicely with NM widget
+<lordievader> I use openvpn through the command line. Works fine.
+<lordievader> kingbeowolf: What happens when you call your openvpn connection through the commandline?
+<BluesKaj> yeah well, I have 20 or so server to choose from and sometimes due to server maintenance I have to switch to an alternative
+<Newbie42> Hi I am looking for an older version of Kubuntu (for Dell Latitude D800). The Ubuntu version would be 6.06.2 I think?
+<BluesKaj> Newbie42,  why so old ?
+<Newbie42> Because my boss gave it to me as I left the Company, but didn't allow for upgrade to Win7
+<lordievader> Newbie42: That version has been EOL for years!
+<Newbie42> But I assume newer versions do not support my old Notebook?
+<lordievader> Newbie42: Try a live cd/usb and test it ;)
+<lordievader> Linux supports a broad range of hardware. Also a lot of old stuff.
+<Newbie42> Also I tried installing an old Suse version I had on DVD at home, but either the Install stopps unexpectedly, or the system hangs up on logging into KDS
+<Newbie42> And the lice can be installed if working?
+<BluesKaj> Newbie42,  got any specs ? maybe we can suggest an OS
+<Newbie42> Pentiom M. 2 GB
+<Newbie42> anything else you need?
+<BluesKaj> 2G what?
+<Newbie42> ahh, UK keyboard
+<Newbie42> 2G RAM
+<BluesKaj> that's fine
+<alket> is this possible in kubuntu 14.04 https://www.youtube.com/watch?v=c8JYt_xkJuY
+<Newbie42> Well it was fine for the last 7 years in the company ;-)
+<BluesKaj> you can probly run kubuntu 14,04
+<Newbie42> OK, that is cool, right?
+<BluesKaj> yes Newbie42
+<Newbie42> Bear in mind, I am 42 and have no previous knowhow in Linux
+<Newbie42> Also I would mainly use Web, eMail, Word-processor
+<Newbie42> So i go for Kubuntu 14.04 Live CD, Thanks folks!
+<BluesKaj> Newbie42,  age has nothing to do with linux...I'm a lot older than you
+<BluesKaj> Newbie42,  and if you need help just ask here
+<Newbie42> BluesKaj, you may be older, but you certainly are more experienced with a proper OS, I am stuck with MS since DOS 5.0
+<kingbeowolf> lordievader: i don't even know how to use the command line version since I never had to
+<Newbie42> Great, Thanks again! CUSoon
+<BluesKaj> Newbie42,  you'll learn, linux is an interesting experience fpr fprmer windows users. i'm one :)
+<rberg_> if you liked command.com you are going to love bash!
+<lordievader> kingbeowolf: It's simple, navigate to where your cert and openvpn config file are. Run "sudo openvpn <config-file>" enter credentials, done.
+<kingbeowolf> lordievader: ok sounds easy enough
+<TeraJL> hi there, how can i update to plasma 5?
+<rgsgdr> hello. I followed the instructions on https://community.kde.org/Plasma/Packages to get KDE plasma 5 into my computer. I added the next PPA and that other one too. However there is still no kubuntu-plasma5-desktop avaliable for download. Is it not in there yet?
+<FuzzyWhirlpool> If you wan't to try plasma 5, you'd better compile it yourself.
+<shadeslayer> FuzzyWhirlpool: why
+<rgsgdr> stable released today you know
+<shadeslayer> rgsgdr: did you apt-get update?
+<shadeslayer> because I do see it
+<rgsgdr> yep
+<shadeslayer> hm
+<shadeslayer> https://launchpad.net/~kubuntu-ppa/+archive/ubuntu/next/+build/6184522 < seems to be there
+<shadeslayer> Riddell: ^^ when you're back
+<shadeslayer> anyway, I have to go back home
+<shadeslayer> cya tomorrow
+<rgsgdr> should I see the PPAs in my sources.list?
+<rgsgdr> cause I don't
+<shadeslayer> yes
+<shadeslayer> how did you add it?
+<shadeslayer> rgsgdr: which release are you running?
+<rgsgdr> just copied the instructions from https://community.kde.org/Plasma/Packages for kubuntu next ppa
+<shadeslayer> that PPA is only for utopic
+<rgsgdr> but I'll try to add them manually instead
+<shadeslayer> so if you're not on utopic
+<shadeslayer> it won't work
+<rgsgdr> oh
+<rgsgdr> I see
+<FuzzyWhirlpool> Because it's a pain to wait for KDE5 to be included in the main/universe repository.
+<shadeslayer> no?
+<shadeslayer> because there's no KDE5
+<shadeslayer> and KF5 is almost nearly uploade
+<shadeslayer> *uploaded
+<shadeslayer> plasma workspace will go in after 14.10
+<FuzzyWhirlpool> s/KDE5/Plasma 5/
+<rgsgdr> oh well that explains it. I guess I could try the neon 5 live image then... thanks
+<shadeslayer> cheers
+<sagart> hello, can someone tell me please, if plasma next will be available in official repository for kubuntu 14.04?
+<sagart> ahh, read it above, sorry
+<anonymous_> Hi
+<kingbeowolf> Will all the widgets and stuff work in the next plasma version?
+<kingbeowolf> will i need to reconfigure panels or anything?
+<Borsi> how do i get access into hard disk using live dist?
+<CrowX-> Borsi, open dolphin and you'll be able to see all the disks attached to the machine in the left sidebar
+<CrowX-> Borsi, dolphin = file manager
+<Borsi> CrowX-: i know, but i dont seem to have access on them
+<Borsi> only readable
+<CrowX-> Borsi, are they ntfs?
+<Borsi> ext4 mostly
+<CrowX-> you should be able to write on ext4...
+<CrowX-> Borsi, are you familiar with bash?(command line)
+<Borsi> it doesnt let me
+<Borsi> i have it open
+<CrowX-> try writing "sudo dolphin" in konsole then, and press enter
+<Borsi> that worked
+<Borsi> didnt know that's possible
+<Borsi> i have writing access now
+<CrowX-> of course you do :)
+<Borsi> i just bought ssd driver (my 1st) i am doing reinstall soon, what filesystem should i use?
+<CrowX-> what are you going to keep on it?
+<CrowX-> Borsi, also, how big is your ssd
+<Borsi> CrowX-: it's 128, i think i keep only system files there
+<Borsi> i got 1tb and 500gb normal disks
+<CrowX-> install / on the ssd, and /var /srv /home on the non ssd hard drive. you can use ext4 for all of them
+<bjrohan> Hi all. I have an error that shows on my system, gist is that kdescreenlocker_greetrc is not writable.  (in the users home directory under .kde) when the message appears it gives the option to click OKAY, but when you click, nothing happens, only thing you can do is shut down the system. I can not find that file in the path given
+<bjrohan> in the error message, any suggestions
+<Borsi> what's /var and srv for?
+<CrowX-> Borsi, /var is for files that are being often auto edited and their size changes, for example logs. /srv is just a new directory that's used instead of /var for keeping websites. If you don't plan to install a web server, you don't need /srv
+<CrowX-> and you want /var not to be on the ssd because there's a limited amount of writing you can do on the ssd, and you don't need much speed for /var anyway
+<Borsi> how much linux uses tmp? should i  put that on normal hdd?
+<CrowX-> tmp is in the ram
+<CrowX-> dev and sys too :)
+<yossarianuk> CrowX-: by default /tmp is on disk isn't it
+<CrowX-> yossarianuk, isn't it empty by default too?
+<yossarianuk> not if your in an X session
+<yossarianuk> i.e kde-[user]
+<CrowX-> i see
+<Borsi> can someone shortly descripe what /usr contains?
+<bprompt> Borsi:     system files :)
+<bprompt> Borsi:     what are you after?
+<rberg_> Borsi: not short but have a look at the Filesystem Hierarchy Standard https://www.debian.org/doc/packaging-manuals/fhs/fhs-2.3.html
+<Borsi> does anyone have experience having lots of ram on linux machine and using it as cache?
+<bprompt_> Borsi:    yes
+<bprompt_> nothing wrong with that
+<Borsi> bprompt_: do you see clear advantages?
+<lordievader> Borsi: The linux kernel uses all non-claimed memory as disk cache.
+<Borsi> lordievader: i know
+<lordievader> Ah ok ;)
+<bprompt_> Borsi:     hmmm yes
+<Borsi> any performance gain if you change the default setting?
+<Borsi> i got 8gigabytes currently (only)
+<bprompt_> Borsi:    what'... your concern anyhow?
+<Borsi> could i speed up the machine somehow using the extra ram currently?
+<bprompt_> hmm
+<bprompt_> Borsi:    if you want to really see the processing speed up, get an SSD
+<Borsi> i did :D
+<bprompt_> hmm
+<Borsi> but maybe i bought too small :D
+<Borsi> i bought today, downloading iso so i can install on it
+<bprompt_> Borsi:    I have an ssd... the size shouldn't matter afaik... so... what's your concern then :P
+<bprompt_> Borsi:    I open libreoffice  3.5 in 1sec, yes is not a typo, 1 sec
+<Borsi> well i think the future is ssd hard-disks, so its better to get rid off old hard-disks
+<bprompt_> Borsi:   so the cache helps some with disk data retrieval, but in the end, memory will still have to do some standing by due to hdd access
+<Borsi> i saw on computer shop (web) a new ssd hard disk and they offered 10 years gurantee !!
+<bprompt_> nothing new.... good selling pitch
+<bprompt_> I mean, I can sell you my used pair of socks with 6months guarantee!!!
+<bprompt_> and of course, charge you extra in the process
+<Borsi> but giving 10 years of gurantee is something...you wouldnt expect
+<bprompt_> Borsi:   for hard drive technology?   surely so, they can go longer than that, depending on regular usage
+<Borsi> if i would make hard disks, i would never give them 10 years gurantee
+<Borsi> that's just too long time of span
+<bprompt_> Borsi:     well... you're not reading the probabilities well, and also the fine prints
+<Borsi> i just started libreoffice i am on live usb currently, it starts around 1s
+<Borsi> but it must be cached somehow in memory
+<bprompt_> likely I'd think
+<rberg_> anyone in here use rekonq or konqueror? I find that some stoopid sites claim my session has timed out immediately after log in
+<crudson> rberg_: I'd check cookie policy (including 3rd party). Otherwise whitelist sites in js blocker?
+<rberg_> thanks I will look into those.. same issue reported here http://comments.gmane.org/gmane.comp.kde.devel.kfm/14722
+<rberg_> ahh ipmi is the worst, except when you need it.. then its the best
+<alket> I installed Plasma 5 from neon project , how to activiate it
+<shadeslayer> alket: logout and choose neon5 at login
+<alket> thanks
+<alket> shadeslayer:
+<jarkko> i am doing do-release-upgrade, where does the installer download the packages?
+<cai> My audio is cracking/skipping/studdering like nuts, Intel HDA, 14.04
+<cai> Brand new motherboard, works fine in windows
+<cai> Z97 + Haswell Refresh

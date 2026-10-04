@@ -1,0 +1,178 @@
+TwitterAAE — dataset and methodology description (metadata-only prior)
+=======================================================================
+
+Source paper: Su Lin Blodgett, Lisa Green, and Brendan O'Connor. "Demographic
+Dialectal Variation in Social Media: A Case Study of African-American
+English." Proceedings of the 2016 Conference on Empirical Methods in
+Natural Language Processing (EMNLP 2016), pages 1119-1130, Austin, Texas.
+Association for Computational Linguistics. https://aclweb.org/anthology/D16-1120
+
+Follow-on paper: Su Lin Blodgett, Johnny Tian-Zheng Wei, and Brendan
+O'Connor. "Twitter Universal Dependency Parsing for African-American and
+Mainstream American English." Proceedings of ACL 2018.
+https://aclweb.org/anthology/P18-1131
+
+Home page: http://slanglab.cs.umass.edu/TwitterAAE/
+Code (demographic classifier model): https://github.com/slanglab/twitteraae
+
+This document is a description of the dataset and its construction method,
+compiled by reading the paper above in full and the project's own site
+directly. It contains no tweet text and no tweet identifiers from the
+dataset itself; see README.md in this same directory for why.
+
+WHAT THE PAPER SET OUT TO DO
+-----------------------------
+The paper's own framing, from its abstract: dialectal language is
+increasingly present on social media, but few NLP resources exist for
+handling it. The authors conduct a case study of African-American English
+(AAE) on Twitter, proposing a distantly supervised model to identify
+AAE-like language from demographics associated with geo-located messages,
+verifying that the identified language follows known AAE linguistic
+phenomena, and demonstrating that existing language-identification and
+dependency-parsing tools perform substantially worse on this text than on
+text associated with white speakers. The paper also released an ensemble
+language-identification classifier meant to close that accuracy gap, and
+released "a new corpus of tweets containing AAE-like language" — the
+TwitterAAE corpus this pocket describes.
+
+WHY GEO-LOCATION AND CENSUS DATA, NOT SELF-REPORTED RACE
+-----------------------------------------------------------
+Twitter does not collect or expose authors' race or ethnicity, and the
+authors explicitly reject inferring it from usernames (citing prior work
+using birth-record name statistics for this purpose in non-social-media
+contexts) because Twitter display names are frequently not real names.
+Instead they use a distant-supervision approach built on geography: a
+message's geo-coordinates are matched to the U.S. Census "blockgroup" that
+contains them — blockgroups being one of the Census's smallest defined
+geographic units, typically 600-3,000 people — and each blockgroup carries
+the 2013 American Community Survey's percentages of non-Hispanic white,
+non-Hispanic Black, Hispanic (any race), and Asian residents. Each user's
+messages are averaged into a length-four demographic vector drawn from the
+blockgroups they tweeted from. The authors are explicit that under strong
+assumptions this vector could be read as a probability of the author's own
+race, but they prefer to describe it more cautiously as a proxy for the
+likely demographics of the neighborhood the author tweets from.
+
+THE UNDERLYING TWITTER SAMPLE
+-------------------------------
+The starting point was a "Gardenhose/Decahose" sample stream archive of
+public Twitter messages sent by U.S. authors in 2013 (a random sample of
+the full public firehose, not a keyword- or hashtag-based search — the
+authors note this distinction matters because keyword-search-based corpora
+of AAE-like language, as used by some prior work they cite, systematically
+miss AAE speech that does not use the searched-for markers). That archive
+held roughly 16 billion messages; about 90 million of those were
+geo-located with coordinates matching a U.S. Census blockgroup. After
+filtering out likely bot/spam/follower-farming messages (authors with
+1,000+ followers, 3+ hashtags, the strings "http"/"follow"/"mention", and
+retweets), 59.2 million tweets from 2.8 million users remained as the base
+population the demographic model was fit to.
+
+TWO METHODS, ONE SHIPPED
+---------------------------
+The paper describes two approaches to turning per-user Census-demographic
+vectors into a text corpus:
+
+1. An early "seedlist" approach: pick the highest-scoring AA-associated
+   terms, then collect tweets from authors who use those terms frequently.
+   The authors call this ad hoc (three free thresholds, no principled way
+   to set them) and superseded it with:
+
+2. A mixed-membership demographic-language model — the model actually
+   shipped and used to build the released corpus. Each of the four
+   demographic categories (African-American, Hispanic, Asian, white) is
+   associated with its own unigram language model ("topic") over a
+   191,873-word vocabulary (every word used by at least 20 distinct
+   users). Each user's mixture over these four topics is drawn from a
+   Dirichlet distribution centered on that user's Census-derived
+   demographic vector, with a concentration parameter (set to 10 in the
+   paper, chosen to yield roughly 0.8 posterior-to-Census correlation, not
+   tuned against any downstream task score) controlling how tightly a
+   user's actual language is pulled toward their neighborhood's Census
+   profile versus allowed to diverge from it. Every individual message
+   additionally gets its own topic distribution, so a single author can
+   write differently in different messages — the paper's own example is a
+   tweet by an author in a heavily AA-associated neighborhood that would
+   still be inferred as non-AAE-aligned if its actual words are not
+   AAE-associated. The model was fit by collapsed Gibbs sampling, 300
+   iterations, converging within 100-200; posterior estimates average the
+   last 50 samples.
+
+The paper is candid about a limitation this model surfaced: with only two
+categories (AA vs. not), Spanish-language terms were absorbed into the AA
+topic; expanding to four categories removed that specific confound, but
+the "Asian" topic ended up functioning partly as a catch-all for
+non-English language generally (its posterior correlates only 0.29 with
+Census Asian-population share, versus 0.83-0.87 for the other three
+categories). Because of this, the paper states directly that "we only
+consider the AA and White categories to be reliable and useful" — a
+caveat this repo's own README for this pocket repeats, since it governs
+how any downstream reader should weight the Hispanic/Asian labels if they
+ever obtain the real data through a legitimate channel.
+
+THE RELEASED CORPUS, AS THE PAPER ITSELF DESCRIBES IT
+----------------------------------------------------------
+To build an explicit corpus of messages (rather than only model
+parameters), the authors collected every tweet from users whose posterior
+probability of AA-associated language use was at least 80%, producing an
+"AA-aligned" corpus, and did the equivalent for a "white-aligned" corpus.
+To reduce non-English-language noise given the uncertainty just described
+around the Hispanic/Asian topics, they additionally required each
+included user's combined Hispanic+Asian posterior share to be under 5%.
+The paper states the resulting sizes directly: "Our two resulting user
+corpora contain 830,000 and 7.3 million tweets" (AA-aligned and
+white-aligned respectively) — and states its own distribution plan for
+them just as directly: "for which we are making their message IDs
+available for further research (in conformance with the Twitter API's
+Terms of Service)." That sentence — the paper's own words, not this
+pocket's inference — is the single strongest piece of evidence behind the
+gating decision recorded in this pocket's manifest: the people who built
+this corpus judged in 2016 that IDs-only, not raw text, was what Twitter's
+terms allowed them to redistribute, and X's terms have only tightened
+since.
+
+Note on scale: the pocket brief that commissioned this staging pass
+described the corpus informally as "~1.1M tweets." That figure could not
+be independently confirmed against the paper (whose own two named corpora
+sum to 8.13 million tweets, not 1.1 million) or against the lab site
+(which states a zip file size, 5.5 GB, but no tweet count). It may refer
+to a different downstream subset, sample, or mirror this pass did not
+locate a primary citation for. Rather than resolve the discrepancy by
+downloading the gated zip to count records directly, it is left here as an
+open, disclosed discrepancy between the pocket's starting note and the
+one primary source (the paper) this pass was able to verify a hard number
+from.
+
+VALIDATION THE PAPER PERFORMS ON ITS OWN CORPUS
+-----------------------------------------------------
+Because the authors judged manual inspection of the AA-aligned text
+impractical at this scale, they validate the corpus indirectly: comparing
+AA- and white-aligned vocabulary against a large standard-English
+wordlist (SCOWL, 627,685 entries) and finding markedly higher
+out-of-dictionary rates for heavily AA-aligned words (79.1%) than for
+heavily white-aligned words (58.2%); and checking that the AA-aligned text
+reproduces well-documented AAE phonological and syntactic phenomena from
+the sociolinguistics literature, plus internet-specific orthographic
+patterns (abbreviations, phonetic shortenings) found by manually browsing
+the highest-ranked AA-associated words. The paper also demonstrates, as
+one of its central findings, that off-the-shelf language-identification
+and dependency-parsing tools of the time performed measurably worse on
+AA-aligned text than on white-aligned text — the racial-disparity finding
+that motivated the paper's own released ensemble language-ID classifier.
+
+CITATION
+--------
+The dataset's own page states, for the corpus: "This dataset is made
+available for research purposes only. If you use it in research, please
+cite Blodgett et al., EMNLP 2016." The recommended citation:
+
+Su Lin Blodgett, Lisa Green, and Brendan O'Connor. 2016. Demographic
+Dialectal Variation in Social Media: A Case Study of African-American
+English. In Proceedings of the 2016 Conference on Empirical Methods in
+Natural Language Processing, pages 1119-1130, Austin, Texas. Association
+for Computational Linguistics.
+
+CONTACT (as listed in the project's own README)
+-------------------------------------------------
+blodgett@cs.umass.edu, brenocon@cs.umass.edu — SLANG Lab, College of
+Information and Computer Sciences, University of Massachusetts Amherst.

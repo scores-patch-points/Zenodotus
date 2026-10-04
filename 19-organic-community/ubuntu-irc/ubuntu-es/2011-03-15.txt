@@ -1,0 +1,1765 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-es"
+date: "2011-3-15"
+lang: "es"
+messages: "1756"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<joel__> si ya busque ahí pero el problema es que no estan subtituladas
+<joel__> el revolution OS ya lo tengo
+<joel__> es para la clases de Software libre que voy a dar
+<dabor> http://www.youtube.com/watch?v=9sJUDx7iEJw
+<joel__> Je! la canción de Free Software XD
+<dannyLopez68> No se puede encontrar ningún paquete cuyo nombre o descripción coincida con "bcmwl-kernel-source"
+<dannyLopez68> T,T lloro
+<joel__> pero necesito platica mas extensa y algo actualizada
+<dannyLopez68> dabor: me recomendaron esta pagina http://www.broadcom.com/support/802.11/linux_sta.php pero quede mas perdido que el hijo de limber
+<dabor> dannyLopez68, yo lo hacia compilando el modulo con module-assistant
+<dabor> dannyLopez68, te bajas los paquetes broadcom-sta-common y source
+<dabor> dannyLopez68, ejecutas sudo m-a
+<dabor> y vas haciendo los pasos del programa hasta instalar el modulo
+<dabor> hay tutoriales
+<dannyLopez68> donde me descargo el modulo?
+<dannyLopez68> el de la pagina que te pase?
+<dabor> dannyLopez68, no esa no
+<dabor> dannyLopez68, prueba con sudo m-a a-i broadcom-sta    asi tal cual
+<dannyLopez68> bash: m-a no encontro la orden no
+<dabor> dannyLopez68, tambien hay que tener instalados sudo aptitude install module-assistant wireless-tools
+<dabor> ejecuta eso primero
+<dannyLopez68> ya faltan 2 min
+<dabor> dannyLopez68, son varios paquetes porque module-assistant te instala lo necesario para compilar
+<dabor> gcc yesas cosas
+<Estrellita> hola
+<Estrellita> instale xampp descomprimiendo el contenido del mismo en el directorio /opt/ puedo iniciarlo sin problemas pero no tengo idea de cual es el usuario y contraseña para entrar al phpmyadmin
+<dannyLopez68> dabor: sorry sali son culpa
+<dannyLopez68> dabor: ya descargo todo y ya hice m-a y de resto
+<dannyLopez68> ahora?
+<Gran_Ger> Hola, saludos a todos. Alguien me puede decir como puedo hacer que un script se ejecute al inicio de la sesión pero con privilegios de root?
+<dabor> dannyLopez68, sudo modprobe wl
+<dannyLopez68> dabor: ya y pues sigo sin ver nada jeje
+<dabor> dannyLopez68, donde estas mirando?
+<dannyLopez68> el boton del Pc
+<dabor> dannyLopez68, hay te aviso que no vas a encontrar nada
+<dabor> dannyLopez68, que estas buscando?
+<dabor> sudo iwconfig
+<dannyLopez68> aja
+<Gran_Ger> Hola, saludos a todos. Alguien me puede decir como puedo hacer que un script se ejecute al inicio de la sesión pero con privilegios de root?
+<Algabe> alguna otra aplicacion que no sea FileZilla?
+<Gran_Ger> parece que hoy está muy "silencioso" esto.
+<Algabe> necesito subir unos archivos a mi shell
+<Algabe> pero FileZilla me marca algunos errores al copiar algunos archivos
+<Algabe> tambien bareFTP
+<Algabe> no se si sea algo de permisos
+<Algabe> PUT /home/Algabe/MyBot/src/commands.py
+<Algabe> Access to the path "/home/algabe/Documentos/MyBot/src/commands.py" is denied.
+<Algabe> alguien sabe subir unos archivos a una Shell por medio del protocolo(SFTP) ?
+<Algabe> osea por SSH
+<JRamirez> PREGUNTA sobre SQUID: Quiero bloquear un rango de ips. para que no entren a X paginas webs... No logro entender las reglas ACL.. como es lla jerarquia?
+<Sur07> buenas noches
+<Sadlymistaken> Hola, hay alguien??
+<Sadlymistaken> Intento forzar el cierre a un programa.... y me he ido a la ventana de Sucesos, y le doy a cerrar... y no me hace caso..
+<yamaci91> matar proceso des gnome-system-monitor
+<Algabe> Sadlymistaken: killall aplicacion
+<Sadlymistaken> Algabe ya lo conseguí con xkill
+<Sadlymistaken> ajajaja ha sido divertido
+<Sadlymistaken> gracias Algabe
+<Algabe> Sadlymistaken: de nada
+<Algabe> alguien que me ayude con una SSH(SFTP) necesito subir unos archivos a mi shell
+<Algabe> Comando:	cd "/home/Algabe/MyBot/plugins"
+<Algabe> Error:	Directory /home/Algabe/MyBot/plugins: no such file or directory
+<Algabe> Comando:	put "/home/algabe/Documentos/MyBot/.directory" ".directory"
+<Algabe> Error:	Transferencia fallida
+<hashashin> Algabe, prueba scp archivo user@x..x.x.x:/home/user/loquesea/
+<Algabe> eso en la terminal ?
+<hashashin> si
+<Algabe> ok
+<Algabe> asi --> scp archivo user@x..x.x.x:/home/algabe/Documentos/MyBot
+<Algabe> ?
+<hashashin> x.x.x.x es la ip del servidor ssh
+<Algabe> ok seria...
+<hashashin> y user seria algabe y archivo lo que sea XD
+<hashashin> a subir
+<Algabe> hashashin: asi?
+<Algabe> hashashin: quiero subir mi bot
+<Algabe> pero necesito copiarlo
+<Algabe> mi bot esta en el directorio..
+<Algabe> . /home/algabe/Documentos/MyBot
+<rommel_> hola a todos buenas noches
+<rommel_> alguien sabria decirme por q en un pendrive al eliminar cosas y vaciarla sigue saliendo como si estubiera lleno?
+<mauricio> rommel_: eso es pq cada pendrive o hd usb tiene su propia papelera
+<Algabe> hashashin: help me
+<mauricio> rommel_:  si presionas ctrl + h puedes ver los archivos ocultos
+<mauricio> rommel_: y saldra una carpeta llamada .Trash
+<hashashin> Algabe, pues entra en el server, crea la carpeta donde quieras copiar eso y luego desde tu pc en el directorio ese: scp * usuario@ip.de.server:/directorio/enel/server
+<mauricio> si orras esa carpeta sera como vaciar la papelera
+<rommel_> si los identifico pero no me deja borrarlos
+<mauricio> rommel_: o simplemente vacia la papelera
+<rommel_> mauricio como puedo eliminar eso or completo?
+<mauricio> la carpeta la puedes borrar como borras cualquier archivo
+<hashashin> Algabe, man scp, pa mas opciones
+<Algabe> ok me conecto con: shh algabe@misever ?
+<rommel_> mauricio no me deja
+<mauricio> entonces como super usuario
+<rommel_> borrar no sale embiar a papelera ni borrarcon delec
+<rommel_> me podes ayudar porfabor
+<mauricio> aprieta alt + f2 y escribes gksudo nautilus
+<mauricio> y ahi entras en el pen y la borras
+<rommel_> nada me abrio una pantalla con un icono de escritorio
+<mauricio> y ahora anda al pendrive
+<mauricio> y borras la carpeta .trash
+<mauricio> aunque antes deberia haber funcionado
+<rommel_> ya fui y no me deja borar
+<mauricio> no se que hiciste pero bue
+<rommel_> no se porque sigue figurando como lleno si ya vacie lapapelera
+<rommel_> no me deja borrar en lo absoluto la carpeta esta como oculta la abro con control h y no me da la opcion para borrar
+<rommel_> alguien sabria como hacerlo porfavor
+<mauricio> rommel_ con un simple suprimir
+<rommel_> no me deja hacerlo mauricio
+<mauricio> bueno, ya no se pq puede ser
+<mauricio> de todas formas como root deberias poder
+<rommel_> ahora tampoco me deja cambiar los prmisos en la acrpeta
+<rommel_> q raro
+<rommel_> y bueno se habra arruinado es un kinston
+<mauricio> trata con comandos desde consola
+<mauricio> solo para verificar
+<jose> Hola amigos tenga la vercion de ubuntu 8.04 y voy a istalar la vercion 10.10 quiero saver si es el mismo prosedimiento de instalacion?
+<mauricio> no
+<mauricio> ha cambiado un poco
+<mauricio> pero en si es casi lo mismo
+<mauricio> es mas, yo diria que mas facil
+<jose> es mas facil o mas complicado?
+<jose> aaaaaaaaaaa
+<jose> ok
+<jose> pero fijate que no tengo unidad de CD y quiero instalarlo por medio de USB?
+<jose> que me recomiendas
+<mauricio> hasta puedes instalar los extras y las actualizaciones en la misma instalacion
+<mauricio> con unetbootin
+<mauricio> puedes crear un live usb
+<jose> grcias
+<mauricio> denada :)
+<jose> una cosa mas cual es la direccion de este chat para poder usarlo en windows por si algo sale mal y que me puedan ayudar?
+<Guest55609> jose, entre a la pagina de freenode
+<jose> ya entre pero no me dise nada
+<mauricio> es irc.freenode.net
+<mauricio> y el canal ubuntu-es
+<arp-> http://webchat.freenode.net/
+<arp-> ahi lo tenes...
+<arp-> podes chatiar desde la web
+<arp-> de la otra forma, necesitas un soft de cliente de IRC
+<jose> mmmmmmm
+<jose> gracias
+<Souchiro> hasta mañana :D
+<nicolasefs> Hola gente libre! Tengo instalado ubuntu 10.10 amd 64 en una notebook y no puedo hacer andar el micrófono para realizar videollamadas usando skype... alguien me podría ayudar??
+<siniestro> hola
+<Reisilver> HOLA
+<siniestro> hola =)
+<siniestro> parece que hoy nadie tiene problemas
+<siniestro> algien a logrado correr minecraft en 10.10
+<Reisilver> QUÉ es eso?¿
+<siniestro> un juego en java
+<siniestro> no logro hacerlo correr
+<Reisilver> ah, lo siento man no o he probado
+<Reisilver> sólo he hecho pruebas con wine
+<siniestro> es un juego que se ejecuta sin wine
+<Reisilver> claro con java, ya lo dijiste
+<Reisilver> probe un programa llamado frostwire , me gustaba para bajar música era parecido al ares creo que se hizo en java
+<siniestro> vale
+<Reisilver> hay cosas interesantes que se pueden hacer con java jejejejejejejejej
+<Reisilver> creo que sacaron un sistema operativo escrito en java una vez pero creo que no funciono o tuvo algunas cosas de malo
+<alejo112132> hola me pueden decir que archivos tengo que instalar para compartir archivos por la red
+<siniestro> vale seria buena idea
+<jamesjedimaster> javaos fue bueno, porque no necesitaba de una maquina virtual, pero no ha tenido tanto auge por algunos problemas del mismo java
+<siniestro> no es 100% libre
+<jamesjedimaster> alejo112132: depende del tipo de red, si intervienen maquinas win, necesitas samba, sino, por tcp/ip se pueden ver los linux
+<alejo112132> lo que pasa es que voy a compartir archivos personales y esta seleccionada la opciond e nunca
+<alejo112132> pero no me deja activarla y dice arriba que no esta disponible por que tengo que instalar algunos paquetes que no estan instalados aun
+<siniestro> vale tengo una semana con kubunto y no me quejo
+<Reisilver> ok quizá jAVAos Vuelva a la vida ...................algún día
+<alejo112132> y ya antes me habia pasado y solo ponia un comando en la terminal y se instalaban los archivos y listo
+<jose> hola amigos e querido instalar ubuntu 10.10 con una USB, hise todo el prosedimiento en la bios para arrancar desde la USB, y al iniciar la makina con los cambios guardados en la BIOS, alla se inisio normalmente no me reconocio ninguna memoria ¿que hago?
+<jose> Holaaaaaa
+<jose> Reisilver, ayudame porfavor
+<jose> perdona la molestia
+<jose> hola amigos e querido instalar ubuntu 10.10 con una USB, hise todo el prosedimiento en la bios para arrancar desde la USB, y al iniciar la makina con los cambios guardados en la BIOS, alla se inisio normalmente no me reconocio ninguna memoria ¿que hago?
+<Reisilver> hola, buenas noches , la verdad no he intentado instalar desde USB ,.........jejejejejejejejejej no sé que decirte
+<Reisilver> has seguido un  tutorial al pie de la letra..........
+<jose> si
+<Reisilver> pasa el link
+<jose> en la bios me sale bootear desde USB-zip
+<jose> http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/
+<jose> ese es el link
+<jose> nadie me puede ayudar
+<xangua> pss yo nunca he usado ese, unetbootin y multisystem nunca me dieron problemas para bootear de usb
+<jose> oye es normal que en la bios diga USB-ZIP
+<Reisilver> pues a simple vista parece que el programa ese no te coloco bien la iso en la usb
+<Reisilver> quizá la iso estaba corrupta
+<Reisilver> ya has usado ese programa antes.......
+<jose> como asi? corrupta
+<Reisilver> la iso que bajaste está dañada
+<Reisilver> generalmente hay un archvo md5 de integridad
+<jose> no te creo si la baje de la pajina de ubuntu
+<Reisilver> para saber si está bien
+<jose> y se tardo 4 pinches horas
+<Reisilver> joojjoojojojojojojojojojojojojoojojojoj
+<jose> no te rias
+<Reisilver> entonces debe estar en buenas condiciones
+<Reisilver> por si acaso revisa el archivo md5
+<xangua> pss nunca está de mal comprobar
+<Reisilver> verificalo con el k3b
+<jose> y eso donde lo encuentro
+<Reisilver> en la página de dónde lo bajaste
+<Reisilver> la de ubuntu
+<jose> el archivo md5 esta en la pagina de ubuntu?
+<alejo112132> como instalo los archivos para la comparticiond e red
+<juanantonio> Buenas. Ya estoy por aquí preguntando de nuevo. Quiero reinstalar en el PC kubuntu y 7 para la novia, ¿da igual el orden? Quiero decir, ¿7 sigue cargándose el GRUB y se repara igual que antes?
+<xangua> windows primero, lo demás que quieras después
+<jose> reisilver, amigo si esta el archivo md5 dentro del ISO
+<juanantonio> xangua> gracias, voy a recuperar los datos, formatear y después, darle caña al sistema con esa configuración ;)
+<jose> Reisilver, amigo si esta el archivo md5 dentro del ISO
+<Reisilver> aún tienes el link de dónde bajaste ubuntu generalmente ese archivo está en los servers, ahora el k3b cuando agregas la iso para grabar también te genera un código md5 debes comparar ambas claves y sí son iguales
+<Reisilver> es porque la iso está en buen estadp
+<Reisilver> estado
+<jose> si lo descargue desde a qui mira  http://www.ubuntu.com/desktop/get-ubuntu/download
+<Reisilver> http://doc.ubuntu-es.org/Verificar_ISO
+<Reisilver> allí te dicen cómo verificar, yo antes bajaba las isos de cdimage ubuntu pero no encuentro esa página
+<jose> Reisilver, pero ya ya tengo ubuntu instalado pero es la vercion 8.04
+<arp-> viejo...
+<jose> y todo el prosedimiento para bootear desde la usb lo hise en win7
+<arp-> deberias pasarte a 10.10
+<arp-> 8.04 dejo de tener soporte..
+<arp-> con muchos paquetes
+<arp-> arrastra viejos errore
+<jose> si es lo que quiero aser pero mi unidad de cd no funcina
+<jose> i quiero Bootear desde USB
+<arp-> usb
+<jose> pero no puedo
+<jose> siç
+<arp-> que problema te da?
+<jose> hise todo el prosedimiento en la bios para arrancar desde la USB, y al iniciar la makina con los cambios guardados en la BIOS, alla se inisio normalmente no me reconocio ninguna memoria
+<arp-> pusiste el USB como primer dispositivo de booteo
+<arp-> debe decir USB-HDD
+<jose> en mi BIOS dice USB-ZIP
+<arp-> busca USB-HDD
+<arp-> suele haber varios para elejir
+<jose> no sale solo sale eso
+<arp-> ok
+<arp-> debes revisar si el USB lo creaste bien
+<arp-> para que bootee..
+<arp-> probalo en otra pc por las dudas
+<jose> si eso voy hacer
+<jose> gracias
+<jose> todo el prosedimiento para bootear desde la usb lo hise en win7 eso no tiene nada que ver verdad?
+<novalettres> buenassss
+<novalettres> volviii
+<novalettres> que cuentan gente
+<songer7> hola como estan?
+<songer7> no puedo mirar disco externo
+<novalettres> les tengo una pregunta:
+<novalettres> tengo en mi poder un router con wifi, lo que quiero hacer es que haga de repetidor de otro que esta en la casa de mi vecina, ojo, no alarmarse, el internet lo pagamos de a 3 casas
+<novalettres> el drama es que ya he podido hacer que haga de repetidor pero como un swith
+<novalettres> pero no se como configurar el wifi para que me repita por ahi
+<novalettres> que problemas te da tu disco songer7??
+<songer7> ni uno, solo no  lo detecta ubuntu
+<songer7> en fat32 ni en ntf
+<novalettres> trata de probar otros puertos usb
+<novalettres> como lo tienes conectado???
+<songer7> la luz esta parpadeando
+<songer7> pero nada
+<novalettres> como lo conectas a tu pc? solo un usb, o tienes que ponerle energia aparte??
+<arp-> songer7, revisa si monto el dispositivo por lo menos
+<novalettres> el mio es con energia aparte y hay que probar con desconectar la corriente, o el puerto usb, uno solo, los dos
+<arp-> enchufalo y pone dmesg
+<songer7> tiene dos de usb y el que va para el disco
+<JRamirez> holas
+<JRamirez> como van por aca
+<novalettres> hola JRamirez
+<JRamirez> alguien me da una idea. de un pequeño escript para renombrar varios archivos? puede ser numericamente con un incremento. i=0  i+1
+<JRamirez> etc...
+<JRamirez> xD
+<novalettres> busca como renombrado masivo de ficheros, en ubuntu.life.com creo que habia un programita para eso
+<novalettres> ...zzz...
+<songer7> novalettres, arp- http://pastebin.ubuntu.com/580435/
+<ivedci89> alguien juega ajedrez?
+<ivedci89> Cibort
+<ivedci89> glchess
+<lula> buenas como puedo redimensionar un jpg en centimetros
+<felipe__> alguien que me ayude xD
+<jose__> hola amigos les cuento que acobo de instalar la vercion 10.10 de ubuntu la que tenia anteriormente era la vercion 8.04 y la instalacion fue todo un exito. la instalacion la hice con un pendrive
+<voyager1> jose__ ¿y?
+<jose__> solo informo por que en este chat fue que me ayudaron hacerlo
+<jose__> gracias
+<voyager1> jose__  disfruta de tu distro,
+<pupilo> hola amigos quiesiera saber como hago para instalar mi targeta grafica en ubuntu 10.10. epuesto esto en la terminal  °glxinfo | grep direct°  y me dise esto  "El programa «glxinfo» no está instalado actualmente.  Puede instalarlo escribiendo: sudo apt-get install mesa-utils
+<pupilo> malpa,
+<pupilo> me puden ayudar?
+<dzup> pues escribe eso
+<dzup> ...o que parte o comprede?
+<pupilo> ya lo escribi y me sale esto  "[sudo] password for jose:
+<pupilo> E: No se pudo bloquear /var/lib/dpkg/lock - open (11: Recurso no disponible temporalmente)
+<pupilo> E: Imposible bloquear el directorio de administración (/var/lib/dpkg/), ¿está otro proceso usándolo?"
+<pupilo> ya mi amigo solo tube que serrar la bentana de synaptic
+<pupilo> la escribi de nuebo i me funciono
+<[A]KangB> Buenos días
+<Tarrasquero> buenos dias
+<Tarrasquero> buenos dias
+<fosco_> buenas
+<Tarrasquero> nas fosco_
+<pupilo> fosco_, Hola
+<pupilo> tengo un pequeño problema con el xvidcap, el programa funciona y todo bien pero cuando quiero ver el video que e grabado se reproduse muymuy rapido no se que sera?
+<fosco_> intenta cambiar los fotogramas por segundo a los que graba
+<pupilo> voy a ver
+<pupilo> Dise frames por segundo:
+<pupilo> sera alli?
+<fosco_> si
+<pupilo> cual es lo normal?
+<fosco_> 25
+<pupilo> gracias ya lo arregle
+<pupilo> pero tengo otro problema
+<pupilo> que no me sale audio
+<fosco_> no uso xvidcap, estas seguro de que soporta audio?
+<pupilo> me dise  "codec de audio ninguno"
+<pupilo> si claro
+<pupilo> cual es el que usas tu?
+<fosco_> ok, pues asegurate de que está leyendo del dispositivo correcto, seguramente la salida estandar de pulse
+<fosco_> gtk-recordmydesktop
+<pupilo> uuyyy ese me pone super lenta la makina
+<pupilo> el xvidcap es mas liviano deverias de probarlo te lo recomiendo es muy sensillo de usar
+<fosco_> lo tendré en cuenta, aunque el recordmydesktop me va bien
+<pupilo> amigo acabo de instalar el tvtime pero no puedo ver la tele me sale todo negro
+<fosco_> abre gstreamer-properties, ve a la pestaña video, y en entrada haz pruebas hasta q veas algo
+<pupilo> adonde encuentro gstreamer?
+<fosco_> escribe gstreamer-properties en un terminal
+<pupilo> en todas las pruebas que ise siempre me salia una ventanita con franjas de colores
+<pupilo> y el tvtime sige sin funcionar y ahora ya no se puede serrar la ventana del tvtime
+<pupilo> le doy a la X y no se sierra
+<pupilo> le doy alt+F4 y tampoco se sierra
+<fosco_> quien no se cierra
+<pupilo> la bentana del tvtime
+<fosco_> pulsa alt+f2 escribe xkill y haz clic sobre su ventana
+<fosco_> pero ten cuidado, despues de escribir xkill matarás lo primero que toques
+<pupilo> solamente lo primero O sigue matando?
+<fosco_> solo lo primero que toques
+<pupilo> si yeaaaaaaaaa!!!!
+<pupilo> sos un Kapooo
+<pupilo> olle pero ahora no me abre el tvtime
+<pupilo> quise abrirlo desde la terminal con "aoss tvtime" y me dise que el programa esta en ejecicion. osea que no se pueden abrir dos estancias al mismo tiempo
+<pupilo> bueno voy a reiniciar talvez eso es lo que me hace falta
+<pupilo> Oye fosco_, tu de donde eres?
+<fosco_> españa
+<pupilo> y que horas son alla?
+<fosco_> 11:28am
+<sabbut> hola, necesito ayuda
+<sabbut> de repente se me fue la conexión en el otro ordenador, que tiene ubuntu 9.10
+<sabbut> por más que intento restaurarlo, al pinchar en el icono pone "redes cableadas - desconectado"
+<sabbut> y no puedo hacer que encuentre la conexión que tengo y por la que estoy escribiendo ahora mismo
+<sabbut> ¿qué debería hacer?
+<fosco_> en el ordenador que no conecta tienes windows tambien?
+<sabbut> solo linux
+<sabbut> tengo windows desde este ordenador por el que estoy escribiendo ahora mismo
+<sabbut> en el otro tengo ubuntu 9.10 y nada más
+<fosco_> es posible que el dispositivo wifi esté apagado, mira si tiene un botón para encenderlo
+<sabbut> está encendido
+<fosco_> ok
+<sabbut> estoy escribiendo desde otro ordenador con la misma conexión
+<fosco_> asegurate que en el gestor de redes está marcada la casilla Activar red inalambrica
+<sabbut> ¿al gestor de redes es a lo que se accede pinchando en el icono?
+<sabbut> vale, sí, con clic derecho en el icono de conexión
+<sabbut> hay una casilla de "activar red" y está marcada
+<fosco_> y otra debe poner "Activar red inalambrica"
+<sabbut> solamente veo "activar red"
+<fosco_> veamos si el hardware está bien
+<sabbut> debajo, "información de la conexión" en gris, "editar las conexiones" y "acerca de"
+<fosco_> abre un terminal, escribe lspci | grep -i net
+<fosco_> y pega el resultado en pastebin.com
+<sabbut> primero lspci a secas
+<sabbut> y luego grep -i net, verdad?
+<fosco_> no, todo junto
+<fosco_> lspci | grep -i net
+<sabbut> bah, lo copio aquí mismo
+<sabbut> 02:05.0 Ethernet controller: Marvell Technology Group Ltd. 88E8001 Gigabit Ethernet Controller (rev 13)
+<fosco_> segun eso solo tienes la ethernet normal
+<fosco_> seguro que la wifi está encendida?
+<sabbut> un momento
+<sabbut> si estoy conectado sin cables es que tengo wifi, ¿no?
+<sabbut> lo digo porque mi portátil está conectado pero la luz de wifi del router no está encendida
+<fosco_> no me refiero al router
+<fosco_> me refiero al ordenador
+<fosco_> debe tener la wifi apagada
+<sabbut> ¿y cómo lo enciendo?
+<fosco_> suele haber un boton en el portatil para encenderla
+<sabbut> el ordenador que perdió la conexión es de sobremesa
+<pupilo> mi amigo fosco_, estoy deseperado no puedo aser que arranque el tvtime
+<sabbut> olvídalo, ya está solucionado
+<fosco_> sabbut, que era?
+<sabbut> gracias por todo
+<fosco_> pupilo, lanzalo desde consola y mira que error da
+<sabbut> me olvidé de que utilizaba la conexión cableada
+<fosco_> ok
+<sabbut> y resulta que el cable estaba en una condición bastante mala
+<pupilo> yo lo lanzo desde la consola y lo abre correctamente, pero no me da video se queda en negro
+<sabbut> y debió moverse un poco y desconectarse solo
+<sabbut> pues el tema es que debería reconfigurarlo de todas formas para que use el wifi
+<fosco_> pupilo, hiciste lo de gstreamer-properties?
+<pupilo> si y en todas las pruebas que ise siempre me salia una ventanita con franjas de colores
+<fosco_> pupilo, pues eso es que no tienes soporte para tu hardware
+<fosco_> ve a sistema - administracion - controladores
+<fosco_> y mira si te propone instalar algun controlador nuevo
+<pupilo> lo ise y me dise que No se estan usando controladores privativos en este sistema
+<pupilo> holaaaa
+<pupilo> hola
+<pupilo> fosco_,
+<pupilo> lo ise y me dise que No se estan usando controladores privativos en este sistema
+<pupilo> alguien me puede ayudar con el problema que tengo de tvtime porfavor?
+<nicolasefs> Hola gente libre! Tengo instalado ubuntu 10.10 amd 64 en una notebook y no puedo hacer andar el micrófono para realizar videollamadas usando skype... alguien me podría ayudar??
+<erAbuelo> buenas tardes
+<yemino> tengo un problema con un makefile que estoy haciendo (es muy cortito): ''make clear:'' funciona, pero  ''make clean:'' no, siendo que tiene exactamente lo mismo. Que puede estar mal??
+<yemino> he estado mucho rato tratando de resolverlo:  aca esta el link http://pastebin.com/878UTYrg
+<chasis> hola, que opinan de playonlinux? funciona bien? se puede jugar a practicamente todo o a pocas cosas?
+<yemino> ya lo he resuelto. No se que tenia, pero ahora funciona :P
+<moshi> jeje que suerte xD
+<LinuxReign> Buenas
+<moshi> naas
+<LinuxReign> que bueno ver cada vez mas gente uniendose a este canal
+<moshi> poco se va popularizando ubuntu en españa jeje, que no se hasta que punto es bueno
+<LinuxReign> mientras mas gente, pues mejor
+<LinuxReign> diria yo
+<fosco__> chasis, yo uso wine directamente, puedes ver la lista de programas soportados en su propia web
+<fosco__> !wine
+<kubot> Wine es una capa de compatibilidad para ejecutar programas de Windows en GNU/Linux | Para Instalar y configurar Wine en Ubuntu puedes ver en http://doc.ubuntu-es.org/Wine | Para saber si un programa funciona con Wine mira en !appdb http://appdb.winehq.org | Sitio Oficial: http://www.winehq.com/ (Inglés)
+<omikron4> si se populariza poco no sera por nosotros.. yo siempre instalo ubuntu en los pcs que trato
+<chasis> fosco_: pero hay que añadir cosas a la libreria y si no sabes no sabes entiendeslo que quiero decir?
+<LinuxReign> que juego te gustaria instalar chasis?
+<fosco__> chasis, lo que yo uso ha funcionado en wine sin necesidad de añadir ni cambiar nada
+<LinuxReign> yo corro cod4 sin mayores problemas
+<LinuxReign> los demas no se
+<LinuxReign> aunque aparentemente puedes correr AoE2, que antes no se podia
+<moshi> yo me puse recientemente el bulletstorm en la maquina ubuntu y es brutal como me lo tira con el wine xD
+<chasis> ninguno, solo quiero saber porque laneo jugar ragnarok, pero la cosa es, no es simplemente instalarlo, si con programa comunes falla, imaginate con juegos, de seguro alla que añadir muchos dlls, instalar directx etc, preguntaba si playonlinux te hace esas cosas automaticamente, no quiero meterme un dia entero pa instalar un juego
+<chasis> planeo*
+<LinuxReign> yo tengo que cambiar la tarjeta de video, es una 9800GT de 1g, pero ya como que se queda
+<LinuxReign> entiendo
+<LinuxReign> yo la verdad no he tenido problemas, aunque todo lo que uso aparte del cod4 es nativo
+<LinuxReign> incluyendo el W;ET
+<fosco__> chasis, yo lo probaría primero
+<fosco__> no tardas ni 5 minutos en probarlo
+<LinuxReign> si, es rapido
+<chasis> fosco_: solo quería saber si playonlinux que  funciona con wine te resuelve algo por si mismo, sin quebrarse la cabeza
+<fosco__> automatiza algunas cosas sí
+<fosco__> pero ya te digo, son cosas que yo nunca he necesitado hacer
+<LinuxReign> correcto
+<Reisilver> Call of duty 1,2,4 , command and conquer tiberius wars , left4dead 1 y 2, Toca Race driver 3, damnation, Far cry 2 y aunque no lo crean el silent hill 5 esos lo tengo instalados y rulan con wine
+<LinuxReign> ensayo y error chasis
+<fosco__> en el rato que llevamos hablando ya sabrías si va bien en wine
+<fosco__> :)
+<chasis> haber nisiquiera tengo el juego dolo me estoy documentando.
+<fosco__> ok
+<LinuxReign> oh, ok
+<Reisilver> hasta el killing floor ya vaaaaaaaaa
+<LinuxReign> jajaja
+<chasis> lol eso no es una peli?
+<Reisilver> nop, es un juego parecido al left4dead
+<LinuxReign> shooters y estrategia, los mejores
+<chasis> ah, que raro
+<Reisilver> 4 personajes contra una hordaaaaaaaa de zombies con ganas de darte
+<LinuxReign> seria bueno ver el Diablo 3 corriendo sobre POL o wine
+<chasis> pero es basado en la peli?
+<LinuxReign> cuando salga
+<chasis> yo no he jugado al left4death
+<chasis> dead*
+<LinuxReign> es bueno
+<Reisilver> muy adictivo
+<Reisilver> con ampliaciones y todo
+<chasis> y el warcraft va?
+<Reisilver> claro
+<Reisilver> aunque lo probe sin expansiones, no lo tengo completo
+<LinuxReign> en la lista de juegos para instalar aparece el Warcraft
+<chasis> pro, en 1 año que llevo usando linux no se me ha ocurido probar juegos
+<Reisilver> probe el age of mithology con su expansión lo pase como la h
+<Reisilver> yo pase el Jericho y el shellshock 2
+<Reisilver> ambos shoters
+<Reisilver> checa en youtube
+<LinuxReign> lo unico que juego todos los dias es el W:ET
+<Reisilver> mezcla de acción y terror
+<Reisilver> ese es un mod?¿
+<LinuxReign> chasis, chequea el sitio que se llama playdeb
+<chasis> cool, no tgo una gran tarjeta grafica y tampoco soy tan jugón, pero esta bien saberlo, uno nunca sabe cuando le apetecerá revivir viejos tiempos
+<Reisilver> un amigo me ha pasado juegos por eso puede probar varios
+<LinuxReign> chasis, checa http://www.playdeb.net/welcome/
+<Reisilver> urban terrorrrrrr
+<chasis> gracias por la web
+<LinuxReign> cool
+<Reisilver> LOL
+<chasis> pero estos son juegos para linux no?
+<Reisilver> YEAH
+<Reisilver> el urban terror es bueno
+<LinuxReign> correcto
+<LinuxReign> todos son nativos
+<Reisilver> es similar al counter
+<chasis> ah, bueno, cando tenga timpo probaré con eso ejeje, oye y si instalo algun juego y me falta una dll wine me aviza?
+<LinuxReign> con los scripts de pol, no debes tener problemas, chasis
+<LinuxReign> y si usas playdeb, el baja e instala lo que necesite
+<chasis> vale entonces me decando por playdeb
+<LinuxReign> como comienzo, es perfecto
+<Reisilver> bueno chicos voy matar zombies en el left4dead nos vemos ah que pena voy a tener que usar la otra partición del lado oscuro windowsssssss, pero un momento que es esto pero sí es wine......adios Bill Gates
+<LinuxReign> asi vas viendo
+<LinuxReign> jajaja
+<LinuxReign> saludos Reisilver
+<chasis> porque como comienzo?
+<LinuxReign> digo que el playdeb para empezar a jugar en la plataforma GNU/Linux es perfecto
+<LinuxReign> asi ves que te gusta y que no
+<LinuxReign> no se si me explico
+<Reisilver> jejejejejejjejejeje holas , bueno los juegos libres tb son bacanes sobre todo de naves
+<chasis> no, mas bien me confundiste jajaja
+<LinuxReign> disculpame
+<Reisilver> miren
+<Reisilver> http://tuxjuegos.tuxfamily.org/
+<Reisilver> los juegos de código libre tb son cheveres
+<chasis> entonce el played ese es para los juegos d linux...?
+<LinuxReign> correcto chasis
+<Reisilver> sólo que el left4dead lo vengo arrastrando desde que fui un user de windows lo jugaba con garena jejejejejejejejejjejejee así que estoy feliz de que los chicos de wine al fin lograran ponerlo en el ranking platinum jejejejejej
+<LinuxReign> con el playdeb no necesitas wine
+<LinuxReign> porque todo lo que hay alli el nativo de Linux
+<LinuxReign> es*
+<chasis> linuxreign no me confundas otra vez, sime dices que es para juegos de linux como dices que no necesito wine? me estas matando jajaja
+<LinuxReign> jajajaja
+<Reisilver> mira el chiste es esto
+<LinuxReign> te lo explico mejor
+<Reisilver> existe windows y linux , existe juegos nativos y juegos que no son nativos
+<LinuxReign> correcto
+<Reisilver> los nativos son propios de una plataforma
+<LinuxReign> cuando decimos nativo, quiere decir que corren en Linux, sin necesidad de emuladores, como wine por ejemplo
+<Reisilver> los juegos que son para windows son comerciales hechos por compañías o casas de software especializado en eso
+<Reisilver> y sí esos juegos son nativos para windows porque fueron hechos para correr en windowsssssssssss
+<chasis> entiendo todo eso jaja, pero me decis uno y otro y me cunfundo, la pregunta es, para jugar juegos de windows cual es la mejor opción que combine rapidez automatismo y compatibilidad
+<LinuxReign> yo me iria con el PlayonLinux para instalar y correr juegos de Winblows en Linux
+<Reisilver> pues ni idea man , depende de tu hardware, el dinero que no gaste en software privativo jejejejeje que gran ahorro el software libre lo use para repotenciar mi hardware
+<chasis> vale entonces playonlinux se ha dicho
+<Reisilver> y corro juegos pesados muy bien esos juegos que llegan a pesar 7 o 8 gb como Toca Race driver 3 y el damnation
+<chasis> perfct entonces, oye y cuanto tiempo te metiste pa hacerlo rular sin problemas?
+<Reisilver> visita la página de wine y ve los platinum esos se instalan a la primera,............... pero si quieres juegos nativos te recomiendo el playdeb e instales el Urban Terror
+<Reisilver> bueno nos vemos
+<Reisilver> te dejo un link http://tuxjuegos.tuxfamily.org/
+<chasis> gracias, entonces ya no hay escusas para volver microshit
+<seyacat> hola ubuntues
+<seyacat> necesito una ayudita
+<seyacat> tengo mi hp mini, y no me puedo conectar al wifi de la universidad
+<seyacat> sin embargo me conecto sin problema en mi casa
+<pupilo> alguien me puede ayudar con el problema que tengo de tvtime porfavor?
+<seyacat> cuando le pongo iwevent, solo me sale SCAN REQUEST COMPLETE, pero parece que esta atontado en ese estado
+<bl4ckc00k1e> wenas, he montado un disco duro ntfs como esclavo
+<bl4ckc00k1e> pero al montarlo
+<bl4ckc00k1e> solo me lo monta como disco de lectura
+<bl4ckc00k1e> y con chmod no puedo darle permisos
+<bl4ckc00k1e> lo hago todo como root
+<LinuxReign> ok
+<LinuxReign> bl4ckc00k1e, que proceso seguiste?
+<bl4ckc00k1e> mount /ruta/disco /win
+<bl4ckc00k1e> LinuxReign, estoy mirando ahora com hacer con el ntfs, kizas vaya
+<LinuxReign> exacto
+<LinuxReign> te saltaste un par de cosas
+<LinuxReign> necesitas fuse-utils, libfuse2, ntfsprogs y libntfs8
+<LinuxReign> importante crear un punto de montaje, algo como sudo mkdir /media/windows o algo asi
+<bl4ckc00k1e> si, lo tengo en /win
+<LinuxReign> luego montar el disco en ese punto de montaje
+<LinuxReign> sudo mount /media/windows /dev/sdb*
+<LinuxReign> bueno, chequea en google, alli esta todo, pero si tienes problemas avisa a ver
+<bl4ckc00k1e> gracias LinuxReign , si ya stoy con google. el disco estamuy dañado, asi k imagiante que caos, hay cosas que dan error de entrada y de salida
+<LinuxReign> oh
+<LinuxReign> ya veo
+<LinuxReign> hace algun ruido ese disco?
+<bl4ckc00k1e> si
+<bl4ckc00k1e> tipico
+<bl4ckc00k1e> clack clack
+<LinuxReign> clicks o como que esta moliendo?
+<bl4ckc00k1e> xDD
+<LinuxReign> demonios
+<LinuxReign> esa es un dolor de huevos, y disculpa el lenguaje
+<bl4ckc00k1e> LinuxReign, na tranquilo, en windows no me veia el disco
+<bl4ckc00k1e> y dije, bua, seguro k el linux lo vao y ditor de ahi
+<bl4ckc00k1e> le queria hacer un easyrecovery, pero que yo sepa, no hay herramientas en linux para recuperar formato ntfs n?
+<LinuxReign> ahora, yo diria que no trates de escribir nada, solo jala lo que necesites como backup antes de que muera definitivamente
+<LinuxReign> no conozco nada
+<LinuxReign> no me ha pasado
+<LinuxReign> disculpa
+<bl4ckc00k1e> LinuxReign, el disco es de un amigo, solo le intento recuperar las cosas
+<LinuxReign> entiendo
+<bl4ckc00k1e> yo no uso windows!
+<LinuxReign> pero puedes ver algo?
+<bl4ckc00k1e> jajjaja
+<bl4ckc00k1e> si
+<bl4ckc00k1e> todo
+<bl4ckc00k1e> pero al copiar... a veces falla en algunos archivos
+<LinuxReign> ok, saca lo que puedas
+<LinuxReign> claro, el sistema de archivos esta danado
+<chiche> hola a todos
+<LinuxReign> saludos chiche
+<bl4ckc00k1e> wenas
+<LinuxReign> jala lo que puedas man
+<chiche> alguien podria decirme por que no puedo agregar espacios de trabajos??
+<LinuxReign> en cualquier momento ese disco pela
+<moshi> has probado a ver si en otro sitios te va?
+<moshi> a lo mejor se te ha desconfigurado el teclado o algo
+<LinuxReign> el disco tiene "clicking noise"
+<LinuxReign> esta en la ultimas patadas
+<bl4ckc00k1e> LinuxReign, xDD, a mi em duro uno de 300 gigas cone l click, 2 años... flipa xD
+<LinuxReign> jajajaja
+<bl4ckc00k1e> y murio de la forma mas tonta
+<moshi> O_O
+<bl4ckc00k1e> descnectandolo de golpe xD
+<LinuxReign> algunos discos cuando arrancan les da la vaina, aunque eso pudiera haber sido falta de corriente
+<LinuxReign> de repente solo tenias que cambiarle el cable de poder por otro
+<bl4ckc00k1e> me quiero pillar un parato de eoss anti subida de tensiones
+<bl4ckc00k1e> que si se va la luz te da autonomia de unas goras
+<bl4ckc00k1e> horas
+<LinuxReign> si, yo puse uno que regula la casa completa
+<pupilo> alguien me puede ayudar con el problema que tengo de tvtime porfavor?
+<LinuxReign> tvtime?
+<pupilo> si
+<bl4ckc00k1e> pupilo,  que es eso?
+<LinuxReign> dinos a ver pupilo
+<LinuxReign> cual es el problema?
+<pupilo> el problema es que lo instale i todo bien, pero cuando lo abro me sale todo negro no da video
+<LinuxReign> aja
+<LinuxReign> y que capturadora estas usando?
+<pupilo> como asi?
+<LinuxReign> la tarjeta de captura de video
+<LinuxReign> para usar tvtime debes tener una capturadora con el cable de tv conectado a ella
+<LinuxReign> no?
+<pupilo> yo tenia instalado ubuntu 8.04 ayer y todo me funcionaba bien tvtime y todo
+<LinuxReign> dame un minuto pupilo
+<LinuxReign> dejame buscar algo
+<pupilo> ahola instale el 10.10 y ya no me funciona
+<bl4ckc00k1e> pupilo,  tiens la grafica instlada?
+<pupilo> si
+<_BUCKY__> hola
+<bl4ckc00k1e> te digo
+<bl4ckc00k1e> el 10.10 da muchos problemas tanto ami como aun amigo, no nos iba casi anda, mil errores
+<bl4ckc00k1e> el 10.04 nos fue perfectoa ambos
+<bl4ckc00k1e> yo sony vaio, y el acer
+<bl4ckc00k1e> es una valoracion personal pupilo , pero si LinuxReign , no da ocn la solucion prueba con el 10.04
+<pupilo> no no puede ser
+<pupilo> me codto tanto bajar e instalar esta vercion
+<LinuxReign> pupilo, una pregunta
+<LinuxReign> tu hiciste upgrade o instalaste desde cero?
+<LinuxReign> del 10.04 al 10.10
+<pupilo> instale desde cero
+<LinuxReign> y para instalar tvtime
+<LinuxReign> como hiciste?
+<erAbuelo> bl4ckc00k1e: al final tendreis que pasar a 10.10 porque no hacerlo ahora ?
+<pupilo> tvtime esta en synaptic
+<moshi> xD
+<pupilo> de slli lo instale
+<LinuxReign> entiendo
+<pupilo> por que?
+<LinuxReign> si me dices que no has tocado nada del hardware
+<bl4ckc00k1e> erAbuelo, prefiero posponerlo lo maximo posible, en mi opinion hace 3 meses no era estable... te juro que me daba mas problemas que suse y debian juntos xD,
+<LinuxReign> y que antes funcionaba
+<LinuxReign> yo diria que es configuracion
+<pupilo> si eso es
+<LinuxReign> debes jugar con los settings del tv time
+<LinuxReign> si estas en Espana, usas pal, si estas en America usas ntsc
+<pupilo> por que ademas el problema que me esta dando el tvtime es el mismo que me dio en la vercion anterior y lo arregle con una pagina
+<LinuxReign> ese tipo de cosas
+<bl4ckc00k1e> muy buena...
+<_BUCKY_> hola fosco_  estas ¿?
+<LinuxReign> es bueno cuando algo no funciona, asi te da la oportunidad de aprender pupilo
+<pupilo> pero e buscado y buscado y no la e buelto a encontrar
+<pupilo> estoy en HONDURAS yo uso ntsf
+<pupilo> si
+<LinuxReign> asi es
+<erAbuelo> ntsf ?
+<LinuxReign> ntsc
+<pupilo> es lo unico bueno que se saca de todo estoi
+<eliezer> hola muchachos,cambie a la vercion 64bit  de ubuntu 10.4 LTS y no c como instalar flash player,,este es el nombre exacto del archivo = flashplayer10_2_p3_64bit_linux_111710.tar.gz
+<LinuxReign> eliezer
+<pupilo> si perdon ntsc
+<LinuxReign> instala de esta manera
+<LinuxReign> sudo apt-get install ubuntu-restricted-extras
+<bl4ckc00k1e> eliezer, no tengo ubuntu 32 bits, pero en mi debian 64 bits, tienes que meterlo en la carpeta deplugins del explorador
+<seyacat> tengo mi hp mini, y no me puedo conectar al wifi de la universidad, sin embargo en la casa funciona bien
+<bl4ckc00k1e> tengo unvuntu 32 *
+<bl4ckc00k1e> ubuntu
+<chiche> como se hace para agregar escritorios?
+<LinuxReign> chiche
+<LinuxReign> le das un click derecho abajo a la derecha de tu escritorio donde estan los cuadritos que representan los escritorio (4)
+<LinuxReign> te vas a preferencias
+<chiche> si ya
+<LinuxReign> y le dices cuantas "columnas" deseas
+<bl4ckc00k1e> eliezer, mira este link, intenta hacerlo en tuubuntu a ver si te tira http://www.esdebian.org/foro/20836/instalar-plugin-flash-debian-64-bits
+<LinuxReign> no hace falta
+<LinuxReign> con instalar los restricted, te instala el flash
+<chiche> tengo solo dos opciones "Columns y rows"
+<LinuxReign> exacto
+<LinuxReign> Clumns
+<LinuxReign> Columns*
+<eliezer> LinuxReign :) esta en progreso,,eso me instalara el flash tambien,,
+<LinuxReign> si
+<chiche> pero no puedo agregar o quitar espacios o "workspaces"
+<chiche> o sea que siempre tengo 4
+<eliezer> bl4ckc00k1e :) error 404 en la pagina
+<bl4ckc00k1e> lol
+<bl4ckc00k1e> eliezer, vuelva aintenrar, por que esta onlne, si no te busco otra cosa
+<LinuxReign> yo hice la prueba chiche, y puedo agregar escritorios sin problemas
+<chiche> pues a mi no me agrega ni quita nada..
+<bl4ckc00k1e> eliezer, mirate este, que es par aubuntu: http://www.ubuntu-es.org/node/76907
+<_BUCKY_> fosco_,
+<bl4ckc00k1e> si el caso es copiar  el .so  a la carpeta plugins de mozilla
+<LinuxReign> chiche, muy raro, yo tengo 6
+<eliezer> LinuxReign :)  Muchas grasias.de un tiro instalo java y flash junto con varias cositas mas
+<LinuxReign> perfecto
+<LinuxReign> por nada
+<chiche> creo que antes tenia mas opciones en ese cuadro de preferencia del que me hablas
+<LinuxReign> en realidad solo aparecen esas dos que me mencionaste hace un momento chiche
+<LinuxReign> rows y columns
+<seyacat> hola ubuntues, donde guarda el network manager el archivo de configuraciones?
+<bl4ckc00k1e> xD yo es que lo hago todo mas manual xDD, no sabia ese aquete de ubuntu para flashy java
+<LinuxReign> ifconfig seyacat
+<LinuxReign> tu como que vienes de Debian bl4ckc00k1e
+<LinuxReign> :P
+<moshi> xD
+<seyacat> el network-manage-gnome
+<chiche> pues gracias de todos modos
+<LinuxReign> tranquilo, lastima que no te hubiera podido prestar mas asistencia
+<bl4ckc00k1e> LinuxReign, jajaja cierto, y loa gradezco por que me obliga a aprender ! de todas formas ubuntu en portatil, debian en sobremesa... soy un melancolico
+<LinuxReign> jajajaja
+<LinuxReign> te entiendo, yo no me he podido deshacer de mi Debian tampoco
+<LinuxReign> jajajaja
+<LinuxReign> es como un hijo
+<bl4ckc00k1e> jajjaa
+<bl4ckc00k1e> por cierto
+<bl4ckc00k1e> lei por ahi que habia ubuntu server
+<bl4ckc00k1e> es estable como un debian?
+<LinuxReign> la enfermedad fue la curva de aprendizaje y la convalecencia es usarlo todos los dias, LOL
+<bl4ckc00k1e> xD
+<LinuxReign> ubuntu server es excelente
+<eliezer> la vercion 64bits de ubuntu esta super mejor que la 32,,es mas rapido y trabaja mas tranquilo,,ahora si note que con 4 g de ram minimo es que c porta bien
+<seyacat> Ya no me asoma el network manager en la barra de tareas, si reinicio el servicio asoma pero sin las configuraciones de red
+<LinuxReign> seyacat, probaste agregarlo de vuelta en la barra de tareas?
+<seyacat> si reinicio el servicio aparece
+<LinuxReign> aja
+<seyacat> pero no hay configuraciones
+<LinuxReign> y luego luff
+<LinuxReign> pluf*
+<LinuxReign> se va
+<LinuxReign> veo veo
+<_BUCKY_> hola , ayer fosco_  estuvo intentando ayudarme   con los problemas ke tenia con  ubuntu 10.10 ,  me dijo ke pusiera este comandoen la consola (sudo apt-get update && sudo apt-get upgrade) pero todas las veces ke lo puse , me daba error hasta ke me canse , me comento ke  lo intentara de nuevo , hoy  lo he vuelto a intentar
+<_BUCKY_> y  , parece ke funciono ,  parece ke todo esta bien , pero ya no se ke mas he de hacer
+<_BUCKY_> :/
+<LinuxReign> _BUCKY_, "parece" que funciono?
+<LinuxReign> y que error te daba?
+<seyacat> donde estaran las configuraciones del network-manager-gnome, para borrarlas?
+<bl4ckc00k1e> seyacat, /etc/network/interfaces
+<eliezer> LinuxReign :) eso me instala tambien el flash en la lista de updates ?  para que de updates automaticamente ?
+<_BUCKY_> creo ke si LinuxReign  , soy nueva en esto , pero ayer   me slian unas cosas y hoy otras
+<LinuxReign> estoy casi seguro de que las configuraciones estan en ifconfig, seyacat
+<LinuxReign> asi es eliezer
+<Pablito> hola buenas
+<Pablito> una consulta
+<Pablito> alguien sabe
+<LinuxReign> a ver
+<Pablito> por que no me abren los archivos
+<Pablito> .docx
+<Pablito> con imagenes
+<eliezer> LinuxReign :) ok,una vez mas grasias,,que tengan buenas tardes muchachos :)
+<Pablito> en el libre office
+<LinuxReign> saludos eliezer
+<seyacat> LinuxReign: en ifconfig ves la configuracion actual, yo quiero el archivo de configuraciones al arranque
+<LinuxReign> entiendo seyacat
+<_BUCKY_> LinuxReign,  muchos errores como este
+<_BUCKY_> Err http://archive.ubuntu.com/ubuntu/ maverick-security/main python-avahi all 0.6.27-2ubuntu3.1
+<_BUCKY_> Imposible conectar a archive.ubuntu.com:http:
+<LinuxReign> dame un minuto a ver que encuentro seyacat
+<bl4ckc00k1e> seyacat, la ruta que te puse ahi lo puedes configurar, eslo ma slimpio que peudes tocar
+<_BUCKY_> hoy no salio ninguno
+<_BUCKY_> asi
+<LinuxReign> alli llego bl4ckc00k1e  al rescate
+<LinuxReign> gracias man
+<LinuxReign> veo veo
+<bl4ckc00k1e> xD
+<LinuxReign> estas en una red inalambrica _BUCKY_ ?
+<_BUCKY_> si LinuxReign
+<_BUCKY_> via wifi
+<bl4ckc00k1e> seyacat, por si no sabes: http://www.estrellateyarde.org/so/configurar-interfaces-red-en-linux
+<LinuxReign> para hacer updates debes conectarte con cable de red _BUCKY_ , solo una sugerencia
+<_BUCKY_> mmmm no tengo cable de red  LinuxReign  :P
+<LinuxReign> asi sabes de seguro que tu maquina tiene acceso a internet
+<Crashbit> pues si no hay cable de red, una buena opción es usar "screen"
+<LinuxReign> que tan lejos estas del wireless router, _BUCKY_ ?
+<_BUCKY_> sep
+<erAbuelo> Crashbit: llevas mucho leyendo, yo estoy flipando en colores xDD
+<ivedci89> alguien tiene skype? quiero probar su funcionamiento pero no tengo contacto activo...
+<Crashbit> erAbuelo: no he leído nada, solo la última parte ...
+<LinuxReign> si no te dio ningun error y no hacias eso desde hace tiempo _BUCKY_ , lo siguiente es reiniciar (por si acaso bajo alguna actualizacion de kernel) y esta ready to go
+<Crashbit> erAbuelo: que pasó ?
+<LinuxReign> yo tengo skype
+<_BUCKY_> LinuxReign,  puedes  ayudarme a ver si puedo cambiar la resolucion  de mi pc ¿?
+<erAbuelo> nada, es el nivel de respuestas que asusta xD
+<LinuxReign> skype user: linuxreign1
+<Crashbit> erAbuelo: ah, vale :-)
+<_BUCKY_> la k e kiero  no la soporta mi targeta , bueno eso me dijeron ayer , pero tb me dijeron ke algo se podia hacer
+<_BUCKY_> :/
+<Crashbit> erAbuelo: leíste lo que dije sobre el problema que tenía ?
+<erAbuelo> si
+<Crashbit> erAbuelo: que fallo ... diós
+<Crashbit> :D
+<ivedci89> rodrigo roberto?
+<erAbuelo> xD
+<LinuxReign> si
+<Crashbit> Y la de dolores de cabeza que me dió ... y como no podía ser de otra forma ... una tontería que se me pasó varias veces
+<_BUCKY_> asi aprovecho el reinicio para ver si se cambio la  resolucion xd
+<erAbuelo> suele pasar, lo mas simple es lo que mas jode xD
+<seyacat> a parece que logre conectarme
+<LinuxReign> muy bien
+<LinuxReign> erAbuelo, asi es
+<LinuxReign> PLOP
+<pupilo> linuxReign. voy a reiniciar te cuento si tube exito o no
+<LinuxReign> ok
+<LinuxReign> te espero
+<pupilo> dale
+<LinuxReign> _BUCKY_, a ver
+<seyacat> Estoy entrando en un momento de iras, algo no funciona bien aca en la universidad y en la casa si, pero ni idea que es no pe puedo conectar por wan
+<pupilo> sigo en la misma mmm
+<_BUCKY_> te leo LinuxReign
+<pupilo> abro el tvtime y solo se queda con la pantalla negra
+<chasis> existe algun comando para instala la dependencias de un deb automaticamente? aveces voy a instalar un deb y mintras los instalo me dice que tal paquete no está y tengo que instalarlo e iniciar el proceso desde 0
+<LinuxReign> pupilo, configuracion es lo unico que se me ocurre
+<pupilo> pero no es configuracion del tvtime por que todo esta bien
+<LinuxReign> si tuviera una instalada yo, podria ser mas sencillo, pero no tengo
+<LinuxReign> y te fijaste en lo basico? el cable de senal de tv esta conectado a la tarjeta?
+<pupilo> por ahorita no lo tengo conectado
+<LinuxReign> estas completamente seguro de que esta llegando senal por ese cable especificamente?
+<LinuxReign> conectalo please y has la prueba a ver que pasa
+<pupilo> pero auque no lo tenga conectado no me tiene que tirar la pantalla negra
+<LinuxReign> entiendo
+<LinuxReign> no lo he usado, de eso sabes mas que yo
+<pupilo> la pantalla la tiene que tirar azul cuando el cable no esta conectado
+<LinuxReign> veo veo
+<LinuxReign> iwal
+<LinuxReign> conectale el cable please
+<LinuxReign> y fijate
+<LinuxReign> a ver que pasa
+<pupilo> ok te are caso
+<LinuxReign> gracias
+<pupilo> voy
+<LinuxReign> ok
+<LinuxReign> pupilo, tienes el compiz instalado?
+<pupilo> yeaaaaaaaa!!!
+<LinuxReign> dime
+<pupilo> ya conecte el cable
+<LinuxReign> aja?
+<_BUCKY_> :)
+<pupilo> voy a probar
+<LinuxReign> ok
+<_BUCKY_> yo tb kiero decir yeaaaaaaaaaaaaaa!
+<_BUCKY_> xd
+<pupilo> sige iguallllll
+<LinuxReign> si tienes el compiz, ese podria ser el problema
+<LinuxReign> http://ubuntuforums.org/showthread.php?t=825852
+<LinuxReign> fijate alli, como esta tu ingles?
+<LinuxReign> voy _BUCKY_
+<LinuxReign> dame un minuto
+<pupilo> mas omenos
+<_BUCKY_> sisisis ,  faltaba mas  LinuxReign
+<_BUCKY_> :)
+<LinuxReign> si tienes el compiz, otra gente ha reportado un problema de pantalla negra
+<LinuxReign> con el tvtime
+<LinuxReign> pupilo, que tarjeta de video tienes? nvidia o ati?
+<pupilo> si pero ese no es mi problema
+<pupilo> ati
+<pupilo> ok fijate
+<LinuxReign> dime
+<pupilo> antes cuando tenia el tvtimt con la vercion 8.04 me salia el mismo problema pero lo solucione con una pagina web que e buscado y buscado pero no e podido encontrar
+<LinuxReign> aja
+<LinuxReign> sabes como enviar capturas de pantalla?
+<pupilo> y tenia instalado el compiz i no abia ningun problema
+<LinuxReign> me gustaria ver exactamente cual es el proble,a
+<LinuxReign> problema*
+<pupilo> puedo capturar la pantalla pero no se como embiartela por este chat
+<ivedci89> no se puede
+<ivedci89> debes subirla a algun lado, una web o algo asi... y entonces poner aqui el enlase.
+<ivedci89> link
+<pupilo> ok
+<LinuxReign> pupilo, pegala aqui http://imagebin.org/
+<LinuxReign> y me envias el link a ver que es lo que es
+<pupilo> bueno ya la subi en 4shared
+<pupilo> http://www.4shared.com/photo/X3-yxwZD/screenshot2.html
+<LinuxReign> ok
+<LinuxReign> voy
+<LinuxReign> y que opciones te da en "cambiar origen de video"?
+<LinuxReign> solo default?
+<pupilo> en donde esta la flechita roja me daba unas opciones para cambiar en televicion y otras cosas que ya no me acuerdo
+<pupilo> pero yo lo ponia siempre en televicion
+<pupilo> pero ahora ya no me da la opcion
+<LinuxReign> y que tipo de cable va conectado a la tarjeta? coaxial o RCA?
+<LinuxReign> coaxial es uno solo, el RCA es amarillo, rojo y blanco
+<LinuxReign> cual es?
+<pupilo> coaxial
+<LinuxReign> aja
+<LinuxReign> y ese programa no te da una opcion de "buscar" canales
+<LinuxReign> como en un atelevision normal?
+<LinuxReign> o sea, que los programa
+<LinuxReign> y los guarda
+<LinuxReign> no se como explicarme, disculpa
+<pupilo> y cuando tenia bueno el tvtime y no tenia conectado el cable me aparecia la pantalla azul y en medio me decia NO SINGNAL
+<LinuxReign> entiendo
+<pupilo> si si tiene lo que dises
+<pupilo> solo que ahora no me da esa opcion de buscar canales
+<LinuxReign> pero de nada va a servir porque al parecer la tarjeta no envia senal de ninguna clase
+<pupilo> si y como te digo yo ya tube ese mismo problema y lo solucione asi que no creo que sea el SO que este molestando
+<pupilo> esa idea la descarto totalmente
+<pupilo> solo tengo que indagar un poquito mas
+<LinuxReign> ok
+<LinuxReign> entiendo, me hubiera gustado poder ayudarte pero la verdad, estoy a ciegas man
+<pupilo> no te preocupes te lo agradesco la intecion es lo que cuenta
+<LinuxReign> no hay problema
+<pupilo> te digo si encuentro algo ok
+<LinuxReign> iwal estoy de vacaciones
+<LinuxReign> dale
+<LinuxReign> perfecto
+<LinuxReign> voy por un cigarrillo y un cafe, ya vuelvo
+<j2bv16> Buenas!
+<j2bv16> Necesito ayuda con alsa, no tengo sonido, he buscado y hecho todo lo que encontre en google
+<osinet> holas...tengo un problema... no puedo ingresar a la interfaz grafica del network manager... por consola intente ingresar nm-connection-editor pero me sale error
+<osinet> ** (nm-connection-editor:2407): WARNING **: Icon nm-device-wired missing: Error al abrir el archivo: Demasiados niveles de enlaces simbólicos
+<osinet> ** (nm-connection-editor:2407): WARNING **: Failed to initialize the UI, exiting...
+<osinet> que puede estar pasando?
+<LinuxReign> osinet, wow
+<LinuxReign> eso no lo habia visto
+<LinuxReign> probaste hace algn update?
+<osinet> o como podria ver que error mas puede estar pasando
+<LinuxReign> hacer*
+<LinuxReign> probaste removerlo con purge e instalarlo de vuelta por ejemplo?
+<osinet> lo reinstale con el synaptic
+<osinet> pero aun asi nada
+<LinuxReign> aja, yo haria sudo apt-get remove nm-connection-editor --purge
+<LinuxReign> y luego instalarlo con el synaptic a ver que tal
+<LinuxReign> no se, podria
+<LinuxReign> resolver
+<LinuxReign> _BUCKY_, cual era el prpoblema con la resolucion?
+<_BUCKY_> /msg nick set password hijoalbert
+<_BUCKY_> perdona LinuxReign
+<_BUCKY_> diem
+<_BUCKY_> me ausente...
+<_BUCKY_> dime*
+<Crashbit> _BUCKY_: te recomiendo que cambies el password de tu nick "hijoalbert" ya que los has puesto en el canal
+<_BUCKY_> no es ese
+<_BUCKY_> :P
+<_BUCKY_> era un aprueba
+<_BUCKY_> un aprueba*
+<_BUCKY_> xd
+<Crashbit> _BUCKY_: vale
+<Crashbit> mejor
+<_BUCKY_> gracias  de todos modos
+<_BUCKY_> :)
+<osinet> hola
+<osinet> talves urgue algo en la configuracion que n me di cuenta :(.. alguien sabe como puedo restaurar mi ubuntu?
+<_BUCKY_> LinuxReign,  estas ¿?
+<_BUCKY_> bueno...  marcho pues , talue !
+<osinet> hola
+<luckatoni> buenas
+<osinet> hola .. como puedo reinstalar el nm-connection-editor
+<ariel__> hola gente! que tengo que hacer para que el ubuntu me reconozca el microfono interno de mi laptop dell?
+<t4k3sh1> ariel__, que modelo es?
+<pupilo> LinuxReign,
+<VADER> hola gentee
+<VADER> hoal canall
+<rommel> Hola a todos,les cuento resolvi mi gran problema q ya les habia contado
+<rommel> termine por hacer un bakuc
+<rommel> y la macana que no me dejaba instalar nuebamente xp que lo tenia quebrado,termine por instalar seven y ubunt 10.04.
+<rommel> despues refresque por asi desirlo los repositorios y desde ahi resien pude entrar a you tube hantes me pedia actualisar adobe flas y ademas pude instalar el controlador para mi tarjeta grafica
+<rommel> sñrs
+<rommel> quisiera una ayudita porfavor
+<rommel> no puedo instalar el paquete dlj
+<rommel> pongo asi y no me deja
+<rommel> sudo apt-get install djl
+<fosco_> no conozco ese programa, estas seguro de que existe en linux?
+<rommel> si esta enu tutorial
+<rommel> es para juegos
+<fosco_> como se llama exactamente, djl o dlj?
+<rommel> http://www.glatelier.org/2010/02/djl-instala-juegos-en-linux-facilmente/
+<rommel> este es el link
+<rommel> djl
+<fosco_> pues no está en los repositorios de ubuntu
+<fosco_> tendrás que instalarlo tal como diga la guia
+<willfrand> hey, que tal amigos
+<willfrand> una ayuda con virtualbox?
+<rommel> seguro pero no lo encuentra
+<rommel> ahi te subo lo que me dise  si aver si me podes dar una mano prfavor
+<fosco_> tienes que añadir primero el repositorio plydeb
+<fosco_> está explicado en playdeb.net
+<fosco_> playdeb*
+<rommel> http://pastebin.ubuntu.com/580684/
+<rommel> esto me salio despues de pegar el segundo enlace
+<rommel> el primero salio bien
+<rommel> y como hago eso porfa
+<fosco_> ve a playdeb.net y lee las instrucciones
+<rommel> ok
+<pupilo> LinuxReign,
+<willfrand> amigos, ayuda con virtualbox
+<moshi> que ocurre?
+<rommel> fosco llegue hasta una pagina pero por mas traductor q busq esta solo en ingles
+<willfrand> resulta que instale elv irtualbox porque necesito un programa que soplo esta en windows
+<rommel> y no quiero mandarme mas macana por bajar cosas q no entinedo
+<rommel> sabrias ayudarme por ahi vos entendes mas de ingles
+<willfrand> pero ocurre lo siguiente, quiero instalar el dichoso programa, pero no puedo leer el dvd
+<willfrand> entonces no puedo acceder a la instalacion
+<willfrand> soy claro?
+<moshi> el programa te lo detecta?
+<willfrand> como hago para leer el cd o el dvd en windows 7 en virtualbox
+<moshi> osea desde el virtual box decirle que vaya expresamente a buscar al dvd
+<rommel> alguien sabria como instalar el gparter
+<willfrand> desde el virtualbox? como lo hago moshi
+<moshi> a ver, puedes hacer igual que cuando quieres montarlo con una imagen
+<ariel__> hola gente! que tengo que hacer para que el ubuntu me reconozca el microfono interno de mi laptop dell?
+<moshi> suponiendo que no tienen mal configurada la lectora y por eso no te lo lee
+<willfrand> no, normalmente puedo leer cds y dvds en la lectora, menos algunos formatos de musica y peliculas encriptadas
+<rommel> tengo otro problema en pen drive por mas que quiero eliminar su contenido no me deja borrar unas carpetas ocultas no me deja formatear me ah rrecomendado que lo haga con el gparte quien sabria algo al respecto
+<moshi> le das a almacenamiento y en donde te marque el virtual box que tienes la lectora
+<moshi> te pondra unidad anfitrion
+<moshi> y la etiqueta de las unidades
+<moshi> d: f:
+<moshi> todo eso
+<moshi> pones en la que tienes el dvd colocado
+<moshi> y con eso ya deberia llertelo
+<moshi> pero que vamos de normal eso lo hace automatico
+<willfrand> pues tengo la version 3.2.8
+<willfrand> y lo hace automatico
+<willfrand> si
+<willfrand> pero no me aparece nada en el lector
+<rommel> ya instale el gparter ahora boy a intentar borrar todo del pen drive
+<rommel> aber como me ba
+<fosco_> rommel, se llama gparted y lo tienes listo para instalar en el centro de software
+<moshi> en almacenamiento saldrá si tienes controlador ide o sata o lo que sea
+<moshi> y desde ahi lo buscas
+<willfrand> te envio un pantallazo?
+<rommel> si ya lo baje ahora como desia boy a intentar borrar todo de mi pen drive pues no me deja borrar unascarpetas ocultas por mas que entro a permisos de carpetas y nada
+<moshi> como quieras ^^
+<moshi> pero como ultimo recurso siempre puedes hacer una imagen del dvd y cargar el so desde ahi
+<seyacat> hola ubuntues, no puedo conectarme a la red en la universidad, existe muchos access points con le mismo ESSID, y me parece que al tratar de conectarse se hace un lio
+<rommel> alguien sabria como poder borrar todo el contenido de un pen drive no me deja borrar unas crpetas ocultas y me ocupa toda la capacidad
+<willfrand> moshi, yo no uso windows, pero tuve que instlarlo en el virtualbox para poder instalar el solid edge
+<willfrand> entonces, necesito que el cd me corra en windows, en el virtualbox
+<willfrand> aparece montado, pero no lo lee
+<willfrand> aunque el internet, y otras cosas al parecer si funcionan
+<willfrand> oye, otra cosita, com encuentro el lugar donde se guardan los archivos en el solid edge?
+<willfrand> donde esta mis documentos? como puedo acceder a ellos desde ubuntu?
+<moshi> si te sale montado
+<moshi> sobre la pestaña superior cuando el virtual box esta iniciado en dispositivos
+<moshi> ahi sale lo que esta montado
+<moshi> mira a ver si tiene un tick al lado
+<willfrand> entonces apago el so y vuelvo a prenderlo?
+<willfrand> no hay que hacerlo
+<willfrand> si
+<willfrand> veo el cd-dvd montado
+<moshi> sale el simbolo de correcto al lado?
+<moshi> el que parece una v
+<willfrand> ninguno tiene ese simbolo
+<moshi> pues clicka encima del dvd y si sale el simbolo reinicia
+<willfrand> donde me sale el dvd y eso, no es enlace, es texto
+<willfrand> no puedo hacerle click
+<willfrand> pues, me refiero a que no es clickeable, muy bonito, pero no se puede hacer click
+<moshi> mm que raro, juraria que en lo de dispositivos podias elegir para montar el dvd
+<moshi> rollo los usb que van asi
+<rommel> hola alguien sabria bajo que extencion poner una particion en el pendrive  para que lo recosca tanto linux como windows?
+<mimecar> fat32
+<rommel> gracias mimecar
+<rommel> mimecar que es recomendable ponerle la misma extencion a dos particiones en un pendrive o hay otra q tambien la pueda reconocer linux y windows?
+<mimecar> no tiene mucho sentido tener dos particiones en un pendrive
+<moshi> no mucho xD
+<rommel> es que aveces hay cosas q descargar en lugares q no son mu confiables y eso puede ir en una particion y cosas personales en la otra asi no se infectan
+<mimecar> un virus te puede afectar a las dos particiones
+<moshi> sip
+<rommel> a no lo sabia pense q no era asi
+<mimecar> con solo conectar el usb ya te puedes llevar virus
+<rommel> me habian dicho lo contrtario
+<rommel> entiendo
+<rommel> muchas gracias
+<moshi> hay virus muy puñeteros
+<moshi> xD
+<danny_> buenas
+<danny_> alguien usa irssi?
+<Tarrasquero> yes
+<danny_> hola Tarrasquero
+<Tarrasquero> hola
+<Tarrasquero> que te atormenta?
+<danny_> recuerdas que ayer estube haciendo lo que lcn me decia para configurarlo y con el autoligin, pero ahora que trate de entrar me aparece unable to conect
+<Tarrasquero> hmmm
+<NeoRanger> holas, pregunta: me conecte a una red cableada, me pude conectar al xchat pero no puedo navegar
+<mimecar> te filtran :P
+<renzo> hola a todos
+<NeoRanger> mimecar, puede ser, estoy en una empresa
+<NeoRanger> pero un pibe tiene su maquina igual que yo y puede navegar, tiene windows ¬¬
+<mimecar> directamente lo dudo
+<renzo> estube tratando de hacer unos cambios al escritorio dentro de los cuales me quedo algo colgado en la terminal y no puedo ejecutar nada por q sale q esta en destok como puedo hacer para que regrese a home
+<renzo> y resien cambiar de lado los botones de cierre  de ventanas
+<renzo> esto es lo que ne sale en la terminal
+<renzo> http://pastebin.ubuntu.com/580724/
+<renzo> mimecar soy rommel desd la pc de mi hermano sabrias que macana memande
+<mimecar> renzo: es normal que eso no te funcione
+<renzo> no puedo ejecutar desd la consola
+<jamesjedimaster> puedes conectarte aqui con irssi, un cliente irc en texto
+<renzo> no sale como hantes renzo@renso
+<renzo> en la terminal
+<mimecar> renzo-desktop es solo el nombre del equipo
+<mimecar> NO te afecta nada
+<renzo> entiendo
+<renzo> y porq en otra pc pegue esta linea de comandos y me cambio los botones de una y ahora no
+<mimecar> esa línea de comandos no hace nada
+<NeoRanger> mimecar, el pibe se puso en Ubuntu y ahora le pasa lo mismo que a mi
+<NeoRanger> tenes idea de como puedo solucionarlo??
+<mimecar> NeoRanger: sin cosas extras no te puedes saltar el filtrado de una red
+<renzo> sabrias como cambiar de lado los botones de ubuntu del escritorio
+<mimecar> eso está muy documentado en google
+<renzo> ok
+<renzo> esq trato de seguir un pos con esos comandos y no me deja
+<mimecar> renzo: ese comando no hace nada
+<renzo> ok buscare en otro pos
+<cool_is_cool> renzo, que pos?
+<javila> Saludos a la sala.
+<javila> Saludos a la sala.
+<NeoRanger> renzo, usa Ubuntu Tweak que con dos clicks cambias los botones de lgar
+<renzo> neoranger y como es eso
+<renzo> o comoo hago o donde esta¡?
+<javila> perdon por repetir :)
+<pupilo> LinuxReign,
+<renzo> estos comados si ban para cambiar de lado los botones de una .
+<NeoRanger> renzo, es un programita el cual podes modificar muchas cosas en Ubuntu sin tener que usar la consola
+<renzo> http://pastebin.ubuntu.com/580729/
+<NeoRanger> desde cambiar los botones hasta modificar los directorios de Ubuntu y hasta añadir repos e instalar programas
+<renzo> bueno señrs como siempre estar en esta sale es muy bueno se aprende dia a dia,by rommel
+<NeoRanger> te recomiendo bajarlo y probarlo
+<renzo> neoranger cual
+<renzo> y esta en los repositorios o hay q bajarlo aparte?
+<renzo> se puede descargar desd sinagtis??
+<NeoRanger> es un .deb
+<NeoRanger> se llama Ubuntu Tweak
+<renzo> pero me refiero si esta en en el centro de sot de ubuntu o no?
+<NeoRanger> tambien tenes uno llamado Ailurus el cual hace lo mismo pero con un poco mas de detalle
+<NeoRanger> no no, tenes que buscar el .deb
+<renzo> y estan en ingles o castellano
+<NeoRanger> renzo, castellano, dejá de hacer preguntas y probalo!!
+<NeoRanger> jajaj
+<rommel> bien ahi neoranger
+<rommel> ya me lo baje ahora donde esta
+<rommel> para querer usarlo
+<mimecar> ....
+<rommel> ya esta instalado mejor dicho
+<rommel> neoranger preguntaba por el ubuntu tweak
+<NeoRanger> rommel, aplicaciones >herramientas del sistema
+<NeoRanger> rommel, lo encontraste??
+<renzo> no nada q ver neo
+<renzo> no en esa ruta por lo menos
+<renzo> tengo 10.04
+<mimecar> lo has instalado?
+<renzo> si
+<NeoRanger> renzo, yo tambien tengo la 10.04
+<NeoRanger> y tengo el Ubuntu Tweak en Aplicaciones > Herramientas del sistema > Ubuntu Tweak
+<NeoRanger> ya vengo
+<renzo> en aplicaciones no hay ninguna solapa con herramientas
+<renzo> ok
+<NeoRanger-AW> renzo, en el menu, amigo, el menu
+<Girsob> donde esta el virtual box
+<Girsob> xD
+<NeoRanger-AW> Girsob, en el centro de software tenes la VB OSE
+<mimecar> xD
+<renzo> no nada q ver amigo
+<NeoRanger-AW> renzo, entonces no tenes Ubuntu
+<renzo> jajajajaja
+<renzo> q gracioso
+<mimecar> pregunta tonta, ¿como lo has instalado?
+<renzo> lo baje desd un servidor
+<renzo> x
+<mimecar> y que mas
+<renzo> lo instale facil por es .deb
+<renzo> y cargo bien
+<renzo> ahora no se donde esta
+<mimecar> ¿como lo has instalado?
+<renzo> para ver or q lei q se divide en 4 partes graficas en torno a todo lo que se refiere a la pc de sot y hat
+<renzo> una ves q bajo le ise doble clip al paquete y empeso a instalarse despues de pedirme contraseña
+<mimecar> pon el enlace de la web de la que te lo has descargado
+<renzo> lo q no encuentro en aplicasiones herramientas de sistema
+<renzo> ok
+<renzo> aber
+<mimecar> pon el diccionario cuando puedas
+<renzo> http://ubuntu-tweak.uptodown.com/ubuntu/descargar
+<mimecar> mala página
+<mimecar> esa no es la web oficial
+<rommel> perdon resien me aparese ahora herramientas de sistema
+<rommel> en aplicasiones
+<rommel> ak estoi
+<k-milogars> hola a todos
+<k-milogars> tengo el siguiente problema
+<rommel> gracias neo ranger
+<rommel> y mimecar
+<rommel> estaba en la otra pc
+<k-milogars> instale ubuntu 10.10 y no me da video la pantalla se queda negra
+<k-milogars> es un portatil toshiba con tarjeta de video ati
+<Katarcis> chicos por si les intereza in libro sobre seguridad GNU/linux
+<Katarcis> http://ufpr.dl.sourceforge.net/project/librosperpinan/LibrosFCLD/Libro-Seguridad-GNU-Linux-Antonio-Perpinan-2011.pdf
+<fzeta> buenas familia ;-)
+<moshi> gracias katarcis :)
+<gusan0r> Hola a todos, no me anda el microfono, alguien me puede decir como me fijo que hardware tengo y de donde podria ver de descargar un parche?
+<mimecar> ¿que versión de ubuntu tienes?
+<gusan0r> Linux gusan0r-laptop 2.6.32-28-generic #55-Ubuntu SMP Mon Jan 10 21:21:01 UTC 2011 i686 GNU/Linux
+<gusan0r> mimecar, ahi esta
+<mimecar> ¿que número de versión de ubuntu?
+<gusan0r> a no dice ahi, la 10.04
+<mimecar> ¿has puesto todas las actualizaciones?
+<gusan0r> lo comico que en versiones anteriores andaba y ahora no
+<gusan0r> sep
+<mimecar> ¿está subido el volumen del micrófono?
+<gusan0r> si, fui a Sistemas, preferencias, sonido, entrada --- > volumen 100%
+<mimecar> ¿como compruebas si funciona el microfono?
+<gusan0r> ahí mismo en esa ventana hay una barra que dice " nivel de entrada " grito y no pasa nada, le doy golpes al teclado y mueve 2 lineas
+<gusan0r> y despues desde el skype
+<gusan0r> y despues con el amsn grabando la conversacion, pero no sale nada
+<mimecar> el micrófono suele estar en el teclado en los portatiles?
+<gusan0r> ehm no se bien, pero a golpesitos sale por algun lado jajajaja
+<mimecar> sabes donde está el micrófono verdad?
+<gusan0r> no no tengo idea
+<mimecar> ...
+<gusan0r> osea, antes lo usaba y andaba,
+<gusan0r> si queres la desarmo y me fijo
+<gusan0r> jajajaja
+<mimecar> si dando golpes en el teclado se mueve la barra de la entrada de audio
+<mimecar> la tarjeta funciona
+<gusan0r> claro
+<gusan0r> pero es como que tiene el "volumen bajo"
+<gusan0r> porque no llega a detectar bien mis gritos, la verdad no tengo idea
+<gusan0r> si bajo la ultima version del alsa servirá para algo ?
+<mimecar> ubuntu no usa alsa
+<mimecar> por defecto usa pulse audio
+<gusan0r> aa
+<gusan0r> ehmm entonces creo que ahí deducimos algo
+<mimecar> prueba a subir el volumen del mezclador que usa alsa
+<gusan0r> en una distro que uso de ubuntu tiene alsa ( segun lo que tengo entendido ) y ahi me funciona
+<gusan0r> mimecar, ahi véo como se hace
+<mimecar> no me acuerdo del nombre del programa
+<erAbuelo> alsamixer
+<gusan0r> "alsa-mixer?"
+<gusan0r> eso
+<gusan0r> ahi creo que está el problema
+<gusan0r> está en 0
+<gusan0r> creo que ahí esta, lo subí pruebo y les digo
+<gusan0r> no, sigue igual uff
+<gusan0r> No definitivamente no funciona, como me puedo fijar que microfono tengo así busco los drivers, o veo como puedo hacer
+<JRamirez> Como puedo hacer para renombrar masivamente mis archivos con un numero ejemplo 001,002,003.. manteniendo la extensión?...  hasta el momento hago esto... i=0; for file in *.jpg; do mv "$file" "$(printf "%3d" "$i").jpg"; ((i++)); done
+<JRamirez> pero como seria para que saliera 001,002,003
+<mimecar> gusan0r: alsamixer tiene más controles d volumen a la derecha
+<mimecar> y tu micrófono ya funciona, no necesitas drivers
+<gusan0r> okk
+<gusan0r> ahi me sigo fijando entonces
+<gusan0r> mimecar, ya le subí a todo espero que funciones
+<gusan0r> funcione*
+<gusan0r> mimecar, no funcionó ya fueme cnase
+<gusan0r> cansé
+<erAbuelo> gusan0r: es un eeepc ?
+<gusan0r> "eeepc? "
+<erAbuelo> que ordenador es ?
+<gusan0r> notebook
+<erAbuelo> buscaste en google con tu modelo de notebook ?
+<gusan0r> erAbuelo, no, es que ya me canse, antes funcionaba de lo mas bien, no se porque no funciona ahora
+<gusan0r> erAbuelo, en otra distro funciona perfectamente
+<mimecar> gusan0r: busca bien el control de volument
+<erAbuelo> gusan0r: ok
+<mimecar> si al hacer ruido en el teclado hay señal de audio, te funciona bien
+<gusan0r> mimecar, si, es que ya dudo de que sea mera coincidencia...
+<mimecar> has comprobado los controles de volumen ocultos de alsamixer?
+<moshi> naaas
+<VADER> kepa
+<Ayuda-> Hola buenas tardes, necesito consultar sobre un problema que tengo con mi computadora hace algunos días
+<Ayuda-> Antes cuando yo instale Ubuntu, no me salía nada de nada al apagarlo
+<Ayuda-> Ahora cuando lo apago me sale una pantalla negra con varios "escritos"
+<Ayuda-> Luego empezó a fallarme el navegador (uso firefox)
+<mimecar> ¿que versión de ubuntu tienes?
+<Ayuda-> Y ahora no puedo ver videos, me dice algo sobre el "flash"
+<Ayuda-> Hola mimecar, gracias por contestar, tengo la versión 10.04
+<mimecar> ¿con todas las actualizaciones?
+<Ayuda-> No tengo nada más que actualizar mimecar, tengo todo en orden
+<mimecar> haz una captura de pantalla de la ventana que te sale al cerrar
+<Ayuda-> La verdad no soy muy experimentado en LINUX, soy nuevo, eh tratado de buscar sobre ello y no encuentro nada concreto
+<Ayuda-> Por eso eh venido aquí
+<Ayuda-> mimecar, disculpa mi ignorancia, ¿Como hago eso?
+<mimecar> haz una foto con el móvil
+<mimecar> si al poco de salir la ventana se cierra el sistema
+<Ayuda-> Bien mimecar, y lo que es respecto a el "flash"
+<Ayuda-> Para ver videos en youtube por ejemplo
+<Ayuda-> Me da erro de "El plugins de flash a fallado"
+<mimecar> ¿tienes el plugin de flash instalado?
+<_BUCKY_> alguien me puede decir donde puedo encontrar un manual del xchat  por favor ¿? , intento cambiar el color de mi texto pero no lo consigo :/
+<Ayuda-> Debería tenerlo si hace un par de días atrás nada pasaba en mi computadora
+<mimecar> _BUCKY_: en la web del programa
+<_BUCKY_> no lo he visto
+<Ayuda-> Y hoy apareció así
+<mimecar> Ayuda-: ¿que error te da flash?
+<Ayuda-> mimecar, el antes mencionado, "El plugin de flash a fallado"
+<mimecar> eso no da información
+<Ayuda-> Me lo da en la pantalla del video en este caso en la página de youtube
+<_BUCKY_> solo veo manuales de instalacion :S
+<mimecar> _BUCKY_: mira en la sección de documentación
+<_BUCKY_> voy mimecar  gracias
+<_BUCKY_> juer solo lo veo en ingles :(
+<mimecar> la web del programa es inglesa...
+<_BUCKY_> y alo veo
+<_BUCKY_> pero algun canal o algo tp  puede ser ?
+<_BUCKY_> no se ingles
+<_BUCKY_> :(
+<mimecar> usa un traductor o busca la documentación en otra web
+<cool_is_cool> bucky; aqui tienes algunos
+<cool_is_cool> http://toxin.jottit.com/xchat_themes
+<_BUCKY_> gracias cool_is_cool  , no me digas ke la configuracion de esto va por comandos  !! ¿? ... :S
+<mimecar> _BUCKY_: xchat se configura desde el menú
+<cool_is_cool> solo tienes que copiar los archivos "colors.conf" y "pevents.conf"" en la carpeta /home/$usuario/.xchat2/
+<_BUCKY_> todo eso para cambiar el color de mi texto ¿?
+<_BUCKY_> :O
+<cool_is_cool> solo el color del texto, pues vete a Configuracion->preferencias...
+<_BUCKY_> si pero del mio , el de lo sdema sesta bien como lo tengo
+<cool_is_cool> ?
+<_BUCKY_> a ver cool_is_cool  , te esplico... yo veo el testo de los demas en negro  y el ke yo escribo en gris y el fondo lo tengo en gris ke es el color ke kiero
+<_BUCKY_> kiero ver mi texto en negro tb
+<cossier> _BUCKY_, y usas xchat ?
+<_BUCKY_> y ahi en confuguracion no hay nada para cambiar el color de mi texto :S
+<_BUCKY_> si cossier
+<cool_is_cool> tiene que ser en Configuracion->Preferencias->colores, el como no lo se, vete probando
+<_BUCKY_> ahi en colores solo tengo gris el fondo de la ventana
+<_BUCKY_> :S
+<_BUCKY_> no se ke es lo ek pertenece a mi texto
+<_BUCKY_> :S
+<_BUCKY_> hola cossier  kedas saludado.. :P
+<cossier> _BUCKY_, es donde pone Primer plano !!
+<cossier> ahora el texto se volvio rojo !!!
+<_BUCKY_> ese esta en negro
+<_BUCKY_> pero yo veo mi texto en grisssss
+<_BUCKY_> :S
+<_BUCKY_> a ver... probando..
+<_BUCKY_> nada , gris
+<_BUCKY_> :(
+<_BUCKY_> y mi nick tb
+<cossier> _BUCKY_, tienes razon se cambia el color de los demas
+<alberto> Hola
+<alberto> Buenas noches.
+<_BUCKY_> :(
+<alberto> ¿Alguien sabe algo sobre cómo hacer que funcionen los instrumentos VST en Ubuntu?
+<alberto> Es que no puedo hacerlo.
+<alberto> Y veo que otros sí pueden.
+<_BUCKY_> y como narices se cambia el mioooooo !! jajaja  madreeee!!!
+<_BUCKY_> xd
+<cossier> alberto, has mirado en synaptic
+<_BUCKY_> tu usas xchat cossier  ¿?
+<cossier> _BUCKY_, si
+<_BUCKY_> y de ke color ves tu texto¿?
+<cossier> he cambiado el color del nick creo donde pone local colors
+<cossier> _BUCKY_, creo que son los ultimos
+<_BUCKY_> los ultimos ke¡?
+<_BUCKY_> local colors donde esta  cossier  ¿?
+<jvargas90> alguien sabe de php ocupo una ayudita??
+<cossier> _BUCKY_, Comnfiguración->Preferencias_>Colors
+<cossier> _BUCKY_, a mi me pone local colors
+<cossier> _BUCKY_, pero espera que aun tengo color gris
+<cossier> tambien :-(
+<_BUCKY_> jajajajajaja
+<_BUCKY_> ainssss   me rio por no llorar  xd
+<_BUCKY_> cossier,  nunca kisiste cambiarlo ¿?
+<cossier> la verdad es que no
+<_BUCKY_> mira si me nombran sale rojo  y  el nick de kien me nombra rojo
+<_BUCKY_> si hablas sin nombrarme  tu nick me sale verde fosforitooooooooooooooooo
+<_BUCKY_> jajajajaj
+<cossier> _BUCKY_, y pq no cambias el color del fond
+<cossier> fondo *
+<_BUCKY_> porke lo kiero gris
+<_BUCKY_> :P
+<cossier> a uno mas claro
+<_BUCKY_> no no no , kiero este
+<_BUCKY_> ^^
+<_BUCKY_> gris claro
+<_BUCKY_> pero mi texto negrooooooo !!!
+<cossier> pero tu ves tu texto ?
+<_BUCKY_> si pero poco
+<_BUCKY_> el tecto es mas oscurito pero poco mas
+<_BUCKY_> texto*
+<_BUCKY_> por eso lo kiero negro
+<_BUCKY_> y en configuracion avanzada .. no veo nada  :(
+<doby> bucky, vete a Configuracion->Avanzada->textos de eventos
+<alberto> cossier Me refiero a los instrumentos VST de Windows, con Wine y dssi-vst
+<_BUCKY_> doby estoy ahi
+<_BUCKY_> pero no veo nada  de como cambiar el color de mi texto
+<cossier> alberto, ni idea !!
+<_BUCKY_> hace 3 dias ke uso esto
+<_BUCKY_> :S
+<doby> pega lo que pone en "Your message"
+<_BUCKY_> a ver
+<_BUCKY_> voy
+<cossier> _BUCKY_, ya lo encontre
+<_BUCKY_> :O
+<_BUCKY_> dime comoooooooooooooooooooooo!!!!!!!!!!!!!!!!!
+<_BUCKY_> pegu eeso  doby
+<_BUCKY_> pero nada
+<_BUCKY_> debí guardarlo ¿?
+<_BUCKY_> :S
+<cossier> _BUCKY_, en colors es el penultimo cuadro de color y el ultimo es el color de nick
+<cossier> _BUCKY_, perdona donde pone local colors
+<_BUCKY_> le penultimo cuadro¿?
+<_BUCKY_> a mi m epone colors solo trankilo lo dijiste bien
+<_BUCKY_> ;)
+<_BUCKY_> pero a ke penultimo cuadro te refieres ¿?
+<_BUCKY_> linea de señalador ¿?
+<_BUCKY_> :S
+<_BUCKY_> ese es mi penultimo cuadro xd
+<cossier> _BUCKY_, te aprece una linea de cuadraditos ??
+<_BUCKY_> si con numeros
+<_BUCKY_> el penultimo el color gris
+<cossier> _BUCKY_, donde pone local colors es el penultimo !! pincha sobre el
+<_BUCKY_> te refieres a las de arriba , no¿?
+<_BUCKY_> ke me pone solo colores
+<_BUCKY_> :S
+<_BUCKY_> a ver si me aclaro perdona  cossier
+<cossier> _BUCKY_, te muestro una imagen
+<_BUCKY_> abro las preferencias y al aizkierda me voy a l apestaña colores , doy ahi y me slem  arriba dos lineas de cuadraditos de  colores y despues abajo  textos y un cuadradito de color al lado , asi lo tienes tu  tb ¿?
+<cossier> _BUCKY_, te sale esto no http://imagebin.org/143230
+<_BUCKY_> a ver
+<_BUCKY_> si  pero con otros  colores
+<renzo> Hola a todos
+<_BUCKY_> y en español
+<_BUCKY_> xd
+<cossier> _BUCKY_, de la hilera de "local colors" es el penultimo para texto y el ultimo para el color del nick
+<cossier> _BUCKY_, lo tengo en catalan por eso a lo mejor difiere
+<_BUCKY_> a ver
+<renzo> les puedo hacer una consulta pero es al respecto de windows pues e particionado mi pc
+<_BUCKY_> siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii ole ole oleeeeeeeeeeeeeeeeeeee
+<cossier> renzo, ve al canal de #windows
+<cossier> renzo, si es para ubuntu es aqui!!
+<renzo> en ubuntu no tube ningun problema al instalarlo pero con xp c que hay que instalar driver,como tendria que hacer para descargarlos solo con el modelo del mader?
+<renzo> disculpen en todo caso
+<Thedemon007> Hola alguien sabe com parchear un kernel en uso?
+<renzo> alguno de utds sabria de algun canal de windows
+<Thedemon007> para que dispositivo es el driver?
+<cossier> renzo, es para acceder de windows a Ubuntu ??
+<renzo> es para poder tener xp en mi ordenador pues hay alguna cosas como mi filmadora q no lo puedo hacer en linux por q es solo compatible con windows
+<renzo> resien le instale xp
+<_BUCKY__> hola de nuevo
+<_BUCKY__> me echaron ?=
+<_BUCKY__> :S
+<cossier> _BUCKY__, algun bot sin escrupulos
+<renzo> mi film.viene con un cd del programa de la misma y es solo compatible con windows
+<renzo> por eso en xp
+<_BUCKY__> pido disculpas  no se ke hice mal :S
+<renzo> es servi pac 3
+<doby> renzo, yo te recomendaria algun programa que busque los drivers de forma automatica, en wxp suelo usar drivermax, pero hay varios
+<cossier> renzo, cunado instalaste ubuntu antes o despues de win XP
+<cossier> cuando*
+<Thedemon007> haber conecta tu firmadora y has el comando sudo lsusb -v | grep -E '\<(Bus|iProduct|bDeviceClass|bDeviceProtocol)' 2>/dev/null
+<cossier> _BUCKY__, no si los bots son automaticos !! jejeje
+<renzo> despues pues me dijeron q lo haga asi para q arranque primero y ademas sino xp borra ubuntu si se instala segundo
+<renzo> aber espera
+<Thedemon007> y pega lo que sale en pastebin y dasel link
+<renzo> ya la traigo
+<Thedemon007> da el link
+<_BUCKY__> jeje ya esta claro , ya se como va...
+<_BUCKY__> el ultimo es para el color de  el nick propio :p
+<Thedemon007> se puede cambiar el color del nick?
+<cossier> Thedemon007, en xchat si !!
+<Thedemon007> Mmm ok yo estoy usando emphaty
+<Thedemon007> pero tambien tengo instalado xchat
+<cossier> Thedemon007, emphaty lo uso pero no rebuscado lo de los colores
+<cossier> he *
+<Souchiro> nas
+<Souchiro> alguien sabe como borrar un archivo protegido?
+<Thedemon007> le cambias los permisos
+<Souchiro> ya lo hice, pero no me deja
+<Souchiro> mas bien ia trate pero no me deja cambiar los permisos ni como root
+<Thedemon007> Souchiro intenta con este comando chmod 777 /rutadel archivo
+<Thedemon007> a es sudo chmod 777 /rutadel archivo
+<Souchiro> quiero borar una carpeta de mi memoria usb
+<Souchiro> y me manda a la fregada xD
+<_BUCKY__> esto va tomando color...  otra cosa , kisiera cambiar  la resolucion
+<Thedemon007> intenta con el comando
+<jamesjedimaster> Souchiro: sudo -rf /media/tumemoria/directorio_a_borrar
+<cossier> _BUCKY__, Sistema->Preferencias_>Pantalla
+<jamesjedimaster> Souchiro: sudo rm -rf /media/tumemoria/directorio_a_borrar
+<cossier> _BUCKY__, o monitores
+<cousteau> mucho cuidado con ese comando
+<cousteau> de hecho, yo nunca lo usaría... al menos con sudo
+<_BUCKY__> si cossier uyy  ahor ano me va el tabulador... :S
+<Souchiro> o.o
+<renzo> no puedo abrir archivos.mod
+<Souchiro> costeau tonx como le hago?
+<renzo> solo se escucha mas no se puede ver los videoas
+<cousteau> renzo, qué son los archivos .mod?
+<renzo> si
+<_BUCKY__> pero el problema ke tengo es  ke de alli lo cambio , pero reinicio  el pc y  no se me guarda la resolucion ke elijo
+<cousteau> Souchiro, sin sudo
+<renzo> en un segundo vuelvo porfa
+<Souchiro> cual?
+<Souchiro> el -rf .....
+<Thedemon007> renzo son los archivos de la camara?
+<_BUCKY__> me dijeron ke era porke mi grafica no  ceptaba esa resolucion  pero , me dijeron tb ke algo se  podria hacer
+<_BUCKY__> :S
+<Thedemon007> renzo hiciste el comando que te  dije con la firmadora conectada?
+<cousteau> ah, que no te deja sin sudo... bueno, aún así suele ser más conveniente hacer   gksudo nautilus   y borrarlo gráficamente
+<Souchiro> o.o
+<Souchiro> ya lo intente
+<jamesjedimaster> Souchiro: cousteau , puse el sudo porque puede ser que ese directorio haya quedado montado como root y no como el usuario
+<Souchiro> pero no me deja
+<_BUCKY__> sabes algo de eso cossier ¿?
+<cousteau> jamesjedimaster, aún así, creo que es mejor cambiar el propietario y hacer borrado sin sudo... es que puede ser peligroso
+<cossier> _BUCKY__, es un portatil o sobremesa ?
+<Souchiro> sigue sin poder borrarlo
+<cousteau> imagínate que se te escapa un espacio después de /media
+<Souchiro> le doy suprimir y no lo borra
+<_BUCKY__> sobremensa  mas viejo ke la  orilla de in rio
+<_BUCKY__> xd
+<Souchiro> de hecho, no  hace nada
+<renzo> y ademas no se si de dejara ver el cd de instalacion del programa de edicion de la filmadora
+<renzo> para poder ver los archivos
+<renzo> a no introduci el comando espera
+<cossier> _BUCKY__, abre una consola y pon lspci y ponlo en pastebin
+<_BUCKY__> voy
+<cossier> !paste, _BUCKY__
+<kubot> _BUCKY__: Pastebin es un servicio para pegar mucho texto sin inundar el canal, se encuentra en http://paste.ubuntu.com (asegurate de darnos la dirección de tu paste) - Ver también en el topic.
+<cossier> _BUCKY__, es para saber que chip de grafica tienes!!
+<renzo> ya copie el comando ahora?
+<renzo> queres q los pastee
+<Katarcis> Una pequeña pregunta.. Yo puedo particionar la parciticion (valga la redundancia ) donde tengo ubuntu sin que se dañe nada? y si es asi con liveCD y Gparted ?
+<Thedemon007> si pasealo
+<Thedemon007> si renzo colocalo en pastebin
+<Katarcis> es para poner debian
+<renzo> http://pastebin.ubuntu.com/580835/
+<_BUCKY__> http://pastebin.ubuntu.com/580836/
+<dabor> Katarcis, lo que se puede hacer es redimencionar y crear otro particion en el espacio vacio
+<Souchiro> o.o
+<cossier> _BUCKY__, es una grafica bastante antigua
+<Souchiro> mmm
+<Souchiro> no pude borrarlo con gksudo ...
+<cossier> _BUCKY__, quizas tengas que modificar el xorg.conf o crear uno a medida
+<_BUCKY__> juer si es lo primero ke dije... ke mi pc es mas viejo ke la orilla del rio
+<_BUCKY__> :/
+<Thedemon007> este es el idintificador de la firmadora 04f1:0008 dejame chequear
+<_BUCKY__> ademas tu para ke miras Souchiro  ?¿  ¬¬ jajajajaja
+<Katarcis> dabor, por eso.. entro por live CD cojo gparted y redimenciono la particion esta y ya
+<Katarcis> en el hueco que queda la creo
+<_BUCKY__> como hago eso cossier  ¿?
+<renzo> ok
+<cossier> _BUCKY__, yo lo hice para la Radeon 9200 y me sirvio
+<_BUCKY__> me esplicas ¿?
+<Souchiro> No se pudieron cambiar los permisos de «XPSP3SatasIntelINGLES.iso»: Error al establecer permisos: Sistema de ficheros de sólo lectura
+<Souchiro> como pude una memoria usb ser solo lectura? -.-
+<cossier> _BUCKY__, mira en /etc/X11 si hay un archivo xorg.conf
+<cossier> _BUCKY__, y que resolucion quieres ponerle ??
+<_BUCKY__> cossier,  soy nueva en esto de ubuntu , muy nueva... como llego ahoi ¿?
+<_BUCKY__> la 1024  creo ke es ..
+<cossier> _BUCKY__, desde consola cd /etc/X11
+<cossier> _BUCKY__, ls -l
+<_BUCKY__> eing¿?
+<_BUCKY__> :SD
+<cossier> _BUCKY__, tambien llamada Terminal
+<_BUCKY__> jeje
+<Thedemon007> renzo Los archivos de video creado por JVC y videocámaras Sony con una función de disco duro - con las extensiones *. moi y mod *. - no hay necesidad de convertir.  Estos son simples archivos en formato MPEG-2.
+<_BUCKY__> okis
+<_BUCKY__> xd
+<_BUCKY__> :$
+<renzo> y como puedo hacer para poder verlos en linux y ademas poder  instalar o hacer correr el disco de instalacion para la edicion y demas desde wine?
+<_BUCKY__> terminal abierta , he de poner esto ¿? ...  cd /etc/X11
+<cossier> _BUCKY__, si y luego ls -l
+<Thedemon007> renzo  Sólo cambiar el nombre de su extensión a *. mpg o *. vob y descubrir cualquier editor de vídeo.
+<_BUCKY__> con sudo o sin sudo¿?
+<renzo> aver
+<Souchiro> o.o
+<cossier> _BUCKY__, no hemos llegado alli aun !!!
+<Thedemon007> renombra los archivos despues del punto le colocas .mpg o .vob
+<Souchiro> costeau encerio use el comando gksudo nautilus y busque la carpeta de la memoria usb para borrarla
+<_BUCKY__> me han salido un monton de cosas cossier
+<Souchiro> pero no me deja
+<renzo> hay alguna forma de hacerlos todos de una ves?
+<renzo> por terminal
+<Souchiro> de hecho nisiquiera aparece el enviar a papelera
+<cossier> _BUCKY__, alguna pone xorg.conf
+<_BUCKY__> si
+<_BUCKY__> la encontre
+<_BUCKY__> si
+<Souchiro> le doy suprimir al archivo y no hace nada, ahora, si lo arrastro a la papelera simplemente me dice que no se puede borrar
+<_BUCKY__> lo pego aki¿?
+<renzo> y como puedo hacer correr el programa del cd desde windows o lo puedo poner ahun en ubuntu
+<Thedemon007> mm no se si debe de haberla pero no se que comando seria
+<renzo> ygual gracias Thedemon007
+<cossier> _BUCKY__, entonces pegalo en pastebin
+<renzo> desime sera q solo con el winw podre ver un programa en el caso q baje el cd de jvc en windows
+<renzo> wine perdon
+<cossier> _BUCKY__, el contenido !! me refiero
+<_BUCKY__> solo eso o todo¿?
+<_BUCKY__> todo ea!1 asi mejor
+<_BUCKY__> xd
+<renzo> o se puede instalar en ubuntu el cd tambien
+<renzo> por ahi cambiandole la extecion de los archivos  o algo asi por el estilo?
+<Thedemon007> renzo consegui este comando rename -v 's/\.htm$/\.html/' *.htm
+<renzo> para q es contame
+<Thedemon007> este lo que hace es renombrar de htm a html
+<_BUCKY__> http://pastebin.ubuntu.com/580837/
+<renzo> pero los archivos son .mod
+<_BUCKY__> lo del pasterbin lo aprendi ayer :P
+<_BUCKY__> pastebin*
+<cossier> _BUCKY__, instalaremos el pastebinit
+<renzo> Thedemon007:sirve tambien para los archivos .mod?
+<_BUCKY__> no lo tengo¿?
+<_BUCKY__> :S
+<cossier> _BUCKY__, sudo apt-get install pastebinit
+<_BUCKY__> pero para ke  cossier  ?¿
+<_BUCKY__> voy
+<Thedemon007> renzo creo q para tu caso seria: rename -v 's/\.mod$/\.mpg/' *.htm
+<Thedemon007> aff sorry asi no es
+<Thedemon007> rename -v 's/\.mod$/\.mpg/' *.mod
+<cossier> _BUCKY__, es un utilitario
+<renzo> desime y esta extencion tambien se puede ver en windows?
+<Thedemon007> si tambien la puedes reproducir en windows
+<_BUCKY__> pastebinit ya está en su versión más reciente.
+<_BUCKY__> :S
+<_BUCKY__> ya lo tenia¿?
+<renzo> me dise en la terminal q no existe el fichero
+<cossier> _BUCKY__, bien haz esto cat /etc/X11/xorg.conf | pastebinit
+<Thedemon007> pero primero tienes que cambiar de directorio
+<renzo> y si lo pongo en avi o mp4 ejmp se puede ver tambien?
+<_BUCKY__> http://pastebin.com/AujuWzp0
+<cossier> _BUCKY__, y pegas aqui el link que te da !!
+<renzo> a cual
+<Thedemon007> a donde estan los videos con cd
+<_BUCKY__> ese
+<renzo> y como lo haria
+<_BUCKY__> lo ves  cossier  ¿?
+<renzo> en este momento estan en mi filmadora
+<Thedemon007> escribe cd y arratra la carpeta o disco donde estan los videos
+<Thedemon007> arrastra
+<Thedemon007> y enter
+<renzo> lo del cd es un cd que biene con el programa para ver los videos en windos y editar y demas
+<_BUCKY__> cossier,  esos comandos es para ver el directorio de las cosas ¿?
+<renzo> a donde arrastro
+<Thedemon007> no escribe cd de cahnge directory
+<Thedemon007> perodon es el cd de cahange directory
+<colo> hola: tengo un modem zte w300 anda todo bien pero mediante wifi no puedo entrar al modem, alguna idea?
+<renzo> pongo cd en la terminal?
+<Thedemon007> escribelo en el terminal y arrastre la carpeta renzo
+<Thedemon007> renzo http://www.go2linux.org/rename-bulk-files-with-linux-console-command
+<Thedemon007> y este otro link http://www.ubuntu-es.org/?q=node/111568 renzo
+<_BUCKY__> cossier,   sigo aki ¿?
+<_BUCKY__> si
+<_BUCKY__> :P
+<cossier> _BUCKY__, mira esto he hecho unas modificaciones http://pastebin.com/index/AujuWzp0
+<Thedemon007> si escribe cd en el terminal y arrastra la carpeta o disco donde estan los videos
+<renzo> esta en la filmadora
+<Thedemon007> y luego has el comando rename -v 's/\.mod$/\.mpg/' *.mod
+<renzo> no se como hacerlo arrastrar hasta la terminal
+<cossier> _BUCKY__, el comando cat es para ver el contenido de un archivo
+<_BUCKY__> si pero va seguido de un etc y de otros
+<Thedemon007> mm estonces dale segundo clic a la carpeta y copiar luego en el terminal le das pegar perate
+<_BUCKY__> bueno eso dejemoslo , a ver
+<_BUCKY__> vi lo ek me pusiste
+<_BUCKY__> ke  es eso¿?
+<_BUCKY__> ke*
+<cossier> _BUCKY__, las añadiremos asi gksudo gedit /etc/X11/xorg.conf
+<_BUCKY__> vas a intentar engañar a ubuntu¿?
+<_BUCKY__> x
+<_BUCKY__> xd
+<cossier> _BUCKY__, haz un copy paste de lo que puse
+<_BUCKY__> voy
+<Thedemon007> te va a salir algo como esto en el terminal /home/usuarior/Descargas/Temas y les das enter hay deberia cambiarte el directorio
+<_BUCKY__> donde kieres ke lo pegue¿?
+<_BUCKY__> en un archivo de texto¿?
+<_BUCKY__> :S
+<Thedemon007> probaste el comando renzo?
+<renzo> http://pastebin.ubuntu.com/580841/
+<renzo> me sale eso
+<cossier> _BUCKY__, sustituyelo todo si es un archivo de texto
+<renzo> la cosa es q quiero poder editar mis videos y obio verlos tambien en ubuntu
+<Thedemon007> jajja no cuando dije perate es que te esperaras no que lo escribiera pero haora si
+<renzo> jajajajaj ta ya ves
+<cossier> renzo, prueba con kdenlive anque sea para KDE
+<renzo> despues el sonso soy yo jajajaja
+<renzo> una bromita
+<renzo> eh no te enojes
+<renzo> aber vamos de nuebo
+<Thedemon007> te indico renzo escribe cd vas a donde esta la carpetadale segundo clic a la carpeta y copiar luego en el terminal le das segundo clic y pegar
+<_BUCKY__> ya eesta en el archivo , donde kieres ke  coloke el archivo  cossier  ¿?
+<renzo> abr}
+<cossier> _BUCKY__, se debe gaurdar en /etc/X11
+<_BUCKY__> y como llego a esa carpeta ¿?
+<renzo> ya pego ahora?
+<Thedemon007> dale enter y pastea a ver si lo hiciste bien
+<cossier> _BUCKY__, no abriste el gedit  ???
+<_BUCKY__> no me dijiste nada de eso  cossier
+<_BUCKY__> :S
+<_BUCKY__> o si ¿? :S
+<cossier> _BUCKY__, te puse esto -> gksudo gedit /etc/X11/xorg.conf
+<_BUCKY__> pos no lopuse
+<_BUCKY__> perdon
+<_BUCKY__> :$
+<cossier> _BUCKY__, tenemos que ser superusuarios sino no deja
+<renzo> http://pastebin.ubuntu.com/580848/
+<renzo> no se por q no pastea todo
+<_BUCKY__> cossier,  lo ke kieres es ke sake lo de gedit y ponga lo ke tu me pusiste en pastabin
+<_BUCKY__> no¿?
+<_BUCKY__> o  solo incluir lo de pastebin.. :S
+<cossier> _BUCKY__, si con las modificaciones que hize
+<cossier> hice *
+<_BUCKY__> borro y  pongo...
+<_BUCKY__> si¿?
+<renzo> no hay drama si no se puede hare uno por uno
+<_BUCKY__> cossier,  no em kedo claro si he de borrar ...
+<_BUCKY__> me*
+<Thedemon007> ok renzo haora si el comando que debes de hacer para cambiar de directorio es:  cd /media/EVERIO_HDD/SD_VIDEO/PRG00A/
+<cossier> _BUCKY__, si puedes sobreescribir!!
+<renzo> ponelo denuebo
+<renzo> porfa
+<_BUCKY__> vale
+<renzo> termina en a
+<renzo> o en /
+<Thedemon007> cd d /media/EVERIO_HDD/SD_VIDEO/PRG00A
+<Thedemon007> en a
+<renzo> ok
+<renzo> abr
+<_BUCKY__> ya esta cossier
+<Thedemon007> renzo le das enter y luego has el comando: rename -v 's/\.mod$/\.mpg/' *.mod
+<cossier> _BUCKY__, lo guardeaste ???
+<_BUCKY__> deberia de haber guardao lo otro ... ains :(
+<renzo> no existe el fichero
+<renzo> o con sudo primero
+<_BUCKY__> lo nuevo ¿?
+<_BUCKY__> si cerrado
+<Thedemon007> no con sudo no
+<renzo> pongo todo ygual
+<_BUCKY__> y guardado
+<Thedemon007> te di el comando mal es asi
+<cossier> _BUCKY__, no creo que pase nada grave
+<renzo> o primero cd  y depues lo demas
+<renzo> abr
+<Thedemon007> cd /media/EVERIO_HDD/SD_VIDEO/PRG00A
+<_BUCKY__> no me conoces aun cossier
+<_BUCKY__> jeje
+<_BUCKY__> soy maria problemas xd
+<_BUCKY__> bueno
+<_BUCKY__> ahora ke
+<cossier> _BUCKY__, si lo guardaste tal y como estaba puesto solo hace falta reiniciar el ordenata
+<_BUCKY__> reinicio ¿?  :P (como todo se soliciona reiniciando.. xd
+<renzo> http://pastebin.ubuntu.com/580851/
+<_BUCKY__> :O acerte
+<cossier> _BUCKY__, ojo
+<_BUCKY__> jajja
+<_BUCKY__> ke
+<_BUCKY__> ya eata aki la pega....:(
+<Thedemon007> esta vez lo hiciste bien renzo
+<_BUCKY__> esta *
+<Thedemon007> haora has el comando: rename -v 's/\.mod$/\.mpg/' *.mod
+<cossier> _BUCKY__, tambien puedes mirar si da errores en /var/log/Xorg.0.log
+<renzo> y donde se supone q les acmbia la estencion en otra carpeta?la crea a aparte?
+<Thedemon007> renzo haora has el comando: rename -v 's/\.mod$/\.mpg/' *.mod
+<renzo> no existe
+<_BUCKY__> bash: /var/log/Xorg.0.log: Permiso denegado
+<Thedemon007> para cambiar la extansion
+<_BUCKY__> :S
+<renzo> dis q no existe
+<cossier> _BUCKY__, abre Terminal y pon cat /var/log/Xorg.0.log | pastebinit
+<cossier> _BUCKY__, espera que lo pruebo yo tambien
+<_BUCKY__> http://pastebin.com/Gu2TEbdP
+<Thedemon007> mm que raro intenta con este: mv *.modmv mv *.mpg
+<Thedemon007> no pera
+<Thedemon007> renzo este: mv *.mod *.mpg
+<renzo> nada no existe

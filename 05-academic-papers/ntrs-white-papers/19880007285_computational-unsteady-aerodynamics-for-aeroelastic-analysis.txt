@@ -1,0 +1,1346 @@
+---
+title: Computational unsteady aerodynamics for aeroelastic analysis
+collection: 05-academic-papers/ntrs-white-papers
+source: NASA Technical Reports Server (NTRS) — accession 19880007285
+source_url: https://ntrs.nasa.gov/citations/19880007285
+rights: Public-use permitted by the US government for its records; no third-party material (NTRS copyright determination GOV_PUBLIC_USE_PERMITTED)
+distribution: PUBLIC
+sti_type: TECHNICAL_MEMORANDUM
+center: Legacy CDMS
+publication_date: 2019-06-24
+retrieved: 2026-09-22
+sha256: bc313c4d71fb2f91599a0110b3758a9af07d8fcee7b504064e09e69615e710e9
+pages: 29
+words: 5578
+cv_look_pages: 6
+---
+
+     NASA Technical Memorandum
+
+
+
+      COMPUTATIONAL UNSTEADY AERODYNAMICS FOR
+      AEROELASTIC ANALYSIS
+
+
+
+
+     WOODROW WHITLOW, JR.
+
+
+     4 L A S B - T B - 1005 23) CCBFUTA!llCLAL UNSTEADY                     ma-16668
+     AEBGDYNABICS FOE B E R O E L A S I I C A L A L Y S I S
+     (hASA)           29 p                               CSCL 018
+                                                                            Unclas
+                                                                    G3/02   0123307
+
+
+
+
+     DECEMBER 1987
+
+
+.
+    National Aeronautics and
+    Space Adrntnistratlon
+    Langley Research Center
+    Hampton,Virginia 23665-5225
+     COMPUTATIONAL UNSTEADY AERODYNAMICS FOR AEROELASTIC ANALYSIS
+
+                                   Woodrow Whitlow, Jr.
+                                NASA Langley Research Center
+                               Hampton, V i r g i n i a 23665-5225
+
+
+
+                                            Summarv
+
+    This report summarizes the status of computational unsteady aerodynamics methods for
+
+aeroelastic analysis and makes recommendations for future research activities.         The flight
+
+conditions for which various types of flows exist are described and the aeroelastic phenomena
+
+that can occur in those flight regimes are discussed. Some important aeroelastic problems of
+
+current interest are described, and the aerodynamic methods needed to analyze them are
+
+presented.     The capabilities and limitations of existing unsteady aerodynamics methods are
+
+discussed.     Computer resources required to perform aeroelastic analysis of various flight
+
+vehicle configurations are presented.     Recommendations for future research are made, and
+
+schedules for completion of proposed research tasks are presented.
+
+
+
+                                          J n t r o m
+
+    Computational aerodynamics is rapidly becoming an important tool in the design of flight
+
+vehicles.    It allows computer simulation of flows past configurations that previously would have
+
+required large budget and personnel resources to determine the flows experimentally.            In
+
+addition, many design options can be examined using computational methods. To model the flow
+
+past flight vehicles, today's engineer must choose from a range of options based upon available
+
+computer capacity and budget.       The choices range from the calculation of the flow past a
+
+relatively complete description of the entire aircraft using lower order approximations to the
+
+equations of fluid flow to the calculation of the flow past less complex representations of the
+
+vehicle, such as the wing only, using higher order flow equations.
+    Flow models can be grouped into lower order potential flow models--full potential (FP) and
+
+transonic small disturbance (TSD) potential--and the higher order models typified by various
+
+approximations to the Navier-Stokes equations--the parabolized, thin layer, and Reynolds
+
+averaged approximations. The intermediate Euler equations flow model is obtained from the
+
+Navier-Stokes equations by neglecting the viscous terms.
+
+   This paper presents some current aeroelastic problems of interest to the aerospace
+
+community and the computational aerodynamics methods available for simulating flow fields and
+
+analyzing aeroelastic phenomena. This is followed by a discussion of the capabilities of existing
+
+methods and the computer resources required to use those methods for aeroelastic analysis.
+
+Finally, recommendations for future research directions and schedules for completion of
+
+proposed tasks are presented.
+
+
+
+                                Current Aeroelastic Problem3
+
+   This section describes some of the aeroelastic phenomena that have been observed on modern
+
+aircraft and the nature of the flows involved. The aerodynamic methods necessary to analyze
+
+each type of aeroelastic response are discussed.
+
+   Figure 1 shows the characteristics of attached, mixed, and separated flow for complete
+
+aircraft at free stream Mach numbers between 0 and 2.0. In region I, the flow is predominantly
+
+attached. To obtain optimum performance and to avoid the drag penalty associated with flow
+
+separation, design cruise conditions for aircraft typically are located in region I, near the
+
+boundary of region II (mixed flow).
+
+   As speed andlor angle of attack increases, a transition region of mixed flow (region II of
+
+fig. 1) is encountered. For rigid structures, this region is typified by the onset of localized
+
+regions of flow separation which may exhibit significant aerodynamic unsteadiness.           For
+
+
+
+
+                                                   2
+            realistic, flexible structures, the aeroelastic response of the structure interacts with the
+
+            airflow to induce much more complicated situations. Structural vibrations can cause the flow to
+I   '
+            alternately separate and reattach at flow conditions where a rigid structure would support
+        b
+            attached flow.   The associated highly unsteady aerodynamic loading can interact with the
+
+            structural dynamic response to cause unusual aeroelastic phenomena which may restrict the
+
+            vehicle flight envelope.
+
+                With further speed and/or angle of attack increases which are encountered under
+
+            maneuvering conditions, stable separated flow conditions emerge (region I l l of fig. 1). Leading-
+
+            edge vortex flows and shock-induced separated flows are of this nature. At still higher angles of
+
+            attack, vortex bursting is encountered.     Within such regions, the flow is highly unsteady,
+
+            requiring careful attention to turbulence modeling.
+
+                While predictive methods for attached flows are reasonably well developed, the picket fence
+
+            in fig. 1 emphasizes the difficulty in predicting aeroelastic phenomena in the mixed and
+
+            separated flow regions.      It also symbolizes novel features that are being encountered in
+
+            transonic flutter testing.   Modern high performance aircraft are capable of maneuvering at
+
+            transonic speeds, leading to a much enlarged parameter space for flutter clearance. Wingstore
+
+            loading, speed, angle of attack, wing shape, altitude and wing sweep all must be considered, and
+
+            the traditional flutter boundary parameterization of dynamic pressure at flutter versus Mach
+
+            number may need to be augmented to adequately describe aeroelastic stability boundaries. For
+
+            instance, flutter tests give some indication that these additional parameters affect the detailed
+
+            aeroelastic stability condition near the flutter boundary. Thus, the pickets of the fence in fig. 1
+
+            represent isolated regions of instability and low damping that may be encountered.
+
+
+
+
+                                                             3
+                                  Kev Aeroelastic Problems
+    The mathematical formulation that is used to model the flow is determined by the problem
+
+that is to be solved. The flow may be modeled using a velocity potential equation, the Euler
+
+equations, or a form of the Navier-Stokes equations. Problems of current interest include (1)
+
+aircraft operating at maximum speed at design conditions, (2) aircraft operating in
+
+attached/mildly separated flow conditions, and (3) maneuvering, high-performance aircraft
+
+where vortex/shock-induced separated flows at high dynamic pressures define the flutter-
+
+critical conditions.
+
+    To impact the design of modern aircraft, new methods should provide accurate predictions of
+
+nonclassical flutter features such as those observed near the edge of the flutter envelope, and
+
+vortex flow interactions with vertical tails which severely limit structural lifetime.   These
+
+methods also should provide a means for modeling the effects of active controls. Enhancing the
+
+computational aeroelastic analysis capability will result in opportunities to examine key
+
+aeroelastic problems, including the minimum in flutter boundaries usually observed at
+
+transonic speeds (the transonic "flutter dip"), the DAST ARW-2 nonclassical aeroelastic
+
+response, wing/store limit amplitude flutter, vortex induced oscillations of the B-1 wing, and
+
+vertical tail buffet on twin-tailed fighters.
+
+    Figure 2 shows a traditional flutter boundary of dynamic pressure at flutter versus Mach
+
+number. The boundary tends to decrease with increasing Mach number for subsonic speeds,
+
+reaching a minimum in the transonic speed range, followed by a rapid increase.            Such
+
+boundaries are usually established for straight and level, trimmed flight conditions.      The
+
+boundary shown in fig. 2 represents "hard" flutter conditions typified by divergent structural
+
+oscillations that lead to structural failure.   For subsonic speeds, attached flow conditions
+
+prevail (region I, fig. 1) and linear aerodynamic methods have been used quite successfully. As
+
+
+
+
+                                                 4
+speed increases into the transonic regime, the flutter boundary deviates from that predicted
+
+with linear methods, which can become unconsewative. The minimum of the flutter boundary
+
+is associated with the formation of shock waves and the onset of flow separation, typical of flow
+
+in region II. This minimum is a critical condition for flutter analysis and represents a primary
+
+challenge for computational aeroelastic analysis. A key question is the level of flow model
+
+required to predict this minimum flutter speed accurately. It is very likely that many cases
+
+may be treated using an inviscid flow method (Le. a potential or Euler equation code) coupled
+
+with a viscous boundary layer method.
+
+    The nonclassical aeroelastic response of the DAST ARW-2 is illustrated in fig. 3. This is a
+
+region of high dynamic response at constant Mach number encountered at dynamic pressures
+
+well below those for which flutter was predicted. The motion is of the limit-amplitude type,
+
+and the response is believed to be associated with flow separation and reattachment over the
+
+supercritical wing, again a region II flow condition. Interacted viscous/inviscid methods may
+
+treat the types of flows associated with this response and may be used in the aeroelastic
+
+analysis.
+
+    Wingktore limit amplitude flutter is experienced by modern, high performance aircraft
+
+under various loading and maneuvering conditions at transonic Mach numbers, resulting in
+
+vehicle placards on performance. The conditions for which this response occurs are shown in
+
+fig. 4.     The flow is characterized by mixed flow--region II-- over portions of the wing
+
+surfaces. Thin layer Navier-Stokes methods can model the flows characteristic of region II and
+
+may be required to calculate winglstore limit-amplitude flutter.
+
+    Vortex-induced oscillations observed on the 6-1 wing occur for high wing sweep angles,
+
+during wind-up turn maneuvers. The flow is of the type in region Ill. The instability is of the
+
+first wing bending mode type and occurs over a wide Mach number range (0.6 - 0.95) at angles
+
+
+
+
+                                                5
+of attack 7-9 degrees. The range of conditions for which this phenomenon occurs is shown in
+
+fig. 5.   A Reynolds-averaged Navier-Stokes method can model the stable, separated flows
+
+associated with this instability and may be used to calculate the vortex-induced oscillations.
+
+    Tail buffet on twin-tail fighters occurs when a vortex encounters downstream lifting
+
+surfaces, horizontal and vertical tails, causing structural fatigue.      This type of aeroelastic
+
+response occurs when aircraft operate in flows characteristic of region Ill. Figure 6 shows the
+
+operating conditions for which tail buffet occurs.        Buffet of horizontal tails can occur at
+
+intermediate angles of attack and is a result of an unburst vortex encountering a lifting surface.
+
+As angle of attack increases, the location of vortex bursting moves upstream in the wake. Loss
+
+of lift is associated with the burst location reaching the vicinity of the aircraft, and vertical tail
+
+surfaces located in such regions experience severe dynamic loads. Typically, this occurs at
+
+angles of attack of approximately 30 degrees. Navier-Stokes methods with more sophisticated
+
+turbulence models than are currently available are needed to analyze these responses. This is
+
+because the burst vortex phenomenon involves massive separation and large-scale unsteadiness.
+
+Current turbulence models are not valid for such flows.
+
+
+
+                                     Aerodvnamic Methods
+
+    Various aerodynamic methods are available to analyze the aeroelastic phenomena discussed
+
+above. They range from potential flow codes for complete aircraft to Navier-Stokes methods for
+
+airfoils and wings. Table I provides a summary of current research activities in computational
+
+unsteady aerodynamics at the NASA Langley Research Center (LaRC). The discussion below
+
+details the methods and the types of problems to which they are applicable.
+
+
+
+
+                                                  6
+    Potential Flow Methods
+
+       These methods provide a realistic opportunity to develop design and analysis capabilities for
+
+    complete aircraft. They are applicable only to aircraft operating in attached flow (region I).
+
+    Current potential flow capability includes the XTRAN3S (ref. 1) and CAP-TSD (computational
+
+    qeroelasticity Erogram-Lransonic Small Risturbance) (ref. 2) codes.          The XTRAN3S code
+
+    solves the transonic small disturbance (TSD) potential equation and was developed for analysis
+
+    of isolated wing configurations. Extensive modifications to the code have enabled the analysis of
+
+    either wing/fuselage or winglcanard (tail) configurations. The CAP-TSD code was developed by
+
+    the Unsteady Aerodynamics Branch (UAB) at Langley and can be used for aeroelastic analysis of
+
+    complete aircraft.   As an example, ref. 2 gives the details of modeling an F-16 aircraft,
+
+    including the wing, strake, tail, fuselage, tip launcher, and tip missile.
+
+       Methods based on TSD theory are valid for thin bodies at small angles of incidence undergoing
+
+    small amplitude unsteady motions. In addition, the flow equations are derived assuming that the
+
+    free stream Mach number is near unity. Thus, full potential (FP) methods are being explored.
+
+    The state-of-the-art differencing method for calculating unsteady full potential flows was
+
+    developed by UAB personnel with two university researchers (refs. 3-5). This method is based
+
+    on differencing the flux function. It is an improvement upon previously-used methods since the
+
+    flux-differencing method (a) accurately tracks sonic conditions and requires no empirical
+
+    constants to specify the amount of artificial viscosity, (b) produces no velocity overshoots at
+
+    shock waves, allowing for larger time steps and increasing computational efficiency for
+
+    unsteady calculations, (c) produces well-defined shock waves with a maximum two point
+
+    transition between upstream and downstream states, and (d) dissipates expansion shocks,
+
+a   ruling out solutions with such nonphysical characteristics. Flux differencing was implemented
+
+
+
+
+                                                      7
+in an approximate factorization algorithm to yield a two-dimensional unsteady full potential
+
+code (ref. 5). This algorithm and the algorithm used in CAP-TSD are similar.
+
+    It has been shown that when shock waves are in flow fields modeled using potential flow
+
+methods, the calculated loads can be highly inaccurate and even multivalued (refs. 6-9). This
+
+is because the entropy generated by shock waves is not modeled in the isentropic formulation of
+
+potential flow aerodynamics. Methods have been developed to modify isentropic potential theory
+
+at the 2-D and 3-D TSD levels (refs. 8,9) and at the 2 - 0 FP (ref. 5 ) level. Calculations of
+
+attached flows with strong shocks indicate that the modified potential methods improve the
+
+accuracy of and extends the range of validity of potential flow solutions (refs. 5,8,9).       The
+
+method used in ref. 5 for 2-D FP calculations can be applied in three dimensions.
+
+
+
+ELIer/Na vier-Stokes      Methods
+
+   Navier-Stokes methods are needed to analyze aeroelastic phenomena that occur in mildly
+
+separated (region 11) and fully separated flows (region 111). Steady flow codes have been
+
+developed by the Analytical Methods Branch at Langley. The CFL2D code (ref.10) is used for
+
+2-D flows, and the CFL3D code (ref. 11) is used in three dimensions. The CFL2D and C F U D
+
+codes are the most efficient and stable of existing codes for solving the Navier-Stokes equations.
+
+These codes use upwind differencing with flux-vector splitting to achieve unconditionally stable
+
+algorithms.   Solutions of the Euler equations are obtained from the Navier-Stokes codes by
+
+neglecting the viscous terms. Although viscous effects are neglected, which limits applicability
+
+to region I, the Euler equations can accurately model flows containing curved shock waves and
+
+vorticity convection.   Recently, the CFL2D and CFL3D codes were modified to allow the
+
+calculation of time-accurate unsteady solutions.    Euler calculations for oscillating airfoils and
+
+
+
+
+                                                8
+    wings have been obtained (ref. 12). These unsteady codes are available to be used in aeroelastic
+
+    analysis.
+I
+
+
+
+    Interacted Viscous /Inviscid Methods
+
+        Since inviscid flow methods--potential and Euler--are limited to the attached flow regime,
+
+    it is necessary to interact the solutions with viscous boundary layer methods to allow analysis
+
+    of mildly separated flows. Coupling viscous boundary layer methods with inviscid flow codes
+
+    results in a capability for more accurately resolving some aeroelastic phenomena.              In
+
+    particular, accurate definition of the transonic "flutter dip" and calculation of the nonclassical
+
+    aeroelastic response observed for the DAST ARW-2 are among the problems that may be treated
+
+    with this capability. Available boundary layer methods include one with which mildly separated
+
+    flows can be modeled (ref. 13). This method has been tested, in a quasi-steady manner, in the
+
+    2-D unsteady TSD code XTRAN2L (ref. 14). Implementation in CAP-TSD, in a quasi-steady,
+
+    2-D strip fashion, is underway. These methods also can be coupled with full potential and Euler
+
+    methods. Coupling Euler and viscous methods provides a means for calculating separated flows,
+
+    for some cases, as well as attached and mildly separated flows. For some cases, it may be
+
+    necessary for a vortex tracking method to be coupled with the flow solver.
+
+        A contracted effort supported by UAB to develop a finite difference computer code for solving
+
+    the unsteady 3-D boundary layer equations is nearing completion. When complete, it will
+
+    provide a 3-D viscous boundary layer method (ref. 15) that is more accurate than those
+
+    currently available.
+
+
+
+0   Vortex Flow Methods
+
+b      The development of methods for treating leading edge vortex flows is being supported by UAB
+
+
+
+
+                                                    9
+with a university grant. A hybrid vortex method (ref. 16) that can be used to predict vortex
+
+flows arising from leading edge separation on wings at high angles of attack has been developed.
+
+In this method, the full potential equation is solved over most of the flow field using integral
+
+equation methods. Regions of the flow containing strong shock waves or vortices are treated by
+
+solving the Euler equations.
+
+   Euler methods may be used for the analysis of vortex flows arising from separation at sharp
+
+edged wings at moderate angles of attack. In order to predict the separation line on round-edged
+
+wings, solutions of the Navier-Stokes equations are required. Research in these areas is being
+
+pursued under a university grant supported by UAB (ref. 16).
+
+
+
+                               Cornmiter Resource Reauirements
+
+   This section discusses the computer resources required to analyze aeroelastic phenomena
+
+using various aerodynamic methods. The resources required for analysis of a complete aircraft
+
+and a wing/body/canard configuration are presented.
+
+   The computer resources required to calculate a single flutter point for a complete aircraft
+
+using TSD and Navier-Stokes methods are shown in Table 11.         The required resources are
+
+presented as central processing unit (CPU) time on the Control Data Corporation VPS-32.
+
+Required CPU times are obtained assuming that a flutter point can be determined by calculating
+
+a steady, loaded condition and three aeroelastic responses at varying dynamic pressures to
+
+determine neutral stability and that the steady condition and each response can be calculated in
+
+1000 time steps. The time for the TSD calculation is obtained using the computation speed for
+
+actual CAP-TSD calculations--2.7 microseconds per grid point per time step. This works out
+
+to 2.3 hours of CPU time per flutter point. This problem requires approximately 30 million of
+
+the 32 million words of memory available with the VPS-32.         When calculating symmetric
+
+
+
+
+                                               10
+aoroolaslic responses, a half spar1 modo1 can bo used, with a proportional decrease in required
+
+memory and CPU time. For run times of this length, turnaround times on the VPS-32 can be
+
+expected to be quite long. Thus attention to ways of automating the calculation of flutter points
+
+is needed. One such method has been developed at UAB and implemented with a 2-0 TSD method
+
+(ref. 17). Use of a FP method would increase the computer resource requirements by 50-100
+
+percent, while Euler methods are approximately 2-5 times more expensive than FP methods.
+
+The time for the Navier-Stokes analysis in Table II is calculated from the following relationship
+
+
+
+                 TIME = (GRID PTS) X        OPS        X (ITER)/(OPS/SEC)
+
+                                       (GRID PTS X ITER)
+
+
+
+Computer speeds of 100 million floating point operations per second (MFLOPS) and 1000
+
+operations per grid point per time step are assumed. For Reynolds number of 10 million, 77.8
+
+hours of VPS-32 time is required to calculate a single flutter point.        This points out that
+
+routine aeroelastic analysis of complex configurations using Navier-Stokes aerodynamics is not
+
+feasible using the VPS-32.
+
+       Table Ill shows the CPU times required to calculate a flutter boundary for a
+
+wing/body/canard (tail) configuration with increasingly complex aerodynamic methods.          The
+
+boundary is assumed to consist of flutter points at ten Mach numbers with each point requiring
+
+the calculation of a steady, loaded condition and three aeroelastic responses. The steady condition
+
+and each response can be calculated in 1000 time steps. The computation speed on the VPS-32
+
+is assumed to be 100 MFLOPS, and that on the NAS is taken to be 250 MFLOPS. Computational
+
+grids for the TSD, full potential, and Euler calculations are assumed to have 750 000 points,
+
+and its estimated that a grid with 14.5 million points is required for the Navier-Stokes
+
+
+
+
+                                                  11
+calculations.   Also, it is assumed that the TSD calculations require 200 operations per grid
+
+point per time step, the full potential calculations require 300 operations per grid point per
+
+time step, the Euler calculations require 600 operations per grid point per time step, and the
+
+Navier-Stokes calculations require 1000 operations per grid point per time step.     The times
+
+shown for the TSD and full potential calculations are 180 percent of the inviscid flow times.
+
+The 80 percent increase in run time (compared to inviscid calculations) has been observed for
+
+potential flow coupled with boundary layer methods (ref. 13).      Coupling a boundary layer
+
+method with an Euler solution increases the required CPU time by approximately 30 percent.
+
+Thus the times shown in Table Ill for the Euler solutions are 1.3 times the inviscid Euler
+
+requirements.    Because of the differences in the multiplicative factors--l.8 versus 1.3-4he
+
+ratio of required times for Euler and TSD solutions decreases. The TSD method with boundary
+
+layer can be used for problems in region I and for some problems in region II. Using this flow
+
+model, 30 hours and 12 hours on the VPS-32 and NAS, respectively, are required to define a
+
+flutter boundary.   Full potential with boundary layer also can be used in regions I and It.
+
+Estimated CPU requirements are 45 hours on the VPS-32 and 18 hours on NAS.             An Euler
+
+method with viscous modeling can be used in regions I and II and for some problems in region Ill.
+
+Sixty-five hours of VPS-32 time and 26 hours of NAS time are required to define the flutter
+
+boundary using this flow model. Navier-Stokes methods can be used in regions II and 111.     At a
+
+Reynolds number of 100 million, 1611 hours on the VPS-32 and 644 hours on NAS are
+
+required to calculate the flutter boundary. Sufficient experience with NAS has not been obtained
+
+to make a judgement on turnaround time, but it is expected to be significantly better than that
+
+experienced with the VPS-32.       However, for the simplest of flow models, the computer
+
+requirements will not allow routine analysis of complex aircraft configurations.           Future
+
+
+
+
+                                               12
+generation supercomputers are required to predict aeroelastic responses of complex
+
+configurations.
+
+
+
+                                      Recommendations
+
+   The development of computational aeroelastic methods should proceed on two fronts--at the
+
+Euler/Navier-Stokes level and at the potential flow level. The CFL2D and CFL3D codes for
+
+solving the unsteady 2-D and 3-D EuleVNavier-Stokes equations are available in the NASA
+
+Langley Computational Fluid Dynamics Laboratory. The CFL2D code (Navier-Stokes option)
+
+presently is being used to correlate with unsteady pressure data measured at transonic speeds,
+
+cryogenic temperatures, and Reynolds numbers up to 35 million (ref. 18). Results from the
+
+unsteady CFL3D code (Euler option) are being compared with results from unsteady TSD codes.
+
+
+
+RECOMMENDATION:            INCORPORATE THE AEROELASTIC ANALYSIS METHODS
+
+                           INTO AV AI LABLE EULER/NAVI ER-STOKES CODES.
+
+
+
+   Since the aerodynamic codes are available, this effort should proceed immediately. This will
+
+allow analysis of some aeroelastic phenomena where vortex and separated (mixed) flows are
+
+important.    Such problems of current interest include the DAST ARW-2 nonclassical flutter
+
+response, wingktore limit amplitude flutter, and B-1 vortex-induced oscillations.     These will
+
+be limitations of the resulting method. One of the most important is the limitation of turbulence
+
+models.      Present turbulence models yield poor results for flows in which 3-D effects are
+
+important and do not do a good job in regions of massive separation, large-scale unsteadiness,
+
+and transition from laminar to turbulent flow.         Aeroelasticians are dependent upon
+
+aerodynamicists to develop turbulence models that are valid in these regions.       Until this is
+
+
+
+
+                                                13
+accomplished, aeroelastic phenomena such as those due to vortex bursting cannot be modeled
+
+accurately using existing Navier-Stokes methods.        Problems of current interest that fall into
+
+this category include vertical tail buffet of twin-tail fighters.
+
+    Euler/Navier-Stokes codes currently are too expensive to use for routine aeroelastic
+
+analysis.   For a large class of problems, potential flow or potential flow/boundary layer is
+
+adequate. An effort is needed to determine when the Euler/Navier-Stokesmethods are needed.
+
+The only way to accomplish this is to construct a full potential code for evaluation purposes.
+
+
+
+RECOMMENDATION:            DEVELOP AN AEROELASTIC ANALYSIS CAPABILITY BASED
+
+                           ON THE FULL POTENTIAL FLOW EQUATIONS.
+
+
+
+   A logical step is to extend the FP method discussed above to three dimensions. It would be an
+
+improvement upon TSD methods because of improved accuracy of the calculated aerodynamic
+
+loads. Full Potential methods can be used for analysis of thick, blunt bodies such as blended
+
+wing/fuselage configurations that are characteristic of Advanced Technology Fighters. Because
+
+grids used in unsteady FP methods can follow the vehicle motion, body boundary conditions are
+
+applied at the instantaneous surface locations. In TSD methods, the boundary conditions are
+
+applied on mean surfaces that must not be much different than the actual surfaces. Thus, FP
+
+methods should be useful in predicting aeroelastic responses that involve larger amplitude
+
+motions.
+
+    This should be done by developing a CAP-FP code that, initially, treats isolated wings. The
+
+resulting code can be used to evaluate the advantages of FP over TSD methods without developing
+
+a complete aircraft code. If it is determined that those advantages warrant further development
+
+of FP methods, a code for complex configurations should be developed. This capability should be
+
+
+
+
+                                                  14
+    developed in conjunction with the development of Euler/Navier-Stokes aeroelastic analysis
+
+    capability.
+
+
+
+    RECOMMENDATION:            COMPLETE DEVELOPMENT OF TRANSONIC SMALL
+
+                               DISTURBANCE CODE FOR COMPLETE VEHICLE AEROELASTIC
+
+                               ANALYSIS.
+
+
+
+        This code will provide the first capability for complete vehicle computational aeroelastic
+
+    analysis. The initial goal should be to use the TSD code for analysis of vehicles in level flight at
+
+    maximum speed. At such conditions, aircraft operate in attached flow (region I) or attached
+
+    flow with mildly separated regions (region 11).
+
+       The TSD and FP methods should be augmented by including nonisentropic effects. In addition,
+
+    the inviscid flow methods (potential and Euler) should be coupled with direct and inverse
+
+    boundary layer methods.
+
+       A list of activities directed at accomplishing these recommendations is shown in Table IV.
+
+    Correlation of CFL2D with transonic cryogenic data is underway. This will serve to validate
+
+    this higher equation level code for unsteady flow about oscillating airfoils. In parallel with this
+
+    effort, initial calculation of flutter of an isolated wing using Navier-Stokes aerodynamics is
+
+    proceeding.   In addition, a full potential code for the analysis of isolated wings is under
+
+    development which will be used to evaluate the utility of such a code for more complex
+
+    configurations.   The initial version of CAP-TSD (Version 1.O) including nonisentropic and
+
+    vorticity corrections is available, and a version with viscous boundary layer modeling
+3
+    (Version 2.0) is under development.
+
+
+
+
+                                                      15
+                                         Conclusions
+
+    The status of computational unsteady aerodynamics methods for aeroelastic analysis is
+
+summarized and recommendations for future research activities are made.             Aeroelastic
+
+problems of current interest are discussed. These include (a) the minimum flutter speed, (b)
+
+the nonclassical aeroelastic response of the DAST ARW-2, (c) wing/store limit amplitude
+
+flutter, (d) vortex-induced oscillations on the B-1 wing, and (e) tail buffet of twin-tail
+
+fighters. The aerodynamic methods available to analyze various aeroelastic phenomena and the
+
+computer requirements to use those methods are discussed. The requirements for aeroelastic
+
+analysis of complex configurations using even relatively simple flow models are quite
+
+restrictive.   Recommendations for future research activities include (a) incorporating
+
+aeroelastic analysis methods into available EulerINavier-Stokes codes, (b) developing a pilot
+
+full potential code, and (c) completing development of a transonic small disturbance code for
+
+complete vehicle aeroelastic analysis.
+
+
+
+                                         References
+
+
+    1 . Borland, C. J.; and Rizzetta, D. P.: Nonlinear Transonic Flutter Analysis, AIAA Journal,
+VOI. 20, NO. 11, pp. 1606-1615, 1982.
+
+   2. Batina, John T.; Seidel, David A.; Bland, Samuel R.; and Bennett, Robert M.: Unsteady
+Transonic Flow Calculations for Realistic Aircraft Configurations, AlAA 87-0850, 1987.
+
+    3. Osher, S.; Hafez, M.; and Whitlow, W., Jr.:             Entropy Condition Satisfying
+Approximations for the Full Potential Equation of Transonic Flow, Mathematics of Computation,
+VOI. 44, NO. 169, pp. 1-30, 1985.
+
+    4 . Hafez, M.; Whitlow, W., Jr.; and Osher, S.:    Improved Finite Difference Schemes for
+Transonic Flow Calculations, AIAA 84-0092, 1984.
+
+   5. Whitlow, Woodrow, Jr.; Hafez, Mohamed M.; and Osher, Stanley, J.: An Entropy                 c
+
+Correction Method for Unsteady Full Potential Flows with Strong Shocks, NASA TM 87769,
+1986.
+
+
+
+
+                                               16
+   6 . Steinhoff, John; and Jameson, Antony: Multiple Solutions of the Transonic Potential
+Flow Equation, AlAA Journal, Vol. 20, No.11, pp. 1521-1525, 1982.
+
+   7 . Salas, M. D.; and Gumbert, C. R.:     Breakdown of the Conservative Potential Equation,
+AlAA 85-0367. 1985.
+
+    8 . Fuglsang, Dennis F.; and Williams, Marc H.: Non-Isentropic Unsteady Transonic Small
+Disturbance Theory, AlAA 85-0600, 1985.
+
+   9 . Gibbons, M. D.; Whitlow, W., Jr.; and Williams, M. H.: Nonisentropic Unsteady Three
+Dimensional Small Disturbance Potential Theory, AlAA 86-0863, 1986.
+
+    1 0. Rumsey, C. L.: Time-Dependent Navier-Stokes Computations of Separated Flows over
+Airfoils, AlAA 85-1684, 1985.
+
+   1 1 . Thomas, J. L.; Taylor, S. L.; and Anderson, W. K.:Navier-Stokes Computations of
+Vortical Flows over Low Aspect Ratio Wings, AlAA 87-0207, 1987.
+
+   1 2 . Anderson, W. Kyle; Thomas, James L.; and Rumsey, Christopher L.: Extension and
+Applications of Flux-Vector Splitting to Unsteady Calculations on Dynamic Meshes, AIAA 87-
+1152-CP. 1987.
+
+   1 3 . Howlett, J. T.:
+                       Efficient Self-Consistent Viscous-Inviscid Solutions for Unsteady
+Transonic Flow, AlAA 85-0482, 1985.
+
+  1 4 . Whitlow, Woodrow, Jr.: XTRAN2L: A Program for Solving the General-Frequency
+Unsteady Transonic Small Disturbance Equation, NASA TM 85723, 1983.
+
+   15.Weinberg, Bernard C.; and Shamroth, Stephen J.: Three-Dimensional Unsteady Viscous
+Flow Analysis Over Airfoil Sections, NASA CR 172368, 1984.
+
+   1 6 . Kandil, 0. A.; Chuang, A.; and Chu, L.-C.: Finite-Volume and Integral-Equation
+Techniques for Transonic and Supersonic Vortex-Dominated Flows, ICAS-86-1.5.4, 1986.
+
+   17. Gallman, J. W.; Batina, J. T.; and Yang, T. Y.:       A Computational Transonic Flutter
+Boundary Tracking Procedure, NASA TM 87708, 1986.
+
+   1 8 . Hess, Robert W.; Seidel, David A.; Igoe, William B.; and Lawing, Pierce L.: Highlights of
+Unsteady Pressure Tests on a 14 Percent Supercritical Airfoil at High Reynolds Number,
+Transonic Condition, AIAA 87-0035, 1987.
+
+
+
+
+                                                17
+u,
+0    X
+5
+a
+z
+*n
+0
+U
+W
+a    X
+>
+n
+a
+W
+I-
+m
+z
+3
+J
+a
+z
+0
+F    X
+a
+I-
+3
+
+0
+0
+z
+I
+
+
+
+
+u,
+W
+F
+3
+F
+0
+a
+0
+U
+CU
+I.
+I-
+z
+W
+U
+U
+3
+0
+-
+W
+J        I   L   L   L   I
+m
+a
+I-       I   1
+I-
+-
+Z
+-                   U
+0                   U
+n                   co
+U                   t-
+W
+I-                  t-
+I-
+3
+A
+LL
+W
+
+
+U    i=
+W    z
+I-
+W
+     5
+     n         H
+n
+     U         t-   O
+0    W
+I-   c         0    t-
+
+                                   cn
+                                    n
+                    cn
+                    W              0
+                                   A
+                                   LL
+                                   E
+                                   0
+                                   0
+          J                        F
+          W
+          P                        LL
+          0                        0
+          z                        n
+                                   W
+          0    n                   W
+               cn                  a
+               I-                  cn
+                              v)
+                              W
+                              v)
+                              a
+                              0
+                              A
+          z
+               ta   t
+                    a
+                              a
+                              3
+          0    U    U         I-
+          F    0    0         o
+          a    U    U         a
+          U    z    z         z
+                                   cn
+          =I
+          (3   W
+               I-
+               W
+                    I-
+                              0
+                              n
+                    W         W    3
+                    A
+                    n
+                              cn   cn
+                    E
+                              a
+                              mU   cn
+          0
+          1
+                    0
+                                   a
+                                   U
+                                   U
+                    0
+
+
+                         19
+                        cn                   n
+                        [I                   z
+>                  0
+                   v)
+                        8
+                        I
+                                             3X
+U                       cu                   CD
+a                  3    r                    N
+n                  v)
+                   a
+                   z
+U
+W
+I-
+I-
+3
+4
+u.
+           d            m               cn   n
+                                        U    X
+     uu
+           E
+           W
+                        U
+                        8               8    3X
+     3 w   X            I               I
+            z
+            w
+                        0
+                        c
+                        7
+                                        Lo   v)
+                                             CD
+
+
+           m X
+           q
+               9             U
+               d
+                             LLJ
+W
+0
+[r                 4
+                   W
+                             3
+3
+0                  n
+cn                 0
+W
+U
+                   H
+
+
+       0
+       r
+
+
+
+
+                                   20
+        TABLE IV.   ACTIVITIES IN COMPUTATIONAL
+                    UNSTEADY AERODYNAMICS
+
+
+
+0 CORRELATION OF NAVIER-STOKES AND TRANSONIC CRYOGENIC
+   PRESSURES
+
+0 NAVIER-STOKES FLUTTER ANALYSIS
+
+0 FULL POTENTIAL (ISOLATED WINGS)
+
+0 FULL POTENTIAL (CONFIGURATIONS)
+
+0 CAP-TSD (LEVEL 1.0)
+
+0 CAP-TSD (LEVEL 2.0)
+
+
+
+
+                            21
+     L
+     0
+     rc
+
+
+
+
+     Iu
+     P
+     aJ
+     v)
+
+
+
+
+     aJ
+     L
+
+
+
+
+22
+     CI
+
+     .-0
+      t
+     a
+
+
+
+
+23
+A
+!)/
+T3
+
+0
+ 3                            n
+                              m
+                              c,
+                              v)
+
+
+
+4
+
+
+
+
+L
+a                             I-
+                              v,
+a                             Q
+                              n
+ t
+.-
+1
+                              aJ
+                              L
+              0     0     0   3
+     0    0   0     0
+                              07
+
+     0    0   d-
+     00   a         c\1
+
+
+
+
+               24
+             *I-
+             ?
+              P
+              E
+              a
+
+
+
+
+         0
+
+
+
+
+a
+
+    25
+              b
+
+
+
+
+         aJ
+         L
+         3
+     0
+
+
+
+
+0
+
+
+
+
+26
+         0
+         (D
+
+
+
+
+         0
+         w-
+
+
+              v)
+              U
+
+
+
+         0
+         a
+              U
+              Q)
+
+
+
+
+              I
+              X
+              a,
+              c,
+              L
+         0    0
+              >
+
+   c.
+    c         a,
+              L
+    a,
+   .-         S
+
+.- -0
+4=
+-I=
+   a,
+   0
+  0
+
+
+
+
+   27
+                                         Report Documentation Page
+1. Raport No.                                 2. Government Accession No.                     3. Recipient's Catalog No.
+
+ NASA TPI- 100523
+                                          -
+                                                                                              5. Report Date
+
+
+                                                                                               Decem be r 1987
+                                                                                              6. Performing Organization Code
+
+
+
+7. Authods)                                                                                   8. Performing Organization Report No.
+Woodrow Whitlow, J r .
+                                                                                             10. Work Unit No.
+
+9. Performing Organization Name and Address
+                                                                                               505-63-21-01
+NASA Langley Research Center                                                                 11. Contract or Grant No.
+Hampton, Vi r g i n i a 23665-5225
+                                                                                             13. Type of Report and Period Covered
+'2. Sponsoring Agency Name and Address
+                                                                                               Technical Memorandum
+National Aeronautics and Space Admi n i s t r a t ion
+                                                                                             14. Sponsoring Agency Code
+Washington, DC 20546
+
+5. Supplementary Notes
+
+
+
+
+6. Abstract
+         This report summarizes the status of computational unsteady aerodynamics
+methods f o r aeroelastic analysis and makes recommendations for future research
+a c t i v i t i e s . The f l i g h t conditions f o r which various types of flows e x i s t are
+described and the aeroelastic phenomena that can occur i n those f l i g h t regimes a r e
+discussed. Some important acroelastic problems of current i n t e r e s t are described,
+and the aerodynamic methods needed t o analyze them are presented. The c a p a b i l i t i e s
+and limitations of existing unsteady aerodynamics methods are discussed. Computer
+resources required t o perform aeroelastic analysis of various f l i g h t vehicle
+configurations are presented. Recommendations f o r future research a r e made, and
+schedules f o r completion of proposed research tasks are presented.
+
+
+
+
+7. Key Words (Suggested by Authork))                                  18. Distribution Statement
+
+ Computational Aeroelasticity                                          Unclassified - Unlimited
+ Unsteady Aerodynamics                                                 Subject Category - 02
+
+
+9. Security Classif. (of this report)     20. Security Classif. (of this page)               21. No. of pages      22. Price
+
+ Unclassified                                 Uncl ass i f i ed                                    28                A03
+

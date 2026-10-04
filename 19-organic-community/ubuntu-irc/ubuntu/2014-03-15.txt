@@ -1,0 +1,684 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu"
+date: "2014-3-15"
+lang: "en"
+messages: "675"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<EndymionM> That'd be defined as "The Plan", yep.
+<gmachine_24> what does this mean Mode #ubuntu +o IdleOne by ChanServ
+<ActionParsnip> j0lz: of plex. Another great solution.
+<j0lz> gmachine_24, a bit of both I am looking at something like this except it was a web gui for making playlists and that type of thing http://www.opensourcecms.com/scripts/details.php?scriptid=322&name=Podcast%20Generator
+<ActionParsnip> gmachine_24: means that idleone put his op hat on and is about to lay the smack down
+<gmachine_24> ActionParsnip: thank you. :-)
+<IdleOne> actually, I invited the log bot back in
+<gmachine_24> j0lz: you want to make a podcast?
+<EndymionM> Who doesn't want to make a podcast?
+<j0lz> ActionParsnip, yes I like the look of plex
+<gmachine_24> EndymionM: :-) me.
+<j0lz> yes i have been thinking about it gmachine_24
+<EndymionM> gmachine_24: Then there's probably something wrong with you.  Get inspired and have a message to share with the world.
+<nikolam> EndymionM, I better like isolating such old apps completely. (if I understood right, that is x86 DOS application). I would run it inside Virtualbox and treat it as separate machine if possible.
+<buchmann> e aí?
+<gmachine_24> j0lz: at home I used slim server for years until it was acquired by logitech and became logitech media server - because I have a nice-sounding logitech player I still use it
+<gmachine_24> EndymionM: oh there's no doubt something is wrong with me. :-)
+<nikolam> Or run Dosbox with underprivileged account
+<gmachine_24> j0lz: I also use MediaTomb - which is kind of cumbersome depending on what you're trying to stream to
+<gmachine_24> but not for music - for video
+<j0lz> gmachine_24, I remember the logitech media center it was really nice interface
+<gmachine_24> j0lz: yes, they inherited that from slim server
+<EndymionM> nikolam: That makes it a pain the rear to maintain save files.
+<thoonai> llutz: thanks gtg
+<raj__> how to check in bash script if first char of string is '/' & modify it to 'xx'?
+<daftykins> #bash
+<gmachine_24> j0lz: have been playing with the idea of using musicip with the logitech software to create playlists ... but I've never been a big fan of playlists.... so it just kind of sits there
+<j0lz> gmachine_24, I spend more time wading through the music I have to find and play than I am comfortable with
+<Guye_Alvarez> How can i install Jdownloader in Ubuntu 14.04?
+<cfhowlett> !trusty|Guye_Alvarez, ask the other channel
+<gmachine_24> j0lz: yeah, and it only gets worse as you add more music . . .
+<ubottu> Guye_Alvarez, ask the other channel: Ubuntu 14.04 (Trusty Tahr) will be the 20th release of Ubuntu.  See the announcement at http://www.markshuttleworth.com/archives/1295 for more info. support in #ubuntu+1
+<gmachine_24> j0lz: which is one reason I'm interested in musicip
+<nikolam> EndymionM, not if you do zfs send or btrfs send of whole Virtualbox volumes. Then you copy changed blocks on volume, not files. You mount volume on other side and read data as you like. Virtualbox can also use iscsi-exported volumes.
+<ubuntued> Hi guys, I have a weird thing where my Thunderbird (no other windows) window is maximised, won't show the titlebar, can only quit with Ctrl-Q. Alt-Space > resize allows the little grabby triangle in the bottom right corner but it doesn't do anything. Ideas?
+<shovel_boss> <shovel_boss> and when grub boots
+<shovel_boss> <shovel_boss> it will boot linux
+<shovel_boss> <shovel_boss> can i make it boot windows?
+<shovel_boss> <shovel_boss> the 3 second timer thingy
+<problem123> I have a computer (with Lubuntu 13.10) that doesn
+<problem123> 't want to boot
+<OerHeks> ubuntued hit F11 to get out of full screen
+<gmachine_24> shovel_boss: I assume you mean boot windows as the option without having to choose windows....... right?
+<shovel_boss> yes
+<problem123> I changed quiet splash to text, and I keep seeing cannot allocate memory
+<j0lz> gmachine_24, i might try it out too
+<ubuntued> that is a great idea!
+<shovel_boss> is it easy to do gmachine_24 ?
+<problem123> I'm getting this: "unable to get pwuid: cannot allocate memory"
+<gmachine_24> shovel_boss: perhaps this http://askubuntu.com/questions/52963/how-do-i-set-windows-to-boot-as-the-default-in-the-boot-loader
+<shovel_boss> thanks
+<ubuntued> neg, it toggles the today bar thing on the right-hand side
+<ajoul> would it be possible to fetch work from stratum instead of bitcoind would that be considered sub-pooling?
+<simone> la grande bellezza
+<problem123> Can anyone here help with my boot problem?
+<ajoul> would it be possible to fetch work from stratum instead of bitcoind would that be considered sub-pooling?
+<problem123> BTW, it worked yesterday.
+<utf-8> i think that it was an italian chat
+<daftykins> ajoul: this is not a channel for mining help
+<daftykins> !anyone | problem123
+<ubottu> problem123: A high percentage of the first questions asked in this channel start with "Does anyone/anybody..." Why not ask your next question (the real one) and find out? See also !details, !gq, and !poll.
+<EndymionM> daftykins: Really?  So you wouldn't be able to tell me how I can refine redstone ore? :-P
+<daftykins> EndymionM: you're not familiar with bitcoin mining i take it
+<problem123> daftykins, I'm trying to boot, but I get 'cannot allocate memory' errors (I'm using text boot)
+<cfhowlett> EndymionM, wrong channel.  a little respect for the rules goes a long way here.
+<daftykins> problem123: perhaps your installation medium is not good
+<problem123> It worked for two weeks until now
+<daftykins> take a picture if you can
+<EndymionM> cfhowlett: I do wish to point out that I was kidding.  And I have been asking questions about Ubuntu... because, yeah long-time Windows user.
+<cfhowlett> EndymionM, hmm.  noted.
+<daftykins> EndymionM: for future reference nazis will descend upon you if you speak of anything off topic
+<cowboyuppride> I thought it was ninjas?
+<problem123> Can I fix the installation from a live DVD *without* overwriting it?
+<daftykins> problem123: well we don't know what's wrong yet 'cause you haven't provided any logs/errors
+<daftykins> but most likely!
+<EndymionM> daftykins: Duly noted.  So I need to find a version of zDoom with the Wolf3dTC.
+<problem123> daftykins, It might take me a few minutes, let me get the live DVD (since i cant boot)
+<daftykins> problem123: i'd be willing to bet you've upgraded kernel, hold left shift at bootup and boot an older one to test
+<problem123> daftykins, I already got the live DVD, but i'll reboot and try that.
+<problem123> by holding shift, am I supposed to get the grub menu? I already have it, and I've tried advanced options.
+<problem123> it did the same thing
+<problem123> so I'll try to find a log file from the live dvd
+<raj__> how do I hook a script to be executed whenever 'nano' command is used.. ?
+<problem123> daftykins, once I've got my linux partition mounted, what logfile should I look for?
+<TheNH813> HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEP! I broke Glibc and Glibc6.
+<TheNH813> I have no idea what I did, all i ran was apt-get upgrade
+<bekks> TheNH813: That wont break glibc.
+<bekks> TheNH813: So what did you do before?
+<problem123> daftykins, I've mounted it, and I'm in /var/log - which one do you need to see?
+<TheNH813> I was updating Glibc and it failed while replacing it.
+<TheNH813> bekks: Now it kernel panics trying to find libc6 on boot.
+<bekks> TheNH813: Do you remember the error message when it failed to replace?
+<TheNH813> Yes, failed to replace file <something.so>
+<daftykins> problem123: so you tried older kernels and got no different result huh?
+<TheNH813> bekks: Should I just reinstall? I broke like 36 other libraries too.
+<problem123> no - assuming that's what those version numbers in advanced options were
+<bekks> TheNH813: Thats the easy way, yes.
+<TheNH813> bekks: Before I rebooted thinking it was a glitch sudo itself segfaults because of the missing file.
+<daftykins> problem123: they were, you would've ignored the newest version and booted the one before it, then keep going back in the list seeing whether it errors each time or just on the newest one
+<problem123> daftykins, I tried all three of them, but only the first one with text. Let me run the other two with text and see if I get the same errors.
+<TheNH813> bekks: I know pretty much about Linux, and never expected this to happen. Is there any way to find the list of installed software? I was going to be remastering and had installed countless things.
+<problem123> When I run them without text, I get a blank screen with a blinking cursor.
+<bekks> TheNH813: for getting that list you would have to repair your system :)
+<problem123> daftykins, nope - I get the same errors in the older versions
+<problem123> let me try recovery mode
+<daftykins> problem123: is this a laptop?
+<TheNH813> bekks: Just checked the sources from this LivdCD, I see, I used the wrong repository. I had replaced some lines in /etc/apt/sources.list and forced installed incompatable versions of like 1260 libraries. Definitely reinstalling, it would be hell to try fixing all of that.
+<monsune> would you happen to know if 100mbit cisco firewall makes any sense? i mean can it protect the machine behind it against ddos attack that is stronger than 100mbit? or 100mbit means that anything over 100mbit would exhaust the fw and make the server unresponsive?
+<TheNH813> bekks: Thanks for helping.
+<problem123> daftykins, no, it's a desktop. The only thing different today than yesterday is that it's been moved (physically).
+<daftykins> monsune: that has nothing to do with Ubuntu - try ##networking
+<monsune> ok thank you daftykins.. just wasn't sure where to ask about that
+<daftykins> funnily enough Cisco firewalls != Linux distributions - so that was clue #1 ;)
+<problem123> perhaps, since it's giving me memory errors, I should do a memory test?
+<monsune> well my clue was that at least one guy in here must be using a hardware firewall ;)
+<daftykins> problem123: could have knocked something loose. yeah memtest wouldn't hurt
+<bekks> monsune: If your line is ddos'ed with more bandwidth than you actually have, no firewall on this world can prevent that.
+<daftykins> don't enable the offtopic =/
+<EndymionM> Alright.  Thanks for the help, See you all later.
+<monsune> bekks the firewall in colo is on another network than physical machine and it's just routed tru fw
+<bekks> monsune: Which doesnt affect what has been said.
+<monsune> so what's the point of that fw and why is it so costly...
+<bekks> monsune: It is very offtopic in here.
+<monsune> ok i'm sorry
+<problem123> daftykins, the memtest finished without errors. I'm going to try updating from the live CD. I hope that works.
+<Flashservis> někdo z České Republiky? :)
+<cfhowlett> !ck
+<cfhowlett> !cz
+<ubottu> České uživatele žádáme, aby mluvili v kanále #ubuntu anglicky. Česky je možno se domluvit v #ubuntu-cz. Děkujeme.
+<c2tarun> Why do dialogues from Xchat move to my clipboard automatically? How can I prevent it?
+<cfhowlett> c2tarun, I seem to recall seeing that option in the xchat settings.  explore
+<mirofilmphoenix> skype
+<cyber37> Hi! There is no channel #wine, so i come here
+<cyber37> i try to install the game "Warframe" with wine
+<cfhowlett> !wine|cyber37,
+<ubottu> cyber37,: WINE is a compatibility layer for running Windows programs on GNU/Linux - More information: https://help.ubuntu.com/community/Wine - Search the !AppDB for application compatibility ratings - Join #winehq for application help - See !virtualizers for running Windows (or another OS) inside Ubuntu
+<cyber37> But the game is broken when she try to acces on internet, i have that 3 lines repeated :
+<cyber37> fixme:ras:RasEnumConnectionsW (0x12e640,0x292c684,0x76c623e4),stub!
+<cyber37> fixme:ras:RasEnumConnectionsW RAS support is not implemented! Configure program to use LAN connection/winsock instead!
+<cyber37> fixme:service:EnumServicesStatusW resume handle not supported
+<cyber37> Sorry for no pastbin it; but for 3 lines .. and cfhowlett, realy thanks for help.
+<cfhowlett> cyber37, ask  #winehq for wine support
+<Deihmos_> Anyone use Ubuntu on surface pro
+<nikolam> this freaking pulseaudio... since day 1 he was making problems... now I install one simple linux game (FTL) and he is killing CPU using 73% CPU time.. How hard it is jus using SOUND in 2014...
+<kongthap> i installed ubuntu 13.10 as sda2 after windows7, before i only boot into windows7, after using boot-repair now it's only can boot to ubuntu, how to enable dual boot, please help ?
+<franknog> kongthap: both options should be available after you boot into BIOS. grub should come up after you boot.
+<kongthap> franknog, after using boot-repair, my grub only offers to boot into ubuntu :(
+<franknog> kongthap: why did you use boot-repair
+<kongthap> franknog, what did you meant by boot into BIOS, what to do ?
+<franknog> kongthap: after BIOS grub comes up. it's just the order
+<Beldar> kongthap, Did you save the botinfo summary?
+<Beldar> bootinfo*
+<kongthap> franknog, i install ubuntu after windows 7, before i couldn't boot into ubuntu but windows 7, so someone here told me to fix with boot-repair
+<kongthap> Beldar, the boot-repair notice me some paste.ubuntu.com, hang on
+<kongthap> Beldar, http://paste.ubuntu.com/7097373/
+<franknog> kongthap: could you also provide the contents of /boot/grub/grub.cfg?
+<EndymionM> Hi, I'm back, because I have a really dumb question that could only come from someone just going from Windows.  Can I use (for example) Workspace 1 on my laptop display, and Workspace 2 on the one I have connected by VGA cable?  And if I do, can I then swap them like I would with Ctrl+Alt+arrow?
+<slb> hi all, quick question. couple of years ago, i ripped (using ruby ripper) all my CDs to flacs in one directory. i would like to figure out how to move those to individual folders - one per CD. i was thinking of using music player software to bring up the entire collection of flacs, and then copy one CD at at time to an individual folder, but don't think the music playing software i've used allows you to select the flacs of a given album and m
+<slb> ove them like within a file manager. any ideas?
+<kongthap> franknog, it's here http://paste.ubuntu.com/7097504/
+<slb> for the record, i've used rhythmbox, amarok, banshee, xnoise over the years
+<Beldar> kongthap, The script shows nothing wrong it should be booting grub, I would use supergrub to boot to ubuntu and reload the mbr from there.
+<Beldar> kongthap, http://www.supergrubdisk.org/super-grub2-disk/
+<kasad> newbie question. Since alias doesn't take variables ie alias gosubdomainroot="cd /var/www/vhosts/domain.tld/subdomains/$1" I wanted to make a function in .bashrc so I did something like
+<EndymionM> slb: Why not just move them in a batch file based on name into folders?  Is the collection so large as to be unwieldy?
+<Beldar> kongthap, there is also the bootrepiars developers thread at the UF that is good help, post the script there.  http://ubuntuforums.org/showthread.php?p=10871917#post10871917
+<kongthap> Beldar, i will try that, but by the way what is the safe way to install ubuntu after windows 7? i always face this kind of problem :(
+<MarkShuttleworth> MY NAME IS MARK SHUTTLEWORTH
+<MarkShuttleworth> AND I AM YOUR GOD
+<JazSpaz> Hello Mark Shuttleworth.
+<slb> lol
+<MarkShuttleworth> DROP THE AMAZON ADS ALREADY
+<kasad> So, since alias can't accept $1 I tried in .bashrc: gosub() { if [$1 == ""] then cd /var/www/vhosts/mydomain/subdomains/ else cd /var/www/vhosts/mydomain/subdomains/$1 fi
+<cfhowlett> !ops
+<ubottu> Help! Channel emergency! (ONLY use this trigger in emergencies) - elky, rww, Madpilot, tritium, Nalioth, tonyyarusso, PriceChild, Amaranth, jrib, Myrtti, mneptok, Pici, jpds,  gnomefreak, bazhang,  Flannel, ikonia, maco, h00k, IdleOne, nhandler, Jordan_U, DJones or k1l!
+<Flannel> MarkShuttleworth: Please stop, thanks.
+<MarkShuttleworth> STOP WHAT
+<kasad> which works, but if I do foreaxmple gosub foo, it will change to said folder but also give me error "command foo doesn't exist"
+<slb> EndymionM, the file names are the title #s and track names. the rest of the info is only in the tags.
+<Beldar> kongthap, Not sure why you have this problem, I have 5 OS on one 256 gig SSD one is W8.1 and the rest ubuntu. YOu would have to detail exactly what you do and happens to find the answer.
+<kasad> any hints?
+<kongthap> Beldar, install ubuntu after windows for 4-5 times, i always face this kind of problems but in slidely different details
+<franknog> kongthap: walk me through your typical Ubuntu installation process.
+<kongthap> Beldar, the 2nd link you suggest, about the boot-repair, this is the one i used when i cannot boot into windows 7, should i try to re-run it again ?
+<EndymionM> slb: I know a perfect piece of software for that in Windows(mp3tag), I know nothing about Wine, so I'm looking for an Ubuntu alternative.
+<kongthap> franknog, i just got a new harddisk, 1. i made a partition and install windows 7 first
+<EndymionM> slb: Ah. I see.  Try renaming them from their tags with Puddletag, then copy the files to their new folder structure, perhaps?
+<slb> EndymionM, i've used that to tag my mp3s (for my portable disk player). didn't know it could move files around??
+<Beldar> kongthap, I gave yoiu two links one is supergrub and the other the bootrepair developers thread to post that script you gave the url to.
+<kongthap> franknog, after that i use ubuntu liveusb (created on windows) to made a new ex4 partition and install ubuntu
+<EndymionM> slb: It can, but that's not what I was suggesting - I was suggesting it for Step 1 - rename them so that it's artist - album - track - tracknum.
+<kongthap> franknog, when finish installing ubuntu i just only can boot into windows 7 just like i never install ubuntu
+<slb> EndymionM, there's like 8GB of them, i was hoping to do album at a time, not file at a time
+<cfhowlett> kongthap, reinstall grub
+<cfhowlett> !grub
+<ubottu> GRUB2 is the default Ubuntu boot manager. Lost GRUB after installing Windows? See https://help.ubuntu.com/community/RestoreGrub - For more information and troubleshooting for GRUB2 please refer to https://help.ubuntu.com/community/Grub2
+<kongthap> Beldar, sorry i misunderstood about the 2nd link
+<franknog> kongthap: that's when you ran boot-repair, but that made you only able to boot into Ubuntu?
+<Beldar> kongthap, Honestly with the info you have given we would at best be guessing why you have this problem, not sure this is the place to figure that out, it might be your job to do this.
+<EndymionM> slb: I still think a mass-move batch would be best
+<slb> EndymionM, my logic is since the music software can read the tags, and categorize per album, i should be able to use that to move an album at a time
+<naxil> !chat
+<ubottu> #ubuntu is the Ubuntu support channel, for all Ubuntu-related support questions. Please use #ubuntu-offtopic for other topics (though our !guidelines apply there too). Thanks!
+<cfhowlett> slb, I've recently begun using clementine.  mass mp3 tag editing is available
+<EndymionM> slb: I was about to suggest Clementine as well.
+<slb> i'll check it out
+<RobDude> Is there any software that is distribution specific?  Or if you can get it to run in Ubuntu, you can run it in whatever distro, so long as you have the pre-reqs installed?
+<slb> thanks EndymionM and cfhowlett
+<kongthap> cfhowlett, you meant something like this -> sudo grub-install /dev/sda --boot-directory=/mnt
+<slb> RobDude, pretty much
+<RobDude> slb:  Cool - ty
+<RobDude> I've noticed a few things that have like a download for Ubuntu but nothing else
+<kongthap> franknog, yeah, after ran boot-repair i only can boot into ubuntu just like i never had windows :(
+<slb> RobDude, it is because someone created a deb for Ubuntu b/c it has more users
+<RobDude> Gotcha - but someone on another distro could just take the deb or do whatever they'd need to do and it should work
+<slb> you can always install from scratch using traballs
+<RobDude> Ahh
+<kongthap> Beldar, allow me one more question, the super grub2, it can be made to liveusb right? all i have to do is made liveusb and boot from it right?
+<slb> ubuntu is debian based so uses debs (installation files if you like); others used rpms
+<Beldar> kongthap, yes
+<ikonia> why do you want to use supergrub ?
+<ikonia> why not use grub that ships with ubuntu
+<Beldar> ikonia, Has a failing boot bootsript looks good for a boot, I suggested supergrub to get in and reload the mbr from the desktop.
+<kasad> guys can somebody give me a hint what I am doing wrong here: http://pastie.org/8930524
+<jorgem> hii
+<jorgem> somebody can help me?
+<ikonia> why the need for super grub thats actually a different version
+<franknog> hi jorgem, what seems to be the issue?
+<ikonia> Beldar: what's wrong with the grub provided on the ubuntu live/install cd
+<daftykins> jorgem: ask
+<kasad> scratch that, got help already, (if anyone is interested to solution for http://pastie.org/8930524, there has to be space after and before [ and ] in if statement credit goes to mr.  ayecee from #linux
+<Beldar> ikonia, nothing except they can't seem to get it to boot, take a look at all the posts, you are welcome to fix that.
+<jorgem> hii, mi problem is that when i charge mi pc ubuntu doesnt put "charging" on the battery
+<franknog> thanks for letting us know how you solved it, kasad
+<jorgem> sorry for my bad english
+<jorgem> hi?
+<Beldar> ikonia, They used the bootrepair app, grub is in the mbr.
+<kongthap> please recommend app to make liveusb for super grub2? it cannot be used with startup disk creator
+<franknog> jorgem: it just doesn't show if the battery is charging?
+<jorgem> the battery actually is charging but in ubuntu appears like "timeuot xx min"
+<jorgem> timeout*
+<franknog> jorgem: is that the only problem you have?
+<jorgem> yes :)
+<ikonia> Beldar: then why are you telling them to get super grub ?
+<jorgem> i hav others but i want to solve that first
+<jorgem> have*
+<Beldar> ikonia, You have not been following, and now you are here to ask me stupid questions, help the user, suggesting supergrub to boot in is not a bad suggestion.
+<franknog> jorgem: it's probably a GNOME thing considering GNOME does the same thing. it's not a pressing issue, so how about we take care of one of your other problems?
+<ikonia> Beldar: it's not a stupid question, it's a pretty sensible considering he probably already has an ubuntu CD from which he did the install from,
+<Beldar> ikonia, I know your a mod and I am not being disrespectful, however your focus is really off here.
+<jorgem> it doesnt have a solution? what a pitty :(
+<ikonia> Beldar: that's why I'm asking the question - to understand why you are suggesting a super grub CD when the ubuntu cd will be fine
+<ikonia> unless there is something I'm missing
+<ikonia> (hence asking)
+<jorgem> how can i reorder the icons at the right/top screen?
+<Netwolf> http://toronto.en.craigslist.ca/tor/tlg/4376561036.html
+<ikonia> Netwolf: please don't spam that here
+<jorgem> i use gnome interface
+<Netwolf> ikonia: sorry, stupid touch screen paste
+<franknog> jorgem: I think unity-tweak-tool will take care of that if you're using Unity. for GNOME it is gnome-tweak-tool.
+<jorgem> i have that.. but i dont know were is the configuration
+<franknog> jorgem: you don't know how to access it? type unity-tweak-tool into the terminal.
+<jorgem> i know that but i cant find where do i can change de order of the icons
+<Beldar> ikonia, Seemed the best path to results under a circumstance of a use not understanding or even knowing what they have done or are doing or the answer to why they have this same problem on a msdos HS everytime.
+<Beldar> user/HD
+<sara> Buenas noches!
+<Beldar> ikonia, I use supergrub often other then the live cd, to reload from the desktop, but I have it on a multibot usb, it is a small download is all.
+<ikonia> I don't see why super grub cd is needed for that, but fair enough
+<ikonia> Beldar: he should already have the ubuntu cd - he did the install on, so there is no download required
+<jorgem> hola sara!
+<sara> Just instaled Xubuntu and I dont have a 'restart' entry on the menu... just power off and logoff
+<sara> any ideas how to put a restart there?
+<jorgem> sara podes apretar directamente el boton de encendido/apagado
+<sara> jorgem, no, sale un aviso de : esto se apaga en 30 seg. aceptas o cancelas...
+<mactrent> sara: I'm slightly annoyed by this, too, but if you use th 'Log Out', it opens up a menu with options.  It's a lot like WinXP.
+<jorgem> sara, que raro! xubuntu o lubuntu?
+<tozen> hey! eng, please
+<sara> xubuntu
+<sara> mactrent, lets look there!
+<sara> mactrent, right
+<tozen> sara:  why to not to use bash aliases then?
+<Izaya> #learnprogramming
+<Izaya> woops
+<sara> thanks, didn't even look at there
+<sara> jorgem, está en en menú logout!
+<Beldar> kongthap, Lets get back to what happens when you power on, the grub menu should be showing, does it if you use the shift key right after powering on?
+<sara> too less intuitive but works.
+<mactrent> sara: Yes, it's weird.  You may also notice that 'Hibernate' only ever shows up in that pop-up, and only if properly configured.   That had me stumped, too.  :P
+<Beryl> Anyone know an ISO mounting utility that can mount pretty much anything? I ripped my games and some refuse to mount via CLI, but work fine in windows, hmmm
+<cfhowlett> !es|jorgem,
+<ubottu> jorgem,: En la mayoría de los canales de Ubuntu, se habla sólo en inglés. Si busca ayuda en español entre al canal #ubuntu-es; escriba "/join #ubuntu-es" (sin comillas) y presione intro.
+<ikonia> Beryl: mount will work with any valid iso
+<jorgem> ok, sorry :)
+<bekks> Beryl: that utility is called "mount".
+<kongthap> Beldar, i got grub menu, but there was no loader for sda1
+<OerHeks> Beldar, did he post a 'fdisk -l' ?
+<sara> mactrent, just erased that posibility. got a SSD drive and looks like it's not recommended to suspend
+<Beldar> OerHeks, WE got a bootscript http://paste.ubuntu.com/7097373/
+<sara> or hibernate
+<kongthap> Beldar, should i try to hold shift key while booting ?
+<Izaya`Orihara> Question
+<tozen> Izaya`Orihara: Answer
+<sara> cfhowlett, google translate will help if you want to read spanish ;)
+<mactrent> sara, Alright.  Best of luck with Xubuntu!
+<Beldar> kongthap, No you get the grub menu sda1 is windows sda2 is ubuntu, do you see ubuntu in that menu?
+<sara> mactrent, thanks!
+<Izaya> Has anyone here used YUMI sto setup Ubuntu 13.10 or greater?
+<kongthap> Beldar, i saw ubuntu on the menu
+<mactrent> Izaya: I have.  It appears to make some customizations.
+<Beldar> kongthap, Can you boot to ubuntu or windows from the grub menu?
+<kongthap> Beldar, i only can boot to ubuntu (right now i'm on ubuntu)
+<Izaya> mactrent: have you ever experienced it showing the boot option, showing the splash screen, and then going black (with backlighting)???
+<jorgem> hi, does someone know how can i change the size of the icons that are on the right upper side of the screen? i use GNOME interface. Thanks you! :)
+<Izaya> I've heard adding nomodeset before the -- in the grub.cfg helps
+<kongthap> Beldar, i cannot boot into windows because i cannot see choice to boot to windows,
+<Beldar> kongthap, Run sudo update-grub to update grub. So this is windows is not booting from grub?
+<Beldar> kongthap, do the sudo up0date-grub in ubuntu and reboot and see if windows is availabke.
+<kongthap> Beldar, open the terminal and sudo update-grub now?
+<kongthap> Beldar, ok
+<Beldar> kongthap, In the ubuntu install yes, then reboot and see if windows boots from the grub menu.
+<mactrent> Izaya: That depends.  It does go black when it's booting Ubuntu, but are there leftovers of the menu or something?
+<Izaya> negative
+<kongthap> Beldar, i did this http://paste.ubuntu.com/7097731/
+<Izaya> usually it doesn't even get to the menu
+<Izaya> mactrent: usually it won't get to the menu at all.
+<Beldar> kongthap, Looks good windows is showing, reboot to the grub menu and see if windows boots.
+<mactrent> Izaya: Usually?  Is there anything at all on the screen when it doesn't?
+<Izaya> mactrent: on occassion it seems to get to the "use live" or "install" but not always
+<Beryl> I wish ubuntu had a comercial version, no BS stuff like amazon, with online file storage syncing
+<Beldar> Beryl, That can be removed and shutoff easily.
+<mactrent> Izaya: How old is this USB drive?  I'd suspect corruption.  The other thing to try is booting on another computer.
+<Beryl> Beldar: Ya but you'd think Canonical would have a commercial version to rake in some money
+<Beldar> Beryl, Don't follow a confirmation bias road, your just repeating others opinions without any solid research.
+<mdelgado> Where is a great place/resource to learn more about Linux.
+<willvarfar> I have a big, old old old codebase using CVS and a custom python build script.  But there's a lot of c++0x in there.  What IDEs can load a project from CVS (or git), code-completion *without* being in charge of the compile step?
+<Beryl> Beldar: Key words: Repeating others opinions, there's demand and they ignore it, and are losing money
+<cfhowlett> mdel, ibm.com has an entire linux course
+<mdelgado> cfhow, Do you know if its free?
+<cfhowlett> mdelgado, http://www.ibm.com/developerworks/linux/library/l-lpic1-v3-map/
+<mdelgado> cfhow, Awesome thanks.
+<kongthap> Beldar, i got dual boot now :)
+<OerHeks> kongthap, awesome, have fun :-)
+<cfhowlett> mdelgado, if not currently free, it will be soon according to recent news story
+<mdelgado> cfhow, oh. ok I'll keep an eye on it.
+<kongthap> OerHeks, thanks :)
+<cfhowlett> !cookie|Beldar,
+<Izaya`Orihara> sorry about that
+<ubottu> Beldar,: Wow! You're such a great helper, you deserve a cookie!
+<Izaya> sorry about that
+<Beldar> kongthap, Cool, we just had some miscommunication is all, I saw you were probably getting grub, and should of stuck with that.
+<kongthap> Beldar, sorry about confused info from me :)
+<mdelgado> I have found learning Linux OS/Servers so much more interesting that Windows based oses.
+<Beryl> mdelgado: linux really shines with servers where you want complete control over the system.
+<Beldar> kongthap, It happens with all of us, no biggie, I was just concerned in the end you get going. So remember that update-grub command is all it rebuilds the grub menu when needed or after any changes made.
+<kongthap> Beldar, in the other days, i couldn't boot into windows7 after ubuntu installation but i used to use like "sudo grub-install xxx" i was working, i also did the same as last time but it's not working
+<mdelgado> It sure does. Just so much freedom. The CLI has also given me the desire/motivation to learn even more. Just limitless.
+<Beldar> kongthap, When I dual boot I do a manual install from the something other option on the install gui. I then make sure my install goes to a specific partition, and that grub goes to the mbr is all.
+<mdelgado> What type of job oppertunities are available to professionals who have certs in Linux?
+<Beryl> mdelgado: Running the internet.
+<mdelgado> Are they limited to larger environments?
+<kongthap> Beldar, next time may be i just use boot-repair, then sudo update-grub, this should be the easiest for beginner like me
+<sara> ok everydoby. Time to make some dinner.
+<sara> thanks for all and Hae a lot od Fun!
+<Beryl> mdelgado: Medium-Large typically, although a lot do contract for smalller companies
+<Beldar> kongthap, It looked from the bootinfo summary that all you did wrong in the install was to have grub put in the ubuntu partition sda2 here, rather than the mbr just sda, just a guess though but based on extra booting files in ubuntu.
+<mdelgado> Beryl, I think it would be a great career decison to make Linux a specialty of mine.
+<mdelgado> THanks.
+<Beldar> mdelgado, Sure, however off topic here is all.
+<Beldar> mdelgado,  try  #ubuntu-offtopic
+<kongthap> Beldar, i did "grub-install /dev/sda --boot-directory=/mnt" you guess it should be *sda2* instead of *sda* right ?
+<OerHeks> no, sda is correct
+<ttyS1> How can I remove a user from being listed by the GDM3 greeter / login screen ?  I edited /etc/gdm3/daemon.conf and enabled:   IncludeAll = false Include = user   but the user still shows in the login screen
+<Beldar> kongthap, I Like this link, it has a cool chroot command slightly different than the standard, sometimes a chroot is needed is all. https://help.ubuntu.com/community/Grub2/Installing#via_ChRoot   The commands you just showed work most of the time if correct, but at times a chroot is needed.
+<kongthap> Beldar, ok i will try to understand from it :)
+<MrSavage> how do i restart my eth0?
+<MrSavage> service networking restart says that it doesn't know stop and start
+<MrSavage> and i get an error for /etc/init.d/networking restart
+<bazhang> ifup/ifdown
+<Ambu> cok
+<BTDhero> Hi again :D
+<BTDhero> anybody online ?
+<mactrent> BTDhero: Absolutely.
+<BTDhero> I could use some help
+<mactrent> I'll see what I can do.
+<BTDhero> I have the latest version of ubuntu installed on my Dell Inspiron 1501
+<cfhowlett> !details|BTDhero,
+<ubottu> BTDhero,: Please give us full details. For example: "I have a problem with ..., I'm running Ubuntu version .... When I try to do ..., I get the following output: ..., but I expected it to do ..."
+<BTDhero> And I can't start ubuntu :(
+<mactrent> BTDhero: Now, is this a dual-boot setup?
+<BTDhero> my video driver cracked and I keep getting that message that it will try to run in low-graphics mode, but it won't start anyway
+<BTDhero> nope, ubuntu only on the laptop
+<BTDhero> I am now online on my PC
+<mactrent> BTDhero: Ok, so what does it do when it won't start, even in low graphics mode?  Does it reboot the computer, or just sit there?
+<BTDhero> it just sits there ...
+<BTDhero> I have several options in a litttle menu, but none works
+<OerHeks> BTDhero, ATI x1150 right? should work with the standard driver AFAIK
+<BTDhero> I guess so. I tried to install some ATI software from Ubuntu Software Center.
+<BTDhero> It worked before
+<BTDhero> RefreshL it worked when I installed Ubuntu 13, it stopped working after installing that software
+<bekks> and now you are using which ubuntu?
+<mactrent> OerHecks: Are you thinking Live CD->chroot->dpkg/apt-get remove?
+<BTDhero> on the laptop I have the latest version, downloaded last night
+<bekks> BTDhero: the latest version is 13.10
+<BTDhero> that one, most probably
+<bekks> BTDhero: And which version are you on?
+<bekks> BTDhero: Please check it, using "lsb_release -a"
+<BTDhero> ok, I should open a terminal for that command ...
+<mactrent> BTDhero, do you still have your Live CD handy?
+<BTDhero> yeap
+<mactrent> There may be a better solution, but I'd recommend (and I can walk you through) booting to the Live CD, then uninstalling said ATI driver package.
+<bekks> that can be done in recovery mode, too.
+<mactrent> Gotcha.
+<BTDhero> I tried some things in recovery mode today,  but nothing worked
+<BTDhero> I could try to boot the Live CD
+<bekks> BTDhero: Define "some things". Did you uninstall the driver in question?
+<mactrent> If you can get to recovery mode, the Live CD may not help.  What did you try from recover mode?
+<BTDhero> nope, I tried to reinstall some older drivers, found some commands on ubuntuask forums
+<BTDhero> so .. sudo apt-get install fglrx
+<bekks> BTDhero: Then you should uninstall that driver. Instead of trying to install it again.
+<BTDhero> I should indeed, how could I do that ?
+<bekks> sudo apt-get purge fglrx
+<BTDhero> I also tried failsafeX, from recoverymenu
+<BTDhero> bekks: should I enter that command in a terminal?
+<bekks> BTDhero: You should enter that command in recovery mode.
+<bekks> BTDhero: At least that was suggested - to remove the broken driver.
+<BTDhero> ok, I am currently booting my live CD... can I enter recovery mode form over here, or should I restart and enter GRUB ?
+<bekks> BTDhero: There is no recovery mode on the live cd.
+<BTDhero> ah, ok I will eject the disk and restart then
+<BTDhero> so: W: Not using locking for read only lock file /var/lib/dpkg/lock E: Unable to write to /var/cache/apt/ E: The package lists or status file could not be parsed or opened.
+<bekks> BTDhero: You have to mount that filesystem read/write.
+<BTDhero> and how can I do that ?
+<bekks> sudo mount -o remount,rw /
+<bekks> Replace / with the path where the filesystem in question is mounted.
+<Izaya> sooooooooooo yeah that was fun
+<Izaya> accidentally formatted my Ubuntu boot after hopping to my windows boot to allocate more drive space
+<Izaya> and then killed my grub file, had to totally reinstall windows. Deleted my whole partition in the process when it decided to install :-\
+<bekks> Izaya: Time for restoring the backup.
+<Izaya> lol... I lived dangerously bekks
+<Izaya> ... too dangerously. Luckily anything worth keeping was on my Dropbox anyway
+<Izaya> everything else was fluff.
+<Izaya> but now that I've made that mistake
+<Izaya> I'm setting up a windows backup right now :-\ and partitioned out my drives the away I want so that going forward
+<Izaya> I'll have a ton of space
+<char> hello
+<BTDhero> hi
+<char> just looking about
+<char> when i ask for a list of channels nothing shows
+<BTDhero> bekks: you got me, which filesystem do you mean ?
+<OerHeks> !alis
+<ubottu> alis is a services bot that can help you find channels. Read "/msg alis help list" for help and ask any questions about it in #freenode. Example usage: /msg alis list #ubuntu* or /msg alis list *http*
+<bekks> BTDhero: the filesystem of your system, which is mounted in recovery mode,
+<BTDhero> bekks: namely? :-S
+<bekks> BTDhero: The recovery mode asked wether you want to mount it readonly and it told you where it was mounted to.
+<brainburger> hello - is this a good place to ask for help installign java?
+<BTDhero> lolz, I guess I got it.
+<bekks> !jdk | brainburger
+<bekks> !java | brainburger
+<ubottu> brainburger: To just use java you need a "Java Runtime Environment" (JRE) and/or a browser plugin. If that is not sufficient you will need a "Java Development Kit" (JDK) aka "Software  Development Kit" (SDK).  Please see https://help.ubuntu.com/community/Java about how to install one of three current implementations.
+<brainburger> thansk (Are you a bot?) I'll read that.
+<BTDhero> bekks: I believe it worked, should I restart now ?
+<toshiba_> hi
+<bekks> BTDhero: yeah.
+<toshiba_> speaking spanish??
+<bekks> !es | toshiba_
+<ubottu> toshiba_: En la mayoría de los canales de Ubuntu, se habla sólo en inglés. Si busca ayuda en español entre al canal #ubuntu-es; escriba "/join #ubuntu-es" (sin comillas) y presione intro.
+<char> seems i need to do more reading before I attempt this
+<toshiba_> ok
+<BTDhero> thanks, bekks , it started :D
+<BTDhero> it runs pretty awful though... I am asked if I want to do 'additional debugging work' :-S
+<bekks> BTDhero: Why ":-S" - cant you answer that question yourself?
+<BTDhero> well I am currenlty trying to remove that ATI software that I installed
+<bekks> BTDhero: Which you said that you did remove it.
+<bekks> BTDhero: So that question is to be answered with "yes" or "no".
+<BTDhero> Indeed, it is not here anymore. But the windows are moving pretty laggy around, so I guess I should fix that
+<BTDhero> And that question has a lot of answers, lol
+<BTDhero> Namely: I don't know, No, I just need to know  a workaround, Yes, if not too technical, Yes, Yes including running git bitsection searches
+<bekks> BTDhero: Yes, you do know. Yes, you removed the driver you wanted to remove. No, that was all to do. No, there is nothing more to do.
+<BTDhero> ok, I guess I'll just try to experiment more woth the drivers. And really now, I mean it,  those are all the options which I can choose to answer. thanks a lot for the help :D
+<OerHeks> ati x1150 is too old for unity 3d, as 2d desktop is removed, i think you better try xubuntu
+<bekks> BTDhero: you dont have to experiment. That card is just too old.
+<BTDhero> oh, so I'll just have to get used to it
+<delsouz> hi
+<delsouz> hi
+<mactrent> Hello.
+<delsouz> female chat
+<entreri_> hey there, I'm looking for a Windows Command Prompt simulator for Linux, any idea ?
+<entreri_> There is Cygwin, which is a Linux command-line simulator for Windows... but I can't find the opposite
+<bekks> entreri_: cygwin is not a simulator :)
+<bekks> entreri_: the most easy way would be to install windows in a vm.
+<Deihmos> about to try ubuntu out. have not tried it in a while now the last time it felt so sluggish compared to windows
+<entreri_> Cygwin is a Linux command-line simulator for Windows, that means that if you do the command "ls /home/of/user", in reality, it's going to do "DIR C:\Home\User", that's what I understand of it
+<entreri_> bekks:
+<KillerWalrus> hi all
+<k1l> Deihmos: for chitchat please see #ubuntu-offtopic
+<ActionParsnip> Deihmos: xubuntu and lubuntunaim to be airy and light
+<KillerWalrus> so I'm getting grub2 rescue mode on Ubuntu 13.10 GNOME - done the following:
+<ActionParsnip> Lubuntu aim*
+<KillerWalrus> set root, set prefix, insmod, normal, -> boots as normal -> update-grub, reboot
+<Deihmos> this is on an i7 laptop
+<bekks> entreri_: cygwin is a large collection of GNU and Open Source tools which provide functionality similar to a Linux distribution on Windows.
+<ActionParsnip> KillerWalrus: id boot to live cd and reinstate grub using a chroot
+<KillerWalrus> set root, set prefix, insmod, normal-> boots as normal -> apt-get purge grub-common, reinstall, reboot -> and rescue mode again
+<bekks> entreri_: but to answer your question again, I never heard of a windows command line emulator for linux.
+<ActionParsnip> Deihmos: its about ram use, not cpu. You could have an i7 but with 512Mb RAM
+<Deihmos> 8gb ram
+<KillerWalrus> ActionParsnip: shouldn't apt-get purge grub-common have done that? Anyways, it's complaining about a device not found, but I can't find any trace of that UUID in /boot/grub/grub.cfg or /etc/default/grub or in blkid
+<Deihmos> the ui felt sluggish. graphics was up to date
+<ActionParsnip> Deihmos: then you have far above the min requirements. Should be ok as long as you dont have that optimus garbage
+<Deihmos> anyway about to try it out again. this laptop is i7 12gb ram
+<ActionParsnip> KillerWalrus: the chroot may help. OmgUbuntu has a guide called: sticking it to Grub
+<KillerWalrus> cool, I'll tr
+<ActionParsnip> Deihmos: earlier you said 8Gb, now 12Gb.....
+<Deihmos> the pc i had at that time had 8gb
+<Deihmos> i more think the sluggish performance had to do with the ui than anything else
+<ActionParsnip> Deihmos: ahhh I see. Is the system you are using have an Optimus based GPU (Intel and Nvidia)?
+<Deihmos> the one i have new has intel anf nvidia. the one i had before was amd and intel
+<ActionParsnip> Deihmos: that can be a headache, the nvidia+optimus is getting better though
+<puff> I have an ubuntu install, I installed centos on a separate partition, it appears that centos overwrote the MBR so now it only boots into centos.
+<bekks> !grub2 | puff
+<ubottu> puff: GRUB2 is the default Ubuntu boot manager. Lost GRUB after installing Windows? See https://help.ubuntu.com/community/RestoreGrub - For more information and troubleshooting for GRUB2 please refer to https://help.ubuntu.com/community/Grub2
+<puff> bekks: Thanks.
+<puff> bekks: So, this is for after windows kills the MBR, obviously centos is similar, any idea exactly what boot-repair/grub-install is going to do?
+<Beldar> puff, When you get the ubuntu grub back, I believe centos is one of the few OS's that need to be mounted for grub 2 to see it with a grub-update as well.
+<puff> Beldar: Ah, thanks, but can you expand on that a bit?
+<ActionParsnip> Beldar: grub2 is grub2 so will work the same in any distro
+<puff> Beldar: Taking a stab in the dark, are you saying a) boot-repair, b) boot into ubuntu, c) manually mount the centos partition, d) use grub-udpate to add centos to the grub2 setup?
+<rd_> someone can help me??
+<Beldar> puff, Grub 2 has the os-prober, it finds other OS's, normally not needing to be mounted to be found and added to the grub menu. Centos if I remember, may be another OS that needed to be mounted.
+<rd_> help me please???
+<bekks> !ask | rd_
+<ubottu> rd_: Please don't ask to ask a question, simply ask the question (all on ONE line and in the channel, so that others can read and follow it easily). If anyone knows the answer they will most likely reply. :-) See also !patience
+<rd_> its about a plugin . exe for firefox
+<Beldar> ActionParsnip, I know grub 2 should see all OS technically, I just recall centos as possibly having this quirk.
+<rd_> alguem fala português??
+<ActionParsnip> !pt
+<ubottu> Por favor, use #ubuntu-br para ajuda em português. Para entrar no canal por favor faça "/join #ubuntu-br" sem as aspas. Para a comunidade local portuguêsa, use #ubuntu-pt. Obrigada.
+<ActionParsnip> Beldar: then its a bug. Grub2 will point to a partition and load the kernel. Grub doesnt mount partitions
+<Beldar> ActionParsnip, Really just heads up info, in case the grub-update does not see centos, but yeah something seemed amiss at the time.
+<puff> Beldar: Again, thanks. I'm waiting for yum update to complete before I reboot and etc.  Is there recommended reading on this?
+<Beldar> puff, If you want ubuntu to have the grub control the bootrepair app should fix this and make a bootinfo summary to use. Or a reload of the mbr from a live ubuntu cd.
+<drscoops> An uncaught exception was raised:
+<drscoops> [Errno 5] Input/output error
+<drscoops> what does that mean
+<KillerWalrus> ActionParsnip: http://www.omgubuntu.co.uk/2011/09/live-usb-sticking-grub-2-video done, unfortunately it still results in rescue mode
+<KillerWalrus> however, if I do set prefix=(hd1,msdos1)/boot/grub
+<kcdehimposter> Hey guys could you help me out? I just built a new computer with a Radeon HD 7870 2gb, but it doesn't seem to be going as fast as it should be, I tested out Minecraft and I am playing with only 40 fps :(
+<KillerWalrus> then insmod normal and normal, it boots immediately
+<Slart> kcdehimposter: minecraft is a
+<Beldar> puff, Centos, I think is grub legacy, you could add ubuntu to it. I never messed with grub legacy, but others here have.
+<Slart> kcdehimposter: minecraft is not a good benchmark... it's weird in many ways
+<Slart> kcdehimposter: you can always try switching between binary/proprietary drivers and open source drivers.. see if it makes a difference
+<puff> Beldar: I can't think of any problem with having ubuntu/grub2 be in charge of everything.
+<kcdehimposter> Is there anything else to test? The other problem I was having was when I load up a steam game, it will launch, but when I go into the actual game it closes itself down.
+<puff> Beldar: When you say "You could add ubuntu to it" do you mean having grub legacy handle booting into ubuntu?
+<Slart> !radeon | kcdehimposter
+<ubottu> kcdehimposter: For Ati/NVidia/Matrox video cards, see https://help.ubuntu.com/community/VideoDriverHowto
+<Slart> kcdehimposter: any error messages?
+<kcdehimposter> None, just closes down and goes to desktop
+<drscoops> An uncaught exception was raised:
+<drscoops> [Errno 5] Input/output error
+<kcdehimposter> I have down it with Garry's Mod and TF2
+<Beldar> puff, Yeah, legacy, I believe did not have a auto update to add OS's.
+<dartlunk> 38 countries it looks like
+<Slart> kcdehimposter: I'm pretty sure there are error messages.. try running the game from a terminal and see what you get
+<ActionParsnip> kcdehimposter: i'd ask in #ubuntu-steam
+<dartlunk> i wonder what it is for canada
+<ActionParsnip> kcdehimposter: there is a steam channel
+<dartlunk> people like to think canada is better, but as far as people entering the country canada is typically more strict overall actually
+<kcdehimposter> Okay thanks
+<Slart> kcdehimposter: good suggestion from ActionParsnip.. they might have better suggestions when it comes to gaming on ubuntu
+<dartlunk> and for good reason. canada doesnt watn wish wash coming into their country
+<ActionParsnip> dartlunk: how is this Ubuntu support related?
+<dartlunk> oops
+<dartlunk> wrong channel lol
+<ActionParsnip> dartlunk: yep
+<Beldar> puff, Did you look at the original boot grub 2 links, there you will see the bootrepair app, and links to doing this manually from a live cd.
+<puff> Beldar: Yeah, I'm reading those.  They don't mention grub-update.
+<puff> Beldar: Ah, that may be because it's update-grub.
+<Beldar> puff, Heh, sorry, I switched the syntax from the command, my apology.
+<puff> Is grub2 going to be comfortable invoking grub 1 on centos?
+<Beldar> without intending to, Doh
+<puff> Somebody on #centos suggests installing grub to the centos /boot partition instead of the MBR.
+<Beldar> puff, Is this a boot partition you had for ubuntu as well, or one made by centos? Are there any other OS's here?
+<puff> Beldar: Just ubuntu and centos.
+<puff> Beldar: It's the /boot partition that centos created.
+<Beldar> puff, Ah, I have never had a boot partition, I use the mbr always. Others here can help on this, knowing the otions.
+<Beldar> options*
+<puff> Beldar: Thanks.
+<kcdehimposter> Hey guys, which driver should I be using for my Radeon HD 7870 2gb? There is an open source one and 2 propietary
+<Beldar> puff, My guess is that you could reload the mbr with ubuntu grub and it will read the centos boot, or even use that boot partition with ubuntu's grub. I just don't know how centos has tweaked grub....etc, or at least I'm concerned on that.
+<cloneG> hello I am using ubuntu on a quad core...but when working on blender one core reaches 100% cpu usage while the rest remain about 10% could it be possible to balance usage between cores to prevent blender from hanging? in the other hand the system keeps working
+<Joozey> For me one core is 75%, the rest 10 or lower
+<Slart> cloneG: I would be surprised if blender didn't have some kind of support for multi-threading.. you've looked through all the settings?
+<Joozey> one core is stable at 75%, if I rotate the view around another core jumps from 10 to 20%, so it seems to be multithreading
+<OSaucey> Hey. I was here the other day about trouble with audio. I can now adjust the levels using alsamixer but the audio icon in the upper menubar does not work, all the options are grayed out and no devices are showing up.  pulseaudio --start   causes some options show up, but only for the dummy output. Ideas on how to get my sound card to show up and why pulseaudio isn't starting on login?
+<cloneG> Slart must multi-threading be configured????
+<Slart> cloneG: I have no idea but there might be an option somewhere.. sometimes multi-threading has its own disadvantages so it might not be enabled by default.. there might also be a configuration for multithreading when rendering and one setting for the gui.. it's quite possible the gui isn't multithreaded at all since the heavy lifting is usually done during the rendering phase
+<cloneG> wise thoughts
+<cloneG> I think I ll ask at blender irc
+<alex80ks> hello
+<alex80ks> Does anybody know why on Ubunty 12.04 always get error when installing some package but it almost always packages are installed corectly?
+<elb0w> so I have a 8.2 macbook pro. I was running 13.04. I did a dist-upgrade and when I rebooted it after grub I see rom not supported and cant get passed that. I used to set some outb and i915 settings in the grub launch command. I cannot seem to find those in the macbookpro docs anymore. Anyone have any thoughts?
+<thom_> hello all
+<Beldar> elb0w, In grub e=edit for the kernel.
+<jillsmitt> how can i enable acpi support in ubuntu server 12.04?
+<elb0w> Beldar: yes
+<elb0w> Beldar: I cant find the commands I used to enter, they used to be on the ubuntu docs
+<elb0w> aaaaaaand I just found them
+<elb0w> :D
+<Beldar> elb0w, The i915 looks familiar as a general command IE hardware bound, I don't know what "outb" is
+<elb0w> Beldar: in the grub edit mode is there a way to insert a tab instead of space space space space space space space
+<Beldar> elb0w, Not sure what you mean with "tab instead of space space..etc"
+<elb0w> Beldar: like to move the cursor 4 spaces in one key press
+<Beldar> elb0w, Heh, never worried about that, so no answer on that.
+<elb0w> Beldar: np https://help.ubuntu.com/community/MacBookPro8-2/Raring
+<elb0w> this was the docs
+<elb0w> I needed
+<elb0w> if you were curious
+<elb0w> working now
+<elb0w> woo
+<Beldar> elb0w, That is about as close to a apple computer I have come, just never owned one is all
+<jakey1> is there a piece of software that can compare to code files and tell you the difference of contentbetween them
+<jakey1> or something online?
+<elb0w> Beldar: Honestly I bought it because the rendering of the fonts in mac is awesome
+<elb0w> Beldar: but I ended up just dual booting ubuntu on it
+<RobDude> jakey1:  Do you want a GUI or console based diff?  There are quite a few
+<Beldar> elb0w, Good OS and would use if I had one.
+<elb0w> Beldar: I plan to get the new microsoft surface 3 when it comes out to put ubuntu on it
+<jakey1> RobDude: I think i find one online thanks
+<Beldar> use what feeds your needs. ;)
+<jhutchins> jakey1: In fact, this is how code patches are usually created.
+<RobDude> jakey1:  Cool - good luck!
+<jhutchins> jakey1: gnu diff can produce a standardized format that can be imported to existing code.
+<jakey1> thanks
+<RobDude> Sigh - if I'd started on my homework instead of installing Linux (again) I'd probably be done by now :)  I still don't know what I'm doing, but this is getting addictive
+<RobDude> If I test a version of Ubuntu inside a virtualbox and decide 'Wow, this is great' is there any way to 'export' the virtual hard-drive into a real hard-drive - or is it better to just install it and redo any customization
+<RobDude> I tried to Google it, but my google-fu is weak, apparently
+<evilbug> so i set up a portable ubuntu system on a flash drive and i'm having issues with having ubuntu automatically reading the networking interface. i see there's an available eth1 but how would i make that default? ubuntu server 12.04
+<Beldar> RobDude, Can be done, but not for the timid is all. You could make a dpkg of apps installed and any repos and keys that are extra and reload the basic install in another.
+<RobDude> Beldar:  Thanks.  I had a feeling it wouldn't be straight-forward.  I'll just reinstall and tackle that another day
+<jillsmitt> temp1 in acpitz-virtual-0 always show 8.3 C
+<jillsmitt> how to solve this?
+<RobDude> Yuck - I used 'cat' to read a file, but it wasn't a text file (it's binary/unreadable) but it seems to have broken my terminal.  My prompt has junk in it and if I do 'ls' I'm getting a bunch of weird symbols.  Can I fix it without exiting/closing the window?
+<david38400> my sound has just disappeared. Can anyone help fix please?
+<Beldar> !sound | david38400
+<ubottu> david38400: If you're having problems with sound, click the Volume applet, then Sound Preferences, and check your Volume, Hardware, Input, and Output settings.  If that fails, see https://help.ubuntu.com/community/Sound - https://help.ubuntu.com/community/SoundTroubleshooting - http://alsa.opensrc.org/DmixPlugin - For playing audio files,  see !players and !mp3.
+<david38400> Beldar, I have been listening to music on my bluetooth speaker and all of a sudden no sound at all
+<jasabella> hi
+<angrycoast> hi
+<Beldar> david38400, Bummer, I never use bluetooth so no real help here.
+<david38400> thanks everyone
+<saif_forge> I'm currently using i3. Anyone know how I could switch user without logging out (like lxde)
+<evilbug> ok, in /etc/networking/interfaces is it possible to make it so that that i'd throw a bunch of eth possible entries and have ubuntu atuomatically scan which one works at startup?>
+<pdo_fn14> Anyone know method to mount device without sudoers password?
+<saif_forge> anyone in here know how to do anything?
+<Geo> Is it possible to run two SMTP servers w/ internet access behind a single NAT?
+<RobDude> Geo:  I'm assuming you want them both on the same port, right?
+<ejuan> Geo, you just need to set them to run on different ports
+<RobDude> Er yeah - if they are on different ports - you shouldn't have to do anything special at all
+<rww> going to run in to all sorts of fun in this scenario
+<rww> if you're sending outgoing mail, you're going to have issues with spam filters. if you're receiving mail, other SMTP servers will be expecting you to be on the well-known port
+<Geo> I guess the clients would have to be told not to use port 25
+<charco> Hi! I'm a bit stucked in trying to install ubuntu with raid0. Can anyone give me some advice? (I've read hundreds of tutorials and have some doubts that doesn't seem to be addressed in anyone of them :/)
+<Geo> and for incoming, pop would be used... i'll cross that bridge when I get to it I guess
+<rww> are you planning on not sending mail outside your local mailserver ever?
+<Geo> No, it needs internet access
+<rww> okay, then I'm not sure why you think incoming mail would use POP. Other SMTP servers would be using SMTP to talk to your SMTP server
+<rww> and clients should be using 587 anyway, btw
+<Geo> incoming mail to the user... ie, retrieving mail
+<rww> and if you're sending mail to other SMTP servers, again, you are going to run into spam filtering hell
+<rww> retrieving mail isn't within the purview of an SMTP server :P
+<RobDude> pdo_fn14:  I think you can add it to your fstab with the 'noauto' flag.  Then you can mount it without sudo
+<Geo> thats why i said i'll cross that bridge when I get to it
+<charco> I want to install ubuntu and then install windows, efi, raid0. I've set up BIOS raid, but somehow I can't access to the raid setup utility (which other systems seem to have with CTRL I or something like that).
+<rww> and I'm guessing that NAT and lack of SMTP experience implies you're trying to run this off a residential connection or something, in which case... further spam filter hell

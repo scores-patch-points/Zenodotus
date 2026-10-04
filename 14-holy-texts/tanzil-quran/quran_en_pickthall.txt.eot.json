@@ -1,0 +1,210 @@
+{
+ "schema": "EOTReading@2",
+ "supersedes": "EOTReading@1 — erased 2026-08-31 (LP7)",
+ "source": {
+  "path": "14-holy-texts/tanzil-quran/quran_en_pickthall.txt",
+  "sha256": "3ed295f9d84feaa57506e287aa93fb8f5edb38e31ee8fbc59f9cccb23fd2ba8b",
+  "chars": 833387
+ },
+ "reader": {
+  "kind": "hand-adjudication",
+  "recipeId": "cdc1ebe31991a3d4",
+  "descriptor": {
+   "generator": "scripts/eot-sidecar2.mjs@1",
+   "law": "POLICIES.md LP7 + 2026-08-31 amendment (surprise is hypergraph delta)",
+   "rule": "goldens/reading/RULE.md R1-R12 + fourth amendment (triadic minimum)",
+   "priors": {
+    "path": "derived-priors/reading-priors/reading-priors-v1.json",
+    "sha256": "df77decb3988597560e24d42bc6845a14359b845ec9eedf5436955c3b92d055a"
+   },
+   "actPrior": {
+    "path": "derived-priors/act-priors/act-prior-en.json",
+    "sha256": "67b97d1e10ba75a1c5ce34c05350181ae07033f74b7fd02f810b2d180115240c"
+   },
+   "livePriors": {
+    "commit": "483a0de7bfd51cc72493c8bd36b20f11322b366d"
+   }
+  },
+  "specimens": [
+   "quran-2-37-en@cdc1ebe31991a3d4"
+  ]
+ },
+ "ground": {
+  "seed": "ReadingPriors@1 checkpoint (a projection of the live goldens at the recipe's named commit — LP7 second amendment: checkpoints, never weights)",
+  "consumed": [
+   "act expectations (non-self + VerbNet)",
+   "the proposition bar"
+  ]
+ },
+ "windows": [
+  {
+   "specimen": "quran-2-37-en",
+   "start": 5962,
+   "startText": "Then Adam received from his Lord words",
+   "end": 6084,
+   "endText": "the relenting, the Merciful.",
+   "coordinates": "normalized body (container-stripped, CRLF-normalized); spans in RAW file coordinates"
+  }
+ ],
+ "admission": {
+  "gate": "hand-adjudication under RULE.md",
+  "offered": 3,
+  "heard": 3,
+  "turnedAway": 0
+ },
+ "spanSelfVerification": {
+  "checked": 3,
+  "ok": 3,
+  "bad": [],
+  "method": "re-run fresh at generation: raw.slice(span) must contain subject head, relation head, first object word (collapsed comparison)"
+ },
+ "surprise": {
+  "definition": "things are surprising to the extent they change our hypergraph, not ngram frequency (user direction, verbatim — LP7 amendment 2026-08-31). Surprise is the TYPED CHANGE an increment makes to the accumulated graph, never a perplexity.",
+  "graphEvents": {
+   "note": "this source founds its own specimens' propositions; it joins no rosetta graph yet — its evidence seeds the act lexicon for the spiral"
+  },
+  "frame": {
+   "standing": "own-census",
+   "census": {
+    "quran-2-37-en": {
+     "EVA·Figure": 1,
+     "REC·Figure": 1,
+     "SIG·Figure": 1
+    }
+   }
+  },
+  "actExpectations": {
+   "act-agreement": 1,
+   "act-departure": 0,
+   "no-expectation": 1,
+   "no-verb-head": 1,
+   "departures": [],
+   "note": "checked against non-self witnesses + the received VerbNet tier only"
+  }
+ },
+ "layers": [
+  {
+   "layer": 0,
+   "kind": "reading",
+   "hypothesis": "hand-adjudication (the favored reading)",
+   "recipeId": "cdc1ebe31991a3d4"
+  }
+ ],
+ "fold": {
+  "statement": "a sidecar is never done (LP8): layers append, the fold is recomputed on every append, nothing here is a final reading",
+  "note": "no adversarial layers yet — the shipped hypotheses predict from a prior reading of the same document, which this source does not have; the ledger appends when one exists"
+ },
+ "propositions": [
+  {
+   "specimen": "quran-2-37-en",
+   "language": "en",
+   "subject": "Adam",
+   "relation": "received",
+   "object": "from his Lord words (of revelation)",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:adam-received-words",
+   "ground": "quran-2.37.1",
+   "role": "declared",
+   "because": "the receiving of words into a holder's keeping — content held, Relate·Interpretation at figure grain, matching the Arabic row's تَلَقَّىٰ",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": null,
+   "alternate": {
+    "op": "CON",
+    "grain": "Figure",
+    "because": "receiving readable as the transfer-arrangement itself"
+   },
+   "span": {
+    "start": 394,
+    "end": 6284
+   },
+   "anchor": "Then Adam received from his Lord words (of revelation)",
+   "cell": {
+    "op": "EVA",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": null,
+    "key": null,
+    "verdict": "no-expectation"
+   }
+  },
+  {
+   "specimen": "quran-2-37-en",
+   "language": "en",
+   "subject": "his Lord",
+   "relation": "relented toward",
+   "object": "him",
+   "polarity": "+",
+   "clause": "coordinate",
+   "prop": "quran:god-relented",
+   "ground": "quran-2.37.2",
+   "role": "declared",
+   "because": "'relented toward him' — the standing re-grounded: wrath conceded, mercy begun, the re-zero on one bond — Generate·Interpretation at figure grain; Pickthall's verb choice renders the tawba as exactly this act",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "'He' → his Lord; 'him' → Adam",
+   "alternate": {
+    "op": "EVA",
+    "grain": "Figure",
+    "because": "readable as mercy held toward him"
+   },
+   "span": {
+    "start": 394,
+    "end": 6284
+   },
+   "anchor": "and He relented toward him",
+   "cell": {
+    "op": "REC",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "mechanical",
+    "key": null,
+    "verdict": "no-verb-head",
+    "note": "no token reaches VERB dominance — the copula rule or an unattested predicate; a typed gap, never a guess"
+   }
+  },
+  {
+   "specimen": "quran-2-37-en",
+   "language": "en",
+   "subject": "He",
+   "relation": "is",
+   "object": "the relenting, the Merciful",
+   "polarity": "+",
+   "clause": "main",
+   "prop": "quran:he-is-relenting",
+   "ground": "quran-2.37.3",
+   "role": "declared",
+   "because": "copula rule 3 — definite unique epithets (THE relenting, THE Merciful): identificational",
+   "embedded": false,
+   "unresolved": false,
+   "resolution": "'He' → the Lord of the previous clause",
+   "alternate": null,
+   "span": {
+    "start": 394,
+    "end": 6284
+   },
+   "anchor": "Lo! He is the relenting, the Merciful.",
+   "cell": {
+    "op": "SIG",
+    "grain": "Figure"
+   },
+   "actExpectation": {
+    "tier": "golden",
+    "key": "en|is",
+    "expectedOps": [
+     "SIG"
+    ],
+    "verdict": "act-agreement"
+   }
+  }
+ ],
+ "acts": [],
+ "revisions": [],
+ "lastRun": {
+  "recipeId": "cdc1ebe31991a3d4",
+  "at": "2026-08-31T19:09:25.829Z"
+ }
+}

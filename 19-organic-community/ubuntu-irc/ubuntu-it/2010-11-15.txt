@@ -1,0 +1,1196 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2010-11-15"
+lang: "it"
+messages: "1187"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<yvesBsAs> ciao ivan_
+<rorro007> yvesBsAs , bho qui mi dice nessuna webcam pero audio e mic funzionano
+<ivan_> <yvesBsAs> son tornato x vedere se riusciamo un attimo a risolvere quel problemi della'latra sera sulla connessione ;)
+<yvesBsAs> rorro007, ma la selezioni nelle usb della macchina? l'icona in basso a destra?
+<yvesBsAs> ivan_, la disconnessione :D
+<ivan_> <yvesBsAs> sì sì disconessione :D
+<yvesBsAs> avevi rimosso da avvio automatico quelle cose?
+<rorro007> yvesBsAs , non vedo usb
+<ivan_> <yvesBsAs> sì sì, ma nn è cambiato nulla
+<ivan_> l'ha fatto ancora
+<ivan_> <yvesBsAs> va a capire sta connessione modem, come si disattiva...
+<yvesBsAs> rorro007, che versione hai installato di virtualbox? è fondamentale saperlo...
+<yvesBsAs> ivan_, in cat /etc/network/interfaces che hai?
+<ivan_> ora guardo...mi sembra ke avevo cancellato tutto
+<rorro007> yvesBsAs , la 3.2.8
+<ivan_> <yvesBsAs> è vuoto
+<yvesBsAs> si, vabbè, guarda in alto nella macchina, nel menu vedi se c'è la voce "installa guest adition"
+<yvesBsAs> ivan_, come vuoto??
+<yvesBsAs> hai scritto bene?
+<yvesBsAs> cat /etc/network/interfaces
+<ivan_> nn stampa nulla a video e ricordo bene che quando avevo installato wicd, mi avevi detto di cancellare tutto e di salvarlo in un file per backup
+<rorro007> yvesBsAs , è gia intallato guest adition
+<yvesBsAs> rorro007, non so, se non le vede non le può usare, se sei sicuro sia quella "NON" ose non saprei che fare in più
+<yvesBsAs> ivan_, ma almeno due linee ci devono essere, riguardano "lo"
+<yvesBsAs> auto lo
+<ivan_> avevo tolto tutto...anke quelle
+<yvesBsAs> iface lo inet loopback
+<yvesBsAs> no, mettilo quello
+<ivan_> se vuoi le ripristino da quello vecchio
+<yvesBsAs> gksudo gedit /etc/network/interfaces
+<rorro007> yvesBsAs , si è ose è la versione che c'è nel ubuntu center
+<yvesBsAs> ed inserisci le linee
+<yvesBsAs> rorro007, è più o meno una ora che ti ho detto di installare l'altra, se non lo vuoi fare amen...
+<ivan_> auto lo iface lo inet loopback
+<yvesBsAs> la macchina virtuale creata non la perdi, non cancellerla
+<ivan_> sono queste 2 righe vero?? <yvesBsAs>
+<yvesBsAs> si ivan_
+<yvesBsAs> auto lo
+<yvesBsAs> iface lo inet loopback
+<yvesBsAs> queste due
+<yvesBsAs> salvi e riavvii
+<rorro007> yvesBsAs , a scusa non avevo capito ma allora devo cancellare tutto e istallare
+<ivan_> perfetto ;) per fortuna avevo salvato il file :)
+<yvesBsAs> disinstalla completamente quella
+<yvesBsAs> sul gestore pacchetti spunta la rimozione completa
+<yvesBsAs> non ti cancella la macchina che hai creato
+<rorro007> yvesBsAs , ok e dopo
+<yvesBsAs> quando installai la nuova crei la macchina e gli fai puntare il disco di adesso, e lei parte
+<ivan_> <yvesBsAs ok incollato e salvato...ma a ke servivano quelle 2 righe? visto ke funzionava anke senza hihihi?
+<yvesBsAs> è un interfaccia del sistema, che funzionasse è una cosa, che funzionasse bene è tutto da vedere :D
+<rorro007> yvesBsAs , dimmi come si chiama la che devo istallare
+<ivan_> <yvesBsAs> potrebbe essere ke adesso sia risolto il problema? devo riavviare x vedere?
+<yvesBsAs> riavvia ivan_
+<yvesBsAs> rorro007, ripassa in chat
+<yvesBsAs> /join #ubuntu-it-chat
+<ivan_> ricordami solo il comando per vedere tutti i processi così in caso salta, te lo pasto subito dopo
+<yvesBsAs> è in sistema amministrazione applicazioni di avvio
+<ivan_> tail -f /var/log/messages
+<yvesBsAs> haa, no, spetta
+<yvesBsAs> si, esatto
+<ivan_> per fortuna esiste il comandi history ^^
+<ivan_> a dopo
+<yvesBsAs> oki
+<ivan_> per ora nn è ancora saltata
+<ivan_> semmai fra poco tento un'altro riavvio...
+<yvesBsAs> aspetta una decina di minuti, poi invece di fare il riavvio spegni e riaccendi per sicurezza
+<ivan_> <yvesBsAs> ok...
+<ivan_> <yvesBsAs> intanto ti chiedo un'altra cosa...è possibile non dover autenticarae con la password le partizioni di windows ogni volta ke si riavvia??
+<yvesBsAs> normalmente si, mi pare sia risolvibile facilmente con il software ubuntu tweaks
+<ivan_> <yvesBsAs> l'avevo installato proprio a tal proposito ma poi nn ero riuscito...
+<yvesBsAs> strano..
+<ivan_> <yvesBsAs> nn ho tyrovato nessuna voce ke possa riguardare quel problema
+<napoli> 1qualcuno ce mi aiuti
+<napoli> help
+<napoli> nada
+<napoli> help
+<napoli> m
+<attempt> ?
+<attempt> !qualcuno
+<ubot-it> la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<napoli> allora
+<napoli> o un problea con un acer aspire one
+<attempt> scrivi tutto su una riga
+<napoli> allora non riesco a istallarer ubuntu
+<napoli> ho provato con uneniboot il boot parte
+<napoli> ma la partizione non va
+<napoli> attept
+<attempt> partizione?
+<attempt> hai il cd di installazione di ubuntu?
+<napoli> no
+<napoli> acer aspire one non hai il supporto
+<napoli> cd
+<napoli> a olo usb
+<napoli> we
+<attempt> hai fatto una penna usb live di ubuntu?
+<napoli> si
+<attempt> il pc riesce a bootare da usb?
+<attempt> devi settare il bios perche booti da usb e non da hd.
+<napoli> lo
+<napoli> so
+<napoli> e l o
+<napoli> fatto
+<napoli> e sol
+<FloodBotIt1> napoli: Non intasare il canale, usa http://paste.ubuntu.com per incollare, non usare Invio come punteggiatura.
+<attempt> che significa la partizione non va?  dove si ferma ubuntu?
+<napoli> cheallora io o gia fto il boot e solo che faccio i prii pasi dell installazione di ubuntu ma quando devo formattare non va
+<attempt> allora ti procuri gparted live
+<attempt> !gparted
+<ubot-it> http://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/PartizionamentoManuale
+<attempt> usi anche win?
+<attempt> devi  ridimensionare la partizione di windows e crearne una per ubuntu.
+<roxdragon> seraaaaaaaaaaaaaaaaaaaa
+<Bullterrier> Buon piovoso lunedì
+<Odo> Giorno
+<libero_> devo leggere file apple come fare?
+<libero_> overme ne hai idea?
+<OverMe> son entrato adesso, di cosa devo avere idea?
+<libero_> come leggo i file apple con ubuntu?
+<massimo18> Buon Giorno
+<OverMe> dipende da quali sono "i file apple"
+<libero_> sono del suo writer
+<libero_> di scrittura
+<OverMe> si ma l'estensione qual'è?
+<libero_> aspetta esco leggo e torno
+<Marty139> Buongiorno.
+<libero_> over sono .doc
+<libero_> ma non era word? di windows?
+<OverMe> libero_, con openoffice li apri
+<libero_> sivuro ma poi vedo solo caratteri incomprensibili
+<giulia> ciao a tutti!
+<giulia> ciao a tutti
+<zem120> ciao a tutti!
+<zem120> qualcuno mi può dare una mano?
+<OverMe> zem120, chiedi, chi sa risponde
+<zem120> sto cercando di configurare una stampate qua su ubuntu
+<zem120> è una hp deskjet f4580, ubuntu mi trova i driver e come al solito la installa da solo
+<zem120> e dal pannello di amministrazione mela fa vedere e sembra tutto perfetto... ma.... non stampa
+<zem120> appena installata cliccano su stampa pagina di prova la stampava ma non stampava nient altro... adesso non stampa manco quella
+<zem120> e non capisco dove sbaglio....
+<zem120> grazie a chiunque mi risponda :)
+<mlazzari2> giorno a tutti
+<e-DIO-t> raga': una qualche maniera formale per definire le "prese ethernet collegate al patch panel"? Userei le porte d'accesso, ma poi me le confondono con le porte d'accesso dello switch, e "prese a muro" fa cagare.
+<e-DIO-t> mmmh e come al solito ho sbagliato chan :°°°
+<nicotano> buongiorno
+<glpiana> ola
+<zem120> ciao a tutti!
+<zlatan> ciao a tutti
+<gigirock> ciao a tutti...su una versione server 9.10 dopo alcuni giorni non riesco + ad accedere con ssh con utente normale...solo root....perche' ?
+<glpiana> gigirock, che errore ottieni?
+<gigirock> glpiana: aspe...
+<gigirock> glpiana: permission denied
+<glpiana> gigirock, tu dai ssh nel terminale e ottieni solo permission denied?
+<gigirock> glpiana: si
+<glpiana> gigirock, puoi mettere su pastebin tutto, dal comando al promprt successivo?
+<gigirock> glpiana: Permission denied, please try again.
+<gigirock> glpiana: non posso pastare gli indirizzi del server e gli user.....
+<glpiana> ok. sul server che errore ti da?
+<gigirock> glpiana: che log devo guardare ? access.log
+<glpiana> gigirock, non lo so, sei tu che hai un server, non hio. guardali un po' tutti fin che non trovi qualcosa che riguarda il tentativo di accesso
+<glpiana> gigirock, non è che accedendo da root hai sminchiato i permessi?
+<gigirock> glpiana failed passowrd.....e' l'unico errore che mi da....
+<glpiana> gigirock, facendo cosa? cerca di capire che io da qui non vedo cosa digiti al tuo pc. se contestualizzassi sarebbe più facile seguirti
+<gigirock> ma e' possibile che sia settato che l'utente deve cambiare password ogni tot giorni ?
+<gigirock> glpiana: vado nel auth.log in var /log e all'orario che ho tentato l'accesso mi da failed password
+<gigirock> come si vede se un utente e' locked ?
+<glpiana> gigirock, ecco, se ti spieghi si capisce cosa stai facendo. non avrei potuto immaginarmelo da solo
+<glpiana> gigirock, il tuo server avrà una configurazione per ssh immagino
+<gigirock> si chiaro....
+<glpiana> gigirock, controlla la configurazione allora
+<gigirock> glpiana: non c'e' niente di particolare nella conf solo che root puo' loggarsi....
+<filo1234> hai provato a cambiare la password dell'utente?
+<gigirock> filo1234:  ma io penso che in qualche maniera la password dell'utente viene resettata o blocata
+<BlackZ> gigirock: awk -F: '($2 == "") {print}' /etc/shadow
+<filo1234> se è impostata per essere cambiata dopo un toto di giorni si....ma ripeto prova acambarla tu manualmente ora
+<gigirock> filo1234: come se fosse impostato scadenza password ogni 30 gg. o cose simili
+<BlackZ> gigirock: verifica che nessun account (tra cui quello che stai tentanto di usare per eseguire l'accesso) ha password vuote
+<BlackZ> gigirock: e dai anche chage -l username
+<gigirock> BlackZ: no nessuno ha pass vuote
+<BlackZ> gigirock: ok, dai il secondo comando
+<gigirock> !pastebin
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<gigirock> http://paste.ubuntu.com/532243/
+<gigirock> never....
+<filo1234> ma quanto casino...provare  acambiare la password no e? troppo semplice?
+<gigirock> filo1234: dopo un po di giorni la pass n e' + valida....
+<filo1234> Password expires                                        : never
+<BlackZ> gigirock: verifica che nella configurazione del server ssh non ci sia "AllowUsers" né "DenyUsers"
+<filo1234> non è impostato nessun expires
+<BlackZ> gigirock: e se c'è uno di quelli (o entrambi) verifica a quali user è permesso l'accesso e/o a quali no
+<gigirock> BlackZ: sshd.conf ?
+<filo1234> Number of days of warning before password expires       : 7
+<filo1234> gigirock: ^
+<BlackZ> gigirock: /etc/ssh/sshd_config
+<BlackZ> gigirock: cat /etc/ssh/sshd_config | egrep 'AllowUsers|DenyUsers'
+<gigirock> BlackZ: niente non  ritorna niente....
+<filo1234> Number of days of warning before password expires       : 7
+<filo1234> e 3
+<gigirock> filo1234: ma tutti gli altri parametri non fanno scadere la password...
+<filo1234> gigirock: scusa con root accedi giusto? una volta che sei in root  dai su nome_user e vedi se ti fa loggare
+<gigirock> filo certo che mi fa loggare....
+<BlackZ> gigirock: passwd -S username cosa ti restituisce?
+<rorro007> cia a tutti posso fare la divisione del disco per istallere un altro sistema operativo? ora ho ubuntu
+<glpiana> !gparted | rorro007
+<ubot-it> rorro007: http://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/PartizionamentoManuale
+<filo1234> gigirock: allora non è un problema di password ma è un problema di accesso da ssh
+<gigirock> filo se uso su funziona se uso sudo no ... :(
+<filo1234> ?
+<filo1234> sudo che
+<BlackZ> filo1234: all'utente root non chiede la password se usi "su" su un account utente normale
+<gigirock> filo1234:  sudo -i mi da unable to resolve host xxxxxxxxxx
+<filo1234> BlackZ: e quindi?
+<filo1234> io ho detto su nomeutente
+<filo1234> s elo fa loggare non è un problema di password dell'utente in questione
+<gigirock> su nomeutente funziona....
+<filo1234> se lo fosse non lo farebbe loggare nemmeno in quel modo
+<filo1234> gigirock: appunto allora non è un problema di password, ma di restrizioni ssh
+<gigirock> io avevo cambiato solo che root puo' accedera a ssh....
+<filo1234> gigirock: sudo non te lo fa usare se l'utente non è abilitato all'uso di sudo
+<gigirock> cioe' non e' un sudoers ?
+<BlackZ> filo1234: ma se usa "su" in quel modo non può sapere se la password è giusta o sbagliata, ti pare? (esempio: se inserisce la password sbagliata)
+<filo1234> BlackZ: ah ora ho capito cosa intendi
+<gigirock> grazie a tutti.....per ora. adesso vado a fare altro....oggi pomeriggio tornero' sull'argomento....
+<gigirock> non ho capito molto.....
+<BlackZ> <gigirock> io avevo cambiato solo che root puo' accedera a ssh.... <- ecco risolto l'enigma :)
+<filo1234> -.-
+<gigirock> quindi solo root puo' accedere a ssh ?
+<BlackZ> gigirock: era un'affermazione o cosa?
+<BlackZ> gigirock: visto che da quella frase ho capito che hai impostato la configurazione del server ssh in modo che solo l'utente root può accedere al server ssh :)
+<filo1234> secondo me è un delirio
+<gigirock> io ho solo aggiunto PermitRootLogin yes
+<BlackZ> gigirock: questo non impedisce agli altri utenti normali di effettuare l'accesso al server ssh, comunque, non mi hai mica dato l'output che il comando "passwd -S username" ti restituisce
+<gigirock> user P 11/02/2010 0 99999 7 -1
+<BlackZ> gigirock: ok, come ultima spiaggia: prova a cambiare password e vedi se il problema si risolve
+<gigirock> si ok....non ho piu' tempo adesso....ci sentiamo oggi pomeriggio....
+<filo1234> gigirock: puoi pastare il comando ssh che dai per connetterti da user?
+<gigirock> filo1234: ssh -l user nomeserver
+<filo1234> gigirock: verifichi se cambia qualcosa con ssh user@ipserver   ( non dovrebbe ma forse... )
+<filo1234> gigirock: ma questo server è a portata di mano?
+<glpiana> Permission denied, please try again.
+<glpiana> lo da quando o il nick è sbagliato o la password è sbagliata
+<glpiana> e potrebbe sbagliarle intrembe contemporaneamente essendo gigirock
+<glpiana> :)
+<rorro007> glpiana,sai come funziona gparted cosa devo fare per una partizione
+<glpiana> rorro007, hai letto la guida che ti ho indicato? c'è scritto tutto
+<glpiana> rorro007, che poi dipende da cosa devi installare
+<rorro007> glpiana, purtroppo seven
+<glpiana> rorro007, se si tratta di un'altra distribuzione linux probabilmente puoi evitare il passaggio da gparted e usarne gli strumenti in fase di installazione
+<glpiana> ah ecco. beh, usa geprted come spiegato
+<glpiana> *gparted
+<rorro007> glpiana, scusa se ti chiedo ma posso aumentere dev sda 2 ntfs
+<glpiana> rorro007, non so come sia messo il tuo disco, non ci tiro fin lì. digita sudo fdisk -l in un terminale e copia su pastebin
+<rorro007> glpiana, non da niente
+<glpiana> rorro007, sudo fdisk -l non ti da nulla? impossibboli
+<rorro007> glpiana, scusa domenticato sudo
+<glpiana> eh
+<rorro007> glpiana, http://pastebin.ubuntu.com/532278/
+<glpiana> rorro007, ma scusa, tu che cosa vuoi fare? ridimensionare un ntfs su cui ha un windows per fare spazio e metterci seven?
+<glpiana> o cosa altro?
+<rorro007> glpiana, fare spazio poi intallere seven da boot
+<glpiana> rorro007, scusa, vado a mangiare
+<rorro007> glpiana, ok a dopo buon app
+<roxdragon> seraa
+<giuseppe_> ciao ho installato skype però quando faccio videochiamata non mi vedo anche se la cam si accende
+<giuseppe_> come faccio
+<giuseppe_> è urgente
+<giuseppe_> aiutatemi
+<giuseppe_> per favore
+<roxdragon> giuseppe_,  lsusb
+<roxdragon> !paste | giuseppe_
+<ubot-it> giuseppe_: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<gigirock> giuseppe_: come fai a dire che la webcam si accende ?
+<giuseppe_> si accende la luce rossa ma non mi vedono
+<gigirock> la luce rossa dice che e' in funzione ?
+<giuseppe_> esatto
+<gigirock> k., hai provato con un altro programma ?
+<giuseppe_> skype ho provato
+<gigirock> cheese o come uazz si chiama ?
+<giuseppe_> a me quello serve, già nn riesco con amsn
+<fernet> ciao come posso ridurre le idmensioni di un video?
+<gigirock> giuseppe_: visto che e' cosi' urgente dobbiamo capire se la cam viene vista da ubuntu...
+<gigirock> giuseppe_: lsusb
+<giuseppe_> che devo fare?
+<giuseppe_> devo scrivere lsub dove?
+<fernet> cioè 5 minuti di video sono 200 e passa mb!!!!come posso fare per ridurlo magari per metterlo su youtube?
+<gigirock> apri un terminale e digita lsusb , copia il risultato in paste.ubuntu.com e posta qui il link rislutante
+<roxdragon> giuseppe_,  chiudi tutto
+<gigirock> fernet: con chi parli ?
+<roxdragon> e dai: LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so skype
+<roxdragon> nel terminale
+<roxdragon> e prova la cam
+<fernet> gigirock da solo sto spiegando il mio problema
+<gigirock> fernet: con che applicazione e in che contesto
+<roxdragon> fernet, pytube
+<giuseppe_> lsub mi dice comando nn valido
+<roxdragon> o mi pare pitivi fernet
+<gigirock> giuseppe_: lsusb
+<giuseppe_> ok
+<fernet> roxdragon non per forza vorrei metterlo su youtube
+<fernet> devo metterlo su un foru
+<fernet> forum
+<fernet> e devo ridurre la dimensione
+<roxdragon> usa pitivi
+<fernet> ok
+<giuseppe_> http://paste.ubuntu.com/532304/
+<fernet> ho usato l'editor video pitivi
+<fernet> per tagliarlo
+<fernet> e farlo di 5 minuti
+<fernet> ma come riduco la dimensione?
+<giuseppe_> ce l'ho fatta
+<giuseppe_> ho fatto come ha detto roxdragon
+<giuseppe_> grazie mille
+<gigirock> roxdragon: ma cosi' carichi il driver prima ? poi resiste al reboot ?
+<roxdragon> n0on resiste al reboot
+<roxdragon> è uscito dovevo fargli mettere il lanciatore
+<gigirock> roxdragon: del resto era urgente
+<roxdragon> infatti ^^
+<fernet> scusate  il formato file meno grosso?
+<fernet> ora da 200 sono passato a 96 mb ora è file avi
+<fernet> come posso ridurre ancora questi 96mb di video?????sono 7 minuti di filmato ma 96 mb mi sembrano tantini
+<roxdragon> fr flv
+<roxdragon> fernet,
+<fernet> roxdragon dimmi
+<roxdragon> flv
+<roxdragon> il formato
+<frank29> è normale che il pc ibernato ci impiega di più ad accendersi rispetto a un avvio normale??
+<cobe571> ciao a tutti
+<glpiana> frank29, direi di no
+<frank29> glpiana, allora Huston, abbiamo un  problema :D
+<frank29> *Houston :D
+<glpiana> lol
+<fernet> roxdragon FLV me lo fa a 133mb piu di avi
+<ghigomatto> ciao a tutti
+<ghigomatto> problema: pubblicato sito locale con Joomla su ubuntu 10.04 con apache, php5 e mysql, ma il web server risponde così:vuoi salvare l'oggetto phtml?
+<glpiana> !chat | ghigomatto
+<ubot-it> ghigomatto: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<ghigomatto> ubot-it: non credevo d'esser ot, si tratta di un problema dei componenti server ubuntu...se tento d'installare apache, mi propone troppe scelte, devono esserci dei repos non necessari!
+<ubot-it> Error: I am only a bot, please don't think I'm intelligent :)
+<glpiana> !apache | ghigomatto
+<ubot-it> ghigomatto: apache: Installare e configurare Apache: http://wiki.ubuntu-it.org/Server/Web - Installazione di un server LAMPP: http://wiki.ubuntu-it.org/Server/Xampp
+<nicotano> salve
+<ghigomatto> ubot-it: so configurare un web server, mi serve sapere se uso i pacchetti giusti!
+<ubot-it> Error: I am only a bot, please don't think I'm intelligent :)
+<glpiana> ghigomatto, ubot-it è un bot, smettila di parlare con lui :D
+<fernando60> buon giorno. devo rivitalizzare un nbook potrei avere il link per la versione 8.1 di ubutu? grazie a tutti... non sono Gianni Morandi!
+<glpiana> fernando60, nbook = netbook o notebook?
+<glpiana> e di 8.10 che te ne fai che è obsoleta?
+<nicotano> fernando60, magari prova Lubuntu
+<fernando60> yes. non parlo inglese!
+<nicotano> fernando60,  quanta ram tiene il pc e che CPU
+<glpiana> e che c'entra l'inglese? O.o
+<fernando60> ok va bene lubuntu, per favore il link così posso tornare a casa.
+<glpiana> fernando60, basta legger eil topic
+<ghigomatto> glpiana: scusami, ma non sapevo. resta la domanda...
+<fernando60> 128 mb ram hdd 8 bb
+<massimo18> bb?
+<glpiana> ghigomatto, resta la mia risposta di partenza: qui non c'è supporto per joomla
+<glpiana> !chat | ghigomatto
+<ubot-it> ghigomatto: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<nicotano> fernando60, http://lubuntu.net/
+<nicotano> fernando60, cmq sei proprio al minimo con lubuntu, forse devi orientarti + verso puppy o DSL o tiny
+<fernando60> ok grazie per il link lo sto facendo.
+<fernando60> puppy legge le sk pcmcia?
+<nicotano> fernando60,  leggi qui https://wiki.ubuntu.com/Lubuntu/ReleaseNotes/LucidLynx
+<fernando60> grazie vado a leggere.
+<ghigomatto> glpiana: credevo che si potesse domandare qui per versioni diverse dei pacchetti ubuntu.
+<glpiana> ghigomatto, no :) chiedi su #ubuntu-it-chat
+<massimo18> lol
+<fernando60> nicotano in inglese sono 00000. si puo scaricare la iso o qualcosa di simile? grazie
+<nicotano> fernando60, di cosa ?
+<peppeuz> buondì gente... cosa ne pensate di burg?
+<peppeuz> volevo provarlo, ma leggo in giro che rallenta di molto l'avvio dell'os...
+<nicotano> !chat | peppeuz
+<ubot-it> peppeuz: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<peppeuz> okok, cambio stanza :D saluti!
+<ghigomatto> glpiana: ok, ci provo. grazie.
+<fernando60> nicotano puppy dsl o tiny. mi scuso se questo non è il luogo adatto.
+<nicotano> fernando60, http://distrowatch.com/index.php?language=IT  qui trovi i link
+<fernando60> nicotano grazie vado subito
+<nicotano> fernando60, leggi anche qui  http://livelinux.altervista.org/articles.php?lng=it&pg=200
+<plm> !java
+<ubot-it> http://wiki.ubuntu-it.org/Programmazione/Java - Java su Architettura a 64 Bit: http://wiki.ubuntu-it.org/Programmazione/Java/Architettura64Bit
+<fernando60> nicotano grazie per il link. penso puppy vada bene...se riesco a farlo funzionare:)
+<nicotano> fernando60, se vuoi posso passarti il manuale in italiano è una versione vecchia ma le basi son quelle,
+<cippirimerlo> hi
+<glpiana> nicotano, fernando60 scusate,, ma per parlare di puppy non siete sul canale giusto :)
+<nicotano> glpiana, sorry mi scuso
+<nicotano> fernando60, in pvt
+<fernando60> nicotano si grazie, mi scuso per il disturbo, ma non saprei come fare.grazie
+<fernando60> #ubuntu-it-chat
+<nicotano> fernando60, leggi il pvt?
+<fernando60> non lo so
+<OverMe> :/
+<fernando60> ubuntu-it-chat
+<nicotano> fernando60, scrivi "/join" senza virgolette  #ubuntu-it-chat
+<fabri> Ciao a tutti... Sto installando ubuntu su un compaq C700 con vista, non riesco a fare il resize della partizione per installare linux in dual boot
+<glpiana> fabri, hai fatto il defrag del disco di windows prima dell'installazione?
+<nicotano> fabri, usa il cd live parted-magic prima deframmenta windows
+<fabri> ok... quando mi costa in termini di tempo?
+<nicotano> cosa?
+<fabri> il derag
+<fabri> defrag
+<nicotano> chiedilo a windows
+<rorro007> ciao una volta mi hanno fatto vedere come mettere a zero elementi recenti ma non mi ricordo piu qualcuno mi puo aiutare
+<rorro007> dove trovo il file per modificare dati recenti??
+<nigna> \
+<rorro007> nessuno sa come impostare la quantità di elementi recente
+<seth----> salve a tutti
+<ubuntu> ciao a tutti. ho riavviato ubuntu 10.04 e adesso la distribuzione parte e carica. quando arriva al desktop, carica lo sfondo e qualche icona ma tutto si ferma li. il pc resta bloccato. il desktop non risulta utilizzabile. cosa può essere successo?
+<ubuntu> jester-, Ciao....
+<jester-> cià
+<jester-> ubuntu: prima andava?
+<ubuntu> jester-, si si andava benissimo
+<ubuntu> jester-, ma non ho effettuato aggiornamenti
+<jester-> ubuntu: fa cosi dopo aver fatto?
+<ubuntu> jester-, dal led del disco sembra che si comporti in modo anomalo è come se caricasse continuamente....
+<jester-> ubuntu: scheda video ati o nvidia
+<ubuntu> jester-, scheda nvidia
+<jester-> ubuntu: hai messo il driver e poi pacioccato con nvidiaconfig?
+<ubuntu> jester-, ho provato a caricare con la modalità di ripristino utilizzando la modalita generale ma non cambia nulla. No jester non ho toccato il driver video
+<roxdragon> !tab | ubuntu
+<ubot-it> ubuntu: Per autocompletare un nick scrivete le prime due o tre lettere e poi premete il tasto TAB | vedi anche !chi
+<jester-> ubuntu: fai 2 cose. sudo touch /forcefsck che al riavvio ti fa lo scandisk. e controla se nella home hai per caso uun file nascosto .nividirc o simile e segalo
+<ubuntu> jester-, ma in ubuntu un disco si può 2invalidare"?
+<jester-> ubuntu: qualsiasi filesystem è sminchiabile e qualsiasi hd si puo rovinare o rompere
+<ubuntu> jester-, il force..... posso darlo dalla live dalla quale ti sto scrivendo? Non è necessario inserire il nome del media o la posizione sul disco?
+<jester-> ubuntu: dovresti andare un chroot, fai prima col recovery
+<ubuntu> jester-, puoi gentilmente spiegarmi?
+<jester-> ubuntu: e con ls -la vedi | grep -i .nvidia* vedi se hai il file
+<jester-> ubuntu: riavvia i nmodlaità ripristino
+<jester-> vain shell di root
+<jester-> e fai
+<ubuntu> ok. grazie. ci provo!
+<jester-> ubuntu: spe
+<ubuntu> ah si
+<jester-> ubuntu: lo scandisk lo fai anche da live, che partizione è ubuntu
+<ubuntu> come faccio a vedere la lista delle partizioni da shell?
+<jester-> ubuntu: sudo fdisk -l
+<ubuntu> sda9
+<jester-> ubuntu: sudo fsck /dev/sda9
+<ubuntu> jester-, Warning... fsck.ext4 for device /dev/sda9 exited with signal 7.
+<jester-> ubuntu: azzz la partizione è smontata?
+<ubuntu> jester-, ho provato sia smontata che montata. che significa?
+<jester-> ubuntu: chiudi il nautilus e altro terminale e da i sudo umount /dev/sda9
+<jester-> ubuntu: quindi ancora sudo sfsck /dev/sda9
+<ubuntu> jester-, non va.
+<ubuntu> aspetta provo a fare una cosa
+<jester-> ubuntu: fai vedere sul paste sudo fdisk -l
+<parmenide> salve a tutti, sono appena approdato ad ubuntu, cortesemente posso chiedere un paio di cosettine veloci a qualcuno?
+<glpiana> !aiuto | parmenide
+<ubot-it> parmenide: per cortesia non chiedere il permesso di chiedere, semplicemente formula la domanda (tutta su  una riga, in modo tale che gli altri possano leggerla e seguirla con facilità). Se qualcuno conosce la risposta ti risponderà :-)
+<parmenide> ok grazie!
+<parmenide> praticamente ho difficoltà nel capire il / mount dismount unità virtuali, partizioni... .ecc.. . Non c'è una guida che spieghi le differenze che arrivando da windows non capisco bene come sono intese qui. negli help sul sito di ubuntu non ho trovato niente... grazie!
+<roxdragon> !mount
+<ubot-it> Voce non trovata: 'mount'
+<cristian_c> ciao, ho un problema che non riesco a spiegare
+<cristian_c> in pratica ho un mio file di testo
+<cristian_c> ma non riesco più ad aprirlo
+<cristian_c> non so cosa sia successo
+<cristian_c> il messaggio di errore nell'editor è:
+<cristian_c> Impossibile aprire il file «/home/cristian/.upman/dicts/dict_EN.txt».
+<cristian_c> Il programma non è stato in grado di determinare la codifica dei caratteri.
+<cristian_c> Assicurarsi che il file non sia un file binario.
+<cristian_c> Selezionare una codifica dei caratteri dal menù e riprovare.
+<cristian_c> premetto che gli altri file txt nella cartella riesco ad aprirli tranquillamente
+<cristian_c> come posso fare per risolvere?
+<K99Brain> cristian_c, da terminale: file /home/cristian/.upman/dicts/dict_EN.tx
+<K99Brain> cristian_c, da terminale: file /home/cristian/.upman/dicts/dict_EN.txt
+<HoldenC> cristian_c: da terminale nano /home/cristian/.upman/dicts/dict_EN.txt
+<cristian_c> riesco ad aprirlo con nano
+<cristian_c> ma per aprirlo anche con gedit
+<cristian_c> ?
+<cristian_c> anche perché di solito uso gedit e non nano per leggere e modificare i file di testo
+<cristian_c> :)
+<fabri> aggiornamento da prima, installata ubuntu sul compaq c700... scaricati driver wireless con connessione cablata... riavviato... ora però appare connesso ma non scarica nulla
+<cristian_c> niente, non riesco ad aprirlo con gedit
+<cristian_c> :(
+<cristian_c> qualcuno conosce un modo?
+<OverMe> cristian_c, se ti dice che la codifica è sbagliata vuol dire che per errore c'è finto dentro qualcosa di non ascii e/o non riconoscibile oppure s'è corrotto
+<cristian_c> OverMe, sì, ma nano lo apre
+<cristian_c> come si spiega?
+<OverMe> perché nano se ne frega della codifica
+<cristian_c> aprendolo con nano non risulta danneggiato
+<cristian_c> c'è un modo per ripristinare la codifica e permettere di aprirlo con gedit?
+<OverMe> passaci sto file e vediamo
+<HoldenC> cristian_c: iconv --from-code=UTF-8 --to-code=UTF-8 --output=fileuscita.txt fileingresso.txt
+<cristian_c> iconv: sequenza di input non lecita alla posizione 11604
+<HoldenC> cristian_c: infatti, il file è corrotto...
+<cristian_c> questo vuol dire che non lo posso ripristinare?
+<cristian_c> :O
+<HoldenC> cristian_c: non senza perderne una piccola parte
+<cristian_c> ma è strano, perché tutte le vecchie copie sono inaccessibili
+<cristian_c> ho alcune vecchie copie del file in degli archivi
+<cristian_c> eppure una volta funzionavano
+<cristian_c> che si siano corrotte tutte allo stesso momento?
+<cristian_c> e molto strano :O
+<cristian_c> *è
+<HoldenC> cristian_c: fai una semplice prova, in un terminale lancia "cat filecorrotto"
+<HoldenC> cristian_c: vedi se escono caratteri strani
+<fabri> Nessuno mi può aiutare con una broadcom che si connette ma non scarica?
+<cristian_c> HoldenC, ad un certo punto risulta tagliato, anche in nano
+<HoldenC> cristian_c: ok, allora è quello il problema, non credo sia colpa di gedit
+<cristian_c> alla riga 1466
+<cristian_c> non è possibile che sia non apribile anche la vecchissima versione del file
+<cristian_c> non ho capito cos'è successo
+<MinorBigle> ciao
+<MinorBigle> buon pomerigigo a uttti
+<cristian_c> fabri, sicuro che il problema non sia la rete invece della scheda wireless?
+<fabri> no, perché ocn un altro pc vi parlo qui
+<cristian_c> fabri, beh, allora come fai a connetterti con la scheda wireless
+<cristian_c> ?
+<fabri> ? ho due pc, entrambi connessi in wifi, con questo funziona tutto, con l'altro si connette ma non carica nemmeno una pagina web
+<MinorBigle> c'è qualcuno che ha installato matlab 2010a? sono alle prime armi. all'infuori dei repositori per isntallare programmi e nn so come fare
+<cristian_c> quindi non si connette
+<fabri> si connette a default, ma non scarica nulla
+<cristian_c> MinorBigle, c'è anche l'alternativa octave
+<cristian_c> o il dual boot
+<cristian_c> che vuol dire a default?
+<MinorBigle> ne ho sentito parlare
+<cristian_c> ha la stessa sintassi
+<cristian_c> è un matlab però libero
+<MinorBigle> ma come linguaggio di programmazione e potenzialità è uguale? lo devo usare all'università e nn vorrei uscire pazzo per imposrtare file
+<cristian_c> aspetta
+<HoldenC> MinorBigle: cosa ci devi fare esattamente?
+<MinorBigle> controllo digitale
+<MinorBigle> robotica
+<MinorBigle> e via dicendo
+<MinorBigle> simulazioni
+<FloodBotIt1> MinorBigle: Non intasare il canale, usa http://paste.ubuntu.com per incollare, non usare Invio come punteggiatura.
+<cristian_c> uhm
+<cristian_c> beh, roba complessa
+<HoldenC> MinorBigle: uhm... allora mi sa che ti serve simulink etc
+<HoldenC> a quel punto usa matlab
+<fabri> cristian_c default è la rete
+<cristian_c> in dual boot
+<cristian_c> fabri, cioè si connette a internet o no? Prova un ping
+<fabri> come?
+<glpiana> ola
+<cristian_c> ping en.wikipedia.org
+<cristian_c> ad esempio da terminale
+<cristian_c> è un test
+<HoldenC> MinorBigle: possiamo parlare qui, no non ho matlab installato, uso octave
+<MinorBigle> capito
+<lince> ciao a tutti. ho necessità di installare winxp, (con ubuntu già installato) vorrei evitare, ma devo. quanto dovrei moccolare per avere il dual boot?
+<glpiana> lince, mettere windows dopo ubuntu è un problema che io sappia (ma non ne so granchè di windows)
+<glpiana> lince, hai necessità di una installazione reale o potresti optare per una installazione virtuale?
+<lince> ciao amico, glpiana e già mi aspettavo sta' cosa, volevo capire dic he morte devo morire...
+<glpiana> lince, temo che semplicemente windows non riuscirà a installarsi
+<lince> ma con già predisposta una partizione, no? glpiana
+<glpiana> lince, puoi provar a lasciare dello spazio libero dopo ubuntu e vedere se il cd di installazione d xp vede la partizione che gli dedichi
+<glpiana> lince, eh a questo non so rispondere
+<lince> semmai il problema è dopo, rifare il grub. il supergrub disk potrebbe risolvere? glpiana
+<glpiana> lince, quello assolutamente non è un problema. lo si fa da livecd in un attimo
+<glpiana> !grub | lince qui la guida
+<ubot-it> lince qui la guida: http://wiki.ubuntu-it.org/AmministrazioneSistema/Grub/ | Per ripristinare Grub: http://wiki.ubuntu-it.org/AmministrazioneSistema/Grub/Ripristino
+<lince> ah ok, sì conosco. grazie. semmai mi ripresento qui. grazie amici, buona serata glpiana ubot-it
+<glpiana> ciao lince :)
+<lince> ciao glpiana
+<freenguello> riesco a vedere i video di youtube e non riesco a vedere questo tranne i primi 2 secondi http://www.lastampa.it/multimedia/multimedia.asp?IDmsezione=29&IDalbum=32211&tipo=VIDEO
+<glpiana> freenguello, ti ho già chiesto un paste di about:config di là -.-
+<freenguello> e non ci riesco
+<e-DIO-t> freenguello: domanda: ma hai provato a farlo ripartire dopo che ti s'è bloccato?
+<freenguello> ho riavviato pure firefox
+<glpiana> freenguello, strano. vabbè, cerca flash e dimmi che libreria riporta
+<freenguello> si e-DIO-t
+<e-DIO-t> freenguello: chè anche a me è andato in errore, poi ho ripremuto play ed è ripartito.
+<freenguello> accessibility.typeaheadfind.flashBar;1
+<freenguello> dom.ipc.plugins.enabled.libflashplayer.so;true
+<glpiana> freenguello, no aspetta
+<glpiana> non tutto dai
+<glpiana> la libreria mi serve
+<freenguello> in synaotic
+<e-DIO-t> ah cacchio, ma stiamo su -it di qua :°°° mannacc torno sul -chat & sorry!
+<glpiana> freenguello, allora,ho sbagliato :)
+<glpiana> freenguello, about:plugins
+<freenguello> si ci sono
+<glpiana> freenguello, questa la riesci a copiare, giusto?
+<freenguello> mettendo flash come filtro esce quello
+<freenguello> si
+<freenguello> si copia una riga alla volta
+<glpiana> freenguello, no spe, non about:config, about:plugins, mi ero sbagliato
+<freenguello> ecco
+<freenguello> !pastebin
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<freenguello> eccoti servito http://paste.ubuntu.com/532440/
+<glpiana> freenguello, sembra ok. ricarica la pagina della stampa e fai una schermata
+<glpiana> !image | freenguello
+<ubot-it> freenguello: Carica un'immagine su http://imagebin.org/index.php?page=add | http://imageshack.us/ e metti un collegamento ad essa in canale.
+<sharing> ciao
+<sharing> posso chiedere?
+<glpiana> sharing, cert
+<glpiana> o
+<sharing> glpiana: avrei bisogno di un piccolo aiutino per la compilazione di un programma
+<glpiana> sharing, allora passa su #ubuntu-it-chat
+<freenguello> http://imagebin.org/123356
+<sharing> glpiana: ma quello non è per le chat che non riguardano problemi tecnici?
+<glpiana> freenguello, mi sa di problema di connessione perchè il player te lo apre
+<glpiana> sharing, qui non c'è supporto per la compilazione per cui o di là o niente ;)
+<freenguello> si riesco a vedere solo l'inizio che dice la tecnologia e poi esce quella schermata
+<sharing> glpiana: ok
+<glpiana> ciao nicotano
+<freenguello> ma com'è possibile
+<nicotano> ciao glpiana
+<glpiana> freenguello, non lo so
+<glpiana> freenguello, ma flash è a posto
+<freenguello> http://lastampa.it/multimedia/multimedia.asp?IDmsezione=10&IDalbum=32237&tipo=VIDEO anche questo
+<orsetto> ciao a tutti ho un problema con xorg.conf in kubuntu 10.10
+<darkroom> salve a tutti
+<orsetto> non riesco più a trovarlo nella cartella /etc/X11/
+<glpiana> orsetto, non c'è più. che devi fare?
+<darkroom> ki mi aiuta con il microfono interno del mio aspire one?
+<orsetto> dovrei modificarlo per configurare la scheda video ati
+<darkroom> in pratica nn riesco a registrare
+<darkroom> solo fruscio
+<glpiana> orsetto, che scheda ? dai lspci | grep -i vga      e incolla la riga
+<glpiana> darkroom, portatile o fisso?
+<darkroom> netbook aspire one
+<glpiana> darkroom, apri le referenze audio e vai nella scheda ingressi.
+<darkroom> ci sono
+<glpiana> darkroom, prendi una schermata
+<orsetto> glpiana, ATI Technologies Inc M92 [Mobility Radeon HD 4500 Series]
+<glpiana> !image | darkroom
+<ubot-it> darkroom: Carica un'immagine su http://imagebin.org/index.php?page=add | http://imageshack.us/ e metti un collegamento ad essa in canale.
+<glpiana> orsetto, che driver usi?
+<orsetto> glpiana, per ora quelli di default come li ha installati kubuntu ma stavo configurando quelli ati
+<glpiana> orsetto, te li propone il gestore dei driver porprietari?
+<orsetto> cioè ho installato il pacchetto sorgente e l'ho compilato
+<glpiana> *proprietari
+<glpiana> naaaaaaaaaa
+<orsetto> sono arrivato alla parte della guida dove dovrei modificare xorg.conf
+<glpiana> orsetto, non te li proponeva?
+<orsetto> chi me li doveva proporre?
+<glpiana> orsetto, il gesotre dei driver proprietari
+<orsetto> ancora devo riavviare comunque
+<glpiana> *gestore
+<orsetto> adesso vedo il gestore
+<darkroom> ecco la skermata http://imagebin.org/123357
+<glpiana> orsetto, ma quello che hai compilato lo hai anche installato?
+<glpiana> darkroom, prova ad alzare il volume e a parlare e vedi se la barra si muove
+<darkroom> gia provato
+<darkroom> nn succede nulla
+<darkroom> ho installato anke asla mixer
+<glpiana> darkroom, se vai nella sceda "hardware", come è impostata?
+<orsetto> glpiana, se intendi una cosa simile sudo dpkg -i xorg-driver-fglrx_*.deb fglrx-kernel-source_*.deb fglrx-amdcccle_*.deb .... si l'ho fatto
+<glpiana> orsetto, azz
+<TheBestNeo> ciao a tutti, flash con firefox va lentissimo, mentre con chrome va bene, ho karmic, come mai questa differenza? ci posso fare qualcosa?
+<darkroom> analog stereo duplex
+<glpiana> darkroom, e sopra ti indica un ingresso?
+<darkroom> solo volume di uscita
+<darkroom> e la relativa skeda interna
+<darkroom> selezionata
+<orsetto> glpiana, ma non c'è un modo di intervenire sul file di configurazione di X?
+<glpiana> nella descrizione della scheda, da un ingresso e un'uscita?
+<orsetto> cioè cosa sostituisce xorg.conf
+<glpiana> orsetto, sì, puoi crearlo.
+<glpiana> orsetto, se lo crei viene letto. ma quello che hai usato non è un metodo pratico per mettere i driver
+<orsetto> devo crearmi un mio xorg.conf glpiana
+<glpiana> RaFaNaDaL, di solito se sono compatibili li propone il gestore, credo anche su kubuntu. altrimenti devi usare gli open
+<orsetto> devo crearmi un mio xorg.conf? glpiana
+<glpiana> orsetto, ok, come vuoi: sudo touch /etc/X11/xorg.conf
+<glpiana> <glpiana> orsetto, sì, puoi crearlo.
+<glpiana> <glpiana> orsetto, se lo crei viene letto. ma quello che hai usato non è un metodo pratico per mettere i driver
+<glpiana> RaFaNaDaL, sorry :)
+<orsetto> glpiana, questo comando mi crea un xorg.conf base? come se fosse un modello?
+<glpiana> orsetto, no, ti crea un file vuoto. poi gli metti dentro quello che ti serve. ma ripeto, non è un buon modo di mettere i driver quello che stai seguendo. se non fossero compatibili con l'attuale xorg avresti problemi al riavvio
+<orsetto> glpiana, come posso tornare su una strada più semplice da seguire?
+<orsetto> cerco nel gestore dei file proprietari ora?
+<glpiana> orsetto, no, dammi iil comando con cui hai installato i pacchetti
+<ceon1> sera
+<glpiana> darkroom, nel terminale scrivi alsamixer e dimmi che cosa c'è come chipset
+<darkroom> scheda: hda intel processore: realtek alc272x
+<orsetto> glpiana, prima ho dato questo:sh ati-driver-installer-10-10-x86.x86_64.run --buildpkg Ubuntu/jaunty ..e dopo questo.. sudo dpkg -i xorg-driver-fglrx_8.783-0ubuntu1_amd64.deb fglrx-kernel-source_8.783-0ubuntu1_amd64.deb fglrx-amdcccle_8.783-0ubuntu1_amd64.deb
+<glpiana> darkroom, sei su gnome?
+<glpiana> darkroom, sì scusa, le schermate...
+<glpiana> darkroom, gksu gedit /etc/modprobe.d/alsa-base.conf
+<darkroom> ok ci sono
+<glpiana> orsetto, io li rimuoverei e poi guarderei sul gestore. sudo apt-get remove --purge xorg-driver-fglrx fglrx-kernel-source fglrx-amdcccle
+<glpiana> darkroom, copialo su pastebin
+<orsetto> glpiana, ok grazie. mi fido del tuo consiglio
+<orsetto> glpiana,  ora lo faccio :)
+<glpiana> orsetto, sperando che non abbiano già fatto danni :D
+<glpiana> orsetto, poi copia tutto su pastebin
+<orsetto> glpiana, non ho ancora riavviato nulla
+<orsetto> glpiana, ok
+<darkroom> http://pastebin.ubuntu.com/532465/
+<darkroom> eko il post
+<TheBestNeo> ciao a tutti, flash con firefox va lentissimo, mentre con chrome va bene, ho karmic, come mai questa differenza? ci posso fare qualcosa?
+<glpiana> darkroom, prova ad aggiungere in fondo al file: options snd-hda-intel model=acer-aspire
+<glpiana> darkroom, poi salvi il file e riavvii
+<darkroom> ok
+<glpiana> darkroom, se qualcosa non va nel suono, riedita il file e togli l'opzione che hai aggiunto
+<darkroom> ok
+<darkroom> risalve
+<glpiana> darkroom, qualcosa è cambiato?
+<darkroom> nulla
+<darkroom> l audio è rimasto kome prima
+<darkroom> nessuna differenza
+<darkroom> la stringa ke mi hai passato l ho copiata in ultimo
+<darkroom> nella direttiva ke mi hai detto
+<glpiana> darkroom, un nome più specifico del tuo pc c'è?
+<darkroom> aspire one d250
+<darkroom> da premettere ke sotto winzoz il tutto è funzionante
+<orsetto> glpiana,  rieccomi qua :) ho disinstallato come hai detto tu e ho installato dal gestore dei driver proprietari
+<orsetto> glpiana, poi ho riavviato e adesso sto qui. ma come verifico che sto viaggiando con la ati installata correttamente?
+<glpiana> darkroom, riedita il file e cambia l'opzione che hai messo con options snd-hda-intel model=acer           e riprova
+<darkroom> ok
+<glpiana> orsetto, scrivi in un terminale: glxinfo
+<glpiana> orsetto, ti farà installare mesa-utils, fallo
+<glpiana> e ridai il comando
+<KaoSreign> salve ragazzi a qui c'è tutta la comunità italiana compresi i coloro che usano kubuntu, edubuntu eccecc?
+<glpiana> KaoSreign, tutti, cioè non tutti qui, ma qualcuno di ognuno :D
+<KaoSreign> glpiana perfetto :D era giusto per sapere se ero nel posto giusto o c'era qualche altro canale più specifico
+<orsetto> glpiana, ho fatto glxinfo ma sonto troppe info.. cosa dovrei trovare?
+<glpiana> orsetto, dai glxinfo | grep render
+<orsetto> ok glpiana sembre installata :)
+<glpiana> orsetto, bene :)
+<orsetto> c'è qualche provra grafica che posso fargli fare? glpiana
+<glpiana> orsetto, metti su pastebin le righe che sono uscite
+<KaoSreign> qualcuno sa consigliarmi se reinstallare kubuntu con la  versione 10.10 o tenermi la 10.4 ?
+<glpiana> KaoSreign, devi vedere come gira sul tuo pc. se vedi che la 10.10 va bene tienila
+<orsetto> http://ubuntu.pastebin.com/di1L7SrR glpiana
+<glpiana> orsetto, benone
+<glpiana> orsetto, per provarla, boh, un qualsiasi giochino 3d
+<KaoSreign> glpiana ok allora proverò ad installare quella ora hola 10.4 in pratica con il mio pc ho dei grossi problemi per quanto riguarda gnome associato alle nuove versioni del kernel mi provcano il freeze
+<orsetto> glpiana, ti ringrazio mille
+<orsetto> glpiana,  ora vado a casa.. ti farò sapere
+<glpiana> orsetto, :)
+<orsetto> buonaserata a tutti
+<glpiana> KaoSreign, gnome o gli effetti grafici?
+<KaoSreign> glpiana allora non credo siano gli effetti grafici perchè fino alla 9.4 ce li avevo abilitati
+<glpiana> KaoSreign, ma le cose sui driver video sono un po' cambiate
+<glpiana> KaoSreign, ma poi scusa, s hai kubuntu gnome che c'entra?
+<KaoSreign> glpiana sono ritornato al kde perchè non c'era verso di risolvere la questione
+<KaoSreign> :)
+<glpiana> ah ok :)
+<glpiana> KaoSreign, ma avevi anche provatos enza effetti?
+<KaoSreign> glpiana no non mi era venuto in mente che sarebbe potuto essere quello il problema
+<KaoSreign> glpiana la cosa strana ora che ci penso è che con la live andava tutto alla grande
+<glpiana> se te ne capita l'occasione prova a disabilitarli
+<glpiana> aspetta, scheda video?
+<KaoSreign> glpiana è un integrata aspetta un secondo che ti dico con precisione il chipset
+<KaoSreign> glpiana Intel Corporation 82945G/GZ Integrated Graphics Controller (rev 02)
+<glpiana> KaoSreign, boh, secondo me puoi giusto provare se disabilitando gli effetti il problema persiste
+<KaoSreign> glpiana beh si un ultimo tentativo si può fare :D
+<KaoSreign> glpiana sempre sperando che riesca a farlo prima che si impalli tutto
+<glpiana> :)
+<cristian_c> un'altra domanda
+<cristian_c> come si aprono i file .ttf
+<cristian_c> non riesco ad aprirli
+<cristian_c> mi dice che non c'è nessuna applicazione disponibile
+<cristian_c> conoscete un modo?
+<cristian_c> ho fatto anche delle ricerche in internet ma non ho trovato nulla
+<KaoSreign> glpiana ti ringrazio provo a fare come hai detto :D
+<cristian_c> con gli imageviewer non lo apre
+<glpiana> cristian_c, http://forum.ubuntu-it.org/index.php?topic=236014.0
+<cristian_c> ok
+<cristian_c> provo
+<_Matt__> ciao a tutti
+<_Matt__> se c'è qualcuno disponibile, vorrei chiedervi aiuto riguardo la configurazione della rete di virtualbox installato su ubuntu
+<cristian_c> grazie glpiana, con fontforge viene aperto
+<cristian_c> :)
+<glpiana> bene :)
+<cristian_c> _Matt__, sul forum c'è un how-to veramente completo
+<cristian_c> la bibbia di virtualbox
+<maumau> buona sera
+<maumau> qualcuno sa dirmi per favore se si possono evitare un pò di richieste password da parte del pc
+<glpiana> maumau, per effettuare che azioni?
+<glpiana> maumau, se sono operazioni di amministrazione del sistema no
+<maumau> glpiana, ma ... ad esempio quando riattivo da sby
+<glpiana> maumau, quello è il blocco dello schermo credo. prova ad andare in  sistema preferenze salvaschermo e leva la spunta al blocco
+<maumau> ok grazie
+<maumau> fatto adesso vedremo quando si attiverà salvas.
+<PaoloRotolo> Salve
+<maumau> e scusate ancora c'è  qualche motivo per il quale non riesco a farlo andare in ibernazione?
+<maumau> o standby o spento!
+<maumau> glpiana, si era quello il blocco grazie ancora.
+<maumau> per l' accesso da accensione si può togliere la richiesta password?
+<maumau> visto che il pc lo uso solo io
+<PaoloRotolo> maumau, Sistema - Amministrazione - Schermata di Accesso
+<PaoloRotolo> maumau, metti accedere automaticamente
+<Mtt> 'sera a tutti! Sto usando la netbook remix, l'ultima.. come si fa ad accedere alle cartelle come home, piuttosto che /var non da terminale? Scusate la domanda stupida ma non le trovo
+<maumau> PaoloRotolo, fatto grazie. Sono cose molto semplici ma se non sai dove cercare. =I
+<giovanni> #openoffice.org-it
+<giovanni> join #openoffice.org-it
+<giovanni> join! #openoffice.org-it
+<giovanni> join !#openoffice.org-it
+<giovanni> ! join #openoffice.org-it
+<ubot-it> Error: I am only a bot, please don't think I'm intelligent :)
+<giovanni> !join #openoffice.org-it
+<ubot-it> Error: I am only a bot, please don't think I'm intelligent :)
+<maumau> PaoloRotolo, non funziona, è il portachiavi che vuole la password
+<PaoloRotolo> maumau, quando entri li fai sblocca e metti la tua password
+<PaoloRotolo> ah, il portachiavi?
+<PaoloRotolo> maumau, se non sbaglio se vai in avanzate quando compare il portachiavi dovrebbe esserci qualcosa...
+<maumau> PaoloRotolo, e per l'ibernazione mi dà schermata nera e dice qualcosa tipo errore semaforo non pronto:
+<maumau> comunque non trovo avanzate
+<rorro007> ciao a tutti cdove devo andare per i documenti recenti da 5 a 0??
+<sharing> rorro007: spiegati meglio
+<rorro007> allora video sempre documeti recenti e voglio che sia zero che non me li memozizza
+<sharing> rorro007: mmh, arduo quesito, ma guarda che son i documenti normali, non ti fa una doppia copia :)
+<maumau> c'è qualcuno che sà dirmi perchè con iberna mi dà errore e non si spegne
+<roxdragon> maumau,  che errore
+<sharing> maumau: probabilmente ti segnerà un errore ACPI, confermi?
+<rorro007> sharing, una volta mi hanno fatto andare in un file dove potevo diminuire la quantità di documenti
+<maumau> qualcosa tipo errore semaforo non pronto
+<maumau> in inglese
+<sharing> rorro007: non ti duplica i file, quindi non trai vantaggi nel disattivare la funzione
+<sharing> maumau: dacci la sintassi corretta
+<rorro007> sharing, ma glio che sia sempre vuoto il documenti recenti
+<sharing> rorro007: si ma ti dico che non fa doppie copie nè nulla, quindi non ci trai alcun vantaggio nel disattivarne la funzione, e dunque non ha senso farlo, ti pare?
+<maumau> devo farmi dare l'errore di nuovo ci vorrà un pochino perchè si blocca e devo forzare lo spegnimento
+<sharing> maumau: ok, fotografalo e diccelo poi
+<rorro007> va bhe grazie
+<maumau> vabbene by
+<sharing> roxdragon: prego :)
+<roxdragon> cosa prego sharing
+<roxdragon> xD
+<sharing> roxdragon: no era a rorro007
+<roxdragon> okok
+<maumau> sharing, rieccomi questa volta non ha segnalato errori ma : schrmo nero e non si è spento
+<maumau> devo andare. alla prox grazie comunque
+<ostage> Salve raga, come faccio su firefox a far aprire i file torrent con qbittorent e non con transmission? non lo trovo nella lista apri con e non trovo nemmeno la cartella in /home
+<seth----> ciao a tutti ragazzi
+<rorro007> ciao a tutti come mai apps/gedit-2/preferences/ui/recents metto 0 e continuo a vedere elementi recenti??
+<Carmine> buona sera
+<seth----> ciao a tutti ragazzi
+<seth----> ragazzi, ho un problema riguardo ubuntu e wine. c'è un programma che lo vedo "sfasato" graficamente, cioè i TAB di alcune funzioni sono disposte diversamente rispetto a come si vedono originariamente su windows e di conseguenze alcune finestre le vedo tagliate, oscurandomi alcune funzioni. c'è una funzione su wine che si può cambiare per evitare questo? vi posto uno screenshot dello stesso programma da ubuntu/wine
+<seth----> e da windows per rendere meglio l'idea: http://imagebin.ca/view/prlfaO.html - sul cerchio giallo sono i TAB incriminati, mentre il cerchio rosso è il "taglio" che mi provoca problemi! gracias
+<speppa> buonasera
+<speppa> sto diventando schizofrenica -__-
+<speppa> devo fare un link da una libreria all'altra con sudo ln -s libreria libreria_installata
+<speppa> solo che della mia libreria installata so solo il nome del pacchetto (libgtk2.0-0) e non il nome specifico, tipo libgtk-1.2.so.0
+<speppa> come lo trovo?
+<speppa> con dpkg -l | grep -i libgtk non trovo nessun file .so
+<K99Brain> speppa, dpkg -L nomepacchetto
+<K99Brain> speppa, inoltre occhio a ln
+<K99Brain> speppa, sudo ln -s TARGET LINKNAME
+<speppa> K99Brain, per target intendi la libreria da linkare o quella installata?
+<K99Brain> speppa, target è la destinazione, la libreria linkata, l'originale, l'obbiettivo, il target, appunto
+<speppa> K99Brain, grazie per il dpkg -L pacchetto! e io mi stavo sfrittellando le cervella su forum vari per sta cavolata .__.
+<K99Brain> di nulla
+<speppa> K99Brain, aspè
+<speppa> K99Brain, per linkname intendi quella installata sul sistema, vero? perchè sennò sto disastrando :D
+<K99Brain> speppa, linkname è il nome del link che gli devi dare tu, te lo inventi
+<K99Brain> speppa, per quello dicevo di stare attenti, perchè ln è un po' strano in quel senso
+<seth----> K99Brain, ciao! scusami, nn è che per caso hai una soluzione al mio problema?
+<K99Brain> gli argomenti sono invertiti rispetto a quello che intuitivamente uno pensa
+<seth----> K99Brain, è scritto poco sopra
+<K99Brain> seth----, e di che problema si tratta?
+<seth----> K99Brain,  copio e incollo :)
+<seth----> ragazzi, ho un problema riguardo ubuntu e wine. c'è un programma che lo vedo "sfasato" graficamente, cioè i TAB di alcune funzioni sono disposte diversamente rispetto a come si vedono originariamente su windows e di conseguenze alcune finestre le vedo tagliate, oscurandomi alcune funzioni. c'è una funzione su wine che si può cambiare per evitare questo? vi posto uno screenshot dello stesso programma da ubuntu/wine
+<seth----> e da windows per rendere meglio l'idea: http://imagebin.ca/view/prlfaO.html - sul cerchio giallo sono i TAB incriminati, mentre il cerchio rosso è il "taglio" che mi provoca problemi! gracias
+<K99Brain> seth----, ehm, e allargare la finestra non serve?
+<speppa> K99Brain, ok sto andando fuori di testa. sto seguendo questo http://ubuntuforums.org/showpost.php?p=1337669&postcount=19 e il tizio sta facendo praticamente sudo ln -s versione_libreria_che_serve_ma_non_c'è    versione_libreria_effettivamente_installata . perchè il link lo invento? non è quello che ci deve essere nel sistema, e quindi non inventata?
+<seth----> K99Brain, ehehe.. ho già provato, ma la finestra è "bloccata", sia su windows che su wine
+<K99Brain> seth----, potrebbe essere un problema di fot, che su wine occupa piu spazio
+<K99Brain> seth----, ma non saprei cosa cosigliarti
+<K99Brain> speppa, no, occhio a usa ln nel modo giusto
+<seth----> K99Brain, l'ho pensato. non c'è un modo per importare i font originali di windows?
+<K99Brain> speppa, ad esempio questo è un comando valido: sudo ln -s /boot/grub/grub.cfg ~/nomeacaso
+<K99Brain> speppa, mentre questo no: sudo ln -s  ~/nomeacaso /boot/grub/grub.cf
+<K99Brain> g
+<K99Brain> speppa, capito?
+<K99Brain> speppa, il link che viene creato è l'ultmo argomento
+<K99Brain> non quello prima
+<speppa> K99Brain, ho capito, solo che credevo che stavo facendo il contrario
+<DAMN3dg1rl> seth----,  prova a copiarli da /windows/font a /var/fonts
+<K99Brain> !fonts
+<ubot-it> fonts is Installazione: http://wiki.ubuntu-it.org/AmbienteGrafico/InstallareCaratteri - Migliorare Caratteri: http://wiki.ubuntu-it.org/AmbienteGrafico/MigliorareCaratteri - Caratteri Microsoft: http://wiki.ubuntu-it.org/AmbienteGrafico/CaratteriMicrosoft
+<seth----> K99Brain, grazie mille, teneterò
+<baldo_> sera
+<baldo_> sono disperato
+<seth----> *tenterò
+<baldo_> ho il vecchio sistema sun un hd esterno
+<baldo_> vedo le cartelle ma la home è criptata
+<baldo_> non riesco a decriptarla
+<baldo_> come si fa?
+<baldo_> ecryptfs-mount-private
+<baldo_> con questo niente
+<baldo_> come faccio???
+<baldo_> raga non lo sa nessuno????
+<baldo_> ragazzi nessuno puo aiutarmi?
+<baldo_> ragazzi
+<baldo_> nessuno sa aiutarmi
+<baldo_> x favore
+<sharing> baldo_: dicci
+<baldo_> meno male
+<baldo_> ho un sistema ubuntu su hd esterno
+<baldo_> collegato
+<sharing> baldo_: si ma scrivi su una sola riga
+<baldo_> voglio copiare i file nella cartella home
+<baldo_> ma non ci sono perchè crittografati
+<baldo_> non so come scrittografarli
+<fil_> con cosa l'hai criptata la home?
+<baldo_> ok
+<sharing> baldo_: semplicemente avvia ubuntu
+<baldo_> quando installi il sistema ti chiede se criptare la cartella personale
+<sharing> baldo_: e da ubuntu esegui la copia dei file
+<baldo_> non sia vvia piu
+<baldo_> mi da un errore tipo kernel-panic e tante righe di errore
+<sharing> baldo_: avvialo in modalità di ripristino
+<baldo_> quindo l'ho montato su un case esterno e volevo copiare i file
+<baldo_> non funzione
+<baldo_> in nessuno elle 4 modalità disponibili
+<baldo_> nella home ho 2 file
+<baldo_> uno acces-your-private-date che quando lo lancio dice
+<baldo_> Il lanciatore di applicazioni «Access-Your-Private-Data.desktop» non è stato contrassegnato come fidato. Se non si conosce l'origine di questo file, lanciarlo potrebbe non essere sicuro.
+<sharing> baldo_: la cartella home è criptata tramite un sistema a generazione casuale, decrittare la home impiegherebbe come la storia dell'universo pur facendola dal pc più potente attualmente disponibile, quindi vediamo di far partire ubuntu
+<fil_> quindi è una operazione con sola andata?
+<sharing> fil_: se non riavvii ubuntu si
+<fil_> ma allora perchè quelli di ubuntu non o scivono?
+<sharing> fil_: traduci
+<fil_> mi sembra una cazzata di quelli di ubuntu non averlo scrito
+<baldo_> l'altro file è un tx che contiene
+<baldo_> THIS DIRECTORY HAS BEEN UNMOUNTED TO PROTECT YOUR DATA.
+<baldo_> From the graphical desktop, click on:
+<baldo_> "Access Your Private Data"
+<baldo_> or
+<FloodBotIt1> baldo_: Non intasare il canale, usa http://paste.ubuntu.com per incollare, non usare Invio come punteggiatura.
+<fil_> scritto
+<sharing> baldo: scrivi su un solo rigo
+<fil_> che sistma è, io pensavo ti premetessero di criptare con una chiave che decidi tu, e quindi sapendo la chiave puoi recuperare il disco
+<sharing> fil_: par ovvio, se critti un file devi avere sicurezza che nessuno possa rubartelo
+<fil_> beh conosci solo tu la chiave
+<baldo_> ho provato con quel comando ma non mi retituisce niente
+<sharing> baldo_: quale comando?
+<baldo_> io ho la chiave ma non so dove metterla :)
+<baldo_> ecryptfs-mount-private
+<sharing> fil_: si ma per evitare il Bruteforce (che è più veloce del reverse) viene generato un numero casuale che funge da base generatrice
+<baldo_> ma è come se mi montasse il sistema in uso
+<baldo_> mentre io dovrei montare quella contenuta in /media/eccc....
+<fil_> ma c'è unwikisu questo?
+<sharing> baldo_: prova ad aprire la home con un altro sistema ubuntu
+<sharing> fil_: ?
+<baldo_> quindi come posso fare?
+<sharing> baldo_: che dati erano? audio? video? testo?
+<fil_> sharing, mi dico come fa a sapere uno come decrittarlo?
+<baldo_> è quello che sto facendo, ma ho questi 2 file
+<baldo_> io sono su una macchina con ubuntu,e sull' hd esterno l'altro disco con l'altro sistema
+<sharing> fil_: son un ingegnere informatico
+<fil_> http://wiki.ubuntu-it.org/Sicurezza/CartellaProtetta
+<baldo_> si un po di tutto
+<sharing> baldo_: non ti ho chiesto la situazione ma il tipo di file da recuperare
+<baldo_> di utto u  po
+<baldo_> immagini,musica,documenti
+<sharing> baldo_: che livello di importanza hanno? potrebbe essere molto lungo recuperarli
+<fil_> ma ubuntu non ti ha chiesto delel password?
+<sharing> fil_: se non si avvia...
+<baldo_> ricordi di una vita
+<baldo_> vacanza ecc.....
+<sharing> baldo_: la possibilità più corta che vedo è quella di avviare ubuntu e far decrittare la home, anche se solo una parte del sistema partisse saremmo a cavallo
+<baldo_> ma non ce modo di decrittare la cartella pur avendo la password?
+<baldo_> no
+<baldo_> il file che dovrebbe recuperarla mi dice che non è fidato
+<baldo_> e non me lo fa lanciare
+<FloodBotIt1> baldo_: Non intasare il canale, usa http://paste.ubuntu.com per incollare, non usare Invio come punteggiatura.
+<sharing> baldo_: scrivi su un solo rigo
+<fil_> sharing, e da live cd?
+<sharing> fil_: la generazione del codice casuale sarebbe differente
+<fil_> http://wiki.ubuntu-it.org/Sicurezza/CartellaProtetta     qua c'è un Recuperare la passphrase per il montaggio
+<sharing> fil_: non so magari però se facessimo linkare la chiave...
+<sharing> fil_: si ecco esatto
+<fil_> baldo_, quante password ti ha chiesto ubuntu?
+<sharing> fil_: no, non c'è nulla di utilie li
+<fil_> sharing, perchè?
+<sharing> fil_: perchè presume che il sistema si avvii
+<Sorion_Buddha> Yuuka Sugisawa & Red Bull F-1 papel Promo-Gimp-Linux"[1920x1200]"-0001  >>> http://twitpic.com/376xdl
+<fil_> baldo_, che errore ti da all'avio?
+<fil_> avvio
+<sharing> baldo_: allora, nel tuo PC fisso installa ubuntu e poi ricontattaci
+<sharing> baldo_: NON toccare in nessun modo l'HD
+<fil_> se reinstalla deve fare in modo che non venga toccata la home
+<sharing> fil_: nah, ha ubuntu su un HD esterno non è un problema
+<fil_> ok giusto
+<fil_> beh ma se lo reinstalla sull'hd esterno
+<sharing> baldo_: ci sei?
+<baldo_> si scusate
+<sharing> fil_: assolutamente no
+<baldo_> sembra un errore di kernel
+<baldo_> non monta piu il volume
+<sharing> baldo_: ci eravamo arrivati :)
+<baldo_> :)
+<sharing> baldo_: installa linux sul tuo pc fisso
+<fil_> baldo_, all'avio ti compare un menu con i kernel instAllati?
+<baldo_> si
+<fil_> fai partire un kernel diverso
+<baldo_> 4 e con nessuno dei 4 funziona
+<sharing> fil_: già tentato... fosse così facile non mi starei interessando
+<fil_> ok
+<sharing> baldo_: ok?
+<baldo_> ok
+<baldo_> ma gia fatto anche in safety mode ma non funziona
+<sharing> baldo_: hai una versione di ubuntu sul fisso che va vero?
+<baldo_> certo
+<sharing> avviala
+<baldo_> questa che sto usando
+<sharing> ottimo
+<sharing> ora tenta di far decrittare la cartella home
+<baldo_> e come?
+<sharing> fai "cd PERIFERICA/usr/TUONOME/home"
+<sharing> fil_: è corretto l'indirizzo?
+<baldo_> non credo
+<sharing> no innfatti è "PERIFERICA/home/USER"
+<fil_> si
+<baldo_> aspetta, io entro i media e vedo il disco chiamato "suonome"
+<K99Brain> e che cacchio dovrebbe essere "PERIFERICA" ???
+<sharing> e dimmi che  succede
+<fil_> /dev/sdx/home/USER
+<baldo_> giusto?
+<baldo_> li cosa devo fare?
+<K99Brain> ma quando mai...
+<sharing> K99Brain: id della periferica (es. in window G, K, C etc.)
+<K99Brain> sharing, in linux non esiste G K C
+<fil_> sharing, è /dev/sdx
+<baldo_> no io uso ubuntu,il dome della periferica è ungo circa 30 caratteri alfanumerici
+<sharing> baldo_: aspè ma non stai seguendo, monta prima il volume del disco esterno
+<fil_> è l'UUID
+<sharing> K99Brain: era per un esempio
+<baldo_> c'è perche vedo i file
+<baldo_> vedo tutti i file del sistema
+<sharing> fil_: si è la gestione di unix
+<baldo_> tutte le cartelle,usr,etc,bin e anche home
+<sharing> baldo_: accedi alla cartella /home
+<baldo_> e ho questi 2 file
+<sharing> baldo_: accedi alla cartella /home
+<baldo_> ci sono 2 file
+<sharing> baldo_: accedi alla cartella /home/tuonomeutente
+<baldo_> soke poi?
+<baldo_> ok fatto
+<sharing> baldo_: ok, sei nella tua hone
+<sharing> *home
+<sharing> copia i file
+<sharing> che ti interessano
+<baldo_> ho problemi di spazio
+<baldo_> non si puo
+<baldo_> questo disco 200 gb
+<baldo_> disco da salvare 500 gb
+<sharing> baldo_ : non ci posso far nulla io
+<baldo_> ci aevo pensato
+<sharing> baldo_: dovrai scartare file o caricarli su megaupload
+<baldo_> non tiseguo
+<sharing> baldo_: o un qualsiasi host
+<baldo_> no
+<baldo_> aspetta
+<baldo_> ma montare la cartella home x poi decriptarlka non si puo
+<sharing> baldo_: se non puoi copiarli sul fisso o li copi in altre parti o li elimini
+<sharing> baldo_: ma sei entrato?
+<baldo_> si
+<sharing> baldo_: e li vedi i tuoi file?
+<baldo_> non si decripta solola cartella home
+<sharing> baldo_: e li vedi i tuoi file?
+<sharing> baldo_: e li vedi i tuoi file?
+<baldo_> no perche non ci sono visivamente
+<baldo_> mi dice 396 gb
+<sharing> baldo_: eh allora non dirmi che va bene -.-
+<sharing> baldo_: accedi al disco ma tramite terminale
+<baldo_> come si fa?
+<sharing> baldo_: come ti diceva Fil_
+<baldo_> puoi ripetere x favore
+<sharing> baldo_: spe
+<Pa0lino> sera
+<aaa_> salve
+<baldo_> ok ci dovrei essere
+<aaa_> appena fatto instalalzione ubuntu linux
+<baldo_> ma vedo sempre e solo quei 2 file
+<aaa_> ma nn resaco a mettere lingua italiana come faccio?
+<aaa_> ??
+<baldo_> sistema-amministrazione-supporto lingue
+<baldo_> lo scarica da solo se sei connesso
+<baldo_> sharing: Inserted auth tok with sig [codice] into the user session keyring
+<baldo_> fopen: No such file or directory
+<sharing> baldo_: ?
+<baldo_> ho fatto
+<aaa_> ok ma riamne sempre inglese!
+<baldo_> e mi da questo doce ce scritto codice ce un codice alfanumerico
+<sharing> baldo_: ottimo io stavo lavorando ad altro xD
+<baldo_> riavvia
+<baldo_> quindi ora che si fa?
+<sharing> aaa_: riavvia
+<sharing> baldo_: fai lo stesso
+<sharing> ma come root
+<baldo_> x abilitare root nn ricordo il comand
+<sharing> baldo_: sudo root passwoird
+<sharing> baldo_: se non erro
+<baldo_> passwoird?
+<sharing> baldo_: no dimantica
+<sharing> *dimentica
+<sharing> fai "sudo -i"
+<dolphin> sudo passwd root
+<baldo_> ci sono
+<dolphin> e lo abiliti
+<sharing> baldo_: ottimo
+<baldo_> ok
+<baldo_> entro da root
+<sharing> dolphin: pericoloso se deve fare solo 2 comandi
+<sharing> baldo_: esatto bravo
+<baldo_> e rifaccio il procedimento da terminale'
+<baldo_> ok ci risentiamo fra poco
+<sharing> baldo_: si, speriamo funzioni
+<sharing> no spe
+<sharing> baldo_: ferma!
+<baldo_> ok
+<sharing> sei già root ma solo nel terminale
+<sharing> quindi lavora da terminale
+<dolphin> baldo fai un bel sudo rm -fr /
+<dolphin> :D
+<sharing> e se ti serve la grafica picchiaci "nautilus /"
+<sharing> dolphin: non ho presente che faccia quel comando, non ne capisco la sintassi
+<sharing> rimuove ma cosa?
+<dolphin> provalo....
+<sharing> dolphin: non uso programmi che non so che facciano
+<sharing> dolphin: o comandi in questo caso
+<dolphin> beh......rimuove la directory è semplice :)
+<sharing> baldo_: procede?
+<sharing> dolphin: non è una buona idea...
+<dolphin> dici?
+<dolphin> bah..io lo proverei
+<dolphin> fa un po' di pulizia
+<sharing> dolphin: eh per me se elimino i file a qualcuno quello si inca di brutto
+<Claudinux> !chat dolphin sharing
+<ubot-it> Error: I am only a bot, please don't think I'm intelligent :)
+<Claudinux> e soprattutto dolphin , piantala di sparare cavolate in questo chan
+<sharing> Claudinux: ciao eh!
+<baldo_> no
+<Claudinux> !chat | dolphin sharing
+<ubot-it> dolphin sharing: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<baldo_> sono fermo
+<sharing> baldo_: a cosa?
+<dolphin> minchia quanto vi scaldate...
+<dolphin> raga fatevi na camomilla
+<baldo_> a /home
+<sharing> dolphin: eh hanno ragione, metti che uno esegue quel comando
+<baldo_> /home/nomeutente non mi va come se non esistesse
+<sharing> baldo_: fai "cd /nomeutente/
+<dolphin> sfiga.....
+<sharing> baldo_: asd
+<sharing> baldo_: fai "ls"
+<dolphin> fai un ls -c
+<dolphin> o ls -u
+<sharing> e posta la risultanza nel NOPASTE
+<sharing> dolphin: che me ne faccio di ID e nome utente?
+<dolphin> a me lo chiedi???
+<sharing> dolphin: ecco se non lo sai non postare comandi
+<sharing> !chat | dolphin
+<ubot-it> dolphin: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<dolphin> veramente i miei non fanno quello
+<dolphin> cmq....
+<baldo_> ok ci sono
+<DAMN3dg1rl> notte mortali :D
+<baldo_> ma vedo sempre i 2 file
+<sharing> DAMN3dg1rl: notte
+<baldo_> THIS DIRECTORY HAS BEEN UNMOUNTED TO PROTECT YOUR DATA
+<sharing> baldo_: ma che cavolo! ho idea che tu debba ripristinare ubuntu
+<sharing> baldo_: e nel caso non si riuscisse.....
+<baldo_> e come si fa?
+<baldo_> dal cd nn si puo
+<sharing> baldo_: eh lo so ma io non so come fare
+<sharing> baldo_: sappi solo che o ripristini ubuntu
+<sharing> baldo_: o......
+<baldo_> lo so... e x ripristinare?
+<sharing> baldo_: non l'ho mai fatto (per fortuna)
+<sharing> aspeta
+<sharing> sei ancora nella home?
+<sharing> ?
+<sharing> baldo_: sei ancora nella home?
+<baldo_> si
+<sharing> baldo_: lancia
+<sharing> baldo_: no sorry gioca con questo comando mount -t ecryptfs ~/.Private ~/Private
+<sharing> baldo_:  vedi se fa qualcosa
+<baldo_> alla fine da errore
+<fabri> Salve a tutti... ho un problema con Mplab IDE sotto wine
+<fabri> qualcuno può aiutarmi?
+<baldo_> parla di crittografia l'ho seguiro come nella guida ma niente
+<sharing> fabri: no supporto per wine qui
+<sharing> baldo_: non so
+<sharing> baldo_: ma prova a seguire questa guida: http://blog.dustinkirkland.com/2009/03/mounting-your-encrypted-home-from.html
+<baldo_> ok
+<lorenzo-2357> buonasera signori...
+<lorenzo-2357> non mi apre il gestore di pacchetti... mi da il seguente errore: http://pastebin.ubuntu.com/532649/
+<sharing> lorenzo-2357: lancia "sudo apt-get update" e riprova
+<lorenzo-2357> sharing, uguale, il terminale dice: http://pastebin.ubuntu.com/532650/
+<sharing> lorenzo-2357: apri il file /etc/apt/sources.list ed elimina la riga 63, salva e riesegui il comando di prima
+<lorenzo-2357> sharing, scusami qual'è il comando per aprirlo... :)
+<sharing> lorenzo-2357: sudo EDITOR /etc/apt/sources.list
+<sharing> lorenzo-2357: sostituisci EDITOR con l'editor che usi
+<lorenzo-2357> sharing, fatto, però vorrei installare cairo dock, come faccio sono off topic?
+<sharing> lorenzo-2357: si su questo canale si ma (sudo apt-get install cairo-dock) devi chiedere nell'altro ;)
+<lorenzo-2357> sharing, ok (grazie) chiederò di là ! ! !

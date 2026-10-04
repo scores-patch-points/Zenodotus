@@ -1,0 +1,713 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2011-7-15"
+lang: "it"
+messages: "704"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<pinko2> hola:)
+<greenrabbit> giorno pinko2
+<pinko2> greenrabbit, giorno a te:)
+<glpiana> ola
+<Odo> Giorno
+<marker_> ciao
+<marker_> ho usato brasero per masterizzare su ubuntu 11.04 natty
+<marker_> ho usato un dvd+rw
+<marker_> ma dopo la masterizzazione non caricava il dvd e non potevo cancellarlo, poi da windows l'ho cancellato
+<marker_> ho fatto di nuovo la masterizzazione questa volta tutto ok, però il programma mi è sembrato un pò lento a masterizzare...
+<marker_> avete consiglio per programmi di masterizzazione? tipo kb3?
+<glpiana> marker_, k3b
+<marker_> grazie
+<marker_> giusto si chiama k3b :)
+<marker_> un altra domanda. Ma i pacchetti che si scaricano con apt-get di Debian si possono anche installare su Ubuntu, vero? visto che Ubunti si basa su debian...
+<glpiana> marker_, non necessariamente
+<glpiana> e comunque che senso ha? se ci sono i pacchetti di un software per debian ci sono anche per ubuntu
+<glpiana> in linea di massima
+<marker_> lo so, era una curiosità il pacchetto di k3b è anche nelle reporsory di ubuntu :-)
+<glpiana> marker_, scusa, ma tu non hai ubuntu?
+<marker_> si ce l'ho. perchè?
+<glpiana> marker_, non capisco perchè dovrebbe essere ANCHE nei repo di ubuntu
+<marker_> se si trova qui http://packages.ubuntu.com/natty/k3b
+<marker_> non è nelle repo di ubuntu...
+<glpiana> marker_, k3b non è nei repo di ubuntu?
+<glpiana> O.o
+<glpiana> marker_, ma che stai dicendo?
+<marker_> spiegami meglio
+<marker_> da poco utilizzo ubuntu
+<glpiana> !pacchetti | marker_ leggi qui
+<ubot-it> marker_ leggi qui: in Ubuntu tutto il sistema di installazione e aggiornamento è centralizzato: se vuoi davvero essere comodo non usare altri tools al di fuori di Synaptic, Ubuntu software center, kpackagekit e Update Manager (grafici) oppure apt-get o aptitude (da riga di comando). Vedi anche !synaptic, !adept, !apt, !aptitude, !deb
+<glpiana> e qui
+<glpiana> !synaptic | marker_
+<ubot-it> marker_: http://wiki.ubuntu-it.org/AmministrazioneSistema/InstallareProgrammi/GestorePacchetti
+<glpiana> e qui
+<glpiana> !apt | marker_
+<ubot-it> marker_: apt-get is http://wiki.ubuntu-it.org/AmministrazioneSistema/Apt
+<glpiana> e magari pure qui
+<glpiana> !repositories | marker_
+<ubot-it> Voce non trovata: 'repositories'
+<glpiana> beh allora non qui :)
+<glpiana> !repository | marker_
+<ubot-it> marker_: Guida ai repository: http://wiki.ubuntu-it.org/Repository e http://help.ubuntu-it.org/8.04/ubuntu/add-applications/it/extra-repositories.html | Esempio di sources.list http://wiki.ubuntu-it.org/Repository/SourcesList | Da Kubuntu: http://wiki.ubuntu-it.org/Repository/Kubuntu
+<marker_> io volevo usare infatti apt.get per installare ma sul sito ufficiale di K3B è riferito a debian questo: apt-get update; apt-get install k3b
+<marker_> e lo stesso per ubuntu?
+<glpiana> marker_, sì, scrivi in un terminale: sudo apt-get install k3b
+<glpiana> !k3b | marker_
+<ubot-it> marker_: Installazione e configurazione di K3B: http://wiki.ubuntu-it.org/Multimedia/Masterizzazione/K3b
+<pa> ma partimage non esiste per amd64 in ubuntu???
+<pa> scherziamo?
+<glpiana> !chat | pa
+<ubot-it> pa: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<marker_> i file tar.gz sono sempre sorgenti di un software? Qualsiasi sorgente se lo compilo su ubuntu funziona? Qlache guida sono come compilare i tar.gz?
+<pa> ok, ma come lo installo partimage in una natty 64?
+<glpiana> pa, non vedo la versione 64 bit. usa altro
+<pa> ok, suggerimenti?
+<pa> dovrei clonare un windows XP in una partizione piu grande
+<marker_> qualche guida per imparare a compilare i sorgenti contenuti nei file tar.gz? (voglio impare a fare qualcosa oltre ad installare programmi dai repo :-) )
+<nicotano> buongiorno
+<jester-> 'ngiorno
+<ferro> ciao
+<ferro> sn un nabbo di ubuntu e volevo sapere dopo aver scompattato un file tar.bz2 e volevo sapere come fare a selezionare i file all'interno della cartella creata
+<ferro> da terminale
+<OverMe> selezionare per fare cosa?
+<ferro> per installare un programma visto che facendo sudo nmake nella cartella sopracitaata non mi fa nulla
+<nicotano> ferro, devi installare build-essential per poter compilare
+<ferro> fatto
+<OverMe> solitamente c'è un file (README o INSTALL) che ti dice come fare.
+<OverMe> non esiste già pacchettizzato questo prgramma?
+<ferro> no
+<ferro> ora cerco un readme
+<OverMe> che programma è?
+<ferro> una vaccata ovvero zsnes
+<pa> domanda stupida: in ubuntu chi e' che lancia fetchmail?
+<OverMe> ferro, esiste eccome già pacchettizzato
+<ferro> ma cercando da scaricare sul sito ufficiale mi da solo il file tar.bz2 dici che devo cercarlo a giro per internet?
+<OverMe> devi usare il gestore pacchetti o il software center
+<ferro> ok ora provo
+<ferro> grazie tantissime trovato
+<ferro> e risolto
+<ferro> ciao e buona giornata
+<OverMe> ciao
+<Dig> http://www.libreriafrassati.it/joomla/file_allegati/video-2011-07-15-11-04-45.mp4 giorno. qualcuno può ascoltare questo difetto?
+<mallk> ciao
+<mallk> una guida per compilare i tar.gz?
+<mallk> un altra domanda, ma i tar.gz compilati funzionano sempre bene su ubuntu?
+<mallk> in generale se compilo un sorgente sono sicuro che il programma funziona su ubuntu?
+<jester-> mallk: e quando mai i tar si compilano
+<OverMe> http://wiki.ubuntu-it.org/AmministrazioneSistema/InstallareProgrammi/DaSorgenti
+<pa> non sto riuscendo ad aggiornare i pacchetti di natty
+<pa> mi da 403 forbidden
+<pa> e' colpa mia o succede anche ad altri?
+<OverMe> pa, sudo apt-get update
+<OverMe> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<jester-> mallk: tar è un archivio compresso tipo zip, dentro ci puo essere di tutto
+<nicotano> Dig, non funziona una cippa, la pagina si raggiunge ma non c'è video ne audio
+<Dig> nicotano, ok, dai provo a caricaro da un'altra parte
+<nicotano> Dig, provato con firefox e con chrome
+<mallk> ok, quando sul sito di un programma dicono che  nel file compreso tar.gz c'è il sorgente, per essere sicuro che si tratta di codice sorgente all'interno trovo file BIN?
+<pa> OverMe,  http://codepad.org/ULDY1D1N
+<pa> sscusa
+<pa> http://codepad.org/ULDY1U1N
+<jester-> mallk: che programma è
+<mallk> in relta volevo provare a compilare un codice sorgente (per imparare) ancora non ho deciso quale codice sorgente utilizzare, se hai qualche consiglio sul sorgente posso provare, per impare.. :-)
+<jester-> mallk: sistema debian è insano e inutile compilare
+<OverMe> pa, usi proxy o altri cristi simili?
+<pa> no
+<pa> pero in effetti in un altra macchina funziona
+<jester-> ci sono camionate di applicazioni nei repo e per quelle poche che non ci sono meglo cercare pacchetti deb
+<mallk> lo so, vari programmi che mi servivano li ho installati dai repo..era solo a fini didattici :-). Quindi vuoi dire che se compilo qualche software posso rischiare di rendere instabile l'OS
+<OverMe> pa, la rete è tua o sei in luoghi astrusi tipo università, caffetteria sotto casa, etc?
+<pa> no, no , rete mia
+<pa> stavo controllando
+<pa> non ho nemmeno proxy settati
+<pa> e riesco ad accedere al repo di ubuntu via firefox
+<pa> quindi non so perche' apt si inchiodi
+<OverMe> pa, fai da terminale, wget http://download.skype.com/linux/repos/debian/dists/stable/non-free/binary-i386/Packages
+<OverMe> vediamo se ce la fa
+<jester-> pa sudo iptables -F sudo apt-get update
+<pa> OverMe, allora , questo ci riesce
+<pa> anche firefox ci riesce
+<pa> e' solo apt che ritorna 403 forbidden
+<mallk> ho un adattatore usb wireless netgear, router della stessa marca (ho comprato tutto nella stessa scatola). E' normale che con il wireless non si collega sempre subito, succede varie volte che vari tenatvi senza riusci a collegare, poi dopo varie volte che clicco sul nome del mia rete wireless si collega. Il router è ha un metro circa dal computer.  Con il cavo si collega sempre subito. Comunque quando sono collegato in wireless non
+<mallk> Non uso l'antenna wireless interna al notebook asus a6m (il computer che uso con ubuntu) perchè non funziona più (non c'entrano i driver anche su wn lo stesso)
+<mallk> scusate gli errori ho le parole troncate ho scritto veloce....
+<pa> wgetting il Packages.gz funziona
+<pa> mi sa che e' qualche problema con la cache di apt
+<pa> come lo resetto?
+<OverMe> non c'entra
+<OverMe> prova intanto come ha detto jester
+<mallk> correzione ops :-) - scusate gli errori o le parole troncate, ho scritto veloce....
+<pa> fatto, ma fa uguale
+<pa> e poi comunque wget e firefox funzionano
+<pa> perche' apt non dovrebbe?
+<mallk> per unity (l'interfaccia) la barra in alto (dove c'è anche il global menù) oltre nera e grigia non può avere un altro colore?
+<Steeler> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<OverMe> pa, fai vedere anche un apt-config dump
+<mallk> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<pa> OverMe, http://codepad.org/YKtBwa4H
+<OverMe> Acquire::http::Proxy "http://192.168.1.1:3128/";
+<OverMe> mi devi ingiallire?
+<pa> aha!
+<pa> e come lo levo?
+<pa> beh ho controllato in env
+<OverMe> al contrario di come l'hai messo
+<pa> e non c'era nessun http_proxy
+<pa> ok, era in apt.conf
+<pa> si vede che per qualche ragione ci era andato a finire, o rimasto da tempo
+<pa> adesso l'ho tolto e va
+<pa> grazie mille!
+<Steeler> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<bobbybong> ciao
+<esulu> ]]we
+<raffa50> salve
+<raffa50> salve
+<raffa50> ho collegato il mio portatile a uno shermo
+<raffa50> nessun problema
+<raffa50> come faccio a spegnere lo schermo del portatile?
+<filo1234> raffa50: c'è un tasto di solito, o meglio una combinazione di tasti
+<raffa50> uhu?
+<raffa50> ehm quale è?
+<raffa50> ho un pakardbelt
+<filo1234> c'è una combinazione di tasti per escludere il monitor del portatile...fn+....qualcosa
+<raffa50> dot s
+<glpiana> raffa50, puoi farlo anche dall'applicazione monitor
+<eXpl01t> fun + F4
+<raffa50> ...
+<raffa50> boh
+<glpiana> eXpl01t, dipende dal pc
+<eXpl01t> che modello è
+<glpiana> raffa50, sistema preferenze monitor
+<eXpl01t> io ho un packard bell tm85
+<glpiana> raffa50, oppure se hai unity, bandierina di windows e scrivi monitor
+<raffa50> un la trovo
+<glpiana> raffa50, hai gnome?
+<raffa50> già
+<glpiana> raffa50, ti ho detto dov'è
+<raffa50> dot s exploit
+<raffa50> ho gnome
+<glpiana> raffa50, eh, ti ho detto il percorso: sistema preferenze monitor
+<raffa50> nn c'è la bandiera di winzoz
+<glpiana> -.-
+<glpiana> l'unico pc senza tastiera -.-
+<raffa50> ah
+<raffa50> e poi
+<glpiana> <glpiana> raffa50, sistema preferenze monitor
+<glpiana> <glpiana> raffa50, oppure se hai unity, bandierina di windows e scrivi monitor
+<raffa50> sono in monitor
+<raffa50> sono in monitor
+<raffa50> nn sò che premere
+<glpiana> raffa50, dare un'occhiata alle opzioni che ti propone quella schermata potrebbe aiutarti
+<raffa50> grazie mille
+<raffa50> trovato
+<glpiana> bien
+<esulu> ciao glpiana
+<glpiana> ciao esulu
+<esulu> ascoltatemi gentilmente sapete indicarmi che plugin devo installare per firefox
+<esulu> per poter sentire la radio online
+<glpiana> esulu, flashplugin-installer
+<esulu> glpiana: gia installato ed è gia aggiornato
+<glpiana> esulu, youtube funziona?
+<esulu> si
+<glpiana> esulu, e se clicchi col tasto destro l'ultima voce del menu è flash player col numero di versione?
+<esulu> ma dici sul youtube?
+<glpiana> esulu, sì
+<esulu> You have version 10,3,181,34 installed
+<glpiana> oki, flash è installato. che radio non riesci a sentire?
+<esulu> radio stella
+<esulu> vuoi che te lo link
+<esulu> ?
+<glpiana> magari
+<esulu> http://www.radiostellaweb.it/
+<glpiana> esulu, se clicchi su on air ti apre una finestrella?
+<esulu> si
+<esulu> assistenza di evolution
+<glpiana> assistenza evolution????
+<glpiana> bah
+<esulu> a me esce quello
+<glpiana> comunque per quella non serve flash ma un player che legga lo stream
+<glpiana> a me non funziona, a meno di aver atteso troppo poco
+<glpiana> esulu, clicca sulla radio, non su scrivi alla direzione -.-
+<esulu> glpiana: lascia stare ho fatto una cavolata
+<esulu> caspita sul mio pc è normale che vada
+<esulu> che scemo che sono, il problema ha il computer che ho al negozio
+<esulu> che ha ubuntu 10.10
+<esulu> volevo sapere che cosa devo installare per farlo funzionare anche la'
+<glpiana> esulu, guarda sul pc che stai usando l'elenco di plugin di firefox. lo visualizzi scrivendo about:plugins nella barra degli indirizzi
+<esulu> barra degli indirizzi
+<esulu> di browser intendi?
+<esulu> si
+<esulu> si perfetto a questo punto faccio una paragone e al massimo quello che manca lo installo sul computer del negozio
+<esulu> perfetto grazie
+<RaffaX> ehm scusatemi di nuovo
+<RaffaX> ma è possibile avere sui vari desktop icone diverse?
+<RaffaX> ...
+<RaffaX> uhu?
+<opale> ciao a tutti, controllato hd?
+<glpiana> !chat | opale
+<ubot-it> opale: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<RaffaX> si possono mettere cose diverse sui desktop?
+<glpiana> RaffaX, direi di no
+<glpiana> RaffaX, programmi diversi sì, certo, ma icone diverse no
+<opale> glpiana, era solo una stupida frase. ieri non siamo riusciti a fare nulla per il semplice motivo che hd era seriamente danneggiato. non ho fatto nemmeno in tempo a fare un bacup
+<glpiana> azz
+<opale> glpiana, ora sto cercando di recuperare i documenti
+<RaffaX> intendo
+<RaffaX> programmi cartelle
+<RaffaX> mi sn spèiegato male
+<glpiana> RaffaX, credo di averti dato una risposta abbastanza esaustiva
+<RaffaX> ehm ma quando passo a un altro desktop mi trovo le ifcone del primo
+<glpiana> RaffaX, appunto, in linea con quanto ti ho detto
+<RaffaX> ah ergo nn c'è modo
+<RaffaX> vabbè
+<RaffaX> nn è un problema
+<RaffaX> tanto ho la cairo dock
+<nicotano> salve
+<glpiana> oilà nicotano
+<nicotano> ciao glpiana :)
+<opale> dicono che testdisk è il migliore, voi avete da eccepire?
+<RaffaX> come personalizzo la shermata di acesso?
+<RaffaX> ho scaricato un tema da gnome ma nn lo sò impostare
+<glpiana> RaffaX, ti do i comandi per farlo
+<glpiana> RaffaX, apri un terminale e scrivi:   sudo cp /usr/share/applications/gnome-appearance-properties.desktop /usr/share/gdm/autostart/LoginWindow
+<RaffaX> comandi?
+<il_grillo_> ubuntu 10.10 samba funziona, ubuntu 11.04 con gnome3 samba mi da il seguente errore " Recupero dell'elenco delle condivisioni dal server non riuscito"
+<RaffaX> ?
+<glpiana> il_grillo_, gnome3 non è nei repo ufficiali e qui non c'è supporto al riguardo
+<RaffaX> ma nn c'era un modo per farlo da interfaccia
+<glpiana> RaffaX, il comando fa sì che al successivo login ti appaia una interfaccia
+<glpiana> RaffaX, poi va cancellato il file che crei con quel comando
+<RaffaX> ?
+<glpiana> RaffaX, ma parliamoci chiaro: se non vuoi dar comandi vivi felice con la schermata di login che hai. tanto mica continui a entrare e uscire dalla sessione, o no?
+<RaffaX> ho digitato il comando nn ha fatto nulla
+<glpiana> RaffaX, ora se chiudi la sessione al login potrai impostare il tema. poi quando rientri digiti: sudo rm /usr/share/gdm/autostart/LoginWindow/gnome-appearance-properties.desktop
+<RaffaX> eh ma l'occhio vuole la sua parte
+<enzotib> ci manca una virgola, glpiana
+<RaffaX> volevo solo una skermata con le cose nere
+<RaffaX> invece che bianche
+<Fedons> # Appears as ANNA
+<glpiana> enzotib, dove?
+<enzotib> Fedons: prego?
+<enzotib> glpiana: hai scritto: se chiudi la sessione al login ...
+<Fedons> (#G610E;10M1) prego cosa?
+<glpiana> enzotib, hai ragione :)
+<Fedons> (#G=10E=10M1) non ho parlato :P
+<enzotib> Fedons: sei un bot?
+<glpiana> Fedons, leva gli script o quant'altro tu stia usando
+<Fedons> (#G>10E@10M1) no!
+<Fedons> (#G010EA10M1) cosa ho fatto?
+<glpiana> Fedons, ripeto leva quella che stai usando
+<glpiana> al prossimo avviso sei fuori
+<Shin3> soccia
+<RaffaX> vabbè come reverto qul comando scs?
+<il_grillo_> glpiana, riavvio con unity cosi poi vedo se qualcuno mi risponde
+<filo1234> 14:31 < glpiana> RaffaX, ora se chiudi la sessione al login potrai impostare il tema. poi quando rientri digiti: sudo rm  /usr/share/gdm/autostart/LoginWindow/gnome-appearance-properties.desktop
+<glpiana> il_grillo_, che c'entra unity con gnome scusa?
+<il_grillo_> glpiana,  ubuntu posso avviarlo con unity o con gnome
+<il_grillo_> e samba non va uguale
+<glpiana> il_grillo_, sì vabbè, ma resteresti comunque su gnome3. e chi ci dice che oltre a gnome3 non hai altri mille repo esterni tra cui samba?
+<il_grillo_> glpiana, scusa ma se riavvio con unity come faccio a rimanere su gmome 3, carica l'interfaccia originale e non gnome 3
+<glpiana> il_grillo_, unity è una barra che gira su gnome
+<[1]ichi> giorno a tutti ragassi
+<[1]ichi> volevo sapere se è possibile fare uno script che invia una email in background a un indirizzo che scelgo io.. mi spiego meglio
+<[1]ichi> voglio fare in modo che se lascio il mio netbook  incustodito e spento, quando viene acceso e si connette ad internet, invia una email di avviso al mio pc fisso a casa.. una sorta di allarme via email
+<[1]ichi> però l'email via background
+<western> [1]ichi si, cerca su google "linux mail terminal"
+<giordano> salve a tutti, vorrei istallare enlightenment su ubuntu 10.04 ma ho ottenuto qualcosa di strano cosa posso fare?
+<Aizram> innanzitutto dire cosa è successo nella maniera più chiara e completa possibile giordano
+<giordano> sono andata in synapic è ho scritto enlightenment ho selezionato tutti i pachetti e ho avviato l'istallazione ho cambiato utente e ho selezionato E16 ma è comparso un desktop diverso da quello che mi aspettavo.
+<giordano> qualcuno è riuscito a istallare enlightenment su ubuntu 10.04?
+<Dig> http://www.mediafire.com/?qq3aq85s9w333s1    qualcuno può dare ascolto a questo????
+<OverMe> no?
+<giordano> che robba è?
+<nicotano> giordano,  http://wiki.ubuntu-it.org/AmbienteGrafico/Enlightenment17
+<nicotano> Dig, avevi la videocamera rivoltata ?
+<Dig> nicotano, è un cellulare. L'audio è il problema
+<nicotano> infatti non capisce
+<Dig> premetto...che se si risolve scaricando una libreria lo faccio....altrimenti mi tengo il difetto. Il Pc è è stabilissimo e non mi interessa un piccolo BUG.
+<nicotano> Dig,  ma sul telefonino l'audio è buono
+<Dig> nicotano, il problema è che se metto sotto pressione la CPU. L'audio diventa "metallico"
+<Dig> nicotano, forse non si intuisce bene come si è distorto
+<nicotano> dig non me ne intendo, ma forse occorre un codec quando passi da cellulare a pc per mantenere senza distorsione
+<Dig> scusa nicotano mi sono spiegato male.
+<Dig> nicotano, quella che senti è una radio. Ho usato il cellulare solo per catturare il suono. Mentre uso Banshee, se attivo alcune applicazioni, il suono diventa come lo senti nel video. Devo riavviare l'applicazione o cambiare sorgente per tornare normale.
+<nicotano> Dig,  capito, è banshee che suona male forse le altre applicazioni  in uso sfruttano la cpu e banshee non ce la
+<Dig> nicotano, ho provato con rhythm box...ma è la stessa cosa. Mi sembra di capire che non è un "problema noto"
+<Dig> nicotano, ho notato che un problema che si ripete con più frequenza se lancio un programma gestionale basato su java che carica un database. Quindi è proprio un problema di carico
+<nicotano> Dig,  magari lo fa solo da te se utilizzi roba pesante, io ogni tanto uso banshee + firefox o writer mai notato degrado audio
+<nicotano> ecco è lì java
+<Dig> nicotano, è possibile dire al mio pc:  dedica questa RAM e questa CPU al programma Banshee?
+<nicotano> Dig, so di quote su disco, ma per questo specifico aspetta se qualcuno + esperto ti sa dire
+<Dig> la cosa più normale sarebbe sospendere banshee finché non finisce l'operazione che occupa le risorse. che poi sarà un attimo
+<nicotano> bisogna tradurla in pratica, forse fai prima a mettere tu in pausa quando serve
+<Alex83> Doppio sfondo nel blocco schermo di Ubuntu 10.10
+<Alex83> uno è lontano da dove si inserisce la pssword l'altro fa da cornice
+<Alex83> aiuto
+<attempt> Dig prova a cambiare la priorita' del programma con nice.  man nice
+<attempt> Dig   vai nel menu in edit, destro sul menu. vai alla voce banshee e al posto del comando esistente metti nice -n-15 banshee  e altro se e' gia' presente.
+<attempt> sudo nice -n -15 banshee   esattamente a meno che banshee non si avvii con altre opzioni specificate da mantenere. spunta esegui in terminale.
+<Dig> attempt, grazie mille
+<Dig> ci provo
+<attempt> aumenta la priorita' di scheduling di banshee a spese degli altri processi.
+<lesnek> ciao
+<reddos> sera a tutti ho un problemino io ho ubuntu 10.10 32 bit o acceso il pc e volevo masterizzare  ma sembra che il programma di ubuntu non legga il masterizzatore lo gia sostituito con un altro ma niente sapete dirmi come risolvere grazie
+<bobbybong> reddos, sudo cdrecord scanbus vedi se lo rileva
+<reddos> ok
+<reddos> Sorry, try again mi da questo
+<bobbybong> sudo cdrecord scanbus ^
+<bobbybong> ?
+<reddos> http://pastebin.ubuntu.com/644874/
+<lesnek> avevo creato quando usavo windows con LIBRE OFFICE un foglio di calcolo (.xls) con password, Libre Office su UBuntu per modificare inserendo la password mi apre una copia (invece dell'originale)..Non capisco...
+<reddos> e serio il problema
+<bobbybong> reddos, scanbus non scanbu come hai scritto tu
+<reddos> scusa
+<reddos> http://pastebin.ubuntu.com/644877/
+<bobbybong> wodim -scanbus prova questo
+<reddos> http://pastebin.ubuntu.com/644880/
+<bobbybong> scanbus
+<bobbybong> hai di nuovo scritto scanbu
+<reddos> http://pastebin.ubuntu.com/644882/ mi riscuso
+<bobbybong> non lo rileva
+<bobbybong> reddos, cambia il cavo
+<attempt> controlla le connessioni se e' un desktop.
+<reddos> ok grazie
+<lesnek> avevo creato quando usavo windows con LIBRE OFFICE un foglio di calcolo (.xls) con password, Libre Office su UBuntu per modificare inserendo la password mi apre una copia (invece dell'originale)..Non capisco...
+<esulu> scusatemi mi manca questo Decoder text/html
+<esulu> secondo vuoi come faccio ad installarlo sul ubuntu 10.10 gentilmente
+<esulu> ?
+<remix_tj> !formatiproprietari | esulu
+<ubot-it> esulu: ﻿per informazioni sui formati multimediali proprietari http://wiki.ubuntu-it.org/Multimedia/FormatiProprietari - Vedi anche !FormatiLiberi
+<Nippon> salve a tutti
+<Nippon> ho bisogno di aiuto, qualcuno @ disponibile per favore
+<remix_tj> !qualcuno | Nippon
+<ubot-it> Nippon: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<Nippon> c`e qualcuno
+<Nippon> ok, mia moglie giapponese ha fatto un aggiornamento
+<Nippon> lei usa la tastiera italiana con il IBus
+<Nippon> per  scrivere in giapponese
+<Nippon> adesso e sparita anche l-icona in basso
+<Nippon> IT/JP
+<Nippon> ed non riesce piu a scrivere in giapponese
+<lesnek> ho inserito un adattatore bluethoot usb, per inviare il fiule basta usare il menù contestuale
+<Nippon> sa sistema preferenze preferenze di Ibus quando ci clicco mi appare un messaggio
+<Nippon> inoltre quando cerco di iconizzare le finestre sul pannello spariscono
+<Nippon> qualcuno sa darmi una risposta=
+<Nippon> aiuto per favore
+<Nippon> devo formattare=
+<Nippon> perch@ nessuno vuole aiutarmi
+<Nippon> qalcuno puo rispore per favore
+<Steeler> !nippon | qualcuno
+<ubot-it> Voce non trovata: 'nippon'
+<Steeler> !qualcuno | Nippon
+<ubot-it> Nippon: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<Nippon> ma sono in chat oppure no
+<Nippon> vi prego di aiutarmi
+<Nippon> come posso risolvere questi problemi=
+<Nippon> inoltre se premo sul tasto del punto interrogativo per avere aiuto la finestra enanche si apre
+<attempt> Nippon in pratica non e' che non ti leggiamo. ma ci vuole qualcuno che ti legge ed e' in grado di aiutarti.
+<Nippon> grazie, almeno gia capisco che sono in chat
+<attempt> quindi riponi il problema  ad intervalli regolari congrui. vedrai che qualcuno ti risponde.
+<Nippon> ho diversi problemi con ubuntu e non so come risolveri, sembra che l OS sia un po in confusione
+<attempt> che versione usi?
+<attempt> l'ultima versione che non dava problemi quale era?  hai aggiornato o fatto un avanzamento di versione?
+<Nippon> 10.04 Lucyd Lynx
+<Nippon> era sempre la stessa versione
+<attempt> quindi stai usando lucid?
+<Nippon> si
+<Nippon> sempre la stessa
+<Nippon> adesso ho diversi problemi
+<Nippon> le finestre iconizzate non si vedono
+<Nippon> IBus
+<Nippon> non funziona
+<attempt> io di ibus non conosco niente ma tanto per provare ti direi di resettare gnome a default. puoi sempre tornare indietro.
+<Nippon> quando premo sul punto interrogativo blu in alto la finestra di aiuto si apre e poi sparisce
+<attempt> apri terminale e dai sudo dpkg --configure -a
+<attempt> se risponde qualcosa lo metti su paste
+<attempt> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<Nippon> ok provo, grazie
+<attempt> -.-
+<attempt> eppure uso un'italiano corretto..
+<fenixxx_86> Buonasera ... volevo chiedere cortesemente a qualcuno se mi sa consigliare una versione abbastanza stabile di ubuntu da installare ho una nvidia geforce go 7200 il mio pc ha la web ... ed inoltre dovrei installarew la scheda digitale terrestre ma quello non è un problema ... un po in giro per i forum ho letto che una delle versioni piu stabili e linux mint ... sia per beryl compiz che per altre compatibilita' qualcuno mi sa d
+<enzotib> fenixxx_86: mint non è una versione di ubuntu
+<lesnek> ciao
+<lesnek> se avvio un applicazione a tutto schermo (tipo un gioco) e poi si blocca come faccio alla ritornare al desktop?
+<enzotib> lesnek: puoi provare qualche shortcut tipo Ctrl-Alt-Freccia per spostarti su un altro workspace
+<enzotib> lesnek: oppure Ctrl-Alt-F1 per andare su un terminale virtuale
+<dennis_> ciao
+<dennis_> avrei bisogno di aiuto
+<dennis_> volevo sapere se posso installare ubuntu su mac
+<dennis_> grazie
+<enzotib> !macbook | vedi se c'è qualcosa di interessante
+<ubot-it> vedi se c'è qualcosa di interessante: https://help.ubuntu.com/community/MacBookPro
+<dennis_> ti ringrazio
+<fenixxx_86> enzotib: quindi ??? :-D ... non so perche ma qui su questo pc ... ubuntu non mi si installava prpr ... dopo un po ho installato kubuntu ... è andato bene ... ed un po di giorni dopo mi è craascato
+<enzotib> fenixxx_86: quindi cosa, correggevo una tua imprecisione, e ti rendo noto che mint non è supportato su questo canale, dato che NON è ubuntu
+<fenixxx_86> enzotib: non sto chiedendo supporto ... sto chiedendo un consiglio ...
+<enzotib> fenixxx_86: e allora se vogliamo essere precisi, per i consigli puoi chiedere su #ubuntu-it-chat, non qui
+<fenixxx_86> enzotib: grazie ...
+<fenixxx_86> enzotib: una curiosita' ho kubu 10.04 ... è ubuntu vero ???
+<enzotib> sì
+<fenixxx_86> mi è successo un problema ... da un momento all'altro ho riavviato ed invece di apparire la schermata grafica
+<fenixxx_86> enzotib: mi è apparso il login da console ... con tty2 ... come quando sei da schermata grafica e fai il control alt f2 ... e da li basta ... non mi parte piu ed in effetti ora sono da live ... che cercavo di capire cosa è sauccesso e nell'aventualita' sia successo qualcosa di irreparabile di trovare una nuova distribuzione piu stabile
+<fenixxx_86> join /ubuntu-it-chat
+<fenixxx_86> enzotib: ... mi sai dire nulla ??? hai mai sentito parlare del problema che mi è successo ???
+<enzotib> fenixxx_86: fai un controllo del disco, e controlla anche che non sia pieno
+<enzotib> fenixxx_86: poi, hai fatto installazioni o aggiornamenti o modifiche particolati ultimamente?
+<fenixxx_86> ci avevo installato compiz ... con un hwto per kubu 10.04 ... che ho trovato in una chat inglese ... kmq ora sono con una live di ubuntu ... ma di disco vuoto ci sono 15 gb ...
+<fenixxx_86> enzotib: ci avevo installato compiz ... con un hwto per kubu 10.04 ... che ho trovato in una chat inglese ... kmq ora sono con una live di ubuntu ... ma di disco vuoto ci sono 15 gb ... poi cercavo di installare i driver della ge force 7200 ma senza successo ...
+<enzotib> fenixxx_86: compiz con kubuntu serve a poco, dato che kwin fa egregiamente il suo lavoro
+<enzotib> fenixxx_86: prova a toglierlo
+<fenixxx_86> enzotib: ah capisco ... io l'ultima versione di kubu ke avevo era la 7.10 ... e su quella compiz mi andava alla grande ... ora sinceramente è un annetto che non stavo piu su linux in quanto l'universita' ... dovevo usare nettamente altre applicazioni ... ma ora ci rivoglio tornare per forza e voglio trascinare con me almeno un altra decina di ragazzi ... quindi ... devo mettermi di nuovo in forma ... kmq ammesso e non concess
+<fenixxx_86> enzotib:  e ci mette un botto a riaprirsi ... magari se la faccio di qui è piu' immediato !!!
+<Aizram> kubuntu .... compiz .......
+<lesnek> per l'interfaccia Unity è possibile cambiare lo stile delle finestre ma lasciare la barra in alto (quella dove ci sono anche i global menu) nera...?
+<lesnek> Ho riavviato ed è grigia e anche mettendo il terma di unity non riesco a farla tornare nera...
+<lesnek> ubuntu mi ha caricato la barra in alto interfaccia Unity (quella dove c'è anche il global menù)  grigia e anche mettendo il terma delle finestre di unity non riesco a farla tornare nera (con la grafica di default)
+<Shark360_> buona sera a tutti
+<Shark360_> c'è qualcuno che è disponibile ad aiutarmi due secondi?
+<filo1234> !qualcuno | Shark360_
+<ubot-it> Shark360_: la maggior parte delle prime domande fatte in questo canale è del tipo «qualcuno puo' aiutarmi/qualcuno ha tempo/qualcuno usa...?». Fate la vostra domanda tecnica e se qualcuno sa, rispondera'
+<Shark360_> non riesco ad attivare il mic boost su ubuntu 10.10
+<fenixxx_86> devo installarew per l'ennesima volta ubuntu ... che ubuntu installo ???
+<Shark360_> il microfono e casse funzionano benissimo, ma non riesco a sentire il microfono in cuffia
+<lesnek> ubuntu mi ha caricato la barra in alto interfaccia Unity (quella dove c'è anche il global menù)  grigia e anche mettendo il terma delle finestre di unity non riesco a farla tornare nera (con la grafica di default)
+<filo1234> !gomereset | lesnek
+<ubot-it> Voce non trovata: 'gomereset'
+<filo1234> !gnomereset | lesnek
+<ubot-it> lesnek: Per resettare gnome alle sue impostazioni di default rinominare le cartelle nascoste nella propria home  .gnome2 .config .gconf .gconfd .gnome2_private  con un nome a piacere, ad esempio .gnome2.bk e riavviare la sessione
+<lesnek> no uso l'interfaccia Unity
+<filo1234> lesnek: cambia nulla
+<lesnek> ok ora provo
+<fenixxx_86> piu di una volta ho provato ad installare l'ultima versione di ubuntu ... ma mi da problemi ... a volte mi si blocca all '83 per cento ... e poi appena finisco l'installazione che avvio per la prima volta ... non so perche ma mi crascia e non mi entra in modalita normale ma mi dice solo di entrare in modalita' recovery !!!
+<lesnek> per fare vedere i file nascosti?
+<fenixxx_86> ma è indifferente se ho un proc 64bit ... ed installo la versione 32 bit ???
+<rightnow2> ciao a tutti mi potete quello che non posso fare su questo canale
+<rightnow2> ?
+<filo1234> !irc | rightnow2
+<ubot-it> rightnow2: leggi le Linee Guida del canale su http://wiki.ubuntu-it.org/GruppoIrc/LineeGuida
+<rightnow2> cioè io vorrei vendere un pc fisso ma non so se infrangerei le regole del canale
+<filo1234> si le infrangeresti
+<rightnow2> ok
+<rightnow2> d'accordo
+<rightnow2> e se mi sposto sulla chat?
+<filo1234> rightnow2: nemmeno li...entra e leggi il topic della chat
+<rightnow2> ok praticamente chiedevo un aiuto
+<rightnow2> ma si vede che sono in un posto sbagliato
+<rightnow2> vi posso fare una domanda
+<rightnow2> ?
+<rightnow2> ma non mi kikkate
+<rightnow2> sono nuovo
+<filo1234> rightnow2: questo è un canale di supporto tecnico per ubuntu
+<rightnow2> ok
+<filo1234> tutto ciò che puoi fare sono domande tecniche non altro
+<rightnow2> da quando ho aggiornato xubuntu alla nuova versione
+<rightnow2> dopo 15 o 20 minuti
+<rightnow2> di inattività
+<rightnow2> il pc va in crash e normale
+<rightnow2> ?
+<rightnow2> insomma sta diventando una tortura
+<filo1234> be certo che non è normale
+<rightnow2> inoltre
+<rightnow2> skype non parte più
+<rightnow2> cioé
+<rightnow2> quando lo installo
+<rightnow2> parte
+<filo1234> rightnow2: ma io veificherei se nel bios ci sia qualche impostazione che disabilita i dischi dopo un tot
+<FloodBotIt1> rightnow2: Non intasare il canale, usa http://paste.ubuntu.com per incollare, non usare Invio come punteggiatura.
+<rightnow2> comunque la prossima settimana,mi arriva un netbook SAMSUNG con processore N550 Dual Core 1,55 GHZ e 1GB di RAM,vi chiedo se installo XUBUNTU accanto allo starter pensate che avrò problemi nell'usare il wi-fi?
+<rightnow2> scusatemi per disturbo,ma mi sposto nell'area chat che ritengo sia più appropriata non voglio intasare qui
+<leo_> ciao ragazzi una domanda ho un had disk eterno(usb) fat32 è possibile trasformarlo in nfts senza perdere nessun dato???????
+<opale> se testdisk non riesce a trovare quasi niente solo su un particolare disco vuol dire che devo mollare la spugna?
+<filo1234> opale: prova con foremost
+<xubuntero> ragazzi mi insegnate l'anonimato in rete????
+<xubuntero> Ho istallato foxyproxy....ma che proxy aggiungo x l'anonimato??????
+<xubuntero> eiii
+<bobbybong> !chat | xubuntero
+<ubot-it> xubuntero: per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<RanXeroX> sera
+<opale> filo1234, scaricato, scansionato ma ha trovato solo 12 file.....:(
+<opale> filo1234, non dico che non funzionino i programmi, dico solo che per quella determinata partizione il risultato è veramente pessimo, nelle altre partizioni dove credo ci siano meno settori danneggiati vi sono risultati reali.
+<opale> filo1234, ora sto provando a scansionare l'intero disco nella partizione estesa. staremo a vedere
+<lesnek> CIAO
+<lesnek> wine mi da questo errore
+<lesnek> http://pastebin.ubuntu.com/645016/
+<lesnek> con qualsiasi applicazione di win che ho provato
+<lesnek> ho modificato nel messaggio il percoso del file con uno finto (tanto per esempio)
+<xubuntero> ragazzi chi mi aiuta,non mi si avvia piu firefox
+<lesnek> prova da ubuntu download center a rimuoverlo e poi lo reinstalli
+<xubuntero> è un impostazione sbagliata di foxyproxy.....ho solo provato ad aggiungere un proxyanonimo
+<bobbybong> lesnek, devi mettere eseguibile nelle proèprietà del file
+<xubuntero> da li,non ne vuole piu sapere
+<xubuntero> si ma mi rimuove una marea di cose cosi
+<lesnek> ci sono riuscito grazie!
+<xubuntero> ragazzi niente da fare,nemmeno reistallandolo si avvia
+<xubuntero> chi mi aiuta
+<lesnek> su ubuntu non c'è un taskmanager per i processi e per chiudere programmi bloccati?
+<bobbybong> lesnek, c'è monitor di sistema
+<bobbybong> o top da terminale
+<lesnek> trovato grazie
+<fenixxx_86> buonasera ...
+<fenixxx_86> ho appena installato l-ultima versione di ubu ... ma nel fare l-accesso ... mi appare una chermata nera ... con la scritta errore .usr.lib.libconf2-4.gconf-sanity-check-2 e uscito con stato 256
+<fenixxx_86> ovviamente ora per scrivervi sono da live usb ...
+<fenixxx_86> ce nessuno che abbia idea di quello che sia successo ???
+<filo1234> fenixxx_86: io ho dei dubbi, 1 masterizzi male l'iso, 2 scarichi un iso corrotta, 3 imposti qualcosa di strano durante l'installazione
+<filo1234> non è possibile che non ti vada bene  nessuna installazione da una settimana
+<filo1234> oppure hai un pc dell'era di noè
+<fenixxx_86> filo1234:  non credo in quanto questo e successo con l-installazione via cd con 3 cd diversi via usb con 3 usb diverse ed ogni volta scaricate nuovamente dal sito della home di ubu
+<filo1234> eh allora o è la terza o la quarta
+<filo1234> c'è poco da fare
+<fenixxx_86> ho un dv6000 hp pavilion nn e certo lultimo sul mercato ... ma ha web ... scheda video hd ... ecc ecc nsomma e in competizione ... dimenticavo ho preocessore 64 bit ma ho installato la versione 32 ma non credo sia un problema
+<N3mes1s> http://forum.ubuntu-it.org/index.php?topic=275882.0
+<N3mes1s> fenixxx_86: ^
+<fenixxx_86> quindi filo1234  e N3mes1s cosa mi consigliate di fare ??? rinuncio a linux ???
+<filo1234> fenixxx_86: non lo so sinceramente le live funzionano bene?
+<filo1234> hai provato quali versioni?
+<filo1234> N3mes1s: è del 2009 quel "bug"
+<N3mes1s> filo1234: si ripresenta la stessa cosa, hai provato?
+<filo1234> N3mes1s: come potrei provare?
+<fenixxx_86> si la live nn mi da problemi ... ma [ una live ... nn posso andare avanti a live ... avevo installato kubu 10.04 ed [ andatro bene per una decina di giorni ... poi ha crashato pure lui ... mi pare che filo1234  hai visto il problema che mi dava l-ho scritto prima
+<N3mes1s> prova con la live
+<filo1234> comunque provare non costa nulla N3mes1s
+<filo1234> fenixxx_86: ^
+<fenixxx_86> N3mes1s:  quei comandi gli posso dare dalla shell della live stessa no ___
+<N3mes1s> logicamente devi montare l'hd dove hai la root di ubuntu
+<N3mes1s> eh si
+<fenixxx_86> N3mes1s:  mi dai un indicazione su come montare ... xk nn ho idea di come si faccia
+<fenixxx_86> se non sbaglio ubu sta su sda5
+<N3mes1s> si però anche per montare una partizione :/
+<fenixxx_86> scusate\
+<N3mes1s> se sei da root
+<fenixxx_86> saro caduto ...
+<N3mes1s> mount /dev/sda5 /mnt/(qualche cartella)
+<N3mes1s> se non esiste qualche cartella in mnt ne crei una
+<filo1234> basta anche solo in /mnt
+<N3mes1s> oppure
+<N3mes1s> qualcuno dice anche di dare chmod 1777 /tmp/
+<N3mes1s> anyway su internet ci stanno molti topic a riguardo
+<filo1234> scusa ma accedi da recovery?
+<fenixxx_86> si da recovery accedo ...
+<filo1234> allora fai da li
+<fenixxx_86> filo1234:  da recoveri accedo ma dal momento che poi la live ci mette 20 minuti a partire e un po sconveniente ...
+<N3mes1s> bon io però ora abbandono, auguri
+<filo1234> fenixxx_86: non ho capito
+<fenixxx_86> grazie n3
+<filo1234> cosa sarebbe sconveniente?
+<filo1234> e che c'entra la live con il recovery?
+<fenixxx_86> filo1234:  non sono pratico ... per chiedere qualche consiglio se qualcosa non va o vedere qualche guida ... sarei ricostretto a fare il boot dalla live ... e perdo 20 minuti a fare questa operazione ...
+<filo1234> ah
+<fenixxx_86> filo1234:  mi sapresti aiutare cortesemente a montare ... la partizione dove [ installato ubu ... magari mi dici dove posso vedere come si fa cosi vediamo se chmod ci puo- salvare???
+<lesnek> Ogni volta che riavvio la partizione in cui tengo i miei documeti (fatta tempo con windows) deve essere sempre rimontata (basta cliccarci e lo fa) ma i programmi non trovano i file sulla quella partizione finche non la monto. Non può rimanere montata?
+<filo1234> fenixxx_86: pasta sudo fdisk -l
+<lesnek> filo, dici a me?
+<fenixxx_86> ah ok filo1234  dove ti posso pastare quello che mi dice ???
+<filo1234> !paste | fenixxx_86
+<ubot-it> fenixxx_86: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<fenixxx_86> filo1234:  non mi da nessun link -.- da mandarti
+<filo1234> -.- madu
+<filo1234> fenixxx_86: hai fatto paste?
+<fenixxx_86> si ovvio ...
+<filo1234> eh allora guarda copia l'url
+<filo1234> che è cambiato come notera
+<filo1234> i
+<fenixxx_86> http://paste.ubuntu.com/
+<fenixxx_86> no non mi cambia
+<filo1234> non hai fatto paste
+<Carlin0> lesnek, → http://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/MontarePartizioni
+<filo1234> hai messo un nick?
+<clakes> piano con le paste, ché quella robaccia chimica fa male...!
+<fenixxx_86> filo1234:  ecco a te ... http://paste.debian.net/123047/
+<filo1234> fenixxx_86: sudo mount /dev/sda5 /mnt/
+<fenixxx_86> filo1234:  perfetto l-ho fatto e http://paste.debian.net/123048/
+<filo1234> era gia montata oh
+<filo1234> fenixxx_86: df -h
+<fenixxx_86> filo1234:  XD ...
+<fenixxx_86> filo1234:  prima era perche non ho messo nick comuinque http://paste.ubuntu.com/645053/
+<fenixxx_86> filo1234:  ora che [ montata se non sbaglio ... dovrei dare quel famoso chmod ... che dicono no ??? ... kmq il probmema non credo sia lo spazio perche ho 20 gb ...
+<filo1234> vabè proviamo quello che dice il post anche se ho i miei dubbi
+<fenixxx_86> quindi devo dare quel comando del post
+<fenixxx_86> filo1234:  ho dato quel comando ossia sudo chmod 775 /etc/gconf/gconf.xml.system ... ma non mi [ uscito nulla proprio ... sara successo qualcosa ???
+<filo1234> prova
+<fenixxx_86> ___
+<filo1234> fenixxx_86: naturalmente dovresti farlo su /mnt/etc/gconf/....
+<fenixxx_86> filo1234:  ah ok ... kmq piu giu ce un ragazzo che prima di dare il ch mod ... ha fatto ???
+<fenixxx_86> filo1234:  mkdir -p /etc/gconf/gconf.xml.system
+<filo1234> si ma in /mnt/.....
+<fenixxx_86> a che serve questo mkdir ... kmq filo1234 intendi che prima di dare quel comando devo entrare in quella directory ___
+<filo1234> serve per creare quella dir
+<filo1234> sudo mkdir /mnt/etc/gconf/gconf.xml.system
+<fenixxx_86> ah ... ok starebbe a make directory ...
+<filo1234> sudo chmod 775 /mnt/etc/gconf/gconf.xml.system
+<fenixxx_86> ok ... quindi faccio ank io con l mkdir o andi un attimo che prima controllo se c-e-
+<filo1234> sudo umount /mnt
+<filo1234> sudo reboot
+<fenixxx_86> ??? do questi 4 comenakdi come me gli hai scritti in ordine tu ___
+<filo1234> si
+<fenixxx_86> ooooooook ... speriamo bene ... son veramente stanco di inst e disi ...
+<filo1234> fenixxx_86: quanta ram hai su quel pc?
+<fenixxx_86> se nn sbaglio 1 gb
+<fenixxx_86> e poca ??? non metto gli accenti che nn so dove sono XD
+<filo1234> no non è poca
+<fenixxx_86> filo1234:  quando do il primo comando mi dice mkdir: cannot create directory `/mnt/etc/gconf/gconf.xml.system': File exists
+<filo1234> è che volevo consigliarti di fare un installazone minimale e poi installare lubuntu-desktop o xubuntu-desktop
+<filo1234> giusto per vedere un po' se va meglio
+<filo1234> fenixxx_86: ok quindi dai solo il chmod
+<filo1234> fenixxx_86: anzi
+<filo1234> se non l'hai gia dato....
+<filo1234> ls -ld /mnt/etc...blabla
+<fenixxx_86> eh ... mi sa che  la soluzione migliore ... senno ... basta con ubuntu ... mi sono veramente stancato ... provo con opensuse ... o fedora ...
+<fenixxx_86> filo1234:  con il tuo ls mi da drwxrwxr-x 2 root root 4096 2011-04-11 12:28 /mnt/etc/gconf/gconf.xml.system
+<filo1234> boh vabè riavvia va
+<fenixxx_86> ooooooooook ... grazie filo1234  spero di richattarti da xchat e non da live hihi
+<ghido> ho bisogno di aiuto...
+<ghido> nessuno in linea?
+<ghido> ritorno a windows è?
+<grongosauro> salve ragazzi..ho un problema con wifi e driver nvidia,chi mi aaiuta
+<grongosauro> '''
+<grongosauro> in driver nvidia,mi da errore alla fine del download
+<ghido> ciao grongo... mi sa che non cè nessuno
+<grongosauro> il wifi mi sa che ha bisogno del firmware
+<grongosauro> cacchio
+<grongosauro> ciao ghido
+<ghido> mi sa che che i nostri problemi ce li grattiamo da soli
+<grongosauro> naggia
+<grongosauro> che broblemi hai'
+<grongosauro> non mi va il punto di domanda
+<ghido> inkia
+<ghido> a meno che... tu sai se si può aggiornare il 10.10 al 4.11 direttamente?
+<Claudinux> ghido, 4.11?
+<grongosauro> 11.04 punto di domanda
+<grongosauro> si..ma a parer mio è meglio farlo da cd
+<grongosauro> non da internet
+<fenixxx_86> filo1234:  ho riavviato ... ma nulla ... parte una schermata che va e viene ... e mi porta un failt su // stopping automatuc crash report generation //
+<Carlin0> ghido, dalla 10.10 alla 11.04 puoi avanzare di versione ma come dice grongosauro meglio una installazione fresca
+<ghido> ci stai pensando o ti è partita la tastiera... non solo il ?
+<fenixxx_86> filo1234:  sono andato da recoveri ho provato a liberare spazio ma nulla ... ank perche credo che 20 gb son piu che sufficienti hihi ... ho provato a riparare i pacchetti danneggiati ma 0 0 0 ...
+<grongosauro> lo scrivo visto che il punto non lo posso usare
+<grongosauro> ragazzi miu aiutate col wifi punto di domanda
+<grongosauro> stu cazza paviluion dv5  è na merda
+<grongosauro> pavilion
+<fenixxx_86> grongosauro:  ank io pavilion ma sto ubuntu mi da un sacco di probmemi cavolo o meglio mi da un unico probema ... cavoletto di bruxel ...
+<fenixxx_86> dv6000 per l-esattezza ...
+<fenixxx_86> vabbe mi sono rotto le palle ora vedo come va opensuse ... o fedora ...
+<grongosauro> dv5000 e non è nemmeno mio
+<grongosauro> suse pesante come un macigno
+<grongosauro> fedo oi mommia
+<Carlin0> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<grongosauro> carlin0 soprry
+<Carlin0> grongosauro, non è per me...sono regole del canale
+<ghido> ha un nonno permaloso
+<ghido> ... non so come "arrossire" le persone con cui chatto... carlino?
+<grongosauro> vero....
+<fenixxx_86> ma come ambiante grafico meglio gnome o kde >>>
+<Carlin0> imho gnome
+<fenixxx_86> Carlin0:  ??? qualche motivo in particolare ___
+<grongosauro> filo1234. ma sei tu l amico di jumpysnake pundo di domanda
+<grongosauro> ragazzi dove dove trovo il firmware per il wifi http://pastebin.com/YpCp0ajP
+<filo1234> !broadcom | grongosauro
+<ubot-it> grongosauro: Dispositivo senza filo Broadcom http://wiki.ubuntu-it.org/Hardware/DispositiviSenzaFili/Broadcom

@@ -1,0 +1,436 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2013-3-15"
+lang: "en"
+messages: "427"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<dijonyummy> will dolphin ever get an option to configure file overwrite if size and/or date is the same? would be very nice
+<len> My uncle is having a strange problem with Kmix.  If he clicks on the mix icon in the system try and trys to adjust the volume with the internal audio speaker volunme, nothing happens, BUT if he hits teh mixer button to bring up the full window and adjusts the exactly the same labeled slider in the full box, it works.
+<len> Any ideas what would cause this?
+<makis> hi
+<makis> do you copy?
+<makis> anyone?
+<ddalley> Can someone help me with a networked printer set-up problem, please?
+<aljosa> brightness is automatically changing every couple of seconds, any idea what could cause this? it looks pretty random
+<katieskool> trimming the fat from a fresh install of Quantal, POLL: Quassel vs konversation...
+<katieskool> Any opinions? quassel vs Konversation for IRC client
+<katieskool> dead chan?
+<lordievader> Good morning
+<n8w> how do i enable syslog to console?
+<lordievader> n8w: You want to read the syslog while it is generated? tail -f /var/log/syslog
+<n8w> lordievader, ye thats a solution...but i was woderin about this line in the conf *.=notice;*.=warn       |/dev/xconsole
+<lordievader> n8w: I would say it's a bad idea to only log to the console. You loose your archive/backlog...
+<n8w> lordievader, not only to console...both
+<n8w> lordievader, but then your solution is better
+<n8w> lordievader, noo, your solution is exactly what i need...thx:)
+<lordievader> n8w: No problem ;)
+<SudoSudoSudoSu> Okay, lordievader!
+<SudoSudoSudoSu> How do I find out what my graphics card model is?
+<SudoSudoSudoSu> It's an ATI.
+<SudoSudoSudoSu> I'm sure about that.
+<lordievader> SudoSudoSudoSu: Run (from a terminal): kdesudo jockey-kde
+<SudoSudoSudoSu> Sure thing!
+<SudoSudoSudoSu> There.
+<SudoSudoSudoSu> I typeded it in.
+<lordievader> SudoSudoSudoSu: Hit enter...
+<SudoSudoSudoSu> No drivers.
+<lordievader> SudoSudoSudoSu: Hmm, is it an old card?
+<SudoSudoSudoSu> I don't know.
+<SudoSudoSudoSu> How do I find out what model it is?
+<n8w> ok here we go...things have started revealing...anyone knowin whats this: /USR/SBIN/CRON[15940]: (root) MAIL (mailed 17 bytes of output but got status 0x0001 ) ?
+<lordievader> SudoSudoSudoSu: glxinfo|grep Open
+<SudoSudoSudoSu> Sure.
+<lordievader> n8w: Have gotten that for a while too, haven't seen it for a while in my logwatch. Unfortunately I have no idea what fixed it... :(
+<SudoSudoSudoSu> Have to install mesa_drivers
+<SudoSudoSudoSu> Should I?
+<n8w> lordievader, but mailed to where?
+<lordievader> SudoSudoSudoSu: Ah glxinfo is not installed? Yes install the package it complains about.
+<SudoSudoSudoSu> Thanks! Wow, so good to be helped.
+<lordievader> n8w: Perhaps to your root mail account, hold on a sec.
+<SudoSudoSudoSu> Wait.
+<SudoSudoSudoSu> It was mesa_utils
+<SudoSudoSudoSu> Sorry.
+<SudoSudoSudoSu> Should I install THAT?
+<lordievader> n8w: This might work: sudo mail <- is there mail in there?
+<lordievader> SudoSudoSudoSu: Yes, glxinfo is inside that package.
+<SudoSudoSudoSu> :D
+<SudoSudoSudoSu> It can't locate the package.
+<n8w> lordievader, i have got mail command... but mailq ...it says its empty
+<n8w> lordievader, i have got not /etc/aliases
+<lordievader> n8w: Hmm, I knew this was a very strange problem. Believe I googled it once without any success... I'm sorry but I cannot help you :(
+<n8w> lordievader, k, thx anywai
+<lordievader> SudoSudoSudoSu: sudo apt-get install mesa-utils
+<SudoSudoSudoSu> Ah.
+<SudoSudoSudoSu> There!
+<SudoSudoSudoSu> I put in a _ instead of a -
+<SudoSudoSudoSu> It got up to:
+<SudoSudoSudoSu> Setting up mesa-utils (8.0.1+git20110129+d8f7d6b-0ubuntu2) ...
+<SudoSudoSudoSu> Is that it?
+<lordievader> Yes, SudoSudoSudoSu
+<SudoSudoSudoSu> :D
+<SudoSudoSudoSu> Thanks!
+<SudoSudoSudoSu> It crashed... Agian.
+<lordievader> SudoSudoSudoSu: What crashed? Minecraft? We are not even remotely close to having it working....
+<SudoSudoSudoSu> Ah, it was Minecraft.
+<SudoSudoSudoSu> Sorry.
+<SudoSudoSudoSu> Carry on?
+<lordievader> SudoSudoSudoSu: glxinfo|grep Open
+<SudoSudoSudoSu> SSure.
+<lordievader> Paste bin the output, SudoSudoSudoSu
+<SudoSudoSudoSu> What output?
+<palasso> the output on the terminal
+<SudoSudoSudoSu> http://pastebin.com/FdJvF2Tr
+<SudoSudoSudoSu> There.
+<lordievader> Hmpff, fine. What does "lspci |grep VGA" give? SudoSudoSudoSu
+<SudoSudoSudoSu> Let me see.
+<SudoSudoSudoSu> 01:00.0 VGA compatible controller: Advanced Micro Devices [AMD] nee ATI RV370 5B60 [Radeon X300 (PCIE)]
+<SudoSudoSudoSu> Hey... What DOES "Grep" do?
+<lordievader> sebo: Searches through things.
+<SudoSudoSudoSu> Who's sebo?
+<lordievader> sebo: Wrong directed answer... sorry ;)
+<lordievader> SudoSudoSudoSu: ^
+<lordievader> SudoSudoSudoSu: Your card is ancient btw, 2004...
+<SudoSudoSudoSu> Thanks!
+<SudoSudoSudoSu> Oh my god...
+<SudoSudoSudoSu> So...
+<palasso> I know for sure that since 12.10 some GPUs (including 2004 cards) are considered legacy from the proprietary AMD driver so the open source one is used.
+<SudoSudoSudoSu> Wat
+<lordievader> SudoSudoSudoSu: This driver you could install: http://support.amd.com/us/gpudownload/linux/Legacy/Pages/radeon_linux.aspx?type=2.4.1&product=2.4.1.3.12&lang=English
+<lordievader> sebo: Could you keep it in channel, you'll probably get helped faster and your question might also help other people.
+<SudoSudoSudoSu> Sebo?
+<SudoSudoSudoSu> WHo's Sebo?
+<palasso> I think there might be a PPA or a nice guide on some blog I've seen before for installing the proprietary driver for legacy cards...
+<lordievader> Relax SudoSudoSudoSu, there are more people in this channel. You are not the only one.
+<SudoSudoSudoSu> It's gonna be a tarball, Isn't it.
+<SudoSudoSudoSu> Ugh, why does eveyone tell me to relax, I'm fine!
+<lordievader> SudoSudoSudoSu: Nope, .run file.
+<SudoSudoSudoSu> Good...?
+<sebo> lordievader: ok. i hope that someone can help me
+<lordievader> SudoSudoSudoSu: Act that way... please.
+<lordievader> sebo: Repeat the question ;)
+<SudoSudoSudoSu> Well... What.
+<lordievader> SudoSudoSudoSu: Download the driver, make it executable, to be sure disable X, install driver, reboot.
+<sebo> hi can you tell me how to do it? in update center i dont have notification that i have to update system
+<SudoSudoSudoSu> It opens in Kae.
+<SudoSudoSudoSu> *Kate
+<palasso> SudoSudoSudoSu, what is the name of the file you just installed?
+<palasso> *downloaded
+<lordievader> sebo: Go to System Settings -> Application and System Notifications -> Other Notifications, is "Upgrade information" enabled?
+<lordievader> SudoSudoSudoSu: You didn't make it executable..
+<SudoSudoSudoSu> Hwo do I?
+<lordievader> SudoSudoSudoSu: chmod a+x <driver-location>
+<palasso> chmod +x I think
+<SudoSudoSudoSu> ...
+<sebo> lordievarder: yes
+<SudoSudoSudoSu> Do I put in the file.
+<SudoSudoSudoSu> As well?
+<palasso> yes
+<palasso> We want the permission change only to that file
+<palasso> Not the entire folder
+<SudoSudoSudoSu> Ah.
+<lordievader> sebo: Ok, in the Manage Notification -> Event Source: System Notification -> is there an I before "Updates are available"?
+<palasso> SudoSudoSudoSu, you can type the command you're abt to run here first just for proofreading
+<SudoSudoSudoSu> Nah, it's fine.
+<SudoSudoSudoSu> chmod a+x /home/(Not showing for privacy reasons)/Downloads/ati-driver-installer-9-3-x86.x86_64.run.part
+<sebo> lordievader: yes
+<palasso> SudoSudoSudoSu, see the ".part" thing? This means it hasn't been downloaded fully yet
+<lordievader> sebo: Do you get a notification when you run "sudo apt-get update"?
+<palasso> wait for a while and type "chmod a+x /home/(Not showing for privacy reasons)/Downloads/ati-driver-installer-9-3-x86.x86_64.run" when the download is finished and a file without the .part file is available
+<palasso> SudoSudoSudoSu, also if you want you can use "~" instead of "/home/(Not showing for privacy reasons)"
+<SudoSudoSudoSu> Thanks.
+<palasso> That makes the command: "chmod a+x ~/Downloads/ati-driver-installer-9-3-x86.x86_64.run"
+<SudoSudoSudoSu> chmod a+x ~/Downloads/ati-driver-installer-9-3-x86.x86_64.run
+<palasso> yeap
+<SudoSudoSudoSu> Wut nowh?
+<palasso> Is the download finished?
+<SudoSudoSudoSu> Eeyup.
+<palasso> Run the command
+<SudoSudoSudoSu> I did.
+<palasso> sudo sh  ~/Downloads/ati-driver-installer-9-3-x86.x86_64.run
+<littlebit> hi people, I have a new thinkpad edge330 where i have installed kubuntu. in order to press F2, for example, i have to use the "Fn" button. The funtion buttons are reversed. How can I reverse the funtion buttons back?
+<lordievader> It is advised to disable X before installing the driver...
+<SudoSudoSudoSu> Infinite :D
+<SudoSudoSudoSu> Oops.
+<SudoSudoSudoSu> Well, I'm running X.
+<lordievader> littlebit: You could remap all the keys, but I think that will be a pain...
+<lordievader> Hey murthy, how are you?
+<SudoSudoSudoSu> -_(\(\(\(\(\(\
+<lordievader> SudoSudoSudoSu: Do you know how to get to a tty and use it?
+<littlebit> lordivader: do you have a link where it is documented ?
+<SudoSudoSudoSu> Uh...
+<murthy> hi lordievader how are you today, i am fine
+<palasso> He won't be able to read us
+<SudoSudoSudoSu> Isn't it Ctrl+something+Fwhatever?
+<murthy> hello everyone
+<lordievader> littlebit: http://www.linuxscrew.com/2008/09/15/faq-how-to-disableremap-a-keyboard-key-in-linux/
+<palasso> SudoSudoSudoSu, in case you won't be available on IRC keep in mind in the end after the process is finished to do a "sudo aticonfig --initial -f"
+<SudoSudoSudoSu> Thanks.
+<SudoSudoSudoSu> SO, remind me how to get to a TTY?
+<lordievader> SudoSudoSudoSu: Is "Uh" a yes or a no?
+<littlebit> lordievader: thank you
+<SudoSudoSudoSu> Isn't it Ctrl+something+Fwhatever?
+<lordievader> murthy: Doing good murthy, doing some web-development :)
+<palasso> SudoSudoSudoSu, it's Ctrl+Alt+F1
+<SudoSudoSudoSu> Thanks!
+<palasso> And F6 to get back to the GUI if I remember correctly
+<lordievader> SudoSudoSudoSu: Hold on...
+<SudoSudoSudoSu> No, It's F7
+<lordievader> palasso: This isn't what you want, for all I know he has no idea what to do next once he gets to the tty1...
+<lordievader> SudoSudoSudoSu: Ok lets suppose you are in tty1, do you know how to disable X?
+<SudoSudoSudoSu> Nope.
+<palasso> lordievader, isn't enough an sh then following the install process and then a aticonfig? Anyway I'm not that knowledgeable, you go ahead and help him.
+<lordievader> SudoSudoSudoSu: As I thought, hold on, I'll write down the commands, write these down somewhere.
+<SudoSudoSudoSu> Okay.
+<lordievader> SudoSudoSudoSu: Are you running Kubuntu 12.10, or 12.04?
+<SudoSudoSudoSu> Uh...
+<SudoSudoSudoSu> Let me check.
+<SudoSudoSudoSu> 12.04
+<lordievader> littlebit: No problem.
+<lordievader> SudoSudoSudoSu: This should be correct: http://paste.kde.org/697340/
+<sebo> lordievader: thanks command works :D
+<SudoSudoSudoSu> Okay.
+<lordievader> That wasn't the root of sebo's problem...
+<SudoSudoSudoSu> Do you know a kde IRC client I can use in terminal?
+<SudoSudoSudoSu> WAit... just IRC.
+<lordievader> SudoSudoSudoSu: irssi.
+<alse_> does anyone know how to generate 64 bit shell code to do buffer overflow?
+<PrincessLuna> Hi, on KDE 4.10.1 sometimes the mouse cursor moves but I cannot click anything on plasma and rekonq. Clicking in everything else works. Any ideas?
+<PrincessLuna> Forgot to mention, I meant click with a touchscreen
+<PrincessLuna> Also it works sometimes but most of the times it is not functional
+<BluesKaj> Hiyas all
+<norok2> hi
+<BluesKaj> hi norok2
+<norok2> do you know if kubuntu is going to propose any gsoc project?
+<BluesKaj> what is gsoc ...I'm not big on acronyms
+<norok2> google summer of code
+<RockApe> howdy
+<RockApe> need some   help, my kubuntu laptop is timeing out and having connection reset errors
+<BluesKaj> howdy RockApe, timing out during boot ?
+<murthy> BluesKaj: hi
+<RockApe> network issue when connecting to network
+<RockApe> chrome, firefox, wget, etc
+<BluesKaj> hi murthy
+<RockApe> also 12.04
+<BluesKaj> RockApe, what's your network setup , wifi on home network or ?
+<RockApe> even lan (wifi n)
+<RockApe> cerowrt ap wndr3800
+<RockApe> no ipv6
+<BluesKaj> cerowrt ap wndr3800?
+<BluesKaj> RockApe, have you checked the logs to see what's erroring out with your connection ?
+<RockApe> http://www.bufferbloat.net/projects/cerowrt
+<RockApe> which llogs
+<BluesKaj> look in /var/log/syslog
+<RockApe> i just did 300mb of system updates :(, can i roll back
+<RockApe> will look
+<RockApe> shows my attempts to change between 2.4 & 5
+<BluesKaj> RockApe, sorry i'm not familiar with OpenWrt , and i's not in the kubuntu repositories so technically it's not supported here
+<BluesKaj> OpenWrt must have a support forum or chat of it's own , RockApe
+<RockApe> that is my router
+<BluesKaj> oops cerwrt then
+<RockApe> still my router
+<RockApe> cero wrt  is a qos version   of    openwrt
+<RockApe> damn broken spacebar
+<BluesKaj> yes but you're running proprietary software that isn't supported here , http://www.bufferbloat.net/projects/cerowrt/wiki
+<RockApe> no other computer or android device has a problem
+<BluesKaj> maybe #networking can help you
+<RockApe> just kubuntu
+<RockApe> never mind
+<SudoSudoSudoSu> Firefox keeps crashing.
+<gerson> hola
+<SudoSudoSudoSu> ?? Who said hi?
+<lordievader> Hey SudoSudoSudoSu, did you succeed in installing the driver?
+<gerson> alguno habla epanol?
+<SudoSudoSudoSu> Sorry, I was out.
+<SudoSudoSudoSu> 4 hours.
+<lordievader> !spain| gerson
+<palasso> lol
+<ubottu> gerson: En la mayoría de los canales de Ubuntu, se habla sólo en inglés. Si busca ayuda en español entre al canal #ubuntu-es; escriba "/join #ubuntu-es" (sin comillas) y presione intro.
+<palasso> SudoSudoSudoSu, did the gpu driver work?
+<SudoSudoSudoSu> Haven't installed it!
+<palasso> ohhh ok
+<gerson> gracias
+<SudoSudoSudoSu> Firefox keeps crashing.
+<SudoSudoSudoSu> Help?
+<SudoSudoSudoSu> Trying to read about SCP: Containment breach.
+<SudoSudoSudoSu> #join kubuntu-offtopic
+<palasso> I'd like to inform you that there is risk to this procedure that could make x.org not working properly
+<BluesKaj> SudoSudoSudoSu, got kubuntu-restricted-extras installed ?
+<SudoSudoSudoSu> Don't know.
+<BluesKaj> SudoSudoSudoSu, then do , sudo apt-get install kubuntu-restricted-extras , in a terminal
+<SudoSudoSudoSu> I did.
+<BluesKaj> when ?
+<SudoSudoSudoSu> Well, doing it.
+<BluesKaj> FF might be crashing due to lack of flash and java
+<SudoSudoSudoSu> Well, I have Flash installed, and OpenJDK 6.
+<BluesKaj> SudoSudoSudoSu, try a differnt browser to test
+<SudoSudoSudoSu> Sure.
+<SudoSudoSudoSu> It works!
+<SudoSudoSudoSu> But...
+<SudoSudoSudoSu> What about the Minecraft problem?
+<BluesKaj> wesupport minecraft here , sorry
+<BluesKaj> don't
+<SudoSudoSudoSu> I was given help by lordievader.
+<SudoSudoSudoSu> It's not JUST Minecraft.
+<lordievader> SudoSudoSudoSu: Have you installed the driver?
+<BluesKaj> running it in wine ?
+<lordievader> BluesKaj: It seemed to me an OpenGL problem.
+<SudoSudoSudoSu> I tried using it in wine,
+<SudoSudoSudoSu> Had to install Java on WINE.
+<SudoSudoSudoSu> So...
+<SudoSudoSudoSu> Tried that.
+<lordievader> SudoSudoSudoSu: Can you answer my question please?
+<SudoSudoSudoSu> What one?
+<SudoSudoSudoSu> Oh.
+<SudoSudoSudoSu> Not yet.
+<SudoSudoSudoSu> I was AFK.
+<SudoSudoSudoSu> For 4 hours.
+<lordievader> SudoSudoSudoSu: Well do so, it probably solves your problem. Last time we forgot to inform you, there are some risks. You might get stuck with a black-screen.
+<BluesKaj> heh, probly needs mono and moonlight like some other windows/silverlignt
+<palasso> SudoSudoSudoSu, if you want to play sth in WINE perhaps you should do your research on the web and look for support in the appropriate channels (WINE in that case)
+<SudoSudoSudoSu> Sure.
+<rowlo> hi everyone
+<lordievader> Hey rowlo, how are you?
+<rowlo> thx fine how are you?
+<rowlo> I'm having trouble installing kubuntu 12.10 on a 2 year old machine
+<rowlo> the live dvd just doesn't boot up
+<rowlo> can anybody assist me with this?
+<lordievader> rowlo: Have you checked the disc for errors?
+<rowlo> I get to the boot loader menu, select my language and choose start kubuntu, then the system totally freezes after about 3 seconds
+<rowlo> yup
+<rowlo> no errors
+<rowlo> screen stays black
+<BluesKaj> did you run a md5sum on the dvd ?
+<lordievader> rowlo: Perhaps it is an idea to use the 12.04 alternate cd.
+<BluesKaj> !md5sum
+<ubottu> To verify your Ubuntu ISO image (or other files for which an MD5 checksum is provided), see http://help.ubuntu.com/community/HowToMD5SUM or http://www.linuxquestions.org/linux/answers/LQ_ISO/Checking_the_md5sum_in_Windows
+<rowlo> ah, i was wondering why there is non for 12.10?
+<rowlo> the md5 was find
+<rowlo> fine
+<rowlo> the alternate only exists for 12.04?
+<palasso> for 12.04 or previous versions
+<lordievader> rowlo: Yes, since 12.10 there is no longer an alternate cd.
+<BluesKaj> that's really unfortunate , because I could use one
+<BluesKaj> install 12.04 , rowlo , then , sudo do-release-upgrade to install 12.10 , make the upgrade to LTS only is turned off im muon
+<BluesKaj> make sure
+<rowlo> ok, will try that
+<BluesKaj> if ubiquity has hardware recognition issues , then they have leaked back into other versions from the 13.04 bug , haven't seen that on 12.10
+<BluesKaj> before
+<rowlo> just double checked the md5, it's definitly ok
+<BluesKaj> ok
+<rowlo> well, i tried the linux mint live cd, which has a non quiete mode
+<rowlo> there I could observe same freeze but could actually see where
+<rowlo> booting froze after detection of my usb razer imperator mouse
+<rowlo> so i unplugged it and booted again
+<rowlo> then it frooze after setting up the RTC
+<rowlo> so it seems more like a general linux issue to me
+<BluesKaj> yeah mine froze after detecting my wireless KB and mouse , thenI tried with a wired KB and mouse , but it still froze at the same spot
+<Torch> maybe booting with "nomodeset" helps?
+<rowlo> torch: thx, will try that
+<BluesKaj> rowlo, , Torch has a point try the F key options at the install & try kubuntu page
+<rowlo> well tried the acpi stuff and one or two other options, but not the nomodeset
+<BluesKaj> I tried that but it still wouldn't install btw , it got me to the dvd kubuntu desktop but the instll process still froxe FYI
+<BluesKaj> froze
+<rowlo> I'm already wondering how I got the 10.10 installed
+<rowlo> my wife told this morning that I spent days until I made it ;-)
+<rowlo> unfortunatly I don't remember what the problem was back then and how I solved that
+<hundinderpfanne> hiho
+<SudoSudoSudoSu> I need an invite to  #wine
+<bazhang> SudoSudoSudoSu, its #winehq
+<SudoSudoSudoSu> Ah, thanks!
+<BluesKaj> are you on a znc bouncer or is your nick isn't registered
+<BluesKaj> not registered that is
+<bstock> hello
+<BluesKaj> #wine should still connect him to #winehq
+<bazhang> nope
+<BluesKaj> it does for me
+<bazhang> if he's in #winehq , he'll get that message
+<bstock> I have a freshly-configured install of Kubuntu on a VM, and I can't get JDK 7 installed. openjdk-6-jdk is in the repository, but openjdk-7-jdk can't be found in any repository. I've already run an update, to no avail.
+<BluesKaj> bazhang, "BluesKaj #wine #winehq Forwarding to another channel"
+<bstock> I'm a competent Linux user, but new to *buntu, and I've been struggling with this for a couple of hours now!
+<bazhang> BluesKaj, I was in #winehq first, as was he, so we get the #wine need a channel invite when trying to join it subsequently
+<BluesKaj> bstock, have you tried kubuntu-restricted-extras
+<bstock> Is that a repo?
+<palasso> bstock, if you want to look on what is on the repos a nice source is packages.ubuntu.com
+<BluesKaj> bazhang, must be his client not connecting
+<BluesKaj> bstock, no it's a package
+<BluesKaj> !kubuntu-restricted-extras
+<ubottu> For multimedia issues, this page has useful information: https://help.ubuntu.com/community/RestrictedFormats - See also https://help.ubuntu.com/12.04/ubuntu-help/media.html  - But please use free formats if you can: https://help.ubuntu.com/community/FreeFormats
+<BluesKaj> bstock,^
+<bstock> Ok, well I can see openjdk-7-jdk on the site palasso linked (packages.ubuntu.com) so why can't apt-get find it?
+<palasso> let me check
+<lordievader> bstock: What version of Kubuntu are you using?
+<bstock> The latest, I think. I'll give you a version # in a second
+<BluesKaj> bstock, perhaps you have to enable the repositories needed in the package manager or in /etc/apt/sources.list
+<bstock> 8.04.2
+<palasso> It's very old version that's why.....
+<bstock> uh oh, I must've downloaded an archive version instead...
+<BluesKaj> no longer support I'm afraid
+<palasso> It's from April 2008...
+<bstock> I don't know how that happened...
+<BluesKaj> the latest version 12.10
+<lordievader> bstock: Well there you go ;)
+<bstock> Ok, I see that now. I just downloaded the ISO yesterday...
+<bstock> ugh, I see now. My University's mirrors are horribly obsolete
+<palasso> bstock, the versions are YY.MM and releases are biannual every April and every October. That's why they're called 10.04, 10.10, 11.04, 11.10, 12.04, 12.10 and the next one will be 13.04
+<bstock> Thanks for the help, and sorry to bother you for such a silly issue.
+<BluesKaj> bstock, http://www.kubuntu.org/
+<palasso> Also every two years an LTS release gets released
+<palasso> 8.04, 10.04, 12.04 are LTS and 14.04 will be LTS
+<bstock> Yeah, getting 12.10 now. I really enjoy the 100 mbit Uni speeds on campus but sometimes it bites you in the arse like this with outdated version.
+<palasso> LTS stands for Long Term Support
+<13WAARNZL> Help!
+<13WAARNZL> I'm SUdoSudoSudoSu, but I'm suddenly 13WAARNZL!
+<13WAARNZL> WHat's going on?
+<13WAARNZL> Help!
+<lordievader> 13WAARNZL: You've changed your nick?
+<13WAARNZL> No.
+<13WAARNZL> I restarted Kubuntu, and got this Nick.
+<13WAARNZL> Out of nowhere.
+<lordievader> 13WAARNZL: Odd anyhow usually you can change your nick with "/nick <new-nick>"
+<arezey> 13WAARNZL, might have been due to some nickname collision
+<13WAARNZL> DOesn't work.
+<13WAARNZL> So.. How do I fix it?
+<arezey> sudosudosudosu: No such nick/channel
+<13WAARNZL> D:
+<arezey> bah..
+<SudoSudoSudoSu> Yay!
+<arezey> oh there
+<SudoSudoSudoSu> Finally!
+<arezey> i've seen a case like that before though
+<arezey> a ghost using the nick was on one server and wasn't on another
+<arezey> so it desynced a little
+<arezey> not on this network though
+<StephenS> lol Im on lubuntu
+<StephenS> LUBUNTU
+<bazhang> StephenS, try #lubuntu
+<StephenS> Im on ubuntu
+<StephenS> so whys that
+<StephenS> ping pong
+<BluesKaj> kubuntu uses the kde desktop , ubuntu uses unity/gnome
+<bazhang> StephenS, this channel is support only not chit chat
+<StephenS> what lubuntu use?
+<bazhang> lxde/openbox
+<bazhang> !lubuntu > StephenS
+<ubottu> StephenS, please see my private message
+<thechef> If you were to leave Ubuntu, because Canonical had incompatible plans, would you go for Debian directly?
+<bazhang> thechef, thats not on topic for a support channel
+<bazhang> thechef, #kubuntu-offtopic perhaps
+<thechef> sorry
+<heoyea> go windows
+<enrique> spanish
+<bazhang> !es | enrique
+<ubottu> enrique: En la mayoría de los canales de Ubuntu, se habla sólo en inglés. Si busca ayuda en español entre al canal #ubuntu-es; escriba "/join #ubuntu-es" (sin comillas) y presione intro.
+<toString> hi
+<toString> is there a kubuntu live iso?
+<toString> i can't find it on the site
+<bazhang> on kubuntu.org ?
+<toString> yes
+<toString> but i probably got the answer
+<toString> ""The Desktop install CD image contains a graphical installer as well as a live session of Ubuntu, that runs directly off your computer memory and the install media without installing anything to hard-disk""
+<toString> from ubuntu.com faq
+<toString> it's the same for kubuntu, isn't it?
+<LeeJunFan> Are there libreoffice packages somewhere (PPA) that include the kde integration packages?
+<LeeJunFan> libreoffice 4.0.x that is.

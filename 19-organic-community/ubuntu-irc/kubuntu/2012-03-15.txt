@@ -1,0 +1,373 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#kubuntu"
+date: "2012-3-15"
+lang: "en"
+messages: "364"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<ybit> #kde-usa <- join if you're in the US :)
+<Grief_Umbrella> hey guys, can anyone tell me off the top of their heads how 3 button mouse emulation is activated now that there's no more xorg.conf? googling seems not to reveal much.
+<amason> Grief_Umbrella: usually it's enabled by default, at least it is on my machine, but you can still afaik create an xorg.conf and put the changes in there
+<Grief_Umbrella> yeah, I thought it was odd that it's not on by default. if I create a xorg.conf, won't that override all the fancy mouse hotplugging stuff?
+<Grief_Umbrella> nevermind, finally found the xinput option for it.
+<Num83rGuy> Where are the settings for Dolphin's "file sharing" (SAMBA) kept?
+<Num83rGuy> And by that I mean the text files that the settings are recorded in.
+<kadoban_> hello.  I have installed kubuntu on a laptop which has an Fn modifier key (for the F1-F12 keys to have an extra functionality).  When I'm /not/ pressing the Fn key, it does the extra functions, not F1-F12...the logic is reversed.  any hints on how i can fix that?
+<kadoban_> it's annoying to say the least to have to hold an extra key to press F2 or any of those
+<Grief_Umbrella> kadoban_: on mine it was a setting hidden away in the BIOS
+<kadoban_> Grief_Umbrella: hmm, really? that would be easy fix, ill check.  thanks in advance (hopefully)
+<amason> kadoban_: yeh same on my slaptop
+<Grief_Umbrella> yeah, I don't think the OS would have any idea about the Fn keys, that's usually a hardware-level thing.
+<amason> you _can_ remap them in OS, but that's a PITA
+<amason> but if your BIOS is decent / well behaved then it's better to do it there
+<kadoban_> cool, ya you were right, found the option.  did seem a bit bizarre that it'd be an OS thing, but i've never had a laptop set up like that before
+<nutcase_> I am new to ubuntu and am using version 11.10.  I am trying to get the software to reconize my Parallel I/O PCI-E card  (IOCREST SY-PEX10007) any suggestions
+<naught101> Sometimes after I sleep and wake my laptop, my usb wireless mouse (logitech) becomes very slow and jerky. My touchpad still works fine
+<naught101> I've tried rmmod/modprobe both usbhid and psmouse, but that didn't change anything
+<naught101> any ideas?
+<amason> it's possible that the wake isn't handled properly by either the device, the bus or the kernel. You could try and capture the number of interrupts on the bus
+<amason> there are probably a few other explainations
+<artao> hai
+<artao> ok. for the first time now since installing linux, I want to xfer files from a Win XP machine over my network to my linux machine
+<artao> what do i use to do this?
+<artao> I've got a VNC app installed, but can't copy files that way as I'd hoped I might
+<amason> if you have cifs enabled on your windowsXP box that's probably the easiest way
+<amason> it will show up under dolphin
+<amason> otherwise you can use something like the shared folders option in rdesktop if you have rdp enabled on your windowsXP machine
+<amason> sorry, wrong direction
+<amason> scp or cifs/samba going the otherway
+<amason> from windowsXP to linux
+<amason> you will need something like WinSCP or an sftp client ( filezilla i think will work too )
+<amason> and openssh-server installed and running on your linux box
+<artao> amason, cifs?
+<artao> wow. that all sounds ... rather complex
+<amason> artao: cifs = windows file sharing
+<amason> and it's pretty easy, especially scp
+<artao> i c
+<amason> for scp the steps would be 1) install openssh-server on your linux box 2) install either winscp or filezilla on your windows box
+<artao> sooooo .... i share the folder on the xp machine and navigate to it from linux how exactly then?
+<artao> oop
+<artao> ok
+<amason> well you can do that too
+<amason> to get to the windows machine from linux , share the folder on windows as you mentioned
+<artao> k
+<amason> then use dolphin
+<amason> just go to the network places
+<amason> samba shares
+<amason> and whatever your network  is called
+<amason> and then find the machine / share
+<amason> same as you would with windows explorer
+<artao> OH!! there's my other computers! thx
+<artao> i usually use Thunnar and didn't see any network options there
+<amason> i don't know if thunnar has a samba vfs installed by default
+<amason> but given this a kubuntu channel then dolphin is the default file manager
+<artao> me either
+<amason> but i think thunar should be able to do it
+<amason> but you would find better help in a xubuntu channel or xfce
+<artao> i spose. i'm using thunnar 'cause i was using xfce before i switched to kde heh
+<artao> thx tho. files xfering now =D
+<amason> well if thunar is what your familiar with it might be worth spending the time workign out how to enable it. it's probably just a plugin or something
+<naught101> amason: were you talking to me about interrupts on the bus?
+<naught101> (I tried pluggin the mouse into different usb port, and it stays on the same bus, but the device number increases
+<naught101> is there a way I can reset the bus or something, perhaps?
+<amason> what do you mean by reset the bus ?
+<amason> and usually usb ports will share the same bus
+<artao> RIGHT! that's the primary reason I've been using Thunnar instead of Dolphin!!!
+<Kalidarn> artao: what reason?
+<artao> I've got a 4 button mouse, and like to use the thumb-button as 'go back'
+<artao> can I set Dolphin to have that behaviour?
+<artao> other than that, i actually DO really like Dolphin. it's nice it's got a built in console
+<amason> artao: should be able to set that in the gestures either for dolphin specifically or for kde globally. system settings is where you will find that sort of stuff
+<amason> i don't use them myself so i'm of limited help
+<amason> i'm more of a keyboard shortcut person
+<artao> kul thx again amason =D
+<amason> np
+<Guest18604> hi
+<astrobill> hello
+<nafg_> http://www.yated.com/content.asp?maincatid=7&categoryid=7&contentid=596
+<naftilos76> has anybody got any clue what is going on with Kmail? Since upgrading to 4.8.1, i get random Kontact-shut-downs without any obvious reason. After any update new bugs appear out of nowhere. This is a nighmare...As seen on the internet even if it is a new issue there are several similar references...
+<Num83rGuy> Where are the settings for Dolphin's "file sharing" (SAMBA) kept?
+<szal> Num83rGuy: Dolphin doesn't share files, the Samba server does
+<Num83rGuy> I am aware but, I can't find where the settings are stored samba.conf doesn't have them.
+<szal> what settings?
+<Num83rGuy> The folders and users.
+<szal> ?
+<ktwo> where is the option to connect to bluetooth PAN with Kubuntu? i dont find anything like that after pairing :| in gnome its there
+<Num83rGuy> Here is the problem.  I share some folders through Dolphins share tab in the properties popup. go to my wifes Win7 laptop and my computer is there but when I put in my user name and pass word it says user name or pass are wrong.
+<szal> pans have bluetooth now? to measure the oil temperature? :D
+<Num83rGuy> Ah, never mind you seem to be trolling.
+<Num83rGuy> Sorry to have taken up my time.
+<szal> never used that way of sharing, I used to set up Samba the old-fashioned way
+<ktwo> what way of sharing?
+<ktwo> oh ok it was for Num83 x)
+<Sifrazooy_> hi does anyone know what is the development channel
+<Riddell> Sifrazooy_: of kubuntu? #kubuntu-devel  of kde is #kde-devel
+<Sifrazooy_> Riddell: thnx man :D
+<excognac> until now, I've never had problems with AMAROK. Now update collection and nothing happens
+<excognac> got it, nevermind
+<Sifrazooy_> does any one knows that is the plasmoid development channel ?
+<JanneP> good afternoon all
+<JanneP> i ran into problems with my kubuntu 11.10 automatic updates..
+<JanneP> basically, it's stuck in the middle of the update process.. is there anything to do without breaking the system?
+<JanneP> (already re-installed once, because it did the same thing on the previous attempt, which resulted in a broke system after i was forced to rest the computer)
+<JanneP> *restart
+<howlymowly> JanneP: i think the problem lies in the fact that sometimes packages need user input from the commandline during installation (for example proprietary java installations)  for some reason muon can not do this. To repair your system you should update from the commandline
+<howlymowly> (At least that's what helped me after I encountered the same problems, you did)
+<JanneP> howlymowly: thanks... i found some information that muon should be avoided, and terminal used instead
+<howlymowly> JanneP:  yepp.. that's right...  the reason for this is what I said above :)
+<JanneP> ok managed to kill muon... fingers crossed it's fixable without yet another re-install =)
+<JanneP> it's pretty daft releasing a "stable" release with broken update manager.. what a piece of crap
+<JanneP> but i'd rather try to make this work than install something with unity =)
+<JanneP> okey.. manual update worked.. no re-install needed :D <-- happy camper
+<Peace-> JanneP: i use always console
+<Peace-> just because with alias to upgrade i type
+<Peace-> u ; g
+<Peace-> and it's faster than gui
+<Peace-> even add a repository is better from shell
+<JanneP> yeah i might have done that too, but i didn't know before what commands to use for update from command line =)
+<Peace-> sudo add-apt-repository stuff
+<Peace-> JanneP: ok wait a second
+<JanneP> Peace-: no need i already figured that out
+<Peace-> JanneP: http://nowardev.wordpress.com/2012/02/05/alias-apt-with-auto-complete-kde-4-kubuntu/
+<Peace-> JanneP: yes but this has the autocomplete stuff
+<JanneP> ahaa neat
+<JanneP> for finding out package names i've ususally used "aptitude search"
+<JanneP> thanks, i'll hack that to work with aptitude :D for some reason i like it more than apt-get
+<Peace-> JanneP: yes you can when you have finisched please post your solution
+<delight> is there others suffering from this kde-proxy-settings problem in precise 12.04 ? http://ubuntuforums.org/showthread.php?p=11636551
+<delight> is there a ticket to it ?
+<BluesKaj> 'Morning all
+<reisi> hi everyone! again i managed to get dbus_daemon to use all avail CPU, any ideas on how to check which process is causing this?
+<Peace-> reisi: mmm yes
+<reisi> tried dbus-monitor, but it of course cannot join the dbus daemon as it's so busy
+<Peace-> reisi: try to sse this http://wstaw.org/m/2012/03/15/plasma-desktopTE4096.png
+<reisi> Peace-: no other process than dbus-daemon is taking up considerable amount of cpu
+<Peace-> reisi: have you seeen if command says soemthing ?
+<Peace-> you have seen the coloumn command?
+<reisi> Peace-: yes of course, have been watching this using htop previously; it's the /bin/dbus-daemon
+<Peace-> reisi: nepomuck is active?
+<Peace-> reisi: version of kde and kubutnu
+<noaXess> hey all
+<noaXess> hm.. strange... since a while, if i listen sound in amarok and want increase the sound master level.. nothing happends.. i only can increase/descrease the level of the outputstream from amarok.. any idea?
+<noaXess> BluesKaj: here tooo ;)
+<BluesKaj> ok
+<Mamarok> noaXess: works fine here
+<noaXess> Mamarok: don't know why..
+<noaXess> also in alsamixer..
+<Mamarok> check your pulseaudio settings and KMix settings
+<BluesKaj> noaXess,  how high is the vol in alsamixer ?
+<noaXess> http://i.imgur.com/MEddp.png BluesKaj
+<BluesKaj> noaXess,  your master vol is too low , make it 90% at least
+<noaXess> BluesKaj: why?
+<Mamarok> because else you will not have enough output
+<noaXess> so you mean.. master to 90% and then controll the output streams?
+<BluesKaj> having it that high gives more dnamic rabge to the other ctrls including the amarok
+<BluesKaj> range
+<Mamarok> you should have 100% in alsamixer, then you fiorget about that and only change settings in the applications
+<BluesKaj> noaXess,  listen to Mamarok :)
+<noaXess> BluesKaj: ok.. but.. amarok is on 100%.. and if master in alsamixer is on 100% nothing changes..
+<BluesKaj> dynamic range ,. noaXess ..check that out on google
+<Mamarok> noaXess: and what are your KMix settings?
+<BluesKaj> amarok depends on alsmixer's setings
+<Mamarok> not only
+<noaXess> Mamarok: what you want to know from kmix settings?
+<Mamarok> noaXess: well, which is your master channel and how are the settings there?
+<noaXess> Mamarok: master channel for playback is internal audio analog stereo
+<Mamarok> OK, and that is set to how much?
+<noaXess> Mamarok: internal audio: 100% now.. but amarok still normal loud
+<noaXess> ah.. wait...
+<noaXess> stop.. back.. revert..
+<noaXess> ok.. problem..
+<Mamarok> noaXess: you can still modfiy the volume in Amarok, no?
+<BluesKaj> kmix needs tombe at 100% as well , altho I don't know why we need it
+<noaXess> if no headset is plugged in.. all is fine.. can increase/descrease master and amarok.. to get more sound..
+<Mamarok> BluesKaj: it's just a matter of level, alsa is very low lewel, KMix is desktop level, and Pulseaudio is application level
+<BluesKaj> noaXess,  just do it , you'll see or hear :)
+<noaXess> but if headset is pluged in, nothing changes.. hm... also if i change volume in alsamixer for Headphone..
+<BluesKaj> too many cooks imo , Mamarok
+<Mamarok> noaXess: you should never have to change anything in alsamixer to start with
+<Mamarok> BluesKaj: we didn't choose it like that, it was forced down our throats with PA
+<Mamarok> but KMix sucks, I agree
+<noaXess> ok.. in kmix i have no control over headphone
+<Mamarok> it starts getting better, but still not as it should be
+<Mamarok> and I don't use it anymore, I use pavucontrol or the veromix widget
+<BluesKaj> I still have a love hate relationship with pulse :P
+<Mamarok> noaXess: use pavucontrol or the veromix widget, sound output and input should be handled in pulseaudio
+<Mamarok> BluesKaj: when did you last use it?
+<Mamarok> Since Colin took over it got a lot, lot, lot better
+<noaXess> Mamarok: ok.. trying..
+<BluesKaj> I am using pulse , no webaudio with my m-audio card without pulse
+<BluesKaj> pavucontrol as well , it helps firm up the DD and DTS pass thru settings...which used to get changed on reboots etc without pavu
+<BluesKaj> Mamarok,  how do i prevent playlist from being saved or even started in amarok , I don't use playlists
+<BluesKaj> ?
+<Mamarok> BluesKaj: erase it before you close Amarok
+<Mamarok> else it will be saved on close
+<Mamarok> and you can't play anything without putting it into the playlist
+<BluesKaj> is that the only method, gawd I despise the default save options
+<Mamarok> which is actually the play-queue
+<BluesKaj> I just want a player not a jukebox
+<Mamarok> yes, it is the only method
+<Mamarok> BluesKaj: use xmms then
+<BluesKaj> xmms is too small graphically for my monitor
+<Mamarok> BluesKaj: make your mind up :)
+<noaXess> hm.. i have two headphone jacks.. or better.. one normal and another spdif.. if i plugin the jack int spdif a little bit i hear sound and can control headphone volume.. in the other headphone jack, i plugin the jack 100% i can't control headphone volume.. then i can only control over amarok
+<BluesKaj> why can't one just play audio tracks without the olayer trying to be everything it doesn't need to be ...it's apita ..I used to be a DJ and I never ever wished for a playlist option
+<BluesKaj> spdif plays analog ?, are you sure?
+<noaXess> is it possible, that those two jacks are reversed?
+<noaXess> BluesKaj: no ;).. just information.. think they are reversed... normally on spdif you can't plugin a normal analog headphone
+<BluesKaj> noaXess,  exactly, spdif is digital
+<noaXess> BluesKaj: or digital is working woth volume control and analog not.. is also possible.. hm..
+<BluesKaj> or supposed to be
+<reisi> Peace-: hmm not sure of nepomuk, just closed eclipse and dbus free'd
+<reisi> Peace-: and when i shut down a message box of virtualbox even more pending dbus stuff started moving (apps i wanted to start earlier, kmail imap finished)
+<reisi> Peace-: and when i killed the spawned kmail my screensaver turned on and locked the screen ... "this is very usable"
+<noaXess> ok Mamarok since veromix installed/enabled.. pulseaudio is using 10-15% cpu.. hm..
+<Mamarok> that should not ahppen, which KDE version do you use?
+<noaXess> 4.8.1
+<noaXess> BluesKaj: audacios ??
+<BluesKaj> yup
+<noaXess> was that?
+<noaXess> a widget, app, ?
+<BluesKaj> !audacious
+<BluesKaj> hmm, odd it's in the repos
+<noaXess> audio player?
+<noaXess> BluesKaj: is it as powerfull as amarok?
+<BluesKaj> it's a player by audacity , I think ...justplays your music , doesn't try to do anything else afaik
+<bazhang> !info audacity
+<ubottu> audacity (source: audacity): fast, cross-platform audio editor. In component universe, is optional. Version 1.3.13-5 (oneiric), package size 2441 kB, installed size 6436 kB
+<noaXess> BluesKaj: i use audacity to cut, mix sound too..
+<bazhang> BluesKaj, you mean audacious, the replacement for xmms presumably not audacity
+<noaXess> BluesKaj: is there a ppa with current version 3.2.1?
+<bazhang> noaXess, its very minimal
+<_313hummer> hi
+<BluesKaj> dunno , bazhang i just looked around for a player that will play music without default playlists that have to be erased etc
+<BluesKaj> noaXess, ppa for ?
+<bazhang> BluesKaj, yep audacious will do that
+<bazhang> noaXess, why do you needed the very latest
+<noaXess> bazhang: why not ;(
+<noaXess> ;)
+<bazhang> noaXess, ppa are unsupported for one
+<noaXess> bazhang: i know. but i have a lot of them.. :)..
+<bazhang> noaXess, then try the launchpad ppa search page
+<BluesKaj> noaXess,  not sure but make sure you have kubuntu-restricted-extras installe if you're into media at all.
+<noaXess> tried ..
+<BluesKaj> tried what?
+<noaXess> searching ppa.. ;)..
+<worm_> help
+<bazhang> with what worm_
+<worm_> anyone can tell me how to use Quassel IRC to join in the server at Wikipedia?
+<worm_> like this: irc://irc.freenode.net/wikipedia-zh-help
+<Tm_T> worm_: server at wikipedia?
+<Tm_T> worm_: that's #wikipedia-zh-help in this network
+<worm_> I couldn't open the link by clicking on it.
+<Tm_T> yeah
+<worm_> It told me to use a software like Quassel.
+<Tm_T> I don't know if Quassel do support such links
+<Tm_T> worm_: and?
+<noecc> Fresh 11.10 install, Kmix > Playback Devices tab lists only 'Internal Audio Analog stereo'.  All audio is output t HDMI how can I set it to the internal laptop speakers?  system settings > multilmedia > phonon > device preference, all audio playback set to  Internal Audio Analog Stereo other option Internal Audio Digital Stereo (HDMI) is greyed out.
+<worm_> That is all the informations the website gave me. Most people needing live help editing Wikipedia can access IRC easily using this freenode webchat link: http://webchat.freenode.net/?channels=wikipedia-en-help (for example). Web-based IRC is a good choice for first-time IRC users, for portable use, and for those who cannot, or prefer not to, install separate software: ......
+<Tm_T> ah
+<worm_> but I don't want to use the website entrance of those IRCs, I want to use Quassel, but how?
+<worm_> http://en.wikipedia.org/wiki/Wikipedia:IRC
+<Tm_T> worm_: shame I don't know how those links would work with Quassel (and I don't use neither myself) but you can manually go to the channel by entering "/join <channelname>" .. without quotes, ofcourse
+<worm_> ... All right...
+<BluesKaj> noecc,  check phonon, Audio Hardware Setup  tab, try to set the hdmi outputs there , also install pavucontrol , that will give even more output settings
+<noecc> BluesKaj: Audio Hardware Setup tab Sound Card & Sound Device set as Internal Audio.  With HDMI cable connected sound is output HDMI, with HDMI cable disconnected sound is output laptop speakers as desired.
+<BluesKaj> noecc,  ?? I'm not sure what you mean , so is it working with those settings or ?
+<noecc> On Kubuntu 10.04 audio was output to laptop speakers, on 11.10 with no hardware changes audio is output to HDMI which I do not want.
+<jordan4ibanez> use pavucontrol
+<BluesKaj> noecc,  you gave me the impression that you wnated the hdmi to work , because it was greyed out
+<noecc> BluesKaj:   [09:25:29]  ....... All audio is output t HDMI how can I set it to the internal laptop speakers? ........
+<noecc> pavucontrol Internal audio set to analog stereo output same as  system settings > multilmedia > phonon > device preference
+<BluesKaj> noecc,  that's a lot more clear, go for the analog settings in phonon/pulseaudio Audio Hardware Setup
+<noecc> BluesKaj: Those are my settings yet all audio is output HDMI.
+<BluesKaj> noecc, pastebin the phonon settings pls for both audio device preference and hardware
+<BluesKaj> imagebin, noecc
+<noecc> BluesKaj: http://imagebin.org/203614  http://imagebin.org/203615
+<BluesKaj> noecc, did you just set those settings ? if so reboot
+<noecc> BluesKaj:  No, installed 11.10 on Monday, several reboots since
+<BluesKaj> noecc, make sure you vols in alsamixer and kmix are all maxed
+<noecc> BluesKaj: alsamixer PCM set at 64 otherwise HDMI audio is too loud.
+<BluesKaj> noecc,  what other options do you have in the soundcard hardware setting ?
+<noecc> BluesKaj: just an USB camera
+<BluesKaj> noecc, ok ,  aplay -l in the terminal
+<noecc> BluesKaj: http://pastebin.com/HvqKabuB
+<BluesKaj> noecc,  , now paste your /etc/modprobe.d/alsa-base.conf file pls
+<noecc> BluesKaj: http://pastebin.com/MucX6wwz   I added the line options snd-hda-intel model=ALC272 several days ago.  It did not change/fix the problem.
+<BluesKaj> noecc,  change that line 'options snd-hda-intel model=ALC272' to , 'options snd-hda-intel index=0', without the the quotes. 0 or card0, indicates the default soundcard
+<noecc> BluesKaj: Does that require a reboot?  If not, no change after sudo alsa force-reload.  FWIW http://pastebin.com/hF20wdEW
+<BluesKaj> noecc,  force-reload doesn't always work , you'll ahve to back and check your phonon settings now as well
+<noecc> BluesKaj: Going to reboot.  rbr
+<noecc> BluesKaj: : no change following reboot
+<BluesKaj> did you make the changes in phonon yet?
+<noecc> BluesKaj: There was nothing to change.
+<noecc> same as previous imagebin
+<BluesKaj> noecc,  have you installed pavucontrol
+<noecc> yes
+<BluesKaj> di you try setting the audio route up there yet ?
+<BluesKaj> bbiab ...stuff to do for a few mins
+<noecc> BluesKaj: http://imagebin.org/203620  http://imagebin.org/203621
+<BluesKaj> noecc,  that doesn't tell me anything , are there other options on those tabs ?
+<noecc> BluesKaj: Output Devies tab options Analog speakers & Analog  Headphones, Conf tab same options for analog and digital output as on phonon tab.
+<BluesKaj> noecc,  sorry , dunno how else to help , unless there's a mute turned on in alsamixer on the internal output or some such
+<noecc> BluesKaj: yes, strange.  If I disconnect HDMI cable with no other changes the audio plays through the laptop.
+<noecc> Thanks for your help
+<BluesKaj> noecc,  well, I guess the hdmi is set to take precedence in the pulseaudio config file ..that might be worth looking into
+<chilubrin> ahh it's a wonderful day
+<simo_> hey
+<jono> congrats, folks, on the Kubuntu Tablet edition
+<jono> :-)
+<ybit> i made a KDE promo video and uploaded a bit ago if anyone wants to check it out: http://youtu.be/H0xIfSyio_c
+<Ezim> ybit, nice.
+<ybit> thanks Ezim
+<Peace-> ybit: slow
+<Peace-> ybit: recorder software?
+<ybit> Peace-: it was recorded @14fps in kazam and rendered at 23fps in kdenlive
+<ybit> which affected the quality
+<ybit> brb
+<Peace-> ybit: kazam?
+<Peace-> ybit: just use ffmpeg
+<ybit> Peace-: i'll look into it
+<ybit> i think there may be some benefits had in using blender for video editing as well
+<Peace-> ybit: ffmpeg -f  alsa  -ac 2 -ar 48000  -i hw:0,0   -s $(xrandr  | awk '/, current /{print $8}')x$(xrandr  | awk '/, current /{gsub(/\,/,"");print $10}') -f x11grab -r 15  -i :0.0 -acodec pcm_s16le -vcodec  ljpeg output.avi
+<Peace-> ybit: i have made an alias
+<Peace-> so on my terminal i type vrec
+<ybit> Peace-: mind sharing it?
+<Peace-> ybit: http://nowardev.wordpress.com/2011/05/23/how-to-screencast/
+<eegore> Hi y'all
+<Linkmaster> Im setting up Kubuntu 11.10 on my moms computer, to show her about linux(shes interested, just never has time), but  when I logged her account off, it is simply given a black screen with the mouse. It is running 4.7.*, and I was wondering if this is an issue others have, and if so, a way to fix it
+<Ezim> Linkmaster, when you log out/in?
+<Linkmaster> Ezim: just when I log out, its the first time its happened, I can update the system and see if that resolves it first
+<Ezim> Linkmaster, nvidia card?
+<Ezim> run kdesudo kate /etc/kde4/kdm/kdmrc and paste: TerminateServer=true under: [X-:*-Core]
+<Linkmaster> Ezim: it might actually, the entire computer worked right out of the box(yay linux), so I didn't hunt for drivers or anything else
+<Ezim> restart and it should work
+<Linkmaster> Ezim: let me try that. Should I ensure drivers are installed before doing that? (what does that do anyways?)
+<Ezim> Linkmaster, http://paste.kde.org/440864/
+<Ezim> Linkmaster, lspci -nn | grep VGA
+<Ezim> copy/paste the answer
+<Linkmaster> here, let me get on IRC on her computer, 1 min
+<Linkmaster> Ezim: back, you want lspci about what?
+<Ezim> Linkmaster, lspci -nn | grep VGA
+<Linkmaster> 01:00.0 VGA compatible controller [0300]: ATI Technologies Inc RV710 [Radeon HD 4350] [1002:954f]
+<Ezim> Linkmaster, then you have the answer.
+<Linkmaster> Ezim: ^
+<Ezim> ati card :)
+<Linkmaster> ahh
+<Ezim> Linkmaster, have you tried the thing I did write before?
+<Linkmaster> Yeah, I see that =P didn't even think to check, off to jockey I go
+<Linkmaster> I just put it in, lemme try it
+<Linkmaster> be right back
+<Ezim> Linkmaster, https://bugs.launchpad.net/ubuntu/+source/nvidia-graphics-drivers/+bug/930614
+<ubottu> Launchpad bug 930614 in nvidia-graphics-drivers (Ubuntu) "Application rendering broken after logging out in KDE" [Undecided,Confirmed]
+<Ezim> Linkmaster, wb. working?
+<Linkmaster> nope
+<Ezim> Linkmaster, https://bugs.launchpad.net/ubuntu/+source/nvidia-graphics-drivers/+bug/930614
+<Linkmaster> Let me try jockey, put a proper driver on it
+<Ezim> Linkmaster, maybe same problem.
+<Linkmaster> quite possibly
+<Ezim> okey try jockey
+<Linkmaster> ITs an HD4350, so I don't see why it would happen...and the comment didn't seem to work, despite the workaround status :/
+<eric__> hi, should I enable/install something in order to show the contacts when i write and email and/or in the krunner field (the contacts option is enabled)? because at the moment it shows just the recent addresses, not the contacts (i've both local and owncload contacts), under kubuntu 11.10

@@ -1,0 +1,818 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-it"
+date: "2012-7-15"
+lang: "it"
+messages: "809"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<hallino1> Giorno
+<jester-> 'ngiorno
+<luca> salve a tutti
+<luca> qualcuno sa come configurare l'autenticazione http al sistema ubuntu? io mi connetto tramite proxy+autenticazione, per la configurazione di mozilla non ci sono problemi ma per configurare le impostazioni dell'autenticazione  per il sistema non trovo come fare
+<jester-> luca: hai abilitato il proxy in conf di sistema?
+<luca> si
+<luca> ma non trovo dove configurare username e password per l'autenticazione
+<jester-> luca: in impostazioni di sistema rete?
+<luca> nelle vecchie versioni di ubuntu lo potevo fare dal software center
+<luca> si
+<jester-> luca: e non ti funza apt?
+<luca> no perche oltre al proxy
+<luca> si deve configurare username e password
+<jester-> luca: in /etc/apt c'è apt.conf?
+<luca> si
+<jester-> luca: ma la pass non si da al momento del collegamento?
+<jester-> quindi la pass andrebbe settata in rete
+<luca> firefox me la chiede appena provo ad aprire un sito
+<jester-> luca: messo su automatico non te le chiede?
+<luca> mentre il software center non mi chiede nulla
+<luca> mi da errore
+<luca> no
+<luca> ho provato a fare un istallazione da terminale
+<luca> e mi dice pycurl.error: (56, 'Received HTTP code 407 from proxy after CONNECT')
+<luca> devo praticamente trovare il modo di configurare nome utente e pass di autenticazione per il proxy
+<dod> e invece navigare navighi?
+<jester-> luca: prova a mettere in apt.conf  http_proxy=username:password@IP:PORTA
+<luca> certo, da mozzilla firefox posso configurare tutto
+<luca> devo aprirlo sotto sudo da terminale?
+<jester-> luca: oppure da terminale  http_proxy=username:password@IP:PORTA
+<jester-> export http_proxy=come_sopra
+<jester-> e poi apt-get quello che vuoi
+<luca> ok, e è temporaneo o definitivo il comando?
+<luca> mi serve la possibilità di poter swichtare a secondo se mi connetto dall'uni o da casa
+<luca> non vorrei poi arrivare a casa e non riuscire a connettermi
+<luca> cmq ora provo ad aggiungere la riga all'apt.conf
+<jester-> luca: a casa no proxy dovrai rinominare apt.conf
+<jester-> se funza vai meglio col terminale
+<luca> non funziona
+<luca> ho provato a modificare da terminale
+<luca> niente...
+<luca> ma possibile che si siano dimenticati l'opzione in queste nuove realease di ubuntu?
+<jester-> luca: da terminale una volta fatto export devi andare di sudo -E apt-get sticasss per preservare le variabili
+<luca> mm ok
+<luca> provo e riavvio
+<luca> ..
+<luca> a dp
+<luca> grazie
+<Kvashir> Ciao a tutti, conoscete un modo per staccare una scheda video non da bios ma tramite drivers fglrx?
+<jester-> Kvashir: spiega: staccare
+<Kvashir> il mio notebook monta l'apu vision di AMD vga interna + vga discreta, purtroppo causa poca maturità dei drivers scalda tantissimo e mi sono accorto che la "colpa" è della vga interna, quindi volevo spegnerla, ma da bios non posso.
+<jester-> Kvashir: metter il modulo che usa in blacklist
+<jester-> Kvashir: lo vedi da lshw
+<jester-> sudo lshw
+<Kvashir> cosa vedo da lshw?
+<jester-> Kvashir: il modulo (driver) che usa tale scheda
+<Kvashir> il modulo che usa è fglrx
+<Kvashir> a me importa come spegnerla, non visualizzarne il driver...
+<jester-> scrivendolo in blacklist non viene caricato al boot
+<jester-> Kvashir e cosa ti sto scrivendo?  pare logico che se non carica il driver rimane spenrta
+<jester-> spenta*
+<Kvashir> certo, ma se non carico il driver fglrx come faccio ad usare la gpu discreta? :)
+<Kvashir> usano lo stesso driver
+<jester-> Kvashir: sicuro che usano entrambe fglrx e non radeon?
+<jester-> se usano le stgesso driver la vedo dura
+<Kvashir> non c'è un modo per blacklistare direttamente l'hardware?
+<Kvashir> evitare che si accenda una periferica con un eventuale id?
+<jester-> Kvashir: onetamente non so se se una volta balcklistato si possa poi scrivere il modulo in /etc/modules con stringa per usare una determinata periferica
+<Steeler> !chat
+<ubot-it> per qualsiasi argomento non inerente strettamente il supporto a ubuntu, /join #ubuntu-it-chat
+<nicotano> salve
+<samed> scusate con ubuntu è possibile mandare in stampa più file in serie ?
+<jester-> samed: nella cartella in cui ci sono i files: lpr *
+<sage79> salve. ricevo nell'aggiornamento questo errore E: Impossibile aprire il file /var/lib/apt/lists/it.archive.ubuntu.com_ubuntu_dists_oneiric_main_binary-i386_Packages.IndexDiff - open (2: File o directory non esistente)
+<enzotib> sage79, sudo rm /var/lib/apt/lists/*, e poi rifai l'update
+<sage79> rm: impossibile rimuovere "/var/lib/apt/lists/partial": È una directory
+<enzotib> sage79, ok, riprova l'update
+<sage79> W: Errore GPG: http://ubuntu.fastbull.org oneiric-security InRelease: Il file /var/lib/apt/lists/partial/ubuntu.fastbull.org_ubuntu_dists_oneiric-security_InRelease non inizia con un messaggio di firma in chiaro W: Distribuzione in conflitto: http://ubuntu.fastbull.org oneiric-updates Release (atteso oneiric-updates ma ottenuto oneiric) E: Errore GPG: http://ubuntu.fastbull.org oneiric-backports Release: Le seguenti firme non erano
+<bamboch> ciao, come si fa capire che sistema operativo c'è installato, e i dati del software?
+<bamboch> da terminale?
+<Fefefefe> Lsb_release -a
+<Fefefefe> Con la elle minuscola scusa
+<Fefefefe> E poi
+<Fefefefe> uname -a
+<bamboch> grazie
+<vincenzo_> ciao a tutti
+<vincenzo_> dove posso postare un errore che mi da.??
+<vincenzo_> I seguenti pacchetti presentano dipendenze non soddisfatte:  linux-headers-generic-pae: Depends: linux-headers-3.2.0-26-generic-pae ma non è installato unity-2d-panel: Depends: libgcc1 (>= 1:4.1.1) ma 1:4.6.3-1ubuntu5 è installato                 Depends: libqt4-dbus (>= 4:4.5.3) ma 4:4.8.1-0ubuntu4.1 è installato                 Depends: libqtcore4 (>= 4:4.7.0~beta1) ma 4:4.8.1-0ubuntu4.1 è installato                 Depend
+<vincenzo_> come posso risolvere??
+<vincenzo_> helpp
+<Fefefefe> !paste
+<ubot-it> http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<vincenzo_> http://paste.ubuntu.com/1093105/
+<vincenzo_> ecco
+<Fefefefe> Ecco, ora aspetta, perche' io son dal telefono..... Se hai culo qualcuno risponde
+<vincenzo_> speriamo :)
+<Fefefefe> Altrimenti, a pagamento, potrei aiutarti ihihihihi
+<vincenzo_> potrei risolvere rinstallando tutto
+<vincenzo_> però non credo sia grave.
+<vincenzo_> allora ce qualcuno
+<kvashir> Ragazzi c'è un modo per disattivare una periferica (gpu nel mio caso) se non da bios?
+<dod> vincenzo_ ma che devi installare?
+<dod> vincenzo_ tenti di installare un pacchetto vecchio
+<DAMN3dg1rl> da ieri o l'altro ieri
+<DAMN3dg1rl> sto continuando ad avere continui kernel panic e blocchi
+<sage79> salve. vorrei utiizzare come compilatore gcc 4.3 al posto di 4.4 come faccio?
+<jester-> sage79: serve gcc4.3 installato e rifare il simlink
+<jester-> non lo vedo in pangolina triste
+<Ab3L> qualcuno è riuscito ad installare e far funzionare kdenlive sul pangolino? ho provato da repository e da ppa, ma nessuna delle due versioni parte. In alternativa potete darmi qualche suggerimento su qualche altro software che permetta di fare bilanciamento del bianco dei video?
+<Steeler> Ab3L, pangolino ??
+<jester-> Ab3L: è peace il dutur di kdeinlive
+<Ab3L> Steeler: kubuntu 12.04
+<Steeler> Ab3L, hai provato ad installare la versione SVN ?
+<Ab3L> jester-: lo so. ma non vedendolo, mi son detto che magari qualcun altro aveva provato a smanettare i video delle vacanze :)
+<Ab3L> Steeler: no. non ho provato da svn
+<Steeler> Ab3L, dai un'occhiata qui: http://www.steeler.altervista.org/kdenlive/kdenlive.htm#ERRORI_RECENTI
+<Ab3L> grazie steeler
+<cucuzza> ragazzi ho un problema con il gestore delle cartelle, vorrei che fosse caja a gestire questa applicazione e non nautilus, cosa devo fare per poter ottenere questo risultato? dimenticavo di dire che l'ambiente grafico che utilizzo è mate... grazie
+<jester-> cucuzza: a parte il fatto che mate centra nulla con ubuntu. se evoluzione di gnome è nautilus che paciocca
+<cucuzza> a
+<jester-> ma nulla ti impedisce di usare un altro filemanager
+<cucuzza> jester-, come?
+<cucuzza> al momento attuale la scelta quasi random
+<jester-> cucuzza: lo installi e lo apri
+<cucuzza> sono installati entrambi, ma avolte è nautilus a gestitre le cartelle altre caja
+<Ab3L> Steeler: non funziona. proverò con qualche altro software, tipo Open... qualcosa.
+<jester-> cucuzza: nautilus gestisce il desktop a altro ma come filemanager basta che apri quello che ti pare
+<Steeler> Ab3L, http://trac.videolan.org/vlmc/wiki/Downloads   questo ha il white balance.
+<cucuzza> ogni volta dovrei selezionare apri con... jester- mi sembra un tantino noiosetto
+<jester-> cucuzza: anche giocare al lotto e non vincere mai è noiosetto
+<cucuzza> ahah
+<cucuzza> jester-, a volte noi utenti non specializzati siamo veramente stupidi adesso ho trovato la maniera di risolvere il tutto facilmente selezionando caja dalle applicazioni preferite. per il file manager...
+<DAMN3dg1rl> svegliaaaaaaaaaa sono stufa di sti kernel panicccccccccc
+<jason_hudson> lol
+<jason_hudson> formatta
+<jason_hudson> e passa la paura
+<Joshua^Dunamis> DAMN3dg1rl: che hai combinato?
+<DAMN3dg1rl> Joshua^Dunamis, non soooooo
+<DAMN3dg1rl> è da oggi che ogni 10 minuti mi panica
+<Joshua^Dunamis> mmm
+<Joshua^Dunamis> DAMN3dg1rl: ma hai provato ad avviare un kernel precedente?
+<Joshua^Dunamis> DAMN3dg1rl: hai installato kernels da repositories non ufficiali?
+<Rebecca92> panic
+<Joshua^Dunamis> Rebecca92: anche tu in kernel panic?
+<Rebecca92> Joshua^Dunamis, due nick
+<Joshua^Dunamis> ah ok
+<Rebecca92> il ns li alterna
+<Rebecca92> Joshua^Dunamis, ogni tot panico
+<Joshua^Dunamis> Rebecca92: ascolta, all avvio tieni premuto SHIFT di destra, entra in grub e prova ad avviare un kernel precedente e vedi come si comporta
+<Joshua^Dunamis> Rebecca92: ma più importante di tutto, dimmi: hai installato kernels da repositories non ufficali?
+<Rebecca92> Joshua^Dunamis,  nada. e non ho una versione precedente
+<Rebecca92> nell'ultimo update apt mi ha ranzato il kernel
+<hallino1> Rebecca92, installalo ora un kernel no?
+<Joshua^Dunamis> Rebecca92: se sei su Ubuntu dammi il risultato del comando dpkg -l |grep linux-image
+<axq> ciao una domanda..
+<DAMN3dg1rl> evvai
+<DAMN3dg1rl> due di seguito
+<DAMN3dg1rl> http://paste.ubuntu.com/1093325/
+<axq> mi son fatto aiutare da uno con il teamviewer per installare ed aggiornare qualche applicazione  vorrei capire.. è possibile che questo possa aver installato qualcosa a mia insaputa (non essendo io esperto) e mi spia opp tutto cioò che faccio o digito lui lo sa???
+<jason_hudson> axq, possibile ma improbabile se hai visto che faceva
+<Joshua^Dunamis> DAMN3dg1rl: hai tre kernel installati, quindi al grub scegli Altri sistemi Linux e prendi un kernel precedente e vedi come si comporta
+<DAMN3dg1rl> Joshua^Dunamis, non ne vedo altri
+<axq> posso in qualche modo verificare?
+<jason_hudson> axq, potresti ma i risultati non sarebbero attendibili al 100%, per sapere dove l'hai trovato sto tizio?
+<Joshua^Dunamis> DAMN3dg1rl: ops si sono stati rimossi, a sto punto forse è meglio che installi uno dei kenrels tipo linux-image-3.2.0-24-generic se ancora disponibile
+<DAMN3dg1rl> Joshua^Dunamis, ho lo stack danneggiato
+<DAMN3dg1rl> ho letto nell'ultimo kp
+<axq> qui
+<jason_hudson> axq, nome?
+<axq> preferisco non dirlo
+<jason_hudson> :|
+<Joshua^Dunamis> DAMN3dg1rl: si quel kernel va rimosso e semmai reinstallato, per farlo ho installi un secondo kernel in modo che avvi da quello o lo fai dal live di Ubuntu usando chroot
+<Joshua^Dunamis> *o
+<DAMN3dg1rl> Joshua^Dunamis, ho reinstallato il ecchio
+<DAMN3dg1rl> aspetto il kp
+<DAMN3dg1rl> e riavvio
+<Joshua^Dunamis> perché aspetti il kp? riavvia e scegli l'altro kernel al Grub
+<DAMN3dg1rl> Joshua^Dunamis, verrà tra poco ;)
+<Joshua^Dunamis> DAMN3dg1rl: si ma non vedo perché aspettare il kernel panic
+<axq> ve lo dico se scopro che ha fatto qualcosa che non doveva fare..
+<jason_hudson> ma lol
+<jason_hudson> axq, e come fai a saperlo?
+<axq> il nome lo so... se mi dite come faccio a capire se ha fatto qualcosa al mio pc..ve lo dico se lo scopro.. ma non ho idea se ha installato qualche programma spia o qualcosa.. come faccio?
+<hallino1> axq, dire che cosa ti ha installato?
+<jason_hudson> axq, non sappiamo neanche noi come scoprirlo a priori, però magari se è un regolare o un individuo conosciuto ci sono meno chances che ti abbia installato cagate
+<axq> ma voi conoscete qualche programma spione.. opp se c'è un programma che blocca dati in uscita?
+<hallino1> axq, ma sono domande normali?
+<hallino1> axq, comunque siamo in OT..
+<axq> sono domande da un non esperto...
+<jason_hudson> axq, questo è un canale di supporto non una copertura del kgb
+<axq> cosa è OT??
+<axq> lo so che è di supporto.. e mi state supportando per capire se ho programmi che non devo avere..
+<bollito> si puoi massimizzare la protezione per i dati in uscita e sbloccarli con la password io l'ho provato ma è una rottura terribile..
+<bollito> comunque ciao xD
+<hallino1> axq, rivolgi la domanda qui #ubuntu-it-chat
+<bollito> che differenza c'e' scusa?
+<hallino1> bollito, la differenza è che qui si trattano di discorsi inerenti a prooblemi seri di ubuntu
+<hallino1> bollito, come citato precedentemente : kernel panic
+<bollito> e come vengono classificati i problemi "seri" e "non seri"?
+<hallino1> bollito, dalle domande che fanno ahahah
+<bollito> capitan ovvio colpisce ancora..
+<bollito> ma tutti la pensano come te?
+<bollito> nel senso tu mi hai dato assistenza qualche volta ma a volte postavo domande "non serie" su questo e mi rispondevano tranquillamente
+<hallino1> bollito, evidentemente dipende da chi ti ha risposto e che domanda hai rivolto
+<hallino1> bollito, e comunque non sono io che lo penso, ma son le regole
+<bollito> ok ok.. io vado torno dopo (forse=
+<ado_> ciao vorrei installare skipe.. ma non lo trovo su software center
+<jason_hudson> ado_, cerca skype invece
+<ado_> si si.. ho scritto.. ho sbagliato qui
+<jason_hudson> strano :\ forse è nei repo partner o come diavolo si chiamano
+<ado_> non appare
+<jason_hudson> ado_, http://www.skype.com/intl/it/get-skype/on-your-computer/linux/downloading.ubuntu32
+<ado_> ho scaricato.. am come faccio ad installarlo?
+<ado_> ci sei?
+<jason_hudson> si scusa
+<jason_hudson> clickaci 2 volte
+<jason_hudson> cazza buttòn e si installa
+<ado_> sembra zippato si apre un finestrella
+<ado_> con tre file interni
+<jason_hudson> O.o
+<jason_hudson> dovrebbe essere un .deb
+<ado_> si
+<ado_> dentro ci sono 3 file..2 .gz e uno binary
+<weltall> skype su android fa pena ultimamente l'audio continua a scattare
+<jason_hudson> ado_, apri un terminale
+<jason_hudson> dai cd Scaricati
+<jason_hudson> e poi dpkg -i skypeblabla
+<jason_hudson> lag
+<ado_> mi dice che dpkg ha bisogno di super utente..
+<jason_hudson> sudo dpkg -i skybeblabla
+<jason_hudson> scusa
+<jason_hudson> lol
+<jason_hudson> skypeblabla = il nome del .deb
+<accendino> salve a tutti
+<DAMN3dg1rl> accendino, non fumo
+<accendino> mi servirebbe aiuto per avviare la mia ventola
+<jason_hudson> :|
+<accendino> manco io se è per questo! xD
+<jason_hudson> accendidino
+<accendino> ho un hp 620
+<jester-> accendino: ventola?
+<jason_hudson> DAMN3dg1rl, hai risolto coi kernel panic?
+<accendino> ventolina...
+<DAMN3dg1rl> jason_hudson, non ne ho
+<jester-> accendino: de che
+<accendino> del mio portatile
+<jester-> accendino: scalda?
+<jason_hudson> ergo hai risolto
+<jason_hudson> inb4 kernel panic
+<accendino> abbastanza
+<jester-> accendino: che sistema usi
+<accendino> al momento lo sto ventilando con il ventaglio
+<accendino> ubuntu 11.10
+<jason_hudson> oh scusate pensavo di essere in #ubuntu-it-chat :\
+<jester-> accendino: appena installata?
+<accendino> no
+<accendino> è da abbastanza
+<jester-> accendino: e prima andava?
+<accendino> non saprei
+<accendino> ho visto sul forum
+<accendino> ma mi sa che ho fatto solo casino
+<jester-> accendino: cioè?
+<accendino> fancontrol
+<jester-> accendino: consiglio è: avanza alla 12.04
+<accendino> dici che poi funziona?
+<jester-> cosi oltre ad avanzare resetta il tutto
+<jester-> e perchè mai non dovrebbe, con un hp poi
+<accendino> jester grazie
+<accendino> proverò
+<jester-> accendino: poi per test ti vedi qulache video su youtube flash fa scaldare la cpu e senti se attacca
+<accendino> questa non la sapevo
+<jester-> flash attaccato e indurisci le uova sul pc
+<DAMN3dg1rl> jason_hudson, rettifico
+<jason_hudson> lol
+<accendino> grazie di tutto
+<accendino> esco un pò
+<accendino> jester- le farò sapere
+<accendino> xD
+<nicotano> salve
+<jester-> aloha nicotano
+<nicotano> ciao jester-
+<tipistrani> un saluto al canale
+<tipistrani> ho un problema di grub non riesco a farlo partire e non ho capiteo il perche, mi aiutate un paio di minuti , grazi
+<tipistrani> parte windows
+<jester-> tipistrani: hai per caso installato winzoz dopo ubuntu?
+<tipistrani> no prima
+<tipistrani> il fatto c
+<jester-> tipistrani: hai 2 hd?
+<tipistrani> e il fatto che prima andava come
+<jester-> tipistrani: hai 2 hd?
+<tipistrani> HO DIVERSI HD, MA I SISTEMI GIRANO SUL C
+<Aizram> non urlare tipistrani
+<jester-> tipistrani: l'installer di default mette grub sul primo hd quindi prova a fare il boot dal secondo o iltezzo
+<Aizram> che qui capiscono uguale
+<tipistrani> ho formattato il sda ho installato windows poi ho installato il 11 10 e andava benissimo
+<jester-> tipistrani: fai come indicato sorpa che parte il disco sbagliato
+<tipistrani> poi ci ho ripensato e messo il 1204
+<jester-> sempre che non hai settato non istallare grub
+<tipistrani> ma ho installato sulle partizioni da me prima create
+<jester-> centrano no le partizioni
+<jester-> ma centra il disco che parte al boot
+<aless_p> ciao
+<jester-> tipistrani: non è che hai settato di mettere grub su partizione per caso?
+<tipistrani> no assolutamente
+<tipistrani> il grub non lo toccato proprio
+<jester-> tipistrani: allora riavvia e parti con gli altri hd
+<jester-> che sarà su uno di essi
+<tipistrani> se mi fai spiegare forse ne usciamo subito
+<aless_p> volevo chiedere un pò di cose. ho installato ubuntu sul mio pc e ho anche windows (selezionabile all'avvio). vorrei ripristinare il pc alle impostazioni di fabbrica. non so come si fa in questi casi. potete aiutarmi?
+<aless_p> :)
+<jester-> aless_p: è un portatile?
+<aless_p> si
+<aless_p> è un asus
+<jester-> aless_p: se non hai segato la partizione di ripristino lo fa da solo
+<aless_p> recente. comprato questo inverno
+<jester-> aless_p: al boot si pigia un tasto FX
+<tipistrani> dicevo quando ho installato la versione 1204 il grub partiva come prima ma non era per la versione 1204 e non trovava il sistema da avviare, e anche con windows non lo trovava piu
+<jester-> quele dovresti vederlo indicato al boot
+<tipistrani> percui ho ripartizionato
+<jester-> tipistrani: quindi?
+<tipistrani> reinstallato
+<tipistrani> ma niente all avvio parte windows e non il grub
+<aless_p> allora, io non sono espertissimo. all'inizio mi compare una schermata dove ci sono i due sistemi operativi. quando l'ho installato (ubuntu) ho deciso di installarlo insieme a windows, quindi credo che cmq abia creato una partizione
+<jester-> tipistrani: e 4: installer mette grub su sda
+<Aizram> ma si mettono d'accordo?
+<jester-> se a partire la boot è sdb o c hai voglia di ripartizionare
+<tipistrani> e che devo fare adesso?
+<tipistrani> ho capito
+<jester-> tipistrani: se il pc non è vetusto al boot con tasto fX hai un menu di boot
+<nicotano> di solito F8
+<jester-> tipistrani: o f9 o f11
+<jester-> tipistrani: quindi provi a fare il boot da dagli altri hd
+<tipistrani> ok provo subito
+<jester-> tipistrani: tale tasto, di solito, lo vedi al boot
+<jester-> menupopup o simile
+<tipistrani> ok adesso riavvio appena windows finisce di aggiornasi e parto con un altro hd
+<jester-> tipistrani: una volta trovato quello giusto o usi il menu per linux o setti il bios o installi grub anche sull'ha in questione
+<tipistrani> e quando e successo , che manco me ne sono accorto?
+<jester-> tipistrani: comincia a vedere se c'è grub su uno degli altri dischi
+<jester-> sennò si deve usare la live
+<albe> scusate se mi intrometto: grub si puo' ripristinare
+<jester-> o un cd di supergrub
+<jester-> !grub | albe
+<ubot-it> albe: http://wiki.ubuntu-it.org/AmministrazioneSistema/Grub/ | Per ripristinare Grub: http://wiki.ubuntu-it.org/AmministrazioneSistema/Grub/Ripristino
+<brillina> ciao  a tutti
+<jester-> !ciao | brillina
+<ubot-it> brillina: Ciao! Benvenuto in #ubuntu-it
+<brillina> ragazzi avrei un problema...
+<brillina> :)
+<jester-> dica
+<tipistrani> ciao brillina
+<brillina> voglio togliere il raid 0
+<tipistrani> wow
+<jester-> brillina: hai linux installato in raid?
+<brillina> ma dopo aver disabilitato sul bios non è ancora a posto
+<brillina> uffa
+<jester-> brillina: hai linux installato in raid?
+<brillina> noooooo
+<brillina> acc
+<jester-> o intendi il raid del bios?
+<brillina> volevo farlo ci ho provato ma si instaal su un disco solo
+<brillina> raid soft
+<jester-> brillina: instalalzione raid è perticolare
+<jester-> setta il bios in normale
+<brillina> eee
+<brillina> come
+<brillina> gia fatto .. penso
+<jester-> brillina: ma in un portatile?
+<brillina> default ?
+<brillina> no un fisso
+<brillina> scheda m2nsli deluxe
+<jester-> brillina: entri nel bios e da qualche parte vedi che c'è raid etc
+<jester-> se hai un hd solo lo disabiliti
+<tipistrani> hai ragione jester era su un altro disco
+<brillina> gia fatto ma linux mi vede il raid
+<jester-> tipistrani: normale
+<jester-> brillina: mi sa che vada reinstallato
+<brillina> allora avevo il raid
+<brillina> provo install...
+<brillina> e lui si installa su un disco solo
+<tipistrani> ma perche la versione 1204 si inchioda?
+<jester-> eccerto
+<brillina> allora ci smanetto
+<brillina> finche i dischi danno fuori
+<brillina> e si bloccano
+<jester-> tipistrani: si inchioda?
+<brillina> smanettavo col bios
+<jester-> e quando mai
+<tipistrani> si
+<jester-> tipistrani: spiega inchioda
+<brillina> tolto tutto cio che parlava di raid
+<jester-> brillina: load setup defualt
+<jester-> default
+<brillina> meno il controller  altrimenti non vede piu nemmeno i dischi
+<tipistrani> non appare la barra sopra e quando clicco qualcosa si apre dopo qualche minuto
+<jester-> tipistrani: apri un terminale e dai unity --reset
+<brillina> azzaccio di linux ci vado pazzo
+<tipistrani> appena si apre lo faccio
+<jester-> tipistrani: ancora meglio installa gnome-seesion-fallback e avrai gnome normale
+<brillina> cio linux dappertutto .. cio tre pc uso anche back track
+<jester-> unica differenza: per apcioccare le barre serve tastro destro e alt assieme
+<brillina> ora vpolevo metterlo anche sul piu grosso
+<jester-> brillina: controlla le partizioni
+<jester-> che non abbia fatto tipo circo barnum
+<brillina> ma non ci riecso per un raid del piffero
+<jester-> !raid
+<ubot-it> http://wiki.ubuntu-it.org/Hardware/DispositiviPartizioni/FakeRaid
+<brillina> funzionano cio installato win xp e sette
+<brillina> percio fungono
+<jester-> brillina: e ma se hai fatto in raid linux
+<brillina> pero vede due dischi invece
+<jester-> appunto
+<brillina> di uno solo grande
+<tipistrani> niente non mi da la possibilita di aprire niente qui, stavolta non e apparsa nemmeno la barra delle opzioni, e mi sa che devo spegnere anche a mano
+<jester-> tipistrani: control-alt-f2  ti logghi
+<tipistrani> adesso stacco gli altri dischi e rifaccio le partizioni dopodiche reinstallo tanto ci metto 15 minuti
+<tipistrani> ök
+<jester-> tipistrani: sudo apt-get install gnome-session-fallback
+<jester-> tipistrani: quindi sudo reboot, al lightdm scegli gnome classic
+<jester-> tipistrani: devi cliccare il piedino
+<tipistrani> con controll - alt f2 mi e uscita una schermata con login
+<jester-> tipistrani: dai user  pass
+<tipistrani> ok
+<jester-> e hai la tty (terminale o shell)
+<brillina> la scheda suporta il sata3 ma ho sentito che nel sata  non vengono considerati il master e lo slave
+<jester-> brillina: non esistono
+<brillina> percio il settaggio dei dichi non centra nulla
+<jester-> tipistrani: reinstallare a qual epro
+<tipistrani> sistem product name login, mi da errore login
+<brillina> mi spiace devo lasciarvi ufffffaaaaa
+<brillina> ciaooooo grazie lo stesso
+<brillina> :))
+<jester-> tipistrani: scrivi il tuo user e la pass
+<jester-> tipistrani: gli stessi che dai alla finestra di login
+<tipistrani> ok e andato
+<fourlastor> ciao a tutti
+<tipistrani> $
+<fourlastor> ma bumblebee-ui è disponibile in qualche repository?
+<tipistrani> e adesso?
+<jester-> !info  bumblebee-ui
+<ubot-it> Package bumblebee-ui does not exist in precise
+<jester-> negli ufficiali pare non esserci
+<jester-> tipistrani: sudo apt-get install gnome-session-fallback
+<tipistrani> ok
+<jester-> tipistrani: sudo reboot e al login clicca il piedino e scelgi gnome classic non effetti
+<fourlastor> jester-, non è sicuramente negli ufficiali, dato che bumblebee sta in ppa
+<jester-> fourlastor: quindi, anche se non consigliato, devi aggiungere il ppa
+<tipistrani> E:impossibile trovare il mpacchetto fallback
+<jester-> tipistrani: sudo apt-get install gnome-session-fallback
+<fourlastor> jester-, il ppa per bumblebee ce l'ho già, sto cercando di capire se per la gui c'è un altro ppa o cosa..
+<tipistrani> siun altra volta
+<tipistrani> aspetta che glielo do ancora
+<jester-> tipistrani: sudo apt-get update cosa fa
+<jester-> aggiorna o no
+<jester-> sei collegato a internet?
+<tipistrani> scarica
+<tipistrani> il package
+<tipistrani> kb/4796
+<jester-> tipistrani: da sudo apt-get install gnome-session-fallback?
+<jester-> o sta aggiornando il db
+<tipistrani> li non lo trovava
+<tipistrani> adesso sta u
+<tipistrani> installando l update
+<tipistrani> appena finisce  vediamo se lo
+<jester-> quando ha finito da sudo apt-get install gnome-session-fallback
+<tipistrani> ecco finito
+<jester-> scrivi bene
+<tipistrani> allora apt-get install
+<jester-> sudo apt-get install gnome-session-fallback
+<tipistrani> gnome session fallback e gia alla versionepiu recente
+<tipistrani> mi dice di rimuoverli
+<jester-> tipistrani: allora sudo reboot e al login clicca il piedino e cambia
+<tipistrani> apt-get autoremove
+<jester-> usa gnome classic no effetti
+<tipistrani> se parte
+<jester-> logico che devi fare la stessa manovra sugli hd
+<tipistrani> ma se ripartizono e reinstallo non faccio prima?
+<jester-> tipistrani: a quale pro
+<jester-> tipistrani: fai moltoi prima li da ubuntu a mettere grub anche su sb e c
+<tipistrani> ho dei dati longevi sugli altri hdd se sgarro mi frego da solo
+<jester-> se ti schifa cambiare le impstazioni al bios o usare il popup menu
+<tipistrani> aspe dai sto ribottando
+<jester-> tipistrani: se non metti grub sul dosco che parte non c'è partizionamento che tenga
+<tipistrani> mi son distratto e non ho fatto in tempo a pigiare f8 e partito windows rebottto
+<Oiidbe> Salve a tutti volevo chiedervi una cosa la versione 11.04 per quanto rimarrà aggiornato
+<jester-> Oiidbe: se non lts mi pare un anno e mezzo
+<Oiidbe> ok grazie
+<tipistrani> ok mi e partito il grub
+<Oiidbe> ciao ciao
+<tipistrani> ma qui niente piedini xd
+<jester-> tipistrani: al login dove metti user e pass a destra della user c'è un piedino
+<jester-> o no
+<tipistrani> nel grub?
+<jester-> eh
+<tipistrani> no
+<jester-> tipistrani: gdm o lightdm la finestra di login
+<jester-> o hai accesso automatico
+<tipistrani> ho tolto l opzione che chiede sempre la passwird nell installazzione
+<jester-> bravo
+<jester-> tipistrani: termina sessione
+<tipistrani> dal grub posso partire con linux  modaliata provv memtest e poi win
+<jester-> tipistrani: ti appare il lightdm
+<jester-> tipistrani: ma se togli accesso auto alla winzoz è meglio
+<tipistrani> devo partire con linux allora poi vediamo se appare
+<jester-> certoche devi ppartirfe
+<jester-> centra no grub con cosa userai
+<tipistrani> forse in modalita provvisoria e meglio?
+<tipistrani> sta caricando
+<tipistrani> niente piedino parte da solo
+<tipistrani> almeno la  barra apparisse, manco quella
+<tipistrani> se non appare la barra non mi fa aprire neanche la dash
+<tipistrani> a ecco si e aperta
+<tipistrani> apro un terminale?
+<jester-> tipistrani: leva accesso auto
+<jester-> o termina sessione
+<tipistrani> tra un minuto lo levo
+<tipistrani> ok piedino
+<tipistrani> gnome classic?
+<jester-> eh non effeti tanto per cominciare
+<tipistrani> come parto?
+<tipistrani> gnome no effect allora?
+<jester-> setti metti user e pass e invio
+<jester-> poi gli effetti didoenderanno dalla video che hai
+<tipistrani> ok adesso e veloce
+<tipistrani> e non ancora ho aggiornato, sara quello forse
+<jester-> tipistrani: lspci | grep -i vga
+<tipistrani> da terminale?
+<jester-> si
+<tipistrani> aspe che non mi ricordo come si fa la barra dritta
+<jester-> maiusc+\  a sinsitra di 1
+<tipistrani> come si fa?
+<tipistrani> ok
+<jester-> tipistrani: cosa risponde
+<tipistrani> non riesco a fare la barra
+<tipistrani> ho una tastiera tedesca
+<jester-> tipistrani: prime shift a tasto a sinistra di 1
+<jester-> tipistrani: va  bè fa vedere simplice lspci  ma usa pastebin
+<jester-> !paste | tipistrani
+<ubot-it> tipistrani: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<tipistrani> pvt?
+<jester-> tipistrani: prefiriamo il canale
+<jester-> preferiamo
+<tipistrani_> riciao
+<tipistrani_> puoi riscrivermi quell comando per favore jester cosi lo copio
+<jester-> lspci
+<jester-> !paste | tipistrani_
+<ubot-it> tipistrani_: http://paste.ubuntu.com/ servizio che permette di incollare lunghi output senza intasare il canale; incollare il testo, indicare il nick, premere paste e postare in canale l'indirizzo della pagina
+<tipistrani_> :(
+<tipistrani_> che succede?
+<tipistrani_> http://paste.ubuntu.com/1093623/
+<jester-> tipistrani: lspci e incolla nel pastebin
+<tipistrani> http://paste.ubuntu.com/1093623/
+<tipistrani> http://paste.ubuntu.com/1093637/
+<jester-> tipistrani: lspci | grep -i vga
+<tipistrani> http://paste.ubuntu.com/1093641/
+<bamboch> come faccio a capire che processori ha il comp??
+<jester-> tipistrani: glxinfo | grep rendering
+<bamboch> come faccio a capire che processori ha il comp?? da terminale?
+<jester-> bamboch: sudo lshw
+<accendino> salve a tutti
+<tipistrani> http://paste.ubuntu.com/1093644/
+<bamboch> grazie
+<jester-> tipistrani: gli open per nvidia funzanom hai il 3d
+<accendino> avrei bisogno di una mano ad aggiornare il mio ubuntu 11.10 a 12.10 precedentemente l'ho rifiutato e adesso non so come fare ho provato pure con il cd
+<accendino> 12.04
+<tipistrani> http://paste.ubuntu.com/1093647/
+<jester-> accendino: apri gestore aggiornamenti
+<accendino> non c'è il bottone jester-
+<DD3my> allora fai l aggiornamento da terminale accendino
+<jester-> tipistrani: prova, se si inchioda provi a installare il nvidia da driver aggiuntuvi
+<jester-> accendino: che bottone
+<tipistrani> ok
+<jester-> accendino: alt-F2
+<tipistrani> per il grub lo lascio cosi?
+<jester-> accendino: update-manager -d
+<DD3my> accendino, http://wiki.ubuntu-it.org/Installazione/NoteAvanzamento
+<jester-> tipistrani: se togli accesso automantico è meglio
+<jester-> cosi se si inchioda non hai probelmi
+<jester-> problemi*
+<jester-> tipistrani: per il grub devi vedere tu
+<accendino> http://pastebin.ubuntu.com/1093660/
+<tipistrani> http://paste.ubuntu.com/1093661/
+<accendino> jester- vedi cosa mi risponde
+<jester-> accendino: fallo dalla finestra che ottieni da alt.F2
+<jester-> se anche li non va hai il sistema bello sminchiato
+<jester-> accendino: hai gnome o kde o altro
+<accendino> mi sa gnome
+<accendino> mi si avvia il gestore aggiornamenti
+<jester-> accendino: hai 11.04 o 11-30
+<accendino> 11.10
+<jester-> 11.10
+<jester-> accendino: e dal gestore non c'è avanza?
+<accendino> no
+<accendino> l'ho rifiutato prima
+<accendino> e mo non esce più
+<jester-> accendino:centra no se hai rifiutato
+<jester-> non ti propone ma rimane
+<accendino> non ci stà
+<accendino> ho provato pure dal cd riavviando a fare aggiorna ma non me lo faceva selezionare
+<jester-> accendino: apri sorgenti software
+<pedro> cosa succede?
+<jester-> riva il babauu
+<jester-> accendino: etichetta aggionementi
+<pedro> D:
+<pedro> il babau no!
+<pedro> no, sul serio, quale problema ha accendino^
+<pedro> ?*
+<jester-> dice non fa avanzamento
+<jester-> secondo me ha sminchiato le gtk
+<pedro> aggiornamento di versione? da che versione a quale versione?
+<jester-> accendino: alura
+<accendino> non tutti gli aggiornamenti possono essere intallati
+<jester-> ultima voce
+<jester-> notifica versione di ubuntu
+<jester-> cosa hai
+<jester-> ci deve essere: per qualsiasi versione
+<accendino> io ho ubuntu 11.10 e vorrei passare alla12.10 ma prima quando me lo proponeva l'ho rifiutata e ora è scomparso il bottone
+<jester-> accendino: segui o vai per i cassi tuoi
+<accendino> rispondevo a pedro
+<accendino> sono un pò lento a scrivere
+<jester-> non devi scrivere ma fare
+<accendino> e sto cercando
+<jester-> accendino: sta in impostazioni di sistema
+<accendino> sorgenti software
+<jester-> o in software center menu modifica
+<pedro> avete provato con apt-get dist-upgrade?
+<jester-> pedro: non fare casino
+<accendino> notificare nuove versioni di ubuntu
+<pedro> chiedo scusa D:
+<accendino> per qualsiasi versione
+<jester-> pedro: e non dire cazzate che dist avanza una cippa
+<jester-> accendino: c'era gia?
+<accendino> si
+<jester-> accendino: per cui da alt-f2 update-manager -d deve aggiornare
+<jester-> se non apre la gui hai fatto qualche casino
+<accendino> si apre il gestore aggiornamenti
+<accendino> e non c'è il bottone per avanzare
+<jester-> non pare il gestore
+<jester-> apre
+<accendino> apre il gestore degli aggiornamenti
+<jester-> accendino: i casi sono due: o hai cannibalizzato o hai un ubuntu tarocco
+<adam__> ciao ragazzi, ma qui date supporto anche a quelli che non sanno quasi nulla?
+<accendino> ma non posso avanzare la versione posso aggiornare quella che ho
+<jester-> adam__: in prevalenza a quelli
+<jester-> accendino: c'è altra possibilità_ che trolli
+<accendino> che significa?
+<accendino> che ti prendo in giro?
+<jester-> !troll
+<ubot-it> Trollare è un comportamento considerato fastidioso dagli altri utenti del canale. Questo include andare offtopic o chiedere la stessa cosa piu volte ottenendo risposte ma non considerarle, e questi non sono i soli comportamenti che possono essere considerati da troll. Per favore leggi /msg ubot-it irc - se questo riguarda te, potresti ritrovarti fuori dal canale.
+<Kimitsu> Buona sera ^_^ uso xubuntu 12.04 su vecchio pc fisso e ho qualche problemino con gli aggiornamenti... provando ad aggiornare da terminale il risultato è questo  http://pastebin.com/LRikStt0         mi hanno detto ( in questa stessa chat ) che è un problema di portachiavi e mi hanno dato la stringa da inserire da terminale per correggere l'errore ma il risultato è questo   http://pastebin.com/fC6tgR1H... qualcuno saprebbe darmi qualche
+<Kimitsu> dritta in proposito ( dimenticavo... sono niubbo da far paura ç_ç)
+<accendino> nono parlo serio
+<accendino> penso di più che ho fatto qualche casino
+<jester-> Kimitsu: non è di portachiavi ma non c'è la chiave di un repo non ufficiale che hai aggiunto
+<jester-> Kimitsu: o inpoti la chiave o dai s quando chiede per il repo non autenticato
+<HoldenC> Kimitsu, fai vedere anche:   sudo apt-key list
+<jester-> Kimitsu: gpg --keyserver  keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 && gpg --export --armor | sudo apt-key add - && sudo apt-get  update
+<jester-> incolla nel terminale
+<jester-> accendino: hai la live della 11.04?
+<jester-> cioè della 12.04
+<accendino> si
+<jester-> accendino: usala
+<jester-> install
+<jester-> dovrebbe chiedere se vuoi aggiornare la esistente
+<accendino> riavviando dici?
+<jester-> accendino: eh devi fare il boot del cd
+<jester-> mica lo fa dal sistema
+<accendino> ho gia provato non me lo faceva selezionare
+<jester-> accendino: parliamo di ubuntu su partizione o dentro a winzoz
+<accendino> io sul mio computer ho solo ubuntu
+<accendino> ti faccio una foto del desktop?
+<jester-> accendino: allora quando arrivi al partizionamento scegli altro
+<accendino> e poi?
+<jester-> accendino: vai sulla partizione ubuntu e scegli modifica
+<jester-> accendino: esce una finestra
+<jester-> usare come ext4 jurnaled, non spuntare formattare, montare come /
+<jester-> accendino: no home separata ?
+<accendino> no
+<jester-> accendino: allora segnati quello che ti ho scritto sopra ma puoi venire in canale da live con webchat
+<jester-> !webchat
+<ubot-it> Per accedere a IRC via web con firefox: http://webchat.freenode.net/?channels=ubuntu-it
+<accendino> mo me lo scrivo
+<accendino> la vedo dura
+<jester-> ma va
+<jester-> accendino: se non hai dati da salvare digli di usare l'intero hd
+<jester-> ma pialla tutto
+<accendino> allora mo faccio così
+<jester-> accendino: avvia la live e vieni in canale
+<accendino> ma se voglio salvare i file?
+<jester-> accendino: bisogna fare come ti ho scritto sopra
+<Kimitsu> Jester scusa, ho provato a mandarti i risultati per messaggio provato per non intasare la chat, ma non sono molto sicuro di aver azzeccato i comandi O.o mi puoi dare conferma ?
+<jester-> Kimitsu: rifai sudo apt-get update che vedi se è azzeccato
+<accendino> non c'è un altro modo per fare girare la ventolina?
+<jester-> accendino: aggiorna che vedi che la vntolina guarisce
+<accendino> mo avvio la live e vengo
+<accendino> salve
+<accendino> jester- sono sulla live
+<jester-> accendino: installa e arriva al partizionamento quindi fischia
+<accendino> mo me lo fa fare l'aggiornamento
+<accendino> posso fare direttamente aggiorna?
+<jester-> accendino: si
+<jester-> accendino: meglio
+<accendino> olèèèè
+<accendino> grazie jester-
+<accendino> quanto mi vorrei imparare pure io come a voi
+<jester-> accendino fai tesoro quando risolvi e prendi appunti
+<accendino> ogni volta qualcosa di diverso
+<jester-> accendino: e non seguire presunte guide
+<adolrtl> ciao
+<adolrtl> qualcuno mi puo dare una mano a installare un dvbs usb esattamente il prof7500 su ubuntu ?
+<Kimitsu> -jester- mi sa che quest'affare non vuole saperne di funzionare ç_ç qualche idea ?
+<jester-> adolrtl: che sarebbe?
+<adolrtl> un ricevitore usb sat
+<jester-> Kimitsu: funza basta che autorizzi la richiesta
+<adolrtl> topo lo skystar usb ecc...
+<jester-> kimatsu fa un copia incolla di tutto nel terminale
+<jester-> gpg --keyserver  keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 && gpg --export --armor | sudo apt-key add - && sudo apt-get  update
+<jester-> Kimitsu: dai la pass quando la chiede
+<adolrtl> eventualmente ho anche la skystar usb2 ............ma preferirei la prof
+<adolrtl> ho guardato e provato qualche guida ...ma mi sono perso ...
+<jester-> adolrtl: scusando l'igniranza a cosa serve
+<jester-> ignoranza*
+<adolrtl> per vedere i canali satellitari su pc
+<jester-> adolrtl: per satellite non saperi, per la digitale ne ho una che funza si serie
+<jester-> gli serve il firmware e qualche lib per kaffeine
+<adolrtl> a peccato
+<jester-> c'era leopesto che usava il satellite ma non si vede da un bel po
+<adolrtl> ok grazie
+<francescone> come mai non mi fa inviare i file dal computer al telefonino con il gestore bluetooth di default su ubuntu 12.04? devo scaricare qualche pacchetto aggiuntivo o cosa? grazie. :-)
+<Kimitsu> jester ?
+<accendino> esco
+<accendino> devo riavviare
+<DD3my> francescone, hai gia controllato il forum di ubuntu?
+<francescone> DD3my si, comunque, ho risolto mettendo un pennino bluetooth solo che mi fa inviare i file dal telefonino al PC ma non viceversa. Come mai?
+<DD3my> non saprei francescone,
+<DD3my> pero c'è questa guida, provala per vedere se funziona o meno
+<DD3my> http://marcosbox.blogspot.it/2010/10/ubuntu-1010-impossibile-ricevere-file.html
+<francescone> DD3my ok grazie. Proverò anche spiare di più sul web. :-)
+<DD3my> francescone, figurati pero rimani in linea
+<DD3my> forse ho trovato una soluzione :)
+<francescone> Ah ok, grazie mille. Praticamente, non sto usando il gestore di default di Ubuntu ma ho scaricato blueman che, secondo me è più buono. Ora, come ti dicevo prima, i file me li fa inviare dal telefonino al PC ma non viceversa. Secondo me c'è da scaricare qualche pacchetto e non lo so. :-)
+<DD3my> francescone, allora le opzioni sono due, una è quella di installare un programma come hai fatto tu per sfuggire da questo bug, e la seconda è quella di esplorare il tuo cell tramite pc, come se fosse in remoto
+<meeen> ciao a tutti
+<meeen> ho xp virtualizzato ma non si collega a internet che posso fare? grazie
+<francescone> DD3my ho provato la seconda che hai detto ma non funziona bene. Dai fa niente, riproverò domani con calma tanto il bluetooth non è urgente. :-)
+<francescone> Grazie DD3my. Gentilissimo. :-)
+<DD3my> francescone, è sempre meglio risolvere questi piccoli problemi
+<DD3my> comunque figurati
+<DD3my> io ho risolto cosi, accedo da pc come se fosse in remoto e non ci sono problemi
+<DD3my> anzi credo che sia anche piu comodo
+<francescone> Comunque ho letto anche io che è un bug di bluez?
+<francescone> Forse è stato pure segnalato su launchpad, devo darci un'occhiata.
+<DD3my> usa il forum di ubunt
+<DD3my> e lascia un post li
+<DD3my> segnato come bug
+<francescone> Ok. :-)
+<meeen> ho xp virtualizzato ma non si collega a internet che posso fare? grazie
+<DD3my> meeen, che programma hai usato per virtualizzare xp?
+<meeen> virtualbox
+<jester-> meeen: quale vbox
+<meeen> quello del sito ufficiale
+<jester-> meeen: devi installare le addons e le exenzion
+<jester-> meeen: usa la connessione dell'ost quindi una volta collegato l'host collegato anche il client e settalo in nat
+<meeen> le extension sono installate e anche guest addition
+<meeen> è già settato in nat
+<jester-> meeen: se è collegato host è collegato anche il client a internet
+<meeen> dovrebbe essere così...qui mi dice nessun accesso alla rete
+<DD3my> meeen, http://ubuntrucchi.wordpress.com/2009/03/09/installare-le-guest-additions-di-virtualbox-2x/
+<jester-> meeen: mettilo in bridge
+<meeen> provo
+<meeen> non si collega
+<accendino> salve a tutti
+<accendino> grazie jester-
+<jester-> accendino: a posto?
+<accendino> sisi
+<accendino> almeno sembra
+<jester-> bene
+<jester-> gira la ventola?
+<accendino> no
+<accendino> però l'aggiornamento è servito
+<accendino> come posso fare adesso per la ventola
+<accendino> o magari domani
+<accendino> ero tornato anche e soprattutto per ringraziarti
+<jester-> accemn
+<jester-> accendino: la ventola non deve girare per forza, hai installato flash?
+<accendino> si quello che già stava penso sia aggiornato
+<jester-> accendino: vai su youtube e guarda un paio di video, vredrai cche sentirai la ventola girare
+<accendino> sto facendo
+<accendino> jester- qui non parte la ventolina
+<jester-> accendino: sicuro? il di sopra del pc dovrebbe scottare
+<jester-> sarebbe gia andato in blocco
+<accendino> non si sente nessuna ventola
+<accendino> manco poco
+<jester-> il pc scotta?
+<jester-> accendino: uname -r
+<accendino> non eccessivamente
+<jester-> accendino: avrà una ventola silenziosa
+<accendino> http://pastebin.ubuntu.com/1093929/
+<jester-> accendino: ok è aggiornato
+<accendino> dici che se è qualcosa parte ?
+<jester-> accendino: non ci fosse raffreddamento intel disattiva la cpu
+<jester-> vedi il video che si pianta
+<accendino> ho capito vabbè grazie ancora se è qualcosa torno
+<accendino> ora vado buon proseguimento a tutti
+<accendino> ciao jester-
+<jester-> notte
+<accendino> sei stato disponibilissimo
+<accendino> grazie assai
+<accendino> ciao

@@ -1,0 +1,552 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+  "sha256": "611bcf51961c97623260b345a4f5c119b608095ed24975f0cd1e5fb9929166dd",
+  "bytes": 601086,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 601086,
+  "bodyOffset": 0,
+  "bodyChars": 601086,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7835,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6256,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 64,
+  "surfaces": 100,
+  "referentEvents": 13,
+  "distinctReferents": 11,
+  "examined": true,
+  "edgesFound": 9,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 4,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 12
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 9,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 11,
+  "excerptOk": 11,
+  "rawChecked": 11,
+  "rawOk": 11,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 9,
+  "heard": 9,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "such|was|the task i set myself",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Such was the task I set myself",
+    "subject": "Such",
+    "verb": "was",
+    "object": "the task I set myself",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#1117-1148",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "Such was the task I set myself."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "whilst i|was|working upon the case of lady alice lisle",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "whilst I was working upon the case of Lady Alice Lisle",
+    "subject": "whilst I",
+    "verb": "was",
+    "object": "working upon the case of Lady Alice Lisle",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#2053-2271",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "I discovered an allusion to the case of Charles the Bold and Sapphira Danvelt in Macaulay's “History of England”--quoted from an old number of the “Spectator”--whilst I was working upon the case of Lady Alice Lisle."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that cesare borgia|was|the murderer",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that Cesare Borgia was the murderer",
+    "subject": "that Cesare Borgia",
+    "verb": "was",
+    "object": "the murderer",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#3265-3508",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "In the “Cambridge Modern History” our most authoritative writers on this epoch have definitely pronounced that there is no evidence acceptable to historians to support the view current for four centuries that Cesare Borgia was the murderer."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the name of cesare borgia|was|first associated with it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the name of Cesare Borgia was first associated with it",
+    "subject": "the name of Cesare Borgia",
+    "verb": "was",
+    "object": "first associated with it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#3556-4357",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "Here let it suffice to say that it was not until nine months after the deed that the name of Cesare Borgia was first associated with it; that public opinion had in the mean time assigned the guilt to a half-dozen others in succession; that no motive for the crime is discoverable in the case of Cesare; that the motives advanced will not bear examination, and that they bear on the face of them the stamp of having been put forward hastily to support an accusation unscrupulously political in purpose; that the first men accused by the popular voice were the Cardinal Vice-Chancellor Ascanio Sforza and his nephew Giovanni Sforza, Tyrant of Pesaro; and, finally, that in Matarazzo's “Chronicles of Perugia” there is a fairly detailed account of how the murder was perpetrated by the latter."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "a fairly detailed account of how the murder|was|perpetrated by the latter",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "a fairly detailed account of how the murder was perpetrated by the latter",
+    "subject": "a fairly detailed account of how the murder",
+    "verb": "was",
+    "object": "perpetrated by the latter",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#3556-4357",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "Here let it suffice to say that it was not until nine months after the deed that the name of Cesare Borgia was first associated with it; that public opinion had in the mean time assigned the guilt to a half-dozen others in succession; that no motive for the crime is discoverable in the case of Cesare; that the motives advanced will not bear examination, and that they bear on the face of them the stamp of having been put forward hastily to support an accusation unscrupulously political in purpose; that the first men accused by the popular voice were the Cardinal Vice-Chancellor Ascanio Sforza and his nephew Giovanni Sforza, Tyrant of Pesaro; and, finally, that in Matarazzo's “Chronicles of Perugia” there is a fairly detailed account of how the murder was perpetrated by the latter."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "a strong motive for the murder|was|not lacking",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "a strong motive for the murder was not lacking",
+    "subject": "a strong motive for the murder",
+    "verb": "was",
+    "object": "not lacking",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#4514-4605",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "And it is undeniable that in Sforza's case a strong motive for the murder was not lacking."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the case of “the night of kirk|o'|field",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the case of “The Night of Kirk o' Field",
+    "subject": "the case of “The Night of Kirk",
+    "verb": "o'",
+    "object": "Field",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5259-5441",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "In the case of “The Night of Kirk o' Field,” on the other hand, I do not think any apology is necessary for my reconstruction of the precise manner in which Darnley met his death."
+     },
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5442-5747",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "The event has long been looked upon as one of the mysteries of history--the mystery lying in the fact that whilst the house at Kirk o' Field was destroyed by an explosion, Darnley's body was found at some distance away, together with that of his page, bearing every evidence of death by strangulation."
+     },
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#7304-7359",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "THE NIGHT OF KIRK O' FIELD--The Murder of Darnley III."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my reconstruction of the precise manner in which darnley|met|his death",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "my reconstruction of the precise manner in which Darnley met his death",
+    "subject": "my reconstruction of the precise manner in which Darnley",
+    "verb": "met",
+    "object": "his death",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5259-5441",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "In the case of “The Night of Kirk o' Field,” on the other hand, I do not think any apology is necessary for my reconstruction of the precise manner in which Darnley met his death."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "darnley's body|was|found at some distance away",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Darnley's body was found at some distance away",
+    "subject": "Darnley's body",
+    "verb": "was",
+    "object": "found at some distance away",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5442-5747",
+      "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+      "text": "The event has long been looked upon as one of the mysteries of history--the mystery lying in the fact that whilst the house at Kirk o' Field was destroyed by an explosion, Darnley's body was found at some distance away, together with that of his page, bearing every evidence of death by strangulation."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 9,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "a fairly detailed account of how the murder|was|perpetrated by the latter",
+   "subject": "a fairly detailed account of how the murder",
+   "verb": "was",
+   "object": "perpetrated by the latter",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#3556-4357",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "Here let it suffice to say that it was not until nine months after the deed that the name of Cesare Borgia was first associated with it; that public opinion had in the mean time assigned the guilt to a half-dozen others in succession; that no motive for the crime is discoverable in the case of Cesare; that the motives advanced will not bear examination, and that they bear on the face of them the stamp of having been put forward hastily to support an accusation unscrupulously political in purpose; that the first men accused by the popular voice were the Cardinal Vice-Chancellor Ascanio Sforza and his nephew Giovanni Sforza, Tyrant of Pesaro; and, finally, that in Matarazzo's “Chronicles of Perugia” there is a fairly detailed account of how the murder was perpetrated by the latter."
+    }
+   ]
+  },
+  {
+   "id": "a strong motive for the murder|was|not lacking",
+   "subject": "a strong motive for the murder",
+   "verb": "was",
+   "object": "not lacking",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#4514-4605",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "And it is undeniable that in Sforza's case a strong motive for the murder was not lacking."
+    }
+   ]
+  },
+  {
+   "id": "darnley's body|was|found at some distance away",
+   "subject": "Darnley's body",
+   "verb": "was",
+   "object": "found at some distance away",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5442-5747",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "The event has long been looked upon as one of the mysteries of history--the mystery lying in the fact that whilst the house at Kirk o' Field was destroyed by an explosion, Darnley's body was found at some distance away, together with that of his page, bearing every evidence of death by strangulation."
+    }
+   ]
+  },
+  {
+   "id": "my reconstruction of the precise manner in which darnley|met|his death",
+   "subject": "my reconstruction of the precise manner in which Darnley",
+   "verb": "met",
+   "object": "his death",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5259-5441",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "In the case of “The Night of Kirk o' Field,” on the other hand, I do not think any apology is necessary for my reconstruction of the precise manner in which Darnley met his death."
+    }
+   ]
+  },
+  {
+   "id": "such|was|the task i set myself",
+   "subject": "Such",
+   "verb": "was",
+   "object": "the task I set myself",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#1117-1148",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "Such was the task I set myself."
+    }
+   ]
+  },
+  {
+   "id": "that cesare borgia|was|the murderer",
+   "subject": "that Cesare Borgia",
+   "verb": "was",
+   "object": "the murderer",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#3265-3508",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "In the “Cambridge Modern History” our most authoritative writers on this epoch have definitely pronounced that there is no evidence acceptable to historians to support the view current for four centuries that Cesare Borgia was the murderer."
+    }
+   ]
+  },
+  {
+   "id": "the case of “the night of kirk|o'|field",
+   "subject": "the case of “The Night of Kirk",
+   "verb": "o'",
+   "object": "Field",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5259-5441",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "In the case of “The Night of Kirk o' Field,” on the other hand, I do not think any apology is necessary for my reconstruction of the precise manner in which Darnley met his death."
+    },
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#5442-5747",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "The event has long been looked upon as one of the mysteries of history--the mystery lying in the fact that whilst the house at Kirk o' Field was destroyed by an explosion, Darnley's body was found at some distance away, together with that of his page, bearing every evidence of death by strangulation."
+    },
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#7304-7359",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "THE NIGHT OF KIRK O' FIELD--The Murder of Darnley III."
+    }
+   ]
+  },
+  {
+   "id": "the name of cesare borgia|was|first associated with it",
+   "subject": "the name of Cesare Borgia",
+   "verb": "was",
+   "object": "first associated with it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#3556-4357",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "Here let it suffice to say that it was not until nine months after the deed that the name of Cesare Borgia was first associated with it; that public opinion had in the mean time assigned the guilt to a half-dozen others in succession; that no motive for the crime is discoverable in the case of Cesare; that the motives advanced will not bear examination, and that they bear on the face of them the stamp of having been put forward hastily to support an accusation unscrupulously political in purpose; that the first men accused by the popular voice were the Cardinal Vice-Chancellor Ascanio Sforza and his nephew Giovanni Sforza, Tyrant of Pesaro; and, finally, that in Matarazzo's “Chronicles of Perugia” there is a fairly detailed account of how the murder was perpetrated by the latter."
+    }
+   ]
+  },
+  {
+   "id": "whilst i|was|working upon the case of lady alice lisle",
+   "subject": "whilst I",
+   "verb": "was",
+   "object": "working upon the case of Lady Alice Lisle",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg2636_Faust__German_.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg2636_Faust__German_.txt#2053-2271",
+     "ref": "01-literature-books/gutenberg/pg2636_Faust__German_.txt",
+     "text": "I discovered an allusion to the case of Charles the Bold and Sapphira Danvelt in Macaulay's “History of England”--quoted from an old number of the “Spectator”--whilst I was working upon the case of Lady Alice Lisle."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:34.285Z"
+ }
+}

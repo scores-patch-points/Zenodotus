@@ -1,0 +1,263 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#xubuntu"
+date: "2014-3-15"
+lang: "en"
+messages: "254"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<xubuntu355> what program should i use to add a windows partition after a fresh install of xubuntu?
+<holstein> xubuntu355: i use gparted.. but, i would probably use the windows installer if it doesnt wipe the drive
+<perseids> i have a quick easy question, i wiped the drive and did an full Ubuntu install, can i still resize the linux partitions and add a windows 7 install?
+<holstein> perseids: nothing about linux or ubuntu is stopping you
+<holstein> https://help.ubuntu.com/community/RecoveringUbuntuAfterInstallingWindows will likely be necessary
+<holstein> you can use https://help.ubuntu.com/community/Boot-Repair as well
+<holstein> gparted will resize
+<perseids> hrmm
+<perseids> should there be any specific reason why windows should be at the front of the drive?
+<holstein> perseids: no
+<holstein> perseids: put it where you want/need it to be
+<perseids> at this point i have a freh xubuntu install
+<perseids> and everything is backed up
+<perseids> reinstalling with windows first i can do real quick
+<holstein> perseids: its a fresh install..
+<perseids> would add another hour
+<holstein> perseids: the hour for installing windows happens regardless.. then configuring
+<holstein> you might want to just isntall windows, let it wipe the drive.. and let the xubuntu installer setup the dual boot for you.. that wont take long
+<perseids> i was just wondering if there was going to be issues resizing the partitions with windows at the end
+<holstein> perseids: i dont have issues..
+<holstein> perseids: grub doesnt care where the partition is.. windows doesnt care.. if you do, put it where you want
+<perseids> whats a good list of software to use
+<perseids> burning dvds
+<perseids> office work
+<perseids> which ones are the best now?
+<perseids> music player
+<holstein> perseids: "good" is always a matter of opinion and use case.. use what is included, and research and try what you like
+<perseids> what should i use to partition the drive to make room for windows?
+<holstein> perseids: i have suggested, and i personally use gparted.. gparted is what i use, and most guides will suggest.. you should use what you are comfortable using
+<perseids> going with clementine for music playr
+<xubuntu837> hello to all
+<xubuntu837> i have a question i hope someone can answer for me
+<xubuntu837> i installed xubuntu and cannot find my volume button
+<holstein> xubuntu837: should just be down by the time.. is audio working? did you do any testing from a live CD before installing? have you referred to..
+<holstein> !audio
+<ubottu> If you're having problems with sound, click the Volume applet, then Sound Preferences, and check your Volume, Hardware, Input, and Output settings.  If that fails, see https://help.ubuntu.com/community/Sound - https://help.ubuntu.com/community/SoundTroubleshooting - http://alsa.opensrc.org/DmixPlugin - For playing audio files,  see !players and !mp3.
+<holstein> i use pavucontrol
+<xubuntu837> i do have sound
+<xubuntu837> just not able to adjust it inside ubuntu only in the amorak app
+<xubuntu837> i dont see the volume applet
+<holstein> xubuntu837: the above resources should help.. i use pavucontrol, which you can use as well
+<xubuntu837> ok i found it in xfc - multimedia  - pulseaudiocontrol
+<skippezot> test
+<holstein> skippezot: its working.. just ask if you have a question :)
+<skippezot> all right thx
+<skippezot> kinda new to ubuntu and been playing around with diffrent distro's on my system
+<skippezot> seems the only one wich works decent is ubuntu studio
+<skippezot> how come the low latency kernel seems to be more responsive
+<holstein> we mostly just start with xubuntu and add packages.. as well as that kernel
+<skippezot> but the low latency doesn't seem to use so much the hard drive as a plain xubuntu or an xfce session in ubuntu
+<holstein> skippezot: you can look and see what the sizes are.. the hard drive space the kernel uses will be minimal
+<holstein> any kernel
+<skippezot> sorry didn't explain very wel
+<holstein> if you mean resources, it really shouldnt be much different.. though, some folks find issues with the lowlatency kernel
+<skippezot> i don't mean space but reading from or to the harddrive
+<holstein> i usually suggest, if you dont need lowlatency, just use the generic one.. but, if you are enjoying that kernel, go for it
+<holstein> you can use it in any ubuntu, since its in the default repos
+<holstein> skippezot: that kernel shouldnt have anything to do with disk i/o
+<skippezot> that's what i read also and that's why I'm wondering why it seems to run better
+<holstein> skippezot: just that, likely friend.. "seems"
+<skippezot> ok
+<holstein> skippezot: as i said, if you are enjoying it, great.. and is something different? could be.. could be configuration or something you did at setup
+<holstein> or, ubuntustudio 13.10 vs ubuntu 12.04.. vs xubuntu 13.04. for example
+<skippezot> only used 12.04
+<skippezot> but like i said I've been playing around much without much knowledge so....
+<holstein> back then, i think there may be an older version.. so, you could be using an older kernel for lowlatency, and something about the newer generic one has issues with your hardware
+<skippezot> OK
+<skippezot> i'm just wandering cause I'd like to reinstall my system so maybe I could go for plain xubuntu cause I don't realy need the low latency
+<skippezot> I also installed the gnome desktop which probably wasn't such a smart move
+<skippezot> seems to be interfering with xfce session
+<perseids> so whats essectial sofware for liunx now
+<fibz_> i dont understand the question
+<perseids> ubuntu software center crashes alot
+<perseids> is there an alternative?
+<fibz_> i just use apt-get in terminal most of the time
+<fibz_> software center is nice for when you dont necessarily know what your looking for
+<fibz_> perseids, there is also Synaptic Package Manager availavle under the app launcer menu -> system -> Synaptic
+<dna6a> if i am updating the ram on my xubuntu 2 gb ddr with 16 gb ddr i dont have to change anything in bios correct?
+<dna6a> ive never had a linux os build before just thought id check in advance, i think it should all be cool just to reaplce and switch back on though..
+<TheSheep> dna6a: whether you need to change anything in bios or not is irrelevant to what operating system you are using, better ask in ##hardware and tell them what computer you have
+<dna6a> ty
+<dna6a> how do I check if this ubuntu is 64 or 32?
+<TheSheep> uname -a
+<TheSheep> if it says x86_64, it's 64
+<dna6a> ty
+<perseids> what are some must have apps for Xbuntu?
+<dna6a> for me cgminer :P
+<knome> perseids, that depends what you want to do with xubuntu
+<perseids> is ubuntu software center the only place for ubuntu packages?
+<knome> you can use any package management software
+<knome> other options are synaptic (another GUI) or apt-get (command line tool)
+<perseids> which gui package manger is better
+<perseids> i use to be hardcore command line
+<perseids> im looking for ease of use
+<perseids> no bugs
+<perseids> everything just works
+<knome> "better" is subjective
+<knome> it depends what you are after...
+<knome> synaptic allows more fine-grained management than USC, if you are asking about that
+<starrats> good morning everyone, a question please, is there a firewall download in the software 'store' on ubuntu
+<bekks> starrats: ufw is already installed.
+<AussieDownUnder> starrats, lol, I meant ask more specifically about "apparmor", you can definitely find that by searching its name.
+<bekks> apparmor isnt a firewall.
+<cfhowlett> !firewall|starrats, f
+<ubottu> starrats, f: Ubuntu, like any other Linux distribution, has built-in firewall capabilities. The firewall is managed using the 'ufw' command - see https://help.ubuntu.com/community/UFW | GUI frontends such as Gufw also exist. | An alternative to ufw is the 'iptables' command - See https://help.ubuntu.com/community/IptablesHowTo
+<AussieDownUnder> arrith, myself & starrats, were discussing something to do with it & irc's. Arrith you mung get over here
+<starrats> ah ok but when I sudo ufw status te terminal response came back 'inactive' so that is why I was asking the questions about installing one, that is all
+<bekks> starrats: It is installed, but inactive.
+<baizon> starrats: there is a nice gui for the ufw, its called "gufw"
+<bekks> starrats: Anf ufw is just a frontend for iptables, which are installed too.
+<baizon> install it if you want a gui
+<knome> quoting the documentation...
+<knome> " More advanced users may wish to use the UFW firewall, which is installed, but not enabled, in the default Xubuntu installation. "
+<starrats> ah okay
+<starrats> so getting a reply on term saying 'inactive ' after sudo ufw status is okay?
+<starrats> just curious
+<knome> that's the expected result.
+<knome> until you activate ufw.
+<starrats> thanks knome
+<bluesabre> When you say "more advanced users", everybody becomes one :)
+<knome> yep.
+<xubuntu700> Hello helpers
+<xubuntu700> i have a problem with my second monitor
+<xubuntu700> i am not able to acces it anymore
+<xubuntu700> i just tried a live cd with same xubuntu version as it is installed and there it works fine
+<xubuntu700> its a ibm lenovo thinpad x60
+<baizon> xubuntu700: which graphics drivers are you using?
+<xubuntu700> its an intel GMA950 chipset
+<xubuntu700> so not additional drivers
+<xubuntu700> I have an additional, maybe related, problem
+<xubuntu700> after normal startup and normal login, I only get a black screen
+<xubuntu700> I just solved it by changing the boot option quiet splash to nomodeset
+<arrith> AussieDownUnder: ah eh
+<arrith> ufw is good, and i thought was enabled by default
+<arrith> but i guess not
+<arrith> which is interesting
+<arrith> any thoughts on enabling ufw by default?
+<xubuntu700> what is ufw?
+<AussieDownUnder> arrith, starrats, What distro version is starrats running? That might help first
+<AussieDownUnder> Universal Fighting Warriors
+<xubuntu700> thats probably not related to my problem ^^
+<baizon> xubuntu700: no its not
+<xubuntu700> am i in the wrong chanel?
+<xubuntu700> its the first time i use irc
+<baizon> xubuntu700: not really, i personally never had an intel graphics card so i cant help :(
+<AussieDownUnder> Lol sorry ignore me, I was trolling. What did you come here for?
+<baizon> xubuntu700: but wait and maybe someone else can help you
+<xubuntu700> a problem with my second monitor on xubuntu
+<knome> xubuntu700, what does 'xrandr -q' on the terminal tell you?
+<knome> !pastebin | xubuntu700, please use pastebin:
+<ubottu> xubuntu700, please use pastebin:: For posting multi-line texts into the channel, please use http://paste.ubuntu.com | To post !screenshots use http://imagebin.org/?page=add | !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+<xubuntu700> its working fine with the live system of the installed distrobution
+<xubuntu700> failed to get size of gamma for output default
+<AussieDownUnder> Hmmm, I'm total noob. But have you run any of the following lately? 'sudo apt-get update', followed by 'sudo apt-get upgrade'?
+<xubuntu700> of course ^^
+<starrats> AussieDownUnder ^^^^^
+<starrats> of course i have, everyday, just did another one this morning, plus I have sent in bug reports to ubuntu-bug on terminal
+<AussieDownUnder> More evidence that I am total noob man mr inexperience.
+<xubuntu700> http://paste.ubuntu.com/7095170/
+<xubuntu700> (result of xrandr -q)
+<knome> xubuntu700, doesn't look like the other monitor is recognised
+<xubuntu700> I guess that too ^^
+<xubuntu700> if i run this command on my notebook (other one) i get the second screen with the correct resolution
+<xubuntu700> (the ThinkPad is my wife's, and everytime if something is not working correctly, its with hers^^)
+<xubuntu700> the strange thing is, that it is working fine with the live system
+<xubuntu700> and the login screen is also displayed on the second monitor, as long as i dont set nomodeset as bootoption
+<xubuntu700> but then is after the login just a blank black screen and the second screen doesn't get a signal anymore
+<pawell> Hi, I have a little problem, when I try to execute program by using the whole path like /opt/.../aap it doesn't work, I get "no file or driectory bleble", when I go there by cd /opt cd ble ble and then ./aap It works
+<bekks> pawell: That "bleble" is important.
+<pawell> bekks: I get exacly "No such file or directory"
+<bekks> Then the full path you are specifying is wrong.
+<baizon> pawell: run it like this: ./home/user1/script.sh
+<bekks> Does it contain whitespaces?
+<pawell> The full path is ok because I'm using tab when I type it
+<pawell> -bash: /opt/android-studio/sdk/platform-tools/adb: No such file or directory         the whole path
+<bekks> whats the output of "ls -lha /opt/android-studio/sdk/platform-tools/adb"
+<pawell> -rwxrwxrwx 1 pawel pawel 1,2M sty 17 22:31 /opt/android-studio/sdk/platform-tools/adb
+<baizon> pawell: how do you try to run it from antoher path? post the command-line pls
+<pawell> baizon: "/opt/android-studio/sdk/platform-tools/adb"
+<pawell> another interesting thing, when I'm in folder I write ./adb it doesn't work, when I write adb it works
+<baizon> pawell: so maybe it got installed globally
+<bekks> type: "which adb"
+<pawell> /usr/bin/adb
+<bekks> pawell: Is /opt on a separate filesystem?
+<pawell> no
+<pawell> I have partirion for home : ext4 and partition for / : ext4
+<pawell> bekks: I mean, one seperate parition for /home and one seperatre partition for /
+<pawell> bekks: but both ext4, I'm not sure what you mean but seperate filesystem
+<bekks> pawell: / is a separate filesystem, as well as /home in your case.
+<pawell> bekks: ok, is it a reason here ?
+<bekks> pawell: No.
+<pawell> Thank you for your helps, the problem is cause because my system doesn't handle with 32 bit programs
+<baizon> :D
+<bekks> pawell: How did yo managed to restrict your ubuntu like that?
+<pawell> bekks: I didn't do almost anything in my ubuntu, I installed it yesterday.
+<dna6a> i lost the top bar in ubunto
+<holstein> dna6a: i usually suggest using a live CD or a new user to experiement around with the UI.. but, you can always remove the config for the user and get the default settings back.. you can also add whatever panels you like/need and do it that way
+<Unit193> !panels
+<ubottu> Did your panels disappear? Press alt+f2 and run: xfce4-panel | See also: https://help.ubuntu.com/community/XubuntuPanels | Want to theme your panels? See http://xubuntu.wordpress.com/2007/10/12/howto-set-a-background-image-for-your-panel/
+<Unit193> If only the top, you removed panel 0.  rm .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+<dna6a> i lost the bottom part also
+<dna6a> launching  xfce4-panel didnt restore anything :/
+<holstein> dna6a: you can remove everything from the users config and get back to default.. no worries
+<dna6a> xfce4-panel
+<dna6a> i cant launch this?
+<holstein> dna6a: doesnt matter what panel.. and id say the issue isnt that you havent launched it, its that you have altered or removed it
+<holstein> dna6a: you can add them back, or keep removing the config files you have and relogging til you get the default setup
+<dna6a> rm -rf ~/.cache/sessions   do i run this from console?
+<holstein> dna6a: i dont rm -rf personally
+<holstein> dna6a: i see no advantage in it.. i'll just go in and move it out of the way, and test
+<holstein> dna6a: and, you'll need to move more than that.. not just the sessions.. the config for the panel
+<dna6a> how to logout using windows keyboard commands?
+<holstein> dna6a: if you are using ubuntu, there is a menu item
+<holstein> dna6a: in most any linux, you can go to tty, and "sudo reboot" if thats what you are trying to do
+<holstein> !tty | dna6a
+<ubottu> dna6a: To get to the TTY terminals 1-6, use the keystroke ctrl + alt + F1-F6 respectively (Alt+F7 will get you back to your graphical login).  To change the resolution for your TTY, see https://help.ubuntu.com/community/ChangeTTYResolution
+<dna6a> ive lost the panels though
+<dna6a> im trying to fix it but i need to logout
+<holstein> dna6a: ok.. take a minute to read, and process what i have suggested above.. since that will reboot the machine and log you out and back in
+<dna6a> that fixed it
+<dna6a> ill add a new user now
+<holstein> dna6a: for the record.. nothing was broken
+<dna6a> well i reverted my mistake
+<holstein> resetting the configuration to a default state that you prefer
+<xubuntu847> How do I install Clamtk 5.0 or 5.1?
+<cfhowlett> !clam
+<cfhowlett> !clamtk
+<cfhowlett> !clamav
+<krytarik> xubuntu847: From here: http://code.google.com/p/clamtk/
+<xubuntu847> Thank you.  I'm a newbe and don't know which package to download.
+<xubuntu847> Can I install using terminal?
+<krytarik> xubuntu847: I'd use GDebi for that.
+<xubuntu847> Ok, I'll install GDebi
+<xubuntu847> I first tried the xubuntu software center for Clamtk but was way outdated.
+<Arpad2> after start the sound is muted, how can be this changed?
+<acalbaza> is there a better way to manage menu items?  main menu does not want to allow me to add additional menu items.  anyone know of a fix for this?
+<freshmint> hey i installed xubuntu 14.04 in a virtual box however i have problems installing the guest additions
+<freshmint> can i do that via package manager
+<bekks> No.
+<freshmint> hmm, well installing guest box additions with host VM does not work...
+<bekks> You have to use virtualbox 4.3.8 for being able to install the guest additions in a 14.04 guest.
+<freshmint> okay that might be it let me control my version of virtualbox
+<freshmint> hmm i have 4.1.12. which comes with ubuntu 12.04
+<freshmint> can i manually update that...
+<bekks> Just follow the installation instructions on www.virtualbox.org
+<perseids> xubuntu runs so smooth
+<freshmint> bekks, i will try grabbing it from the web
+<freshmint> bekks, ok i got the latest virtualbox from the website, though where do i find the option to mount the guestboxiso
+<freshmint> damn i think that is in the menu bar which is not shown in ubuntu 12.04... omg
+<peyam> hi
+<peyam> When is 14.04 arrived?
+<krytarik> peyam: Planned on April 17th, also see: https://wiki.ubuntu.com/TrustyTahr/ReleaseSchedule
+<peyam> great
+<peyam> Rendering is a issue

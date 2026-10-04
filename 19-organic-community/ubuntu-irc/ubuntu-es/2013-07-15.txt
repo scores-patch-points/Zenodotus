@@ -1,0 +1,477 @@
+---
+source: "Ubuntu IRC logs"
+channel: "#ubuntu-es"
+date: "2013-7-15"
+lang: "es"
+messages: "468"
+license: "Publicly served by Canonical; real-time support chat"
+---
+
+<firenetcorp> hola
+<firenetcorp> alguien me puede ayudar por favor
+<firenetcorp> me pueden ayudar con mi ubuntu 13.04
+<SonikkuAmerica> !crosspost
+<kubot> Please don't ask the same question in multiple Ubuntu channels at the same time. Many helpers are in more than one channel and it's not fair to them or the other people seeking support.
+<SonikkuAmerica> Favor de no preguntar en canales multiples Ubuntu al mismo tiempo.
+<SonikkuAmerica> Muchas ayudantes están en más de un canal y no tiene razón para ellos o a la otra gente que buscan para soporte.
+<SonikkuAmerica> firenetcorp: ¿Puedes tener detalles?
+<SonikkuAmerica> !detalles
+<kubot> Necesitamos detalles si quieres que te ayudemos. "No funciona" no es suficiente nunca. Los ejemplos y mensajes de error facilitan mucho la labor ;)
+<SonikkuAmerica> *Puedo
+<firenetcorp> si claro que si
+<firenetcorp> gracias
+<firenetcorp> mi problema se simple
+<firenetcorp> instale ubuntu 13
+<firenetcorp> en mi equipo todo estaba bien
+<firenetcorp> pero la preste y la desconfigurado
+<firenetcorp> del audio ya no se escucha nada
+<firenetcorp> fui a la opcion sonido
+<firenetcorp> y en donde dice reproducir attravez de
+<firenetcorp> esta vacio
+<firenetcorp> como le hago
+<firenetcorp> para que pueda tener con que reproducir  otra vez si alguien me ayuda por favor
+<firenetcorp> holaaaaaaaaaaa alguien me puede ayudar con mi ubuntu por favor
+<fzeta> dices que la has prestado y la han desconfigurado? firenetcorp
+<firenetcorp> sip
+<firenetcorp> la preste y la desconfiguraron del audio nada mas
+<fzeta> firenetcorp: pero sí te has ido a la configuración de sonido, cómo es que no  puedes arreglarlo?
+<firenetcorp> por que
+<firenetcorp> donde dice sonido
+<firenetcorp> accedes y vez que luego luego
+<firenetcorp> te sale donde dice salida y abajo dice
+<firenetcorp> reproducir sonido atravez de
+<firenetcorp> ahi antes aparecia el dispositivo pero ahora esta vacio
+<firenetcorp> como puedo volver a añadirlo
+<firenetcorp> alguien sabe....::?
+<fzeta> que dices? actualiza, reinicia y prueba a ver..
+<firenetcorp> no
+<fzeta> no que?
+<firenetcorp> es que solo quiero añadir el dispositivo donde dice reproducir sonido atravez de
+<firenetcorp> y ya
+<fzeta> por eso mismo
+<firenetcorp> no se como añadirlo y como hacerle es lo unico por que todo el sistema funciona de manera impecable
+<fzeta> que has hecho para remediarlo? pues habré una terminal y teclea: sudo apt-get update && sudo apt-get upgrade
+<fzeta> reinicias y a ver que pasa
+<firenetcorp> no pero eso solo es para los repositorios
+<firenetcorp> y nada tiene que ver
+<firenetcorp> lo que quiero es configurar el dispositivo añadirlo
+<fzeta> has mirado el alsamixer
+<fzeta> con*
+<fzeta> ?
+<firenetcorp> no es que el problema no es el dispositivo el problema radica en que el sistema perdio el medio por el cual se reproduce
+<fzeta> con el f6 seleccionas la tarjeta de sonido
+<firenetcorp> si pero ese no es el problema amigo
+<firenetcorp> te repito el unico problema es que en donde dice sonido ya perdio el medio donde se reproduce todo tipo de sonido
+<firenetcorp> lo unico que quiero hacer es añadirlo y ya eso es todo
+<SonikkuAmerica2> firenetcorp: En Kubuntu, usamos PulseAudio
+<firenetcorp> si pero
+<firenetcorp> el mio no es compatible
+<firenetcorp> uso alsa
+<firenetcorp> pero ese no es el problema
+<firenetcorp> el unico problema es donde dice reproducir los sonidos atravez de
+<firenetcorp> antes en esa casilla aparecia la tarjeta de sonido y ahora ya no esta lo que quiero saber es como añadirla de nuevo
+<flares> hola a todos
+<flares> una consulta instalè ubuntu 13 y agreguè la maquina al dominio
+<flares> entro con un usuario cualquiera del dominio y cuando voy a usuarios en donde dice tipo ... quiero ponerlo como admin
+<flares> pero no me deja .. pese a pongo desbloquear
+<flares> alguna ayuda ? necesito dejar un usuario del dominio como admin
+<mimecar> ¿qué password pones como administrador?
+<flares> yo hice un usuario en la instalacion ...y pongo ese  pass de ese usuario
+<mimecar> ese usuario tiene permisos de administrador en la máquina?
+<flares> en group esta en root  pero tengo q hacer sudo todavia
+<flares> :/
+<mimecar> el usuario que quieres añadir en el dominio
+<mimecar> tiene permisos para usar sudo en la máquina del servidor sí o no
+<flares> no
+<flares> ya agreguè la pc al dominio cuanto te logueas podes entrar con cualquier usuario que esta en el active directory
+<flares> pero quiero hacerlo admin local en la pc
+<mimecar> tendrás que crear una cuenta en local
+<guampa> flares: agregalo al grupo sudo
+<guampa> no se si en ubuntu es sudo o wheel
+<flares> mmm como seria ?
+<guampa> usermod -aG sudo usuario
+<guampa> pero no se si es sudo o wheel en ubuntu
+<mimecar> wheel?
+<guampa> en debian es wheel
+<mimecar> ok
+<guampa> ah no, ahora es sudo tambien :)
+<guampa> ANTES era wheel :P
+<flares> lo hice
+<flares> pero por ej hago un apt-get update y me dce q el usuario no existe al grupo
+<flares> no se por q en ubuntu 13 hace esto
+<flares> en la 12 le cambias la cosa el tipo y listo aca no me deja
+<mimecar> después de añadir el usuario al grupo, has cerrado sesión?
+<flares> si
+<flares> entro como root y en usuarios no me deja cambiarlo a admin
+<mimecar> el usuario te deja usar sudo después de haber iniciado sesión de nuevo?
+<flares> hago ej
+<flares> sudo apt-get update
+<flares> me pide el pass lo pongoy dice que no existe en sudoers
+<flares> voy a instalar la version 12 y listo
+<mimecar> has comprobado si el usuario existe en el archivo?
+<flares> tiene q estar en el grupo admin y lo esta
+<flares> ya esta pongo la 12
+<flares> estoy en el trabajo no puedo perder tiempo
+<mimecar> el sistema te dice que no está en sudoers
+<mimecar> si vas justo de tiempo pon la 12
+<flares> si eso voy a hacer
+<flares> la otra cambias en admin y listo
+<flares> la 13 no se por q no te deja
+<chilicuil> buenos dias o/
+<SonikkuAmerica> \o y a ti
+<socratesxd> hola a todos
+<socratesxd> recién he instalado ubuntu 13.04 en una HP Pavillon
+<socratesxd> pero está todo mal
+<socratesxd> tengo que instalar el driver b43 y el driver privativo de nvidia
+<socratesxd> porque cuando abro el dash muestra un comportamiento extraño
+<mimecar> ya has puesto todas las actualizaciones?
+<socratesxd> además de que todos los textos en interfaces gtk se ha vuelto borroso
+<socratesxd> lamentablemente no puedo, ya que no tengo una conexión cableada
+<socratesxd> estoy hablando desde otro equipo
+<socratesxd> dispongo de una conexión inalámbrica
+<socratesxd> pero me faltan los drivers de la tarjeta inalámbrica
+<socratesxd> y... creo que tengo lag :/
+<mimecar> no puedes usar una conexión por cable?
+<mimecar> desde ningún equipo?
+<socratesxd> no
+<socratesxd> no dispongo de una ahora mismo
+<socratesxd> pero sí de una inalámbrica
+<mimecar> es complicado que instales cosas si no tienes red
+<socratesxd> no importa
+<mimecar> no tienes ninguna opción de usar una red cableada aunque sea más tarde?
+<Deckon> podrias ver si encuentra los modulos para tu tarjeta de red en .deb y pasarlos por usb a tu hp
+<mimecar> Deckon, los módulos tendrían que estar compilados para su versión del kernel
+<socratesxd> he bajado paquetes deb antes para ubuntu
+<socratesxd> y compilado cosas
+<socratesxd> ahora mismo estoy en arch, pero le he instalado ubuntu a otra máquina
+<socratesxd> y esa es mi situación
+<socratesxd> no importa, los compilaré en ubuntu
+<mimecar> la versión de ubuntu que tiene red, es la misma ?
+<Deckon> pero para hacer eso tendris que tener instalado buil-esentials
+<socratesxd> aún si tenga que bajarme el gcc y todos los paquetes que ello conlleva
+<mimecar> no te puedes bajar todas las dependencias "a mano"
+<Deckon> seria mejor ir a un cafe internet y rentar una linea
+<mimecar> socratesxd, cuando pusistes la 13.04, ¿probastes todo?
+<socratesxd> creo que synaptic puede hacer scripts para descargar paquetes
+<socratesxd> sin embargo, creo que debería instalar los drivers de la gráfica primero... porque unity está horrible
+<socratesxd> no sólo unity, todo el sistema X está bastante mal
+<socratesxd> hasta en el splashscreen
+<mimecar> ¿has llegado a probar el live cd?
+<socratesxd> ok, aquí es donde instalo el driver:
+<socratesxd> http://wireless.kernel.org/en/users/Drivers/b43#bcm43xx.2C_b43legacy.2C_b43.2C_softmac.2C..._the_full_story
+<socratesxd> mimecar, pues usé el livecd
+<mimecar> probastes que funcionara todo o instalastes directamente?
+<socratesxd> pero irresponsablemente lo instalé
+<socratesxd> aún sabiendo que las X se veía bien
+<socratesxd> digo, mal
+<socratesxd> un montón de glitches
+<mimecar> si sabes que no funciona y lo instalas...
+<mimecar> tus opciones son
+<mimecar> tener una máquina identica y compilar los drivers
+<mimecar> usar temporalmente una tarjeta wifi por usb
+<mimecar> usar una conexión por cable
+<socratesxd> creo que aquí también puedo ayudarme: https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx#b43%20-%20No%20Internet%20access
+<socratesxd> ok, creo que ahora no tengo lag
+<eliezer> hola quien me puede ayudar
+<eliezer> borre por acidente el vimrc y el vimrc-tiny
+<m4v> y?
+<atworkL0503> Hola buenas tardes
+<Ing-Francisco> 0/ hola a todos =3
+<elhoir> buenasss
+<derzu> Hola alguien sabe como instalar aircrack en ubuntu 12.04
+<mimecar> tendrás que buscar por la red, aircrack es un programa que no tiene soporte
+<mimecar> tienes live cd que lo llevan incluido de serie
+<derzu> Tengo un live cd que bajé
+<derzu> cuando activo el cubo 3d con compiz solo puedo cambiar a dos escritorios
+<derzu> como se cambia a los demás
+<mimecar> añade más escritorio en la configuración de compiz
+<derzu> además no sale la forma del cubo
+<derzu> se ve plano
+<mimecar> para un cubo necesitas más de dos escritorios
+<derzu> tengo cuatro
+<derzu> pero no se ve la forma de cubo
+<derzu> y solo cambia entre dos de ellos
+<mimecar> en compiz puedes acceder a los cuatro?
+<derzu> }como es eso?
+<derzu> donde veo eso?
+<mimecar> los escritorios que puede usar compiz
+<mimecar> no son los que tiene el sistema
+<derzu> entiendo
+<derzu> como agrego en compiz escritorios?
+<mimecar> busca en la herramienta de configuración de compiz
+<mimecar> no se si se instala con compiz
+<derzu> en preferencias?
+<derzu> activar integración con el entorno de escritorio
+<derzu> ¿?
+<mimecar> hace tiempo que no uso compiz
+<mimecar> pero tienes que tener una opción para indicarle el número de escritorios que puede usar
+<derzu> En ubuntu 12.04 existe un salvapantalla, no lo encuentro?
+<derzu> se tiene que instalar a parte?
+<mimecar> en gnome 3 me parece que no viene por defecto
+<mimecar> puedes instalar xscreensaver
+<derzu> ok
+<derzu> gracias
+<ariel> buena tarde
+<ariel> y noche
+<Guest86655> necesitando un favor no me funciona el inicio grafico de ubuntu
+<Guest86655> como poder solucionar ese problema
+<mimecar> dando más detalles
+<Guest86655> saludos mimacar
+<Guest86655> soy arielsanflo
+<mimecar> no me cambies el nick
+<Souchiro> o.o
+<Souchiro> lol
+<Souchiro> mimacar
+<Souchiro> xD
+<Guest86655> a pues la idea es que el iniciar mi ubuntiu no me sale el inicio grtafico si ne me sale en negro y  todos los ok
+<Souchiro> Guest86655, trata de iniciar con un kernel anteriror
+<Souchiro> ese error suele pasar en ubuntu
+<Guest86655> si lo hice
+<mimecar> sólo falla la visualización del sistema mientres carga?
+<Guest86655> pero nada
+<Guest86655> si
+<Guest86655> solo mintras carga
+<Souchiro> si entra es por alguna configuracion fallida en la actualizacon del kernel en ubuntu
+<Guest86655> pues trate de actualizar
+<Guest86655> para haber si era una falla del kernel
+<Guest86655> pero sigue igual
+<Souchiro> pero te muestra pantalla grafica de inicio, no?
+<n3td1srupt> como puedo obtener el icono de un deb desde apt-cache
+<n3td1srupt> es para un proyecto
+<n3td1srupt> y me seria de gran ayuda obtener esta funcionalidad
+<arp-> lo dudo
+<arp-> deberias bajar el .deb, desempaquetarlo y sacar el icono
+<n3td1srupt> en cualquier caso
+<n3td1srupt> el software center de ubuntu
+<n3td1srupt> como provee esa funcionalidad ?
+<n3td1srupt> osea el software center es un backend que trabaja con apt
+<arp-> supongo que de la misma informacion de repositorio
+<n3td1srupt> se sabria como poder acceder a esa informacion y donde buscarla
+<n3td1srupt> he buscado por todos lados
+<n3td1srupt> pero no he ecnotrado nada de este tema
+<guampa> si tenes instalado el paquete proba dpkg -L <paquete> | grep icon
+<arp-> source.list
+<guampa> sino podes bajarlo y desempaquetarlo como dijo arp-
+<n3td1srupt> la cache de apt
+<n3td1srupt> ?
+<n3td1srupt> que contiene realmente
+<n3td1srupt> osea en que forma esta la informacion
+<guampa> tiene los paquetes que vas bajando
+<n3td1srupt> en tar.gz
+<guampa> no, los deb directamente
+<n3td1srupt> pero entonces si por ejemplo tengo el paquete chromium pero no lo tengo bajado osea instalado pero esta disponible para instalar
+<n3td1srupt> esta en la cache de apt como deb?
+<guampa> si lo instalaste recientemente si, a menos que la hayas limpiado
+<n3td1srupt> en caso de que no lo haya instalado nunca ?
+<n3td1srupt> en que forma se me presentaria ?
+<guampa> y si no lo instalaste podes bajarlo en forma directa con wget o con apt-get -d
+<guampa> deb
+<n3td1srupt> perdonanad la persistencia en el tema
+<n3td1srupt> pero donde podria consultar la cache de apt
+<n3td1srupt> en que directorios se almacenan tales archivos
+<guampa> esta en /var/cache/apt/archives
+<n3td1srupt> realmente no tengo idea de como hacerlo
+<n3td1srupt> tendre que buscar otras fuentes
+<n3td1srupt> acaba de consultar el path y apenas tengo 10 archivos
+<guampa> y?
+<n3td1srupt> pensaba encontrar por ejemplo una lista de paquetes tal y como obtengo con el comando
+<n3td1srupt> apt-cache show "package"
+<n3td1srupt> es informacion de comandos como ese
+<n3td1srupt> la que busco donde se almacena en nuestro ordenador
+<guampa> son tres cosas distintas
+<guampa> una es la base de datos APT. la otra son los paquetes tal como quedan instalados en tu sistema, que ya no son deb sino archivos en diversas ubicaciones, la base de datows APT se limita a registrar este hecho
+<guampa> y la ultima cosa son los .deb que hayas bajado y quedan cacheados un tiempo por si los desinstalaras y volvieras a instalar
+<n3td1srupt> si eso ok
+<n3td1srupt> entonces yo tendria que acceder a la primera
+<n3td1srupt> para ello que recurso podria usar
+<guampa> pero no necesitas acceder directamente, apt-cache y dpkg te muestran toda la info que verias si miraras manualmente
+<guampa> si queres examinar la db de apt, esta en /var/lib/apt
+<guampa> pero es mucho mejor usar los comandos, esta la misma info mas facil de manejar y evitas el riesgo de dañar la base
+<n3td1srupt> gracias
+<n3td1srupt> entonces usare claramente los comandos que me proporcionan
+<n3td1srupt> ubuntu
+<guampa> si queres ver info de paquetes que no tenes instalados, te conviene bajar el paquete sin instalarlo, extraerlo y ver lo que tiene
+<guampa> o podes usar packages.ubuntu.org
+<n3td1srupt> gracias!
+<arp-> em
+<arp-> . /home/xxxxx/.cache/software-center/icons
+<arp-> ahi guarda el cache de iconos..
+<guampa> tiene su propia db entonces
+<arp-> asi es
+<guampa> o cache
+<arp-> tiene una db
+<arp-> ejecuttas: software-center --debug
+<arp-> y vas viendo toda la consulta que hacce cuando buscas algo
+<danes> alo, alguien que me pueda ayudar? Estoy tratando de recuperar informacion de un disco externo que se danio. Estoy usando testdisk y despues de hacer un analisis, esto es lo que me sale: http://pastie.org/8144088
+<GridCube> ve a list y elige
+<danes> Can't open filesystem. Filesystem seems damaged.
+<danes> olvide mencionar ese detalle...
+<GridCube> ah, pues repara el mtf
+<ese> otra vez me llaman
+<GridCube> mft
+<ese> :s
+<GridCube> es culpa de ese nick
+<danes> MFT and MFT mirror are bad. Failed to repair them.
+<danes> :(
+<GridCube> proba rebuilt tons
+<danes> uta... va a tardar otros dos dias???
+<GridCube> no deberia el bootsector es pequeñito
+<esse> crreo que finalmente tengo unos 2 dias para aprender python, encontre estos 10 lkibros, a descargarlos http://www.leettips.org/2013/02/top-10-free-python-pdf-ebooks-download.html
+<danes> pues esto se ve que va para largo...
+<GridCube> sep, si esta roto puede tardar danes
+<GridCube> esse, http://freecomputerbooks.com/
+<esse> voy
+<eliezer> hola quien por aqui
+<GridCube> no
+<danes> :( El problema es que ya tengo casi una semana tratando de recuperar la informacion
+<eliezer> quien me puede ayudar con un problemita
+<GridCube> danes, sep, shit happens
+<danes> La ley de Murphy me cayo de sorpresa
+<GridCube> !alguien | eliezer
+<kubot> eliezer: Muchas de las preguntas hechas en #ubuntu-es comienzan con "alguien usa/sabe/hace...", haga su pregunta directamente al canal sin preguntar si alguien esta disponible. Utilizar la palabra "alguien" podría hacer pensar a las personas que su objetivo es encontrar un ayudante personal. La ayuda es proporcionada por el canal, y por nadie en particular. Ver tambien, !detalles, !bp y !encuesta
+<danes> ese era mi respaldo del respaldo que trono :(
+<GridCube> jajajaja respaldo del respaldo
+<eliezer> por accidente el la configuracion de vim borre el vimrc y el vimrc-tiny
+<danes> casualmente cuando iba a transferir la informacion al disco nuevo que habia comprado... sorpresa...
+<GridCube> danes, intentaste el viejisimo truco del congelador?
+<danes> GridCube: ??? no... no he escuchado de ese truco
+<GridCube> danes, lo lei en un libro de como recuperar discos duros
+<eliezer> por accidente el la configuracion de vim borre el vimrc y el vimrc-tiny
+<guampa> eliezer: cual es tu pregunta?
+<eliezer> por accidente en la configuracion de vim borre el vimrc y el vimrc-tiny
+<danes> GridCube: lo mas probable es que a estas alturas yo creo que ni sumergiendolo en nitrogeno liquido jeje
+<danes> GridCube: yo pense que era un mito... No entiendo como puede eso reparar un disco...
+<GridCube> dice "1: pon el disco en el congelador por unas cuantas horas" "2: Dejelo caer de 1,5 metros"
+<eliezer> guampa,  no es una pregunta es un problema
+<guampa> si es un problema, lo borraste
+<eliezer> si
+<eliezer> :D
+<GridCube> no era para reparar, era para que funcione un rato para recuperar los datos danes
+<danes> GridCube: eso suena a como destruir el disco definitivamente...
+<guampa> eliezer: queres que nos demos por enterados nomas?
+<GridCube> danes, no es que a veces el problema es que se empasta las agujas
+<eliezer> la pregunta es guampa  como se podria restaurar eso dos elementos
+<danes> GridCube: esto me parece mas un error logico que mecanico...
+<GridCube> eliezer, dpkg-reconfigure
+<guampa> danes: si hace un click el disco proba lo del freezer
+<danes> guampa: no, suena perfectamente normal cuando arranca
+<guampa> es posta
+<eliezer> GridCube,   asi no mas dpkg-reconfigure
+<guampa> ah entonces puede ser logico nomas
+<danes> si, es lo que yo creo...
+<GridCube> eliezer, tirale un man a dpkg-reconfigure
+<danes> ya he tenido algunos discos que se han daniado... lo malo es que el sistema operativo que usa casi todo el mundo me ha de haber daniado la particion...
+<GridCube> happens
+<danes> ya decidi no volver a dar formato que no sea ext*
+<GridCube> yo tengo un hd de 750gb que esta ahi muerto con todas mis cosas
+<esse> GridCube, pporque me das a probar paginas que me meyten spam a mi navegador? wtf te pasa man? grrrr
+<GridCube> lo pior es que se que el disco esta bien, culpo a la plaqueta
+<eliezer> GridCube,  no funciono no restauro el elemento
+<GridCube> spam?
+<esse> si, para bajar un libro de tu pagina debes instalar unas cosas de anuncios, que te pasa?
+<GridCube> eliezer, sudo apt-get install "nombre del programa" --reinstall
+<GridCube> esse, no se de que hablas no veo ningun programa ni nada
+<GridCube> solo un montoooooooooooon de libros
+<esse> lo bueno que se como quitar spam, pero no hagas eso
+<GridCube> jajaja XD nunca vi ningun spam lo siento
+<GridCube> yo uso abp asi que hay cosas de la internet de las que ni me entero por suerte
+<eliezer> GridCube,  tu as usado alguna ves vim
+<GridCube> no
+<eliezer> ok mira entra en etc/vim en tu pc
+<eliezer> y dime si tienes el vimrc y el vimrc-tiny
+<GridCube> /etc/vim its a directory
+<GridCube> si
+<GridCube> estan
+<eliezer> por q creo q esos archvos los trae ubuntu
+<GridCube> ni idea
+<guampa> eliezer: purga los programas e instalalos de nuevo, eso va a generar la config en /etc
+<eliezer> dios mio o alguna fuerza divina hazle saber a  estos hombre q no es el programa
+<eliezer> eso archivos son nativos de vi
+<eliezer> del sistema los trae el sistema
+<guampa> el sistema los instala junto con el programa
+<guampa> son parte del paquete eliezer
+<eliezer> todo el q tenga instalado ubuntu asi no tenga instalado vim debe tener instalado vi
+<eliezer> no por q ya purge
+<eliezer> y no los instala el vim
+<SadlyMistaken> que leches es el vim?
+<SadlyMistaken> yo eso no lo he instalado
+<eliezer> un editor de texto
+<SadlyMistaken> ah... pero el gedit...
+<GridCube> dpkg deberia reinstalarlo
+<guampa> eliezer: pone dpkg -s /etc/vim/vimrc
+<GridCube> SadlyMistaken, vim es un editor de texto para "hackers"
+<SadlyMistaken> ah, es de terminal?
+<SadlyMistaken> pues no está el nano?
+<SadlyMistaken> aggggggg
+<SadlyMistaken> ok ok, tunces me callo.
+<SadlyMistaken> jejeje
+<GridCube> SadlyMistaken, nano es lo mas, pero vi/vim/evim y toda la bola de vi tiene un fandom enooooooooorme
+<guampa> interesante oracion
+<SadlyMistaken> jejejeje....
+<eliezer> no
+<eliezer> para nada
+<eliezer> no puedo restaurar esos archivos
+<guampa> eliezer: corriste el comando que te pase?
+<eliezer> si
+<guampa> no te largo nada?
+<eliezer> si q necesita valides del archivo
+<eliezer> dpkg-query: error: --status needs a valid package name but '/etc/vim' is not: illegal package name in specifier '/etc/vim': debe comenzar con un carácter alfanumérico
+<eliezer> Utilice --help para obtener ayuda de la consulta de paquetes.
+<guampa> oh disculpa eliezer, el switch en cuestion era -S
+<guampa> no -s
+<guampa> prueba asi
+<eliezer> vim-common: /etc/vim/vimrc
+<eliezer> eso fue lo que me voto
+<guampa> ok, ese es el paquete que contiene el archivo
+<guampa> dpkg -S busca a que paquete pertenece un archivo
+<guampa> tendrias que purgar vim-common e instalarlo nuevamente
+<eliezer> ok
+<eliezer> apt-get purga vim-common
+<eliezer> 
+<eliezer> me dice q operacion invalida
+<guampa> usa dpkg -P
+<guampa> sudo dpkg -P vim-common
+<guampa> luego sudo apt-get install vim-common
+<guampa> (si es que el primer comando tuvo exito)
+<eliezer> dpkg: dependency problems prevent removal of vim-common:
+<eliezer> vim-tiny depende de vim-common (= 2:7.3.547-4ubuntu1.1).
+<eliezer> vim depende de vim-common (= 2:7.3.547-4ubuntu1.1).
+<eliezer> dpkg: error al procesar vim-common (--purge):
+<eliezer> problemas de dependencias - no se desinstala
+<eliezer> Se encontraron errores al procesar:
+<guampa> perfecto
+<eliezer> vim-common
+<guampa> hace asi
+<eliezer> no tuvo exito
+<eliezer> reintalamos el vim-common
+<guampa> no
+<guampa> sudo dpkg -P --force-all vim-common
+<guampa> ahora lo va a purgar aunque tenga problemas de dependencias
+<guampa> por eso no tenes que usar apt-get purge ahi, porque intentaria eliminar otros paquetes tambien
+<guampa> dpkg solo va a operar sobre este paquete
+<eliezer> ya
+<eliezer> exito
+<guampa> ok, ahora si apt-get install
+<eliezer> ya gracias a dios puedo programar traquilo
+<eliezer> guampa,  tu as usado vim
+<guampa> si
+<eliezer> pero tu programas en el
+<guampa> si, programo, escribo, las mismas teclas andan en las man e info pages
+<guampa> asi que medio esta en todos lados, es como jebus
+<eliezer> mira a mi me paso todo esto por querer poner el autocomplete de java en vim
+<guampa> ah en java no programe, pero tendrias que buscar que paquetes son populares para eso
+<guampa> normalmente te vienen en un paquete para instalar automaticamente desde vim y traen todo
+<guampa> a lo mejor hay algo en synaptic, te fijaste?
+<eliezer> de eso si no se nada como se  debería llamar
+<guampa> en synaptic pone el boton de busqueda y busca vim
+<guampa> en los resultados de la busqueda usa la ventanita que esta arriba de la lista y ahi pone java
+<eliezer> ok gracias :D lo voy a ver gracias por la ayuda
+<guampa> x nada eliezer, suerte
+<ayuda-fstab> hola necesito ayuda con el fstab no se porque me da fallos en montar tengo 3 hds dos en xfs y uno en ntfs
+<ayuda-fstab> http://paste.ubuntu.com/5879181/
+<ayuda-fstab> http://paste.ubuntu.com/5879185/
+<guampa> ayuda-fstab: proba usando LABEL= en vez de UUID en fstab
+<guampa> es mas simpĺe y anda igual
+<guampa> y pone los labels de los fs en vez de los UUIDs
+<guampa> y no dejes espacio despues del igual
+<guampa> ayuda-fstab: otra cosa que tenes mal son los campos 5 y 6

@@ -1,0 +1,1657 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+  "sha256": "2b7238758a350af441475489c7db10b8d8e9686a3897b1acebd7e81723960f80",
+  "bytes": 574123,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 574123,
+  "bodyOffset": 0,
+  "bodyChars": 574123,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7838,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6061,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 95,
+  "surfaces": 50,
+  "referentEvents": 9,
+  "distinctReferents": 5,
+  "examined": true,
+  "edgesFound": 34,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 22,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 49
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 34,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 34,
+  "excerptOk": 34,
+  "rawChecked": 34,
+  "rawOk": 34,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 34,
+  "heard": 34,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "to sherlock holmes she|is|always _the_ woman",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "To Sherlock Holmes she is always _the_ woman",
+    "subject": "To Sherlock Holmes she",
+    "verb": "is",
+    "object": "always _the_ woman",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#607-652",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "To Sherlock Holmes she is always _the_ woman."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "that the world|has|seen",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "that the world has seen",
+    "subject": "that the world",
+    "verb": "has",
+    "object": "seen",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#951-1111",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "yet there|was|but one woman to him",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "yet there was but one woman to him",
+    "subject": "yet there",
+    "verb": "was",
+    "object": "but one woman to him",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#1652-1770",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory."
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|had|seen little of holmes lately",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I had seen little of Holmes lately",
+    "subject": "I",
+    "verb": "had",
+    "object": "seen little of Holmes lately",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#1774-1809",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "I had seen little of Holmes lately."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "baker street|was|still",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Baker Street was still",
+    "subject": "Baker Street",
+    "verb": "was",
+    "object": "still",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#2341-2604",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He was still, as ever, deeply attracted by the study of crime, and occupied his immense faculties and extraordinary powers of observation in following out those clues, and clearing up those mysteries which had been abandoned as hopeless by the official police."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "those mysteries which|had|been abandoned as hopeless by the official police",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "those mysteries which had been abandoned as hopeless by the official police",
+    "subject": "those mysteries which",
+    "verb": "had",
+    "object": "been abandoned as hopeless by the official police",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#2341-2604",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He was still, as ever, deeply attracted by the study of crime, and occupied his immense faculties and extraordinary powers of observation in following out those clues, and clearing up those mysteries which had been abandoned as hopeless by the official police."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "of baker street|summons|to odessa in the case of the trepoff murder",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "of Baker Street summons to Odessa in the case of the Trepoff murder",
+    "subject": "of Baker Street",
+    "verb": "summons",
+    "object": "to Odessa in the case of the Trepoff murder",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#2606-2933",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "From time to time I heard some vague account of his doings: of his summons to Odessa in the case of the Trepoff murder, of his clearing up of the singular tragedy of the Atkinson brothers at Trincomalee, and finally of the mission which he had accomplished so delicately and successfully for the reigning family of Holland."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|was|on the twentieth of march",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "it was on the twentieth of March",
+    "subject": "it",
+    "verb": "was",
+    "object": "on the twentieth of March",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3096-3275",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "One night—it was on the twentieth of March, 1888—I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "for i|had|now returned to civil practice)",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "for I had now returned to civil practice)",
+    "subject": "for I",
+    "verb": "had",
+    "object": "now returned to civil practice)",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3096-3275",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "One night—it was on the twentieth of March, 1888—I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "baker street|was pacing|the room swiftly",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Baker Street was pacing the room swiftly",
+    "subject": "Baker Street",
+    "verb": "was pacing",
+    "object": "the room swiftly",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3682-3791",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He was pacing the room swiftly, eagerly, with his head sunk upon his chest and his hands clasped behind him."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "he|was|at work again",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "He was at work again",
+    "subject": "He",
+    "verb": "was",
+    "object": "at work again",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3882-3903",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He was at work again."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "dreams and|was|hot upon the scent of some new problem",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "dreams and was hot upon the scent of some new problem",
+    "subject": "dreams and",
+    "verb": "was",
+    "object": "hot upon the scent of some new problem",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3904-3996",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He had risen out of his drug-created dreams and was hot upon the scent of some new problem."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the bell and|was shown|up to the chamber which had formerly been in part my own",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the bell and was shown up to the chamber which had formerly been in part my own",
+    "subject": "the bell and",
+    "verb": "was shown",
+    "object": "up to the chamber which had formerly been in part my own",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3997-4085",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "I rang the bell and was shown up to the chamber which had formerly been in part my own."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "his manner|was|not effusive",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "His manner was not effusive",
+    "subject": "His manner",
+    "verb": "was",
+    "object": "not effusive",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4089-4117",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "His manner was not effusive."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "but he|was|glad",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "but he was glad",
+    "subject": "but he",
+    "verb": "was",
+    "object": "glad",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4118-4170",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "It seldom was; but he was glad, I think, to see me."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "baker street|waved|me to an armchair",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Baker Street waved me to an armchair",
+    "subject": "Baker Street",
+    "verb": "waved",
+    "object": "me to an armchair",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4171-4341",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "With hardly a word spoken, but with a kindly eye, he waved me to an armchair, threw across his case of cigars, and indicated a spirit case and a gasogene in the corner."
+     }
+    ],
+    "seq": 15,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|should have|thought a little more",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I should have thought a little more",
+    "subject": "I",
+    "verb": "should have",
+    "object": "thought a little more",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4577-4622",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "“Indeed, I should have thought a little more."
+     }
+    ],
+    "seq": 16,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this|is|too much",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "this is too much",
+    "subject": "this",
+    "verb": "is",
+    "object": "too much",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4942-4986",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "“My dear Holmes,” said I, “this is too much."
+     }
+    ],
+    "seq": 17,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "you would certainly|have|been burned",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "You would certainly have been burned",
+    "subject": "You would certainly",
+    "verb": "have",
+    "object": "been burned",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4987-5060",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "You would certainly have been burned, had you lived a few centuries ago."
+     }
+    ],
+    "seq": 18,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "but as i|have|changed my clothes i can’t imagine how you deduce it",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "but as I have changed my clothes I can’t imagine how you deduce it",
+    "subject": "but as I",
+    "verb": "have",
+    "object": "changed my clothes I can’t imagine how you deduce it",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5061-5213",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "It is true that I had a country walk on Thursday and came home in a dreadful mess, but as I have changed my clothes I can’t imagine how you deduce it."
+     }
+    ],
+    "seq": 19,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "sherlock holmes|is|incorrigible",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Sherlock Holmes is incorrigible",
+    "subject": "Sherlock Holmes",
+    "verb": "is",
+    "object": "incorrigible",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5214-5341",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "As to Mary Jane, she is incorrigible, and my wife has given her notice, but there, again, I fail to see how you work it out.”"
+     }
+    ],
+    "seq": 20,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my wife|has|given sherlock holmes notice",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "my wife has given Sherlock Holmes notice",
+    "subject": "my wife",
+    "verb": "has",
+    "object": "given Sherlock Holmes notice",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5214-5341",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "As to Mary Jane, she is incorrigible, and my wife has given her notice, but there, again, I fail to see how you work it out.”"
+     }
+    ],
+    "seq": 21,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "baker street|chuckled|to baker street and rubbed baker street long",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Baker Street chuckled to Baker Street and rubbed Baker Street long",
+    "subject": "Baker Street",
+    "verb": "chuckled",
+    "object": "to Baker Street and rubbed Baker Street long",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5345-5412",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He chuckled to himself and rubbed his long, nervous hands together."
+     }
+    ],
+    "seq": 22,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "it|is|simplicity itself",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "It is simplicity itself",
+    "subject": "It",
+    "verb": "is",
+    "object": "simplicity itself",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5416-5596",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "“It is simplicity itself,” said he; “my eyes tell me that on the inside of your left shoe, just where the firelight strikes it, the leather is scored by six almost parallel cuts."
+     }
+    ],
+    "seq": 23,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the leather|is|scored by six almost parallel cuts",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the leather is scored by six almost parallel cuts",
+    "subject": "the leather",
+    "verb": "is",
+    "object": "scored by six almost parallel cuts",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5416-5596",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "“It is simplicity itself,” said he; “my eyes tell me that on the inside of your left shoe, just where the firelight strikes it, the leather is scored by six almost parallel cuts."
+     }
+    ],
+    "seq": 24,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my double deduction that you|had|been out in vile weather",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "my double deduction that you had been out in vile weather",
+    "subject": "my double deduction that you",
+    "verb": "had",
+    "object": "been out in vile weather",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5742-5905",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "Hence, you see, my double deduction that you had been out in vile weather, and that you had a particularly malignant boot-slitting specimen of the London slavey."
+     }
+    ],
+    "seq": 25,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the right side of baker street top-hat to show where baker street|has secreted|baker street stethoscope",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "the right side of Baker Street top-hat to show where Baker Street has secreted Baker Street stethoscope",
+    "subject": "the right side of Baker Street top-hat to show where Baker Street",
+    "verb": "has secreted",
+    "object": "Baker Street stethoscope",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5906-6247",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "As to your practice, if a gentleman walks into my rooms smelling of iodoform, with a black mark of nitrate of silver upon his right forefinger, and a bulge on the right side of his top-hat to show where he has secreted his stethoscope, I must be dull, indeed, if I do not pronounce him to be an active member of the medical profession.”"
+     }
+    ],
+    "seq": 26,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the distinction|is|clear",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The distinction is clear",
+    "subject": "The distinction",
+    "verb": "is",
+    "object": "clear",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#6769-6795",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "The distinction is clear."
+     }
+    ],
+    "seq": 27,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "you|have|not observed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "You have not observed",
+    "subject": "You",
+    "verb": "have",
+    "object": "not observed",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7029-7051",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "You have not observed."
+     }
+    ],
+    "seq": 28,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "yet you|have|seen",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "yet you have seen",
+    "subject": "yet you",
+    "verb": "have",
+    "object": "seen",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7052-7074",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "And yet you have seen."
+     }
+    ],
+    "seq": 29,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "because i|have|both seen and observed",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "because I have both seen and observed",
+    "subject": "because I",
+    "verb": "have",
+    "object": "both seen and observed",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7099-7182",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "Now, I know that there are seventeen steps, because I have both seen and observed."
+     }
+    ],
+    "seq": 30,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "baker street|threw|over a sheet of thick",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Baker Street threw over a sheet of thick",
+    "subject": "Baker Street",
+    "verb": "threw",
+    "object": "over a sheet of thick",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7362-7459",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "He threw over a sheet of thick, pink-tinted notepaper which had been lying open upon the table."
+     }
+    ],
+    "seq": 31,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the note|was|undated",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The note was undated",
+    "subject": "The note",
+    "verb": "was",
+    "object": "undated",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7517-7579",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "The note was undated, and without either signature or address."
+     }
+    ],
+    "seq": 32,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "this account of you we|have|from all quarters received",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "This account of you we have from all quarters received",
+    "subject": "This account of you we",
+    "verb": "have",
+    "object": "from all quarters received",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7932-7987",
+      "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+      "text": "This account of you we have from all quarters received."
+     }
+    ],
+    "seq": 33,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 34,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "baker street|chuckled|to baker street and rubbed baker street long",
+   "subject": "Baker Street",
+   "verb": "chuckled",
+   "object": "to Baker Street and rubbed Baker Street long",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5345-5412",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He chuckled to himself and rubbed his long, nervous hands together."
+    }
+   ]
+  },
+  {
+   "id": "baker street|threw|over a sheet of thick",
+   "subject": "Baker Street",
+   "verb": "threw",
+   "object": "over a sheet of thick",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7362-7459",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He threw over a sheet of thick, pink-tinted notepaper which had been lying open upon the table."
+    }
+   ]
+  },
+  {
+   "id": "baker street|was pacing|the room swiftly",
+   "subject": "Baker Street",
+   "verb": "was pacing",
+   "object": "the room swiftly",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3682-3791",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He was pacing the room swiftly, eagerly, with his head sunk upon his chest and his hands clasped behind him."
+    }
+   ]
+  },
+  {
+   "id": "baker street|was|still",
+   "subject": "Baker Street",
+   "verb": "was",
+   "object": "still",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#2341-2604",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He was still, as ever, deeply attracted by the study of crime, and occupied his immense faculties and extraordinary powers of observation in following out those clues, and clearing up those mysteries which had been abandoned as hopeless by the official police."
+    }
+   ]
+  },
+  {
+   "id": "baker street|waved|me to an armchair",
+   "subject": "Baker Street",
+   "verb": "waved",
+   "object": "me to an armchair",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4171-4341",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "With hardly a word spoken, but with a kindly eye, he waved me to an armchair, threw across his case of cigars, and indicated a spirit case and a gasogene in the corner."
+    }
+   ]
+  },
+  {
+   "id": "because i|have|both seen and observed",
+   "subject": "because I",
+   "verb": "have",
+   "object": "both seen and observed",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7099-7182",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "Now, I know that there are seventeen steps, because I have both seen and observed."
+    }
+   ]
+  },
+  {
+   "id": "but as i|have|changed my clothes i can’t imagine how you deduce it",
+   "subject": "but as I",
+   "verb": "have",
+   "object": "changed my clothes I can’t imagine how you deduce it",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5061-5213",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "It is true that I had a country walk on Thursday and came home in a dreadful mess, but as I have changed my clothes I can’t imagine how you deduce it."
+    }
+   ]
+  },
+  {
+   "id": "but he|was|glad",
+   "subject": "but he",
+   "verb": "was",
+   "object": "glad",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4118-4170",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "It seldom was; but he was glad, I think, to see me."
+    }
+   ]
+  },
+  {
+   "id": "dreams and|was|hot upon the scent of some new problem",
+   "subject": "dreams and",
+   "verb": "was",
+   "object": "hot upon the scent of some new problem",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3904-3996",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He had risen out of his drug-created dreams and was hot upon the scent of some new problem."
+    }
+   ]
+  },
+  {
+   "id": "for i|had|now returned to civil practice)",
+   "subject": "for I",
+   "verb": "had",
+   "object": "now returned to civil practice)",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3096-3275",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "One night—it was on the twentieth of March, 1888—I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street."
+    }
+   ]
+  },
+  {
+   "id": "he|was|at work again",
+   "subject": "He",
+   "verb": "was",
+   "object": "at work again",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3882-3903",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He was at work again."
+    }
+   ]
+  },
+  {
+   "id": "his manner|was|not effusive",
+   "subject": "His manner",
+   "verb": "was",
+   "object": "not effusive",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4089-4117",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "His manner was not effusive."
+    }
+   ]
+  },
+  {
+   "id": "i|had|seen little of holmes lately",
+   "subject": "I",
+   "verb": "had",
+   "object": "seen little of Holmes lately",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#1774-1809",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "I had seen little of Holmes lately."
+    }
+   ]
+  },
+  {
+   "id": "i|should have|thought a little more",
+   "subject": "I",
+   "verb": "should have",
+   "object": "thought a little more",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4577-4622",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "“Indeed, I should have thought a little more."
+    }
+   ]
+  },
+  {
+   "id": "it|is|simplicity itself",
+   "subject": "It",
+   "verb": "is",
+   "object": "simplicity itself",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5416-5596",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "“It is simplicity itself,” said he; “my eyes tell me that on the inside of your left shoe, just where the firelight strikes it, the leather is scored by six almost parallel cuts."
+    }
+   ]
+  },
+  {
+   "id": "it|was|on the twentieth of march",
+   "subject": "it",
+   "verb": "was",
+   "object": "on the twentieth of March",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3096-3275",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "One night—it was on the twentieth of March, 1888—I was returning from a journey to a patient (for I had now returned to civil practice), when my way led me through Baker Street."
+    }
+   ]
+  },
+  {
+   "id": "my double deduction that you|had|been out in vile weather",
+   "subject": "my double deduction that you",
+   "verb": "had",
+   "object": "been out in vile weather",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5742-5905",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "Hence, you see, my double deduction that you had been out in vile weather, and that you had a particularly malignant boot-slitting specimen of the London slavey."
+    }
+   ]
+  },
+  {
+   "id": "my wife|has|given sherlock holmes notice",
+   "subject": "my wife",
+   "verb": "has",
+   "object": "given Sherlock Holmes notice",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5214-5341",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "As to Mary Jane, she is incorrigible, and my wife has given her notice, but there, again, I fail to see how you work it out.”"
+    }
+   ]
+  },
+  {
+   "id": "of baker street|summons|to odessa in the case of the trepoff murder",
+   "subject": "of Baker Street",
+   "verb": "summons",
+   "object": "to Odessa in the case of the Trepoff murder",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#2606-2933",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "From time to time I heard some vague account of his doings: of his summons to Odessa in the case of the Trepoff murder, of his clearing up of the singular tragedy of the Atkinson brothers at Trincomalee, and finally of the mission which he had accomplished so delicately and successfully for the reigning family of Holland."
+    }
+   ]
+  },
+  {
+   "id": "sherlock holmes|is|incorrigible",
+   "subject": "Sherlock Holmes",
+   "verb": "is",
+   "object": "incorrigible",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5214-5341",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "As to Mary Jane, she is incorrigible, and my wife has given her notice, but there, again, I fail to see how you work it out.”"
+    }
+   ]
+  },
+  {
+   "id": "that the world|has|seen",
+   "subject": "that the world",
+   "verb": "has",
+   "object": "seen",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#951-1111",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position."
+    }
+   ]
+  },
+  {
+   "id": "the bell and|was shown|up to the chamber which had formerly been in part my own",
+   "subject": "the bell and",
+   "verb": "was shown",
+   "object": "up to the chamber which had formerly been in part my own",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#3997-4085",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "I rang the bell and was shown up to the chamber which had formerly been in part my own."
+    }
+   ]
+  },
+  {
+   "id": "the distinction|is|clear",
+   "subject": "The distinction",
+   "verb": "is",
+   "object": "clear",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#6769-6795",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "The distinction is clear."
+    }
+   ]
+  },
+  {
+   "id": "the leather|is|scored by six almost parallel cuts",
+   "subject": "the leather",
+   "verb": "is",
+   "object": "scored by six almost parallel cuts",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5416-5596",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "“It is simplicity itself,” said he; “my eyes tell me that on the inside of your left shoe, just where the firelight strikes it, the leather is scored by six almost parallel cuts."
+    }
+   ]
+  },
+  {
+   "id": "the note|was|undated",
+   "subject": "The note",
+   "verb": "was",
+   "object": "undated",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7517-7579",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "The note was undated, and without either signature or address."
+    }
+   ]
+  },
+  {
+   "id": "the right side of baker street top-hat to show where baker street|has secreted|baker street stethoscope",
+   "subject": "the right side of Baker Street top-hat to show where Baker Street",
+   "verb": "has secreted",
+   "object": "Baker Street stethoscope",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#5906-6247",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "As to your practice, if a gentleman walks into my rooms smelling of iodoform, with a black mark of nitrate of silver upon his right forefinger, and a bulge on the right side of his top-hat to show where he has secreted his stethoscope, I must be dull, indeed, if I do not pronounce him to be an active member of the medical profession.”"
+    }
+   ]
+  },
+  {
+   "id": "this account of you we|have|from all quarters received",
+   "subject": "This account of you we",
+   "verb": "have",
+   "object": "from all quarters received",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7932-7987",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "This account of you we have from all quarters received."
+    }
+   ]
+  },
+  {
+   "id": "this|is|too much",
+   "subject": "this",
+   "verb": "is",
+   "object": "too much",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4942-4986",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "“My dear Holmes,” said I, “this is too much."
+    }
+   ]
+  },
+  {
+   "id": "those mysteries which|had|been abandoned as hopeless by the official police",
+   "subject": "those mysteries which",
+   "verb": "had",
+   "object": "been abandoned as hopeless by the official police",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#2341-2604",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "He was still, as ever, deeply attracted by the study of crime, and occupied his immense faculties and extraordinary powers of observation in following out those clues, and clearing up those mysteries which had been abandoned as hopeless by the official police."
+    }
+   ]
+  },
+  {
+   "id": "to sherlock holmes she|is|always _the_ woman",
+   "subject": "To Sherlock Holmes she",
+   "verb": "is",
+   "object": "always _the_ woman",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#607-652",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "To Sherlock Holmes she is always _the_ woman."
+    }
+   ]
+  },
+  {
+   "id": "yet there|was|but one woman to him",
+   "subject": "yet there",
+   "verb": "was",
+   "object": "but one woman to him",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#1652-1770",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory."
+    }
+   ]
+  },
+  {
+   "id": "yet you|have|seen",
+   "subject": "yet you",
+   "verb": "have",
+   "object": "seen",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7052-7074",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "And yet you have seen."
+    }
+   ]
+  },
+  {
+   "id": "you would certainly|have|been burned",
+   "subject": "You would certainly",
+   "verb": "have",
+   "object": "been burned",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#4987-5060",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "You would certainly have been burned, had you lived a few centuries ago."
+    }
+   ]
+  },
+  {
+   "id": "you|have|not observed",
+   "subject": "You",
+   "verb": "have",
+   "object": "not observed",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt#7029-7051",
+     "ref": "01-literature-books/gutenberg/pg1661_The_Adventures_of_Tom_Sawyer.txt",
+     "text": "You have not observed."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:33.686Z"
+ }
+}

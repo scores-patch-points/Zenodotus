@@ -1,0 +1,802 @@
+{
+ "schema": "EOTReading@1",
+ "source": {
+  "path": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+  "sha256": "d24c90e244ce63b2a63f590a6b30503beeb481c6723bf1221b13070cb15db5ad",
+  "bytes": 657946,
+  "declaredIdentity": null
+ },
+ "recipe": {
+  "id": "d4c696c0ac8e97c6",
+  "descriptor": {
+   "engine": "eoreader7/native (adapters/text, kernel/task-log.js, kernel/cube.js)",
+   "determiners": "priors.js DEFINITE_DETERMINERS + INDEFINITE_DETERMINERS (giver lang/en, the-fold P41)",
+   "negationWords": "priors.js NEGATION_WORDS (giver lang/en, the-fold P43)",
+   "posPriorGate": "hypergraph.js::makeRelationReader posPriorFor -> relations.js::discoverRelationVocab's own posPrior param (giver UD_English-EWT, CC BY-SA 4.0) — TYPE-level vocabulary gate: verbShare > 0.5 across attested uses admits, an unattested form is NOT refused, ACTIVE at vocabulary discovery (before extractRelations runs)",
+   "classifyConnector": "wordclass.js dominantClass (giver UD_English-EWT, CC BY-SA 4.0) — minShare 0.5, per-EDGE DISCLOSURE ONLY, never gates admission (see posPriorGate above for the vocabulary-level gate, which is a different mechanism and IS active)",
+   "resolvePronouns": "eoreader7/native adapters/text/pronouns.js resolvePronouns — kernel/activation.js one-hop recall through kernel/contest.js co-presence veto (minActivation/minMargin at PRONOUN_MIN_ACTIVATION/PRONOUN_MIN_MARGIN, hypergraph.js's own declared floor, unvalidated against a golden — see hypergraph.js header)",
+   "thirdPersonSingular": "priors.js THIRD_PERSON_SINGULAR (giver lang/en)",
+   "nounPhraseSubjects": true,
+   "phrasalPredicates": true,
+   "verbForms": null,
+   "createLemmatizer": null,
+   "unionOmitted": {
+    "blankFurniture": "real bug, 2026-09-01 — see eo-constitution/claims/blank-furniture-sentence-drift.claim.json",
+    "verbForms": "available and measured (319->737 edges on a 10-file sample) but withheld — widens recall rather than closing a false binding, a separate decision from wiring activation",
+    "createLemmatizer": "available but not yet paired with a lemma index verified against this corpus's own vocabulary",
+    "morphologyIndex": "no organ produces this shape on any engine path today",
+    "morphologyLanguage": "unused while morphologyIndex is unset",
+    "classifyConnector": "loaded above for a DIFFERENT call site (disclosure-only, P56); not re-wired here as makeRelationReader's own accepted organ under this name without checking that distinction first",
+    "minShare": "moot while classifyConnector is unset above",
+    "extractLeadingSurfaces": "no organ under this name exists on the native adapters/text/surfaces.js path as of this pass",
+    "casePrior": "Latin case-marking prior — this reader is makeRelationReader, the English positional reader, not makeCaseMarkedRelationReader",
+    "extractCaseMarkedRelation": "same reason as casePrior"
+   },
+   "excerptChars": 8000,
+   "provenance": {
+    "eoreader7": {
+     "commit": "f2c96b0beff03062311232760df19ec5bba79dd6",
+     "dirty": true
+    },
+    "theFold": {
+     "commit": "2856ece348f1a8b1e806ca081aa7d7bb07c15767",
+     "dirty": true
+    },
+    "livePriors": {
+     "commit": "d22e7d38f2541b4a567a7a946a8170fb9d95c51b",
+     "dirty": true
+    }
+   }
+  }
+ },
+ "excerpting": {
+  "fullChars": 657946,
+  "bodyOffset": 0,
+  "bodyChars": 657946,
+  "frontMatter": {
+   "detected": false
+  },
+  "excerptChars": 7855,
+  "truncated": true
+ },
+ "script": {
+  "casedLetters": 6226,
+  "caselessLetters": 0,
+  "casedShare": 1,
+  "gap": null
+ },
+ "reading": {
+  "sentences": 55,
+  "surfaces": 19,
+  "referentEvents": 4,
+  "distinctReferents": 3,
+  "examined": true,
+  "edgesFound": 15,
+  "extractionError": null,
+  "vocabulary": {
+   "verbs": 8,
+   "minSurfaces": 1,
+   "grammarPrior": true,
+   "candidates": 19
+  },
+  "contentWithoutRelations": false,
+  "grammar": {
+   "checked": 15,
+   "minShare": 0.5,
+   "mismatched": []
+  }
+ },
+ "spanSelfVerification": {
+  "excerptChecked": 15,
+  "excerptOk": 15,
+  "rawChecked": 15,
+  "rawOk": 15,
+  "rawPassRate": 1,
+  "bad": []
+ },
+ "admission": {
+  "gate": "clean",
+  "offered": 15,
+  "heard": 15,
+  "turnedAway": 0,
+  "turnedAwayReasons": {},
+  "suppressedByScriptGap": 0
+ },
+ "log": {
+  "entries": [
+   {
+    "kind": "propose",
+    "task_id": "thrushcross grange|is|my own",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Thrushcross Grange is my own",
+    "subject": "Thrushcross Grange",
+    "verb": "is",
+    "object": "my own",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#1083-1144",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "“Thrushcross Grange is my own, sir,” he interrupted, wincing."
+     }
+    ],
+    "seq": 0,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "here we|have|the whole establishment of domestics",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Here we have the whole establishment of domestics",
+    "subject": "Here we",
+    "verb": "have",
+    "object": "the whole establishment of domestics",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#1807-1924",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "“Here we have the whole establishment of domestics, I suppose,” was the reflection suggested by this compound order."
+     }
+    ],
+    "seq": 1,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "the lord|help|us!”",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "The Lord help us!”",
+    "subject": "The Lord",
+    "verb": "help",
+    "object": "us!”",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2102-2121",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "“The Lord help us!”"
+     }
+    ],
+    "seq": 2,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "wuthering heights|is|the name of mr",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "Wuthering Heights is the name of Mr",
+    "subject": "Wuthering Heights",
+    "verb": "is",
+    "object": "the name of Mr",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2409-2468",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "Wuthering Heights is the name of Mr. Heathcliff’s dwelling."
+     }
+    ],
+    "seq": 3,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "descriptive of the atmospheric tumult to which its station|is|exposed in stormy weather",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "descriptive of the atmospheric tumult to which its station is exposed in stormy weather",
+    "subject": "descriptive of the atmospheric tumult to which its station",
+    "verb": "is",
+    "object": "exposed in stormy weather",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2469-2613",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "“Wuthering” being a significant provincial adjective, descriptive of the atmospheric tumult to which its station is exposed in stormy weather."
+     }
+    ],
+    "seq": 4,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "bracing ventilation they|must have|up there at all times",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "bracing ventilation they must have up there at all times",
+    "subject": "bracing ventilation they",
+    "verb": "must have",
+    "object": "up there at all times",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2615-2924",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "Pure, bracing ventilation they must have up there at all times, indeed: one may guess the power of the north wind, blowing over the edge, by the excessive slant of a few stunted firs at the end of the house; and by a range of gaunt thorns all stretching their limbs one way, as if craving alms of the sun."
+     }
+    ],
+    "seq": 5,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "one|may|guess the power of the north wind",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "one may guess the power of the north wind",
+    "subject": "one",
+    "verb": "may",
+    "object": "guess the power of the north wind",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2615-2924",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "Pure, bracing ventilation they must have up there at all times, indeed: one may guess the power of the north wind, blowing over the edge, by the excessive slant of a few stunted firs at the end of the house; and by a range of gaunt thorns all stretching their limbs one way, as if craving alms of the sun."
+     }
+    ],
+    "seq": 6,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "i|would have|made a few comments",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "I would have made a few comments",
+    "subject": "I",
+    "verb": "would have",
+    "object": "made a few comments",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#3379-3660",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "I would have made a few comments, and requested a short history of the place from the surly owner; but his attitude at the door appeared to demand my speedy entrance, or complete departure, and I had no desire to aggravate his impatience previous to inspecting the penetralium."
+     }
+    ],
+    "seq": 7,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "he|is|a dark-skinned gipsy in aspect",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "He is a dark-skinned gipsy in aspect",
+    "subject": "He",
+    "verb": "is",
+    "object": "a dark-skinned gipsy in aspect",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#5597-5859",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "He is a dark-skinned gipsy in aspect, in dress and manners a gentleman: that is, as much a gentleman as many a country squire: rather slovenly, perhaps, yet not looking amiss with his negligence, because he has an erect and handsome figure; and rather morose."
+     }
+    ],
+    "seq": 8,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "my dear mother used to say i|should never have|a comfortable home",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "my dear mother used to say I should\nnever have a comfortable home",
+    "subject": "my dear mother used to say I",
+    "verb": "should\nnever have",
+    "object": "a comfortable home",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6486-6667",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "Let me hope my constitution is almost peculiar: my dear mother used to say I should never have a comfortable home; and only last summer I proved myself perfectly unworthy of one."
+     }
+    ],
+    "seq": 9,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "as long as heights|took|no notice of me",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "as long as Heights took no notice of me",
+    "subject": "as long as Heights",
+    "verb": "took",
+    "object": "no notice of me",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6671-6855",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "While enjoying a month of fine weather at the sea-coast, I was thrown into the company of a most fascinating creature: a real goddess in my eyes, as long as she took no notice of me."
+     }
+    ],
+    "seq": 10,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "if looks|have|language",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "if looks have language",
+    "subject": "if looks",
+    "verb": "have",
+    "object": "language",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6856-7068",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "I “never told my love” vocally; still, if looks have language, the merest idiot might have guessed I was over head and ears: she understood me at last, and looked a return—the sweetest of all imaginable looks."
+     }
+    ],
+    "seq": 11,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "merest idiot|might have|guessed i was over head and ears: she understood me at last",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "merest idiot might have guessed I was over head and ears: she understood me at last",
+    "subject": "merest idiot",
+    "verb": "might have",
+    "object": "guessed I was over head and ears: she understood me at last",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6856-7068",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "I “never told my love” vocally; still, if looks have language, the merest idiot might have guessed I was over head and ears: she understood me at last, and looked a return—the sweetest of all imaginable looks."
+     }
+    ],
+    "seq": 12,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "overwhelmed with confusion at heights|supposed|mistake",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "overwhelmed with confusion at Heights supposed mistake",
+    "subject": "overwhelmed with confusion at Heights",
+    "verb": "supposed",
+    "object": "mistake",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#7088-7351",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "I confess it with shame—shrunk icily into myself, like a snail; at every glance retired colder and farther; till finally the poor innocent was led to doubt her own senses, and, overwhelmed with confusion at her supposed mistake, persuaded her mamma to decamp."
+     }
+    ],
+    "seq": 13,
+    "depends_on": [],
+    "evidence": []
+   },
+   {
+    "kind": "propose",
+    "task_id": "persuaded heights|mamma|to decamp",
+    "operator": "INS",
+    "operator_basis": "produced",
+    "grain": "Figure",
+    "cell": "INS·Figure",
+    "stance": "Making",
+    "terrain": "Entity",
+    "mode": "Generate",
+    "domain": "Existence",
+    "description": "persuaded Heights mamma to decamp",
+    "subject": "persuaded Heights",
+    "verb": "mamma",
+    "object": "to decamp",
+    "witnesses": [
+     "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+    ],
+    "spans": [
+     {
+      "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#7088-7351",
+      "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+      "text": "I confess it with shame—shrunk icily into myself, like a snail; at every glance retired colder and farther; till finally the poor innocent was led to doubt her own senses, and, overwhelmed with confusion at her supposed mistake, persuaded her mamma to decamp."
+     }
+    ],
+    "seq": 14,
+    "depends_on": [],
+    "evidence": []
+   }
+  ],
+  "nextSeq": 15,
+  "admits": [
+   "NUL",
+   "SEG",
+   "SIG",
+   "CON",
+   "EVA",
+   "DEF",
+   "INS",
+   "SYN",
+   "REC"
+  ]
+ },
+ "folded": [
+  {
+   "id": "as long as heights|took|no notice of me",
+   "subject": "as long as Heights",
+   "verb": "took",
+   "object": "no notice of me",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6671-6855",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "While enjoying a month of fine weather at the sea-coast, I was thrown into the company of a most fascinating creature: a real goddess in my eyes, as long as she took no notice of me."
+    }
+   ]
+  },
+  {
+   "id": "bracing ventilation they|must have|up there at all times",
+   "subject": "bracing ventilation they",
+   "verb": "must have",
+   "object": "up there at all times",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2615-2924",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "Pure, bracing ventilation they must have up there at all times, indeed: one may guess the power of the north wind, blowing over the edge, by the excessive slant of a few stunted firs at the end of the house; and by a range of gaunt thorns all stretching their limbs one way, as if craving alms of the sun."
+    }
+   ]
+  },
+  {
+   "id": "descriptive of the atmospheric tumult to which its station|is|exposed in stormy weather",
+   "subject": "descriptive of the atmospheric tumult to which its station",
+   "verb": "is",
+   "object": "exposed in stormy weather",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2469-2613",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "“Wuthering” being a significant provincial adjective, descriptive of the atmospheric tumult to which its station is exposed in stormy weather."
+    }
+   ]
+  },
+  {
+   "id": "he|is|a dark-skinned gipsy in aspect",
+   "subject": "He",
+   "verb": "is",
+   "object": "a dark-skinned gipsy in aspect",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#5597-5859",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "He is a dark-skinned gipsy in aspect, in dress and manners a gentleman: that is, as much a gentleman as many a country squire: rather slovenly, perhaps, yet not looking amiss with his negligence, because he has an erect and handsome figure; and rather morose."
+    }
+   ]
+  },
+  {
+   "id": "here we|have|the whole establishment of domestics",
+   "subject": "Here we",
+   "verb": "have",
+   "object": "the whole establishment of domestics",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#1807-1924",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "“Here we have the whole establishment of domestics, I suppose,” was the reflection suggested by this compound order."
+    }
+   ]
+  },
+  {
+   "id": "i|would have|made a few comments",
+   "subject": "I",
+   "verb": "would have",
+   "object": "made a few comments",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#3379-3660",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "I would have made a few comments, and requested a short history of the place from the surly owner; but his attitude at the door appeared to demand my speedy entrance, or complete departure, and I had no desire to aggravate his impatience previous to inspecting the penetralium."
+    }
+   ]
+  },
+  {
+   "id": "if looks|have|language",
+   "subject": "if looks",
+   "verb": "have",
+   "object": "language",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6856-7068",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "I “never told my love” vocally; still, if looks have language, the merest idiot might have guessed I was over head and ears: she understood me at last, and looked a return—the sweetest of all imaginable looks."
+    }
+   ]
+  },
+  {
+   "id": "merest idiot|might have|guessed i was over head and ears: she understood me at last",
+   "subject": "merest idiot",
+   "verb": "might have",
+   "object": "guessed I was over head and ears: she understood me at last",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6856-7068",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "I “never told my love” vocally; still, if looks have language, the merest idiot might have guessed I was over head and ears: she understood me at last, and looked a return—the sweetest of all imaginable looks."
+    }
+   ]
+  },
+  {
+   "id": "my dear mother used to say i|should never have|a comfortable home",
+   "subject": "my dear mother used to say I",
+   "verb": "should\nnever have",
+   "object": "a comfortable home",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#6486-6667",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "Let me hope my constitution is almost peculiar: my dear mother used to say I should never have a comfortable home; and only last summer I proved myself perfectly unworthy of one."
+    }
+   ]
+  },
+  {
+   "id": "one|may|guess the power of the north wind",
+   "subject": "one",
+   "verb": "may",
+   "object": "guess the power of the north wind",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2615-2924",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "Pure, bracing ventilation they must have up there at all times, indeed: one may guess the power of the north wind, blowing over the edge, by the excessive slant of a few stunted firs at the end of the house; and by a range of gaunt thorns all stretching their limbs one way, as if craving alms of the sun."
+    }
+   ]
+  },
+  {
+   "id": "overwhelmed with confusion at heights|supposed|mistake",
+   "subject": "overwhelmed with confusion at Heights",
+   "verb": "supposed",
+   "object": "mistake",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#7088-7351",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "I confess it with shame—shrunk icily into myself, like a snail; at every glance retired colder and farther; till finally the poor innocent was led to doubt her own senses, and, overwhelmed with confusion at her supposed mistake, persuaded her mamma to decamp."
+    }
+   ]
+  },
+  {
+   "id": "persuaded heights|mamma|to decamp",
+   "subject": "persuaded Heights",
+   "verb": "mamma",
+   "object": "to decamp",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#7088-7351",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "I confess it with shame—shrunk icily into myself, like a snail; at every glance retired colder and farther; till finally the poor innocent was led to doubt her own senses, and, overwhelmed with confusion at her supposed mistake, persuaded her mamma to decamp."
+    }
+   ]
+  },
+  {
+   "id": "the lord|help|us!”",
+   "subject": "The Lord",
+   "verb": "help",
+   "object": "us!”",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2102-2121",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "“The Lord help us!”"
+    }
+   ]
+  },
+  {
+   "id": "thrushcross grange|is|my own",
+   "subject": "Thrushcross Grange",
+   "verb": "is",
+   "object": "my own",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#1083-1144",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "“Thrushcross Grange is my own, sir,” he interrupted, wincing."
+    }
+   ]
+  },
+  {
+   "id": "wuthering heights|is|the name of mr",
+   "subject": "Wuthering Heights",
+   "verb": "is",
+   "object": "the name of Mr",
+   "witnesses": [
+    "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt@d4c696c0ac8e97c6"
+   ],
+   "spans": [
+    {
+     "at": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt#2409-2468",
+     "ref": "01-literature-books/gutenberg/pg768_The_Adventures_of_Sherlock_Holmes.txt",
+     "text": "Wuthering Heights is the name of Mr. Heathcliff’s dwelling."
+    }
+   ]
+  }
+ ],
+ "lastRun": {
+  "recipeId": "d4c696c0ac8e97c6",
+  "at": "2026-09-01T20:04:35.146Z"
+ }
+}
