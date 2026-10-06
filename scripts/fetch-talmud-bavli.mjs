@@ -88,7 +88,7 @@ async function fetchTractate(name, heName) {
     ref = got.next && got.next !== ref ? String(got.next).replace(/\s+/, '.') : null;
     if (d % 20 === 0) console.error(`  ${name}: ${d} dappim so far (at ${leaf})`);
     d++;
-    if (d > 300) { console.error(`    ${name}: runaway daf walk at ${ref}`); break; }
+    if (d > 600) { console.error(`    ${name}: runaway daf walk at ${ref}`); break; }
     await sleep(1500);
   }
   if (!dappim.length) { console.error(`  ${name}: nothing fetched`); return null; }
