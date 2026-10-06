@@ -11,6 +11,8 @@ classical text, provenance-carrying, 600-word floor, nothing invented.
 
 ## Holdings
 
+### Individual first-person works (10)
+
 | File | Voice | Year | Language | Source |
 |---|---|---|---|---|
 | `wollstonecraft-vindication.txt` | Mary Wollstonecraft — *A Vindication of the Rights of Woman* | 1792 | English | Project Gutenberg #16199 |
@@ -23,6 +25,29 @@ classical text, provenance-carrying, 600-word floor, nothing invented.
 | `hirschfeld-transvestites.txt` | Magnus Hirschfeld — *Die Transvestiten* | 1910 | German (original) | archive.org `hirschfeld-1910` |
 | `woolf-room-of-ones-own.txt` | Virginia Woolf — *A Room of One's Own* | 1929 | English | archive.org `virginia-woolf-a-room-of-ones-own` |
 | `hurston-how-it-feels-to-be-colored-me.txt` | Zora Neale Hurston — *How It Feels to Be Colored Me* | 1928 | English | Project Gutenberg #73549 |
+
+### Written oral histories — WPA slave narratives (25 volumes)
+
+`slave-narratives-wpa/` — the Federal Writers' Project interviews (1936-38):
+over 2,300 people who had been enslaved, speaking, transcribed. The single
+largest written-oral-history corpus in American letters, public domain.
+Arkansas (6 parts), Florida, Georgia (2), Indiana, Iowa, Missouri, North
+Carolina (2), Oklahoma, South Carolina (6), Texas (5). Fetched by
+`scripts/fetch-wpa-slave-narratives.mjs`.
+
+### Written oral histories — the empty tiers (6)
+
+`written-oral-histories/` — transcribed voices for the register rows that
+were discussed-but-empty:
+- **Mayhew, *London Labour and the London Poor*** (3 vols, 1851-62) — the
+  working poor of London, interviewed verbatim — *working class*
+- **Riis, *How the Other Half Lives*** (1890) — the tenements of New York —
+  *the poor / the unhoused*
+- **Beers, *A Mind That Found Itself*** (1908) — first-person mental illness —
+  *the mentally ill*
+- **Mother Jones, *Autobiography*** (1925) — the mine wars in a woman worker's
+  own voice — *working class / women workers*
+Fetched by `scripts/fetch-written-oral-histories.mjs`.
 
 ## Not yet held (disclosed gaps)
 
@@ -41,6 +66,12 @@ classical text, provenance-carrying, 600-word floor, nothing invented.
   is held; her 1937 *Their Eyes Were Watching God* waits until 2033.
 - **Claude McKay — *Home to Harlem* (1928)**, **Hughes — *Not Without
   Laughter* (1930)**: at the PD boundary, not yet fetched — next pass.
+- **Refugees, children, elderly, dalit, sex workers**: the remaining
+  discussed-but-empty rows. The classic refugee/exile memoirs and dalit
+  testimony are either under copyright (Elie Wiesel, Ambedkar's mid-century
+  works) or not yet digitized as text; the driver's `perspectives-register.mjs`
+  tracks them, and these stay named gaps until a public-domain written oral
+  history is reachable.
 
 The general law: **2026's public-domain boundary is 1930.** Everything first
 published in or before 1930 by the 95-year US term is a legitimate hold (2025
