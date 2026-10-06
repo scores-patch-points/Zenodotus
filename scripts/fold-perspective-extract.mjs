@@ -43,31 +43,31 @@ const GROUPS = [
     id: 'women',
     name: 'women / feminine',
     subject: /woman|women|female|feminine|girls|suffrag/i,
-    author: /by (mary wollstonecraft|george sand|emma goldman|louisa may alcott|jane austen|emily bront|george eliot|virginia woolf|kate chopin)/i,
+    names: /mary wollstonecraft|george sand|emma goldman|louisa may alcott|jane austen|emily bront|george eliot|virginia woolf|kate chopin|zora neale hurston/i,
   },
   {
     id: 'indigenous',
     name: 'indigenous peoples',
     subject: /indigenous|aboriginal|savage|tribal\b|(^|\s)(indian|red man|native)\b|first nations/i,
-    author: /beck elks?|zitkala|charles eastman|black elk speaks|william apess|sitting bull/i,
+    names: /zitkala|charles eastman|black elk speaks|william apess|sitting bull|ohiyesa/i,
   },
   {
     id: 'trans',
     name: 'transgender / gender-nonconforming',
     subject: /transgender|transsexual|cross[- ]dressing|trans woman|trans man|gender identity/i,
-    author: /lili elbe|hircschfeld|transvestites\b/i,
+    names: /lili elbe|hirschfeld|transvestites\b/i,
   },
   {
     id: 'enslaved',
     name: 'formerly enslaved',
     subject: /slave|slavery|negro\b/i,
-    author: /equiano|douglass|harriet (jacobs|tubman)|narrative of the life of/i,
+    names: /equiano|douglass|harriet (jacobs|tubman)/i,
   },
   {
     id: 'colonized',
     name: 'colonized peoples',
     subject: /colon(y|ies|ial|ized|ization)/i,
-    author: /fanon|cesaire|mahatma gandhi|my experiments with truth/i,
+    names: /fanon|cesaire|mahatma gandhi/i,
   },
 ];
 
@@ -81,7 +81,9 @@ function main() {
       try { text = fs.readFileSync(path.join(ROOT, f), 'utf8').slice(0, 400000); }
       catch { continue; }
       if (g.subject.test(text)) about.push(f);
-      if (g.author.test(f + '\n' + text.slice(0, 8000))) by.push(f);
+      const head = text.slice(0, 4000);
+      const isVoice = new RegExp(`(?:by|author:).{0,80}?${g.names.source}`, 'i').test(f + '\n' + head);
+      if (isVoice) by.push(f);
     }
     return {
       group: g.id,
