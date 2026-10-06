@@ -63,9 +63,10 @@ async function main() {
       if (done >= limit) break;
       const title = (l.title || decodeURIComponent(l.url.split('/').pop()).replace(/^sh\d+\s*[-ـ]\s*/, ''))
         .replace(/^بخش\s*(?:۱|۲|۳|۴|۵|۶|۷|۸|۹|۰)?\s*[-ـ]?\s*/u, '').trim();
-      const beyts = await sectionCouplets(`${SITE}${l.url}`);
+const beyts = await sectionCouplets(`${SITE}${l.url}`);
       if (beyts.length) sections.push(`\n### ${title}\n\n${beyts.join('\n')}`);
-      else console.error(`  ${l}: no beyts`);
+      else console.error(`  ${l.url}: no beyts`);
+      if (done % 25 === 0) console.error(`  daftar ${d}: ${done}/${links.length} sections`);
       done++;
       await sleep(1200);
     }
