@@ -28,6 +28,7 @@ const WORKS = [
   { id: 57060, file: 'mayhew-london-labour-vol3.txt', title: 'London Labour and the London Poor, Vol. 3', who: 'the working poor and street-sellers of London, interviewed and transcribed verbatim', persp: 'working class / poor' },
   { id: 45502, file: 'riis-how-the-other-half-lives.txt', title: 'How the Other Half Lives: Studies Among the Tenements of New York', who: 'the tenement poor of New York — immigrants, the unemployed, the unhoused', persp: 'the poor / the unhoused' },
   { id: 11962, file: 'beers-a-mind-that-found-itself.txt', title: 'A Mind That Found Itself: An Autobiography', who: 'Clifford Whittingham Beers', persp: 'the mentally ill' },
+  { id: 65079, file: 'mother-jones-autobiography.txt', title: 'Autobiography of Mother Jones', who: 'Mary Harris "Mother" Jones — labor organizer', persp: 'the working class / women workers' },
 ];
 
 function clean(text) {
