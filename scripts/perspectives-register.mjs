@@ -53,13 +53,13 @@ const GROUPS = [
   { id: 'mental-health', name: 'the mentally ill', subject: /insane|mad\b|madness|lunatic|mentally ill|asylum/i, names: /chesler|szasz/i, tags: /mentally ill/i },
   { id: 'prisoners', name: 'the imprisoned', subject: /prison|jail|incarcerat|convict\b|penitentiar/i, names: /oscar wilde/i },
   { id: 'unhoused', name: 'the unhoused', subject: /homeless|unhoused|houseless|street people/i, names: /little dorrit|pygmalion(?!.*shaw)?/i, tags: /unhoused/i },
-  { id: 'refugees', name: 'refugees / displaced', subject: /refugee|displaced persons|exile\b|asylum seeker/i, names: /hannah arendt|herzl(?!.*by)/i },
+  { id: 'refugees', name: 'refugees / displaced', subject: /refugee|displaced persons|exile\b|asylum seeker|immigrant|emigrant/i, names: /hannah arendt|herzl(?!.*by)|mary antin/i, tags: /refugees \/ displaced|immigrant/i },
   { id: 'children', name: 'children', subject: /children\b|childhood/i, names: /anne frank/i },
   { id: 'elderly', name: 'older people', subject: /elderly|old age|aged\b|geriatric/i, names: /cicero on old age/i },
   { id: 'workers', name: 'the working class', subject: /working class|proletariat|laborers?|peasant|serfs?/i, names: /silk weaver|the weavers/i, tags: /working class/i },
   { id: 'religious-minority', name: 'religious minorities', subject: /jews?\b|judaism|anti-semit|muslims?\b|sikhs?\b|heretic/i, names: /theodor herzl(?!.*by)|spinoza/i },
-  { id: 'caste-oppressed', name: 'caste-oppressed (dalit / untouchable)', subject: /untouchab|dalit|scheduled caste/i, names: /ambedkar|phule/i },
-  { id: 'sex-workers', name: 'sex workers', subject: /prostitut|sex work|courtesan|hetaira/i, names: /vermeer(?!.*by)|nelly kimball/i },
+  { id: 'caste-oppressed', name: 'caste-oppressed (dalit / untouchable)', subject: /untouchab|dalit|scheduled caste|castes? in india/i, names: /ambedkar|phule/i, tags: /caste-oppressed|dalit/i },
+  { id: 'sex-workers', name: 'sex workers', subject: /prostitut|sex work|courtesan|hetaira/i, names: /harriette wilson/i, tags: /sex workers/i },
   { id: 'rural-poor', name: 'rural poor / landless', subject: /landless|share-crop|sharecropp|yeoman/i, names: /none\b(?!.*by)/i },
 ];
 

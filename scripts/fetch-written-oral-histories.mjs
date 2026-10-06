@@ -29,6 +29,11 @@ const WORKS = [
   { id: 45502, file: 'riis-how-the-other-half-lives.txt', title: 'How the Other Half Lives: Studies Among the Tenements of New York', who: 'the tenement poor of New York — immigrants, the unemployed, the unhoused', persp: 'the poor / the unhoused' },
   { id: 11962, file: 'beers-a-mind-that-found-itself.txt', title: 'A Mind That Found Itself: An Autobiography', who: 'Clifford Whittingham Beers', persp: 'the mentally ill' },
   { id: 65079, file: 'mother-jones-autobiography.txt', title: 'Autobiography of Mother Jones', who: 'Mary Harris "Mother" Jones — labor organizer', persp: 'the working class / women workers' },
+  { id: 43617, file: 'harriette-wilson-memoirs.txt', title: 'The Memoirs of Harriette Wilson', who: 'Harriette Wilson — Regency-era woman, memoirist', persp: 'sex workers' },
+  { id: 20885, file: 'antin-promised-land.txt', title: 'The Promised Land', who: 'Mary Antin — Russian-Jewish immigrant', persp: 'refugees / displaced' },
+  { id: 408, file: 'dubois-souls-of-black-folk.txt', title: 'The Souls of Black Folk', who: 'W. E. B. Du Bois', persp: 'the Black voice / colonized' },
+  // Ambedkar lands via archive.org's PARI text (not Gutenberg); see the
+  // committed .txt which the driver treats as present and skips.
 ];
 
 function clean(text) {
