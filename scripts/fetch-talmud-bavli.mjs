@@ -75,18 +75,20 @@ async function fetchTractate(name, heName) {
   // The Vilna pagination begins at daf 2a; Sefaria's own `next` pointer tells
   // us where each daf leads, so we never hardcode a tractate's length and
   // never invent a daf past the real last one ("ends at Daf 64a").
-  let ref = `${name}.2a`;
+let ref = `${name}.2a`;
   let d = 1;
   while (ref) {
     // Sefaria's `next` pointer arrives as "Shabbat 2b"; the API expects a dot.
-    ref = ref.replace(/\s+/, '.');
+    // The separator is the LAST whitespace run before the daf ("Rosh Hashanah
+    // 2b" -> "Rosh Hashanah.2b"), so replacing the first space corrupts
+    // multi-word tractate names.
+    ref = ref.replace(/\s+(?=\d+[ab]$)/, '.');
     const got = await fetchDaf(ref);
     if (!got) break;
     const leaf = ref.replace(/^.*?\./, '');
     if (got.text && got.text.length > 20) dappim.push(`\n### דף ${leaf} — ${name} ${leaf}\n\n${got.text}`);
     else console.error(`    ${leaf}: no text`);
-    ref = got.next && got.next !== ref ? String(got.next).replace(/\s+/, '.') : null;
-    if (d % 20 === 0) console.error(`  ${name}: ${d} dappim so far (at ${leaf})`);
+    ref = got.next && got.next !== ref ? String(got.next) : null;
     d++;
     if (d > 600) { console.error(`    ${name}: runaway daf walk at ${ref}`); break; }
     await sleep(1500);
