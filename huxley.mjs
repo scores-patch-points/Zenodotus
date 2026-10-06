@@ -38,7 +38,7 @@ const MANIFEST_PATH = path.join(ROOT, "eo-teachings", "manifest", "huxley.json")
 // it, and the corpus addresses where that canon would live if we hold it. Addresses are
 // measured as glob-able dirs; `expected` names the canonical work.
 const COMPASS = [
-  { tradition: "Hebrew / Jewish", language: "Hebrew", expected: "Tanakh (WLC), Talmud", homes: ["14-holy-texts/wlc-tanakh", "14-holy-texts/sefaria"] },
+  { tradition: "Hebrew / Jewish", language: "Hebrew", expected: "Tanakh (WLC), Talmud Bavli", homes: ["14-holy-texts/wlc-tanakh", "14-holy-texts/sefaria", "14-holy-texts/talmud-bavli"] },
   { tradition: "Christian (Greek NT)", language: "Greek", expected: "Nestle-Aland / SBLGNT", homes: ["14-holy-texts/sblgnt-books", "14-holy-texts/nestle1904"] },
   { tradition: "Islamic (Qur'an)", language: "Arabic", expected: "Qur'an in Arabic", homes: ["14-holy-texts/tanzil-quran", "14-holy-texts/quran-suras"] },
   { tradition: "Islamic (hadith)", language: "Arabic", expected: "Sahih al-Bukhari", homes: ["11-multi-language/arabic-originals/sahih-al-bukhari.txt"] },
@@ -51,15 +51,16 @@ const COMPASS = [
   { tradition: "Jain", language: "Prakrit", expected: "Jaina Sutras (SBE 45)", homes: ["eo-teachings/sources/jaina-sutras-sbe45-jacobi.txt"] },
   { tradition: "Taoist", language: "Chinese", expected: "Tao Te Ching, Zhuangzi", homes: ["14-holy-texts/tao-te-ching", "11-multi-language/chinese-originals"] },
   { transition: true, tradition: "Confucian", language: "Chinese", expected: "Four Books, Xunzi, Mozi", homes: ["eo-teachings/sources/confucius-four-books-legge-1900.txt", "eo-teachings/sources/dubs-works-of-hsuntze-1928.txt", "eo-teachings/sources/mozi-mei-works-of-motse-1929.txt"] },
-  { tradition: "Greek philosophical", language: "Greek", expected: "Homer through the first philosophers", homes: ["11-multi-language/greek-originals", "15-western-canon"] },
-  { tradition: "Latin / Roman", language: "Latin", expected: "Latin originals (classics, Stoics)", homes: ["11-multi-language/latin-originals"] },
+  { tradition: "Greek philosophical", language: "Greek", expected: "Homer through the first philosophers; Corpus Hermeticum (Poimandres)", homes: ["11-multi-language/greek-originals", "15-western-canon"] },
+  { tradition: "Latin / Christian scholastic", language: "Latin", expected: "Latin originals incl. Aquinas Summa", homes: ["11-multi-language/latin-originals"] },
   { tradition: "Old Norse", language: "Old Norse", expected: "Prose Edda, Poetic Edda", homes: ["11-multi-language/old-norse-originals", "eo-teachings/sources/brodeur-prose-edda-1916.txt"] },
   { tradition: "Shinto", language: "Japanese", expected: "Aston's Shinto (1905)", homes: ["eo-teachings/sources/aston-shinto-1905.txt"] },
   { tradition: "Japanese Buddhist", language: "Japanese", expected: "Japanese originals", homes: ["11-multi-language/japanese-originals"] },
   { tradition: "Yoruba / West African", language: "Yoruba", expected: "Johnson's History of the Yorubas", homes: ["eo-teachings/sources/johnson-history-of-the-yorubas-1921.txt"] },
-  { tradition: "Hermetic / Gnostic", language: "Greek", expected: "Corpus Hermeticum, Nag Hammadi", homes: ["13-mysticism"] },
+  { tradition: "Hermetic", language: "Greek", expected: "Corpus Hermeticum — Poimandres, Krater, To Tatt", homes: ["11-multi-language/greek-originals/corpus-hermeticum-poimandres.txt", "11-multi-language/greek-originals/corpus-hermeticum-krater.txt", "11-multi-language/greek-originals/corpus-hermeticum-tat.txt"] },
+  { tradition: "Gnostic (Coptic)", language: "Coptic", expected: "Nag Hammadi — Ap.John, Hypostasis Archons, On the Origin of the World", homes: ["13-mysticism"] },
   { tradition: "Kabbalah", language: "Hebrew", expected: "Zohar (excerpts)", homes: ["13-mysticism"] },
-  { tradition: "Sufi (Persian)", language: "Persian", expected: "Rumi's Diwan", homes: ["13-mysticism"] },
+  { tradition: "Sufi (Persian)", language: "Persian", expected: "Rumi's Masnavi — all six daftars", homes: ["11-multi-language/persian-originals"] },
   { tradition: "Western esoteric", language: "English", expected: "Secret Doctrine, Swedenborg", homes: ["13-mysticism"] },
   { tradition: "Chinese medicine", language: "Chinese", expected: "Bencao Gangmu, Shiuwen Jiezi", homes: ["11-multi-language/chinese-originals/bencao-gangmu.txt", "11-multi-language/chinese-originals/shuowen-jiezi.txt"] },
 ];
