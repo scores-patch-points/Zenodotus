@@ -59,6 +59,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { loadOrgans, LP_ROOT, admissionCoverage, propositionLedger } from "./eot-digest.mjs";
+import { readingFor } from "./lib/script-words.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -391,9 +392,25 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
   // it should be OFFERED, not merely turned away one edge at a time.
   let gate;
   let effectiveAdmitEdges = admitEdges;
+  let scriptPrior = null;
   if (script.gap) {
     gate = "gapped_script";
     effectiveAdmitEdges = [];
+    // The per-script remedy the constitution names (II.13): a language's own
+    // prior supplies the tokenisation — NOT a generic substitute, but the
+    // token inventory a human-annotated UD treebank (or UniMorph) actually
+    // produced, with that treebank as the giver. If a POSPrior exists for this
+    // file's declared language, segment+tag by its own vocabulary and READ,
+    // recording coverage, rather than only reporting the gap.
+    const code = organs.normalizeLangCode?.(identity?.language || (raw.match(/^language:\s*([^\n]+)/m) || [])[1]?.trim() || "") || "";
+    const prior = organs.posGateFor?.(code)?.posPrior ?? null;
+    if (prior) {
+      const sr = readingFor(body, prior);
+      if (sr.total >= 20 && sr.coverage >= 0.25) {
+        gate = "script_prior";
+        scriptPrior = { script: sr.script, tokens: sr.total, matched: Math.round(sr.matched), coverage: +sr.coverage.toFixed(4), giver: sr.giver };
+      }
+    }
   } else if (rawEdges.length === 0) {
     gate = "empty";
   } else if (admitEdges.length === 0) {
@@ -625,6 +642,10 @@ async function readSidecar(organs, absPath, { excerptChars = EXCERPT_CHARS, fres
       turnedAway: turnedAway.length,
       turnedAwayReasons: turnedAway.reduce((acc, t) => { acc[t.reason] = (acc[t.reason] ?? 0) + 1; return acc; }, {}),
       suppressedByScriptGap: script.gap ? admitEdges.length : 0,
+      // A prior-driven token read for a caseless script the capitalisation
+      // organ cannot see (script-words.mjs). Present only when gate ===
+      // "script_prior"; the giver is the language's own UD treebank.
+      ...(scriptPrior ? { scriptPrior } : {}),
       // LP10: `gate` answers "did anything false get in" — this answers
       // the separate question "how much of the document got a chance to
       // get in at all," always computed, never left implicit in a raw
@@ -709,8 +730,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log("usage: node eot-sidecar.mjs <path> [<path> ...] | --scan [--fresh] [--excerpt-chars=N]");
     process.exit(1);
   }
-  let clean = 0, gappedScript = 0, gappedSelfVerify = 0, empty = 0;
+  let clean = 0, gappedScript = 0, gappedSelfVerify = 0, empty = 0, scriptPriorN = 0;
   const cleanCoverages = []; // LP10: coverage among CLEAN-gated sources specifically — "clean" alone was the false signal
+  const scriptPriorCoverages = [];
   const started = Date.now();
   for (const abs of targets) {
     const t0 = Date.now();
@@ -718,11 +740,13 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const ms = Date.now() - t0;
     const rel = path.relative(LP_ROOT, abs);
     if (out.admission.gate === "clean") { clean += 1; if (out.admission.coverage != null) cleanCoverages.push(out.admission.coverage); }
+    else if (out.admission.gate === "script_prior") { scriptPriorN += 1; if (out.admission.scriptPrior?.coverage != null) scriptPriorCoverages.push(out.admission.scriptPrior.coverage); }
     else if (out.admission.gate === "gapped_script") gappedScript += 1;
     else if (out.admission.gate === "gapped_self_verify") gappedSelfVerify += 1;
     else empty += 1;
     const coveragePct = out.admission.coverage == null ? "n/a" : `${(out.admission.coverage * 100).toFixed(1)}%`;
-    console.log(`${rel}: ${out.admission.gate} — ${out.reading.edgesFound} edges, ${out.admission.heard} heard (${coveragePct} of sentences), raw-spans ${out.spanSelfVerification.rawOk}/${out.spanSelfVerification.rawChecked} — ${ms}ms`);
+    const sp = out.admission.scriptPrior ? `, script-prior ${(out.admission.scriptPrior.coverage * 100).toFixed(1)}% of ${out.admission.scriptPrior.tokens} tokens (${out.admission.scriptPrior.script})` : "";
+    console.log(`${rel}: ${out.admission.gate} — ${out.reading.edgesFound} edges, ${out.admission.heard} heard (${coveragePct} of sentences)${sp}, raw-spans ${out.spanSelfVerification.rawOk}/${out.spanSelfVerification.rawChecked} — ${ms}ms`);
   }
   const total = Date.now() - started;
   // LP10: reported as a distribution over what was actually measured, never
@@ -736,5 +760,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const median = sorted[Math.floor(sorted.length / 2)];
     coverageNote = ` — admission coverage among clean sources: mean ${(mean * 100).toFixed(1)}%, median ${(median * 100).toFixed(1)}%, min ${(sorted[0] * 100).toFixed(1)}%, max ${(sorted[sorted.length - 1] * 100).toFixed(1)}%`;
   }
-  console.log(`\n${targets.length} sources in ${(total / 1000).toFixed(1)}s (${(total / targets.length).toFixed(0)}ms/source avg) — clean ${clean}, gapped_script ${gappedScript}, gapped_self_verify ${gappedSelfVerify}, empty ${empty}${coverageNote}`);
+  console.log(`\n${targets.length} sources in ${(total / 1000).toFixed(1)}s (${(total / targets.length).toFixed(0)}ms/source avg) — clean ${clean}, script_prior ${scriptPriorN}, gapped_script ${gappedScript}, gapped_self_verify ${gappedSelfVerify}, empty ${empty}${coverageNote}${scriptPriorCoverages.length ? ` — prior-driven token coverage (caseless scripts): mean ${(scriptPriorCoverages.reduce((a, b) => a + b, 0) / scriptPriorCoverages.length * 100).toFixed(1)}%` : ""}`);
 }
