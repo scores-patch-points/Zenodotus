@@ -131,7 +131,7 @@ const ARCHIVE = [
 ];
 
 function splitCsvRows(t) { const r = []; let c = '', q = false; for (let i = 0; i < t.length; i++) { const ch = t[i]; if (q) { c += ch; if (ch === '"') { if (t[i + 1] === '"') { c += '"'; i++; } else q = false; } } else if (ch === '"') { q = true; c += ch; } else if (ch === '\n') { r.push(c); c = ''; } else c += ch; } if (c) r.push(c); return r; }
-function splitCsvFields(row) { const o = []; let c = '', q = false; for (let i = 0; i < row.length; i++) { const ch = row[i]; if (q) { c += ch; if (ch === '"') { if (row[i + 1] === '"') { c += '"'; i++; } else q = false; } } else if (ch === '"') { q = true; } else if (ch === ',') { o.push(c); c = ''; } else c += ch; } o.push(c); return o.map(f => f.trim()); }
+function splitCsvFields(row) { const o = []; let c = '', q = false; for (let i = 0; i < row.length; i++) { const ch = row[i]; if (q) { if (ch === '"') { if (row[i + 1] === '"') { c += '"'; i++; } else q = false; } else c += ch; } else if (ch === '"') { q = true; } else if (ch === ',') { o.push(c); c = ''; } else c += ch; } o.push(c); return o.map(f => f.trim()); }
 
 let catalog = '';
 function resolve(authorPats, keyword) {

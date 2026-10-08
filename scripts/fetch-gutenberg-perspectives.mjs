@@ -158,7 +158,7 @@ function splitCsvFields(row) {
   const out = []; let cur = '', inQ = false;
   for (let i = 0; i < row.length; i++) {
     const ch = row[i];
-    if (inQ) { cur += ch; if (ch === '"') { if (row[i + 1] === '"') { cur += '"'; i++; } else inQ = false; } }
+    if (inQ) { if (ch === '"') { if (row[i + 1] === '"') { cur += '"'; i++; } else inQ = false; } else cur += ch; }
     else if (ch === '"') { inQ = true; }
     else if (ch === ',') { out.push(cur); cur = ''; }
     else cur += ch;
