@@ -1,0 +1,157 @@
+{
+ "schema": "VisionPrior@1",
+ "family": "alhazen",
+ "giver": "opencode, 2026-10-08 (Alhazen build session)",
+ "recipe": "regex-extract the eye registry, schemas and taxonomies from scores-patch-points/Alhazen/alhazen.js; POINTER (never copy) to the source and its vendored copy, sha256-pinned; list the corpora the reader was measured on",
+ "standing": "CANDIDATE — a pointer index, not a measured accuracy claim",
+ "what_this_is": "where the no-model optics reader's priors live: the source, its vendored copies, the nested-document reader, and the corpora it reads. Pointers only; the corpus does not hold the reader.",
+ "pointers": [
+  {
+   "id": "alhazen-source",
+   "what": "the canonical optics reader (pure JS, no model)",
+   "home": "../Alhazen/alhazen.js",
+   "exists": true,
+   "sha256": "727eb83cc77d1280991592aa725f0efdf324a0c03bd3a944925385c80a8d23da",
+   "repo": "scores-patch-points/Alhazen",
+   "note": "loads as ESM/CommonJS/script; exposes window.Alhazen"
+  },
+  {
+   "id": "alhazen-vendored",
+   "what": "the byte-identical copy the holodeck surface loads",
+   "home": "../holodeck/vendor/alhazen/alhazen.js",
+   "exists": true,
+   "sha256": "727eb83cc77d1280991592aa725f0efdf324a0c03bd3a944925385c80a8d23da",
+   "pin": "51998503a79319aa6f623727653e44681c6d0c3c",
+   "note": "vendor-alhazen.mjs from scores-patch-points/Alhazen"
+  },
+  {
+   "id": "eo-nested-reader",
+   "what": "the EO nested document reader (page>section>field, typed values, EOT ledger)",
+   "home": "../eo-docread/read.mjs",
+   "exists": true,
+   "sha256": "42773b75ede366b530c5cccddf72f47678102a4f4becea581aefaa91d5d0b0d1",
+   "schema": "EODocRead@1"
+  },
+  {
+   "id": "video-reader",
+   "what": "the 4D/video harness (frames -> trails, tracks, motion blur)",
+   "home": "../eo-docread/video-read.mjs",
+   "exists": true,
+   "sha256": "0affa0794fe4cb1cff75296333caee1113b23ce2c528404c7dc879f258d05583"
+  },
+  {
+   "id": "live-widget",
+   "what": "the live in-browser reader (webcam/file/capture -> overlay)",
+   "home": "../holodeck/alhazen-live.html",
+   "exists": true,
+   "sha256": "bff64b0e08f7ffdbe7f29bc2a6a1e8946c6281c1a4e948e915a110b5c8d24280"
+  }
+ ],
+ "eyes": [
+  "depth",
+  "depth3d",
+  "face",
+  "fourd",
+  "grid",
+  "layer",
+  "raster",
+  "salience",
+  "signs",
+  "temporal3d",
+  "text"
+ ],
+ "schemas": [
+  "Alhazen3D@1",
+  "Alhazen4D@1",
+  "AlhazenBlur@1",
+  "AlhazenDepth@1",
+  "AlhazenFace@1",
+  "AlhazenLayers@1",
+  "AlhazenLook@1",
+  "AlhazenMesh@1",
+  "AlhazenPheromone@1",
+  "AlhazenReconcile@1",
+  "AlhazenRules@1",
+  "AlhazenSalience@1",
+  "AlhazenScene@1",
+  "AlhazenSee@1",
+  "AlhazenSigns@1",
+  "AlhazenSwarm@1"
+ ],
+ "valueFormats": [
+  "empty",
+  "currency",
+  "date",
+  "time",
+  "email",
+  "phone",
+  "choice",
+  "identifier",
+  "integer",
+  "decimal",
+  "name",
+  "text"
+ ],
+ "sceneKinds": [
+  "blank",
+  "photograph",
+  "screenshot",
+  "chart",
+  "diagram",
+  "document",
+  "unknown"
+ ],
+ "layerRoles": [
+  "paper",
+  "faint",
+  "wash",
+  "figure",
+  "ink"
+ ],
+ "learned": [
+  {
+   "name": "rule ledger",
+   "schema": "AlhazenRules@1",
+   "note": "learnFrom(reading, truth) -> key/format rules; createRuleLedger(); append-only with falsify()"
+  },
+  {
+   "name": "pheromone board",
+   "schema": "AlhazenPheromone@1",
+   "note": "eyelevel stigmergy keyed by sceneKind; deposit/evaporate/recommend"
+  },
+  {
+   "name": "online background/salience",
+   "schema": "AlhazenSalience@1",
+   "note": "learnSalience(frames): per-pixel background learned on the fly, subject = persistent deviation; NO skin/face/class prior"
+  },
+  {
+   "name": "sign vocabulary",
+   "schema": "AlhazenSigns@1",
+   "note": "readSigns(frames): a sign is 4D (handshape + signing-space location + movement path/direction/repetition) -> movement-episode segmentation -> online clustering; no lexicon, no language"
+  }
+ ],
+ "corpora_measured_on": [
+  {
+   "id": "funsd",
+   "home": "ab/corpus/data/_funsd/dataset",
+   "note": "199 scanned forms, question->answer links (English)"
+  },
+  {
+   "id": "xfund-fr",
+   "home": "ab/corpus/data/xfund/xf",
+   "note": "French forms (Latin), FUNSD-shaped GT"
+  },
+  {
+   "id": "xfund-zh",
+   "home": "ab/corpus/data/xfund/xf",
+   "note": "Chinese forms (non-Latin), FUNSD-shaped GT"
+  },
+  {
+   "id": "naf",
+   "home": "ab/corpus/data/naf",
+   "note": "US National Archives forms + handwriting (annotations; images in a 753MB release)"
+  }
+ ],
+ "falsifying_control": "a pointer whose sha256 no longer matches its source (the reader moved and this index went stale), or an EYES/schema name in this file that the source no longer declares, breaks the index.",
+ "at": "2026-10-08T20:41:21.569Z"
+}

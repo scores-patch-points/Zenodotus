@@ -170,3 +170,19 @@ with no consumer is not coverage (LP10). cmn_hans has no whitespace
 segmentation, so its unit is the clause (disclosed per entry). Builder,
 full design, the lookup API contract, and the comparative measurements:
 `scripts/pronunciation-RESULTS.md`.
+
+## `vision-priors/`
+
+`VisionPrior@1` — where the **no-model optics reader (Alhazen,
+`scores-patch-points/Alhazen`) keeps its priors**, as a pointer index. Pointers
+(never copies) to the reader's source and its byte-identical vendored copy
+(`sha256`-pinned, with the holodeck vendor commit), the nested-document reader
+(`EODocRead@1`), the 4D video harness, and the live widget; plus the extracted
+eye registry, observation schemas, value-format table, scene kinds and layer
+roles, and the four learned structures (rule ledger `AlhazenRules@1`, pheromone
+board `AlhazenPheromone@1`, online background/salience `AlhazenSalience@1`,
+sign vocabulary `AlhazenSigns@1`). Built by
+`scripts/build-alhazen-vision-prior.mjs`, which extracts the taxonomies from the
+source by regex so they cannot drift. Discipline: pointers pinned by `sha256`;
+the falsifying control is a pointer whose hash no longer matches its source, or
+an eye/schema name here the source no longer declares. `standing: CANDIDATE`.
