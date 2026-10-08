@@ -33,7 +33,7 @@ consuming CODE (`extractCaseMarkedRelation`/`defaultLatinCasePrior`,
 eoreader7's `native/adapters/text/relations-case-marked.js`) stays in
 eoreader7 and loads this file via the same cross-repo relative path
 `native/tests/phasepost.test.mjs` already established for `act-priors/`
-(`../../../ethos/derived-priors/...`, counted from the loading
+(`../../../Zenodotus/derived-priors/...`, counted from the loading
 module's own directory). the-fold's own `hypergraph.js::
 makeCaseMarkedRelationReader` (POLICIES.md P73) consumes the organ, never
 this file directly.

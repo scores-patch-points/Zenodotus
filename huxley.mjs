@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// ethos/huxley.mjs — the navigator of the wisdom corpus, the keeper of the sacred core.
+// Zenodotus/huxley.mjs — the navigator of the wisdom corpus, the keeper of the sacred core.
 // Handle: Huxley — the navigator who holds the map of the world's wisdom and the gaps in it.
 //
 // The philosophia perennis is not a doctrine; it is a position on the map. Every tradition
@@ -24,14 +24,14 @@ import { fileURLToPath } from "node:url";
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
 const CORPUS_DIRS = [
-  "ethos/14-holy-texts",
-  "ethos/15-western-canon",
-  "ethos/11-multi-language",
+  "Zenodotus/14-holy-texts",
+  "Zenodotus/15-western-canon",
+  "Zenodotus/11-multi-language",
   "eo-teachings/sources",
   "eo-teachings/manifest",
 ];
-const REPO_ROOTS = { ethos: path.join(ROOT, "ethos"), "eo-teachings": path.join(ROOT, "eo-teachings") };
-const SCROLL_PATH = path.join(ROOT, "ethos", "GREAT-SCROLL.md");
+const REPO_ROOTS = { Zenodotus: path.join(ROOT, "Zenodotus"), "eo-teachings": path.join(ROOT, "eo-teachings") };
+const SCROLL_PATH = path.join(ROOT, "Zenodotus", "GREAT-SCROLL.md");
 const MANIFEST_PATH = path.join(ROOT, "eo-teachings", "manifest", "huxley.json");
 
 // The declared compass: wisdom lineage -> the original-language canon that would stand for
@@ -66,8 +66,8 @@ const COMPASS = [
 ];
 
 function walkTxt(dir) {
-  const repoName = dir.startsWith("eo-teachings") ? "eo-teachings" : "ethos";
-  const rel = dir.replace(/^(eo-teachings|ethos)\//, "");
+  const repoName = dir.startsWith("eo-teachings") ? "eo-teachings" : "Zenodotus";
+  const rel = dir.replace(/^(eo-teachings|Zenodotus)\//, "");
   const abs = path.join(REPO_ROOTS[repoName], rel);
   if (!fs.existsSync(abs)) return [];
   if (!fs.statSync(abs).isDirectory()) return abs.endsWith(".txt") ? [dir] : [];
@@ -97,7 +97,7 @@ function atlas() {
       language: c.language,
       expected: c.expected,
       held: found.length,
-      files: found.slice(0, 6).map((f) => f.replace(/^ethos\//, "")),
+      files: found.slice(0, 6).map((f) => f.replace(/^Zenodotus\//, "")),
     });
   }
   return { schema: "WisdomAtlas@1", scanned: files.size, traditions };

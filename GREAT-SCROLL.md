@@ -2,7 +2,7 @@
 
 *The ledger of Archon Huxley — the keeper of the sacred core, navigator of the wisdom corpus. Append-only; every entry evidence-cited; nothing rewritten once written.*
 
-Huxley is registered in the governance registry (`archon-holocracy/ARCHON-LEDGER.md`), his identity canon held as a fair-use excerpt of *The Perennial Philosophy* (1945) at `eo-teachings/sources/huxley-perennial-philosophy.txt`, verified verbatim (sha256 `7e4d90f1a6bb45d835d438fbc448cfb93879fbcc3d1de29c29c20dd95b148fd5`). His map is a working tool: `node ethos/huxley.mjs atlas | gaps | scroll`.
+Huxley is registered in the governance registry (`archon-holocracy/ARCHON-LEDGER.md`), his identity canon held as a fair-use excerpt of *The Perennial Philosophy* (1945) at `eo-teachings/sources/huxley-perennial-philosophy.txt`, verified verbatim (sha256 `7e4d90f1a6bb45d835d438fbc448cfb93879fbcc3d1de29c29c20dd95b148fd5`). His map is a working tool: `node Zenodotus/huxley.mjs atlas | gaps | scroll`.
 
 **The method.** He does not collect wisdom; he navigates to it, and fills what is uncharted. A territory is *held* only where the original-language canon sits in the corpus — a translation in the archive stands for nothing. A gap is reported only as a measured absence against a declared compass, never as a vague longing. Every ingestion is a fetch from a named source with recorded provenance, and every entry carries the falsifying control that would prove it wrong.
 

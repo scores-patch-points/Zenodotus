@@ -12,7 +12,7 @@ noticed resemblance, not a lineage claim), **Named contrast**, or
 
 **Coordination note (2026-08-16):** a sibling session ("Grounding tool
 development") is independently mapping this same citation set to live_priors
-— see [issue #3](https://github.com/scores-patch-points/ethos/issues/3).
+— see [issue #3](https://github.com/scores-patch-points/Zenodotus/issues/3).
 This manifest is this session's inventory pass; reconcile before assuming a
 row marked `not fetched` here is still unfetched elsewhere.
 
