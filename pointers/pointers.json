@@ -1942,6 +1942,56 @@
         "sha256": null
       },
       "falsifying_control": "If the source 404s or is gated, the pointer is corrected or deleted; an open edition moves it to a vendored hold."
+    },
+    {
+      "id": "eccc-archive",
+      "perspective": "atrocity survivors",
+      "title": "ECCC / Khmer Rouge Tribunal Archive (court transcripts incl. victim testimony)",
+      "author": "Extraordinary Chambers in the Courts of Cambodia (UN-backed)",
+      "era": "1975-79 (tribunal 2006-2022)",
+      "tradition": "Cambodia",
+      "language": "Khmer / English / French",
+      "rights": "open",
+      "rights_evidence": "Public UN-backed tribunal records; the archive states the records are public.",
+      "vendorable": true,
+      "why_pointer": "Open public court records incl. record_type='Transcript' (first-person victim and witness testimony), but the site is a Next.js SPA whose API is not pinned; vendored reading awaits pinning the data endpoint.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://archive.eccc.gov.kh/en"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the archive API is pinned and transcripts fetch cleanly, they are vendored; if the portal blocks fetches the pointer is corrected or deleted."
+    },
+    {
+      "id": "legal-tools-db",
+      "perspective": "atrocity survivors",
+      "title": "Legal Tools Database (ICC/ICTY/ICTR/MICT judicial records)",
+      "author": "International Criminal Court / UN Mechanism",
+      "era": "1990s-present",
+      "tradition": "international criminal law",
+      "language": "English / French",
+      "rights": "open",
+      "rights_evidence": "Open access; no license string.",
+      "vendorable": true,
+      "why_pointer": "Open JSON API (legal-tools.org/api/clddocs/search) of ~19,500 judicial records — decisions and filings, not raw testimony transcripts; useful as the legal frame, cited not vendored.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://legal-tools.org/api/clddocs/search"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 500,
+        "sha256": null
+      },
+      "falsifying_control": "If the API schema changes the pointer is corrected; it is metadata/judicial text, not victim testimony."
     }
   ]
 }
