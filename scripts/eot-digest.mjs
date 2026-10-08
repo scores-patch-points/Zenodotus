@@ -97,7 +97,17 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const LP_ROOT = path.join(HERE, "..");
 const FOLD_ROOT = path.join(LP_ROOT, "..", "the-fold");
 const EOREADER7_ROOT = path.join(LP_ROOT, "..", "eoreader7");
-const NATIVE = path.join(EOREADER7_ROOT, "native");
+// THE LINGUISTIC ORGANS live in khora/native (the perceiver — wordclass.js,
+// relations.js, spans.js, …); eoreader7/native is a stub with no adapters/text
+// at all, so pointing NATIVE there made EVERY organ import fail and the POS
+// gate dead. THE PRIORS live in janus/priors — the one home the design names
+// (khora/native/the-fold/priors-home.js: "every prior … lives at
+// <workspace root>/janus/priors; khora READS them from there"). khora's own
+// native/priors is now a symlink to that home, so both resolve identically.
+const KHORA_ROOT = path.join(LP_ROOT, "..", "khora");
+const NATIVE = path.join(KHORA_ROOT, "native");
+const ORGANS = path.join(KHORA_ROOT, "native", "organs");
+const PRIORS_DIR = path.join(LP_ROOT, "..", "janus", "priors");
 const DIGEST_DIR = path.join(LP_ROOT, "digested");
 
 /**
@@ -172,16 +182,16 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   // one occurrence-level organ makeRelationReader accepts and this file had
   // never imported at all, let alone passed.
   const pron = await import(path.join(NATIVE, "adapters/text/pronouns.js"));
-  const { makeRelationReader } = await import(path.join(FOLD_ROOT, "hypergraph.js"));
+  const { makeRelationReader } = await import(path.join(ORGANS, "hypergraph.js"));
   // A 2026-09-08 rename to organs/notes-text.js / makeNotesText (this
   // file's own prior comment) did not stick — checked live 2026-09-09:
   // the-fold/hyperlexicon.js re-exports eoreader7/native/organs/
   // hyperlexicon.js, whose export is (still/again) `makeHyperlexicon`.
   // The stale alias below called an undefined function on every run.
-  const { makeHyperlexicon } = await import(path.join(FOLD_ROOT, "hyperlexicon.js"));
-  const { makeReferentIndex } = await import(path.join(FOLD_ROOT, "cast.js"));
-  const { stripContainer, declaredIdentity } = await import(path.join(FOLD_ROOT, "source.js"));
-  const { makeGrammarLens, mismatchedConnectors } = await import(path.join(FOLD_ROOT, "grammar-lens.js"));
+  const { makeHyperlexicon } = await import(path.join(ORGANS, "hyperlexicon.js"));
+  const { makeReferentIndex } = await import(path.join(ORGANS, "cast.js"));
+  const { stripContainer, declaredIdentity } = await import(path.join(ORGANS, "source.js"));
+  const { makeGrammarLens, mismatchedConnectors } = await import(path.join(ORGANS, "grammar-lens.js"));
 
   // Loaded OPTIONALLY — a missing local POSPrior@1 build degrades this
   // driver to exactly its prior behaviour (posPriorFor / classifyConnector
@@ -256,7 +266,25 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
   // this gate absent for) and for the declared, narrow POS mapping (bare
   // V/N/ADJ only; every non-finite subtype — participle, converb, masdar —
   // is dropped, disclosed per-language in each prior's own provenance).
-  const LANG_ALIAS = { en: "eng", ru: "rus", fi: "fin", el: "ell", tr: "tur", he: "heb", ko: "kor", fa: "fas", fr: "fra" };
+  // General ISO 639-1 → 639-3 map for every language this corpus holds (plus
+  // the ones already in the old three-entry alias). The prior files are named
+  // by ISO 639-3 (pos-spa.json, pos-cmn.json, …); corpus filenames and the
+  // UDHR header use mostly ISO 639-1. Resolution NEVER falls back to another
+  // language — an unmapped code simply finds no entry and is a typed gap.
+  const LANG_ALIAS = {
+    en: "eng", es: "spa", pt: "por", zh: "cmn", ar: "arb", he: "heb", fa: "fas",
+    ja: "jpn", sa: "san", la: "lat", el: "ell", ru: "rus", fi: "fin", tr: "tur",
+    ko: "kor", fr: "fra", de: "deu", it: "ita", ca: "cat", gl: "glg", af: "afr",
+    nl: "nld", sv: "swe", da: "dan", no: "nob", pl: "pol", cs: "ces", sk: "slk",
+    sl: "slv", hu: "hun", ro: "ron", bg: "bul", uk: "ukr", sr: "srp", hr: "hrv",
+    lt: "lit", lv: "lav", et: "est", hi: "hin", ta: "tam", te: "tel", ur: "urd",
+    mr: "mar", gu: "guj", bn: "ben", ne: "nep", si: "sin", vi: "vie", id: "ind",
+    ms: "msa", th: "tha", sw: "swa", eo: "epo", tl: "tgl", eu: "eus", hy: "hye",
+    ka: "kat", mt: "mlt", cy: "cym", ga: "gle", mt2: "mlt", uz: "uzn", az: "azj",
+    kk: "kaz", ky: "kir", tg: "tgk", ps: "pbu", ku: "kmr", am: "amh", so: "som",
+    yo: "yor", ig: "ibo", ha: "hau", zu: "zul", xh: "xho", st: "sot", tn: "tsn",
+    sn: "sna", ny: "nya", rw: "kin", lg: "lug", wo: "wol", ff: "fuv", mg: "mlg",
+  };
   const normalizeLangCode = (code) => {
     const c = String(code ?? "").toLowerCase();
     return LANG_ALIAS[c] ?? c;
@@ -276,9 +304,16 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
     // entirely — not a coverage gap folding diacritics would paper over
     // correctly, a real different register/vocabulary a period-matched
     // treebank actually answers.
-    for (const lang of ["eng", "rus", "fin", "ell", "tur", "heb", "kor", "fas", "fra", "grc"]) {
+    // Enumerate EVERY pos-<iso3>.json in the janus priors home — not a
+    // hardcoded few. A language with no prior file stays a typed gap
+    // (posGateFor returns null), never a guess and never a fallback.
+    const posFiles = fs.existsSync(PRIORS_DIR)
+      ? fs.readdirSync(PRIORS_DIR).filter(f => /^pos-[a-z0-9_]+\.json$/.test(f))
+      : [];
+    for (const file of posFiles) {
+      const lang = file.replace(/^pos-/, "").replace(/\.json$/, "");
       try {
-        const posPrior = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `pos-${lang}.json`), "utf8"));
+        const posPrior = JSON.parse(fs.readFileSync(path.join(PRIORS_DIR, file), "utf8"));
         posByLang[lang] = {
           posPrior,
           classifyConnector: makeGrammarLens({
@@ -321,7 +356,7 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
     const declension = await import(path.join(NATIVE, "adapters/text/declension.js"));
     for (const lang of ["rus"]) {
       try {
-        const prior = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `declension-${lang}.json`), "utf8"));
+        const prior = JSON.parse(fs.readFileSync(path.join(PRIORS_DIR, `declension-${lang}.json`), "utf8"));
         declensionByLang[lang] = declension.createDeclensionFolder(prior).sameStem;
       } catch {
         // no declension prior for this language yet — disclosed via sameStemFor
@@ -350,7 +385,7 @@ async function loadOrgans({ phrasalPredicates = true, nounPhraseSubjects = true 
     const morphology = await import(path.join(NATIVE, "adapters/text/morphology.js"));
     for (const lang of ["eng"]) {
       try {
-        const raw = JSON.parse(fs.readFileSync(path.join(NATIVE, "priors", `morphology-${lang}.json`), "utf8"));
+        const raw = JSON.parse(fs.readFileSync(path.join(PRIORS_DIR, `morphology-${lang}.json`), "utf8"));
         const prior = morphology.morphologyFromPrior(raw);
         morphologyByLang[lang] = { createLemmatizer: morphology.createLemmatizer, morphologyIndex: prior.forms, morphologyLanguage: prior.language };
       } catch {
