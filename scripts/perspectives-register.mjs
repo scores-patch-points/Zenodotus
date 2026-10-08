@@ -47,20 +47,21 @@ const GROUPS = [
   { id: 'indigenous', name: 'indigenous peoples', subject: /indigenous|aboriginal|savage|tribal\b|(^|\s)(indian|red man|native)\b|first nations|maori|samis?\b|inuit/i, names: /zitkala|charles eastman|black elk|william apess|sitting bull|ohiyesa|mourning dove|chickaloon/i, tags: /indigenous/i },
   { id: 'trans', name: 'transgender / gender-nonconforming', subject: /transgender|transsexual|cross[- ]dressing|trans woman|trans man|gender identity|queer/i, names: /lili elbe|hirschfeld|transvestites\b|marsha p\.? johnson|sylvia rivera/i, tags: /trans\b/i },
   { id: 'enslaved', name: 'formerly enslaved', subject: /slave|slavery|negro\b|black people/i, names: /equiano|douglass|harriet (jacobs|tubman)|sojourner truth|booker t\.? washington/i, tags: /slave narrative|formerly enslaved/i },
-  { id: 'colonized', name: 'colonized peoples', subject: /colon(y|ies|ial|ized|ization)|empire|mandate\b/i, names: /fanon|cesaire|mahatma gandhi|nehrus?|nkrumah|kenyatta/i },
-  { id: 'queer-lgb', name: 'gay / lesbian', subject: /homosexual|lesbian|gay\b|same[- ]sex/i, names: /sappho|walt whitman|oscar wilde|gide|forster/i },
-  { id: 'disabled', name: 'disabled people', subject: /disab(le|led|ility)|handicap|lame\b|blind people/i, names: /helen keller|fdr|deaf/i },
+  { id: 'colonized', name: 'colonized peoples', subject: /colon(y|ies|ial|ized|ization)|empire|mandate\b/i, names: /fanon|cesaire|mahatma gandhi|nehrus?|nkrumah|kenyatta/i, tags: /colonized/i },
+  { id: 'queer-lgb', name: 'gay / lesbian', subject: /homosexual|lesbian|gay\b|same[- ]sex/i, names: /sappho|walt whitman|oscar wilde|gide|forster/i, tags: /gay \/ lesbian/i },
+  { id: 'disabled', name: 'disabled people', subject: /disab(le|led|ility)|handicap|lame\b|blind people/i, names: /helen keller|fdr|deaf/i, tags: /disabled/i },
   { id: 'mental-health', name: 'the mentally ill', subject: /insane|mad\b|madness|lunatic|mentally ill|asylum/i, names: /chesler|szasz/i, tags: /mentally ill/i },
-  { id: 'prisoners', name: 'the imprisoned', subject: /prison|jail|incarcerat|convict\b|penitentiar/i, names: /oscar wilde/i },
+  { id: 'prisoners', name: 'the imprisoned', subject: /prison|jail|incarcerat|convict\b|penitentiar/i, names: /oscar wilde/i, tags: /imprisoned/i },
   { id: 'unhoused', name: 'the unhoused', subject: /homeless|unhoused|houseless|street people/i, names: /little dorrit|pygmalion(?!.*shaw)?/i, tags: /unhoused/i },
   { id: 'refugees', name: 'refugees / displaced', subject: /refugee|displaced persons|exile\b|asylum seeker|immigrant|emigrant/i, names: /hannah arendt|herzl(?!.*by)|mary antin/i, tags: /refugees \/ displaced|immigrant/i },
   { id: 'children', name: 'children', subject: /children\b|childhood/i, names: /anne frank|anna green winslow/i, tags: /children\b/i },
   { id: 'elderly', name: 'older people', subject: /elderly|old age|aged\b|geriatric/i, names: /elizabeth cady stanton|mary somerville|eighty years and more/i, tags: /older people/i },
   { id: 'workers', name: 'the working class', subject: /working class|proletariat|laborers?|peasant|serfs?/i, names: /silk weaver|the weavers/i, tags: /working class/i },
-  { id: 'religious-minority', name: 'religious minorities', subject: /jews?\b|judaism|anti-semit|muslims?\b|sikhs?\b|heretic/i, names: /theodor herzl(?!.*by)|spinoza/i },
+  { id: 'religious-minority', name: 'religious minorities', subject: /jews?\b|judaism|anti-semit|muslims?\b|sikhs?\b|heretic/i, names: /theodor herzl(?!.*by)|spinoza/i, tags: /religious minority/i },
   { id: 'caste-oppressed', name: 'caste-oppressed (dalit / untouchable)', subject: /untouchab|dalit|scheduled caste|castes? in india/i, names: /ambedkar|phule/i, tags: /caste-oppressed|dalit/i },
   { id: 'sex-workers', name: 'sex workers', subject: /prostitut|sex work|courtesan|hetaira/i, names: /harriette wilson/i, tags: /sex workers/i },
-  { id: 'rural-poor', name: 'rural poor / landless', subject: /landless|share-crop|sharecropp|yeoman/i, names: /none\b(?!.*by)/i },
+  { id: 'rural-poor', name: 'rural poor / landless', subject: /landless|share-crop|sharecropp|yeoman/i, names: /none\b(?!.*by)/i, tags: /rural poor/i },
+  { id: 'atrocity', name: 'genocide / atrocity survivors', subject: /genocide|holocaust|famine|atrocit|massacre|ethnic cleansing/i, names: /(?!x)x/, tags: /atrocity|genocide/i },
 ];
 
 const VOICED = 'voiced';
@@ -79,7 +80,7 @@ function main() {
       if (g.subject.test(text)) about.push(f);
       const head = text.slice(0, 4000);
       const byAuthor = new RegExp(`(?:by|author:).{0,80}?${g.names.source}`, 'i').test(f + '\n' + head);
-      const byTag = g.tags ? new RegExp(`perspective:\\s*.{0,40}?${g.tags.source}`, 'i').test(head) : false;
+      const byTag = g.tags ? new RegExp(`perspective:\\s*.{0,40}?(?:${g.tags.source})`, 'i').test(head) : false;
       if (byAuthor || byTag) by.push(f);
     }
     const tier = by.length > 0 ? VOICED : (about.length > 0 ? EMPTY : ABSENT);

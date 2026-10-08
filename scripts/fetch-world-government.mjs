@@ -860,7 +860,11 @@ async function main() {
     manifest.sections.world_legislation = JURISDICTIONS.map(j => existing.get(j.cc)).filter(Boolean);
   }
   if (!only || only.includes('udhr')) manifest.sections.un_udhr = await fetchUDHR();
-  if (!only || only.includes('factbook')) manifest.sections.world_factbook = await fetchFactbook();
+  // RЕТIRED 2026-10-08: the CIA World Factbook fetch is removed by user
+  // direction — a US intelligence-agency survey of every country is the
+  // clearest block of empire-POV material, and the corpus is being balanced
+  // against it. See manifests/retired-factbook.json and GREAT-SCROLL.md.
+  // if (!only || only.includes('factbook')) manifest.sections.world_factbook = await fetchFactbook();
 
   const counts = {
     world_legislation:

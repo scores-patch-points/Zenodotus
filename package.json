@@ -41,7 +41,10 @@
     "pronunciation:coverage": "node scripts/pronunciation.mjs coverage",
     "pronunciation:compare": "node scripts/pronunciation-compare.mjs",
     "test:pronunciation": "node --test scripts/pronunciation.test.mjs scripts/pronunciation-compare.test.mjs",
-    "stats": "find . -name '*.txt' -o -name '*.json' | grep -v node_modules | grep -v .git | wc -l && du -sh ."
+    "stats": "find . -name '*.txt' -o -name '*.json' | grep -v node_modules | grep -v .git | wc -l && du -sh .",
+    "pointers:list": "node scripts/read-pointer.mjs --list",
+    "pointers:read": "node scripts/read-pointer.mjs",
+    "fetch:holodomor": "node scripts/fetch-holodomor-oral-histories.mjs"
   },
   "keywords": ["corpus", "texts", "priors", "eo", "gutenberg", "wikipedia", "holy-texts"],
   "license": "MIT"

@@ -22,15 +22,24 @@ German, Spanish and Italian.
 | `05-academic-papers/ntrs-white-papers/` | **97 public-domain NASA white papers** (NTRS technical reports), each with an eoreader7 CV look-loop sidecar (`*.cv.md`) and a `*.structure.json` outline |
 | `06-government-legal/world-legislation/` | **449 statutes and codes from 28 jurisdictions** |
 | `06-government-legal/un-udhr/` | **516 translations of the Universal Declaration of Human Rights** |
-| `06-government-legal/world-factbook/` | **255 CIA World Factbook country profiles** |
+| `06-government-legal/` | **965 documents** — 449 statutes from 28 jurisdictions + 516 UDHR translations. *(The 255 CIA World Factbook profiles were removed 2026-10-08 to balance the corpus's empire-POV weight; see `manifests/retired-factbook.json`.)* |
 | `09-source-code/` | 31 repos in two tiers: 20 landmark + 11 security-audited at pinned commits, content-vetted (`VETTING.md`) |
 | `14-holy-texts/` | 492 files — whole books of the Tanakh, Greek NT, Qur'an and Pali canon; plus **upanishads/** and **bhagavad-gita/** in Sanskrit (IAST) added 2026-09-13 |
 | `15-western-canon/folger-shakespeare/` | Bulk text + XML + 15 individual plays |
 | `11-multi-language/` | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr); **greek-originals/**, **latin-originals/**, **sanskrit-originals/**, **japanese-originals/**, **arabic-originals/** added 2026-09-13 as original-language texts of the St. John's canon (Homer through Ibn Khaldūn) — see `digested/STJOHNS-CANON-GAP-ANALYSIS.md`; every one carries a `*.structure.json` byte-structure outline (see `digested/STRUCTURE-FROM-BYTES-FINDING.md` and POLICIES.md LP20–LP21) |
+| `11-multi-language/mesopotamian/` *(2026-10-08)* | **10 Sumerian compositions** — the Gilgameš cycle, Enki & Ninḫursaĝa, Enki & Ninmaḫ, Inana's Descent, the Sumerian King List, the Lament for Urim — ETCSL transliteration with interlinear English |
+| `11-multi-language/mesopotamian/amarna-letters/` *(2026-10-08)* | **All 305 Amarna letters** — the 14th-c.-BCE Akkadian diplomatic correspondence between Egypt and its vassals — aggregated into 19 per-sender-city documents (Byblos/Rib-Hadda 71, Amurru 18, etc.), transliteration + English, CC BY-SA (ORACC `aemw/amarna`) |
+| `11-multi-language/avestan/` *(2026-10-08)* | **The five Gathās of Zarathustra** (Old Avestan + English; the two short Gathās aggregate per the Sappho rule), from avesta.org |
+| `11-multi-language/egyptian/` *(2026-10-08)* | **5 public-domain translations** — Budge's Book of the Dead, the Instruction of Ptah-Hotep (~2400 BCE), Petrie's Egyptian Tales, Budge's literature and afterlife volumes. *Territory classed half-open:* the hieroglyphic originals are images and the transliteration standard (TLA) is gated, so these land as corpus text, not as held original-language canon |
+| `11-multi-language/chinese-originals/` *(BCE classics, 2026-10-08)* | Analects 論語, Zhuangzi 莊子, Yijing 周易 (65 hexagrams), Shijing 詩經, Sunzi 孫子兵法, Mengzi 孟子, Han Feizi 韓非子 — the pre-0 Chinese canon in the original, joining the held Tao Te Ching, Mozi, Xunzi, Shiji |
+| `11-multi-language/latin-originals/` | 21 BCE-era original-language works: Caesar's Bello Gallico, Lucretius, Catullus, Cicero (Catilinam, De officiis, Tusculanae, De natura deorum, Epistulae ad Atticum), Virgil (Aeneid/Eclogae/Georgica), Horace's Carmina, Ovid (Amores, Heroides, Ars amatoria, Metamorphoses), Plautus, Terence, Sallust |
 | `18-childrens-books/` | Pilot pull: 38 books across 17 languages (Global Digital Library + StoryWeaver, African Storybook) — see [`18-childrens-books/ATTRIBUTION.md`](18-childrens-books/ATTRIBUTION.md) |
 | `11-multi-language/concepticon/` | Cross-linguistic concept backbone: 4,165 concept sets linking ~160 fieldwork concept lists across languages (CC BY 4.0) |
 | `11-multi-language/parallel-classics/` | 7 public-domain works (Alice in Wonderland, Pinocchio, Grimms' Fairy Tales, Robinson Crusoe, Gulliver's Travels, Faust Part 1, Perrault's Fairy Tales), 31 editions across 8 languages, same work independently translated — for direct cross-language comparison, "Rosetta Stone" style |
 | `19-organic-community/` | **297 real human chat-log documents** — unedited human typing with typos, slang and informal register across eras and languages: NUS SMS (en/zh, Singlish), CoSEM (Singapore English messages 2016-2022), Ubuntu IRC logs (en/de/es/it, 2004-2015), Enron workplace email (en, 1998-2002, public domain), LCCC Chinese conversation (zh). See [`19-organic-community/README.md`](19-organic-community/README.md) |
+| `20-first-person-voices/gutenberg/` *(2026-10-08)* | **118 public-domain works by women and people of colour**, global-south focus, across time — resolved live from the Gutenberg catalog (`fetch-gutenberg-voices.mjs`). African American (Chesnutt, Dunbar, F. E. W. Harper, W. W. Brown, Du Bois, McKay, Hughes, Toomer, Cullen, Hopkins, Fauset, Hurston, Ida B. Wells, Truth, Mary Prince, H. E. Wilson); Indigenous (Zitkala-Ša, Eastman); global south (Rizal, Machado de Assis, Gibran, Tagore, Naidu, Toru Dutt, Darío, Martí, Sor Juana, Gorriti, Schreiner, Mansfield); women of the North (Austen, Shelley, Brontës, Gaskell, Eliot, Alcott, Stowe, Chopin, Wharton, Cather…) |
+| `pointers/` *(2026-10-08)* | **Sources the corpus cites but does not hold** — a citation + working fetch recipe for copyrighted/gated works, resolved on demand into a git-ignored local cache (never committed, never served). Seeded: Ugarit (Baal Cycle), the Pyramid Texts, Nag Hammadi, the Zohar, and (2026-10-08) 16 atrocity/global-south oral-history archives (Voice/Vision Holocaust, Boder, South African TRC, Palestinian Nakba, Partition 1947, DC-Cam, Nanjing, Rwanda, Colombia CNMH, Guatemala CEH, Humanizing Deportation…). Policy = **LP22**. See [`pointers/README.md`](pointers/README.md) |
+| `20-first-person-voices/oral-histories/` *(2026-10-08)* | **Holodomor survivor testimony** — the US Commission on the Ukraine Famine Oral History Project (1932-33 famine; English translations; US G.P.O. 1990 = public domain), 3 volumes / ~1.0M words. `fetch-holodomor-oral-histories.mjs` |
 
 See [`SOURCES.md`](SOURCES.md) for the complete catalog with pull status, and
 [`06-government-legal/ATTRIBUTION.md`](06-government-legal/ATTRIBUTION.md) for the rights notice
@@ -58,7 +67,7 @@ recorded in `manifests/chat-logs-manifest.json`.
   United Kingdom, United States, Uruguay. Each file keeps the publisher's YAML frontmatter:
   official source URL, publishing department, publication date, in-force status.
 - **UN Universal Declaration of Human Rights** in 516 languages, as encoded by OHCHR.
-- **CIA World Factbook** country and region profiles, rendered from JSON to prose.
+- **CIA World Factbook** — removed 2026-10-08 (US intelligence survey; retired to balance the corpus's empire-POV weight).
 
 Rights vary by publisher. Official legal texts are outside copyright in most of these
 jurisdictions (Germany §5 UrhG, US 17 USC §105, Poland, Czechia, Sweden, Switzerland and
@@ -101,7 +110,7 @@ node scripts/run-all.mjs
 # Fetch specific sources
 node scripts/run-all.mjs --only gutenberg sefaria quran
 
-# World legislation, UDHR and Factbook (optionally a subset of jurisdictions)
+# World legislation and UDHR (optionally a subset of jurisdictions)
 node scripts/fetch-world-government.mjs
 node scripts/fetch-world-government.mjs --jurisdictions de,fr,uk
 

@@ -1,0 +1,1322 @@
+{
+  "schema": "PointerRegistry@1",
+  "note": "Citations + working fetch recipes for sources the corpus cites but does not hold (copyrighted or gated). The corpus vends PD/open sources and points at the rest; the reader fetches locally into .pointer-cache/ (git-ignored). Every entry's recipe must resolve live — a dead pointer is corrected or deleted, never left as decoration. See pointers/README.md.",
+  "pointers": [
+    {
+      "id": "ugarit-baal-cycle",
+      "title": "Religious Texts from Ugarit (Baal Cycle, Keret, Aqhat — English translation)",
+      "author": "N. Wyatt",
+      "era": "pre-0 (Ugaritic texts c. 14th–12th c. BCE; this edition 2002)",
+      "tradition": "Ugaritic / Late Bronze Age Levant",
+      "language": "English (translation of Ugaritic)",
+      "rights": "copyrighted",
+      "rights_evidence": "Internet Archive scan states no license; the book is © 2002 Sheffield Academic Press / Continuum. The archive.org copy is a scan of a copyrighted work.",
+      "vendorable": false,
+      "why_pointer": "The only readable whole rendering reachable is this copyrighted edition. The original-language transliteration has an OPEN vendorable home (Copenhagen Ugaritic Corpus, github.com/DT-UCPH/cuc, CC BY-NC 4.0) — this pointer exists for the ENGLISH reading in the meantime.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://archive.org/download/religious-texts-from-ugarit-whole-transliteration/religious-texts-from-ugarit-whole%20Transliteration_djvu.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 500000,
+        "sha256": null
+      },
+      "falsifying_control": "If the archive.org item is removed or the djvu.txt 404s, the pointer is dead and must be re-pointed or deleted. If the item's rights are clarified as open, it moves from a pointer to a vendored source."
+    },
+    {
+      "id": "pyramid-texts-sethe",
+      "title": "Die altägyptischen Pyramidentexte (hieroglyphic edition, vols)",
+      "author": "Kurt Sethe",
+      "era": "pre-0 (Old Egyptian, c. 2350–2100 BCE; this edition 1908–22)",
+      "tradition": "Ancient Egyptian",
+      "language": "Egyptian (hieroglyphic plates) + German apparatus",
+      "rights": "pd",
+      "rights_evidence": "Internet Archive item metadata possible-copyright-status: NOT_IN_COPYRIGHT; published 1908–22, author d. 1934 — public domain by age.",
+      "vendorable": true,
+      "why_pointer": "PD, but the scan's OCR yields no machine-readable text (the DjVu text contains no Unicode hieroglyphs). Vendoring the BYTES (PDF/JP2) is possible; the extractable text is not usable, so a reader fetches the OCR to see the plates live. A proper vendored hold would transcribe the plates via the eoreader7 CV loop.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://archive.org/download/diealtaegyptisch03sethuoft/diealtaegyptisch03sethuoft_djvu.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 100000,
+        "sha256": null
+      },
+      "falsifying_control": "If a machine-readable open transliteration of the Pyramid Texts is found, it supersedes this pointer and is vendored instead. If the archive item changes id, re-resolve."
+    },
+    {
+      "id": "pyramid-texts-translation",
+      "title": "The Pyramid Texts (transliteration + English, after Piankoff)",
+      "author": "Vincent Brown (pyramidtextsonline.com)",
+      "era": "pre-0 (Old Egyptian, c. 2350–2100 BCE)",
+      "tradition": "Ancient Egyptian",
+      "language": "Egyptian (transliteration) + English",
+      "rights": "copyrighted",
+      "rights_evidence": "No license string on the site; © Vincent Brown, all rights reserved by default.",
+      "vendorable": false,
+      "why_pointer": "The clearest readable transliteration + English rendering available; copyrighted, so cited not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.pyramidtextsonline.com/translation.html"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 50000,
+        "sha256": null
+      },
+      "falsifying_control": "A license statement appearing on the site, or a PD alternative reaching parity, moves this out of the pointer tier."
+    },
+    {
+      "id": "nag-hammadi-translations",
+      "title": "The Nag Hammadi Library (English translations)",
+      "author": "James M. Robinson, gen. ed. (various translators)",
+      "era": "pre-0 / early CE (Coptic codices c. 3rd–4th c. CE; texts older)",
+      "tradition": "Gnostic (Coptic)",
+      "language": "English (translation of Coptic)",
+      "rights": "copyrighted",
+      "rights_evidence": "gnosis.org states contributors retain all copyright to their works.",
+      "vendorable": false,
+      "why_pointer": "The COPTIC ORIGINALS have an open vendorable home (Coptic Scriptorium, github.com/CopticScriptorium/corpora, CC BY 4.0 — e.g. the Gospel of Thomas, NH codex II). This pointer carries the full English translation collection.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gnosis.org/naghamm/nhl.html"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 10000,
+        "sha256": null
+      },
+      "falsifying_control": "A page removal or 403 falsifies the pointer; the Coptic originals are vendored separately from Coptic Scriptorium regardless."
+    },
+    {
+      "id": "zohar-aramaic",
+      "title": "Zohar (Aramaic/Hebrew, vocalized edition)",
+      "author": "attributed to Moses de León",
+      "era": "medieval (13th c. CE)",
+      "tradition": "Kabbalah",
+      "language": "Aramaic / Hebrew",
+      "rights": "unknown",
+      "rights_evidence": "Sefaria API: the English is The Zohar (Soncino 1933), license Public Domain / Sefaria Community Translation CC0; the Hebrew/Aramaic 'Vocalized Zohar, Israel 2013' reports heLicense = unknown (underlying 13th-c. text PD; the 2013 digitization unlicensed).",
+      "vendorable": false,
+      "why_pointer": "The English is vendor-ready (PD/CC0 via Sefaria); the ARAMAIC original as served carries no open license, so it is pointed at, fetched per parashah via the Sefaria API.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.sefaria.org/api/texts/Zohar%2C%20Bereshit%201?context=0"
+        ],
+        "stripHtml": false,
+        "jsonPath": "he"
+      },
+      "expected": {
+        "minBytes": 500,
+        "sha256": null
+      },
+      "falsifying_control": "If Sefaria states an open license for the Aramaic, it becomes vendorable. A single-parashah recipe is a demo pointer; enumerate parashiot via https://www.sefaria.org/api/index/Zohar for full coverage."
+    },
+    {
+      "id": "pyramid-texts-sacred",
+      "title": "The Pyramid Texts (translation by Samuel A. B. Mercer, 1952)",
+      "author": "Samuel A. B. Mercer",
+      "era": "pre-0 (Old Egyptian, c. 2350–2100 BCE)",
+      "tradition": "Ancient Egyptian",
+      "language": "English (translation of Old Egyptian)",
+      "rights": "pd",
+      "rights_evidence": "sacred-texts page states '[1952, copyright not renewed]' — US copyright lapsed, public domain.",
+      "vendorable": true,
+      "why_pointer": "PD, but the live sacred-texts.com is Cloudflare-blocked; the reader fetches the archive.org Wayback copy of the classic site (pinned to the 2016 static snapshot, before the site's redesign) and assembles all 63 pages on the fly.",
+      "recipe": {
+        "kind": "wayback-index",
+        "timestamp": "2016",
+        "index": "https://www.sacred-texts.com/egy/pyt/index.htm",
+        "linkPattern": "pyt\\d+\\.htm",
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 200000,
+        "sha256": null
+      },
+      "falsifying_control": "If the 2016 snapshot is purged or the page pattern changes, the pointer is dead. Since it is PD it may be promoted to a vendored hold (the corpus already has the Sethe pointer for the original-language edition)."
+    },
+    {
+      "id": "egyptian-book-of-the-dead-sacred",
+      "title": "The Egyptian Book of the Dead (Budge translation)",
+      "author": "E. A. Wallis Budge",
+      "era": "pre-0 (Egyptian papyri, c. 1550 BCE onward)",
+      "tradition": "Ancient Egyptian",
+      "language": "English (translation of Egyptian)",
+      "rights": "pd",
+      "rights_evidence": "Budge (1857–1934), 19th–20th-c. edition; the corpus already vends Budge's Book of the Dead from Gutenberg.",
+      "vendorable": true,
+      "why_pointer": "PD; pointed at the Wayback classic site because sacred-texts.com is Cloudflare-blocked. Assembled on the fly from the ebod page set.",
+      "recipe": {
+        "kind": "wayback-index",
+        "timestamp": "2016",
+        "index": "https://www.sacred-texts.com/egy/ebod/index.htm",
+        "linkPattern": "ebod\\d+\\.htm",
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 100000,
+        "sha256": null
+      },
+      "falsifying_control": "A pattern change or snapshot purge falsifies it; being PD it is a candidate to vendor."
+    },
+    {
+      "id": "swedenborg-heaven-and-hell",
+      "title": "Heaven and Hell (De Caelo et Inferno)",
+      "author": "Emanuel Swedenborg",
+      "era": "18th c. (Western esoteric; the tradition's texts are pre-modern)",
+      "tradition": "Western esoteric",
+      "language": "English (translation of Latin)",
+      "rights": "pd",
+      "rights_evidence": "Swedenborg (1688–1772); the 19th-c. English editions are public domain.",
+      "vendorable": true,
+      "why_pointer": "PD; the live sacred-texts is Cloudflare-blocked, so the reader pulls the archive.org Wayback classic snapshot and assembles the 14 chapters on the fly.",
+      "recipe": {
+        "kind": "wayback-index",
+        "timestamp": "2016",
+        "index": "https://www.sacred-texts.com/swd/hh/index.htm",
+        "linkPattern": "hh\\d+\\.htm",
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 100000,
+        "sha256": null
+      },
+      "falsifying_control": "Snapshot purge or pattern change falsifies it; being PD it is a candidate to vendor."
+    },
+    {
+      "id": "records-of-the-past-vol1",
+      "title": "Records of the Past, Vol. 1 (Egyptian and Assyrian texts in translation)",
+      "author": "A. H. Sayce (ed.)",
+      "era": "pre-0 (ancient Near East; this series 1873–)",
+      "tradition": "Ancient Near East (Egypt / Assyria / Babylonia / Persia)",
+      "language": "English (translations)",
+      "rights": "pd",
+      "rights_evidence": "19th-c. series (1873 onward), public domain by age.",
+      "vendorable": true,
+      "why_pointer": "PD; pointed at the Wayback classic snapshot because the live site is blocked. Fetched page-by-page on demand.",
+      "recipe": {
+        "kind": "wayback-index",
+        "timestamp": "2016",
+        "index": "https://www.sacred-texts.com/ane/rp/rp201/index.htm",
+        "linkPattern": "rp201\\d+\\.htm",
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 50000,
+        "sha256": null
+      },
+      "falsifying_control": "Snapshot purge or pattern change falsifies it; PD, so a vendor candidate. Other volumes exist as rp202…rp220 (add per volume)."
+    },
+    {
+      "id": "gnostic-pistis-sophia",
+      "title": "Pistis Sophia (Gnostic text, English translation)",
+      "author": "G. R. S. Mead (tr.)",
+      "era": "early CE (Coptic text; Mead's translation 1921)",
+      "tradition": "Gnostic (Coptic)",
+      "language": "English (translation of Coptic)",
+      "rights": "pd",
+      "rights_evidence": "Mead (1863–1933), 1921 translation — public domain by age.",
+      "vendorable": true,
+      "why_pointer": "PD; pointed at the Wayback classic snapshot (live site blocked). Assembled on the fly from the th1 page set.",
+      "recipe": {
+        "kind": "wayback-index",
+        "timestamp": "2016",
+        "index": "https://www.sacred-texts.com/gno/th1/index.htm",
+        "linkPattern": "th1\\d+\\.htm",
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 50000,
+        "sha256": null
+      },
+      "falsifying_control": "Snapshot purge or pattern change falsifies it; PD, so a vendor candidate. The Coptic originals are vendored separately from Coptic Scriptorium."
+    },
+    {
+      "id": "transgender-67711",
+      "perspective": "transgender",
+      "title": "Autobiography of an Androgyne",
+      "author": "Ralph Werther / Earl Lind (Jennie June)",
+      "era": "1918",
+      "tradition": "turn-of-the-century US",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A first-person trans/androgynous autobiography (1918), one of the earliest in English. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/67711/pg67711.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "transgender-70019",
+      "perspective": "transgender",
+      "title": "The Female-Impersonators",
+      "author": "Ralph Werther / Earl Lind (Jennie June)",
+      "era": "1922",
+      "tradition": "turn-of-the-century US",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "The sequel to the Androgyne autobiography. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/70019/pg70019.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "mentally-ill-memoirs-of-my-nervou",
+      "perspective": "mentally ill",
+      "title": "Memoirs of My Nervous Illness",
+      "author": "Daniel Paul Schreber",
+      "era": "1903",
+      "tradition": "German psychiatry",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "This archive.org scan is the ENGLISH translation (1950s edition); the 1903 German original is PD but this edition is not.",
+      "vendorable": false,
+      "why_pointer": "The founding first-person account of psychosis, from inside it. Pointed at the archive.org copy of the English edition (copyrighted).",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://archive.org/download/memoirs-of-my-nervous-illness-by-daniel-paul-schreber/Memoirs%20of%20My%20Nervous%20Illness%20by%20Daniel%20Paul%20Schreber_djvu.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 100000,
+        "sha256": null
+      },
+      "falsifying_control": "If the archive item is removed or the file 404s, the pointer is corrected or deleted; a rights clarification moves it between pointer and vendored hold."
+    },
+    {
+      "id": "indigenous-lifeamongpiutes00man",
+      "perspective": "indigenous",
+      "title": "Life Among the Piutes: Their Wrongs and Claims",
+      "author": "Sarah Winnemucca Hopkins",
+      "era": "1883",
+      "tradition": "Northern Paiute",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Published 1883; public domain by age.",
+      "vendorable": true,
+      "why_pointer": "The first autobiography written by a Native American woman.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://archive.org/download/lifeamongpiutes00manngoog/lifeamongpiutes00manngoog_djvu.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 100000,
+        "sha256": null
+      },
+      "falsifying_control": "If the archive item is removed or the file 404s, the pointer is corrected or deleted; a rights clarification moves it between pointer and vendored hold."
+    },
+    {
+      "id": "rural-poor-42092",
+      "perspective": "rural poor",
+      "title": "Memoirs of a Surrey Labourer",
+      "author": "George Sturt (George Bourne)",
+      "era": "1907",
+      "tradition": "rural England",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A farm labourer's life, recorded first-person from the countryside. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/42092/pg42092.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "imprisoned-10401",
+      "perspective": "imprisoned",
+      "title": "Personal Memoir of Daniel Drayton, for Four Years' Imprisonment",
+      "author": "Daniel Drayton",
+      "era": "1855",
+      "tradition": "antebellum US",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A first-person account by a man jailed for aiding enslaved people's escape. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/10401/pg10401.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "unhoused-15415",
+      "perspective": "unhoused",
+      "title": "Tramping on Life: An Autobiographical Narrative",
+      "author": "Harry Kemp",
+      "era": "1922",
+      "tradition": "US, the road",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A poet-hobo's first-person account of life on the road. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/15415/pg15415.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "working-class-31118",
+      "perspective": "working class",
+      "title": "The Long Day: The Story of a New York Working Girl",
+      "author": "Dorothy Richardson",
+      "era": "1905",
+      "tradition": "US, New York",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A working girl's own account of factory and shop life. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/31118/pg31118.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "religious-minority-20638",
+      "perspective": "religious minority",
+      "title": "From Plotzk to Boston",
+      "author": "Mary Antin",
+      "era": "1899",
+      "tradition": "Jewish immigration, US",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A young Jewish immigrant's first-person account of exile and arrival. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/20638/pg20638.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "children-43818",
+      "perspective": "children",
+      "title": "The Story of Opal: The Journal of an Understanding Heart",
+      "author": "Opal Whiteley",
+      "era": "1920",
+      "tradition": "US childhood",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "A child naturalist's diary, written as a child. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/43818/pg43818.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "colonized-40461",
+      "perspective": "colonized",
+      "title": "Indian Home Rule (Hind Swaraj)",
+      "author": "M. K. Gandhi",
+      "era": "1909",
+      "tradition": "colonial India",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "Gandhi's own argument for Indian self-rule. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/40461/pg40461.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "older-people-42716",
+      "perspective": "older people",
+      "title": "Recollections of a Long Life",
+      "author": "John Stoughton",
+      "era": "1894",
+      "tradition": "Victorian England",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "An old man's retrospective of a long life. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/42716/pg42716.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "gay---lesbian-32022",
+      "perspective": "gay / lesbian",
+      "title": "A Problem in Greek Ethics",
+      "author": "John Addington Symonds",
+      "era": "1883",
+      "tradition": "Victorian England",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Project Gutenberg, public domain",
+      "vendorable": true,
+      "why_pointer": "An early first-person-adjacent defense of same-sex love by a man who lived it. Pointer used so the perspective can be read on the fly without committing the bytes; PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gutenberg.org/cache/epub/32022/pg32022.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 20000,
+        "sha256": null
+      },
+      "falsifying_control": "If the Gutenberg ebook id changes or 404s the pointer is corrected; being PD it may be promoted to a vendored hold at any time."
+    },
+    {
+      "id": "caste-oppressed-ambedkar",
+      "perspective": "caste-oppressed (dalit / untouchable)",
+      "title": "Annihilation of Caste",
+      "author": "B. R. Ambedkar",
+      "era": "1936",
+      "tradition": "India (anti-caste)",
+      "language": "English",
+      "rights": "pd",
+      "rights_evidence": "Ambedkar (1891-1956); the 1936 text is public domain (author's works PD in India by life+60 in 2016).",
+      "vendorable": true,
+      "why_pointer": "The founding dalit critique of caste, in Ambedkar's own words; pointed at the archive.org copy so it reads on the fly. PD, so a vendor candidate.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://archive.org/download/AnnihilationOfCasteDr.B.r.ambedkar/Annihilation%20of%20caste%20Dr.B.r.ambedkar_djvu.txt"
+        ],
+        "stripHtml": false
+      },
+      "expected": {
+        "minBytes": 100000,
+        "sha256": null
+      },
+      "falsifying_control": "If the archive item is removed or the file 404s the pointer is corrected; if the rights status is clarified the work moves between pointer and vendored hold."
+    },
+    {
+      "id": "longform-transgender",
+      "perspective": "transgender",
+      "title": "Venice and Morris and Me",
+      "author": "Harrison Hill",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.afar.com/magazine/in-venice-with-writer-jan-morris?utm_source=pocket_mylist"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-sex-workers",
+      "perspective": "sex-workers",
+      "title": "Can We \"Cure\" the Men Who Pay for Sex?",
+      "author": "Brooke Jarvis",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "http://www.gq.com/story/cure-men-who-pay-for-sex-end-prostitution"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-imprisoned",
+      "perspective": "imprisoned",
+      "title": "Kamala Harris, Mass Incarceration, and Me",
+      "author": "Reginald Dwayne Betts",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.nytimes.com/2020/10/20/magazine/kamala-harris-crime-prison.html"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-unhoused",
+      "perspective": "unhoused",
+      "title": "Untimely Futures",
+      "author": "Carina Chocanohelsea Edgar",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://placesjournal.org/article/black-homelessness-in-oakland/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-mentally-ill",
+      "perspective": "mentally-ill",
+      "title": "‘What Are We Going to Do About Tyler?’",
+      "author": "Sarah Smith",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://features.propublica.org/tyler-haire-mississippi/tyler-haire-mississippi-mental-health-evaluations-criminal-justice/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-indigenous",
+      "perspective": "indigenous",
+      "title": "At This Table We Sing With Joy, With Sorrow",
+      "author": "Steve Marsh",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.meal-magazine.com/meal-digital/2021/6/30/at-this-table-we-sing-with-joy-with-sorrow"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-disabled",
+      "perspective": "disabled",
+      "title": "All the Light We Cannot See [Excerpt]",
+      "author": "Anthony Doerr",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "http://parade.condenast.com/312040/parade/read-an-excerpt-from-anthony-doerrs-stunning-wwii-era-novel-all-the-light-we-cannot-see/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-refugees",
+      "perspective": "refugees",
+      "title": "Did We Adopt a Jihadist?",
+      "author": "Scott Sayare",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.gq.com/story/did-we-adopt-a-jihadist"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-formerly-enslaved",
+      "perspective": "formerly-enslaved",
+      "title": "What Do We Want History to Do to Us?",
+      "author": "Zadie Smith",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.nybooks.com/articles/2020/02/27/kara-walker-what-do-we-want-history-to-do-to-us/#fnr-12"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-older-people",
+      "perspective": "older-people",
+      "title": "How Long Can We Live?",
+      "author": "Ferris Jabr",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.nytimes.com/2021/04/28/magazine/human-lifespan.html"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-gay-lesbian",
+      "perspective": "gay-lesbian",
+      "title": "America’s Hidden H.I.V. Epidemic",
+      "author": "Linda Villarosa",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.nytimes.com/2017/06/06/magazine/americas-hidden-hiv-epidemic.html"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-caste",
+      "perspective": "caste",
+      "title": "Indian Women Seeking Jobs Confront Taboos and Threats",
+      "author": "Ellen Barry",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "http://www.nytimes.com/2016/01/31/world/asia/indian-women-labor-work-force.html?_r=0"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "longform-rural-poor",
+      "perspective": "rural-poor",
+      "title": "“She’s missing. I’m not going to quit her.”",
+      "author": "Clio Chang",
+      "era": "contemporary (2000s–2020s)",
+      "tradition": "longform journalism",
+      "language": "English",
+      "rights": "copyrighted",
+      "rights_evidence": "contemporary magazine/newspaper article; © the publisher. Aggregated by longform.org.",
+      "vendorable": false,
+      "why_pointer": "longform.org curates rich longform coverage of this perspective; this is a representative piece (mostly third-person journalism ABOUT the group, not their own voice). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://story.californiasunday.com/escape-betsy-the-cow"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 3000,
+        "sha256": null
+      },
+      "falsifying_control": "If the article 404s or is paywalled to a fetch, the pointer is corrected or deleted. It is citation-tier: it does not count as the group's own voice."
+    },
+    {
+      "id": "voice-vision-holocaust",
+      "perspective": "atrocity survivors",
+      "title": "Voice/Vision Holocaust Survivor Oral History Archive",
+      "author": "Univ. of Michigan-Dearborn",
+      "era": "1940s-2000s",
+      "tradition": "Holocaust",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "© Board of Regents, University of Michigan-Dearborn; no reuse license stated.",
+      "vendorable": false,
+      "why_pointer": "300+ survivor interviews with full English verbatim transcripts, fetchable per section (interview.php?D=<Surname>&section=<n>). Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "http://holocaust.umd.umich.edu/interviews.php"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "boder-voices-holocaust",
+      "perspective": "atrocity survivors",
+      "title": "Voices of the Holocaust (David P. Boder, 1946 survivor interviews)",
+      "author": "David P. Boder / Illinois Institute of Technology",
+      "era": "1946 interviews",
+      "tradition": "Holocaust",
+      "language": "English / other",
+      "rights": "cc-by-nc-nd",
+      "rights_evidence": "Original site states 'copyright © 2009 Paul V. Galvin Library, IIT'; CC BY-NC-ND 3.0 US.",
+      "vendorable": false,
+      "why_pointer": "70 interviews conducted in 1946 in displaced-persons camps, German/Yiddish with English translations; transcripts now only via the Wayback Machine.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://web.archive.org/web/20100620065537/http://voices.iit.edu/interview?doc=bassfreundJ&display=bassfreundJ_en"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "sa-trc-transcripts",
+      "perspective": "colonized peoples",
+      "title": "Truth and Reconciliation Commission — Human Rights Violations testimony",
+      "author": "South African TRC (Dept of Justice)",
+      "era": "1996-1998",
+      "tradition": "South Africa (apartheid)",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "South African state work; no license stated.",
+      "vendorable": false,
+      "why_pointer": "The largest body of verbatim first-person apartheid-era testimony; plain HTML, directory-listed. Full hearings at /trc/hrvtrans/<town>/<file>.htm.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.justice.gov.za/trc/hrvtrans/index.htm"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "poha-nakba",
+      "perspective": "refugees / displaced",
+      "title": "Palestinian Oral History Archive (POHA)",
+      "author": "American University of Beirut",
+      "era": "1948 Nakba testimony",
+      "tradition": "Palestine",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "Interview pages: 'copyright holder of this interview is Al-Nakba Archive, all rights reserved.'",
+      "vendorable": false,
+      "why_pointer": "735 indexed first-generation Palestinian/Nakba interviews, Arabic (+English); searchable. Cited, not copied.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://libraries.aub.edu.lb/poha/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "partition-1947-archive",
+      "perspective": "refugees / displaced",
+      "title": "The 1947 Partition Archive",
+      "author": "The 1947 Partition Archive",
+      "era": "1947 Partition testimony",
+      "tradition": "South Asia",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "'Copyright © 2011–2025 The 1947 Partition Archive. All rights reserved.' Gated archive.",
+      "vendorable": false,
+      "why_pointer": "10k+ Partition testimonies (audio/video, many languages). Cited; archive access is gated.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.1947partitionarchive.org/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "dccam-survivors",
+      "perspective": "atrocity survivors",
+      "title": "DC-Cam Survivors' Stories (Khmer Rouge)",
+      "author": "Documentation Center of Cambodia",
+      "era": "1975-1979",
+      "tradition": "Cambodia",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "'© Copyright 2025' DC-Cam; no open license.",
+      "vendorable": false,
+      "why_pointer": "First-person written survivor narratives in English, live HTML under /survivors/<slug>/.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.dccam.org/homepage/health/survivors-stories/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "nanjing-memorial-testimony",
+      "perspective": "atrocity survivors",
+      "title": "Nanjing Massacre survivor testimony",
+      "author": "Memorial Hall of the Victims in Nanjing",
+      "era": "1937",
+      "tradition": "China",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "'Copyright (C) The Memorial Hall of the Victims…'; no license stated.",
+      "vendorable": false,
+      "why_pointer": "English first-person testimony pages under /en/research/yjda/.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.19371213.com.cn/en/research/yjda/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "genocide-archive-rwanda",
+      "perspective": "atrocity survivors",
+      "title": "Genocide Archive of Rwanda",
+      "author": "Aegis Trust / Kigali Genocide Memorial",
+      "era": "1994",
+      "tradition": "Rwanda",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "SPA site; /api returns 'Login Required' — gated.",
+      "vendorable": false,
+      "why_pointer": "Audio/video survivor testimony (Kinyarwanda/English), login-gated. Cited; no bulk access.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.genocidearchiverwanda.org.rw/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "ushmm-oral-histories",
+      "perspective": "atrocity survivors",
+      "title": "USHMM Oral History Collections (metadata)",
+      "author": "United States Holocaust Memorial Museum",
+      "era": "1933-1945",
+      "tradition": "Holocaust",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "Record-level 'Access: Open / Use: Open Download' or 'In Copyright - Use Permitted'; donor © may persist; transcripts view-only.",
+      "vendorable": false,
+      "why_pointer": "The USHMM Collections JSON API exposes oral-history METADATA and citations openly (search?format=json); transcript text is generally view-only.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://collections.ushmm.org/search/?q=oral+history+transcript&format=json"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "colombia-cnmh",
+      "perspective": "atrocity survivors",
+      "title": "Centro Nacional de Memoria Histórica (memory reports)",
+      "author": "Colombia, CNMH",
+      "era": "1958-present",
+      "tradition": "Colombia",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "Government of Colombia; no license stated.",
+      "vendorable": false,
+      "why_pointer": "Truth/memory reports ('¡Basta ya!') and victim testimony documentation, Spanish PDFs. Cited.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.centrodememoriahistorica.gov.co/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "guatemala-ceh-memory",
+      "perspective": "atrocity survivors",
+      "title": "Guatemala: Memory of Silence (CEH truth commission, EN)",
+      "author": "UN Commission for Historical Clarification / HRDAG",
+      "era": "1980s",
+      "tradition": "Guatemala",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "'© 1999 United Nations'.",
+      "vendorable": false,
+      "why_pointer": "Truth-commission report with victim testimony excerpts in English (PDF via HRDAG). Cited.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://hrdag.org/wp-content/uploads/2013/01/CEHreport-english.pdf"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "humanizing-deportation",
+      "perspective": "refugees / displaced",
+      "title": "Humanizing Deportation (community digital storytelling)",
+      "author": "UC Davis + Mexican partners",
+      "era": "2017-present",
+      "tradition": "Mexico / Central America / US",
+      "language": "English / other",
+      "rights": "cc-by-nc",
+      "rights_evidence": "Bilingual OPEN-ACCESS site (states open access to the stories); site is Cloudflare-403 to curl.",
+      "vendorable": false,
+      "why_pointer": "Migrants/deportees share their own stories (text + media). Open access but bot-gated to fetch — browser/pointer.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "http://humanizandoladeportacion.ucdavis.edu/en/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "bracero-history-archive",
+      "perspective": "rural poor / landless",
+      "title": "Bracero History Archive",
+      "author": "Roy Rosenzweig Center / Smithsonian",
+      "era": "1942-1964",
+      "tradition": "Mexico / US",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "Omeka site; no license string; API disabled.",
+      "vendorable": false,
+      "why_pointer": "Oral histories of Mexican guest workers (Bracero program). Cited; enumerate at the item browse.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "http://braceroarchive.org/items/browse"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "saho-south-africa",
+      "perspective": "colonized peoples",
+      "title": "South African History Online (with first-person testimony)",
+      "author": "SAHO",
+      "era": "various",
+      "tradition": "South Africa",
+      "language": "English / other",
+      "rights": "cc-by-nc-sa",
+      "rights_evidence": "CC BY-NC-SA 4.0 (license string on the site); has an LLM Markdown endpoint.",
+      "vendorable": true,
+      "why_pointer": "The one cleanly VENDORABLE African source found: openly licensed, with a machine-readable dump at /llm.txt plus article pages.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://sahistory.org.za/llm.txt"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "minnesota-immigrant-oral-histories",
+      "perspective": "refugees / displaced",
+      "title": "Minnesota Immigrant Oral Histories",
+      "author": "Minnesota Historical Society",
+      "era": "1967-2012",
+      "tradition": "immigration, US",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "MNHS; no open license stated.",
+      "vendorable": false,
+      "why_pointer": "360+ oral-history interviews of recent immigrants, streaming audio + written transcripts online. Cited.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.mnhs.org/immigration/oral-histories"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    },
+    {
+      "id": "unhcr-refworld",
+      "perspective": "refugees / displaced",
+      "title": "Refworld (UNHCR)",
+      "author": "UNHCR",
+      "era": "contemporary",
+      "tradition": "global",
+      "language": "English / other",
+      "rights": "copyrighted",
+      "rights_evidence": "UNHCR; various rights per document.",
+      "vendorable": false,
+      "why_pointer": "UNHCR's global policy/document database; some first-person/testimonial material. Cited.",
+      "recipe": {
+        "kind": "http",
+        "urls": [
+          "https://www.refworld.org/"
+        ],
+        "stripHtml": true
+      },
+      "expected": {
+        "minBytes": 2000,
+        "sha256": null
+      },
+      "falsifying_control": "If the source 404s or moves, the pointer is corrected or deleted; a rights change moves it between pointer and vendored hold."
+    }
+  ]
+}

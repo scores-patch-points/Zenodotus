@@ -23,12 +23,12 @@ are not mistaken for empty documents.
 | 3. OER/Textbooks | 8 | ⬜ | No bulk APIs available |
 | 4. Pre-aggregated | 2 | ⬜ | Common Pile/RedPajama require local HF datasets |
 | 5. Academic papers | 4 | ✅ 94 book chapters + **97 NTRS white papers** | arXiv/PLOS abstracts removed (under the floor); replaced with open-licensed monographs + NASA technical reports — see below |
-| 6. Government/Legal | 6 | ✅ **1,220 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations (all re-read for reading-pipeline blind spots — see POLICIES.md LP8), 255 World Factbook profiles |
+| 6. Government/Legal | 6 | ✅ **965 documents** | 449 statutes from 28 jurisdictions, 516 UDHR translations (all re-read for reading-pipeline blind spots — see POLICIES.md LP8). The 255 CIA World Factbook profiles were **removed 2026-10-08** (user direction) to begin balancing the corpus's empire-POV weight — see `manifests/retired-factbook.json` and GREAT-SCROLL.md |
 | 7. Images/Media | 4 | ✅ 2 collection catalogues | NASA (185 items) and Met Museum (140 items) folded into catalogue documents |
 | 8. News | 4 | ⚠️ 1 document | Wikinews items were under the floor; wikinews.org is not reachable to refetch |
 | 9. Source Code | 31 | ✅ 89 files across 31 repos | Two tiers: 20 landmark repos + 11 security-audited repos at pinned commits, all vetted (see `09-source-code/VETTING.md`) |
 | 10. Audio/Music | 5 | ✅ 13 collection catalogues | Per-item metadata folded into catalogues; 2 collections were too thin even consolidated |
-| 11. Multi-language | 8 | ✅ 96 texts | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr), content-verified, at `war-and-peace/` — see POLICIES.md LP7; the `gutenberg-non-en/` row above it is 20/20 mislabeled, see `digested/CORPUS-INTEGRITY-FINDING.md`. Added 2026-09-09: `concepticon/` (3 files, the cross-linguistic concept-ID backbone, CC BY 4.0) and `parallel-classics/` (31 texts, 7 public-domain works each independently translated into several languages — every download's own declared header is checked against what it was fetched for before being saved, see `scripts/fetch-parallel-classics.mjs`) |
+| 11. Multi-language | 8 | ✅ 96 texts (+107 pre-year-0, 2026-10-08; +19 Amarna +3 Ovid BCE, 2026-10-08) | Gutenberg non-English + Wikipedia in 16 languages + War and Peace (en/ru/fr), content-verified, at `war-and-peace/` — see POLICIES.md LP7; the `gutenberg-non-en/` row above it is 20/20 mislabeled, see `digested/CORPUS-INTEGRITY-FINDING.md`. Added 2026-09-09: `concepticon/` (3 files, the cross-linguistic concept-ID backbone, CC BY 4.0) and `parallel-classics/` (31 texts, 7 public-domain works each independently translated into several languages — every download's own declared header is checked against what it was fetched for before being saved, see `scripts/fetch-parallel-classics.mjs`). **Added 2026-10-08 — the pre-year-0 expansion.** New subdirectories `mesopotamian/` (10 Sumerian compositions: Gilgameš cycle, Enki & Ninḫursaĝa, Enki & Ninmaḫ, Inana's Descent, Sumerian King List, Lament for Urim — ETCSL transliteration + English interlinear) and **`mesopotamian/amarna-letters/`** (19 per-sender-city documents, all **305 Amarna letters** — the 14th-c. BCE Akkadian diplomatic correspondence, transliteration + English, CC BY-SA via ORACC aemw/amarna, enumerated live from the ORACC pager), `avestan/` (the five Gathās, Avestan + English, avesta.org), `egyptian/` (5 PD translations: Budge Book of the Dead, Ptahhotep, Petrie Egyptian Tales, Budge literature — territory honestly classed half-open until a transliteration source is reachable). Inside the existing originals dirs: `greek-originals/` +62 (Hesiod Theogony + Works and Days, Homeric Hymns, Xenophon Anabasis, Euclid Elements, and the Septuagint Rahlfs — 60 books enumerated live from Wikisource's own Rahlfs category, the Psalms aggregated), `latin-originals/` +21 (Caesar, Lucretius, Catullus, Cicero incl. Epistulae ad Atticum, Virgil, Horace, **Ovid incl. Amores + Heroides + Ars amatoria**, Plautus, Terence, Sallust), `chinese-originals/` +7 (Analects, Zhuangzi, Yijing, Shijing, Sunzi, Mengzi, Han Feizi), `sanskrit-originals/` +1 (Atharvaveda, GRETIL IAST). All over the 600-word floor with `*.structure.json` outlines; drivers in `scripts/fetch-{latin-bce,greek-bce,mesopotamian,amarna,chinese-pre0,egyptian,avestan,sanskrit-pre0}.mjs`; see GREAT-SCROLL.md 2026-10-08 entries |
 | 12. Non-Western Music | 5 | ✅ Great 78 catalogue | Other sources not yet pulled |
 | 13. Mysticism | 3 | ⬜ | Cloudflare blocks sacred-texts.com |
 | 14. Holy Texts | 10 | ✅ 492 files | Whole books: Tanakh (38), SBLGNT (23), Qur'an by sura (81), Pali suttas (186) + earlier pulls |
@@ -56,7 +56,7 @@ jurisdictions plus two multi-country instruments.
   source URL, publication date and in-force status.
 - **un-udhr/** — the Universal Declaration of Human Rights in 516 languages, as encoded by
   OHCHR. Public domain.
-- **world-factbook/** — 255 country and region profiles from the CIA World Factbook, rendered
+- **world-factbook/** — REMOVED 2026-10-08 (255 CIA World Factbook profiles; a US intelligence-agency survey, the clearest empire-POV block, retired to balance the corpus). See `manifests/retired-factbook.json`.
   from JSON to prose. Public domain (US federal work).
 
 Rights are not uniform. Official legal texts are outside copyright in most of these
@@ -220,12 +220,23 @@ US-public-domain but each translation carries separate copyright.
 
 ```bash
 node scripts/run-all.mjs                        # everything, then catalogues + prune
-node scripts/fetch-world-government.mjs         # legislation, UDHR, Factbook
+node scripts/fetch-world-government.mjs         # legislation, UDHR (Factbook retired 2026-10-08)
 node scripts/fetch-world-government.mjs --jurisdictions de,fr,uk
 node scripts/fetch-replacements.mjs --only scripture
 node scripts/fetch-concepticon.mjs              # cross-linguistic concept backbone
 node scripts/fetch-parallel-classics.mjs        # same work, several languages
 node scripts/enforce-min-words.mjs              # audit; add --prune to delete
+# pre-year-0 expansion drivers (2026-10-08):
+node scripts/fetch-latin-bce.mjs                # Caesar..Sallust, Ovid BCE (la.wikisource)
+node scripts/fetch-greek-bce.mjs                # Hesiod, Hymns, Xenophon, Euclid, LXX-Rahlfs (el.wikisource, LXX enumerated live from the Rahlfs category)
+node scripts/fetch-mesopotamian.mjs             # Sumerian Gilgames cycle etc. (ETCSL, translit + English)
+node scripts/fetch-amarna.mjs                   # all 305 Amarna letters, per-sender-city (ORACC aemw/amarna, CC BY-SA)
+node scripts/fetch-chinese-pre0.mjs             # Analects, Zhuangzi, Yijing, Shijing, Sunzi, Mengzi, Han Feizi (zh.wikisource)
+node scripts/fetch-egyptian.mjs                 # Book of the Dead, Ptahhotep, Egyptian Tales (Gutenberg PD translations)
+node scripts/fetch-avestan.mjs                  # the five Gathas (avesta.org, Avestan + English)
+node scripts/fetch-sanskrit-pre0.mjs            # Atharvaveda (GRETIL IAST)
+# voices sweep (2026-10-08):
+node scripts/fetch-gutenberg-voices.mjs         # women + people of colour + global south, across time (resolved live from pg_catalog.csv)
 ```
 
 ## eochat Consumption

@@ -11,6 +11,39 @@ classical text, provenance-carrying, 600-word floor, nothing invented.
 
 ## Holdings
 
+### `gutenberg/` — women + people of colour, global-south focus, across time (118 works, 2026-10-08)
+
+The broad sweep the register's `by` column was waiting on: the public-domain
+works of women authors and authors of colour, with a global-south focus,
+resolved **live from the Project Gutenberg catalog** (`pg_catalog.csv`) — never
+from hand-typed ebook numbers (`scripts/fetch-gutenberg-voices.mjs`). Every
+document carries its identity axis in the frontmatter (`woman`, `poc`,
+`global_south`, `first_person`) and its region.
+
+- **African American (42)**: Charles Chesnutt (3), Paul Laurence Dunbar (2),
+  Frances Ellen Watkins Harper (7 — incl. *Iola Leroy*, the first best-selling
+  novel by an African American woman), James Weldon Johnson (2), William Wells
+  Brown (3 — incl. *Clotel*, the first African-American novel), Solomon Northup,
+  Booker T. Washington, W.E.B. Du Bois (5), Claude McKay (2), Langston Hughes,
+  Jean Toomer, Countee Cullen, Alice Dunbar-Nelson (2), Pauline Hopkins (2),
+  Jessie Fauset, Angelina Weld Grimké, Zora Neale Hurston, Ida B. Wells (4),
+  the Crafts' escape narrative, Sojourner Truth, Mary Prince (the first slave
+  narrative by a woman), Harriet Wilson (*Our Nig*, first novel by an
+  African-American woman), Elizabeth Keckley.
+- **Indigenous (6)**: Zitkala-Ša (2), Charles Eastman (4).
+- **Global south (29)**: José Rizal (*Noli Me Tangere*, *El Filibusterismo*),
+  Machado de Assis (4 — Brazil), Kahlil Gibran (3 — Lebanon), Sarojini Naidu
+  and Toru Dutt (India), Rabindranath Tagore (3 — India), Rubén Darío
+  (Nicaragua), José Martí (Cuba), Juana Inés de la Cruz (*Sor Juana* — Mexico),
+  Juana Manuela Gorriti (Argentina/Peru), Olive Schreiner (South Africa),
+  Katherine Mansfield (New Zealand), Mary Prince (West Indies).
+- **Women of the North (through time)**: Austen, Shelley, the Brontës, Gaskell,
+  George Eliot, Edgeworth, Alcott, Stowe, Chopin, Gilman, Wharton, Jewett,
+  Freeman, Cather, Elizabeth Stuart Phelps.
+
+Full detail in `manifests/gutenberg-voices-manifest.json`; the catalog used for
+resolution is cached at `manifests/gutenberg-catalog.csv`.
+
 ### Individual first-person works (10)
 
 | File | Voice | Year | Language | Source |
