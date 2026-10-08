@@ -41,6 +41,17 @@ const GUTENBERG = [
   ['Fernie', 'Herbal Simples', '23-healing', 'herbal simples for modern use'],
   ['Buchan, William', 'Domestic medicine', '23-healing', 'the household medical advisor'],
   ['Smith, Huron', 'Ethnobotany of the Ojibwe', '23-healing', 'Ojibwe plant medicine, recorded'],
+  ['Mooney, James', 'Sacred Formulas of the Cherokees', '23-healing', 'Cherokee healing formulas, recorded'],
+  ['Mooney, James', 'Myths of the Cherokee', '23-healing', 'Cherokee sacred narrative'],
+  ['Lindlahr, Henry', 'Nature Cure', '23-healing', 'nature-cure philosophy and practice'],
+  // more collectivist / commons theory
+  ['Marx, Karl', 'Communist Manifesto', '22-commons', 'the collectivist call to arms'],
+  ['Engels, Friedrich', 'Condition of the Working-Class', '22-commons', 'the working class of England, documented'],
+  ['Morris, William', 'News from Nowhere', '22-commons', 'a socialist utopia of the commons'],
+  ['Morris, William', 'A Dream of John Ball', '22-commons', 'the commons against enclosure'],
+  ['Bellamy, Edward', 'Looking Backward', '22-commons', 'the cooperative commonwealth'],
+  ['George, Henry', 'Progress and Poverty', '22-commons', 'the land as a common inheritance'],
+  ['Marx, Karl', 'The Eighteenth Brumaire', '22-commons', 'class and the state'],
 ];
 
 // GRETIL Sanskrit Ayurveda (original language)

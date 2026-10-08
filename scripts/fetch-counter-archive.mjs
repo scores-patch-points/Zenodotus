@@ -124,6 +124,10 @@ const ARCHIVE = [
   { key: 'india-naoroji', id: 'povertyunbritish00naoruoft', region: 'India (British Raj)', counter: 'British empire', title: 'Poverty and Un-British Rule in India', author: 'Dadabhai Naoroji', note: 'the "Grand Old Man of India" on the drain of wealth under British rule' },
   { key: 'african-cugoano', id: 'thoughtssentimen00cugo', region: 'Britain / West Africa (Fanti)', counter: 'the slave trade and empire', title: 'Thoughts and Sentiments on the Evil of Slavery', author: 'Ottobah Cugoano', note: 'a formerly enslaved African\u2019s 1787 argument against slavery' },
   { key: 'african-garvey', id: 'philosophyopinio01garv', region: 'Jamaica / United States', counter: 'colonialism and white supremacy', title: 'Philosophy and Opinions of Marcus Garvey', author: 'Marcus Garvey', note: 'the Pan-Africanist\u2019s own speeches and writings (1923)' },
+  { key: 'gold-coast-hayford-institutions', id: 'goldcoastnative00hayfgoog', region: 'Gold Coast (Ghana)', counter: 'British colonial rule', title: 'Gold Coast Native Institutions', author: 'J. E. Casely Hayford', note: 'a Gold Coast lawyer on native self-government and customary institutions (1903)' },
+  { key: 'gold-coast-hayford-ethiopia', id: 'ethiopiaunbounds00hayf', region: 'Gold Coast (Ghana)', counter: 'colonialism', title: 'Ethiopia Unbound: Studies in Race Emancipation', author: 'J. E. Casely Hayford', note: 'a founding Pan-African novel of emancipation (1911)' },
+  { key: 'india-dutt-economic-history', id: 'in.ernet.dli.2015.16957', region: 'India (British Raj)', counter: 'the colonial drain of wealth', title: 'The Economic History of India', author: 'Romesh Chunder Dutt', note: 'an Indian civil servant\u2019s own account of the economic ruin of India under British rule' },
+  { key: 'india-lajpat-rai-unhappy', id: 'india.history.resource.89043', region: 'India (British Raj)', counter: 'British empire', title: 'Unhappy India', author: 'Lala Lajpat Rai', note: 'a nationalist\u2019s 1928 reckoning with British rule' },
 ];
 
 function splitCsvRows(t) { const r = []; let c = '', q = false; for (let i = 0; i < t.length; i++) { const ch = t[i]; if (q) { c += ch; if (ch === '"') { if (t[i + 1] === '"') { c += '"'; i++; } else q = false; } } else if (ch === '"') { q = true; c += ch; } else if (ch === '\n') { r.push(c); c = ''; } else c += ch; } if (c) r.push(c); return r; }
@@ -186,7 +190,14 @@ async function main() {
       console.log(`  ↺ reused`); continue;
     }
     let text = null;
-    try { const r = await fetch(`https://archive.org/download/${w.id}/${w.id}_djvu.txt`, { headers: { 'User-Agent': 'live_priors corpus builder' } }); text = r.ok ? await r.text() : null; } catch { text = null; }
+    try {
+      // resolve the actual djvu.txt filename from item metadata (ids vary)
+      const metaRes = await fetch(`https://archive.org/metadata/${w.id}`, { headers: { 'User-Agent': 'live_priors corpus builder' } });
+      let fname = `${w.id}_djvu.txt`;
+      if (metaRes.ok) { const md = await metaRes.json(); const hit = (md.files || []).find(x => x.name.endsWith('_djvu.txt')); if (hit) fname = hit.name; }
+      const r = await fetch(`https://archive.org/download/${w.id}/${encodeURIComponent(fname)}`, { headers: { 'User-Agent': 'live_priors corpus builder' } });
+      text = r.ok ? await r.text() : null;
+    } catch { text = null; }
     if (!text || text.length < 1000) { console.log(`  ✗ ${w.id} fetch failed`); manifest.rejected.push({ key: w.key, id: w.id, reason: 'fetch_failed' }); continue; }
     const words = wordsIn(text);
     if (words < 600) { console.log(`  ✗ under floor (${words})`); manifest.rejected.push({ key: w.key, id: w.id, reason: 'under_600_words', words }); continue; }
