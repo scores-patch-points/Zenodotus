@@ -171,6 +171,23 @@ segmentation, so its unit is the clause (disclosed per entry). Builder,
 full design, the lookup API contract, and the comparative measurements:
 `scripts/pronunciation-RESULTS.md`.
 
+## `identity-priors/`
+
+Priors for learning identity from documents — the closed classes that mark
+that two surfaces name one being. `IdentityClosedClasses@1`
+(`identity-classes-{arb,heb}.json`) carries the determiners and overt copula of
+Arabic and Hebrew, derived from Universal Dependencies treebanks; `PronounPrior@1`
+(`pronoun-grc.json`) carries Ancient Greek third-person pronouns; the three
+`NotationIdentityPrior@1`/`TaxonomyIdentity@1` files cover chess PGN, taxonomy
+and UML/BPMN. This kind sits beside the received/measured identity lexicons
+already here (`name-priors/`, `alias-priors/`, `pronoun-priors/`,
+`propernoun-priors/`, `act-priors/`). The treebank-derived files are
+**byte-pinned**: each form carries the complete list of byte offsets of its
+teaching token lines in the source (sidecars in `addresses/`, source pinned by
+`sha256`). The notation files name their givers but are typed `not-pinned` — the
+training corpora and builder are not in this repo. See
+[`identity-priors/README.md`](identity-priors/README.md).
+
 ## `vision-priors/`
 
 `VisionPrior@1` — where the **no-model optics reader (Alhazen,
