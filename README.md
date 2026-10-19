@@ -187,3 +187,7 @@ const result = await queryPriors({
 
 - **eoPriors** = "how we measure what we know" (ledger, compression, projection)
 - **live_priors** = "what we know" (the actual texts)
+
+## Readings are not stored here (2026-10-19)
+
+This repo holds sources and the priors measured from them. The per-source readings that used to sit beside them (`*.eot.json`, `*.eot.jsonl`, `*.cv.md`) were removed: the system's mind is one binary log, [mnemosyne](https://github.com/scores-patch-points/mnemosyne), which records only the differences that make a difference. The reading scripts under `scripts/` still write sidecars when run; they are not committed. Sections above that describe sidecars describe the history before this date. The five hand-adjudicated UDHR readings (`udhr-*.txt.hand.eot.jsonl`) and the `*.structure.json` outlines are kept for now.
