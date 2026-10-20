@@ -16,16 +16,16 @@ test("the merged log and its artifacts verify: ring1-english and ring1-associate
   assert.ok(m.chainOk);
   assert.equal(m.domains["udhr-core/ring1-english"].verified, true, m.domains["udhr-core/ring1-english"].reason);
   assert.equal(m.domains["udhr-core/ring1-associates"].verified, true);
-  assert.equal(m.overIndexed.standing, "candidate"); assert.ok(m.associates.byWord.size > 0);
+  assert.equal(m.overIndexed.standing, "candidate"); assert.deepEqual(m.overIndexed.ac, [], "the folder-labelled anti-colonial items are withdrawn"); assert.equal(m.associates, null, "the associates are withdrawn: no priors offered");
 });
 
 test("fail closed: an altered artifact withholds ITS domain only", { skip: !HAVE && "no checkout" }, async () => {
-  const d = stage(), sp = JSON.parse(readFileSync(d + "ring1-spiral3-report.json", "utf8"));
-  sp.associates = sp.associates.slice(1);                                   // one associate removed
-  writeFileSync(d + "ring1-spiral3-report.json", JSON.stringify(sp));
+  const d = stage(), g = JSON.parse(readFileSync(d + "ring1-genre-gated-report.json", "utf8"));
+  g.survival.firstPerson = g.survival.firstPerson.filter((x) => !x.survives).concat(g.survival.firstPerson.filter((x) => x.survives).slice(1));   // one first-person survivor removed
+  writeFileSync(d + "ring1-genre-gated-report.json", JSON.stringify(g));
   const m = await loadMind({ logPath: LOG, dir: d });
-  assert.equal(m.domains["udhr-core/ring1-associates"].verified, false); assert.equal(m.associates, null, "no priors from a domain that does not verify");
-  assert.equal(m.domains["udhr-core/ring1-english"].verified, true, "the other domain is unaffected");
+  assert.equal(m.domains["udhr-core/ring1-english"].verified, false); assert.equal(m.overIndexed, null, "no priors from a domain that does not verify");
+  assert.equal(m.domains["udhr-core/ring1-associates"].verified, true, "the other domain is unaffected (it verifies as the withdrawn, empty set)");
 });
 
 test("fail closed: a missing artifact withholds the domain with a stated reason", { skip: !HAVE && "no checkout" }, async () => {
