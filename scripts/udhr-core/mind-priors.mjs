@@ -19,7 +19,7 @@ const sha = (x) => createHash("sha256").update(x).digest("hex"), rootOf = (set) 
 export const DOMAINS = ["udhr-core", "udhr-core/propositions", "udhr-core/beings", "udhr-core/beings-independent", "udhr-core/ring1-english", "udhr-core/ring1-associates"];
 const here = new URL("./", import.meta.url).pathname;
 
-export const NEEDS = ['charter', 'overIndexed', 'associates'];
+export const NEEDS = ['charter', 'overIndexed', 'associates', 'charters'];
 const CHARTER_SCHEMA = 'UDHRCharterRoot@1';
 /** The charter's root from the two small artifacts alone: the structure charter.mjs structureOf() reads from the ledger, rebuilt from referents.json (modal paragraph counts) and relations.json (stated relations). */
 export function charterRootFromArtifacts(referents, relations) {
@@ -69,6 +69,22 @@ export async function loadMind({ logPath, dir = here, deep = false, needs = NEED
     const rj = read('referents.json'), rl = read('relations.json');
     if (verdict('udhr-core', charterRootFromArtifacts(rj, rl))) out.charter = { root: out.domains['udhr-core'].root, referents: rj.modal, relations: rl.relations, standing: { stated: 'given', interpretive: 'candidate' } };
   } catch (e) { verdict('udhr-core', null, `artifact missing or unreadable: ${e.message.slice(0, 60)}`); }
+  // the co-core charters (charters/): each charter's domain is recomputed from read-state.json (the reading: editions in order with the provision count found), whose editions are
+  // re-hashed against the manifests by charters/pin.mjs. A mismatch withholds that charter; the Declaration's core is checked above and is not touched by any of this.
+  if (want.has('charters')) try {
+    const { verify } = await import("./charters/pin.mjs"), { conclusion, rootOfSet, setRootOf, domainName } = await import("./charters/build-mind-charters.mjs");
+    const pin = read("charters/co-core.json"), st = read("charters/read-state.json"), bad = verify(pin); out.charters = {};
+    for (const c of pin.charters.map((x) => x.charter)) {
+      const name = domainName(c), reads = st?.[c];
+      if (!reads) { verdict(name, null, "no read-state for this charter"); continue; }
+      const stale = bad.filter((b) => b.startsWith(c + "/") || b === c || b.startsWith(c + ":"));
+      if (stale.length) { verdict(name, null, `edition files differ from the pin: ${stale.slice(0, 3).join(", ")}`); continue; }
+      const tip = domainTip(buf, name), set = conclusion(c, reads);
+      if (tip && tip.setRoot !== setRootOf(reads)) { verdict(name, null, "the log's edition-set root differs from the recorded reading"); continue; }
+      if (verdict(name, rootOfSet(set))) out.charters[c] = { standing: "candidate", source: out.domains[name].root, provisions: set.size, editions: reads.length, offConclusion: reads.filter((e) => e.n !== set.size).map((e) => e.code) };
+    }
+    if (bad.includes("coreRoot")) out.coCore = { intact: false, reason: "the co-core root differs from the pin" }; else out.coCore = { intact: !bad.length, root: pin.coreRoot };
+  } catch (e) { out.charters = null; out.coCore = { intact: false, reason: `artifact missing or unreadable: ${e.message.slice(0, 80)}` }; }
   // the beings domains (and an independent cross-check of the charter) need the rebuilt event log
   if (deep) {
     const { loadLedger, LOG } = await import("./build.mjs"), { structureRoot } = await import("./charter.mjs"), { readAll, modalNN, mutualPairs, rootOf: pairRoot } = await import("./build-mind-beings.mjs");

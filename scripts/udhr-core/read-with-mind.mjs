@@ -56,11 +56,15 @@ const stats = new Map(), sent = new Map(); let tokens = 0, blind = 0;
 for (const s of text.replace(/\s+/g, " ").split(/(?<=[.!?])\s+/)) { const raws = s.match(TOK) ?? []; tokens += raws.length; for (const raw of raws) { const w = raw.toLowerCase(); if (!isUnknownWord(m.hearing.posPrior, w)) continue; blind++; if (raw !== w || !/^\p{Ll}{3,}$/u.test(w)) continue; stats.set(w, (stats.get(w) ?? 0) + 1); if (!sent.has(w) && raws.length >= 6 && raws.length <= 40) sent.set(w, s); } }
 const queue = [...stats].filter(([w, n]) => n >= 2 && sent.has(w)).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, 40), unk = [];
 for (let i = 0; i < queue.length; i += 8) unk.push(...(await Promise.all(queue.slice(i, i + 8).map(([w, n]) => sniff(sm, m.hearing.posPrior, w, sent.get(w), embed).then((v) => ({ word: w, n, cls: v.cls, score: v.score, accepted: v.accept }), () => null)))).filter(Boolean));
+// (3) the co-core charters, each a ground of its own (charters/ground.mjs): which provisions a paragraph speaks to beyond the text's null, or none. Reported apart from (1) and (2).
+const charterGrounds = [];
+if (mind.charters) { const { charterModel, speaksTo } = await import("./charters/ground.mjs"); for (const [c, v] of Object.entries(mind.charters)) { const cm = await charterModel(c, stem, v.provisions); charterGrounds.push(cm.gap ? { charter: c, gap: cm.gap } : speaksTo(paras, cm)); } }
 const report = {
   text: textFile.split("/").slice(-1)[0], paragraphsRead: perPara.length, tokens, language: stem,
   core: mind.core,
   rests_on: Object.fromEntries(Object.entries(mind.domains).map(([k, v]) => [k, v.verified ? `verified ${v.root.slice(0, 12)}` : `withheld (${v.reason})`])),
   declaration: { declarationVocabularyShare: +vocab(text).toFixed(4), referenceShare: refShare == null ? null : +refShare.toFixed(4), ratioToReference: refShare ? +(vocab(text) / refShare).toFixed(2) : null, paragraphsConcentratedBeyondNull: `${speaks} of ${paras.length}`, chanceLevel: "about 5% by construction (95th percentile of the text's own shuffled words); a rate near 5% means no concentration beyond the text's own word mix, NOT that the text is unrelated to the Declaration", nullThreshold: +thr.toFixed(3), speaksTo: speaks ? ranked.slice(0, 6).map(([u, x]) => `${unitName(u)} ${(x * 100).toFixed(1)}%`) : [] },
+  charters: { rests_on: mind.coCore ?? null, grounds: charterGrounds },
   ownBeings: own,
   charterRelationsJoiningThoseUnits: speaks ? rel : [],
   sharedWithAdmittedVoices: voices, 
