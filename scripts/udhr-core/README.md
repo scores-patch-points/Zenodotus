@@ -39,3 +39,15 @@ Read `PROBE-CLAUSE-ALIGNMENT.md` and `PLAN-GOLD-SPANS.md` for the wording findin
 - Language stem is the only independence proxy; translation ancestry is not recoverable from the sidecars.
 - khora's `defaultGround()` (Article 3 only) is untouched. `charter.mjs` builds the full charter beside it; swapping it in is a separate decision. Stated relations are carried on the charter but not bound as hyperlexicon affordances: khora has no composition semantics for them yet.
 - `build.mjs` rewrites the log; `run-convergence.mjs` (called by `all.mjs`) refiles the convergence event, and the epoch on `epochs.json` is append-only.
+
+
+## Ring 1 and the part-of-speech sniff (2026-10-19)
+
+Reading beyond the Declaration, one ring at a time, with every claim fixed before it was run. **Nothing here is in the mind log except `udhr-core/ring1-english`** (mnemosyne); the rest is measurement and a revisable extension to the English POS prior.
+
+- `ring1.mjs`, `ring1-genre.mjs`: which units of the Declaration the English voices of the dispossessed (`21-anti-colonial`, `20-first-person-voices`) speak to more than neutral novels, then more than a genre control (UK and US statutes, Britannica 1911). The repo holds no imperial-side prose, so the control is state-side legal and encyclopedic English, not the control that was asked for.
+- `sniff.mjs`, `build-sniff.mjs`, `sniff-eng.json`: a nominal-vs-other part-of-speech sniff for words the prior does not know, from khora's ablation delta plus the word's ending. Trained on **UD English-EWT (CC BY-SA 4.0)**, which is not in this repo: fetch `en_ewt-ud-train.conllu` from the UD_English-EWT repository into `data-ud-ewt/` to rebuild. 79.5% overall, 89.6% above its accept threshold (65% coverage). The delta alone is no better than the word's ending (`ablation-suffix.mjs`); the combination is.
+- `hybrid-settle.mjs`: the settlement policy (a pure Wiktionary list decides; a mixed one defers to the sniff). On the 64 English UDHR words it agrees with the in-sentence role 96.2% of the time against 89.1% for the type-level rule (`gold/udhr64-roles.json` is my adjudication, not human-checked).
+- `ring1-read.mjs`, `eng-prior-extension.json`: the first read: 2,153 of the 3,000 most important unknown words settled by the sniff, written as an extension, not as a change to the prior.
+- `ring1-spiral.mjs`, `ring1-spiral2.mjs`, `ring1-spiral-check.mjs`: the re-entry. What ring 1 associates with each unit replicates on held-out documents, and does not move the 170-edition conclusion.
+- Needs an Ollama with `nomic-embed-text` (set `OLLAMA_URL`; default `http://127.0.0.1:11434`). No text leaves the machine.

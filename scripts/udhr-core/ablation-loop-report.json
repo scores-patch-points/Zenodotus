@@ -1,0 +1,56 @@
+{
+ "split": {
+  "trainPerClass": 400,
+  "testPerClass": 300
+ },
+ "B1_sniff": {
+  "accuracy": 0.758,
+  "nullMax": 0.558,
+  "holds": true
+ },
+ "B2_calibration": {
+  "topThirdAcc": 0.885,
+  "bottomThirdAcc": 0.61,
+  "gap": 0.275,
+  "nullMax": 0.125,
+  "holds": true
+ },
+ "B3_compounding": {
+  "curve": [
+   {
+    "n": 20,
+    "mean": 0.637
+   },
+   {
+    "n": 40,
+    "mean": 0.691
+   },
+   {
+    "n": 80,
+    "mean": 0.72
+   },
+   {
+    "n": 160,
+    "mean": 0.741
+   },
+   {
+    "n": 320,
+    "mean": 0.753
+   }
+  ],
+  "monotone": true,
+  "pairedWinsN320over20": "20/20",
+  "holds": true
+ },
+ "B4_wiktionary": {
+  "words": 64,
+  "pure": 46,
+  "mixedSetAside": 18,
+  "noContext": 0,
+  "nominalPure": 25,
+  "accuracy": 0.717,
+  "nullMax": 0.717,
+  "holds": false,
+  "accuracyAfterAddingSettledLOO": 0.739
+ }
+}
