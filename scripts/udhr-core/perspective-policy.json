@@ -1,5 +1,31 @@
-{"schema":"PerspectivePolicy@1","decided":"2026-10-20","why":"The core is meant to hold non-corporate, non-empire perspectives. A source enters the core (the ground, grown priors, associates) only if it DECLARES a perspective of the people speaking from their own standpoint. Everything else is a CONTROL or CONTRAST, never ground. Fail closed: no declaration means control.",
-"admit":{"collections":{"21-anti-colonial":"frontmatter perspective must be non-empty (all 1,058 declared values are 'colonized peoples')","20-first-person-voices":"frontmatter perspective must be non-empty (declared values include the interviewees' own first person, children, older people, unhoused, imprisoned, atrocity survivors, indigenous, caste-oppressed, ...)"},
-"explicit":{"11-multi-language/dialects-pidgins-creoles/coraal":"community voices: the transcript is the speakers' own speech (African American speakers in DC, Princeville, Rochester); CC BY-NC-SA 4.0; no frontmatter, so admitted by name"}},
-"control":["01-literature-books","02-encyclopedic","06-government-legal (the Declaration itself is the ground by decision, not by this gate)","19-organic-community (chat, SMS, email)","24-global-literature (no perspective declared)","20-first-person-voices/gutenberg (118 files, none declared)"],
-"limits":"The label is the curator's, not an independent verification of anyone's standpoint. 90 files in 21-anti-colonial and 119 in 20-first-person-voices declare nothing and stay controls until someone decides."}
+{
+ "schema": "PerspectivePolicy@2",
+ "decided": "2026-10-20",
+ "why": "The core is meant to hold non-corporate, non-empire perspectives: the standpoint of people speaking from their own situation. A source enters the core (grown reading, associates, standpoints) only on evidence ABOUT THAT DOCUMENT. A label applied to a folder is not evidence about a document (policy v1 trusted such a label and admitted 1,025 documents of a mixed library about colonialism; see colonial-studies-audit.json). Fail closed: no document-level evidence means control. (Revision: the 28 curated primary works and the SAHO archive carried no label and were excluded by v1; they are the collection's intended voices.)",
+ "admit": {
+  "collections": {
+   "20-first-person-voices": "frontmatter perspective must be non-empty AND is declared per file (the 90 declared files carry different values: the interviewees' own first person, the author's own first person, children, older people, mentally ill, unhoused, imprisoned, atrocity survivors, ...)"
+  },
+  "explicit": {
+   "11-multi-language/dialects-pidgins-creoles/coraal": "community voices: the transcript is the speakers' own speech (African American speakers in DC, Princeville, Rochester); CC BY-NC-SA 4.0; no frontmatter, so admitted by name",
+   "21-anti-colonial/dloc-oral-histories": "interviews: the interviewee's own account, admitted by what the documents are, NOT by the folder-level label; includes 15 interviews with a no-redistribution notice (read locally for statistics, nothing published)",
+   "21-anti-colonial/saho-archive": "South African History Online (62 files, CC BY-NC-SA 4.0): histories, biographies and tributes of the liberation struggle, written within the South African liberation-heritage project, not individual first-person accounts; admitted as the struggle's own record, PROPOSED: approve or amend"
+  },
+  "explicitPatterns": [
+   {
+    "match": "^21-anti-colonial/[^/]+\\.txt$",
+    "why": "the 28 individually curated primary works at the top of 21-anti-colonial (Walker's Appeal, Cugoano, Cuffe, Pennington, Nat Turner, Garvey, Hayford, Lajpat Rai, Dutt, Naoroji, Apess, Pauline Johnson, Pokagon, Kartini, Aguinaldo, Mabini, Plaatje, J. J. Thomas, Sun Yat-sen, Marti, ...): works BY colonized, enslaved or Indigenous authors, chosen one by one. They carry no `perspective` field, which is why policy v1 excluded them while admitting the folder-labelled library. PROPOSED by the model that wrote this policy from titles and authors: approve or amend."
+   }
+  ]
+ },
+ "control": [
+  "21-anti-colonial/colonial-studies (1,025 English documents): a library about colonialism from every side; the 'colonized peoples' perspective is the folder's, identical on every one of its 1,058 labelled files; control until its documents are classified by the author's standpoint (gold/colonial-studies-audit-sample.md)",
+  "01-literature-books",
+  "02-encyclopedic",
+  "06-government-legal (the Declaration itself is the ground by decision, not by this gate)",
+  "19-organic-community (chat, SMS, email)",
+  "24-global-literature (no perspective declared)",
+  "20-first-person-voices/gutenberg (118 files, none declared)"
+ ],
+ "limits": "The label is still the curator's, not an independent verification of anyone's standpoint, wherever it is declared per file. 119 files in 20-first-person-voices declare nothing and stay controls. The 15 restricted interviews are admitted for reading, not for redistribution."
+}

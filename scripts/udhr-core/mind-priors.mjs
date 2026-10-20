@@ -51,18 +51,20 @@ export async function loadMind({ logPath, dir = here, deep = false, needs = NEED
   const read = (f) => { const p = dir + f; return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : null; };
   const verdict = (name, expected, why) => { const tip = domainTip(buf, name); out.domains[name] = !tip ? { verified: false, reason: "no ground in the log" } : expected == null ? { verified: false, root: tip.root, reason: why } : { verified: tip.root === expected, root: tip.root, expected, reason: tip.root === expected ? "recomputed root equals the log's" : "recomputed root DIFFERS from the log's" }; return out.domains[name].verified; };
 
-  const want = new Set(needs);
+  const want = new Set(needs), rev = read("provenance/revisions.json") ?? {};
   // ring1-english: survivors of the genre control (admitted sources) + the CORAAL units
   if (want.has('overIndexed')) try {
     const g = read("ring1-genre-gated-report.json"), c = read("coraal-units-report.json");
     const set = new Set([...g.survival.anticolonial.filter((x) => x.survives).map((x) => `ac:${x.unit}`), ...g.survival.firstPerson.filter((x) => x.survives).map((x) => `fp:${x.unit}`), ...c.out.surviving.map((u) => `cr:${u}`)]);
+    for (const i of rev["ring1-english"]?.withdraw ?? []) set.delete(i);      // REVISE records withdraw items; the recomputed root must equal the log's tip AFTER them
     if (verdict("udhr-core/ring1-english", rootOf(set))) out.overIndexed = { standing: "candidate", source: out.domains["udhr-core/ring1-english"].root, ac: [...set].filter((i) => i.startsWith("ac:")).map((i) => +i.slice(3)), fp: [...set].filter((i) => i.startsWith("fp:")).map((i) => +i.slice(3)), cr: [...set].filter((i) => i.startsWith("cr:")).map((i) => +i.slice(3)) };
   } catch (e) { verdict("udhr-core/ring1-english", null, `artifact missing or unreadable: ${e.message.slice(0, 60)}`); }
   // ring1-associates
   if (want.has('associates')) try {
     const sp = read("ring1-spiral3-report.json"), ck = read("ring1-spiral3-check-report.json"), dropped = new Set(ck.out.K2_dropped.map((s) => s.split(" ")[0]));
     const kept = sp.associates.filter((a) => !dropped.has(a.word)), pairs = new Set(kept.flatMap((a) => a.units.map((x) => `assoc:${x.u}:${a.word}`)));
-    if (verdict("udhr-core/ring1-associates", rootOf(pairs))) out.associates = { standing: "candidate", source: out.domains["udhr-core/ring1-associates"].root, byWord: new Map(kept.map((a) => [a.word, a.units.map((x) => ({ unit: x.u, share: x.share, lift: x.lift }))])) };
+    if (rev["ring1-associates"]?.withdraw === "all") { pairs.clear(); kept.length = 0; }      // withdrawn in full: the domain verifies as empty and offers no priors
+    if (verdict("udhr-core/ring1-associates", rootOf(pairs)) && kept.length) out.associates = { standing: "candidate", source: out.domains["udhr-core/ring1-associates"].root, byWord: new Map(kept.map((a) => [a.word, a.units.map((x) => ({ unit: x.u, share: x.share, lift: x.lift }))])) };
   } catch (e) { verdict("udhr-core/ring1-associates", null, `artifact missing or unreadable: ${e.message.slice(0, 60)}`); }
   // the Declaration's structure: rebuilt and re-hashed from the two small artifacts (no event log)
   if (want.has('charter')) try {
