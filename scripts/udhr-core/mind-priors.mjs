@@ -51,7 +51,10 @@ export async function loadMind({ logPath, dir = here, deep = false, needs = NEED
   const read = (f) => { const p = dir + f; return existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : null; };
   const verdict = (name, expected, why) => { const tip = domainTip(buf, name); out.domains[name] = !tip ? { verified: false, reason: "no ground in the log" } : expected == null ? { verified: false, root: tip.root, reason: why } : { verified: tip.root === expected, root: tip.root, expected, reason: tip.root === expected ? "recomputed root equals the log's" : "recomputed root DIFFERS from the log's" }; return out.domains[name].verified; };
 
-  const want = new Set(needs), rev = read("provenance/revisions.json") ?? {};
+  // withdrawals apply only to a log that HOLDS the REVISE record citing the audit: against an older log the same artifacts recompute to the older roots
+  const revs = read("provenance/revisions.json") ?? {}, revised = new Set(scan.records.map(E.decode).filter((d) => d.kind === "REVISE" && d.source === revs.auditSha256Prefix).map((d) => d.domain));
+  const rev = { "ring1-english": revised.has(E.domainOf("udhr-core/ring1-english")) ? revs["ring1-english"] : null, "ring1-associates": revised.has(E.domainOf("udhr-core/ring1-associates")) ? revs["ring1-associates"] : null };
+  const want = new Set(needs);
   // ring1-english: survivors of the genre control (admitted sources) + the CORAAL units
   if (want.has('overIndexed')) try {
     const g = read("ring1-genre-gated-report.json"), c = read("coraal-units-report.json");
