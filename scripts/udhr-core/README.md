@@ -51,3 +51,9 @@ Reading beyond the Declaration, one ring at a time, with every claim fixed befor
 - `ring1-read.mjs`, `eng-prior-extension.json`: the first read: 2,153 of the 3,000 most important unknown words settled by the sniff, written as an extension, not as a change to the prior.
 - `ring1-spiral.mjs`, `ring1-spiral2.mjs`, `ring1-spiral-check.mjs`: the re-entry. What ring 1 associates with each unit replicates on held-out documents, and does not move the 170-edition conclusion.
 - Needs an Ollama with `nomic-embed-text` (set `OLLAMA_URL`; default `http://127.0.0.1:11434`). No text leaves the machine.
+
+### Spanish (2026-10-19)
+
+- `build-sniff-lang.mjs <lang> <treebank> <word-regex> <model>` fits and tests a sniff for another language; `sniff-spa.json` is the Spanish one, from **UD Spanish-GSD (CC BY-SA 4.0)**, which is not in this repo (fetch `es_gsd-ud-train.conllu` from the UD_Spanish-GSD repository into `data-ud-spa/`). Combined 82.3%, spelling alone 79.7%, delta alone 71.6% (it carries signal: shuffled-label maximum 53.5%, although the only local embedder is English-centric). 91.9% accurate above its threshold at 66.9% coverage. Spelling matters more than in English.
+- `read-lang.mjs`, `read-lang-check.mjs`, `spa-prior-extension.json`: the first Spanish read: 1,887 of the 3,000 most important unknown words in 200 Project Gutenberg Spanish documents settled by the sniff. Checked on en.wiktionary.org: 22 of 26 pure-list words agree (84.6%), **one word under the 85% bar fixed in advance, so that claim did not hold**. The four misses are nouns voted for adjectives and verbs ending in -o/-a/-as.
+- This is general Spanish literature, **not ring 1**: the repo holds only 7 Spanish documents of the voices ring 1 is for, too few to test. The `region: global south` tag on `24-global-literature/es` is unreliable (it includes Byron in translation).
