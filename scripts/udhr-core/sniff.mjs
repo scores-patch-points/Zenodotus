@@ -38,6 +38,18 @@ export function fitLogistic(X, y, iters = 800, lr = 0.5) {
   for (let it = 0; it < iters; it++) { const g = [0, 0, 0]; X.forEach((x, i) => { const p = 1 / (1 + Math.exp(-(w[0] * x[0] + w[1] * x[1] + w[2] * x[2]))); for (let k = 0; k < 3; k++) g[k] += (p - y[i]) * x[k]; }); w = w.map((v, k) => v - (lr * g[k]) / X.length); }
   return w;
 }
+/** v2: log-odds of "nominal" given the PREVIOUS / NEXT word (lower-cased; "<s>" / "</s>" at the edges), smoothed, from training occurrences. Plain objects so they serialise. */
+export function ctxCounts(xs, key) {
+  const t = {}; for (const x of xs) (t[x[key]] ??= [0, 0])[x.truth === "nominal" ? 0 : 1]++;
+  const nN = xs.filter((x) => x.truth === "nominal").length; return { t, prior: Math.log(nN / (xs.length - nN)) };
+}
+export const ctxLogOdds = ({ t, prior }, w) => { const c = t[w]; return c ? Math.log((c[0] + 1) / (c[1] + 1)) - prior : 0; };
+/** the words either side of `word` in `sentence` (first whole-token match, case-insensitive) */
+export function neighbours(sentence, word) {
+  const toks = (sentence.match(/\p{L}+(?:['’]\p{L}+)?/gu) ?? []).map((t) => t.toLowerCase()), i = toks.indexOf(word.toLowerCase());
+  return { prev: i > 0 ? toks[i - 1] : "<s>", next: i >= 0 && i + 1 < toks.length ? toks[i + 1] : "</s>" };
+}
+export const score2 = (model, d, word, prev, next) => model.weights[0] * deltaMargin(d, model.centroids) + model.weights[1] * suffixLogOdds(model.suffix, word) + model.weights[2] * ctxLogOdds(model.ctx.prev, prev) + model.weights[3] * ctxLogOdds(model.ctx.next, next) + model.weights[4];
 export const score = (model, d, word) => model.weights[0] * deltaMargin(d, model.centroids) + model.weights[1] * suffixLogOdds(model.suffix, word) + model.weights[2];
 
 /** The delta of one sentence for one word, from the injected embedder. */
@@ -54,6 +66,7 @@ export async function deltaOf(embed, sentence, word) {
  */
 export async function sniff(model, posPrior, word, sentence, embed) {
   if (!isUnknownWord(posPrior, word)) throw new Error(`sniff: the prior already knows "${word}"`);
-  const s = score(model, await deltaOf(embed, sentence, word), word);
+  const d = await deltaOf(embed, sentence, word), nb = neighbours(sentence, word);
+  const s = model.ctx ? score2(model, d, word, nb.prev, nb.next) : score(model, d, word);
   return Object.freeze({ word, cls: s >= 0 ? "nominal" : "other", score: +s.toFixed(4), accept: Math.abs(s) >= model.threshold, source: "sniff", revisable: true });
 }
