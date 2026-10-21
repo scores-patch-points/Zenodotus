@@ -16,10 +16,10 @@ import * as E from "./eotm.mjs";
 import { domainTip } from "./revise.mjs";
 
 const sha = (x) => createHash("sha256").update(x).digest("hex"), rootOf = (set) => sha([...set].sort().join("\n")).slice(0, 32);
-export const DOMAINS = ["udhr-core", "udhr-core/propositions", "udhr-core/beings", "udhr-core/beings-independent", "udhr-core/ring1-english", "udhr-core/ring1-associates"];
+export const DOMAINS = ["udhr-core", "udhr-core/propositions", "udhr-core/beings", "udhr-core/beings-independent", "udhr-core/ring1-english", "udhr-core/ring1-associates", "udhr-core/standpoints"];
 const here = new URL("./", import.meta.url).pathname;
 
-export const NEEDS = ['charter', 'overIndexed', 'associates', 'charters'];
+export const NEEDS = ['charter', 'overIndexed', 'associates', 'charters', 'standpoints'];
 const CHARTER_SCHEMA = 'UDHRCharterRoot@1';
 /** The charter's root from the two small artifacts alone: the structure charter.mjs structureOf() reads from the ledger, rebuilt from referents.json (modal paragraph counts) and relations.json (stated relations). */
 export function charterRootFromArtifacts(referents, relations) {
@@ -43,7 +43,7 @@ export function checkCore(buf, scan, core) {
 }
 
 export async function loadMind({ logPath, dir = here, deep = false, needs = NEEDS } = {}) {
-  const buf = readFileSync(logPath), scan = E.scan(buf), out = { chainOk: scan.ok, records: scan.records?.length ?? 0, domains: {}, charter: null, overIndexed: null, associates: null, beingsPairs: null };
+  const buf = readFileSync(logPath), scan = E.scan(buf), out = { chainOk: scan.ok, records: scan.records?.length ?? 0, domains: {}, charter: null, overIndexed: null, associates: null, standpoints: null, beingsPairs: null };
   if (!scan.ok) { for (const d of DOMAINS) out.domains[d] = { verified: false, reason: `the log does not verify: ${scan.error}` }; return out; }
   const coreFile = dirname(logPath) + "/core.json";
   if (existsSync(coreFile)) { const bad = checkCore(buf, scan, JSON.parse(readFileSync(coreFile, "utf8"))); out.core = bad ? { pinned: true, intact: false, reason: bad } : { pinned: true, intact: true }; if (bad) { for (const d of DOMAINS) out.domains[d] = { verified: false, reason: `the immutable core is not intact: ${bad}` }; return out; } }
@@ -69,6 +69,11 @@ export async function loadMind({ logPath, dir = here, deep = false, needs = NEED
     if (rev["ring1-associates"]?.withdraw === "all") { pairs.clear(); kept.length = 0; }      // withdrawn in full: the domain verifies as empty and offers no priors
     if (verdict("udhr-core/ring1-associates", rootOf(pairs)) && kept.length) out.associates = { standing: "candidate", source: out.domains["udhr-core/ring1-associates"].root, byWord: new Map(kept.map((a) => [a.word, a.units.map((x) => ({ unit: x.u, share: x.share, lift: x.lift }))])) };
   } catch (e) { verdict("udhr-core/ring1-associates", null, `artifact missing or unreadable: ${e.message.slice(0, 60)}`); }
+  // standpoints: what each recorded standpoint recurs on, in its own terms (no Declaration unit); recomputed from the profiles report and the selection
+  if (want.has('standpoints')) try {
+    const sel = read('provenance/standpoints.json'), rep = read(sel.report), sets = Object.fromEntries(sel.recorded.map((g) => [g, rep.out[g].top20.map((x) => x.split(' ')[0])])), all = new Set(sel.recorded.flatMap((g) => sets[g].map((w) => `sp:${g}:${w}`)));
+    if (verdict('udhr-core/standpoints', rootOf(all))) out.standpoints = { standing: 'candidate', source: out.domains['udhr-core/standpoints'].root, beings: new Map(Object.entries(sets)) };
+  } catch (e) { verdict('udhr-core/standpoints', null, `artifact missing or unreadable: ${e.message.slice(0, 60)}`); }
   // the Declaration's structure: rebuilt and re-hashed from the two small artifacts (no event log)
   if (want.has('charter')) try {
     const rj = read('referents.json'), rl = read('relations.json');

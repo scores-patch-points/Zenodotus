@@ -8,8 +8,8 @@ import * as E from "./eotm.mjs";
 
 // The merged log lives in the sibling mnemosyne checkout; skip (with the reason) when it is absent.
 const LOG = new URL("../../../mnemosyne/mind.eot", import.meta.url).pathname, HAVE = existsSync(LOG);
-const ART = ["ring1-genre-gated-report.json", "coraal-units-report.json", "ring1-spiral3-report.json", "ring1-spiral3-check-report.json"];
-const stage = () => { const d = mkdtempSync(join(tmpdir(), "mind-")) + "/"; for (const f of ART) copyFileSync(new URL(`./${f}`, import.meta.url), d + f); mkdirSync(d + "provenance"); copyFileSync(new URL("./provenance/revisions.json", import.meta.url), d + "provenance/revisions.json"); return d; };
+const ART = ["ring1-genre-gated-report.json", "coraal-units-report.json", "ring1-spiral3-report.json", "ring1-spiral3-check-report.json", "perspective-profiles-report.json"];
+const stage = () => { const d = mkdtempSync(join(tmpdir(), "mind-")) + "/"; for (const f of ART) copyFileSync(new URL(`./${f}`, import.meta.url), d + f); mkdirSync(d + "provenance"); for (const f of ["revisions.json", "standpoints.json"]) copyFileSync(new URL(`./provenance/${f}`, import.meta.url), d + `provenance/${f}`); return d; };
 
 test("the merged log and its artifacts verify: ring1-english and ring1-associates recompute to the log's roots", { skip: !HAVE && "no ../mnemosyne/mind.eot checkout" }, async () => {
   const m = await loadMind({ logPath: LOG, dir: stage() });
