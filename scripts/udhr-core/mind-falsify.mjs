@@ -46,7 +46,9 @@ out.U3 = { hash1: createHash("sha256").update(a1).digest("hex").slice(0, 16), ha
   out.U2 = { overlap: k, of: cr.length, expectedByChance: +((fp.length * cr.length) / 31).toFixed(2), p: +p.toFixed(3), holds: p < 0.05 }; }
 
 // ---- U1: associates transfer to CORAAL ----
-{ const { modelOf, scoreTokens, tokensOf, shuffle, mulberry } = await import("./ring1.mjs"), { admitted } = await import("./perspective-gate.mjs");
+{ const mind0 = await loadMind({ logPath: LOG });
+  if (!mind0.associates) out.U1 = { withdrawn: true, reason: "the associates were withdrawn from the log by REVISE (they were learned on folder-labelled documents, see colonial-studies-audit.json); there is nothing to test. The earlier result (transfer to CORAAL held, 64 pairs) is history, not a standing claim." };
+  else { const { modelOf, scoreTokens, tokensOf, shuffle, mulberry } = await import("./ring1.mjs"), { admitted } = await import("./perspective-gate.mjs");
   const mind = await loadMind({ logPath: LOG }), by = mind.associates.byWord, m = await modelOf("eng"), rd = (p) => readFileSync(p, "utf8");
   const w2 = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? w2(join(d, e.name)) : /\.txt$/.test(e.name) ? [join(d, e.name)] : []));
   const files = w2(here + "../Zenodotus/11-multi-language/dialects-pidgins-creoles/coraal").filter((p) => admitted(p).admit);
@@ -58,6 +60,7 @@ out.U3 = { hash1: createHash("sha256").update(a1).digest("hex").slice(0, 16), ha
   const real = usable.flatMap(([w, us]) => lift(w, us.map((x) => x.unit))), mean = (xs) => xs.reduce((a, c) => a + c, 0) / xs.length, rnd = mulberry(9), words = usable.map(([w]) => w), shape = new Map(usable.map(([w, us]) => [w, us.map((x) => x.unit)]));
   const nulls = Array.from({ length: 200 }, () => { const sh = shuffle(words, rnd); return mean(words.flatMap((w, i) => lift(w, shape.get(sh[i])))); });
   out.U1 = { associatesWithEnoughCoraal: `${usable.length} of ${by.size}`, meanLift: +mean(real).toFixed(3), nullMax: +Math.max(...nulls).toFixed(3), nullMean: +mean(nulls).toFixed(3), holds: usable.length >= 10 && mean(real) > Math.max(...nulls) }; }
+}
 
 // ---- A1: activation: which artifact files does a load actually open, for each need? (second run, after `needs` was added; the first run, with no such option, FAILED: _mind-falsify-before.log) ----
 { const fs = (await import("node:fs")).default, orig = fs.readFileSync, opened = new Set(); fs.readFileSync = function (p, ...r) { if (typeof p === "string" && p.startsWith(here) && p.endsWith(".json")) opened.add(p.slice(here.length)); return orig.call(this, p, ...r); }; syncBuiltin.syncBuiltinESMExports();
