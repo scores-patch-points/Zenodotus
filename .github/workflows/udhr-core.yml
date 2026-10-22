@@ -1,0 +1,31 @@
+# udhr-core: the tests, run the way they are meant to run: beside their public sibling repositories, on an event log rebuilt from the frozen editions.
+name: udhr-core
+on:
+  pull_request:
+    paths: ['scripts/udhr-core/**', '.github/workflows/udhr-core.yml']
+  push:
+    branches: [main]
+    paths: ['scripts/udhr-core/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts
+            06-government-legal/un-udhr
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: sibling repositories (all public), beside this checkout
+        run: |
+          cd "$GITHUB_WORKSPACE/.."
+          for r in khora janus penelope mnemosyne; do git clone --depth 1 "https://github.com/scores-patch-points/$r.git" "$r"; done
+      - name: rebuild the event log from the frozen editions
+        run: cd scripts/udhr-core && node all.mjs
+      - name: tests
+        run: cd scripts/udhr-core && node --test *.test.mjs
