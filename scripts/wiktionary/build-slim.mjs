@@ -17,7 +17,7 @@ import { join } from "node:path";
 import { slimOf, tagOf, sha256, SLIM_VERSION } from "./project.mjs";
 
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i < 0 ? d : process.argv[i + 1]; };
-const TSV_IN = arg("tsv"), CODES = arg("codes"), IN = arg("in") ?? TSV_IN, OUT = arg("out", "slim"), CHUNK = Number(arg("chunk-mb", 8)) * 1048576;
+const GLOSS = arg("gloss-lang"), TSV_IN = arg("tsv"), CODES = arg("codes"), IN = arg("in") ?? TSV_IN, OUT = arg("out", "slim"), CHUNK = Number(arg("chunk-mb", 8)) * 1048576;
 if (!IN) { console.error("usage: node build-slim.mjs --in <extract.jsonl> --out <dir>"); process.exit(2); }
 mkdirSync(join(OUT, "chunks"), { recursive: true });
 const TSV = join(OUT, "unsorted.tsv"), SORTED = join(OUT, "sorted.tsv");
@@ -39,6 +39,7 @@ for await (const line of createInterface({ input: createReadStream(IN), crlfDela
   } else {
     let e; try { e = JSON.parse(line); } catch { continue; }
     s = slimOf(e); if (!s) continue;
+    if (GLOSS) s.gl = GLOSS; // the language the glosses are WRITTEN in (the edition), not the language of the word
   }
   if (!w.write(`${s.w.replace(/[\t\n]/g, " ")}\t${JSON.stringify(s)}\n`)) await new Promise((r) => w.once("drain", r));
   kept++;
@@ -69,7 +70,7 @@ flushWord(); flushChunk(); rmSync(SORTED);
 
 const manifest = { version: SLIM_VERSION, built: new Date().toISOString(), source: IN,
   licence: "Wiktionary text is CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/); attribution: Wiktionary contributors, page histories at https://en.wiktionary.org; this slim projection is a derivative under the same licence.",
-  reader: TSV_IN ? "fast-read.mjs (structural, templates collapsed; senses with an unread template carry gaps)" : "wiktextract", unmappedEntries: unmapped, entriesRead: read, entriesKept: kept, rawBytesIn: rawIn, chunks };
+  glossLanguage: GLOSS ?? "en", reader: TSV_IN ? "fast-read.mjs (structural, templates collapsed; senses with an unread template carry gaps)" : "wiktextract", unmappedEntries: unmapped, entriesRead: read, entriesKept: kept, rawBytesIn: rawIn, chunks };
 writeFileSync(join(OUT, "manifest.json"), JSON.stringify(manifest));
 const packed = chunks.reduce((n, c) => n + c.bytes, 0);
 console.log(`${unmapped} entries in languages with no code in the tables;`);
