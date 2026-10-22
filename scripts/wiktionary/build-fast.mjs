@@ -28,7 +28,7 @@ function onPage(b) {
   for (const e of readPage(unxml(title), unxml(text))) {
     entries++;
     for (const s of e.s) { senses++; if (s.gaps) gapSenses++; }
-    w.write(`${e.w.replace(/[\t\n]/g, " ")}\t${JSON.stringify({ w: e.w, n: e.n, p: e.p, s: e.s, ...(e.t ? { t: e.t } : {}) })}\n`);
+    w.write(`${e.w.replace(/[\t\n]/g, " ")}\t${JSON.stringify({ w: e.w, n: e.n, p: e.p, s: e.s, ...(e.t ? { t: e.t } : {}), ...(e.rel ? { rel: e.rel } : {}) })}\n`);
   }
   if (pages % 200000 === 0) console.error(`${pages} pages, ${entries} entries, ${((Date.now() - t0) / 60000).toFixed(1)} min`);
 }

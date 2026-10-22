@@ -34,7 +34,7 @@ for await (const line of createInterface({ input: createReadStream(IN), crlfDela
   if (TSV_IN) {
     const tab = line.indexOf("\t"); try { s = JSON.parse(line.slice(tab + 1)); } catch { continue; }
     const code = nameToCode[s.n];
-    if (code) { const { tag, inSuite } = tagOf(code); s = { w: s.w, c: code, tag, st: inSuite, n: s.n, p: s.p, s: s.s, ...(s.t ? { t: s.t } : {}) }; }
+    if (code) { const { tag, inSuite } = tagOf(code); s = { w: s.w, c: code, tag, st: inSuite, n: s.n, p: s.p, s: s.s, ...(s.t ? { t: s.t } : {}), ...(s.rel ? { rel: s.rel } : {}) }; }
     else { unmapped++; s = { ...s, c: null, tag: null, st: 0 }; } // a language the tables do not name: typed gap, not a guess
   } else {
     let e; try { e = JSON.parse(line); } catch { continue; }

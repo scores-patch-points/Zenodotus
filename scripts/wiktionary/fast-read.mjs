@@ -58,6 +58,44 @@ export function readGloss(raw) {
   return { text: s.replace(/^[,;:\s]+/, ""), tags: [...new Set(tags)], of: st.of, gaps: st.gaps, unread: st.unread };
 }
 
+
+// ── related words: synonyms, antonyms, hypernyms, hyponyms ──────────────────────────────────────────────────────────────
+// Per sense, from `#: {{syn|en|a|b}}` lines under a sense (and the same templates inline in a gloss line); per entry, from the
+// ====Synonyms==== / ====Antonyms==== / ====Hypernyms==== / ====Hyponyms==== sections, where a `{{sense|x}}` label says which sense a
+// bullet is about (kept as the qualifier). A word is a string, or [word, qualifier] where one is given (`word<q:rare>`, `{{q|…}}`, a sense label).
+const REL_KEY = { syn: "syn", synonym: "syn", synonyms: "syn", ant: "ant", antonym: "ant", antonyms: "ant", hyper: "hyper", hypernym: "hyper", hypernyms: "hyper", hypo: "hypo", hyponym: "hypo", hyponyms: "hypo" };
+const REL_MAX = 40;
+const addRel = (into, kind, word, q) => {
+  word = String(word ?? "").replace(/#.*$/, "").trim(); if (!word || /^(?:Category|File|Image|w|wikipedia):/i.test(word)) return;
+  const list = (into[kind] ??= []); if (list.length >= REL_MAX) return;
+  if (!list.some((x) => (Array.isArray(x) ? x[0] : x) === word)) list.push(q ? [word, q] : word);
+};
+/** Relation templates in one line → {syn?, ant?, hyper?, hypo?}. `{{syn|lang|w1|w2<q:x>|q1=…}}`: positional args after the language code. */
+export function readRel(text) {
+  const out = {};
+  for (const m of String(text).matchAll(/\{\{\s*(syn|synonyms?|ant|antonyms?|hyper|hypernyms?|hypo|hyponyms?)\s*\|([^{}]*)\}\}/gi)) {
+    const kind = REL_KEY[m[1].toLowerCase()]; const a = splitArgs(m[2]).map((x) => x.trim());
+    for (const arg of a.slice(1)) {
+      if (/^[\w-]+=/.test(arg)) continue; // named parameters (q1=, t1=, sc= …) are not words
+      const w = /^([^<]*)((?:<[^>]*>)*)$/.exec(arg); if (!w) continue;
+      const q = /<q:([^>]*)>/.exec(w[2])?.[1];
+      addRel(out, kind, w[1].replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, "$1"), q);
+    }
+  }
+  return out;
+}
+const mergeRel = (into, rel) => { for (const [k, list] of Object.entries(rel)) for (const x of list) addRel(into, k, Array.isArray(x) ? x[0] : x, Array.isArray(x) ? x[1] : null); };
+/** One bullet of a Synonyms/Antonyms/… section → [word, qualifier?] list. */
+function bulletWords(line) {
+  const sense = /\{\{\s*(?:sense|s|sens)\s*\|([^{}|]*)/i.exec(line)?.[1]?.trim() || null;
+  const q = /\{\{\s*(?:q|qual|qualifier|i)\s*\|([^{}]*)\}\}/i.exec(line)?.[1]?.split("|").join(", ") || null;
+  const out = [];
+  for (const m of line.matchAll(/\{\{\s*(?:l|link|m|mention|ll)\s*\|[^|{}]*\|([^|{}]+)/gi)) out.push(m[1].trim());
+  for (const m of line.matchAll(/\{\{\s*col\d?[^|{}]*\|[^|{}]*\|([^{}]*)\}\}/gi)) for (const w of splitArgs(m[1])) if (!/^[\w-]+=/.test(w) && w.trim()) out.push(w.replace(/<[^>]*>/g, "").trim());
+  if (!out.length) for (const m of line.matchAll(/\[\[([^\]|#]+)(?:\|[^\]]*)?\]\]/g)) out.push(m[1].trim());
+  return { words: out, q: sense || q };
+}
+
 /** wikitext of one page → entries [{w, n, p, s:[{g|of, tags?, gaps?}], t?}] */
 export function readPage(title, wikitext, codes = {}) {
   const entries = [];
@@ -73,17 +111,25 @@ export function readPage(title, wikitext, codes = {}) {
         if (codes[name]) cur.c = codes[name];
         let parent = [];
         for (const line of text.split("\n")) {
+          // `#: {{syn|en|…}}` under a sense: that sense's related words
+          const rl = /^#+:\s*(.*)$/.exec(line);
+          if (rl && cur.s.length) { const r = readRel(rl[1]); if (Object.keys(r).length) mergeRel(cur.s[cur.s.length - 1], r); continue; }
           const m = /^(#+)(?![#*:])\s*(.*)$/.exec(line); if (!m) continue;
-          const depth = m[1].length, g = readGloss(m[2]);
+          const depth = m[1].length, g = readGloss(m[2]), inlineRel = readRel(m[2]);
           parent = parent.slice(0, depth - 1); parent[depth - 1] = g.text;
           // a sense whose whole gloss is a template this reader cannot expand ({{place}}, {{surname}}, {{letter}} …) still EXISTS:
           // keep it as a typed gap that names the templates, never drop the sense (and with it the whole language entry)
           if (!g.text && !g.of && !g.unread.length) continue;
           const sense = g.of ? { of: g.of } : (g.text ? { g: [...new Set(parent.filter(Boolean))].slice(-3) } : { g: [], tpl: g.unread });
           if (g.tags.length) sense.tags = g.tags; if (g.gaps) sense.gaps = g.gaps;
+          if (Object.keys(inlineRel).length) mergeRel(sense, inlineRel);
           cur.s.push(sense);
         }
         entries.push(cur);
+      } else if (/^(?:Synonyms|Antonyms|Hypernyms|Hyponyms)$/i.test(head) && cur) {
+        const kind = REL_KEY[head.toLowerCase()], rel = (cur.rel ??= {});
+        for (const line of text.split("\n")) { if (!/^\s*[*:]/.test(line) && !/\{\{\s*col/i.test(line)) continue; const { words, q } = bulletWords(line); for (const w of words) addRel(rel, kind, w, q); }
+        if (!Object.keys(cur.rel).length) delete cur.rel;
       } else if (/^Translations$/i.test(head) && cur) {
         const t = []; for (const m of text.matchAll(/\{\{t\+?\|([^|}]+)\|([^|}]+)/g)) t.push([m[1], m[2]]);
         if (t.length) cur.t = (cur.t || []).concat(t);
