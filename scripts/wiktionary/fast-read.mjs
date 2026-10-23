@@ -63,11 +63,13 @@ export function readGloss(raw) {
 // Per sense, from `#: {{syn|en|a|b}}` lines under a sense (and the same templates inline in a gloss line); per entry, from the
 // ====Synonyms==== / ====Antonyms==== / ====Hypernyms==== / ====Hyponyms==== sections, where a `{{sense|x}}` label says which sense a
 // bullet is about (kept as the qualifier). A word is a string, or [word, qualifier] where one is given (`word<q:rare>`, `{{q|…}}`, a sense label).
-const REL_KEY = { syn: "syn", synonym: "syn", synonyms: "syn", ant: "ant", antonym: "ant", antonyms: "ant", hyper: "hyper", hypernym: "hyper", hypernyms: "hyper", hypo: "hypo", hyponym: "hypo", hyponyms: "hypo" };
-const REL_MAX = 40;
+const REL_KEY = { syn: "syn", synonym: "syn", synonyms: "syn", ant: "ant", antonym: "ant", antonyms: "ant", hyper: "hyper", hypernym: "hyper", hypernyms: "hyper", hypo: "hypo", hyponym: "hypo", hyponyms: "hypo",
+  holonym: "holo", holonyms: "holo", meronym: "mero", meronyms: "mero", "derived terms": "derived", "coordinate terms": "coord" };
+const REL_MAX = 40, REL_MAX_BY = { derived: 80 };
 const addRel = (into, kind, word, q) => {
   word = String(word ?? "").replace(/#.*$/, "").trim(); if (!word || /^(?:Category|File|Image|w|wikipedia):/i.test(word)) return;
-  const list = (into[kind] ??= []); if (list.length >= REL_MAX) return;
+  if (!/[\p{L}\p{N}]/u.test(word)) return; // a separator or markup that leaked in as a "word"
+  const list = (into[kind] ??= []); if (list.length >= (REL_MAX_BY[kind] ?? REL_MAX)) return;
   if (!list.some((x) => (Array.isArray(x) ? x[0] : x) === word)) list.push(q ? [word, q] : word);
 };
 /** Relation templates in one line → {syn?, ant?, hyper?, hypo?}. `{{syn|lang|w1|w2<q:x>|q1=…}}`: positional args after the language code. */
@@ -91,7 +93,7 @@ function bulletWords(line) {
   const q = /\{\{\s*(?:q|qual|qualifier|i)\s*\|([^{}]*)\}\}/i.exec(line)?.[1]?.split("|").join(", ") || null;
   const out = [];
   for (const m of line.matchAll(/\{\{\s*(?:l|link|m|mention|ll)\s*\|[^|{}]*\|([^|{}]+)/gi)) out.push(m[1].trim());
-  for (const m of line.matchAll(/\{\{\s*col\d?[^|{}]*\|[^|{}]*\|([^{}]*)\}\}/gi)) for (const w of splitArgs(m[1])) if (!/^[\w-]+=/.test(w) && w.trim()) out.push(w.replace(/<[^>]*>/g, "").trim());
+  for (const m of line.matchAll(/\{\{\s*(?:col|der|rel|cot|top)\d?[^|{}]*\|[^|{}]*\|([^{}]*)\}\}/gi)) for (const w of splitArgs(m[1])) if (!/^[\w-]+=/.test(w) && w.trim()) out.push(w.replace(/<[^>]*>/g, "").trim());
   if (!out.length) for (const m of line.matchAll(/\[\[([^\]|#]+)(?:\|[^\]]*)?\]\]/g)) out.push(m[1].trim());
   return { words: out, q: sense || q };
 }
@@ -126,9 +128,9 @@ export function readPage(title, wikitext, codes = {}) {
           cur.s.push(sense);
         }
         entries.push(cur);
-      } else if (/^(?:Synonyms|Antonyms|Hypernyms|Hyponyms)$/i.test(head) && cur) {
+      } else if (/^(?:Synonyms|Antonyms|Hypernyms|Hyponyms|Holonyms|Meronyms|Derived terms|Coordinate terms)$/i.test(head) && cur) {
         const kind = REL_KEY[head.toLowerCase()], rel = (cur.rel ??= {});
-        for (const line of text.split("\n")) { if (!/^\s*[*:]/.test(line) && !/\{\{\s*col/i.test(line)) continue; const { words, q } = bulletWords(line); for (const w of words) addRel(rel, kind, w, q); }
+        for (const line of text.split("\n")) { if (!/^\s*[*:]/.test(line) && !/\{\{\s*(?:col|der|rel|cot|top)\d?/i.test(line)) continue; const { words, q } = bulletWords(line); for (const w of words) addRel(rel, kind, w, q); }
         if (!Object.keys(cur.rel).length) delete cur.rel;
       } else if (/^Translations$/i.test(head) && cur) {
         const t = []; for (const m of text.matchAll(/\{\{t\+?\|([^|}]+)\|([^|}]+)/g)) t.push([m[1], m[2]]);

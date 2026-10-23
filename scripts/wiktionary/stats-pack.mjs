@@ -3,7 +3,7 @@
 import { Dictionary } from "./lookup.mjs";
 const arg = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i < 0 ? d : process.argv[i + 1]; };
 const d = new Dictionary({ pack: arg("pack"), learned: "/dev/null", changed: "/dev/null", delta: "/dev/null" });
-const LANG = arg("lang", "en"), KINDS = ["syn", "ant", "hyper", "hypo"];
+const LANG = arg("lang", "en"), KINDS = ["syn", "ant", "hyper", "hypo", "holo", "mero", "derived", "coord"];
 const z = () => ({ entries: 0, senses: 0, entriesWithT: 0, sensesTags: 0, sensesGaps: 0, ...Object.fromEntries(KINDS.flatMap((k) => [[`sense_${k}`, 0], [`entry_${k}`, 0]])) });
 const all = z(), one = z();
 for (const c of d.manifest.chunks) for (const line of d.loadChunk(c)) for (const e of JSON.parse(line).e) {
