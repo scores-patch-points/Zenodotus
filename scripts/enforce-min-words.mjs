@@ -79,6 +79,9 @@ function measure(files) {
     } catch {
       continue;
     }
+    // A document whose own frontmatter declares `floor_exempt: <reason>` (GAP-INGEST-SPEC.md: a children's book, a
+    // complete short work, a newspaper article, a corpus file) is exempt by its fetcher's claim, never pruned here.
+    if (text.startsWith('---') && /^floor_exempt:\s*\S/m.test(text.slice(0, text.indexOf('\n---', 3) + 1 || 20000))) continue;
     rows.push({ file: f, words: wordsIn(text, f), bytes: text.length });
   }
   return rows;
