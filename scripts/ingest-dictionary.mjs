@@ -18,7 +18,9 @@ const [, , giver, license, file] = process.argv;
 if (!giver || !license || !file) { console.error("usage: node ingest-dictionary.mjs <giver> <license> <normalized.jsonl>"); process.exit(1); }
 
 const h = open("given", { dir: process.env.PHAROS_DIR || null, writer: giver });
-if (!entries(h).some((e) => e.kind === "kind" && e.addr === "kind:definition")) weave(h, { cell: "DEF·Figure", kind: "kind", addr: "kind:definition", body: { name: "definition", cell: "DEF·Figure" } });
+// no kind-declaration check here: weaveMany does not require a declared kind, and entries(h) is
+// O(n) — re-reading a million-entry log per dictionary is the slow path. The "definition" kind is
+// declared once by whoever wants it in the registry; the bulk write needs no registry.
 
 const inputs = [];
 for (const line of fs.readFileSync(file, "utf8").split("\n")) {
