@@ -119,6 +119,7 @@ All exploratory, English only; F1 to F5 on 7 mixed documents, F1b to F10 on 32 O
 | F7 | document | the day is reproducible, so an echoed note can be re-opened by re-reading | two independent reads of the same 32 documents: 32 of 32 deposits byte-identical |
 | F8 | recall | a cue's beings are found and their addresses open onto them | a 255-character cue admitted 7 beings; all 7 met, 6 standing (2 to 21 documents); every opened address read its being's bytes (e.g. `old-bailey-16811017.txt#12260+7` "Newgate") |
 | F9 | recall | a short cue can be recalled | refuted: the canonical door reads nothing under 200 characters (`read-core.mjs` `minCharacters = 200`, not passed by `readToWeft`); a short cue is answered with the reader's gap, never a string search |
+| F9b | recall | as F9, after the fix | `readDocument` already took a caller's `minCharacters`; recall-corpus.mjs now declares it (default 1: a cue is read whole whatever its length). khora `636a605` makes `readToWeft` take it too (the two doors equal; `native/tests/min-characters-door.test.mjs` fails on the old door). A 49-character cue, "Who was sent to Newgate, and who died at Tyburn?", admitted both beings and opened their addresses |
 | F10 | document | the reader admits beings by a name signal | on 17th-century English the capitalized common nouns stand as beings across documents: Felony (23), Tryal (22), Indictment (22), Court (21), Death (20); "john" stands in 19 documents as one ref |
 
 ## Corrections to the first version (commit `c42fccf8`)
@@ -130,6 +131,20 @@ All exploratory, English only; F1 to F5 on 7 mixed documents, F1b to F10 on 32 O
 ## Size, measured on the Old Bailey run
 
 Per 8 documents (about 130K characters): the gate's own `khora.phb` (being, binding, gender) 1.16 MB, 83% of the model directory; the compact index and deposits 0.24 MB; the night's field for all 32 documents 0.63 MB. The remaining weight is the gate's clause-level write (a binding per pronoun, agreement the pronoun already gives); shrinking it is a change to khora's gate, not made here.
+
+## Fixed in khora (local commits on `ccr-40ad7623-3d1ajm`, not pushed)
+
+| problem | fix | measured |
+|---|---|---|
+| the two front doors differed on `minCharacters` | `readToWeft` passes a caller's declared floor through; default 200 unchanged | new test fails on the old door, passes on the new; gate: the same 7 pre-existing failures |
+| the gate wrote a read entry by entry (`weave()` builds the whole log's view per entry) | one `weaveMany` per read; kinds checked by `missingKinds`; a repeat within a read, or an address-global repeat across reads, written once | 8 Old Bailey documents into one log: the same 6,120 distinct entries as the old gate; 87.3 s to 15.2 s; 10% fewer bytes |
+| binding addresses `bind:<offset>` repeated across documents (heads at one address mixed documents) | `bind:<sha16 of the text>:<offset>`, as `weaveReferents` addresses; being addresses stay `ref:auto:<name>` (penelope's referent graph keys on them, by design) | no consumer reads the binding address (searched khora, janus, penelope, the-fold, holodeck) |
+| "DMD" named two things | DMD is only Bateson's; the Koopman decomposition is `kernel/koopman.js` (`koopmanModes`, `createStreamingKoopman`); penelope's one import follows | khora gate: the same 7 pre-existing failures |
+
+## Still blocked
+
+- **Capitalized common nouns admitted as beings (F10), and part-name absorption (F1b).** Both are changes to how the reader admits and merges beings, and khora ships a reading change only measured against gold. The gold (UD English GUM, pinned in `eval/reading-baseline/BASELINE.json`) is not in this checkout, and its download was refused here. Measurement needs that file (or LitBank / CorefUD dev) on the machine.
+- **The night's elenchus.** khora's `dream` runs `corroborateLedger`, whose witness is an injected `ask` and whose passage selection matches surface words (`TEXT_CONTENT_WORD`, `indexOf`). With no LLM in the loop and no reasoning on surface strings, it is not run; the night applies the projection only. A typed gap, not a silent omission.
 
 ## Not yet run
 

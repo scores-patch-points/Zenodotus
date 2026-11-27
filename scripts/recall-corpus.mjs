@@ -5,7 +5,7 @@
 // (Zenodotus) is opened at the addresses: the bytes of each mention, and the line it stands in, up to a declared reach. A cue
 // whose read admits no being is answered with the reader's own gap, never a fallback search.
 //
-//   node scripts/recall-corpus.mjs "<cue text>" [--reach 240] [--per-ref 3] [<model-or-field-dir>...]
+//   node scripts/recall-corpus.mjs "<cue text>" [--reach 240] [--per-ref 3] [--min-characters 1] [<model-or-field-dir>...]
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -24,6 +24,7 @@ const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); if (i < 0) return d; const v = args[i + 1]; args.splice(i, 2); return v; };
 const REACH = Number(opt("--reach", 240));     // declared dial: bytes of context either side of a mention, cut back to the line it stands in
 const PER_REF = Number(opt("--per-ref", 3));   // declared dial: addresses opened per referent (the rest are counted, not opened)
+const MIN_CHARS = Number(opt("--min-characters", 1));   // declared dial: a cue is read whole whatever its length; the reader's own floor (read-core.mjs minCharacters = 200) is for reading a document for relations
 const cue = args.shift();
 if (!cue) { console.error('usage: node scripts/recall-corpus.mjs "<cue>" [dirs...]'); process.exit(2); }
 const base = path.join(ROOT, "..", "zenodotus-pharos");
@@ -32,7 +33,7 @@ const dirs = args.length ? args : fs.readdirSync(base).filter((d) => d.startsWit
 const paths = new Map();
 for (const l of fs.readFileSync(path.join(base, "ingest-checkpoint.jsonl"), "utf8").split("\n")) if (l) { const j = JSON.parse(l); paths.set(`doc:${j.sha256}`, j.path); }
 
-const w = await readDocument(cue, { language: "eng" });
+const w = await readDocument(cue, { language: "eng", minCharacters: MIN_CHARS });
 const active = (w.cast ?? []).map((c) => c.ref);
 if (!active.length) { console.log(JSON.stringify({ cue, gap: "the cue's read admitted no being", readerGaps: w.gaps ?? [], skipped: w.skipped ?? null })); process.exit(0); }
 
