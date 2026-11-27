@@ -30,6 +30,7 @@ const BUDGET = Number(arg("--budget-sec", 0)) || Infinity;
 const MAX_BYTES = Number(arg("--max-bytes", 1500000));   // declared dial: a document larger than this is deferred, counted, not read
 const STRIDE = Number(arg("--stride", 1));               // declared dial: read every STRIDE-th eligible document (a sample is said to be one)
 const LIMIT = Number(arg("--limit", 0)) || Infinity;
+const ONLY = arg("--only");                                 // a collection prefix: read only documents under it (a declared selection, said in the summary)
 const MAX_SHARD_BYTES = Number(arg("--max-shard-bytes", 200e6));   // declared dial: the pharos stays under 1 GB in all (4 shards x 200 MB + the 52 MB source tier)
 const OUT = path.resolve(arg("--dir", path.join(ROOT, "..", "zenodotus-pharos", `model-${SI}of${SN}`)));
 fs.mkdirSync(OUT, { recursive: true });
@@ -42,6 +43,9 @@ const DOOR = (process.env.HL_DOOR || "http://127.0.0.1:11450").replace(/\/$/, ""
 const { readDocument } = await import(path.join(KHORA, "native/reading.js"));
 const { stemOf } = await import(path.join(KHORA, "native/the-fold/language-grammar.js"));
 const { open, weaveMany, weave } = await import(path.join(PHAROS, "lib", "pharos.mjs"));
+const { makeNotes, noteId } = await import(path.join(KHORA, "native/kernel/notes.js"));   // the medium-blind notes kernel: first sighting INS, re-sighting SYN
+const NOTES = makeNotes();
+const key16 = (s) => crypto.createHash("sha256").update(s).digest("hex").slice(0, 16);   // a note is carried by the hash of its identity, never by its words
 
 let hlHead = null;
 try { hlHead = (await (await fetch(`${DOOR}/v1/hyperlexicon`)).json()).head ?? null; } catch { /* door down: the read records its own gap */ }
@@ -75,6 +79,7 @@ for (const d of all) {
   const label = claims.language ?? pathLabel ?? null;
   if (!label) { skipped.no_label++; continue; }
   const stem = stemOf(label); if (!stem) { skipped.no_stem++; continue; } if (stem !== "eng") { skipped.other_stem++; continue; }
+  if (ONLY && !d.path.startsWith(ONLY)) { skipped.outside_only = (skipped.outside_only ?? 0) + 1; continue; }
   if (size > MAX_BYTES) { skipped.too_large++; continue; }
   eligible.push({ ...d, label });
 }
@@ -85,9 +90,13 @@ const done = new Set(); const dcp = path.join(OUT, "read-checkpoint.jsonl");
 if (fs.existsSync(dcp)) for (const l of fs.readFileSync(dcp, "utf8").split("\n")) if (l) done.add(JSON.parse(l).sha256);
 const act = open("activation", { dir: OUT, writer: "zenodotus-activation", format: "phb" });
 weave(act, { cell: "DEF·Figure", kind: "kind", addr: "kind:activation", body: { name: "activation", cell: "CON·Figure" } });
+// THE DAY (consolidation.js): the door hears the read's own edges; a document's deposit is what it heard, as note ids and byte spans.
+weave(act, { cell: "DEF·Figure", kind: "kind", addr: "kind:deposit", body: { name: "deposit", cell: "INS·Figure" } });
+// COMPARE: the reader's own surprise measure, kept as numbers (it is capped by the reader at its own maxTokens; the basis says so).
+weave(act, { cell: "DEF·Figure", kind: "kind", addr: "kind:surprise", body: { name: "surprise", cell: "EVA·Ground" } });
 
 const dirBytes = () => fs.readdirSync(OUT).reduce((n, f) => n + fs.statSync(path.join(OUT, f)).size, 0);
-const t0 = Date.now(); const st = { documents: 0, beings: 0, spans: 0, chars: 0, failed: [], partial: [] };
+const t0 = Date.now(); const st = { documents: 0, beings: 0, spans: 0, chars: 0, notes_heard: 0, notes_turned_away: {}, failed: [], partial: [] };
 for (const d of mine) {
   if ((Date.now() - t0) / 1000 > BUDGET || st.documents >= LIMIT) break;
   if (dirBytes() > MAX_SHARD_BYTES) { st.stopped = "size_cap"; break; }
@@ -103,20 +112,37 @@ for (const d of mine) {
     // WHOLE DOCUMENTS ONLY (the owner's rule: fewer documents, never segments): a read that took fewer characters than the work has is
     // not recorded as a read of it. The gate has already written its act; the document stays out of the checkpoint and is counted.
     if (w.readCharacters !== body.length) { st.partial.push({ path: d.path, given: body.length, read: w.readCharacters }); continue; }
-    const batch = [];
+    // THE INDEX (CON·Figure): one entry per document, each admitted being's ref and its byte spans. No surface string (the bytes
+    // at the span are the surface), the basis written once: the document's index, not one entry per being.
+    const batch = []; const idx = [];
     for (const c of w.cast ?? []) {
       const spans = (c.mentionSpans ?? []).filter((s) => Array.isArray(s) && s[0] >= 0 && s[1] <= body.length && s[1] > s[0]).map(([s, e]) => [base + byteAt[s], byteAt[e] - byteAt[s]]);
       if (!spans.length) continue;
-      batch.push({ cell: "CON·Figure", kind: "activation", addr: `${docAddr}/${c.ref}`, body: { source: docAddr, ref: c.ref, surface: c.surface, spans }, basis: { door: "native/reading.js#readDocument", tier: w.competency?.tier ?? null, stem: w.competency?.stem ?? null, hyperlexicon: hlHead } });
-      st.spans += spans.length;
+      idx.push([c.ref, spans]); st.spans += spans.length;
     }
+    if (idx.length) batch.push({ cell: "CON·Figure", kind: "activation", addr: `activation:${docAddr}`, body: { source: docAddr, beings: idx }, basis: { door: "native/reading.js#readDocument", tier: w.competency?.tier ?? null, stem: w.competency?.stem ?? null, hyperlexicon: hlHead } });
+    // the day: the kernel admits the read's edges (end1/label/end2, the read's own names); kept: the id hash, polarity, byte spans
+    const r = NOTES.admit(NOTES.createNotes({}), w.edges ?? [], { witness: docAddr });
+    const away = new Set(r.turnedAway.map((x) => x.edge));
+    for (const x of r.turnedAway) st.notes_turned_away[x.reason] = (st.notes_turned_away[x.reason] ?? 0) + 1;
+    const dep = new Map();
+    for (const e of w.edges ?? []) {
+      if (away.has(e)) continue;
+      const k = key16(noteId(e.end1, e.label, e.end2)) + (e.polarity === "-" ? "-" : "");
+      const sp = (e.spans ?? []).filter((x) => Number.isFinite(x?.start) && Number.isFinite(x?.end) && x.start >= 0 && x.end <= body.length && x.end > x.start).map((x) => [base + byteAt[x.start], byteAt[x.end] - byteAt[x.start]]);
+      const cur = dep.get(k) ?? []; for (const q of sp) if (!cur.some((c) => c[0] === q[0] && c[1] === q[1])) cur.push(q); dep.set(k, cur);
+    }
+    st.notes_heard += dep.size;
+    batch.push({ cell: "INS·Figure", kind: "deposit", addr: `deposit:${docAddr}`, body: { source: docAddr, notes: [...dep].map(([k, sp]) => [k, sp]), heard: dep.size, turnedAway: r.turnedAway.length }, basis: { organ: "khora native/kernel/notes.js#admit", identity: "noteId (the assertion log's normalized ends), carried as sha256[0:16]; not referent identity", door: "native/reading.js#readDocument" } });
+    const sur = w.surprise && typeof w.surprise === "object" ? Object.fromEntries(Object.entries(w.surprise).filter(([, v]) => ["number", "boolean"].includes(typeof v) || (typeof v === "string" && v.length < 40) || (Array.isArray(v) && v.every((x) => typeof x === "number")))) : null;
+    if (sur) batch.push({ cell: "EVA·Ground", kind: "surprise", addr: `surprise:${docAddr}`, body: { source: docAddr, ...sur }, basis: { organ: "the reader's own surprise cut", capped: sur.streamCapped === true ? `first ${sur.maxTokens} tokens (the reader's dial)` : false } });
     if (batch.length) weaveMany(act, batch);
-    st.beings += batch.length; st.documents++; st.chars += body.length;
-    fs.appendFileSync(dcp, JSON.stringify({ sha256: d.sha256, path: d.path, chars: body.length, readCharacters: w.readCharacters, beings: batch.length, tier: w.competency?.tier ?? null }) + "\n");
+    st.beings += idx.length; st.documents++; st.chars += body.length;
+    fs.appendFileSync(dcp, JSON.stringify({ sha256: d.sha256, path: d.path, chars: body.length, readCharacters: w.readCharacters, beings: idx.length, notes: dep.size, tier: w.competency?.tier ?? null }) + "\n");
   } catch (e) { st.failed.push({ path: d.path, why: String(e.message).replace(/\s+/g, " ").slice(0, 160) }); }
   if (st.documents % 10 === 0) process.stdout.write(`\r  shard ${SI}: ${st.documents} docs, ${(st.chars / 1e6).toFixed(1)}M chars, ${((Date.now() - t0) / 1000).toFixed(0)}s`);
 }
 const bytes = fs.readdirSync(OUT).reduce((n, f) => n + fs.statSync(path.join(OUT, f)).size, 0);
-const summary = { schema: "CorpusModelRun@1", shard: `${SI}/${SN}`, door: "native/reading.js#readDocument (gate on, no allowDegraded)", format: "phb", hyperlexicon_head: hlHead, dials: { max_bytes: MAX_BYTES, stride: STRIDE, max_shard_bytes: MAX_SHARD_BYTES, budget_sec: BUDGET === Infinity ? null : BUDGET }, eligible: eligible.length, assigned: mine.length, skipped, ...st, failed_count: st.failed.length, partial_count: st.partial.length, bytes_on_disk: bytes, seconds: Math.round((Date.now() - t0) / 1000) };
+const summary = { schema: "CorpusModelRun@1", shard: `${SI}/${SN}`, door: "native/reading.js#readDocument (gate on, no allowDegraded)", format: "phb", hyperlexicon_head: hlHead, dials: { only: ONLY, max_bytes: MAX_BYTES, stride: STRIDE, max_shard_bytes: MAX_SHARD_BYTES, budget_sec: BUDGET === Infinity ? null : BUDGET }, eligible: eligible.length, assigned: mine.length, skipped, ...st, failed_count: st.failed.length, partial_count: st.partial.length, bytes_on_disk: bytes, seconds: Math.round((Date.now() - t0) / 1000) };
 fs.writeFileSync(path.join(OUT, "run-summary.json"), JSON.stringify(summary, null, 1));
 console.log(`\n${JSON.stringify({ ...summary, failed: undefined })}`);

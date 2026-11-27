@@ -48,7 +48,7 @@ Registry names in parentheses. "Written" is what the code writes today.
 | the resolved link, mention to being | CON·Figure (`relations` is the link cell) | `binding` CON·Figure |
 | one kāraka or subject-verb-object edge | CON·Figure (`relations`, `positionalSlots`) | not written per edge |
 | a being's class from its pro-forms | DEF·Figure (`priors`, `what`) | `gender`, `proform` DEF·Figure |
-| how far the stream moved from what was predicted | EVA·Ground (`atmosphere`), EVA·Figure (`volatility`) | not written (the read computes `surprise`, the gate drops it) |
+| how far the stream moved from what was predicted | EVA·Ground (`atmosphere`), EVA·Figure (`volatility`) | `surprise` EVA·Ground, one per document, numbers only (read-corpus.mjs); the reader caps it at its own 3,000 tokens and the basis says so |
 | DMD here | a binding whose agreement the pronoun already gives carries 0 bits (F3): no difference, not to be carried | **carried**: every binding, 402 B each |
 
 Identity and link are two acts: SIG·Figure decides who, CON·Figure is the link that records it. The gate writes the second only.
@@ -59,7 +59,8 @@ Identity and link are two acts: SIG·Figure decides who, CON·Figure is the link
 |---|---|---|
 | the document's edges composed into one network, deduped | SYN·Pattern (`graph`) | `karaka`, `part_of`, `identity` SYN·Pattern (one set per read) |
 | a re-sighting inside the document folds into the same note | SYN·Figure (`hear`) | implicitly: one `being` per ref per read |
-| a referent's places, as byte spans checked against the bytes | CON·Figure (`relations`: "every edge span-verified against real bytes") | `activation` CON·Figure |
+| a referent's places, as byte spans checked against the bytes | CON·Figure (`relations`: "every edge span-verified against real bytes") | `activation` CON·Figure, ONE entry per document: each being's ref and byte spans, no surface string, basis once |
+| the day: the door hears the read's own edges | INS·Figure (first sighting, `kernel/notes.js`) | `deposit` INS·Figure, one per document: each admitted note as sha256[0:16] of its noteId and its byte spans; no text |
 | DMD here | a description that does not recur is a mention, not a referent: `weaveReferents` keeps a nominal only when `mentions > 1` | applied for nominals only; names are kept at one mention |
 
 The kāraka edge is CON·Figure as one edge at the clause and SYN·Pattern as the document's composed network; the gate writes the second, deduped by head, role and argument per read. That is the document-level use, not a misfiling.
@@ -70,11 +71,11 @@ The kāraka edge is CON·Figure as one edge at the clause and SYN·Pattern as th
 |---|---|---|
 | a document cut out of the corpus as an entity, addressed by hash | NUL·Figure (`clear`) | `source` NUL·Figure (ours; the mind pharos uses the same) |
 | the same document as the ground its read stands on | INS·Ground (`preflight`: generating ground) | khora `text` INS·Ground carries the text itself; we do not write it (no restatement) |
-| a being seen in a second document folds into the same note, witnesses unioned | SYN·Figure (`hear`) | **missing**: `being` addresses are `ref:auto:<name>` with document-free spans, so a second sighting cannot union witnesses |
-| a claim's standing across independent witnesses | EVA·Pattern (`standing`), floor of 2 in CON·Pattern (`network`, `RECURRENCE_FLOOR = 2`) | **missing** |
-| below the floor: on the record, out of the field | NUL·Figure (`clear`, refusal `below_recurrence_floor`) | **missing** |
-| the night: day's deposits judged, the field projected | REC·Ground (`dream`, consolidation.js) | **missing** |
-| DMD here | what recurs across documents is the corpus's difference to the reader | not computed |
+| a being or note seen in a second document folds into the same note, witnesses unioned | SYN·Figure (`hear`) | `standing-being`, `standing-note` SYN·Figure (consolidate-corpus.mjs), witnesses and sources only, `of` the night |
+| a claim's standing across independent witnesses | EVA·Pattern (`standing`), floor of 2 in CON·Pattern (`network`, `RECURRENCE_FLOOR = 2`) | the floor applied by khora's own `projectField` (floor 2, window null); sources counted with `sourceOfWitness` |
+| below the floor: on the record, out of the field | NUL·Figure (`clear`, refusal `below_recurrence_floor`) | `echo` NUL·Figure, one per night: the counts, the refusal, the night's basis once; each echoed item stays in its document's deposit or index |
+| the night: day's deposits judged, the field projected | REC·Ground (`dream`, consolidation.js) | consolidate-corpus.mjs runs the projection only; the elenchus (a witness judging a single-witness note) is not run |
+| DMD here | what recurs across documents is the corpus's difference to the reader | computed per night (F2) |
 
 `source` has three precedents: NUL·Figure (the mind pharos, this ingest), INS·Figure (khora identity scripts, a source as a born being), INS·Ground (khora `text`). They are different acts at different levels, not one act filed three ways.
 
@@ -92,10 +93,10 @@ The kāraka edge is CON·Figure as one edge at the clause and SYN·Pattern as th
 
 | act | cell (registry) | written |
 |---|---|---|
-| have I met this, and where (the shadow) | SIG·Figure (`recall`, relative.js) | **missing**: not wired to this pharos |
+| have I met this, and where (the shadow) | SIG·Figure (`recall`, relative.js) | recall-corpus.mjs: the cue read by the same door, its beings looked up in the index and the field |
 | activation: referents, their sentences, one hop out | CON·Figure and CON·Pattern (activation-retrieval.js) | machinery exists |
 | DMD here | `dmdCut`: show one more sentence only if it changes the reach (`resolutions.js`) | machinery exists |
-| the mouth reads the holograph at the address | penelope (Generate) | not wired |
+| the mouth reads the holograph at the address | penelope (Generate) | recall-corpus.mjs opens the bytes and the line at each address; turning them into speech (penelope) is not wired |
 
 ## Memory tiers (resolution, not grain)
 
@@ -103,7 +104,7 @@ The kāraka edge is CON·Figure as one edge at the clause and SYN·Pattern as th
 
 ## Falsifiers and what they found
 
-All exploratory, English only, 7 documents (4 shards) unless stated; none is held out.
+All exploratory, English only; F1 to F5 on 7 mixed documents, F1b to F10 on 32 Old Bailey documents (`20-first-person-voices/old-bailey`, under 30 KB each); none is held out.
 
 | id | level | claim | result |
 |---|---|---|---|
@@ -112,6 +113,13 @@ All exploratory, English only, 7 documents (4 shards) unless stated; none is hel
 | F3 | clause | stored bindings carry far more than their information (DMD at the clause level) | 30,472 bindings: 402 B stored, about 3.7 B of entropy; agreement given pronoun 0.00 bits |
 | F4 | corpus (janus) | the hyperlexicon's use addresses resolve | 5 words, 300 uses each: 1,500 of 1,500 |
 | F5 | document | the whole document is read | no cap in `read-core.mjs`; only the `surprise` measure is capped (3,000 tokens) and it is not written |
+| F1b | document | as F1, on the Old Bailey run (32 whole documents, 528K characters), with the falsifier script | 16,949 spans: 100% open onto a surface the reader recorded for that being; 85.4% equal its birth name. The 14.6% are aliases, some conflations: the being "Carter Lane London" holds every bare "London" of its document; "Murdering Robert Reeks Yeoman" carries a capitalized verb |
+| F2b | corpus | as F2, Old Bailey, 32 documents, after the night | beings 4,949: 1,117 stand (22.6%), singleton share 77.4% (91.5% at 7 mixed documents); notes 10,098: 239 stand (2.4%). One homogeneous collection, so recurrence is likely higher than in a random sample |
+| F6 | document | the compact index (one entry per document) changes nothing the night decides | two day runs, the old per-being shape and the compact one: identical field (239 notes, 1,117 beings, same totals); the index file 1,377,071 to 241,327 bytes per shard |
+| F7 | document | the day is reproducible, so an echoed note can be re-opened by re-reading | two independent reads of the same 32 documents: 32 of 32 deposits byte-identical |
+| F8 | recall | a cue's beings are found and their addresses open onto them | a 255-character cue admitted 7 beings; all 7 met, 6 standing (2 to 21 documents); every opened address read its being's bytes (e.g. `old-bailey-16811017.txt#12260+7` "Newgate") |
+| F9 | recall | a short cue can be recalled | refuted: the canonical door reads nothing under 200 characters (`read-core.mjs` `minCharacters = 200`, not passed by `readToWeft`); a short cue is answered with the reader's gap, never a string search |
+| F10 | document | the reader admits beings by a name signal | on 17th-century English the capitalized common nouns stand as beings across documents: Felony (23), Tryal (22), Indictment (22), Court (21), Death (20); "john" stands in 19 documents as one ref |
 
 ## Corrections to the first version (commit `c42fccf8`)
 
@@ -119,10 +127,14 @@ All exploratory, English only, 7 documents (4 shards) unless stated; none is hel
 - One cell per stage was the wrong shape: an act happens at a level, and a stage is several acts. The two "disagrees" verdicts (binding, kāraka) are withdrawn: each is a second, legitimate use (link beside identity; the document's composed network beside the clause's edge).
 - The claim that memory tiers coincide with grains is withdrawn.
 
+## Size, measured on the Old Bailey run
+
+Per 8 documents (about 130K characters): the gate's own `khora.phb` (being, binding, gender) 1.16 MB, 83% of the model directory; the compact index and deposits 0.24 MB; the night's field for all 32 documents 0.63 MB. The remaining weight is the gate's clause-level write (a binding per pronoun, agreement the pronoun already gives); shrinking it is a change to khora's gate, not made here.
+
 ## Not yet run
 
-- F2 at 100+ documents.
-- Recall end to end: a cue activates a being, its spans are fetched, and the answer is checked against the stored binding.
+- F2 at 100+ documents, and on a random sample rather than one collection.
+- The elenchus at night (a witness judging each single-witness note), which `dream` runs and the projection alone does not.
 - Whether existing `usage` entries need a CANDIDATE standing under the grain theorem.
 
 ## Operational finding
