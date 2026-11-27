@@ -46,6 +46,20 @@ function gutenbergBody(text) {
   return text.slice(m ? m.index + m[0].length : 0, e ? e.index : text.length);
 }
 
+// A Zenodotus document opens with a `---` header of `key: value` claims (metadata, not prose): the
+// reader reads the work, never its header. Read by line; an unterminated header is not a header.
+function zenodotusBody(text) {
+  if (!text.startsWith("---\n")) return text;
+  let pos = 4;
+  while (pos < text.length) {
+    const nl = text.indexOf("\n", pos);
+    const line = nl < 0 ? text.slice(pos) : text.slice(pos, nl);
+    pos = nl < 0 ? text.length : nl + 1;
+    if (line === "---") return text.slice(pos);
+  }
+  return text;
+}
+
 function topK(m, k) { return Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, k); }
 
 // One document, whole: the per-lemma usage profile of this document alone.
@@ -97,7 +111,7 @@ for (const f of files) {
   const text = fs.readFileSync(f, "utf8");
   const hash = sha256(text);
   if (done.has(hash)) { console.log(`  skip ${path.basename(f)}`); continue; }
-  const body = gutenbergBody(text).replace(/\r/g, "");
+  const body = gutenbergBody(zenodotusBody(text)).replace(/\r/g, ""); // regex-ok: line-ending bytes, not language
   const t1 = Date.now();
   const lex = await docLexicon(body, lang);
   fs.appendFileSync(cp, JSON.stringify({ hash, file: f, lex: Object.fromEntries(lex) }) + "\n");
