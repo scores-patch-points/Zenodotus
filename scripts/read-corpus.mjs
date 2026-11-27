@@ -12,7 +12,8 @@
 // Only documents the canonical reader can read: the document's label -> khora's OWN stemOf -> "eng".
 // A label with no stem, or none at all, is skipped and counted (a typed gap, never English by default).
 // Resumable (checkpoint of finished sha256s), sharded (one pharos directory per shard: one writer, one file),
-// bounded (--budget-sec), and every dial is declared in the summary.
+// bounded (--budget-sec), and every dial is declared in the summary. WHOLE DOCUMENTS ONLY: a document is read whole or not at all
+// (--max-bytes defers whole documents, never cuts one; a read whose readCharacters differs from the work's length is not recorded).
 //
 //   node scripts/read-corpus.mjs --shard 0/4 --budget-sec 2400 [--max-bytes 1500000] [--stride 1] [--dir <out>]
 //   env: KHORA_HOME (../khora), PHAROS_HOME (../pharos), HL_DOOR (http://127.0.0.1:11450)
@@ -86,7 +87,7 @@ const act = open("activation", { dir: OUT, writer: "zenodotus-activation", forma
 weave(act, { cell: "DEF·Figure", kind: "kind", addr: "kind:activation", body: { name: "activation", cell: "CON·Figure" } });
 
 const dirBytes = () => fs.readdirSync(OUT).reduce((n, f) => n + fs.statSync(path.join(OUT, f)).size, 0);
-const t0 = Date.now(); const st = { documents: 0, beings: 0, spans: 0, chars: 0, failed: [] };
+const t0 = Date.now(); const st = { documents: 0, beings: 0, spans: 0, chars: 0, failed: [], partial: [] };
 for (const d of mine) {
   if ((Date.now() - t0) / 1000 > BUDGET || st.documents >= LIMIT) break;
   if (dirBytes() > MAX_SHARD_BYTES) { st.stopped = "size_cap"; break; }
@@ -99,6 +100,9 @@ for (const d of mine) {
   const docAddr = `doc:${d.sha256}`;
   try {
     const w = await readDocument(body, { language: "eng", address: docAddr });   // canonical door; no allowDegraded; the gate writes the read
+    // WHOLE DOCUMENTS ONLY (the owner's rule: fewer documents, never segments): a read that took fewer characters than the work has is
+    // not recorded as a read of it. The gate has already written its act; the document stays out of the checkpoint and is counted.
+    if (w.readCharacters !== body.length) { st.partial.push({ path: d.path, given: body.length, read: w.readCharacters }); continue; }
     const batch = [];
     for (const c of w.cast ?? []) {
       const spans = (c.mentionSpans ?? []).filter((s) => Array.isArray(s) && s[0] >= 0 && s[1] <= body.length && s[1] > s[0]).map(([s, e]) => [base + byteAt[s], byteAt[e] - byteAt[s]]);
@@ -108,11 +112,11 @@ for (const d of mine) {
     }
     if (batch.length) weaveMany(act, batch);
     st.beings += batch.length; st.documents++; st.chars += body.length;
-    fs.appendFileSync(dcp, JSON.stringify({ sha256: d.sha256, path: d.path, chars: body.length, beings: batch.length, tier: w.competency?.tier ?? null }) + "\n");
+    fs.appendFileSync(dcp, JSON.stringify({ sha256: d.sha256, path: d.path, chars: body.length, readCharacters: w.readCharacters, beings: batch.length, tier: w.competency?.tier ?? null }) + "\n");
   } catch (e) { st.failed.push({ path: d.path, why: String(e.message).replace(/\s+/g, " ").slice(0, 160) }); }
   if (st.documents % 10 === 0) process.stdout.write(`\r  shard ${SI}: ${st.documents} docs, ${(st.chars / 1e6).toFixed(1)}M chars, ${((Date.now() - t0) / 1000).toFixed(0)}s`);
 }
 const bytes = fs.readdirSync(OUT).reduce((n, f) => n + fs.statSync(path.join(OUT, f)).size, 0);
-const summary = { schema: "CorpusModelRun@1", shard: `${SI}/${SN}`, door: "native/reading.js#readDocument (gate on, no allowDegraded)", format: "phb", hyperlexicon_head: hlHead, dials: { max_bytes: MAX_BYTES, stride: STRIDE, max_shard_bytes: MAX_SHARD_BYTES, budget_sec: BUDGET === Infinity ? null : BUDGET }, eligible: eligible.length, assigned: mine.length, skipped, ...st, failed_count: st.failed.length, bytes_on_disk: bytes, seconds: Math.round((Date.now() - t0) / 1000) };
+const summary = { schema: "CorpusModelRun@1", shard: `${SI}/${SN}`, door: "native/reading.js#readDocument (gate on, no allowDegraded)", format: "phb", hyperlexicon_head: hlHead, dials: { max_bytes: MAX_BYTES, stride: STRIDE, max_shard_bytes: MAX_SHARD_BYTES, budget_sec: BUDGET === Infinity ? null : BUDGET }, eligible: eligible.length, assigned: mine.length, skipped, ...st, failed_count: st.failed.length, partial_count: st.partial.length, bytes_on_disk: bytes, seconds: Math.round((Date.now() - t0) / 1000) };
 fs.writeFileSync(path.join(OUT, "run-summary.json"), JSON.stringify(summary, null, 1));
 console.log(`\n${JSON.stringify({ ...summary, failed: undefined })}`);
