@@ -89,10 +89,10 @@ for (const rel of walk(ROOT)) {
   if (text.split("�").length - 1 > text.length * 0.01) { stats.unreadable.push(rel); continue; }
   const { claims, bodyStart } = parseHeader(text);
   const body = text.slice(bodyStart).replace(/\r/g, ""); // regex-ok: line-ending bytes of a file, not language
-  const tail = path.basename(path.dirname(rel));
-  const pathLang = tail.length >= 2 && tail.length <= 3 && tail === tail.toLowerCase() && [...tail].every((c) => c >= "a" && c <= "z") ? tail : null;
-  const language = claims.language ?? pathLang ?? null;
-  const language_basis = claims.language ? (claims.language_basis ?? "declared-by-source") : pathLang ? "path" : "unknown";
+  // A language label comes only from the document's own header (`language`, declared by the source). A folder name is never taken as a language:
+  // the earlier guess (a 2-3 letter folder tail) read CORAAL site codes (dcb, roc, prv: English transcripts) as languages, prv as Provencal.
+  const language = claims.language ?? null;
+  const language_basis = claims.language ? (claims.language_basis ?? "declared-by-source") : "unknown";
   if (!language) stats.no_language++;
   const words = countWords(body);
   const collection = claims.collection ?? path.dirname(rel);
