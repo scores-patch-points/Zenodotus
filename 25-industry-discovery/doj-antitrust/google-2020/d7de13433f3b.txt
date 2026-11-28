@@ -1,0 +1,141 @@
+title: DX0099
+author: unknown
+collection: 25-industry-discovery/doj-antitrust/google-2020
+source: U.S. Department of Justice, Antitrust Division
+source_url: https://www.justice.gov/atr/media/1322676/dl
+retrieved: 2026-11-28
+sha256: 0b1ec64cbffabebdd677195c305af9ab3326f71b25ffcd26ef4480b546780f0c
+received_format: pdf
+license: not established: see manifests/trial-exhibits-manifest.json terms_read
+license_url: https://www.justice.gov/legalpolicies
+license_tier: unknown
+language: en
+language_basis: holder (a United States proceeding); not detected
+date: unknown (exhibit of a 2023 trial; the document is older)
+date_basis: none
+place_by: unknown
+translation_of: none
+industry: technology
+document_kind: trial exhibit
+conversion: pdftotext -layout; the text layer is the holder's (born digital or the holder's own OCR), unchecked
+privacy_note: working correspondence or interview record of named individuals, public by court order or federal release; read as a language document
+words: 301
+floor_exempt: a complete exhibit, letter or memorandum as the holder publishes it
+
+           Go gle
+
+           SRP Latency Update
+           for Redacted@
+           Friends of Low Latency
+           2017-05-19
+
+
+
+
+                                                          DX0099
+             REDACTED FOR PUBLIC FILING & ABRIDGED
+Redacted                            DX0099.001       GOOG-DOJ-02702726
+           Agenda
+           • Google vs Bing findings
+           • Measuring the Bing gap going forward
+           • Projects under way that may help close the gap
+           • Additional investigations
+
+
+
+
+            REDACTED FOR PUBLIC FILING & ABRIDGED
+Redacted                                 DX0099.002           GOOG-DOJ-02702727
+           Recap: Folly Workstreams
+                                                                                              g_o fo   road
+                                                                                                         t
+                        / lfAl'HO
+                                        HtA0    TAL I_    C_ _
+
+                                                           S              .._.__
+           2                        i O(tOO)    O(l'OO)    M
+
+                !
+                                                           ..
+                                                                                  ~~~---......
+                !                   i
+                !                   i 0(100-)                     I    _ _ _ _...,,,,_,_..,._ _
+
+           : Confidential ioc,oe, ~:
+           1    i                   !0(100)     0(10}
+                                                                  ' ,_,,,..~--
+                                                                       ·•--SAT•Al'ToolGSA_     _,,.
+           , i                      ;oc100)                            0,.0...blflOOf~-----
+           •
+           10
+                i                               0(10001
+                                                                 ...
+                                                                 <I
+
+                                    i
+
+
+
+
+  There is lots of latency reduction work happening -- we are focusing on one part of it
+  today.
+
+
+
+
+                    REDACTED FOR PUBLIC FILING & ABRIDGED
+Redacted                                                   DX0099.003                                         GOOG-DOJ-02702728
+           Bing is faster - why?                                  2) Google has significant
+                                                                  logged-in penalty
+
+
+
+
+           Go gle
+
+
+
+
+                                3) Bing serves slmilar     4) Bing uses different Image
+            g_ogg_ £>,- -b ng
+                                content with fewer bytes   loading techniques
+
+
+
+
+  Bing loads more images externally so the page looks complete sooner and does not
+  fade them in like Google does.
+
+
+
+
+            REDACTED FOR PUBLIC FILING & ABRIDGED
+Redacted                                        DX0099.004                                    GOOG-DOJ-02702729
+           1) Google results arrive later
+                                     Google first results
+                                     ~ 300ms later             [blue shark] (logged-out)
+                                  SOOms         1000ms            1500ms         2000ms
+
+
+           Go gle
+                                                         ...........
+           First byte                                       iii:..:=;.::=;:;::ii:;;;:-=·
+           about the same
+                                                ,oooms             1500ms
+
+
+
+
+  On both search engines, the first byte returns at roughly the same time .
+
+  However, server time spent before first result is rendered is -30Oms for Google.
+
+  It's worth noting that GWSTime has increased (particularly since 03). Since results
+  are in the body chunk and that depends on GWS, this probably contributes to the gap.
+
+
+
+
+             REDACTED FOR PUBLIC FILING & ABRIDGED
+Redacted                                  DX0099.005                                       GOOG-DOJ-02702730
+

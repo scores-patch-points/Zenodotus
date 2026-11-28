@@ -1,0 +1,156 @@
+title: PTX0858
+author: unknown
+collection: 25-industry-discovery/doj-antitrust/google-2023
+source: U.S. Department of Justice, Antitrust Division
+source_url: https://www.justice.gov/atr/media/1368891/dl
+retrieved: 2026-11-28
+sha256: 6b54e82876a9e0c6b916f571612a8d1ce5977cedf57804a382d07bce0e2afbfe
+received_format: pdf
+license: not established: see manifests/trial-exhibits-manifest.json terms_read
+license_url: https://www.justice.gov/legalpolicies
+license_tier: unknown
+language: en
+language_basis: holder (a United States proceeding); not detected
+date: unknown (exhibit of a 2024 trial; the document is older)
+date_basis: none
+place_by: unknown
+translation_of: none
+industry: technology-advertising
+document_kind: trial exhibit
+conversion: pdftotext -layout; the text layer is the holder's (born digital or the holder's own OCR), unchecked
+privacy_note: working correspondence or interview record of named individuals, public by court order or federal release; read as a language document
+words: 629
+
+                Demand elasticity on AdX web publishers
+                                             ajaybangla@ , gTrade
+                                                 May 9, 2018
+                                             go/demand_elasticity
+
+
+        Executive Summary
+           1. Coverage: Our analysis and experiments were on DRX web publishers only (for
+              simplicity). These can be easily extended to DRX App publishers. Once AdMob
+              Bernanke is completed, we can also do this on AdMob publishers. We can't do this on
+              AdSense publishers at this point. The stats below are on DRX web publishers only.
+           2. Increasing margins: At 20% buy side margin, revenue goes down -0.9% (-$53M) but
+              the overall (buy+sell side) profit increases 6.5% ($70M). At 17.5%, revenue drops -0.4%
+              (-$24M) and profit increases 4% ($40M). At these margins, for every dollar in lost
+              revenue we gain much more than a dollar in profit. Increasing margin beyond 20% starts
+              to have a big revenue hit. The decrease in AdWords spend is mitigated to some extent
+              by an increase in spend from other buyers. Please note that the $70M listed above is
+              only on the Adx web slice. This can be extended to apps , which will result in roughly
+              doubling the profit increase.
+           3. Decreasing margins: Decreasing buy side margin costs profit without generating a lot
+              of additional revenue.
+           4. AWBid: we also ran an experiment on AWBid targeting ~5% more margin. This
+              experiment shows a $2M revenue drop and $15M profit gain.
+
+        Objective
+        Explore the impact on revenue, payout and profit on AdX for different AdWords buy side
+        margins.
+
+        Methodology
+        Use Bernanke to target different adwords margins on AdX web publishers. Production margirn is
+        15%. We ran bernanke simulation for margins from 10% to 25% in steps of 2.5%. We also ran
+        two online experiments with margins 10% and 20% (rasta).
+
+        Results for all buyers on AdX web publishers
+        We report the total impact (across all buyers) on AdX web publishers.
+
+
+
+
+                                                                                              PTX0858
+                                                                                               1: 23-cv-00108
+
+HIGHLY CONFIDENTIAL                                                                       GOOG-DOJ-04 736246
+          Total Revenue Change vs Margin                     Total Profit Change vs Margin
+                     ■                                                  ■ Annualized Profit
+              ,,,
+                                                                                                     $750M
+
+
+                                                             70                                      $700M
+           0.00%
+
+
+
+
+                                                               s
+
+                                                             ·1 0                                    S·100M
+                           1
+
+
+        Figure 1: Total impact on revenue and profit relative to production. X-axis is the buy side
+        margin, left Y-axis is the% change and right Y-axis is the annualized change.
+
+
+            Margin       Matched Queries   Revenue                  Profit               Payout
+
+            10%          +1.9%             +0 .2% (+$11M)           -8.1% (-$87M)        +2.4% (+$101M)
+
+            12.5%        +1.1%             +0.2% (+$9M)             -3.7% (-$40M)        +1.4% (+$57M)
+
+            17.5%        -1.3%             -0. 4% (-$24M)           +3.6% (+$39M)        -1.5% (-$63M)
+
+            20%          -2.5%             -0.9% (-$53M)            +6.4% (+$70M)        -2.9% (-$125M)
+
+            22.5%        -4.9%             -2 .7% (-$152M)          10.8% (+$116M)       -7.8% (-$326M)
+
+            25%          -7.8%             -5 .0% (-$283M)          14.6% (+$158M)       -13.2% (-$552M)
+        Table 1: Total impact(% change and annualized change) on matched queries, revenue, payout
+        and profit w. r. t production across all buyers on AdX web pubs.
+
+
+
+
+HIGHLY CONFIDENTIAL                                                                                      GOOG-DOJ-04 73624 7
+        Results for Adwords buyers on AdX web publishers
+          AdWords Revenue Change vs Margin                    AdWords Profit Change vs Margin
+
+                        ■              -                                  ■ Annualized Profit        Profit
+
+                                                  $SOM
+
+
+
+                                                  SOM
+
+                                                                                                              SSOM
+
+
+                                                                   o.
+                                                  S-1
+
+
+
+          7                                                    7                                              S-100M
+                                                                                                          .
+
+
+        Figure 2: Impact on AdWords revenue and profit relative to production. X-axis is the buy side
+        margin, left Y-axis is the% change and right Y-axis is the annualized change.
+
+
+              Margin        Matched Queries   Revenue                   Profit                  Payout
+
+              10%           +3.6%             1.1% ($23M)               -13.3% (-$86M)          7.2% ($109M)
+
+              12 . 5%       +2 .1%            0.9% ($19M)               -6 .1% (-$39M)          4 .1% ($62M)
+
+              17.5%         - 2.4%            - 1 . 5% ( - $32M)        5 . 8% ($38M)           - 4.6% ( - $70M)
+
+              20%           - 4.8%            - 3.2% ( - $70M)          10.5% ($68M)            -9 .1% (-$139M)
+
+              22 . 5%       -7.2%             -4.9% (-108M)             15.0% ($97M)            -13 . 7% (-$207M)
+
+              25%           - 9 . 9%          -7 . 3% ( - $157M)        19.0% ($123M)           -18 . 7% (-$284M)
+        Table 2: Impact (% change and annualized change) on matched queries, revenue, payout and
+        profit w.r.t production for AdWords buyers on AdX web pubs.
+
+
+
+
+HIGHLY CONFIDENTIAL                                                                                                GOOG-DOJ-04 736248
+
