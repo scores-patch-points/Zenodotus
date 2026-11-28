@@ -75,8 +75,9 @@ const eligible = []; const skipped = { no_label: 0, no_stem: 0, other_stem: 0, t
 for (const d of all) {
   const fd = fs.openSync(path.join(ROOT, d.path), "r"); const b = Buffer.alloc(4096); const n = fs.readSync(fd, b, 0, 4096, 0); const size = fs.fstatSync(fd).size; fs.closeSync(fd);
   const { claims } = header(b.toString("utf8", 0, n));
-  const tail = path.basename(path.dirname(d.path)); const pathLabel = tail.length >= 2 && tail.length <= 3 && [...tail].every((c) => c >= "a" && c <= "z") ? tail : null;
-  const label = claims.language ?? pathLabel ?? null;
+  // A language label comes only from the document's own header (`language`, declared by the source). A folder name is never taken as a language:
+  // the earlier guess (a 2-3 letter folder tail) read CORAAL site codes (dcb, roc, prv: English transcripts) as languages, prv as Provencal.
+  const label = claims.language ?? null;
   if (!label) { skipped.no_label++; continue; }
   const stem = stemOf(label); if (!stem) { skipped.no_stem++; continue; } if (stem !== "eng") { skipped.other_stem++; continue; }
   if (ONLY && !d.path.startsWith(ONLY)) { skipped.outside_only = (skipped.outside_only ?? 0) + 1; continue; }

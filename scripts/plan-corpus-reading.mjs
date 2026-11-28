@@ -45,9 +45,9 @@ const byLabel = new Map();
 for (const d of docs) {
   const fd = fs.openSync(path.join(ROOT, d.path), "r"); const b = Buffer.alloc(4096); const n = fs.readSync(fd, b, 0, 4096, 0); fs.closeSync(fd);
   const { claims } = header(b.toString("utf8", 0, n));
-  const tail = path.basename(path.dirname(d.path));
-  const pathLabel = tail.length >= 2 && tail.length <= 3 && [...tail].every((c) => c >= "a" && c <= "z") ? tail : null;
-  const label = claims.language ?? pathLabel ?? null; const basis = claims.language ? "declared-by-source" : pathLabel ? "path" : "none";
+  // A language label comes only from the document's own header (`language`, declared by the source). A folder name is never taken as a language:
+  // the earlier guess (a 2-3 letter folder tail) read CORAAL site codes (dcb, roc, prv: English transcripts) as languages, prv as Provencal.
+  const label = claims.language ?? null; const basis = claims.language ? "declared-by-source" : "none";
   const key = `${label}\u0000${basis}`; const e = byLabel.get(key) ?? { label, basis, documents: 0, words: 0, largest: null };
   e.documents++; e.words += d.words; if (!e.largest || d.words > e.largest.words) e.largest = d; byLabel.set(key, e);
 }
