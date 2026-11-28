@@ -1,0 +1,152 @@
+title: Re: PERL CGI: 2 POST methods using same parameters
+author: unknown
+collection: 25-industry-discovery/w3c-lists/www-talk/2004JanFeb
+source: W3C public mailing list archives
+source_url: https://lists.w3.org/Archives/Public/www-talk/2004JanFeb/0020.html
+retrieved: 2026-11-28
+sha256: 5ed8398fa7b3a1d82d8c900ce30b8014b84433d58d24ace0fcbed90bef80d413
+received_format: html
+license: not established: see manifests/trial-exhibits-manifest.json terms_read
+license_url: unknown
+letter_token_share: 0.81
+license_tier: unknown
+language: en
+language_basis: holder (a United States proceeding); not detected
+date: 2004
+date_basis: holder archive folder
+place_by: unknown
+translation_of: none
+industry: software-standards
+document_kind: public mailing-list message
+conversion: the <pre> body of the archive page, tags and entities removed
+privacy_note: working correspondence or interview record of named individuals, public by court order or federal release; read as a language document
+words: 794
+
+
+>-----Original Message-----  From:   www-talk-request&#x40;&#0119;&#0051;&#0046;&#0111;&#0114;&#0103; 
+>[SMTP:www-talk-request&#x40;&#0119;&#0051;&#0046;&#0111;&#0114;&#0103;] On Behalf Of Ariadna Font 
+>Llitjos  Sent:   Thursday, January 22, 2004 8:07 
+>AM  To:     www-talk&#x40;&#0119;&#0051;&#0046;&#0111;&#0114;&#0103;  Cc:     aria+&#x40;&#0099;&#0115;&#0046;&#0099;&#0109;&#0117;&#0046;&#0101;&#0100;&#0117;  Subject: 
+>PERL CGI: 2 POST methods using same parameters
+>
+>Hi,
+>
+>I'm trying to create an html page (with a cgi script) which after 
+>allowing  the user to pick among a few choices (by checking on the 
+>appropriate  check-box), it asks the user to pick between two actions, 
+>namely two  different POST methods which take them to different cgi 
+>scripts, but which  need to have access to the same set of values.
+
+
+There is a problem with what you are seeking to do.
+
+The user is lured into disclosing user information when it is unclear who
+is getting the information.
+
+The technique you propose would  be an open invitation to abuse.  We have
+enough scams on the Internet with emails arriving daily offering you a bogus
+place to update your eBay data or a bogus patch from Microsoft.
+
+You can do what you want to do with HTML4 and HTTP in either of two ways.
+
+One clean way is to move the choice of action ahead of the data entry and
+include redundant data fields in two html4:form elements, each with its
+hard-coded html:form.action, and make the choice of action be a set of
+internal hyperlinks that put you in the appropriate form.
+
+Another is to integrate the logic to take all the actions that should be
+within the user's reach from the common data, and put that in one CGI on the
+server side.  Make sufficient discriminants to drive the action choices
+_data_ in the form returned to the _one_ CGI and get on with life.  Clearly
+you can still abuse the user's trust behind the CGI interface, but at least
+for the path from the browser to the HTTP server it is clear who is abusing
+them if you do.
+
+The html4:form container element offers the use some integrity in terms of
+who they are talking to when they impart information to the draft form.  Of
+course this can be abrogated with scripting, but that is not the highest and
+best trust relationship with the user.
+
+You owe the user a clear explanation of what you are going to do with the data
+before you collect it.  Even across the UI into the draft form in the browser.
+
+If the action choices vary with the user data, then you need to implement a
+multiphase-commit (see good checkout systems for B2C eCommerce) in which the
+user is clearly reminded of what they are about to do with what information
+at the point that you are ready for them to commit to a known action via 
+one of
+the CGIs.
+
+Al
+
+At 08:41 PM 2004-01-25, Calvin, Lee Kai Chuen wrote:
+
+>Hi,
+>
+>you may need to use javascript here...
+>
+>e.g. html segment:
+>
+><form id="yourform" name="yourform" method="post">
+>         <!-- some form elements go here -->
+>         <!-- some form elements go here -->
+>         <!-- some form elements go here -->
+>         <!-- some form elements go here -->
+>         <input
+>                 value="post to action_1.cgi"
+>                 type="submit"
+>                 onclick="action(this.form,'action_1.cgi')"
+>                 onkeypress="action(this.form,'action_1.cgi')"
+>         />
+>         <input
+>                 value="post to action_2.cgi"
+>                 type="submit"
+>                 onclick="action(this.form,'action_2.cgi')"
+>                 onkeypress="action(this.form,'action_2.cgi')"
+>         />
+></form>
+>
+>you may need some javascript like this (put them in <head> part):
+>
+><script type="text/javascript">
+><!--
+>
+>function action(frm,url) {
+>         frm.action = url;               // this is the meat
+>}
+>
+>//-->
+></script>
+>
+>onclick event & onkeypress event drive to set up the targeted cgi url.
+>
+>Regards,
+>Calvin
+>
+>-----Original Message-----  From:   www-talk-request&#x40;&#0119;&#0051;&#0046;&#0111;&#0114;&#0103; 
+>[SMTP:www-talk-request&#x40;&#0119;&#0051;&#0046;&#0111;&#0114;&#0103;] On Behalf Of Ariadna Font 
+>Llitjos  Sent:   Thursday, January 22, 2004 8:07 
+>AM  To:     www-talk&#x40;&#0119;&#0051;&#0046;&#0111;&#0114;&#0103;  Cc:     aria+&#x40;&#0099;&#0115;&#0046;&#0099;&#0109;&#0117;&#0046;&#0101;&#0100;&#0117;  Subject: 
+>PERL CGI: 2 POST methods using same parameters
+>
+>Hi,
+>
+>I'm trying to create an html page (with a cgi script) which after 
+>allowing  the user to pick among a few choices (by checking on the 
+>appropriate  check-box), it asks the user to pick between two actions, 
+>namely two  different POST methods which take them to different cgi 
+>scripts, but which  need to have access to the same set of values.
+>
+>The problem I am having right now is that if the user picks the 
+>second  action by clicking on the second submit button, the values only 
+>get stored  in the first form (ie. when clicking on the first button), and 
+>I don't seem  to have access to them from the second form.
+>
+>Is there a way to share the values between two html forms containing 
+>POST  methods pointing to different cgi scripts?  If not, what would be 
+>the best way to share user choices between to scripts  that can be called 
+>from the same html page?
+>
+>thanks,
+>
+>Ariadna Font Llitjos  aria&#x40;&#0099;&#0115;&#0046;&#0099;&#0109;&#0117;&#0046;&#0101;&#0100;&#0117;
