@@ -1,0 +1,273 @@
+title: PTX0128
+author: unknown
+collection: 25-industry-discovery/doj-antitrust/google-2023
+source: U.S. Department of Justice, Antitrust Division
+source_url: https://www.justice.gov/atr/media/1369466/dl
+retrieved: 2026-11-28
+sha256: 5d93d167b3df26e7d23ca47ce71dad0c20e62e515246f083a91d08d293e4c1d4
+received_format: pdf
+license: not established: see manifests/trial-exhibits-manifest.json terms_read
+license_url: https://www.justice.gov/legalpolicies
+license_tier: unknown
+language: en
+language_basis: holder (a United States proceeding); not detected
+date: unknown (exhibit of a 2024 trial; the document is older)
+date_basis: none
+place_by: unknown
+translation_of: none
+industry: technology-advertising
+document_kind: trial exhibit
+conversion: pdftotext -layout; the text layer is the holder's (born digital or the holder's own OCR), unchecked
+privacy_note: working correspondence or interview record of named individuals, public by court order or federal release; read as a language document
+words: 1457
+
+              From:      Scott Spencer <scottspencer@google.com>
+              To:        Martin Pal <mpal@google.com>
+              Sent:      Fri, 22 Mar 2013 21:16:54 -0400
+              Subject:   Re: AdX TOS effectively prohibits publisher from using an adserver?
+              Cc:        Eyal Manor <emanor@google.com>, Drew Bradstock <dbradstock@google.com>, Rivka
+              Spivak <rivka@google .com>, Aparna Pappu <apappu@google.com>
+
+              The current policy restricts calling AdX from another yield manager or exchange when there is
+              AdX sub-syndication (i.e., network partners) in place.
+              We define a yield manager as a system that autotnatically detennines the CPM from multiple
+              indirect channels. We define a exchange as something w ith RTB callouts. This definition has
+              worked well since, even in systen1s with multiple functions, these can typically be turned off.
+
+              We are planning to remove the AdX sub-syndication dependency in January once we have a
+              good track record with the full Admeld functionality integrated into AdX.
+
+              -scott
+
+
+              On Fri, Mar 22, 2013 at 7 :49 PM, Martin Pal <mpal@google.com> wrote:
+
+                Scott,
+                thanks a lot for the explanation, that reasoning makes sense. Let me ask some followup
+                questions to understand this space better.
+                I presume AdMeld was a SSP and they were redirecting to AdX, which would appear to be
+                against this policy. Simiilarly, using Rubicon to run a private exchange and fall through to
+                AdX for the open one is technically against this policy, right?
+
+              I an1 wondering what is a good working definition of an ad server, because in my mind the line
+                 between an ad server and a yield manager is fairly blurry, as these things venture into each
+                 other's territory. The reason I ask is that presumably integrati on with "ad servers" is
+                 presumably a good thing that should be encouraged while integration with the rest is
+                 undesirable. I'd like to tell the good and the bad guys apart.
+
+               - if it lets you book reservations, it feels like an ad server
+               - something that helps you manage callback chains manually is an ad server
+               - if it however auto1natically fetches CPM's and dynamically rearranges callback chains to
+                 optimize revenue it's a yield manager. But XfP also ventures into this territory with LiveCpm
+               - if it does dynamic backfill, it is likely an ad server but it could also be a yield manager
+               - if it accepts rtb bids and handles billing, it's an exchange
+
+              Thanks again,
+
+               martin
+
+
+
+
+                                                                                                        PTX0128
+                                                                                                         1:23-cv-00108
+
+
+                                                                                                                             DOJ
+HIGHLY CONFIDENTIAL                                                                                             GOOG-TEX-00149044
+              On Fri, Mar 22, 2013 at 7: 16 PM, Scott Spencer <scottspencer@google.com>          wrote:
+
+
+                 This was a strategic decision.
+
+                 We allow redirection from 3rd party ad servers, but not from other exchanges or yield
+                 managers. Why? Because if we did then those systems would immediately have a super set
+                 of demand - anything the SSP had+ all of AdX (including Ad.Words). No one would sign up
+                 for AdX directly.
+
+                 In addition, such a scenario is bad for buyers because every impression could potentially go
+                 through multiple RTB call outs making buyers con1pete with themselves.
+
+                  Scott
+
+
+                 On Mar 22, 2013 12:33 PM, "Eyal Manor" <emanor@google.com>             wrote:
+
+                  This is a big topic, the latest i know of, and there 1nay have been development that i am not
+                  aware of ,
+                  is that you can have client side back fill into adx, with out with out dynamic allocation from
+                  your adserver, but not
+
+              from you SSP, as adx is the SSP and you wi11 pay more rev share, have less controls and more
+                  latency .
+
+              Long ago we scanned and blocked various YM refer tags we detected, not sure if this is still
+                 enforced.
+
+              30% of adx pubs queries use own adserving solution and client side redirects.
+
+
+              On Fri, Mar 22, 2013 at 12:10 PM, Martin Pal <mpal@google.com>          wrote:
+
+                      I stand corrected by Jacob: apparently we do allow browser-side third party dynamic
+                      allocation to some whitelisted publishers. The question about the policy remains, as well
+                      as whether we should be friendlier to third party serving stacks, opening up dynamic
+                      allocation to everyone and potentially offer other integration points (like allow calling
+                      AdX twice, once private, once open exchange).
+
+
+              On Fri, Mar 22, 2013 at 11 :24 AM, Martin Pal <mpal@google.com> wrote:
+
+                      A thread on adx-questions brings up the fact that AdX policy essentially prohibits the use
+                      of SSP's, yield managers or third party ad servers in conjunction with AdX. In practice,
+                      many publishers ignore that and use ad servers and all sorts of indirection anyway.
+                      What is the purpose of that policy? Wouldn't abolishing it and adopting a friendlier stance
+                      towards 3rd party ad servers (e.g. by supporting a protocol to implement dynamic
+
+
+
+
+                                                                                                                               DOJ
+HIGHLY CONFIDENTIAL                                                                                               GOOG-TEX-00149045
+                      allocation, which is currently technically impossible) be good for our business?
+
+              Feedback appreciated. Thanks,
+
+               martin
+
+              ---------- Forwarded 1nessage ----------
+              Fro1n: Martin Pal <mpal@google.com>
+              Date: Fri, Mar 22, 2013 at 11 : 15 AM
+              Subject: Re: [adx-questions: 10197] TYM question
+              To: Leo Masri <masri@google.com>, Rivka Spivak <rivka@google.com>
+              Cc: Mark Scannell <mscannell@google.com> Karina Szmulewicz
+                     <kszmulewiez@google.com> adx-questions <adx-questions@google.com>
+
+
+              Ouch. I am an eng on A dX, thinking about our integration with third party ad servers. If
+                   dynamic allocation fro1n third party ad servers is explicitly prohibited by our terms of
+                   service, that seems pretty bad . Thanks Leo for pointing out that passage, I'll bring it up
+                   with our PM's.
+
+
+
+              On Tue, Mar 19, 2013 at 11: 13 A M, Leo Masri <masri@google.com> wrote:
+
+                        Hey Mark,
+                        I'm not policy expert, someone else may be in a better position to answer. But if you
+                        question relates to dynamic allocation, then yes, there's no way to do something like that
+                        if you're not on DFP.
+
+              Thanks,
+
+              Leo
+
+
+              On Tue, Mar 19, 2013 at 11 : 14 AM, Mark Scannell <scannell@google.com>           wrote:
+
+                        Leo,
+                        Just a general question about that policy ...
+
+              Doesn't that policy preclude what an Ad Server itself does?
+
+               So if a customer doesn't have DFP, but something that works remarkably similar, wouldn't that
+                        be a "system used for dynamically or programmatically allocating ad requests to Ad
+                        Networks based on real-time pricing information or automatic estimations of real-time
+                       pricing information?" As that's what DFP would do with Live CPMs. And, even
+                        without live CPMs, it seems a bit strange to draw the line between manual updating of
+                        the CPMs from the Ad Net,vorks and automatic updating of those CPMs.
+
+
+
+
+                                                                                                                              DOJ
+HIGHLY CONFIDENTIAL                                                                                              GOOG-TEX-00149046
+              Thanks,
+
+              Mark
+
+
+
+
+              On 18 March 2013 14: 12, Leo Masri <masri@google.com> wrote:
+
+                             This behavior is against AdX policies:
+
+                                 Restrictions on Passing and Redirecting Inventory. Inventory coming from a Seller Partner to
+                                 the Ad Exchange may be subject to rules set within the Ad Exchange (including, but not limited to,
+                                 auction rules). Thus, before sending an impression to the Ad Exchange, a Seller Partner must not
+                                 first pass that impression through any systen1 used for dynamically or programmatically allocating
+                                 ad requests to Ad Networks (i.e. , entities that buy on behalf of multiple advertisers, taking principal
+                                 risk on the transaction) based on real-time pricing information (e.g., RTB) or automatic estimations
+                                 of real-time pricing information (e.g., yield management). Further a Seller Partner must not
+                                 receive inventory from the Ad Exchange back to its own system. If that system is used for
+                                 dynamically or programmatically allocating ad requests to Ad Networks based on real-time pricing
+                                 information (e.g., RTB) or automatic estimations of real-time pricing information (e.g., yield
+                                 management).
+
+
+
+              On Mon, Mar 18, 2013 at 10:57 AM, Karina Szn1ulewicz <kszmulewicz@google.com>                                       wrote:
+
+                                 Hi Team, I hope you are all doing great.
+                                 One of my publishers is an ad network using NPM and is developing an in-house
+                                 TYM (Traditional Yield Manager).
+
+              I'd like to know if it is compliant fo r them to use this in-house TYM to scrab the AdX
+                         CPM dynamically, so they can serve the best performing ad each time.
+
+
+              I hope you can give me green light on this!
+
+              Best,
+
+              Karina.
+
+
+              Karina Szmulewicz
+              PBS - Online Partnerships Group ~ LatAm
+
+              -54 11 5530-3320
+              kszmulewicz@google.com
+
+
+
+
+                                                                                                                                                        DOJ
+HIGHLY CONFIDENTIAL                                                                                                                        GOOG-TEX-0014904 7
+              Agrega a +Google Argentina a tus circulos. Ahora en Google+
+
+
+               *Google Latin America is hiring! Apply online http://www.google.com.ar/intl/es/jobs/index.html*
+
+
+              CONFIDENTIALITY. This email may be confidential or privileged. If you received this communication by
+                      mistake, please don't forward it to anyone else, please erase all copies and attachments, and
+                      please let me know that it went to the wrong person . Thanks!
+
+
+
+
+               This email may be confidential or privileged. If you received this communication by mistake
+                      please don't forward it to anyone else, please email all copied and attachments and
+                      please let me know that it went to a wrong person. Thanks
+
+
+
+
+                                                                 , ,                                ,   ,        ,
+                        Mark Scannell ! Technical Account Manager | scannell@google.com        | +44-(0)78-7621-8151
+
+
+
+
+               This email may be confidential or privileged. If you received this communication by mistake
+                       please don't forward it to anyone else, please email all copied and attachments and please
+                       let me know that it went to a wrong person. Thanks
+
+
+
+
+                                                                                                                                    DOJ
+HIGHLY CONFIDENTIAL                                                                                                    GOOG-TEX-00149048
+
